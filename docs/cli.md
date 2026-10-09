@@ -21,19 +21,18 @@ python3 tsep.py add-evidence /tmp/tsep-demo/report.json --id intent --path inten
 python3 tsep.py add-evidence /tmp/tsep-demo/report.json --id http --path http.txt \
   --kind http --target https://example.com/page --observed-at 2026-10-09T10:00:00Z \
   --access synthetic --description 'Authored synthetic exchange'
-python3 - <<'PY'
-import json
-from pathlib import Path
-report = json.loads(Path('examples/pass/report.json').read_text())
-Path('/tmp/tsep-demo/atoms.json').write_text(json.dumps(report['results'][0]['atomic_results']))
-PY
 python3 tsep.py record /tmp/tsep-demo/report.json --control TS01 --status C \
   --reason 'Two authored passing judgments; synthetic TS01 only' \
   --procedure 'Replay supplied synthetic judgments, no live assessment' \
   --target https://example.com/page --evidence http --evidence intent \
-  --atomic-results /tmp/tsep-demo/atoms.json
+  --atomic '{"rule_id":"TS01-A01","target":"https://example.com/page","outcome":"pass","reason":"Synthetic complete final 200","evidence_ids":["http","intent"]}' \
+  --atomic '{"rule_id":"TS01-A02","target":"https://example.com/page","outcome":"pass","reason":"Synthetic URL and body digest match prior intent","evidence_ids":["http","intent"]}'
 python3 tsep.py gate /tmp/tsep-demo/report.json --summary --lang fr
 ```
+
+`add-evidence` et `record` affichent par défaut un reçu de deux lignes ; `--json`
+rétablit le résumé structuré complet (décision, causes bloquantes et couverture).
+Le rapport complet reste dans le fichier indiqué, jamais remplacé par ce reçu.
 
 `add-evidence` calcule le SHA-256 du fichier local existant. Répéter `--target` pour
 plusieurs cibles. IDs/chemins en doublon, preuve hors racine, empreinte modifiée,
@@ -43,8 +42,9 @@ Search Console existante. `--access` explicite public/restricted/synthetic.
 
 `record` remplace uniquement le contrôle sélectionné et son tableau atomique ;
 aucune fusion implicite de constats anciens. Répéter `--evidence` et `--target`.
-Le fichier `--atomic-results` contient un tableau d’objets avec `rule_id`, `target`,
-`outcome`, `reason`, `evidence_ids`. Omettre le tableau ne permet pas de déclarer C
+Deux modes exclusifs : répéter `--atomic` avec un objet JSON explicite par
+règle/cible, comme ci-dessus, ou utiliser un fichier `--atomic-results` qui contient un tableau d’objets avec `rule_id`, `target`,
+`outcome`, `reason`, `evidence_ids`. Aucun rattachement implicite de preuves. Omettre le tableau ne permet pas de déclarer C
 sur TS01/07/10. `--state` vaut complete pour C/NC/NA, inconclusive pour NT ;
 `--state not-started` exige l’absence de cibles évaluées, preuves et observations.
 
@@ -64,6 +64,10 @@ The default evidence root is the report's directory. The commands above replay
 supplied synthetic judgments; they are not automatic observations of a live site.
 Use `--summary` without `--lang fr` for the English gate summary.
 
+`add-evidence` and `record` print a two-line receipt by default; `--json` restores
+the full structured summary, including decision, blocking causes and coverage.
+The complete report remains in the named file; the receipt never replaces it.
+
 `add-evidence` hashes an existing local file and records ID, relative path, kind,
 repeated target, zoned observation date, access and description. Duplicate IDs/paths,
 files outside the evidence root, changed hashes, future evidence and self-evidence
@@ -71,10 +75,11 @@ are rejected. `--kind webmaster-tools` requires `--engine`; only Google satisfie
 the existing Search Console normative series. Access is explicit.
 
 `record` replaces only the selected control and its entire atomic array, without
-merging old findings. Repeat `--evidence` and `--target`. The `--atomic-results`
-JSON array contains rule_id, target, outcome, reason, evidence_ids. Omitting it
+merging old findings. Repeat `--evidence` and `--target`. Either repeat `--atomic`
+with one explicit JSON object per rule/target or supply an `--atomic-results` JSON
+array file; these modes are mutually exclusive. Each object contains rule_id, target, outcome, reason, evidence_ids. Omitting it
 cannot yield C on TS01/07/10. State defaults to complete for C/NC/NA, inconclusive
-for NT. Explicit not-started requires no evaluated targets, evidence or observations.
+for NT. Evidence is never linked implicitly. Explicit not-started requires no evaluated targets, evidence or observations.
 
 An implementation that actually executed all automatic rules can initialize with
 `--mode automatic --tool NAME --tool-version VERSION` alongside required arguments.

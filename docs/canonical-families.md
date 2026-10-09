@@ -2,6 +2,14 @@
 
 ## Français
 
+Les inconclusive décrits ci-dessous sont les limites de l’interpréteur de référence.
+Ils ne remplacent pas les attendus normatifs du corpus : un adaptateur plus complet
+est comparé selon les [accords et la couverture](conformance.md). Les cas concernés
+portent `reference_limit` et une justification par couple. Content-Type est analysé
+sans casse pour type/sous-type, noms des paramètres et charset UTF-8, y compris
+charset quoté. Les preuves et revues restent liées aux octets exacts des captures.
+
+
 Extension de conformance `input_version: "1"`, draft.5. Chaque cas reste
 synthétique ; les chaînes HTTP, HTML, DOM et XML sont interprétées hors réseau.
 Les verdicts attendus sont séparés de l’entrée. A01/A03/A04 restent `semiAuto` ;
@@ -149,6 +157,14 @@ et dates déclarés. Ni canonical choisi par un moteur, ni indexation, ni exhaus
 du site ne sont déduits.
 
 ## English
+
+The inconclusive outcomes described below are reference-interpreter limits. They
+do not replace normative corpus expectations: broader adapters are compared using
+[agreements and coverage](conformance.md). Affected cases declare `reference_limit`
+and per-pair rationale. Content-Type type/subtype, parameter names and UTF-8
+charset are case insensitive, including quoted charset. Evidence/reviews remain
+bound to exact capture bytes.
+
 
 Draft.5 extends conformance input_version 1 with synthetic raw HTTP/HTML/DOM/XML
 inputs for four TS10 rules. No network collection occurs. Expected outcomes remain

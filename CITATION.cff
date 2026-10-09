@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "Cite the exact draft version and archive checksum. No DOI has been registered."
 title: "Technical SEO Evidence Protocol (TSEP)"
-version: "0.1.0-draft.5"
+version: "0.1.0-draft.6"
 type: software
 authors:
   - family-names: "Morel"

@@ -1,6 +1,6 @@
 # TSEP — format d’échange de preuves
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.5 · initié par Edikka · [English](README.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.6 · initié par Edikka · [English](README.md)**
 
 Transmettre un audit SEO technique que son destinataire peut examiner, rejouer et
 contester : mêmes identifiants, périmètre explicite, preuves liées aux constats et
@@ -53,11 +53,14 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
 3. **Passer la suite de conformance** : fournir un adaptateur JSON sur entrée/sortie
    standard, puis exécuter `python3 conformance/run.py --command 'python3 mon_adaptateur.py'`.
    Déclarer les neuf règles et les bornes réellement prises en charge, pas « 44
-   contrôles automatiques ». [Format d’entrée et comparaison](docs/conformance.md).
+   contrôles automatiques ». [Format d’entrée et comparaison](docs/conformance.md). Publier séparément
+   accords, désaccords et couverture réduite : les indéterminés acceptés sur des
+   limites de référence signalées ne sont pas des évaluations réussies.
 
 Un C automatique exige toutes les règles du contrôle `automatic`, leur couverture
 complète et `assessor.tool.name/version`. TS01-A01/A02 sont automatic : 200 final
-et égalité exacte URL/empreinte du corps avec l’intention préalable. TS07-A01/A02/A03
+et identité de ressource selon l’intention préalable (URL, empreinte, stabilité
+déclarée ou marqueurs littéraux). TS07-A01/A02/A03
 restent semiAuto ; TS10-A02 reste manual. Définir une référence de contenu pertinente reste une responsabilité humaine.
 
 ## Profils de preuves
@@ -100,10 +103,10 @@ Aucun résultat ne garantit indexation, classement ou comportement futur d’un 
 
 [Contrat FR](docs/contract.fr.md) · [44 contrôles](docs/controls.fr.md) ·
 [Source bilingue](spec/protocol.json) · [Schéma](schemas/report.schema.json) ·
-[Migration draft.5](docs/migration-draft.5.md) · [EARL](docs/interoperability.md) ·
+[Migration draft.6](docs/migration-draft.6.md) · [EARL](docs/interoperability.md) ·
 [Gouvernance](GOVERNANCE.md) · [Contribuer](CONTRIBUTING.md) · [Historique](CHANGELOG.md) ·
 [Clause de recette](docs/acceptance-clause.md) · [Sonde HTTP](probes/README.md).
 
-Citer `TSEP@0.1.0-draft.5:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
+Citer `TSEP@0.1.0-draft.6:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
 Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](CITATION.cff).
 [Développement, vérification complète et dépôt autonome](docs/development.md).

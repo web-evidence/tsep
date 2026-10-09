@@ -24,6 +24,58 @@ def need(condition, reason):
         raise Unknown(reason)
 
 
+def media_type(headers):
+    """Parse one unambiguous Content-Type; only charset values are case-folded."""
+    values = headers.get('content-type', [])
+    need(len(values) == 1, 'Missing or repeated Content-Type')
+    token = r"[!#$%&'*+.^_`|~0-9A-Za-z-]+"
+    match = re.match(r'^(' + token + '/' + token + r')[ \t]*', values[0])
+    need(match, 'Malformed Content-Type')
+    kind, rest, params = match[1].lower(), values[0][match.end():], {}
+    parameter = re.compile(r';[ \t]*(' + token + r')=(?:(' + token + r')|"((?:[^"\\\r\n]|\\[\t\x20-\x7e])*)")[ \t]*')
+    while rest:
+        match = parameter.match(rest)
+        need(match, 'Malformed Content-Type parameter')
+        key = match[1].lower()
+        need(key not in params, 'Repeated Content-Type parameter')
+        value = match[2] if match[2] is not None else re.sub(r'\\(.)', r'\1', match[3])
+        params[key] = value.lower() if key == 'charset' else value
+        rest = rest[match.end():]
+    return kind, params
+
+
+def utf8_media(headers, kinds, default_utf8=False):
+    kind, params = media_type(headers)
+    return kind in kinds and params.get('charset', 'utf-8' if default_utf8 else None) == 'utf-8'
+
+
+def identity_result(final_url, body, intent):
+    expected_url = intent.get('expected_final_url')
+    need(isinstance(expected_url, str), 'Missing reference URL')
+    url_parts(expected_url)
+    if final_url != expected_url:
+        return 'fail', 'Final URL differs from declared reference URL'
+    expected = intent.get('expected_body_sha256', '')
+    need(isinstance(expected, str) and re.fullmatch('[a-f0-9]{64}', expected), 'Missing reference body SHA-256')
+    actual = hashlib.sha256(body.encode('utf-8')).hexdigest()
+    if actual == expected:
+        return 'pass', 'Final URL and complete body SHA-256 match: ' + actual
+    if intent.get('representation') == 'stable':
+        return 'fail', 'Declared stable representation changed: ' + actual
+    need('representation' not in intent, 'Unsupported representation policy')
+    required, forbidden = intent.get('required_markers', []), intent.get('forbidden_markers', [])
+    for markers in (required, forbidden):
+        need(isinstance(markers, list) and all(text_present(m) for m in markers)
+             and len(markers) == len(set(markers)), 'Malformed identity markers')
+    need(not any(bad in good for good in required for bad in forbidden), 'Contradictory identity markers')
+    need(required or forbidden, 'Body digest changed without stable policy or identity markers')
+    missing = [m for m in required if m not in body]
+    present = [m for m in forbidden if m in body]
+    if missing or present:
+        return 'fail', 'Identity marker contradiction: ' + json.dumps({'missing': missing, 'forbidden': present}, ensure_ascii=False)
+    return 'pass', 'Changed body satisfies all declared literal identity markers: ' + actual
+
+
 def url_parts(url):
     parts = urlsplit(url)
     need(parts.scheme in ('http', 'https') and parts.hostname and not parts.fragment
@@ -128,7 +180,7 @@ def directive_result(headers, body, intent):
     need(intent.get('indexing') in ('allow', 'exclude'), 'Missing indexing intent')
     need(intent.get('following', 'unspecified') in ('allow', 'disallow', 'unspecified'), 'Unknown link intent')
     need('presentation' not in intent, 'Presentation restrictions require review')
-    need(headers.get('content-type', []) == ['text/html; charset=utf-8'], 'Unsupported media type or encoding')
+    need(utf8_media(headers, ('text/html',)), 'Unsupported media type or encoding')
     need(bool(re.search(r'</html\s*>\s*$', body, re.I)), 'HTML end not captured')
     parser = Meta()
     parser.feed(body)
@@ -231,10 +283,10 @@ def reviewed_exemption(target, plan, headers):
         need(record.get('sha256') == hashlib.sha256(record['content'].encode('utf-8')).hexdigest(),
              'Exemption supporting record fingerprint mismatch')
     if plan['basis'] == 'non-html':
-        need(headers.get('content-type') in (['application/pdf'], ['text/plain; charset=utf-8'], ['image/png']),
+        need(media_type(headers)[0] in ('application/pdf', 'image/png') or utf8_media(headers, ('text/plain',)),
              'Non-HTML exemption contradicts media type or type is unsupported')
     else:
-        need(headers.get('content-type') == ['text/html; charset=utf-8'], 'Stable HTML review requires HTML source')
+        need(utf8_media(headers, ('text/html',)), 'Stable HTML review requires HTML source')
     return 'not-applicable', 'Documented ' + plan['basis'] + ' review and supporting records; review truth not independently verified'
 
 
@@ -316,13 +368,7 @@ def evaluate_target(target, rule):
         if rule == 'TS01-A01':
             return ('pass' if status == 200 else 'fail', 'Final complete GET status: ' + str(status))
         if rule == 'TS01-A02':
-            expected = intent.get('expected_body_sha256', '')
-            need(isinstance(expected, str) and re.fullmatch('[a-f0-9]{64}', expected)
-                 and isinstance(intent.get('expected_final_url'), str), 'Missing exact representation reference')
-            url_parts(intent['expected_final_url'])
-            actual = hashlib.sha256(body.encode('utf-8')).hexdigest()
-            matches = actual == expected and final_url == intent['expected_final_url']
-            return ('pass' if matches else 'fail', 'Exact final URL and decoded body SHA-256 comparison: ' + actual)
+            return identity_result(final_url, body, intent)
         if rule == 'TS07-A01':
             return directive_result(headers, body, intent)
         if rule == 'TS07-A03':
@@ -333,7 +379,7 @@ def evaluate_target(target, rule):
         robots = target.get('robots', {})
         need(tsep.timestamp(robots['observed_at']) <= tsep.timestamp(target['observed_at']), 'Robots capture postdates assessment')
         _, robot_status, robot_headers, robot_body = trace(robots.get('http'), robots_url, crawler)
-        need(robot_status == 200 and robot_headers.get('content-type') == ['text/plain; charset=utf-8'], 'Unsupported robots response; no default access inferred')
+        need(robot_status == 200 and utf8_media(robot_headers, ('text/plain',), default_utf8=True), 'Unsupported robots response; no default access inferred')
         allowed = robots_allowed(robot_body, final_url, crawler)
         if not allowed:
             return 'fail', 'Observed robots policy disallows this target crawler/path'

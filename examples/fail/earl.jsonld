@@ -26,8 +26,8 @@
         "@id": "_:scope"
       },
       "earl:test": {
-        "@id": "urn:tsep:0.1.0-draft.5:TS01",
-        "@type": "earl:TestCriterion"
+        "@id": "urn:tsep:0.1.0-draft.6:TS01",
+        "@type": "earl:TestRequirement"
       },
       "earl:mode": {
         "@id": "earl:manual"
@@ -57,8 +57,11 @@
         "@id": "https://example.com/page"
       },
       "earl:test": {
-        "@id": "urn:tsep:0.1.0-draft.5:TS01-A01",
-        "@type": "earl:TestCriterion"
+        "@id": "urn:tsep:0.1.0-draft.6:TS01-A01",
+        "@type": "earl:TestCase",
+        "dct:isPartOf": {
+          "@id": "urn:tsep:0.1.0-draft.6:TS01"
+        }
       },
       "earl:mode": {
         "@id": "earl:manual"

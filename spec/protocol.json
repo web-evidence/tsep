@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.5",
+  "version": "0.1.0-draft.6",
   "status": "draft",
   "date": "2026-10-09",
   "languages": [
@@ -146,28 +146,28 @@
             "en": "Each final response whose content can be compared to intent."
           },
           "procedure": {
-            "fr": "Comparer exactement l’URL finale et le SHA-256 des octets du corps complet aux valeurs expected_final_url et expected_body_sha256 fixées dans intent avant la mesure. Aucun retrait implicite de paramètres ni normalisation du corps.",
-            "en": "Compare the final URL and SHA-256 of the complete body bytes exactly against expected_final_url and expected_body_sha256 fixed in intent before measurement. No implicit parameter removal or body normalization."
+            "fr": "Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer ces références et, si nécessaire, representation: stable ou les listes required_markers / forbidden_markers dans intent avant la mesure. Aucune normalisation implicite.",
+            "en": "First compare the final URL with expected_final_url, then the complete body SHA-256 with expected_body_sha256. Fix these references and, if needed, representation: stable or required_markers / forbidden_markers arrays in intent before measurement. No implicit normalization."
           },
           "acceptance": {
-            "fr": "Les deux valeurs correspondent exactement. Une URL ou une empreinte différente est fail même si A01 réussit. Le code HTTP ne remplace pas la comparaison.",
-            "en": "Both values match exactly. A different URL or digest is fail even if A01 passes. The HTTP status does not replace comparison."
+            "fr": "URL finale différente : fail. À URL identique, empreinte identique : pass. Sinon, representation: stable impose fail. Sinon, des marqueurs valides et non vides au total donnent pass si tous les requis sont présents et tous les interdits absents, fail dans le cas contraire. Sans marqueurs ni stabilité déclarée : inconclusive. Le statut HTTP ne remplace pas cette comparaison.",
+            "en": "Different final URL: fail. At the same URL, identical digest: pass. Otherwise, representation: stable requires fail. Otherwise, valid marker lists containing at least one marker yield pass when every required marker is present and every forbidden marker absent, fail otherwise. Without markers or declared stability: inconclusive. HTTP status does not replace this comparison."
           },
           "evidence": {
-            "fr": "Trace HTTP et corps complet, intention datée avec URL et empreinte attendues, valeurs calculées et outil/version. L’empreinte porte sur le corps après décodage de transfert et de contenu, avant toute autre transformation.",
-            "en": "HTTP trace and complete body, dated intent with expected URL and digest, computed values and tool/version. Hash the body after transfer and content decoding, before any other transformation."
+            "fr": "Trace HTTP, corps complet et intention préalable datée avec URL, empreinte de référence et éventuels marqueurs/politique de stabilité ; valeurs calculées et outil/version. Empreinte après décodage de transfert et de contenu, avant toute autre transformation. Marqueurs UTF-8 littéraux, sensibles à la casse, recherchés dans le corps décodé sans extraction DOM ni expression régulière.",
+            "en": "HTTP trace, complete body and dated prior intent containing URL, reference digest and any markers/stability policy; computed values and tool/version. Hash after transfer and content decoding, before any other transformation. Literal case-sensitive UTF-8 markers are searched in the decoded body without DOM extraction or regular expressions."
           },
           "assumptions": {
             "fr": "Le responsable fixe une représentation de référence avant la collecte ; sa pertinence métier reste sa responsabilité. La comparaison est automatique, la définition de l’intention ne l’est pas.",
             "en": "The owner fixes a reference representation before collection; its business relevance remains their responsibility. Comparison is automatic; defining intent is not."
           },
           "inconclusive": {
-            "fr": "Corps absent/tronqué, décodage inconnu, URL ou empreinte de référence absente, intention non fixée avant la mesure : inconclusive. Un seul code 200 ne suffit pas.",
-            "en": "Missing/truncated body, unknown decoding, missing reference URL or digest, intent not fixed before measurement: inconclusive. A 200 status alone is insufficient."
+            "fr": "Capture absente/tronquée, décodage inconnu, référence URL absente/invalide, intention postérieure : inconclusive. À URL identique, empreinte de référence absente/invalide : inconclusive. Si les empreintes diffèrent sans stabilité déclarée, marqueurs absents, vides, malformés ou contradictoires : inconclusive. Une URL différente reste fail même sans empreinte de référence.",
+            "en": "Missing/truncated capture, unknown decoding, missing/invalid reference URL or subsequent intent: inconclusive. At an identical URL, missing/invalid reference digest: inconclusive. If digests differ without declared stability, absent, empty, malformed or contradictory markers: inconclusive. A different URL remains fail even without a reference digest."
           },
           "limitations": {
-            "fr": "Une représentation dynamique doit avoir une référence exacte dans le contexte testé ; aucune heuristique de similarité. Une mauvaise référence peut valider un mauvais contenu. Ni classification soft 404 du moteur ni indexation ni contrôle de toutes les routes.",
-            "en": "A dynamic representation needs an exact reference in the tested context; no similarity heuristic. A wrong reference may validate wrong content. No engine soft-404 classification, indexing claim or assessment of every route."
+            "fr": "Une variation d’empreinte seule ne prouve pas un contenu erroné. Les marqueurs ne mesurent ni similarité sémantique ni visibilité : leur choix et la référence relèvent du responsable. Une mauvaise intention peut valider un mauvais contenu. Ni classification soft 404 du moteur, ni indexation, ni contrôle des routes non déclarées.",
+            "en": "A changed digest alone does not prove wrong content. Markers measure neither semantic similarity nor visibility: the owner is responsible for their choice and the reference. Wrong intent can validate wrong content. No engine soft-404 classification, indexing or assessment of undeclared routes."
           },
           "na_inputs": [],
           "non_applicability": {
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.5"
+      "rule_version": "0.1.0-draft.6"
     },
     {
       "id": "TS02",
@@ -673,7 +673,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.5"
+      "rule_version": "0.1.0-draft.6"
     },
     {
       "id": "TS08",
@@ -1038,7 +1038,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.5"
+      "rule_version": "0.1.0-draft.6"
     },
     {
       "id": "TS11",
@@ -3171,15 +3171,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "9470ac1cdf419ad87a416e83243c3c3f51ab385b9cfbdafc92879be59fa4eb00"
+      "sha256": "9ddab4d5328b455acb332f89b61e29875b4622ce47392d162fdaa46850ee34d3"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "8314156da7c02c50475e9df522bc73fc9243371781f92d22cd7f7308a47d6e2f"
+      "sha256": "1231dfdc4c188ba3133ed571a74b35cc0fcd2fcbb254df65f8816e93dbd8a6fb"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "0b889dd4d940aab4b37b2f8248fcf9a3f7738a78dc6a586b2a86d3e49be57974"
+      "sha256": "bb27d1096f37586fd0b3a18bf2f60940d8e68a799499282e2d3485ce12c27780"
     }
   ]
 }

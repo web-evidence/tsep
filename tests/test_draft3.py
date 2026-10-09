@@ -207,7 +207,7 @@ class Draft3(unittest.TestCase):
         data['targets'][0]['http'][0]['response'] = data['targets'][0]['http'][0]['response'].replace('Expected content','Different content')
         result = {a['rule_id']:a['outcome'] for a in evaluate(data)}
         self.assertEqual(result['TS01-A01'], 'pass')
-        self.assertEqual(result['TS01-A02'], 'fail')
+        self.assertEqual(result['TS01-A02'], 'inconclusive')
 
     def test_distribution_excludes_agent_instructions(self):
         self.assertNotIn('AGENTS.md', tsep.read_json(ROOT/'release-files.json')['files'])

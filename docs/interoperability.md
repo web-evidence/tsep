@@ -6,7 +6,7 @@ The EARL JSON-LD companion uses the [W3C EARL vocabulary](https://www.w3.org/TR/
 Its context is embedded; no network lookup is required. It is not a lossless
 replacement for the report and evidence, nor W3C approval or universal consumer
 compatibility. Control assertions concern the declared scope, with stable local
-IDs such as `_:control_TS01` and tests `urn:tsep:0.1.0-draft.5:TS01`.
+IDs such as `_:control_TS01` and tests `urn:tsep:0.1.0-draft.6:TS01`.
 
 | Control result / state | EARL outcome |
 | --- | --- |
@@ -15,6 +15,10 @@ IDs such as `_:control_TS01` and tests `urn:tsep:0.1.0-draft.5:TS01`.
 | NA / complete | `earl:inapplicable` |
 | NT / not-started | `earl:untested` |
 | NT / inconclusive | `earl:cantTell` |
+
+The control test is an `earl:TestRequirement`; each atomic test is an
+`earl:TestCase` whose own `dct:isPartOf` points to the versioned control test URN.
+This test hierarchy is separate from the retained assertion-to-assertion link.
 
 Each `atomic_result` generates **one additional assertion**. Its `earl:test` is
 `urn:tsep:<version>:TSxx-Ayy`, its `earl:subject` is that observation's target URL
@@ -45,8 +49,12 @@ Le compagnon JSON-LD emploie le vocabulaire EARL W3C, avec contexte intégré sa
 requête réseau. Il ne remplace pas le rapport et les preuves, ne vaut pas validation
 W3C et ne garantit pas une compatibilité universelle. Les assertions des contrôles
 portent sur le périmètre déclaré, avec IDs locaux tels que `_:control_TS01` et
-tests `urn:tsep:0.1.0-draft.5:TS01`. Le premier tableau distingue C, NC, NA, NT non
+tests `urn:tsep:0.1.0-draft.6:TS01`. Le premier tableau distingue C, NC, NA, NT non
 commencé et NT indéterminé.
+
+Le test du contrôle est un `earl:TestRequirement` ; chaque test atomique est un
+`earl:TestCase` dont le propre `dct:isPartOf` pointe vers l’URN du test du contrôle
+versionné. Cette hiérarchie de tests est distincte du lien conservé entre assertions.
 
 Chaque `atomic_result` produit **une assertion supplémentaire** : `earl:test` vaut
 `urn:tsep:<version>:TSxx-Ayy`, `earl:subject` est l’URL cible de cette observation

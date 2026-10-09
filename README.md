@@ -1,6 +1,6 @@
 # TSEP — evidence interchange format
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.5 · initiated by Edikka · [Français](README.fr.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.6 · initiated by Edikka · [Français](README.fr.md)**
 
 Share a technical SEO assessment that its recipient can inspect, replay and
 challenge: stable identifiers, explicit scope, evidence linked to findings and
@@ -53,11 +53,13 @@ validation establishes consistency and file integrity.
 3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
    `python3 conformance/run.py --command 'python3 my_adapter.py'`. Declare the nine
    rules and bounds actually supported, not “44 automatic controls”.
-   [Input format and comparison](docs/conformance.md).
+   [Input format and comparison](docs/conformance.md). Report exact agreements,
+   disagreements and reduced coverage separately; accepted inconclusive results
+   on marked reference limits are not successful assessments.
 
 Automatic C requires every control rule `automatic`, complete coverage and
-`assessor.tool.name/version`. TS01-A01/A02 are automatic: final 200 and exact
-URL/body hash equality against prior intent. TS07-A01/A02/A03 remain semiAuto; TS10-A02 remains manual.
+`assessor.tool.name/version`. TS01-A01/A02 are automatic: final 200 and resource identity against prior intent (URL, body digest,
+declared stability or literal identity markers). TS07-A01/A02/A03 remain semiAuto; TS10-A02 remains manual.
 Defining an appropriate content reference remains a human responsibility.
 
 ## Evidence profiles
@@ -101,10 +103,10 @@ ranking or future engine behavior.
 
 [EN contract](docs/contract.en.md) · [44 controls](docs/controls.en.md) ·
 [Bilingual source](spec/protocol.json) · [Schema](schemas/report.schema.json) ·
-[Draft.5 migration](docs/migration-draft.5.md) · [EARL](docs/interoperability.md) ·
+[Draft.6 migration](docs/migration-draft.6.md) · [EARL](docs/interoperability.md) ·
 [Governance](GOVERNANCE.md) · [Contribute](CONTRIBUTING.md) · [History](CHANGELOG.md) ·
 [Acceptance clause](docs/acceptance-clause.md) · [HTTP probe](probes/README.md).
 
-Cite `TSEP@0.1.0-draft.5:TS07` with scope, result, evidence and archive hash.
+Cite `TSEP@0.1.0-draft.6:TS07` with scope, result, evidence and archive hash.
 Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATION.cff).
 [Development, full verification and independent repository](docs/development.md).

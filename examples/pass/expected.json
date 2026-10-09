@@ -19,6 +19,7 @@
     "NT": 0
   },
   "blocking": [],
+  "blocking_causes": [],
   "synthetic_evidence": true,
   "selected_controls": 1,
   "protocol_controls": 44,

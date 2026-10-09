@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.5",
+  "protocol_version": "0.1.0-draft.6",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -331,7 +331,7 @@
         "en": "200 but unexpected login screen."
       },
       "evidence": {
-        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only. Reference fixed at 2026-10-09T09:00:00Z: expected_final_url=https://example.com/page; expected_body_sha256=52da4daf804588dfa84e3db19f94dd66fee416c20eb2e2346274c98b84ee0216. Exact UTF-8 body bytes without final newline; no encoding. This is an authored judgment fixture, not executable raw HTTP.",
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only. Reference fixed at 2026-10-09T09:00:00Z: expected_final_url=https://example.com/page; expected_body_sha256=52da4daf804588dfa84e3db19f94dd66fee416c20eb2e2346274c98b84ee0216. Exact UTF-8 body bytes without final newline; no encoding. This is an authored judgment fixture, not executable raw HTTP. Prior synthetic identity criteria: required_markers=[\"Article A\"]; forbidden_markers=[\"Login\"].",
         "http": "SYNTHETIC: Fixture/1 offline exchange at 2026-10-09T10:00:00Z; GET https://example.com/page; final same; redirects=0; HTTP/1.1 200 OK; Content-Type: text/html; full body: <form>Login</form>; no truncation. Bounds: 10s/5 hops/5MiB, not reached."
       },
       "atomic_results": [
@@ -351,8 +351,8 @@
           "rule_id": "TS01-A02",
           "outcome": "fail",
           "reason": {
-            "fr": "200 mais écran de connexion inattendu.",
-            "en": "200 but unexpected login screen."
+            "fr": "Marqueur requis Article A absent et marqueur interdit Login présent dans le corps synthétique complet.",
+            "en": "Required Article A marker absent and forbidden Login marker present in the complete synthetic body."
           },
           "evidence_ids": [
             "intent",

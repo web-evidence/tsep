@@ -1,5 +1,24 @@
 # Change history / Historique
 
+## 0.1.0-draft.6 — 2026-10-09 — unpublished development candidate
+
+R-019: TS01-A02 uses prior identity markers or explicit stability for changed
+bodies; a bare digest change is inconclusive. R-020: normative expectations are
+separate from reference limits, with exact agreements, disagreements and reduced
+coverage. R-021: case-insensitive media types/UTF-8 charset, including charset-free
+robots.txt. Gate cause NC/NT is explicit; decision policy is unchanged.
+
+R-023: short mutation receipts, optional JSON, inline atomic records and English
+summary punctuation. R-022: EARL TestRequirement/TestCase hierarchy, retaining
+assertion links. FR/EN spec/docs, 40 additional synthetic cases and regression
+coverage. Format 2 and TS01–TS44 remain unchanged. [Migration](docs/migration-draft.6.md).
+
+R-019 : une variation seule ne prouve plus un échec d’identité ; marqueurs et
+stabilité sont fixés avant mesure. R-020 : attendus normatifs distincts des limites
+du parseur et couverture réduite comptée séparément. R-021 : casse Content-Type et
+UTF-8 correctement traitée. Causes NC/NT, CLI et hiérarchie EARL précisées, sans
+modifier la politique de décision. Aucun contrôle partiel ne devient C global.
+
 ## 0.1.0-draft.5 — 2026-10-09 — unpublished development candidate
 
 - Add bounded raw-input conformance for TS10-A01–A04: inventoried canonical signals,

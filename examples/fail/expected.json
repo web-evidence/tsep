@@ -21,6 +21,12 @@
   "blocking": [
     "TS01"
   ],
+  "blocking_causes": [
+    {
+      "control_id": "TS01",
+      "status": "NC"
+    }
+  ],
   "synthetic_evidence": true,
   "selected_controls": 1,
   "protocol_controls": 44,

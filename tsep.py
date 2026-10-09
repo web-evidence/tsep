@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 """TSEP report interchange reference implementation. Apache-2.0.
 
-No network, third-party dependencies or automatic SEO assessments.
+Validates scoped reports, including declared automatic assessments under the
+versioned rules. No network collection or SEO evaluation in this CLI, and no
+third-party dependencies.
 The shape checker implements only the keywords used by the bundled schema;
 it is deliberately not a general-purpose JSON Schema implementation.
 """
@@ -40,6 +42,12 @@ def unique_object(pairs):
 def read_json(path):
     with Path(path).open('rb') as handle:
         data = handle.read(MAX_JSON_BYTES + 1)
+    return parse_json(data)
+
+
+def parse_json(data):
+    if isinstance(data, str):
+        data = data.encode('utf-8')
     require(len(data) <= MAX_JSON_BYTES, 'JSON exceeds 8 MiB')
     def bad_constant(value):
         raise Invalid('Non-finite JSON number: ' + value)
@@ -263,6 +271,8 @@ def decision(report, controls=None):
         gate = 'GO_WITH_RESERVATIONS'
     return {'valid': True, 'decision': gate, 'profile': report['profile'],
             'scope': report['scope'], 'counts': counts, 'blocking': blocking,
+            'blocking_causes': [{'control_id': r['control_id'], 'status': r['status']}
+                                for r in report['results'] if r['control_id'] in blocking],
             'synthetic_evidence': any(a['access'] == 'synthetic' for a in report['artifacts']),
             'selected_controls': len(report['controls']), 'protocol_controls': len(controls),
             'unevaluated_controls': sorted(set(controls) - set(report['controls'])),
@@ -308,7 +318,7 @@ def earl(report, summary):
         graph.append({'@id': parent, '@type': 'earl:Assertion', 'earl:assertedBy': {'@id': '_:assertor'},
                       'earl:subject': {'@id': '_:scope'},
                       'earl:test': {'@id': 'urn:tsep:' + report['protocol']['version'] + ':'
-                                   + result['control_id'], '@type': 'earl:TestCriterion'},
+                                   + result['control_id'], '@type': 'earl:TestRequirement'},
                       'earl:mode': {'@id': 'earl:' + (report['assessor']['mode']
                                     if result['evaluation_state'] != 'not-started' else 'unknownMode')},
                       'earl:result': {'@type': 'earl:TestResult',
@@ -330,7 +340,8 @@ def earl(report, summary):
                           'earl:assertedBy': {'@id': '_:assertor'},
                           'earl:subject': atomic_subject,
                           'earl:test': {'@id': 'urn:tsep:' + report['protocol']['version'] + ':' + atom['rule_id'],
-                                        '@type': 'earl:TestCriterion'},
+                                        '@type': 'earl:TestCase',
+                                        'dct:isPartOf': {'@id': 'urn:tsep:' + report['protocol']['version'] + ':' + result['control_id']}},
                           'earl:mode': {'@id': 'earl:' + report['assessor']['mode']},
                           'earl:result': {'@type': 'earl:TestResult',
                                          'earl:outcome': {'@id': 'earl:' + atomic_mapping[atom['outcome']]},
@@ -376,12 +387,12 @@ def readable_summary(summary, language):
     return '\n'.join([
         ('Décision : ' if fr else 'Decision: ') + summary['decision'],
         ('Périmètre : ' if fr else 'Scope: ') + summary['scope']['label'],
-        '%s : %s | %s : %s/%s' % (
+        ('%s : %s | %s : %s/%s' if fr else '%s: %s | %s: %s/%s') % (
             'Cibles' if fr else 'Targets', len(summary['scope']['targets']),
             'Contrôles sélectionnés' if fr else 'Selected controls',
             summary['selected_controls'], summary['protocol_controls']),
         ' · '.join('%s=%s' % item for item in summary['counts'].items()),
-        ('Bloquants : ' if fr else 'Blocking: ') + (', '.join(summary['blocking']) or '—'),
+        ('Bloquants : ' if fr else 'Blocking: ') + (', '.join(r['control_id'] + ' (' + r['status'] + ')' for r in summary['blocking_causes']) or '—'),
         ('Preuves synthétiques : ' if fr else 'Synthetic evidence: ') + synthetic,
         ('Portée limitée aux cibles et contrôles déclarés ; aucune conformité globale. '
          'Vérifie cohérence et intégrité, pas la vérité des constats.' if fr else
@@ -410,6 +421,8 @@ def main(argv=None):
         if command == 'gate':
             p.add_argument('--summary', action='store_true', help='Human-readable scoped summary')
             p.add_argument('--lang', choices=['en', 'fr'], default='en')
+        if command in ('add-evidence', 'record'):
+            p.add_argument('--json', action='store_true', help='Emit the full structured gate summary instead of a short receipt')
         if command == 'add-evidence':
             p.add_argument('--id', required=True)
             p.add_argument('--path', required=True, help='Existing file relative to evidence root')
@@ -427,7 +440,9 @@ def main(argv=None):
             p.add_argument('--procedure', required=True)
             p.add_argument('--target', action='append', default=[])
             p.add_argument('--evidence', action='append', default=[])
-            p.add_argument('--atomic-results', type=Path, help='JSON array of atomic observations')
+            atomic = p.add_mutually_exclusive_group()
+            atomic.add_argument('--atomic-results', type=Path, help='JSON array of atomic observations')
+            atomic.add_argument('--atomic', action='append', help='One JSON atomic observation, including evidence_ids; repeat per rule/target')
     args = parser.parse_args(argv)
     try:
         if args.command == 'init':
@@ -458,11 +473,17 @@ def main(argv=None):
                           'evaluated_targets': args.target, 'evidence_ids': args.evidence}
                 if args.atomic_results:
                     record['atomic_results'] = read_json(args.atomic_results)
+                elif args.atomic:
+                    record['atomic_results'] = [parse_json(value) for value in args.atomic]
                 report['results'] = [record if r['control_id'] == args.control else r for r in report['results']]
             report['issued_at'] = datetime.now(timezone.utc).isoformat()
             summary = save_report(args.report, report, root)
         if args.command == 'gate' and args.summary:
             print(readable_summary(summary, args.lang))
+        elif args.command in ('add-evidence', 'record') and not args.json:
+            print('Saved ' + str(args.report) + ' (' + args.command + ')')
+            print('Decision: %s | Selected controls: %s/%s | Declared scope only; no global conformity.' %
+                  (summary['decision'], summary['selected_controls'], summary['protocol_controls']))
         else:
             emit(earl(report, summary) if args.command == 'earl' else summary)
         if args.command == 'gate':

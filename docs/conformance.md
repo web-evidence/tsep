@@ -12,7 +12,8 @@ Le corpus lie `protocol_version` à la version livrée. Chaque cas possède `id`
 `input` et `expected`. L’interpréteur reçoit **seulement input** ; `expected` contient
 un verdict par couple `rule_id`/`target`. Le comparateur exige une matrice complète,
 sans doublon ni résultat supplémentaire, et pass/fail/inconclusive pour chacune
-des neuf règles. Une divergence renvoie 1, une entrée invalide 64, un accord 0.
+des neuf règles. Un désaccord renvoie 1, une entrée invalide 64 ; 0 signifie aucun désaccord,
+avec éventuelle couverture réduite explicitement comptée.
 Il n’émet ni rapport C ni conformité globale.
 
 ### Format input_version 1
@@ -41,6 +42,23 @@ pas partie de l’intention préalable et n’est pas inférée d’un 200.
 Une intention absente ou postérieure donne inconclusive. Une intention de
 présentation (`presentation`) nécessite une revue hors de cet interpréteur.
 
+Identité TS01-A02 : `expected_final_url` et `expected_body_sha256` restent les
+références préalables. URL différente → fail ; URL et empreinte identiques → pass.
+Sur empreinte différente, `representation: "stable"` → fail ; sinon les listes
+optionnelles `required_markers` et `forbidden_markers` décident pass/fail. Au moins
+un marqueur au total, chaînes UTF-8 uniques non blanches, sensibles à la casse et
+littérales dans le corps décodé ; aucun regex, DOM ou nettoyage. Un interdit contenu
+dans un requis est contradictoire. Listes absentes/vides/invalides → inconclusive ;
+une politique de représentation autre que stable n’est pas prise en charge.
+Sans empreinte valide à URL identique, les marqueurs ne suffisent pas. Voir l’ordre
+normatif et les limites dans le [contrat](contract.fr.md#automatisation-et-identité-de-représentation).
+
+Content-Type : type/sous-type, noms des paramètres et valeur charset sont comparés
+sans casse ; paramètres quotés acceptés. HTML exige text/html avec charset UTF-8 ;
+robots.txt exige text/plain et accepte l’absence de charset (UTF-8 imposé par RFC
+9309 §2.3). Les autres encodages, types ambigus, champs ou paramètres répétés
+restent inconclusive. Les valeurs des autres paramètres gardent leur casse.
+
 Chaque échange contient `url`, `complete` booléen, `request` et `response` :
 chaînes brutes avec lignes CRLF et séparation en-têtes/corps CRLF CRLF. Les en-têtes
 répétés sont conservés. Le HTML source est le corps de la réponse finale ; robots.txt
@@ -55,7 +73,7 @@ exactement Location. Aucun cookie ni Authorization dans ce sous-ensemble.
 
 ### Couverture et limites de l’interpréteur
 
-TS01 compare le statut final, puis l’URL et l’empreinte attendues. TS07-A01 applique
+TS01 compare le statut final, puis l’identité selon les critères préalables ci-dessus. TS07-A01 applique
 la série Googlebot aux en-têtes finaux et meta robots/googlebot. Restrictions
 combinées, casse, none, nofollow et aperçus sont distingués. Il accepte index,
 noindex, follow, nofollow, all, none, nosnippet et les paramètres max-snippet,
@@ -82,9 +100,27 @@ pas le texte libre des motifs. Invocation sans shell, avec délai borné :
 python3 conformance/run.py --command 'python3 conformance/evaluate.py'
 ```
 
-Les décisions attendues incluent les limites du sous-ensemble livré. Passer cette
-suite établit un accord avec ces cas/version, pas la capacité à analyser toute
-page. Un adaptateur plus étendu documente ses différences. TS07-A03 compare maintenant des captures source/DOM fournies selon le
+Les attendus représentent la vérité normative de ces cas, jamais la sortie
+souhaitée du parseur livré. `expected_origin` décrit cette origine rédactionnelle,
+sans prétendre à une validation indépendante. Un cas hors sous-ensemble porte
+`reference_limit: true`, et chaque couple concerné le répète avec un `basis` motivé.
+Le marquage au niveau du cas ne relâche pas les autres couples.
+
+- Accord exact : compté dans `agreements`, y compris un indéterminé normatif.
+- Attendu conclusif marqué + résultat inconclusive : accepté mais compté dans
+  `coverage.reduced_pairs` et détaillé dans `reduced_coverage`, jamais comme accord.
+- Tout autre écart : `disagreements` et `failures`, notamment pass/fail contraire,
+  NA contraire, omission, cible supplémentaire ou indéterminé non marqué.
+
+`coverage.percent` = attendus conclusifs correctement résolus / attendus conclusifs
+(pass, fail, not-applicable). Les indéterminés normatifs sont exclus de ce ratio ;
+ils restent obligatoires et comparés exactement. Les comptes par règle sont dans
+`coverage.by_rule`. Une exécution réussie peut donc couvrir moins de 100 % des
+attendus conclusifs ; elle ne déclare aucune conformité de contrôle ou de site.
+Un adaptateur plus complet peut obtenir l’accord exact là où la référence déclare
+une limite. Exemple : `unsupported-robots-wildcard` attend TS07-A02 pass, car `/*?`
+ne correspond pas à `/page` (RFC 9309 §2.2.2–2.2.3) ; l’inconclusive de la référence
+compte seulement en couverture réduite. TS07-A03 compare maintenant des captures source/DOM fournies selon le
 [format de rendu](rendered-states.md). La suite n’émet pas de rapport C : la couverture
 des trois règles TS07 et la revue semiAuto restent nécessaires. Les quatre règles TS10 utilisent le [format famille](canonical-families.md), avec
 revue humaine du contenu et rapprochement des populations déclarées.
@@ -97,7 +133,7 @@ synthetic; no collection occurs. The historical nine-rule judgment fixtures rema
 separate report-consistency tests. Cases declare `id`, `input`, `expected` and a
 version-pinned corpus. Only `input` reaches the interpreter. Expected and actual
 rule/target matrices must match exactly, without missing, extra or duplicate pairs.
-Each rule has pass/fail/inconclusive cases. Exit codes: 0 agreement, 1 difference,
+Each rule has pass/fail/inconclusive cases. Exit codes: 0 no disagreements (possibly reduced coverage), 1 difference,
 64 invalid input/execution. No C report or global conformity is generated.
 
 Input version 1 is `{ "input_version": "1", "rules": [...], "targets": [...] }`.
@@ -117,6 +153,23 @@ The separate access review records `outcome: "no-obstacle"` and its reason after
 examining the capture, outside prior intent; 200 alone does not supply it. Missing/late intent is inconclusive. A `presentation` objective
 requires assessment outside this interpreter.
 
+TS01-A02 identity retains prior `expected_final_url` and `expected_body_sha256`.
+A different URL fails; matching URL and digest pass. With a changed digest,
+`representation: "stable"` fails; otherwise optional `required_markers` and
+`forbidden_markers` arrays decide pass/fail. At least one marker overall; unique,
+nonblank UTF-8 strings matched literally and case sensitively in the decoded body,
+without regex, DOM extraction or cleanup. A forbidden marker inside a required
+one makes intent contradictory. Missing/empty/invalid lists are inconclusive;
+representation policies other than stable are unsupported. At the same URL,
+markers cannot replace a missing valid digest. See the ordered normative checks
+and limits in the [contract](contract.en.md#automation-and-representation-identity).
+
+Content-Type type/subtype, parameter names and charset values are case insensitive;
+quoted parameters are accepted. HTML requires text/html with UTF-8 charset;
+robots.txt requires text/plain and accepts absent charset (RFC 9309 §2.3 requires
+UTF-8). Other encodings, ambiguous types, repeated fields/parameters remain
+inconclusive. Other parameter values retain their case.
+
 Each hop has `url`, boolean `complete`, raw `request` and `response` strings using
 CRLF lines and a CRLF CRLF boundary. Preserve repeated headers. Source HTML and
 robots.txt are their response bodies. The SHA-256 covers exact UTF-8 body bytes,
@@ -125,7 +178,7 @@ Transfer-Encoding are supported, not TLS or HTTP/2 wire captures. Hops must be
 unconditional GETs following Location exactly, without cookies/Authorization.
 Ambiguous, incomplete or interrupted captures remain inconclusive.
 
-TS01 compares final status, then exact expected URL/digest. TS07-A01 implements a
+TS01 compares final status, then identity against the prior criteria above. TS07-A01 implements a
 Googlebot subset over final headers and robots/googlebot meta tags: restrictive
 combination, case, none, nofollow and previews remain distinct. Supported tokens
 are index/noindex/follow/nofollow/all/none/nosnippet and max-snippet,
@@ -145,8 +198,28 @@ implementation and does not establish actual engine access or indexing.
 An external adapter receives one input object on stdin and returns an array of
 rule_id/target/outcome/reason objects on stdout. The comparator checks outcomes,
 not free-text reasons. Use the command above (or your own adapter); argv is parsed
-without a shell, with bounded execution. Passing establishes agreement for this
-version's bounded cases only. Extended implementations document differences.
+without a shell, with bounded execution.
+
+Expectations are normative truth for these cases, not the reference parser's
+preferred output. `expected_origin` states editorial authorship, not independent
+validation. Cases outside the reference subset have `reference_limit: true`;
+each affected expected pair repeats that flag and supplies a reasoned `basis`.
+A case-level flag never relaxes other pairs.
+
+Exact outcomes count as `agreements`, including normative inconclusive outcomes.
+A marked conclusive expectation with an inconclusive result is accepted only as
+`coverage.reduced_pairs`, detailed in `reduced_coverage`, never as an agreement.
+All other differences count as `disagreements` and `failures`: contrary pass/fail,
+contrary NA, missing/extra pairs or unmarked inconclusive results. Duplicates are
+invalid. `coverage.percent` divides correctly resolved conclusive expectations by
+all conclusive expectations (pass/fail/not-applicable). Normative unknowns are
+excluded from that ratio but must still match exactly. Per-rule counts appear in
+`coverage.by_rule`. Success may therefore have less than 100% conclusive coverage;
+it does not establish control/site conformity. A broader adapter can agree where
+the reference cannot decide. `unsupported-robots-wildcard` expects TS07-A02 pass:
+`/*?` does not match `/page` under RFC 9309 §2.2.2–2.2.3; reference inconclusive
+counts only as reduced coverage.
+
 TS07-A03 now compares supplied source/DOM captures using the
 [rendered-state format](rendered-states.md). The suite does not emit a C report:
 all three TS07 rules and semiAuto review remain necessary. The four TS10 rules use the [family format](canonical-families.md), supplied

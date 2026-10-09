@@ -9,7 +9,7 @@ from urllib.parse import urljoin, urlsplit, urldefrag
 
 import tsep
 from conformance.evaluate import (Meta, Unknown, binding_digest, exchange, need,
-                                  reviewed_exemption, text_present, trace, url_parts)
+                                  reviewed_exemption, text_present, trace, url_parts, utf8_media)
 
 ERRORS = (Unknown, tsep.Invalid, KeyError, TypeError, ValueError, AttributeError)
 NS = '{http://www.sitemaps.org/schemas/sitemap/0.9}'
@@ -179,8 +179,8 @@ def doms(target, doc, plan, final, headers):
 def surfaces(target, doc, plan):
     final, status, headers, body = response(target, doc)
     need(status == 200, 'Representation unavailable for canonical/link extraction')
-    is_html = headers.get('content-type') == ['text/html; charset=utf-8']
-    need(is_html or headers.get('content-type') == ['text/plain; charset=utf-8'], 'Unsupported representation media type')
+    is_html = utf8_media(headers, ('text/html',))
+    need(is_html or utf8_media(headers, ('text/plain',)), 'Unsupported representation media type')
     parsers = []
     if is_html:
         try:
@@ -351,8 +351,7 @@ def sitemap_agreement(target, members, preferred):
             return
         doc = capture(target, documents, url)
         final, status, headers, body = response(target, doc)
-        need(final == url and status == 200 and headers.get('content-type') in
-             (['application/xml; charset=utf-8'], ['text/xml; charset=utf-8']), 'Unavailable/unsupported sitemap response')
+        need(final == url and status == 200 and utf8_media(headers, ('application/xml', 'text/xml')), 'Unavailable/unsupported sitemap response')
         is_index, locations = xml_entries(body)
         visited.add(url)
         if is_index:
@@ -394,7 +393,7 @@ def internal_links(target, members, preferred):
         try:
             doc = capture(target, documents, source['url'])
             final, headers, initial, rendered = surfaces(target, doc, source['rendering'])
-            need(urlsplit(final)[:2] == origin and headers.get('content-type') == ['text/html; charset=utf-8'],
+            need(urlsplit(final)[:2] == origin and utf8_media(headers, ('text/html',)),
                  'Source redirected outside internal origin or non-HTML')
             for parser, error in initial + rendered:
                 if error:

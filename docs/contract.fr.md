@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.5
+# Contrat de rapport — TSEP 0.1.0-draft.6
 
 ## Périmètre déclaré
 
@@ -139,12 +139,28 @@ interprétation humaine ; `manual`, un jugement humain. Ce classement décrit la
 méthode, pas la qualité de la preuve.
 
 TS01-A01 et A02 sont automatic. A01 exige un **200 final** ; son titre hérité est
-plus large. A02 exige désormais l’égalité exacte de l’URL finale et du SHA-256 du
-corps décodé avec `expected_final_url` et `expected_body_sha256` fixés dans intent
-avant l’observation. Référence manquante ou corps incomplet : inconclusive, jamais
-réussite heuristique. Définir une référence pertinente reste la responsabilité du
-propriétaire. TS07-A01/A02/A03 et TS10-A01/A03/A04 sont semiAuto ; TS10-A02 est manual.
-L’interpréteur TS07 borné ne peut pas établir un C automatique de TS07.
+plus large. A02 compare `expected_final_url` et `expected_body_sha256` préalables :
+
+1. Une URL finale différente donne fail, même sans empreinte de référence.
+2. À URL identique, une empreinte identique du corps complet donne pass.
+3. Sinon, `representation: "stable"` déclaré impose fail pour tout changement.
+4. Sinon, les listes `required_markers` / `forbidden_markers` décident : tous les
+   requis présents et tous les interdits absents donnent pass ; toute violation
+   donne fail. Sans critères d’identité valides et non vides : inconclusive.
+
+Les références URL/empreinte doivent être valides ; une capture incomplète ou non
+attribuable ne permet pas pass. Marqueurs UTF-8 uniques et non blancs, recherchés
+littéralement avec casse dans le corps décodé, sans normalisation, regex ni DOM.
+Des listes vides ne prouvent rien. Un interdit contenu dans un requis rend
+l’intention contradictoire. Des marqueurs invalides ou une politique de
+représentation inconnue ne résolvent pas une variation d’empreinte. L’ordre ci-dessus
+s’applique : les marqueurs sont une alternative en cas d’empreinte différente et
+ne contournent jamais un échec de stabilité. Une empreinte de référence absente
+à URL identique reste inconclusive, même avec marqueurs. Le responsable répond de
+la pertinence des références et marqueurs. Une variation horodatée seule n’est pas
+un défaut SEO. NT sur TS01 bloquant donne toujours NO_GO.
+TS07-A01/A02/A03 et TS10-A01/A03/A04 sont semiAuto ; TS10-A02 reste manual.
+Voir la [migration draft.6](migration-draft.6.md) pour la réévaluation obligatoire.
 
 Voir [migration depuis draft.2](migration-draft.3.md) et [parcours CLI](cli.md).
 `add-evidence` et `record` valident avant de remplacer le rapport, actualisent sa
@@ -197,14 +213,18 @@ dérogation silencieuse ni surcharge des sévérités.
 64 pour un rapport invalide, une preuve manquante ou des données d’appel invalides.
 Le parseur d’arguments utilise le code conventionnel 2 pour une syntaxe CLI erronée.
 
+Le JSON conserve les IDs `blocking` et ajoute `blocking_causes`, un tableau de
+`{control_id, status}` avec NC ou NT pour chaque contrôle bloquant. Le résumé
+FR/EN affiche la même cause. Décision et codes de sortie restent inchangés.
+
 ## Versions et revendications d’implémentation
 
-Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.5:TS01`. Ne jamais
+Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.6:TS01`. Ne jamais
 remplacer silencieusement un artefact publié. Changer applicabilité, attendus,
 preuves ou décisions exige une nouvelle version et une note de migration.
 TS01–TS44 restent des identités permanentes.
 
 La suite démontre seulement « réussit les tests d’échange des rapports fournis
-avec 0.1.0-draft.5 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
+avec 0.1.0-draft.6 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
 plus large exige une correspondance par règle et des limites publiées. Aucune
 interopérabilité avec un outil tiers n’a encore été démontrée.
