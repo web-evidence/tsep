@@ -89,11 +89,50 @@ The GitHub workflow runs the same command on Linux/Python 3.9, 3.10, 3.11, 3.12,
 3.13 and 3.14 and on macOS/Python 3.14. Action dependencies are pinned to verified commit hashes;
 permissions are read-only and checkout does not persist credentials. It has no
 deploy, release, secret, `pull_request_target` or automatic publication step.
-The workflow is prepared but has not run on GitHub. Only the locally observed
-Python/OS results are claimed in the migration recipe; Windows support is not
-claimed as tested by this migration.
+The repository is [web-evidence/tsep](https://github.com/web-evidence/tsep), hosted
+under [Web Evidence](https://github.com/web-evidence). It is private as of
+9 October 2026; repository, issue, pull-request and CI links require access.
+Edikka remains the current steward; hosting does not establish independent governance.
+Use the repository's issues/PRs when you have access. Public contributions will
+use the same channels after a separately authorized public opening.
 
-Keep external contribution discussions in the eventual repository's issues/PRs.
+### First observed CI run
+
+On 9 October 2026, [run 1, attempt 1](https://github.com/web-evidence/tsep/actions/runs/37962185984)
+completed successfully on commit `253b0a13389af53d50245f874f6bdcdb2b570a68`.
+All seven jobs passed: Linux/Python 3.9, 3.10, 3.11, 3.12, 3.13 and 3.14,
+and macOS/Python 3.14. Each job ran 152 unit tests and all 216 conformance cases
+in both the checkout and the extracted archive, plus 48 loopback HTTP cases.
+Each conformance run retained 454 agreements, zero disagreements and nine reduced
+coverage pairs out of 463 rule/target pairs; reduced coverage is not a pass.
+All fourteen unit-test steps stayed below 60 seconds; the longest took 49.354 seconds
+including process startup, with the default 120-second step deadline unchanged.
+
+The runner images and Python patch versions observed in the logs were:
+
+| Runner label | Image and build | Python versions |
+| --- | --- | --- |
+| `ubuntu-latest` | `ubuntu-24.04`, `20261004.327.1` | 3.9.25, 3.10.22, 3.11.17, 3.12.15, 3.13.16, 3.14.8 |
+| `macos-latest` | `macos-26-arm64`, `20260907.0351.1` | 3.14.7 |
+
+The `-latest` labels can resolve to different images in later runs.
+
+All seven archives and their rebuilds matched the archive built locally from
+the same commit before push:
+`4f8bc1575fa5591dc6fdbbbcbbaac97620e9e81e57d7de749223631f4685dafa` (SHA-256).
+The maintainer retained the complete log ZIP for this attempt, SHA-256
+`5e799a49546ec74a15f829dd1a6aab6b95168ac61d0598264632433c7fcc75d0`.
+Logs are accessible through the private run until the GitHub retention period
+expires ([90 days by default](https://docs.github.com/en/organizations/managing-organization-settings/configuring-the-retention-period-for-github-actions-artifacts-and-logs-in-your-organization));
+the effective repository setting was not checked. The retained ZIP identified
+above is the durable reference after that expiry. This is an observed remote
+execution, not yet a publicly inspectable or independently reviewed result.
+Windows was not tested.
+
+These results and archive hashes belong to that commit, which predates this
+documentation update. Later revisions, including documentation-only changes,
+need their own verification and produce a different archive when packaged bytes
+change. The protocol remains `0.1.0-draft.7`; the initial tag is not replaced.
 
 ## Français
 
@@ -150,7 +189,56 @@ La copie `tools/tsep` dans Edikka est gelée. Toute évolution se fait ici ; le 
 intégrera une version choisie avec empreinte et recette propres. Aucune synchronisation
 bidirectionnelle, aucun lien symbolique ou historique Git partagé.
 
-La CI couvre Linux/Python 3.9, 3.10, 3.11, 3.12, 3.13 et 3.14 et macOS/Python 3.14,
-avec dépendances figées, droits de lecture et sans publication. Elle n’a pas été exécutée sur GitHub. La recette distingue toujours
-les validations locales des validations distantes. Les futurs tickets publics
-accueilleront les contributions.
+### CI et contributions publiques
+
+La CI couvre Linux/Python 3.9, 3.10, 3.11, 3.12, 3.13 et 3.14 et macOS/Python 3.14.
+Les dépendances d’actions sont figées sur des empreintes de commit vérifiées ;
+les droits sont en lecture seule et le checkout ne conserve pas les identifiants.
+Le workflow n’a ni déploiement, ni release, ni secret, ni `pull_request_target`,
+ni étape de publication automatique.
+Le dépôt [web-evidence/tsep](https://github.com/web-evidence/tsep) est hébergé sous
+[Web Evidence](https://github.com/web-evidence). Il est privé au 9 octobre 2026 ;
+les liens vers le dépôt, les issues/PR et la CI nécessitent un accès.
+Edikka reste le responsable actuel ; l’hébergement ne crée pas une gouvernance indépendante.
+Utiliser les issues/PR avec un accès au dépôt. Les contributions publiques
+emploieront les mêmes canaux après une ouverture publique autorisée séparément.
+
+### Première CI observée
+
+Le 9 octobre 2026, le [run 1, tentative 1](https://github.com/web-evidence/tsep/actions/runs/37962185984)
+a réussi sur le commit `253b0a13389af53d50245f874f6bdcdb2b570a68`.
+Les sept jobs ont réussi : Linux/Python 3.9, 3.10, 3.11, 3.12, 3.13 et 3.14,
+et macOS/Python 3.14. Chaque job a exécuté 152 tests unitaires et les 216 cas de
+conformance dans les sources puis l’archive extraite, ainsi que 48 cas HTTP sur loopback.
+Chaque passage de conformance conserve 454 accords, aucun désaccord et neuf
+couples de couverture réduite sur 463 couples règle/cible ; une couverture réduite
+n’est pas un pass. Les quatorze étapes unitaires sont restées sous 60 secondes ;
+la plus lente a duré 49,354 secondes, démarrage du processus compris, sans modifier
+le délai par défaut de 120 secondes par étape.
+
+Les images des runners et les versions correctives de Python observées dans les
+journaux étaient :
+
+| Étiquette du runner | Image et build | Versions de Python |
+| --- | --- | --- |
+| `ubuntu-latest` | `ubuntu-24.04`, `20261004.327.1` | 3.9.25, 3.10.22, 3.11.17, 3.12.15, 3.13.16, 3.14.8 |
+| `macos-latest` | `macos-26-arm64`, `20260907.0351.1` | 3.14.7 |
+
+Les étiquettes `-latest` peuvent désigner d’autres images lors de runs suivants.
+
+Les sept archives et leurs reconstructions ont la même empreinte que l’archive
+construite localement depuis ce même commit avant l’envoi :
+`4f8bc1575fa5591dc6fdbbbcbbaac97620e9e81e57d7de749223631f4685dafa` (SHA-256).
+Le responsable a conservé le ZIP complet des journaux de cette tentative, SHA-256
+`5e799a49546ec74a15f829dd1a6aab6b95168ac61d0598264632433c7fcc75d0`.
+Les journaux sont accessibles depuis le run privé jusqu’à l’expiration de la
+rétention GitHub ([90 jours par défaut](https://docs.github.com/en/organizations/managing-organization-settings/configuring-the-retention-period-for-github-actions-artifacts-and-logs-in-your-organization)) ;
+le réglage effectif du dépôt n’a pas été vérifié. Le ZIP conservé, identifié
+ci-dessus, est la référence durable après cette expiration. Cette exécution
+distante observée n’est pas encore une preuve consultable publiquement ni une
+revue indépendante. Windows n’a pas été testé.
+
+Ces résultats et empreintes appartiennent à ce commit, antérieur à cette mise à
+jour documentaire. Toute révision suivante, même documentaire, exige sa propre
+vérification et produit une autre archive si les octets distribués changent.
+Le protocole reste `0.1.0-draft.7` ; le tag initial n’est pas remplacé.

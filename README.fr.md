@@ -82,7 +82,16 @@ la série Google. Les listes exactes de contrôles sont versionnées dans le JSO
 
 ## Statut et trajectoire vers la 1.0
 
-**Statut : candidat de développement non publié ; validation locale, sans revue indépendante établie.**
+**Statut au 9 octobre 2026 : candidat de développement dans un dépôt privé ;
+vérification locale et CI distante observées, sans revue indépendante de praticiens établie.**
+
+TSEP est hébergé dans [web-evidence/tsep](https://github.com/web-evidence/tsep), sous
+[Web Evidence](https://github.com/web-evidence). Il a été initié par Edikka, qui
+en reste le responsable. La [première CI](https://github.com/web-evidence/tsep/actions/runs/37962185984)
+a réussi ses sept jobs sur le commit `253b0a1` : Linux/Python 3.9–3.14 et macOS/Python 3.14.
+Le dépôt et le run nécessitent actuellement un accès. Voir les
+[résultats datés et leur portée](docs/development.md#première-ci-observée) avant
+d’appliquer ce résultat à une autre révision.
 
 | Étape | Critère de succès avant la 1.0 |
 | --- | --- |
@@ -91,7 +100,9 @@ la série Google. Les listes exactes de contrôles sont versionnées dans le JSO
 | Organiser la revue | Revue indépendante documentée et deux comainteneurs indépendants identifiés selon la gouvernance |
 | Figer une version | Désaccords normatifs résolus ou explicitement exclus, migration documentée, archives reproductibles et CI observée sur la matrice annoncée |
 
-Ces critères sont des objectifs, pas des résultats acquis ni un calendrier de publication.
+Ces critères sont cumulatifs pour la 1.0 et ne constituent pas un calendrier de
+publication. La CI observée répond à une partie du dernier critère. Tous les autres
+critères restent ouverts, dont l’implémentation externe et la revue indépendante.
 
 ## Limites
 

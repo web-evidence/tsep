@@ -81,7 +81,16 @@ Google series. Exact control lists are versioned in the JSON.
 
 ## Status and path to 1.0
 
-**Status: unpublished development candidate; local validation, no established independent review.**
+**Status on 9 October 2026: development candidate in a private repository;
+local verification and remote CI observed, no established independent practitioner review.**
+
+TSEP is hosted in [web-evidence/tsep](https://github.com/web-evidence/tsep), under
+[Web Evidence](https://github.com/web-evidence). It was initiated by Edikka, which
+remains its steward. The [first CI run](https://github.com/web-evidence/tsep/actions/runs/37962185984)
+passed all seven jobs on commit `253b0a1`: Linux/Python 3.9–3.14 and macOS/Python 3.14.
+The repository and run currently require access. See the
+[dated results and scope](docs/development.md#first-observed-ci-run) before applying
+this result to another revision.
 
 | Stage | Success criterion before 1.0 |
 | --- | --- |
@@ -90,7 +99,9 @@ Google series. Exact control lists are versioned in the JSON.
 | Organize review | Documented independent review and two identified independent co-maintainers under the governance rules |
 | Freeze a version | Normative disagreements resolved or explicitly excluded, migration documented, reproducible archives and observed CI on the announced matrix |
 
-These are goals, not achieved results or a publication schedule.
+These are cumulative requirements for 1.0, not a publication schedule. The observed
+CI run addresses part of the last criterion. All other criteria remain open,
+including external implementation and independent review.
 
 ## Limits
 

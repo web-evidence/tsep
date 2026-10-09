@@ -1,5 +1,25 @@
 # Change history / Historique
 
+## Repository and observed CI — 2026-10-09 — unpublished documentation
+
+Link the private Web Evidence repository and the first successful remote CI run
+on `253b0a1` from `README.md`, `README.fr.md` and `docs/development.md`. Record its
+scope, measured environments, restricted access, archive and log checksums and
+log retention; distinguish that tested revision from this documentation update.
+Clarify hosting, Edikka stewardship and organization administration in
+`GOVERNANCE.md`; update the public-access comment in `CITATION.cff`.
+Protocol draft.7, licenses, decision rules and historical tags are unchanged.
+This entry does not claim public access or independent practitioner review.
+
+`README.md`, `README.fr.md` et `docs/development.md` reliés au dépôt privé Web Evidence
+et à la première CI distante réussie sur `253b0a1`. Portée, environnements mesurés,
+accès restreint, empreintes et rétention des journaux consignés ; révision testée
+distinguée de cette mise à jour documentaire. Hébergement, responsabilité Edikka
+et administration de l’organisation clarifiés dans `GOVERNANCE.md` ; commentaire
+sur l’accès public actualisé dans `CITATION.cff`. Protocole draft.7, licences,
+règles de décision et tags historiques inchangés ; aucune ouverture publique ni revue
+indépendante de praticiens déclarée acquise.
+
 ## Contributor guidance — 2026-10-09 — unpublished documentation
 
 R-028: rewrite contributor instructions in English without private infrastructure

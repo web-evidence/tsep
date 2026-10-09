@@ -8,10 +8,13 @@ co-maintainer or community adoption is represented. Edikka sells web services
 and benefits from this protocol's reputation: that is a declared commercial
 interest, not proof of neutrality.
 
-The contribution process is open by design; the candidate has no public hosting
-yet. Distribute contributions as patches with the version, affected IDs, evidence,
-expected outcomes, conflicts of interest and a license declaration. Once a public
-repository exists, use its issues and pull requests; do not invent links now.
+The contribution process is open by design. As of 9 October 2026,
+[web-evidence/tsep](https://github.com/web-evidence/tsep) is a private repository
+under Web Evidence; this hosting does not change the stewardship declared above.
+The Web Evidence organization is currently administered by Edikka.
+Contributors with access can use its issues and pull requests; otherwise supply
+patches with the version, affected IDs, evidence, expected outcomes, conflicts of
+interest and a license declaration. Public access is not yet available.
 
 Stewards publish reasoned acceptance/rejection decisions, retain dissent when
 material, and credit actual contributions with consent. Commercial relationships
@@ -38,10 +41,13 @@ indépendante de praticiens. Aucun comité, comainteneur ou usage communautaire
 n’est revendiqué. Edikka vend des services web et bénéficie de la réputation du
 protocole : cet intérêt commercial est déclaré.
 
-Le processus est conçu pour accueillir les contributions ; le candidat n’a pas
-encore d’hébergement public. Fournir un patch avec version, IDs, preuves, résultats
-attendus, intérêts déclarés et licence. Les issues/PR seront utilisables quand le
-dépôt existe ; aucun lien fictif n’est publié.
+Le processus est conçu pour accueillir les contributions. Au 9 octobre 2026,
+[web-evidence/tsep](https://github.com/web-evidence/tsep) est un dépôt privé sous
+Web Evidence ; cet hébergement ne change pas la responsabilité déclarée ci-dessus.
+L’organisation Web Evidence est actuellement administrée par Edikka.
+Les contributeurs ayant accès peuvent utiliser les issues/PR ; sinon, fournir
+un patch avec version, IDs, preuves, résultats attendus, intérêts déclarés et licence.
+L’accès public n’est pas encore ouvert.
 
 Les responsables motivent leurs décisions, conservent les désaccords utiles et
 créditent les contributions réelles avec accord. Aucun lien commercial ne justifie
