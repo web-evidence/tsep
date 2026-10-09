@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.4 — Controls
+# TSEP 0.1.0-draft.5 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.4:TS01-A01`
+`TSEP@0.1.0-draft.5:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.4:TS01-A02`
+`TSEP@0.1.0-draft.5:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.4:TS07-A01`
+`TSEP@0.1.0-draft.5:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -246,7 +246,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.4:TS07-A02`
+`TSEP@0.1.0-draft.5:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -270,7 +270,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.4:TS07-A03`
+`TSEP@0.1.0-draft.5:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -364,11 +364,11 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
-**References**: [https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls); [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+**References**: [https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls); [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics); [https://www.sitemaps.org/protocol.html](https://www.sitemaps.org/protocol.html); [https://www.rfc-editor.org/rfc/rfc8288](https://www.rfc-editor.org/rfc/rfc8288)
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.4:TS10-A01`
+`TSEP@0.1.0-draft.5:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -378,9 +378,9 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Method.** List members, preferred URL and expected method; compare final URLs, HTTP Link, HTML rel=canonical and required rendered states. Retain multiple declarations, even identical ones.
 
-**Acceptance.** Present signals and those required by strategy identify the same absolute HTTP(S) URL without a fragment. HTML in head or HTTP Link are accepted; no universal HTML tag requirement. A relative canonical is fail for this TSEP rule without claiming Google cannot interpret it.
+**Acceptance.** Present signals and those required by strategy identify the same absolute HTTP(S) URL without a fragment. HTML in head or HTTP Link are accepted; no universal HTML tag requirement. A relative canonical is fail for this TSEP rule without claiming Google cannot interpret it. Retain repeated identical declarations, which may agree; an attributable conflict remains fail despite another missing capture.
 
-**Evidence.** Family inventory in intent; headers and source (or html non-applicability record for non-HTML); extraction with location and method, required DOM attached when needed.
+**Evidence.** Family inventory in intent; headers and source (or html non-applicability record for non-HTML); extraction with location and method, required DOM attached when needed. Bind each capture to the family, context and date. Declare required methods and DOM states before assessment; bind DOMs to the HTTP trace by fingerprint. A rendering exemption needs a source-bound review and supporting records, not a bare “no JS” claim.
 
 **Assumptions.** Strategy distinguishes preferred canonical and duplicates; comparisons do not silently remove parameters or normalize case or slashes.
 
@@ -392,7 +392,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.4:TS10-A02`
+`TSEP@0.1.0-draft.5:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -404,7 +404,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Acceptance.** The expected destination is directly accessible with 200, without canonical chains or cycles, and compatible content. A duplicate may remain 200 and point to the preferred URL; not every duplicate final URL must equal it.
 
-**Evidence.** Destination trace and body tied to the family; declaration graph and reasoned content comparison.
+**Evidence.** Destination trace and body tied to the family; declaration graph and reasoned content comparison. The human compatibility review identifies its author, date, each member compared with the preferred representation, reasoned judgment and exact examined captures by fingerprint. A missing/stale reference or unestablished comparison prevents pass.
 
 **Assumptions.** Content similarity is assessed in business context without a universal similarity threshold.
 
@@ -412,11 +412,11 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant.
+**Limits.** A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant. A comparator can check the supplied review’s bindings and coverage; it does not turn that judgment into automatic content comparison.
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.4:TS10-A03`
+`TSEP@0.1.0-draft.5:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -426,7 +426,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Families associated with a sitemap under the declared strategy.
 
-**Method.** Compare entries from all sitemaps/indexes required for the family and preferred URL; retain exclusions justified by strategy.
+**Method.** Compare entries from all sitemaps/indexes required for the family and preferred URL; retain exclusions justified by strategy. Reconcile captures of each index and all expected children. An observed failure remains fail when another branch is missing; an omission becomes fail only after the declared population has been fully examined.
 
 **Acceptance.** Observed and required entries agree with declared preference; a duplicate published as a competing canonical without justification is fail.
 
@@ -442,7 +442,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.4:TS10-A04`
+`TSEP@0.1.0-draft.5:TS10-A04`
 
 **Required inputs**: crawl, intent.
 
@@ -452,9 +452,9 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Method.** Extract links from the announced population; compare destinations and documented exceptions with canonical preference.
 
-**Acceptance.** All assessed links follow strategy; no unexplained competing destination. Zero links can satisfy the rule only when the announced population is fully examined.
+**Acceptance.** All assessed links follow strategy; no unexplained competing destination. Zero links can satisfy the rule only when the announced population is fully examined. An attributable competing link remains fail even if another source page or required state is missing.
 
-**Evidence.** Crawl export with source URL, href, destination, pages actually visited, failures and exclusions; reconciliation with the declared population.
+**Evidence.** Crawl export with source URL, href, destination, pages actually visited, failures and exclusions; reconciliation with the declared population. Retain source HTML and DOMs needed for extraction, bound to their traces, contexts and dates; a rendering exemption is reviewed and supported. Exceptions identify source, destination and reason.
 
 **Assumptions.** The crawl checks a declared population; it does not by itself prove that population exhaustive.
 

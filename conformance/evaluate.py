@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded offline interpreter for five TSEP rules. Apache-2.0; no collection."""
+"""Bounded offline interpreter for nine TSEP rules. Apache-2.0; no collection."""
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -11,7 +11,8 @@ from urllib.parse import urljoin, urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import tsep
 
-RULES = ('TS01-A01', 'TS01-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03')
+RULES = ('TS01-A01', 'TS01-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
+         'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04')
 
 
 class Unknown(ValueError):
@@ -52,21 +53,27 @@ def message(raw, response=False):
     return lines[0], headers, body
 
 
+def exchange(hop, expected, crawler):
+    """Validate one attributable exchange, including an unfinished redirect."""
+    need(hop.get('complete') is True, 'Incomplete HTTP capture')
+    need(hop.get('url') == expected, 'Missing or mismatched redirect hop')
+    parts = url_parts(expected)
+    first, request_headers, _ = message(hop.get('request'))
+    request_path = (parts.path or '/') + ('?' + parts.query if parts.query else '')
+    need(first == 'GET ' + request_path + ' HTTP/1.1', 'Unconditional GET capture required')
+    need(request_headers.get('host') == [parts.netloc], 'Request Host differs from hop URL')
+    need(request_headers.get('user-agent') == [crawler], 'Request crawler differs from intent')
+    need(not any(k in request_headers for k in ('if-none-match', 'if-modified-since', 'range',
+                                                 'authorization', 'cookie')), 'Unsupported conditional/authenticated request')
+    status, headers, body = message(hop.get('response'), True)
+    return status, headers, body
+
+
 def trace(hops, start, crawler):
     need(isinstance(hops, list) and 0 < len(hops) <= 20, 'Missing or excessive HTTP hops')
     expected = start
     for number, hop in enumerate(hops):
-        need(hop.get('complete') is True, 'Incomplete HTTP capture')
-        need(hop.get('url') == expected, 'Missing or mismatched redirect hop')
-        parts = url_parts(expected)
-        first, request_headers, _ = message(hop.get('request'))
-        request_path = (parts.path or '/') + ('?' + parts.query if parts.query else '')
-        need(first == 'GET ' + request_path + ' HTTP/1.1', 'Unconditional GET capture required')
-        need(request_headers.get('host') == [parts.netloc], 'Request Host differs from hop URL')
-        need(request_headers.get('user-agent') == [crawler], 'Request crawler differs from intent')
-        need(not any(k in request_headers for k in ('if-none-match', 'if-modified-since', 'range',
-                                                     'authorization', 'cookie')), 'Unsupported conditional/authenticated request')
-        status, headers, body = message(hop.get('response'), True)
+        status, headers, body = exchange(hop, expected, crawler)
         if status in (301, 302, 303, 307, 308):
             locations = headers.get('location', [])
             need(len(locations) == 1 and locations[0], 'Missing or ambiguous Location')
@@ -294,6 +301,9 @@ def rendered_result(target, final_url, headers, body):
 
 
 def evaluate_target(target, rule):
+    if rule.startswith("TS10-"):
+        from conformance.canonical import assess
+        return assess(target, rule)
     try:
         intent = target.get('intent', {})
         need(intent.get('public_canonical') is True, 'Applicability not established for bounded URL population')

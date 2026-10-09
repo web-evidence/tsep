@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.4
+# Report contract — TSEP 0.1.0-draft.5
 
 ## Declared scope
 
@@ -80,7 +80,7 @@ declarations, although the validator cannot determine that need.
 
 The CLI checks declarations, references and coverage, not the correctness of
 HTTP/HTML interpretation, intent or exemptions. The historical method fixtures have authored reference verdicts. The separate
-[executable conformance suite](conformance.md) interprets raw inputs for five rules
+[executable conformance suite](conformance.md) interprets raw inputs for nine rules
 within documented bounds; it does not implement all controls. No C extends to unselected
 controls, an entire site or actual indexing. See [migration and cases](migration-draft.2.md).
 
@@ -104,6 +104,25 @@ interpreter compares supplied captures: it neither executes JavaScript nor
 simulates the engine. See [format and limits](rendered-states.md) and
 [draft.4 migration](migration-draft.4.md). Report validation checks evidence
 references/kinds; it does not itself parse DOMs or the plan.
+
+### TS10 canonical families — draft.5
+
+A01 reconciles declarations across every inventoried member: required methods and
+states fixed in advance, dated captures bound to context/source. Retain repeated
+signals and contradictions despite other gaps. Rendering exemptions need supported
+review. A02 requires a directly responding 200 destination and reasoned human
+review for each member compared with the preference, fingerprint-bound to examined
+records; it remains manual.
+
+A03 reconciles every expected index/child before concluding omission. A04 reconciles
+all source pages and required states; zero links cannot pass a partial population.
+An attributable failure survives another missing branch/page. Exceptions identify
+their precise subject and reason. Positive sitemap absence exempts A03 only.
+
+The [executable format](canonical-families.md) bounds HTTP/HTML, DOM and XML
+interpretation. Reports retain evidence, results and unknowns; report validation
+neither parses these captures nor guarantees review truth. No automatic TS10 C,
+no C from a subset of its rules. See [draft.5 migration](migration-draft.5.md).
 
 ## Automation and representation identity
 
@@ -174,12 +193,12 @@ The argument parser uses the conventional exit code 2 for malformed CLI syntax.
 ## Versions and implementation claims
 
 Pin both version and protocol SHA-256. Cite IDs as
-`TSEP@0.1.0-draft.4:TS01`. Never silently replace a released artifact. Changes to
+`TSEP@0.1.0-draft.5:TS01`. Never silently replace a released artifact. Changes to
 applicability, expectations, required evidence or decisions require a new version
 and migration note. TS01–TS44 are permanent identities, not reusable slots.
 
 This candidate has one implementation of report validation. Passing its tests
 allows the narrow statement “passes the bundled report-interchange tests for
-0.1.0-draft.4.” It does not establish implementation of all 44 assessment methods.
+0.1.0-draft.5.” It does not establish implementation of all 44 assessment methods.
 An implementation must publish per-rule mapping and limitations before making a
 broader claim. No compatibility with a third-party tool has yet been demonstrated.

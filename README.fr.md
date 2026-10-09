@@ -1,6 +1,6 @@
 # TSEP — format d’échange de preuves
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.4 · initié par Edikka · [English](README.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.5 · initié par Edikka · [English](README.md)**
 
 Transmettre un audit SEO technique que son destinataire peut examiner, rejouer et
 contester : mêmes identifiants, périmètre explicite, preuves liées aux constats et
@@ -20,8 +20,9 @@ NC, NA ou NT ; les règles atomiques portent pass, fail, not-applicable ou incon
 
 **TS01–TS44 sont les identifiants permanents hérités de la grille 1.1.** La séquence
 de versions TSEP est distincte ; les sources FR/EN et leur provenance restent intactes.
-Neuf règles précisent TS01, TS07 et TS10. Cinq disposent d’un interpréteur borné
-sur entrées brutes : TS01-A01/A02 et TS07-A01/A02/A03.
+Neuf règles précisent TS01, TS07 et TS10 et disposent d’un interpréteur borné sur
+entrées brutes : TS01-A01/A02, TS07-A01/A02/A03 et TS10-A01 à A04. La comparaison
+de contenu TS10-A02 reste une revue humaine fournie et liée aux captures.
 
 ## Essayer en deux minutes
 
@@ -51,13 +52,13 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
    TS01/TS07 ne satisfait pas un profil nommé. Aucun test isolé ne valide son parent.
 3. **Passer la suite de conformance** : fournir un adaptateur JSON sur entrée/sortie
    standard, puis exécuter `python3 conformance/run.py --command 'python3 mon_adaptateur.py'`.
-   Déclarer les cinq règles et les bornes réellement prises en charge, pas « 44
+   Déclarer les neuf règles et les bornes réellement prises en charge, pas « 44
    contrôles automatiques ». [Format d’entrée et comparaison](docs/conformance.md).
 
 Un C automatique exige toutes les règles du contrôle `automatic`, leur couverture
 complète et `assessor.tool.name/version`. TS01-A01/A02 sont automatic : 200 final
 et égalité exacte URL/empreinte du corps avec l’intention préalable. TS07-A01/A02/A03
-restent semiAuto. Définir une référence de contenu pertinente reste une responsabilité humaine.
+restent semiAuto ; TS10-A02 reste manual. Définir une référence de contenu pertinente reste une responsabilité humaine.
 
 ## Profils de preuves
 
@@ -91,17 +92,18 @@ Le validateur vérifie les déclarations et les empreintes, pas leur authenticit
 la pertinence de l’intention ni l’exactitude de tous les jugements. Une empreinte
 ne prouve ni l’auteur ni la date réelle de collecte. Les cas fournis sont synthétiques.
 
-L’interpréteur couvre cinq règles dans un sous-ensemble documenté ; les entrées
+L’interpréteur couvre neuf règles dans un sous-ensemble documenté ; les entrées
 non prises en charge restent indéterminées. TS07-A03 compare des captures source/DOM fournies, sans exécuter JavaScript ;
-le plan et les exemptions nécessitent une revue. TS10 reste à examiner séparément. Un contrôle partiel ne produit jamais de conformité globale.
+le plan et les exemptions nécessitent une revue. TS10 compare les signaux d’une famille déclarée et vérifie le rattachement de la revue
+humaine de contenu, sans en garantir la justesse. Un contrôle partiel ne produit jamais de conformité globale.
 Aucun résultat ne garantit indexation, classement ou comportement futur d’un moteur.
 
 [Contrat FR](docs/contract.fr.md) · [44 contrôles](docs/controls.fr.md) ·
 [Source bilingue](spec/protocol.json) · [Schéma](schemas/report.schema.json) ·
-[Migration draft.4](docs/migration-draft.4.md) · [EARL](docs/interoperability.md) ·
+[Migration draft.5](docs/migration-draft.5.md) · [EARL](docs/interoperability.md) ·
 [Gouvernance](GOVERNANCE.md) · [Contribuer](CONTRIBUTING.md) · [Historique](CHANGELOG.md) ·
 [Clause de recette](docs/acceptance-clause.md) · [Sonde HTTP](probes/README.md).
 
-Citer `TSEP@0.1.0-draft.4:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
+Citer `TSEP@0.1.0-draft.5:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
 Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](CITATION.cff).
 [Développement, vérification complète et dépôt autonome](docs/development.md).

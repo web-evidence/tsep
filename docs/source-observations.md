@@ -20,3 +20,14 @@ lecture de noindex et de la politique robots, sans prouver une indexation.
 
 New local capture for the source/DOM milestone; retained outside distribution.
 Nouvelle capture locale pour le jalon source/DOM, conservée hors distribution.
+
+## TS10 / draft.5
+
+- [canonical.html](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls) — 2026-10-09T12:06:44.937+00:00 — SHA-256 `beb9ad9a2d5b6a84f657ee5cf6e29e46f0f980f02a333f655a58e2c18004848d`.
+- [sitemaps.html](https://www.sitemaps.org/protocol.html) — 2026-10-09T12:06:45.885+00:00 — SHA-256 `5e7570590fcb92d473d7015c88940a830383b6a61bc6c16be4df51e97f471654`.
+- [rfc8288.html](https://www.rfc-editor.org/rfc/rfc8288) — 2026-10-09T12:06:47.030+00:00 — SHA-256 `3acf5930ba5c285d4dd4d77429c7be47b414cd63b361efc842aa04b047fa5762`.
+
+Trois références de syntaxe et de méthode, sans mesure du moteur ni validation
+complète des RFC. Captures conservées localement hors distribution.
+Three syntax/method references, without engine measurements or complete RFC
+validation. Raw captures retained locally outside distribution.

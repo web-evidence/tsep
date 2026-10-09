@@ -1,5 +1,17 @@
 # Change history / Historique
 
+## 0.1.0-draft.5 — 2026-10-09 — unpublished development candidate
+
+- Add bounded raw-input conformance for TS10-A01–A04: inventoried canonical signals,
+  direct preferred destination, complete sitemap trees and declared internal sources.
+- Bind source/DOM captures and supported reviews to context/date/fingerprints;
+  TS10-A02 retains supplied, reasoned human content comparison and manual automation.
+- Add 80 synthetic cases, per-rule contradictory outcomes and report/EARL integration
+  tests that reject partial/automatic C while retaining failures and unknowns.
+- Extend FR/EN contracts, input documentation and dated primary references. Format 2,
+  TS01–TS44, grid 1.1, severities/profiles and existing five-rule inputs unchanged.
+  [Migration](docs/migration-draft.5.md). No publication or external validation claimed.
+
 ## 0.1.0-draft.4 — 2026-10-09 — unpublished development candidate
 
 TS07-A03 source/DOM conformance: prior state plans, source/context bindings, browser

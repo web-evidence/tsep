@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.4",
+  "version": "0.1.0-draft.5",
   "status": "draft",
   "date": "2026-10-09",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.4"
+      "rule_version": "0.1.0-draft.5"
     },
     {
       "id": "TS02",
@@ -673,7 +673,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.4"
+      "rule_version": "0.1.0-draft.5"
     },
     {
       "id": "TS08",
@@ -839,7 +839,9 @@
       },
       "references": [
         "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
-        "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
+        "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+        "https://www.sitemaps.org/protocol.html",
+        "https://www.rfc-editor.org/rfc/rfc8288"
       ],
       "source_scope": {
         "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
@@ -870,12 +872,12 @@
             "en": "List members, preferred URL and expected method; compare final URLs, HTTP Link, HTML rel=canonical and required rendered states. Retain multiple declarations, even identical ones."
           },
           "acceptance": {
-            "fr": "Les signaux présents et ceux exigés par la stratégie désignent la même URL HTTP(S) absolue, sans fragment. HTML dans head ou en-tête Link sont acceptés ; pas d’obligation universelle d’une balise HTML. Une canonical relative est fail pour cette règle TSEP, sans affirmer son invalidité pour Google.",
-            "en": "Present signals and those required by strategy identify the same absolute HTTP(S) URL without a fragment. HTML in head or HTTP Link are accepted; no universal HTML tag requirement. A relative canonical is fail for this TSEP rule without claiming Google cannot interpret it."
+            "fr": "Les signaux présents et ceux exigés par la stratégie désignent la même URL HTTP(S) absolue, sans fragment. HTML dans head ou en-tête Link sont acceptés ; pas d’obligation universelle d’une balise HTML. Une canonical relative est fail pour cette règle TSEP, sans affirmer son invalidité pour Google. Les déclarations répétées identiques sont conservées et peuvent converger ; un conflit attribuable demeure fail malgré une autre capture manquante.",
+            "en": "Present signals and those required by strategy identify the same absolute HTTP(S) URL without a fragment. HTML in head or HTTP Link are accepted; no universal HTML tag requirement. A relative canonical is fail for this TSEP rule without claiming Google cannot interpret it. Retain repeated identical declarations, which may agree; an attributable conflict remains fail despite another missing capture."
           },
           "evidence": {
-            "fr": "Inventaire de famille dans intent ; en-têtes et source (ou record html non applicable pour non-HTML) ; extraction avec emplacement et méthode, DOM requis joint si nécessaire.",
-            "en": "Family inventory in intent; headers and source (or html non-applicability record for non-HTML); extraction with location and method, required DOM attached when needed."
+            "fr": "Inventaire de famille dans intent ; en-têtes et source (ou record html non applicable pour non-HTML) ; extraction avec emplacement et méthode, DOM requis joint si nécessaire. Relier chaque capture à la famille, au contexte et à la date. Déclarer les méthodes et les états DOM requis avant examen ; lier les DOM à la trace HTTP par empreinte. Une exemption de rendu exige une revue liée à la source et ses pièces, pas une simple affirmation « pas de JS ».",
+            "en": "Family inventory in intent; headers and source (or html non-applicability record for non-HTML); extraction with location and method, required DOM attached when needed. Bind each capture to the family, context and date. Declare required methods and DOM states before assessment; bind DOMs to the HTTP trace by fingerprint. A rendering exemption needs a source-bound review and supporting records, not a bare “no JS” claim."
           },
           "assumptions": {
             "fr": "La stratégie distingue canonical préférée et doublons ; aucune suppression implicite de paramètres, casse ou slash lors des comparaisons.",
@@ -920,8 +922,8 @@
             "en": "The expected destination is directly accessible with 200, without canonical chains or cycles, and compatible content. A duplicate may remain 200 and point to the preferred URL; not every duplicate final URL must equal it."
           },
           "evidence": {
-            "fr": "Trace et corps de la destination reliés à la famille ; graphe des déclarations et comparaison de contenu motivée.",
-            "en": "Destination trace and body tied to the family; declaration graph and reasoned content comparison."
+            "fr": "Trace et corps de la destination reliés à la famille ; graphe des déclarations et comparaison de contenu motivée. La revue humaine de compatibilité identifie son auteur, sa date, chaque membre comparé à la préférence, le jugement motivé et les captures exactes examinées, par empreinte. Une référence manquante, périmée ou une comparaison non établie empêche pass.",
+            "en": "Destination trace and body tied to the family; declaration graph and reasoned content comparison. The human compatibility review identifies its author, date, each member compared with the preferred representation, reasoned judgment and exact examined captures by fingerprint. A missing/stale reference or unestablished comparison prevents pass."
           },
           "assumptions": {
             "fr": "La proximité du contenu est évaluée dans le contexte métier, sans seuil universel de similarité.",
@@ -932,8 +934,8 @@
             "en": "Uncollected destination, timeout or incomparable content: inconclusive. An observed 404/5xx, cycle or hop is a contradiction."
           },
           "limitations": {
-            "fr": "Un GET réussi ne prouve pas que Google retiendra cette URL ; aucune stabilité dans le temps déduite d’un instant.",
-            "en": "A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant."
+            "fr": "Un GET réussi ne prouve pas que Google retiendra cette URL ; aucune stabilité dans le temps déduite d’un instant. Un comparateur peut vérifier les liens et la couverture de la revue fournie ; il ne transforme pas ce jugement en comparaison automatique du contenu.",
+            "en": "A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant. A comparator can check the supplied review’s bindings and coverage; it does not turn that judgment into automatic content comparison."
           },
           "na_inputs": [],
           "non_applicability": {
@@ -957,8 +959,8 @@
             "en": "Families associated with a sitemap under the declared strategy."
           },
           "procedure": {
-            "fr": "Comparer les entrées de tous les sitemaps/index nécessaires à la famille et à l’URL préférée ; conserver les exclusions justifiées par la stratégie.",
-            "en": "Compare entries from all sitemaps/indexes required for the family and preferred URL; retain exclusions justified by strategy."
+            "fr": "Comparer les entrées de tous les sitemaps/index nécessaires à la famille et à l’URL préférée ; conserver les exclusions justifiées par la stratégie. Rapprocher les captures de chaque index et de tous ses enfants attendus. Un échec observé reste fail si une autre branche manque ; une omission ne devient fail qu’après examen complet de la population annoncée.",
+            "en": "Compare entries from all sitemaps/indexes required for the family and preferred URL; retain exclusions justified by strategy. Reconcile captures of each index and all expected children. An observed failure remains fail when another branch is missing; an omission becomes fail only after the declared population has been fully examined."
           },
           "acceptance": {
             "fr": "Les entrées observées et exigées concordent avec la préférence déclarée ; un doublon publié comme canonique concurrent sans justification est fail.",
@@ -1009,12 +1011,12 @@
             "en": "Extract links from the announced population; compare destinations and documented exceptions with canonical preference."
           },
           "acceptance": {
-            "fr": "Tous les liens évalués suivent la stratégie ; aucune destination concurrente inexpliquée. Zéro lien peut satisfaire la règle uniquement si la population annoncée est intégralement examinée.",
-            "en": "All assessed links follow strategy; no unexplained competing destination. Zero links can satisfy the rule only when the announced population is fully examined."
+            "fr": "Tous les liens évalués suivent la stratégie ; aucune destination concurrente inexpliquée. Zéro lien peut satisfaire la règle uniquement si la population annoncée est intégralement examinée. Un lien concurrent attribuable reste fail même si une autre page source ou un état requis manque.",
+            "en": "All assessed links follow strategy; no unexplained competing destination. Zero links can satisfy the rule only when the announced population is fully examined. An attributable competing link remains fail even if another source page or required state is missing."
           },
           "evidence": {
-            "fr": "Export de crawl avec URL source, href, destination, pages réellement parcourues, échecs et exclusions ; rapprochement avec la population déclarée.",
-            "en": "Crawl export with source URL, href, destination, pages actually visited, failures and exclusions; reconciliation with the declared population."
+            "fr": "Export de crawl avec URL source, href, destination, pages réellement parcourues, échecs et exclusions ; rapprochement avec la population déclarée. Conserver le HTML source et les DOM nécessaires à l’extraction, liés à leurs traces, contextes et dates ; une exemption de rendu est revue et étayée. Les exceptions identifient source, destination et motif.",
+            "en": "Crawl export with source URL, href, destination, pages actually visited, failures and exclusions; reconciliation with the declared population. Retain source HTML and DOMs needed for extraction, bound to their traces, contexts and dates; a rendering exemption is reviewed and supported. Exceptions identify source, destination and reason."
           },
           "assumptions": {
             "fr": "Le crawl vérifie une population déclarée ; il n’en prouve pas à lui seul l’exhaustivité.",
@@ -1036,7 +1038,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.4"
+      "rule_version": "0.1.0-draft.5"
     },
     {
       "id": "TS11",
@@ -3169,15 +3171,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "3ff8f2083b31a2fd3df4e25fea5acb388d1538a50fae915335b1590945f90e12"
+      "sha256": "9470ac1cdf419ad87a416e83243c3c3f51ab385b9cfbdafc92879be59fa4eb00"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "3e70d1707d20ee32218fbae4b434d65560eede5f3988a84eee5da3a7e2316700"
+      "sha256": "8314156da7c02c50475e9df522bc73fc9243371781f92d22cd7f7308a47d6e2f"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "6b0542349efe784ae3677a18e9696010184e4209e5bffba11aa9ee6e73d80696"
+      "sha256": "0b889dd4d940aab4b37b2f8248fcf9a3f7738a78dc6a586b2a86d3e49be57974"
     }
   ]
 }

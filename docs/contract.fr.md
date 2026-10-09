@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.4
+# Contrat de rapport — TSEP 0.1.0-draft.5
 
 ## Périmètre déclaré
 
@@ -80,7 +80,7 @@ affecte les déclarations, même si le validateur ne peut pas déterminer ce bes
 La CLI vérifie les déclarations, références et couvertures, pas la justesse de la
 lecture HTTP/HTML, de l’intention ou des exemptions. Les cas de méthode historiques
 ont des verdicts rédigés. La [suite exécutable distincte](conformance.md) interprète
-les entrées brutes de cinq règles dans des limites documentées ; elle
+les entrées brutes de neuf règles dans des limites documentées ; elle
 n’implémente pas tous les contrôles. Aucun C ne
 s’étend aux contrôles non sélectionnés, à un site entier ou à l’indexation réelle.
 Voir [migration et cas](migration-draft.2.md).
@@ -105,6 +105,27 @@ pas. L’interpréteur compare des captures fournies : il n’exécute pas JavaS
 ne simule pas le moteur. Voir [format et limites](rendered-states.md) et
 [migration draft.4](migration-draft.4.md). La validation du rapport contrôle les
 références/types de preuves ; elle ne parse pas elle-même les DOM ni le plan.
+
+### Familles canoniques TS10 — draft.5
+
+A01 rapproche les déclarations de tous les membres inventoriés : méthodes et états
+requis fixés auparavant, captures datées et liées au contexte/source. Conserver
+les signaux répétés et les contradictions malgré les autres lacunes. Les exemptions
+de rendu exigent une revue étayée. A02 exige une destination directement en 200 et
+une revue humaine motivée pour chaque membre comparé à la préférence, liée par
+empreinte aux pièces examinées ; elle reste manual.
+
+A03 rapproche tous les index et enfants attendus avant de conclure à une omission.
+A04 rapproche toutes les pages sources et états nécessaires ; zéro lien n’est pas
+une réussite si la population reste partielle. Un échec attribuable survit à une
+autre branche/page manquante. Les exceptions identifient précisément leur objet
+et leur motif. Une absence positive de sitemap exempte seulement A03.
+
+Le [format exécutable](canonical-families.md) borne les interprétations HTTP/HTML,
+DOM et XML. Le rapport conserve preuves, résultats et inconnues ; sa validation ne
+parse pas ces captures ni ne garantit la justesse des revues. Aucun C automatique
+TS10, aucun C à partir d’un sous-ensemble des règles. Voir la
+[migration draft.5](migration-draft.5.md).
 
 ## Automatisation et identité de représentation
 
@@ -178,12 +199,12 @@ Le parseur d’arguments utilise le code conventionnel 2 pour une syntaxe CLI er
 
 ## Versions et revendications d’implémentation
 
-Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.4:TS01`. Ne jamais
+Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.5:TS01`. Ne jamais
 remplacer silencieusement un artefact publié. Changer applicabilité, attendus,
 preuves ou décisions exige une nouvelle version et une note de migration.
 TS01–TS44 restent des identités permanentes.
 
 La suite démontre seulement « réussit les tests d’échange des rapports fournis
-avec 0.1.0-draft.4 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
+avec 0.1.0-draft.5 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
 plus large exige une correspondance par règle et des limites publiées. Aucune
 interopérabilité avec un outil tiers n’a encore été démontrée.
