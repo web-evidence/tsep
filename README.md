@@ -1,6 +1,6 @@
 # Technical SEO Evidence Protocol — TSEP
 
-**0.1.0-draft.1 · working draft · initiated by Edikka · [Français](README.fr.md)**
+**0.1.0-draft.2 · working draft · initiated by Edikka · [Français](README.fr.md)**
 
 Make a technical SEO assessment inspectable: named controls, a declared scope,
 traceable evidence, explicit unknowns, and a result another practitioner can challenge.
@@ -54,6 +54,12 @@ it cannot be combined with a named profile. The CLI does not fetch the target.
 - [Licensing and attribution](LICENSE.md)
 - [Bounded HTTP probe and its 48 historical regression cases](probes/README.md)
 
+TS01, TS07 and TS10 now have nine atomic rules with evidence requirements and
+synthetic FR/EN cases. Report format 2 requires coverage per target before C on
+these controls. See [migration from draft.1](docs/migration-draft.2.md) and
+[method cases](tests/fixtures/control-cases.json). Case verdicts are authored;
+tests verify aggregation, not an automatic SEO engine.
+
 The normative package is the versioned JSON, report contract and schema together.
 An inconsistency is a defect to report, not permission to select the easiest rule.
 The original Edikka grid 1.1 is preserved byte-for-byte in `upstream/` for provenance.
@@ -89,12 +95,12 @@ clearance. No metrics about llms.txt adoption underpin this design.
 
 ## Reuse and cite
 
-Use the identifiers in tools and procurement: `TSEP@0.1.0-draft.1:TS07`. Preserve
+Use the identifiers in tools and procurement: `TSEP@0.1.0-draft.2:TS07`. Preserve
 the version, actual evaluated scope, result and evidence reference. A crawler
 alert can map to part of a control without claiming the entire control passed.
 
 Suggested citation: *Edikka. Technical SEO Evidence Protocol (TSEP),
-0.1.0-draft.1, 2026-10-09. Working draft.* Include the release archive hash when
+0.1.0-draft.2, 2026-10-09. Working draft.* Include the release archive hash when
 sharing this unpublished candidate. No DOI should be invented.
 
 Text/data are CC BY 4.0; original software is Apache-2.0. Attribution belongs in
@@ -104,5 +110,5 @@ To build a deterministic standalone archive outside this directory:
 
 ```sh
 python3 maintain.py check
-python3 maintain.py build --output /tmp/tsep-0.1.0-draft.1.zip
+python3 maintain.py build --output /tmp/tsep-0.1.0-draft.2.zip
 ```

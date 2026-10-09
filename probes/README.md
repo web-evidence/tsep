@@ -35,6 +35,12 @@ For example, this probe expects one HTML canonical; the protocol can assess othe
 documented strategies. A successful historical case suite is regression evidence
 for this bounded example, not a declaration that all robots/header syntax is covered.
 
+In draft.2, observations can contribute to TS01-A01/A02, TS07-A01 or TS10-A01,
+after human review of scope, raw evidence and applicability. The probe does not
+emit `atomic_results` or fill missing rule/target pairs. The separate
+`tests/fixtures/control-cases.json` corpus supplies authored method judgments;
+it does not extend this probe's parser coverage.
+
 ## Français
 
 La sonde conserve l’exemple limité de l’article : un GET, cinq redirections maximum,
@@ -47,3 +53,8 @@ automatiquement conformes. Un échec ne devient NC qu’après rapprochement ave
 l’applicabilité et le comportement réellement attendu. Conserver séparément les
 réponses brutes et les conditions pour en faire des preuves. Cette suite historique
 de non-régression n’est pas la future suite de conformité des 44 contrôles.
+
+En draft.2, les observations peuvent contribuer à TS01-A01/A02, TS07-A01 ou
+TS10-A01 après revue humaine des preuves et du contexte. La sonde ne produit pas
+`atomic_results` et ne remplit aucune règle manquante. Le corpus de cas de méthode
+séparé contient des jugements rédigés ; il n’étend pas la couverture du parseur.

@@ -208,22 +208,26 @@ class Reports(unittest.TestCase):
     def test_major_failure_requires_review(self):
         self.report['controls'] = ['TS02']
         self.report['results'][0].update(control_id='TS02', status='NC')
+        self.report['results'][0].pop('atomic_results')
         self.assertEqual(self.check()['decision'], 'REVIEW')
 
     def test_minor_failure_preserved_in_go_reservations(self):
         self.report['controls'] = ['TS09']
         self.report['results'][0].update(control_id='TS09', status='NC')
+        self.report['results'][0].pop('atomic_results')
         result = self.check()
         self.assertEqual(result['decision'], 'GO_WITH_RESERVATIONS')
         self.assertEqual(result['counts']['NC'], 1)
 
     def test_all_na_is_not_success(self):
         self.report['results'][0].update(status='NA', reason='Declared no public canonical target; synthetic status test only.')
+        self.report['results'][0]['atomic_results'] = []
         self.assertEqual(self.check()['decision'], 'INCOMPLETE')
 
     def test_failing_counterexample_can_cover_subset(self):
         self.report['scope']['targets'].append('https://example.com/other')
         self.report['results'][0].update(status='NC', reason='One observed contradiction is enough to fail the whole declared set.')
+        self.report['results'][0]['atomic_results'][0]['outcome'] = 'fail'
         self.assertEqual(self.check()['decision'], 'NO_GO')
 
     def test_five_earl_outcomes_are_distinct(self):
@@ -234,6 +238,10 @@ class Reports(unittest.TestCase):
             with self.subTest(status=status, state=state):
                 report = copy.deepcopy(self.report)
                 report['results'][0].update(status=status, evaluation_state=state)
+                if status == 'NC':
+                    report['results'][0]['atomic_results'][0]['outcome'] = 'fail'
+                if status == 'NA' or state == 'not-started':
+                    report['results'][0]['atomic_results'] = []
                 if state == 'not-started':
                     report['results'][0].update(evaluated_targets=[], evidence_ids=[])
                 summary = self.check(report)

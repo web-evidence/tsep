@@ -1,6 +1,6 @@
 # Technical SEO Evidence Protocol — TSEP
 
-**0.1.0-draft.1 · version de travail · initié par Edikka · [English](README.md)**
+**0.1.0-draft.2 · version de travail · initié par Edikka · [English](README.md)**
 
 Un audit SEO technique que l’on peut examiner et contester : contrôles identifiés,
 périmètre déclaré, preuves traçables et inconnues explicites. Ce kit fonctionne
@@ -54,6 +54,12 @@ TSEP-1. La CLI ne visite pas l’URL.
 - [Licences et attribution](LICENSE.md)
 - [Sonde HTTP bornée et ses 48 cas historiques de non-régression](probes/README.md)
 
+TS01, TS07 et TS10 possèdent désormais neuf règles atomiques avec preuves et
+cas synthétiques FR/EN. Le format de rapport 2 exige leur couverture par cible
+avant tout C de ces contrôles. Voir la [migration depuis draft.1](docs/migration-draft.2.md)
+et les [cas de méthode](tests/fixtures/control-cases.json). Les verdicts des cas
+sont rédigés ; les tests vérifient l’agrégation, pas un moteur SEO automatique.
+
 Le JSON versionné, le contrat de rapport et le schéma forment ensemble le contrat
 normatif du candidat. Une incohérence est un défaut à signaler. La grille Edikka
 1.1 reste intacte dans `upstream/` ; TSEP possède une numérotation distincte.
@@ -87,11 +93,11 @@ d’adoption de llms.txt ne fonde ce travail.
 
 ## Reprendre et citer
 
-Référence stable : `TSEP@0.1.0-draft.1:TS07`, avec périmètre, résultat et preuve.
+Référence stable : `TSEP@0.1.0-draft.2:TS07`, avec périmètre, résultat et preuve.
 Une alerte d’outil peut correspondre à une partie d’un contrôle ; elle ne suffit
 pas à déclarer le contrôle entier conforme.
 
-Citation : *Edikka. Technical SEO Evidence Protocol (TSEP), 0.1.0-draft.1,
+Citation : *Edikka. Technical SEO Evidence Protocol (TSEP), 0.1.0-draft.2,
 9 octobre 2026. Version de travail.* Joindre l’empreinte de l’archive lors du
 partage de ce candidat non publié ; ne pas inventer de DOI.
 
@@ -103,5 +109,5 @@ Construction autonome et déterministe, avec sortie hors de ce dossier :
 
 ```sh
 python3 maintain.py check
-python3 maintain.py build --output /tmp/tsep-0.1.0-draft.1.zip
+python3 maintain.py build --output /tmp/tsep-0.1.0-draft.2.zip
 ```

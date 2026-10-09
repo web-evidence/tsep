@@ -66,6 +66,8 @@ def main():
             run([python, 'maintain.py', 'check'], extracted, environment, 'extracted contract', checks)
             run([python, 'tsep.py', 'validate', 'examples/pass/report.json'], extracted,
                 environment, 'extracted CLI', checks)
+            run([python, '-m', 'unittest', 'discover', '-s', 'tests', '-v'], extracted,
+                environment, 'extracted report and atomic-rule cases', checks)
             run([python, 'maintain.py', 'build', '--output', str(temp/'second.zip')], extracted,
                 environment, 'rebuild from extracted archive', checks)
             report['archive_sha256'] = tsep.digest(temp/'first.zip')

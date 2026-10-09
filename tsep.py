@@ -112,6 +112,56 @@ def evidence_path(root, relative):
     return full
 
 
+def validate_atomic_results(result, control, targets, artifacts):
+    """Check declared rule evidence/coverage; never infer SEO truth from a capture."""
+    rules = {r['id']: r for r in control.get('rules', [])}
+    atoms = result.get('atomic_results', [])
+    require(rules or not atoms, 'No atomic rules defined for ' + control['id'])
+    unique([(a['rule_id'], a['target']) for a in atoms], 'rule/target observation')
+    by_pair = {}
+    for atom in atoms:
+        rid, target = atom['rule_id'], atom['target']
+        require(rid in rules, 'Unknown or foreign atomic rule: ' + rid)
+        require(target in result['evaluated_targets'], 'Atomic target not evaluated: ' + target)
+        refs = atom['evidence_ids']
+        unique(refs, 'atomic evidence reference')
+        require(set(refs) <= set(result['evidence_ids']), 'Atomic evidence not linked by control')
+        require(all(target in artifacts[ref]['targets'] for ref in refs),
+                'Atomic evidence does not cover its target')
+        outcome = atom['outcome']
+        if outcome != 'inconclusive':
+            require(refs, 'Conclusive atomic outcome requires evidence')
+        if outcome in ('pass', 'not-applicable'):
+            key = 'required_inputs' if outcome == 'pass' else 'na_inputs'
+            needed = rules[rid][key]
+            require(needed, 'Atomic exemption is not allowed: ' + rid)
+            require(set(needed) <= {artifacts[ref]['kind'] for ref in refs},
+                    'Missing atomic input coverage: ' + rid)
+        by_pair[(rid, target)] = outcome
+    if not rules:
+        return
+    status = result['status']
+    has_failure = 'fail' in by_pair.values()
+    if status == 'C':
+        require(set(by_pair) == {(rid, target) for rid in rules for target in targets},
+                'C requires every atomic rule for every target')
+        require(all(x in ('pass', 'not-applicable') for x in by_pair.values()),
+                'Partial or failing atomic results cannot yield C')
+        require('pass' in by_pair.values(), 'All atomic exemptions cannot yield C')
+    elif status == 'NC':
+        require(has_failure, 'NC requires an evidenced atomic contradiction')
+    elif status == 'NA':
+        require(not atoms, 'Whole-control NA cannot contain applicable atomic observations')
+        for target in targets:
+            require(any(artifacts[ref]['kind'] == 'intent' and target in artifacts[ref]['targets']
+                        for ref in result['evidence_ids']),
+                    'Whole-control NA requires applicability evidence in intent per target')
+    else:
+        require(not has_failure, 'An evidenced atomic contradiction must remain NC')
+        if result['evaluation_state'] == 'not-started':
+            require(not atoms, 'Unstarted control cannot contain atomic observations')
+
+
 def validate(report, evidence_root):
     shape(report, read_json(ROOT / 'schemas/report.schema.json'))
     protocol = read_json(PROTOCOL_PATH)
@@ -174,6 +224,7 @@ def validate(report, evidence_root):
                     kind_targets = set().union(*(set(artifacts[x]['targets']) for x in refs
                                                 if artifacts[x]['kind'] == kind))
                     require(targets <= kind_targets, 'Missing input coverage ' + kind + ': ' + cid)
+        validate_atomic_results(result, controls[cid], targets, artifacts)
     return decision(report, controls)
 
 
@@ -213,7 +264,7 @@ def initialize(targets, selected, profile, assessor, label, selection_method):
     require(set(selected) <= {c['id'] for c in protocol['controls']}, 'Unknown control')
     unique(selected, 'selected control')
     unique(targets, 'target')
-    return {'format_version': '1', 'protocol': {'name': 'TSEP', 'version': protocol['version'],
+    return {'format_version': '2', 'protocol': {'name': 'TSEP', 'version': protocol['version'],
             'sha256': digest(PROTOCOL_PATH)}, 'issued_at': datetime.now(timezone.utc).isoformat(),
             'assessor': {'name': assessor, 'mode': 'manual'},
             'scope': {'label': label, 'targets': targets, 'selection_method': selection_method,

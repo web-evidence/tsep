@@ -1,5 +1,24 @@
 # Change history / Historique
 
+## 0.1.0-draft.2 — 2026-10-09 — unpublished development candidate
+
+Nine bilingual atomic rules for TS01, TS07 and TS10, with authored synthetic
+method cases and adversarial report coverage tests. Report format 2 requires
+rule/target evidence for C on these controls; partial observations cannot establish
+a complete control. TS07 adds robots evidence; conditional rendering and justified
+absence of sitemap/HTML surfaces are explicit. This remains a report validator,
+not an automatic implementation of the SEO methods. IDs, severities, profiles,
+upstream provenance and the initial tag are preserved. No publication or
+independent review. See [migration](docs/migration-draft.2.md).
+
+Neuf règles atomiques FR/EN pour TS01/07/10, cas synthétiques à jugements de
+référence rédigés et tests contradictoires de couverture. Format de rapport 2,
+preuves par couple règle/cible, aucun C d’un contrôle entier à partir d’une
+observation partielle. Nouvelle preuve robots pour TS07 ; rendu conditionnel et
+absences justifiées de sitemap/HTML explicites. Les méthodes SEO ne deviennent pas
+automatiques. Identités, sévérités, profils, provenance et tag initial conservés.
+Migration explicite ; aucune publication ni revue indépendante.
+
 ## 0.1.0-draft.1 — 2026-10-09 — unpublished candidate
 
 Initial independent version sequence derived from Edikka grid 1.1. The 44 IDs and

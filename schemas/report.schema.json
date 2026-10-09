@@ -1,11 +1,11 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:tsep:report-schema:0.1.0-draft.1",
+  "$id": "urn:tsep:report-schema:0.1.0-draft.2",
   "title": "TSEP scoped assessment report (draft)",
   "type": "object",
   "properties": {
     "format_version": {
-      "const": "1"
+      "const": "2"
     },
     "protocol": {
       "type": "object",
@@ -14,7 +14,7 @@
           "const": "TSEP"
         },
         "version": {
-          "const": "0.1.0-draft.1"
+          "const": "0.1.0-draft.2"
         },
         "sha256": {
           "type": "string",
@@ -332,6 +332,52 @@
             "items": {
               "type": "string",
               "minLength": 1
+            },
+            "minItems": 0
+          },
+          "atomic_results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "rule_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "target": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "outcome": {
+                  "type": "string",
+                  "enum": [
+                    "pass",
+                    "fail",
+                    "not-applicable",
+                    "inconclusive"
+                  ]
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "evidence_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "minItems": 0
+                }
+              },
+              "required": [
+                "rule_id",
+                "target",
+                "outcome",
+                "reason",
+                "evidence_ids"
+              ],
+              "additionalProperties": false
             },
             "minItems": 0
           }

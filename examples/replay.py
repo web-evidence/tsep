@@ -36,10 +36,15 @@ def generate(output_root=ROOT):
         report['scope']['exclusions'] = ['All other controls and every live site / Autres contrôles et sites réels']
         report['artifacts'] = [fixture(folder, 'intent.txt', 'intent',
             'Synthetic case: this public canonical page is expected to return the declared content with final HTTP 200.\n'
-            'Cas fictif : cette page publique canonique doit retourner le contenu attendu en HTTP 200 final.\n')]
+            'Expected final URL: https://example.com/page; content identity: Expected page content / Contenu attendu.\n'
+            'Cas fictif : cette page publique canonique doit retourner ce contenu à cette URL finale en HTTP 200.\n')]
         if http_status:
             report['artifacts'].append(fixture(folder, 'http.txt', 'http',
                 'SYNTHETIC FIXTURE / CAS SYNTHÉTIQUE\nGET ' + TARGET + '\n'
+                + 'Authored offline transcript, Fixture/2; no network command executed.\n'
+                + 'Fictional observation: ' + DATE + '; GET without conditional headers; no cookies/auth.\n'
+                + 'User-Agent: Fixture/2; network: none (synthetic); bounds: 10s, 5 hops, 5 MiB.\n'
+                + 'Complete fictional response, bounds not reached, no truncation.\n'
                 + 'Final URL: ' + TARGET + '\nHTTP/1.1 ' + str(http_status) + '\n'
                 + 'Content-Type: text/html; charset=utf-8\nRedirects: 0\n\n'
                 + ('Expected page content / Contenu attendu' if http_status == 200 else 'Not found / Introuvable') + '\n'))
@@ -52,6 +57,14 @@ def generate(output_root=ROOT):
                               'procedure': 'Read the synthetic exchange against the declared intention / Comparer échange fictif et intention',
                               'evaluated_targets': [TARGET],
                               'evidence_ids': [a['id'] for a in report['artifacts']]}]
+        report['results'][0]['atomic_results'] = [
+            {'rule_id': 'TS01-A01', 'target': TARGET,
+             'outcome': {'pass': 'pass', 'fail': 'fail', 'partial': 'inconclusive'}[case],
+             'reason': reasons[case], 'evidence_ids': [a['id'] for a in report['artifacts']]}]
+        if case == 'pass':
+            report['results'][0]['atomic_results'].append({
+                'rule_id': 'TS01-A02', 'target': TARGET, 'outcome': 'pass',
+                'reason': reasons[case], 'evidence_ids': ['http', 'intent']})
         summary = tsep.validate(report, folder)
         for name, value in [('report.json', report), ('expected.json', summary),
                             ('earl.jsonld', tsep.earl(report, summary))]:

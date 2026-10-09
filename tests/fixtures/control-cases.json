@@ -1,0 +1,2457 @@
+{
+  "synthetic": true,
+  "protocol_version": "0.1.0-draft.2",
+  "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
+  "cases": [
+    {
+      "id": "TS01-ok",
+      "control_id": "TS01",
+      "description": {
+        "fr": "200 et ressource attendue.",
+        "en": "200 and expected resource."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "http": "SYNTHETIC: Fixture/1 offline exchange at 2026-10-09T10:00:00Z; GET https://example.com/page; final same; redirects=0; HTTP/1.1 200 OK; Content-Type: text/html; full body: <h1>Article A</h1>; no truncation. Bounds: 10s/5 hops/5MiB, not reached."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS01-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "200 et ressource attendue.",
+            "en": "200 and expected resource."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        },
+        {
+          "rule_id": "TS01-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "200 et ressource attendue.",
+            "en": "200 and expected resource."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS01-status-404",
+      "control_id": "TS01",
+      "description": {
+        "fr": "Code final observé incompatible avec 200.",
+        "en": "Observed final status contradicts 200."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "http": "SYNTHETIC complete GET https://example.com/page at 2026-10-09T10:00:00Z, no redirects; HTTP/1.1 404; final response captured; no expected Article A representation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS01-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Code final observé incompatible avec 200.",
+            "en": "Observed final status contradicts 200."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        },
+        {
+          "rule_id": "TS01-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Code final observé incompatible avec 200.",
+            "en": "Observed final status contradicts 200."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS01-status-500",
+      "control_id": "TS01",
+      "description": {
+        "fr": "Code final observé incompatible avec 200.",
+        "en": "Observed final status contradicts 200."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "http": "SYNTHETIC complete GET https://example.com/page at 2026-10-09T10:00:00Z, no redirects; HTTP/1.1 500; final response captured; no expected Article A representation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS01-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Code final observé incompatible avec 200.",
+            "en": "Observed final status contradicts 200."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        },
+        {
+          "rule_id": "TS01-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Code final observé incompatible avec 200.",
+            "en": "Observed final status contradicts 200."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS01-status-204",
+      "control_id": "TS01",
+      "description": {
+        "fr": "Code final observé incompatible avec 200.",
+        "en": "Observed final status contradicts 200."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "http": "SYNTHETIC complete GET https://example.com/page at 2026-10-09T10:00:00Z, no redirects; HTTP/1.1 204; final response captured; no expected Article A representation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS01-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Code final observé incompatible avec 200.",
+            "en": "Observed final status contradicts 200."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        },
+        {
+          "rule_id": "TS01-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Code final observé incompatible avec 200.",
+            "en": "Observed final status contradicts 200."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS01-status-206",
+      "control_id": "TS01",
+      "description": {
+        "fr": "Code final observé incompatible avec 200.",
+        "en": "Observed final status contradicts 200."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "http": "SYNTHETIC complete GET https://example.com/page at 2026-10-09T10:00:00Z, no redirects; HTTP/1.1 206; final response captured; no expected Article A representation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS01-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Code final observé incompatible avec 200.",
+            "en": "Observed final status contradicts 200."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        },
+        {
+          "rule_id": "TS01-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Code final observé incompatible avec 200.",
+            "en": "Observed final status contradicts 200."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS01-timeout",
+      "control_id": "TS01",
+      "description": {
+        "fr": "Observation insuffisante, sans défaut SEO inféré.",
+        "en": "Insufficient observation without an inferred SEO fault."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "http": "SYNTHETIC GET timed out before response, no status observed"
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS01-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Observation insuffisante, sans défaut SEO inféré.",
+            "en": "Insufficient observation without an inferred SEO fault."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        },
+        {
+          "rule_id": "TS01-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Observation insuffisante, sans défaut SEO inféré.",
+            "en": "Insufficient observation without an inferred SEO fault."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS01-head",
+      "control_id": "TS01",
+      "description": {
+        "fr": "Observation insuffisante, sans défaut SEO inféré.",
+        "en": "Insufficient observation without an inferred SEO fault."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "http": "SYNTHETIC HEAD 200 only, no GET or body"
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS01-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Observation insuffisante, sans défaut SEO inféré.",
+            "en": "Insufficient observation without an inferred SEO fault."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        },
+        {
+          "rule_id": "TS01-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Observation insuffisante, sans défaut SEO inféré.",
+            "en": "Insufficient observation without an inferred SEO fault."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS01-304",
+      "control_id": "TS01",
+      "description": {
+        "fr": "Observation insuffisante, sans défaut SEO inféré.",
+        "en": "Insufficient observation without an inferred SEO fault."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "http": "SYNTHETIC conditional GET 304, no retained representation"
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS01-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Observation insuffisante, sans défaut SEO inféré.",
+            "en": "Insufficient observation without an inferred SEO fault."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        },
+        {
+          "rule_id": "TS01-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Observation insuffisante, sans défaut SEO inféré.",
+            "en": "Insufficient observation without an inferred SEO fault."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS01-login",
+      "control_id": "TS01",
+      "description": {
+        "fr": "200 mais écran de connexion inattendu.",
+        "en": "200 but unexpected login screen."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "http": "SYNTHETIC: Fixture/1 offline exchange at 2026-10-09T10:00:00Z; GET https://example.com/page; final same; redirects=0; HTTP/1.1 200 OK; Content-Type: text/html; full body: <form>Login</form>; no truncation. Bounds: 10s/5 hops/5MiB, not reached."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS01-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "200 mais écran de connexion inattendu.",
+            "en": "200 but unexpected login screen."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        },
+        {
+          "rule_id": "TS01-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "200 mais écran de connexion inattendu.",
+            "en": "200 but unexpected login screen."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS01-missing-intent",
+      "control_id": "TS01",
+      "description": {
+        "fr": "Objectif absent : NT, pas NA.",
+        "en": "Missing intent: NT, not NA."
+      },
+      "evidence": {
+        "http": "SYNTHETIC: Fixture/1 offline exchange at 2026-10-09T10:00:00Z; GET https://example.com/page; final same; redirects=0; HTTP/1.1 200 OK; Content-Type: text/html; full body: <h1>Article A</h1>; no truncation. Bounds: 10s/5 hops/5MiB, not reached."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS01-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Objectif absent : NT, pas NA.",
+            "en": "Missing intent: NT, not NA."
+          },
+          "evidence_ids": [
+            "http"
+          ]
+        },
+        {
+          "rule_id": "TS01-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Objectif absent : NT, pas NA.",
+            "en": "Missing intent: NT, not NA."
+          },
+          "evidence_ids": [
+            "http"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS01-status-only",
+      "control_id": "TS01",
+      "description": {
+        "fr": "Code réussi seul, identité non examinée.",
+        "en": "Passing status alone; identity unexamined."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "http": "SYNTHETIC: Fixture/1 offline exchange at 2026-10-09T10:00:00Z; GET https://example.com/page; final same; redirects=0; HTTP/1.1 200 OK; Content-Type: text/html; full body: <h1>Article A</h1>; no truncation. Bounds: 10s/5 hops/5MiB, not reached."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS01-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Code réussi seul, identité non examinée.",
+            "en": "Passing status alone; identity unexamined."
+          },
+          "evidence_ids": [
+            "intent",
+            "http"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS01-not-applicable",
+      "control_id": "TS01",
+      "description": {
+        "fr": "Inventaire positif sans page HTTP publique.",
+        "en": "Positive inventory with no public HTTP page."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC positive applicability inventory: target is an offline paper-only process, contains no public HTTP document, no indexing policy and no canonical family. No live collection."
+      },
+      "atomic_results": [],
+      "expected_status": "NA",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS07-allow",
+      "control_id": "TS07",
+      "description": {
+        "fr": "Directives et accès compatibles, source statique revue.",
+        "en": "Compatible directives and access, reviewed static source."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Googlebot text search; indexing allowed, following allowed, preview unrestricted. Resource https://example.com/page. Complete source reviewed: no script, external script, event handler or dynamic directive. Static fixture, no required DOM state.",
+        "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; no X-Robots-Tag, no redirects; complete headers/body, no truncation.",
+        "html": "<html><head><meta name=\"robots\" content=\"index, follow\"></head><body>Article A</body></html>",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Directives et accès compatibles, source statique revue.",
+            "en": "Compatible directives and access, reviewed static source."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Directives et accès compatibles, source statique revue.",
+            "en": "Compatible directives and access, reviewed static source."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "not-applicable",
+          "reason": {
+            "fr": "Directives et accès compatibles, source statique revue.",
+            "en": "Compatible directives and access, reviewed static source."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS07-noindex-conflict",
+      "control_id": "TS07",
+      "description": {
+        "fr": "noindex final prime index du HTML et contredit l’objectif.",
+        "en": "Final noindex prevails over HTML index and contradicts intent."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Googlebot text search; indexing allowed, following allowed, preview unrestricted. Resource https://example.com/page. Complete source reviewed: no script, external script, event handler or dynamic directive. Static fixture, no required DOM state.",
+        "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; X-Robots-Tag: noindex, no redirects; complete headers/body, no truncation.",
+        "html": "<html><head><meta name=\"robots\" content=\"index, follow\"></head><body>Article A</body></html>",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "noindex final prime index du HTML et contredit l’objectif.",
+            "en": "Final noindex prevails over HTML index and contradicts intent."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "noindex final prime index du HTML et contredit l’objectif.",
+            "en": "Final noindex prevails over HTML index and contradicts intent."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "not-applicable",
+          "reason": {
+            "fr": "noindex final prime index du HTML et contredit l’objectif.",
+            "en": "Final noindex prevails over HTML index and contradicts intent."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS07-none",
+      "control_id": "TS07",
+      "description": {
+        "fr": "NONE insensible à la casse inclut noindex.",
+        "en": "Case-insensitive NONE includes noindex."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Googlebot text search; indexing allowed, following allowed, preview unrestricted. Resource https://example.com/page. Complete source reviewed: no script, external script, event handler or dynamic directive. Static fixture, no required DOM state.",
+        "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; no X-Robots-Tag, no redirects; complete headers/body, no truncation.",
+        "html": "<html><head><meta name=\"ROBOTS\" content=\"NONE\"></head></html>",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "NONE insensible à la casse inclut noindex.",
+            "en": "Case-insensitive NONE includes noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "NONE insensible à la casse inclut noindex.",
+            "en": "Case-insensitive NONE includes noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "not-applicable",
+          "reason": {
+            "fr": "NONE insensible à la casse inclut noindex.",
+            "en": "Case-insensitive NONE includes noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS07-other-bot",
+      "control_id": "TS07",
+      "description": {
+        "fr": "Une restriction autrebot ne devient pas Googlebot noindex.",
+        "en": "An otherbot restriction is not Googlebot noindex."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Googlebot text search; indexing allowed, following allowed, preview unrestricted. Resource https://example.com/page. Complete source reviewed: no script, external script, event handler or dynamic directive. Static fixture, no required DOM state.",
+        "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; X-Robots-Tag: otherbot: noindex, no redirects; complete headers/body, no truncation.",
+        "html": "<html><head><meta name=\"robots\" content=\"index, follow\"></head><body>Article A</body></html>",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Une restriction autrebot ne devient pas Googlebot noindex.",
+            "en": "An otherbot restriction is not Googlebot noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Une restriction autrebot ne devient pas Googlebot noindex.",
+            "en": "An otherbot restriction is not Googlebot noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "not-applicable",
+          "reason": {
+            "fr": "Une restriction autrebot ne devient pas Googlebot noindex.",
+            "en": "An otherbot restriction is not Googlebot noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS07-preview",
+      "control_id": "TS07",
+      "description": {
+        "fr": "Une limite d’aperçu n’est pas noindex.",
+        "en": "A preview limit is not noindex."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Googlebot text search; indexing allowed, following allowed, preview max 50 characters. Resource https://example.com/page. Complete source reviewed: no script, external script, event handler or dynamic directive. Static fixture, no required DOM state.",
+        "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; no X-Robots-Tag, no redirects; complete headers/body, no truncation.",
+        "html": "<html><head><meta name=\"robots\" content=\"max-snippet:50\"></head></html>",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Une limite d’aperçu n’est pas noindex.",
+            "en": "A preview limit is not noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Une limite d’aperçu n’est pas noindex.",
+            "en": "A preview limit is not noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "not-applicable",
+          "reason": {
+            "fr": "Une limite d’aperçu n’est pas noindex.",
+            "en": "A preview limit is not noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS07-excluded",
+      "control_id": "TS07",
+      "description": {
+        "fr": "Exclusion voulue et noindex accessible.",
+        "en": "Intended exclusion and accessible noindex."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Googlebot text search; indexing excluded, following allowed, preview unrestricted. Resource https://example.com/page. Complete source reviewed: no script, external script, event handler or dynamic directive. Static fixture, no required DOM state.",
+        "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; no X-Robots-Tag, no redirects; complete headers/body, no truncation.",
+        "html": "<html><head><meta name=\"robots\" content=\"noindex\"></head></html>",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exclusion voulue et noindex accessible.",
+            "en": "Intended exclusion and accessible noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exclusion voulue et noindex accessible.",
+            "en": "Intended exclusion and accessible noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "not-applicable",
+          "reason": {
+            "fr": "Exclusion voulue et noindex accessible.",
+            "en": "Intended exclusion and accessible noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS07-blocked",
+      "control_id": "TS07",
+      "description": {
+        "fr": "Disallow empêche la lecture du noindex attendu.",
+        "en": "Disallow prevents reading intended noindex."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Googlebot text search; indexing excluded, following allowed, preview unrestricted. Resource https://example.com/page. Complete source reviewed: no script, external script, event handler or dynamic directive. Static fixture, no required DOM state.",
+        "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; no X-Robots-Tag, no redirects; complete headers/body, no truncation.",
+        "html": "<html><head><meta name=\"robots\" content=\"noindex\"></head></html>",
+        "robots": "SYNTHETIC robots 200: User-agent: *\nDisallow: /page\nExplicitly denies Googlebot /page."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Disallow empêche la lecture du noindex attendu.",
+            "en": "Disallow prevents reading intended noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Disallow empêche la lecture du noindex attendu.",
+            "en": "Disallow prevents reading intended noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "not-applicable",
+          "reason": {
+            "fr": "Disallow empêche la lecture du noindex attendu.",
+            "en": "Disallow prevents reading intended noindex."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS07-render-missing",
+      "control_id": "TS07",
+      "description": {
+        "fr": "Rendu requis mais absent : NT.",
+        "en": "Required rendering missing: NT."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Googlebot text search; indexing allowed, following allowed, preview unrestricted. Resource https://example.com/page. Source contains dynamic.js. Dynamic fixture; script may inject directives; rendered state required.",
+        "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; no X-Robots-Tag, no redirects; complete headers/body, no truncation.",
+        "html": "<html><head><script src=\"dynamic.js\"></script></head></html>",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Rendu requis mais absent : NT.",
+            "en": "Required rendering missing: NT."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Rendu requis mais absent : NT.",
+            "en": "Required rendering missing: NT."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Rendu requis mais absent : NT.",
+            "en": "Required rendering missing: NT."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS07-render-noindex",
+      "control_id": "TS07",
+      "description": {
+        "fr": "Le rendu requis ajoute un noindex contraire à l’objectif.",
+        "en": "Required rendering adds noindex contrary to intent."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC Googlebot, indexing allowed; source allows indexing; required DOM after script completion.",
+        "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; no X-Robots-Tag, no redirects; complete headers/body, no truncation.",
+        "html": "<html><head><script src=\"dynamic.js\"></script></head></html>",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture.",
+        "render": "SYNTHETIC browser Fixture/1, scripts enabled, load completed, no errors; DOM <meta name=\"robots\" content=\"noindex\"> at 2026-10-09T10:00:00Z."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Le rendu requis ajoute un noindex contraire à l’objectif.",
+            "en": "Required rendering adds noindex contrary to intent."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Le rendu requis ajoute un noindex contraire à l’objectif.",
+            "en": "Required rendering adds noindex contrary to intent."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Le rendu requis ajoute un noindex contraire à l’objectif.",
+            "en": "Required rendering adds noindex contrary to intent."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS07-remove-noindex",
+      "control_id": "TS07",
+      "description": {
+        "fr": "Supprimer noindex en JS n’annule pas la contradiction source.",
+        "en": "Removing noindex with JS does not erase the source contradiction."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC Googlebot, indexing allowed; required source and post-script DOM.",
+        "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; no X-Robots-Tag, no redirects; complete headers/body, no truncation.",
+        "html": "<html><head><meta name=\"robots\" content=\"noindex\"><script src=\"remove.js\"></script></head></html>",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture.",
+        "render": "SYNTHETIC rendered DOM removes noindex; no claim about Google rendering."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Supprimer noindex en JS n’annule pas la contradiction source.",
+            "en": "Removing noindex with JS does not erase the source contradiction."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Supprimer noindex en JS n’annule pas la contradiction source.",
+            "en": "Removing noindex with JS does not erase the source contradiction."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Supprimer noindex en JS n’annule pas la contradiction source.",
+            "en": "Removing noindex with JS does not erase the source contradiction."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS07-unknown",
+      "control_id": "TS07",
+      "description": {
+        "fr": "Syntaxe non interprétée : aucune conformité déduite.",
+        "en": "Uninterpreted syntax: no inferred conformity."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Googlebot text search; indexing allowed, following allowed, preview unrestricted. Resource https://example.com/page. Complete source reviewed: no script, external script, event handler or dynamic directive. Static fixture, no required DOM state.",
+        "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; X-Robots-Tag: unknown-policy: ???, no redirects; complete headers/body, no truncation.",
+        "html": "<html><head><meta name=\"robots\" content=\"index, follow\"></head><body>Article A</body></html>",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Syntaxe non interprétée : aucune conformité déduite.",
+            "en": "Uninterpreted syntax: no inferred conformity."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Syntaxe non interprétée : aucune conformité déduite.",
+            "en": "Uninterpreted syntax: no inferred conformity."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "not-applicable",
+          "reason": {
+            "fr": "Syntaxe non interprétée : aucune conformité déduite.",
+            "en": "Uninterpreted syntax: no inferred conformity."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS07-headers-missing",
+      "control_id": "TS07",
+      "description": {
+        "fr": "Meta seule ne prouve pas l’absence de X-Robots-Tag.",
+        "en": "Meta alone does not prove absence of X-Robots-Tag."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Googlebot text search; indexing allowed, following allowed, preview unrestricted. Resource https://example.com/page. Complete source reviewed: no script, external script, event handler or dynamic directive. Static fixture, no required DOM state.",
+        "html": "<html><head><meta name=\"robots\" content=\"index, follow\"></head><body>Article A</body></html>",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Meta seule ne prouve pas l’absence de X-Robots-Tag.",
+            "en": "Meta alone does not prove absence of X-Robots-Tag."
+          },
+          "evidence_ids": [
+            "intent",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Meta seule ne prouve pas l’absence de X-Robots-Tag.",
+            "en": "Meta alone does not prove absence of X-Robots-Tag."
+          },
+          "evidence_ids": [
+            "intent",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Meta seule ne prouve pas l’absence de X-Robots-Tag.",
+            "en": "Meta alone does not prove absence of X-Robots-Tag."
+          },
+          "evidence_ids": [
+            "intent",
+            "html",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS07-pdf",
+      "control_id": "TS07",
+      "description": {
+        "fr": "PDF avec noindex HTTP ; absence de surface HTML documentée.",
+        "en": "PDF with HTTP noindex; documented absence of HTML surface."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC Googlebot; PDF indexing excluded; Content-Type application/pdf proves no HTML or DOM surface.",
+        "http": "SYNTHETIC complete GET 200, Content-Type: application/pdf, X-Robots-Tag: noindex; PDF body captured.",
+        "html": "SYNTHETIC applicability record: PDF, not HTML; Content-Type and body reviewed, no HTML fabricated.",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "PDF avec noindex HTTP ; absence de surface HTML documentée.",
+            "en": "PDF with HTTP noindex; documented absence of HTML surface."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "PDF avec noindex HTTP ; absence de surface HTML documentée.",
+            "en": "PDF with HTTP noindex; documented absence of HTML surface."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "not-applicable",
+          "reason": {
+            "fr": "PDF avec noindex HTTP ; absence de surface HTML documentée.",
+            "en": "PDF with HTTP noindex; documented absence of HTML surface."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS07-not-applicable",
+      "control_id": "TS07",
+      "description": {
+        "fr": "Inventaire sans ressource soumise à une politique d’indexation.",
+        "en": "Inventory has no resource subject to an indexing policy."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC positive applicability inventory: target is an offline paper-only process, contains no public HTTP document, no indexing policy and no canonical family. No live collection."
+      },
+      "atomic_results": [],
+      "expected_status": "NA",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS10-aligned",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Famille complète et quatre signaux concordants.",
+        "en": "Complete family and four agreeing signals."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, no Link; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"https://example.com/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC complete https://example.com/sitemap.xml: <urlset><url><loc>https://example.com/page</loc></url></urlset>; no sitemap index.",
+        "crawl": "SYNTHETIC complete source population: /menu HTTP 200, <a href=\"https://example.com/page\">Article A</a>; one link, no failed or excluded pages."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Famille complète et quatre signaux concordants.",
+            "en": "Complete family and four agreeing signals."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Famille complète et quatre signaux concordants.",
+            "en": "Complete family and four agreeing signals."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Famille complète et quatre signaux concordants.",
+            "en": "Complete family and four agreeing signals."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Famille complète et quatre signaux concordants.",
+            "en": "Complete family and four agreeing signals."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS10-http-link",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Méthode Link HTTP déclarée sans balise HTML.",
+        "en": "Declared HTTP Link method without an HTML tag."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTTP Link canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, Link: <https://example.com/page>; rel=\"canonical\" for both members; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC full static sources for both members: <html><head></head><body>Article A</body></html>; no HTML canonical, HTTP method declared.",
+        "sitemap": "SYNTHETIC complete https://example.com/sitemap.xml: <urlset><url><loc>https://example.com/page</loc></url></urlset>; no sitemap index.",
+        "crawl": "SYNTHETIC complete source population: /menu HTTP 200, <a href=\"https://example.com/page\">Article A</a>; one link, no failed or excluded pages."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Méthode Link HTTP déclarée sans balise HTML.",
+            "en": "Declared HTTP Link method without an HTML tag."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Méthode Link HTTP déclarée sans balise HTML.",
+            "en": "Declared HTTP Link method without an HTML tag."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Méthode Link HTTP déclarée sans balise HTML.",
+            "en": "Declared HTTP Link method without an HTML tag."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Méthode Link HTTP déclarée sans balise HTML.",
+            "en": "Declared HTTP Link method without an HTML tag."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS10-relative",
+      "control_id": "TS10",
+      "description": {
+        "fr": "URL relative : échec du critère TSEP absolu.",
+        "en": "Relative URL: fails the TSEP absolute-URL criterion."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, no Link; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC complete https://example.com/sitemap.xml: <urlset><url><loc>https://example.com/page</loc></url></urlset>; no sitemap index.",
+        "crawl": "SYNTHETIC complete source population: /menu HTTP 200, <a href=\"https://example.com/page\">Article A</a>; one link, no failed or excluded pages."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "URL relative : échec du critère TSEP absolu.",
+            "en": "Relative URL: fails the TSEP absolute-URL criterion."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "URL relative : échec du critère TSEP absolu.",
+            "en": "Relative URL: fails the TSEP absolute-URL criterion."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "URL relative : échec du critère TSEP absolu.",
+            "en": "Relative URL: fails the TSEP absolute-URL criterion."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "pass",
+          "reason": {
+            "fr": "URL relative : échec du critère TSEP absolu.",
+            "en": "Relative URL: fails the TSEP absolute-URL criterion."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS10-conflict",
+      "control_id": "TS10",
+      "description": {
+        "fr": "HTML et Link désignent deux destinations.",
+        "en": "HTML and Link name two destinations."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, Link: <https://example.com/other>; rel=\"canonical\"; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"https://example.com/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC complete https://example.com/sitemap.xml: <urlset><url><loc>https://example.com/page</loc></url></urlset>; no sitemap index.",
+        "crawl": "SYNTHETIC complete source population: /menu HTTP 200, <a href=\"https://example.com/page\">Article A</a>; one link, no failed or excluded pages."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "HTML et Link désignent deux destinations.",
+            "en": "HTML and Link name two destinations."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "HTML et Link désignent deux destinations.",
+            "en": "HTML and Link name two destinations."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "HTML et Link désignent deux destinations.",
+            "en": "HTML and Link name two destinations."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "pass",
+          "reason": {
+            "fr": "HTML et Link désignent deux destinations.",
+            "en": "HTML and Link name two destinations."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS10-redirect",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Destination canonique redirigée : chaîne observée.",
+        "en": "Redirected canonical destination: observed chain."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC /page GET 301 Location: /other; /other GET 200. All captures complete; intended preferred remains /page.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"https://example.com/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC complete https://example.com/sitemap.xml: <urlset><url><loc>https://example.com/page</loc></url></urlset>; no sitemap index.",
+        "crawl": "SYNTHETIC complete source population: /menu HTTP 200, <a href=\"https://example.com/page\">Article A</a>; one link, no failed or excluded pages."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Destination canonique redirigée : chaîne observée.",
+            "en": "Redirected canonical destination: observed chain."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Destination canonique redirigée : chaîne observée.",
+            "en": "Redirected canonical destination: observed chain."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Destination canonique redirigée : chaîne observée.",
+            "en": "Redirected canonical destination: observed chain."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Destination canonique redirigée : chaîne observée.",
+            "en": "Redirected canonical destination: observed chain."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS10-cycle",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Cycle canonique A vers B puis B vers A.",
+        "en": "Canonical cycle A to B then B to A."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, no Link; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC /page canonical=https://example.com/duplicate; /duplicate canonical=https://example.com/page; both complete source captures, Article A.",
+        "sitemap": "SYNTHETIC complete https://example.com/sitemap.xml: <urlset><url><loc>https://example.com/page</loc></url></urlset>; no sitemap index.",
+        "crawl": "SYNTHETIC complete source population: /menu HTTP 200, <a href=\"https://example.com/page\">Article A</a>; one link, no failed or excluded pages."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cycle canonique A vers B puis B vers A.",
+            "en": "Canonical cycle A to B then B to A."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cycle canonique A vers B puis B vers A.",
+            "en": "Canonical cycle A to B then B to A."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cycle canonique A vers B puis B vers A.",
+            "en": "Canonical cycle A to B then B to A."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cycle canonique A vers B puis B vers A.",
+            "en": "Canonical cycle A to B then B to A."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS10-sitemap-conflict",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Sitemap publie un doublon concurrent sans exception.",
+        "en": "Sitemap publishes a competing duplicate without exception."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, no Link; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"https://example.com/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC complete sitemap includes /page and /duplicate as canonical candidates; no approved exception.",
+        "crawl": "SYNTHETIC complete source population: /menu HTTP 200, <a href=\"https://example.com/page\">Article A</a>; one link, no failed or excluded pages."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Sitemap publie un doublon concurrent sans exception.",
+            "en": "Sitemap publishes a competing duplicate without exception."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Sitemap publie un doublon concurrent sans exception.",
+            "en": "Sitemap publishes a competing duplicate without exception."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Sitemap publie un doublon concurrent sans exception.",
+            "en": "Sitemap publishes a competing duplicate without exception."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Sitemap publie un doublon concurrent sans exception.",
+            "en": "Sitemap publishes a competing duplicate without exception."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS10-crawl-missing",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Canonical seule ne suffit pas : crawl absent.",
+        "en": "Canonical alone is insufficient: missing crawl."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, no Link; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"https://example.com/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC complete https://example.com/sitemap.xml: <urlset><url><loc>https://example.com/page</loc></url></urlset>; no sitemap index."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Canonical seule ne suffit pas : crawl absent.",
+            "en": "Canonical alone is insufficient: missing crawl."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Canonical seule ne suffit pas : crawl absent.",
+            "en": "Canonical alone is insufficient: missing crawl."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Canonical seule ne suffit pas : crawl absent.",
+            "en": "Canonical alone is insufficient: missing crawl."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Canonical seule ne suffit pas : crawl absent.",
+            "en": "Canonical alone is insufficient: missing crawl."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS10-declaration-only",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Une déclaration réussie laisse trois règles non examinées.",
+        "en": "A passing declaration leaves three rules unexamined."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, no Link; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"https://example.com/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC complete https://example.com/sitemap.xml: <urlset><url><loc>https://example.com/page</loc></url></urlset>; no sitemap index.",
+        "crawl": "SYNTHETIC complete source population: /menu HTTP 200, <a href=\"https://example.com/page\">Article A</a>; one link, no failed or excluded pages."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Une déclaration réussie laisse trois règles non examinées.",
+            "en": "A passing declaration leaves three rules unexamined."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS10-no-sitemap",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Absence de sitemap établie, autres règles satisfaites.",
+        "en": "Established absence of sitemap, other rules satisfied."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; strategy and complete sitemap inventory establish no sitemap used for this family. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, no Link; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"https://example.com/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC applicability record: no sitemap used, justified by declared complete inventory and strategy, not inferred from a guessed 404.",
+        "crawl": "SYNTHETIC complete source population: /menu HTTP 200, <a href=\"https://example.com/page\">Article A</a>; one link, no failed or excluded pages."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Absence de sitemap établie, autres règles satisfaites.",
+            "en": "Established absence of sitemap, other rules satisfied."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Absence de sitemap établie, autres règles satisfaites.",
+            "en": "Established absence of sitemap, other rules satisfied."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "not-applicable",
+          "reason": {
+            "fr": "Absence de sitemap établie, autres règles satisfaites.",
+            "en": "Established absence of sitemap, other rules satisfied."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Absence de sitemap établie, autres règles satisfaites.",
+            "en": "Established absence of sitemap, other rules satisfied."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS10-sitemap-404",
+      "control_id": "TS10",
+      "description": {
+        "fr": "404 sur chemin supposé ne prouve pas l’absence de sitemap.",
+        "en": "404 at a guessed path does not prove no sitemap."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, no Link; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"https://example.com/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC GET /sitemap.xml 404, sitemap index/inventory unknown.",
+        "crawl": "SYNTHETIC complete source population: /menu HTTP 200, <a href=\"https://example.com/page\">Article A</a>; one link, no failed or excluded pages."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "404 sur chemin supposé ne prouve pas l’absence de sitemap.",
+            "en": "404 at a guessed path does not prove no sitemap."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "404 sur chemin supposé ne prouve pas l’absence de sitemap.",
+            "en": "404 at a guessed path does not prove no sitemap."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "404 sur chemin supposé ne prouve pas l’absence de sitemap.",
+            "en": "404 at a guessed path does not prove no sitemap."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "pass",
+          "reason": {
+            "fr": "404 sur chemin supposé ne prouve pas l’absence de sitemap.",
+            "en": "404 at a guessed path does not prove no sitemap."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS10-internal-conflict",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Lien interne vers doublon malgré préférence déclarée.",
+        "en": "Internal link to duplicate despite declared preference."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, no Link; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"https://example.com/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC complete https://example.com/sitemap.xml: <urlset><url><loc>https://example.com/page</loc></url></urlset>; no sitemap index.",
+        "crawl": "SYNTHETIC complete /menu capture: <a href=\"https://example.com/duplicate\">Article A</a>; no exception."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Lien interne vers doublon malgré préférence déclarée.",
+            "en": "Internal link to duplicate despite declared preference."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Lien interne vers doublon malgré préférence déclarée.",
+            "en": "Internal link to duplicate despite declared preference."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Lien interne vers doublon malgré préférence déclarée.",
+            "en": "Internal link to duplicate despite declared preference."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Lien interne vers doublon malgré préférence déclarée.",
+            "en": "Internal link to duplicate despite declared preference."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS10-destination-missing",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Destination non vérifiée : NT, pas 200 présumé.",
+        "en": "Unverified destination: NT, no presumed 200."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC only /duplicate GET 200 with HTML canonical /page; /page not fetched.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"https://example.com/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC complete https://example.com/sitemap.xml: <urlset><url><loc>https://example.com/page</loc></url></urlset>; no sitemap index.",
+        "crawl": "SYNTHETIC complete source population: /menu HTTP 200, <a href=\"https://example.com/page\">Article A</a>; one link, no failed or excluded pages."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Destination non vérifiée : NT, pas 200 présumé.",
+            "en": "Unverified destination: NT, no presumed 200."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Destination non vérifiée : NT, pas 200 présumé.",
+            "en": "Unverified destination: NT, no presumed 200."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Destination non vérifiée : NT, pas 200 présumé.",
+            "en": "Unverified destination: NT, no presumed 200."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Destination non vérifiée : NT, pas 200 présumé.",
+            "en": "Unverified destination: NT, no presumed 200."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS10-empty-crawl",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Zéro lien avec population incomplète ne réussit pas.",
+        "en": "Zero links with incomplete population does not pass."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, no Link; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"https://example.com/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC complete https://example.com/sitemap.xml: <urlset><url><loc>https://example.com/page</loc></url></urlset>; no sitemap index.",
+        "crawl": "SYNTHETIC crawl returned zero links; /menu was not visited due to timeout."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Zéro lien avec population incomplète ne réussit pas.",
+            "en": "Zero links with incomplete population does not pass."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Zéro lien avec population incomplète ne réussit pas.",
+            "en": "Zero links with incomplete population does not pass."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Zéro lien avec population incomplète ne réussit pas.",
+            "en": "Zero links with incomplete population does not pass."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Zéro lien avec population incomplète ne réussit pas.",
+            "en": "Zero links with incomplete population does not pass."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS10-not-applicable",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Inventaire et stratégie sans document concerné.",
+        "en": "Inventory and strategy contain no relevant document."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC positive applicability inventory: target is an offline paper-only process, contains no public HTTP document, no indexing policy and no canonical family. No live collection."
+      },
+      "atomic_results": [],
+      "expected_status": "NA",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS07-render-compatible",
+      "control_id": "TS07",
+      "description": {
+        "fr": "Rendu requis capturé et compatible avec la source.",
+        "en": "Required rendering captured and compatible with source."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC Googlebot; indexing allowed; source and post-script state required.",
+        "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; no X-Robots-Tag, no redirects; complete headers/body, no truncation.",
+        "html": "<html><head><meta name=\"robots\" content=\"index\"><script src=\"dynamic.js\"></script></head></html>",
+        "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture.",
+        "render": "SYNTHETIC FixtureBrowser/1, scripts enabled; load+settled state captured at 2026-10-09T10:00:00Z; no errors; <meta name=\"robots\" content=\"index\"> unchanged. Local rendering only."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS07-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Rendu requis capturé et compatible avec la source.",
+            "en": "Required rendering captured and compatible with source."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS07-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Rendu requis capturé et compatible avec la source.",
+            "en": "Required rendering captured and compatible with source."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS07-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Rendu requis capturé et compatible avec la source.",
+            "en": "Required rendering captured and compatible with source."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "robots",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS10-ambiguous-link",
+      "control_id": "TS10",
+      "description": {
+        "fr": "Syntaxe Link non interprétée : NT.",
+        "en": "Uninterpreted Link syntax: NT."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: family [https://example.com/page, https://example.com/duplicate]; preferred=https://example.com/page; HTML canonical strategy; duplicate may return 200. Source population=[https://example.com/menu]; sitemap inventory=[https://example.com/sitemap.xml], must include preferred only. No exceptions. Complete static source reviewed, no dynamic states.",
+        "http": "SYNTHETIC Fixture/1 GETs at 2026-10-09T10:00:00Z: /page and /duplicate return final 200, no redirects, text/html; complete headers, Link: <unterminated; rel=\"canonical\"; both bodies Article A, source declarations preserved in html record. All family members and destination retained, no truncation.",
+        "html": "SYNTHETIC full source for both members: <html><head><link rel=\"canonical\" href=\"https://example.com/page\"></head><body>Article A</body></html>; no scripts or dynamic states.",
+        "sitemap": "SYNTHETIC complete https://example.com/sitemap.xml: <urlset><url><loc>https://example.com/page</loc></url></urlset>; no sitemap index.",
+        "crawl": "SYNTHETIC complete source population: /menu HTTP 200, <a href=\"https://example.com/page\">Article A</a>; one link, no failed or excluded pages."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS10-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Syntaxe Link non interprétée : NT.",
+            "en": "Uninterpreted Link syntax: NT."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Syntaxe Link non interprétée : NT.",
+            "en": "Uninterpreted Link syntax: NT."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Syntaxe Link non interprétée : NT.",
+            "en": "Uninterpreted Link syntax: NT."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        },
+        {
+          "rule_id": "TS10-A04",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Syntaxe Link non interprétée : NT.",
+            "en": "Uninterpreted Link syntax: NT."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "sitemap",
+            "crawl"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    }
+  ]
+}

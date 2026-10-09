@@ -1,5 +1,9 @@
 SYNTHETIC FIXTURE / CAS SYNTHÉTIQUE
 GET https://example.com/page
+Authored offline transcript, Fixture/2; no network command executed.
+Fictional observation: 2026-10-09T10:00:00Z; GET without conditional headers; no cookies/auth.
+User-Agent: Fixture/2; network: none (synthetic); bounds: 10s, 5 hops, 5 MiB.
+Complete fictional response, bounds not reached, no truncation.
 Final URL: https://example.com/page
 HTTP/1.1 404
 Content-Type: text/html; charset=utf-8

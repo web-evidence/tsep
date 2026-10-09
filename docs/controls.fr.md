@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.1 — Contrôles
+# TSEP 0.1.0-draft.2 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -16,7 +16,7 @@ Draft / Version de travail. See / Voir [contract](contract.fr.md).
 
 **Attendus.** Chaque GET atteint une réponse finale 200 pour la ressource attendue ; horodatage et chaîne conservés.
 
-**Preuves.** URL testée, horodatage, code final 200 pour une page canonique publique.
+**Preuves.** Intention, trace GET complète et corps conservé ; justifications par règle A01–A02.
 
 **Conditions de NA.** Aucune page publique canonique dans le périmètre déclaré.
 
@@ -27,6 +27,50 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://www.rfc-editor.org/rfc/rfc9110](https://www.rfc-editor.org/rfc/rfc9110)
+
+### TS01-A01 — GET final en 200
+
+`TSEP@0.1.0-draft.2:TS01-A01`
+
+**Entrées requises**: http, intent.
+
+**Applicabilité.** Chaque page publique désignée canonique, dans le contexte de requête déclaré.
+
+**Méthode.** Exécuter un GET sans cache conditionnel ; enregistrer chaque saut et la réponse finale. Déclarer agent, en-têtes, cookies/authentification, réseau, heure et bornes de temps, taille et redirections.
+
+**Attendus.** Une réponse finale complète est observée en 200. Un 204, 206, 4xx ou 5xx final observé contredit cet attendu ; HEAD seul ou 304 sans représentation ne suffit pas.
+
+**Preuves.** Intention par URL ; commande et version de l’outil ; trace GET datée, URL et codes de tous les sauts, en-têtes finaux et indicateurs de troncature.
+
+**Hypothèses.** La requête et ses bornes sont déclarées avant l’essai ; le 200 est une exigence TSEP pour cette population.
+
+**Indéterminé.** Délai, DNS/TLS, chaîne interrompue, borne atteinte, capture incomplète, requête HEAD seule ou 304 sans corps conservé : inconclusive, sans défaut SEO déduit.
+
+**Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
+
+**Limites.** Ni disponibilité permanente ni réponse réelle de Googlebot. Une chaîne observée ne valide pas TS02.
+
+### TS01-A02 — Ressource finale attendue
+
+`TSEP@0.1.0-draft.2:TS01-A02`
+
+**Entrées requises**: http, intent.
+
+**Applicabilité.** Chaque réponse finale dont le contenu peut être comparé à l’intention.
+
+**Méthode.** Comparer URL finale et corps conservé aux critères de contenu déclarés ; chercher page de connexion, challenge ou erreur à la place du contenu attendu.
+
+**Attendus.** La réponse correspond à la ressource et à la destination déclarées. Un 200 livrant un autre contenu est fail, même si A01 réussit.
+
+**Preuves.** Corps de réponse archivé avec la trace HTTP, critère d’identité déclaré et comparaison motivée ; occultations documentées.
+
+**Hypothèses.** Le critère distingue la ressource attendue d’un écran intermédiaire ; la revue du contenu est humaine ou assistée.
+
+**Indéterminé.** Corps absent/tronqué, intention absente ou identité ambiguë : inconclusive. Ne pas déduire la ressource d’un seul code 200.
+
+**Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
+
+**Limites.** Pas de classification soft 404 du moteur, d’indexation ni de contrôle de toutes les routes.
 
 ## TS02 — Les redirections sont intentionnelles, directes et sans boucle.
 
@@ -152,11 +196,11 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Sévérité**: blocking. **Unité**: page.
 
-**Entrées requises**: http, html, intent.
+**Entrées requises**: http, html, intent, robots.
 
 **Applicabilité.** Documents et ressources dont l’objectif d’indexation est déclaré.
 
-**Méthode.** Inspecter les en-têtes et le DOM source sur les gabarits indexables et exclus.
+**Méthode.** Examiner les en-têtes finaux, le HTML source, l’accès et les états rendus nécessaires selon A01–A03.
 
 **Attendus.** Les directives effectives du robot cible, dans les en-têtes finaux et le HTML, correspondent à cet objectif ; directives inconnues et états rendus nécessaires sont examinés.
 
@@ -170,7 +214,75 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
-**Références**: [https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag)
+**Références**: [https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag); [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+
+### TS07-A01 — Directives effectives et objectif
+
+`TSEP@0.1.0-draft.2:TS07-A01`
+
+**Entrées requises**: http, html, intent.
+
+**Applicabilité.** Chaque document avec objectif d’indexation déclaré, pour un robot et un contexte explicitement nommés.
+
+**Méthode.** Inventorier tous les X-Robots-Tag finaux et meta robots/robot cible dans le HTML source, sans les confondre avec les sauts. Appliquer la sémantique documentée du robot, y compris doublons, portée, casse, paramètres et directives ignorées.
+
+**Attendus.** L’effet combiné correspond à l’objectif déclaré d’indexation et aux restrictions de présentation/liens déclarées. Pour Google : une restriction applicable prime une permission, none inclut noindex/nofollow ; nofollow ou une limite d’aperçu seuls ne signifient pas noindex. L’absence de directive n’est pas un échec si l’objectif autorise l’indexation.
+
+**Preuves.** En-têtes répétés bruts, HTML source, tableau token/robot/effet et référence technique datée. Pour un non-HTML, le fichier de type html décrit la non-applicabilité de cette surface avec le Content-Type, sans inventer de HTML.
+
+**Hypothèses.** Intention et robot figés avant revue ; ne pas extrapoler les règles Google à un autre moteur. En cas d’indexifembedded ou unavailable_after, inclure contexte d’intégration et date nécessaires.
+
+**Indéterminé.** Objectif absent, syntaxe/portée inconnue, capture partielle ou contexte manquant : inconclusive. Une directive documentée comme ignorée est consignée, pas transformée automatiquement en erreur.
+
+**Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
+
+**Limites.** Évalue les déclarations observées, pas leur ingestion ni l’indexation réelle. A01 seul ne couvre pas l’accès ou le rendu.
+
+### TS07-A02 — Accès à la directive
+
+`TSEP@0.1.0-draft.2:TS07-A02`
+
+**Entrées requises**: http, robots, intent.
+
+**Applicabilité.** Toute ressource pour laquelle l’effet des directives est évalué.
+
+**Méthode.** Confronter politique robots effective et conditions d’accès au robot cible ; distinguer réponse au client de test, blocage explicite et accès du robot non observé.
+
+**Attendus.** Aucun obstacle observé n’empêche de lire la directive dans le contexte déclaré. Une interdiction robots explicite contredit une stratégie reposant sur la lecture de noindex.
+
+**Preuves.** Capture et interprétation robots pour URL/robot, trace HTTP et hypothèses d’accès documentées dans l’intention.
+
+**Hypothèses.** La politique effective est interprétée selon TS04 ; son seul statut HTTP ne suffit pas. Le contexte de test est borné et ne simule pas une authentification de Googlebot.
+
+**Indéterminé.** Politique inaccessible ou ambiguë, challenge non résolu, capture manquante : inconclusive, jamais NA pour manque d’accès.
+
+**Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
+
+**Limites.** Aucune preuve de visite réelle du moteur ; TS04 et les autres contrôles d’accès ne sont pas globalement validés.
+
+### TS07-A03 — États rendus nécessaires
+
+`TSEP@0.1.0-draft.2:TS07-A03`
+
+**Entrées requises**: render, intent.
+
+**Entrées pour exemption atomique**: intent, http, html.
+
+**Applicabilité.** Pages dont scripts ou états peuvent affecter les directives, ou dont la stabilité n’est pas établie.
+
+**Méthode.** Comparer les directives source et les états DOM nécessaires, en déclarant navigateur/version, scripts, interactions, attente, erreurs et contexte. Ne pas supposer que le moteur rend un HTML initial noindex.
+
+**Attendus.** Chaque état requis reste compatible avec l’objectif ; une suppression JavaScript de noindex initial ne suffit pas à établir l’indexabilité.
+
+**Preuves.** Captures DOM datées et comparaison motivée avec la source ; limites de rendu consignées.
+
+**Hypothèses.** Les états nécessaires sont listés avant le test ; rendu local et rendu du moteur restent distincts.
+
+**Indéterminé.** Rendu requis absent, échec de script, état manquant ou modification incertaine : inconclusive.
+
+**Conditions de NA.** Non-HTML ou stabilité des directives démontrée par revue documentée ; la preuve intent référence cette justification et ses pièces. Aucune simple affirmation « pas de JS ».
+
+**Limites.** Ne valide ni TS25 ni le rendu effectif du moteur.
 
 ## TS08 — Le statut d’indexation réel est vérifié dans Search Console.
 
@@ -230,7 +342,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Méthode.** Comparer URL finale, rel=canonical, sitemap et liens internes.
 
-**Attendus.** URL finales, canonicals déclarés, sitemap et liens internes convergent selon cette stratégie ; les exceptions sont justifiées.
+**Attendus.** Les quatre règles A01–A04 établissent une préférence cohérente selon la stratégie déclarée ; exceptions et absences sont justifiées, pas déduites d’un défaut de collecte.
 
 **Preuves.** Signaux convergents vers la même URL canonique sans chaîne.
 
@@ -242,7 +354,97 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
-**Références**: [https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+**Références**: [https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls); [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+
+### TS10-A01 — Déclaration canonique
+
+`TSEP@0.1.0-draft.2:TS10-A01`
+
+**Entrées requises**: http, html, intent.
+
+**Applicabilité.** Chaque membre d’une famille et sa stratégie de canonicalisation déclarée.
+
+**Méthode.** Lister membres, URL préférée et méthode attendue ; comparer URL finales, Link HTTP, rel=canonical HTML et états rendus nécessaires. Conserver les déclarations multiples, même identiques.
+
+**Attendus.** Les signaux présents et ceux exigés par la stratégie désignent la même URL HTTP(S) absolue, sans fragment. HTML dans head ou en-tête Link sont acceptés ; pas d’obligation universelle d’une balise HTML. Une canonical relative est fail pour cette règle TSEP, sans affirmer son invalidité pour Google.
+
+**Preuves.** Inventaire de famille dans intent ; en-têtes et source (ou record html non applicable pour non-HTML) ; extraction avec emplacement et méthode, DOM requis joint si nécessaire.
+
+**Hypothèses.** La stratégie distingue canonical préférée et doublons ; aucune suppression implicite de paramètres, casse ou slash lors des comparaisons.
+
+**Indéterminé.** Famille/intention incomplète, Link ambigu, document tronqué ou état rendu requis absent : inconclusive.
+
+**Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
+
+**Limites.** Relatif, placement et convergence sont des critères TSEP ; la sélection canonique du moteur n’est pas observée ici.
+
+### TS10-A02 — Destination canonique directe
+
+`TSEP@0.1.0-draft.2:TS10-A02`
+
+**Entrées requises**: http, html, intent.
+
+**Applicabilité.** Toute destination préférée dans les familles déclarées.
+
+**Méthode.** Tester la destination, conserver GET et contenu ; vérifier que son éventuelle canonical ne repart pas ailleurs. Comparer le contenu à la famille déclarée.
+
+**Attendus.** La destination attendue est accessible directement en 200, sans chaîne ni cycle canonique, avec contenu compatible. Un doublon peut rester en 200 et pointer vers la préférée ; l’URL finale de chaque doublon n’a pas à lui être identique.
+
+**Preuves.** Trace et corps de la destination reliés à la famille ; graphe des déclarations et comparaison de contenu motivée.
+
+**Hypothèses.** La proximité du contenu est évaluée dans le contexte métier, sans seuil universel de similarité.
+
+**Indéterminé.** Destination non collectée, délai ou contenu non comparable : inconclusive. Un 404/5xx, cycle ou saut observé est une contradiction.
+
+**Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
+
+**Limites.** Un GET réussi ne prouve pas que Google retiendra cette URL ; aucune stabilité dans le temps déduite d’un instant.
+
+### TS10-A03 — Convergence du sitemap
+
+`TSEP@0.1.0-draft.2:TS10-A03`
+
+**Entrées requises**: sitemap, intent.
+
+**Entrées pour exemption atomique**: intent, sitemap.
+
+**Applicabilité.** Familles associées à un sitemap selon la stratégie déclarée.
+
+**Méthode.** Comparer les entrées de tous les sitemaps/index nécessaires à la famille et à l’URL préférée ; conserver les exclusions justifiées par la stratégie.
+
+**Attendus.** Les entrées observées et exigées concordent avec la préférence déclarée ; un doublon publié comme canonique concurrent sans justification est fail.
+
+**Preuves.** Sitemaps bruts et couverture des index, correspondance famille/entrées et justification des omissions.
+
+**Hypothèses.** Le périmètre des sitemaps est déclaré ; leur absence ne se déduit pas du 404 d’un seul chemin supposé.
+
+**Indéterminé.** Index incomplet, sitemap attendu indisponible ou stratégie inconnue : inconclusive.
+
+**Conditions de NA.** Aucun sitemap utilisé pour cette famille, établi par stratégie et inventaire documentés. Conserver un record sitemap expliquant cette absence ; pas de NA de tout TS10.
+
+**Limites.** Sitemap = préférence publiée, pas sélection du moteur ni inventaire exhaustif du site.
+
+### TS10-A04 — Convergence des liens internes
+
+`TSEP@0.1.0-draft.2:TS10-A04`
+
+**Entrées requises**: crawl, intent.
+
+**Applicabilité.** Chaque famille et population de pages sources déclarée.
+
+**Méthode.** Extraire les liens de la population annoncée ; comparer leurs destinations et les exceptions documentées à la préférence canonique.
+
+**Attendus.** Tous les liens évalués suivent la stratégie ; aucune destination concurrente inexpliquée. Zéro lien peut satisfaire la règle uniquement si la population annoncée est intégralement examinée.
+
+**Preuves.** Export de crawl avec URL source, href, destination, pages réellement parcourues, échecs et exclusions ; rapprochement avec la population déclarée.
+
+**Hypothèses.** Le crawl vérifie une population déclarée ; il n’en prouve pas à lui seul l’exhaustivité.
+
+**Indéterminé.** Pages sources manquantes, liens non examinés ou crawl absent : inconclusive, jamais réussite par zéro résultat.
+
+**Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
+
+**Limites.** Aucun résultat étendu aux liens externes, pages hors population ou dates futures.
 
 ## TS11 — Les variantes réellement dupliquées convergent sans masquer des pages distinctes.
 

@@ -1,9 +1,9 @@
 {
-  "format_version": "1",
+  "format_version": "2",
   "protocol": {
     "name": "TSEP",
-    "version": "0.1.0-draft.1",
-    "sha256": "18838cbf4c1f20cb6f0487f90c4fe7a77a60f1a9addd8239166a3d9e38311053"
+    "version": "0.1.0-draft.2",
+    "sha256": "2c221516b3e3c4894c2667dc871adb3e85b370186e00247215c7c042ab1163fd"
   },
   "issued_at": "2026-10-09T10:00:00Z",
   "assessor": {
@@ -29,7 +29,7 @@
     {
       "id": "intent",
       "path": "intent.txt",
-      "sha256": "c8e9349bc8976750ceb31afe474158c00d3eb8b6895618b13d2afd778267dd4f",
+      "sha256": "efd2c5da39c0daeeb0a65749561c6a370dd98e313062ba9cf36e3cb49e395cfd",
       "kind": "intent",
       "observed_at": "2026-10-09T10:00:00Z",
       "targets": [
@@ -51,6 +51,17 @@
       ],
       "evidence_ids": [
         "intent"
+      ],
+      "atomic_results": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reason": "Request was not completed; there is no HTTP evidence and no compliance conclusion / Requête non aboutie, aucune preuve HTTP ni conclusion de conformité.",
+          "evidence_ids": [
+            "intent"
+          ]
+        }
       ]
     }
   ]

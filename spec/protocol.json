@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.1",
+  "version": "0.1.0-draft.2",
   "status": "draft",
   "date": "2026-10-09",
   "languages": [
@@ -62,8 +62,8 @@
         "en": "No public canonical page in the declared scope."
       },
       "evidence": {
-        "fr": "URL testée, horodatage, code final 200 pour une page canonique publique.",
-        "en": "Tested URL, timestamp and final 200 status for a public canonical page."
+        "fr": "Intention, trace GET complète et corps conservé ; justifications par règle A01–A02.",
+        "en": "Intent, complete GET trace and retained body; reasoned findings for A01–A02."
       },
       "limitations": {
         "fr": "Un test depuis une IP ne prouve pas la réponse reçue par Googlebot.",
@@ -84,7 +84,98 @@
       "acceptance_note": {
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
-      }
+      },
+      "rules": [
+        {
+          "id": "TS01-A01",
+          "required_inputs": [
+            "http",
+            "intent"
+          ],
+          "title": {
+            "fr": "GET final en 200",
+            "en": "Final GET returns 200"
+          },
+          "applicability": {
+            "fr": "Chaque page publique désignée canonique, dans le contexte de requête déclaré.",
+            "en": "Each public page designated canonical, in the declared request context."
+          },
+          "procedure": {
+            "fr": "Exécuter un GET sans cache conditionnel ; enregistrer chaque saut et la réponse finale. Déclarer agent, en-têtes, cookies/authentification, réseau, heure et bornes de temps, taille et redirections.",
+            "en": "Perform a GET without conditional caching; record every hop and final response. Declare agent, headers, cookies/authentication, network, time and time/size/redirect bounds."
+          },
+          "acceptance": {
+            "fr": "Une réponse finale complète est observée en 200. Un 204, 206, 4xx ou 5xx final observé contredit cet attendu ; HEAD seul ou 304 sans représentation ne suffit pas.",
+            "en": "A complete final 200 response is observed. An observed final 204, 206, 4xx or 5xx contradicts this expectation; HEAD alone or 304 without a representation is insufficient."
+          },
+          "evidence": {
+            "fr": "Intention par URL ; commande et version de l’outil ; trace GET datée, URL et codes de tous les sauts, en-têtes finaux et indicateurs de troncature.",
+            "en": "Intent per URL; command and tool version; dated GET trace, URLs and statuses of every hop, final headers and truncation indicators."
+          },
+          "assumptions": {
+            "fr": "La requête et ses bornes sont déclarées avant l’essai ; le 200 est une exigence TSEP pour cette population.",
+            "en": "Request context and bounds are declared before the test; 200 is a TSEP requirement for this population."
+          },
+          "inconclusive": {
+            "fr": "Délai, DNS/TLS, chaîne interrompue, borne atteinte, capture incomplète, requête HEAD seule ou 304 sans corps conservé : inconclusive, sans défaut SEO déduit.",
+            "en": "Timeout, DNS/TLS failure, interrupted chain, reached bound, incomplete capture, HEAD only or 304 without a retained body: inconclusive, without an inferred SEO fault."
+          },
+          "limitations": {
+            "fr": "Ni disponibilité permanente ni réponse réelle de Googlebot. Une chaîne observée ne valide pas TS02.",
+            "en": "Neither continuous availability nor an actual Googlebot response. An observed chain does not validate TS02."
+          },
+          "na_inputs": [],
+          "non_applicability": {
+            "fr": "Aucune exemption atomique quand le contrôle s’applique.",
+            "en": "No atomic exemption when the control applies."
+          }
+        },
+        {
+          "id": "TS01-A02",
+          "required_inputs": [
+            "http",
+            "intent"
+          ],
+          "title": {
+            "fr": "Ressource finale attendue",
+            "en": "Expected final resource"
+          },
+          "applicability": {
+            "fr": "Chaque réponse finale dont le contenu peut être comparé à l’intention.",
+            "en": "Each final response whose content can be compared to intent."
+          },
+          "procedure": {
+            "fr": "Comparer URL finale et corps conservé aux critères de contenu déclarés ; chercher page de connexion, challenge ou erreur à la place du contenu attendu.",
+            "en": "Compare final URL and retained body with declared content criteria; look for a login, challenge or error page replacing expected content."
+          },
+          "acceptance": {
+            "fr": "La réponse correspond à la ressource et à la destination déclarées. Un 200 livrant un autre contenu est fail, même si A01 réussit.",
+            "en": "The response matches the declared resource and destination. A 200 delivering different content is fail even if A01 passes."
+          },
+          "evidence": {
+            "fr": "Corps de réponse archivé avec la trace HTTP, critère d’identité déclaré et comparaison motivée ; occultations documentées.",
+            "en": "Response body archived with the HTTP trace, declared identity criterion and reasoned comparison; redactions documented."
+          },
+          "assumptions": {
+            "fr": "Le critère distingue la ressource attendue d’un écran intermédiaire ; la revue du contenu est humaine ou assistée.",
+            "en": "The criterion distinguishes the expected resource from an intermediate screen; content review is manual or assisted."
+          },
+          "inconclusive": {
+            "fr": "Corps absent/tronqué, intention absente ou identité ambiguë : inconclusive. Ne pas déduire la ressource d’un seul code 200.",
+            "en": "Missing/truncated body, missing intent or ambiguous identity: inconclusive. Do not infer resource identity from 200 alone."
+          },
+          "limitations": {
+            "fr": "Pas de classification soft 404 du moteur, d’indexation ni de contrôle de toutes les routes.",
+            "en": "No engine soft-404 classification, indexing claim or assessment of every route."
+          },
+          "na_inputs": [],
+          "non_applicability": {
+            "fr": "Aucune exemption atomique quand le contrôle s’applique.",
+            "en": "No atomic exemption when the control applies."
+          }
+        }
+      ],
+      "rule_version": "0.1.0-draft.2"
     },
     {
       "id": "TS02",
@@ -389,15 +480,16 @@
       "required_inputs": [
         "http",
         "html",
-        "intent"
+        "intent",
+        "robots"
       ],
       "applicability": {
         "fr": "Documents et ressources dont l’objectif d’indexation est déclaré.",
         "en": "Documents and resources with a declared indexing objective."
       },
       "procedure": {
-        "fr": "Inspecter les en-têtes et le DOM source sur les gabarits indexables et exclus.",
-        "en": "Inspect headers and source DOM across indexable and excluded templates."
+        "fr": "Examiner les en-têtes finaux, le HTML source, l’accès et les états rendus nécessaires selon A01–A03.",
+        "en": "Review final headers, source HTML, access and required rendered states under A01–A03."
       },
       "acceptance": {
         "fr": "Les directives effectives du robot cible, dans les en-têtes finaux et le HTML, correspondent à cet objectif ; directives inconnues et états rendus nécessaires sont examinés.",
@@ -421,7 +513,8 @@
         "en": "Public"
       },
       "references": [
-        "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag"
+        "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+        "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
       ],
       "source_scope": {
         "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
@@ -430,7 +523,148 @@
       "acceptance_note": {
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
-      }
+      },
+      "rules": [
+        {
+          "id": "TS07-A01",
+          "required_inputs": [
+            "http",
+            "html",
+            "intent"
+          ],
+          "title": {
+            "fr": "Directives effectives et objectif",
+            "en": "Effective directives and objective"
+          },
+          "applicability": {
+            "fr": "Chaque document avec objectif d’indexation déclaré, pour un robot et un contexte explicitement nommés.",
+            "en": "Each document with a declared indexing objective, for an explicitly named crawler and context."
+          },
+          "procedure": {
+            "fr": "Inventorier tous les X-Robots-Tag finaux et meta robots/robot cible dans le HTML source, sans les confondre avec les sauts. Appliquer la sémantique documentée du robot, y compris doublons, portée, casse, paramètres et directives ignorées.",
+            "en": "Inventory all final X-Robots-Tag headers and robots/target-crawler meta tags in source HTML, separate from redirect hops. Apply documented crawler semantics, including duplicates, scope, case, parameters and ignored rules."
+          },
+          "acceptance": {
+            "fr": "L’effet combiné correspond à l’objectif déclaré d’indexation et aux restrictions de présentation/liens déclarées. Pour Google : une restriction applicable prime une permission, none inclut noindex/nofollow ; nofollow ou une limite d’aperçu seuls ne signifient pas noindex. L’absence de directive n’est pas un échec si l’objectif autorise l’indexation.",
+            "en": "Combined effects match the declared indexing objective and declared presentation/link restrictions. For Google: an applicable restriction prevails over permission, none includes noindex/nofollow; nofollow or a preview limit alone does not mean noindex. Missing directives are not failure when intent permits indexing."
+          },
+          "evidence": {
+            "fr": "En-têtes répétés bruts, HTML source, tableau token/robot/effet et référence technique datée. Pour un non-HTML, le fichier de type html décrit la non-applicabilité de cette surface avec le Content-Type, sans inventer de HTML.",
+            "en": "Raw repeated headers, source HTML, token/crawler/effect table and dated technical reference. For non-HTML, the html-kind record documents why this surface does not apply, with Content-Type, without inventing HTML."
+          },
+          "assumptions": {
+            "fr": "Intention et robot figés avant revue ; ne pas extrapoler les règles Google à un autre moteur. En cas d’indexifembedded ou unavailable_after, inclure contexte d’intégration et date nécessaires.",
+            "en": "Intent and crawler fixed before review; do not extrapolate Google rules to another engine. For indexifembedded or unavailable_after, include the required embedding context and date."
+          },
+          "inconclusive": {
+            "fr": "Objectif absent, syntaxe/portée inconnue, capture partielle ou contexte manquant : inconclusive. Une directive documentée comme ignorée est consignée, pas transformée automatiquement en erreur.",
+            "en": "Missing objective, unknown syntax/scope, partial capture or missing context: inconclusive. A documented ignored directive is recorded, not automatically treated as an error."
+          },
+          "limitations": {
+            "fr": "Évalue les déclarations observées, pas leur ingestion ni l’indexation réelle. A01 seul ne couvre pas l’accès ou le rendu.",
+            "en": "Assesses observed declarations, not ingestion or actual indexing. A01 alone does not cover access or rendering."
+          },
+          "na_inputs": [],
+          "non_applicability": {
+            "fr": "Aucune exemption atomique quand le contrôle s’applique.",
+            "en": "No atomic exemption when the control applies."
+          }
+        },
+        {
+          "id": "TS07-A02",
+          "required_inputs": [
+            "http",
+            "robots",
+            "intent"
+          ],
+          "title": {
+            "fr": "Accès à la directive",
+            "en": "Access to the directive"
+          },
+          "applicability": {
+            "fr": "Toute ressource pour laquelle l’effet des directives est évalué.",
+            "en": "Every resource for which directive effects are assessed."
+          },
+          "procedure": {
+            "fr": "Confronter politique robots effective et conditions d’accès au robot cible ; distinguer réponse au client de test, blocage explicite et accès du robot non observé.",
+            "en": "Compare effective robots policy and access conditions for the target crawler; distinguish the test client response, explicit blocking and unobserved crawler access."
+          },
+          "acceptance": {
+            "fr": "Aucun obstacle observé n’empêche de lire la directive dans le contexte déclaré. Une interdiction robots explicite contredit une stratégie reposant sur la lecture de noindex.",
+            "en": "No observed obstacle prevents reading the directive in the declared context. An explicit robots disallow contradicts a strategy relying on reading noindex."
+          },
+          "evidence": {
+            "fr": "Capture et interprétation robots pour URL/robot, trace HTTP et hypothèses d’accès documentées dans l’intention.",
+            "en": "Robots capture and interpretation for URL/crawler, HTTP trace and access assumptions documented in intent."
+          },
+          "assumptions": {
+            "fr": "La politique effective est interprétée selon TS04 ; son seul statut HTTP ne suffit pas. Le contexte de test est borné et ne simule pas une authentification de Googlebot.",
+            "en": "Effective policy is interpreted under TS04; its HTTP status alone is insufficient. The test context is bounded and does not simulate Googlebot authentication."
+          },
+          "inconclusive": {
+            "fr": "Politique inaccessible ou ambiguë, challenge non résolu, capture manquante : inconclusive, jamais NA pour manque d’accès.",
+            "en": "Unavailable or ambiguous policy, unresolved challenge, missing capture: inconclusive, never NA for missing access."
+          },
+          "limitations": {
+            "fr": "Aucune preuve de visite réelle du moteur ; TS04 et les autres contrôles d’accès ne sont pas globalement validés.",
+            "en": "No evidence of an actual engine visit; TS04 and other access controls are not globally validated."
+          },
+          "na_inputs": [],
+          "non_applicability": {
+            "fr": "Aucune exemption atomique quand le contrôle s’applique.",
+            "en": "No atomic exemption when the control applies."
+          }
+        },
+        {
+          "id": "TS07-A03",
+          "required_inputs": [
+            "render",
+            "intent"
+          ],
+          "title": {
+            "fr": "États rendus nécessaires",
+            "en": "Required rendered states"
+          },
+          "applicability": {
+            "fr": "Pages dont scripts ou états peuvent affecter les directives, ou dont la stabilité n’est pas établie.",
+            "en": "Pages whose scripts or states can affect directives, or whose stability is not established."
+          },
+          "procedure": {
+            "fr": "Comparer les directives source et les états DOM nécessaires, en déclarant navigateur/version, scripts, interactions, attente, erreurs et contexte. Ne pas supposer que le moteur rend un HTML initial noindex.",
+            "en": "Compare source directives with required DOM states, declaring browser/version, scripts, interactions, wait, errors and context. Do not assume the engine renders initially noindex HTML."
+          },
+          "acceptance": {
+            "fr": "Chaque état requis reste compatible avec l’objectif ; une suppression JavaScript de noindex initial ne suffit pas à établir l’indexabilité.",
+            "en": "Every required state remains compatible with intent; JavaScript removal of initial noindex is insufficient to establish indexability."
+          },
+          "evidence": {
+            "fr": "Captures DOM datées et comparaison motivée avec la source ; limites de rendu consignées.",
+            "en": "Dated DOM captures and reasoned source comparison; rendering limits recorded."
+          },
+          "assumptions": {
+            "fr": "Les états nécessaires sont listés avant le test ; rendu local et rendu du moteur restent distincts.",
+            "en": "Required states are listed before the test; local and engine rendering remain distinct."
+          },
+          "inconclusive": {
+            "fr": "Rendu requis absent, échec de script, état manquant ou modification incertaine : inconclusive.",
+            "en": "Missing required rendering, script failure, missing state or uncertain mutation: inconclusive."
+          },
+          "limitations": {
+            "fr": "Ne valide ni TS25 ni le rendu effectif du moteur.",
+            "en": "Does not validate TS25 or actual engine rendering."
+          },
+          "na_inputs": [
+            "intent",
+            "http",
+            "html"
+          ],
+          "non_applicability": {
+            "fr": "Non-HTML ou stabilité des directives démontrée par revue documentée ; la preuve intent référence cette justification et ses pièces. Aucune simple affirmation « pas de JS ».",
+            "en": "Non-HTML or directive stability demonstrated by documented review; intent evidence references this justification and supporting records. No unsupported “no JS” assertion."
+          }
+        }
+      ],
+      "rule_version": "0.1.0-draft.2"
     },
     {
       "id": "TS08",
@@ -574,8 +808,8 @@
         "en": "Compare the final URL, rel=canonical, sitemap and internal links."
       },
       "acceptance": {
-        "fr": "URL finales, canonicals déclarés, sitemap et liens internes convergent selon cette stratégie ; les exceptions sont justifiées.",
-        "en": "Final URLs, declared canonicals, sitemaps and internal links converge under that strategy; exceptions are justified."
+        "fr": "Les quatre règles A01–A04 établissent une préférence cohérente selon la stratégie déclarée ; exceptions et absences sont justifiées, pas déduites d’un défaut de collecte.",
+        "en": "Rules A01–A04 establish a consistent preference under the declared strategy; exceptions and absences are justified, not inferred from collection gaps."
       },
       "non_applicability": {
         "fr": "Aucun document concerné, inventaire et stratégie à l’appui.",
@@ -595,7 +829,8 @@
         "en": "Public"
       },
       "references": [
-        "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls"
+        "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+        "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
       ],
       "source_scope": {
         "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
@@ -604,7 +839,191 @@
       "acceptance_note": {
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
-      }
+      },
+      "rules": [
+        {
+          "id": "TS10-A01",
+          "required_inputs": [
+            "http",
+            "html",
+            "intent"
+          ],
+          "title": {
+            "fr": "Déclaration canonique",
+            "en": "Canonical declaration"
+          },
+          "applicability": {
+            "fr": "Chaque membre d’une famille et sa stratégie de canonicalisation déclarée.",
+            "en": "Each family member and its declared canonicalization strategy."
+          },
+          "procedure": {
+            "fr": "Lister membres, URL préférée et méthode attendue ; comparer URL finales, Link HTTP, rel=canonical HTML et états rendus nécessaires. Conserver les déclarations multiples, même identiques.",
+            "en": "List members, preferred URL and expected method; compare final URLs, HTTP Link, HTML rel=canonical and required rendered states. Retain multiple declarations, even identical ones."
+          },
+          "acceptance": {
+            "fr": "Les signaux présents et ceux exigés par la stratégie désignent la même URL HTTP(S) absolue, sans fragment. HTML dans head ou en-tête Link sont acceptés ; pas d’obligation universelle d’une balise HTML. Une canonical relative est fail pour cette règle TSEP, sans affirmer son invalidité pour Google.",
+            "en": "Present signals and those required by strategy identify the same absolute HTTP(S) URL without a fragment. HTML in head or HTTP Link are accepted; no universal HTML tag requirement. A relative canonical is fail for this TSEP rule without claiming Google cannot interpret it."
+          },
+          "evidence": {
+            "fr": "Inventaire de famille dans intent ; en-têtes et source (ou record html non applicable pour non-HTML) ; extraction avec emplacement et méthode, DOM requis joint si nécessaire.",
+            "en": "Family inventory in intent; headers and source (or html non-applicability record for non-HTML); extraction with location and method, required DOM attached when needed."
+          },
+          "assumptions": {
+            "fr": "La stratégie distingue canonical préférée et doublons ; aucune suppression implicite de paramètres, casse ou slash lors des comparaisons.",
+            "en": "Strategy distinguishes preferred canonical and duplicates; comparisons do not silently remove parameters or normalize case or slashes."
+          },
+          "inconclusive": {
+            "fr": "Famille/intention incomplète, Link ambigu, document tronqué ou état rendu requis absent : inconclusive.",
+            "en": "Incomplete family/intent, ambiguous Link, truncated document or missing required rendered state: inconclusive."
+          },
+          "limitations": {
+            "fr": "Relatif, placement et convergence sont des critères TSEP ; la sélection canonique du moteur n’est pas observée ici.",
+            "en": "Relative URLs, placement and convergence are TSEP criteria; engine canonical selection is not observed here."
+          },
+          "na_inputs": [],
+          "non_applicability": {
+            "fr": "Aucune exemption atomique quand le contrôle s’applique.",
+            "en": "No atomic exemption when the control applies."
+          }
+        },
+        {
+          "id": "TS10-A02",
+          "required_inputs": [
+            "http",
+            "html",
+            "intent"
+          ],
+          "title": {
+            "fr": "Destination canonique directe",
+            "en": "Direct canonical destination"
+          },
+          "applicability": {
+            "fr": "Toute destination préférée dans les familles déclarées.",
+            "en": "Every preferred destination in declared families."
+          },
+          "procedure": {
+            "fr": "Tester la destination, conserver GET et contenu ; vérifier que son éventuelle canonical ne repart pas ailleurs. Comparer le contenu à la famille déclarée.",
+            "en": "Test the destination, retain GET and content; verify that any canonical there does not point elsewhere. Compare content with the declared family."
+          },
+          "acceptance": {
+            "fr": "La destination attendue est accessible directement en 200, sans chaîne ni cycle canonique, avec contenu compatible. Un doublon peut rester en 200 et pointer vers la préférée ; l’URL finale de chaque doublon n’a pas à lui être identique.",
+            "en": "The expected destination is directly accessible with 200, without canonical chains or cycles, and compatible content. A duplicate may remain 200 and point to the preferred URL; not every duplicate final URL must equal it."
+          },
+          "evidence": {
+            "fr": "Trace et corps de la destination reliés à la famille ; graphe des déclarations et comparaison de contenu motivée.",
+            "en": "Destination trace and body tied to the family; declaration graph and reasoned content comparison."
+          },
+          "assumptions": {
+            "fr": "La proximité du contenu est évaluée dans le contexte métier, sans seuil universel de similarité.",
+            "en": "Content similarity is assessed in business context without a universal similarity threshold."
+          },
+          "inconclusive": {
+            "fr": "Destination non collectée, délai ou contenu non comparable : inconclusive. Un 404/5xx, cycle ou saut observé est une contradiction.",
+            "en": "Uncollected destination, timeout or incomparable content: inconclusive. An observed 404/5xx, cycle or hop is a contradiction."
+          },
+          "limitations": {
+            "fr": "Un GET réussi ne prouve pas que Google retiendra cette URL ; aucune stabilité dans le temps déduite d’un instant.",
+            "en": "A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant."
+          },
+          "na_inputs": [],
+          "non_applicability": {
+            "fr": "Aucune exemption atomique quand le contrôle s’applique.",
+            "en": "No atomic exemption when the control applies."
+          }
+        },
+        {
+          "id": "TS10-A03",
+          "required_inputs": [
+            "sitemap",
+            "intent"
+          ],
+          "title": {
+            "fr": "Convergence du sitemap",
+            "en": "Sitemap agreement"
+          },
+          "applicability": {
+            "fr": "Familles associées à un sitemap selon la stratégie déclarée.",
+            "en": "Families associated with a sitemap under the declared strategy."
+          },
+          "procedure": {
+            "fr": "Comparer les entrées de tous les sitemaps/index nécessaires à la famille et à l’URL préférée ; conserver les exclusions justifiées par la stratégie.",
+            "en": "Compare entries from all sitemaps/indexes required for the family and preferred URL; retain exclusions justified by strategy."
+          },
+          "acceptance": {
+            "fr": "Les entrées observées et exigées concordent avec la préférence déclarée ; un doublon publié comme canonique concurrent sans justification est fail.",
+            "en": "Observed and required entries agree with declared preference; a duplicate published as a competing canonical without justification is fail."
+          },
+          "evidence": {
+            "fr": "Sitemaps bruts et couverture des index, correspondance famille/entrées et justification des omissions.",
+            "en": "Raw sitemaps and index coverage, family/entry mapping and justification of omissions."
+          },
+          "assumptions": {
+            "fr": "Le périmètre des sitemaps est déclaré ; leur absence ne se déduit pas du 404 d’un seul chemin supposé.",
+            "en": "Sitemap scope is declared; absence is not inferred from a 404 at one guessed path."
+          },
+          "inconclusive": {
+            "fr": "Index incomplet, sitemap attendu indisponible ou stratégie inconnue : inconclusive.",
+            "en": "Incomplete index, unavailable expected sitemap or unknown strategy: inconclusive."
+          },
+          "limitations": {
+            "fr": "Sitemap = préférence publiée, pas sélection du moteur ni inventaire exhaustif du site.",
+            "en": "Sitemap = published preference, not engine selection or an exhaustive site inventory."
+          },
+          "na_inputs": [
+            "intent",
+            "sitemap"
+          ],
+          "non_applicability": {
+            "fr": "Aucun sitemap utilisé pour cette famille, établi par stratégie et inventaire documentés. Conserver un record sitemap expliquant cette absence ; pas de NA de tout TS10.",
+            "en": "No sitemap used for this family, established by documented strategy and inventory. Retain a sitemap record explaining absence; no whole-TS10 NA."
+          }
+        },
+        {
+          "id": "TS10-A04",
+          "required_inputs": [
+            "crawl",
+            "intent"
+          ],
+          "title": {
+            "fr": "Convergence des liens internes",
+            "en": "Internal-link agreement"
+          },
+          "applicability": {
+            "fr": "Chaque famille et population de pages sources déclarée.",
+            "en": "Each family and declared source-page population."
+          },
+          "procedure": {
+            "fr": "Extraire les liens de la population annoncée ; comparer leurs destinations et les exceptions documentées à la préférence canonique.",
+            "en": "Extract links from the announced population; compare destinations and documented exceptions with canonical preference."
+          },
+          "acceptance": {
+            "fr": "Tous les liens évalués suivent la stratégie ; aucune destination concurrente inexpliquée. Zéro lien peut satisfaire la règle uniquement si la population annoncée est intégralement examinée.",
+            "en": "All assessed links follow strategy; no unexplained competing destination. Zero links can satisfy the rule only when the announced population is fully examined."
+          },
+          "evidence": {
+            "fr": "Export de crawl avec URL source, href, destination, pages réellement parcourues, échecs et exclusions ; rapprochement avec la population déclarée.",
+            "en": "Crawl export with source URL, href, destination, pages actually visited, failures and exclusions; reconciliation with the declared population."
+          },
+          "assumptions": {
+            "fr": "Le crawl vérifie une population déclarée ; il n’en prouve pas à lui seul l’exhaustivité.",
+            "en": "The crawl checks a declared population; it does not by itself prove that population exhaustive."
+          },
+          "inconclusive": {
+            "fr": "Pages sources manquantes, liens non examinés ou crawl absent : inconclusive, jamais réussite par zéro résultat.",
+            "en": "Missing source pages, unexamined links or absent crawl: inconclusive, never success from zero results."
+          },
+          "limitations": {
+            "fr": "Aucun résultat étendu aux liens externes, pages hors population ou dates futures.",
+            "en": "No extrapolation to external links, pages outside the population or future dates."
+          },
+          "na_inputs": [],
+          "non_applicability": {
+            "fr": "Aucune exemption atomique quand le contrôle s’applique.",
+            "en": "No atomic exemption when the control applies."
+          }
+        }
+      ],
+      "rule_version": "0.1.0-draft.2"
     },
     {
       "id": "TS11",
@@ -2732,15 +3151,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "b19c779388878ccfce36415d8aeb687de5ecd92f38c0ce3aecbe759a85fc76f6"
+      "sha256": "fdd37f3f536bebfb87926eaf524c5fcfc8e2761e0c39ebe55860317f5d1cf117"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "45d8c463d81d1ac3da9eb44eb5ea3734669468c1ec9d2741232ae44d6aeb8610"
+      "sha256": "3e6bceebc7f28db6b756620a50e116c69d92cfe968787b9541e47bbb1ba0db1b"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "6f1e475061a87824eeee8a1514981ee7dc30d2463b3d0ab1555542c5a5b7aeff"
+      "sha256": "6ebddcc6b9b2b6c4a741333c1fd2d87f70b0bdb33edb2e9afac8c27cb33b123b"
     }
   ]
 }

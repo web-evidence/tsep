@@ -67,12 +67,30 @@ def rendered(protocol, language):
                   '**' + labels[11] + '.** ' + control['source_scope'][language], '']
         lines += ['**' + labels[10] + '**: ' + ('; '.join('[' + url + '](' + url + ')'
                               for url in control['references']) or 'TSEP / Edikka method.'), '']
+        for rule in control.get('rules', []):
+            lines += ['### ' + rule['id'] + ' — ' + rule['title'][language], '',
+                      '`TSEP@' + control['rule_version'] + ':' + rule['id'] + '`', '',
+                      '**' + labels[7] + '**: ' + ', '.join(rule['required_inputs']) + '.', '']
+            if rule['na_inputs']:
+                label = 'Entrées pour exemption atomique' if language == 'fr' else 'Atomic exemption inputs'
+                lines += ['**' + label + '**: ' + ', '.join(rule['na_inputs']) + '.', '']
+            fields = [('applicability', labels[1]), ('procedure', labels[2]),
+                      ('acceptance', labels[3]), ('evidence', labels[4]),
+                      ('assumptions', 'Hypothèses' if language == 'fr' else 'Assumptions'),
+                      ('inconclusive', 'Indéterminé' if language == 'fr' else 'Inconclusive'),
+                      ('non_applicability', labels[5]), ('limitations', labels[6])]
+            for key, label in fields:
+                lines += ['**' + label + '.** ' + rule[key][language], '']
     return '\n'.join(lines)
 
 
 def check():
     release_sources()
     protocol = tsep.read_json(tsep.PROTOCOL_PATH)
+    schema = tsep.read_json(ROOT/'schemas/report.schema.json')
+    known_inputs = schema['properties']['artifacts']['items']['properties']['kind']['enum']
+    tsep.require(schema['properties']['protocol']['properties']['version']['const'] == protocol['version'],
+                 'Schema/protocol version mismatch')
     controls = protocol['controls']
     tsep.require([c['id'] for c in controls] == ['TS%02d' % n for n in range(1, 45)],
                  'Exactly TS01–TS44 required in order')
@@ -84,6 +102,23 @@ def check():
                          all(isinstance(x, str) and x.strip() for x in control[field].values()),
                          'Missing bilingual text: ' + control['id'] + '.' + field)
         tsep.require(control['required_inputs'] and control['unit'], 'Missing contract inputs')
+        if 'rules' in control:
+            tsep.require(control['id'] in ('TS01', 'TS07', 'TS10') and control['rules'],
+                         'Unexpected atomic rule scope')
+            tsep.require(control['rule_version'] == protocol['version'], 'Stale atomic rule version')
+            tsep.unique([r['id'] for r in control['rules']], 'atomic rule')
+            for n, rule in enumerate(control['rules'], 1):
+                tsep.require(rule['id'] == control['id'] + '-A%02d' % n, 'Unstable atomic ID')
+                for field in ('title', 'applicability', 'procedure', 'acceptance', 'evidence',
+                              'assumptions', 'inconclusive', 'non_applicability', 'limitations'):
+                    tsep.require(set(rule[field]) == {'fr', 'en'} and
+                                 all(isinstance(x, str) and x.strip() for x in rule[field].values()),
+                                 'Missing bilingual atomic text: ' + rule['id'] + '.' + field)
+                tsep.require(rule['required_inputs'] and
+                             set(rule['required_inputs'] + rule['na_inputs']) <= set(known_inputs),
+                             'Invalid atomic input kind')
+    tsep.require({c['id'] for c in controls if 'rules' in c} == {'TS01', 'TS07', 'TS10'},
+                 'Missing atomic control')
     for upstream in protocol['upstream']:
         tsep.require(tsep.digest(ROOT / upstream['path']) == upstream['sha256'],
                      'Historical source changed: ' + upstream['path'])
