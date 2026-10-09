@@ -36,6 +36,29 @@ credentials, package installation, browser or public-site collection is needed.
 If a sandbox forbids a loopback listener, report that limitation; do not silently
 skip the HTTP tests and claim the full verification passed.
 
+Each subprocess step has a **120-second default deadline**, including each unit
+test run. Set `TSEP_VERIFY_STEP_TIMEOUT` to a finite number of seconds greater than
+zero and at most 86400 (fractions allowed), for example on a slower runner:
+
+```sh
+TSEP_VERIFY_STEP_TIMEOUT=300 python3 scripts/verify.py
+```
+
+The effective deadline is recorded as `step_timeout_seconds` in the JSON result.
+Invalid values fail before any checks. A timeout fails verification and retains
+the step name, duration, limit and partial output; it never skips a check or
+turns it into success. The limit applies per step, not to the entire command;
+the conformance adapter's own 15-second per-case limit remains separate.
+
+The draft.7 external CLI test uses 15 named corpus cases, asserting pass/fail/
+inconclusive coverage for all nine rules. They also include multiple targets and
+a reference limit; the test rejects wrong verdicts and extra output. This reduces
+adapter startups from 604 to 45. **Both conformance steps still run all 216 cases**
+in the source tree and extracted archive; the corpus is unchanged. The unit-step
+target is under 60 seconds, leaving at least the same amount of margin under the
+default deadline. Actual timings depend on Python, machine load and hardware;
+record the measured environment rather than asserting an unobserved CI result.
+
 Git is needed for development, not for using a downloaded package. Start work on
 a `codex/` branch. Keep generated files in sync through deliberate, reviewed
 regeneration. The canonical report contract and JSON did not change during the
@@ -81,6 +104,26 @@ La commande `python3 scripts/verify.py` vérifie contrat, tests, conformance sur
 sonde HTTP locale et archive reconstruite à l’identique. Elle exige Python 3.9+
 et curl, sans dépendance Python externe ni accès à Edikka. Une restriction de
 sandbox sur 127.0.0.1 reste une limite à signaler, jamais un test réussi.
+
+Le délai maximal par étape de sous-processus vaut **120 secondes par défaut**,
+y compris chaque exécution unitaire. `TSEP_VERIFY_STEP_TIMEOUT` accepte un nombre
+fini de secondes strictement positif et inférieur ou égal à 86400, fractions
+admises. Exemple pour une machine plus lente :
+`TSEP_VERIFY_STEP_TIMEOUT=300 python3 scripts/verify.py`.
+La sortie JSON expose la valeur effective dans `step_timeout_seconds`. Une valeur
+invalide échoue avant les contrôles. Un dépassement fait échouer la vérification
+et conserve nom de l’étape, durée, limite et sorties partielles ; aucun contrôle
+n’est omis ou déclaré réussi. Ce délai s’applique à chaque étape, pas à la commande
+entière ; les 15 secondes par cas d’adaptateur de conformance restent distinctes.
+
+Le test CLI externe draft.7 utilise 15 cas nommés du corpus et vérifie la présence
+de pass/fail/inconclusive pour chacune des neuf règles. Il conserve plusieurs
+cibles, une limite de référence, les mauvais verdicts et les sorties en trop.
+Les lancements d’adaptateur passent de 604 à 45. **Les deux étapes de conformance
+exécutent toujours les 216 cas**, depuis les sources et l’archive extraite ; le
+corpus reste inchangé. L’objectif unitaire est inférieur à 60 secondes, laissant
+au moins autant de marge sous le délai par défaut. Les durées dépendent de Python,
+du matériel et de sa charge ; ne revendiquer que les environnements mesurés.
 
 Les tests couvrent aussi la conversion hors ligne captures → paquet, l’intégrité
 et la couverture partielle ; les exemples de captures sont régénérés avec les

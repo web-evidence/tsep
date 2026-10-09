@@ -74,6 +74,7 @@
     "tests/test_draft7.py",
     "tests/test_rendered_states.py",
     "tests/test_reports.py",
+    "tests/test_verification.py",
     "tsep.py",
     "upstream/grid-v1.1.en.json",
     "upstream/grid-v1.1.fr.json"

@@ -1,5 +1,18 @@
 # Change history / Historique
 
+## Verification runtime — 2026-10-09 — unpublished development tooling
+
+R-027: sample 15 contradictory cases for external-adapter CLI tests, including
+wrong verdicts and extra rows; retain the full 216-case conformance checks.
+Make the 120-second per-step deadline configurable with
+`TSEP_VERIFY_STEP_TIMEOUT`, with explicit timeout diagnostics. Protocol draft.7,
+corpus, report and decision semantics unchanged; no remote CI execution claimed.
+
+R-027 : 15 cas contradictoires pour le test CLI externe, erreurs et lignes en trop
+conservées ; conformance complète maintenue. Délai de 120 s par étape configurable,
+dépassements explicites. Contrat draft.7 et corpus inchangés ; aucune CI distante
+déclarée exécutée. [Vérification FR/EN](docs/development.md).
+
 ## 0.1.0-draft.7 — 2026-10-09 — unpublished development candidate
 
 R-024: changed-body identity requires at least one positive required marker;

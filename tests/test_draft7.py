@@ -13,12 +13,23 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
 from adapters.captures import build
-from conformance.evaluate import evaluate, identity_text
+from conformance.evaluate import RULES, evaluate, identity_text
 from conformance.run import compare, run
 
 CORPUS = tsep.read_json(ROOT/'conformance/cases.json')
 CASES = {c['id']:c for c in CORPUS['cases']}
 SELECTED = ['TS01-A01', 'TS01-A02']
+# CLI transport/selection regressions need contradictory examples, not hundreds
+# of interpreter startups. verify.py still runs the complete conformance corpus.
+EXTERNAL_CASE_IDS = (
+    'two-targets-must-stay-distinct', 'canonical-all-signals-agree',
+    'truncated-capture', 'media-ts10-non-utf8', 'render-initial-noindex-removed',
+    'explicit-disallow', 'wrong-expected-url', 'render-all-states-compatible',
+    'render-script-added-noindex', 'canonical-relative-declaration',
+    'canonical-content-incompatible', 'canonical-sitemap-competing-member',
+    'canonical-sitemap-unjustified-omission', 'canonical-links-duplicate-destination',
+    'unsupported-robots-wildcard',
+)
 
 
 class Draft7(unittest.TestCase):
@@ -99,7 +110,14 @@ class Draft7(unittest.TestCase):
                 else:self.assertFalse(run(CORPUS,rules=SELECTED)['success'])
 
     def test_ts01_external_adapter_passes_only_declared_subset_and_wrong_results_fail(self):
+        sample = dict(CORPUS, cases=[CASES[name] for name in EXTERNAL_CASE_IDS])
+        # Fail if a fixture edit removes representative coverage for any rule.
+        for rule in RULES:
+            seen = {r['outcome'] for c in sample['cases'] for r in c['expected'] if r['rule_id']==rule}
+            self.assertTrue({'pass','fail','inconclusive'} <= seen, rule)
         with tempfile.TemporaryDirectory() as folder:
+            corpus_path=Path(folder)/'sample.json'
+            corpus_path.write_text(json.dumps(sample),encoding='utf-8')
             adapter=Path(folder)/'partial.py'
             adapter.write_text('import json,sys\n'
                 'sys.path.insert(0,'+repr(str(ROOT))+')\n'
@@ -114,17 +132,23 @@ class Draft7(unittest.TestCase):
                 '   if "--wrong" in sys.argv: row["outcome"]="fail"\n'
                 '  else: row={"rule_id":rule,"target":target["url"],"outcome":"inconclusive","reason":"Not implemented"}\n'
                 '  rows.append(row)\n'
+                'if "--extra" in sys.argv: rows.append(dict(rows[0],target="https://example.com/foreign"))\n'
                 'print(json.dumps(rows))\n')
             command=shlex.join([sys.executable,str(adapter)])
-            for scoped,wrong,code in [(True,False,0),(False,False,1),(True,True,1),(False,True,1)]:
-                with self.subTest(scoped=scoped,wrong=wrong):
-                    args=[sys.executable,str(ROOT/'conformance/run.py'),'--command',command+(' --wrong' if wrong else '')]
+            for scoped,variant,code in [(True,'',0),(False,'',1),(True,'--wrong',1),
+                                        (False,'--wrong',1),(True,'--extra',1)]:
+                with self.subTest(scoped=scoped,variant=variant):
+                    args=[sys.executable,str(ROOT/'conformance/run.py'),'--cases',str(corpus_path),
+                          '--command',command+(' '+variant if variant else '')]
                     if scoped:args+=['--rules',','.join(SELECTED)]
                     result=subprocess.run(args,capture_output=True,text=True,timeout=90)
                     self.assertEqual(result.returncode,code,result.stdout+result.stderr)
                     summary=json.loads(result.stdout)
                     self.assertEqual(summary['rules'],SELECTED if scoped else summary['available_rules'])
-                    if wrong:self.assertGreater(summary['coverage']['by_rule']['TS01-A01']['disagreements'],0)
+                    if variant=='--wrong':self.assertGreater(summary['coverage']['by_rule']['TS01-A01']['disagreements'],0)
+                    if variant=='--extra':
+                        self.assertTrue(any(d['target']=='https://example.com/foreign' and d['expected'] is None
+                                            for c in summary['failures'] for d in c['differences']))
 
     def test_cli_invalid_rule_selections_fail_before_execution(self):
         for value in ('','TS01','TS99-A01','TS01-A01,TS01-A01','TS01-A01,'):

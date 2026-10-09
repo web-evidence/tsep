@@ -2,6 +2,7 @@
 """Verify the independent source tree, examples, HTTP probe and distribution. Apache-2.0."""
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 import subprocess
@@ -16,15 +17,39 @@ sys.path.insert(0, str(ROOT))
 import maintain
 import tsep
 
+TIMEOUT_ENV = 'TSEP_VERIFY_STEP_TIMEOUT'
+DEFAULT_STEP_TIMEOUT = 120
+MAX_STEP_TIMEOUT = 86400
+
+
+def step_timeout(environment):
+    """A positive finite duration up to one day; no unbounded/disabled mode."""
+    try:
+        seconds = float(environment.get(TIMEOUT_ENV, str(DEFAULT_STEP_TIMEOUT)))
+    except (ValueError, TypeError):
+        raise tsep.Invalid(TIMEOUT_ENV + ' must be a positive finite number of seconds')
+    tsep.require(math.isfinite(seconds) and 0 < seconds <= MAX_STEP_TIMEOUT,
+                 TIMEOUT_ENV + ' must be > 0 and <= 86400 finite seconds')
+    return seconds
+
 
 def snapshot():
     return {p.relative_to(ROOT).as_posix(): tsep.digest(p) for p in maintain.release_sources()}
 
 
 def run(command, directory, environment, label, checks):
+    timeout = step_timeout(environment)
     start = time.monotonic()
-    result = subprocess.run(command, cwd=directory, env=environment, text=True,
-                            encoding='utf-8', capture_output=True, timeout=120)
+    try:
+        result = subprocess.run(command, cwd=directory, env=environment, text=True,
+                                encoding='utf-8', capture_output=True, timeout=timeout)
+    except subprocess.TimeoutExpired as error:
+        def captured(value):
+            return value.decode('utf-8', errors='replace') if isinstance(value, bytes) else value or ''
+        checks.append({'name': label, 'exit': None, 'timed_out': True, 'timeout_seconds': timeout,
+                       'seconds': round(time.monotonic()-start, 3),
+                       'stdout': captured(error.stdout), 'stderr': captured(error.stderr)})
+        raise tsep.Invalid(label + ' timed out after ' + str(timeout) + ' seconds; see check output') from error
     checks.append({'name': label, 'exit': result.returncode,
                    'seconds': round(time.monotonic()-start, 3),
                    'stdout': result.stdout, 'stderr': result.stderr})
@@ -39,6 +64,7 @@ def main():
     before = None
     environment = dict(os.environ, PYTHONDONTWRITEBYTECODE='1', PYTHONUTF8='1')
     try:
+        report['step_timeout_seconds'] = step_timeout(environment)
         before = snapshot()
         with tempfile.TemporaryDirectory(prefix='tsep-verify-') as folder:
             temp = Path(folder)
