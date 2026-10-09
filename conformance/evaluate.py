@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded offline interpreter for four TSEP rules. Apache-2.0; no collection."""
+"""Bounded offline interpreter for five TSEP rules. Apache-2.0; no collection."""
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -11,7 +11,7 @@ from urllib.parse import urljoin, urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import tsep
 
-RULES = ('TS01-A01', 'TS01-A02', 'TS07-A01', 'TS07-A02')
+RULES = ('TS01-A01', 'TS01-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03')
 
 
 class Unknown(ValueError):
@@ -193,6 +193,106 @@ def robots_allowed(text, target, crawler):
     return max(matches)[1] if matches else True
 
 
+def binding_digest(hops):
+    """Bind supplied DOM captures to the exact ordered input trace, not a live site."""
+    encoded = json.dumps(hops, sort_keys=True, separators=(',', ':'), ensure_ascii=False)
+    return hashlib.sha256(encoded.encode('utf-8')).hexdigest()
+
+
+def text_present(value):
+    return isinstance(value, str) and bool(value.strip())
+
+
+def reviewed_exemption(target, plan, headers):
+    need(plan.get('basis') in ('non-html', 'reviewed-stable'), 'Unsupported rendering exemption basis')
+    render = target.get('render', {})
+    need(isinstance(render, dict), 'Malformed rendering record')
+    need(not plan.get('required_states') and not render.get('states'),
+         'Exemption cannot hide planned or captured rendered states')
+    review = target.get('exemption_review', {})
+    need(isinstance(review, dict), 'Missing documented exemption review')
+    need(review.get('basis') == plan['basis'] and text_present(review.get('reviewer'))
+         and text_present(review.get('reason')), 'Missing documented exemption review')
+    need(review.get('source_http_sha256') == binding_digest(target['http']), 'Exemption review is not bound to source')
+    need(tsep.timestamp(review['observed_at']) >= tsep.timestamp(target['observed_at']),
+         'Exemption review predates source')
+    supporting = review.get('support', [])
+    need(isinstance(supporting, list) and supporting, 'Exemption needs supporting records, not a no-JS assertion')
+    for record in supporting:
+        need(isinstance(record, dict) and text_present(record.get('name')) and text_present(record.get('content')),
+             'Missing exemption supporting record')
+        need(record.get('sha256') == hashlib.sha256(record['content'].encode('utf-8')).hexdigest(),
+             'Exemption supporting record fingerprint mismatch')
+    if plan['basis'] == 'non-html':
+        need(headers.get('content-type') in (['application/pdf'], ['text/plain; charset=utf-8'], ['image/png']),
+             'Non-HTML exemption contradicts media type or type is unsupported')
+    else:
+        need(headers.get('content-type') == ['text/html; charset=utf-8'], 'Stable HTML review requires HTML source')
+    return 'not-applicable', 'Documented ' + plan['basis'] + ' review and supporting records; review truth not independently verified'
+
+
+def rendered_result(target, final_url, headers, body):
+    """Compare supplied DOMs; do not execute scripts or infer absent states."""
+    intent = target['intent']
+    plan = intent.get('rendering', {})
+    need(isinstance(plan, dict), 'Missing rendering plan')
+    if plan.get('mode') == 'exempt':
+        return reviewed_exemption(target, plan, headers)
+    need(plan.get('mode') == 'required', 'Rendering applicability/plan not established')
+    required = plan.get('required_states', [])
+    need(isinstance(required, list) and required, 'Required states must be explicitly inventoried')
+    for state in required:
+        need(isinstance(state, dict) and text_present(state.get('id')) and text_present(state.get('wait'))
+             and isinstance(state.get('interactions'), list)
+             and all(text_present(x) for x in state['interactions']), 'Incomplete required-state plan')
+    ids = [s['id'] for s in required]
+    need(len(ids) == len(set(ids)), 'Duplicate planned state')
+    need(text_present(target['context'].get('id')), 'Rendering requires an explicit context ID')
+    render = target.get('render', {})
+    need(isinstance(render, dict), 'Malformed rendering record')
+    browser = render.get('browser', {})
+    need(isinstance(browser, dict), 'Missing render browser/version')
+    need(text_present(browser.get('name')) and text_present(browser.get('version')), 'Missing render browser/version')
+    states = render.get('states', [])
+    need(isinstance(states, list) and all(isinstance(s, dict) and text_present(s.get('id')) for s in states),
+         'Malformed rendered-state inventory')
+    results = []
+    extras = sorted({s['id'] for s in states} - set(ids))
+    if extras:
+        results.append(('inconclusive', 'Unplanned states: ' + ', '.join(extras)))
+    source_hash = binding_digest(target['http'])
+    for expected in required:
+        label = expected['id']
+        try:
+            matches = [s for s in states if s['id'] == label]
+            need(len(matches) == 1, 'Missing or duplicate capture')
+            state = matches[0]
+            need(state.get('complete') is True, 'Incomplete DOM capture')
+            need(state.get('url') == final_url and state.get('context_id') == target['context']['id']
+                 and state.get('source_http_sha256') == source_hash, 'Source, URL or context binding mismatch')
+            need(tsep.timestamp(state['observed_at']) >= tsep.timestamp(target['observed_at']), 'DOM predates source')
+            need(state.get('javascript_enabled') is True, 'JavaScript execution not established')
+            need(state.get('interactions') == expected['interactions'] and state.get('wait') == expected['wait'],
+                 'Interaction or waiting condition differs from plan')
+            need(isinstance(state.get('errors'), list) and not state['errors'], 'Script/render errors or missing error record')
+            need(isinstance(state.get('dom'), str), 'Missing raw DOM')
+            outcome, reason = directive_result(headers, state['dom'], intent)
+        except (Unknown, tsep.Invalid, KeyError, TypeError, ValueError) as error:
+            outcome, reason = 'inconclusive', str(error)
+        results.append((outcome, label + ': ' + reason))
+    try:
+        source_outcome, source_reason = directive_result(headers, body, intent)
+    except (Unknown, tsep.Invalid, KeyError, TypeError, ValueError) as error:
+        source_outcome, source_reason = 'inconclusive', str(error)
+    detail = '; '.join(outcome + ' — ' + reason for outcome, reason in results)
+    detail += '; source: ' + source_outcome + ' — ' + source_reason
+    if any(outcome == 'fail' for outcome, _ in results):
+        return 'fail', detail  # Keep a demonstrated contradiction even when other states are unknown.
+    if source_outcome != 'pass' or any(outcome == 'inconclusive' for outcome, _ in results):
+        return 'inconclusive', detail + '; source contradiction/removal or incomplete comparison cannot yield pass'
+    return 'pass', detail + '; declared states only, not engine rendering or indexing'
+
+
 def evaluate_target(target, rule):
     try:
         intent = target.get('intent', {})
@@ -215,6 +315,8 @@ def evaluate_target(target, rule):
             return ('pass' if matches else 'fail', 'Exact final URL and decoded body SHA-256 comparison: ' + actual)
         if rule == 'TS07-A01':
             return directive_result(headers, body, intent)
+        if rule == 'TS07-A03':
+            return rendered_result(target, final_url, headers, body)
         need(intent.get('access_basis') == 'test-client-only', 'Access assumptions not declared')
         parts = url_parts(final_url)
         robots_url = parts.scheme + '://' + parts.netloc + '/robots.txt'

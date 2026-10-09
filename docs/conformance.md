@@ -12,13 +12,13 @@ Le corpus lie `protocol_version` à la version livrée. Chaque cas possède `id`
 `input` et `expected`. L’interpréteur reçoit **seulement input** ; `expected` contient
 un verdict par couple `rule_id`/`target`. Le comparateur exige une matrice complète,
 sans doublon ni résultat supplémentaire, et pass/fail/inconclusive pour chacune
-des quatre règles. Une divergence renvoie 1, une entrée invalide 64, un accord 0.
+des cinq règles. Une divergence renvoie 1, une entrée invalide 64, un accord 0.
 Il n’émet ni rapport C ni conformité globale.
 
 ### Format input_version 1
 
 Objet `{ "input_version": "1", "rules": [...], "targets": [...] }`. `rules` liste
-explicitement TS01-A01, TS01-A02, TS07-A01 et/ou TS07-A02. Chaque cible contient :
+explicitement TS01-A01, TS01-A02, TS07-A01, TS07-A02 et/ou TS07-A03. Chaque cible contient :
 
 | Champ | Contenu |
 | --- | --- |
@@ -82,8 +82,9 @@ python3 conformance/run.py --command 'python3 conformance/evaluate.py'
 
 Les décisions attendues incluent les limites du sous-ensemble livré. Passer cette
 suite établit un accord avec ces cas/version, pas la capacité à analyser toute
-page. Un adaptateur plus étendu documente ses différences. TS07-A03 n’est pas
-exécuté ; TS07 et TS10 ne reçoivent jamais un C global de cette suite.
+page. Un adaptateur plus étendu documente ses différences. TS07-A03 compare maintenant des captures source/DOM fournies selon le
+[format de rendu](rendered-states.md). La suite n’émet pas de rapport C : la couverture
+des trois règles TS07 et la revue semiAuto restent nécessaires. TS10 n’est pas exécuté.
 
 ## English
 
@@ -97,7 +98,7 @@ Each rule has pass/fail/inconclusive cases. Exit codes: 0 agreement, 1 differenc
 64 invalid input/execution. No C report or global conformity is generated.
 
 Input version 1 is `{ "input_version": "1", "rules": [...], "targets": [...] }`.
-Rules explicitly select the four IDs above. Each target has exact HTTP(S) `url`
+Rules explicitly select the five IDs above. Each target has exact HTTP(S) `url`
 (no fragment/credentials), zoned `observed_at`, context strings `network`, `bounds`,
 `tool`, `tool_version`, structured `intent`, ordered `http` hops, and `robots`
 with its own `observed_at` and `http` trace from the final origin's robots.txt.
@@ -141,6 +142,8 @@ rule_id/target/outcome/reason objects on stdout. The comparator checks outcomes,
 not free-text reasons. Use the command above (or your own adapter); argv is parsed
 without a shell, with bounded execution. Passing establishes agreement for this
 version's bounded cases only. Extended implementations document differences.
-TS07-A03 is not executed; the suite never establishes whole-TS07 or TS10 conformity.
+TS07-A03 now compares supplied source/DOM captures using the
+[rendered-state format](rendered-states.md). The suite does not emit a C report:
+all three TS07 rules and semiAuto review remain necessary. TS10 is not executed.
 
 [Dated reference fingerprints / Empreintes datées des références](source-observations.md).

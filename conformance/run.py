@@ -51,7 +51,7 @@ def run(corpus, command=None):
     tsep.require(all({'pass', 'fail', 'inconclusive'} <= values for values in seen.values()), 'Missing contradictory coverage per rule')
     return {'success': not failures, 'protocol_version': corpus['protocol_version'], 'synthetic': True,
             'cases': len(cases), 'rule_target_pairs': pairs, 'rules': list(RULES), 'failures': failures,
-            'limitations': 'Four bounded atomic rules only. No TS07-A03, no whole TS07/TS10, no global conformity or live observations.'}
+            'limitations': 'Five bounded atomic rules; supplied source/DOM comparison, no JavaScript execution. No TS10, global conformity or live observations.'}
 
 
 if __name__ == '__main__':

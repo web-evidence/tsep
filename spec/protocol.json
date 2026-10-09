@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.3",
+  "version": "0.1.0-draft.4",
   "status": "draft",
   "date": "2026-10-09",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.3"
+      "rule_version": "0.1.0-draft.4"
     },
     {
       "id": "TS02",
@@ -624,6 +624,8 @@
         {
           "id": "TS07-A03",
           "required_inputs": [
+            "http",
+            "html",
             "render",
             "intent"
           ],
@@ -636,28 +638,28 @@
             "en": "Pages whose scripts or states can affect directives, or whose stability is not established."
           },
           "procedure": {
-            "fr": "Comparer les directives source et les états DOM nécessaires, en déclarant navigateur/version, scripts, interactions, attente, erreurs et contexte. Ne pas supposer que le moteur rend un HTML initial noindex.",
-            "en": "Compare source directives with required DOM states, declaring browser/version, scripts, interactions, wait, errors and context. Do not assume the engine renders initially noindex HTML."
+            "fr": "Fixer avant la capture les états requis, interactions et conditions d’attente. Comparer les en-têtes finaux et le HTML source avec chaque DOM, en déclarant navigateur/version, scripts activés, heure, erreurs et contexte. Relier chaque capture à la réponse source et à la cible. Ne pas supposer que le moteur rend un HTML initial noindex.",
+            "en": "Fix required states, interactions and waiting conditions before capture. Compare final headers and source HTML with each DOM, declaring browser/version, enabled scripts, time, errors and context. Bind each capture to the source response and target. Do not assume the engine renders initially noindex HTML."
           },
           "acceptance": {
-            "fr": "Chaque état requis reste compatible avec l’objectif ; une suppression JavaScript de noindex initial ne suffit pas à établir l’indexabilité.",
-            "en": "Every required state remains compatible with intent; JavaScript removal of initial noindex is insufficient to establish indexability."
+            "fr": "Tous les états requis sont documentés et compatibles avec l’objectif, dans le contexte déclaré. Une contradiction dans un état complet et attribuable est fail, même si d’autres états manquent. Un retrait de noindex initial par JavaScript ne donne pas pass : A03 reste inconclusive si aucun état requis ne fournit une autre contradiction ; A01 conserve son propre verdict source.",
+            "en": "All required states are documented and compatible with intent in the declared context. A contradiction in a complete, attributable state is fail even if other states are missing. Removing initial noindex with JavaScript does not yield pass: A03 remains inconclusive unless a required state supplies another contradiction; A01 retains its own source verdict."
           },
           "evidence": {
-            "fr": "Captures DOM datées et comparaison motivée avec la source ; limites de rendu consignées.",
-            "en": "Dated DOM captures and reasoned source comparison; rendering limits recorded."
+            "fr": "En-têtes et HTML source conservés, plan préalable, DOM bruts datés avec empreinte de liaison à la trace HTTP, URL finale, contexte, navigateur/version, état des scripts, interactions, attente et erreurs. Comparaison motivée et limites ; aucune capture du moteur simulée.",
+            "en": "Retained headers/source HTML, prior plan, dated raw DOMs with binding digest of the HTTP trace, final URL, context, browser/version, script state, interactions, waiting conditions and errors. Reasoned comparison and limitations; no simulated engine capture."
           },
           "assumptions": {
             "fr": "Les états nécessaires sont listés avant le test ; rendu local et rendu du moteur restent distincts.",
             "en": "Required states are listed before the test; local and engine rendering remain distinct."
           },
           "inconclusive": {
-            "fr": "Rendu requis absent, échec de script, état manquant ou modification incertaine : inconclusive.",
-            "en": "Missing required rendering, script failure, missing state or uncertain mutation: inconclusive."
+            "fr": "Plan ou capture requis absent, état tronqué, erreur de script, liaison source/cible/contexte incohérente, chronologie invalide, directive non interprétable ou retrait tardif du noindex initial : inconclusive sans réussite déduite. Une contradiction établie dans un autre état attribuable reste fail.",
+            "en": "Missing required plan/capture, truncated state, script error, inconsistent source/target/context binding, invalid chronology, uninterpretable directive or late removal of initial noindex: inconclusive without an inferred pass. An established contradiction in another attributable state remains fail."
           },
           "limitations": {
-            "fr": "Ne valide ni TS25 ni le rendu effectif du moteur.",
-            "en": "Does not validate TS25 or actual engine rendering."
+            "fr": "semiAuto : le plan et la suffisance des observations nécessitent une revue. L’interpréteur compare des captures fournies ; il n’exécute pas JavaScript et ne démontre ni exhaustivité des états, ni TS25, ni rendu ou indexation du moteur.",
+            "en": "semiAuto: the plan and sufficiency of observations require review. The interpreter compares supplied captures; it does not execute JavaScript or establish exhaustive states, TS25, engine rendering or indexing."
           },
           "na_inputs": [
             "intent",
@@ -671,7 +673,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.3"
+      "rule_version": "0.1.0-draft.4"
     },
     {
       "id": "TS08",
@@ -1034,7 +1036,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.3"
+      "rule_version": "0.1.0-draft.4"
     },
     {
       "id": "TS11",
@@ -3167,15 +3169,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "cd34cd92fa9625ed601831766fa4b19ca50cd83af4371d814489c23a7893a646"
+      "sha256": "3ff8f2083b31a2fd3df4e25fea5acb388d1538a50fae915335b1590945f90e12"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "c7ca3b9c0b807a719792d484bf42765f561a00a4b3e9b56c725d00dbd1c6a76a"
+      "sha256": "3e70d1707d20ee32218fbae4b434d65560eede5f3988a84eee5da3a7e2316700"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "59cb649d903618a2826267c4767dcf017cec0623c03b29d7cd930c93a7a2b225"
+      "sha256": "6b0542349efe784ae3677a18e9696010184e4209e5bffba11aa9ee6e73d80696"
     }
   ]
 }

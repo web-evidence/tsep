@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.3 — Controls
+# TSEP 0.1.0-draft.4 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.3:TS01-A01`
+`TSEP@0.1.0-draft.4:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.3:TS01-A02`
+`TSEP@0.1.0-draft.4:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.3:TS07-A01`
+`TSEP@0.1.0-draft.4:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -246,7 +246,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.3:TS07-A02`
+`TSEP@0.1.0-draft.4:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -270,9 +270,9 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.3:TS07-A03`
+`TSEP@0.1.0-draft.4:TS07-A03`
 
-**Required inputs**: render, intent.
+**Required inputs**: http, html, render, intent.
 
 **Automation / Automatisation**: `semiAuto`.
 
@@ -280,19 +280,19 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Pages whose scripts or states can affect directives, or whose stability is not established.
 
-**Method.** Compare source directives with required DOM states, declaring browser/version, scripts, interactions, wait, errors and context. Do not assume the engine renders initially noindex HTML.
+**Method.** Fix required states, interactions and waiting conditions before capture. Compare final headers and source HTML with each DOM, declaring browser/version, enabled scripts, time, errors and context. Bind each capture to the source response and target. Do not assume the engine renders initially noindex HTML.
 
-**Acceptance.** Every required state remains compatible with intent; JavaScript removal of initial noindex is insufficient to establish indexability.
+**Acceptance.** All required states are documented and compatible with intent in the declared context. A contradiction in a complete, attributable state is fail even if other states are missing. Removing initial noindex with JavaScript does not yield pass: A03 remains inconclusive unless a required state supplies another contradiction; A01 retains its own source verdict.
 
-**Evidence.** Dated DOM captures and reasoned source comparison; rendering limits recorded.
+**Evidence.** Retained headers/source HTML, prior plan, dated raw DOMs with binding digest of the HTTP trace, final URL, context, browser/version, script state, interactions, waiting conditions and errors. Reasoned comparison and limitations; no simulated engine capture.
 
 **Assumptions.** Required states are listed before the test; local and engine rendering remain distinct.
 
-**Inconclusive.** Missing required rendering, script failure, missing state or uncertain mutation: inconclusive.
+**Inconclusive.** Missing required plan/capture, truncated state, script error, inconsistent source/target/context binding, invalid chronology, uninterpretable directive or late removal of initial noindex: inconclusive without an inferred pass. An established contradiction in another attributable state remains fail.
 
 **When NA is allowed.** Non-HTML or directive stability demonstrated by documented review; intent evidence references this justification and supporting records. No unsupported “no JS” assertion.
 
-**Limits.** Does not validate TS25 or actual engine rendering.
+**Limits.** semiAuto: the plan and sufficiency of observations require review. The interpreter compares supplied captures; it does not execute JavaScript or establish exhaustive states, TS25, engine rendering or indexing.
 
 ## TS08 — The actual indexing status is checked in Search Console.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.3:TS10-A01`
+`TSEP@0.1.0-draft.4:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -392,7 +392,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.3:TS10-A02`
+`TSEP@0.1.0-draft.4:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -416,7 +416,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.3:TS10-A03`
+`TSEP@0.1.0-draft.4:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -442,7 +442,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.3:TS10-A04`
+`TSEP@0.1.0-draft.4:TS10-A04`
 
 **Required inputs**: crawl, intent.
 

@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.3",
+  "protocol_version": "0.1.0-draft.4",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -930,11 +930,11 @@
         "en": "Required rendering adds noindex contrary to intent."
       },
       "evidence": {
-        "intent": "SYNTHETIC Googlebot, indexing allowed; source allows indexing; required DOM after script completion.",
+        "intent": "SYNTHETIC Googlebot, indexing allowed; source allows indexing; required DOM after script completion. Plan fixed at 2026-10-09T09:00:00Z: one required state post-script, no interactions, wait=load+settled, context=Fixture/1, URL=https://example.com/page.",
         "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; no X-Robots-Tag, no redirects; complete headers/body, no truncation.",
         "html": "<html><head><script src=\"dynamic.js\"></script></head></html>",
         "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture.",
-        "render": "SYNTHETIC browser Fixture/1, scripts enabled, load completed, no errors; DOM <meta name=\"robots\" content=\"noindex\"> at 2026-10-09T10:00:00Z."
+        "render": "SYNTHETIC authored method judgment fixture, not an input_version 1 capture. FixtureBrowser/1; source and DOM observed at 2026-10-09T10:00:00Z; scripts enabled; errors=[]; state=post-script; wait=load+settled; interactions=[]; complete=true; context=Fixture/1; URL=https://example.com/page; http file SHA-256=74f7d63e478ae2b233df471281e5b20275ba31a80df759ab723771cece1d71b6; html file SHA-256=46157dc3eb4a8581fed42c66b3d2bc937b843547eee06bfb98856bfbae37dbcd; full authored DOM: <html><head><meta name=\"robots\" content=\"noindex\"><script src=\"dynamic.js\"></script></head></html>; no actual browser or engine execution."
       },
       "atomic_results": [
         {
@@ -994,11 +994,11 @@
         "en": "Removing noindex with JS does not erase the source contradiction."
       },
       "evidence": {
-        "intent": "SYNTHETIC Googlebot, indexing allowed; required source and post-script DOM.",
+        "intent": "SYNTHETIC Googlebot, indexing allowed; required source and post-script DOM. Plan fixed at 2026-10-09T09:00:00Z: one required state post-script, no interactions, wait=load+settled, context=Fixture/1, URL=https://example.com/page.",
         "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; no X-Robots-Tag, no redirects; complete headers/body, no truncation.",
         "html": "<html><head><meta name=\"robots\" content=\"noindex\"><script src=\"remove.js\"></script></head></html>",
         "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture.",
-        "render": "SYNTHETIC rendered DOM removes noindex; no claim about Google rendering."
+        "render": "SYNTHETIC authored method judgment fixture, not an input_version 1 capture. FixtureBrowser/1; source and DOM observed at 2026-10-09T10:00:00Z; scripts enabled; errors=[]; state=post-script; wait=load+settled; interactions=[]; complete=true; context=Fixture/1; URL=https://example.com/page; http file SHA-256=74f7d63e478ae2b233df471281e5b20275ba31a80df759ab723771cece1d71b6; html file SHA-256=db43169e039a85944f489031e074a87eb1f4f210d4b3295d0aa85b42fb7be466; full authored DOM: <html><head><script src=\"remove.js\"></script></head></html>; no actual browser or engine execution."
       },
       "atomic_results": [
         {
@@ -2318,11 +2318,11 @@
         "en": "Required rendering captured and compatible with source."
       },
       "evidence": {
-        "intent": "SYNTHETIC Googlebot; indexing allowed; source and post-script state required.",
+        "intent": "SYNTHETIC Googlebot; indexing allowed; source and post-script state required. Plan fixed at 2026-10-09T09:00:00Z: one required state post-script, no interactions, wait=load+settled, context=Fixture/1, URL=https://example.com/page.",
         "http": "SYNTHETIC: Fixture/1 GET at 2026-10-09T10:00:00Z, no auth/cookies; final 200; Content-Type: text/html; no X-Robots-Tag, no redirects; complete headers/body, no truncation.",
         "html": "<html><head><meta name=\"robots\" content=\"index\"><script src=\"dynamic.js\"></script></head></html>",
         "robots": "SYNTHETIC: https://example.com/robots.txt, HTTP 200; User-agent: *\nDisallow:\nPolicy interpretation: allows /page for Googlebot in this static fixture.",
-        "render": "SYNTHETIC FixtureBrowser/1, scripts enabled; load+settled state captured at 2026-10-09T10:00:00Z; no errors; <meta name=\"robots\" content=\"index\"> unchanged. Local rendering only."
+        "render": "SYNTHETIC authored method judgment fixture, not an input_version 1 capture. FixtureBrowser/1; source and DOM observed at 2026-10-09T10:00:00Z; scripts enabled; errors=[]; state=post-script; wait=load+settled; interactions=[]; complete=true; context=Fixture/1; URL=https://example.com/page; http file SHA-256=74f7d63e478ae2b233df471281e5b20275ba31a80df759ab723771cece1d71b6; html file SHA-256=6e1c02a94caebbe2f249a85e51f394f1990a338ae43adb55877ffc5779217238; full authored DOM: <html><head><meta name=\"robots\" content=\"index\"><script src=\"dynamic.js\"></script></head></html>; no actual browser or engine execution."
       },
       "atomic_results": [
         {

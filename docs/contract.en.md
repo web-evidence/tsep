@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.3
+# Report contract — TSEP 0.1.0-draft.4
 
 ## Declared scope
 
@@ -80,9 +80,30 @@ declarations, although the validator cannot determine that need.
 
 The CLI checks declarations, references and coverage, not the correctness of
 HTTP/HTML interpretation, intent or exemptions. The historical method fixtures have authored reference verdicts. The separate
-[executable conformance suite](conformance.md) interprets raw inputs for four rules
+[executable conformance suite](conformance.md) interprets raw inputs for five rules
 within documented bounds; it does not implement all controls. No C extends to unselected
 controls, an entire site or actual indexing. See [migration and cases](migration-draft.2.md).
+
+### TS07-A03 rendered captures — draft.4
+
+A pass requires http, html, render and intent inputs for the target so the test
+is linked to its source. The plan fixes states, interactions and waiting conditions
+before observations. Retain browser/version, JavaScript activation, errors, date
+and context per capture. Final URL, context and an HTTP-trace digest bind DOMs to
+the assessed source.
+
+A contradiction in a complete, attributable state yields fail even when another
+state remains inconclusive. Without a contradiction, a missing, truncated,
+erroneous, ambiguous or unattributable required state prevents pass. Removing an
+initial source noindex later does not pass A03; the A01 source verdict remains
+separate. Prior plan review and capture sufficiency keep this rule semiAuto.
+
+An exemption requires a documented source-bound review with supporting records;
+an empty list, absent DOM or unsupported “no JS” assertion is insufficient. The
+interpreter compares supplied captures: it neither executes JavaScript nor
+simulates the engine. See [format and limits](rendered-states.md) and
+[draft.4 migration](migration-draft.4.md). Report validation checks evidence
+references/kinds; it does not itself parse DOMs or the plan.
 
 ## Automation and representation identity
 
@@ -153,12 +174,12 @@ The argument parser uses the conventional exit code 2 for malformed CLI syntax.
 ## Versions and implementation claims
 
 Pin both version and protocol SHA-256. Cite IDs as
-`TSEP@0.1.0-draft.3:TS01`. Never silently replace a released artifact. Changes to
+`TSEP@0.1.0-draft.4:TS01`. Never silently replace a released artifact. Changes to
 applicability, expectations, required evidence or decisions require a new version
 and migration note. TS01–TS44 are permanent identities, not reusable slots.
 
 This candidate has one implementation of report validation. Passing its tests
 allows the narrow statement “passes the bundled report-interchange tests for
-0.1.0-draft.3.” It does not establish implementation of all 44 assessment methods.
+0.1.0-draft.4.” It does not establish implementation of all 44 assessment methods.
 An implementation must publish per-rule mapping and limitations before making a
 broader claim. No compatibility with a third-party tool has yet been demonstrated.

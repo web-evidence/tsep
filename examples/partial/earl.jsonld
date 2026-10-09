@@ -26,7 +26,7 @@
         "@id": "_:scope"
       },
       "earl:test": {
-        "@id": "urn:tsep:0.1.0-draft.3:TS01",
+        "@id": "urn:tsep:0.1.0-draft.4:TS01",
         "@type": "earl:TestCriterion"
       },
       "earl:mode": {
@@ -57,7 +57,7 @@
         "@id": "https://example.com/page"
       },
       "earl:test": {
-        "@id": "urn:tsep:0.1.0-draft.3:TS01-A01",
+        "@id": "urn:tsep:0.1.0-draft.4:TS01-A01",
         "@type": "earl:TestCriterion"
       },
       "earl:mode": {

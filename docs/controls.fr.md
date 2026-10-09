@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.3 — Contrôles
+# TSEP 0.1.0-draft.4 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.3:TS01-A01`
+`TSEP@0.1.0-draft.4:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.3:TS01-A02`
+`TSEP@0.1.0-draft.4:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -222,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.3:TS07-A01`
+`TSEP@0.1.0-draft.4:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -246,7 +246,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.3:TS07-A02`
+`TSEP@0.1.0-draft.4:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -270,9 +270,9 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.3:TS07-A03`
+`TSEP@0.1.0-draft.4:TS07-A03`
 
-**Entrées requises**: render, intent.
+**Entrées requises**: http, html, render, intent.
 
 **Automation / Automatisation**: `semiAuto`.
 
@@ -280,19 +280,19 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Pages dont scripts ou états peuvent affecter les directives, ou dont la stabilité n’est pas établie.
 
-**Méthode.** Comparer les directives source et les états DOM nécessaires, en déclarant navigateur/version, scripts, interactions, attente, erreurs et contexte. Ne pas supposer que le moteur rend un HTML initial noindex.
+**Méthode.** Fixer avant la capture les états requis, interactions et conditions d’attente. Comparer les en-têtes finaux et le HTML source avec chaque DOM, en déclarant navigateur/version, scripts activés, heure, erreurs et contexte. Relier chaque capture à la réponse source et à la cible. Ne pas supposer que le moteur rend un HTML initial noindex.
 
-**Attendus.** Chaque état requis reste compatible avec l’objectif ; une suppression JavaScript de noindex initial ne suffit pas à établir l’indexabilité.
+**Attendus.** Tous les états requis sont documentés et compatibles avec l’objectif, dans le contexte déclaré. Une contradiction dans un état complet et attribuable est fail, même si d’autres états manquent. Un retrait de noindex initial par JavaScript ne donne pas pass : A03 reste inconclusive si aucun état requis ne fournit une autre contradiction ; A01 conserve son propre verdict source.
 
-**Preuves.** Captures DOM datées et comparaison motivée avec la source ; limites de rendu consignées.
+**Preuves.** En-têtes et HTML source conservés, plan préalable, DOM bruts datés avec empreinte de liaison à la trace HTTP, URL finale, contexte, navigateur/version, état des scripts, interactions, attente et erreurs. Comparaison motivée et limites ; aucune capture du moteur simulée.
 
 **Hypothèses.** Les états nécessaires sont listés avant le test ; rendu local et rendu du moteur restent distincts.
 
-**Indéterminé.** Rendu requis absent, échec de script, état manquant ou modification incertaine : inconclusive.
+**Indéterminé.** Plan ou capture requis absent, état tronqué, erreur de script, liaison source/cible/contexte incohérente, chronologie invalide, directive non interprétable ou retrait tardif du noindex initial : inconclusive sans réussite déduite. Une contradiction établie dans un autre état attribuable reste fail.
 
 **Conditions de NA.** Non-HTML ou stabilité des directives démontrée par revue documentée ; la preuve intent référence cette justification et ses pièces. Aucune simple affirmation « pas de JS ».
 
-**Limites.** Ne valide ni TS25 ni le rendu effectif du moteur.
+**Limites.** semiAuto : le plan et la suffisance des observations nécessitent une revue. L’interpréteur compare des captures fournies ; il n’exécute pas JavaScript et ne démontre ni exhaustivité des états, ni TS25, ni rendu ou indexation du moteur.
 
 ## TS08 — Le statut d’indexation réel est vérifié dans Search Console.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.3:TS10-A01`
+`TSEP@0.1.0-draft.4:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -392,7 +392,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.3:TS10-A02`
+`TSEP@0.1.0-draft.4:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -416,7 +416,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.3:TS10-A03`
+`TSEP@0.1.0-draft.4:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -442,7 +442,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.3:TS10-A04`
+`TSEP@0.1.0-draft.4:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 

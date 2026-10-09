@@ -1,5 +1,20 @@
 # Change history / Historique
 
+## 0.1.0-draft.4 — 2026-10-09 — unpublished development candidate
+
+TS07-A03 source/DOM conformance: prior state plans, source/context bindings, browser
+metadata, chronology, script errors and documented exemptions. Keep observed state
+failures despite other gaps; never pass a late removal of source noindex. A03 pass
+now needs http/html/render/intent. Five bounded rules are executable over supplied
+captures; no browser or JavaScript execution. IDs and semiAuto classification stay
+unchanged. [Migration](docs/migration-draft.4.md).
+
+Conformance TS07-A03 source/DOM : plan préalable, liaison source/contexte,
+métadonnées navigateur, chronologie, erreurs et exemptions documentées. Conserver
+les échecs malgré les autres inconnues ; aucun pass par retrait tardif du noindex
+source. Pass A03 exige http/html/render/intent. Cinq règles bornées comparées sur
+captures fournies, sans lancer navigateur ou JavaScript. IDs et semiAuto conservés.
+
 ## 0.1.0-draft.3 — 2026-10-09 — unpublished development candidate
 
 Explicit rule automation and guarded automatic C; TS01-A02 now uses an exact prior

@@ -1,6 +1,6 @@
 # TSEP — evidence interchange format
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.3 · initiated by Edikka · [Français](README.fr.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.4 · initiated by Edikka · [Français](README.fr.md)**
 
 Share a technical SEO assessment that its recipient can inspect, replay and
 challenge: stable identifiers, explicit scope, evidence linked to findings and
@@ -20,8 +20,8 @@ atomic rules use pass, fail, not-applicable or inconclusive.
 
 **TS01–TS44 are the permanent identifiers inherited from grid 1.1.** TSEP has a
 separate version sequence; the original FR/EN sources and provenance remain intact.
-Nine rules specify TS01, TS07 and TS10. Four have a bounded interpreter over raw
-inputs: TS01-A01/A02 and TS07-A01/A02.
+Nine rules specify TS01, TS07 and TS10. Five have a bounded interpreter over raw
+inputs: TS01-A01/A02 and TS07-A01/A02/A03.
 
 ## Try it in two minutes
 
@@ -50,13 +50,13 @@ validation establishes consistency and file integrity.
    NT/inconclusive and link each artifact to its target. Selecting TS01/TS07 does
    not satisfy a named profile. An isolated test cannot pass its parent control.
 3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
-   `python3 conformance/run.py --command 'python3 my_adapter.py'`. Declare the four
+   `python3 conformance/run.py --command 'python3 my_adapter.py'`. Declare the five
    rules and bounds actually supported, not “44 automatic controls”.
    [Input format and comparison](docs/conformance.md).
 
 Automatic C requires every control rule `automatic`, complete coverage and
 `assessor.tool.name/version`. TS01-A01/A02 are automatic: final 200 and exact
-URL/body hash equality against prior intent. TS07-A01/A02 remain semiAuto.
+URL/body hash equality against prior intent. TS07-A01/A02/A03 remain semiAuto.
 Defining an appropriate content reference remains a human responsibility.
 
 ## Evidence profiles
@@ -91,17 +91,18 @@ checks declarations and hashes, not authenticity, appropriate intent or every
 assessment judgment. A hash does not establish authorship or actual collection
 time. Bundled cases are synthetic.
 
-The interpreter covers four rules within a documented subset; unsupported inputs
-remain inconclusive. TS07-A03 and TS10 require further evidence and assessment.
+The interpreter covers five rules within a documented subset; unsupported inputs
+remain inconclusive. TS07-A03 compares supplied source/DOM captures without executing JavaScript;
+the plan and exemptions require review. TS10 still needs separate assessment.
 A partial check never produces global conformity. No result guarantees indexing,
 ranking or future engine behavior.
 
 [EN contract](docs/contract.en.md) · [44 controls](docs/controls.en.md) ·
 [Bilingual source](spec/protocol.json) · [Schema](schemas/report.schema.json) ·
-[Draft.3 migration](docs/migration-draft.3.md) · [EARL](docs/interoperability.md) ·
+[Draft.4 migration](docs/migration-draft.4.md) · [EARL](docs/interoperability.md) ·
 [Governance](GOVERNANCE.md) · [Contribute](CONTRIBUTING.md) · [History](CHANGELOG.md) ·
 [Acceptance clause](docs/acceptance-clause.md) · [HTTP probe](probes/README.md).
 
-Cite `TSEP@0.1.0-draft.3:TS07` with scope, result, evidence and archive hash.
+Cite `TSEP@0.1.0-draft.4:TS07` with scope, result, evidence and archive hash.
 Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATION.cff).
 [Development, full verification and independent repository](docs/development.md).

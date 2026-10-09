@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.3
+# Contrat de rapport — TSEP 0.1.0-draft.4
 
 ## Périmètre déclaré
 
@@ -80,10 +80,31 @@ affecte les déclarations, même si le validateur ne peut pas déterminer ce bes
 La CLI vérifie les déclarations, références et couvertures, pas la justesse de la
 lecture HTTP/HTML, de l’intention ou des exemptions. Les cas de méthode historiques
 ont des verdicts rédigés. La [suite exécutable distincte](conformance.md) interprète
-les entrées brutes de quatre règles dans des limites documentées ; elle
+les entrées brutes de cinq règles dans des limites documentées ; elle
 n’implémente pas tous les contrôles. Aucun C ne
 s’étend aux contrôles non sélectionnés, à un site entier ou à l’indexation réelle.
 Voir [migration et cas](migration-draft.2.md).
+
+### Captures rendues TS07-A03 — draft.4
+
+Un pass exige les quatre types http, html, render et intent pour la cible, afin
+que le test soit relié à sa source. Le plan fixe les états, interactions et attentes
+avant les observations. Conserver navigateur/version, activation JavaScript,
+erreurs, date et contexte de chaque capture. L’URL finale, le contexte et une
+empreinte de la trace HTTP lient les DOM à la source évaluée.
+
+Une contradiction dans un état complet et attribuable donne fail, même si un autre
+état reste inconclusive. Sans contradiction, un état requis manquant, tronqué,
+en erreur, ambigu ou non attribuable empêche pass. Un noindex source retiré tardivement
+ne donne pas pass à A03 ; le verdict source A01 reste distinct. La revue préalable
+du plan et la suffisance des captures gardent cette règle semiAuto.
+
+Une exemption exige une revue documentée, liée à la source, avec pièces conservées ;
+une liste vide, un DOM absent ou la simple affirmation « pas de JS » ne suffisent
+pas. L’interpréteur compare des captures fournies : il n’exécute pas JavaScript et
+ne simule pas le moteur. Voir [format et limites](rendered-states.md) et
+[migration draft.4](migration-draft.4.md). La validation du rapport contrôle les
+références/types de preuves ; elle ne parse pas elle-même les DOM ni le plan.
 
 ## Automatisation et identité de représentation
 
@@ -157,12 +178,12 @@ Le parseur d’arguments utilise le code conventionnel 2 pour une syntaxe CLI er
 
 ## Versions et revendications d’implémentation
 
-Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.3:TS01`. Ne jamais
+Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.4:TS01`. Ne jamais
 remplacer silencieusement un artefact publié. Changer applicabilité, attendus,
 preuves ou décisions exige une nouvelle version et une note de migration.
 TS01–TS44 restent des identités permanentes.
 
 La suite démontre seulement « réussit les tests d’échange des rapports fournis
-avec 0.1.0-draft.3 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
+avec 0.1.0-draft.4 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
 plus large exige une correspondance par règle et des limites publiées. Aucune
 interopérabilité avec un outil tiers n’a encore été démontrée.
