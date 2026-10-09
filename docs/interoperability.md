@@ -6,7 +6,7 @@ The EARL JSON-LD companion uses the [W3C EARL vocabulary](https://www.w3.org/TR/
 Its context is embedded; no network lookup is required. It is not a lossless
 replacement for the report and evidence, nor W3C approval or universal consumer
 compatibility. Control assertions concern the declared scope, with stable local
-IDs such as `_:control_TS01` and tests `urn:tsep:0.1.0-draft.6:TS01`.
+IDs such as `_:control_TS01` and tests `urn:tsep:0.1.0-draft.7:TS01`.
 
 | Control result / state | EARL outcome |
 | --- | --- |
@@ -49,7 +49,7 @@ Le compagnon JSON-LD emploie le vocabulaire EARL W3C, avec contexte intégré sa
 requête réseau. Il ne remplace pas le rapport et les preuves, ne vaut pas validation
 W3C et ne garantit pas une compatibilité universelle. Les assertions des contrôles
 portent sur le périmètre déclaré, avec IDs locaux tels que `_:control_TS01` et
-tests `urn:tsep:0.1.0-draft.6:TS01`. Le premier tableau distingue C, NC, NA, NT non
+tests `urn:tsep:0.1.0-draft.7:TS01`. Le premier tableau distingue C, NC, NA, NT non
 commencé et NT indéterminé.
 
 Le test du contrôle est un `earl:TestRequirement` ; chaque test atomique est un

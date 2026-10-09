@@ -1,5 +1,22 @@
 # Change history / Historique
 
+## 0.1.0-draft.7 — 2026-10-09 — unpublished development candidate
+
+R-024: changed-body identity requires at least one positive required marker;
+absent forbidden-only markers remain inconclusive. R-026: HTML markers use source
+text excluding comments, script/style and attributes, with explicit extraction
+boundaries and limits. R-025: `conformance/run.py --rules` tests a declared subset
+and reports omitted rules/pairs separately. Wrong or extra results still fail.
+Nineteen new contradictory cases, FR/EN contracts and migration. IDs, format 2,
+automation and gate policy unchanged. [Migration](docs/migration-draft.7.md).
+
+R-024 : interdits seuls absents → inconclusive ; un requis est nécessaire au pass
+sur variation. R-026 : texte source extrait, sans commentaires, script/style ni
+attributs, limites explicites. R-025 : sous-ensemble de conformance déclaré par
+`--rules`, omissions visibles, aucun contrôle partiel promu C. Dix-neuf nouveaux
+cas contradictoires et migration FR/EN ; aucune publication ou revue indépendante
+déclarée acquise.
+
 ## Offline capture adapter 1 — 2026-10-09 — unpublished development tooling
 
 Convert supplied raw captures into validated report/evidence/gate/EARL bundles

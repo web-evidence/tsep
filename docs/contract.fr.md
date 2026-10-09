@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.6
+# Contrat de rapport — TSEP 0.1.0-draft.7
 
 ## Périmètre déclaré
 
@@ -144,13 +144,26 @@ plus large. A02 compare `expected_final_url` et `expected_body_sha256` préalabl
 1. Une URL finale différente donne fail, même sans empreinte de référence.
 2. À URL identique, une empreinte identique du corps complet donne pass.
 3. Sinon, `representation: "stable"` déclaré impose fail pour tout changement.
-4. Sinon, les listes `required_markers` / `forbidden_markers` décident : tous les
-   requis présents et tous les interdits absents donnent pass ; toute violation
-   donne fail. Sans critères d’identité valides et non vides : inconclusive.
+4. Sinon, des listes valides `required_markers` / `forbidden_markers` donnent fail
+   si un requis manque ou un interdit apparaît. Pass exige **au moins un requis**,
+   tous les requis présents et tous les interdits absents. Avec seulement des
+   interdits absents, ou sans critères valides : inconclusive.
 
 Les références URL/empreinte doivent être valides ; une capture incomplète ou non
 attribuable ne permet pas pass. Marqueurs UTF-8 uniques et non blancs, recherchés
-littéralement avec casse dans le corps décodé, sans normalisation, regex ni DOM.
+littéralement avec casse dans le **texte source extrait**, sans regex :
+
+- HTML : caractères des segments textuels, entités HTML décodées ; commentaires,
+  contenu de `script` et `style`, balises et attributs exclus. Ne jamais concaténer
+  les segments à travers une balise ou un commentaire pour créer un marqueur.
+- `text/plain` : corps décodé intégral, sans interprétation de pseudo-balisage.
+- Pas de normalisation des espaces ou de la casse. Une extraction ou un décodage
+  indéterminé ne permet aucun verdict conclusif fondé sur les marqueurs.
+
+Cette extraction n’affecte pas le SHA-256 du corps complet. Elle ne mesure pas la
+visibilité : titre et texte masqué par CSS peuvent compter. Ni CSS ni JavaScript
+ne sont exécutés ; les contextes non pris en charge par la référence sont
+documentés dans la [conformance](conformance.md).
 Des listes vides ne prouvent rien. Un interdit contenu dans un requis rend
 l’intention contradictoire. Des marqueurs invalides ou une politique de
 représentation inconnue ne résolvent pas une variation d’empreinte. L’ordre ci-dessus
@@ -160,7 +173,7 @@ ne contournent jamais un échec de stabilité. Une empreinte de référence abse
 la pertinence des références et marqueurs. Une variation horodatée seule n’est pas
 un défaut SEO. NT sur TS01 bloquant donne toujours NO_GO.
 TS07-A01/A02/A03 et TS10-A01/A03/A04 sont semiAuto ; TS10-A02 reste manual.
-Voir la [migration draft.6](migration-draft.6.md) pour la réévaluation obligatoire.
+Voir la [migration draft.7](migration-draft.7.md) pour la réévaluation obligatoire.
 
 Voir [migration depuis draft.2](migration-draft.3.md) et [parcours CLI](cli.md).
 `add-evidence` et `record` valident avant de remplacer le rapport, actualisent sa
@@ -219,12 +232,12 @@ FR/EN affiche la même cause. Décision et codes de sortie restent inchangés.
 
 ## Versions et revendications d’implémentation
 
-Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.6:TS01`. Ne jamais
+Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.7:TS01`. Ne jamais
 remplacer silencieusement un artefact publié. Changer applicabilité, attendus,
 preuves ou décisions exige une nouvelle version et une note de migration.
 TS01–TS44 restent des identités permanentes.
 
 La suite démontre seulement « réussit les tests d’échange des rapports fournis
-avec 0.1.0-draft.6 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
+avec 0.1.0-draft.7 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
 plus large exige une correspondance par règle et des limites publiées. Aucune
 interopérabilité avec un outil tiers n’a encore été démontrée.

@@ -58,7 +58,7 @@ class Draft6(unittest.TestCase):
         for name, case in CASES.items():
             if name.startswith('identity-'):
                 with self.subTest(case=name):
-                    self.assertEqual([r['outcome'] for r in evaluate(case['input'])], [r['outcome'] for r in case['expected']])
+                    self.assertEqual(compare(case['expected'], evaluate(case['input']))[1], [])
 
     def test_partial_identity_cannot_pass_control(self):
         data = copy.deepcopy(CASES['identity-timestamp-markers']['input']);data['rules']=['TS01-A02']

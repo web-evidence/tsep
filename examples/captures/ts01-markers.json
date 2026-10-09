@@ -25,7 +25,7 @@
         "access_basis": "test-client-only",
         "required_markers": [
           "Expected content",
-          "<title>Reference</title>"
+          "Reference"
         ],
         "forbidden_markers": [
           "Access denied"

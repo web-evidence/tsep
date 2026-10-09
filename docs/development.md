@@ -28,8 +28,9 @@ conformance suite, regenerates synthetic examples outside the source tree, runs 
 builds an archive, extracts it and checks that rebuilding yields identical bytes.
 The tests include offline capture-to-bundle conversion, file integrity and partial
 coverage; raw capture examples are regenerated alongside report examples. The
-capture adapter has its own tool version and code fingerprints; adding this
-workflow does not change the draft.6 normative contract.
+capture adapter has its own tool version and code fingerprints. It uses the
+pinned normative protocol; draft.7 changes identity assessment, as documented
+in its migration, without changing the adapter's bundle format.
 It refuses source-file changes during verification. No Edikka environment,
 credentials, package installation, browser or public-site collection is needed.
 If a sandbox forbids a loopback listener, report that limitation; do not silently
@@ -83,8 +84,9 @@ sandbox sur 127.0.0.1 reste une limite à signaler, jamais un test réussi.
 
 Les tests couvrent aussi la conversion hors ligne captures → paquet, l’intégrité
 et la couverture partielle ; les exemples de captures sont régénérés avec les
-rapports. L’adaptateur possède sa version d’outil et ses empreintes de code ; ce
-parcours ne modifie pas le contrat normatif draft.6.
+rapports. L’adaptateur possède sa version d’outil et ses empreintes de code. Il
+utilise le protocole normatif figé ; draft.7 modifie l’évaluation d’identité selon
+sa migration, sans changer le format du paquet de l’adaptateur.
 
 Le constructeur utilise une liste explicite `release-files.json`, pas tous les
 fichiers du répertoire. Les fichiers privés non listés restent exclus. Cette

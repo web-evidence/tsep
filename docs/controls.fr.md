@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.6 — Contrôles
+# TSEP 0.1.0-draft.7 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.6:TS01-A01`
+`TSEP@0.1.0-draft.7:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.6:TS01-A02`
+`TSEP@0.1.0-draft.7:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -62,19 +62,19 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Chaque réponse finale dont le contenu peut être comparé à l’intention.
 
-**Méthode.** Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer ces références et, si nécessaire, representation: stable ou les listes required_markers / forbidden_markers dans intent avant la mesure. Aucune normalisation implicite.
+**Méthode.** Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer ces références et, si nécessaire, representation: stable ou required_markers / forbidden_markers avant la mesure. En cas de variation sans stabilité, comparer les marqueurs au texte source extrait selon le contrat draft.7 ; l’empreinte porte toujours sur le corps complet inchangé.
 
-**Attendus.** URL finale différente : fail. À URL identique, empreinte identique : pass. Sinon, representation: stable impose fail. Sinon, des marqueurs valides et non vides au total donnent pass si tous les requis sont présents et tous les interdits absents, fail dans le cas contraire. Sans marqueurs ni stabilité déclarée : inconclusive. Le statut HTTP ne remplace pas cette comparaison.
+**Attendus.** URL finale différente : fail. À URL identique, empreinte identique : pass. Sinon, representation: stable impose fail. Sinon, des marqueurs valides donnent fail si un requis manque ou si un interdit apparaît. Pass exige au moins un marqueur requis, tous les requis présents et tous les interdits absents. Interdits seuls absents : inconclusive. Sans marqueurs ni stabilité déclarée : inconclusive. Le statut HTTP ne remplace pas cette comparaison.
 
-**Preuves.** Trace HTTP, corps complet et intention préalable datée avec URL, empreinte de référence et éventuels marqueurs/politique de stabilité ; valeurs calculées et outil/version. Empreinte après décodage de transfert et de contenu, avant toute autre transformation. Marqueurs UTF-8 littéraux, sensibles à la casse, recherchés dans le corps décodé sans extraction DOM ni expression régulière.
+**Preuves.** Trace HTTP, corps complet et intention préalable datée avec URL, empreinte de référence et éventuels marqueurs/politique de stabilité ; extraction, valeurs calculées et outil/version. Empreinte après décodage de transfert et de contenu, avant toute transformation. Marqueurs littéraux sensibles à la casse dans chaque segment de texte source HTML décodé : entités résolues, commentaires, script/style, balises et attributs exclus, segments jamais concaténés à travers le balisage. Pour text/plain, corps décodé intégral. Ni normalisation des espaces ni expression régulière.
 
 **Hypothèses.** Le responsable fixe une représentation de référence avant la collecte ; sa pertinence métier reste sa responsabilité. La comparaison est automatique, la définition de l’intention ne l’est pas.
 
-**Indéterminé.** Capture absente/tronquée, décodage inconnu, référence URL absente/invalide, intention postérieure : inconclusive. À URL identique, empreinte de référence absente/invalide : inconclusive. Si les empreintes diffèrent sans stabilité déclarée, marqueurs absents, vides, malformés ou contradictoires : inconclusive. Une URL différente reste fail même sans empreinte de référence.
+**Indéterminé.** Capture absente/tronquée, décodage inconnu, référence URL absente/invalide, intention postérieure : inconclusive. À URL identique, empreinte de référence absente/invalide : inconclusive. Si les empreintes diffèrent sans stabilité, marqueurs absents, vides, malformés ou contradictoires, extraction indéterminée, ou interdits seuls tous absents : inconclusive. Une URL différente reste fail même sans empreinte de référence.
 
 **Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
 
-**Limites.** Une variation d’empreinte seule ne prouve pas un contenu erroné. Les marqueurs ne mesurent ni similarité sémantique ni visibilité : leur choix et la référence relèvent du responsable. Une mauvaise intention peut valider un mauvais contenu. Ni classification soft 404 du moteur, ni indexation, ni contrôle des routes non déclarées.
+**Limites.** Une variation d’empreinte seule ne prouve pas un contenu erroné. L’extraction du texte source ne mesure ni visibilité CSS/DOM, ni similarité sémantique ; titre et texte masqué par CSS peuvent compter. Des marqueurs pertinents et une référence correcte restent la responsabilité du propriétaire. Une mauvaise intention peut valider un mauvais contenu. Ni classification soft 404 du moteur, ni indexation, ni routes non déclarées.
 
 ## TS02 — Les redirections sont intentionnelles, directes et sans boucle.
 
@@ -222,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.6:TS07-A01`
+`TSEP@0.1.0-draft.7:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -246,7 +246,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.6:TS07-A02`
+`TSEP@0.1.0-draft.7:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -270,7 +270,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.6:TS07-A03`
+`TSEP@0.1.0-draft.7:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.6:TS10-A01`
+`TSEP@0.1.0-draft.7:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -392,7 +392,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.6:TS10-A02`
+`TSEP@0.1.0-draft.7:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -416,7 +416,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.6:TS10-A03`
+`TSEP@0.1.0-draft.7:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -442,7 +442,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.6:TS10-A04`
+`TSEP@0.1.0-draft.7:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 

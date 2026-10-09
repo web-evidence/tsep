@@ -49,7 +49,7 @@ def utf8_media(headers, kinds, default_utf8=False):
     return kind in kinds and params.get('charset', 'utf-8' if default_utf8 else None) == 'utf-8'
 
 
-def identity_result(final_url, body, intent):
+def identity_result(final_url, headers, body, intent):
     expected_url = intent.get('expected_final_url')
     need(isinstance(expected_url, str), 'Missing reference URL')
     url_parts(expected_url)
@@ -69,11 +69,13 @@ def identity_result(final_url, body, intent):
              and len(markers) == len(set(markers)), 'Malformed identity markers')
     need(not any(bad in good for good in required for bad in forbidden), 'Contradictory identity markers')
     need(required or forbidden, 'Body digest changed without stable policy or identity markers')
-    missing = [m for m in required if m not in body]
-    present = [m for m in forbidden if m in body]
+    segments = identity_text(headers, body)
+    missing = [m for m in required if not any(m in text for text in segments)]
+    present = [m for m in forbidden if any(m in text for text in segments)]
     if missing or present:
         return 'fail', 'Identity marker contradiction: ' + json.dumps({'missing': missing, 'forbidden': present}, ensure_ascii=False)
-    return 'pass', 'Changed body satisfies all declared literal identity markers: ' + actual
+    need(required, 'Forbidden markers absent, but no required identity marker establishes identity')
+    return 'pass', 'Changed body satisfies required and forbidden markers in extracted source text: ' + actual
 
 
 def url_parts(url):
@@ -173,6 +175,51 @@ class Meta(HTMLParser):
     def handle_data(self, data):
         need(not data.strip() or self.stack, 'Text outside HTML root')
         need('<' not in data or self.stack[-1] in ('script', 'style'), 'Unparsed HTML markup')
+
+
+class IdentityText(Meta):
+    """Bounded source text, never rendered visibility or concatenated markup."""
+    def __init__(self):
+        super().__init__()
+        self.segments = []
+
+    def handle_starttag(self, tag, attrs):
+        need(not self.stack or self.stack[-1] != 'title', 'Markup in title needs browser parsing')
+        super().handle_starttag(tag, attrs)
+
+    def handle_startendtag(self, tag, attrs):
+        need(tag in ('meta', 'link', 'br', 'img'), 'Non-void self-closing HTML needs browser parsing')
+        self.handle_starttag(tag, attrs)
+
+    def handle_data(self, data):
+        # Character references are already decoded by HTMLParser. A decoded '<'
+        # is text, so do not apply Meta's raw-markup heuristic to it.
+        need(not data.strip() or self.stack, 'Text outside HTML root')
+        if self.stack and not any(tag in ('script', 'style') for tag in self.stack):
+            self.segments.append(data)
+
+    def handle_decl(self, decl):
+        need(decl.lower() == 'doctype html', 'Unsupported HTML declaration')
+
+    def unknown_decl(self, decl):
+        raise Unknown('Unsupported HTML marked section')
+
+    def handle_pi(self, data):
+        raise Unknown('Unsupported HTML processing instruction')
+
+
+def identity_text(headers, body):
+    kind, params = media_type(headers)
+    need(params.get('charset') == 'utf-8', 'Identity markers require explicit UTF-8')
+    if kind == 'text/plain':
+        return [body]
+    need(kind == 'text/html', 'Unsupported identity marker media type')
+    need(bool(re.search(r'</html\s*>\s*$', body, re.I)), 'HTML end not captured')
+    parser = IdentityText()
+    parser.feed(body)
+    parser.close()
+    need(parser.roots == 1 and not parser.stack, 'Incomplete HTML structure')
+    return parser.segments
 
 
 def directive_result(headers, body, intent):
@@ -368,7 +415,7 @@ def evaluate_target(target, rule):
         if rule == 'TS01-A01':
             return ('pass' if status == 200 else 'fail', 'Final complete GET status: ' + str(status))
         if rule == 'TS01-A02':
-            return identity_result(final_url, body, intent)
+            return identity_result(final_url, headers, body, intent)
         if rule == 'TS07-A01':
             return directive_result(headers, body, intent)
         if rule == 'TS07-A03':

@@ -49,10 +49,15 @@ présentation (`presentation`) nécessite une revue hors de cet interpréteur.
 Identité TS01-A02 : `expected_final_url` et `expected_body_sha256` restent les
 références préalables. URL différente → fail ; URL et empreinte identiques → pass.
 Sur empreinte différente, `representation: "stable"` → fail ; sinon les listes
-optionnelles `required_markers` et `forbidden_markers` décident pass/fail. Au moins
-un marqueur au total, chaînes UTF-8 uniques non blanches, sensibles à la casse et
-littérales dans le corps décodé ; aucun regex, DOM ou nettoyage. Un interdit contenu
-dans un requis est contradictoire. Listes absentes/vides/invalides → inconclusive ;
+optionnelles `required_markers` et `forbidden_markers` décident : requis manquant
+ou interdit présent → fail. Pass exige au moins un requis et aucune violation.
+Interdits seuls absents → inconclusive. Chaînes UTF-8 uniques non blanches,
+sensibles à la casse et littérales dans le texte source extrait. Pour HTML,
+entités décodées ; commentaires, script/style, balises et attributs exclus ;
+aucune concaténation entre segments séparés par une balise ou un commentaire.
+Pour text/plain, corps complet sans interprétation HTML. Aucun regex ni
+normalisation des espaces. Un interdit contenu dans un requis est contradictoire.
+Listes absentes/vides/invalides → inconclusive ;
 une politique de représentation autre que stable n’est pas prise en charge.
 Sans empreinte valide à URL identique, les marqueurs ne suffisent pas. Voir l’ordre
 normatif et les limites dans le [contrat](contract.fr.md#automatisation-et-identité-de-représentation).
@@ -77,7 +82,19 @@ exactement Location. Aucun cookie ni Authorization dans ce sous-ensemble.
 
 ### Couverture et limites de l’interpréteur
 
-TS01 compare le statut final, puis l’identité selon les critères préalables ci-dessus. TS07-A01 applique
+TS01 compare le statut final, puis l’identité selon les critères préalables ci-dessus.
+La branche des marqueurs prend en charge text/plain et text/html avec charset
+UTF-8 explicite. Pour HTML, l’extracteur utilise le même ensemble d’éléments borné
+ci-dessous, un document clos et des balises emboîtées. Les éléments vides
+meta/link/br/img acceptent aussi `/>` ; une telle fermeture sur script/style ou
+un autre élément non vide reste indéterminée. Déclarations autres que doctype html,
+instructions de traitement et balisage dans title ne sont pas pris en charge.
+Le titre et le texte caché par CSS peuvent compter : aucune visibilité rendue
+n’est mesurée. `identity-marker-unsupported-element` conserve un attendu normatif
+pass pour le texte d’une section valide ; la référence compte ce couple en
+couverture réduite. La priorité URL/empreinte/stabilité reste inchangée.
+
+TS07-A01 applique
 la série Googlebot aux en-têtes finaux et meta robots/googlebot. Restrictions
 combinées, casse, none, nofollow et aperçus sont distingués. Il accepte index,
 noindex, follow, nofollow, all, none, nosnippet et les paramètres max-snippet,
@@ -103,6 +120,30 @@ pas le texte libre des motifs. Invocation sans shell, avec délai borné :
 ```sh
 python3 conformance/run.py --command 'python3 conformance/evaluate.py'
 ```
+
+Pour une implémentation partielle, déclarer les règles effectivement testées :
+
+```sh
+python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 mon_adaptateur.py'
+```
+
+Sans `--rules`, les neuf règles restent exigées. L’option accepte une liste non
+vide d’identifiants atomiques connus, sans doublon ; elle restreint `input.rules`
+et la matrice attendue, sans transmettre `expected`. Les cas sans règle sélectionnée
+ne sont pas exécutés. Toutes les cibles de chaque cas retenu restent obligatoires.
+Les résultats supplémentaires, y compris sur une règle non demandée, restent des
+erreurs ; les sorties ne sont jamais filtrées pour masquer un désaccord.
+
+`rules` expose la sélection, `available_rules` et `omitted_rules` sa portée ;
+`cases`/`rule_target_pairs` comptent les comparaisons exécutées, les champs
+`total_*`, `skipped_cases` et `omitted_rule_target_pairs` comptent le reste.
+Le corpus complet reste validé (version, matrices, cas contradictoires).
+`coverage.by_rule` contient accords, désaccords, couverture réduite, numérateur,
+dénominateur et pourcentage des attendus conclusifs pour chaque règle sélectionnée.
+Une réussite fournit `claim` : « passes TSEP 0.1.0-draft.7 conformance for
+TS01-A01, TS01-A02 ». Publier cette formulation avec les limites/couvertures
+réduites, jamais comme conformité globale, d’un profil, d’un contrôle ou d’un site.
+Un échec donne `claim: null`. Réussir A01 seule ne valide pas TS01.
 
 Les attendus représentent la vérité normative de ces cas, jamais la sortie
 souhaitée du parseur livré. `expected_origin` décrit cette origine rédactionnelle,
@@ -164,10 +205,14 @@ requires assessment outside this interpreter.
 TS01-A02 identity retains prior `expected_final_url` and `expected_body_sha256`.
 A different URL fails; matching URL and digest pass. With a changed digest,
 `representation: "stable"` fails; otherwise optional `required_markers` and
-`forbidden_markers` arrays decide pass/fail. At least one marker overall; unique,
-nonblank UTF-8 strings matched literally and case sensitively in the decoded body,
-without regex, DOM extraction or cleanup. A forbidden marker inside a required
-one makes intent contradictory. Missing/empty/invalid lists are inconclusive;
+`forbidden_markers` arrays decide: missing required or present forbidden marker
+fails. Pass requires at least one required marker and no violation; absent
+forbidden-only markers are inconclusive. Unique nonblank UTF-8 strings are matched
+literally and case sensitively in extracted source text. HTML character references
+are decoded; comments, script/style, tags and attributes are excluded, without
+joining segments across tags or comments. text/plain uses the complete body
+without HTML interpretation. No regex or whitespace normalization. A forbidden
+marker inside a required one makes intent contradictory. Missing/empty/invalid lists are inconclusive;
 representation policies other than stable are unsupported. At the same URL,
 markers cannot replace a missing valid digest. See the ordered normative checks
 and limits in the [contract](contract.en.md#automation-and-representation-identity).
@@ -186,7 +231,18 @@ Transfer-Encoding are supported, not TLS or HTTP/2 wire captures. Hops must be
 unconditional GETs following Location exactly, without cookies/Authorization.
 Ambiguous, incomplete or interrupted captures remain inconclusive.
 
-TS01 compares final status, then identity against the prior criteria above. TS07-A01 implements a
+TS01 compares final status, then identity against the prior criteria above.
+The marker branch supports text/plain and text/html with explicit UTF-8 charset.
+For HTML, extraction uses the same bounded element set below, a closed document
+and nested tags. Void meta/link/br/img also accept `/>`; self-closing script/style
+or other non-void tags remain inconclusive. Declarations other than doctype html,
+processing instructions and markup inside title are unsupported. Title and
+CSS-hidden text may count; rendered visibility is not measured.
+`identity-marker-unsupported-element` retains normative pass for valid section
+text; the reference counts this pair as reduced coverage. URL/digest/stability
+precedence is unchanged.
+
+TS07-A01 implements a
 Googlebot subset over final headers and robots/googlebot meta tags: restrictive
 combination, case, none, nofollow and previews remain distinct. Supported tokens
 are index/noindex/follow/nofollow/all/none/nosnippet and max-snippet,
@@ -207,6 +263,23 @@ An external adapter receives one input object on stdin and returns an array of
 rule_id/target/outcome/reason objects on stdout. The comparator checks outcomes,
 not free-text reasons. Use the command above (or your own adapter); argv is parsed
 without a shell, with bounded execution.
+
+For a partial implementation, use `--rules TS01-A01,TS01-A02` with the adapter
+command. Without this option, all nine rules remain required. The nonempty list
+must contain unique known atomic IDs. It restricts `input.rules` and the expected
+matrix; `expected` is never sent. Cases without a selected rule are skipped.
+All targets in retained cases remain required. Additional outputs, including
+unrequested rules, still fail; actual results are never filtered to hide differences.
+
+`rules` lists the selection; `available_rules` and `omitted_rules` expose its scope.
+`cases`/`rule_target_pairs` count executed comparisons; `total_*`, `skipped_cases`
+and `omitted_rule_target_pairs` expose the remainder. Full corpus validation
+(version, matrices, contradictory cases) still runs. `coverage.by_rule` provides
+agreements, disagreements, reduced coverage, conclusive numerator/denominator and
+percentage per selected rule. Successful output includes `claim`: “passes TSEP
+0.1.0-draft.7 conformance for TS01-A01, TS01-A02”. Accompany it with limits/reduced
+coverage; never claim global, profile, control or site conformity. Failure gives
+`claim: null`. Passing A01 alone does not pass TS01.
 
 Expectations are normative truth for these cases, not the reference parser's
 preferred output. `expected_origin` states editorial authorship, not independent

@@ -3,10 +3,11 @@
 ## Français
 
 `adapters/captures.py` version 1 transforme un fichier de captures fourni en un
-rapport TSEP draft.6, ses preuves, sa décision et son export EARL. Il appelle
+rapport TSEP draft.7, ses preuves, sa décision et son export EARL. Il appelle
 l’interpréteur de référence existant et calcule les résultats depuis les entrées
 brutes. Il ne lit pas les verdicts attendus du corpus. Ce composant interne ne
-constitue pas une implémentation indépendante ni une nouvelle version normative.
+constitue pas une implémentation indépendante. Son format de paquet reste en
+version 1 ; l’évaluation suit la [migration normative draft.7](migration-draft.7.md).
 
 ### Premier paquet
 
@@ -117,22 +118,23 @@ Une règle en échec conserve NC même si d’autres manquent. C nécessite tout
 règles et toutes les cibles requises, au moins un pass, aucune inconnue ni aucun
 fail ; des exemptions seules ne justifient pas NA au niveau du contrôle. Les
 règles non demandées restent omises et visibles dans `import.json`, sans fausse
-assertion d’exécution. La politique de décision draft.6 reste inchangée.
+assertion d’exécution. La politique de décision reste inchangée en draft.7.
 
 Les limites de l’interpréteur restent celles de la [conformance](conformance.md) :
 pas de collecte, exécution JavaScript, observation moteur ou conformité globale.
 Les attendus normatifs du corpus ne sont jamais substitués aux résultats
-calculés. La recette convertit les 197 entrées brutes et vérifie intégrité,
+calculés. La recette convertit toutes les entrées brutes du corpus et vérifie intégrité,
 portabilité, limites de modes, inconnues, échecs, non-écrasement et erreurs de copie.
 Ce contrôle du parcours ne constitue pas une seconde interprétation normative.
 
 ## English
 
 `adapters/captures.py` version 1 converts supplied offline captures into a TSEP
-draft.6 report, evidence, decision and EARL export. It uses the existing bounded
+draft.7 report, evidence, decision and EARL export. It uses the existing bounded
 reference interpreter and computes outcomes from raw input, without reading
 conformance expectations. This internal component is neither an independent
-implementation nor a new normative version.
+implementation. Its bundle format remains version 1; assessment follows the
+[draft.7 normative migration](migration-draft.7.md).
 
 ### First bundle
 
@@ -213,10 +215,10 @@ outcomes are reproducible for identical input and code versions.
 A failure preserves NC despite missing rules. C requires every required rule and
 target, at least one pass, no fail or unknown. All-exempt atoms alone cannot
 establish whole-control NA. Omitted rules remain visible in `import.json` without
-invented execution assertions. Draft.6 decision policy is unchanged.
+invented execution assertions. Decision policy remains unchanged in draft.7.
 
 The [reference limits](conformance.md) still apply: no collection, JavaScript
 execution, engine observation or global conformity. Normative corpus expectations
-never replace computed outcomes. Tests convert all 197 raw inputs and verify
+never replace computed outcomes. Tests convert every raw corpus input and verify
 integrity, portability, mode constraints, unknowns, failures, non-overwrite and
 copy failures. These workflow checks are not a second normative interpretation.

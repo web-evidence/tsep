@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.6
+# Report contract — TSEP 0.1.0-draft.7
 
 ## Declared scope
 
@@ -140,13 +140,27 @@ is broader. A02 compares prior `expected_final_url` and `expected_body_sha256`:
 1. A different final URL is fail, even without a reference digest.
 2. At the same URL, an identical complete-body digest is pass.
 3. Otherwise, prior `representation: "stable"` makes any digest change fail.
-4. Otherwise, declared `required_markers` / `forbidden_markers` decide: every
-   required marker present and every forbidden marker absent gives pass; any
-   violation gives fail. Without valid, nonempty identity criteria: inconclusive.
+4. Otherwise, valid `required_markers` / `forbidden_markers` yield fail if a
+   required marker is missing or a forbidden marker appears. Pass requires
+   **at least one required marker**, all required markers present and all forbidden
+   markers absent. Forbidden-only markers all absent, or no valid criteria:
+   inconclusive.
 
 Reference URL/digest must be valid; incomplete/unattributable captures cannot be
 passed. Markers are unique, nonblank UTF-8 strings, matched literally and case
-sensitively in the decoded body (no normalization, regex or DOM extraction).
+sensitively in **extracted source text**, without regex:
+
+- HTML: textual segments with character references decoded; comments, `script`
+  and `style` content, tags and attributes excluded. Never concatenate segments
+  across a tag or comment to manufacture a marker.
+- `text/plain`: the entire decoded body, without interpreting apparent markup.
+- No whitespace or case normalization. Unresolved extraction or decoding cannot
+  establish a conclusive marker-based verdict.
+
+Extraction does not affect the complete-body SHA-256. It does not measure
+visibility: title and CSS-hidden text may count. CSS and JavaScript are not
+executed; unsupported reference contexts are documented in
+[conformance](conformance.md).
 Empty arrays establish nothing. A forbidden marker contained in a required marker
 makes the intent contradictory. Invalid markers or an unknown representation
 policy cannot resolve a changed digest. The ordered checks above apply: markers
@@ -155,7 +169,7 @@ Missing reference digest at the same URL stays inconclusive even with markers.
 The owner remains responsible for reference and marker relevance. A timestamp
 change alone is not an SEO failure. NT for blocking TS01 still yields NO_GO.
 TS07-A01/A02/A03 and TS10-A01/A03/A04 are semiAuto; TS10-A02 is manual.
-See [draft.6 migration](migration-draft.6.md) for mandatory reassessment.
+See [draft.7 migration](migration-draft.7.md) for mandatory reassessment.
 
 See [migration from draft.2](migration-draft.3.md) and [CLI workflow](cli.md).
 `add-evidence` and `record` validate before replacing the report, refresh its
@@ -212,12 +226,12 @@ summaries show the same cause. Neither the decision nor exit codes change.
 ## Versions and implementation claims
 
 Pin both version and protocol SHA-256. Cite IDs as
-`TSEP@0.1.0-draft.6:TS01`. Never silently replace a released artifact. Changes to
+`TSEP@0.1.0-draft.7:TS01`. Never silently replace a released artifact. Changes to
 applicability, expectations, required evidence or decisions require a new version
 and migration note. TS01–TS44 are permanent identities, not reusable slots.
 
 This candidate has one implementation of report validation. Passing its tests
 allows the narrow statement “passes the bundled report-interchange tests for
-0.1.0-draft.6.” It does not establish implementation of all 44 assessment methods.
+0.1.0-draft.7.” It does not establish implementation of all 44 assessment methods.
 An implementation must publish per-rule mapping and limitations before making a
 broader claim. No compatibility with a third-party tool has yet been demonstrated.
