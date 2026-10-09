@@ -1,114 +1,107 @@
-# Technical SEO Evidence Protocol — TSEP
+# TSEP — evidence interchange format
 
-**0.1.0-draft.2 · working draft · initiated by Edikka · [Français](README.fr.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.3 · initiated by Edikka · [Français](README.fr.md)**
 
-Make a technical SEO assessment inspectable: named controls, a declared scope,
-traceable evidence, explicit unknowns, and a result another practitioner can challenge.
-This package is usable independently of Edikka. It is not a certification, an
-established standard, a ranking score, or a guarantee of indexation.
+Share a technical SEO assessment that its recipient can inspect, replay and
+challenge: stable identifiers, explicit scope, evidence linked to findings and
+unknowns retained. The report distinguishes established findings from remaining checks.
 
-## Independent repository
+## Who it is for
 
-This is the autonomous development repository. See [development and integration boundaries](docs/development.md). Run the complete local verification with `python3 scripts/verify.py`. The import tag preserves the original candidate; later infrastructure work is a development snapshot until separately released.
+SEO and development teams preparing acceptance checks, clients reviewing audit
+evidence, and tool authors exporting observations in a common format without
+turning partial coverage into global conformity.
+
+## Actual output
+
+A `report.json`, evidence files with SHA-256, a decision restricted to declared
+controls/targets and an EARL JSON-LD companion. Controls use C, NC, NA or NT;
+atomic rules use pass, fail, not-applicable or inconclusive.
+
+**TS01–TS44 are the permanent identifiers inherited from grid 1.1.** TSEP has a
+separate version sequence; the original FR/EN sources and provenance remain intact.
+Nine rules specify TS01, TS07 and TS10. Four have a bounded interpreter over raw
+inputs: TS01-A01/A02 and TS07-A01/A02.
 
 ## Try it in two minutes
 
-Python 3.9+; standard library only. No account, API key, installation or network
-collection is needed for the demonstration. From this directory:
+Python 3.9+, standard library only; synthetic examples, no account or network
+collection. From the repository root:
 
 ```sh
-python3 examples/replay.py
 python3 tsep.py validate examples/pass/report.json
-python3 tsep.py gate examples/fail/report.json
+python3 tsep.py gate examples/pass/report.json --summary
+python3 tsep.py gate examples/fail/report.json --summary
+python3 conformance/run.py
 python3 tsep.py earl examples/partial/report.json
-python3 -m unittest discover -s tests -v
 ```
 
-The second command validates the report format and local evidence hashes. It does
-not independently validate the auditor's judgment. The failing gate returns exit
-code 1 on purpose. Examples are synthetic; they are not observations of Edikka or
-any other live site. The successful example covers **TS01 only on one URL**.
+The passing case displays `GO_WITH_RESERVATIONS`, `C=1` and **1 control out of 44,
+one target, synthetic evidence**. The failing case deliberately exits 1. Report
+validation establishes consistency and file integrity.
 
-Create a report without silently marking anything as passed:
+## Implement TSEP
 
-```sh
-python3 tsep.py init --profile TSEP-1 \
-  --target https://example.com/ \
-  --assessor 'Your team' --label 'Homepage sample' \
-  --selection-method 'One deliberately selected URL; no site-wide inference' > report.json
-```
+1. **Emit a report**: pin protocol version and hash, declare targets, selection and
+   tool. `init` starts at NT; `add-evidence` computes SHA-256 and records kind,
+   targets and date; `record` adds the reasoned control result and atomic observations.
+   See the [complete CLI workflow](docs/cli.md).
+2. **Declare partial coverage**: select a `custom` list, keep unknowns as
+   NT/inconclusive and link each artifact to its target. Selecting TS01/TS07 does
+   not satisfy a named profile. An isolated test cannot pass its parent control.
+3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
+   `python3 conformance/run.py --command 'python3 my_adapter.py'`. Declare the four
+   rules and bounds actually supported, not “44 automatic controls”.
+   [Input format and comparison](docs/conformance.md).
 
-Every selected control starts as `NT`. Add evidence files and record the assessment
-before validation. `--controls TS01,TS07` creates an explicitly custom selection;
-it cannot be combined with a named profile. The CLI does not fetch the target.
-
-## Read or implement the contract
-
-- [Report contract and decision rules](docs/contract.en.md)
-- [44 controls, generated from the bilingual source](docs/controls.en.md)
-- [Canonical source](spec/protocol.json) and [JSON Schema](schemas/report.schema.json)
-- [EARL mapping and ACT relationship](docs/interoperability.md)
-- [Governance, conflicts and contributions](GOVERNANCE.md)
-- [Contribution requirements](CONTRIBUTING.md), [change history](CHANGELOG.md)
-- [Acceptance-clause template, EN/FR](docs/acceptance-clause.md)
-- [Licensing and attribution](LICENSE.md)
-- [Bounded HTTP probe and its 48 historical regression cases](probes/README.md)
-
-TS01, TS07 and TS10 now have nine atomic rules with evidence requirements and
-synthetic FR/EN cases. Report format 2 requires coverage per target before C on
-these controls. See [migration from draft.1](docs/migration-draft.2.md) and
-[method cases](tests/fixtures/control-cases.json). Case verdicts are authored;
-tests verify aggregation, not an automatic SEO engine.
-
-The normative package is the versioned JSON, report contract and schema together.
-An inconsistency is a defect to report, not permission to select the easiest rule.
-The original Edikka grid 1.1 is preserved byte-for-byte in `upstream/` for provenance.
-It remains a separate historical publication. TSEP has its own version sequence.
+Automatic C requires every control rule `automatic`, complete coverage and
+`assessor.tool.name/version`. TS01-A01/A02 are automatic: final 200 and exact
+URL/body hash equality against prior intent. TS07-A01/A02 remain semiAuto.
+Defining an appropriate content reference remains a human responsibility.
 
 ## Evidence profiles
 
-| Draft profile | Controls | Evidence access |
+| Profile | Controls | Evidence type |
 | --- | ---: | --- |
-| TSEP-1 | 27 | Public observations plus a declared audit context |
-| TSEP-2 | 29 | TSEP-1 plus Google Search Console |
-| TSEP-3 | 44 | TSEP-2 plus logs, configuration, inventories and change/CI records |
+| TSEP-1 | 27 | Public observations and declared context |
+| TSEP-2 | 29 | TSEP-1 and the target engine’s webmaster tools; Google is the first normative series |
+| TSEP-3 | 44 | TSEP-2, logs, configuration, inventories, history and CI |
 
-These profiles describe access, not increasing quality or confidence. Public data
-does not imply complete automation. Declared context supplies expected behavior;
-it does not prove that behavior. The exact versioned ID lists are in `protocol.json`.
-Google-specific controls are not satisfied by a Bing report. Bing can supply
-additional evidence; this draft has no separate normative Bing control set.
+Profiles describe required evidence, not a quality level. `webmaster-tools`
+evidence declares its `engine`; another engine's evidence does not validate the
+Google series. Exact control lists are versioned in the JSON.
 
-## What the implementation proves
+## Status and path to 1.0
 
-The CLI checks report shape, scope consistency, evidence references, required input
-coverage, local SHA-256 hashes, and conservative gate decisions. The test suite
-checks this **report interchange implementation**, not 44 SEO test algorithms.
-It rejects unsupported claims and exposes unselected controls. It cannot prove
-that a screenshot is truthful or that a human judgment is sound. SHA-256 provides
-integrity, not identity, trusted time or authenticity.
+**Status: unpublished development candidate; local validation, no established independent review.**
 
-The human-assisted assessment methods are not yet backed by an independently
-reviewed per-control fixture suite. No external adopter, reviewer, maintainer,
-public repository or DOI is claimed. The working name has not undergone legal
-clearance. No metrics about llms.txt adoption underpin this design.
+| Stage | Success criterion before 1.0 |
+| --- | --- |
+| Stabilize methods | Applicability, evidence, limits and contradictory cases for every rule; verified FR/EN parity |
+| Establish interoperability | At least one external implementation passes a declared suite coverage; differences documented |
+| Organize review | Documented independent review and two identified independent co-maintainers under the governance rules |
+| Freeze a version | Normative disagreements resolved or explicitly excluded, migration documented, reproducible archives and observed CI on the announced matrix |
 
-## Reuse and cite
+These are goals, not achieved results or a publication schedule.
 
-Use the identifiers in tools and procurement: `TSEP@0.1.0-draft.2:TS07`. Preserve
-the version, actual evaluated scope, result and evidence reference. A crawler
-alert can map to part of a control without claiming the entire control passed.
+## Limits
 
-Suggested citation: *Edikka. Technical SEO Evidence Protocol (TSEP),
-0.1.0-draft.2, 2026-10-09. Working draft.* Include the release archive hash when
-sharing this unpublished candidate. No DOI should be invented.
+TSEP is a proposed format, not a certification or recognized standard. The validator
+checks declarations and hashes, not authenticity, appropriate intent or every
+assessment judgment. A hash does not establish authorship or actual collection
+time. Bundled cases are synthetic.
 
-Text/data are CC BY 4.0; original software is Apache-2.0. Attribution belongs in
-documentation or citation metadata; TSEP adds no promotional backlink condition.
+The interpreter covers four rules within a documented subset; unsupported inputs
+remain inconclusive. TS07-A03 and TS10 require further evidence and assessment.
+A partial check never produces global conformity. No result guarantees indexing,
+ranking or future engine behavior.
 
-To build a deterministic standalone archive outside this directory:
+[EN contract](docs/contract.en.md) · [44 controls](docs/controls.en.md) ·
+[Bilingual source](spec/protocol.json) · [Schema](schemas/report.schema.json) ·
+[Draft.3 migration](docs/migration-draft.3.md) · [EARL](docs/interoperability.md) ·
+[Governance](GOVERNANCE.md) · [Contribute](CONTRIBUTING.md) · [History](CHANGELOG.md) ·
+[Acceptance clause](docs/acceptance-clause.md) · [HTTP probe](probes/README.md).
 
-```sh
-python3 maintain.py check
-python3 maintain.py build --output /tmp/tsep-0.1.0-draft.2.zip
-```
+Cite `TSEP@0.1.0-draft.3:TS07` with scope, result, evidence and archive hash.
+Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATION.cff).
+[Development, full verification and independent repository](docs/development.md).

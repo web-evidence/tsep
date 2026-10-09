@@ -161,7 +161,7 @@ class Reports(unittest.TestCase):
         self.report = report
         self.rejected()
 
-    def test_no_automated_whole_control_pass_claim(self):
+    def test_automatic_c_requires_tool_declaration(self):
         self.report['assessor']['mode'] = 'automatic'
         self.rejected()
 

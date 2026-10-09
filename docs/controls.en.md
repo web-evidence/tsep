@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.2 — Controls
+# TSEP 0.1.0-draft.3 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -22,7 +22,7 @@ Draft / Version de travail. See / Voir [contract](contract.en.md).
 
 **Limits.** A test from one IP does not prove the response received by Googlebot.
 
-C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
+C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability. TSEP note: the criterion is a final 200; the permanent title inherited from grid 1.1 is broader.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
@@ -30,9 +30,11 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.2:TS01-A01`
+`TSEP@0.1.0-draft.3:TS01-A01`
 
 **Required inputs**: http, intent.
+
+**Automation / Automatisation**: `automatic`.
 
 **Applicability.** Each public page designated canonical, in the declared request context.
 
@@ -52,25 +54,27 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.2:TS01-A02`
+`TSEP@0.1.0-draft.3:TS01-A02`
 
 **Required inputs**: http, intent.
 
+**Automation / Automatisation**: `automatic`.
+
 **Applicability.** Each final response whose content can be compared to intent.
 
-**Method.** Compare final URL and retained body with declared content criteria; look for a login, challenge or error page replacing expected content.
+**Method.** Compare the final URL and SHA-256 of the complete body bytes exactly against expected_final_url and expected_body_sha256 fixed in intent before measurement. No implicit parameter removal or body normalization.
 
-**Acceptance.** The response matches the declared resource and destination. A 200 delivering different content is fail even if A01 passes.
+**Acceptance.** Both values match exactly. A different URL or digest is fail even if A01 passes. The HTTP status does not replace comparison.
 
-**Evidence.** Response body archived with the HTTP trace, declared identity criterion and reasoned comparison; redactions documented.
+**Evidence.** HTTP trace and complete body, dated intent with expected URL and digest, computed values and tool/version. Hash the body after transfer and content decoding, before any other transformation.
 
-**Assumptions.** The criterion distinguishes the expected resource from an intermediate screen; content review is manual or assisted.
+**Assumptions.** The owner fixes a reference representation before collection; its business relevance remains their responsibility. Comparison is automatic; defining intent is not.
 
-**Inconclusive.** Missing/truncated body, missing intent or ambiguous identity: inconclusive. Do not infer resource identity from 200 alone.
+**Inconclusive.** Missing/truncated body, unknown decoding, missing reference URL or digest, intent not fixed before measurement: inconclusive. A 200 status alone is insufficient.
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** No engine soft-404 classification, indexing claim or assessment of every route.
+**Limits.** A dynamic representation needs an exact reference in the tested context; no similarity heuristic. A wrong reference may validate wrong content. No engine soft-404 classification, indexing claim or assessment of every route.
 
 ## TS02 — Redirects are intentional, direct and loop-free.
 
@@ -212,15 +216,17 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
-**Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
+**Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal. Sources checked on 2026-10-09; dated capture fingerprints recorded in docs/source-observations.md.
 
-**References**: [https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag); [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+**References**: [https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag); [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics); [https://developers.google.com/search/docs/crawling-indexing/block-indexing](https://developers.google.com/search/docs/crawling-indexing/block-indexing); [https://www.rfc-editor.org/rfc/rfc9309](https://www.rfc-editor.org/rfc/rfc9309)
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.2:TS07-A01`
+`TSEP@0.1.0-draft.3:TS07-A01`
 
 **Required inputs**: http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
 
 **Applicability.** Each document with a declared indexing objective, for an explicitly named crawler and context.
 
@@ -236,13 +242,15 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** Assesses observed declarations, not ingestion or actual indexing. A01 alone does not cover access or rendering.
+**Limits.** Assesses observed declarations, not ingestion or actual indexing. A01 alone does not cover access or rendering. Automation is semiAuto: the bounded interpreter does not cover every syntax, crawler or context; unsupported inputs remain inconclusive and require review.
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.2:TS07-A02`
+`TSEP@0.1.0-draft.3:TS07-A02`
 
 **Required inputs**: http, robots, intent.
+
+**Automation / Automatisation**: `semiAuto`.
 
 **Applicability.** Every resource for which directive effects are assessed.
 
@@ -258,13 +266,15 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** No evidence of an actual engine visit; TS04 and other access controls are not globally validated.
+**Limits.** No evidence of an actual engine visit; TS04 and other access controls are not globally validated. Automation is semiAuto: the bounded interpreter does not cover every syntax, crawler or context; unsupported inputs remain inconclusive and require review.
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.2:TS07-A03`
+`TSEP@0.1.0-draft.3:TS07-A03`
 
 **Required inputs**: render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
 
 **Atomic exemption inputs**: intent, http, html.
 
@@ -358,9 +368,11 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.2:TS10-A01`
+`TSEP@0.1.0-draft.3:TS10-A01`
 
 **Required inputs**: http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
 
 **Applicability.** Each family member and its declared canonicalization strategy.
 
@@ -380,9 +392,11 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.2:TS10-A02`
+`TSEP@0.1.0-draft.3:TS10-A02`
 
 **Required inputs**: http, html, intent.
+
+**Automation / Automatisation**: `manual`.
 
 **Applicability.** Every preferred destination in declared families.
 
@@ -402,9 +416,11 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.2:TS10-A03`
+`TSEP@0.1.0-draft.3:TS10-A03`
 
 **Required inputs**: sitemap, intent.
+
+**Automation / Automatisation**: `semiAuto`.
 
 **Atomic exemption inputs**: intent, sitemap.
 
@@ -426,9 +442,11 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.2:TS10-A04`
+`TSEP@0.1.0-draft.3:TS10-A04`
 
 **Required inputs**: crawl, intent.
+
+**Automation / Automatisation**: `semiAuto`.
 
 **Applicability.** Each family and declared source-page population.
 

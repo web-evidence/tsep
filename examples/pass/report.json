@@ -2,8 +2,8 @@
   "format_version": "2",
   "protocol": {
     "name": "TSEP",
-    "version": "0.1.0-draft.2",
-    "sha256": "2c221516b3e3c4894c2667dc871adb3e85b370186e00247215c7c042ab1163fd"
+    "version": "0.1.0-draft.3",
+    "sha256": "17ce3b4bb1816f9f0bce90b96c1b75bfecbe9645483fae7634594cf9cef250ea"
   },
   "issued_at": "2026-10-09T10:00:00Z",
   "assessor": {
@@ -29,7 +29,7 @@
     {
       "id": "intent",
       "path": "intent.txt",
-      "sha256": "efd2c5da39c0daeeb0a65749561c6a370dd98e313062ba9cf36e3cb49e395cfd",
+      "sha256": "0f5bc86c39062b0d5d7bbad2293e4fd79656fa0ef3b28c7d8e5fce44cf8c9c48",
       "kind": "intent",
       "observed_at": "2026-10-09T10:00:00Z",
       "targets": [

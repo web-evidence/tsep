@@ -1,0 +1,3034 @@
+{
+  "protocol_version": "0.1.0-draft.3",
+  "synthetic": true,
+  "expected_origin": "Authored independently of the interpreter; raw fixtures are not live observations.",
+  "cases": [
+    {
+      "id": "complete-reference",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "final-404",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "truncated-capture",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": false,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "wrong-representation-200",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Login</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "missing-reference",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "unexpected-noindex",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: noindex\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "unknown-directive",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: unknown-directive\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "explicit-disallow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow: /\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "missing-robots",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "redirect-header-not-final",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/destination",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 302 Synthetic\r\nLocation: /destination\r\nX-Robots-Tag: noindex\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/destination",
+                "complete": true,
+                "request": "GET /destination HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "unfinished-chain",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 302 Synthetic\r\nLocation: /destination\r\n\r\n"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "unrecorded-hop",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 302 Synthetic\r\nLocation: /missing\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/destination",
+                "complete": true,
+                "request": "GET /destination HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "head-only",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "HEAD /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "304-without-body",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 304 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "204-is-not-200",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 204 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "duplicates-restrictive-none",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "exclude",
+              "following": "disallow",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: index\r\nX-Robots-Tag: Googlebot: NONE\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "otherbot-and-preview-not-noindex",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: otherbot: noindex\r\nX-Robots-Tag: nofollow, max-snippet: 0\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "meta-noindex",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta name=\"ROBOTS\" content=\"noindex\"><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "ambiguous-meta",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta name=\"robots\" name=\"otherbot\" content=\"noindex\"><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "script-text-not-meta",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><script>\"<meta name=robots content=noindex>\"</script><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "unterminated-script",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><script><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "embedding-context-unsupported",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: noindex, indexifembedded\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "intent-after-capture",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T11:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "robots-specific-merged-tie-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow: /\nUser-agent: Googlebot\nDisallow: /page\nUser-agent: googlebot\nAllow: /page\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "robots-longest-match",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nAllow: /\nDisallow: /page\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "unsupported-robots-wildcard",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow: /*?\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "robots-unavailable",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 503 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "truncated-body-length",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 9999\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "unresolved-access-review",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "unresolved-challenge",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "access-denied",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 403 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "two-targets-must-stay-distinct",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          },
+          {
+            "url": "https://example.com/other",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/other",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/other",
+                "complete": true,
+                "request": "GET /other HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/other",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/other",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/other",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/other",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "informational-without-final",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 103 Early Hints\r\nLink: </a>\r\n\r\n"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "wrong-expected-url",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/another",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "invalid-reference-url",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "not a URL",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "unsupported-presentation-objective",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only",
+              "presentation": {
+                "max_snippet": 0
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "robots-wrong-origin",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://other.example/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "access-review-before-capture",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A01",
+          "TS01-A02",
+          "TS07-A01",
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T08:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    }
+  ]
+}

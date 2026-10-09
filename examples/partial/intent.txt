@@ -1,3 +1,5 @@
 Synthetic case: this public canonical page is expected to return the declared content with final HTTP 200.
-Expected final URL: https://example.com/page; content identity: Expected page content / Contenu attendu.
+Intent fixed at 2026-10-09T09:00:00Z; expected_final_url: https://example.com/page.
+expected_body_sha256: f09a98e40d0af123e64a4c2a2b5856df7ba13da24f664f76a4ed59570831b55b
+Hash of complete UTF-8 body after the header boundary, including final LF; no transfer/content encoding.
 Cas fictif : cette page publique canonique doit retourner ce contenu à cette URL finale en HTTP 200.

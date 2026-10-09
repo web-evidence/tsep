@@ -17,6 +17,7 @@
       "dct:title": "Synthetic fixture author / Auteur des cas fictifs"
     },
     {
+      "@id": "_:control_TS01",
       "@type": "earl:Assertion",
       "earl:assertedBy": {
         "@id": "_:assertor"
@@ -25,7 +26,7 @@
         "@id": "_:scope"
       },
       "earl:test": {
-        "@id": "urn:tsep:0.1.0-draft.2:TS01",
+        "@id": "urn:tsep:0.1.0-draft.3:TS01",
         "@type": "earl:TestCriterion"
       },
       "earl:mode": {
@@ -41,6 +42,68 @@
           "@type": "xsd:dateTime"
         },
         "earl:info": "Declared synthetic target returns expected content with final 200; no inference beyond TS01 / Cible fictive et contenu attendus en 200 final, TS01 seulement.\nEvidence: intent, http"
+      }
+    },
+    {
+      "@id": "_:control_TS01_atomic_0",
+      "@type": "earl:Assertion",
+      "dct:isPartOf": {
+        "@id": "_:control_TS01"
+      },
+      "earl:assertedBy": {
+        "@id": "_:assertor"
+      },
+      "earl:subject": {
+        "@id": "https://example.com/page"
+      },
+      "earl:test": {
+        "@id": "urn:tsep:0.1.0-draft.3:TS01-A01",
+        "@type": "earl:TestCriterion"
+      },
+      "earl:mode": {
+        "@id": "earl:manual"
+      },
+      "earl:result": {
+        "@type": "earl:TestResult",
+        "earl:outcome": {
+          "@id": "earl:passed"
+        },
+        "dct:date": {
+          "@value": "2026-10-09T10:00:00Z",
+          "@type": "xsd:dateTime"
+        },
+        "earl:info": "Declared synthetic target returns expected content with final 200; no inference beyond TS01 / Cible fictive et contenu attendus en 200 final, TS01 seulement.\nEvidence: intent, http"
+      }
+    },
+    {
+      "@id": "_:control_TS01_atomic_1",
+      "@type": "earl:Assertion",
+      "dct:isPartOf": {
+        "@id": "_:control_TS01"
+      },
+      "earl:assertedBy": {
+        "@id": "_:assertor"
+      },
+      "earl:subject": {
+        "@id": "https://example.com/page"
+      },
+      "earl:test": {
+        "@id": "urn:tsep:0.1.0-draft.3:TS01-A02",
+        "@type": "earl:TestCriterion"
+      },
+      "earl:mode": {
+        "@id": "earl:manual"
+      },
+      "earl:result": {
+        "@type": "earl:TestResult",
+        "earl:outcome": {
+          "@id": "earl:passed"
+        },
+        "dct:date": {
+          "@value": "2026-10-09T10:00:00Z",
+          "@type": "xsd:dateTime"
+        },
+        "earl:info": "Declared synthetic target returns expected content with final 200; no inference beyond TS01 / Cible fictive et contenu attendus en 200 final, TS01 seulement.\nEvidence: http, intent"
       }
     }
   ]

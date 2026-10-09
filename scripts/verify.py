@@ -46,6 +46,7 @@ def main():
             run([python, 'maintain.py', 'check'], ROOT, environment, 'contract and distribution inventory', checks)
             run([python, '-m', 'unittest', 'discover', '-s', 'tests', '-v'], ROOT,
                 environment, 'report and distribution tests', checks)
+            run([python, 'conformance/run.py'], ROOT, environment, 'raw-input conformance', checks)
             run([python, 'examples/replay.py', '--output-dir', str(temp/'examples')], ROOT,
                 environment, 'synthetic examples outside source tree', checks)
             for case in ('pass', 'fail', 'partial'):
@@ -68,6 +69,7 @@ def main():
                 environment, 'extracted CLI', checks)
             run([python, '-m', 'unittest', 'discover', '-s', 'tests', '-v'], extracted,
                 environment, 'extracted report and atomic-rule cases', checks)
+            run([python, 'conformance/run.py'], extracted, environment, 'extracted raw-input conformance', checks)
             run([python, 'maintain.py', 'build', '--output', str(temp/'second.zip')], extracted,
                 environment, 'rebuild from extracted archive', checks)
             report['archive_sha256'] = tsep.digest(temp/'first.zip')

@@ -35,7 +35,7 @@ For example, this probe expects one HTML canonical; the protocol can assess othe
 documented strategies. A successful historical case suite is regression evidence
 for this bounded example, not a declaration that all robots/header syntax is covered.
 
-In draft.2, observations can contribute to TS01-A01/A02, TS07-A01 or TS10-A01,
+In draft.3, observations can contribute to TS01-A01/A02, TS07-A01 or TS10-A01,
 after human review of scope, raw evidence and applicability. The probe does not
 emit `atomic_results` or fill missing rule/target pairs. The separate
 `tests/fixtures/control-cases.json` corpus supplies authored method judgments;
@@ -54,7 +54,12 @@ l’applicabilité et le comportement réellement attendu. Conserver séparémen
 réponses brutes et les conditions pour en faire des preuves. Cette suite historique
 de non-régression n’est pas la future suite de conformité des 44 contrôles.
 
-En draft.2, les observations peuvent contribuer à TS01-A01/A02, TS07-A01 ou
+En draft.3, les observations peuvent contribuer à TS01-A01/A02, TS07-A01 ou
 TS10-A01 après revue humaine des preuves et du contexte. La sonde ne produit pas
 `atomic_results` et ne remplit aucune règle manquante. Le corpus de cas de méthode
 séparé contient des jugements rédigés ; il n’étend pas la couverture du parseur.
+
+The probe does not compute TS01-A02’s expected body hash. Use the separate
+[raw-input conformance interpreter](../docs/conformance.md) for that comparison.
+La sonde ne calcule pas l’empreinte de corps attendue de TS01-A02 ; cette comparaison
+relève de l’interpréteur de conformance distinct.

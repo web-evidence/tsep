@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:tsep:report-schema:0.1.0-draft.2",
+  "$id": "urn:tsep:report-schema:0.1.0-draft.3",
   "title": "TSEP scoped assessment report (draft)",
   "type": "object",
   "properties": {
@@ -14,7 +14,7 @@
           "const": "TSEP"
         },
         "version": {
-          "const": "0.1.0-draft.2"
+          "const": "0.1.0-draft.3"
         },
         "sha256": {
           "type": "string",
@@ -47,6 +47,24 @@
             "semiAuto",
             "automatic"
           ]
+        },
+        "tool": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "version": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "name",
+            "version"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
@@ -198,7 +216,8 @@
               "sitemap",
               "structured-data",
               "tls",
-              "validator-output"
+              "validator-output",
+              "webmaster-tools"
             ]
           },
           "observed_at": {
@@ -224,6 +243,10 @@
               "restricted",
               "synthetic"
             ]
+          },
+          "engine": {
+            "type": "string",
+            "minLength": 1
           }
         },
         "required": [

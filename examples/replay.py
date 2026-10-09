@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generate deterministic synthetic reports, never collect a live site. Apache-2.0."""
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -36,7 +37,9 @@ def generate(output_root=ROOT):
         report['scope']['exclusions'] = ['All other controls and every live site / Autres contrôles et sites réels']
         report['artifacts'] = [fixture(folder, 'intent.txt', 'intent',
             'Synthetic case: this public canonical page is expected to return the declared content with final HTTP 200.\n'
-            'Expected final URL: https://example.com/page; content identity: Expected page content / Contenu attendu.\n'
+            'Intent fixed at 2026-10-09T09:00:00Z; expected_final_url: https://example.com/page.\n'
+            'expected_body_sha256: ' + hashlib.sha256(b'Expected page content / Contenu attendu\n').hexdigest() + '\n'
+            'Hash of complete UTF-8 body after the header boundary, including final LF; no transfer/content encoding.\n'
             'Cas fictif : cette page publique canonique doit retourner ce contenu à cette URL finale en HTTP 200.\n')]
         if http_status:
             report['artifacts'].append(fixture(folder, 'http.txt', 'http',

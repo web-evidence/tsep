@@ -70,7 +70,8 @@ def rendered(protocol, language):
         for rule in control.get('rules', []):
             lines += ['### ' + rule['id'] + ' — ' + rule['title'][language], '',
                       '`TSEP@' + control['rule_version'] + ':' + rule['id'] + '`', '',
-                      '**' + labels[7] + '**: ' + ', '.join(rule['required_inputs']) + '.', '']
+                      '**' + labels[7] + '**: ' + ', '.join(rule['required_inputs']) + '.', '',
+                      '**Automation / Automatisation**: `' + rule['automation'] + '`.', '']
             if rule['na_inputs']:
                 label = 'Entrées pour exemption atomique' if language == 'fr' else 'Atomic exemption inputs'
                 lines += ['**' + label + '**: ' + ', '.join(rule['na_inputs']) + '.', '']
@@ -109,6 +110,8 @@ def check():
             tsep.unique([r['id'] for r in control['rules']], 'atomic rule')
             for n, rule in enumerate(control['rules'], 1):
                 tsep.require(rule['id'] == control['id'] + '-A%02d' % n, 'Unstable atomic ID')
+                tsep.require(rule.get('automation') in ('automatic', 'semiAuto', 'manual'),
+                             'Missing or invalid atomic automation: ' + rule['id'])
                 for field in ('title', 'applicability', 'procedure', 'acceptance', 'evidence',
                               'assumptions', 'inconclusive', 'non_applicability', 'limitations'):
                     tsep.require(set(rule[field]) == {'fr', 'en'} and

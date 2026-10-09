@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.2",
+  "version": "0.1.0-draft.3",
   "status": "draft",
   "date": "2026-10-09",
   "languages": [
@@ -69,7 +69,7 @@
         "fr": "Un test depuis une IP ne prouve pas la réponse reçue par Googlebot.",
         "en": "A test from one IP does not prove the response received by Googlebot."
       },
-      "assessment": "manual-or-tool-assisted",
+      "assessment": "automatic-with-declared-intent",
       "legacy_access": {
         "fr": "Public",
         "en": "Public"
@@ -82,8 +82,8 @@
         "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
       },
       "acceptance_note": {
-        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
-        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité. Note TSEP : le critère est un 200 final ; le titre permanent hérité de la grille 1.1 est plus large.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability. TSEP note: the criterion is a final 200; the permanent title inherited from grid 1.1 is broader."
       },
       "rules": [
         {
@@ -128,7 +128,8 @@
           "non_applicability": {
             "fr": "Aucune exemption atomique quand le contrôle s’applique.",
             "en": "No atomic exemption when the control applies."
-          }
+          },
+          "automation": "automatic"
         },
         {
           "id": "TS01-A02",
@@ -145,37 +146,38 @@
             "en": "Each final response whose content can be compared to intent."
           },
           "procedure": {
-            "fr": "Comparer URL finale et corps conservé aux critères de contenu déclarés ; chercher page de connexion, challenge ou erreur à la place du contenu attendu.",
-            "en": "Compare final URL and retained body with declared content criteria; look for a login, challenge or error page replacing expected content."
+            "fr": "Comparer exactement l’URL finale et le SHA-256 des octets du corps complet aux valeurs expected_final_url et expected_body_sha256 fixées dans intent avant la mesure. Aucun retrait implicite de paramètres ni normalisation du corps.",
+            "en": "Compare the final URL and SHA-256 of the complete body bytes exactly against expected_final_url and expected_body_sha256 fixed in intent before measurement. No implicit parameter removal or body normalization."
           },
           "acceptance": {
-            "fr": "La réponse correspond à la ressource et à la destination déclarées. Un 200 livrant un autre contenu est fail, même si A01 réussit.",
-            "en": "The response matches the declared resource and destination. A 200 delivering different content is fail even if A01 passes."
+            "fr": "Les deux valeurs correspondent exactement. Une URL ou une empreinte différente est fail même si A01 réussit. Le code HTTP ne remplace pas la comparaison.",
+            "en": "Both values match exactly. A different URL or digest is fail even if A01 passes. The HTTP status does not replace comparison."
           },
           "evidence": {
-            "fr": "Corps de réponse archivé avec la trace HTTP, critère d’identité déclaré et comparaison motivée ; occultations documentées.",
-            "en": "Response body archived with the HTTP trace, declared identity criterion and reasoned comparison; redactions documented."
+            "fr": "Trace HTTP et corps complet, intention datée avec URL et empreinte attendues, valeurs calculées et outil/version. L’empreinte porte sur le corps après décodage de transfert et de contenu, avant toute autre transformation.",
+            "en": "HTTP trace and complete body, dated intent with expected URL and digest, computed values and tool/version. Hash the body after transfer and content decoding, before any other transformation."
           },
           "assumptions": {
-            "fr": "Le critère distingue la ressource attendue d’un écran intermédiaire ; la revue du contenu est humaine ou assistée.",
-            "en": "The criterion distinguishes the expected resource from an intermediate screen; content review is manual or assisted."
+            "fr": "Le responsable fixe une représentation de référence avant la collecte ; sa pertinence métier reste sa responsabilité. La comparaison est automatique, la définition de l’intention ne l’est pas.",
+            "en": "The owner fixes a reference representation before collection; its business relevance remains their responsibility. Comparison is automatic; defining intent is not."
           },
           "inconclusive": {
-            "fr": "Corps absent/tronqué, intention absente ou identité ambiguë : inconclusive. Ne pas déduire la ressource d’un seul code 200.",
-            "en": "Missing/truncated body, missing intent or ambiguous identity: inconclusive. Do not infer resource identity from 200 alone."
+            "fr": "Corps absent/tronqué, décodage inconnu, URL ou empreinte de référence absente, intention non fixée avant la mesure : inconclusive. Un seul code 200 ne suffit pas.",
+            "en": "Missing/truncated body, unknown decoding, missing reference URL or digest, intent not fixed before measurement: inconclusive. A 200 status alone is insufficient."
           },
           "limitations": {
-            "fr": "Pas de classification soft 404 du moteur, d’indexation ni de contrôle de toutes les routes.",
-            "en": "No engine soft-404 classification, indexing claim or assessment of every route."
+            "fr": "Une représentation dynamique doit avoir une référence exacte dans le contexte testé ; aucune heuristique de similarité. Une mauvaise référence peut valider un mauvais contenu. Ni classification soft 404 du moteur ni indexation ni contrôle de toutes les routes.",
+            "en": "A dynamic representation needs an exact reference in the tested context; no similarity heuristic. A wrong reference may validate wrong content. No engine soft-404 classification, indexing claim or assessment of every route."
           },
           "na_inputs": [],
           "non_applicability": {
             "fr": "Aucune exemption atomique quand le contrôle s’applique.",
             "en": "No atomic exemption when the control applies."
-          }
+          },
+          "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.2"
+      "rule_version": "0.1.0-draft.3"
     },
     {
       "id": "TS02",
@@ -514,11 +516,13 @@
       },
       "references": [
         "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
-        "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
+        "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+        "https://developers.google.com/search/docs/crawling-indexing/block-indexing",
+        "https://www.rfc-editor.org/rfc/rfc9309"
       ],
       "source_scope": {
-        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
-        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale. Sources consultées le 2026-10-09 ; captures datées et empreintes consignées dans docs/source-observations.md.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal. Sources checked on 2026-10-09; dated capture fingerprints recorded in docs/source-observations.md."
       },
       "acceptance_note": {
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
@@ -561,14 +565,15 @@
             "en": "Missing objective, unknown syntax/scope, partial capture or missing context: inconclusive. A documented ignored directive is recorded, not automatically treated as an error."
           },
           "limitations": {
-            "fr": "Évalue les déclarations observées, pas leur ingestion ni l’indexation réelle. A01 seul ne couvre pas l’accès ou le rendu.",
-            "en": "Assesses observed declarations, not ingestion or actual indexing. A01 alone does not cover access or rendering."
+            "fr": "Évalue les déclarations observées, pas leur ingestion ni l’indexation réelle. A01 seul ne couvre pas l’accès ou le rendu. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue.",
+            "en": "Assesses observed declarations, not ingestion or actual indexing. A01 alone does not cover access or rendering. Automation is semiAuto: the bounded interpreter does not cover every syntax, crawler or context; unsupported inputs remain inconclusive and require review."
           },
           "na_inputs": [],
           "non_applicability": {
             "fr": "Aucune exemption atomique quand le contrôle s’applique.",
             "en": "No atomic exemption when the control applies."
-          }
+          },
+          "automation": "semiAuto"
         },
         {
           "id": "TS07-A02",
@@ -606,14 +611,15 @@
             "en": "Unavailable or ambiguous policy, unresolved challenge, missing capture: inconclusive, never NA for missing access."
           },
           "limitations": {
-            "fr": "Aucune preuve de visite réelle du moteur ; TS04 et les autres contrôles d’accès ne sont pas globalement validés.",
-            "en": "No evidence of an actual engine visit; TS04 and other access controls are not globally validated."
+            "fr": "Aucune preuve de visite réelle du moteur ; TS04 et les autres contrôles d’accès ne sont pas globalement validés. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue.",
+            "en": "No evidence of an actual engine visit; TS04 and other access controls are not globally validated. Automation is semiAuto: the bounded interpreter does not cover every syntax, crawler or context; unsupported inputs remain inconclusive and require review."
           },
           "na_inputs": [],
           "non_applicability": {
             "fr": "Aucune exemption atomique quand le contrôle s’applique.",
             "en": "No atomic exemption when the control applies."
-          }
+          },
+          "automation": "semiAuto"
         },
         {
           "id": "TS07-A03",
@@ -661,10 +667,11 @@
           "non_applicability": {
             "fr": "Non-HTML ou stabilité des directives démontrée par revue documentée ; la preuve intent référence cette justification et ses pièces. Aucune simple affirmation « pas de JS ».",
             "en": "Non-HTML or directive stability demonstrated by documented review; intent evidence references this justification and supporting records. No unsupported “no JS” assertion."
-          }
+          },
+          "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.2"
+      "rule_version": "0.1.0-draft.3"
     },
     {
       "id": "TS08",
@@ -884,7 +891,8 @@
           "non_applicability": {
             "fr": "Aucune exemption atomique quand le contrôle s’applique.",
             "en": "No atomic exemption when the control applies."
-          }
+          },
+          "automation": "semiAuto"
         },
         {
           "id": "TS10-A02",
@@ -929,7 +937,8 @@
           "non_applicability": {
             "fr": "Aucune exemption atomique quand le contrôle s’applique.",
             "en": "No atomic exemption when the control applies."
-          }
+          },
+          "automation": "manual"
         },
         {
           "id": "TS10-A03",
@@ -976,7 +985,8 @@
           "non_applicability": {
             "fr": "Aucun sitemap utilisé pour cette famille, établi par stratégie et inventaire documentés. Conserver un record sitemap expliquant cette absence ; pas de NA de tout TS10.",
             "en": "No sitemap used for this family, established by documented strategy and inventory. Retain a sitemap record explaining absence; no whole-TS10 NA."
-          }
+          },
+          "automation": "semiAuto"
         },
         {
           "id": "TS10-A04",
@@ -1020,10 +1030,11 @@
           "non_applicability": {
             "fr": "Aucune exemption atomique quand le contrôle s’applique.",
             "en": "No atomic exemption when the control applies."
-          }
+          },
+          "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.2"
+      "rule_version": "0.1.0-draft.3"
     },
     {
       "id": "TS11",
@@ -3081,8 +3092,13 @@
       "capabilities": [
         "public",
         "declared-context",
-        "search-console"
-      ]
+        "webmaster-tools"
+      ],
+      "definition": {
+        "fr": "Preuves publiques et preuves issues des outils webmaster du moteur visé. Google constitue la première série normative (TS08 et TS12) ; aucune équivalence avec un autre moteur n’est implicite.",
+        "en": "Public evidence and evidence from the target engine’s webmaster tools. Google is the first normative series (TS08 and TS12); no equivalence with another engine is implicit."
+      },
+      "normative_engine": "google"
     },
     {
       "id": "TSEP-3",
@@ -3135,7 +3151,7 @@
       "capabilities": [
         "public",
         "declared-context",
-        "search-console",
+        "webmaster-tools",
         "logs",
         "configuration",
         "inventory",
@@ -3151,15 +3167,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "fdd37f3f536bebfb87926eaf524c5fcfc8e2761e0c39ebe55860317f5d1cf117"
+      "sha256": "cd34cd92fa9625ed601831766fa4b19ca50cd83af4371d814489c23a7893a646"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "3e6bceebc7f28db6b756620a50e116c69d92cfe968787b9541e47bbb1ba0db1b"
+      "sha256": "c7ca3b9c0b807a719792d484bf42765f561a00a4b3e9b56c725d00dbd1c6a76a"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "6ebddcc6b9b2b6c4a741333c1fd2d87f70b0bdb33edb2e9afac8c27cb33b123b"
+      "sha256": "59cb649d903618a2826267c4767dcf017cec0623c03b29d7cd930c93a7a2b225"
     }
   ]
 }

@@ -9,9 +9,11 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path, PurePosixPath
 import re
 import sys
+import tempfile
 
 ROOT = Path(__file__).resolve().parent
 PROTOCOL_PATH = ROOT / 'spec/protocol.json'
@@ -112,6 +114,13 @@ def evidence_path(root, relative):
     return full
 
 
+def input_kinds(artifact):
+    kinds = {artifact['kind']}
+    if artifact['kind'] == 'webmaster-tools' and artifact.get('engine') == 'google':
+        kinds.add('search-console')  # First normative engine series only.
+    return kinds
+
+
 def validate_atomic_results(result, control, targets, artifacts):
     """Check declared rule evidence/coverage; never infer SEO truth from a capture."""
     rules = {r['id']: r for r in control.get('rules', [])}
@@ -135,7 +144,7 @@ def validate_atomic_results(result, control, targets, artifacts):
             key = 'required_inputs' if outcome == 'pass' else 'na_inputs'
             needed = rules[rid][key]
             require(needed, 'Atomic exemption is not allowed: ' + rid)
-            require(set(needed) <= {artifacts[ref]['kind'] for ref in refs},
+            require(set(needed) <= set().union(*(input_kinds(artifacts[ref]) for ref in refs)),
                     'Missing atomic input coverage: ' + rid)
         by_pair[(rid, target)] = outcome
     if not rules:
@@ -190,7 +199,11 @@ def validate(report, evidence_root):
         require(set(artifact['targets']) <= targets, 'Artifact target outside scope')
         require(timestamp(artifact['observed_at']) <= issued,
                 'Evidence observed after report was issued')
-        allowed_private = {'intent'} if report['profile'] == 'TSEP-1' else {'intent', 'search-console'}
+        if artifact['kind'] == 'webmaster-tools':
+            require(artifact.get('engine', '').strip(), 'Webmaster evidence requires its engine')
+        if artifact['kind'] == 'search-console':
+            require(artifact.get('engine', 'google') == 'google', 'Search Console evidence is Google-specific')
+        allowed_private = {'intent'} if report['profile'] == 'TSEP-1' else {'intent', 'search-console', 'webmaster-tools'}
         if report['profile'] in ('TSEP-1', 'TSEP-2') and artifact['kind'] not in allowed_private:
             require(artifact['access'] == 'public', 'Profile requires public evidence: ' + artifact['id'])
         path = evidence_path(evidence_root, artifact['path'])
@@ -218,11 +231,14 @@ def validate(report, evidence_root):
             if status in ('C', 'NA'):
                 require(evaluated == targets, 'C/NA must cover all declared targets: ' + cid)
             if status == 'C':
-                require(report['assessor']['mode'] != 'automatic',
-                        'This draft has no fully automated control implementation: ' + cid)
+                if report['assessor']['mode'] == 'automatic':
+                    rules = controls[cid].get('rules', [])
+                    require(rules and all(r['automation'] == 'automatic' for r in rules),
+                            'Automatic C requires every control rule to be automatic: ' + cid)
+                    require('tool' in report['assessor'], 'Automatic C requires tool name and version')
                 for kind in controls[cid]['required_inputs']:
                     kind_targets = set().union(*(set(artifacts[x]['targets']) for x in refs
-                                                if artifacts[x]['kind'] == kind))
+                                                if kind in input_kinds(artifacts[x])))
                     require(targets <= kind_targets, 'Missing input coverage ' + kind + ': ' + cid)
         validate_atomic_results(result, controls[cid], targets, artifacts)
     return decision(report, controls)
@@ -254,7 +270,8 @@ def decision(report, controls=None):
                               'consistency and file integrity, not the truth of an assessment.'}
 
 
-def initialize(targets, selected, profile, assessor, label, selection_method):
+def initialize(targets, selected, profile, assessor, label, selection_method,
+               mode='manual', tool=None):
     protocol = read_json(PROTOCOL_PATH)
     profiles = {p['id']: p for p in read_json(PROTOCOL_PATH)['profiles']}
     if profile != 'custom':
@@ -266,7 +283,7 @@ def initialize(targets, selected, profile, assessor, label, selection_method):
     unique(targets, 'target')
     return {'format_version': '2', 'protocol': {'name': 'TSEP', 'version': protocol['version'],
             'sha256': digest(PROTOCOL_PATH)}, 'issued_at': datetime.now(timezone.utc).isoformat(),
-            'assessor': {'name': assessor, 'mode': 'manual'},
+            'assessor': dict(name=assessor, mode=mode, **({'tool': tool} if tool else {})),
             'scope': {'label': label, 'targets': targets, 'selection_method': selection_method,
                       'exclusions': []}, 'profile': profile, 'controls': selected,
             'claim': 'scoped-assessment', 'artifacts': [],
@@ -277,7 +294,7 @@ def initialize(targets, selected, profile, assessor, label, selection_method):
 
 
 def earl(report, summary):
-    """Export an embedded-context JSON-LD assertion per control about the whole scope."""
+    """Export scoped controls plus each atomic observation about its own target."""
     mapping = {'C': 'passed', 'NC': 'failed', 'NA': 'inapplicable'}
     subject = {'@id': '_:scope', '@type': 'earl:TestSubject',
                'dct:title': report['scope']['label'],
@@ -287,7 +304,8 @@ def earl(report, summary):
     for result in report['results']:
         outcome = mapping.get(result['status'], 'untested' if result['evaluation_state']
                               == 'not-started' else 'cantTell')
-        graph.append({'@type': 'earl:Assertion', 'earl:assertedBy': {'@id': '_:assertor'},
+        parent = '_:control_' + result['control_id']
+        graph.append({'@id': parent, '@type': 'earl:Assertion', 'earl:assertedBy': {'@id': '_:assertor'},
                       'earl:subject': {'@id': '_:scope'},
                       'earl:test': {'@id': 'urn:tsep:' + report['protocol']['version'] + ':'
                                    + result['control_id'], '@type': 'earl:TestCriterion'},
@@ -298,6 +316,26 @@ def earl(report, summary):
                                       'dct:date': {'@value': report['issued_at'], '@type': 'xsd:dateTime'},
                                       'earl:info': result['reason'] + '\nEvidence: '
                                       + ', '.join(result['evidence_ids'])}})
+        atomic_mapping = {'pass': 'passed', 'fail': 'failed', 'not-applicable': 'inapplicable',
+                          'inconclusive': 'cantTell'}
+        for number, atom in enumerate(result.get('atomic_results', [])):
+            # URL/URN targets retain their identity. Legacy free-text inventory labels
+            # need an absolute IRI for JSON-LD without silently resolving a relative URL.
+            target = atom['target']
+            atomic_subject = {'@id': target} if re.fullmatch(r'[A-Za-z][A-Za-z0-9+.-]*:[^\s]+', target) else {
+                '@id': 'urn:tsep:target:sha256:' + hashlib.sha256(target.encode('utf-8')).hexdigest(),
+                'dct:title': target}
+            graph.append({'@id': parent + '_atomic_' + str(number), '@type': 'earl:Assertion',
+                          'dct:isPartOf': {'@id': parent},
+                          'earl:assertedBy': {'@id': '_:assertor'},
+                          'earl:subject': atomic_subject,
+                          'earl:test': {'@id': 'urn:tsep:' + report['protocol']['version'] + ':' + atom['rule_id'],
+                                        '@type': 'earl:TestCriterion'},
+                          'earl:mode': {'@id': 'earl:' + report['assessor']['mode']},
+                          'earl:result': {'@type': 'earl:TestResult',
+                                         'earl:outcome': {'@id': 'earl:' + atomic_mapping[atom['outcome']]},
+                                         'dct:date': {'@value': report['issued_at'], '@type': 'xsd:dateTime'},
+                                         'earl:info': atom['reason'] + '\nEvidence: ' + ', '.join(atom['evidence_ids'])}})
     return {'@context': {'earl': 'http://www.w3.org/ns/earl#',
                           'dct': 'http://purl.org/dc/terms/',
                           'xsd': 'http://www.w3.org/2001/XMLSchema#'}, '@graph': graph}
@@ -305,6 +343,50 @@ def earl(report, summary):
 
 def emit(value):
     print(json.dumps(value, ensure_ascii=False, indent=2))
+
+
+def save_report(path, report, root):
+    """Validate before an atomic replacement; never overwrite a referenced artifact."""
+    require(not path.is_symlink(), 'Report destination must not be a symlink')
+    require(all(evidence_path(root, a['path']) != path.resolve() for a in report['artifacts']),
+            'Report cannot be its own evidence')
+    summary = validate(report, root)
+    with tempfile.NamedTemporaryFile(mode='w', encoding='utf-8', dir=path.parent,
+                                     prefix='.tsep-', delete=False) as handle:
+        temporary = Path(handle.name)
+        try:
+            json.dump(report, handle, ensure_ascii=False, indent=2)
+            handle.write('\n')
+            handle.flush()
+            os.fsync(handle.fileno())
+        except BaseException:
+            temporary.unlink()
+            raise
+    try:
+        os.replace(temporary, path)
+    finally:
+        if temporary.exists():
+            temporary.unlink()
+    return summary
+
+
+def readable_summary(summary, language):
+    fr = language == 'fr'
+    synthetic = ('oui' if fr else 'yes') if summary['synthetic_evidence'] else ('non' if fr else 'no')
+    return '\n'.join([
+        ('Décision : ' if fr else 'Decision: ') + summary['decision'],
+        ('Périmètre : ' if fr else 'Scope: ') + summary['scope']['label'],
+        '%s : %s | %s : %s/%s' % (
+            'Cibles' if fr else 'Targets', len(summary['scope']['targets']),
+            'Contrôles sélectionnés' if fr else 'Selected controls',
+            summary['selected_controls'], summary['protocol_controls']),
+        ' · '.join('%s=%s' % item for item in summary['counts'].items()),
+        ('Bloquants : ' if fr else 'Blocking: ') + (', '.join(summary['blocking']) or '—'),
+        ('Preuves synthétiques : ' if fr else 'Synthetic evidence: ') + synthetic,
+        ('Portée limitée aux cibles et contrôles déclarés ; aucune conformité globale. '
+         'Vérifie cohérence et intégrité, pas la vérité des constats.' if fr else
+         'Declared targets and selected controls only; no global conformity. '
+         'Checks consistency and integrity, not the truth of findings.')])
 
 
 def main(argv=None):
@@ -317,22 +399,72 @@ def main(argv=None):
     init.add_argument('--assessor', required=True)
     init.add_argument('--label', required=True)
     init.add_argument('--selection-method', required=True)
-    for command in ('validate', 'gate', 'earl'):
+    init.add_argument('--mode', choices=['manual', 'semiAuto', 'automatic'], default='manual')
+    init.add_argument('--tool')
+    init.add_argument('--tool-version')
+    for command in ('validate', 'gate', 'earl', 'add-evidence', 'record'):
         p = sub.add_parser(command)
         p.add_argument('report', type=Path)
         p.add_argument('--evidence-root', type=Path,
                        help='Defaults to the directory containing the report')
+        if command == 'gate':
+            p.add_argument('--summary', action='store_true', help='Human-readable scoped summary')
+            p.add_argument('--lang', choices=['en', 'fr'], default='en')
+        if command == 'add-evidence':
+            p.add_argument('--id', required=True)
+            p.add_argument('--path', required=True, help='Existing file relative to evidence root')
+            p.add_argument('--kind', required=True)
+            p.add_argument('--target', action='append', required=True)
+            p.add_argument('--observed-at', required=True)
+            p.add_argument('--description', required=True)
+            p.add_argument('--access', choices=['public', 'restricted', 'synthetic'], required=True)
+            p.add_argument('--engine')
+        if command == 'record':
+            p.add_argument('--control', required=True)
+            p.add_argument('--status', choices=['C', 'NC', 'NA', 'NT'], required=True)
+            p.add_argument('--state', choices=['complete', 'not-started', 'inconclusive'])
+            p.add_argument('--reason', required=True)
+            p.add_argument('--procedure', required=True)
+            p.add_argument('--target', action='append', default=[])
+            p.add_argument('--evidence', action='append', default=[])
+            p.add_argument('--atomic-results', type=Path, help='JSON array of atomic observations')
     args = parser.parse_args(argv)
     try:
         if args.command == 'init':
+            require(bool(args.tool) == bool(args.tool_version), 'Use --tool and --tool-version together')
             report = initialize(args.target, args.controls.split(',') if args.controls else None,
-                                args.profile, args.assessor, args.label, args.selection_method)
+                                args.profile, args.assessor, args.label, args.selection_method,
+                                args.mode, {'name': args.tool, 'version': args.tool_version} if args.tool else None)
             validate(report, ROOT)
             emit(report)
             return 0
         report = read_json(args.report)
-        summary = validate(report, args.evidence_root or args.report.parent)
-        emit(earl(report, summary) if args.command == 'earl' else summary)
+        root = args.evidence_root or args.report.parent
+        summary = validate(report, root)
+        if args.command in ('add-evidence', 'record'):
+            if args.command == 'add-evidence':
+                artifact = {'id': args.id, 'path': args.path,
+                            'sha256': digest(evidence_path(root, args.path)), 'kind': args.kind,
+                            'targets': args.target, 'observed_at': args.observed_at,
+                            'description': args.description, 'access': args.access}
+                if args.engine:
+                    artifact['engine'] = args.engine
+                report['artifacts'].append(artifact)
+            else:
+                require(args.control in report['controls'], 'Control is not selected')
+                record = {'control_id': args.control, 'status': args.status,
+                          'evaluation_state': args.state or ('inconclusive' if args.status == 'NT' else 'complete'),
+                          'reason': args.reason, 'procedure': args.procedure,
+                          'evaluated_targets': args.target, 'evidence_ids': args.evidence}
+                if args.atomic_results:
+                    record['atomic_results'] = read_json(args.atomic_results)
+                report['results'] = [record if r['control_id'] == args.control else r for r in report['results']]
+            report['issued_at'] = datetime.now(timezone.utc).isoformat()
+            summary = save_report(args.report, report, root)
+        if args.command == 'gate' and args.summary:
+            print(readable_summary(summary, args.lang))
+        else:
+            emit(earl(report, summary) if args.command == 'earl' else summary)
         if args.command == 'gate':
             return {'GO_WITH_RESERVATIONS': 0, 'NO_GO': 1, 'INCOMPLETE': 2, 'REVIEW': 2}[summary['decision']]
         return 0

@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.2 — Contrôles
+# TSEP 0.1.0-draft.3 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -22,7 +22,7 @@ Draft / Version de travail. See / Voir [contract](contract.fr.md).
 
 **Limites.** Un test depuis une IP ne prouve pas la réponse reçue par Googlebot.
 
-C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
+C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité. Note TSEP : le critère est un 200 final ; le titre permanent hérité de la grille 1.1 est plus large.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
@@ -30,9 +30,11 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.2:TS01-A01`
+`TSEP@0.1.0-draft.3:TS01-A01`
 
 **Entrées requises**: http, intent.
+
+**Automation / Automatisation**: `automatic`.
 
 **Applicabilité.** Chaque page publique désignée canonique, dans le contexte de requête déclaré.
 
@@ -52,25 +54,27 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.2:TS01-A02`
+`TSEP@0.1.0-draft.3:TS01-A02`
 
 **Entrées requises**: http, intent.
 
+**Automation / Automatisation**: `automatic`.
+
 **Applicabilité.** Chaque réponse finale dont le contenu peut être comparé à l’intention.
 
-**Méthode.** Comparer URL finale et corps conservé aux critères de contenu déclarés ; chercher page de connexion, challenge ou erreur à la place du contenu attendu.
+**Méthode.** Comparer exactement l’URL finale et le SHA-256 des octets du corps complet aux valeurs expected_final_url et expected_body_sha256 fixées dans intent avant la mesure. Aucun retrait implicite de paramètres ni normalisation du corps.
 
-**Attendus.** La réponse correspond à la ressource et à la destination déclarées. Un 200 livrant un autre contenu est fail, même si A01 réussit.
+**Attendus.** Les deux valeurs correspondent exactement. Une URL ou une empreinte différente est fail même si A01 réussit. Le code HTTP ne remplace pas la comparaison.
 
-**Preuves.** Corps de réponse archivé avec la trace HTTP, critère d’identité déclaré et comparaison motivée ; occultations documentées.
+**Preuves.** Trace HTTP et corps complet, intention datée avec URL et empreinte attendues, valeurs calculées et outil/version. L’empreinte porte sur le corps après décodage de transfert et de contenu, avant toute autre transformation.
 
-**Hypothèses.** Le critère distingue la ressource attendue d’un écran intermédiaire ; la revue du contenu est humaine ou assistée.
+**Hypothèses.** Le responsable fixe une représentation de référence avant la collecte ; sa pertinence métier reste sa responsabilité. La comparaison est automatique, la définition de l’intention ne l’est pas.
 
-**Indéterminé.** Corps absent/tronqué, intention absente ou identité ambiguë : inconclusive. Ne pas déduire la ressource d’un seul code 200.
+**Indéterminé.** Corps absent/tronqué, décodage inconnu, URL ou empreinte de référence absente, intention non fixée avant la mesure : inconclusive. Un seul code 200 ne suffit pas.
 
 **Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
 
-**Limites.** Pas de classification soft 404 du moteur, d’indexation ni de contrôle de toutes les routes.
+**Limites.** Une représentation dynamique doit avoir une référence exacte dans le contexte testé ; aucune heuristique de similarité. Une mauvaise référence peut valider un mauvais contenu. Ni classification soft 404 du moteur ni indexation ni contrôle de toutes les routes.
 
 ## TS02 — Les redirections sont intentionnelles, directes et sans boucle.
 
@@ -212,15 +216,17 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
-**Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
+**Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale. Sources consultées le 2026-10-09 ; captures datées et empreintes consignées dans docs/source-observations.md.
 
-**Références**: [https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag); [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+**Références**: [https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag); [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics); [https://developers.google.com/search/docs/crawling-indexing/block-indexing](https://developers.google.com/search/docs/crawling-indexing/block-indexing); [https://www.rfc-editor.org/rfc/rfc9309](https://www.rfc-editor.org/rfc/rfc9309)
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.2:TS07-A01`
+`TSEP@0.1.0-draft.3:TS07-A01`
 
 **Entrées requises**: http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
 
 **Applicabilité.** Chaque document avec objectif d’indexation déclaré, pour un robot et un contexte explicitement nommés.
 
@@ -236,13 +242,15 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
 
-**Limites.** Évalue les déclarations observées, pas leur ingestion ni l’indexation réelle. A01 seul ne couvre pas l’accès ou le rendu.
+**Limites.** Évalue les déclarations observées, pas leur ingestion ni l’indexation réelle. A01 seul ne couvre pas l’accès ou le rendu. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue.
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.2:TS07-A02`
+`TSEP@0.1.0-draft.3:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
+
+**Automation / Automatisation**: `semiAuto`.
 
 **Applicabilité.** Toute ressource pour laquelle l’effet des directives est évalué.
 
@@ -258,13 +266,15 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
 
-**Limites.** Aucune preuve de visite réelle du moteur ; TS04 et les autres contrôles d’accès ne sont pas globalement validés.
+**Limites.** Aucune preuve de visite réelle du moteur ; TS04 et les autres contrôles d’accès ne sont pas globalement validés. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue.
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.2:TS07-A03`
+`TSEP@0.1.0-draft.3:TS07-A03`
 
 **Entrées requises**: render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
 
 **Entrées pour exemption atomique**: intent, http, html.
 
@@ -358,9 +368,11 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.2:TS10-A01`
+`TSEP@0.1.0-draft.3:TS10-A01`
 
 **Entrées requises**: http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
 
 **Applicabilité.** Chaque membre d’une famille et sa stratégie de canonicalisation déclarée.
 
@@ -380,9 +392,11 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.2:TS10-A02`
+`TSEP@0.1.0-draft.3:TS10-A02`
 
 **Entrées requises**: http, html, intent.
+
+**Automation / Automatisation**: `manual`.
 
 **Applicabilité.** Toute destination préférée dans les familles déclarées.
 
@@ -402,9 +416,11 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.2:TS10-A03`
+`TSEP@0.1.0-draft.3:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
+
+**Automation / Automatisation**: `semiAuto`.
 
 **Entrées pour exemption atomique**: intent, sitemap.
 
@@ -426,9 +442,11 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.2:TS10-A04`
+`TSEP@0.1.0-draft.3:TS10-A04`
 
 **Entrées requises**: crawl, intent.
+
+**Automation / Automatisation**: `semiAuto`.
 
 **Applicabilité.** Chaque famille et population de pages sources déclarée.
 

@@ -1,5 +1,20 @@
 # Change history / Historique
 
+## 0.1.0-draft.3 — 2026-10-09 — unpublished development candidate
+
+Explicit rule automation and guarded automatic C; TS01-A02 now uses an exact prior
+URL/body hash reference. Executable four-rule raw-input conformance, atomic EARL
+assertions, safe evidence/record CLI and readable gate. TSEP-2 is defined by webmaster
+evidence, with Google first. Bilingual README/migration, broader Python CI matrix,
+AGENTS excluded from distribution. No publication, remote CI result or external review claimed.
+
+Automatisation explicite et C automatique conditionnel ; TS01-A02 compare désormais
+URL/empreinte à une référence préalable exacte. Conformance exécutable sur quatre
+règles, EARL atomique, CLI de saisie des preuves/résultats et résumé lisible. TSEP-2
+défini par les preuves webmaster, Google en première série. README/migration FR/EN,
+matrice Python élargie, AGENTS exclu de la distribution. Aucune publication, CI
+distante observée ou revue externe revendiquée. [Migration](docs/migration-draft.3.md).
+
 ## 0.1.0-draft.2 — 2026-10-09 — unpublished development candidate
 
 Nine bilingual atomic rules for TS01, TS07 and TS10, with authored synthetic

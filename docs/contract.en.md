@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.2
+# Report contract — TSEP 0.1.0-draft.3
 
 ## Declared scope
 
@@ -46,8 +46,7 @@ and their operational consequences explicitly.
 Report format is `2`. A **control** retains its TSxx identifier and scoped
 C/NC/NA/NT outcome. An **atomic test** addresses an expectation identified by
 `TSxx-Ayy` in the canonical JSON. An **observation** is a dated capture or finding
-in a given context; its existence alone does not pass a test. Atomic methods
-remain manual or assisted.
+in a given context; its existence alone does not pass a test. Each rule declares `automation`: `automatic`, `semiAuto` or `manual`.
 
 For these three controls, `atomic_results` links each `rule_id`/`target` pair to
 an `outcome` (`pass`, `fail`, `not-applicable`, `inconclusive`), a `reason` and
@@ -80,19 +79,44 @@ be attached as `render`. TS10-A01 also requires DOM evidence when rendering affe
 declarations, although the validator cannot determine that need.
 
 The CLI checks declarations, references and coverage, not the correctness of
-HTTP/HTML interpretation, intent or exemptions. Bundled method cases have authored
-reference verdicts, not an automatic SEO engine. No C extends to unselected
+HTTP/HTML interpretation, intent or exemptions. The historical method fixtures have authored reference verdicts. The separate
+[executable conformance suite](conformance.md) interprets raw inputs for four rules
+within documented bounds; it does not implement all controls. No C extends to unselected
 controls, an entire site or actual indexing. See [migration and cases](migration-draft.2.md).
+
+## Automation and representation identity
+
+A C with `assessor.mode: "automatic"` is valid only if the control has a nonempty
+set of atomic rules, **all** with `automation: "automatic"`, and the report declares
+`assessor.tool: {"name": "…", "version": "…"}` with nonblank values. All existing
+rule/target/evidence requirements still apply. An exemption does not bypass the
+automation requirement. Controls without defined atomic rules cannot yield an
+automatic C. `semiAuto` requires human interpretation; `manual` requires human
+judgment. These classifications describe the method, not evidence quality.
+
+TS01-A01 and A02 are automatic. A01 requires a final **200**; its inherited title
+is broader. A02 now requires exact final URL and decoded body SHA-256 equality
+with `expected_final_url` and `expected_body_sha256` in intent fixed before the
+observation. Missing reference or incomplete body means inconclusive, never a
+heuristic pass. Defining a suitable reference remains the owner's responsibility.
+TS07-A01/A02/A03 and TS10-A01/A03/A04 are semiAuto; TS10-A02 is manual. The bounded
+TS07 interpreter cannot establish an automatic C for TS07.
+
+See [migration from draft.2](migration-draft.3.md) and [CLI workflow](cli.md).
+`add-evidence` and `record` validate before replacing the report, refresh its
+issuance date, and never infer outcomes. Preserve a copy of earlier assessments.
 
 ## Evidence bundle
 
 Keep the report and evidence together. Each artifact declares ID, relative POSIX
 path, SHA-256, kind, target IDs, observation time with timezone, and a description.
 Declare access as `public`, `restricted` or `synthetic`. TSEP-1 requires public
-evidence except declared intent; TSEP-2 additionally accepts restricted Search
-Console evidence. An assessor still has to document its actual origin. Synthetic
-data is explicitly marked in gate output. This draft refuses a fully automatic C
-because none of its complete control methods has an automated implementation.
+evidence except declared intent; TSEP-2 additionally accepts restricted evidence from the target engine’s
+webmaster tools; Google is the first normative series (TS08/TS12). An assessor still has to document its actual origin. Synthetic
+data is explicitly marked in gate output. The `webmaster-tools` kind requires `engine`; only `engine: "google"` satisfies
+the existing `search-console` input requirement. The legacy `search-console` kind
+means Google and cannot declare another engine. Other engines require their own
+future normative series; their evidence does not validate Google controls.
 Absolute paths, traversal and symlinks escaping the evidence root are rejected.
 All references must resolve locally; no URL is fetched by validation.
 
@@ -129,12 +153,12 @@ The argument parser uses the conventional exit code 2 for malformed CLI syntax.
 ## Versions and implementation claims
 
 Pin both version and protocol SHA-256. Cite IDs as
-`TSEP@0.1.0-draft.2:TS01`. Never silently replace a released artifact. Changes to
+`TSEP@0.1.0-draft.3:TS01`. Never silently replace a released artifact. Changes to
 applicability, expectations, required evidence or decisions require a new version
 and migration note. TS01–TS44 are permanent identities, not reusable slots.
 
 This candidate has one implementation of report validation. Passing its tests
 allows the narrow statement “passes the bundled report-interchange tests for
-0.1.0-draft.2.” It does not establish implementation of all 44 assessment methods.
+0.1.0-draft.3.” It does not establish implementation of all 44 assessment methods.
 An implementation must publish per-rule mapping and limitations before making a
 broader claim. No compatibility with a third-party tool has yet been demonstrated.

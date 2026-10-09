@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.2",
+  "protocol_version": "0.1.0-draft.3",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -11,7 +11,7 @@
         "en": "200 and expected resource."
       },
       "evidence": {
-        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only. Reference fixed at 2026-10-09T09:00:00Z: expected_final_url=https://example.com/page; expected_body_sha256=52da4daf804588dfa84e3db19f94dd66fee416c20eb2e2346274c98b84ee0216. Exact UTF-8 body bytes without final newline; no encoding. This is an authored judgment fixture, not executable raw HTTP.",
         "http": "SYNTHETIC: Fixture/1 offline exchange at 2026-10-09T10:00:00Z; GET https://example.com/page; final same; redirects=0; HTTP/1.1 200 OK; Content-Type: text/html; full body: <h1>Article A</h1>; no truncation. Bounds: 10s/5 hops/5MiB, not reached."
       },
       "atomic_results": [
@@ -51,7 +51,7 @@
         "en": "Observed final status contradicts 200."
       },
       "evidence": {
-        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only. Reference fixed at 2026-10-09T09:00:00Z: expected_final_url=https://example.com/page; expected_body_sha256=52da4daf804588dfa84e3db19f94dd66fee416c20eb2e2346274c98b84ee0216. Exact UTF-8 body bytes without final newline; no encoding. This is an authored judgment fixture, not executable raw HTTP.",
         "http": "SYNTHETIC complete GET https://example.com/page at 2026-10-09T10:00:00Z, no redirects; HTTP/1.1 404; final response captured; no expected Article A representation."
       },
       "atomic_results": [
@@ -91,7 +91,7 @@
         "en": "Observed final status contradicts 200."
       },
       "evidence": {
-        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only. Reference fixed at 2026-10-09T09:00:00Z: expected_final_url=https://example.com/page; expected_body_sha256=52da4daf804588dfa84e3db19f94dd66fee416c20eb2e2346274c98b84ee0216. Exact UTF-8 body bytes without final newline; no encoding. This is an authored judgment fixture, not executable raw HTTP.",
         "http": "SYNTHETIC complete GET https://example.com/page at 2026-10-09T10:00:00Z, no redirects; HTTP/1.1 500; final response captured; no expected Article A representation."
       },
       "atomic_results": [
@@ -131,7 +131,7 @@
         "en": "Observed final status contradicts 200."
       },
       "evidence": {
-        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only. Reference fixed at 2026-10-09T09:00:00Z: expected_final_url=https://example.com/page; expected_body_sha256=52da4daf804588dfa84e3db19f94dd66fee416c20eb2e2346274c98b84ee0216. Exact UTF-8 body bytes without final newline; no encoding. This is an authored judgment fixture, not executable raw HTTP.",
         "http": "SYNTHETIC complete GET https://example.com/page at 2026-10-09T10:00:00Z, no redirects; HTTP/1.1 204; final response captured; no expected Article A representation."
       },
       "atomic_results": [
@@ -171,7 +171,7 @@
         "en": "Observed final status contradicts 200."
       },
       "evidence": {
-        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only. Reference fixed at 2026-10-09T09:00:00Z: expected_final_url=https://example.com/page; expected_body_sha256=52da4daf804588dfa84e3db19f94dd66fee416c20eb2e2346274c98b84ee0216. Exact UTF-8 body bytes without final newline; no encoding. This is an authored judgment fixture, not executable raw HTTP.",
         "http": "SYNTHETIC complete GET https://example.com/page at 2026-10-09T10:00:00Z, no redirects; HTTP/1.1 206; final response captured; no expected Article A representation."
       },
       "atomic_results": [
@@ -211,7 +211,7 @@
         "en": "Insufficient observation without an inferred SEO fault."
       },
       "evidence": {
-        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only. Reference fixed at 2026-10-09T09:00:00Z: expected_final_url=https://example.com/page; expected_body_sha256=52da4daf804588dfa84e3db19f94dd66fee416c20eb2e2346274c98b84ee0216. Exact UTF-8 body bytes without final newline; no encoding. This is an authored judgment fixture, not executable raw HTTP.",
         "http": "SYNTHETIC GET timed out before response, no status observed"
       },
       "atomic_results": [
@@ -251,7 +251,7 @@
         "en": "Insufficient observation without an inferred SEO fault."
       },
       "evidence": {
-        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only. Reference fixed at 2026-10-09T09:00:00Z: expected_final_url=https://example.com/page; expected_body_sha256=52da4daf804588dfa84e3db19f94dd66fee416c20eb2e2346274c98b84ee0216. Exact UTF-8 body bytes without final newline; no encoding. This is an authored judgment fixture, not executable raw HTTP.",
         "http": "SYNTHETIC HEAD 200 only, no GET or body"
       },
       "atomic_results": [
@@ -291,7 +291,7 @@
         "en": "Insufficient observation without an inferred SEO fault."
       },
       "evidence": {
-        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only. Reference fixed at 2026-10-09T09:00:00Z: expected_final_url=https://example.com/page; expected_body_sha256=52da4daf804588dfa84e3db19f94dd66fee416c20eb2e2346274c98b84ee0216. Exact UTF-8 body bytes without final newline; no encoding. This is an authored judgment fixture, not executable raw HTTP.",
         "http": "SYNTHETIC conditional GET 304, no retained representation"
       },
       "atomic_results": [
@@ -331,7 +331,7 @@
         "en": "200 but unexpected login screen."
       },
       "evidence": {
-        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only. Reference fixed at 2026-10-09T09:00:00Z: expected_final_url=https://example.com/page; expected_body_sha256=52da4daf804588dfa84e3db19f94dd66fee416c20eb2e2346274c98b84ee0216. Exact UTF-8 body bytes without final newline; no encoding. This is an authored judgment fixture, not executable raw HTTP.",
         "http": "SYNTHETIC: Fixture/1 offline exchange at 2026-10-09T10:00:00Z; GET https://example.com/page; final same; redirects=0; HTTP/1.1 200 OK; Content-Type: text/html; full body: <form>Login</form>; no truncation. Bounds: 10s/5 hops/5MiB, not reached."
       },
       "atomic_results": [
@@ -408,7 +408,7 @@
         "en": "Passing status alone; identity unexamined."
       },
       "evidence": {
-        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only.",
+        "intent": "SYNTHETIC: public canonical https://example.com/page; expected final URL same; body identity is Article A. GET, no credentials/cookies/conditional headers, UA Fixture/1; one context only. Reference fixed at 2026-10-09T09:00:00Z: expected_final_url=https://example.com/page; expected_body_sha256=52da4daf804588dfa84e3db19f94dd66fee416c20eb2e2346274c98b84ee0216. Exact UTF-8 body bytes without final newline; no encoding. This is an authored judgment fixture, not executable raw HTTP.",
         "http": "SYNTHETIC: Fixture/1 offline exchange at 2026-10-09T10:00:00Z; GET https://example.com/page; final same; redirects=0; HTTP/1.1 200 OK; Content-Type: text/html; full body: <h1>Article A</h1>; no truncation. Bounds: 10s/5 hops/5MiB, not reached."
       },
       "atomic_results": [

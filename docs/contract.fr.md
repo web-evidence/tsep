@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.2
+# Contrat de rapport — TSEP 0.1.0-draft.3
 
 ## Périmètre déclaré
 
@@ -45,7 +45,7 @@ Le format de rapport est `2`. Un **contrôle** garde son identifiant TSxx et son
 résultat C/NC/NA/NT sur le périmètre. Un **test atomique** répond à un attendu
 identifié par `TSxx-Ayy` dans le JSON canonique. Une **observation** est une
 capture ou un constat daté dans un contexte donné ; son existence ne suffit pas
-à réussir le test. Les méthodes atomiques restent manuelles ou assistées.
+à réussir le test. Chaque règle déclare `automation` : `automatic`, `semiAuto` ou `manual`.
 
 Pour ces trois contrôles, `atomic_results` relie chaque couple `rule_id`/`target`
 à un `outcome` (`pass`, `fail`, `not-applicable`, `inconclusive`), un `reason` et
@@ -78,20 +78,47 @@ le rendu requis doit être joint en `render`. TS10-A01 requiert aussi le DOM lor
 affecte les déclarations, même si le validateur ne peut pas déterminer ce besoin.
 
 La CLI vérifie les déclarations, références et couvertures, pas la justesse de la
-lecture HTTP/HTML, de l’intention ou des exemptions. Les cas de méthode fournis
-ont des verdicts de référence rédigés, pas un moteur SEO automatique. Aucun C ne
+lecture HTTP/HTML, de l’intention ou des exemptions. Les cas de méthode historiques
+ont des verdicts rédigés. La [suite exécutable distincte](conformance.md) interprète
+les entrées brutes de quatre règles dans des limites documentées ; elle
+n’implémente pas tous les contrôles. Aucun C ne
 s’étend aux contrôles non sélectionnés, à un site entier ou à l’indexation réelle.
 Voir [migration et cas](migration-draft.2.md).
+
+## Automatisation et identité de représentation
+
+Un C en `assessor.mode: "automatic"` est valide seulement si le contrôle possède
+un ensemble non vide de règles atomiques **toutes** `automation: "automatic"` et
+si le rapport déclare `assessor.tool: {"name": "…", "version": "…"}` avec des valeurs
+non blanches. Toutes les exigences règle/cible/preuve restent applicables. Une
+exemption ne contourne pas l’exigence d’automatisation. Un contrôle sans règles
+atomiques définies ne peut pas produire un C automatique. `semiAuto` exige une
+interprétation humaine ; `manual`, un jugement humain. Ce classement décrit la
+méthode, pas la qualité de la preuve.
+
+TS01-A01 et A02 sont automatic. A01 exige un **200 final** ; son titre hérité est
+plus large. A02 exige désormais l’égalité exacte de l’URL finale et du SHA-256 du
+corps décodé avec `expected_final_url` et `expected_body_sha256` fixés dans intent
+avant l’observation. Référence manquante ou corps incomplet : inconclusive, jamais
+réussite heuristique. Définir une référence pertinente reste la responsabilité du
+propriétaire. TS07-A01/A02/A03 et TS10-A01/A03/A04 sont semiAuto ; TS10-A02 est manual.
+L’interpréteur TS07 borné ne peut pas établir un C automatique de TS07.
+
+Voir [migration depuis draft.2](migration-draft.3.md) et [parcours CLI](cli.md).
+`add-evidence` et `record` valident avant de remplacer le rapport, actualisent sa
+date d’émission et ne déduisent aucun verdict. Conserver les évaluations précédentes.
 
 ## Paquet de preuves
 
 Conserver rapport et fichiers ensemble. Chaque preuve indique ID, chemin POSIX
 relatif, SHA-256, type, cibles, date d’observation avec fuseau et description.
 Déclarer l’accès `public`, `restricted` ou `synthetic`. TSEP-1 exige des preuves
-publiques, sauf l’intention déclarée ; TSEP-2 admet en plus les preuves Search Console
-restreintes. L’évaluateur doit documenter leur vraie origine. Les preuves fictives
-sont signalées dans le résultat. Ce candidat refuse un C entièrement automatique,
-aucun contrôle complet ne disposant encore d’une telle implémentation.
+publiques, sauf l’intention déclarée ; TSEP-2 admet en plus les preuves restreintes issues des outils webmaster
+du moteur visé ; Google constitue la première série normative (TS08/TS12). L’évaluateur doit documenter leur vraie origine. Les preuves fictives
+sont signalées dans le résultat. Le type `webmaster-tools` exige `engine` ; seul `engine: "google"` satisfait
+l’entrée `search-console` existante. Le type historique `search-console` signifie
+Google et ne peut pas déclarer un autre moteur. Les autres moteurs nécessitent
+leur propre série normative future ; leurs preuves ne valident pas les contrôles Google.
 Les chemins absolus, traversées et liens symboliques sortants sont refusés.
 Les références se résolvent localement ; la validation ne télécharge rien.
 
@@ -130,12 +157,12 @@ Le parseur d’arguments utilise le code conventionnel 2 pour une syntaxe CLI er
 
 ## Versions et revendications d’implémentation
 
-Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.2:TS01`. Ne jamais
+Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.3:TS01`. Ne jamais
 remplacer silencieusement un artefact publié. Changer applicabilité, attendus,
 preuves ou décisions exige une nouvelle version et une note de migration.
 TS01–TS44 restent des identités permanentes.
 
 La suite démontre seulement « réussit les tests d’échange des rapports fournis
-avec 0.1.0-draft.2 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
+avec 0.1.0-draft.3 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
 plus large exige une correspondance par règle et des limites publiées. Aucune
 interopérabilité avec un outil tiers n’a encore été démontrée.
