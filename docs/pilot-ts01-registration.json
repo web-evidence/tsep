@@ -1,0 +1,76 @@
+{
+  "plan_id": "TSEP-TS01-pilot-1",
+  "status": "template-not-activated",
+  "prepared_on": "2026-10-09",
+  "plan_en": "pilot-ts01.en.md",
+  "plan_fr": "pilot-ts01.fr.md",
+  "protocol_version": "0.1.0-draft.7",
+  "protocol_sha256": "c7666df08e752400a588963e8781b6441e05b634c62289a607c04f807a5604da",
+  "technical_baseline_commit": "824c48b19abe15f76f9a9058718cff461a7dbabb",
+  "technical_baseline_archive_sha256": "8164b70b08aa200ab0c45f905e0079dd2bfd9ba22e6a1f9428e2c1a840f11de0",
+  "rules": [
+    "TS01-A01",
+    "TS01-A02"
+  ],
+  "proposed_implementation_days": 30,
+  "proposed_publication_days_after_end": 14,
+  "allowed_statuses": [
+    "template-not-activated",
+    "activated",
+    "concluded"
+  ],
+  "baseline_manifest": "pilot-ts01-baseline.sha256",
+  "baseline_manifest_sha256": "bf5d9385ebac8720b078d3cdabe7a1cdab86225a99811eca8e22b0bb7ce2656c",
+  "activation": {
+    "package_commit": null,
+    "package_archive_sha256": null,
+    "package_version_doi": null,
+    "zenodo_archive_filename": null,
+    "zenodo_archive_sha256": null,
+    "participant_name_and_affiliation": null,
+    "participant_relationships_with_edikka_past_12_months_and_during_pilot": null,
+    "participant_compensation_and_funding": null,
+    "participant_public_identity_and_disclosure_consent": null,
+    "human_reviewer_name_and_affiliation": null,
+    "reviewer_relationships_with_edikka_past_12_months_and_during_pilot": null,
+    "reviewer_relationships_with_participant": null,
+    "reviewer_compensation_and_funding": null,
+    "reviewer_public_identity_and_disclosure_consent": null,
+    "prior_reference_code_exposure": null,
+    "planned_reference_code_consultation": null,
+    "code_reuse_and_ai_assistance": null,
+    "capture_scope_and_authorization": null,
+    "evidence_access_and_publication_permissions": null,
+    "starts_at_utc": null,
+    "ends_at_utc": null,
+    "public_result_due_at_utc": null,
+    "accepted_by_participant_and_steward": null
+  },
+  "reference_code_consultation_options": [
+    "never",
+    "after-first-version",
+    "throughout"
+  ],
+  "acceptance_receipt_instruction": "After committing the accepted plan, retain its immutable commit URL and public publication/CI event separately; do not invent a self-referential commit hash.",
+  "success_requires": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06"
+  ],
+  "pilot_outcomes": [
+    "success",
+    "failure",
+    "unfinished"
+  ],
+  "conclusion": {
+    "outcome": null,
+    "technical_failure_cause_and_evidence": null,
+    "actual_reference_code_consultation": null,
+    "outcome_published_url": null,
+    "completed_at_utc": null
+  },
+  "twelve_month_indicators_status": "proposal-owner-decision-pending"
+}

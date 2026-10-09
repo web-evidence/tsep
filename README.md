@@ -67,6 +67,10 @@ a changed body through markers requires at least one satisfied required marker;
 comments and script/style are excluded. TS07-A01/A02/A03 remain semiAuto; TS10-A02 remains manual.
 Defining an appropriate content reference remains a human responsibility.
 
+For a first external implementation, use the [TS01 pilot kit](docs/pilot-ts01.en.md):
+frozen technical baseline, prior criteria, own captures and human replay.
+The kit is available for preparation; recruitment and the pilot have not started.
+
 ## Evidence profiles
 
 | Profile | Controls | Evidence type |

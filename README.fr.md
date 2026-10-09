@@ -68,6 +68,10 @@ exige au moins un marqueur requis respecté pour passer par cette méthode ;
 commentaires et script/style sont exclus. TS07-A01/A02/A03
 restent semiAuto ; TS10-A02 reste manual. Définir une référence de contenu pertinente reste une responsabilité humaine.
 
+Pour une première implémentation extérieure, utiliser le [kit pilote TS01](docs/pilot-ts01.fr.md) :
+base technique figée, critères préalables, captures propres et rejeu humain.
+Le kit permet la préparation ; le recrutement et le pilote ne sont pas lancés.
+
 ## Profils de preuves
 
 | Profil | Contrôles | Type de preuve |

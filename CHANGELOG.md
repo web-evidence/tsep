@@ -1,5 +1,27 @@
 # Change history / Historique
 
+## TS01 pilot kit — 2026-10-09
+
+Add a bilingual pilot plan, an explicitly unactivated registration template and
+implementation/ambiguity issue templates and a manifest of the unchanged technical
+baseline, verifiable without Git. Link the kit from both READMEs and
+include it in the explicit distribution inventory. The technical baseline is
+824c48b; protocol draft.7, executable tools, corpus and decision rules are unchanged.
+This documentation is not an external implementation, a human review or an
+adoption result. Participant, funding and dates remain to be agreed before activation.
+CITATION.cff includes the actually reserved version DOI 10.5281/zenodo.23268700
+with an explicit publication condition; reservation alone is not registration.
+
+Ajout du plan pilote bilingue, d’un modèle d’activation explicitement non activé
+et de modèles d’issues implémentation/ambiguïté, avec manifeste de la base technique
+inchangée vérifiable sans Git. Liens depuis les deux README et
+ajout à l’inventaire explicite de distribution. Base technique 824c48b ; protocole
+draft.7, outils exécutables, corpus et règles de décision inchangés. Ces documents
+ne constituent ni une implémentation extérieure, ni une revue humaine, ni une
+adoption. Participant, financement et dates restent à convenir avant activation.
+CITATION.cff contient le DOI de version effectivement réservé 10.5281/zenodo.23268700,
+sous condition explicite de publication ; sa réservation seule n’est pas un enregistrement.
+
 ## Public repository access — 2026-10-09
 
 Open `web-evidence/tsep` to public reading and contributions. Align the EN/FR
