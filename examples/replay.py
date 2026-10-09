@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Generate deterministic synthetic reports, never collect a live site. Apache-2.0."""
+import argparse
 import json
 from pathlib import Path
 import sys
@@ -14,19 +15,19 @@ DATE = '2026-10-09T10:00:00Z'
 
 def fixture(folder, name, kind, content):
     path = folder / name
-    path.write_text(content, encoding='utf-8')
+    path.write_bytes(content.encode('utf-8'))
     return {'id': kind, 'path': name, 'sha256': tsep.digest(path), 'kind': kind,
             'observed_at': DATE, 'targets': [TARGET], 'access': 'synthetic',
             'description': 'Synthetic fixture; no real network observation / Cas synthétique.'}
 
 
-def generate():
+def generate(output_root=ROOT):
     result = []
     for case, status, state, http_status in [
             ('pass', 'C', 'complete', 200), ('fail', 'NC', 'complete', 404),
             ('partial', 'NT', 'inconclusive', None)]:
-        folder = ROOT / case
-        folder.mkdir(exist_ok=True)
+        folder = output_root / case
+        folder.mkdir(parents=True, exist_ok=True)
         report = tsep.initialize([TARGET], ['TS01'], 'custom',
                                  'Synthetic fixture author / Auteur des cas fictifs',
                                  'One synthetic URL / Une URL fictive',
@@ -52,12 +53,14 @@ def generate():
                               'evaluated_targets': [TARGET],
                               'evidence_ids': [a['id'] for a in report['artifacts']]}]
         summary = tsep.validate(report, folder)
-        (folder / 'report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-        (folder / 'expected.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-        (folder / 'earl.jsonld').write_text(json.dumps(tsep.earl(report, summary), ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+        for name, value in [('report.json', report), ('expected.json', summary),
+                            ('earl.jsonld', tsep.earl(report, summary))]:
+            (folder / name).write_bytes((json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
         result.append({'case': case, 'status': status, 'decision': summary['decision']})
     print(json.dumps({'synthetic': True, 'network_requests': 0, 'cases': result}, indent=2))
 
 
 if __name__ == '__main__':
-    generate()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-dir', type=Path, default=ROOT)
+    generate(parser.parse_args().output_dir)

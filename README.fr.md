@@ -7,6 +7,10 @@ périmètre déclaré, preuves traçables et inconnues explicites. Ce kit foncti
 indépendamment du site Edikka. Il ne constitue ni une certification, ni un standard
 reconnu, ni une note SEO, ni une garantie d’indexation ou de classement.
 
+## Dépôt autonome
+
+Ce dépôt est la source de développement indépendante. Voir [les règles de développement et d’intégration](docs/development.md). Vérification locale complète : `python3 scripts/verify.py`. Le tag d’import conserve le candidat initial ; les évolutions d’infrastructure restent un état de développement jusqu’à une publication distincte.
+
 ## Essayer en deux minutes
 
 Python 3.9 ou supérieur, sans dépendance, compte, clé API ou collecte réseau pour

@@ -7,6 +7,10 @@ traceable evidence, explicit unknowns, and a result another practitioner can cha
 This package is usable independently of Edikka. It is not a certification, an
 established standard, a ranking score, or a guarantee of indexation.
 
+## Independent repository
+
+This is the autonomous development repository. See [development and integration boundaries](docs/development.md). Run the complete local verification with `python3 scripts/verify.py`. The import tag preserves the original candidate; later infrastructure work is a development snapshot until separately released.
+
 ## Try it in two minutes
 
 Python 3.9+; standard library only. No account, API key, installation or network

@@ -1,0 +1,177 @@
+{
+  "format_version": 1,
+  "imported_at": "2026-10-09T09:42:56.835856+00:00",
+  "source": "Edikka TSEP foundation candidate",
+  "source_published": false,
+  "source_archive": "tsep-0.1.0-draft.1.zip",
+  "source_archive_sha256": "5ea6cbb834cd43f00b8cba5d973fff831b25c50339610586648c36381004e0ea",
+  "baseline_commit": "a85366794edfa6f4fe7954a4abf4df5ae40bce54",
+  "baseline_tag": "v0.1.0-draft.1",
+  "source_files": [
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "df24382eb666e9030903659486976708c2357bab87ce2fc8d21dbab8aaf4b903"
+    },
+    {
+      "path": "CITATION.cff",
+      "sha256": "ef2314d01d96c98384c053b1c49c9edcf0321a4297775d79e0e81f4c65d965b0"
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256": "6be2b3f850705d7033007711032ddae73486b94b207710802e991e1c7611b265"
+    },
+    {
+      "path": "GOVERNANCE.md",
+      "sha256": "98f5893a78ab7af80e78396df3fc2ca93d7c0487ba4113e8964505e6aa86af69"
+    },
+    {
+      "path": "LICENSE.md",
+      "sha256": "437c361db0d8eeca4cf4fd9e18b81afe86f754849d1584aea19c1048268f4d0e"
+    },
+    {
+      "path": "NOTICE",
+      "sha256": "8f1842be143ca01486e871176137610867a049b6439fc6d6f2e9a8a596317b87"
+    },
+    {
+      "path": "README.fr.md",
+      "sha256": "53e4da6aa9a7dda2af42b6dc1654b4e47472484c575919888bdd4869ca63c164"
+    },
+    {
+      "path": "README.md",
+      "sha256": "bc8cd51e95139208d674fcaf878598edfd566697606fa6f3de5a6c0d32cb651d"
+    },
+    {
+      "path": "docs/acceptance-clause.md",
+      "sha256": "ec065f410eef9966908337430ffe81e224871d878afe9740f79ce7b49122fe15"
+    },
+    {
+      "path": "docs/contract.en.md",
+      "sha256": "45d8c463d81d1ac3da9eb44eb5ea3734669468c1ec9d2741232ae44d6aeb8610"
+    },
+    {
+      "path": "docs/contract.fr.md",
+      "sha256": "6f1e475061a87824eeee8a1514981ee7dc30d2463b3d0ab1555542c5a5b7aeff"
+    },
+    {
+      "path": "docs/controls.en.md",
+      "sha256": "cbbcad0bab2ede671eeeb4bc33d32776c3fd10dd820d5ed181add9057ba2a6b3"
+    },
+    {
+      "path": "docs/controls.fr.md",
+      "sha256": "16905efd0a22c157d49fbb6cc25ba7e354b2e92c25153f2b4b39c7a8612e0f16"
+    },
+    {
+      "path": "docs/interoperability.md",
+      "sha256": "98e05e8a4dc532ea6b7b34c42a11a11f90f8a94f2a8a9b868c6ed74befc0048b"
+    },
+    {
+      "path": "examples/fail/earl.jsonld",
+      "sha256": "c4fa066a5008a7284ac2e5f363bf8c0e0e4506efba47a28f512562fc1fce3fe0"
+    },
+    {
+      "path": "examples/fail/expected.json",
+      "sha256": "1f2356a2bd3b97254388d550799ff2a67bf710e37bf05f74fb4dcad2646bba40"
+    },
+    {
+      "path": "examples/fail/http.txt",
+      "sha256": "184144575a4946d64af9c9f376d2a89776efc412c71b6f41971f5d9357b0355f"
+    },
+    {
+      "path": "examples/fail/intent.txt",
+      "sha256": "c8e9349bc8976750ceb31afe474158c00d3eb8b6895618b13d2afd778267dd4f"
+    },
+    {
+      "path": "examples/fail/report.json",
+      "sha256": "4d370c36ecf1f6b1b4db34a8a1ea5391235c84883dcd207f12ebb553b79b2c9e"
+    },
+    {
+      "path": "examples/partial/earl.jsonld",
+      "sha256": "38c47c76e6c9ffdac82ec723ebea37a1e4b6c6ccf7d94f0fd3ed560d9129bfac"
+    },
+    {
+      "path": "examples/partial/expected.json",
+      "sha256": "a783b7fe450fbc67234911ab8baac6cde9ba1a466e68d6515a1dcba57f8d9856"
+    },
+    {
+      "path": "examples/partial/intent.txt",
+      "sha256": "c8e9349bc8976750ceb31afe474158c00d3eb8b6895618b13d2afd778267dd4f"
+    },
+    {
+      "path": "examples/partial/report.json",
+      "sha256": "5b9a40d8398ea162a28cff5d81c2fd023957bb5f37c289f819f838bbfdc86a00"
+    },
+    {
+      "path": "examples/pass/earl.jsonld",
+      "sha256": "affbf4381694acab7e4bd7788bdec8adb9c32a31943e1263576f4e2af6ccf420"
+    },
+    {
+      "path": "examples/pass/expected.json",
+      "sha256": "633223681e56438931affa966d9ec5490adcd98222464695f4e8b2e17acde481"
+    },
+    {
+      "path": "examples/pass/http.txt",
+      "sha256": "cb88d0e37afe86468b5c35edcfbd83706a1af248d51045e35af6d905b19d62e3"
+    },
+    {
+      "path": "examples/pass/intent.txt",
+      "sha256": "c8e9349bc8976750ceb31afe474158c00d3eb8b6895618b13d2afd778267dd4f"
+    },
+    {
+      "path": "examples/pass/report.json",
+      "sha256": "545ff79687c4949383ad8bbcbc35db8207d1353dc6d2c3e18333b92ecc957212"
+    },
+    {
+      "path": "examples/replay.py",
+      "sha256": "fa27e33e46ec86ba977e10eb05d34dabd15740cd23745c00442b0d9c43b4ab47"
+    },
+    {
+      "path": "licenses/Apache-2.0.txt",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "path": "maintain.py",
+      "sha256": "66428d8ee0db397795389560039f20a552c434594329e1abd26c769fcf0a0ae5"
+    },
+    {
+      "path": "probes/README.md",
+      "sha256": "c827961953d331559ce483a37fe53dff64655feda306cfeffbb2b16545bba7a1"
+    },
+    {
+      "path": "probes/http-page.py",
+      "sha256": "ff6852a7afdf8b6a47846a668c042899bd568b5915da55637d1c059b4e44f29b"
+    },
+    {
+      "path": "schemas/report.schema.json",
+      "sha256": "b19c779388878ccfce36415d8aeb687de5ecd92f38c0ce3aecbe759a85fc76f6"
+    },
+    {
+      "path": "spec/protocol.json",
+      "sha256": "18838cbf4c1f20cb6f0487f90c4fe7a77a60f1a9addd8239166a3d9e38311053"
+    },
+    {
+      "path": "tests/legacy_http_cases.py",
+      "sha256": "63d6c4929539dfbbf49f3ce524d64d2907e89e041737ed42b38337972a5e3bc0"
+    },
+    {
+      "path": "tests/test_reports.py",
+      "sha256": "5f366e1f7b349a88728f481160ca9e0593c9132441955ca81703047151f3726f"
+    },
+    {
+      "path": "tsep.py",
+      "sha256": "a18bfc1149f9ecee83c84062f64e50ea75f0808e0f6cb890f6cbb0034de793e6"
+    },
+    {
+      "path": "upstream/grid-v1.1.en.json",
+      "sha256": "bf721fc4e5eaaa9fc8666ed6dd6b2d1087e6b68669b317776e5691d56367f01b"
+    },
+    {
+      "path": "upstream/grid-v1.1.fr.json",
+      "sha256": "0d4cc2aaa8b7f949801c9526fcd5610efdbd42f49515ff31c735454914a8f5fa"
+    }
+  ],
+  "original_articles": [
+    "https://www.edikka.com/insights/developpement-web/seo-technique-fondations",
+    "https://www.edikka.com/en/insights/web-development/technical-seo-foundations"
+  ],
+  "note": "Import is byte-identical. Subsequent development must not rewrite the baseline tag or claim that source provenance establishes independent validation."
+}

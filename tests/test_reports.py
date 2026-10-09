@@ -257,10 +257,14 @@ class Reports(unittest.TestCase):
         self.assertEqual(result.returncode, 64)
 
     def test_deterministic_example_regeneration(self):
-        before = {p.relative_to(ROOT): p.read_bytes() for p in (ROOT/'examples').rglob('*') if p.is_file() and p.suffix != '.pyc'}
-        subprocess.run([sys.executable, str(ROOT/'examples/replay.py')], check=True, capture_output=True)
-        after = {p.relative_to(ROOT): p.read_bytes() for p in (ROOT/'examples').rglob('*') if p.is_file() and p.suffix != '.pyc'}
-        self.assertEqual(before, after)
+        expected = {p.relative_to(ROOT/'examples'): p.read_bytes()
+                    for case in ('pass', 'fail', 'partial')
+                    for p in (ROOT/'examples'/case).rglob('*') if p.is_file()}
+        destination = self.root / 'regenerated'
+        subprocess.run([sys.executable, str(ROOT/'examples/replay.py'),
+                        '--output-dir', str(destination)], check=True, capture_output=True)
+        actual = {p.relative_to(destination): p.read_bytes() for p in destination.rglob('*') if p.is_file()}
+        self.assertEqual(expected, actual)
 
     def test_bilingual_generation_and_frozen_provenance(self):
         maintain.check()

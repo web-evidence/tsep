@@ -40,3 +40,15 @@ N’ajouter aucune mesure d’adoption, identité de relecteur, DOI ou affirmati
 certification sans preuve et autorisation nécessaire. Exécuter les quatre commandes
 ci-dessus et conserver les résultats défavorables. Ce candidat n’ajoute ni CLA ni
 lien promotionnel obligatoire. Ses canaux de publication ne sont pas encore ouverts.
+
+## Independent verification / Vérification autonome
+
+Run `python3 scripts/verify.py` before proposing a change. The command performs
+regeneration in temporary directories, verifies package boundaries and checks
+rebuilding outside the checkout. Register a new distributable source explicitly
+in `release-files.json`. Do not include local tracking, credentials or raw private
+evidence. See `docs/development.md` for repository and integration boundaries.
+
+Avant toute proposition, exécuter `python3 scripts/verify.py`. Ajouter explicitement
+les nouvelles sources distribuées dans `release-files.json`. Les preuves privées
+et le suivi local restent hors distribution. Voir `docs/development.md`.

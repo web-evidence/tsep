@@ -3,12 +3,46 @@
 import argparse
 import hashlib
 import json
-from pathlib import Path
+from pathlib import Path, PurePosixPath
+import re
 import sys
 import zipfile
 import tsep
 
 ROOT = Path(__file__).resolve().parent
+
+
+def release_sources(root=ROOT):
+    """Only explicit, reviewed regular files may enter a distribution."""
+    manifest = tsep.read_json(root / 'release-files.json')
+    tsep.require(set(manifest) == {'format_version', 'files'} and manifest['format_version'] == 1,
+                 'Invalid release inventory')
+    names = manifest['files']
+    tsep.require(isinstance(names, list) and names and all(isinstance(n, str) for n in names),
+                 'Release inventory must be a nonempty list of paths')
+    tsep.unique(names, 'release path')
+    tsep.require('release-files.json' in names, 'Distribution must contain its release inventory')
+    files = []
+    for name in names:
+        relative = PurePosixPath(name)
+        tsep.require(re.fullmatch(r'[A-Za-z0-9_./-]+', name) and not relative.is_absolute()
+                     and '..' not in relative.parts and relative.as_posix() == name,
+                     'Unsafe release path: ' + name)
+        parts = [part.lower() for part in relative.parts]
+        forbidden = {'.git', '.ssh', '.aws', '.codex', '.vscode', '.local', 'node_modules',
+                     '__pycache__', 'sha256sums', '.tsep-local.json'}
+        tsep.require(not any(part in forbidden or part.startswith('.env') for part in parts)
+                     and relative.suffix.lower() not in ('.pem', '.key', '.p12', '.pfx', '.db', '.sqlite', '.sql'),
+                     'Private or generated file forbidden in release: ' + name)
+        path = root / name
+        tsep.require(path.is_file(), 'Missing release file: ' + name)
+        for parent in (path, *path.parents):
+            if parent == root:
+                break
+            tsep.require(not parent.is_symlink(), 'Symlink forbidden in release: ' + name)
+        tsep.require(root.resolve() in path.resolve().parents, 'Release path escapes root')
+        files.append(path)
+    return sorted(files)
 
 
 def rendered(protocol, language):
@@ -37,6 +71,7 @@ def rendered(protocol, language):
 
 
 def check():
+    release_sources()
     protocol = tsep.read_json(tsep.PROTOCOL_PATH)
     controls = protocol['controls']
     tsep.require([c['id'] for c in controls] == ['TS%02d' % n for n in range(1, 45)],
@@ -79,12 +114,7 @@ def build(output):
     destination = Path(output).resolve()
     tsep.require(ROOT not in destination.parents, 'Archive output must be outside the package')
     tsep.require(not destination.exists(), 'Refusing to overwrite an existing release archive')
-    files = []
-    for path in sorted(ROOT.rglob('*')):
-        if path.is_file() and not any(p in ('__pycache__', '.git', '.DS_Store') for p in path.parts) \
-                and path.suffix != '.pyc' and path.relative_to(ROOT).as_posix() != 'SHA256SUMS':
-            tsep.require(not path.is_symlink(), 'Release must not contain symlinks')
-            files.append(path)
+    files = release_sources()
     manifest = '\n'.join(tsep.digest(path) + '  ' + path.relative_to(ROOT).as_posix()
                          for path in files) + '\n'
     with zipfile.ZipFile(destination, 'x', compression=zipfile.ZIP_STORED) as archive:
@@ -108,9 +138,9 @@ def main():
         protocol = tsep.read_json(tsep.PROTOCOL_PATH)
         protocol['normative_documents'] = [{'path': name, 'sha256': tsep.digest(ROOT / name)}
             for name in ('schemas/report.schema.json', 'docs/contract.en.md', 'docs/contract.fr.md')]
-        tsep.PROTOCOL_PATH.write_text(json.dumps(protocol, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+        tsep.PROTOCOL_PATH.write_bytes((json.dumps(protocol, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
         for lang in ('fr', 'en'):
-            (ROOT / ('docs/controls.' + lang + '.md')).write_text(rendered(protocol, lang), encoding='utf-8')
+            (ROOT / ('docs/controls.' + lang + '.md')).write_bytes(rendered(protocol, lang).encode('utf-8'))
     elif args.command == 'build':
         tsep.require(args.output, '--output is required')
         build(args.output)
