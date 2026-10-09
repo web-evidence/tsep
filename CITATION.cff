@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "Cite the exact draft version and archive checksum. No DOI has been registered."
+title: "Technical SEO Evidence Protocol (TSEP)"
+version: "0.1.0-draft.1"
+type: software
+authors:
+  - family-names: "Morel"
+    given-names: "Bertrand"
+    affiliation: "Edikka"
+    orcid: "https://orcid.org/0009-0001-3211-6118"
+abstract: "Working draft: 44 bilingual technical SEO assessment controls and an evidence-report interchange reference implementation. Not independently reviewed or certified."
+license: Apache-2.0
+# This citation describes the software; protocol text/data are CC-BY-4.0.
+# Add a repository URL and DOI only after they actually exist.

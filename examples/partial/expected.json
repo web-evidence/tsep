@@ -1,0 +1,73 @@
+{
+  "valid": true,
+  "decision": "NO_GO",
+  "profile": "custom",
+  "scope": {
+    "label": "One synthetic URL / Une URL fictive",
+    "targets": [
+      "https://example.com/page"
+    ],
+    "selection_method": "Controlled demonstration, not a live site assessment / Démonstration contrôlée",
+    "exclusions": [
+      "All other controls and every live site / Autres contrôles et sites réels"
+    ]
+  },
+  "counts": {
+    "C": 0,
+    "NC": 0,
+    "NA": 0,
+    "NT": 1
+  },
+  "blocking": [
+    "TS01"
+  ],
+  "synthetic_evidence": true,
+  "selected_controls": 1,
+  "protocol_controls": 44,
+  "unevaluated_controls": [
+    "TS02",
+    "TS03",
+    "TS04",
+    "TS05",
+    "TS06",
+    "TS07",
+    "TS08",
+    "TS09",
+    "TS10",
+    "TS11",
+    "TS12",
+    "TS13",
+    "TS14",
+    "TS15",
+    "TS16",
+    "TS17",
+    "TS18",
+    "TS19",
+    "TS20",
+    "TS21",
+    "TS22",
+    "TS23",
+    "TS24",
+    "TS25",
+    "TS26",
+    "TS27",
+    "TS28",
+    "TS29",
+    "TS30",
+    "TS31",
+    "TS32",
+    "TS33",
+    "TS34",
+    "TS35",
+    "TS36",
+    "TS37",
+    "TS38",
+    "TS39",
+    "TS40",
+    "TS41",
+    "TS42",
+    "TS43",
+    "TS44"
+  ],
+  "interpretation": "Declared scope and selected controls only; validates report consistency and file integrity, not the truth of an assessment."
+}

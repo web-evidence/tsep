@@ -1,0 +1,2 @@
+Synthetic case: this public canonical page is expected to return the declared content with final HTTP 200.
+Cas fictif : cette page publique canonique doit retourner le contenu attendu en HTTP 200 final.

@@ -1,0 +1,2746 @@
+{
+  "name": "Technical SEO Evidence Protocol",
+  "short_name": "TSEP",
+  "version": "0.1.0-draft.1",
+  "status": "draft",
+  "date": "2026-10-09",
+  "languages": [
+    "en",
+    "fr"
+  ],
+  "initiated_by": "Edikka",
+  "license": "CC-BY-4.0",
+  "upstream": [
+    {
+      "path": "upstream/grid-v1.1.fr.json",
+      "sha256": "0d4cc2aaa8b7f949801c9526fcd5610efdbd42f49515ff31c735454914a8f5fa",
+      "version": "1.1"
+    },
+    {
+      "path": "upstream/grid-v1.1.en.json",
+      "sha256": "bf721fc4e5eaaa9fc8666ed6dd6b2d1087e6b68669b317776e5691d56367f01b",
+      "version": "1.1"
+    }
+  ],
+  "status_codes": {
+    "C": "conforming",
+    "NC": "nonconforming",
+    "NA": "not-applicable",
+    "NT": "not-tested-or-inconclusive"
+  },
+  "controls": [
+    {
+      "id": "TS01",
+      "title": {
+        "fr": "La page finale répond avec un code HTTP exploitable.",
+        "en": "The final page returns an actionable HTTP status code."
+      },
+      "domain": {
+        "fr": "HTTP et disponibilité",
+        "en": "HTTP and availability"
+      },
+      "severity": "blocking",
+      "unit": "page",
+      "required_inputs": [
+        "http",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Pages publiques désignées comme canoniques.",
+        "en": "Public pages designated as canonical."
+      },
+      "procedure": {
+        "fr": "Envoyer une requête GET, suivre les redirections et relever le code final.",
+        "en": "Send a GET request, follow redirects and record the final status code."
+      },
+      "acceptance": {
+        "fr": "Chaque GET atteint une réponse finale 200 pour la ressource attendue ; horodatage et chaîne conservés.",
+        "en": "Each GET reaches a final 200 response for the expected resource; retain timestamp and redirect chain."
+      },
+      "non_applicability": {
+        "fr": "Aucune page publique canonique dans le périmètre déclaré.",
+        "en": "No public canonical page in the declared scope."
+      },
+      "evidence": {
+        "fr": "URL testée, horodatage, code final 200 pour une page canonique publique.",
+        "en": "Tested URL, timestamp and final 200 status for a public canonical page."
+      },
+      "limitations": {
+        "fr": "Un test depuis une IP ne prouve pas la réponse reçue par Googlebot.",
+        "en": "A test from one IP does not prove the response received by Googlebot."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS02",
+      "title": {
+        "fr": "Les redirections sont intentionnelles, directes et sans boucle.",
+        "en": "Redirects are intentional, direct and loop-free."
+      },
+      "domain": {
+        "fr": "HTTP et disponibilité",
+        "en": "HTTP and availability"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "http",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Variantes et anciennes URL dont le comportement attendu est déclaré.",
+        "en": "Variants and legacy URLs with a declared expected behavior."
+      },
+      "procedure": {
+        "fr": "Tester les variantes HTTP/HTTPS, hôte, slash et anciennes URL avec le nombre de redirections.",
+        "en": "Test HTTP/HTTPS, host, trailing-slash and legacy URL variants, including the redirect count."
+      },
+      "acceptance": {
+        "fr": "Chaque variante testée suit la destination et le nombre de sauts autorisés, sans boucle ; intention validée par le responsable.",
+        "en": "Each tested variant follows the approved destination and hop count without a loop; the owner confirms intent."
+      },
+      "non_applicability": {
+        "fr": "Aucune redirection ni variante attendue, inventaire à l’appui.",
+        "en": "No redirects or expected variants, supported by an inventory."
+      },
+      "evidence": {
+        "fr": "Destination finale unique, chaîne documentée, absence de boucle.",
+        "en": "One final destination, documented chain and no loop."
+      },
+      "limitations": {
+        "fr": "Une redirection valide ne prouve pas la pertinence sémantique de sa destination.",
+        "en": "A valid redirect does not prove the semantic relevance of its destination."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/301-redirects"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS03",
+      "title": {
+        "fr": "Les erreurs serveur et soft 404 ne remplacent pas une réponse explicite.",
+        "en": "Server errors and soft 404s do not replace an explicit response."
+      },
+      "domain": {
+        "fr": "HTTP et disponibilité",
+        "en": "HTTP and availability"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "http",
+        "content",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Routes existantes, supprimées et inexistantes du périmètre.",
+        "en": "Existing, removed and nonexistent routes in scope."
+      },
+      "procedure": {
+        "fr": "Tester une page existante, une URL supprimée et une URL inexistante ; comparer code et contenu.",
+        "en": "Test an existing page, a removed URL and a non-existent URL; compare status and content."
+      },
+      "acceptance": {
+        "fr": "Codes et contenus correspondent aux trois cas déclarés ; les erreurs testées ne livrent pas une page d’erreur en 200.",
+        "en": "Status and content match the three declared cases; tested error pages do not return 200."
+      },
+      "non_applicability": {
+        "fr": "Périmètre ne contenant aucun routage HTTP, justification fournie.",
+        "en": "Scope contains no HTTP routing, with a justification."
+      },
+      "evidence": {
+        "fr": "Codes 4xx/5xx cohérents et modèle d’erreur qui ne renvoie pas 200 par défaut.",
+        "en": "Consistent 4xx/5xx responses and an error template that does not return 200 by default."
+      },
+      "limitations": {
+        "fr": "La classification soft 404 finale reste une décision du moteur.",
+        "en": "The final soft-404 classification remains a search-engine decision."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS04",
+      "title": {
+        "fr": "La politique robots effective correspond à l’intention déclarée.",
+        "en": "The effective robots policy matches declared intent."
+      },
+      "domain": {
+        "fr": "Robots et accès",
+        "en": "Robots and access"
+      },
+      "severity": "blocking",
+      "unit": "host",
+      "required_inputs": [
+        "http",
+        "robots",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Hôtes et agents pour lesquels une politique d’exploration est évaluée.",
+        "en": "Hosts and agents for which a crawl policy is assessed."
+      },
+      "procedure": {
+        "fr": "Récupérer robots.txt pour chaque origine ; conserver le statut, les règles effectives du robot ciblé et la politique attendue. Examiner les erreurs selon la documentation du robot, sans assimiler toute absence à un échec.",
+        "en": "Fetch robots.txt for each origin; retain status, effective target-bot rules and expected policy. Review errors against the bot documentation without treating every absence as failure."
+      },
+      "acceptance": {
+        "fr": "Règles effectives et accès aux ressources correspondent à la politique déclarée ; une absence volontaire documentée peut être compatible, sans exiger systématiquement 200.",
+        "en": "Effective rules and resource access match the declared policy; documented intentional absence may be compatible, without universally requiring 200."
+      },
+      "non_applicability": {
+        "fr": "Aucun hôte explorable dans le périmètre.",
+        "en": "No crawlable host in scope."
+      },
+      "evidence": {
+        "fr": "Origine, robot, statut, règles ou absence constatée, ressources testées et politique attendue.",
+        "en": "Origin, bot, status, observed rules or absence, tested resources and expected policy."
+      },
+      "limitations": {
+        "fr": "robots.txt est un protocole d’exploration, pas un contrôle d’accès.",
+        "en": "robots.txt is a crawling protocol, not an access-control mechanism."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc9309.html"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS05",
+      "title": {
+        "fr": "Une directive Disallow n’est jamais présentée comme une garantie de désindexation.",
+        "en": "A Disallow rule is never presented as a guarantee of deindexing."
+      },
+      "domain": {
+        "fr": "Robots et accès",
+        "en": "Robots and access"
+      },
+      "severity": "blocking",
+      "unit": "policy",
+      "required_inputs": [
+        "configuration",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Politiques d’exploration ou d’exclusion du périmètre.",
+        "en": "Crawling or exclusion policies in scope."
+      },
+      "procedure": {
+        "fr": "Comparer la politique robots, les besoins d’indexation et les directives meta/X-Robots-Tag.",
+        "en": "Compare the robots policy, indexing requirements and meta/X-Robots-Tag directives."
+      },
+      "acceptance": {
+        "fr": "Exploration, indexation et protection ont des mécanismes et objectifs distincts ; aucune garantie de désindexation ne repose seulement sur Disallow.",
+        "en": "Crawling, indexing and protection have distinct mechanisms and objectives; no deindexing guarantee relies only on Disallow."
+      },
+      "non_applicability": {
+        "fr": "Aucune politique concernée, périmètre et décision documentés.",
+        "en": "No relevant policy, with scope and decision documented."
+      },
+      "evidence": {
+        "fr": "Décision distincte pour exploration, indexation et protection.",
+        "en": "Separate decisions for crawling, indexing and protection."
+      },
+      "limitations": {
+        "fr": "Une URL bloquée peut rester connue et apparaître sans extrait.",
+        "en": "A blocked URL may remain known and appear without a snippet."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Configuration",
+        "en": "Configuration"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/robots/intro"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS06",
+      "title": {
+        "fr": "Les zones sensibles refusent réellement l’accès au serveur.",
+        "en": "Sensitive areas genuinely deny access at server level."
+      },
+      "domain": {
+        "fr": "Robots et accès",
+        "en": "Robots and access"
+      },
+      "severity": "blocking",
+      "unit": "route-set",
+      "required_inputs": [
+        "configuration",
+        "http",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Routes déclarées privées ou sensibles.",
+        "en": "Routes declared private or sensitive."
+      },
+      "procedure": {
+        "fr": "Tester sans session les routes privées et vérifier authentification, autorisation et cache.",
+        "en": "Test private routes without a session and verify authentication, authorisation and caching."
+      },
+      "acceptance": {
+        "fr": "Sans session et avec les rôles non autorisés testés, aucun contenu sensible n’est livré, y compris par le cache ; contrôles et rôles couverts sont listés.",
+        "en": "No sensitive content is delivered to tested anonymous or unauthorized roles, including from cache; list covered routes and roles."
+      },
+      "non_applicability": {
+        "fr": "Absence de routes privées attestée par un inventaire autorisé.",
+        "en": "An authorized inventory attests to the absence of private routes."
+      },
+      "evidence": {
+        "fr": "Réponse 401/403 ou redirection d’authentification sans contenu sensible livré.",
+        "en": "A 401/403 response or authentication redirect, with no sensitive content delivered."
+      },
+      "limitations": {
+        "fr": "L’absence dans l’index ne constitue pas une preuve de confidentialité.",
+        "en": "Absence from the index is not proof of confidentiality."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Configuration",
+        "en": "Configuration"
+      },
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS07",
+      "title": {
+        "fr": "Les directives meta robots et X-Robots-Tag sont cohérentes avec l’objectif de la page.",
+        "en": "Robots meta directives and X-Robots-Tag match the page objective."
+      },
+      "domain": {
+        "fr": "Indexation",
+        "en": "Indexing"
+      },
+      "severity": "blocking",
+      "unit": "page",
+      "required_inputs": [
+        "http",
+        "html",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Documents et ressources dont l’objectif d’indexation est déclaré.",
+        "en": "Documents and resources with a declared indexing objective."
+      },
+      "procedure": {
+        "fr": "Inspecter les en-têtes et le DOM source sur les gabarits indexables et exclus.",
+        "en": "Inspect headers and source DOM across indexable and excluded templates."
+      },
+      "acceptance": {
+        "fr": "Les directives effectives du robot cible, dans les en-têtes finaux et le HTML, correspondent à cet objectif ; directives inconnues et états rendus nécessaires sont examinés.",
+        "en": "Effective target-bot directives in final headers and HTML match that objective; unknown directives and any necessary rendered states are reviewed."
+      },
+      "non_applicability": {
+        "fr": "Aucune ressource soumise à une politique d’indexation dans le périmètre.",
+        "en": "No resource subject to an indexing policy in scope."
+      },
+      "evidence": {
+        "fr": "Directive unique ou combinaison compatible, sans noindex accidentel.",
+        "en": "One directive or a compatible combination, with no accidental noindex."
+      },
+      "limitations": {
+        "fr": "Le moteur doit pouvoir explorer la ressource pour lire la directive.",
+        "en": "The engine must be allowed to crawl the resource to read the directive."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS08",
+      "title": {
+        "fr": "Le statut d’indexation réel est vérifié dans Search Console.",
+        "en": "The actual indexing status is checked in Search Console."
+      },
+      "domain": {
+        "fr": "Indexation",
+        "en": "Indexing"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "search-console",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "URL dont l’état dans Google doit être établi.",
+        "en": "URLs whose Google indexing state must be established."
+      },
+      "procedure": {
+        "fr": "Utiliser l’inspection d’URL sur un échantillon représentatif et conserver l’export ou la capture.",
+        "en": "Use URL Inspection on a representative sample and retain the export or screenshot."
+      },
+      "acceptance": {
+        "fr": "L’inspection est datée pour chaque URL retenue ; état réel, exploration et canonique sont consignés et rapprochés de l’objectif, écarts expliqués.",
+        "en": "Inspection is dated for each selected URL; actual state, crawl access and canonical are recorded against intent, with discrepancies explained."
+      },
+      "non_applicability": {
+        "fr": "Le moteur Google est explicitement hors périmètre ; absence d’accès seule ne suffit pas.",
+        "en": "Google is explicitly out of scope; lack of access alone is insufficient."
+      },
+      "evidence": {
+        "fr": "URL connue, exploration autorisée, indexation et canonique Google documentées.",
+        "en": "Known URL, crawling permission, indexing state and Google-selected canonical documented."
+      },
+      "limitations": {
+        "fr": "Un audit public ne peut pas établir ce statut sans accès à la propriété.",
+        "en": "A public audit cannot establish this status without property access."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Search Console",
+        "en": "Search Console"
+      },
+      "references": [
+        "https://support.google.com/webmasters/answer/9012289"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS09",
+      "title": {
+        "fr": "Les exclusions volontaires ont un propriétaire et une justification.",
+        "en": "Intentional exclusions have an owner and a rationale."
+      },
+      "domain": {
+        "fr": "Indexation",
+        "en": "Indexing"
+      },
+      "severity": "minor",
+      "unit": "policy",
+      "required_inputs": [
+        "configuration",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Familles volontairement exclues.",
+        "en": "Intentionally excluded page families."
+      },
+      "procedure": {
+        "fr": "Relier chaque famille exclue à une règle, un responsable et une date de revue.",
+        "en": "Tie each excluded family to a rule, owner and review date."
+      },
+      "acceptance": {
+        "fr": "Chaque exclusion du périmètre possède mécanisme, motif, propriétaire et date de revue.",
+        "en": "Every exclusion in scope has a mechanism, rationale, owner and review date."
+      },
+      "non_applicability": {
+        "fr": "Aucune exclusion volontaire, inventaire de politique fourni.",
+        "en": "No intentional exclusions, with a policy inventory provided."
+      },
+      "evidence": {
+        "fr": "Registre des exclusions : type de page, mécanisme, motif, propriétaire, révision.",
+        "en": "Exclusion register: page type, mechanism, rationale, owner and review."
+      },
+      "limitations": {
+        "fr": "La pertinence métier de l’exclusion ne peut pas être automatisée.",
+        "en": "The business relevance of an exclusion cannot be automated."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Configuration",
+        "en": "Configuration"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/block-indexing"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS10",
+      "title": {
+        "fr": "Chaque page canonique publie une URL absolue, stable et cohérente.",
+        "en": "Each canonical page publishes an absolute, stable and consistent URL."
+      },
+      "domain": {
+        "fr": "Canonicalisation",
+        "en": "Canonicalisation"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "http",
+        "html",
+        "sitemap",
+        "crawl",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Familles déclarant une stratégie de canonicalisation.",
+        "en": "Families with a declared canonicalization strategy."
+      },
+      "procedure": {
+        "fr": "Comparer URL finale, rel=canonical, sitemap et liens internes.",
+        "en": "Compare the final URL, rel=canonical, sitemap and internal links."
+      },
+      "acceptance": {
+        "fr": "URL finales, canonicals déclarés, sitemap et liens internes convergent selon cette stratégie ; les exceptions sont justifiées.",
+        "en": "Final URLs, declared canonicals, sitemaps and internal links converge under that strategy; exceptions are justified."
+      },
+      "non_applicability": {
+        "fr": "Aucun document concerné, inventaire et stratégie à l’appui.",
+        "en": "No relevant document, supported by an inventory and strategy."
+      },
+      "evidence": {
+        "fr": "Signaux convergents vers la même URL canonique sans chaîne.",
+        "en": "Signals converge on the same canonical URL without a chain."
+      },
+      "limitations": {
+        "fr": "rel=canonical est un signal fort, pas une directive garantie.",
+        "en": "rel=canonical is a strong signal, not a guaranteed directive."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS11",
+      "title": {
+        "fr": "Les variantes réellement dupliquées convergent sans masquer des pages distinctes.",
+        "en": "Genuine duplicate variants converge without hiding distinct pages."
+      },
+      "domain": {
+        "fr": "Canonicalisation",
+        "en": "Canonicalisation"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "content",
+        "html",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Familles de variantes ou doublons identifiés.",
+        "en": "Identified duplicate or variant families."
+      },
+      "procedure": {
+        "fr": "Échantillonner paramètres, pagination, filtres et versions imprimables ; comparer contenu et canonique.",
+        "en": "Sample parameters, pagination, filters and print versions; compare content and canonicals."
+      },
+      "acceptance": {
+        "fr": "Chaque rapprochement est justifié par comparaison du contenu ; aucune page distincte testée n’est absorbée involontairement.",
+        "en": "Each mapping is justified by content comparison; no tested distinct page is unintentionally consolidated."
+      },
+      "non_applicability": {
+        "fr": "Aucune variante ni duplication connue après inventaire documenté.",
+        "en": "No variants or duplication identified after a documented inventory."
+      },
+      "evidence": {
+        "fr": "Correspondance documentée entre doublon et canonique pertinent.",
+        "en": "Documented mapping between each duplicate and its relevant canonical."
+      },
+      "limitations": {
+        "fr": "Une similarité calculée ne remplace pas la décision éditoriale.",
+        "en": "Computed similarity does not replace an editorial decision."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS12",
+      "title": {
+        "fr": "La canonique choisie par Google est comparée à celle déclarée.",
+        "en": "Google’s selected canonical is compared with the declared canonical."
+      },
+      "domain": {
+        "fr": "Canonicalisation",
+        "en": "Canonicalisation"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "search-console",
+        "html",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "URL dont la canonique Google doit être comparée à la déclaration.",
+        "en": "URLs whose Google canonical must be compared with the declared canonical."
+      },
+      "procedure": {
+        "fr": "Inspecter les URL prioritaires et consigner canonique utilisateur et canonique Google.",
+        "en": "Inspect priority URLs and record the user-declared and Google-selected canonicals."
+      },
+      "acceptance": {
+        "fr": "Les deux valeurs sont datées et comparées ; chaque divergence dispose d’une qualification et d’une décision.",
+        "en": "Both values are timestamped and compared; each discrepancy has an assessment and a decision."
+      },
+      "non_applicability": {
+        "fr": "Google explicitement hors périmètre ; manque d’accès classé NT.",
+        "en": "Google explicitly out of scope; missing access is NT."
+      },
+      "evidence": {
+        "fr": "Accord ou divergence qualifiée et traitée.",
+        "en": "Agreement or a qualified, addressed divergence."
+      },
+      "limitations": {
+        "fr": "La canonique Google peut évoluer après une nouvelle exploration.",
+        "en": "Google’s selected canonical can change after recrawling."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Search Console",
+        "en": "Search Console"
+      },
+      "references": [
+        "https://support.google.com/webmasters/answer/9012289"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS13",
+      "title": {
+        "fr": "Le sitemap contient uniquement des URL absolues et canoniques utiles.",
+        "en": "The sitemap contains only useful absolute canonical URLs."
+      },
+      "domain": {
+        "fr": "Sitemaps et fraîcheur",
+        "en": "Sitemaps and freshness"
+      },
+      "severity": "major",
+      "unit": "sitemap-set",
+      "required_inputs": [
+        "sitemap",
+        "http",
+        "html",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Sitemaps utilisés pour les URL du périmètre.",
+        "en": "Sitemaps used for the URLs in scope."
+      },
+      "procedure": {
+        "fr": "Parser chaque sitemap, compter les URL et comparer statut, canonique et indexabilité.",
+        "en": "Parse every sitemap, count URLs and compare status, canonical and indexability."
+      },
+      "acceptance": {
+        "fr": "Chaque entrée du périmètre est résolue, canonique selon la stratégie et destinée à l’indexation ; exclusions et limites de l’échantillon sont explicites.",
+        "en": "Each scoped entry resolves, is canonical under the strategy and is intended for indexing; exclusions and sample limits are explicit."
+      },
+      "non_applicability": {
+        "fr": "Aucun sitemap utilisé, inventaire et décision fournis.",
+        "en": "No sitemap used, with inventory and decision provided."
+      },
+      "evidence": {
+        "fr": "Inventaire sans redirection, 4xx, noindex ni doublon de canonique.",
+        "en": "Inventory without redirects, 4xx responses, noindex pages or duplicate canonicals."
+      },
+      "limitations": {
+        "fr": "La présence dans un sitemap ne garantit pas l’indexation.",
+        "en": "Sitemap inclusion does not guarantee indexing."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS14",
+      "title": {
+        "fr": "lastmod reflète une modification significative de la page.",
+        "en": "lastmod reflects a significant change to the page."
+      },
+      "domain": {
+        "fr": "Sitemaps et fraîcheur",
+        "en": "Sitemaps and freshness"
+      },
+      "severity": "minor",
+      "unit": "sitemap-set",
+      "required_inputs": [
+        "sitemap",
+        "change-history"
+      ],
+      "applicability": {
+        "fr": "Sitemaps comportant lastmod.",
+        "en": "Sitemaps containing lastmod."
+      },
+      "procedure": {
+        "fr": "Comparer lastmod à l’historique éditorial ou au déploiement de contenu significatif.",
+        "en": "Compare lastmod with editorial history or a significant content deployment."
+      },
+      "acceptance": {
+        "fr": "Chaque date testée correspond à une modification significative traçable ; la génération du fichier ne suffit pas.",
+        "en": "Each tested date maps to a traceable significant change; file generation alone is insufficient."
+      },
+      "non_applicability": {
+        "fr": "Aucun lastmod déclaré ; son absence n’est pas un défaut en soi.",
+        "en": "No lastmod declared; its absence is not itself a defect."
+      },
+      "evidence": {
+        "fr": "Horodatage ISO 8601 lié à une modification réelle, pas à la génération du fichier.",
+        "en": "ISO 8601 timestamp tied to an actual change, not file generation."
+      },
+      "limitations": {
+        "fr": "Le moteur peut ignorer un lastmod jugé peu fiable.",
+        "en": "The engine may ignore a lastmod it considers unreliable."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Configuration",
+        "en": "Configuration"
+      },
+      "references": [
+        "https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS15",
+      "title": {
+        "fr": "Les limites et découpages de sitemap sont respectés.",
+        "en": "Sitemap size and segmentation limits are respected."
+      },
+      "domain": {
+        "fr": "Sitemaps et fraîcheur",
+        "en": "Sitemaps and freshness"
+      },
+      "severity": "major",
+      "unit": "sitemap-set",
+      "required_inputs": [
+        "sitemap"
+      ],
+      "applicability": {
+        "fr": "Fichiers et index de sitemap déclarés.",
+        "en": "Declared sitemap files and indexes."
+      },
+      "procedure": {
+        "fr": "Contrôler taille décompressée, nombre d’URL, index de sitemaps et encodage.",
+        "en": "Check uncompressed size, URL count, sitemap indexes and encoding."
+      },
+      "acceptance": {
+        "fr": "Encodage et syntaxe sont valides ; limites de taille décompressée et de nombre d’entrées sont respectées pour chaque type de fichier.",
+        "en": "Encoding and syntax are valid; uncompressed size and entry-count limits are met for each file type."
+      },
+      "non_applicability": {
+        "fr": "Aucun sitemap utilisé dans le périmètre.",
+        "en": "No sitemap used in scope."
+      },
+      "evidence": {
+        "fr": "Maximum 50 000 URL et 50 Mo non compressés par sitemap.",
+        "en": "No more than 50,000 URLs and 50 MB uncompressed per sitemap."
+      },
+      "limitations": {
+        "fr": "Un fichier valide peut contenir un mauvais périmètre éditorial.",
+        "en": "A valid file can still cover the wrong editorial scope."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://www.sitemaps.org/protocol.html"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS16",
+      "title": {
+        "fr": "Chaque page importante reçoit au moins un lien interne crawlable.",
+        "en": "Every important page receives at least one crawlable internal link."
+      },
+      "domain": {
+        "fr": "Découvrabilité interne",
+        "en": "Internal discoverability"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "crawl",
+        "inventory",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Pages identifiées comme importantes dans un inventaire.",
+        "en": "Pages identified as important in an inventory."
+      },
+      "procedure": {
+        "fr": "Crawler le site depuis les entrées publiques et lister les pages sans lien entrant HTML.",
+        "en": "Crawl from public entry points and list pages with no incoming HTML link."
+      },
+      "acceptance": {
+        "fr": "Chaque page retenue possède au moins un lien entrant HTML résoluble depuis une page interne ; source et destination archivées.",
+        "en": "Every selected page has at least one resolvable incoming HTML link from an internal page; source and destination are archived."
+      },
+      "non_applicability": {
+        "fr": "Aucune page importante concernée, justification et inventaire fournis.",
+        "en": "No relevant important page, with justification and inventory provided."
+      },
+      "evidence": {
+        "fr": "Source du lien, destination, ancre et statut de la page.",
+        "en": "Link source, destination, anchor and destination status."
+      },
+      "limitations": {
+        "fr": "Un lien présent ne prouve pas sa valeur éditoriale.",
+        "en": "The presence of a link does not prove its editorial value."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/links-crawlable"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS17",
+      "title": {
+        "fr": "Les liens essentiels utilisent un élément a avec href résoluble.",
+        "en": "Essential links use an a element with a resolvable href."
+      },
+      "domain": {
+        "fr": "Découvrabilité interne",
+        "en": "Internal discoverability"
+      },
+      "severity": "major",
+      "unit": "page",
+      "required_inputs": [
+        "html",
+        "render",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Destinations de navigation déclarées essentielles.",
+        "en": "Navigation destinations declared essential."
+      },
+      "procedure": {
+        "fr": "Comparer DOM source et rendu ; relever boutons, onclick et ancres sans href.",
+        "en": "Compare source and rendered DOM; identify buttons, onclick handlers and anchors without href."
+      },
+      "acceptance": {
+        "fr": "Chaque destination essentielle testée possède un lien a avec href résoluble au stade observé ; les stades source et rendu sont distingués.",
+        "en": "Every tested essential destination has an a link with a resolvable href at the observed stage; source and rendered stages are distinguished."
+      },
+      "non_applicability": {
+        "fr": "Aucune navigation concernée, périmètre justifié.",
+        "en": "No relevant navigation, with a justified scope."
+      },
+      "evidence": {
+        "fr": "Lien HTML crawlable vers chaque destination essentielle.",
+        "en": "A crawlable HTML link to every essential destination."
+      },
+      "limitations": {
+        "fr": "La crawlabilité ne garantit ni indexation ni classement.",
+        "en": "Crawlability guarantees neither indexing nor rankings."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/links-crawlable"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS18",
+      "title": {
+        "fr": "La profondeur et les pages orphelines sont mesurées sur un périmètre explicite.",
+        "en": "Depth and orphan pages are measured within an explicit scope."
+      },
+      "domain": {
+        "fr": "Découvrabilité interne",
+        "en": "Internal discoverability"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "crawl",
+        "sitemap",
+        "inventory",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Inventaire de référence déclaré, avec frontières du crawl.",
+        "en": "Declared reference inventory with crawl boundaries."
+      },
+      "procedure": {
+        "fr": "Comparer crawl, sitemap et export CMS ; qualifier chaque différence.",
+        "en": "Compare crawl, sitemap and CMS export; qualify every difference."
+      },
+      "acceptance": {
+        "fr": "Crawl et inventaire sont rapprochés ; profondeur observée et candidats orphelins sont qualifiés par famille ; aucune exhaustivité n’est inférée d’un seul crawl.",
+        "en": "Crawl and inventory are reconciled; observed depth and orphan candidates are assessed by family; a crawl alone never establishes completeness."
+      },
+      "non_applicability": {
+        "fr": "Aucun graphe de navigation concerné, justification fournie ; inventaire manquant signifie NT.",
+        "en": "No relevant navigation graph, with a justification; a missing inventory means NT."
+      },
+      "evidence": {
+        "fr": "Inventaire de référence identifié et daté, frontières du crawl, liens entrants, profondeurs observées et différences qualifiées.",
+        "en": "Identified and dated reference inventory, crawl boundaries, incoming links, observed depths and assessed differences."
+      },
+      "limitations": {
+        "fr": "Il n’existe pas de profondeur universelle garantissant un classement.",
+        "en": "No universal depth guarantees rankings."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/links-crawlable"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS19",
+      "title": {
+        "fr": "Les paramètres, filtres et calendriers ne créent pas un espace infini.",
+        "en": "Parameters, filters and calendars do not create an infinite URL space."
+      },
+      "domain": {
+        "fr": "Espaces d’URL",
+        "en": "URL spaces"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "crawl",
+        "configuration",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Paramètres, filtres, calendriers et autres espaces combinatoires.",
+        "en": "Parameters, filters, calendars and other combinatorial URL spaces."
+      },
+      "procedure": {
+        "fr": "Regrouper les URL par motif, compter les combinaisons et rechercher les pièges de crawl.",
+        "en": "Group URLs by pattern, count combinations and look for crawl traps."
+      },
+      "acceptance": {
+        "fr": "Chaque motif testé a une politique de navigation/indexation ; limites et pièges observés sont expliqués sans inférer le volume exploré réel.",
+        "en": "Each tested pattern has a navigation/indexing policy; observed limits and traps are explained without inferring actual crawl volume."
+      },
+      "non_applicability": {
+        "fr": "Inventaire attestant l’absence de tels motifs.",
+        "en": "Inventory attesting to the absence of such patterns."
+      },
+      "evidence": {
+        "fr": "Règle d’indexation et de navigation pour chaque motif de paramètre.",
+        "en": "Indexing and navigation rule for each parameter pattern."
+      },
+      "limitations": {
+        "fr": "Le volume réellement exploré exige les logs ou Search Console.",
+        "en": "The actual crawled volume requires logs or Search Console."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/url-structure"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS20",
+      "title": {
+        "fr": "La structure d’URL est lisible, stable et encodée correctement.",
+        "en": "The URL structure is readable, stable and correctly encoded."
+      },
+      "domain": {
+        "fr": "Espaces d’URL",
+        "en": "URL spaces"
+      },
+      "severity": "minor",
+      "unit": "url-set",
+      "required_inputs": [
+        "crawl",
+        "configuration",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Motifs d’URL publiés.",
+        "en": "Published URL patterns."
+      },
+      "procedure": {
+        "fr": "Relever espaces, fragments, caractères encodés, casse et identifiants volatils.",
+        "en": "Identify spaces, fragments, encoded characters, case and volatile identifiers."
+      },
+      "acceptance": {
+        "fr": "Encodage, casse, stabilité et variations correspondent aux règles déclarées ; aucune variante involontaire observée n’est laissée sans décision.",
+        "en": "Encoding, case, stability and variations match declared rules; no observed unintended variant is left without a decision."
+      },
+      "non_applicability": {
+        "fr": "Aucune URL publique dans le périmètre.",
+        "en": "No public URL in scope."
+      },
+      "evidence": {
+        "fr": "Motifs d’URL documentés et absence de variantes involontaires.",
+        "en": "Documented URL patterns and no unintended variants."
+      },
+      "limitations": {
+        "fr": "Une URL lisible n’est pas un facteur suffisant de performance SEO.",
+        "en": "A readable URL is not sufficient evidence of SEO performance."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/url-structure"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS21",
+      "title": {
+        "fr": "Les URL découvertes mais non indexées sont investiguées par famille.",
+        "en": "Discovered but unindexed URLs are investigated by family."
+      },
+      "domain": {
+        "fr": "Espaces d’URL",
+        "en": "URL spaces"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "search-console",
+        "logs",
+        "sitemap",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Familles signalées découvertes ou explorées mais non indexées.",
+        "en": "Families reported as discovered or crawled but not indexed."
+      },
+      "procedure": {
+        "fr": "Segmenter le rapport Pages par gabarit et comparer aux sitemaps et logs.",
+        "en": "Segment the Pages report by template and compare it with sitemaps and logs."
+      },
+      "acceptance": {
+        "fr": "Chaque famille retenue possède un diagnostic documenté, une hypothèse testable et une décision ; causalité non démontrée signalée.",
+        "en": "Each selected family has a documented diagnosis, a testable hypothesis and a decision; unproven causality is disclosed."
+      },
+      "non_applicability": {
+        "fr": "Rapport daté ne contenant aucune famille concernée, ou Google explicitement exclu.",
+        "en": "A dated report contains no relevant family, or Google is explicitly excluded."
+      },
+      "evidence": {
+        "fr": "Hypothèse par famille, échantillon d’URL et résultat après correction.",
+        "en": "Hypothesis per family, URL sample and post-fix result."
+      },
+      "limitations": {
+        "fr": "Le libellé de Search Console décrit un état, pas toujours sa cause.",
+        "en": "A Search Console label describes a state, not always its cause."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Search Console",
+        "en": "Search Console"
+      },
+      "references": [
+        "https://support.google.com/webmasters/answer/7440203"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS22",
+      "title": {
+        "fr": "Chaque variante hreflang pointe vers une URL indexable et canonique.",
+        "en": "Each hreflang variant points to an indexable canonical URL."
+      },
+      "domain": {
+        "fr": "Internationalisation",
+        "en": "Internationalisation"
+      },
+      "severity": "major",
+      "unit": "locale-cluster",
+      "required_inputs": [
+        "hreflang",
+        "http",
+        "html",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Groupes de variantes localisées utilisant hreflang.",
+        "en": "Localized variant clusters using hreflang."
+      },
+      "procedure": {
+        "fr": "Parser les annotations HTML, HTTP ou sitemap et résoudre chaque URL.",
+        "en": "Parse HTML, HTTP or sitemap annotations and resolve every URL."
+      },
+      "acceptance": {
+        "fr": "Chaque cible du groupe est accessible, destinée à l’indexation et cohérente avec sa canonique ; codes langue/région contrôlés.",
+        "en": "Each cluster target is accessible, intended for indexing and consistent with its canonical; language/region codes are checked."
+      },
+      "non_applicability": {
+        "fr": "Aucun groupe hreflang dans le périmètre, inventaire fourni.",
+        "en": "No hreflang cluster in scope, with an inventory provided."
+      },
+      "evidence": {
+        "fr": "Langue/région valide, URL 200, canonique cohérente.",
+        "en": "Valid language/region, 200 response and consistent canonical."
+      },
+      "limitations": {
+        "fr": "hreflang aide au ciblage ; il ne remplace pas un contenu réellement localisé.",
+        "en": "hreflang helps targeting; it does not replace genuinely localized content."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/specialty/international/localized-versions"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS23",
+      "title": {
+        "fr": "Les annotations hreflang sont réciproques et incluent la page elle-même.",
+        "en": "hreflang annotations are reciprocal and include the current page."
+      },
+      "domain": {
+        "fr": "Internationalisation",
+        "en": "Internationalisation"
+      },
+      "severity": "major",
+      "unit": "locale-cluster",
+      "required_inputs": [
+        "hreflang",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Groupes hreflang déclarés.",
+        "en": "Declared hreflang clusters."
+      },
+      "procedure": {
+        "fr": "Construire les groupes de variantes et vérifier retour et auto-référence.",
+        "en": "Build variant clusters and verify return links and self-references."
+      },
+      "acceptance": {
+        "fr": "Toutes les paires du groupe déclaré sont réciproques et chaque variante s’inclut ; frontières du groupe conservées.",
+        "en": "All pairs in the declared cluster are reciprocal and every variant includes itself; cluster boundaries are retained."
+      },
+      "non_applicability": {
+        "fr": "Aucun groupe hreflang dans le périmètre.",
+        "en": "No hreflang cluster in scope."
+      },
+      "evidence": {
+        "fr": "Groupe complet, réciproque et sans URL contradictoire.",
+        "en": "Complete reciprocal cluster with no conflicting URL."
+      },
+      "limitations": {
+        "fr": "Un groupe valide ne prouve pas que le moteur servira toujours la variante attendue.",
+        "en": "A valid cluster does not prove the engine will always serve the expected variant."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/specialty/international/localized-versions"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS24",
+      "title": {
+        "fr": "x-default représente une destination neutre ou la variante par défaut assumée.",
+        "en": "x-default represents a neutral destination or an explicit default variant."
+      },
+      "domain": {
+        "fr": "Internationalisation",
+        "en": "Internationalisation"
+      },
+      "severity": "minor",
+      "unit": "locale-cluster",
+      "required_inputs": [
+        "hreflang",
+        "http",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Groupes où x-default est déclaré ou requis par la politique.",
+        "en": "Clusters where x-default is declared or required by policy."
+      },
+      "procedure": {
+        "fr": "Vérifier sa présence et sa fonction dans chaque groupe multilingue pertinent.",
+        "en": "Check its presence and role in every relevant multilingual cluster."
+      },
+      "acceptance": {
+        "fr": "La destination est accessible et correspond au parcours de sélection ou à la variante par défaut assumée.",
+        "en": "The destination is accessible and matches the selection flow or the deliberate default variant."
+      },
+      "non_applicability": {
+        "fr": "Aucun x-default requis ou déclaré ; justification de politique conservée.",
+        "en": "No x-default required or declared; retain the policy justification."
+      },
+      "evidence": {
+        "fr": "URL x-default documentée, accessible et cohérente avec le parcours.",
+        "en": "Documented, accessible x-default URL consistent with the journey."
+      },
+      "limitations": {
+        "fr": "x-default n’est pas obligatoire dans tous les cas.",
+        "en": "x-default is not mandatory in every case."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/specialty/international/localized-versions"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS25",
+      "title": {
+        "fr": "Le contenu critique existe dans le HTML source ou devient observable après rendu.",
+        "en": "Critical content exists in source HTML or becomes observable after rendering."
+      },
+      "domain": {
+        "fr": "JavaScript et rendu",
+        "en": "JavaScript and rendering"
+      },
+      "severity": "blocking",
+      "unit": "page",
+      "required_inputs": [
+        "html",
+        "render",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Gabarits dont les éléments critiques sont listés.",
+        "en": "Templates whose critical elements are listed."
+      },
+      "procedure": {
+        "fr": "Lister les éléments critiques puis comparer HTML source et DOM rendu dans les conditions déclarées. Une inspection Google facultative est une observation supplémentaire distincte.",
+        "en": "List critical elements, then compare source HTML and rendered DOM under declared conditions. Optional Google inspection is a separate additional observation."
+      },
+      "acceptance": {
+        "fr": "Chaque élément critique est observé au stade source ou rendu déclaré ; moteur, version et conditions sont conservés ; aucune équivalence avec Google n’est inférée.",
+        "en": "Every critical element is observed at the declared source or rendered stage; engine, version and conditions are retained; no equivalence with Google is inferred."
+      },
+      "non_applicability": {
+        "fr": "Aucun document HTML concerné dans le périmètre.",
+        "en": "No relevant HTML document in scope."
+      },
+      "evidence": {
+        "fr": "Titre, contenu, liens, canonical et données structurées présents au bon stade.",
+        "en": "Title, content, links, canonical and structured data present at the right stage."
+      },
+      "limitations": {
+        "fr": "Un navigateur local ne reproduit pas exactement le rendu Google.",
+        "en": "A local browser does not reproduce Google’s rendering exactly."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS26",
+      "title": {
+        "fr": "Les ressources nécessaires au rendu ne sont pas bloquées ni en erreur.",
+        "en": "Resources required for rendering are neither blocked nor failing."
+      },
+      "domain": {
+        "fr": "JavaScript et rendu",
+        "en": "JavaScript and rendering"
+      },
+      "severity": "major",
+      "unit": "page",
+      "required_inputs": [
+        "http",
+        "render",
+        "robots",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Ressources nécessaires au rendu des gabarits testés.",
+        "en": "Resources needed to render the tested templates."
+      },
+      "procedure": {
+        "fr": "Inspecter réseau, robots, CSP et erreurs console sur les gabarits prioritaires.",
+        "en": "Inspect network activity, robots rules, CSP and console errors on priority templates."
+      },
+      "acceptance": {
+        "fr": "Aucune ressource critique testée n’est empêchée par erreur réseau, politique robots ou CSP ; console et réseau sont conservés.",
+        "en": "No tested critical resource is prevented by network error, robots policy or CSP; console and network evidence are retained."
+      },
+      "non_applicability": {
+        "fr": "Aucune ressource de rendu dépendante, inventaire fourni.",
+        "en": "No dependent rendering resource, supported by an inventory."
+      },
+      "evidence": {
+        "fr": "Ressources critiques accessibles et absence d’erreur qui retire le contenu.",
+        "en": "Critical resources accessible and no error removes essential content."
+      },
+      "limitations": {
+        "fr": "Une console sans erreur ne prouve pas l’indexation.",
+        "en": "An error-free console does not prove indexing."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS27",
+      "title": {
+        "fr": "Les états et routes SPA produisent des URL partageables et des réponses serveur cohérentes.",
+        "en": "SPA states and routes produce shareable URLs and consistent server responses."
+      },
+      "domain": {
+        "fr": "JavaScript et rendu",
+        "en": "JavaScript and rendering"
+      },
+      "severity": "major",
+      "unit": "route-set",
+      "required_inputs": [
+        "http",
+        "render",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Routes applicatives ou états SPA destinés à l’indexation.",
+        "en": "Application routes or SPA states intended for indexing."
+      },
+      "procedure": {
+        "fr": "Ouvrir directement les routes, tester actualisation, historique, canonical et statut HTTP.",
+        "en": "Open routes directly and test refresh, history, canonical and HTTP status."
+      },
+      "acceptance": {
+        "fr": "Ouverture directe, actualisation et historique conservent URL, contenu, statut et signaux attendus pour chaque route retenue.",
+        "en": "Direct opening, refresh and history preserve the expected URL, content, status and signals for each selected route."
+      },
+      "non_applicability": {
+        "fr": "Aucune route applicative ou SPA concernée.",
+        "en": "No relevant application or SPA route."
+      },
+      "evidence": {
+        "fr": "Chaque vue indexable possède URL, 200, contenu et signaux propres.",
+        "en": "Each indexable view has its own URL, 200 response, content and signals."
+      },
+      "limitations": {
+        "fr": "Le choix SSR, CSR ou SSG n’est pas en soi une garantie SEO.",
+        "en": "Choosing SSR, CSR or SSG is not in itself an SEO guarantee."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS28",
+      "title": {
+        "fr": "Le document expose une structure HTML compréhensible sans dépendre de son apparence.",
+        "en": "The document exposes an understandable HTML structure independently of appearance."
+      },
+      "domain": {
+        "fr": "HTML et sémantique",
+        "en": "HTML and semantics"
+      },
+      "severity": "major",
+      "unit": "page",
+      "required_inputs": [
+        "html",
+        "render",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Documents HTML du périmètre.",
+        "en": "HTML documents in scope."
+      },
+      "procedure": {
+        "fr": "Inspecter titre, langue, main, niveaux de titres, liens et libellés sur un échantillon.",
+        "en": "Inspect title, language, main landmark, heading levels, links and labels on a sample."
+      },
+      "acceptance": {
+        "fr": "Titre, langue, structure, navigation et libellés correspondent au contenu et à son usage ; revue humaine consignée, sans certification d’accessibilité.",
+        "en": "Title, language, structure, navigation and labels match the content and its use; human review is recorded without an accessibility certification."
+      },
+      "non_applicability": {
+        "fr": "Aucun document HTML concerné.",
+        "en": "No relevant HTML document."
+      },
+      "evidence": {
+        "fr": "Structure logique, un sujet principal identifiable, composants accessibles.",
+        "en": "Logical structure, one identifiable main subject and accessible components."
+      },
+      "limitations": {
+        "fr": "La validité syntaxique seule ne prouve ni qualité ni pertinence.",
+        "en": "Syntax validity alone proves neither quality nor relevance."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://html.spec.whatwg.org/"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS29",
+      "title": {
+        "fr": "Les contenus essentiels restent disponibles lorsque scripts ou styles échouent.",
+        "en": "Essential content remains available when scripts or styles fail."
+      },
+      "domain": {
+        "fr": "HTML et sémantique",
+        "en": "HTML and semantics"
+      },
+      "severity": "major",
+      "unit": "page",
+      "required_inputs": [
+        "html",
+        "render",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Parcours dont le contenu et la navigation essentiels sont définis.",
+        "en": "Flows whose essential content and navigation are defined."
+      },
+      "procedure": {
+        "fr": "Tester HTML source, désactivation JavaScript et mode réseau dégradé.",
+        "en": "Test source HTML, disabled JavaScript and degraded network conditions."
+      },
+      "acceptance": {
+        "fr": "Les scénarios scripts bloqués et styles dégradés conservent les fonctions déclarées ou un repli effectivement testé.",
+        "en": "Blocked-script and degraded-style scenarios preserve declared functions or an actually tested fallback."
+      },
+      "non_applicability": {
+        "fr": "Aucun parcours web concerné, justification fournie.",
+        "en": "No relevant web flow, with a justification."
+      },
+      "evidence": {
+        "fr": "Information et navigation principales toujours accessibles ou solution de repli documentée.",
+        "en": "Primary information and navigation remain available, or a fallback is documented."
+      },
+      "limitations": {
+        "fr": "La dégradation acceptable dépend de la fonction du composant.",
+        "en": "Acceptable degradation depends on the component’s function."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS30",
+      "title": {
+        "fr": "Les métadonnées essentielles sont uniques, visibles et cohérentes avec la page.",
+        "en": "Essential metadata is unique, visible and consistent with the page."
+      },
+      "domain": {
+        "fr": "HTML et sémantique",
+        "en": "HTML and semantics"
+      },
+      "severity": "major",
+      "unit": "page",
+      "required_inputs": [
+        "html",
+        "content",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Pages dont les métadonnées éditoriales sont évaluées.",
+        "en": "Pages whose editorial metadata is assessed."
+      },
+      "procedure": {
+        "fr": "Comparer title, description, H1, Open Graph et contenu principal par gabarit.",
+        "en": "Compare title, description, H1, Open Graph and main content by template."
+      },
+      "acceptance": {
+        "fr": "Les métadonnées présentes décrivent le contenu sans contradiction ; unicité et duplication évaluées dans le corpus déclaré, avec revue humaine.",
+        "en": "Present metadata describes content without contradiction; uniqueness and duplication are assessed within the declared corpus, with human review."
+      },
+      "non_applicability": {
+        "fr": "Aucun document comportant de métadonnées éditoriales pertinentes.",
+        "en": "No document with relevant editorial metadata."
+      },
+      "evidence": {
+        "fr": "Sujet et promesse cohérents sans duplication mécanique.",
+        "en": "Consistent topic and promise without mechanical duplication."
+      },
+      "limitations": {
+        "fr": "Google peut réécrire le title ou l’extrait dans ses résultats.",
+        "en": "Google may rewrite the title link or snippet in search results."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/appearance/title-link"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS31",
+      "title": {
+        "fr": "Le JSON-LD décrit des entités visibles et appropriées au contenu.",
+        "en": "JSON-LD describes entities that are visible and appropriate to the content."
+      },
+      "domain": {
+        "fr": "Données structurées",
+        "en": "Structured data"
+      },
+      "severity": "major",
+      "unit": "page",
+      "required_inputs": [
+        "structured-data",
+        "content",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Documents publiant des données structurées.",
+        "en": "Documents publishing structured data."
+      },
+      "procedure": {
+        "fr": "Comparer chaque propriété importante au contenu visible et aux recommandations du type.",
+        "en": "Compare each important property with visible content and type-specific guidance."
+      },
+      "acceptance": {
+        "fr": "Syntaxe et propriétés examinées sont cohérentes avec les faits visibles et le type choisi ; aucune donnée inventée observée.",
+        "en": "Examined syntax and properties match visible facts and the selected type; no fabricated data is observed."
+      },
+      "non_applicability": {
+        "fr": "Aucune donnée structurée publiée dans le périmètre.",
+        "en": "No structured data published in scope."
+      },
+      "evidence": {
+        "fr": "Graphe valide, cohérent, sans entité ni note inventée.",
+        "en": "Valid, consistent graph with no invented entity or rating."
+      },
+      "limitations": {
+        "fr": "Un balisage valide ne garantit pas un résultat enrichi ni un meilleur classement.",
+        "en": "Valid markup guarantees neither a rich result nor higher rankings."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/appearance/structured-data/sd-policies"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS32",
+      "title": {
+        "fr": "Les identifiants @id relient les mêmes entités sans créer de doublons.",
+        "en": "Stable @id values connect the same entities without creating duplicates."
+      },
+      "domain": {
+        "fr": "Données structurées",
+        "en": "Structured data"
+      },
+      "severity": "minor",
+      "unit": "graph",
+      "required_inputs": [
+        "structured-data",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Graphes utilisant des identifiants d’entité.",
+        "en": "Graphs using entity identifiers."
+      },
+      "procedure": {
+        "fr": "Construire le graphe, repérer les nœuds sans nom, les identifiants variables et les doublons.",
+        "en": "Build the graph and identify unnamed nodes, variable identifiers and duplicates."
+      },
+      "acceptance": {
+        "fr": "Les mêmes entités conservent leurs identifiants dans le corpus ; références résolubles dans le graphe et doublons qualifiés, sans imposer tous les types cités dans la grille historique.",
+        "en": "The same entities retain identifiers across the corpus; graph references resolve and duplicates are assessed, without requiring all types named in the legacy grid."
+      },
+      "non_applicability": {
+        "fr": "Aucun graphe avec identifiants concerné.",
+        "en": "No relevant graph with identifiers."
+      },
+      "evidence": {
+        "fr": "Graphe archivé, liste des entités et identifiants présents, références et doublons qualifiés.",
+        "en": "Archived graph, inventory of present entities and identifiers, assessed references and duplicates."
+      },
+      "limitations": {
+        "fr": "Schema.org décrit un vocabulaire ; l’interprétation dépend du consommateur.",
+        "en": "Schema.org defines a vocabulary; interpretation depends on the consumer."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://schema.org/docs/datamodel.html"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS33",
+      "title": {
+        "fr": "Les erreurs, avertissements et usages non pris en charge sont distingués.",
+        "en": "Errors, warnings and unsupported uses are distinguished."
+      },
+      "domain": {
+        "fr": "Données structurées",
+        "en": "Structured data"
+      },
+      "severity": "minor",
+      "unit": "page",
+      "required_inputs": [
+        "structured-data",
+        "validator-output",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Balisages dont la validité et l’éligibilité sont évaluées.",
+        "en": "Markup whose validity and eligibility are assessed."
+      },
+      "procedure": {
+        "fr": "Tester syntaxe Schema.org et éligibilité Google séparément ; consigner les résultats.",
+        "en": "Test Schema.org syntax and Google eligibility separately; record both results."
+      },
+      "acceptance": {
+        "fr": "Erreurs de syntaxe, vocabulaire, critères du moteur et avertissements sont séparés ; chaque résultat a outil, version/date et décision.",
+        "en": "Syntax, vocabulary, engine eligibility and warnings are separated; each result has a tool, version/date and decision."
+      },
+      "non_applicability": {
+        "fr": "Aucun balisage structuré dans le périmètre.",
+        "en": "No structured markup in scope."
+      },
+      "evidence": {
+        "fr": "Rapport sans erreur bloquante et avertissements qualifiés.",
+        "en": "Report with no blocking error and qualified warnings."
+      },
+      "limitations": {
+        "fr": "Le test de résultats enrichis ne valide pas tout le vocabulaire Schema.org.",
+        "en": "Rich Results Test does not validate the whole Schema.org vocabulary."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS34",
+      "title": {
+        "fr": "Les Core Web Vitals terrain sont documentés et classés au 75e percentile.",
+        "en": "Field Core Web Vitals are documented and classified at the 75th percentile."
+      },
+      "domain": {
+        "fr": "Performance et suivi",
+        "en": "Performance and monitoring"
+      },
+      "severity": "major",
+      "unit": "field-cohort",
+      "required_inputs": [
+        "field-data",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Cohortes disposant de données terrain pertinentes.",
+        "en": "Cohorts with relevant field data."
+      },
+      "procedure": {
+        "fr": "Utiliser une source terrain identifiée : CrUX, Search Console ou RUM. Consigner période, appareil, granularité et population ; ne pas fusionner URL et origine.",
+        "en": "Use an identified field source: CrUX, Search Console or RUM. Record period, device, granularity and population; do not conflate URL and origin."
+      },
+      "acceptance": {
+        "fr": "Source, période, granularité, appareil et p75 de LCP/INP/CLS sont consignés et classés selon les seuils cités ; les mauvaises valeurs restent visibles et motivent une décision.",
+        "en": "Source, period, granularity, device and LCP/INP/CLS p75 are recorded and classified against cited thresholds; poor values remain visible and inform a decision."
+      },
+      "non_applicability": {
+        "fr": "Parcours explicitement hors périmètre CWV ; absence de données seule signifie NT.",
+        "en": "Flows explicitly outside CWV scope; missing data alone means NT."
+      },
+      "evidence": {
+        "fr": "LCP ≤ 2,5 s, INP ≤ 200 ms, CLS ≤ 0,1 au 75e percentile pour l’état Bon.",
+        "en": "LCP ≤ 2.5 s, INP ≤ 200 ms and CLS ≤ 0.1 at the 75th percentile for a Good assessment."
+      },
+      "limitations": {
+        "fr": "L’absence de données CrUX ne signifie pas que la page est rapide.",
+        "en": "Missing CrUX data does not mean the page is fast."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Search Console",
+        "en": "Search Console"
+      },
+      "references": [
+        "https://web.dev/articles/defining-core-web-vitals-thresholds"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS35",
+      "title": {
+        "fr": "Les tests de laboratoire servent au diagnostic, pas à simuler le terrain.",
+        "en": "Laboratory tests support diagnosis rather than simulate field data."
+      },
+      "domain": {
+        "fr": "Performance et suivi",
+        "en": "Performance and monitoring"
+      },
+      "severity": "minor",
+      "unit": "page",
+      "required_inputs": [
+        "lab-data",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Diagnostics de performance en laboratoire.",
+        "en": "Lab performance diagnostics."
+      },
+      "procedure": {
+        "fr": "Conserver URL, appareil, profil réseau, version de l’outil et mesures détaillées.",
+        "en": "Retain URL, device, network profile, tool version and detailed metrics."
+      },
+      "acceptance": {
+        "fr": "URL, outil/version, appareil, réseau et mesures sont conservés ; les conclusions restent limitées au laboratoire et reliées à une hypothèse.",
+        "en": "URL, tool/version, device, network and measurements are retained; conclusions remain limited to the lab and tied to a hypothesis."
+      },
+      "non_applicability": {
+        "fr": "Aucun diagnostic laboratoire prévu dans ce périmètre.",
+        "en": "No lab diagnostic planned in this scope."
+      },
+      "evidence": {
+        "fr": "Rapport Lighthouse/WebPageTest reproductible et relié à une hypothèse de correction.",
+        "en": "Reproducible Lighthouse/WebPageTest report tied to a remediation hypothesis."
+      },
+      "limitations": {
+        "fr": "Un score Lighthouse de 100 n’est ni une garantie de CWV terrain ni de classement.",
+        "en": "A Lighthouse score of 100 guarantees neither field CWV nor rankings."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://web.dev/articles/lab-and-field-data-differences"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS36",
+      "title": {
+        "fr": "Le suivi relie Search Console, logs et déploiements à des dates de décision.",
+        "en": "Monitoring connects Search Console, logs and deployments to decision dates."
+      },
+      "domain": {
+        "fr": "Performance et suivi",
+        "en": "Performance and monitoring"
+      },
+      "severity": "major",
+      "unit": "release",
+      "required_inputs": [
+        "logs",
+        "search-console",
+        "change-history",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Changements dont le suivi crawl/indexation est évalué.",
+        "en": "Changes whose crawl/indexing follow-up is assessed."
+      },
+      "procedure": {
+        "fr": "Créer une baseline avant changement puis vérifier J+1, J+7 et J+30 selon le risque.",
+        "en": "Create a pre-change baseline, then verify at D+1, D+7 and D+30 according to risk."
+      },
+      "acceptance": {
+        "fr": "Baseline, déploiement et observations de suivi prévues par le risque sont datés ; anomalies et décisions reliées, sans causalité automatique.",
+        "en": "Baseline, deployment and risk-based follow-up observations are dated; anomalies and decisions are linked without automatic causal attribution."
+      },
+      "non_applicability": {
+        "fr": "Aucun changement soumis au suivi dans la période déclarée.",
+        "en": "No change subject to follow-up within the declared period."
+      },
+      "evidence": {
+        "fr": "Journal des déploiements, anomalies crawl/indexation et décisions signées.",
+        "en": "Deployment log, crawl/indexing anomalies and signed decisions."
+      },
+      "limitations": {
+        "fr": "Une corrélation temporelle ne suffit pas à attribuer une variation de trafic.",
+        "en": "Temporal correlation is not sufficient to attribute a traffic change."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Logs serveur",
+        "en": "Server logs"
+      },
+      "references": [
+        "https://developers.google.com/crawling/docs/crawl-budget"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS37",
+      "title": {
+        "fr": "HTTPS, HSTS et les ressources intégrées ne créent ni erreur de certificat ni contenu mixte.",
+        "en": "HTTPS, HSTS and embedded resources create neither certificate errors nor mixed content."
+      },
+      "domain": {
+        "fr": "HTTP et disponibilité",
+        "en": "HTTP and availability"
+      },
+      "severity": "major",
+      "unit": "host",
+      "required_inputs": [
+        "http",
+        "tls",
+        "render",
+        "configuration",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Hôtes et ressources d’un service web public.",
+        "en": "Hosts and resources of a public web service."
+      },
+      "procedure": {
+        "fr": "Tester le certificat sur les hôtes publics, suivre les variantes HTTP/HTTPS, relever Strict-Transport-Security et rechercher les sous-ressources en HTTP.",
+        "en": "Test certificates on public hosts, follow HTTP/HTTPS variants, record Strict-Transport-Security and find HTTP subresources."
+      },
+      "acceptance": {
+        "fr": "Certificats et redirections sont valides pour les hôtes testés ; contenu mixte examiné ; décision HSTS et sa portée documentées, sans imposer le preload.",
+        "en": "Certificates and redirects are valid for tested hosts; mixed content is reviewed; the HSTS decision and scope are documented without requiring preload."
+      },
+      "non_applicability": {
+        "fr": "Aucun service HTTP public concerné.",
+        "en": "No relevant public HTTP service."
+      },
+      "evidence": {
+        "fr": "Certificats et chaînes HTTP archivés, ressources mixtes examinées, décision HSTS explicite et portée documentée.",
+        "en": "Archived certificates and HTTP chains, reviewed mixed resources, explicit HSTS decision and documented scope."
+      },
+      "limitations": {
+        "fr": "HSTS renforce le transport après réception de la politique ; il ne corrige ni un certificat invalide ni une mauvaise architecture d’URL.",
+        "en": "HSTS strengthens transport after the policy is received; it fixes neither an invalid certificate nor a poor URL architecture."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc6797"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS38",
+      "title": {
+        "fr": "Les variantes d’hôte, de casse et de slash convergent vers une règle unique.",
+        "en": "Host, case and trailing-slash variants converge on one rule."
+      },
+      "domain": {
+        "fr": "Espaces d’URL",
+        "en": "URL spaces"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "http",
+        "html",
+        "sitemap",
+        "crawl",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Variantes hôte, casse et slash de ressources déclarées équivalentes.",
+        "en": "Host, case and slash variants of resources declared equivalent."
+      },
+      "procedure": {
+        "fr": "Rejouer www/sans www, HTTP/HTTPS, casse pertinente et slash final sur un échantillon de routes ; comparer redirection, canonical, sitemap et liens internes.",
+        "en": "Replay www/non-www, HTTP/HTTPS, relevant case and trailing-slash variants on sample routes; compare redirect, canonical, sitemap and links."
+      },
+      "acceptance": {
+        "fr": "Chaque variante testée suit la règle déclarée ; redirections, canonicals, sitemap et liens concordent, sans fusion de ressources distinctes.",
+        "en": "Every tested variant follows the declared rule; redirects, canonicals, sitemaps and links agree without merging distinct resources."
+      },
+      "non_applicability": {
+        "fr": "Aucune variante concernée après inventaire explicite.",
+        "en": "No relevant variant after an explicit inventory."
+      },
+      "evidence": {
+        "fr": "Une URL finale stable par ressource, sans chaîne, avec des signaux internes concordants.",
+        "en": "One stable final URL per resource, no chain and consistent internal signals."
+      },
+      "limitations": {
+        "fr": "La casse peut être significative selon le serveur et l’application ; la règle doit être testée, pas supposée.",
+        "en": "Case can be significant depending on the server and application; the rule must be tested, not assumed."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS39",
+      "title": {
+        "fr": "Le CDN, Vary et la géolocalisation ne servent pas des signaux SEO contradictoires.",
+        "en": "The CDN, Vary and geolocation do not serve contradictory SEO signals."
+      },
+      "domain": {
+        "fr": "Performance et suivi",
+        "en": "Performance and monitoring"
+      },
+      "severity": "major",
+      "unit": "delivery-matrix",
+      "required_inputs": [
+        "http",
+        "configuration",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Diffusion variant selon région, cache, appareil ou négociation.",
+        "en": "Delivery varying by region, cache, device or negotiation."
+      },
+      "procedure": {
+        "fr": "Comparer code, canonical, robots, langue et contenu depuis plusieurs régions ou clés de cache ; inspecter Vary, redirections géographiques et règles edge.",
+        "en": "Compare status, canonical, robots, language and content across regions or cache keys; inspect Vary, geolocation redirects and edge rules."
+      },
+      "acceptance": {
+        "fr": "La matrice de conditions est déclarée ; les signaux observés suivent la politique et les variantes restent accessibles selon celle-ci ; cases non testées visibles.",
+        "en": "The condition matrix is declared; observed signals follow policy and variants remain accessible under it; untested cells are visible."
+      },
+      "non_applicability": {
+        "fr": "Absence de mécanisme de variation attestée par configuration.",
+        "en": "Configuration attests to the absence of variation mechanisms."
+      },
+      "evidence": {
+        "fr": "Mêmes signaux SEO pour une même URL, ou variantes explicitement documentées et accessibles à Googlebot.",
+        "en": "Identical SEO signals for the same URL, or explicitly documented variants accessible to Googlebot."
+      },
+      "limitations": {
+        "fr": "Deux points de test ne couvrent pas toutes les routes, tous les POP ni toutes les clés de cache.",
+        "en": "Two test locations do not cover every route, POP or cache key."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Configuration",
+        "en": "Configuration"
+      },
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://developers.google.com/search/docs/specialty/international/locale-adaptive-pages"
+      ],
+      "source_scope": {
+        "fr": "RFC 9110 établit la sémantique de Vary et des réponses HTTP. Le comportement des pages adaptées à la région est documenté séparément par Google.",
+        "en": "RFC 9110 defines Vary and HTTP response semantics. Google separately documents locale-adaptive page behavior."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS40",
+      "title": {
+        "fr": "Les méthodes hreflang utilisées sont complètes et cohérentes.",
+        "en": "The hreflang methods in use are complete and consistent."
+      },
+      "domain": {
+        "fr": "Internationalisation",
+        "en": "Internationalisation"
+      },
+      "severity": "major",
+      "unit": "locale-cluster",
+      "required_inputs": [
+        "hreflang",
+        "sitemap",
+        "http",
+        "html",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Groupes utilisant au moins une méthode hreflang.",
+        "en": "Clusters using at least one hreflang method."
+      },
+      "procedure": {
+        "fr": "Identifier toutes les méthodes publiées, vérifier les groupes et comparer leurs annotations lorsqu’elles coexistent.",
+        "en": "Identify all published methods, verify clusters and compare annotations when methods coexist."
+      },
+      "acceptance": {
+        "fr": "Chaque méthode utilisée couvre le groupe ; si plusieurs sont publiées, leurs annotations sont cohérentes ; aucune obligation d’une méthode unique.",
+        "en": "Each used method covers the cluster; if several are published, their annotations are consistent; no single-method requirement is imposed."
+      },
+      "non_applicability": {
+        "fr": "Aucune annotation hreflang dans le périmètre.",
+        "en": "No hreflang annotations in scope."
+      },
+      "evidence": {
+        "fr": "Groupes équivalents et réciproques ; si le sitemap est choisi, namespace xhtml et entrées par URL valides.",
+        "en": "Equivalent reciprocal clusters; when sitemaps are used, valid xhtml namespace and entries per URL."
+      },
+      "limitations": {
+        "fr": "Cumuler HTML, en-têtes et sitemap n’apporte pas de bénéfice de recherche et augmente le risque de divergence.",
+        "en": "Combining HTML, headers and sitemaps offers no search benefit and increases divergence risk."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/specialty/international/localized-versions"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS41",
+      "title": {
+        "fr": "Les invariants SEO critiques sont rejoués automatiquement avant et après déploiement.",
+        "en": "Critical SEO invariants are replayed automatically before and after deployment."
+      },
+      "domain": {
+        "fr": "Performance et suivi",
+        "en": "Performance and monitoring"
+      },
+      "severity": "major",
+      "unit": "release",
+      "required_inputs": [
+        "configuration",
+        "ci-output",
+        "change-history",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Déploiements soumis aux invariants SEO définis par le projet.",
+        "en": "Deployments subject to project-defined SEO invariants."
+      },
+      "procedure": {
+        "fr": "Exécuter dans la CI un jeu d’URL représentatif : code final, redirections, robots/noindex, canonical, hreflang, contenu serveur, liens essentiels et JSON-LD.",
+        "en": "Run a representative URL set in CI: final status, redirects, robots/noindex, canonical, hreflang, server content, essential links and JSON-LD."
+      },
+      "acceptance": {
+        "fr": "Commande et version, jeux d’URL, seuils, sorties avant/après et lien au déploiement sont conservés ; un test contradictoire prouve le comportement d’échec.",
+        "en": "Command and version, URL sets, thresholds, before/after outputs and deployment link are retained; a negative case demonstrates failure behavior."
+      },
+      "non_applicability": {
+        "fr": "Aucun déploiement ou pipeline concerné dans le périmètre et la période.",
+        "en": "No relevant deployment or pipeline within the scope and period."
+      },
+      "evidence": {
+        "fr": "Commande versionnée, sortie horodatée, seuil d’échec explicite et lien vers le déploiement concerné.",
+        "en": "Versioned command, timestamped output, explicit failure threshold and link to the relevant deployment."
+      },
+      "limitations": {
+        "fr": "Une CI valide des invariants connus ; elle ne remplace ni Search Console, ni les logs, ni une revue éditoriale.",
+        "en": "CI validates known invariants; it replaces neither Search Console, logs nor editorial review."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Configuration",
+        "en": "Configuration"
+      },
+      "references": [],
+      "source_scope": {
+        "fr": "Contrôle de gouvernance et de non-régression proposé par Edikka ; aucune documentation officielle unique ne prescrit ce pipeline complet.",
+        "en": "Edikka governance and non-regression control; no single official document prescribes this complete pipeline."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS42",
+      "title": {
+        "fr": "Chaque agent automatisé est gouverné selon son usage documenté.",
+        "en": "Each automated agent is governed according to its documented purpose."
+      },
+      "domain": {
+        "fr": "Exploration IA et agents",
+        "en": "AI crawling and agents"
+      },
+      "severity": "major",
+      "unit": "policy",
+      "required_inputs": [
+        "configuration",
+        "operator-docs",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Agents automatisés visés par la politique du site.",
+        "en": "Automated agents covered by site policy."
+      },
+      "procedure": {
+        "fr": "Relier chaque jeton concerné à son usage documenté (recherche, action utilisateur, entraînement, publicité ou autre), à une décision et à un propriétaire ; conserver la source opérateur datée.",
+        "en": "Map each relevant token to its documented purpose (search, user action, training, advertising or other), a decision and an owner; retain a dated operator source."
+      },
+      "acceptance": {
+        "fr": "Chaque jeton est relié à son usage documenté, à une décision, une source opérateur datée et un responsable ; usages publicitaires distingués si concernés.",
+        "en": "Each token is linked to its documented purpose, a decision, a dated operator source and an owner; advertising use is distinguished where relevant."
+      },
+      "non_applicability": {
+        "fr": "Aucune politique d’agents dans le périmètre déclaré, raison fournie.",
+        "en": "No agent policy in the declared scope, with a reason provided."
+      },
+      "evidence": {
+        "fr": "Table user-agent / finalité / règle / source opérateur / date de revue, sans confondre recherche en direct et entraînement.",
+        "en": "Table of user agent, purpose, rule, operator source and review date, without conflating live search with training."
+      },
+      "limitations": {
+        "fr": "Une directive robots est déclarative ; elle ne prouve ni l’identité réelle du requérant ni le respect par tous les opérateurs.",
+        "en": "A robots directive is declarative; it proves neither the requester’s identity nor compliance by every operator."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Configuration",
+        "en": "Configuration"
+      },
+      "references": [
+        "https://developers.openai.com/api/docs/bots",
+        "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS43",
+      "title": {
+        "fr": "L’accès des crawlers autorisés est testé avec leur chaîne complète et rapproché des journaux.",
+        "en": "Access for authorized crawlers is tested with the full user-agent string and reconciled with logs."
+      },
+      "domain": {
+        "fr": "Exploration IA et agents",
+        "en": "AI crawling and agents"
+      },
+      "severity": "major",
+      "unit": "request-set",
+      "required_inputs": [
+        "http",
+        "logs",
+        "operator-docs",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Tests de politique d’accès pour des agents déclarés.",
+        "en": "Access-policy tests for declared agents."
+      },
+      "procedure": {
+        "fr": "Envoyer une requête GET avec le user-agent complet documenté, relever code et redirections, puis rechercher la requête dans les logs et vérifier l’identité lorsque l’opérateur publie une méthode.",
+        "en": "Send a GET request using the documented full user-agent, record status and redirects, find the request in logs and verify identity when the operator publishes a method."
+      },
+      "acceptance": {
+        "fr": "Chaîne complète, réponse et trace serveur sont rapprochées ; identité vérifiée ou non vérifiée explicite ; imitation jamais présentée comme visite réelle.",
+        "en": "Full user-agent string, response and server trace are reconciled; verified or unverified identity is explicit; imitation is never presented as a real visit."
+      },
+      "non_applicability": {
+        "fr": "Aucun agent à tester dans la politique déclarée.",
+        "en": "No agent to test in the declared policy."
+      },
+      "evidence": {
+        "fr": "Commande, chaîne complète, réponse finale, horodatage, trace serveur et statut d’identité vérifiée ou non vérifiée.",
+        "en": "Command, full string, final response, timestamp, server trace and verified/unverified identity status."
+      },
+      "limitations": {
+        "fr": "Imiter un user-agent ne reproduit pas l’infrastructure du crawler ; le test valide la politique applicative, pas la visite réelle de l’opérateur.",
+        "en": "Imitating a user agent does not reproduce crawler infrastructure; the test validates application policy, not a real operator visit."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Logs serveur",
+        "en": "Server logs"
+      },
+      "references": [
+        "https://developers.openai.com/api/docs/bots"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    },
+    {
+      "id": "TS44",
+      "title": {
+        "fr": "Le contenu critique et ses preuves restent accessibles sans dépendre d’une exécution JavaScript non documentée.",
+        "en": "Critical content and evidence remain accessible without undocumented JavaScript execution."
+      },
+      "domain": {
+        "fr": "Exploration IA et agents",
+        "en": "AI crawling and agents"
+      },
+      "severity": "major",
+      "unit": "page",
+      "required_inputs": [
+        "html",
+        "render",
+        "content",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Contenus destinés à des consommateurs automatisés déclarés.",
+        "en": "Content intended for declared automated consumers."
+      },
+      "procedure": {
+        "fr": "Comparer la réponse HTML brute, la version rendue et, lorsqu’elle existe, une ressource machine publique ; vérifier titres, faits, sources, liens et date de mise à jour.",
+        "en": "Compare raw HTML, rendered content and any public machine-readable resource; verify titles, facts, sources, links and update date."
+      },
+      "acceptance": {
+        "fr": "Les éléments critiques et leurs preuves sont accessibles dans le HTML serveur ou une ressource publique reliée ; cohérence et capacités supposées sont explicites.",
+        "en": "Critical elements and their evidence are available in server HTML or a linked public resource; consistency and assumed capabilities are explicit."
+      },
+      "non_applicability": {
+        "fr": "Aucun contenu destiné à ces consommateurs dans le périmètre.",
+        "en": "No content intended for these consumers in scope."
+      },
+      "evidence": {
+        "fr": "Faits et sources essentiels dans le HTML serveur ou une ressource publique reliée, avec une version cohérente et une URL stable.",
+        "en": "Essential facts and sources in server HTML or a linked public resource, with a consistent version and stable URL."
+      },
+      "limitations": {
+        "fr": "Un fichier llms.txt ou Markdown peut faciliter l’accès, mais aucun de ces fichiers ne garantit une citation ni un classement.",
+        "en": "An llms.txt or Markdown file may ease access, but neither guarantees citation nor rankings."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+        "https://developers.openai.com/api/docs/bots",
+        "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler"
+      ],
+      "source_scope": {
+        "fr": "Portée partielle : la source Google documente le rendu JavaScript pour Google Search. Le contrôle étend prudemment la vérification à des consommateurs dont les capacités de rendu ne sont pas uniformément documentées.",
+        "en": "Partial scope: Google documents JavaScript rendering for Google Search. This control cautiously extends verification to consumers whose rendering capabilities are not uniformly documented."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      }
+    }
+  ],
+  "profiles": [
+    {
+      "id": "TSEP-1",
+      "controls": [
+        "TS01",
+        "TS02",
+        "TS03",
+        "TS04",
+        "TS07",
+        "TS10",
+        "TS11",
+        "TS13",
+        "TS15",
+        "TS17",
+        "TS22",
+        "TS23",
+        "TS24",
+        "TS25",
+        "TS26",
+        "TS27",
+        "TS28",
+        "TS29",
+        "TS30",
+        "TS31",
+        "TS32",
+        "TS33",
+        "TS34",
+        "TS35",
+        "TS38",
+        "TS40",
+        "TS44"
+      ],
+      "capabilities": [
+        "public",
+        "declared-context"
+      ]
+    },
+    {
+      "id": "TSEP-2",
+      "controls": [
+        "TS01",
+        "TS02",
+        "TS03",
+        "TS04",
+        "TS07",
+        "TS08",
+        "TS10",
+        "TS11",
+        "TS12",
+        "TS13",
+        "TS15",
+        "TS17",
+        "TS22",
+        "TS23",
+        "TS24",
+        "TS25",
+        "TS26",
+        "TS27",
+        "TS28",
+        "TS29",
+        "TS30",
+        "TS31",
+        "TS32",
+        "TS33",
+        "TS34",
+        "TS35",
+        "TS38",
+        "TS40",
+        "TS44"
+      ],
+      "capabilities": [
+        "public",
+        "declared-context",
+        "search-console"
+      ]
+    },
+    {
+      "id": "TSEP-3",
+      "controls": [
+        "TS01",
+        "TS02",
+        "TS03",
+        "TS04",
+        "TS05",
+        "TS06",
+        "TS07",
+        "TS08",
+        "TS09",
+        "TS10",
+        "TS11",
+        "TS12",
+        "TS13",
+        "TS14",
+        "TS15",
+        "TS16",
+        "TS17",
+        "TS18",
+        "TS19",
+        "TS20",
+        "TS21",
+        "TS22",
+        "TS23",
+        "TS24",
+        "TS25",
+        "TS26",
+        "TS27",
+        "TS28",
+        "TS29",
+        "TS30",
+        "TS31",
+        "TS32",
+        "TS33",
+        "TS34",
+        "TS35",
+        "TS36",
+        "TS37",
+        "TS38",
+        "TS39",
+        "TS40",
+        "TS41",
+        "TS42",
+        "TS43",
+        "TS44"
+      ],
+      "capabilities": [
+        "public",
+        "declared-context",
+        "search-console",
+        "logs",
+        "configuration",
+        "inventory",
+        "change-history",
+        "ci-output"
+      ]
+    }
+  ],
+  "profile_interpretation": {
+    "en": "Evidence-access profiles, not quality grades. Full profile coverage and declared context are required. Bing evidence is optional and cannot replace Google-specific checks.",
+    "fr": "Profils d’accès aux preuves, pas niveaux de qualité. Couverture complète du profil et contexte déclaré obligatoires. Les preuves Bing sont facultatives et ne remplacent pas les contrôles propres à Google."
+  },
+  "normative_documents": [
+    {
+      "path": "schemas/report.schema.json",
+      "sha256": "b19c779388878ccfce36415d8aeb687de5ecd92f38c0ce3aecbe759a85fc76f6"
+    },
+    {
+      "path": "docs/contract.en.md",
+      "sha256": "45d8c463d81d1ac3da9eb44eb5ea3734669468c1ec9d2741232ae44d6aeb8610"
+    },
+    {
+      "path": "docs/contract.fr.md",
+      "sha256": "6f1e475061a87824eeee8a1514981ee7dc30d2463b3d0ab1555542c5a5b7aeff"
+    }
+  ]
+}

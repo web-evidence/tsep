@@ -1,0 +1,8 @@
+SYNTHETIC FIXTURE / CAS SYNTHÉTIQUE
+GET https://example.com/page
+Final URL: https://example.com/page
+HTTP/1.1 200
+Content-Type: text/html; charset=utf-8
+Redirects: 0
+
+Expected page content / Contenu attendu

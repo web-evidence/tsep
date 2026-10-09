@@ -1,0 +1,571 @@
+{
+    "name": "Edikka technical SEO audit grid",
+    "version": "1.1",
+    "published_at": "2026-08-22",
+    "last_reviewed": "2026-08-22",
+    "canonical": "https://www.edikka.com/en/insights/web-development/technical-seo-foundations",
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "language": "en-US",
+    "source_catalog": {
+        "https://www.rfc-editor.org/rfc/rfc9110": "RFC 9110 · HTTP Semantics",
+        "https://developers.google.com/search/docs/crawling-indexing/301-redirects": "Google Search Central · Redirects and Google Search",
+        "https://developers.google.com/search/docs/crawling-indexing/http-network-errors": "Google Search Central · HTTP and network errors",
+        "https://www.rfc-editor.org/rfc/rfc9309.html": "RFC 9309 · Robots Exclusion Protocol",
+        "https://developers.google.com/search/docs/crawling-indexing/robots/intro": "Google Search Central · Introduction to robots.txt",
+        "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag": "Google Search Central · Robots meta tag and X-Robots-Tag",
+        "https://support.google.com/webmasters/answer/9012289": "Google Search Console · URL Inspection",
+        "https://developers.google.com/search/docs/crawling-indexing/block-indexing": "Google Search Central · Block Search indexing",
+        "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls": "Google Search Central · Canonicalise duplicate URLs",
+        "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap": "Google Search Central · Build and submit a sitemap",
+        "https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping": "Google Search Central · lastmod and sitemaps",
+        "https://www.sitemaps.org/protocol.html": "Sitemaps.org · XML Sitemap protocol",
+        "https://developers.google.com/search/docs/crawling-indexing/links-crawlable": "Google Search Central · Crawlable links",
+        "https://developers.google.com/search/docs/crawling-indexing/url-structure": "Google Search Central · URL structure",
+        "https://support.google.com/webmasters/answer/7440203": "Google Search Console · Page indexing report",
+        "https://developers.google.com/search/docs/specialty/international/localized-versions": "Google Search Central · Localised versions and hreflang",
+        "https://developers.google.com/search/docs/specialty/international/locale-adaptive-pages": "Google Search Central · Locale-adaptive pages",
+        "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics": "Google Search Central · JavaScript SEO basics",
+        "https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript": "Google Search Central · Fix JavaScript-related search issues",
+        "https://html.spec.whatwg.org/": "WHATWG · HTML Living Standard",
+        "https://developers.google.com/search/docs/appearance/title-link": "Google Search Central · Title links",
+        "https://developers.google.com/search/docs/appearance/structured-data/sd-policies": "Google Search Central · Structured data policies",
+        "https://schema.org/docs/datamodel.html": "Schema.org · Data model",
+        "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data": "Google Search Central · Understand structured data",
+        "https://web.dev/articles/defining-core-web-vitals-thresholds": "web.dev · Core Web Vitals thresholds",
+        "https://web.dev/articles/lab-and-field-data-differences": "web.dev · Lab and field data differences",
+        "https://developers.google.com/crawling/docs/crawl-budget": "Google Search Central · Crawl budget",
+        "https://www.rfc-editor.org/rfc/rfc6797": "RFC 6797 · HTTP Strict Transport Security",
+        "https://developers.openai.com/api/docs/bots": "OpenAI · Crawlers and user agents",
+        "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler": "Anthropic · Claude crawlers"
+    },
+    "method": {
+        "purpose": "Turn a technical SEO audit into replayable controls, observable evidence and an explicit decision.",
+        "scope": "Thirteen domains and forty-four controls. The number of controls varies with risk; the grid predicts neither rankings nor traffic.",
+        "decision_rule": "NO-GO when at least one Blocking control is Non-compliant, or when an applicable Blocking control remains Not tested. Decision required when a Major non-compliance remains. GO with reservations in all other cases, under the responsibility of the decision owner.",
+        "evidence_levels": [
+            "Public",
+            "Search Console",
+            "Server logs",
+            "Configuration"
+        ],
+        "controlled_vocabularies": {
+            "status": [
+                "Not tested",
+                "Compliant",
+                "Non-compliant",
+                "Not applicable"
+            ],
+            "severity": [
+                "Blocking",
+                "Major",
+                "Minor",
+                "Information"
+            ],
+            "decision": [
+                "NO-GO",
+                "Decision required",
+                "GO with reservations"
+            ]
+        }
+    },
+    "controls": [
+        {
+            "id": "TS01",
+            "domain": "HTTP and availability",
+            "control": "The final page returns an actionable HTTP status code.",
+            "access_required": "Public",
+            "method": "Send a GET request, follow redirects and record the final status code.",
+            "expected_evidence": "Tested URL, timestamp and final 200 status for a public canonical page.",
+            "default_severity": "Blocking",
+            "source": "https://www.rfc-editor.org/rfc/rfc9110",
+            "limitation": "A test from one IP does not prove the response received by Googlebot."
+        },
+        {
+            "id": "TS02",
+            "domain": "HTTP and availability",
+            "control": "Redirects are intentional, direct and loop-free.",
+            "access_required": "Public",
+            "method": "Test HTTP/HTTPS, host, trailing-slash and legacy URL variants, including the redirect count.",
+            "expected_evidence": "One final destination, documented chain and no loop.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/301-redirects",
+            "limitation": "A valid redirect does not prove the semantic relevance of its destination."
+        },
+        {
+            "id": "TS03",
+            "domain": "HTTP and availability",
+            "control": "Server errors and soft 404s do not replace an explicit response.",
+            "access_required": "Public",
+            "method": "Test an existing page, a removed URL and a non-existent URL; compare status and content.",
+            "expected_evidence": "Consistent 4xx/5xx responses and an error template that does not return 200 by default.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/http-network-errors",
+            "limitation": "The final soft-404 classification remains a search-engine decision."
+        },
+        {
+            "id": "TS04",
+            "domain": "Robots and access",
+            "control": "robots.txt is accessible, parseable and does not block required resources.",
+            "access_required": "Public",
+            "method": "Fetch /robots.txt and inspect its content type, groups and applicable rules.",
+            "expected_evidence": "A 200 response, readable syntax and rules tied to a documented intent.",
+            "default_severity": "Blocking",
+            "source": "https://www.rfc-editor.org/rfc/rfc9309.html",
+            "limitation": "robots.txt is a crawling protocol, not an access-control mechanism."
+        },
+        {
+            "id": "TS05",
+            "domain": "Robots and access",
+            "control": "A Disallow rule is never presented as a guarantee of deindexing.",
+            "access_required": "Configuration",
+            "method": "Compare the robots policy, indexing requirements and meta/X-Robots-Tag directives.",
+            "expected_evidence": "Separate decisions for crawling, indexing and protection.",
+            "default_severity": "Blocking",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+            "limitation": "A blocked URL may remain known and appear without a snippet."
+        },
+        {
+            "id": "TS06",
+            "domain": "Robots and access",
+            "control": "Sensitive areas genuinely deny access at server level.",
+            "access_required": "Configuration",
+            "method": "Test private routes without a session and verify authentication, authorisation and caching.",
+            "expected_evidence": "A 401/403 response or authentication redirect, with no sensitive content delivered.",
+            "default_severity": "Blocking",
+            "source": "https://www.rfc-editor.org/rfc/rfc9110",
+            "limitation": "Absence from the index is not proof of confidentiality."
+        },
+        {
+            "id": "TS07",
+            "domain": "Indexing",
+            "control": "Robots meta directives and X-Robots-Tag match the page objective.",
+            "access_required": "Public",
+            "method": "Inspect headers and source DOM across indexable and excluded templates.",
+            "expected_evidence": "One directive or a compatible combination, with no accidental noindex.",
+            "default_severity": "Blocking",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+            "limitation": "The engine must be allowed to crawl the resource to read the directive."
+        },
+        {
+            "id": "TS08",
+            "domain": "Indexing",
+            "control": "The actual indexing status is checked in Search Console.",
+            "access_required": "Search Console",
+            "method": "Use URL Inspection on a representative sample and retain the export or screenshot.",
+            "expected_evidence": "Known URL, crawling permission, indexing state and Google-selected canonical documented.",
+            "default_severity": "Major",
+            "source": "https://support.google.com/webmasters/answer/9012289",
+            "limitation": "A public audit cannot establish this status without property access."
+        },
+        {
+            "id": "TS09",
+            "domain": "Indexing",
+            "control": "Intentional exclusions have an owner and a rationale.",
+            "access_required": "Configuration",
+            "method": "Tie each excluded family to a rule, owner and review date.",
+            "expected_evidence": "Exclusion register: page type, mechanism, rationale, owner and review.",
+            "default_severity": "Minor",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/block-indexing",
+            "limitation": "The business relevance of an exclusion cannot be automated."
+        },
+        {
+            "id": "TS10",
+            "domain": "Canonicalisation",
+            "control": "Each canonical page publishes an absolute, stable and consistent URL.",
+            "access_required": "Public",
+            "method": "Compare the final URL, rel=canonical, sitemap and internal links.",
+            "expected_evidence": "Signals converge on the same canonical URL without a chain.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+            "limitation": "rel=canonical is a strong signal, not a guaranteed directive."
+        },
+        {
+            "id": "TS11",
+            "domain": "Canonicalisation",
+            "control": "Genuine duplicate variants converge without hiding distinct pages.",
+            "access_required": "Public",
+            "method": "Sample parameters, pagination, filters and print versions; compare content and canonicals.",
+            "expected_evidence": "Documented mapping between each duplicate and its relevant canonical.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+            "limitation": "Computed similarity does not replace an editorial decision."
+        },
+        {
+            "id": "TS12",
+            "domain": "Canonicalisation",
+            "control": "Google’s selected canonical is compared with the declared canonical.",
+            "access_required": "Search Console",
+            "method": "Inspect priority URLs and record the user-declared and Google-selected canonicals.",
+            "expected_evidence": "Agreement or a qualified, addressed divergence.",
+            "default_severity": "Major",
+            "source": "https://support.google.com/webmasters/answer/9012289",
+            "limitation": "Google’s selected canonical can change after recrawling."
+        },
+        {
+            "id": "TS13",
+            "domain": "Sitemaps and freshness",
+            "control": "The sitemap contains only useful absolute canonical URLs.",
+            "access_required": "Public",
+            "method": "Parse every sitemap, count URLs and compare status, canonical and indexability.",
+            "expected_evidence": "Inventory without redirects, 4xx responses, noindex pages or duplicate canonicals.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap",
+            "limitation": "Sitemap inclusion does not guarantee indexing."
+        },
+        {
+            "id": "TS14",
+            "domain": "Sitemaps and freshness",
+            "control": "lastmod reflects a significant change to the page.",
+            "access_required": "Configuration",
+            "method": "Compare lastmod with editorial history or a significant content deployment.",
+            "expected_evidence": "ISO 8601 timestamp tied to an actual change, not file generation.",
+            "default_severity": "Minor",
+            "source": "https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping",
+            "limitation": "The engine may ignore a lastmod it considers unreliable."
+        },
+        {
+            "id": "TS15",
+            "domain": "Sitemaps and freshness",
+            "control": "Sitemap size and segmentation limits are respected.",
+            "access_required": "Public",
+            "method": "Check uncompressed size, URL count, sitemap indexes and encoding.",
+            "expected_evidence": "No more than 50,000 URLs and 50 MB uncompressed per sitemap.",
+            "default_severity": "Major",
+            "source": "https://www.sitemaps.org/protocol.html",
+            "limitation": "A valid file can still cover the wrong editorial scope."
+        },
+        {
+            "id": "TS16",
+            "domain": "Internal discoverability",
+            "control": "Every important page receives at least one crawlable internal link.",
+            "access_required": "Public",
+            "method": "Crawl from public entry points and list pages with no incoming HTML link.",
+            "expected_evidence": "Link source, destination, anchor and destination status.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable",
+            "limitation": "The presence of a link does not prove its editorial value."
+        },
+        {
+            "id": "TS17",
+            "domain": "Internal discoverability",
+            "control": "Essential links use an a element with a resolvable href.",
+            "access_required": "Public",
+            "method": "Compare source and rendered DOM; identify buttons, onclick handlers and anchors without href.",
+            "expected_evidence": "A crawlable HTML link to every essential destination.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable",
+            "limitation": "Crawlability guarantees neither indexing nor rankings."
+        },
+        {
+            "id": "TS18",
+            "domain": "Internal discoverability",
+            "control": "Depth and orphan pages are measured within an explicit scope.",
+            "access_required": "Public",
+            "method": "Compare crawl, sitemap and CMS export; qualify every difference.",
+            "expected_evidence": "Orphan list, observed minimum depth and a decision for each family.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable",
+            "limitation": "No universal depth guarantees rankings."
+        },
+        {
+            "id": "TS19",
+            "domain": "URL spaces",
+            "control": "Parameters, filters and calendars do not create an infinite URL space.",
+            "access_required": "Public",
+            "method": "Group URLs by pattern, count combinations and look for crawl traps.",
+            "expected_evidence": "Indexing and navigation rule for each parameter pattern.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/url-structure",
+            "limitation": "The actual crawled volume requires logs or Search Console."
+        },
+        {
+            "id": "TS20",
+            "domain": "URL spaces",
+            "control": "The URL structure is readable, stable and correctly encoded.",
+            "access_required": "Public",
+            "method": "Identify spaces, fragments, encoded characters, case and volatile identifiers.",
+            "expected_evidence": "Documented URL patterns and no unintended variants.",
+            "default_severity": "Minor",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/url-structure",
+            "limitation": "A readable URL is not sufficient evidence of SEO performance."
+        },
+        {
+            "id": "TS21",
+            "domain": "URL spaces",
+            "control": "Discovered but unindexed URLs are investigated by family.",
+            "access_required": "Search Console",
+            "method": "Segment the Pages report by template and compare it with sitemaps and logs.",
+            "expected_evidence": "Hypothesis per family, URL sample and post-fix result.",
+            "default_severity": "Major",
+            "source": "https://support.google.com/webmasters/answer/7440203",
+            "limitation": "A Search Console label describes a state, not always its cause."
+        },
+        {
+            "id": "TS22",
+            "domain": "Internationalisation",
+            "control": "Each hreflang variant points to an indexable canonical URL.",
+            "access_required": "Public",
+            "method": "Parse HTML, HTTP or sitemap annotations and resolve every URL.",
+            "expected_evidence": "Valid language/region, 200 response and consistent canonical.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+            "limitation": "hreflang helps targeting; it does not replace genuinely localised content."
+        },
+        {
+            "id": "TS23",
+            "domain": "Internationalisation",
+            "control": "hreflang annotations are reciprocal and include the current page.",
+            "access_required": "Public",
+            "method": "Build variant clusters and verify return links and self-references.",
+            "expected_evidence": "Complete reciprocal cluster with no conflicting URL.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+            "limitation": "A valid cluster does not prove the engine will always serve the expected variant."
+        },
+        {
+            "id": "TS24",
+            "domain": "Internationalisation",
+            "control": "x-default represents a neutral destination or an explicit default variant.",
+            "access_required": "Public",
+            "method": "Check its presence and role in every relevant multilingual cluster.",
+            "expected_evidence": "Documented, accessible x-default URL consistent with the journey.",
+            "default_severity": "Minor",
+            "source": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+            "limitation": "x-default is not mandatory in every case."
+        },
+        {
+            "id": "TS25",
+            "domain": "JavaScript and rendering",
+            "control": "Critical content exists in source HTML or becomes observable after rendering.",
+            "access_required": "Public",
+            "method": "Compare the HTML response, rendered DOM and URL Inspection for critical elements.",
+            "expected_evidence": "Title, content, links, canonical and structured data present at the right stage.",
+            "default_severity": "Blocking",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+            "limitation": "A local browser does not reproduce Google’s rendering exactly."
+        },
+        {
+            "id": "TS26",
+            "domain": "JavaScript and rendering",
+            "control": "Resources required for rendering are neither blocked nor failing.",
+            "access_required": "Public",
+            "method": "Inspect network activity, robots rules, CSP and console errors on priority templates.",
+            "expected_evidence": "Critical resources accessible and no error removes essential content.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+            "limitation": "An error-free console does not prove indexing."
+        },
+        {
+            "id": "TS27",
+            "domain": "JavaScript and rendering",
+            "control": "SPA states and routes produce shareable URLs and consistent server responses.",
+            "access_required": "Public",
+            "method": "Open routes directly and test refresh, history, canonical and HTTP status.",
+            "expected_evidence": "Each indexable view has its own URL, 200 response, content and signals.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript",
+            "limitation": "Choosing SSR, CSR or SSG is not in itself an SEO guarantee."
+        },
+        {
+            "id": "TS28",
+            "domain": "HTML and semantics",
+            "control": "The document exposes an understandable HTML structure independently of appearance.",
+            "access_required": "Public",
+            "method": "Inspect title, language, main landmark, heading levels, links and labels on a sample.",
+            "expected_evidence": "Logical structure, one identifiable main subject and accessible components.",
+            "default_severity": "Major",
+            "source": "https://html.spec.whatwg.org/",
+            "limitation": "Syntax validity alone proves neither quality nor relevance."
+        },
+        {
+            "id": "TS29",
+            "domain": "HTML and semantics",
+            "control": "Essential content remains available when scripts or styles fail.",
+            "access_required": "Public",
+            "method": "Test source HTML, disabled JavaScript and degraded network conditions.",
+            "expected_evidence": "Primary information and navigation remain available, or a fallback is documented.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+            "limitation": "Acceptable degradation depends on the component’s function."
+        },
+        {
+            "id": "TS30",
+            "domain": "HTML and semantics",
+            "control": "Essential metadata is unique, visible and consistent with the page.",
+            "access_required": "Public",
+            "method": "Compare title, description, H1, Open Graph and main content by template.",
+            "expected_evidence": "Consistent topic and promise without mechanical duplication.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/appearance/title-link",
+            "limitation": "Google may rewrite the title link or snippet in search results."
+        },
+        {
+            "id": "TS31",
+            "domain": "Structured data",
+            "control": "JSON-LD describes entities that are visible and appropriate to the content.",
+            "access_required": "Public",
+            "method": "Compare each important property with visible content and type-specific guidance.",
+            "expected_evidence": "Valid, consistent graph with no invented entity or rating.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+            "limitation": "Valid markup guarantees neither a rich result nor higher rankings."
+        },
+        {
+            "id": "TS32",
+            "domain": "Structured data",
+            "control": "Stable @id values connect the same entities without creating duplicates.",
+            "access_required": "Public",
+            "method": "Build the graph and identify unnamed nodes, variable identifiers and duplicates.",
+            "expected_evidence": "Organization, Person, WebSite, WebPage and Article connected by stable @id values.",
+            "default_severity": "Minor",
+            "source": "https://schema.org/docs/datamodel.html",
+            "limitation": "Schema.org defines a vocabulary; interpretation depends on the consumer."
+        },
+        {
+            "id": "TS33",
+            "domain": "Structured data",
+            "control": "Errors, warnings and unsupported uses are distinguished.",
+            "access_required": "Public",
+            "method": "Test Schema.org syntax and Google eligibility separately; record both results.",
+            "expected_evidence": "Report with no blocking error and qualified warnings.",
+            "default_severity": "Minor",
+            "source": "https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data",
+            "limitation": "Rich Results Test does not validate the whole Schema.org vocabulary."
+        },
+        {
+            "id": "TS34",
+            "domain": "Performance and monitoring",
+            "control": "Field Core Web Vitals are read at the 75th percentile.",
+            "access_required": "Search Console",
+            "method": "Record LCP, INP and CLS from field data by device type and URL group.",
+            "expected_evidence": "LCP ≤ 2.5 s, INP ≤ 200 ms and CLS ≤ 0.1 at the 75th percentile for a Good assessment.",
+            "default_severity": "Major",
+            "source": "https://web.dev/articles/defining-core-web-vitals-thresholds",
+            "limitation": "Missing CrUX data does not mean the page is fast."
+        },
+        {
+            "id": "TS35",
+            "domain": "Performance and monitoring",
+            "control": "Laboratory tests support diagnosis rather than simulate field data.",
+            "access_required": "Public",
+            "method": "Retain URL, device, network profile, tool version and detailed metrics.",
+            "expected_evidence": "Reproducible Lighthouse/WebPageTest report tied to a remediation hypothesis.",
+            "default_severity": "Minor",
+            "source": "https://web.dev/articles/lab-and-field-data-differences",
+            "limitation": "A Lighthouse score of 100 guarantees neither field CWV nor rankings."
+        },
+        {
+            "id": "TS36",
+            "domain": "Performance and monitoring",
+            "control": "Monitoring connects Search Console, logs and deployments to decision dates.",
+            "access_required": "Server logs",
+            "method": "Create a pre-change baseline, then verify at D+1, D+7 and D+30 according to risk.",
+            "expected_evidence": "Deployment log, crawl/indexing anomalies and signed decisions.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/crawling/docs/crawl-budget",
+            "limitation": "Temporal correlation is not sufficient to attribute a traffic change."
+        },
+        {
+            "id": "TS37",
+            "domain": "HTTP and availability",
+            "control": "HTTPS, HSTS and embedded resources create neither certificate errors nor mixed content.",
+            "access_required": "Public",
+            "method": "Test certificates on public hosts, follow HTTP/HTTPS variants, record Strict-Transport-Security and find HTTP subresources.",
+            "expected_evidence": "Valid certificate for each host, HTTPS redirect, documented HSTS header and no active HTTP resource.",
+            "default_severity": "Major",
+            "source": "https://www.rfc-editor.org/rfc/rfc6797",
+            "limitation": "HSTS strengthens transport after the policy is received; it fixes neither an invalid certificate nor a poor URL architecture."
+        },
+        {
+            "id": "TS38",
+            "domain": "URL spaces",
+            "control": "Host, case and trailing-slash variants converge on one rule.",
+            "access_required": "Public",
+            "method": "Replay www/non-www, HTTP/HTTPS, relevant case and trailing-slash variants on sample routes; compare redirect, canonical, sitemap and links.",
+            "expected_evidence": "One stable final URL per resource, no chain and consistent internal signals.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+            "limitation": "Case can be significant depending on the server and application; the rule must be tested, not assumed."
+        },
+        {
+            "id": "TS39",
+            "domain": "Performance and monitoring",
+            "control": "The CDN, Vary and geolocation do not serve contradictory SEO signals.",
+            "access_required": "Configuration",
+            "method": "Compare status, canonical, robots, language and content across regions or cache keys; inspect Vary, geolocation redirects and edge rules.",
+            "expected_evidence": "Identical SEO signals for the same URL, or explicitly documented variants accessible to Googlebot.",
+            "default_severity": "Major",
+            "source": "https://www.rfc-editor.org/rfc/rfc9110",
+            "source_scope": "RFC 9110 defines Vary and HTTP response semantics. Google separately documents locale-adaptive page behaviour.",
+            "secondary_sources": [
+                "https://developers.google.com/search/docs/specialty/international/locale-adaptive-pages"
+            ],
+            "limitation": "Two test locations do not cover every route, POP or cache key."
+        },
+        {
+            "id": "TS40",
+            "domain": "Internationalisation",
+            "control": "The chosen hreflang method — HTML, HTTP header or sitemap — is complete and unique.",
+            "access_required": "Public",
+            "method": "Identify the source of truth, then verify that every URL lists itself and all alternatives in that method.",
+            "expected_evidence": "Equivalent reciprocal clusters; when sitemaps are used, valid xhtml namespace and entries per URL.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+            "limitation": "Combining HTML, headers and sitemaps offers no search benefit and increases divergence risk."
+        },
+        {
+            "id": "TS41",
+            "domain": "Performance and monitoring",
+            "control": "Critical SEO invariants are replayed automatically before and after deployment.",
+            "access_required": "Configuration",
+            "method": "Run a representative URL set in CI: final status, redirects, robots/noindex, canonical, hreflang, server content, essential links and JSON-LD.",
+            "expected_evidence": "Versioned command, timestamped output, explicit failure threshold and link to the relevant deployment.",
+            "default_severity": "Major",
+            "source": "",
+            "source_label": "Edikka method · no single primary source",
+            "source_scope": "Edikka governance and non-regression control; no single official document prescribes this complete pipeline.",
+            "limitation": "CI validates known invariants; it replaces neither Search Console, logs nor editorial review."
+        },
+        {
+            "id": "TS42",
+            "domain": "AI crawling and agents",
+            "control": "Each AI crawler is governed according to its actual purpose: search, user action or training.",
+            "access_required": "Configuration",
+            "method": "Map search, user action and training separately — for example OAI-SearchBot / ChatGPT-User / GPTBot and Claude-SearchBot / Claude-User / ClaudeBot — to a dated decision and owner.",
+            "expected_evidence": "Table of user agent, purpose, rule, operator source and review date, without conflating live search with training.",
+            "default_severity": "Major",
+            "source": "https://developers.openai.com/api/docs/bots",
+            "secondary_sources": [
+                "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler"
+            ],
+            "limitation": "A robots directive is declarative; it proves neither the requester’s identity nor compliance by every operator."
+        },
+        {
+            "id": "TS43",
+            "domain": "AI crawling and agents",
+            "control": "Access for authorised crawlers is tested with the full user-agent string and reconciled with logs.",
+            "access_required": "Server logs",
+            "method": "Send a GET request using the documented full user-agent, record status and redirects, find the request in logs and verify identity when the operator publishes a method.",
+            "expected_evidence": "Command, full string, final response, timestamp, server trace and verified/unverified identity status.",
+            "default_severity": "Major",
+            "source": "https://developers.openai.com/api/docs/bots",
+            "limitation": "Imitating a user agent does not reproduce crawler infrastructure; the test validates application policy, not a real operator visit."
+        },
+        {
+            "id": "TS44",
+            "domain": "AI crawling and agents",
+            "control": "Critical content and evidence remain accessible without undocumented JavaScript execution.",
+            "access_required": "Public",
+            "method": "Compare raw HTML, rendered content and any public machine-readable resource; verify titles, facts, sources, links and update date.",
+            "expected_evidence": "Essential facts and sources in server HTML or a linked public resource, with a consistent version and stable URL.",
+            "default_severity": "Major",
+            "source": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+            "source_scope": "Partial scope: Google documents JavaScript rendering for Google Search. This control cautiously extends verification to consumers whose rendering capabilities are not uniformly documented.",
+            "secondary_sources": [
+                "https://developers.openai.com/api/docs/bots",
+                "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler"
+            ],
+            "limitation": "An llms.txt or Markdown file may ease access, but neither guarantees citation nor rankings."
+        }
+    ]
+}

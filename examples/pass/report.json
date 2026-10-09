@@ -1,0 +1,70 @@
+{
+  "format_version": "1",
+  "protocol": {
+    "name": "TSEP",
+    "version": "0.1.0-draft.1",
+    "sha256": "18838cbf4c1f20cb6f0487f90c4fe7a77a60f1a9addd8239166a3d9e38311053"
+  },
+  "issued_at": "2026-10-09T10:00:00Z",
+  "assessor": {
+    "name": "Synthetic fixture author / Auteur des cas fictifs",
+    "mode": "manual"
+  },
+  "scope": {
+    "label": "One synthetic URL / Une URL fictive",
+    "targets": [
+      "https://example.com/page"
+    ],
+    "selection_method": "Controlled demonstration, not a live site assessment / Démonstration contrôlée",
+    "exclusions": [
+      "All other controls and every live site / Autres contrôles et sites réels"
+    ]
+  },
+  "profile": "custom",
+  "controls": [
+    "TS01"
+  ],
+  "claim": "scoped-assessment",
+  "artifacts": [
+    {
+      "id": "intent",
+      "path": "intent.txt",
+      "sha256": "c8e9349bc8976750ceb31afe474158c00d3eb8b6895618b13d2afd778267dd4f",
+      "kind": "intent",
+      "observed_at": "2026-10-09T10:00:00Z",
+      "targets": [
+        "https://example.com/page"
+      ],
+      "access": "synthetic",
+      "description": "Synthetic fixture; no real network observation / Cas synthétique."
+    },
+    {
+      "id": "http",
+      "path": "http.txt",
+      "sha256": "cb88d0e37afe86468b5c35edcfbd83706a1af248d51045e35af6d905b19d62e3",
+      "kind": "http",
+      "observed_at": "2026-10-09T10:00:00Z",
+      "targets": [
+        "https://example.com/page"
+      ],
+      "access": "synthetic",
+      "description": "Synthetic fixture; no real network observation / Cas synthétique."
+    }
+  ],
+  "results": [
+    {
+      "control_id": "TS01",
+      "status": "C",
+      "evaluation_state": "complete",
+      "reason": "Declared synthetic target returns expected content with final 200; no inference beyond TS01 / Cible fictive et contenu attendus en 200 final, TS01 seulement.",
+      "procedure": "Read the synthetic exchange against the declared intention / Comparer échange fictif et intention",
+      "evaluated_targets": [
+        "https://example.com/page"
+      ],
+      "evidence_ids": [
+        "intent",
+        "http"
+      ]
+    }
+  ]
+}
