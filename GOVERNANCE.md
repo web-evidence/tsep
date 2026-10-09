@@ -9,12 +9,13 @@ and benefits from this protocol's reputation: that is a declared commercial
 interest, not proof of neutrality.
 
 The contribution process is open by design. As of 9 October 2026,
-[web-evidence/tsep](https://github.com/web-evidence/tsep) is a private repository
+[web-evidence/tsep](https://github.com/web-evidence/tsep) is a public repository
 under Web Evidence; this hosting does not change the stewardship declared above.
 The Web Evidence organization is currently administered by Edikka.
-Contributors with access can use its issues and pull requests; otherwise supply
-patches with the version, affected IDs, evidence, expected outcomes, conflicts of
-interest and a license declaration. Public access is not yet available.
+Contribute through its [issues](https://github.com/web-evidence/tsep/issues) and
+[pull requests](https://github.com/web-evidence/tsep/pulls), with the version,
+affected IDs, evidence, expected outcomes, conflicts of interest and a license
+declaration. Public access does not establish adoption or independent review.
 
 Stewards publish reasoned acceptance/rejection decisions, retain dissent when
 material, and credit actual contributions with consent. Commercial relationships
@@ -42,12 +43,13 @@ n’est revendiqué. Edikka vend des services web et bénéficie de la réputati
 protocole : cet intérêt commercial est déclaré.
 
 Le processus est conçu pour accueillir les contributions. Au 9 octobre 2026,
-[web-evidence/tsep](https://github.com/web-evidence/tsep) est un dépôt privé sous
+[web-evidence/tsep](https://github.com/web-evidence/tsep) est un dépôt public sous
 Web Evidence ; cet hébergement ne change pas la responsabilité déclarée ci-dessus.
 L’organisation Web Evidence est actuellement administrée par Edikka.
-Les contributeurs ayant accès peuvent utiliser les issues/PR ; sinon, fournir
-un patch avec version, IDs, preuves, résultats attendus, intérêts déclarés et licence.
-L’accès public n’est pas encore ouvert.
+Contribuer par les [issues](https://github.com/web-evidence/tsep/issues) et
+[pull requests](https://github.com/web-evidence/tsep/pulls), avec version, IDs,
+preuves, résultats attendus, intérêts déclarés et licence. L’accès public
+n’établit ni adoption ni revue indépendante.
 
 Les responsables motivent leurs décisions, conservent les désaccords utiles et
 créditent les contributions réelles avec accord. Aucun lien commercial ne justifie

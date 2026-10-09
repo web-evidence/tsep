@@ -81,16 +81,18 @@ Google series. Exact control lists are versioned in the JSON.
 
 ## Status and path to 1.0
 
-**Status on 9 October 2026: development candidate in a private repository;
+**Status on 9 October 2026: development candidate in a public repository;
 local verification and remote CI observed, no established independent practitioner review.**
 
 TSEP is hosted in [web-evidence/tsep](https://github.com/web-evidence/tsep), under
 [Web Evidence](https://github.com/web-evidence). It was initiated by Edikka, which
 remains its steward. The [first CI run](https://github.com/web-evidence/tsep/actions/runs/37962185984)
 passed all seven jobs on commit `253b0a1`: Linux/Python 3.9–3.14 and macOS/Python 3.14.
-The repository and run currently require access. See the
+The repository, issues, pull requests and CI are publicly readable. See the
 [dated results and scope](docs/development.md#first-observed-ci-run) before applying
 this result to another revision.
+For a later revision, inspect its commit and result in the
+[verification workflow](https://github.com/web-evidence/tsep/actions/workflows/verify.yml).
 
 | Stage | Success criterion before 1.0 |
 | --- | --- |

@@ -82,16 +82,18 @@ la série Google. Les listes exactes de contrôles sont versionnées dans le JSO
 
 ## Statut et trajectoire vers la 1.0
 
-**Statut au 9 octobre 2026 : candidat de développement dans un dépôt privé ;
+**Statut au 9 octobre 2026 : candidat de développement dans un dépôt public ;
 vérification locale et CI distante observées, sans revue indépendante de praticiens établie.**
 
 TSEP est hébergé dans [web-evidence/tsep](https://github.com/web-evidence/tsep), sous
 [Web Evidence](https://github.com/web-evidence). Il a été initié par Edikka, qui
 en reste le responsable. La [première CI](https://github.com/web-evidence/tsep/actions/runs/37962185984)
 a réussi ses sept jobs sur le commit `253b0a1` : Linux/Python 3.9–3.14 et macOS/Python 3.14.
-Le dépôt et le run nécessitent actuellement un accès. Voir les
+Le dépôt, les issues, les pull requests et la CI sont consultables publiquement. Voir les
 [résultats datés et leur portée](docs/development.md#première-ci-observée) avant
 d’appliquer ce résultat à une autre révision.
+Pour une révision ultérieure, consulter son commit et son résultat dans le
+[workflow de vérification](https://github.com/web-evidence/tsep/actions/workflows/verify.yml).
 
 | Étape | Critère de succès avant la 1.0 |
 | --- | --- |

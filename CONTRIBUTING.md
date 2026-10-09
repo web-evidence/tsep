@@ -20,7 +20,9 @@ claims without supporting evidence and authorization where needed.
 Run `python3 maintain.py render`, `python3 maintain.py check`,
 `python3 examples/replay.py`, and `python3 -m unittest discover -s tests -v`.
 Report limitations and adverse results. There is no CLA or promotional backlink
-requirement added by this candidate. Publication channels are not live yet.
+requirement added by this candidate. Use the public
+[issues](https://github.com/web-evidence/tsep/issues) for reproducible problems
+and [pull requests](https://github.com/web-evidence/tsep/pulls) for proposed changes.
 `render` binds the schema and EN/FR report-contract hashes into the canonical JSON,
 then regenerates control documentation. Replay examples after any contract change.
 
@@ -39,7 +41,10 @@ Identifier le travail original, sa licence et les intérêts commerciaux concern
 N’ajouter aucune mesure d’adoption, identité de relecteur, DOI ou affirmation de
 certification sans preuve et autorisation nécessaire. Exécuter les quatre commandes
 ci-dessus et conserver les résultats défavorables. Ce candidat n’ajoute ni CLA ni
-lien promotionnel obligatoire. Ses canaux de publication ne sont pas encore ouverts.
+lien promotionnel obligatoire. Utiliser les
+[issues publiques](https://github.com/web-evidence/tsep/issues) pour les problèmes
+rejouables et les [pull requests](https://github.com/web-evidence/tsep/pulls)
+pour les modifications proposées.
 
 ## Independent verification / Vérification autonome
 

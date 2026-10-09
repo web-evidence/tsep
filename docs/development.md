@@ -5,7 +5,7 @@
 This repository is TSEP's development source. It is independent of the Edikka
 website, CMS, database, server configuration and deployment process. Its initial
 commit imports the 40 source files of `0.1.0-draft.1` byte-for-byte. The annotated
-tag `v0.1.0-draft.1` preserves that unpublished candidate. Provenance is recorded
+tag `v0.1.0-draft.1` preserves that imported candidate. Provenance is recorded
 in `provenance/import.json`; no older Git history or private project files were imported.
 
 The protocol is still a draft. Infrastructure commits after the import do not
@@ -90,11 +90,14 @@ The GitHub workflow runs the same command on Linux/Python 3.9, 3.10, 3.11, 3.12,
 permissions are read-only and checkout does not persist credentials. It has no
 deploy, release, secret, `pull_request_target` or automatic publication step.
 The repository is [web-evidence/tsep](https://github.com/web-evidence/tsep), hosted
-under [Web Evidence](https://github.com/web-evidence). It is private as of
-9 October 2026; repository, issue, pull-request and CI links require access.
+under [Web Evidence](https://github.com/web-evidence). It became public on
+9 October 2026; the repository, issues, pull requests and CI are publicly readable.
 Edikka remains the current steward; hosting does not establish independent governance.
-Use the repository's issues/PRs when you have access. Public contributions will
-use the same channels after a separately authorized public opening.
+Use its [issues](https://github.com/web-evidence/tsep/issues) and
+[pull requests](https://github.com/web-evidence/tsep/pulls) to contribute.
+Opening the development repository does not create a stable release or replace
+the initial tag. For the current revision's result, inspect its commit in the
+[verification workflow](https://github.com/web-evidence/tsep/actions/workflows/verify.yml).
 
 ### First observed CI run
 
@@ -122,11 +125,12 @@ the same commit before push:
 `4f8bc1575fa5591dc6fdbbbcbbaac97620e9e81e57d7de749223631f4685dafa` (SHA-256).
 The maintainer retained the complete log ZIP for this attempt, SHA-256
 `5e799a49546ec74a15f829dd1a6aab6b95168ac61d0598264632433c7fcc75d0`.
-Logs are accessible through the private run until the GitHub retention period
+This run was first observed while the repository was private. Its logs are
+accessible through the run page until the GitHub retention period
 expires ([90 days by default](https://docs.github.com/en/organizations/managing-organization-settings/configuring-the-retention-period-for-github-actions-artifacts-and-logs-in-your-organization));
 the effective repository setting was not checked. The retained ZIP identified
-above is the durable reference after that expiry. This is an observed remote
-execution, not yet a publicly inspectable or independently reviewed result.
+above is the durable reference after that expiry. Public access makes the run
+inspectable; it does not establish independent practitioner review.
 Windows was not tested.
 
 These results and archive hashes belong to that commit, which predates this
@@ -197,11 +201,14 @@ les droits sont en lecture seule et le checkout ne conserve pas les identifiants
 Le workflow n’a ni déploiement, ni release, ni secret, ni `pull_request_target`,
 ni étape de publication automatique.
 Le dépôt [web-evidence/tsep](https://github.com/web-evidence/tsep) est hébergé sous
-[Web Evidence](https://github.com/web-evidence). Il est privé au 9 octobre 2026 ;
-les liens vers le dépôt, les issues/PR et la CI nécessitent un accès.
+[Web Evidence](https://github.com/web-evidence). Il est devenu public le 9 octobre 2026 ;
+le dépôt, les issues, les pull requests et la CI sont consultables publiquement.
 Edikka reste le responsable actuel ; l’hébergement ne crée pas une gouvernance indépendante.
-Utiliser les issues/PR avec un accès au dépôt. Les contributions publiques
-emploieront les mêmes canaux après une ouverture publique autorisée séparément.
+Contribuer par les [issues](https://github.com/web-evidence/tsep/issues) et
+[pull requests](https://github.com/web-evidence/tsep/pulls). L’ouverture du dépôt
+de développement ne crée pas de version stable et ne remplace pas le tag initial.
+Pour le résultat de la révision actuelle, consulter son commit dans le
+[workflow de vérification](https://github.com/web-evidence/tsep/actions/workflows/verify.yml).
 
 ### Première CI observée
 
@@ -231,12 +238,13 @@ construite localement depuis ce même commit avant l’envoi :
 `4f8bc1575fa5591dc6fdbbbcbbaac97620e9e81e57d7de749223631f4685dafa` (SHA-256).
 Le responsable a conservé le ZIP complet des journaux de cette tentative, SHA-256
 `5e799a49546ec74a15f829dd1a6aab6b95168ac61d0598264632433c7fcc75d0`.
-Les journaux sont accessibles depuis le run privé jusqu’à l’expiration de la
+Ce run a été observé pour la première fois lorsque le dépôt était privé. Ses
+journaux sont accessibles depuis sa page jusqu’à l’expiration de la
 rétention GitHub ([90 jours par défaut](https://docs.github.com/en/organizations/managing-organization-settings/configuring-the-retention-period-for-github-actions-artifacts-and-logs-in-your-organization)) ;
 le réglage effectif du dépôt n’a pas été vérifié. Le ZIP conservé, identifié
-ci-dessus, est la référence durable après cette expiration. Cette exécution
-distante observée n’est pas encore une preuve consultable publiquement ni une
-revue indépendante. Windows n’a pas été testé.
+ci-dessus, est la référence durable après cette expiration. L’accès public rend
+le run consultable ; il n’établit pas une revue indépendante de praticiens.
+Windows n’a pas été testé.
 
 Ces résultats et empreintes appartiennent à ce commit, antérieur à cette mise à
 jour documentaire. Toute révision suivante, même documentaire, exige sa propre

@@ -3,6 +3,7 @@ message: "Cite the exact draft version and archive checksum. No DOI has been reg
 title: "Technical SEO Evidence Protocol (TSEP)"
 version: "0.1.0-draft.7"
 type: software
+repository-code: "https://github.com/web-evidence/tsep"
 authors:
   - family-names: "Morel"
     given-names: "Bertrand"
@@ -11,4 +12,4 @@ authors:
 abstract: "Working draft: 44 bilingual technical SEO assessment controls and an evidence-report interchange reference implementation. Not independently reviewed or certified."
 license: Apache-2.0
 # This citation describes the software; protocol text/data are CC-BY-4.0.
-# Add a repository URL after public access opens; add a DOI only after registration.
+# Add a DOI only after registration.

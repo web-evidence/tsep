@@ -1,5 +1,21 @@
 # Change history / Historique
 
+## Public repository access — 2026-10-09
+
+Open `web-evidence/tsep` to public reading and contributions. Align the EN/FR
+README, development, governance and contribution guidance with that access;
+add the repository URL to `CITATION.cff`. Keep the first CI run's measured results
+and commit scope as historical evidence, with a link to later workflow runs.
+Protocol draft.7, licenses, decision rules and the initial tag are unchanged.
+Public access does not establish a stable release, adoption or independent review.
+
+Ouverture de `web-evidence/tsep` à la consultation et aux contributions publiques.
+README, développement, gouvernance et contribution alignés en FR/EN ; URL du dépôt
+ajoutée à `CITATION.cff`. Résultats mesurés et portée du commit de la première CI
+conservés comme preuves historiques, avec lien vers les runs suivants.
+Protocole draft.7, licences, règles de décision et tag initial inchangés.
+L’accès public n’établit ni version stable, ni adoption, ni revue indépendante.
+
 ## Repository and observed CI — 2026-10-09 — unpublished documentation
 
 Link the private Web Evidence repository and the first successful remote CI run
