@@ -59,10 +59,13 @@ target is under 60 seconds, leaving at least the same amount of margin under the
 default deadline. Actual timings depend on Python, machine load and hardware;
 record the measured environment rather than asserting an unobserved CI result.
 
-Git is needed for development, not for using a downloaded package. Start work on
-a `codex/` branch. Keep generated files in sync through deliberate, reviewed
-regeneration. The canonical report contract and JSON did not change during the
-repository split; distribution boundaries and verification were strengthened.
+Git is needed for development, not for using a downloaded package. Use descriptive
+branches in the form `<type>/<short-description>`, where type is `feat`, `fix`,
+`docs`, `test` or `chore` (for example, `docs/contributor-guidance`). Integrate
+changes sequentially after verification. Keep generated files in sync through
+deliberate, reviewed regeneration. The canonical report contract and JSON did not
+change during the repository split; distribution boundaries and verification
+were strengthened.
 
 ### Distribution and integration boundaries
 
@@ -99,6 +102,12 @@ tag `v0.1.0-draft.1` conservent les 40 fichiers importés sans changement. Les
 commits d’infrastructure suivants ne remplacent ni ce tag ni une publication.
 La provenance est dans `provenance/import.json`. Aucun historique privé Edikka
 n’est importé, aucun domaine, organisation ou DOI n’est nécessaire pour avancer.
+
+Git sert au développement, pas à l’utilisation d’une archive téléchargée. Utiliser
+des branches descriptives de la forme `<type>/<short-description>`, avec `feat`,
+`fix`, `docs`, `test` ou `chore` comme type (par exemple,
+`docs/contributor-guidance`). Intégrer les changements séquentiellement après
+vérification. Régénérer les dérivés délibérément et relire leurs écarts.
 
 La commande `python3 scripts/verify.py` vérifie contrat, tests, conformance sur entrées brutes, exemples temporaires,
 sonde HTTP locale et archive reconstruite à l’identique. Elle exige Python 3.9+

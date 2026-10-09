@@ -1,53 +1,51 @@
-# TSEP — règles de travail
+# TSEP — contributor instructions
 
-Ce dépôt est la source de développement autonome de Technical SEO Evidence
-Protocol. Le site Edikka est une intégration distincte, sans dépendance d’exécution.
+This repository is the independent development source for Technical SEO Evidence
+Protocol. Integrations are separate consumers, not runtime dependencies.
 
-## Préparation et périmètre
+## Preparation and scope
 
-- Lire `docs/development.md`, le contrat concerné et `git status --short` avant une
-  écriture. Préserver les changements préexistants. Utiliser `codex/` pour les
-  branches de travail ; intégrer séquentiellement après vérification.
-- Si `.tsep-local.json` existe, lire ses références de pilotage local : elles
-  désignent le suivi de l’éditeur, sans ajouter de backlog concurrent. Ce fichier
-  reste ignoré et n’entre jamais dans une distribution. Son absence ne bloque
-  aucun contrôle, build ou contribution externe.
-- Rattacher la mission au suivi autorisé par le propriétaire. À défaut de suivi
-  accessible, consigner la limite dans la réponse ; ne pas inventer une validation
-  ou un accès. Une issue publique servira de référence après ouverture du dépôt.
-- Ne pas modifier un autre dépôt, publier, acheter un domaine, déposer un DOI ou
-  contacter un tiers sans autorisation correspondant à cette action.
+- Read `docs/development.md`, the relevant contract and `git status --short`
+  before editing. Preserve pre-existing changes.
+- Use descriptive branches in the form `<type>/<short-description>`, where type
+  is `feat`, `fix`, `docs`, `test` or `chore`. Integrate changes sequentially after
+  verification.
+- Stay within the requested scope. Changing another repository, publishing,
+  buying a domain, registering a DOI or contacting a third party requires
+  authorization for that action. Never claim access or approval not obtained.
 
-## Contrats et vérité des résultats
+## Contracts and results
 
-- Préserver TS01–TS44, leurs versions et leur provenance. Ne jamais présenter ce
-  candidat comme une certification ou un standard reconnu.
-- Une nouvelle règle précise applicabilité, entrée, attendu, preuve, hypothèses,
-  résultat indéterminé et limites. Distinguer contrôle, test atomique et observation.
-- Le manque de preuve ne devient ni C ni NA. Une sonde partielle n’autorise pas un
-  C global. Ne pas inférer l’indexation, le classement ou l’adoption.
-- Toute évolution normative exige FR/EN, version distincte, migration explicite
-  et cas contradictoires. Aucun artefact publié ou tag ne doit être remplacé.
-- Les captures et rapports synthétiques restent marqués comme tels. Les noms de
-  relecteurs, contributeurs, adoptants et les chiffres doivent avoir une preuve.
+- Preserve TS01–TS44, their versions and provenance. Never present this candidate
+  as a certification or a recognized standard.
+- A new rule specifies applicability, inputs, expectations, evidence, assumptions,
+  inconclusive outcomes and limitations. Distinguish controls, atomic tests and
+  observations.
+- Missing evidence does not become C or NA. A partial probe cannot establish
+  whole-control or global conformity. Do not infer indexing, ranking or adoption.
+- Every normative change requires French and English updates, a distinct version,
+  explicit migration guidance and contradictory cases. Never replace a published
+  artifact or an existing tag.
+- Keep synthetic captures and reports labeled as synthetic. Claims about named
+  reviewers, contributors, adopters or numerical results require evidence.
 
-## Sources, dérivés et livraison
+## Sources, generated files and delivery
 
-- Source bilingue : `spec/protocol.json`. Contrats : `docs/contract.*.md` et schéma
-  JSON. `docs/controls.*.md` et les exemples sont des dérivés contrôlés.
-- `maintain.py render` réécrit les empreintes normatives et les pages générées ;
-  `examples/replay.py` réécrit les exemples, sauf `--output-dir` explicite.
-  Ne jamais les lancer pour masquer un échec sans analyser le diff.
-- Vérification commune : `python3 scripts/verify.py`. Elle travaille dans des
-  dossiers temporaires et refuse une modification des sources. Elle utilise un
-  serveur HTTP sur 127.0.0.1 pour les cas de sonde, sans collecte externe.
-- Ajouter explicitement les fichiers distribués dans `release-files.json`.
-  Aucun parcours récursif de tout le dépôt pour construire une archive.
-- Vérifier la reconstruction depuis l’archive, la propreté Git et les écarts
-  avant intégration. La CI préparée ne remplace pas une exécution distante observée.
-- Pour une observation tierce nouvelle, conserver URL, date, portée et capture
-  datée/empreinte ou exception motivée dans la preuve de la mission. Le suivi local
-  peut imposer son gabarit ; aucune dépendance Edikka dans l’outil livré.
-
-Les preuves de recette décrivent des résultats ; elles ne deviennent pas un
-second tableau de suivi. Conserver les limites et résultats défavorables.
+- The bilingual source is `spec/protocol.json`. The report contracts are
+  `docs/contract.*.md` and the JSON schema. `docs/controls.*.md` and examples are
+  controlled derivatives.
+- `maintain.py render` rewrites normative fingerprints and generated pages;
+  `examples/replay.py` rewrites examples unless given an explicit `--output-dir`.
+  Do not run them to hide a failure without examining the diff.
+- Run `python3 scripts/verify.py`. It works in temporary directories and rejects
+  source changes. Its HTTP probe cases use a server on 127.0.0.1, without external
+  collection.
+- Add distributed files explicitly to `release-files.json`. Do not build an
+  archive by recursively including the entire repository.
+- Check archive reconstruction, Git status and diffs before integration.
+  A prepared CI workflow is not evidence of an observed remote run.
+- For each new third-party observation, retain its URL, date, scope and a dated
+  capture with a fingerprint, or a documented reason why no capture is available.
+  Keep delivered tools independent of any contributor's private infrastructure.
+- Record observed results and limitations, including failures. Verification
+  evidence must not imply a broader assessment than was actually performed.

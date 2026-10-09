@@ -1,5 +1,16 @@
 # Change history / Historique
 
+## Contributor guidance — 2026-10-09 — unpublished documentation
+
+R-028: rewrite contributor instructions in English without private infrastructure
+requirements; use descriptive `feat/`, `fix/`, `docs/`, `test/` and `chore/` branches.
+Align the development guide in English and French. Packaging exclusions and
+protocol draft.7 are unchanged. No remote repository or CI run created.
+
+R-028 : instructions de contribution génériques en anglais, branches descriptives
+neutres et guide de développement aligné FR/EN. Exclusions de distribution et
+contrat draft.7 inchangés. Aucun dépôt distant ni lancement de CI effectué.
+
 ## Verification runtime — 2026-10-09 — unpublished development tooling
 
 R-027: sample 15 contradictory cases for external-adapter CLI tests, including
