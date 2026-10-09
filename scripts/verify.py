@@ -49,7 +49,7 @@ def main():
             run([python, 'conformance/run.py'], ROOT, environment, 'raw-input conformance', checks)
             run([python, 'examples/replay.py', '--output-dir', str(temp/'examples')], ROOT,
                 environment, 'synthetic examples outside source tree', checks)
-            for case in ('pass', 'fail', 'partial'):
+            for case in ('pass', 'fail', 'partial', 'captures'):
                 expected = {p.name: p.read_bytes() for p in (ROOT/'examples'/case).iterdir() if p.is_file()}
                 actual = {p.name: p.read_bytes() for p in (temp/'examples'/case).iterdir() if p.is_file()}
                 tsep.require(expected == actual, 'Generated example differs from canonical fixture: ' + case)

@@ -1,0 +1,194 @@
+{
+  "input_version": "1",
+  "rules": [
+    "TS10-A01",
+    "TS10-A02",
+    "TS10-A03",
+    "TS10-A04"
+  ],
+  "targets": [
+    {
+      "url": "https://example.com/product",
+      "observed_at": "2026-10-09T10:10:00Z",
+      "context": {
+        "id": "synthetic-desktop",
+        "network": "offline fixture",
+        "bounds": "Declared family and source only",
+        "tool": "SyntheticFixture",
+        "tool_version": "1"
+      },
+      "intent": {
+        "declared_at": "2026-10-09T09:00:00Z",
+        "crawler": "googlebot",
+        "canonical": {
+          "preferred_url": "https://example.com/product",
+          "members": [
+            {
+              "url": "https://example.com/product",
+              "required_methods": [
+                "html"
+              ],
+              "rendering": {
+                "mode": "exempt",
+                "basis": "reviewed-stable"
+              }
+            },
+            {
+              "url": "https://example.com/product?color=blue",
+              "required_methods": [
+                "html"
+              ],
+              "rendering": {
+                "mode": "exempt",
+                "basis": "reviewed-stable"
+              }
+            }
+          ],
+          "sitemaps": {
+            "mode": "required",
+            "roots": [
+              "https://example.com/sitemap.xml"
+            ],
+            "require_preferred": true,
+            "exceptions": []
+          },
+          "links": {
+            "sources": [
+              {
+                "url": "https://example.com/catalog",
+                "rendering": {
+                  "mode": "exempt",
+                  "basis": "reviewed-stable"
+                }
+              }
+            ],
+            "exceptions": []
+          }
+        }
+      },
+      "documents": [
+        {
+          "url": "https://example.com/product",
+          "observed_at": "2026-10-09T10:00:00Z",
+          "context_id": "synthetic-desktop",
+          "http": [
+            {
+              "url": "https://example.com/product",
+              "complete": true,
+              "request": "GET /product HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+              "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<html><head><title>Synthetic product</title><link rel=\"canonical\" href=\"https://example.com/product\"></head><body><p>SYNTHETIC product content</p></body></html>"
+            }
+          ],
+          "exemption_review": {
+            "basis": "reviewed-stable",
+            "reviewer": "Synthetic review author",
+            "reason": "SYNTHETIC supplied review of static representation and retained implementation record",
+            "observed_at": "2026-10-09T10:01:00Z",
+            "source_http_sha256": "c62e04c763c872907c52a196934bca76b076c91b7e092087bf7fa28ffed7bf69",
+            "support": [
+              {
+                "name": "SYNTHETIC reviewed inventory",
+                "content": "SYNTHETIC template/configuration inventory: supplied representation has no later canonical or anchor mutations.",
+                "sha256": "f477194993cafe1e801d2536db0dfb18fac60c851ea0fcff2dffbe07bf6c3d16"
+              }
+            ]
+          }
+        },
+        {
+          "url": "https://example.com/product?color=blue",
+          "observed_at": "2026-10-09T10:00:00Z",
+          "context_id": "synthetic-desktop",
+          "http": [
+            {
+              "url": "https://example.com/product?color=blue",
+              "complete": true,
+              "request": "GET /product?color=blue HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+              "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<html><head><title>Synthetic product</title><link rel=\"canonical\" href=\"https://example.com/product\"></head><body><p>SYNTHETIC product content</p></body></html>"
+            }
+          ],
+          "exemption_review": {
+            "basis": "reviewed-stable",
+            "reviewer": "Synthetic review author",
+            "reason": "SYNTHETIC supplied review of static representation and retained implementation record",
+            "observed_at": "2026-10-09T10:01:00Z",
+            "source_http_sha256": "f5cfb29fece2d7dbc2e13b901373a0061c3ed595aa44b34e90f4739bb7ac22bf",
+            "support": [
+              {
+                "name": "SYNTHETIC reviewed inventory",
+                "content": "SYNTHETIC template/configuration inventory: supplied representation has no later canonical or anchor mutations.",
+                "sha256": "f477194993cafe1e801d2536db0dfb18fac60c851ea0fcff2dffbe07bf6c3d16"
+              }
+            ]
+          }
+        }
+      ],
+      "sitemaps": {
+        "documents": [
+          {
+            "url": "https://example.com/sitemap.xml",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context_id": "synthetic-desktop",
+            "http": [
+              {
+                "url": "https://example.com/sitemap.xml",
+                "complete": true,
+                "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.com/product</loc></url></urlset>"
+              }
+            ]
+          }
+        ]
+      },
+      "crawl": {
+        "documents": [
+          {
+            "url": "https://example.com/catalog",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context_id": "synthetic-desktop",
+            "http": [
+              {
+                "url": "https://example.com/catalog",
+                "complete": true,
+                "request": "GET /catalog HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<html><head><title>Synthetic product</title></head><body><p>SYNTHETIC product content</p><a href=\"/product\">Product</a></body></html>"
+              }
+            ],
+            "exemption_review": {
+              "basis": "reviewed-stable",
+              "reviewer": "Synthetic review author",
+              "reason": "SYNTHETIC supplied review of static representation and retained implementation record",
+              "observed_at": "2026-10-09T10:01:00Z",
+              "source_http_sha256": "24964843240ce936627f40a9c824d187223c52f75823a3ebb98ac49e19eaeaf9",
+              "support": [
+                {
+                  "name": "SYNTHETIC reviewed inventory",
+                  "content": "SYNTHETIC template/configuration inventory: supplied representation has no later canonical or anchor mutations.",
+                  "sha256": "f477194993cafe1e801d2536db0dfb18fac60c851ea0fcff2dffbe07bf6c3d16"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "content_review": {
+        "mode": "manual",
+        "reviewer": "Synthetic review author",
+        "reason": "SYNTHETIC authored comparison of the declared family, no actual professional review",
+        "observed_at": "2026-10-09T10:05:00Z",
+        "source_sha256": "4de5007e360857676d27dfd1ef011a4723f8f6faac35d8a0e68483fa6e0ac7dc",
+        "comparisons": [
+          {
+            "url": "https://example.com/product",
+            "outcome": "compatible",
+            "reason": "SYNTHETIC supplied judgment: same product and purpose"
+          },
+          {
+            "url": "https://example.com/product?color=blue",
+            "outcome": "compatible",
+            "reason": "SYNTHETIC supplied judgment: same product and purpose"
+          }
+        ]
+      }
+    }
+  ]
+}

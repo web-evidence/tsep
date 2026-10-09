@@ -2,6 +2,10 @@
 
 ## Français
 
+Pour calculer les résultats à partir de captures structurées déjà fournies,
+utiliser le [parcours captures → paquet](capture-adapter.md). Le parcours ci-dessous
+enregistre les résultats explicitement fournis par l’évaluateur.
+
 La CLI ne collecte aucune URL. `init` écrit sur stdout. `add-evidence` et `record`
 mettent à jour **le rapport existant sur disque**, seulement après validation du
 rapport et de toutes ses preuves ; conserver une copie avant réévaluation. En cas
@@ -56,6 +60,10 @@ reste JSON. Les codes de sortie restent identiques : GO 0, NO_GO 1,
 INCOMPLETE/REVIEW 2, données invalides 64 (syntaxe CLI invalide : 2).
 
 ## English
+
+To compute outcomes from supplied structured captures, use the
+[captures → bundle workflow](capture-adapter.md). The workflow below records
+outcomes explicitly supplied by the assessor.
 
 The CLI never collects URLs. `init` writes stdout; `add-evidence` and `record`
 update the existing report **in place** only after validating it and every artifact.

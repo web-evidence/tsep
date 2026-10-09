@@ -26,6 +26,10 @@ python3 scripts/verify.py
 It validates the contract, runs report/distribution tests and the raw-input
 conformance suite, regenerates synthetic examples outside the source tree, runs the bounded HTTP cases on loopback,
 builds an archive, extracts it and checks that rebuilding yields identical bytes.
+The tests include offline capture-to-bundle conversion, file integrity and partial
+coverage; raw capture examples are regenerated alongside report examples. The
+capture adapter has its own tool version and code fingerprints; adding this
+workflow does not change the draft.6 normative contract.
 It refuses source-file changes during verification. No Edikka environment,
 credentials, package installation, browser or public-site collection is needed.
 If a sandbox forbids a loopback listener, report that limitation; do not silently
@@ -76,6 +80,11 @@ La commande `python3 scripts/verify.py` vérifie contrat, tests, conformance sur
 sonde HTTP locale et archive reconstruite à l’identique. Elle exige Python 3.9+
 et curl, sans dépendance Python externe ni accès à Edikka. Une restriction de
 sandbox sur 127.0.0.1 reste une limite à signaler, jamais un test réussi.
+
+Les tests couvrent aussi la conversion hors ligne captures → paquet, l’intégrité
+et la couverture partielle ; les exemples de captures sont régénérés avec les
+rapports. L’adaptateur possède sa version d’outil et ses empreintes de code ; ce
+parcours ne modifie pas le contrat normatif draft.6.
 
 Le constructeur utilise une liste explicite `release-files.json`, pas tous les
 fichiers du répertoire. Les fichiers privés non listés restent exclus. Cette

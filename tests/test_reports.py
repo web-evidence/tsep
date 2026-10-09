@@ -266,7 +266,7 @@ class Reports(unittest.TestCase):
 
     def test_deterministic_example_regeneration(self):
         expected = {p.relative_to(ROOT/'examples'): p.read_bytes()
-                    for case in ('pass', 'fail', 'partial')
+                    for case in ('pass', 'fail', 'partial', 'captures')
                     for p in (ROOT/'examples'/case).rglob('*') if p.is_file()}
         destination = self.root / 'regenerated'
         subprocess.run([sys.executable, str(ROOT/'examples/replay.py'),

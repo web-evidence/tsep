@@ -73,7 +73,17 @@ def generate(output_root=ROOT):
                             ('earl.jsonld', tsep.earl(report, summary))]:
             (folder / name).write_bytes((json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
         result.append({'case': case, 'status': status, 'decision': summary['decision']})
-    print(json.dumps({'synthetic': True, 'network_requests': 0, 'cases': result}, indent=2))
+    # Raw adapter demonstrations are controlled derivatives, with no expected verdicts.
+    corpus = {case['id']: case['input'] for case in tsep.read_json(ROOT.parent/'conformance/cases.json')['cases']}
+    capture_examples = {'ts01-markers': ('identity-timestamp-markers', ['TS01-A01', 'TS01-A02']),
+                        'ts07-source-only': ('complete-reference', ['TS07-A01', 'TS07-A02']),
+                        'ts10-family': ('canonical-all-signals-agree', ['TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04'])}
+    (output_root/'captures').mkdir(parents=True, exist_ok=True)
+    for name, (case, rules) in capture_examples.items():
+        data = dict(corpus[case], rules=rules)
+        (output_root/'captures'/(name+'.json')).write_bytes((json.dumps(data, ensure_ascii=False, indent=2)+'\n').encode('utf-8'))
+    print(json.dumps({'synthetic': True, 'network_requests': 0, 'cases': result,
+                      'capture_inputs': list(capture_examples)}, indent=2))
 
 
 if __name__ == '__main__':

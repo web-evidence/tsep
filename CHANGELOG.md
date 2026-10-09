@@ -1,5 +1,19 @@
 # Change history / Historique
 
+## Offline capture adapter 1 — 2026-10-09 — unpublished development tooling
+
+Convert supplied raw captures into validated report/evidence/gate/EARL bundles
+with original bytes, code fingerprints, per-target artifacts and explicit omitted
+rules. Preserve failures, unknowns and assessment-mode restrictions. Add three
+controlled raw examples, FR/EN documentation and workflow tests on the corpus.
+Protocol draft.6, identifiers, schema and decision policy remain unchanged.
+
+Conversion de captures fournies en paquet rapport/preuves/décision/EARL validé,
+avec octets d’origine, empreintes du code et règles omises explicites. Inconnues,
+échecs et restrictions d’automatisation conservés. Trois exemples bruts contrôlés,
+documentation FR/EN et tests du parcours. Contrat draft.6 inchangé ; aucune collecte,
+publication ou validation indépendante. [Parcours](docs/capture-adapter.md).
+
 ## 0.1.0-draft.6 — 2026-10-09 — unpublished development candidate
 
 R-019: TS01-A02 uses prior identity markers or explicit stability for changed

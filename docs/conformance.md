@@ -16,6 +16,10 @@ des neuf règles. Un désaccord renvoie 1, une entrée invalide 64 ; 0 signifie 
 avec éventuelle couverture réduite explicitement comptée.
 Il n’émet ni rapport C ni conformité globale.
 
+Pour convertir un objet `input` en rapport et preuves, voir
+l’[adaptateur de captures](capture-adapter.md). Il conserve les résultats calculés,
+y compris les inconnues de référence, sans leur substituer `expected`.
+
 ### Format input_version 1
 
 Objet `{ "input_version": "1", "rules": [...], "targets": [...] }`. `rules` liste
@@ -135,6 +139,10 @@ version-pinned corpus. Only `input` reaches the interpreter. Expected and actual
 rule/target matrices must match exactly, without missing, extra or duplicate pairs.
 Each rule has pass/fail/inconclusive cases. Exit codes: 0 no disagreements (possibly reduced coverage), 1 difference,
 64 invalid input/execution. No C report or global conformity is generated.
+
+To convert one `input` object into a report and evidence, see the
+[capture adapter](capture-adapter.md). It retains computed outcomes, including
+reference unknowns, without substituting `expected` verdicts.
 
 Input version 1 is `{ "input_version": "1", "rules": [...], "targets": [...] }`.
 Rules explicitly select the nine IDs above. TS10 targets use the

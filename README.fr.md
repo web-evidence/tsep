@@ -47,6 +47,8 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
    sélection et outil. `init` commence en NT ; `add-evidence` calcule le SHA-256 et
    enregistre type, cibles et date ; `record` ajoute le résultat motivé du contrôle
    et ses observations atomiques. Voir le [parcours CLI complet](docs/cli.md).
+   Des captures structurées déjà disponibles peuvent aussi produire directement
+   le [paquet de rapport, preuves et EARL](docs/capture-adapter.md), avec résultats calculés et couverture explicite.
 2. **Déclarer une couverture partielle** : sélectionner une liste `custom`, conserver
    les inconnues en NT/inconclusive et relier chaque preuve à sa cible. Une sélection
    TS01/TS07 ne satisfait pas un profil nommé. Aucun test isolé ne valide son parent.

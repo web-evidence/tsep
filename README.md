@@ -46,7 +46,9 @@ validation establishes consistency and file integrity.
 1. **Emit a report**: pin protocol version and hash, declare targets, selection and
    tool. `init` starts at NT; `add-evidence` computes SHA-256 and records kind,
    targets and date; `record` adds the reasoned control result and atomic observations.
-   See the [complete CLI workflow](docs/cli.md).
+   See the [complete CLI workflow](docs/cli.md). Supplied structured captures can
+   also produce a [report, evidence and EARL bundle](docs/capture-adapter.md)
+   directly, with computed results and explicit coverage.
 2. **Declare partial coverage**: select a `custom` list, keep unknowns as
    NT/inconclusive and link each artifact to its target. Selecting TS01/TS07 does
    not satisfy a named profile. An isolated test cannot pass its parent control.
