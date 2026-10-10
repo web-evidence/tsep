@@ -1,0 +1,1468 @@
+{
+  "synthetic": true,
+  "frozen_before_policy_implementation": true,
+  "policy": "html-tree-directives-v1",
+  "cases": [
+    {
+      "id": "source-directives-ordinary-body",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><main><section><h2>Title</h2><p>Text</p></section></main></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-head-noindex",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-body-noindex",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><article><meta name=\"robots\" content=\"noindex\"></article></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-exclude-intent",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><meta name=\"robots\" content=\"noindex\"></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-header-conflict",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: noindex\r\n\r\n<!doctype html><html><head><meta name=\"robots\" content=\"index\"></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-scoped-other-header",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: bingbot: noindex\r\n\r\n<!doctype html><html><head></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-googlebot-meta",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta name=\"GoOgLeBoT\" content=\"NoInDeX\"></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-other-meta",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta name=\"bingbot\" content=\"noindex\"><meta name=\"googlebot-news\" content=\"noindex\"></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-template-inert",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><template><meta name=\"robots\" content=\"noindex\"></template></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-template-not-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><template><meta name=\"robots\" content=\"noindex\"></template></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-noscript-disagree",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><noscript><meta name=\"robots\" content=\"noindex\"></noscript></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-noscript-two-fail",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"><noscript><meta name=\"robots\" content=\"nofollow\"></noscript></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-noscript-two-pass",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><noscript><meta name=\"robots\" content=\"nofollow\"></noscript></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-noscript-following-disagree",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "allow",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><noscript><meta name=\"robots\" content=\"nofollow\"></noscript></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-noscript-unknown",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"><noscript><meta name=\"robots\" content=\"indexifembedded\"></noscript></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-unknown-with-fail",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta name=\"robots\" content=\"noindex,indexifembedded\"></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-shadow-open",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><div><template shadowrootmode=\"open\"><meta name=\"robots\" content=\"noindex\"></template></div></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-shadow-closed-empty",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><div><template shadowrootmode=\"closed\"></template></div></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-template-streaming",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><template for=\"x\"><meta name=\"robots\" content=\"noindex\"></template></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-foreign-integration",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><svg><foreignObject><meta name=\"robots\" content=\"noindex\"></foreignObject></svg></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-foreign-breakout",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><svg><meta name=\"robots\" content=\"noindex\"></svg></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader required. Reported-error constraint is not HTML validity; silent recovery covered by the constructed tree."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-foreign-adjacent",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><svg><title>Icon</title></svg><meta name=\"robots\" content=\"noindex\"></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-pseudo-http-equiv",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta http-equiv=\"X-Robots-Tag\" content=\"noindex\"></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-pseudo-robots",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta http-equiv=\"robots\" content=\"noindex\"></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-padded-name",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta name=\" robots \" content=\"noindex\"></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-missing-content",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta name=\"robots\"></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-duplicate-attribute",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><meta name=\"robots\" content=\"index\" content=\"noindex\"></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-parse-error",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body></div></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader required. Reported-error constraint is not HTML validity; silent recovery covered by the constructed tree."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-bom",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n﻿<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-rcdata-decoy",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><textarea><meta name=\"robots\" content=\"noindex\"></textarea></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 source reader is required; absent runtime remains inconclusive, without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-unknown-profile",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": "unknown"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-null-profile",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "indexing": "allow",
+              "following": "unspecified",
+              "source_reader": null
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    }
+  ],
+  "replaces_oracle": "source-directives-v1.json; v1 retained with the observed 30/32 failure record",
+  "correction_basis": "Policy requires no REPORTED parser errors, not HTML validity. parse5 8.0.1 reports neither the foreign-content meta breakout nor the ignored stray end tag. The former yields HTML body metadata without foreign ancestry; the latter supplies no metadata. The original expectations incorrectly assumed a parser error report. No interpreter change made to obtain corrected agreement."
+}

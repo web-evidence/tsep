@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.14 — Controls
+# TSEP 0.1.0-draft.15 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.14:TS01-A01`
+`TSEP@0.1.0-draft.15:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.14:TS01-A02`
+`TSEP@0.1.0-draft.15:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.14:TS02-A01`
+`TSEP@0.1.0-draft.15:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.14:TS02-A02`
+`TSEP@0.1.0-draft.15:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.14:TS04-A01`
+`TSEP@0.1.0-draft.15:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.14:TS04-A02`
+`TSEP@0.1.0-draft.15:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.14:TS07-A01`
+`TSEP@0.1.0-draft.15:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -328,23 +328,23 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Each document with a declared indexing objective, for an explicitly named crawler and context.
 
-**Method.** Inventory all final X-Robots-Tag headers and robots/target-crawler meta tags in source HTML, separate from redirect hops. Apply documented crawler semantics, including duplicates, scope, case, parameters and ignored rules.
+**Method.** Inventory all final X-Robots-Tag headers and robots/target-crawler meta tags in source HTML, separate from redirect hops. Apply documented crawler semantics, including duplicates, scope, case, parameters and ignored rules. Optional source_reader=html-tree-directives-v1, declared before capture, constructs two complete static hypotheses without executing scripts; HTML robots/googlebot meta in head/body without foreign ancestors are combined separately with final headers. Ordinary template contents are retained but excluded from active directives.
 
-**Acceptance.** Combined effects match the declared indexing objective and declared presentation/link restrictions. For Google: an applicable restriction prevails over permission, none includes noindex/nofollow; nofollow or a preview limit alone does not mean noindex. Missing directives are not failure when intent permits indexing.
+**Acceptance.** Combined effects match the declared indexing objective and declared presentation/link restrictions. For Google: an applicable restriction prevails over permission, none includes noindex/nofollow; nofollow or a preview limit alone does not mean noindex. Missing directives are not failure when intent permits indexing. For this profile, two pass yield pass, two fail yield fail, every other pair stays inconclusive; never merge directives across alternative hypotheses or confuse them with observed rendered states.
 
-**Evidence.** Raw repeated headers, source HTML, token/crawler/effect table and dated technical reference. For non-HTML, the html-kind record documents why this surface does not apply, with Content-Type, without inventing HTML.
+**Evidence.** Raw repeated headers, source HTML, token/crawler/effect table and dated technical reference. For non-HTML, the html-kind record documents why this surface does not apply, with Content-Type, without inventing HTML. This profile also retains both full meta inventories, contexts/namespaces, original tags/body-byte spans, templates, decoding, reported errors, versions and fingerprints in calculated observations linked to the report and compared during replay.
 
-**Assumptions.** Intent and crawler fixed before review; do not extrapolate Google rules to another engine. For indexifembedded or unavailable_after, include the required embedding context and date. Intent retains crawler as the exact HTTP User-Agent. Optional directive_crawler, frozen before collection and limited here to googlebot, selects directive semantics only for this client representation; it does not describe a response received by Googlebot. Without this field, historical behavior requires crawler=googlebot.
+**Assumptions.** Intent and crawler fixed before review; do not extrapolate Google rules to another engine. For indexifembedded or unavailable_after, include the required embedding context and date. Intent retains crawler as the exact HTTP User-Agent. Optional directive_crawler, frozen before collection and limited here to googlebot, selects directive semantics only for this client representation; it does not describe a response received by Googlebot. Without this field, historical behavior requires crawler=googlebot. Absent source_reader preserves the legacy reader; null/unknown or missing Node 24 never falls back. This profile requires explicit HTTP UTF-8 HTML, consumes one initial BOM and retains unreported repairs by the pinned parser. The bilingual source-directives contract specifies assumptions/bounds without asserting HTML validity.
 
-**Inconclusive.** Missing objective, unknown syntax/scope, partial capture or missing context: inconclusive. A documented ignored directive is recorded, not automatically treated as an error. Present but unsupported, null or inconsistent directive_crawler: inconclusive; no favorable fallback.
+**Inconclusive.** Missing objective, unknown syntax/scope, partial capture or missing context: inconclusive. A documented ignored directive is recorded, not automatically treated as an error. Present but unsupported, null or inconsistent directive_crawler: inconclusive; no favorable fallback. For this profile: incomplete reading, reported error, unsupported encoding, declared open/closed shadow, template for, foreign-context robots metadata, missing content/mixed roles or near form defined by the contract, unknown directive and exceeded bound remain inconclusive. Unreadable HTML never becomes header-only agreement.
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** Assesses observed declarations, not ingestion or actual indexing. A01 alone does not cover access or rendering. Automation is semiAuto: the bounded interpreter does not cover every syntax, crawler or context; unsupported inputs remain inconclusive and require review.
+**Limits.** Assesses observed declarations, not ingestion or actual indexing. A01 alone does not cover access or rendering. Automation is semiAuto: the bounded interpreter does not cover every syntax, crawler or context; unsupported inputs remain inconclusive and require review. This methodological choice does not simulate Google. No rendering, access, review or TS10 outcome is inferred.
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.14:TS07-A02`
+`TSEP@0.1.0-draft.15:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.14:TS07-A03`
+`TSEP@0.1.0-draft.15:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -378,7 +378,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Pages whose scripts or states can affect directives, or whose stability is not established.
 
-**Method.** Fix required states, interactions and waiting conditions before capture. Compare final headers and source HTML with each DOM, declaring browser/version, enabled scripts, time, errors and context. Bind each capture to the source response and target. Do not assume the engine renders initially noindex HTML. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin.
+**Method.** Fix required states, interactions and waiting conditions before capture. Compare final headers and source HTML with each DOM, declaring browser/version, enabled scripts, time, errors and context. Bind each capture to the source response and target. Do not assume the engine renders initially noindex HTML. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. The optional new source_reader affects only the A01 source prerequisite, never each DOM reader; priority for an attributable rendered contradiction remains unchanged.
 
 **Acceptance.** All required states are documented and compatible with intent in the declared context. A contradiction in a complete, attributable state is fail even if other states are missing. Removing initial noindex with JavaScript does not yield pass: A03 remains inconclusive unless a required state supplies another contradiction; A01 retains its own source verdict.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.14:TS10-A01`
+`TSEP@0.1.0-draft.15:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -490,7 +490,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.14:TS10-A02`
+`TSEP@0.1.0-draft.15:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -514,7 +514,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.14:TS10-A03`
+`TSEP@0.1.0-draft.15:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.14:TS10-A04`
+`TSEP@0.1.0-draft.15:TS10-A04`
 
 **Required inputs**: crawl, intent.
 

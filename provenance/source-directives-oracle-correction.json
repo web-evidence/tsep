@@ -1,0 +1,352 @@
+{
+  "synthetic": true,
+  "observed_first_match_count": 30,
+  "total": 32,
+  "original_fixture": "tests/fixtures/source-directives-v1.json",
+  "revised_fixture": "tests/fixtures/source-directives-v2.json",
+  "correction_basis": "Policy requires no REPORTED parser errors, not HTML validity. parse5 8.0.1 reports neither the foreign-content meta breakout nor the ignored stray end tag. The former yields HTML body metadata without foreign ancestry; the latter supplies no metadata. The original expectations incorrectly assumed a parser error report. No interpreter change made to obtain corrected agreement.",
+  "observed_failures": [
+    {
+      "id": "source-directives-foreign-breakout",
+      "matches": false,
+      "expected": "inconclusive",
+      "actual": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reason": "html-tree-directives-v1: enabled=fail (Combined source directives compared with declared indexing/link intent; previews not assessed); disabled=fail (Combined source directives compared with declared indexing/link intent; previews not assessed); agreement of bounded alternatives only; no scripts executed or actual indexing inferred"
+        }
+      ],
+      "diagnostics": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "observations": [
+            {
+              "reader": "html-tree-directives-v1",
+              "policy_version": "1",
+              "scope": "Static source hypotheses only; not coexisting rendered states, HTML validity or Google behavior.",
+              "body_sha256": "91620c8bccf4aa56b516948ce480821e32052a2cda68f97d2908de34bfeb3076",
+              "inventory": {
+                "kind": "unapplied-http-source-tree",
+                "experiment_version": "1",
+                "metadata_extension": "1",
+                "normative_effect": "none",
+                "parser": {
+                  "name": "parse5",
+                  "version": "8.0.1",
+                  "dependency": "entities@8.0.0"
+                },
+                "runtime": {
+                  "node": "v24.19.0",
+                  "v8": "13.6.233.17-node.51"
+                },
+                "parser_input_utf8_sha256": "91620c8bccf4aa56b516948ce480821e32052a2cda68f97d2908de34bfeb3076",
+                "source_offset_unit": "UTF-16 code units in exact decoded parser input, zero-based, exclusive end; body byte spans added by supervisor.",
+                "networkGuard": {
+                  "guarded": [
+                    "node:net.connect",
+                    "node:net.createConnection",
+                    "node:net.createServer",
+                    "node:net.Socket.connect",
+                    "node:tls.connect",
+                    "node:tls.createServer",
+                    "node:http.request",
+                    "node:http.get",
+                    "node:http.createServer",
+                    "node:https.request",
+                    "node:https.get",
+                    "node:https.createServer",
+                    "node:http2.connect",
+                    "node:http2.createServer",
+                    "node:http2.createSecureServer",
+                    "node:dgram.createSocket",
+                    "node:dgram.Socket.connect",
+                    "node:dns.lookup",
+                    "node:dns.resolve",
+                    "node:dns.resolve4",
+                    "node:dns.resolve6",
+                    "node:dns.resolveAny"
+                  ],
+                  "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+                },
+                "bounds": {
+                  "source_bytes": 8388608,
+                  "tree_nodes": 200000,
+                  "tree_depth": 256,
+                  "records": 50000,
+                  "parse_errors": 1000
+                },
+                "scope": "Static whole-document hypotheses, no scripts executed. Template declarations and nesting retained; shadow attachment never asserted, including closed mode. Encoding meta retained without changing the certain declared HTTP decoding. Complete is bounded inventory completion, not HTML validity. No SEO decision, URL resolution, browser or Google observation.",
+                "decoding": {
+                  "profile": "html-http-utf8-v1",
+                  "content_types": [
+                    "text/html; charset=utf-8"
+                  ],
+                  "body_sha256": "91620c8bccf4aa56b516948ce480821e32052a2cda68f97d2908de34bfeb3076",
+                  "body_bytes": 103,
+                  "consumed_bom_bytes": 0,
+                  "parser_input_utf8_sha256": "91620c8bccf4aa56b516948ce480821e32052a2cda68f97d2908de34bfeb3076",
+                  "parser_input_utf16_units": 103,
+                  "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+                },
+                "source_sha256": {
+                  "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+                  "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+                  "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+                  "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+                  "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+                  "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+                  "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+                  "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+                  "experiments/source_metadata.mjs": "d0b4ae3247251b31a209d6de6ba2d962b5c606b1e4d4869f2fe504ff628f32f6"
+                },
+                "supervisor": {
+                  "python_version": "3.9.6",
+                  "process_timeout_seconds": 30,
+                  "node_old_space_mib": 128,
+                  "output_byte_limit": 33554432
+                },
+                "readings": {
+                  "enabled": {
+                    "complete": true,
+                    "template_containers": [],
+                    "metadata": [
+                      {
+                        "group": "metadata",
+                        "tag": "meta",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "context": "body",
+                        "attributes": {
+                          "name": "robots",
+                          "content": "noindex"
+                        },
+                        "ancestors": [
+                          "#document",
+                          "html",
+                          "body"
+                        ],
+                        "ancestor_namespaces": [
+                          null,
+                          "http://www.w3.org/1999/xhtml",
+                          "http://www.w3.org/1999/xhtml"
+                        ],
+                        "template_indices": [],
+                        "source_span_utf16": [
+                          45,
+                          83
+                        ],
+                        "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+                        "body_span_bytes": [
+                          45,
+                          83
+                        ]
+                      }
+                    ],
+                    "encoding_declarations": [],
+                    "parse_errors": [],
+                    "tree_nodes": 7,
+                    "document_mode": "no-quirks"
+                  },
+                  "disabled": {
+                    "complete": true,
+                    "template_containers": [],
+                    "metadata": [
+                      {
+                        "group": "metadata",
+                        "tag": "meta",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "context": "body",
+                        "attributes": {
+                          "name": "robots",
+                          "content": "noindex"
+                        },
+                        "ancestors": [
+                          "#document",
+                          "html",
+                          "body"
+                        ],
+                        "ancestor_namespaces": [
+                          null,
+                          "http://www.w3.org/1999/xhtml",
+                          "http://www.w3.org/1999/xhtml"
+                        ],
+                        "template_indices": [],
+                        "source_span_utf16": [
+                          45,
+                          83
+                        ],
+                        "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+                        "body_span_bytes": [
+                          45,
+                          83
+                        ]
+                      }
+                    ],
+                    "encoding_declarations": [],
+                    "parse_errors": [],
+                    "tree_nodes": 7,
+                    "document_mode": "no-quirks"
+                  }
+                }
+              },
+              "hypotheses": {
+                "enabled": {
+                  "outcome": "fail",
+                  "reason": "Combined source directives compared with declared indexing/link intent; previews not assessed"
+                },
+                "disabled": {
+                  "outcome": "fail",
+                  "reason": "Combined source directives compared with declared indexing/link intent; previews not assessed"
+                }
+              },
+              "outcome": "fail",
+              "reason": "html-tree-directives-v1: enabled=fail (Combined source directives compared with declared indexing/link intent; previews not assessed); disabled=fail (Combined source directives compared with declared indexing/link intent; previews not assessed); agreement of bounded alternatives only; no scripts executed or actual indexing inferred"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "source-directives-parse-error",
+      "matches": false,
+      "expected": "inconclusive",
+      "actual": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reason": "html-tree-directives-v1: enabled=pass (Combined source directives compared with declared indexing/link intent; previews not assessed); disabled=pass (Combined source directives compared with declared indexing/link intent; previews not assessed); agreement of bounded alternatives only; no scripts executed or actual indexing inferred"
+        }
+      ],
+      "diagnostics": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "observations": [
+            {
+              "reader": "html-tree-directives-v1",
+              "policy_version": "1",
+              "scope": "Static source hypotheses only; not coexisting rendered states, HTML validity or Google behavior.",
+              "body_sha256": "1b196736d534ff86c6491b14689da1b1a14d784ea08713222a0c05e8ae5725a6",
+              "inventory": {
+                "kind": "unapplied-http-source-tree",
+                "experiment_version": "1",
+                "metadata_extension": "1",
+                "normative_effect": "none",
+                "parser": {
+                  "name": "parse5",
+                  "version": "8.0.1",
+                  "dependency": "entities@8.0.0"
+                },
+                "runtime": {
+                  "node": "v24.19.0",
+                  "v8": "13.6.233.17-node.51"
+                },
+                "parser_input_utf8_sha256": "1b196736d534ff86c6491b14689da1b1a14d784ea08713222a0c05e8ae5725a6",
+                "source_offset_unit": "UTF-16 code units in exact decoded parser input, zero-based, exclusive end; body byte spans added by supervisor.",
+                "networkGuard": {
+                  "guarded": [
+                    "node:net.connect",
+                    "node:net.createConnection",
+                    "node:net.createServer",
+                    "node:net.Socket.connect",
+                    "node:tls.connect",
+                    "node:tls.createServer",
+                    "node:http.request",
+                    "node:http.get",
+                    "node:http.createServer",
+                    "node:https.request",
+                    "node:https.get",
+                    "node:https.createServer",
+                    "node:http2.connect",
+                    "node:http2.createServer",
+                    "node:http2.createSecureServer",
+                    "node:dgram.createSocket",
+                    "node:dgram.Socket.connect",
+                    "node:dns.lookup",
+                    "node:dns.resolve",
+                    "node:dns.resolve4",
+                    "node:dns.resolve6",
+                    "node:dns.resolveAny"
+                  ],
+                  "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+                },
+                "bounds": {
+                  "source_bytes": 8388608,
+                  "tree_nodes": 200000,
+                  "tree_depth": 256,
+                  "records": 50000,
+                  "parse_errors": 1000
+                },
+                "scope": "Static whole-document hypotheses, no scripts executed. Template declarations and nesting retained; shadow attachment never asserted, including closed mode. Encoding meta retained without changing the certain declared HTTP decoding. Complete is bounded inventory completion, not HTML validity. No SEO decision, URL resolution, browser or Google observation.",
+                "decoding": {
+                  "profile": "html-http-utf8-v1",
+                  "content_types": [
+                    "text/html; charset=utf-8"
+                  ],
+                  "body_sha256": "1b196736d534ff86c6491b14689da1b1a14d784ea08713222a0c05e8ae5725a6",
+                  "body_bytes": 60,
+                  "consumed_bom_bytes": 0,
+                  "parser_input_utf8_sha256": "1b196736d534ff86c6491b14689da1b1a14d784ea08713222a0c05e8ae5725a6",
+                  "parser_input_utf16_units": 60,
+                  "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+                },
+                "source_sha256": {
+                  "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+                  "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+                  "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+                  "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+                  "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+                  "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+                  "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+                  "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+                  "experiments/source_metadata.mjs": "d0b4ae3247251b31a209d6de6ba2d962b5c606b1e4d4869f2fe504ff628f32f6"
+                },
+                "supervisor": {
+                  "python_version": "3.9.6",
+                  "process_timeout_seconds": 30,
+                  "node_old_space_mib": 128,
+                  "output_byte_limit": 33554432
+                },
+                "readings": {
+                  "enabled": {
+                    "complete": true,
+                    "template_containers": [],
+                    "metadata": [],
+                    "encoding_declarations": [],
+                    "parse_errors": [],
+                    "tree_nodes": 5,
+                    "document_mode": "no-quirks"
+                  },
+                  "disabled": {
+                    "complete": true,
+                    "template_containers": [],
+                    "metadata": [],
+                    "encoding_declarations": [],
+                    "parse_errors": [],
+                    "tree_nodes": 5,
+                    "document_mode": "no-quirks"
+                  }
+                }
+              },
+              "hypotheses": {
+                "enabled": {
+                  "outcome": "pass",
+                  "reason": "Combined source directives compared with declared indexing/link intent; previews not assessed"
+                },
+                "disabled": {
+                  "outcome": "pass",
+                  "reason": "Combined source directives compared with declared indexing/link intent; previews not assessed"
+                }
+              },
+              "outcome": "pass",
+              "reason": "html-tree-directives-v1: enabled=pass (Combined source directives compared with declared indexing/link intent; previews not assessed); disabled=pass (Combined source directives compared with declared indexing/link intent; previews not assessed); agreement of bounded alternatives only; no scripts executed or actual indexing inferred"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

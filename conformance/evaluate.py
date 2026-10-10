@@ -13,7 +13,7 @@ import tsep
 
 RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS04-A01', 'TS04-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04')
-VERSION = '14'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '15'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -164,7 +164,10 @@ def identity_text(headers, body):
     return extract(body)
 
 
-def directive_result(headers, body, intent):
+def directive_result(headers, body, intent, *, source=False, diagnostics=None):
+    if source and 'source_reader' in intent:
+        from conformance.source_directives import assess
+        return assess(headers, body, intent, combine=directive_values, diagnostics=diagnostics)
     body = text_body(body)
     need(intent.get('directive_crawler', intent.get('crawler')) == 'googlebot',
          'Only the Googlebot directive series is implemented')
@@ -260,7 +263,7 @@ def reviewed_exemption(target, plan, headers):
     return 'not-applicable', 'Documented ' + plan['basis'] + ' review and supporting records; review truth not independently verified'
 
 
-def rendered_result(target, final_url, headers, body):
+def rendered_result(target, final_url, headers, body, *, diagnostics=None):
     """Compare supplied DOMs; do not execute scripts or infer absent states."""
     intent = target['intent']
     plan = intent.get('rendering', {})
@@ -317,7 +320,7 @@ def rendered_result(target, final_url, headers, body):
             outcome, reason = 'inconclusive', str(error)
         results.append((outcome, label + ': ' + reason))
     try:
-        source_outcome, source_reason = directive_result(headers, body, intent)
+        source_outcome, source_reason = directive_result(headers, body, intent, source=True, diagnostics=diagnostics)
     except (Unknown, tsep.Invalid, KeyError, TypeError, ValueError) as error:
         source_outcome, source_reason = 'inconclusive', str(error)
     detail = '; '.join(outcome + ' — ' + reason for outcome, reason in results)
@@ -329,7 +332,7 @@ def rendered_result(target, final_url, headers, body):
     return 'pass', detail + '; declared states only, not engine rendering or indexing'
 
 
-def evaluate_target(target, rule):
+def evaluate_target(target, rule, *, diagnostics=None):
     if rule.startswith('TS04-'):
         from conformance.robots_control import assess
         return assess(target, rule)
@@ -353,16 +356,16 @@ def evaluate_target(target, rule):
         if rule == 'TS01-A02':
             return identity_result(final_url, headers, body, intent)
         if rule == 'TS07-A01':
-            return directive_result(headers, body, intent)
+            return directive_result(headers, body, intent, source=True, diagnostics=diagnostics)
         if rule == 'TS07-A03':
-            return rendered_result(target, final_url, headers, body)
+            return rendered_result(target, final_url, headers, body, diagnostics=diagnostics)
         from conformance.robots_control import access_rule
         return access_rule(target, final_url, status)
     except (Unknown, tsep.Invalid, KeyError, TypeError, ValueError) as error:
         return 'inconclusive', str(error)
 
 
-def evaluate(data):
+def evaluate(data, *, source_observations=None):
     tsep.require(data.get('input_version') in ('1', '2'), 'Unsupported conformance input version')
     def verify_wire(value):
         if isinstance(value, dict):
@@ -389,7 +392,10 @@ def evaluate(data):
     results = []
     for target in targets:
         for rule in rules:
-            outcome, reason = evaluate_target(target, rule)
+            diagnostics = [] if source_observations is not None else None
+            outcome, reason = evaluate_target(target, rule, diagnostics=diagnostics)
+            if diagnostics:
+                source_observations.append({'rule_id':rule, 'target':target['url'], 'observations':diagnostics})
             results.append({'rule_id': rule, 'target': target['url'], 'outcome': outcome, 'reason': reason})
     return results
 

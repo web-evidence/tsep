@@ -74,9 +74,10 @@ def byte_positions(source, bom, positions):
     return mapped
 
 
-def validate_and_attribute(result, source, raw, decoding):
+def validate_and_attribute(result, source, raw, decoding, *, metadata=False):
     need(result.get('kind') == 'unapplied-http-source-tree' and
          result.get('experiment_version') == '1' and result.get('normative_effect') == 'none', 'Unexpected reader identity')
+    need(result.get('metadata_extension') == ('1' if metadata else None), 'Unexpected metadata extension')
     need(set(result['readings']) == {'enabled', 'disabled'}, 'Missing scripting hypothesis')
     located, errors = [], []
     for reading in result['readings'].values():
@@ -86,6 +87,10 @@ def validate_and_attribute(result, source, raw, decoding):
         containers = reading['template_containers']
         records = [r for rows in reading['inventory'].values() for r in rows]
         records += reading['template_signals'] + containers + reading['encoding_declarations']
+        if metadata:
+            records += reading['metadata']
+            for record in records:
+                need(len(record['ancestors']) == len(record['ancestor_namespaces']), 'Namespace ancestry length differs')
         if not reading['complete']:
             need(not records and not reading['inventory_order'], 'Partial reading supplied records')
         for index, template in enumerate(containers):
@@ -133,15 +138,23 @@ def validate_and_attribute(result, source, raw, decoding):
     need(result['comparisons'] == expected, 'Inventory comparison differs')
     expected_extra = {g: ('identical' if result['readings']['enabled'][g] ==
                           result['readings']['disabled'][g] else 'different')
-                      if ready else 'unavailable' for g in ('template_containers', 'template_signals', 'encoding_declarations')}
+                      if ready else 'unavailable' for g in (('template_containers', 'template_signals', 'encoding_declarations', 'metadata') if metadata else
+                                ('template_containers', 'template_signals', 'encoding_declarations'))}
     need(result['supplementary_comparisons'] == expected_extra, 'Supplementary comparison differs')
 
 
-def inventory(raw, *, content_types, node=None, root=ROOT):
+def inventory(raw, *, content_types, node=None, root=ROOT, metadata=False):
     source, decoding = decode(raw, content_types)
     node = shutil.which(node or 'node')
     need(node is not None, 'Optional Node 24 runtime unavailable; no fallback reader')
-    before = identity(root)
+    need(type(metadata) is bool, 'Metadata selection must be boolean')
+    worker = 'source_metadata.mjs' if metadata else 'source_http.mjs'
+    def sources():
+        result = identity(root)
+        if metadata:
+            result['experiments/'+worker] = sha((root/'experiments'/worker).read_bytes())
+        return result
+    before = sources()
     dependencies = shared.packages(root)
     with tempfile.TemporaryDirectory(prefix='tsep-source-http-') as folder:
         work = Path(folder).resolve()
@@ -150,12 +163,12 @@ def inventory(raw, *, content_types, node=None, root=ROOT):
                 destination = work/'node_modules'/name/relative
                 destination.parent.mkdir(parents=True, exist_ok=True)
                 destination.write_bytes(data)
-        for name in ('source_http.mjs', 'source_tree_network_guard.mjs'):
+        for name in (worker, 'source_tree_network_guard.mjs'):
             (work/name).write_bytes((root/'experiments'/name).read_bytes())
         (work/'source.bin').write_bytes(source.encode('utf-8'))
         command = [node, '--max-old-space-size=128', '--no-addons', '--disable-proto=throw',
                    '--disallow-code-generation-from-strings', '--permission',
-                   '--allow-fs-read='+str(work), str(work/'source_http.mjs')]
+                   '--allow-fs-read='+str(work), str(work/worker)]
         env = {k: v for k, v in os.environ.items() if not k.startswith('NODE_')}
         with (work/'stdout').open('wb') as out, (work/'stderr').open('wb') as err:
             try:
@@ -170,9 +183,9 @@ def inventory(raw, *, content_types, node=None, root=ROOT):
             output = handle.read(MAX_OUTPUT+1)
         need(len(output) <= MAX_OUTPUT, 'Source result byte bound exceeded')
         result = json.loads(output)
-    need(identity(root) == before, 'Reader files changed during execution')
+    need(sources() == before, 'Reader files changed during execution')
     need(result.get('parser_input_utf8_sha256') == decoding['parser_input_utf8_sha256'], 'Parser input identity differs')
-    validate_and_attribute(result, source, raw, decoding)
+    validate_and_attribute(result, source, raw, decoding, metadata=metadata)
     result['decoding'] = decoding
     result['source_sha256'] = before
     result['supervisor'] = {'python_version': sys.version.split()[0], 'process_timeout_seconds': TIMEOUT,

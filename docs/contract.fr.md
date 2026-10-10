@@ -320,3 +320,7 @@ un parcours complet, une contradiction attribuable reste conservée. Les structu
 reconnues, namespaces, captures, bornes et inconnues sont définis dans la
 [méthode](sitemap-locations.md) et la [migration](migration-draft.14.md). Ce succès
 atomique seul ne donne ni C à TS10, ni validation hreflang/image, ni choix Google.
+
+## Directives source — draft.15
+
+TS07-A01 et le préalable source A03 acceptent le profil facultatif préalable html-tree-directives-v1. L’accord de deux hypothèses statiques reste distinct des états rendus. Les contextes refusés, encodage, bornes, attribution aux octets, observations et rejeu sont normatifs dans [le contrat bilingue](source-directives.md), inclus dans les empreintes normatives. Les anciennes entrées et exigences de revue restent inchangées. Voir [migration](migration-draft.15.md).

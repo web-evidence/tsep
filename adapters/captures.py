@@ -21,21 +21,26 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '15'
+VERSION = '16'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
 
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
-    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime'):
+    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'experiments.source_http', 'experiments.source_tree'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     result = loaded_sources(ROOT, modules)
     result['collectors/rendered_metadata.js'] = tsep.digest(ROOT/'collectors/rendered_metadata.js')
+    from experiments import source_http
+    result.update(source_http.identity())
+    result['experiments/source_metadata.mjs'] = tsep.digest(ROOT/'experiments/source_metadata.mjs')
     return result
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented', 'fr':'TS07 : source_reader html-tree-directives-v1 préalable, deux hypothèses statiques et métadonnées attribuées aux octets ; Node 24 facultatif requis pour ce profil, aucun repli. Rendu et revues distincts.',
+     'en':'TS07: prior html-tree-directives-v1 source_reader, two static hypotheses with byte-attributed metadata; optional Node 24 required for this profile, no fallback. Rendering and reviews remain separate.'},
     {'state': 'implemented', 'fr': 'TS10-A03 : lecteur sitemap-locations-v1 préalable ; loc de pages distincts des annotations langues/images conservées sans évaluation. Profil historique inchangé, extensions inconnues indéterminées.',
      'en': 'TS10-A03: prior sitemap-locations-v1 reader; page loc distinct from retained, unassessed language/image annotations. Legacy profile unchanged; unknown extensions inconclusive.'},
     {'state': 'implemented', 'fr': 'Profil robots google-robotstxt-fields-v2 : registre fermé de champs hors portée accès, valeurs conservées ; anciens profils inchangés, autres champs indéterminés.',
@@ -245,7 +250,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
     controls = {c['id']: c for c in protocol['controls'] if c['id'] in selected}
     declared_coverage = coverage(data, controls)
     # Only the raw input reaches the interpreter, never the conformance corpus.
-    calculated = evaluate(data)
+    source_observations = []
+    calculated = evaluate(data, source_observations=source_observations)
     tsep.require(source_files() == sources, 'Tool source files changed during interpretation')
     tsep.require(runtime_identity() == runtime, 'Selected runtime dependencies changed during interpretation')
     # Reject malformed metadata and incompatible modes before opening a destination.
@@ -284,9 +290,17 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                                'Import context, source-code fingerprints and omitted-rule coverage; import time is not capture time.'))
         shared.append(artifact('computed-results', 'validator-output', 'assessment.json', calculated, targets, issued_text,
                                'Computed reference outcomes, not normative conformance expectations; assessment performed at import time.'))
+        diagnostic_refs = {target:[] for target in targets}
+        for index, observation in enumerate(source_observations, 1):
+            payload = (json.dumps(observation, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
+            tsep.require(len(payload) <= tsep.MAX_JSON_BYTES, 'Source observation artifact exceeds replay JSON limit')
+            aid = 'source-observation-' + str(index)
+            diagnostic_refs[observation['target']].append(artifact(aid, 'validator-output',
+                'observations/' + aid + '.json', observation, [observation['target']], issued_text,
+                'Computed static source metadata, byte locations, parser/runtime and alternative decisions; import time, not capture or engine observation.'))
         refs = {}
         for index, target in enumerate(data['targets'], 1):
-            refs[target['url']] = list(shared)
+            refs[target['url']] = list(shared) + diagnostic_refs[target['url']]
             for kind, payload in pieces(target).items():
                 aid = 'target-' + str(index) + '-' + kind
                 date, basis = dated(payload, target.get('observed_at'), issued_text)

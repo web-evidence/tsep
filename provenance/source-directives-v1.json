@@ -1,0 +1,24 @@
+{
+  "kind": "source-directives-provenance",
+  "profile": "html-tree-directives-v1",
+  "date": "2026-10-10",
+  "sources": [
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+      "observed_at": "2026-10-10T19:31:41.180992+00:00",
+      "scope": "Name and header scope; HTML head/body metadata; restrictive combination. Not TSEP unanimity.",
+      "capture": ".local/source-directives-2026-10-10/references/google-robots-meta.html",
+      "sha256": "274e0f53f40f25354b61cee0f923679e4e4cdd2828b99b1109f647b4cf37f3ea",
+      "delivery": "Dated local capture included in the separate source-directives delivery kit; not copied as normative upstream text."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/parsing.html",
+      "observed_at": "2026-10-10T19:31:41.183281+00:00",
+      "scope": "Whole-document tree construction, foreign-content and scripting contexts; parser reporting is not HTML validity.",
+      "capture": ".local/source-directives-2026-10-10/references/html-parsing.html",
+      "sha256": "34e193906e6898ae7faf576a8d4c0f8de619a86ec99d85a3baeb2713171f1dbf",
+      "delivery": "Dated local capture included in the separate source-directives delivery kit; not copied as normative upstream text."
+    }
+  ],
+  "scope": "Explicit TSEP candidate policy; not adopted Google behavior or certification. parse5 package provenance retained in third_party/source-tree/packages.json."
+}

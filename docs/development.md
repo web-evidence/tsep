@@ -1,3 +1,10 @@
+Current integration: draft.15, interpreter 15 / adapter 16 / replay 2.
+Optional prior [source directives](source-directives.md) now extends TS07-A01
+and the A03 source prerequisite; Node 24 qualification remains explicit and optional.
+Intégration actuelle : directives source TS07, deux hypothèses et preuves attribuées ;
+[contrat et limites](source-directives.md), [migration](migration-draft.15.md).
+The named milestones below are historical / Les jalons ci-dessous sont historiques.
+
 Current integration: draft.14, interpreter 14 / adapter 15 / sitemap reader 1.
 Optional [static source-tree experiment 1](source-tree-experiment.md) now prepares
 TS07/TS10 source coverage with a pinned parser and separate Node qualification.

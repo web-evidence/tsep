@@ -1,0 +1,563 @@
+{
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "source-directives-render-source-pass",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "id": "synthetic-desktop-en"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only",
+              "rendering": {
+                "mode": "required",
+                "required_states": [
+                  {
+                    "id": "loaded",
+                    "interactions": [],
+                    "wait": "load + 1000 ms"
+                  },
+                  {
+                    "id": "expanded",
+                    "interactions": [
+                      "click #expand"
+                    ],
+                    "wait": "after click + 500 ms"
+                  }
+                ]
+              },
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script></head><body><main><p>Expected content</p></main></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            },
+            "render": {
+              "browser": {
+                "name": "SyntheticBrowser",
+                "version": "1"
+              },
+              "states": [
+                {
+                  "id": "loaded",
+                  "interactions": [],
+                  "wait": "load + 1000 ms",
+                  "url": "https://example.com/page",
+                  "context_id": "synthetic-desktop-en",
+                  "source_http_sha256": "a58efe1ad87ae2d16a65992a652b7965fb6729603ca304c4abb7ee90cc6bcadf",
+                  "observed_at": "2026-10-09T10:00:02Z",
+                  "javascript_enabled": true,
+                  "complete": true,
+                  "errors": [],
+                  "dom": "<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script></head><body><p>Expected content</p></body></html>"
+                },
+                {
+                  "id": "expanded",
+                  "interactions": [
+                    "click #expand"
+                  ],
+                  "wait": "after click + 500 ms",
+                  "url": "https://example.com/page",
+                  "context_id": "synthetic-desktop-en",
+                  "source_http_sha256": "a58efe1ad87ae2d16a65992a652b7965fb6729603ca304c4abb7ee90cc6bcadf",
+                  "observed_at": "2026-10-09T10:00:02Z",
+                  "javascript_enabled": true,
+                  "complete": true,
+                  "errors": [],
+                  "dom": "<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script></head><body><p>Expected content</p></body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A03",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Source prerequisite requires the optional Node 24 reader; supplied DOM retains its declared legacy reader."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "source-directives-render-source-ambiguous",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "id": "synthetic-desktop-en"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only",
+              "rendering": {
+                "mode": "required",
+                "required_states": [
+                  {
+                    "id": "loaded",
+                    "interactions": [],
+                    "wait": "load + 1000 ms"
+                  },
+                  {
+                    "id": "expanded",
+                    "interactions": [
+                      "click #expand"
+                    ],
+                    "wait": "after click + 500 ms"
+                  }
+                ]
+              },
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script><noscript><meta name=\"robots\" content=\"noindex\"></noscript></head><body><main><p>Expected content</p></main></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            },
+            "render": {
+              "browser": {
+                "name": "SyntheticBrowser",
+                "version": "1"
+              },
+              "states": [
+                {
+                  "id": "loaded",
+                  "interactions": [],
+                  "wait": "load + 1000 ms",
+                  "url": "https://example.com/page",
+                  "context_id": "synthetic-desktop-en",
+                  "source_http_sha256": "af2f90eab1efd2ac141ffe5b860a5ac838f29aa2dd1c6961e4750865e633d407",
+                  "observed_at": "2026-10-09T10:00:02Z",
+                  "javascript_enabled": true,
+                  "complete": true,
+                  "errors": [],
+                  "dom": "<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script></head><body><p>Expected content</p></body></html>"
+                },
+                {
+                  "id": "expanded",
+                  "interactions": [
+                    "click #expand"
+                  ],
+                  "wait": "after click + 500 ms",
+                  "url": "https://example.com/page",
+                  "context_id": "synthetic-desktop-en",
+                  "source_http_sha256": "af2f90eab1efd2ac141ffe5b860a5ac838f29aa2dd1c6961e4750865e633d407",
+                  "observed_at": "2026-10-09T10:00:02Z",
+                  "javascript_enabled": true,
+                  "complete": true,
+                  "errors": [],
+                  "dom": "<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script></head><body><p>Expected content</p></body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A03",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-render-missing-state",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "id": "synthetic-desktop-en"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only",
+              "rendering": {
+                "mode": "required",
+                "required_states": [
+                  {
+                    "id": "loaded",
+                    "interactions": [],
+                    "wait": "load + 1000 ms"
+                  },
+                  {
+                    "id": "expanded",
+                    "interactions": [
+                      "click #expand"
+                    ],
+                    "wait": "after click + 500 ms"
+                  }
+                ]
+              },
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script></head><body><main><p>Expected content</p></main></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            },
+            "render": {
+              "browser": {
+                "name": "SyntheticBrowser",
+                "version": "1"
+              },
+              "states": [
+                {
+                  "id": "loaded",
+                  "interactions": [],
+                  "wait": "load + 1000 ms",
+                  "url": "https://example.com/page",
+                  "context_id": "synthetic-desktop-en",
+                  "source_http_sha256": "a58efe1ad87ae2d16a65992a652b7965fb6729603ca304c4abb7ee90cc6bcadf",
+                  "observed_at": "2026-10-09T10:00:02Z",
+                  "javascript_enabled": true,
+                  "complete": true,
+                  "errors": [],
+                  "dom": "<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script></head><body><p>Expected content</p></body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A03",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-render-render-fail",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "id": "synthetic-desktop-en"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only",
+              "rendering": {
+                "mode": "required",
+                "required_states": [
+                  {
+                    "id": "loaded",
+                    "interactions": [],
+                    "wait": "load + 1000 ms"
+                  },
+                  {
+                    "id": "expanded",
+                    "interactions": [
+                      "click #expand"
+                    ],
+                    "wait": "after click + 500 ms"
+                  }
+                ]
+              },
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script></head><body><main><p>Expected content</p></main></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            },
+            "render": {
+              "browser": {
+                "name": "SyntheticBrowser",
+                "version": "1"
+              },
+              "states": [
+                {
+                  "id": "loaded",
+                  "interactions": [],
+                  "wait": "load + 1000 ms",
+                  "url": "https://example.com/page",
+                  "context_id": "synthetic-desktop-en",
+                  "source_http_sha256": "a58efe1ad87ae2d16a65992a652b7965fb6729603ca304c4abb7ee90cc6bcadf",
+                  "observed_at": "2026-10-09T10:00:02Z",
+                  "javascript_enabled": true,
+                  "complete": true,
+                  "errors": [],
+                  "dom": "<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script><meta name=\"robots\" content=\"noindex\"></head><body><p>Expected content</p></body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A03",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "source-directives-render-legacy-dom-not-upgraded",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "id": "synthetic-desktop-en"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only",
+              "rendering": {
+                "mode": "required",
+                "required_states": [
+                  {
+                    "id": "loaded",
+                    "interactions": [],
+                    "wait": "load + 1000 ms"
+                  },
+                  {
+                    "id": "expanded",
+                    "interactions": [
+                      "click #expand"
+                    ],
+                    "wait": "after click + 500 ms"
+                  }
+                ]
+              },
+              "source_reader": "html-tree-directives-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script></head><body><main><p>Expected content</p></main></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            },
+            "render": {
+              "browser": {
+                "name": "SyntheticBrowser",
+                "version": "1"
+              },
+              "states": [
+                {
+                  "id": "loaded",
+                  "interactions": [],
+                  "wait": "load + 1000 ms",
+                  "url": "https://example.com/page",
+                  "context_id": "synthetic-desktop-en",
+                  "source_http_sha256": "a58efe1ad87ae2d16a65992a652b7965fb6729603ca304c4abb7ee90cc6bcadf",
+                  "observed_at": "2026-10-09T10:00:02Z",
+                  "javascript_enabled": true,
+                  "complete": true,
+                  "errors": [],
+                  "dom": "<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script></head><body><main></main></body></html>"
+                },
+                {
+                  "id": "expanded",
+                  "interactions": [
+                    "click #expand"
+                  ],
+                  "wait": "after click + 500 ms",
+                  "url": "https://example.com/page",
+                  "context_id": "synthetic-desktop-en",
+                  "source_http_sha256": "a58efe1ad87ae2d16a65992a652b7965fb6729603ca304c4abb7ee90cc6bcadf",
+                  "observed_at": "2026-10-09T10:00:02Z",
+                  "javascript_enabled": true,
+                  "complete": true,
+                  "errors": [],
+                  "dom": "<!doctype html><html><head><title>Reference</title><script src=\"/app.js\"></script></head><body><p>Expected content</p></body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A03",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    }
+  ]
+}

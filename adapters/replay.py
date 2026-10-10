@@ -12,7 +12,7 @@ from adapters import captures, package
 from adapters.package import inventory, json_bytes, publish, seal
 from provenance.runtime import runtime_identity, loaded_sources
 
-VERSION = '1'
+VERSION = '2'
 
 
 def replay(source, output):
@@ -41,6 +41,10 @@ def replay(source, output):
             mode=original['assessor']['mode'], selected=original['controls'],
             exclusions=original['scope']['exclusions'])
         same_results = tsep.read_json(stage/'bundle/assessment.json') == tsep.read_json(source/'assessment.json')
+        observed_names = {name for name in entries if name.startswith('observations/source-observation-')}
+        replay_names = {str(p.relative_to(stage/'bundle')) for p in (stage/'bundle/observations').glob('source-observation-*.json')}
+        same_source_observations = observed_names == replay_names and all(
+            tsep.read_json(stage/'bundle'/name) == tsep.read_json(source/name) for name in observed_names)
         same_gate = summary == original_gate
         # Also catch a coherently rehashed report that disagrees with the raw input.
         current = tsep.read_json(stage/'bundle/report.json')
@@ -49,9 +53,9 @@ def replay(source, output):
                   'workflow_source_files': workflow_sources,
                   'input_sha256': entries['input.json'], 'original_manifest_sha256': tsep.digest(source/'SHA256SUMS'),
                   'same_atomic_results': same_results, 'same_report_results': same_report_results,
-                  'same_gate': same_gate, 'same_tool_sources': True,
+                  'same_gate': same_gate, 'same_source_observations': same_source_observations, 'same_tool_sources': True,
                   'same_recorded_runtime': metadata.get('runtime') == runtime_identity(),
-                  'replayed': same_results and same_report_results and same_gate,
+                  'replayed': same_results and same_report_results and same_gate and same_source_observations,
                   'decision': summary['decision'], 'network_requests': 0,
                   'limitations': 'Integrity and deterministic interpretation only; no authentication of intent, reviews, captures or engine behavior.'}
         (stage/'replay.json').write_bytes(json_bytes(result))

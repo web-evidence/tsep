@@ -313,3 +313,7 @@ is retained. Recognized structures, namespaces, captures, bounds and unknowns ar
 defined by the [method](sitemap-locations.md) and [migration](migration-draft.14.md).
 This atomic success alone establishes neither whole TS10 C, hreflang/image validity
 nor Google selection.
+
+## Source directives — draft.15
+
+TS07-A01 and the A03 source prerequisite accept optional prior html-tree-directives-v1. Agreement of two static alternatives stays distinct from rendered states. Refused contexts, encoding, bounds, byte attribution, observations and replay are normative in the [bilingual contract](source-directives.md), included in normative fingerprints. Legacy inputs and review requirements remain unchanged. See [migration](migration-draft.15.md).

@@ -1,3 +1,8 @@
+Update — mise à jour draft.15: the optional metadata extension (source_metadata.mjs)
+adds all meta records and namespace ancestry for the explicit [source directive policy](source-directives.md).
+The inventory itself produces no verdict; the original CLI inventory remains unapplied.
+Le profil TS07 facultatif consomme cette extension ; les limites ci-dessous décrivent l’inventaire 1.
+
 # HTTP-source inventory 1 / Inventaire de source HTTP 1
 
 **Unapplied experiment; no normative effect. / Expérience non appliquée, sans

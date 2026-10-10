@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.14 — Contrôles
+# TSEP 0.1.0-draft.15 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.14:TS01-A01`
+`TSEP@0.1.0-draft.15:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.14:TS01-A02`
+`TSEP@0.1.0-draft.15:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.14:TS02-A01`
+`TSEP@0.1.0-draft.15:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.14:TS02-A02`
+`TSEP@0.1.0-draft.15:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -198,7 +198,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A01 — Politique par origine, robot et ressource
 
-`TSEP@0.1.0-draft.14:TS04-A01`
+`TSEP@0.1.0-draft.15:TS04-A01`
 
 **Entrées requises**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A02 — Accès aux ressources nécessaires
 
-`TSEP@0.1.0-draft.14:TS04-A02`
+`TSEP@0.1.0-draft.15:TS04-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.14:TS07-A01`
+`TSEP@0.1.0-draft.15:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -328,23 +328,23 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Chaque document avec objectif d’indexation déclaré, pour un robot et un contexte explicitement nommés.
 
-**Méthode.** Inventorier tous les X-Robots-Tag finaux et meta robots/robot cible dans le HTML source, sans les confondre avec les sauts. Appliquer la sémantique documentée du robot, y compris doublons, portée, casse, paramètres et directives ignorées.
+**Méthode.** Inventorier tous les X-Robots-Tag finaux et meta robots/robot cible dans le HTML source, sans les confondre avec les sauts. Appliquer la sémantique documentée du robot, y compris doublons, portée, casse, paramètres et directives ignorées. Le profil facultatif source_reader=html-tree-directives-v1, déclaré avant capture, construit deux hypothèses statiques complètes sans exécuter de script ; les meta HTML robots/googlebot de head/body sans ancêtre étranger sont combinés séparément avec les en-têtes finaux. Les contenus des templates ordinaires sont conservés mais exclus des directives actives.
 
-**Attendus.** L’effet combiné correspond à l’objectif déclaré d’indexation et aux restrictions de présentation/liens déclarées. Pour Google : une restriction applicable prime une permission, none inclut noindex/nofollow ; nofollow ou une limite d’aperçu seuls ne signifient pas noindex. L’absence de directive n’est pas un échec si l’objectif autorise l’indexation.
+**Attendus.** L’effet combiné correspond à l’objectif déclaré d’indexation et aux restrictions de présentation/liens déclarées. Pour Google : une restriction applicable prime une permission, none inclut noindex/nofollow ; nofollow ou une limite d’aperçu seuls ne signifient pas noindex. L’absence de directive n’est pas un échec si l’objectif autorise l’indexation. Pour ce profil, deux pass donnent pass, deux fail donnent fail, toute autre paire reste inconclusive ; ne jamais fusionner les directives des hypothèses alternatives ni les confondre avec des états rendus observés.
 
-**Preuves.** En-têtes répétés bruts, HTML source, tableau token/robot/effet et référence technique datée. Pour un non-HTML, le fichier de type html décrit la non-applicabilité de cette surface avec le Content-Type, sans inventer de HTML.
+**Preuves.** En-têtes répétés bruts, HTML source, tableau token/robot/effet et référence technique datée. Pour un non-HTML, le fichier de type html décrit la non-applicabilité de cette surface avec le Content-Type, sans inventer de HTML. Ce profil conserve aussi les deux inventaires meta complets, contextes/namespaces, tags et positions dans les octets d’origine, templates, décodage, erreurs signalées, versions et empreintes dans les observations calculées liées au rapport et comparées au rejeu.
 
-**Hypothèses.** Intention et robot figés avant revue ; ne pas extrapoler les règles Google à un autre moteur. En cas d’indexifembedded ou unavailable_after, inclure contexte d’intégration et date nécessaires. L’intention conserve crawler comme User-Agent HTTP exact. Le champ facultatif directive_crawler, figé avant capture et limité ici à googlebot, choisit la sémantique des directives sur cette seule représentation cliente ; il ne décrit pas une réponse reçue par Googlebot. Sans ce champ, le comportement historique exige crawler=googlebot.
+**Hypothèses.** Intention et robot figés avant revue ; ne pas extrapoler les règles Google à un autre moteur. En cas d’indexifembedded ou unavailable_after, inclure contexte d’intégration et date nécessaires. L’intention conserve crawler comme User-Agent HTTP exact. Le champ facultatif directive_crawler, figé avant capture et limité ici à googlebot, choisit la sémantique des directives sur cette seule représentation cliente ; il ne décrit pas une réponse reçue par Googlebot. Sans ce champ, le comportement historique exige crawler=googlebot. Sans source_reader, garder le lecteur historique ; nul/inconnu ou Node 24 absent ne se replie pas. Le profil exige HTML HTTP UTF-8 explicite, consomme un BOM initial, conserve les réparations non signalées du parseur épinglé. Les règles et bornes du contrat bilingue source-directives précisent les hypothèses, sans assertion de validité HTML.
 
-**Indéterminé.** Objectif absent, syntaxe/portée inconnue, capture partielle ou contexte manquant : inconclusive. Une directive documentée comme ignorée est consignée, pas transformée automatiquement en erreur. directive_crawler présent mais non pris en charge, nul ou incohérent : inconclusive ; aucun repli favorable.
+**Indéterminé.** Objectif absent, syntaxe/portée inconnue, capture partielle ou contexte manquant : inconclusive. Une directive documentée comme ignorée est consignée, pas transformée automatiquement en erreur. directive_crawler présent mais non pris en charge, nul ou incohérent : inconclusive ; aucun repli favorable. Pour ce profil : lecture incomplète, erreur signalée, encodage non couvert, shadow déclaratif open/closed, template for, metadata robots de contexte étranger, contenu absent/rôle mixte ou forme approchante définie au contrat, directive inconnue et dépassement de borne restent indéterminés. Un HTML illisible ne devient pas un accord fondé sur les seuls en-têtes.
 
 **Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
 
-**Limites.** Évalue les déclarations observées, pas leur ingestion ni l’indexation réelle. A01 seul ne couvre pas l’accès ou le rendu. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue.
+**Limites.** Évalue les déclarations observées, pas leur ingestion ni l’indexation réelle. A01 seul ne couvre pas l’accès ou le rendu. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue. Ce choix méthodologique ne simule pas Google. Aucun rendu, accès, revue ou résultat TS10 n’est déduit.
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.14:TS07-A02`
+`TSEP@0.1.0-draft.15:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.14:TS07-A03`
+`TSEP@0.1.0-draft.15:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -378,7 +378,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Pages dont scripts ou états peuvent affecter les directives, ou dont la stabilité n’est pas établie.
 
-**Méthode.** Fixer avant la capture les états requis, interactions et conditions d’attente. Comparer les en-têtes finaux et le HTML source avec chaque DOM, en déclarant navigateur/version, scripts activés, heure, erreurs et contexte. Relier chaque capture à la réponse source et à la cible. Ne pas supposer que le moteur rend un HTML initial noindex. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée.
+**Méthode.** Fixer avant la capture les états requis, interactions et conditions d’attente. Comparer les en-têtes finaux et le HTML source avec chaque DOM, en déclarant navigateur/version, scripts activés, heure, erreurs et contexte. Relier chaque capture à la réponse source et à la cible. Ne pas supposer que le moteur rend un HTML initial noindex. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée. Le nouveau source_reader facultatif affecte seulement le préalable source A01, jamais le lecteur de chaque DOM ; la priorité d’une contradiction rendue attribuable reste inchangée.
 
 **Attendus.** Tous les états requis sont documentés et compatibles avec l’objectif, dans le contexte déclaré. Une contradiction dans un état complet et attribuable est fail, même si d’autres états manquent. Un retrait de noindex initial par JavaScript ne donne pas pass : A03 reste inconclusive si aucun état requis ne fournit une autre contradiction ; A01 conserve son propre verdict source.
 
@@ -466,7 +466,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.14:TS10-A01`
+`TSEP@0.1.0-draft.15:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -490,7 +490,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.14:TS10-A02`
+`TSEP@0.1.0-draft.15:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -514,7 +514,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.14:TS10-A03`
+`TSEP@0.1.0-draft.15:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.14:TS10-A04`
+`TSEP@0.1.0-draft.15:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 
