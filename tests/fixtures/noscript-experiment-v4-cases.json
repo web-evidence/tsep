@@ -1,0 +1,1889 @@
+{
+  "format_version": 1,
+  "experiment_version": "4",
+  "scope": "Authored synthetic expectations frozen before implementation; explicit sections required, no nested tables or foster parenting; no normative effect.",
+  "previous_fixture_sha256": {
+    "noscript-experiment-cases.json": "d99f97df3983089f41ea9d3d13c5e56172854851993fab632e83bb338aa11072",
+    "noscript-experiment-v2-cases.json": "70d3c3ce99d6d4e311739c1f805e9cdded370ce5c4caefdd315ae0dbe7e4886f",
+    "noscript-experiment-v3-cases.json": "9aea735368d8d302f85ed7ecfa36799fcb4967630bdde80a5f9e7fb618b9292c"
+  },
+  "previous_expectation_changes": {
+    "noscript-experiment-v3-cases.json": {
+      "v3-table-after-select": {
+        "enabled_segments": [
+          "Expected"
+        ],
+        "disabled_segments": [
+          "Expected"
+        ],
+        "enabled_candidate": "pass",
+        "disabled_candidate": "pass",
+        "candidate_consensus": "pass"
+      }
+    }
+  },
+  "cases": [
+    {
+      "id": "v4-cell-required",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-forbidden",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected Forbidden</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected Forbidden"
+      ],
+      "disabled_segments": [
+        "Expected Forbidden"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-missing",
+      "html": "<html><head></head><body><table><tbody><tr><td>Other</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Other"
+      ],
+      "disabled_segments": [
+        "Other"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-empty-table",
+      "html": "<html><head></head><body>Expected<table></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-empty-cell",
+      "html": "<html><head></head><body>Expected<table><tbody><tr><td></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-empty-section",
+      "html": "<html><head></head><body>Expected<table><tbody></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-empty-row",
+      "html": "<html><head></head><body>Expected<table><tbody><tr></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-caption",
+      "html": "<html><head></head><body><table><caption>Expected</caption></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-caption-inline",
+      "html": "<html><head></head><body><table><caption>Ex<strong>pected</strong></caption></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "disabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-table-attributes",
+      "html": "<html><head></head><body><table title=\"Expected\"><tbody><tr><td data-x=\"Expected\">Other</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Other"
+      ],
+      "disabled_segments": [
+        "Other"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-attributes",
+      "html": "<html><head></head><body><table><tbody><tr><td><span title=\"Forbidden\">Expected</span></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-col-attributes",
+      "html": "<html><head></head><body><table><colgroup span=\"Forbidden\"><col title=\"Forbidden\"/><col></colgroup><tbody><tr><td>Expected</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-full-order",
+      "html": "<html><head></head><body><table><caption>Expected</caption><colgroup><col></colgroup><colgroup><col/></colgroup><thead><tr><th>Head</th></tr></thead><tbody><tr><td>Body</td></tr></tbody><tbody><tr><th>Row</th></tr></tbody><tfoot><tr><td>Foot</td></tr></tfoot></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "Head",
+        "Body",
+        "Row",
+        "Foot"
+      ],
+      "disabled_segments": [
+        "Expected",
+        "Head",
+        "Body",
+        "Row",
+        "Foot"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-footer-only",
+      "html": "<html><head></head><body><table><tfoot><tr><td>Expected</td></tr></tfoot></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-head-only",
+      "html": "<html><head></head><body><table><thead><tr><th>Expected</th></tr></thead></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-successive",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected</td></tr></tbody></table><table><tbody><tr><td>Other</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "Other"
+      ],
+      "disabled_segments": [
+        "Expected",
+        "Other"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-mixed-cells",
+      "html": "<html><head></head><body><table><tbody><tr><th scope=\"row\">Expected</th><td>Forbidden</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "Forbidden"
+      ],
+      "disabled_segments": [
+        "Expected",
+        "Forbidden"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-split-cells",
+      "html": "<html><head></head><body><table><tbody><tr><td>Ex</td><td>pected</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "disabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-split-rows",
+      "html": "<html><head></head><body><table><tbody><tr><td>Ex</td></tr><tr><td>pected</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "disabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-split-comment",
+      "html": "<html><head></head><body><table><tbody><tr><td>Ex<!-- boundary -->pected</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "disabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-comment-excluded",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected<!-- Forbidden --></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-entity",
+      "html": "<html><head></head><body><table><tbody><tr><td>&#69;xpected &amp; more</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected & more"
+      ],
+      "disabled_segments": [
+        "Expected & more"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-encoded-markup",
+      "html": "<html><head></head><body><table><tbody><tr><td>&lt;b&gt;Expected&lt;/b&gt;</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<b>Expected</b>"
+      ],
+      "disabled_segments": [
+        "<b>Expected</b>"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-nbsp",
+      "html": "<html><head></head><body><table><tbody><tr><td>Ex&nbsp;pected</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Ex pected"
+      ],
+      "disabled_segments": [
+        "Ex pected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-case",
+      "html": "<html><head></head><body><table><tbody><tr><td>expected</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "expected"
+      ],
+      "disabled_segments": [
+        "expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-newlines",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected\r\nOther</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected\r\nOther"
+      ],
+      "disabled_segments": [
+        "Expected\r\nOther"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-container-whitespace",
+      "html": "<html><head></head><body><table>\r\n<colgroup> <col>\t</colgroup>\n<thead> <tr>\t<th>Expected</th> </tr> </thead>\n<tbody> <tr><td>Other</td></tr></tbody>\n</table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "\r\n",
+        " ",
+        "\t",
+        "\n",
+        " ",
+        "\t",
+        "Expected",
+        " ",
+        " ",
+        "\n",
+        " ",
+        "Other",
+        "\n"
+      ],
+      "disabled_segments": [
+        "\r\n",
+        " ",
+        "\t",
+        "\n",
+        " ",
+        "\t",
+        "Expected",
+        " ",
+        " ",
+        "\n",
+        " ",
+        "Other",
+        "\n"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-ordinary-descendants",
+      "html": "<html><head></head><body><table><tbody><tr><td><div><p>Expected <a href=\"x\">Other</a></p><ul><li>A</li><li>B</li></ul></div></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected ",
+        "Other",
+        "A",
+        "B"
+      ],
+      "disabled_segments": [
+        "Expected ",
+        "Other",
+        "A",
+        "B"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-script-style",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected<script>Forbidden</script><style>Forbidden</style></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-select",
+      "html": "<html><head></head><body><table><tbody><tr><td><select><option>Expected</option></select><textarea></textarea></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-svg",
+      "html": "<html><head></head><body><table><tbody><tr><td><svg><style>Forbidden</style><path/></svg>Expected</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-uppercase",
+      "html": "<html><head></head><body><TABLE><TBODY><TR><TD>Expected</TD></TR></TBODY></TABLE></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-spans-attributes",
+      "html": "<html><head></head><body><table><tbody><tr><td rowspan=\"2\" colspan=\"3\" hidden>Expected</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-table-after-paragraph",
+      "html": "<html><head></head><body><p>Expected</p><table><tbody><tr><td>Other</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "Other"
+      ],
+      "disabled_segments": [
+        "Expected",
+        "Other"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-row-without-section",
+      "html": "<html><head></head><body><table><tr><td>Expected</td></tr></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-without-row",
+      "html": "<html><head></head><body><table><tbody><td>Expected</td></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-without-section",
+      "html": "<html><head></head><body><table><td>Expected</td></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-col-without-group",
+      "html": "<html><head></head><body><table><col><tbody><tr><td>Expected</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-missing-cell-close",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected</tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-missing-row-close",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected</td></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-missing-section-close",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected</td></tr></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-missing-table-close",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected</td></tr></tbody></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-new-cell-before-close",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected<td>Other</td></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-new-row-before-close",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected</td><tr></tr></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-nested-table",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected<table><tbody><tr><td>Other</td></tr></tbody></table></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-nested-caption-table",
+      "html": "<html><head></head><body><table><caption>Expected<table><tbody><tr><td>Other</td></tr></tbody></table></caption></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-late-caption",
+      "html": "<html><head></head><body><table><tbody></tbody><caption>Expected</caption></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-repeated-caption",
+      "html": "<html><head></head><body><table><caption>Expected</caption><caption>Other</caption></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-caption-after-columns",
+      "html": "<html><head></head><body><table><colgroup><col></colgroup><caption>Expected</caption></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-head-after-body",
+      "html": "<html><head></head><body><table><tbody></tbody><thead><tr><th>Expected</th></tr></thead></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-repeated-head",
+      "html": "<html><head></head><body><table><thead></thead><thead><tr><th>Expected</th></tr></thead></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-body-after-foot",
+      "html": "<html><head></head><body><table><tfoot></tfoot><tbody><tr><td>Expected</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-repeated-foot",
+      "html": "<html><head></head><body><table><tfoot></tfoot><tfoot><tr><td>Expected</td></tr></tfoot></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-columns-after-head",
+      "html": "<html><head></head><body><table><thead></thead><colgroup><col></colgroup></table>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-in-paragraph",
+      "html": "<html><head></head><body><p>Expected<table><tbody><tr><td>Other</td></tr></tbody></table></p></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-in-select",
+      "html": "<html><head></head><body><select><option>Expected<table><tbody><tr><td>Other</td></tr></tbody></table></option></select></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-in-svg",
+      "html": "<html><head></head><body><svg><table><tbody><tr><td>Expected</td></tr></tbody></table></svg></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-foreign-in-container",
+      "html": "<html><head></head><body><table><svg></svg></table>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-template-in-cell",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected<template></template></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-unknown-after-table",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected</td></tr></tbody></table><custom-element></custom-element></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-unsupported-after-forbidden",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected Forbidden</td></tr></tbody></table><iframe></iframe></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-escaped-script-in-cell",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected<script><!--x--></script></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-nonempty-textarea-in-cell",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected<textarea>Other</textarea></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-self-closing-table",
+      "html": "<html><head></head><body>Expected<table/></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-self-closing-section",
+      "html": "<html><head></head><body>Expected<table><tbody/></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-self-closing-cell",
+      "html": "<html><head></head><body><table><tbody><tr><td/>Expected</tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-end-attributes",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected</td data-x=\"x\"></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-duplicate-attributes",
+      "html": "<html><head></head><body><table class=\"a\" CLASS=\"b\"><tbody><tr><td>Expected</td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-ambiguous-comment",
+      "html": "<html><head></head><body>Expected<table><!-->Forbidden</table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-explicit-col-close",
+      "html": "<html><head></head><body>Expected<table><colgroup><col></col></colgroup></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-orphan-caption",
+      "html": "<html><head></head><body>Expected<caption></caption></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-orphan-colgroup",
+      "html": "<html><head></head><body>Expected<colgroup></colgroup></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-orphan-col",
+      "html": "<html><head></head><body>Expected<col></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-orphan-thead",
+      "html": "<html><head></head><body>Expected<thead></thead></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-orphan-tbody",
+      "html": "<html><head></head><body>Expected<tbody></tbody></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-orphan-tfoot",
+      "html": "<html><head></head><body>Expected<tfoot></tfoot></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-orphan-tr",
+      "html": "<html><head></head><body>Expected<tr></tr></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-orphan-td",
+      "html": "<html><head></head><body>Expected<td></td></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-orphan-th",
+      "html": "<html><head></head><body>Expected<th></th></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-text-table",
+      "html": "<html><head></head><body><table>Expected</table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-text-colgroup",
+      "html": "<html><head></head><body><table><colgroup>Expected</colgroup></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-text-thead",
+      "html": "<html><head></head><body><table><thead>Expected</thead></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-text-tbody",
+      "html": "<html><head></head><body><table><tbody>Expected</tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-text-tfoot",
+      "html": "<html><head></head><body><table><tfoot>Expected</tfoot></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-text-tr",
+      "html": "<html><head></head><body><table><tbody><tr>Expected</tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-child-div",
+      "html": "<html><head></head><body>Expected<table><div></div></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-child-script",
+      "html": "<html><head></head><body>Expected<table><script></script></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-child-style",
+      "html": "<html><head></head><body>Expected<table><style></style></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-child-template",
+      "html": "<html><head></head><body>Expected<table><template></template></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-child-input",
+      "html": "<html><head></head><body>Expected<table><input></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-child-noscript",
+      "html": "<html><head></head><body>Expected<table><noscript></noscript></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-child-select",
+      "html": "<html><head></head><body>Expected<table><select></select></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-encoded-space",
+      "html": "<html><head></head><body>Expected<table>&#32;</table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-direct-nbsp",
+      "html": "<html><head></head><body>Expected<table> </table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-forbidden-only",
+      "html": "<html><head></head><body><table><tbody><tr><td>Other</td></tr></tbody></table></body></html>",
+      "required_markers": [],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Other"
+      ],
+      "disabled_segments": [
+        "Other"
+      ],
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-noscript-table-valid",
+      "html": "<html><head></head><body><noscript><table><tbody><tr><td>Expected</td></tr></tbody></table></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<table><tbody><tr><td>Expected</td></tr></tbody></table>"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-noscript-table-attribute",
+      "html": "<html><head></head><body><noscript><table title=\"Forbidden\"><tbody><tr><td>Expected</td></tr></tbody></table></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<table title=\"Forbidden\"><tbody><tr><td>Expected</td></tr></tbody></table>"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-noscript-table-entity",
+      "html": "<html><head></head><body><noscript><table><tbody><tr><td>&#69;xpected</td></tr></tbody></table></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<table><tbody><tr><td>&#69;xpected</td></tr></tbody></table>"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-noscript-table-direct-text",
+      "html": "<html><head></head><body><noscript><table>Expected</table></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<table>Expected</table>"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "pass",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-noscript-table-direct-row",
+      "html": "<html><head></head><body><noscript><table><tr><td>Expected</td></tr></table></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<table><tr><td>Expected</td></tr></table>"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "pass",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-noscript-attribute",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected<noscript><img alt=\"Forbidden\"></noscript></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<img alt=\"Forbidden\">"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-cell-noscript-nested-table",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected<noscript><table><tbody><tr><td>Other</td></tr></tbody></table></noscript></td></tr></tbody></table></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<table><tbody><tr><td>Other</td></tr></tbody></table>"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "pass",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    },
+    {
+      "id": "v4-head-table",
+      "html": "<html><head><table></table></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Authored explicit table subset; not an independent browser oracle."
+    }
+  ]
+}
