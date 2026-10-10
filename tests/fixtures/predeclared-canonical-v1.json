@@ -1,0 +1,295 @@
+{
+  "kind": "predeclared-synthetic-canonical-recipes",
+  "version": "1",
+  "frozen_at": "2026-10-10T12:07:39.735651+00:00",
+  "normative": false,
+  "capture_script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+  "purpose": "New synthetic browser observations; end-to-end chain and environmental assumptions, not independent validation of interpretation rules. Cases designed with knowledge of candidate 1.",
+  "environments": [
+    "integrated",
+    "chrome"
+  ],
+  "method": "One navigation and one instrumented synchronous traversal per task. Callback window.load except during-parsing recipe, which invokes once inline with no load listener. No resampling. All attempts and deviations retained. Unavailable environment explicitly not-collected.",
+  "limitations": [
+    "Browser APIs including readyState, operator, execution and clocks not authenticated",
+    "Same traversal script in both environments; not independent engine validation",
+    "Partial traversal cannot establish absence; complete traversal does not establish stability",
+    "Source and DOM remain distinct; no normative TSEP outcome or engine inference"
+  ],
+  "cases": [
+    {
+      "id": "baseline",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "script": "",
+      "tail": "",
+      "trigger": "load",
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "state_label": "window.load after recipe script"
+      },
+      "expected": {
+        "outcome": "agreement-in-record",
+        "reasons": [
+          "exact-declarations-match"
+        ],
+        "ready_state": "complete",
+        "traversal_complete": true,
+        "stop_reason": null,
+        "canonicals": [
+          {
+            "id": "primary",
+            "raw_href": "{base}/product",
+            "resolved_href": "{base}/product",
+            "position": "head-direct"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dynamic-identical-duplicate",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "script": "const d=document.getElementById('primary').cloneNode(true);d.id='duplicate';document.head.appendChild(d);",
+      "tail": "",
+      "trigger": "load",
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "state_label": "window.load after recipe script"
+      },
+      "expected": {
+        "outcome": "agreement-in-record",
+        "reasons": [
+          "exact-declarations-match"
+        ],
+        "ready_state": "complete",
+        "traversal_complete": true,
+        "stop_reason": null,
+        "canonicals": [
+          {
+            "id": "primary",
+            "raw_href": "{base}/product",
+            "resolved_href": "{base}/product",
+            "position": "head-direct"
+          },
+          {
+            "id": "duplicate",
+            "raw_href": "{base}/product",
+            "resolved_href": "{base}/product",
+            "position": "head-direct"
+          }
+        ]
+      }
+    },
+    {
+      "id": "optional-removal",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "script": "document.getElementById('primary').remove();",
+      "tail": "",
+      "trigger": "load",
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": false,
+        "known_integrity_issues": [],
+        "state_label": "window.load after recipe script"
+      },
+      "expected": {
+        "outcome": "no-declaration-in-record",
+        "reasons": [
+          "optional-canonical-absent"
+        ],
+        "ready_state": "complete",
+        "traversal_complete": true,
+        "stop_reason": null,
+        "canonicals": []
+      }
+    },
+    {
+      "id": "required-removal",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "script": "document.getElementById('primary').remove();",
+      "tail": "",
+      "trigger": "load",
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "state_label": "window.load after recipe script"
+      },
+      "expected": {
+        "outcome": "contradiction-in-record",
+        "reasons": [
+          "required-canonical-absent"
+        ],
+        "ready_state": "complete",
+        "traversal_complete": true,
+        "stop_reason": null,
+        "canonicals": []
+      }
+    },
+    {
+      "id": "moved-to-body",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "script": "document.body.appendChild(document.getElementById('primary'));",
+      "tail": "",
+      "trigger": "load",
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "state_label": "window.load after recipe script"
+      },
+      "expected": {
+        "outcome": "undetermined",
+        "reasons": [
+          "ambiguous-placement"
+        ],
+        "ready_state": "complete",
+        "traversal_complete": true,
+        "stop_reason": null,
+        "canonicals": [
+          {
+            "id": "primary",
+            "raw_href": "{base}/product",
+            "resolved_href": "{base}/product",
+            "position": "body"
+          }
+        ]
+      }
+    },
+    {
+      "id": "c0-normalization",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "script": "document.getElementById('primary').setAttribute('href','\\u0001{base}/product');",
+      "tail": "",
+      "trigger": "load",
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "state_label": "window.load after recipe script"
+      },
+      "expected": {
+        "outcome": "undetermined",
+        "reasons": [
+          "absolute-raw-resolved-difference"
+        ],
+        "ready_state": "complete",
+        "traversal_complete": true,
+        "stop_reason": null,
+        "canonicals": [
+          {
+            "id": "primary",
+            "raw_href": "\u0001{base}/product",
+            "resolved_href": "{base}/product",
+            "position": "head-direct"
+          }
+        ]
+      }
+    },
+    {
+      "id": "dynamic-conflict",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "script": "const d=document.getElementById('primary').cloneNode(true);d.id='conflict';d.setAttribute('href','{base}/other');document.head.appendChild(d);",
+      "tail": "",
+      "trigger": "load",
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "state_label": "window.load after recipe script"
+      },
+      "expected": {
+        "outcome": "contradiction-in-record",
+        "reasons": [
+          "raw-href-differs"
+        ],
+        "ready_state": "complete",
+        "traversal_complete": true,
+        "stop_reason": null,
+        "canonicals": [
+          {
+            "id": "primary",
+            "raw_href": "{base}/product",
+            "resolved_href": "{base}/product",
+            "position": "head-direct"
+          },
+          {
+            "id": "conflict",
+            "raw_href": "{base}/other",
+            "resolved_href": "{base}/other",
+            "position": "head-direct"
+          }
+        ]
+      }
+    },
+    {
+      "id": "conflict-before-limit",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "script": "const d=document.getElementById('primary').cloneNode(true);d.id='conflict';d.setAttribute('href','{base}/other');document.head.appendChild(d);const b=document.createElement('div');for(let i=0;i<2200;i++)b.appendChild(document.createElement('span'));document.body.appendChild(b);",
+      "tail": "",
+      "trigger": "load",
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "state_label": "window.load after recipe script"
+      },
+      "expected": {
+        "outcome": "contradiction-in-record",
+        "reasons": [
+          "raw-href-differs"
+        ],
+        "ready_state": "complete",
+        "traversal_complete": false,
+        "stop_reason": "node-limit",
+        "canonicals": [
+          {
+            "id": "primary",
+            "raw_href": "{base}/product",
+            "resolved_href": "{base}/product",
+            "position": "head-direct"
+          },
+          {
+            "id": "conflict",
+            "raw_href": "{base}/other",
+            "resolved_href": "{base}/other",
+            "position": "head-direct"
+          }
+        ]
+      }
+    },
+    {
+      "id": "loading-before-conflict",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "script": "",
+      "tail": "<link id=\"trailing-conflict\" rel=\"canonical\" href=\"{base}/other\"><p id=\"after-capture\">Cette déclaration arrive après la capture précoce.</p>",
+      "trigger": "during-parsing",
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "state_label": "synchronous parsing before trailing conflict"
+      },
+      "expected": {
+        "outcome": "undetermined",
+        "reasons": [
+          "document-parse-incomplete"
+        ],
+        "ready_state": "loading",
+        "traversal_complete": true,
+        "stop_reason": null,
+        "canonicals": [
+          {
+            "id": "primary",
+            "raw_href": "{base}/product",
+            "resolved_href": "{base}/product",
+            "position": "head-direct"
+          }
+        ]
+      }
+    }
+  ]
+}

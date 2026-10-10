@@ -385,3 +385,16 @@ sont figés avant implémentation ; les ajouts de revue restent identifiés sép
 Les tests incluent le CLI hors réseau sans import d'évaluateur, les limites de
 preuve et la distribution. Aucun changement normatif ou de capture ancienne.
 L'application consignée sur 48 entrées est rétrospective, sans validation indépendante.
+
+## Predeclared canonical laboratory / Laboratoire canonical prédéclaré
+
+[Laboratory 1 and intent adapter 2](predeclared-canonical-laboratory.md) add nine
+predeclared synthetic page recipes, source/POST/chronology binding and offline
+replay. Comparison core 1 stays unchanged; legacy migration is explicit. Tests
+cover its 69 frozen cases plus two preference cases, tampering, duplicate requests,
+missing observations, unavailability and retained mismatches. No normative change.
+
+Neuf recettes synthétiques prédéclarées, liaison sources/POST/chronologie et rejeu
+hors ligne. Le cœur de comparaison 1 reste intact ; migration explicite, tests
+d'altération, doublons, absence, indisponibilité et conservation des écarts.
+Aucune validation indépendante des règles ni modification normative.
