@@ -1,5 +1,17 @@
 # Change history / Historique
 
+## Noscript experiment 2 — 2026-10-10 — unapplied coverage correction
+
+The first retained-page reapplication exposed an overbroad ancestor-li guard.
+Allow a nested ul/ol/menu to create its own list-item scope; keep unclosed items
+within the same scope refused. Six counterexamples were frozen before this fix.
+Keep all 68 initial expectations and the v1 observations; no normative change.
+
+La première réapplication a révélé un refus excessif des li dans une liste imbriquée
+valide. ul/ol/menu crée désormais sa propre portée ; un li non fermé dans la même
+portée reste refusé. Six cas figés avant correctif, 68 attentes initiales et
+résultats v1 conservés. Aucun changement du protocole ou de l’interpréteur actif.
+
 ## Noscript experiment 1 — 2026-10-10 — unapplied local experiment
 
 Freeze 68 authored whole-document cases before implementing two global lexical

@@ -6,12 +6,14 @@ n’altère aucune règle, n’autorise aucun verdict et ne certifie aucune conf
 Le protocole actif reste `0.1.0-draft.7`. / **UNAPPLIED PROPOSAL — no decision
 recorded.** A possible future normative change, not an issued version or rule.
 
-**État du développement, 2026-10-10 :** l’[expérience isolée 1](../noscript-experiment.md)
+**État du développement, 2026-10-10 :** l’[expérience isolée 2](../noscript-experiment.md)
 éprouve maintenant cette piste sur 68 documents synthétiques figés avant son code.
 Elle ne remplace pas le contrat : ses lectures sont lexicales et bornées, pas une
 preuve générale de construction d’arbre HTML5. La promotion normative reste en
-attente. / **Development status:** isolated experiment 1 implements bounded lexical
-hypotheses against 68 prefrozen authored cases. No normative promotion is applied.
+attente. Six cas supplémentaires figés avant correctif couvrent les listes imbriquées
+valides, refusées à tort par la v1. / **Development status:** isolated experiment 2
+implements bounded lexical hypotheses against 68 prefrozen authored cases and six
+additional cases frozen before its list-scope fix. No normative promotion is applied.
 
 ## Français
 

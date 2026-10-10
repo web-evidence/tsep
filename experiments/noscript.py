@@ -17,7 +17,7 @@ from conformance.http import Unknown, need
 from conformance.source_text import characters, tag_at, SPACE, VOID, SVG, CLOSE
 from provenance.runtime import runtime_identity
 
-VERSION = '1'
+VERSION = '2'
 MAX_CHARS = 8*1024*1024
 MAX_TOKENS = 100000
 MAX_DEPTH = 256
@@ -113,8 +113,13 @@ def reading(source, mode):
                 else:
                     need(tag in BODY, 'Unsupported body context: '+tag)
                     need(not (tag in CLOSES_P and 'p' in stack), 'Implied paragraph closing is unsupported')
-                    need(not (tag in ('a', 'button', 'form', 'nobr', 'li') and tag in stack),
+                    need(not (tag in ('a', 'button', 'form', 'nobr') and tag in stack),
                          'Repeated active context is unsupported: '+tag)
+                    # A new nested list has its own item scope. An ancestor li
+                    # beyond ul/ol/menu is valid, not an omitted sibling close.
+                    list_start = max((j for j, t in enumerate(stack) if t in ('ul', 'ol', 'menu')), default=-1)
+                    need(not (tag == 'li' and 'li' in stack[list_start+1:]),
+                         'Unclosed item in the current list scope')
                     need(not (tag in ('dt', 'dd') and any(t in stack for t in ('dt', 'dd'))),
                          'Implied description-item closing is unsupported')
                     need(not (tag in HEADINGS and any(t in stack for t in HEADINGS)),

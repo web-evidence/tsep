@@ -1,8 +1,17 @@
-# Noscript experiment 1 / Expérience noscript 1
+# Noscript experiment 2 / Expérience noscript 2
 
 **UNAPPLIED / NON APPLIQUÉE.** This tool tests a proposal; it cannot emit a TSEP
 report, replace an assessment or alter the active `0.1.0-draft.7` contract.
 It is separate from interpreter 5, the adapter, collector and campaign diagnostic.
+
+Version 2 corrects experiment 1's overbroad list-item refusal: a nested ul/ol/menu
+starts a new item scope. Six additional synthetic expectations were frozen before
+the fix; the initial 68 expectations and v1 observations are preserved. This is
+an experimental coverage correction, with no normative effect. / La version 2
+corrige le refus excessif des listes imbriquées : ul/ol/menu ouvre une portée
+distincte pour les li. Six cas supplémentaires ont été figés avant ce correctif,
+après constat sur captures conservées ; les 68 attentes et résultats v1 restent
+conservés. Ce changement ne produit aucun effet normatif.
 
 ## Français
 
@@ -110,7 +119,7 @@ justifie pas cette promotion.
 
 ## English
 
-Experiment 1 takes a complete UTF-8 HTML source and optional exact marker lists.
+Experiment 2 takes a complete UTF-8 HTML source and optional exact marker lists.
 It applies enabled and disabled scripting hypotheses to the entire unchanged
 document. Enabled noscript is literal RAWTEXT; disabled noscript is tokenized,
 with a head subset limited to HTML whitespace, comments, link/meta/style. Trapped

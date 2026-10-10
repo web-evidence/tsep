@@ -96,6 +96,8 @@
     "tests/fixtures/html5-character-cases.json",
     "tests/fixtures/noscript-experiment-cases.json",
     "tests/fixtures/noscript-experiment-freeze.sha256",
+    "tests/fixtures/noscript-experiment-v2-cases.json",
+    "tests/fixtures/noscript-experiment-v2-freeze.sha256",
     "tests/fixtures/source-text-cases.json",
     "tests/fixtures/source-text-freeze.sha256",
     "tests/fixtures/source-text-v5-cases.json",

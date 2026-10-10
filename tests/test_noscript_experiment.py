@@ -17,6 +17,19 @@ from conformance.source_text import extract
 
 
 class NoscriptExperiment(unittest.TestCase):
+    def test_v2_nested_list_scope_frozen_before_fix(self):
+        path = ROOT/'tests/fixtures/noscript-experiment-v2-cases.json'
+        self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),
+                         (ROOT/'tests/fixtures/noscript-experiment-v2-freeze.sha256').read_text().strip())
+        cases = json.loads(path.read_text())['cases']
+        self.assertEqual(len(cases), 6)
+        for case in cases:
+            for mode in ('enabled', 'disabled'):
+                with self.subTest(case=case['id'], mode=mode):
+                    result = noscript.reading(case['html'], mode)
+                    actual = [s['text'] for s in result['segments']] if result['complete'] else None
+                    self.assertEqual(actual, case[mode+'_segments'])
+
     def test_frozen_whole_document_expectations_and_per_reading_candidates(self):
         path = ROOT/'tests/fixtures/noscript-experiment-cases.json'
         self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),
