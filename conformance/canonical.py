@@ -154,8 +154,12 @@ def doms(target, doc, plan, final, headers):
     need(all(text_present(render.get('browser', {}).get(k)) for k in ('name', 'version')), 'Missing browser/version')
     records = render.get('states')
     need(isinstance(records, list), 'Missing DOM captures')
-    need(all(r['id'] in ids for r in records), 'Unplanned DOM capture')
     results = []
+    if any(r['id'] not in ids for r in records):
+        # The structured path must retain attributable planned-state failures.
+        # Preserve the fixed historical reader's previous whole-record refusal.
+        need(plan.get('dom_reader') == 'structured-inventory-v2', 'Unplanned DOM capture')
+        results.append((None, 'Unplanned DOM capture'))
     for state in states:
         try:
             need(isinstance(state['interactions'], list) and all(text_present(s) for s in state['interactions'])
@@ -171,7 +175,10 @@ def doms(target, doc, plan, final, headers):
                  and record.get('errors') == [], 'Incomplete/failed rendered state')
             need(record.get('interactions') == state['interactions'] and record.get('wait') == state['wait'],
                  'DOM scenario mismatch')
-            results.append((html(record['dom']), None))
+            from conformance.structured_dom import Surface, reader, READER
+            surface = (Surface(record, final, doc['http'], target['intent']['crawler'])
+                       if reader(plan, record) == READER else html(record['dom']))
+            results.append((surface, None))
         except ERRORS as error:
             results.append((None, str(error)))
     return results
@@ -227,9 +234,13 @@ def declarations(target, member, preferred):
         for parser, error in parsers:
             if error:
                 findings.append(('inconclusive', error)); continue
-            findings.append(signals(parser.canonicals, preferred, label + ' canonical'))
-            if label in required and not parser.canonicals:
-                findings.append(('fail', 'Required ' + label + ' canonical absent'))
+            try:
+                values = parser.canonicals
+                findings.append(signals(values, preferred, label + ' canonical' + ('; ' + parser.detail if hasattr(parser, 'detail') else '')))
+                if label in required and not values:
+                    findings.append(('fail', 'Required ' + label + ' canonical absent'))
+            except ERRORS as error:
+                findings.append(('inconclusive', str(error)))
     return combined(findings)
 
 
@@ -279,7 +290,11 @@ def destination(target, members, preferred):
     except ERRORS as error:
         findings.append(('inconclusive', str(error)))
     for parser, error in source + rendered:
-        findings.append(('inconclusive', error) if error else signals(parser.canonicals, preferred, 'Preferred HTML/DOM canonical'))
+        if error:
+            findings.append(('inconclusive', error))
+        else:
+            findings.append(guarded(lambda: signals(parser.canonicals, preferred, 'Preferred HTML/DOM canonical'
+                + ('; ' + parser.detail if hasattr(parser, 'detail') else ''))))
     findings.append(guarded(content_review, target, members))
     return combined(findings)
 
@@ -400,10 +415,14 @@ def internal_links(target, members, preferred):
             for parser, error in initial + rendered:
                 if error:
                     findings.append(('inconclusive', error)); continue
-                links = [(href, urldefrag(urljoin(final, href))[0]) for href in parser.anchors]
+                try:
+                    anchors = parser.anchors
+                except ERRORS as error:
+                    findings.append(('inconclusive', str(error))); continue
+                links = [(href, urldefrag(urljoin(final, href))[0]) for href in anchors]
                 bad = [(href, url) for href, url in links if url in family and url != preferred
                        and (source['url'], url) not in exempt]
-                findings.append(('fail' if bad else 'pass', source['url'] + ' href/destination pairs: ' + repr(links)))
+                findings.append(('fail' if bad else 'pass', source['url'] + ' href/destination pairs: ' + repr(links) + ('; ' + parser.detail if hasattr(parser, 'detail') else '')))
         except ERRORS as error:
             findings.append(('inconclusive', str(error)))
     if any(d['url'] not in urls for d in documents):

@@ -1,3 +1,7 @@
+Current integration: draft.10 adds the predeclared [structured rendered reader](structured-rendering.md) for TS07/TS10.
+Intégration actuelle : draft.10, lecture structurée du rendu ; collecte réelle et recette humaine restent distinctes.
+The historical draft.9 integration and earlier milestones below retain their named scope.
+
 Current integration: draft.9 adds TS04-A01/A02 and the shared TS07 robots reader,
 with prior profiles, resource review workflow and [explicit migration](migration-draft.9.md).
 Intégration actuelle : draft.9 ajoute TS04 et le lecteur partagé TS07, sans finaliser

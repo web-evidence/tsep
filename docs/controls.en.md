@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.9 — Controls
+# TSEP 0.1.0-draft.10 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.9:TS01-A01`
+`TSEP@0.1.0-draft.10:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.9:TS01-A02`
+`TSEP@0.1.0-draft.10:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.9:TS02-A01`
+`TSEP@0.1.0-draft.10:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.9:TS02-A02`
+`TSEP@0.1.0-draft.10:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.9:TS04-A01`
+`TSEP@0.1.0-draft.10:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.9:TS04-A02`
+`TSEP@0.1.0-draft.10:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.9:TS07-A01`
+`TSEP@0.1.0-draft.10:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -344,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.9:TS07-A02`
+`TSEP@0.1.0-draft.10:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.9:TS07-A03`
+`TSEP@0.1.0-draft.10:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -378,19 +378,19 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Pages whose scripts or states can affect directives, or whose stability is not established.
 
-**Method.** Fix required states, interactions and waiting conditions before capture. Compare final headers and source HTML with each DOM, declaring browser/version, enabled scripts, time, errors and context. Bind each capture to the source response and target. Do not assume the engine renders initially noindex HTML.
+**Method.** Fix required states, interactions and waiting conditions before capture. Compare final headers and source HTML with each DOM, declaring browser/version, enabled scripts, time, errors and context. Bind each capture to the source response and target. Do not assume the engine renders initially noindex HTML. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin.
 
 **Acceptance.** All required states are documented and compatible with intent in the declared context. A contradiction in a complete, attributable state is fail even if other states are missing. Removing initial noindex with JavaScript does not yield pass: A03 remains inconclusive unless a required state supplies another contradiction; A01 retains its own source verdict.
 
 **Evidence.** Retained headers/source HTML, prior plan, dated raw DOMs with binding digest of the HTTP trace, final URL, context, browser/version, script state, interactions, waiting conditions and errors. Reasoned comparison and limitations; no simulated engine capture.
 
-**Assumptions.** Required states are listed before the test; local and engine rendering remain distinct.
+**Assumptions.** Required states are listed before the test; local and engine rendering remain distinct. The structured reader interprets HTML meta children directly in the real document head; ambiguous placement or shadow remains inconclusive. It retains combination with the declared navigation headers.
 
-**Inconclusive.** Missing required plan/capture, truncated state, script error, inconsistent source/target/context binding, invalid chronology, uninterpretable directive or late removal of initial noindex: inconclusive without an inferred pass. An established contradiction in another attributable state remains fail.
+**Inconclusive.** Missing required plan/capture, truncated state, script error, inconsistent source/target/context binding, invalid chronology, uninterpretable directive or late removal of initial noindex: inconclusive without an inferred pass. An established contradiction in another attributable state remains fail. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation.
 
 **When NA is allowed.** Non-HTML or directive stability demonstrated by documented review; intent evidence references this justification and supporting records. No unsupported “no JS” assertion.
 
-**Limits.** semiAuto: the plan and sufficiency of observations require review. The interpreter compares supplied captures; it does not execute JavaScript or establish exhaustive states, TS25, engine rendering or indexing.
+**Limits.** semiAuto: the plan and sufficiency of observations require review. The interpreter compares supplied captures; it does not execute JavaScript or establish exhaustive states, TS25, engine rendering or indexing. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md.
 
 ## TS08 — The actual indexing status is checked in Search Console.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.9:TS10-A01`
+`TSEP@0.1.0-draft.10:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -474,23 +474,23 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Each family member and its declared canonicalization strategy.
 
-**Method.** List members, preferred URL and expected method; compare final URLs, HTTP Link, HTML rel=canonical and required rendered states. Retain multiple declarations, even identical ones.
+**Method.** List members, preferred URL and expected method; compare final URLs, HTTP Link, HTML rel=canonical and required rendered states. Retain multiple declarations, even identical ones. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin.
 
 **Acceptance.** Present signals and those required by strategy identify the same absolute HTTP(S) URL without a fragment. HTML in head or HTTP Link are accepted; no universal HTML tag requirement. A relative canonical is fail for this TSEP rule without claiming Google cannot interpret it. Retain repeated identical declarations, which may agree; an attributable conflict remains fail despite another missing capture.
 
 **Evidence.** Family inventory in intent; headers and source (or html non-applicability record for non-HTML); extraction with location and method, required DOM attached when needed. Bind each capture to the family, context and date. Declare required methods and DOM states before assessment; bind DOMs to the HTTP trace by fingerprint. A rendering exemption needs a source-bound review and supporting records, not a bare “no JS” claim.
 
-**Assumptions.** Strategy distinguishes preferred canonical and duplicates; comparisons do not silently remove parameters or normalize case or slashes.
+**Assumptions.** Strategy distinguishes preferred canonical and duplicates; comparisons do not silently remove parameters or normalize case or slashes. In structured DOM, a difference between absolute raw href and the resolved property prevents a conclusion on that surface, without substituting either value or asserting an SEO defect. A relative or out-of-head canonical in ordinary DOM remains a TSEP contradiction; open shadow remains inconclusive.
 
-**Inconclusive.** Incomplete family/intent, ambiguous Link, truncated document or missing required rendered state: inconclusive.
+**Inconclusive.** Incomplete family/intent, ambiguous Link, truncated document or missing required rendered state: inconclusive. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation.
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** Relative URLs, placement and convergence are TSEP criteria; engine canonical selection is not observed here.
+**Limits.** Relative URLs, placement and convergence are TSEP criteria; engine canonical selection is not observed here. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md.
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.9:TS10-A02`
+`TSEP@0.1.0-draft.10:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -498,23 +498,23 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Every preferred destination in declared families.
 
-**Method.** Test the destination, retain GET and content; verify that any canonical there does not point elsewhere. Compare content with the declared family.
+**Method.** Test the destination, retain GET and content; verify that any canonical there does not point elsewhere. Compare content with the declared family. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin.
 
 **Acceptance.** The expected destination is directly accessible with 200, without canonical chains or cycles, and compatible content. A duplicate may remain 200 and point to the preferred URL; not every duplicate final URL must equal it.
 
 **Evidence.** Destination trace and body tied to the family; declaration graph and reasoned content comparison. The human compatibility review identifies its author, date, each member compared with the preferred representation, reasoned judgment and exact examined captures by fingerprint. A missing/stale reference or unestablished comparison prevents pass.
 
-**Assumptions.** Content similarity is assessed in business context without a universal similarity threshold.
+**Assumptions.** Content similarity is assessed in business context without a universal similarity threshold. In structured DOM, a difference between absolute raw href and the resolved property prevents a conclusion on that surface, without substituting either value or asserting an SEO defect. A relative or out-of-head canonical in ordinary DOM remains a TSEP contradiction; open shadow remains inconclusive.
 
-**Inconclusive.** Uncollected destination, timeout or incomparable content: inconclusive. An observed 404/5xx, cycle or hop is a contradiction.
+**Inconclusive.** Uncollected destination, timeout or incomparable content: inconclusive. An observed 404/5xx, cycle or hop is a contradiction. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation.
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant. A comparator can check the supplied review’s bindings and coverage; it does not turn that judgment into automatic content comparison.
+**Limits.** A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant. A comparator can check the supplied review’s bindings and coverage; it does not turn that judgment into automatic content comparison. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md.
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.9:TS10-A03`
+`TSEP@0.1.0-draft.10:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.9:TS10-A04`
+`TSEP@0.1.0-draft.10:TS10-A04`
 
 **Required inputs**: crawl, intent.
 
@@ -548,19 +548,19 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Each family and declared source-page population.
 
-**Method.** Extract links from the announced population; compare destinations and documented exceptions with canonical preference.
+**Method.** Extract links from the announced population; compare destinations and documented exceptions with canonical preference. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin.
 
 **Acceptance.** All assessed links follow strategy; no unexplained competing destination. Zero links can satisfy the rule only when the announced population is fully examined. An attributable competing link remains fail even if another source page or required state is missing.
 
 **Evidence.** Crawl export with source URL, href, destination, pages actually visited, failures and exclusions; reconciliation with the declared population. Retain source HTML and DOMs needed for extraction, bound to their traces, contexts and dates; a rendering exemption is reviewed and supported. Exceptions identify source, destination and reason.
 
-**Assumptions.** The crawl checks a declared population; it does not by itself prove that population exhaustive.
+**Assumptions.** The crawl checks a declared population; it does not by itself prove that population exhaustive. Structured reader v2 retains raw hrefs; bounded resolution only without a base declaration and with baseURI equal to the final URL. Shadow links or unsupported syntax remain inconclusive.
 
-**Inconclusive.** Missing source pages, unexamined links or absent crawl: inconclusive, never success from zero results.
+**Inconclusive.** Missing source pages, unexamined links or absent crawl: inconclusive, never success from zero results. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation.
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** No extrapolation to external links, pages outside the population or future dates.
+**Limits.** No extrapolation to external links, pages outside the population or future dates. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md.
 
 ## TS11 — Genuine duplicate variants converge without hiding distinct pages.
 

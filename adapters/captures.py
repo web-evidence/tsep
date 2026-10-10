@@ -21,19 +21,23 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '9'
+VERSION = '10'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
 
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
-    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'provenance.runtime'):
+    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
-    return loaded_sources(ROOT, modules)
+    result = loaded_sources(ROOT, modules)
+    result['collectors/rendered_metadata.js'] = tsep.digest(ROOT/'collectors/rendered_metadata.js')
+    return result
 
 
 COVERAGE_INVENTORY = [
+    {'state': 'implemented', 'fr': 'TS07/TS10 : lecteur DOM structuré préalable, arbre complet, provenance fournie, sans authentification de navigation. Limites source et revues conservées.',
+     'en': 'TS07/TS10: predeclared structured DOM reader, complete tree and supplied attribution, without navigation authentication. Source limits and reviews retained.'},
     {'state': 'implemented', 'fr': 'TS04 : matrice robots préalable, ressources nécessaires, revues fournies et lecteur partagé TS07. Profils bornés explicites ; anciennes entrées TS07 sous profil historique fixe.',
      'en': 'TS04: prior robots matrix, required resources, supplied reviews and shared TS07 reader. Explicit bounded profiles; legacy TS07 inputs use a fixed historical profile.'},
     {'state': 'implemented', 'fr': 'Octets HTTP exacts en entrée v2 ; lecture des anciennes entrées UTF-8 v1.',
@@ -182,6 +186,19 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
     targets = [t['url'] for t in data['targets']]
     tsep.unique(targets, 'capture target')
     tsep.require(access in ACCESS, 'Explicit evidence access is required')
+    def synthetic_dom(value):
+        if isinstance(value, dict):
+            structured = value.get('structured_dom')
+            if isinstance(structured, dict):
+                acquisition = structured.get('acquisition')
+                if isinstance(acquisition, dict) and acquisition.get('kind') == 'authored-synthetic':
+                    tsep.require(access == 'synthetic', 'Authored structured DOM requires synthetic evidence access')
+            for child in value.values():
+                synthetic_dom(child)
+        elif isinstance(value, list):
+            for child in value:
+                synthetic_dom(child)
+    synthetic_dom(data)
     if any(r.startswith('TS02-') for r in data['rules']):
         for target in data['targets']:
             review = target.get('intent', {}).get('redirect_review', {})

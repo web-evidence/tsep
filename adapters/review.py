@@ -18,10 +18,11 @@ import tsep
 from adapters import captures, package
 from adapters.package import inventory, json_bytes, publish, regular, seal
 from conformance.canonical import content_binding
+from conformance.evaluate import binding_digest
 from conformance.robots_control import access_binding
 from provenance.runtime import loaded_sources
 
-VERSION = '2'
+VERSION = '3'
 ACCESS = ('public', 'restricted', 'synthetic')
 
 
@@ -32,6 +33,30 @@ def source_files():
 
 def now():
     return datetime.now(timezone.utc).isoformat()
+
+
+def rendered_captures(target):
+    """Review identities derived from supplied bytes, not a capture attestation."""
+    result = []
+    for doc in target.get('documents', []):
+        for state in doc.get('render', {}).get('states', []):
+            record = state.get('structured_dom')
+            if not isinstance(record, dict):
+                continue
+            snapshot = record.get('snapshot')
+            if not isinstance(snapshot, dict) or not isinstance(snapshot.get('tree'), dict):
+                continue
+            serialization = snapshot['tree'].get('serialization')
+            html = serialization.get('html') if isinstance(serialization, dict) else None
+            acquisition = record.get('acquisition')
+            acquisition = acquisition if isinstance(acquisition, dict) else {}
+            result.append({'url': doc.get('url'), 'state_id': state.get('id'),
+                'acquisition_kind': acquisition.get('kind'), 'navigation_id': acquisition.get('navigation_id'),
+                'snapshot_sha256': binding_digest(snapshot),
+                'serialization_utf8_sha256': hashlib.sha256(html.encode('utf-8')).hexdigest()
+                    if isinstance(html, str) else None,
+                'attribution': 'Supplied records, not independent navigation authentication'})
+    return result
 
 
 def tasks(data):
@@ -59,7 +84,11 @@ def tasks(data):
                 tsep.require(urls and len(urls) == len(set(urls)), 'Missing/duplicate canonical members')
                 choices = ['compatible', 'incompatible', 'inconclusive']
                 prompt = ('Comparer chaque membre à la préférence déclarée, y compris la préférence elle-même ; '
-                          'justifier avec les contenus examinés. / Compare each member with the declared preference and explain.')
+                          'justifier avec les contenus examinés. Le verdict de métadonnées repose sur l’arbre structuré ; '
+                          'la sérialisation est une pièce compagnon, sans concordance sémantique automatiquement prouvée. '
+                          'Examiner les deux avec leur identité de capture. / Compare each member with the declared preference. '
+                          'Metadata findings use the structured tree; serialization is a companion, not a substitute. '
+                          'Review both under the listed capture identity; their semantic agreement is not automatically established.')
             else:
                 urls = [target['url']]
                 choices = ['no-obstacle', 'unresolved-challenge']
@@ -69,6 +98,8 @@ def tasks(data):
             result.append({'id': 'target-'+str(index)+'-'+rule, 'target_index': index-1,
                 'target': target['url'], 'rule_id': rule, 'field': field, 'title': title,
                 'question': prompt, 'comparison_urls': urls, 'choices': choices})
+            if rule == 'TS10-A02':
+                result[-1]['rendered_captures'] = rendered_captures(target)
     tsep.require(result, 'No supported human review task; select TS04-A02, TS07-A02 or TS10-A02 with applicable resources')
     return result
 

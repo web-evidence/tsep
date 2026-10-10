@@ -32,6 +32,7 @@ EXTERNAL_CASE_IDS = (
     'redirect-direct', 'redirect-rejected-review', 'redirect-missing-review',
     'robots-control-correct', 'robots-control-preproduction', 'robots-control-missing-robots',
     'redirect-wrong-destination', 'redirect-unfinished',
+    'structured-ts07-compatible', 'structured-ts07-added-noindex', 'structured-canonical-absolute-api-difference',
 )
 
 

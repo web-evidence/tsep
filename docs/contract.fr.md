@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.9
+# Contrat de rapport — TSEP 0.1.0-draft.10
 
 ## Périmètre déclaré
 
@@ -232,13 +232,13 @@ FR/EN affiche la même cause. Décision et codes de sortie restent inchangés.
 
 ## Versions et revendications d’implémentation
 
-Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.9:TS01`. Ne jamais
+Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.10:TS01`. Ne jamais
 remplacer silencieusement un artefact publié. Changer applicabilité, attendus,
 preuves ou décisions exige une nouvelle version et une note de migration.
 TS01–TS44 restent des identités permanentes.
 
 La suite démontre seulement « réussit les tests d’échange des rapports fournis
-avec 0.1.0-draft.9 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
+avec 0.1.0-draft.10 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
 plus large exige une correspondance par règle et des limites publiées. Aucune
 interopérabilité avec un outil tiers n’a encore été démontrée.
 
@@ -263,3 +263,13 @@ jamais vers ce profil. Un refus HTTP 401/403 attribuable conserve fail même san
 robots. Les limites de rendu, autres directives et revues ne sont pas supprimées.
 Voir [migration draft.9](migration-draft.9.md). Aucune visite réelle du moteur,
 conformité globale ou indexation n'est déduite de ces résultats.
+
+## États DOM structurés — draft.10
+
+TS07-A03 et TS10-A01/A02/A04 acceptent le lecteur structuré préalablement choisi,
+avec arbre complet, sérialisation, liaisons et pièces de navigation. Une origine
+rédigée reste synthetic ; des acquisitions séparées ou une API connue comme altérée
+restent indéterminées. Aucun repli vers la sérialisation pour obtenir un accord.
+Les revues, en-têtes et sources conservent leur rôle ; aucune assimilation au moteur.
+Le [contrat détaillé](structured-rendering.md) et la [migration](migration-draft.10.md)
+définissent les bornes, décisions et distinctions avec les anciens candidats.

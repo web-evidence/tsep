@@ -1,5 +1,17 @@
 # Change history / Historique
 
+## 0.1.0-draft.10 — 2026-10-10 — structured rendered states
+
+Integrate a predeclared structured reader for TS07-A03 and TS10-A01/A02/A04,
+with complete inventory, provenance guards, exact declarations and retained failures.
+Keep the 299 prior raw cases; add 39 prefrozen authored cases. Interpreter 9,
+capture adapter 10, review workflow 3 with structured capture identities, unchanged report format 2. [Migration](docs/migration-draft.10.md).
+No real capture chain, human review or engine observation is inferred.
+
+Intégration du lecteur structuré, provenance des acquisitions explicite, aucune
+substitution favorable de valeur ou de lecteur. Les exigences source et humaines
+restent présentes ; les arbres rédigés ne sont pas des captures navigateur.
+
 ## 0.1.0-draft.9 — 2026-10-10 — shared robots and TS04
 
 Add TS04-A01/A02, prior origin/profile/resource matrices, evidence-bound access

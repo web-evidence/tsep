@@ -1,3 +1,9 @@
+Current review workflow: **3**. TS10 questions now list structured snapshot and
+serialization digests alongside acquisition/state identity. Older requests retain
+their original tools; no human answers are prefilled.
+Parcours actuel : **3**, identités des captures structurées dans les questions TS10 ;
+anciennes fiches et outils conservés. Aucune réponse humaine fabriquée.
+
 # Revue et rejeu des preuves / Evidence review and replay
 
 ## Français

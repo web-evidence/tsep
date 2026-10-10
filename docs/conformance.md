@@ -1,3 +1,6 @@
+Current: draft.10, interpreter 9, 338 raw cases (299 retained + 39 structured rendered cases).
+Actuel : draft.10 ; [lecture structurée](structured-rendering.md), bornes, provenance et [migration](migration-draft.10.md). Earlier named milestones below remain historical.
+
 # Executable conformance / Conformance exécutable
 
 ## Français

@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.9
+# Report contract — TSEP 0.1.0-draft.10
 
 ## Declared scope
 
@@ -226,13 +226,13 @@ summaries show the same cause. Neither the decision nor exit codes change.
 ## Versions and implementation claims
 
 Pin both version and protocol SHA-256. Cite IDs as
-`TSEP@0.1.0-draft.9:TS01`. Never silently replace a released artifact. Changes to
+`TSEP@0.1.0-draft.10:TS01`. Never silently replace a released artifact. Changes to
 applicability, expectations, required evidence or decisions require a new version
 and migration note. TS01–TS44 are permanent identities, not reusable slots.
 
 This candidate has one implementation of report validation. Passing its tests
 allows the narrow statement “passes the bundled report-interchange tests for
-0.1.0-draft.9.” It does not establish implementation of all 44 assessment methods.
+0.1.0-draft.10.” It does not establish implementation of all 44 assessment methods.
 An implementation must publish per-rule mapping and limitations before making a
 broader claim. No compatibility with a third-party tool has yet been demonstrated.
 
@@ -257,3 +257,12 @@ legacy-exact-v1 profile; explicit-profile refusal never falls back to it. Attrib
 HTTP 401/403 denial remains fail without robots. Rendering/directive/review limits
 remain. See [draft.9 migration](migration-draft.9.md). No actual engine visit,
 global conformity or indexing is inferred.
+
+## Structured DOM states — draft.10
+
+TS07-A03 and TS10-A01/A02/A04 accept a predeclared structured reader with complete
+tree, serialization, bindings and navigation records. Authored trees remain synthetic;
+separate acquisitions or known API alteration remain inconclusive. No fallback to
+serialization to gain agreement. Reviews, headers and source HTML retain their role;
+no engine equivalence. The [detailed contract](structured-rendering.md) and
+[migration](migration-draft.10.md) define bounds, decisions and experimental differences.

@@ -13,7 +13,7 @@ import tsep
 
 RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS04-A01', 'TS04-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04')
-VERSION = '8'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '9'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -176,7 +176,15 @@ def directive_result(headers, body, intent):
     parser.feed(body)
     parser.close()
     need(parser.roots == 1 and not parser.stack, 'Incomplete HTML structure')
-    directives = list(parser.directives)
+    return directive_values(headers, parser.directives, intent)
+
+
+def directive_values(headers, values, intent):
+    need(intent.get('crawler') == 'googlebot', 'Only the Googlebot directive series is implemented')
+    need(intent.get('indexing') in ('allow', 'exclude'), 'Missing indexing intent')
+    need(intent.get('following', 'unspecified') in ('allow', 'disallow', 'unspecified'), 'Unknown link intent')
+    need('presentation' not in intent, 'Presentation restrictions require review')
+    directives = list(values)
     for value in headers.get('x-robots-tag', []):
         # Only a leading, unambiguous crawler scope is supported.
         match = re.match(r'^([A-Za-z_-]+):\s*(.*)$', value)
@@ -291,8 +299,15 @@ def rendered_result(target, final_url, headers, body):
             need(state.get('interactions') == expected['interactions'] and state.get('wait') == expected['wait'],
                  'Interaction or waiting condition differs from plan')
             need(isinstance(state.get('errors'), list) and not state['errors'], 'Script/render errors or missing error record')
-            need(isinstance(state.get('dom'), str), 'Missing raw DOM')
-            outcome, reason = directive_result(headers, state['dom'], intent)
+            from conformance.structured_dom import Surface, reader, READER
+            if reader(plan, state) == READER:
+                need(utf8_media(headers, ('text/html',)), 'Unsupported rendered source media')
+                surface = Surface(state, final_url, target['http'], intent['crawler'])
+                outcome, reason = directive_values(headers, surface.directives, intent)
+                reason += '; ' + surface.detail
+            else:
+                need(isinstance(state.get('dom'), str), 'Missing raw DOM')
+                outcome, reason = directive_result(headers, state['dom'], intent)
         except (Unknown, tsep.Invalid, KeyError, TypeError, ValueError) as error:
             outcome, reason = 'inconclusive', str(error)
         results.append((outcome, label + ': ' + reason))
