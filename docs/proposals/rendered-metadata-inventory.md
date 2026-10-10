@@ -4,6 +4,12 @@
 **Plan expérimental 2 non appliqué. Aucun nouveau verdict ni version normative.**
 The active protocol remains `0.1.0-draft.7`. This plan concerns observations only.
 
+Implementation follow-up (2026-10-10): an [experimental inventory](../rendered-metadata-inventory.md)
+now exists separately. The plan below is retained as written; complete browser
+validation and its review criteria remain pending. / Un inventaire expérimental
+séparé est maintenant implémenté. Le plan ci-dessous reste conservé ; sa validation
+complète dans les navigateurs et sa revue restent à accomplir.
+
 ## Français
 
 ### Pourquoi cette étape

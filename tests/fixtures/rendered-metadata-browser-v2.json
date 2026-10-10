@@ -1,0 +1,352 @@
+{
+  "kind": "synthetic-browser-recipes",
+  "version": "2",
+  "normative": false,
+  "plan": "rendered-metadata-plan-v2.json",
+  "scope": "22 browser scenarios from the 24-case design plan; broken-path and same-script are offline checks. Two extra JS/corrected bridge scenarios. Original plan unchanged.",
+  "limits": {
+    "nodes": 1024,
+    "depth": 64,
+    "tree_utf8_bytes": 524288,
+    "serialization_utf8_bytes": 262144,
+    "cooperative_ms": 2000,
+    "invocation_timeout_ms": 5000
+  },
+  "cases": [
+    {
+      "id": "head-canonical",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "",
+      "script": "",
+      "expected": {
+        "canonical": {
+          "case-canonical": {
+            "raw_href": "{base}/product",
+            "position": "head-direct"
+          }
+        }
+      }
+    },
+    {
+      "id": "root-auxiliary",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "",
+      "script": "const x=document.createElement('div');x.id='case-root';document.documentElement.appendChild(x);",
+      "expected": {
+        "nodes": {
+          "case-root": {
+            "position": "outside-head-body"
+          }
+        }
+      }
+    },
+    {
+      "id": "root-canonical",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "",
+      "script": "const x=document.createElement('div');x.id='case-root';x.innerHTML='<link id=case-outside rel=canonical href=\"{base}/other\">';document.documentElement.appendChild(x);",
+      "expected": {
+        "canonical": {
+          "case-outside": {
+            "raw_href": "{base}/other",
+            "position": "outside-head-body"
+          }
+        }
+      }
+    },
+    {
+      "id": "custom-neutral",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "<x-demo id=\"case-custom\">Neutral</x-demo>",
+      "script": "",
+      "expected": {
+        "nodes": {
+          "case-custom": {
+            "position": "body"
+          }
+        }
+      }
+    },
+    {
+      "id": "custom-canonical",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "<x-demo><link id=\"case-custom-link\" rel=\"canonical\" href=\"{base}/other\"></x-demo>",
+      "script": "",
+      "expected": {
+        "canonical": {
+          "case-custom-link": {
+            "raw_href": "{base}/other",
+            "position": "body"
+          }
+        }
+      }
+    },
+    {
+      "id": "relative-href",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"../product\">",
+      "body": "",
+      "script": "",
+      "expected": {
+        "canonical": {
+          "case-canonical": {
+            "raw_href": "../product",
+            "resolved_href": "{base}/product",
+            "position": "head-direct"
+          }
+        }
+      }
+    },
+    {
+      "id": "base-mutation",
+      "head": "<base id=\"case-base1\" href=\"{base}/old/\"><base id=\"case-base2\" href=\"{base}/ignored/\"><link id=\"case-canonical\" rel=\"canonical\" href=\"item\">",
+      "body": "",
+      "script": "document.getElementById('case-base1').href='{base}/new/';",
+      "expected": {
+        "base_uri": "{base}/new/",
+        "canonical": {
+          "case-canonical": {
+            "raw_href": "item",
+            "resolved_href": "{base}/new/item"
+          }
+        }
+      }
+    },
+    {
+      "id": "canonical-body",
+      "head": "",
+      "body": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "script": "",
+      "expected": {
+        "canonical": {
+          "case-canonical": {
+            "position": "body"
+          }
+        }
+      }
+    },
+    {
+      "id": "canonical-foreign",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "<svg><link id=\"case-foreign\" rel=\"canonical\" href=\"{base}/other\"></link></svg>",
+      "script": "",
+      "expected": {
+        "non_html": [
+          "case-foreign"
+        ]
+      }
+    },
+    {
+      "id": "open-shadow",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "<div id=\"case-host\"></div>",
+      "script": "document.getElementById('case-host').attachShadow({mode:'open'}).innerHTML='<link id=case-shadow rel=canonical href=\"{base}/shadow\">';",
+      "expected": {
+        "canonical": {
+          "case-shadow": {
+            "raw_href": "{base}/shadow",
+            "position": "open-shadow"
+          }
+        }
+      }
+    },
+    {
+      "id": "closed-shadow",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "<div id=\"case-host\"></div>",
+      "script": "document.getElementById('case-host').attachShadow({mode:'closed'}).innerHTML='<link id=case-hidden rel=canonical href=\"{base}/hidden\">';",
+      "expected": {
+        "absent_ids": [
+          "case-hidden"
+        ],
+        "unexposed_shadow": [
+          "case-host"
+        ]
+      }
+    },
+    {
+      "id": "frame-srcdoc",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "<iframe id=\"case-frame\" sandbox srcdoc=\"&lt;link id=case-frame-link rel=canonical href=&quot;{base}/inner&quot;&gt;\"></iframe>",
+      "script": "",
+      "expected": {
+        "frame_ids": [
+          "case-frame"
+        ],
+        "absent_ids": [
+          "case-frame-link"
+        ]
+      }
+    },
+    {
+      "id": "frame-same-origin",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "<iframe id=\"case-frame\" src=\"{base}/frame.html\"></iframe>",
+      "script": "",
+      "expected": {
+        "frame_ids": [
+          "case-frame"
+        ],
+        "absent_ids": [
+          "case-frame-link"
+        ]
+      }
+    },
+    {
+      "id": "frame-cross-origin",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "<iframe id=\"case-frame\" src=\"{cross}/frame.html\"></iframe>",
+      "script": "",
+      "expected": {
+        "frame_ids": [
+          "case-frame"
+        ],
+        "absent_ids": [
+          "case-frame-link"
+        ]
+      }
+    },
+    {
+      "id": "template",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "<template id=\"case-template\"><link id=\"case-hidden\" rel=\"canonical\" href=\"{base}/hidden\"></template>",
+      "script": "",
+      "expected": {
+        "template_ids": [
+          "case-template"
+        ],
+        "absent_ids": [
+          "case-hidden"
+        ]
+      }
+    },
+    {
+      "id": "noscript-text",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "<noscript id=\"case-noscript\"><meta id=\"case-hidden\" name=\"robots\" content=\"noindex\"></noscript>",
+      "script": "",
+      "expected": {
+        "absent_ids": [
+          "case-hidden"
+        ],
+        "text_under": "case-noscript"
+      }
+    },
+    {
+      "id": "source-noindex-removed",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\"><meta id=\"case-removed\" name=\"robots\" content=\"noindex\">",
+      "body": "",
+      "script": "document.getElementById('case-removed').remove();",
+      "expected": {
+        "absent_ids": [
+          "case-removed"
+        ],
+        "source_contains": "id=\"case-removed\""
+      }
+    },
+    {
+      "id": "environment-meta",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "",
+      "script": "const x=document.createElement('meta');x.id='case-added';x.name='robots';x.content='noindex';document.head.appendChild(x);",
+      "expected": {
+        "robots": {
+          "case-added": {
+            "content": "noindex",
+            "position": "head-direct"
+          }
+        }
+      }
+    },
+    {
+      "id": "duplicates",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\"><link id=\"case-second\" rel=\"canonical\" href=\"{base}/other\"><meta id=\"case-index\" name=\"robots\" content=\"index\"><meta id=\"case-noindex\" name=\"robots\" content=\"noindex\">",
+      "body": "",
+      "script": "",
+      "expected": {
+        "canonical_ids": [
+          "case-canonical",
+          "case-second"
+        ],
+        "robots_ids": [
+          "case-index",
+          "case-noindex"
+        ]
+      }
+    },
+    {
+      "id": "attribute-order",
+      "head": "<link data-before=\"a&amp;b\" id=\"case-canonical\" rel=\"CANONICAL alternate\" href=\"{base}/product?a=1&amp;b=2\" data-after=\"&quot;x&quot;\">",
+      "body": "",
+      "script": "",
+      "expected": {
+        "canonical": {
+          "case-canonical": {
+            "raw_href": "{base}/product?a=1&b=2"
+          }
+        },
+        "attribute_order": [
+          "data-before",
+          "id",
+          "rel",
+          "href",
+          "data-after"
+        ]
+      }
+    },
+    {
+      "id": "truncated-tree",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "",
+      "script": "const x=document.createElement('div');for(let i=0;i<2200;i++)x.appendChild(document.createElement('span'));document.body.appendChild(x);",
+      "expected": {
+        "traversal_complete": false,
+        "stop_reason": "node-limit"
+      }
+    },
+    {
+      "id": "page-api-override",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "<p id=\"case-api-witness\"></p>",
+      "script": "const old=Element.prototype.getAttribute;Element.prototype.getAttribute=function(n){return n==='href'?'https://altered.invalid/':old.call(this,n)};Object.defineProperty(HTMLLinkElement.prototype,'href',{get(){return 'https://altered.invalid/'}});document.getElementById('case-api-witness').textContent=document.getElementById('case-canonical').href;",
+      "expected": {
+        "api_probe": "record-only; do not infer integrity or an execution world"
+      }
+    },
+    {
+      "id": "js-canonical",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "",
+      "script": "document.getElementById('case-canonical').href='{base}/product?color=blue';",
+      "expected": {
+        "canonical": {
+          "case-canonical": {
+            "raw_href": "{base}/product?color=blue",
+            "position": "head-direct"
+          }
+        },
+        "source_contains": "href=\"{base}/product\""
+      },
+      "bridge_case": true
+    },
+    {
+      "id": "corrected",
+      "head": "<link id=\"case-canonical\" rel=\"canonical\" href=\"{base}/product\">",
+      "body": "",
+      "script": "",
+      "expected": {
+        "canonical": {
+          "case-canonical": {
+            "raw_href": "{base}/product",
+            "position": "head-direct"
+          }
+        }
+      },
+      "bridge_case": true
+    }
+  ],
+  "supersedes_sha256": "455e1953cd60acf34762b4a7d99b888d63163742a4d76b267930aa805e672bfe",
+  "migration": {
+    "en": "Node budget reduced from 2048 to 1024 after a transport returned 2000 records. Record reported_node_count and require equality with received records. Missing document.baseURI or attribute namespace/localName is an explicit API error, never reconstructed. Existing recipe expectations remain unchanged; an unavailable API may prevent them from being established.",
+    "fr": "Borne réduite de 2048 à 1024 après réception de 2000 nœuds. Compteur déclaré comparé au nombre reçu. baseURI ou espace de noms/nom local d’attribut absent : erreur API explicite, jamais reconstruite. Attentes des cas inchangées ; une API indisponible peut empêcher de les établir."
+  }
+}
