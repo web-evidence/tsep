@@ -1,0 +1,70 @@
+{
+  "format_version": 1,
+  "scope": "Synthetic loopback workflow expectations authored before implementation; no real observations",
+  "cases": [
+    {
+      "id": "digest-same",
+      "active_a01": "pass",
+      "active_a02": "pass",
+      "experiment": "not-needed-digest"
+    },
+    {
+      "id": "markers-simple",
+      "active_a01": "pass",
+      "active_a02": "pass",
+      "experiment": "pass"
+    },
+    {
+      "id": "markers-noscript",
+      "active_a01": "pass",
+      "active_a02": "inconclusive",
+      "experiment": "pass"
+    },
+    {
+      "id": "required-missing",
+      "active_a01": "pass",
+      "active_a02": "inconclusive",
+      "experiment": "fail"
+    },
+    {
+      "id": "forbidden-present",
+      "active_a01": "pass",
+      "active_a02": "inconclusive",
+      "experiment": "fail"
+    },
+    {
+      "id": "unsupported-reading",
+      "active_a01": "pass",
+      "active_a02": "inconclusive",
+      "experiment": "inconclusive"
+    },
+    {
+      "id": "different-url",
+      "active_a01": "pass",
+      "active_a02": "fail",
+      "experiment": "not-eligible-url"
+    },
+    {
+      "id": "http-error",
+      "active_a01": "fail",
+      "active_a02": "pass",
+      "experiment": "not-eligible-status"
+    },
+    {
+      "id": "stable-policy",
+      "active_a01": "pass",
+      "active_a02": "fail",
+      "experiment": "not-eligible-stable-policy"
+    }
+  ],
+  "negative_integrity_cases": [
+    "changed intent after receipt",
+    "receipt after measurement starts",
+    "experimental source changed",
+    "raw capture/sidecar disagreement",
+    "input does not bind reference or evaluation",
+    "tampered experimental reference check",
+    "contradictory reference markers",
+    "replay with different Python runtime disclosed"
+  ]
+}
