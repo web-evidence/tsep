@@ -19,9 +19,25 @@ sys.path.insert(0, str(ROOT))
 import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 
-VERSION = '2'
+VERSION = '3'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
+COVERAGE_INVENTORY = [
+    {'state': 'implemented', 'fr': 'Octets HTTP exacts en entrée v2 ; lecture des anciennes entrées UTF-8 v1.',
+     'en': 'Exact HTTP bytes in input v2; legacy UTF-8 input v1 retained.'},
+    {'state': 'implemented', 'fr': 'HTTP/1.1 chunked borné, gzip simple et deflate enveloppé zlib ; SHA-256 après décodage, sans normalisation.',
+     'en': 'Bounded HTTP/1.1 chunked, single gzip member and zlib-wrapped deflate; SHA-256 after decoding, without normalization.'},
+    {'state': 'implemented', 'fr': 'Rapport hors ligne, preuves originales et comparaison ; inconnues et échecs conservés.',
+     'en': 'Offline report, original evidence and comparison; unknowns and failures retained.'},
+    {'state': 'deferred', 'fr': 'Brotli, gzip multimembre, extensions/trailers chunked, HTTP/2 brut : indéterminés.',
+     'en': 'Brotli, multi-member gzip, chunk extensions/trailers and raw HTTP/2: inconclusive.'},
+    {'state': 'deferred', 'fr': 'Marqueurs : UTF-8 explicite et HTML borné seulement. Octets non UTF-8 conservés et empreintes comparables, sans extraction de texte implicite.',
+     'en': 'Markers: explicit UTF-8 and bounded HTML only. Non-UTF-8 bytes retained and hashes comparable, without implicit text extraction.'},
+    {'state': 'out-of-scope', 'fr': 'Cet adaptateur ne collecte pas, ne rend pas JavaScript et ne produit aucune revue humaine manquante.',
+     'en': 'This adapter does not collect, render JavaScript or supply missing human reviews.'},
+    {'state': 'out-of-scope', 'fr': 'Pas de preuve de Googlebot réel, indexation, classement ou conformité globale.',
+     'en': 'No evidence of actual Googlebot behavior, indexing, ranking or global conformity.'},
+]
 
 
 def dated(value, fallback, issued_text):
@@ -55,7 +71,7 @@ def pieces(target):
     result = {}
     if 'intent' in target:
         result['intent'] = {k: target[k] for k in
-                            ('intent', 'context', 'access_review', 'exemption_review', 'content_review') if k in target}
+                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review') if k in target}
     if 'http' in target or 'documents' in target:
         result['http'] = {k: target[k] for k in ('http', 'documents') if k in target}
         # These are source response records, not invented HTML for non-HTML resources.
@@ -66,7 +82,7 @@ def pieces(target):
             if not isinstance(doc, dict) or not isinstance(doc.get('http'), list):
                 continue
             for hop in doc['http']:
-                if isinstance(hop, dict) and isinstance(hop.get('response'), str):
+                if isinstance(hop, dict) and isinstance(hop.get('response'), (str, dict)):
                     surfaces.append({k: hop[k] for k in ('url', 'complete', 'response') if k in hop})
         if surfaces:
             result['html'] = {'source_responses': surfaces,
@@ -130,7 +146,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
     data = tsep.parse_json(original)
     tsep.require(isinstance(data, dict) and set(data) == {'input_version', 'rules', 'targets'},
                  'Supply only a captures input object, not a case, expected outcomes or a report')
-    tsep.require(data['input_version'] == '1', 'Unsupported captures input version')
+    tsep.require(data['input_version'] in ('1', '2'), 'Unsupported captures input version')
     tsep.require(isinstance(data['rules'], list) and data['rules']
                  and all(isinstance(r, str) and r in RULES for r in data['rules']), 'Explicit supported rules required')
     tsep.unique(data['rules'], 'capture rule')
@@ -183,8 +199,9 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     'interpreter': {'name': 'TSEP bounded reference interpreter', 'version': INTERPRETER_VERSION},
                     'imported_at': issued_text, 'python': sys.version.split()[0],
                     'source_files': {name: tsep.digest(ROOT/name) for name in
-                                     ('adapters/captures.py', 'conformance/evaluate.py', 'conformance/canonical.py', 'tsep.py')},
+                                     ('adapters/captures.py', 'conformance/evaluate.py', 'conformance/http.py', 'conformance/canonical.py', 'tsep.py')},
                     'input_sha256': hashlib.sha256(original).hexdigest(), 'access': access,
+                    'coverage_inventory': COVERAGE_INVENTORY,
                     'network_requests_by_adapter': 0, 'coverage': declared_coverage,
                     'limitations': 'Reference interpreter only. Supplied intent/reviews are not authenticated; no collection, JS execution, engine observation or global conformity.'}
         shared.append(artifact('import-record', 'operator-docs', 'import.json', metadata, targets, issued_text,
@@ -228,7 +245,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('input', type=Path, help='A single input_version 1 captures object; no expected outcomes')
+    parser.add_argument('input', type=Path, help='A single input_version 1 or 2 captures object; no expected outcomes')
     parser.add_argument('--output-dir', type=Path, required=True, help='New directory, existing parent; never overwrite')
     parser.add_argument('--assessor', required=True)
     parser.add_argument('--label', required=True)

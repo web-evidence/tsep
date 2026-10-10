@@ -1,0 +1,40 @@
+# PREPARED EXAMPLE ONLY: copy/adapt in the authorized consumer repository.
+# See docs/guided-capture.md; no remote CI run is implied.
+# Required committed inputs: vendor/tsep/ (verified frozen archive),
+# tsep-reference/ (capture.json, raw files, SHA256SUMS), tsep-intent.json.
+# Both phases' network description must match the actual runner environment.
+name: TS01 evidence on declared targets
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Collect against prior intent, retain results, enforce gate
+        shell: bash
+        run: |
+          python3 vendor/tsep/collectors/ts01.py evaluate \
+            --reference tsep-reference --intent tsep-intent.json \
+            --output tsep-result --lang en
+          python3 vendor/tsep/collectors/ts01.py replay tsep-result \
+            --output tsep-replay --lang en
+          python3 vendor/tsep/tsep.py gate tsep-result/bundle/report.json --summary --lang en
+      - name: Preserve evidence including failures
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4 observed 2026-10-10
+        with:
+          name: ts01-evidence
+          path: |
+            tsep-result/
+            tsep-replay/
+          if-no-files-found: warn
+          retention-days: 14

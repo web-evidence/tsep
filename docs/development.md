@@ -26,6 +26,11 @@ python3 scripts/verify.py
 It validates the contract, runs report/distribution tests and the raw-input
 conformance suite, regenerates synthetic examples outside the source tree, runs the bounded HTTP cases on loopback,
 builds an archive, extracts it and checks that rebuilding yields identical bytes.
+Guided collector tests also bind 127.0.0.1 during the unit step: synthetic
+changing pages exercise gzip/deflate, frozen intent and network-forbidden replay.
+The consumer workflow under `examples/` is prepared, not activated or observed
+on remote CI. See [guided capture](guided-capture.md).
+
 The tests include offline capture-to-bundle conversion, file integrity and partial
 coverage; raw capture examples are regenerated alongside report examples. The
 capture adapter has its own tool version and code fingerprints. It uses the
@@ -176,6 +181,11 @@ exécutent toujours les 216 cas**, depuis les sources et l’archive extraite ; 
 corpus reste inchangé. L’objectif unitaire est inférieur à 60 secondes, laissant
 au moins autant de marge sous le délai par défaut. Les durées dépendent de Python,
 du matériel et de sa charge ; ne revendiquer que les environnements mesurés.
+
+Les tests du collecteur ouvrent aussi 127.0.0.1 pendant l’étape unitaire : pages
+synthétiques changeantes, gzip/deflate, intention préalable et rejeu réseau interdit.
+Le workflow consommateur dans `examples/` est préparé, non activé et non observé
+en CI distante. Voir la [collecte guidée](guided-capture.md).
 
 Les tests couvrent aussi la conversion hors ligne captures → paquet, l’intégrité
 et la couverture partielle ; les exemples de captures sont régénérés avec les

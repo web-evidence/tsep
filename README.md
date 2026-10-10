@@ -50,8 +50,9 @@ validation establishes consistency and file integrity.
    also produce a [report, evidence and EARL bundle](docs/capture-adapter.md)
    directly, with computed results and explicit coverage.
    The [standalone HTML report](docs/html-report.md) exposes evidence offline and
-   compares retained assessments. Interpreter version 2 supports a
-   [bounded HTTP chunked subset](docs/http-transfer-v2.md).
+   compares retained assessments. The [guided TS01 workflow](docs/guided-capture.md)
+   captures raw bytes, freezes criteria before measurement and replays offline;
+   interpreter version 3 supports bounded chunked, gzip and deflate decoding.
 2. **Declare partial coverage**: select a `custom` list, keep unknowns as
    NT/inconclusive and link each artifact to its target. Selecting TS01/TS07 does
    not satisfy a named profile. An isolated test cannot pass its parent control.

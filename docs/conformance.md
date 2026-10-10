@@ -16,11 +16,15 @@ des neuf règles. Un désaccord renvoie 1, une entrée invalide 64 ; 0 signifie 
 avec éventuelle couverture réduite explicitement comptée.
 Il n’émet ni rapport C ni conformité globale.
 
+L’interpréteur version 3 accepte également l’[entrée binaire v2](guided-capture.md),
+avec base64/SHA-256, décodage gzip/deflate borné et empreinte sur octets de contenu.
+La version 1 ci-dessous et le corpus historique restent conservés.
+
 Pour convertir un objet `input` en rapport et preuves, voir
 l’[adaptateur de captures](capture-adapter.md). Il conserve les résultats calculés,
 y compris les inconnues de référence, sans leur substituer `expected`.
 
-### Format input_version 1
+### Format input_version 1 (historique)
 
 Objet `{ "input_version": "1", "rules": [...], "targets": [...] }`. `rules` liste
 explicitement les neuf IDs TS01-A01/A02, TS07-A01/A02/A03 et TS10-A01 à A04.
@@ -74,8 +78,8 @@ répétés sont conservés. Le HTML source est le corps de la réponse finale ; 
 est le corps de sa propre réponse. Exemple de requête :
 `GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n`.
 Le corps est du texte UTF-8 ; son SHA-256 porte sur ses octets exacts, sans
-normalisation d’espaces ou de fins de ligne, après décodage de transfert. Depuis
-l’interpréteur version 2, ce format borné accepte les corps non compressés sans
+normalisation d’espaces ou de fins de ligne, après décodage de transfert. Avec
+l’interpréteur historique version 2, ce format borné accepte les corps non compressés sans
 Transfer-Encoding et un sous-ensemble HTTP/1.1 `chunked`, sans extensions ni trailers.
 Les tailles comptent les octets et la terminaison complète est obligatoire ;
 Transfer-Encoding avec Content-Length reste inconclusive. Il ne capture ni TLS
@@ -189,6 +193,10 @@ To convert one `input` object into a report and evidence, see the
 [capture adapter](capture-adapter.md). It retains computed outcomes, including
 reference unknowns, without substituting `expected` verdicts.
 
+Interpreter version 3 also accepts [binary input v2](guided-capture.md), with
+base64/SHA-256, bounded gzip/deflate decoding and exact content-byte digests.
+The historical input v1 and corpus remain preserved.
+
 Input version 1 is `{ "input_version": "1", "rules": [...], "targets": [...] }`.
 Rules explicitly select the nine IDs above. TS10 targets use the
 [family format](canonical-families.md); the fields below describe TS01/07.
@@ -230,7 +238,7 @@ inconclusive. Other parameter values retain their case.
 Each hop has `url`, boolean `complete`, raw `request` and `response` strings using
 CRLF lines and a CRLF CRLF boundary. Preserve repeated headers. Source HTML and
 robots.txt are their response bodies. The SHA-256 covers exact UTF-8 body bytes,
-without whitespace/newline normalization, after transfer decoding. Interpreter
+without whitespace/newline normalization, after transfer decoding. Historical interpreter
 version 2 supports uncompressed bodies without Transfer-Encoding and bounded
 HTTP/1.1 `chunked` messages without extensions or trailers. Sizes count bytes and
 complete termination is required; Transfer-Encoding with Content-Length remains

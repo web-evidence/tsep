@@ -1,5 +1,23 @@
 # Change history / Historique
 
+## Binary tools 3, guided collector 1 and HTML 2 — 2026-10-10 — local development
+
+Add exact-byte input v2 alongside unchanged legacy v1, bounded gzip and zlib-deflate
+decoding, and a supervised anonymous HTTP/1.1 collector. Reference → frozen intent
+→ evaluation → offline replay retains raw attempts, failures and source hashes.
+HTML 2 adds raw binary downloads, adjacent decision scope and declared coverage.
+Add contradictory binary/loopback workflow tests and a prepared consumer CI example.
+No normative change: draft.7, fingerprints, report contract, 216 cases and gate
+policy remain unchanged. No public release or new remote CI result is claimed.
+
+Ajout de l’entrée binaire v2, v1 historique conservée, décodage gzip/deflate-zlib
+borné et collecteur HTTP/1.1 anonyme supervisé. Référence → intention figée → mesure
+→ rejeu hors ligne : octets, tentatives, échecs et empreintes de sources conservés.
+HTML 2 ajoute téléchargement binaire, périmètre adjacent à la décision et couverture
+déclarée. Tests contradictoires binaires/parcours loopback et exemple CI consommateur
+préparé. Aucun changement normatif : draft.7, empreintes, contrat de rapport,
+216 cas et décision inchangés. Aucune publication ni nouvelle CI distante déclarée.
+
 ## Tool coverage 2 and HTML reports — 2026-10-10 — local development
 
 The reference interpreter and captures adapter advance to tool version 2 with

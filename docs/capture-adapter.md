@@ -2,13 +2,13 @@
 
 ## Français
 
-`adapters/captures.py` version 2 transforme un fichier de captures fourni en un
+`adapters/captures.py` version 3 transforme un fichier de captures fourni en un
 rapport TSEP draft.7, ses preuves, sa décision et son export EARL. Il appelle
 l’interpréteur de référence existant et calcule les résultats depuis les entrées
 brutes. Il ne lit pas les verdicts attendus du corpus. Ce composant interne ne
 constitue pas une implémentation indépendante. Son format de paquet reste en
 version 1 ; l’évaluation suit la [migration normative draft.7](migration-draft.7.md).
-L’interpréteur version 2 étend la [couverture HTTP chunked](http-transfer-v2.md),
+L’interpréteur version 3 étend la [couverture binaire et gzip/deflate](guided-capture.md),
 sans changer le contrat. Les deux versions d’outil figurent dans `import.json`.
 Un [rapport HTML autonome](html-report.md) peut présenter le paquet et comparer
 deux évaluations conservées.
@@ -54,7 +54,7 @@ les sources par `scripts/verify.py`.
 
 ### Entrée et périmètre
 
-L’objet JSON contient exactement `input_version: "1"`, `rules` et `targets`, selon
+L’objet JSON contient exactement `input_version: "1"` ou `"2"`, `rules` et `targets`, selon
 le [format d’entrée](conformance.md), le [plan source/DOM](rendered-states.md) et
 les [familles canoniques](canonical-families.md). Choisir explicitement les règles
 parmi TS01-A01/A02, TS07-A01/A02/A03 et TS10-A01 à A04. Fournir les échanges HTTP
@@ -133,13 +133,13 @@ Ce contrôle du parcours ne constitue pas une seconde interprétation normative.
 
 ## English
 
-`adapters/captures.py` version 2 converts supplied offline captures into a TSEP
+`adapters/captures.py` version 3 converts supplied offline captures into a TSEP
 draft.7 report, evidence, decision and EARL export. It uses the existing bounded
 reference interpreter and computes outcomes from raw input, without reading
 conformance expectations. This internal component is neither an independent
 implementation. Its bundle format remains version 1; assessment follows the
 [draft.7 normative migration](migration-draft.7.md).
-Interpreter version 2 extends [chunked HTTP coverage](http-transfer-v2.md),
+Interpreter version 3 extends [binary and gzip/deflate coverage](guided-capture.md),
 without changing the contract. Both tool versions appear in `import.json`.
 A [standalone HTML report](html-report.md) can present the bundle and compare
 two retained assessments.
@@ -162,7 +162,7 @@ source changes by `scripts/verify.py`.
 
 ### Input and scope
 
-The JSON object contains exactly `input_version: "1"`, `rules` and `targets` in
+The JSON object contains exactly `input_version: "1"` or `"2"`, `rules` and `targets` in
 the [input format](conformance.md), [source/DOM plan](rendered-states.md) and
 [canonical family format](canonical-families.md). Explicitly select rules from
 TS01-A01/A02, TS07-A01/A02/A03 and TS10-A01 through A04. Supply complete HTTP

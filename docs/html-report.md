@@ -2,7 +2,7 @@
 
 ## Français
 
-Le moteur de présentation version 1 transforme un rapport TSEP valide et ses
+Le moteur de présentation version 2 transforme un rapport TSEP valide et ses
 preuves en un fichier HTML autonome en français ou en anglais. Python 3.9+ suffit.
 Il présente les résultats enregistrés, leurs règles, cibles, motifs, limites et
 preuves. Il ne réévalue pas les captures et ne collecte aucune URL.
@@ -50,9 +50,14 @@ Un rapport vérifié reste un ensemble de constats à examiner. L’impression p
 omettre les détails repliés ; utiliser le fichier HTML et les paquets JSON pour
 conserver toutes les preuves.
 
+La version 2 présente aussi les échanges binaires v2 : en-têtes échappés, empreinte
+et téléchargement des octets `.bin`, sans décoder les corps pour les afficher.
+Le périmètre est adjacent à la décision ; l’inventaire de couverture fourni par
+l’adaptateur est affiché comme une déclaration de l’outil.
+
 ## English
 
-Presentation engine version 1 turns a valid TSEP report and its evidence into one
+Presentation engine version 2 turns a valid TSEP report and its evidence into one
 self-contained French or English HTML file using Python 3.9+. It presents recorded
 outcomes, rules, targets, reasons, limitations and evidence without reassessing
 captures or fetching URLs. Use the commands above with `--lang en`.
@@ -88,3 +93,7 @@ Limits: no verification at opening, author authentication, certification or glob
 conformity. Uncovered rules remain visible. A validated report is still a set of
 findings to review. Printing may omit collapsed details; retain HTML and JSON
 bundles for complete evidence.
+
+Version 2 also presents binary v2 exchanges: escaped headers, digest and exact
+`.bin` downloads, without decoding bodies for display. Scope is adjacent to the
+decision; the adapter coverage inventory is labeled as tool-declared coverage.

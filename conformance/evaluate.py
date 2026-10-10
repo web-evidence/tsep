@@ -13,16 +13,10 @@ import tsep
 
 RULES = ('TS01-A01', 'TS01-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04')
-VERSION = '2'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '3'  # Interpreter coverage version; normative protocol version is separate.
 
 
-class Unknown(ValueError):
-    pass
-
-
-def need(condition, reason):
-    if not condition:
-        raise Unknown(reason)
+from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
 
 
 def media_type(headers):
@@ -58,7 +52,7 @@ def identity_result(final_url, headers, body, intent):
         return 'fail', 'Final URL differs from declared reference URL'
     expected = intent.get('expected_body_sha256', '')
     need(isinstance(expected, str) and re.fullmatch('[a-f0-9]{64}', expected), 'Missing reference body SHA-256')
-    actual = hashlib.sha256(body.encode('utf-8')).hexdigest()
+    actual = body_digest(body)
     if actual == expected:
         return 'pass', 'Final URL and complete body SHA-256 match: ' + actual
     if intent.get('representation') == 'stable':
@@ -85,67 +79,6 @@ def url_parts(url):
          and not parts.username and not re.search(r'[\s\x00-\x1f]', url), 'Unsupported target URL')
     return parts
 
-
-def unchunk(body):
-    """Decode a bounded RFC 9112 chunk stream without changing content bytes.
-
-    Input v1 stores raw messages as UTF-8 strings. Sizes count bytes, not Unicode
-    characters. Extensions, trailers and other transfer codings remain outside
-    this interpreter's coverage; never silently discard possible evidence.
-    """
-    wire = body.encode('utf-8')
-    need(len(wire) <= tsep.MAX_JSON_BYTES, 'Chunked body exceeds interpreter limit')
-    offset, content = 0, bytearray()
-    while True:
-        end = wire.find(b'\r\n', offset)
-        need(end != -1, 'Incomplete chunk-size line')
-        line = wire[offset:end]
-        need(re.fullmatch(b'[0-9A-Fa-f]{1,16}', line),
-             'Malformed or unsupported chunk-size line (extensions not supported)')
-        size = int(line, 16)
-        offset = end + 2
-        if size == 0:
-            need(wire[offset:offset + 2] == b'\r\n',
-                 'Incomplete chunked ending or unsupported trailers')
-            need(offset + 2 == len(wire), 'Unexpected bytes after chunked ending')
-            try:
-                return bytes(content).decode('utf-8')
-            except UnicodeDecodeError as error:
-                raise Unknown('Decoded chunked content is not UTF-8') from error
-        need(size <= len(wire) - offset, 'Incomplete chunk data')
-        need(wire[offset + size:offset + size + 2] == b'\r\n',
-             'Missing chunk-data CRLF or incorrect byte size')
-        content.extend(wire[offset:offset + size])
-        offset += size + 2
-
-
-def message(raw, response=False):
-    need(isinstance(raw, str) and '\r\n\r\n' in raw, 'Missing raw HTTP header/body boundary')
-    head, body = raw.split('\r\n\r\n', 1)
-    lines = head.split('\r\n')
-    headers = {}
-    for line in lines[1:]:
-        need(re.fullmatch(r"[!#$%&'*+.^_`|~0-9A-Za-z-]+:[^\r\n]*", line), 'Unsupported HTTP header syntax')
-        key, value = line.split(':', 1)
-        headers.setdefault(key.lower(), []).append(value.strip())
-    if response:
-        match = re.fullmatch(r'HTTP/1\.[01] ([1-5][0-9]{2})(?: [^\r\n]*)?', lines[0])
-        need(match, 'Unsupported HTTP status line')
-        need(headers.get('content-encoding', ['identity']) == ['identity'],
-             'Encoded body not supported')
-        if 'transfer-encoding' in headers:
-            need(lines[0].startswith('HTTP/1.1 '), 'Transfer-Encoding requires HTTP/1.1')
-            need('content-length' not in headers, 'Ambiguous Transfer-Encoding with Content-Length')
-            values = headers['transfer-encoding']
-            need(len(values) == 1 and values[0].lower() == 'chunked',
-                 'Unsupported or repeated Transfer-Encoding')
-            body = unchunk(body)
-        if 'content-length' in headers:
-            values = headers['content-length']
-            need(len(values) == 1 and values[0].isdigit() and
-                 int(values[0]) == len(body.encode('utf-8')), 'Incomplete or ambiguous Content-Length')
-        return int(match[1]), headers, body
-    return lines[0], headers, body
 
 
 def exchange(hop, expected, crawler):
@@ -250,6 +183,7 @@ class IdentityText(Meta):
 
 
 def identity_text(headers, body):
+    body = text_body(body)
     kind, params = media_type(headers)
     need(params.get('charset') == 'utf-8', 'Identity markers require explicit UTF-8')
     if kind == 'text/plain':
@@ -264,6 +198,7 @@ def identity_text(headers, body):
 
 
 def directive_result(headers, body, intent):
+    body = text_body(body)
     need(intent.get('crawler') == 'googlebot', 'Only the Googlebot directive series is implemented')
     need(intent.get('indexing') in ('allow', 'exclude'), 'Missing indexing intent')
     need(intent.get('following', 'unspecified') in ('allow', 'disallow', 'unspecified'), 'Unknown link intent')
@@ -468,7 +403,7 @@ def evaluate_target(target, rule):
         need(tsep.timestamp(robots['observed_at']) <= tsep.timestamp(target['observed_at']), 'Robots capture postdates assessment')
         _, robot_status, robot_headers, robot_body = trace(robots.get('http'), robots_url, crawler)
         need(robot_status == 200 and utf8_media(robot_headers, ('text/plain',), default_utf8=True), 'Unsupported robots response; no default access inferred')
-        allowed = robots_allowed(robot_body, final_url, crawler)
+        allowed = robots_allowed(text_body(robot_body), final_url, crawler)
         if not allowed:
             return 'fail', 'Observed robots policy disallows this target crawler/path'
         if status in (401, 403):
@@ -484,7 +419,25 @@ def evaluate_target(target, rule):
 
 
 def evaluate(data):
-    tsep.require(data.get('input_version') == '1', 'Unsupported conformance input version')
+    tsep.require(data.get('input_version') in ('1', '2'), 'Unsupported conformance input version')
+    def verify_wire(value):
+        if isinstance(value, dict):
+            for key, child in value.items():
+                if key == 'http' and isinstance(child, list):
+                    for hop in child:
+                        if isinstance(hop, dict):
+                            for field in ('request', 'response'):
+                                if isinstance(hop.get(field), dict):
+                                    tsep.require(data['input_version'] == '2', 'Binary HTTP records require input_version 2')
+                                    try:
+                                        raw_bytes(hop[field])
+                                    except Unknown as error:
+                                        raise tsep.Invalid('HTTP evidence integrity error: '+str(error)) from error
+                verify_wire(child)
+        elif isinstance(value, list):
+            for child in value:
+                verify_wire(child)
+    verify_wire(data)
     targets, rules = data.get('targets', []), data.get('rules', [])
     tsep.require(targets and rules and set(rules) <= set(RULES), 'Explicit nonempty targets and supported rules required')
     tsep.unique(rules, 'conformance rule')

@@ -60,3 +60,13 @@ Local capture `rfc9112-2026-10-10.txt`, outside distribution. Scope: §6.3 and �
 chunked framing, byte sizes, termination, ambiguities and interpreter 2 limits.
 No full HTTP compliance, third-party site network test, trusted timestamp or IETF
 endorsement.
+
+## Content coding and consumer CI pin — 2026-10-10
+
+Captures locales hors distribution / local captures outside distribution:
+
+- [rfc9110-2026-10-10.txt](https://www.rfc-editor.org/rfc/rfc9110.txt) — 2026-10-10 — SHA-256 `21c1cdce6ab0e5509b04d84a28000836c7a087cf786efe6f04877ebfff47232a`. Scope / portée : §8.4.1, gzip and zlib-wrapped deflate / gzip et deflate enveloppé zlib.
+- [upload-artifact-v4-2026-10-10.json](https://api.github.com/repos/actions/upload-artifact/git/ref/tags/v4) — 2026-10-10 — SHA-256 `c3573de14d72214239a55ed86c70a88f3c7d0d2005c977be63a38f868f7668df`. Scope / portée : v4 resolves to / pointe vers ea165f8d65b6e75b540449e92b4886f43607fa02.
+
+No full RFC validation, IETF endorsement or observed consumer CI execution.
+Ni validation complète des RFC, ni approbation IETF, ni CI consommateur observée.

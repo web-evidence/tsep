@@ -9,7 +9,7 @@ from urllib.parse import urljoin, urlsplit, urldefrag
 
 import tsep
 from conformance.evaluate import (Meta, Unknown, binding_digest, exchange, need,
-                                  reviewed_exemption, text_present, trace, url_parts, utf8_media)
+                                  reviewed_exemption, text_present, trace, url_parts, utf8_media, text_body)
 
 ERRORS = (Unknown, tsep.Invalid, KeyError, TypeError, ValueError, AttributeError)
 NS = '{http://www.sitemaps.org/schemas/sitemap/0.9}'
@@ -93,6 +93,7 @@ class Links(Meta):
 
 
 def html(body):
+    body = text_body(body)
     need(isinstance(body, str) and re.search(r'</html\s*>\s*$', body, re.I), 'HTML end not captured')
     parser = Links()
     parser.feed(body)
@@ -297,6 +298,7 @@ def exceptions(plan, allowed, sources=None):
 
 
 def xml_entries(body):
+    body = text_body(body)
     need(not re.search(r'<!\s*(DOCTYPE|ENTITY)', body, re.I), 'DTD/entities unsupported')
     try:
         root = ET.fromstring(body)

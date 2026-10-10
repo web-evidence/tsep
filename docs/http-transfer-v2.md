@@ -1,5 +1,8 @@
 # Interpreter 2: HTTP transfer coverage / Couverture HTTP de l’interpréteur 2
 
+Historical tool 2 milestone. Current tool 3 adds [binary/gzip/deflate coverage](guided-capture.md).
+Jalon historique outil 2. L’outil 3 ajoute la [couverture binaire/gzip/deflate](guided-capture.md).
+
 ## Français
 
 L’interpréteur borné et l’adaptateur de captures passent en **version d’outil 2**.
