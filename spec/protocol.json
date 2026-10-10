@@ -1,9 +1,9 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.7",
+  "version": "0.1.0-draft.8",
   "status": "draft",
-  "date": "2026-10-09",
+  "date": "2026-10-10",
   "languages": [
     "en",
     "fr"
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.7"
+      "rule_version": "0.1.0-draft.8"
     },
     {
       "id": "TS02",
@@ -216,10 +216,10 @@
         "en": "One final destination, documented chain and no loop."
       },
       "limitations": {
-        "fr": "Une redirection valide ne prouve pas la pertinence sémantique de sa destination.",
-        "en": "A valid redirect does not prove the semantic relevance of its destination."
+        "fr": "Une redirection valide ne prouve pas la pertinence sémantique de sa destination. La référence exécutable borne les trajectoires serveur HTTP ; les autres mécanismes restent non établis, sans exemption du contrôle.",
+        "en": "A valid redirect does not prove the semantic relevance of its destination. The executable reference covers bounded server-side HTTP trajectories; other mechanisms remain unestablished, without exempting the control."
       },
-      "assessment": "manual-or-tool-assisted",
+      "assessment": "atomic-rules",
       "legacy_access": {
         "fr": "Public",
         "en": "Public"
@@ -234,7 +234,99 @@
       "acceptance_note": {
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
-      }
+      },
+      "rule_version": "0.1.0-draft.8",
+      "rules": [
+        {
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Variantes et anciennes URL dont le comportement attendu est déclaré.",
+            "en": "Variants and legacy URLs with a declared expected behavior."
+          },
+          "assumptions": {
+            "fr": "Le responsable fournit ses critères avant la capture ; un auteur de laboratoire peut fournir une revue synthétique explicitement identifiée. Une empreinte lie les pièces, sans authentifier une personne.",
+            "en": "The owner supplies criteria before capture; a laboratory author may supply an explicitly synthetic review. A digest binds records without authenticating a person."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique. La non-applicabilité du contrôle exige un inventaire positif distinct ; elle ne découle pas d’une capture absente.",
+            "en": "No atomic exemption. Whole-control non-applicability needs a separate positive inventory; a missing capture does not establish it."
+          },
+          "limitations": {
+            "fr": "Une redirection valide ne prouve pas la pertinence sémantique de sa destination. La référence exécutable borne les trajectoires serveur HTTP ; les autres mécanismes restent non établis, sans exemption du contrôle.",
+            "en": "A valid redirect does not prove the semantic relevance of its destination. The executable reference covers bounded server-side HTTP trajectories; other mechanisms remain unestablished, without exempting the control."
+          },
+          "id": "TS02-A01",
+          "automation": "manual",
+          "required_inputs": [
+            "intent"
+          ],
+          "title": {
+            "fr": "Plan de redirection approuvé au préalable",
+            "en": "Previously approved redirect plan"
+          },
+          "procedure": {
+            "fr": "Déclarer source, destination finale, statuts de redirection et terminaux admis, nombres minimal et maximal de redirections et contexte. Vérifier la revue fournie du responsable, motivée, datée entre déclaration et capture et liée par empreinte au plan/contexte.",
+            "en": "Declare source, final destination, allowed redirect and terminal statuses, minimum/maximum redirect count and context. Check the supplied owner review, reasoned, dated between declaration and capture and digest-bound to plan/context."
+          },
+          "acceptance": {
+            "fr": "Le plan applicable est explicitement approuvé par le responsable avant la capture. Un rejet explicite lié au même plan est fail ; une revue absente ou non attribuable reste inconclusive.",
+            "en": "The owner explicitly approves the applicable plan before capture. Explicit rejection bound to the same plan is fail; missing or unattributable review remains inconclusive."
+          },
+          "evidence": {
+            "fr": "Plan, contexte, identité déclarée et rôle du responsable, date, décision, motif, assistance et provenance de la revue ; empreinte exacte des critères examinés.",
+            "en": "Plan, context, declared owner identity and role, date, decision, reason, assistance and review provenance; exact digest of examined criteria."
+          },
+          "inconclusive": {
+            "fr": "Plan absent, invalide ou postérieur ; validation manquante, non liée ou hors période ; mécanisme non couvert. L’outil ne fournit aucune approbation humaine.",
+            "en": "Missing, invalid or late plan; absent, unbound or mistimed review; unsupported mechanism. The tool supplies no human approval."
+          }
+        },
+        {
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Variantes et anciennes URL dont le comportement attendu est déclaré.",
+            "en": "Variants and legacy URLs with a declared expected behavior."
+          },
+          "assumptions": {
+            "fr": "Le responsable fournit ses critères avant la capture ; un auteur de laboratoire peut fournir une revue synthétique explicitement identifiée. Une empreinte lie les pièces, sans authentifier une personne.",
+            "en": "The owner supplies criteria before capture; a laboratory author may supply an explicitly synthetic review. A digest binds records without authenticating a person."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique. La non-applicabilité du contrôle exige un inventaire positif distinct ; elle ne découle pas d’une capture absente.",
+            "en": "No atomic exemption. Whole-control non-applicability needs a separate positive inventory; a missing capture does not establish it."
+          },
+          "limitations": {
+            "fr": "Une redirection valide ne prouve pas la pertinence sémantique de sa destination. La référence exécutable borne les trajectoires serveur HTTP ; les autres mécanismes restent non établis, sans exemption du contrôle.",
+            "en": "A valid redirect does not prove the semantic relevance of its destination. The executable reference covers bounded server-side HTTP trajectories; other mechanisms remain unestablished, without exempting the control."
+          },
+          "id": "TS02-A02",
+          "automation": "automatic",
+          "required_inputs": [
+            "http",
+            "intent"
+          ],
+          "title": {
+            "fr": "Trajectoire HTTP conforme au plan",
+            "en": "HTTP trajectory matches the plan"
+          },
+          "procedure": {
+            "fr": "Lire chaque échange GET attribuable dans l’ordre, résoudre Location, conserver codes et URL, compter les redirections et vérifier destination/statut terminaux. Comparer au plan fixé avant la capture, sans reconstruire les réponses manquantes.",
+            "en": "Read each attributable GET exchange in order, resolve Location, retain codes and URLs, count redirects and check terminal destination/status. Compare with the pre-capture plan without reconstructing missing responses."
+          },
+          "acceptance": {
+            "fr": "La chaîne complète respecte destination, statuts et bornes déclarés, sans boucle. Un type interdit, une borne maximale dépassée, une redirection sans Location ou un retour vers une URL déjà parcourue sont fail dès le préfixe complet qui les prouve. Une destination/statut terminal ou un nombre minimal contradictoires sont fail après réponse terminale attribuable.",
+            "en": "The complete chain matches declared destination, statuses and bounds, without a loop. A forbidden type, exceeded maximum, redirect without Location or return to a visited URL is fail as soon as a complete prefix establishes it. Wrong terminal destination/status or insufficient count is fail after an attributable terminal response."
+          },
+          "evidence": {
+            "fr": "Requêtes et réponses HTTP originales pour chaque saut, URL, complétude, client et contexte ; plan antérieur. Une contradiction prouvée survit aux lacunes ultérieures et à l’absence d’approbation A01.",
+            "en": "Original HTTP requests/responses per hop, URL, completeness, client and context; prior plan. Proven contradictions survive later gaps and absent A01 approval."
+          },
+          "inconclusive": {
+            "fr": "Chaîne inachevée sans contradiction, limite de collecte atteinte, Location ambiguë, fragment ou syntaxe hors portée, requête conditionnelle/authentifiée, capture incomplète ou mal attribuée. Atteindre une borne de collecte ne prouve pas une boucle ; dépasser une borne d’intention est distinct.",
+            "en": "Unfinished chain without contradiction, collection limit, ambiguous Location, unsupported fragment/syntax, conditional/authenticated request, incomplete or unattributable capture. A collection limit does not prove a loop; exceeding an intended maximum is distinct."
+          }
+        }
+      ]
     },
     {
       "id": "TS03",
@@ -673,7 +765,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.7"
+      "rule_version": "0.1.0-draft.8"
     },
     {
       "id": "TS08",
@@ -1038,7 +1130,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.7"
+      "rule_version": "0.1.0-draft.8"
     },
     {
       "id": "TS11",
@@ -3171,15 +3263,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "97a688f2ba869854529a297e65fa8691b0ad3f0cfa7025dbf76d289962f39db5"
+      "sha256": "9c6c252a8c29fbb23b0c81fb5c65e6987a79b6eae508e86050e8fd853e2b16fc"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "b5d3d7cde6e131387212b8406b83f158dbbc6bbda173cb26fb1a2bc88229bb41"
+      "sha256": "35bb5c3126b2f025450570d93b355b0a6920ac7a22d2a370cf8501389632fee7"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "8e1729bb39e0ead09cd7b755893ecfe73fd4170507ba92ce17fa6b8796d8bbac"
+      "sha256": "fef032ed6ebde8a80dde6424adc75971ea843e2be52ce20c9317fcd89c2d8c08"
     }
   ]
 }

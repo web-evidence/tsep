@@ -6,13 +6,13 @@
 brutes aux attendus rédigés séparément dans `conformance/cases.json`. Chaque cas
 est synthétique. Aucun réseau, aucun site audité. Ce corpus est distinct des
 jugements de méthode dans `tests/fixtures/control-cases.json`, qui testent la
-cohérence des rapports pour les neuf règles TS01/07/10.
+cohérence des rapports pour les onze règles TS01/02/07/10.
 
 Le corpus lie `protocol_version` à la version livrée. Chaque cas possède `id`,
 `input` et `expected`. L’interpréteur reçoit **seulement input** ; `expected` contient
 un verdict par couple `rule_id`/`target`. Le comparateur exige une matrice complète,
 sans doublon ni résultat supplémentaire, et pass/fail/inconclusive pour chacune
-des neuf règles. Un désaccord renvoie 1, une entrée invalide 64 ; 0 signifie aucun désaccord,
+des onze règles. Un désaccord renvoie 1, une entrée invalide 64 ; 0 signifie aucun désaccord,
 avec éventuelle couverture réduite explicitement comptée.
 Il n’émet ni rapport C ni conformité globale.
 
@@ -27,7 +27,7 @@ y compris les inconnues de référence, sans leur substituer `expected`.
 ### Format input_version 1 (historique)
 
 Objet `{ "input_version": "1", "rules": [...], "targets": [...] }`. `rules` liste
-explicitement les neuf IDs TS01-A01/A02, TS07-A01/A02/A03 et TS10-A01 à A04.
+explicitement les onze IDs TS01-A01/A02, TS02-A01/A02, TS07-A01/A02/A03 et TS10-A01 à A04.
 Les cibles TS10 suivent le [format famille](canonical-families.md) ; les champs
 ci-dessous décrivent les cibles TS01/07. Chaque cible TS01/07 contient :
 
@@ -136,7 +136,7 @@ Pour une implémentation partielle, déclarer les règles effectivement testées
 python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 mon_adaptateur.py'
 ```
 
-Sans `--rules`, les neuf règles restent exigées. L’option accepte une liste non
+Sans `--rules`, les onze règles restent exigées. L’option accepte une liste non
 vide d’identifiants atomiques connus, sans doublon ; elle restreint `input.rules`
 et la matrice attendue, sans transmettre `expected`. Les cas sans règle sélectionnée
 ne sont pas exécutés. Toutes les cibles de chaque cas retenu restent obligatoires.
@@ -149,7 +149,7 @@ erreurs ; les sorties ne sont jamais filtrées pour masquer un désaccord.
 Le corpus complet reste validé (version, matrices, cas contradictoires).
 `coverage.by_rule` contient accords, désaccords, couverture réduite, numérateur,
 dénominateur et pourcentage des attendus conclusifs pour chaque règle sélectionnée.
-Une réussite fournit `claim` : « passes TSEP 0.1.0-draft.7 conformance for
+Une réussite fournit `claim` : « passes TSEP 0.1.0-draft.8 conformance for
 TS01-A01, TS01-A02 ». Publier cette formulation avec les limites/couvertures
 réduites, jamais comme conformité globale, d’un profil, d’un contrôle ou d’un site.
 Un échec donne `claim: null`. Réussir A01 seule ne valide pas TS01.
@@ -199,7 +199,7 @@ base64/SHA-256, bounded gzip/deflate decoding and exact content-byte digests.
 The historical input v1 and corpus remain preserved.
 
 Input version 1 is `{ "input_version": "1", "rules": [...], "targets": [...] }`.
-Rules explicitly select the nine IDs above. TS10 targets use the
+Rules explicitly select the eleven IDs above. TS10 targets use the
 [family format](canonical-families.md); the fields below describe TS01/07.
 Each TS01/07 target has exact HTTP(S) `url`
 (no fragment/credentials), zoned `observed_at`, context strings `network`, `bounds`,
@@ -282,7 +282,7 @@ not free-text reasons. Use the command above (or your own adapter); argv is pars
 without a shell, with bounded execution.
 
 For a partial implementation, use `--rules TS01-A01,TS01-A02` with the adapter
-command. Without this option, all nine rules remain required. The nonempty list
+command. Without this option, all eleven rules remain required. The nonempty list
 must contain unique known atomic IDs. It restricts `input.rules` and the expected
 matrix; `expected` is never sent. Cases without a selected rule are skipped.
 All targets in retained cases remain required. Additional outputs, including
@@ -294,7 +294,7 @@ and `omitted_rule_target_pairs` expose the remainder. Full corpus validation
 (version, matrices, contradictory cases) still runs. `coverage.by_rule` provides
 agreements, disagreements, reduced coverage, conclusive numerator/denominator and
 percentage per selected rule. Successful output includes `claim`: “passes TSEP
-0.1.0-draft.7 conformance for TS01-A01, TS01-A02”. Accompany it with limits/reduced
+0.1.0-draft.8 conformance for TS01-A01, TS01-A02”. Accompany it with limits/reduced
 coverage; never claim global, profile, control or site conformity. Failure gives
 `claim: null`. Passing A01 alone does not pass TS01.
 
@@ -324,3 +324,7 @@ all three TS07 rules and semiAuto review remain necessary. The four TS10 rules u
 human content review and reconciliation of declared populations.
 
 [Dated reference fingerprints / Empreintes datées des références](source-observations.md).
+
+## TS02 — draft.8
+
+Two additional rules use [the redirect-plan format](redirects.md), with 38 prefrozen contradictory cases. Deux règles supplémentaires utilisent le [format de plan](redirects.md), avec 38 cas contradictoires figés avant code. The prior 216 cases remain unchanged apart from the corpus version.

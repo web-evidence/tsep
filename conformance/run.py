@@ -129,7 +129,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--cases', type=Path, default=ROOT/'conformance/cases.json')
     parser.add_argument('--command', help='External adapter, argv parsed without shell; input JSON on stdin, results array on stdout')
-    parser.add_argument('--rules', help='Comma-separated rule IDs; default: all nine. Limits inputs and comparison, never control conformity')
+    parser.add_argument('--rules', help='Comma-separated rule IDs; default: all supported rules. Limits inputs and comparison, never control conformity')
     args = parser.parse_args()
     try:
         result = run(tsep.read_json(args.cases), args.command, args.rules.split(',') if args.rules is not None else None)

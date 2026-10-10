@@ -122,8 +122,10 @@ class SourceText(unittest.TestCase):
 
     def test_ts07_and_ts10_outputs_match_prechange_baseline(self):
         corpus = json.loads((ROOT/'conformance/cases.json').read_text())
+        additions = {c['id'] for c in json.loads((FIXTURES/'redirect-cases-v1.json').read_text())['cases']}
         data = [{'id': c['id'], 'rows': [r for r in evaluate(c['input']) if r['rule_id'].startswith(('TS07-', 'TS10-'))]}
-                for c in corpus['cases']]
+                for c in corpus['cases'] if c['id'] not in additions]
+        self.assertEqual(len(data), 216)
         raw = (json.dumps(data, ensure_ascii=False, sort_keys=True)+'\n').encode()
         self.assertEqual(hashlib.sha256(raw).hexdigest(), '79176096946f5173cde969a54c34d188852cc8a117d6161ffa07e705da081bc0')
 

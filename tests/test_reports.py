@@ -208,7 +208,10 @@ class Reports(unittest.TestCase):
     def test_major_failure_requires_review(self):
         self.report['controls'] = ['TS02']
         self.report['results'][0].update(control_id='TS02', status='NC')
-        self.report['results'][0].pop('atomic_results')
+        self.report['results'][0]['atomic_results'] = [{
+            'rule_id': 'TS02-A02', 'target': self.report['scope']['targets'][0],
+            'outcome': 'fail', 'reason': 'Synthetic forbidden redirect trajectory',
+            'evidence_ids': ['http', 'intent']}]
         self.assertEqual(self.check()['decision'], 'REVIEW')
 
     def test_minor_failure_preserved_in_go_reservations(self):

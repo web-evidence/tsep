@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.7",
+  "protocol_version": "0.1.0-draft.8",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -2452,6 +2452,201 @@
       ],
       "expected_status": "NT",
       "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS02-approved",
+      "control_id": "TS02",
+      "description": {
+        "fr": "Cas de méthode synthétique TS02 : approved",
+        "en": "Synthetic TS02 method case: approved"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC owner plan/review: /old → /new, one permanent redirect; supplied authored judgment approved",
+        "http": "SYNTHETIC retained GET chain; supplied authored judgment approved"
+      },
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS",
+      "atomic_results": [
+        {
+          "rule_id": "TS02-A01",
+          "outcome": "pass",
+          "evidence_ids": [
+            "intent"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique rédigé : approved",
+            "en": "Authored synthetic judgment: approved"
+          }
+        },
+        {
+          "rule_id": "TS02-A02",
+          "outcome": "pass",
+          "evidence_ids": [
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique rédigé : approved",
+            "en": "Authored synthetic judgment: approved"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS02-rejected",
+      "control_id": "TS02",
+      "description": {
+        "fr": "Cas de méthode synthétique TS02 : rejected",
+        "en": "Synthetic TS02 method case: rejected"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC owner plan/review: /old → /new, one permanent redirect; supplied authored judgment rejected",
+        "http": "SYNTHETIC retained GET chain; supplied authored judgment rejected"
+      },
+      "expected_status": "NC",
+      "expected_gate": "REVIEW",
+      "atomic_results": [
+        {
+          "rule_id": "TS02-A01",
+          "outcome": "fail",
+          "evidence_ids": [
+            "intent"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique rédigé : rejected",
+            "en": "Authored synthetic judgment: rejected"
+          }
+        },
+        {
+          "rule_id": "TS02-A02",
+          "outcome": "pass",
+          "evidence_ids": [
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique rédigé : rejected",
+            "en": "Authored synthetic judgment: rejected"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS02-missing-review",
+      "control_id": "TS02",
+      "description": {
+        "fr": "Cas de méthode synthétique TS02 : missing-review",
+        "en": "Synthetic TS02 method case: missing-review"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC owner plan/review: /old → /new, one permanent redirect; supplied authored judgment missing-review",
+        "http": "SYNTHETIC retained GET chain; supplied authored judgment missing-review"
+      },
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE",
+      "atomic_results": [
+        {
+          "rule_id": "TS02-A01",
+          "outcome": "inconclusive",
+          "evidence_ids": [
+            "intent"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique rédigé : missing-review",
+            "en": "Authored synthetic judgment: missing-review"
+          }
+        },
+        {
+          "rule_id": "TS02-A02",
+          "outcome": "pass",
+          "evidence_ids": [
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique rédigé : missing-review",
+            "en": "Authored synthetic judgment: missing-review"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS02-wrong-destination",
+      "control_id": "TS02",
+      "description": {
+        "fr": "Cas de méthode synthétique TS02 : wrong-destination",
+        "en": "Synthetic TS02 method case: wrong-destination"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC owner plan/review: /old → /new, one permanent redirect; supplied authored judgment wrong-destination",
+        "http": "SYNTHETIC retained GET chain; supplied authored judgment wrong-destination"
+      },
+      "expected_status": "NC",
+      "expected_gate": "REVIEW",
+      "atomic_results": [
+        {
+          "rule_id": "TS02-A01",
+          "outcome": "pass",
+          "evidence_ids": [
+            "intent"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique rédigé : wrong-destination",
+            "en": "Authored synthetic judgment: wrong-destination"
+          }
+        },
+        {
+          "rule_id": "TS02-A02",
+          "outcome": "fail",
+          "evidence_ids": [
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique rédigé : wrong-destination",
+            "en": "Authored synthetic judgment: wrong-destination"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS02-unfinished",
+      "control_id": "TS02",
+      "description": {
+        "fr": "Cas de méthode synthétique TS02 : unfinished",
+        "en": "Synthetic TS02 method case: unfinished"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC owner plan/review: /old → /new, one permanent redirect; supplied authored judgment unfinished",
+        "http": "SYNTHETIC retained GET chain; supplied authored judgment unfinished"
+      },
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE",
+      "atomic_results": [
+        {
+          "rule_id": "TS02-A01",
+          "outcome": "pass",
+          "evidence_ids": [
+            "intent"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique rédigé : unfinished",
+            "en": "Authored synthetic judgment: unfinished"
+          }
+        },
+        {
+          "rule_id": "TS02-A02",
+          "outcome": "inconclusive",
+          "evidence_ids": [
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique rédigé : unfinished",
+            "en": "Authored synthetic judgment: unfinished"
+          }
+        }
+      ]
     }
   ]
 }

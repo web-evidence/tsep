@@ -1,0 +1,2915 @@
+{
+  "synthetic": true,
+  "authored_before_implementation": true,
+  "cases": [
+    {
+      "id": "redirect-direct",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-wrong-destination",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/",
+                "complete": true,
+                "request": "GET / HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "fail",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-terminal-error",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 404 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "fail",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-temporary-disallowed",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 302 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "fail",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-permanent-308",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 308 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-temporary-approved",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  302
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "3c3ee6d72455c485c2df0b38bc277fbba7e5214c9e768f66dd4cab0ffe51b840"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 302 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-chain-too-long",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /middle\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/middle",
+                "complete": true,
+                "request": "GET /middle HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "fail",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-too-long-prefix",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /middle\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/middle",
+                "complete": true,
+                "request": "GET /middle HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "fail",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-chain-approved",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 2,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f9911fc5add8436d0547db9fb5abfd7c72a8ffb1f0200fe0626403787c3f7840"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /middle\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/middle",
+                "complete": true,
+                "request": "GET /middle HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-self-loop",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /old\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "fail",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-two-node-loop",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 3,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "26bf051155d6ae651c7e240b5586748fc1a6bb71a7d8afd799b2cea118dcc35f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /middle\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/middle",
+                "complete": true,
+                "request": "GET /middle HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /old\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "fail",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-unfinished",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-collector-limit-not-loop",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 3,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "26bf051155d6ae651c7e240b5586748fc1a6bb71a7d8afd799b2cea118dcc35f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /middle\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/middle",
+                "complete": true,
+                "request": "GET /middle HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-missing-location",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "fail",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-ambiguous-location",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 X\r\nLocation: /new\r\nLocation: /other\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-incomplete-first",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": false,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-wrong-next-hop",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/other",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-wrong-agent",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Other/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-conditional-request",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\nIf-None-Match: x\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-extra-terminal-hop",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-fragment-location",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new#section\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-backslash-location",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: \\new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-no-redirect-contradicts-minimum",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "fail",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-direct-terminal-approved",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/old",
+                "min_redirects": 0,
+                "max_redirects": 0,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "69c52faa5ea9718422f9a92d521670c904c49b601fb263493342544321b88bb1"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-retirement-410-approved",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/old",
+                "min_redirects": 0,
+                "max_redirects": 0,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  410
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "bbc4cbf96a47c6da71b85e07c4058f7bd0c4e6d2375dda63c053e822dee4a017"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 410 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-missing-review",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-rejected-review",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "rejected",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "fail",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-changed-plan-after-review",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 2,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-late-review",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T11:00:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-review-before-intent",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T08:00:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-blank-review-reason",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": " ",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-missing-plan",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-late-plan",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T11:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "65a56782eb0c8a1620fb7b2d8adcbbfb8fa5bfdd40efe2b12c57aa4c871c3f92"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-unsupported-javascript",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "javascript",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "d07216807f561a0cb2f3366536e9aadd22d6c55acf78af2a74b8d2a57dcfcdfb"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-bool-hop-bound",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": true,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "7b6ac055cd9ebefe1a3bd8530fe89eb98c8abc1b5d6f7e96f1161fb16c2df0c3"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-plan-for-another-source",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/new",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "a0523883abc567d2ec2325fe3b319e903472ce8c1b5722b0c70056a1e76a9a97"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/new",
+                "complete": true,
+                "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-failure-without-review",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 301 Example\r\nLocation: /\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "url": "https://example.com/",
+                "complete": true,
+                "request": "GET / HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Length: 0\r\n\r\n"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "inconclusive",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "fail",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    },
+    {
+      "id": "redirect-type-failure-before-incomplete",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS02-A01",
+          "TS02-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/old",
+            "observed_at": "2026-10-10T10:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "20 exchanges maximum",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "Fixture/1",
+              "redirect_plan": {
+                "mechanism": "http",
+                "source_url": "https://example.com/old",
+                "expected_final_url": "https://example.com/new",
+                "min_redirects": 1,
+                "max_redirects": 1,
+                "redirect_statuses": [
+                  301,
+                  308
+                ],
+                "terminal_statuses": [
+                  200
+                ]
+              },
+              "redirect_review": {
+                "reviewer": "Synthetic owner",
+                "role": "responsible-owner",
+                "observed_at": "2026-10-10T09:30:00Z",
+                "outcome": "approved",
+                "reason": "Synthetic migration mapping, not an actual human approval.",
+                "provenance": "synthetic-exercise",
+                "assistance": "Authored fixture by Codex",
+                "plan_sha256": "f73172357278ef67883977b66896547276fb7dd7553a378c861e442567b92f7f"
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.com/old",
+                "complete": true,
+                "request": "GET /old HTTP/1.1\r\nHost: example.com\r\nUser-Agent: Fixture/1\r\n\r\n",
+                "response": "HTTP/1.1 302 Example\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+              },
+              {
+                "complete": false,
+                "url": "https://example.com/new"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS02-A01",
+          "target": "https://example.com/old",
+          "outcome": "pass",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        },
+        {
+          "rule_id": "TS02-A02",
+          "target": "https://example.com/old",
+          "outcome": "fail",
+          "basis": "Authored TS02 draft.8 expectation; synthetic HTTP and synthetic owner review."
+        }
+      ]
+    }
+  ]
+}

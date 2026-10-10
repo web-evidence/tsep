@@ -17,11 +17,16 @@ entrées Edikka conserve TS01 NT, le refus suivant portant sur noscript. Le
 vides et permet le rejeu des trois types de paquets. Ni ce parcours ni les tests
 logiciels ne prouvent leur recette par Bertrand ou une revue effectivement réalisée.
 
-La cible de travail est de consolider les trois méthodes puis de viser dix :
-TS01, TS07, TS10, TS02, TS04, TS38, TS13, TS15, TS03 et TS23. Le nombre ne réduit
-aucune exigence de preuve. Les colonnes méthode, application réelle et recette
-utilisateur restent séparées. L’ébauche Search Console et l’insight suivent les
-résultats établis. Les 44 lignes ci-dessous restent le **point de référence**.
+Bertrand a remplacé la cible de dix par [quatre contrôles prioritaires](four-control-program.md) :
+TS04, TS02, TS07 et TS10. L'ébauche Search Console et l'insight suivent les résultats
+établis. Les colonnes méthode, application réelle et recette utilisateur restent
+séparées. Les 44 lignes ci-dessous restent le **point de référence draft.7**.
+
+Draft.8 ajoute TS02-A01/A02 : onze règles sont désormais définies pour TS01, TS02,
+TS07 et TS10 (3 automatic, 6 semiAuto, 2 manual). Ce décompte inclut TS01, qui n'est
+pas l'un des quatre objectifs du jour ; TS04 reste à développer. Le laboratoire
+de redirection avant/après et les limites rendues/humaines restent dans le suivi.
+Ces nombres ne déclarent ni quatre méthodes finalisées, ni quatre audits réalisés.
 
 ### Décompte vérifié
 

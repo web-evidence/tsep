@@ -21,14 +21,14 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '7'
+VERSION = '8'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
 
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
-    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.source_text', 'provenance.runtime'):
+    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.source_text', 'conformance.redirects', 'provenance.runtime'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     return loaded_sources(ROOT, modules)
 
@@ -178,6 +178,12 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
     targets = [t['url'] for t in data['targets']]
     tsep.unique(targets, 'capture target')
     tsep.require(access in ACCESS, 'Explicit evidence access is required')
+    if any(r.startswith('TS02-') for r in data['rules']):
+        for target in data['targets']:
+            review = target.get('intent', {}).get('redirect_review', {})
+            if review:
+                tsep.require((review.get('provenance') == 'synthetic-exercise') == (access == 'synthetic'),
+                             'Redirect review provenance differs from evidence access')
     tsep.require(mode in ('manual', 'semiAuto', 'automatic'), 'Unknown assessment mode')
     parents = sorted({r.split('-')[0] for r in data['rules']})
     selected = parents if selected is None else selected

@@ -29,6 +29,8 @@ EXTERNAL_CASE_IDS = (
     'canonical-content-incompatible', 'canonical-sitemap-competing-member',
     'canonical-sitemap-unjustified-omission', 'canonical-links-duplicate-destination',
     'unsupported-robots-wildcard',
+    'redirect-direct', 'redirect-rejected-review', 'redirect-missing-review',
+    'redirect-wrong-destination', 'redirect-unfinished',
 )
 
 
@@ -80,7 +82,7 @@ class Draft7(unittest.TestCase):
         self.assertEqual(result['total_rule_target_pairs']-pairs,result['omitted_rule_target_pairs'])
         self.assertEqual(set(result['coverage']['by_rule']),set(SELECTED))
         self.assertEqual(sum(v['conclusive_expected'] for v in result['coverage']['by_rule'].values()),result['coverage']['conclusive_expected'])
-        self.assertEqual(len(result['omitted_rules']),7)
+        self.assertEqual(result['omitted_rules'], [rule for rule in RULES if rule not in SELECTED])
 
     def test_selection_does_not_hide_corrupt_corpus(self):
         for mutation in ('empty','invalid','duplicate'):

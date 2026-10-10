@@ -1,5 +1,14 @@
 # Independent development / Développement autonome
 
+Current priority: [four deeply verified controls](four-control-program.md), as
+requested on October 10, superseding the ten-control target. Draft.8 adds two
+[TS02 rules](redirects.md), retaining the prior 216 raw cases and adding 38.
+Earlier CI figures below describe their named historical commits only.
+
+Priorité actuelle : [quatre contrôles approfondis](four-control-program.md).
+Draft.8 ajoute deux règles TS02, sans finaliser le programme ni l'audit d'Edikka.
+Les résultats CI historiques ci-dessous ne concernent pas cette candidate.
+
 The [evidence gallery guide](evidence-gallery.md) connects the existing methods
 and retained demonstrations without new collection or a cross-campaign score.
 Le [guide de galerie de preuves](evidence-gallery.md) organise les démonstrations

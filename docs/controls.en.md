@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.7 — Controls
+# TSEP 0.1.0-draft.8 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.7:TS01-A01`
+`TSEP@0.1.0-draft.8:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.7:TS01-A02`
+`TSEP@0.1.0-draft.8:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -92,13 +92,61 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **When NA is allowed.** No redirects or expected variants, supported by an inventory.
 
-**Limits.** A valid redirect does not prove the semantic relevance of its destination.
+**Limits.** A valid redirect does not prove the semantic relevance of its destination. The executable reference covers bounded server-side HTTP trajectories; other mechanisms remain unestablished, without exempting the control.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/301-redirects](https://developers.google.com/search/docs/crawling-indexing/301-redirects)
+
+### TS02-A01 — Previously approved redirect plan
+
+`TSEP@0.1.0-draft.8:TS02-A01`
+
+**Required inputs**: intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicability.** Variants and legacy URLs with a declared expected behavior.
+
+**Method.** Declare source, final destination, allowed redirect and terminal statuses, minimum/maximum redirect count and context. Check the supplied owner review, reasoned, dated between declaration and capture and digest-bound to plan/context.
+
+**Acceptance.** The owner explicitly approves the applicable plan before capture. Explicit rejection bound to the same plan is fail; missing or unattributable review remains inconclusive.
+
+**Evidence.** Plan, context, declared owner identity and role, date, decision, reason, assistance and review provenance; exact digest of examined criteria.
+
+**Assumptions.** The owner supplies criteria before capture; a laboratory author may supply an explicitly synthetic review. A digest binds records without authenticating a person.
+
+**Inconclusive.** Missing, invalid or late plan; absent, unbound or mistimed review; unsupported mechanism. The tool supplies no human approval.
+
+**When NA is allowed.** No atomic exemption. Whole-control non-applicability needs a separate positive inventory; a missing capture does not establish it.
+
+**Limits.** A valid redirect does not prove the semantic relevance of its destination. The executable reference covers bounded server-side HTTP trajectories; other mechanisms remain unestablished, without exempting the control.
+
+### TS02-A02 — HTTP trajectory matches the plan
+
+`TSEP@0.1.0-draft.8:TS02-A02`
+
+**Required inputs**: http, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Variants and legacy URLs with a declared expected behavior.
+
+**Method.** Read each attributable GET exchange in order, resolve Location, retain codes and URLs, count redirects and check terminal destination/status. Compare with the pre-capture plan without reconstructing missing responses.
+
+**Acceptance.** The complete chain matches declared destination, statuses and bounds, without a loop. A forbidden type, exceeded maximum, redirect without Location or return to a visited URL is fail as soon as a complete prefix establishes it. Wrong terminal destination/status or insufficient count is fail after an attributable terminal response.
+
+**Evidence.** Original HTTP requests/responses per hop, URL, completeness, client and context; prior plan. Proven contradictions survive later gaps and absent A01 approval.
+
+**Assumptions.** The owner supplies criteria before capture; a laboratory author may supply an explicitly synthetic review. A digest binds records without authenticating a person.
+
+**Inconclusive.** Unfinished chain without contradiction, collection limit, ambiguous Location, unsupported fragment/syntax, conditional/authenticated request, incomplete or unattributable capture. A collection limit does not prove a loop; exceeding an intended maximum is distinct.
+
+**When NA is allowed.** No atomic exemption. Whole-control non-applicability needs a separate positive inventory; a missing capture does not establish it.
+
+**Limits.** A valid redirect does not prove the semantic relevance of its destination. The executable reference covers bounded server-side HTTP trajectories; other mechanisms remain unestablished, without exempting the control.
 
 ## TS03 — Server errors and soft 404s do not replace an explicit response.
 
@@ -222,7 +270,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.7:TS07-A01`
+`TSEP@0.1.0-draft.8:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -246,7 +294,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.7:TS07-A02`
+`TSEP@0.1.0-draft.8:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -270,7 +318,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.7:TS07-A03`
+`TSEP@0.1.0-draft.8:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -368,7 +416,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.7:TS10-A01`
+`TSEP@0.1.0-draft.8:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -392,7 +440,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.7:TS10-A02`
+`TSEP@0.1.0-draft.8:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -416,7 +464,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.7:TS10-A03`
+`TSEP@0.1.0-draft.8:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -442,7 +490,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.7:TS10-A04`
+`TSEP@0.1.0-draft.8:TS10-A04`
 
 **Required inputs**: crawl, intent.
 

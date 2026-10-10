@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded offline interpreter for nine TSEP rules. Apache-2.0; no collection."""
+"""Bounded offline interpreter for eleven TSEP rules. Apache-2.0; no collection."""
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -11,9 +11,9 @@ from urllib.parse import urljoin, urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import tsep
 
-RULES = ('TS01-A01', 'TS01-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
+RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04')
-VERSION = '6'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '7'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -343,6 +343,9 @@ def rendered_result(target, final_url, headers, body):
 
 
 def evaluate_target(target, rule):
+    if rule.startswith('TS02-'):
+        from conformance.redirects import assess
+        return assess(target, rule)
     if rule.startswith("TS10-"):
         from conformance.canonical import assess
         return assess(target, rule)

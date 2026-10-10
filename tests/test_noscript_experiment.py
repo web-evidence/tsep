@@ -177,7 +177,7 @@ class NoscriptExperiment(unittest.TestCase):
             extract(source)
         result = noscript.experiment(source, {'required_markers':['Expected'], 'forbidden_markers':[]})
         self.assertEqual(result['candidate_consensus'], 'pass')
-        self.assertEqual(json.loads((ROOT/'spec/protocol.json').read_text())['version'], '0.1.0-draft.7')
+        self.assertEqual(json.loads((ROOT/'spec/protocol.json').read_text())['version'], '0.1.0-draft.8')
 
     def test_isolated_cli_needs_no_evaluator_collector_or_private_files(self):
         with tempfile.TemporaryDirectory() as folder:

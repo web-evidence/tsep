@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.7 — Contrôles
+# TSEP 0.1.0-draft.8 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.7:TS01-A01`
+`TSEP@0.1.0-draft.8:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.7:TS01-A02`
+`TSEP@0.1.0-draft.8:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -92,13 +92,61 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Conditions de NA.** Aucune redirection ni variante attendue, inventaire à l’appui.
 
-**Limites.** Une redirection valide ne prouve pas la pertinence sémantique de sa destination.
+**Limites.** Une redirection valide ne prouve pas la pertinence sémantique de sa destination. La référence exécutable borne les trajectoires serveur HTTP ; les autres mécanismes restent non établis, sans exemption du contrôle.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/301-redirects](https://developers.google.com/search/docs/crawling-indexing/301-redirects)
+
+### TS02-A01 — Plan de redirection approuvé au préalable
+
+`TSEP@0.1.0-draft.8:TS02-A01`
+
+**Entrées requises**: intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicabilité.** Variantes et anciennes URL dont le comportement attendu est déclaré.
+
+**Méthode.** Déclarer source, destination finale, statuts de redirection et terminaux admis, nombres minimal et maximal de redirections et contexte. Vérifier la revue fournie du responsable, motivée, datée entre déclaration et capture et liée par empreinte au plan/contexte.
+
+**Attendus.** Le plan applicable est explicitement approuvé par le responsable avant la capture. Un rejet explicite lié au même plan est fail ; une revue absente ou non attribuable reste inconclusive.
+
+**Preuves.** Plan, contexte, identité déclarée et rôle du responsable, date, décision, motif, assistance et provenance de la revue ; empreinte exacte des critères examinés.
+
+**Hypothèses.** Le responsable fournit ses critères avant la capture ; un auteur de laboratoire peut fournir une revue synthétique explicitement identifiée. Une empreinte lie les pièces, sans authentifier une personne.
+
+**Indéterminé.** Plan absent, invalide ou postérieur ; validation manquante, non liée ou hors période ; mécanisme non couvert. L’outil ne fournit aucune approbation humaine.
+
+**Conditions de NA.** Aucune exemption atomique. La non-applicabilité du contrôle exige un inventaire positif distinct ; elle ne découle pas d’une capture absente.
+
+**Limites.** Une redirection valide ne prouve pas la pertinence sémantique de sa destination. La référence exécutable borne les trajectoires serveur HTTP ; les autres mécanismes restent non établis, sans exemption du contrôle.
+
+### TS02-A02 — Trajectoire HTTP conforme au plan
+
+`TSEP@0.1.0-draft.8:TS02-A02`
+
+**Entrées requises**: http, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicabilité.** Variantes et anciennes URL dont le comportement attendu est déclaré.
+
+**Méthode.** Lire chaque échange GET attribuable dans l’ordre, résoudre Location, conserver codes et URL, compter les redirections et vérifier destination/statut terminaux. Comparer au plan fixé avant la capture, sans reconstruire les réponses manquantes.
+
+**Attendus.** La chaîne complète respecte destination, statuts et bornes déclarés, sans boucle. Un type interdit, une borne maximale dépassée, une redirection sans Location ou un retour vers une URL déjà parcourue sont fail dès le préfixe complet qui les prouve. Une destination/statut terminal ou un nombre minimal contradictoires sont fail après réponse terminale attribuable.
+
+**Preuves.** Requêtes et réponses HTTP originales pour chaque saut, URL, complétude, client et contexte ; plan antérieur. Une contradiction prouvée survit aux lacunes ultérieures et à l’absence d’approbation A01.
+
+**Hypothèses.** Le responsable fournit ses critères avant la capture ; un auteur de laboratoire peut fournir une revue synthétique explicitement identifiée. Une empreinte lie les pièces, sans authentifier une personne.
+
+**Indéterminé.** Chaîne inachevée sans contradiction, limite de collecte atteinte, Location ambiguë, fragment ou syntaxe hors portée, requête conditionnelle/authentifiée, capture incomplète ou mal attribuée. Atteindre une borne de collecte ne prouve pas une boucle ; dépasser une borne d’intention est distinct.
+
+**Conditions de NA.** Aucune exemption atomique. La non-applicabilité du contrôle exige un inventaire positif distinct ; elle ne découle pas d’une capture absente.
+
+**Limites.** Une redirection valide ne prouve pas la pertinence sémantique de sa destination. La référence exécutable borne les trajectoires serveur HTTP ; les autres mécanismes restent non établis, sans exemption du contrôle.
 
 ## TS03 — Les erreurs serveur et soft 404 ne remplacent pas une réponse explicite.
 
@@ -222,7 +270,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.7:TS07-A01`
+`TSEP@0.1.0-draft.8:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -246,7 +294,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.7:TS07-A02`
+`TSEP@0.1.0-draft.8:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -270,7 +318,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.7:TS07-A03`
+`TSEP@0.1.0-draft.8:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -368,7 +416,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.7:TS10-A01`
+`TSEP@0.1.0-draft.8:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -392,7 +440,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.7:TS10-A02`
+`TSEP@0.1.0-draft.8:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -416,7 +464,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.7:TS10-A03`
+`TSEP@0.1.0-draft.8:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -442,7 +490,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.7:TS10-A04`
+`TSEP@0.1.0-draft.8:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 

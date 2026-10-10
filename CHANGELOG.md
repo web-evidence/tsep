@@ -1,5 +1,16 @@
 # Change history / Historique
 
+## 0.1.0-draft.8 — 2026-10-10 — TS02 HTTP trajectories
+
+Add two bilingual redirect rules, prior owner-plan review, bounded HTTP comparison,
+38 prefrozen contradictory cases, evidence imports and offline replay. Existing nine
+rule semantics are retained. Interpreter 7, capture adapter 8. No publication.
+
+Ajout de TS02-A01/A02, avec plan préalable et revue fournie, trajectoires HTTP,
+contradictions et inconnues conservées. [Migration](docs/migration-draft.8.md).
+Le programme prioritaire passe à [quatre contrôles](docs/four-control-program.md)
+sur décision de Bertrand ; leur finalisation ne découle pas de cette version.
+
 ## Noscript experiment 4 — 2026-10-10 — unapplied explicit-table coverage
 
 Add explicit table/caption/column-group/section/row/cell grammar, with all closing
