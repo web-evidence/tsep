@@ -5,6 +5,11 @@ and retained demonstrations without new collection or a cross-campaign score.
 Le [guide de galerie de preuves](evidence-gallery.md) organise les démonstrations
 existantes, en séparant cas réels, laboratoires et résultats expérimentaux.
 
+The [44-control development inventory](control-implementation-status.md) separates
+specified methods, executable coverage, known limitations and real assessments.
+Le [suivi des 44 contrôles](control-implementation-status.md) distingue description,
+outillage, limites ouvertes et application réelle ; il ne déclare pas leur achèvement.
+
 ## English
 
 This repository is TSEP's development source. It is independent of the Edikka

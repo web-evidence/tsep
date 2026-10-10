@@ -1,0 +1,177 @@
+# Control implementation status / État de développement des contrôles
+
+## Français
+
+**Point de référence : 10 octobre 2026, protocole 0.1.0-draft.7, code 716899e.**
+Document de pilotage non normatif. Il décrit la couverture du développement,
+jamais la conformité d’Edikka ou d’un site. La priorité de travail est désormais
+la réalisation méthodique des **44 contrôles**, avec traitement des limites
+connues avant d’élargir les démonstrations. La galerie reste un point d’étape.
+
+### Décompte vérifié
+
+- **44 contrôles décrits** dans `spec/protocol.json`, avec procédure et attendus.
+- **3 contrôles possèdent des règles atomiques et un interpréteur borné** :
+  TS01 (2), TS07 (3), TS10 (4), soit **9 règles**.
+- Parmi ces règles : 2 automatic, 6 semiAuto et 1 manual. L’interpréteur des règles
+  semiAuto/manual ne remplace pas les revues exigées.
+- **41 contrôles n’ont pas encore de règles atomiques détaillées exécutables.**
+  Ils disposent déjà d’une description et peuvent être renseignés avec des preuves
+  selon le contrat ; cela ne signifie pas qu’ils disposent du même outillage.
+- Aucun de ces décomptes ne signifie « 3 contrôles achevés », « 44 audits faits »
+  ou « 392 tests = 392 critères ». Les tests logiciels vérifient aussi les refus
+  attendus et les résultats indéterminés.
+
+La définition normative reste dans la [source](../spec/protocol.json) et le
+[contrat](contract.fr.md). Les composants réutilisables et les expériences ne
+confèrent pas automatiquement une couverture à un autre contrôle.
+
+### Condition de clôture d’un lot de développement
+
+Pour chaque contrôle : préciser les unités et l’applicabilité ; détailler les
+règles et les entrées ; fixer les attentes avant les essais ; couvrir au minimum
+accord, contradiction, preuve absente, entrée ambiguë et limite de couverture ;
+implémenter ce qui est automatisable ; définir et tester le parcours des revues
+réellement nécessaires ; conserver un exemple rejouable et ses limites ; vérifier
+la distribution. L’absence de données ou de revue reste non établie.
+
+Un changement normatif exige une version distincte, les contrats français et
+anglais, la migration et les cas contradictoires. Une extension d’outil doit être
+identifiée, testée et comparée sur les mêmes preuves conservées. Une clôture doit
+citer son commit, les preuves et les limites acceptées ; ce tableau ne la déduit
+jamais d’un nombre de tests. Couvrir une méthode bornée ne veut pas dire supporter
+toutes les pages, tous les moteurs ou tous les environnements.
+
+**Deux jalons restent séparés :** développement de la méthode/outillage, puis
+application au périmètre réel avec les accès et revues requis. Search Console
+fait partie des entrées de TS08, TS12, TS21 et TS36 : on peut préparer leurs règles
+sans accès, mais pas déclarer leur application réelle achevée sans ces preuves.
+L’attente d’une entrée externe n’empêche pas le travail indépendant sur les autres
+méthodes ; elle demeure un point ouvert explicite.
+
+### Les 44 contrôles, sans omission
+
+Le tableau suit les identifiants permanents. La colonne suivante est un travail
+à réaliser, pas une nouvelle exigence normative ni une classification finale de
+l’automatisation. Des sous-ensembles utiles existent déjà dans des composants.
+
+| Contrôle | Attendu hérité | Développement actuel | Prochaine étape |
+| --- | --- | --- | --- |
+| TS01 | La page finale répond avec un code HTTP exploitable. | Partiel : 2 règles atomiques | Traiter les refus select/noscript de la lecture source ; préserver les critères et rapports antérieurs. |
+| TS02 | Les redirections sont intentionnelles, directes et sans boucle. | Décrit ; règles atomiques à détailler | Définir les tests des destinations attendues, sauts supplémentaires, boucles et traces incomplètes. |
+| TS03 | Les erreurs serveur et soft 404 ne remplacent pas une réponse explicite. | Décrit ; règles atomiques à détailler | Séparer statut HTTP, identité du contenu et hypothèse soft 404 ; prévoir revue et contre-exemples. |
+| TS04 | La politique robots effective correspond à l’intention déclarée. | Décrit ; règles atomiques à détailler | Détailler la politique par robot/origine et ses erreurs ; réutiliser TS07-A02 sans lui attribuer tout TS04. |
+| TS05 | Une directive Disallow n’est jamais présentée comme une garantie de désindexation. | Décrit ; règles atomiques à détailler | Formaliser la revue de cohérence exploration/indexation ; aucun Disallow ne vaut preuve de désindexation. |
+| TS06 | Les zones sensibles refusent réellement l’accès au serveur. | Décrit ; règles atomiques à détailler | Définir les tests autorisés sans session, les preuves de configuration et les limites de couverture du cache. |
+| TS07 | Les directives meta robots et X-Robots-Tag sont cohérentes avec l’objectif de la page. | Partiel : 3 règles atomiques | Traiter les limites du lecteur HTML et les revues du plan de rendu et de l’accès. |
+| TS08 | Le statut d’indexation réel est vérifié dans Search Console. | Décrit ; règles atomiques à détailler | Définir les entrées d’inspection datées, champs manquants et rattachement à la propriété ; données réelles ensuite. |
+| TS09 | Les exclusions volontaires ont un propriétaire et une justification. | Décrit ; règles atomiques à détailler | Structurer famille exclue, justification, propriétaire, échéance et revue réellement réalisée. |
+| TS10 | Chaque page canonique publie une URL absolue, stable et cohérente. | Partiel : 4 règles atomiques | Traiter les refus DOM ; qualifier séparément le candidat structuré et la revue humaine du contenu. |
+| TS11 | Les variantes réellement dupliquées convergent sans masquer des pages distinctes. | Décrit ; règles atomiques à détailler | Détailler les familles et la comparaison éditoriale ; ne pas confondre similarité et duplication. |
+| TS12 | La canonique choisie par Google est comparée à celle déclarée. | Décrit ; règles atomiques à détailler | Définir la comparaison datée canonique déclarée/Google ; conserver valeurs absentes et divergence qualifiée. |
+| TS13 | Le sitemap contient uniquement des URL absolues et canoniques utiles. | Décrit ; règles atomiques à détailler | Définir les règles des entrées sitemap, leur état HTTP et leur cohérence ; réutiliser sans généraliser TS10-A03. |
+| TS14 | lastmod reflète une modification significative de la page. | Décrit ; règles atomiques à détailler | Lier lastmod à une modification significative prouvée et à son historique ; prévoir jugement éditorial. |
+| TS15 | Les limites et découpages de sitemap sont respectés. | Décrit ; règles atomiques à détailler | Détailler taille décompressée, compte, encodage et index incomplets avec cas de limites. |
+| TS16 | Chaque page importante reçoit au moins un lien interne crawlable. | Décrit ; règles atomiques à détailler | Définir population cible, points d’entrée et couverture du crawl avant de conclure à une absence de lien. |
+| TS17 | Les liens essentiels utilisent un élément a avec href résoluble. | Décrit ; règles atomiques à détailler | Définir inventaire source/DOM des liens essentiels et résolution ; boutons et onclick restent distincts. |
+| TS18 | La profondeur et les pages orphelines sont mesurées sur un périmètre explicite. | Décrit ; règles atomiques à détailler | Relier inventaires CMS, sitemap et crawl ; distinguer page orpheline et inventaire incomplet. |
+| TS19 | Les paramètres, filtres et calendriers ne créent pas un espace infini. | Décrit ; règles atomiques à détailler | Définir motifs, paramètres, bornes et hypothèses de piège de crawl ; pas d’infinité déduite d’un échantillon. |
+| TS20 | La structure d’URL est lisible, stable et encodée correctement. | Décrit ; règles atomiques à détailler | Fixer la politique d’URL avant comparaison : casse, encodage et paramètres ne sont pas équivalents par défaut. |
+| TS21 | Les URL découvertes mais non indexées sont investiguées par famille. | Décrit ; règles atomiques à détailler | Structurer investigation par famille, preuves Search Console/logs/sitemap et hypothèses testables. |
+| TS22 | Chaque variante hreflang pointe vers une URL indexable et canonique. | Décrit ; règles atomiques à détailler | Définir extraction des annotations et vérification des destinations dans un groupe explicite. |
+| TS23 | Les annotations hreflang sont réciproques et incluent la page elle-même. | Décrit ; règles atomiques à détailler | Définir réciprocité, auto-référence, doublons et groupes partiellement collectés. |
+| TS24 | x-default représente une destination neutre ou la variante par défaut assumée. | Décrit ; règles atomiques à détailler | Définir l’applicabilité et la revue de la destination x-default selon l’intention. |
+| TS25 | Le contenu critique existe dans le HTML source ou devient observable après rendu. | Décrit ; règles atomiques à détailler | Fixer les contenus critiques et états requis ; comparer source/rendu sans affirmer reproduire Google. |
+| TS26 | Les ressources nécessaires au rendu ne sont pas bloquées ni en erreur. | Décrit ; règles atomiques à détailler | Lier ressources requises, réseau, robots, CSP et erreurs à chaque état ; une console vide ne suffit pas. |
+| TS27 | Les états et routes SPA produisent des URL partageables et des réponses serveur cohérentes. | Décrit ; règles atomiques à détailler | Définir ouvertures directes, actualisation, historique et URL des routes SPA avec scénarios contradictoires. |
+| TS28 | Le document expose une structure HTML compréhensible sans dépendre de son apparence. | Décrit ; règles atomiques à détailler | Séparer constats structurels et jugement sur la compréhension du document. |
+| TS29 | Les contenus essentiels restent disponibles lorsque scripts ou styles échouent. | Décrit ; règles atomiques à détailler | Définir modes dégradés et critères de disponibilité des contenus ; ne pas les confondre avec un test fonctionnel complet. |
+| TS30 | Les métadonnées essentielles sont uniques, visibles et cohérentes avec la page. | Décrit ; règles atomiques à détailler | Définir unicité, présence et cohérence des métadonnées ; conserver la revue de pertinence. |
+| TS31 | Le JSON-LD décrit des entités visibles et appropriées au contenu. | Décrit ; règles atomiques à détailler | Lier chaque assertion structurée au contenu et aux exigences du type ; préserver les revues nécessaires. |
+| TS32 | Les identifiants @id relient les mêmes entités sans créer de doublons. | Décrit ; règles atomiques à détailler | Définir identité des nœuds, stabilité des @id et cas ambigus sans fusion automatique. |
+| TS33 | Les erreurs, avertissements et usages non pris en charge sont distingués. | Décrit ; règles atomiques à détailler | Séparer syntaxe, vocabulaire et éligibilité ; conserver sorties, versions et erreurs des validateurs. |
+| TS34 | Les Core Web Vitals terrain sont documentés et classés au 75e percentile. | Décrit ; règles atomiques à détailler | Définir source terrain, période, appareil, population, granularité et données manquantes. |
+| TS35 | Les tests de laboratoire servent au diagnostic, pas à simuler le terrain. | Décrit ; règles atomiques à détailler | Définir contexte et répétitions de laboratoire ; ne pas convertir un score en mesure terrain. |
+| TS36 | Le suivi relie Search Console, logs et déploiements à des dates de décision. | Décrit ; règles atomiques à détailler | Définir baseline, changement, observations et décisions ; ne pas fabriquer les observations futures. |
+| TS37 | HTTPS, HSTS et les ressources intégrées ne créent ni erreur de certificat ni contenu mixte. | Décrit ; règles atomiques à détailler | Détailler certificat, politique HSTS, variantes et sous-ressources ; le test TLS du collecteur ne couvre pas TS37. |
+| TS38 | Les variantes d’hôte, de casse et de slash convergent vers une règle unique. | Décrit ; règles atomiques à détailler | Définir les variantes pertinentes et les rapprochements redirection/canonical/sitemap/liens. |
+| TS39 | Le CDN, Vary et la géolocalisation ne servent pas des signaux SEO contradictoires. | Décrit ; règles atomiques à détailler | Définir régions, clés de cache, Vary, contextes et comparaisons ; couverture partielle explicite. |
+| TS40 | Les méthodes hreflang utilisées sont complètes et cohérentes. | Décrit ; règles atomiques à détailler | Définir toutes les méthodes hreflang présentes et leurs contradictions sans mélanger les populations. |
+| TS41 | Les invariants SEO critiques sont rejoués automatiquement avant et après déploiement. | Décrit ; règles atomiques à détailler | Définir invariants, périmètre et preuves de CI réellement exécutée ; CI de développement ≠ contrôle d’un déploiement. |
+| TS42 | Chaque agent automatisé est gouverné selon son usage documenté. | Décrit ; règles atomiques à détailler | Structurer usages, sources opérateur datées, décision et responsable ; aucune identité déduite du jeton seul. |
+| TS43 | L’accès des crawlers autorisés est testé avec leur chaîne complète et rapproché des journaux. | Décrit ; règles atomiques à détailler | Définir requêtes avec agent complet, rapprochement logs et limites d’identité ; imitation ≠ visite réelle. |
+| TS44 | Le contenu critique et ses preuves restent accessibles sans dépendre d’une exécution JavaScript non documentée. | Décrit ; règles atomiques à détailler | Définir les faits/contenus critiques et leurs preuves accessibles ; aucune promesse de citation par un moteur. |
+
+### Premier lot : traiter le socle existant
+
+Le premier dossier à instruire est **TS01, lecture source**. Il faut séparer le
+refus de syntaxe `select` et la question de méthode `noscript` : copier le lecteur
+expérimental dans l’interpréteur actif ferait implicitement ce choix. La décision
+sur les hypothèses de lecture précède toute promotion. Les résultats rédigés ou
+les deux lectures concordantes ne valent pas preuve du comportement d’un moteur.
+
+| Sujet ouvert | État exact | Action et preuve de clôture attendue |
+| --- | --- | --- |
+| TS01 : `select`, tables et autres contextes refusés | L’interpréteur actif reste borné ; un candidat séparé traite davantage de constructions | Définir l’extension précise, garder les contre-exemples, réévaluer les preuves inchangées avec une version identifiée ; conserver tout refus restant |
+| TS01 : interprétation de `noscript` | Deux hypothèses existent seulement dans l’expérience | Formaliser la décision avant intégration, avec désaccords et entrées partielles ; toute nouvelle sémantique exige une migration normative |
+| TS10 : DOM refusés | Les deux campagnes conservent leurs attentes non atteintes | Définir le raccordement du relevé structuré aux preuves HTTP/source, puis tester les contradictions et captures manquantes ; ne pas nettoyer les anciens DOM |
+| TS07/TS10 : revues absentes | Un résultat technique ne remplace pas la revue du plan, de l’accès ou du contenu | Définir la saisie et la liaison des revues ; ne déclarer une revue réalisée qu’avec son auteur, sa portée et ses pièces |
+| Marqueurs présents, formulaire retiré | Angle mort observé sur une copie synthétique | Conserver ce contre-exemple ; traiter la présence du contenu critique dans les méthodes concernées, sans transformer TS01 en test fonctionnel général |
+| Environnements navigateur | Les environnements observés peuvent partager un moteur et des interventions auxiliaires | Déclarer leur portée ; tester séparément de nouveaux environnements si nécessaire, sans revendiquer une indépendance non prouvée |
+| TS02–TS44 sans règles détaillées, hors TS07/TS10 | 41 contrôles à développer | Ouvrir des lots successifs à partir du tableau, sans attribuer à tout un contrôle un test partiel existant |
+| Écart local/public | Outils récents non encore publiés au point de référence | Préparer une distribution identifiée après vérification ; la publication reste une action distincte, pas une condition pour écrire les prochains tests |
+
+Pour chaque sujet : conserver problème, reproduction, décision de méthode,
+correctif/version, résultat après correction et limites restantes. Une explication
+ou une galerie ne ferme pas à elle seule une limitation de l’outil. À l’inverse,
+une preuve réellement absente ne se « corrige » pas en changeant le verdict.
+
+Après le lot de consolidation : avancer par familles et dépendances, en commençant
+par redirections et erreurs HTTP (TS02/TS03), puis accès/robots, familles d’URL,
+sitemaps/liens, internationalisation, rendu/contenus, données structurées,
+mesures/suivi et agents. Chaque contrôle reste individuellement suivi. Les données
+Search Console sont recueillies lors de l’application des méthodes concernées ;
+aucune campagne GSC ou publication d’insight n’est déclenchée par ce document.
+
+## English
+
+**Development snapshot: 10 October 2026, protocol draft.7, code 716899e.** This is
+non-normative planning, not a site assessment. Priority is methodical coverage of
+all 44 controls, addressing known limitations before expanding demonstrations.
+The source describes 44 controls. Only TS01, TS07 and TS10 have detailed atomic
+rules and a bounded reference interpreter: 2, 3 and 4 rules respectively. Of the
+nine rules, two are automatic, six semi-automatic and one manual. Interpreting
+supplied evidence does not replace the reviews required by the latter categories.
+The remaining 41 controls have descriptions/procedures but no detailed executable
+atomic rules. Existing components may be reusable; experiments and test counts
+never establish whole-control completion or site conformity.
+
+The French table enumerates every permanent control and its next development
+step, not new normative requirements or a final automation classification. A lot
+closes only with explicit applicability, units, inputs, rules, predeclared test
+expectations, contradictory/missing/ambiguous/partial cases, implementation or
+review workflow, retained replayable examples, distribution verification and
+identified remaining limitations. A normative change needs a distinct version,
+French/English contracts, migration guidance and contradictory cases. Tool changes
+need their own identity and comparison on retained inputs. Closure cites evidence
+and a commit, never just a passing test count.
+
+Development completion and real application are separate milestones. Search
+Console is required for TS08/TS12/TS21/TS36: methods can be developed without account
+access, but their real assessments cannot be completed without the required data.
+Missing external evidence/reviews stay open without blocking unrelated development.
+
+The first consolidation lot covers the existing foundation: TS01 unsupported
+source contexts and the separate unresolved noscript reading policy; TS10 refused
+DOMs and the explicit future binding of structured evidence; missing TS07/TS10
+human reviews; the marker-versus-function blind spot; declared browser coverage;
+and the local/public distribution gap. A description alone does not fix a reader
+limitation, and missing evidence cannot be fixed by changing an outcome. Preserve
+original captures, historical reports and failed expectations. Do not clean DOMs
+or silently promote an experiment. Define the reading policy before any promotion.
+
+Subsequent lots address redirects/errors, access/robots, URL families, sitemaps
+and links, internationalization, rendering/content, structured data, measurements
+and agents according to their dependencies. Track each of the 44 controls
+individually. This planning document triggers no account access, site mutation,
+publication, new conformity outcome or claim of independent review.
