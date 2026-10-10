@@ -1,0 +1,74 @@
+{
+  "experiment_version": "2",
+  "scope": "Authored regression expectations frozen after v1 real reapplication exposed overbroad li ancestor refusal, before v2 fix. v1 results retained.",
+  "cases": [
+    {
+      "id": "nested-ul",
+      "html": "<html><head></head><body><ul><li>A<ul><li>B</li></ul>C</li></ul></body></html>",
+      "enabled_segments": [
+        "A",
+        "B",
+        "C"
+      ],
+      "disabled_segments": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "nested-ol",
+      "html": "<html><head></head><body><ol><li>A<div><ol><li>B</li></ol></div>C</li></ol></body></html>",
+      "enabled_segments": [
+        "A",
+        "B",
+        "C"
+      ],
+      "disabled_segments": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "nested-menu",
+      "html": "<html><head></head><body><menu><li>A<menu><li>B</li></menu>C</li></menu></body></html>",
+      "enabled_segments": [
+        "A",
+        "B",
+        "C"
+      ],
+      "disabled_segments": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    {
+      "id": "same-list-unclosed-item",
+      "html": "<html><head></head><body><ul><li>A<li>B</li></li></ul></body></html>",
+      "enabled_segments": null,
+      "disabled_segments": null
+    },
+    {
+      "id": "div-is-not-list-scope",
+      "html": "<html><head></head><body><ul><li>A<div><li>B</li></div></li></ul></body></html>",
+      "enabled_segments": null,
+      "disabled_segments": null
+    },
+    {
+      "id": "noscript-nested-list",
+      "html": "<html><head></head><body><ul><li>A<noscript><ul><li>B</li></ul></noscript>C</li></ul></body></html>",
+      "enabled_segments": [
+        "A",
+        "<ul><li>B</li></ul>",
+        "C"
+      ],
+      "disabled_segments": [
+        "A",
+        "B",
+        "C"
+      ]
+    }
+  ]
+}
