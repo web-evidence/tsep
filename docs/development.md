@@ -1,3 +1,6 @@
+The [invalid-base diagnostic](base-uri-diagnostic.md) reproduces the discrepancy in top-level and iframe contexts.
+Diagnostic d’isolement : 12/24 attentes navigateur, 48/48 calculs URL/base explicites ; draft.17 inchangé.
+
 Experimental [rendered-link observer 1](rendered-link-observation.md) retains href properties and effective bases.
 Qualification navigateur : 25/26 attentes, divergence de base invalide conservée ; draft.17 inchangé.
 

@@ -1,0 +1,108 @@
+{
+  "kind": "authored-base-uri-diagnostic",
+  "version": "1",
+  "at": "2026-10-10T21:49:57.131537+00:00",
+  "synthetic": true,
+  "normative_effect": "none",
+  "authorship": "Written after the first 25/26 rendered-link experiment, before this diagnostic harness. Initial standard-based expectations preserved, not aligned to the observed mismatch.",
+  "contexts": [
+    "top",
+    "frame"
+  ],
+  "phases": [
+    "before",
+    "after"
+  ],
+  "cases": [
+    {
+      "id": "no-base",
+      "head": "",
+      "setup": "",
+      "expected": {
+        "before": {
+          "base": "${URL}",
+          "href": "${ORIGIN}/${CONTEXT}/x"
+        },
+        "after": {
+          "base": "${URL}",
+          "href": "${ORIGIN}/${CONTEXT}/x"
+        }
+      }
+    },
+    {
+      "id": "valid-initial",
+      "head": "<base id=\"base-probe\" href=\"https://example.test/base/\">",
+      "setup": "",
+      "expected": {
+        "before": {
+          "base": "https://example.test/base/",
+          "href": "https://example.test/base/x"
+        },
+        "after": {
+          "base": "https://example.test/base/",
+          "href": "https://example.test/base/x"
+        }
+      }
+    },
+    {
+      "id": "invalid-initial",
+      "head": "<base id=\"base-probe\" href=\"http://[\">",
+      "setup": "",
+      "expected": {
+        "before": {
+          "base": "${URL}",
+          "href": "${ORIGIN}/${CONTEXT}/x"
+        },
+        "after": {
+          "base": "${URL}",
+          "href": "${ORIGIN}/${CONTEXT}/x"
+        }
+      }
+    },
+    {
+      "id": "invalid-first",
+      "head": "<base id=\"base-probe\" href=\"http://[\"><base href=\"https://example.test/ignored/\">",
+      "setup": "",
+      "expected": {
+        "before": {
+          "base": "${URL}",
+          "href": "${ORIGIN}/${CONTEXT}/x"
+        },
+        "after": {
+          "base": "${URL}",
+          "href": "${ORIGIN}/${CONTEXT}/x"
+        }
+      }
+    },
+    {
+      "id": "insert-invalid",
+      "head": "",
+      "setup": "const b=document.createElement(\"base\");b.id=\"base-probe\";b.setAttribute(\"href\",\"http://[\");document.head.append(b);",
+      "expected": {
+        "before": {
+          "base": "${URL}",
+          "href": "${ORIGIN}/${CONTEXT}/x"
+        },
+        "after": {
+          "base": "${URL}",
+          "href": "${ORIGIN}/${CONTEXT}/x"
+        }
+      }
+    },
+    {
+      "id": "repair-invalid",
+      "head": "<base id=\"base-probe\" href=\"http://[\">",
+      "setup": "document.getElementById(\"base-probe\").setAttribute(\"href\",\"https://example.test/repaired/\");",
+      "expected": {
+        "before": {
+          "base": "${URL}",
+          "href": "${ORIGIN}/${CONTEXT}/x"
+        },
+        "after": {
+          "base": "https://example.test/repaired/",
+          "href": "https://example.test/repaired/x"
+        }
+      }
+    }
+  ]
+}
