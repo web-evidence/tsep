@@ -1,0 +1,564 @@
+{
+  "kind": "authored-link-resolution-oracle",
+  "version": "1",
+  "authored_at": "2026-10-10T20:27:37.868545+00:00",
+  "synthetic": true,
+  "normative_effect": "none",
+  "scope": "Conditional static HTML a/base facts only, CSP and script effects not applied; areas/SVG/shadow are not ordinary HTML a. No TSEP verdict.",
+  "cases": [
+    {
+      "id": "ordinary",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head></head><body><a id=\"a\" href=\"../product\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/product"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/product"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "relative-base",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head><base href=\"/shop/\"></head><body><a id=\"a\" href=\"product\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/shop/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/shop/product"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/shop/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/shop/product"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "first-base",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head><base href=\"/first/\"><base href=\"/second/\"></head><body><a id=\"a\" href=\"p\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/first/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/first/p"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/first/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/first/p"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "invalid-first-base",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head><base href=\"https://[\"><base href=\"/second/\"></head><body><a id=\"a\" href=\"p\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/p"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/p"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "base-target-only",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head><base target=\"_blank\"><base href=\"/chosen/\"></head><body><a id=\"a\" href=\"p\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/chosen/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/chosen/p"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/chosen/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/chosen/p"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "empty-first-base",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head><base href=\"\"><base href=\"/second/\"></head><body><a id=\"a\" href=\"p\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/p"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/p"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "javascript-base",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head><base href=\"javascript:alert(1)\"></head><body><a id=\"a\" href=\"p\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/p"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/p"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "data-base",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head><base href=\"data:text/plain,x\"></head><body><a id=\"a\" href=\"p\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/p"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/p"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "opaque-base",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head><base href=\"mailto:person@example.test\"></head><body><a id=\"a\" href=\"p\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "mailto:person@example.test",
+          "links": [
+            {
+              "id": "a",
+              "href": null
+            }
+          ]
+        },
+        "disabled": {
+          "base": "mailto:person@example.test",
+          "links": [
+            {
+              "id": "a",
+              "href": null
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "foreign-base",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head><base href=\"https://other.test/shop/\"></head><body><a id=\"a\" href=\"p\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://other.test/shop/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://other.test/shop/p"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://other.test/shop/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://other.test/shop/p"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "body-base",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head></head><body><a id=\"a\" href=\"p\">x</a><base href=\"/late/\"></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/late/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/late/p"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/late/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/late/p"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "inert-template-base",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head><template><base href=\"/inactive/\"></template></head><body><a id=\"a\" href=\"p\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/p"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/p"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "inert-template-anchor",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head></head><body><template><a id=\"t\" href=\"/hidden\">x</a></template><a id=\"a\" href=\"/visible\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/visible"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/visible"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "noscript-base",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head><noscript><base href=\"/off/\"></noscript></head><body><a id=\"a\" href=\"p\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/p"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/off/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/off/p"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "noscript-anchor",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head></head><body><noscript><a id=\"n\" href=\"/off\">x</a></noscript><a id=\"a\" href=\"/on\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/on"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "n",
+              "href": "https://example.test/off"
+            },
+            {
+              "id": "a",
+              "href": "https://example.test/on"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "attribute-decoding",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head></head><body><a id=\"a\" href=\"/p?a=1&amp;b=2\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/p?a=1&b=2"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/p?a=1&b=2"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "missing-versus-empty",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head></head><body><a id=\"none\">x</a><a id=\"a\" href=\"\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/page"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/dir/page"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "duplicate-href",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head></head><body><a id=\"a\" href=\"/first\" href=\"/second\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/first"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/first"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "namespace",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head></head><body><svg><a id=\"s\" href=\"/svg\"></a><foreignObject><a id=\"h\" href=\"/html\">x</a></foreignObject></svg></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "h",
+              "href": "https://example.test/html"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "h",
+              "href": "https://example.test/html"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "shadow-template",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head></head><body><div><template shadowrootmode=\"open\"><a id=\"s\" href=\"/shadow\">x</a></template><a id=\"a\" href=\"/light\">x</a></div></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/light"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/light"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "csp-base",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head><meta http-equiv=\"Content-Security-Policy\" content=\"base-uri 'none'\"><base href=\"/blocked/\"></head><body><a id=\"a\" href=\"p\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/blocked/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/blocked/p"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/blocked/",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/blocked/p"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "not-all-hyperlinks",
+      "document_url": "https://example.test/dir/page",
+      "html": "<!doctype html><html><head></head><body><map><area href=\"/area\"></map><a id=\"a\" href=\"/anchor\">x</a></body></html>",
+      "expected": {
+        "enabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/anchor"
+            }
+          ]
+        },
+        "disabled": {
+          "base": "https://example.test/dir/page",
+          "links": [
+            {
+              "id": "a",
+              "href": "https://example.test/anchor"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

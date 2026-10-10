@@ -1,0 +1,410 @@
+{
+  "kind": "authored-link-resolution-oracle",
+  "version": "1",
+  "authored_at": "2026-10-10T20:27:37.868545+00:00",
+  "synthetic": true,
+  "normative_effect": "none",
+  "scope": "Authored serialized URL expectations; not whole WHATWG conformance or network outcomes.",
+  "cases": [
+    {
+      "id": "child",
+      "request": {
+        "url": "child",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/child"
+    },
+    {
+      "id": "root",
+      "request": {
+        "url": "/product",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/product"
+    },
+    {
+      "id": "parent",
+      "request": {
+        "url": "../product",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/product"
+    },
+    {
+      "id": "dot",
+      "request": {
+        "url": "./x/../product",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/product"
+    },
+    {
+      "id": "excess-parent",
+      "request": {
+        "url": "../../../../product",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/product"
+    },
+    {
+      "id": "query",
+      "request": {
+        "url": "?q=1",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/page?q=1"
+    },
+    {
+      "id": "empty-query",
+      "request": {
+        "url": "?",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/page?"
+    },
+    {
+      "id": "fragment",
+      "request": {
+        "url": "#new",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/page?old=1#new"
+    },
+    {
+      "id": "empty-fragment",
+      "request": {
+        "url": "#",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/page?old=1#"
+    },
+    {
+      "id": "empty",
+      "request": {
+        "url": "",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/page?old=1"
+    },
+    {
+      "id": "protocol-relative",
+      "request": {
+        "url": "//other.test/x",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://other.test/x"
+    },
+    {
+      "id": "absolute-normalized",
+      "request": {
+        "url": "HTTPS://EXAMPLE.TEST:443/p",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/p"
+    },
+    {
+      "id": "nondefault-port",
+      "request": {
+        "url": "https://example.test:8443/p",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test:8443/p"
+    },
+    {
+      "id": "backslash",
+      "request": {
+        "url": "..\\product",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/product"
+    },
+    {
+      "id": "backslash-host",
+      "request": {
+        "url": "\\\\other.test\\p",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://other.test/p"
+    },
+    {
+      "id": "same-scheme",
+      "request": {
+        "url": "https:child",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/child"
+    },
+    {
+      "id": "other-scheme",
+      "request": {
+        "url": "http:child",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "http://child/"
+    },
+    {
+      "id": "encoded-dot",
+      "request": {
+        "url": "%2e%2E/product",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/product"
+    },
+    {
+      "id": "mixed-dot",
+      "request": {
+        "url": ".%2e/product",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/product"
+    },
+    {
+      "id": "encoded-slash",
+      "request": {
+        "url": "a%2Fb",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/a%2Fb"
+    },
+    {
+      "id": "percent-case",
+      "request": {
+        "url": "%7e",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/%7e"
+    },
+    {
+      "id": "invalid-percent",
+      "request": {
+        "url": "%zz",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/%zz"
+    },
+    {
+      "id": "spaces",
+      "request": {
+        "url": "  /p  ",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/p"
+    },
+    {
+      "id": "embedded-tab",
+      "request": {
+        "url": "/pro\tduct",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/product"
+    },
+    {
+      "id": "embedded-newline",
+      "request": {
+        "url": "/pro\nduct",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/product"
+    },
+    {
+      "id": "space-path",
+      "request": {
+        "url": "/a b",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/a%20b"
+    },
+    {
+      "id": "unicode-path",
+      "request": {
+        "url": "/café",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/caf%C3%A9"
+    },
+    {
+      "id": "unicode-query",
+      "request": {
+        "url": "?q=été",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/page?q=%C3%A9t%C3%A9"
+    },
+    {
+      "id": "idna",
+      "request": {
+        "url": "https://bücher.example/",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://xn--bcher-kva.example/"
+    },
+    {
+      "id": "ipv4-short",
+      "request": {
+        "url": "http://127.1/",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "http://127.0.0.1/"
+    },
+    {
+      "id": "ipv6",
+      "request": {
+        "url": "https://[2001:0db8::1]:443/p",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://[2001:db8::1]/p"
+    },
+    {
+      "id": "credentials",
+      "request": {
+        "url": "https://u:p@example.test/p",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://u:p@example.test/p"
+    },
+    {
+      "id": "mail",
+      "request": {
+        "url": "mailto:person@example.test",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "mailto:person@example.test"
+    },
+    {
+      "id": "javascript",
+      "request": {
+        "url": "javascript:alert(1)",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "javascript:alert(1)"
+    },
+    {
+      "id": "data",
+      "request": {
+        "url": "data:text/plain,x",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "data:text/plain,x"
+    },
+    {
+      "id": "blob",
+      "request": {
+        "url": "blob:https://example.test/id",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "blob:https://example.test/id"
+    },
+    {
+      "id": "file",
+      "request": {
+        "url": "file:///tmp/example",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "file:///tmp/example"
+    },
+    {
+      "id": "bad-port",
+      "request": {
+        "url": "https://example.test:70000/p",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": null
+    },
+    {
+      "id": "bad-host",
+      "request": {
+        "url": "https://exa mple.test/",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": null
+    },
+    {
+      "id": "bad-ipv6",
+      "request": {
+        "url": "https://[no]/",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": null
+    },
+    {
+      "id": "encoded-host",
+      "request": {
+        "url": "https://%65xample.test/p",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/p"
+    },
+    {
+      "id": "query-apos",
+      "request": {
+        "url": "?q='",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/page?q=%27"
+    },
+    {
+      "id": "empty-double-query",
+      "request": {
+        "url": "?a=1&&b=2",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test/dir/page?a=1&&b=2"
+    },
+    {
+      "id": "relative-without-base",
+      "request": {
+        "url": "x",
+        "base": null
+      },
+      "expected_href": null
+    },
+    {
+      "id": "absolute-without-base",
+      "request": {
+        "url": "https://example.test",
+        "base": null
+      },
+      "expected_href": "https://example.test/"
+    },
+    {
+      "id": "invalid-base-even-absolute",
+      "request": {
+        "url": "https://example.test/",
+        "base": "bad"
+      },
+      "expected_href": null
+    },
+    {
+      "id": "opaque-base-relative",
+      "request": {
+        "url": "x",
+        "base": "mailto:person@example.test"
+      },
+      "expected_href": null
+    },
+    {
+      "id": "opaque-base-fragment",
+      "request": {
+        "url": "#x",
+        "base": "mailto:person@example.test"
+      },
+      "expected_href": "mailto:person@example.test#x"
+    },
+    {
+      "id": "query-preserve",
+      "request": {
+        "url": "",
+        "base": "https://example.test/p?#old"
+      },
+      "expected_href": "https://example.test/p?"
+    },
+    {
+      "id": "trailing-host-dot",
+      "request": {
+        "url": "https://example.test./p",
+        "base": "https://example.test/dir/page?old=1#old"
+      },
+      "expected_href": "https://example.test./p"
+    }
+  ]
+}

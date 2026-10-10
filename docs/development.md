@@ -1,3 +1,6 @@
+Optional [source link resolution experiment 1](source-links-experiment.md) prepares A04: explicit Node24 URL parsing, static base hypotheses and attributed anchors; no normative change.
+Expérience de liens source disponible, sans changement de verdict draft.16.
+
 Current integration: draft.16, interpreter 16 / adapter 17 / replay 2.
 Optional prior [canonical source profile](source-canonical.md) extends TS10-A01/A02;
 [explicit migration](migration-draft.16.md), unchanged A04 and DOM readers.

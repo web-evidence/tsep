@@ -1,0 +1,53 @@
+{
+  "kind": "source-link-resolution-provenance",
+  "normative_effect": "none",
+  "sources": [
+    {
+      "url": "https://url.spec.whatwg.org/",
+      "at": "2026-10-10T20:26:49.854324+00:00",
+      "scope": "URL parsing / static document base references, not evidence about Edikka or Google.",
+      "status": 200,
+      "final_url": "https://url.spec.whatwg.org/",
+      "sha256": "9a9df6f2a4843089b1bc0ec6dda62e6fb5cc508b2f50c8a90ebb86a17853c800",
+      "bytes": 740292,
+      "capture": ".local/source-links-2026-10-10/references/whatwg-url.html",
+      "delivery": "Separate retained kit; repository stores scope, URL, date and hash only."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/urls-and-fetching.html",
+      "at": "2026-10-10T20:26:51.188436+00:00",
+      "scope": "URL parsing / static document base references, not evidence about Edikka or Google.",
+      "status": 200,
+      "final_url": "https://html.spec.whatwg.org/multipage/urls-and-fetching.html",
+      "sha256": "ef521eb8dd53e3a86b383949f90208183aecedf30a94fcec35f36ee55dab92e4",
+      "bytes": 81034,
+      "capture": ".local/source-links-2026-10-10/references/html-base.html",
+      "delivery": "Separate retained kit; repository stores scope, URL, date and hash only."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/semantics.html",
+      "at": "2026-10-10T20:26:52.103205+00:00",
+      "scope": "URL parsing / static document base references, not evidence about Edikka or Google.",
+      "status": 200,
+      "final_url": "https://html.spec.whatwg.org/multipage/semantics.html",
+      "sha256": "19dc5bf13461b20dcb5fabec098d726e319986b30fc6b84cba98a037472fc82f",
+      "bytes": 333091,
+      "capture": ".local/source-links-2026-10-10/references/html-base-element.html",
+      "delivery": "Separate retained kit; repository stores scope, URL, date and hash only."
+    },
+    {
+      "url": "https://nodejs.org/docs/latest-v24.x/api/url.html",
+      "at": "2026-10-10T20:26:53.404431+00:00",
+      "scope": "URL parsing / static document base references, not evidence about Edikka or Google.",
+      "status": 200,
+      "final_url": "https://nodejs.org/docs/latest-v24.x/api/url.html",
+      "sha256": "3154c1cd3e90ca3b036a650abd536ec5753a53bb7938ced82a695d7bbf2c23e3",
+      "bytes": 183465,
+      "capture": ".local/source-links-2026-10-10/references/node24-url.html",
+      "delivery": "Separate retained kit; repository stores scope, URL, date and hash only."
+    }
+  ],
+  "oracle_timing": "50 URL cases and 22 HTML cases authored before implementation; hashes beside fixtures.",
+  "runtime": "Explicit Node24; retained Node/V8/Ada/ICU/Unicode identity, not a claim ICU supplies current URL IDNA.",
+  "scope": "Conditional static HTML a/base resolution, no rendered/engine/TSEP outcome."
+}
