@@ -56,7 +56,8 @@ class Handler(BaseHTTPRequestHandler):
         coding = 'identity' if self.path in ('/large', '/slow', '/cut') else 'deflate' if self.path == '/deflate' else 'gzip'
         body = gzip.compress(content, mtime=0) if coding == 'gzip' else zlib.compress(content) if coding == 'deflate' else content
         self.send_response(200)
-        self.send_header('Content-Type', self.server.media)
+        if self.server.media is not None:
+            self.send_header('Content-Type', self.server.media)
         self.send_header('Content-Encoding', coding)
         self.send_header('Transfer-Encoding', 'chunked')
         self.end_headers()
@@ -190,6 +191,17 @@ class GuidedCapture(unittest.TestCase):
         target = tsep.read_json(self.root/'assessment/input.json')['targets'][0]
         self.assertTrue(target['context']['media_comparison']['raw_headers_differ'])
         self.assertIn('Type de média observé', (self.root/'assessment/report-fr.html').read_text())
+
+    def test_removed_content_type_is_an_observed_change_not_an_unavailable_capture(self):
+        self.prepare(paths=('/stable',))
+        self.server.media = None
+        result = evaluate(self.root/'first/reference', self.root/'intent.json', self.root/'assessment')
+        self.assertEqual(result['counts']['C'], 1)  # Complete-body digest priority remains normative.
+        target = tsep.read_json(self.root/'assessment/input.json')['targets'][0]
+        observed = target['context']['media_comparison']
+        self.assertEqual(observed['evaluation'], [])
+        self.assertTrue(observed['raw_headers_differ'])
+        self.assertNotIn('unavailable_reason', observed)
 
     def test_changed_frozen_preflight_is_rejected_before_evaluation_network(self):
         self.prepare()

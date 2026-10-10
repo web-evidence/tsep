@@ -54,10 +54,12 @@ validation establishes consistency and file integrity.
    captures raw bytes, freezes criteria before measurement and replays offline;
    interpreter 5 provides a [TS01 source-text extractor](docs/source-text-v5.md)
    separate from TS07, with frozen counterexamples and explicit limits.
-   Collector 5 preflights reference markers; adapter 6 preserves traceability and
+   Collector 6 preflights reference markers; adapter 6 preserves traceability and
    HTML 4 displays preflight and observed media types. A separate [coverage
    diagnostic](docs/reference-diagnostics.md) inventories candidate limitations
-   without issuing verdicts. The protocol remains draft.7.
+   without issuing verdicts. The [paired capture diagnostic](docs/diagnostic-campaign.md)
+   compares registered phases and exposes extraction limits on changed bodies.
+   The protocol remains draft.7; the [noscript proposal](docs/proposals/noscript-consensus.md) is unapplied.
 2. **Declare partial coverage**: select a `custom` list, keep unknowns as
    NT/inconclusive and link each artifact to its target. Selecting TS01/TS07 does
    not satisfy a named profile. An isolated test cannot pass its parent control.

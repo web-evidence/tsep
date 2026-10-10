@@ -1,5 +1,22 @@
 # Change history / Historique
 
+## Collector 6, preflight 2 and campaign diagnostic 1 — 2026-10-10 — local development
+
+Compare two registered capture phases without TSEP outcomes: decoded-byte
+changes, per-page non-exhaustive construction inventory and complete source
+extraction availability or first refusal. Verify manifests, raw/JSON binding,
+settings, ordering, timestamps and source continuity. Signal Content-Type removal
+or addition when both responses are available. Interpreter 5, adapter 6, intent 3,
+HTML 4 and draft.7 stay unchanged. A bilingual noscript consensus proposal is
+explicitly unapplied; select coverage is not extended. [Scope](docs/diagnostic-campaign.md).
+
+Comparaison diagnostique de deux phases préenregistrées, sans verdict : octets
+décodés, inventaire non exhaustif par page, extraction complète ou premier refus.
+Empreintes, correspondance JSON/brut, réglages, ordre, dates et sources vérifiés.
+Ajout/retrait de Content-Type signalé quand les réponses sont disponibles.
+Protocole draft.7 et interpréteur 5 inchangés ; proposition noscript bilingue non
+appliquée. Aucun changement de couverture select, publication ou nouvelle CI distante.
+
 ## Interpreter 5, adapter 6 and collector 5 — 2026-10-10 — local development
 
 Extend SVG style exclusion only within the bounded icon subset: explicit body,

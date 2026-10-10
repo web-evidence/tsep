@@ -2,7 +2,9 @@
 
 ## Français
 
-Version courante : [collecteur 5 / interpréteur 5 / adaptateur 6](source-text-v5.md). Styles SVG bornés ; nouvelle référence/intention exigée après changement d’outil.
+Version courante : [collecteur 6 / précontrôle 2](diagnostic-campaign.md).
+Un Content-Type absent dans une réponse complète est une observation ; nouvelle
+référence/intention exigée après changement d’outil. Interpréteur 5 / adaptateur 6.
 
 **Collecteur 4 / intention guidée 3 :** les marqueurs sont vérifiés sur la référence
 avant scellement. Contradiction → refus ; extraction non prise en charge → avertissement
@@ -10,7 +12,7 @@ explicite conservé dans le reçu, l’intention et le rapport. La vérification
 recalculée avant toute nouvelle requête. Les types de média sont observés séparément,
 sans changer TS01. Voir [diagnostic et migration](reference-diagnostics.md).
 
-Le collecteur version 5 réalise des GET anonymes sur **1 à 10 URL explicitement
+Le collecteur version 6 réalise des GET anonymes sur **1 à 10 URL explicitement
 choisies et autorisées**, puis utilise l’interpréteur version 5, l’adaptateur version 6 et le
 rapport HTML version 4. Python 3.9+, bibliothèque standard. Protocole draft.7,
 TS01–TS44, contrat du rapport et corpus normatif inchangés. Cette couverture
@@ -198,7 +200,9 @@ le HTML ; l’inventaire de couverture est déclaré par l’outil, sans validat
 
 ## English
 
-Current: [collector 5 / interpreter 5 / adapter 6](source-text-v5.md). Bounded SVG styles; new reference/intent required after tool changes.
+Current: [collector 6 / preflight 2](diagnostic-campaign.md). Observed absence of
+Content-Type is distinguished from unavailable evidence; fresh reference/intent
+required after tool changes. Interpreter 5 / adapter 6 unchanged.
 
 **Collector 4 / guided intent 3:** markers are checked on the reference before
 sealing. Contradiction refuses the seal; unsupported extraction is a recorded
@@ -214,7 +218,7 @@ runtime difference.
 
 
 
-Collector version 5 performs anonymous GET requests for **1–10 explicitly selected,
+Collector version 6 performs anonymous GET requests for **1–10 explicitly selected,
 authorized URLs**, using interpreter 5, adapter 6 and HTML engine 4.
 Python 3.9+ standard library only. Protocol draft.7, TS01–TS44, the report contract
 and normative corpus are unchanged. This is tool coverage, not certification or

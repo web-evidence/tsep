@@ -2,7 +2,8 @@
 
 ## Français
 
-Version courante : [interpréteur 5 / adaptateur 6 / collecteur 5](source-text-v5.md), extension bornée des styles SVG ; draft.7 inchangé.
+Version courante : interpréteur 5 / adaptateur 6, [styles SVG bornés](source-text-v5.md) ;
+[collecteur 6](diagnostic-campaign.md), draft.7 inchangé.
 
 `adapters/captures.py` version 6 transforme un fichier de captures fourni en un
 rapport TSEP draft.7, ses preuves, sa décision et son export EARL. Il appelle
@@ -144,7 +145,8 @@ Ce contrôle du parcours ne constitue pas une seconde interprétation normative.
 
 ## English
 
-Current version: [interpreter 5 / adapter 6 / collector 5](source-text-v5.md), bounded SVG style extension; draft.7 unchanged.
+Current: interpreter 5 / adapter 6, [bounded SVG styles](source-text-v5.md);
+[collector 6](diagnostic-campaign.md), draft.7 unchanged.
 
 Interpreter 4 / adapter 5 / collector 3 migration is documented in
 [Source text v4](source-text-v4.md). Draft.7, binary input 2 and original captures

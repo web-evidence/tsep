@@ -54,10 +54,12 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
    collecte les octets bruts, fige les critères avant mesure et rejoue hors ligne ;
    l’interpréteur 5 fournit un [extracteur de texte source TS01](docs/source-text-v5.md)
    distinct de TS07, avec cas contradictoires figés et limites explicites.
-   Le collecteur 5 précontrôle les marqueurs sur la référence ; l’adaptateur 6
+   Le collecteur 6 précontrôle les marqueurs sur la référence ; l’adaptateur 6
    conserve la traçabilité et le HTML 4 affiche ce précontrôle et les types de média.
    Le [diagnostic de couverture](docs/reference-diagnostics.md) inventorie les limites
-   candidates sans produire de verdict. Le protocole reste draft.7.
+   candidates sans produire de verdict. Le [diagnostic par paire](docs/diagnostic-campaign.md)
+   compare des phases préenregistrées et les limites d’extraction des corps changés.
+   Le protocole reste draft.7 ; la [proposition noscript](docs/proposals/noscript-consensus.md) est non appliquée.
 2. **Déclarer une couverture partielle** : sélectionner une liste `custom`, conserver
    les inconnues en NT/inconclusive et relier chaque preuve à sa cible. Une sélection
    TS01/TS07 ne satisfait pas un profil nommé. Aucun test isolé ne valide son parent.

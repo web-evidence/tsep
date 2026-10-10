@@ -310,3 +310,18 @@ le faux balisage dans les attributs/scripts, les bornes et la conservation des
 entrées. Le parcours guidé refuse les marqueurs contradictoires de référence,
 conserve les avertissements malgré une empreinte égale, refuse un précontrôle
 modifié avant le réseau et observe le média sans modifier le verdict normatif.
+
+## Paired diagnostic / Diagnostic par paire
+
+Campaign tests distinguish decoded-byte changes from compression, incomplete
+responses, changed destinations, missing media and source-extraction limits. They
+reject changed URL ordering, settings/source continuity, invalid times, tampered
+manifests and JSON/raw sidecar disagreements. An isolated CLI runs without the
+rule evaluator or collector. A guided loopback case retains equal-digest pass
+while disclosing a removed Content-Type. See [scope](diagnostic-campaign.md).
+
+Les tests distinguent changement des octets décodés, compression, réponse incomplète,
+destination différente, type absent et limites de l’extracteur. Ils refusent les
+écarts de liste, réglages, sources, dates, manifeste ou fichiers bruts. Le CLI isolé
+fonctionne sans module de décision ni collecteur ; un cas loopback conserve le
+pass par empreinte égale tout en signalant le Content-Type retiré.

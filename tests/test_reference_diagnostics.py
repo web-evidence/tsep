@@ -101,7 +101,9 @@ class ReferenceDiagnostics(unittest.TestCase):
         result=media_comparison(HEADERS,{'content-type':['text/plain; charset=utf-8']})
         self.assertTrue(result['raw_headers_differ'])
         self.assertNotIn('outcome',result)
-        self.assertIsNone(media_comparison({},HEADERS)['raw_headers_differ'])
+        self.assertTrue(media_comparison({},HEADERS)['raw_headers_differ'])
+        self.assertTrue(media_comparison(HEADERS,{})['raw_headers_differ'])
+        self.assertFalse(media_comparison({},{})['raw_headers_differ'])
 
 
 if __name__=='__main__':

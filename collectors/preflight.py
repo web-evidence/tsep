@@ -2,7 +2,7 @@
 from conformance.evaluate import identity_text
 from conformance.http import Unknown, body_digest
 
-VERSION = '1'
+VERSION = '2'
 
 
 def reference_check(headers, body, policy, required=(), forbidden=()):
@@ -33,8 +33,12 @@ def reference_check(headers, body, policy, required=(), forbidden=()):
 
 
 def media_comparison(before, after):
-    """Raw supplied Content-Type field comparison; no rule or media-intent inference."""
+    """Compare fields of two parsed responses, including observed absence.
+
+    An unavailable response is handled by the caller, never represented as an
+    empty header dictionary. Empty lists here mean the field was absent.
+    """
     left, right = before.get('content-type', []), after.get('content-type', [])
     return {'reference': left, 'evaluation': right,
-            'raw_headers_differ': left != right if left and right else None,
+            'raw_headers_differ': left != right,
             'scope': 'Observed Content-Type fields only; spelling/parameter differences may be benign. Draft.7 does not bind expected media type.'}
