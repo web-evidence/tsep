@@ -1,5 +1,20 @@
 # Change history / Historique
 
+## Noscript experiment 1 — 2026-10-10 — unapplied local experiment
+
+Freeze 68 authored whole-document cases before implementing two global lexical
+noscript hypotheses. Retain source ranges, per-reading marker evidence and
+candidate agreement; incomplete readings never contribute a prefix. Standalone
+CLI, no normative evaluator dependency, no report or HTTP identity verdict.
+Active interpreter 5, draft.7, all prior tools/cases and their outcomes are unchanged.
+The experiment is not an HTML5 tree-construction oracle. [Scope](docs/noscript-experiment.md).
+
+68 documents synthétiques figés avant le prototype : deux hypothèses globales,
+positions source, preuves de marqueurs et concordance candidate. Aucun préfixe
+accepté si une lecture reste incomplète, aucun verdict TSEP. Interpréteur 5,
+draft.7 et outils antérieurs inchangés. Lectures lexicales bornées, pas une preuve
+générale du comportement d’un navigateur ; aucune promotion normative.
+
 ## Collector 6, preflight 2 and campaign diagnostic 1 — 2026-10-10 — local development
 
 Compare two registered capture phases without TSEP outcomes: decoded-byte

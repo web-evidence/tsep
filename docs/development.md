@@ -325,3 +325,17 @@ destination différente, type absent et limites de l’extracteur. Ils refusent 
 écarts de liste, réglages, sources, dates, manifeste ou fichiers bruts. Le CLI isolé
 fonctionne sans module de décision ni collecteur ; un cas loopback conserve le
 pass par empreinte égale tout en signalant le Content-Type retiré.
+
+## Unapplied noscript experiment / Expérience noscript non appliquée
+
+The separate [experiment](noscript-experiment.md) has 68 authored cases frozen
+before implementation, with per-mode expected source segments and candidates.
+Tests also check Unicode offsets, disagreement/incomplete-reading behavior, bounds,
+CLI isolation without evaluator/collector, and the unchanged active extractor.
+It is included in verification/distribution for review, never imported by the
+normative decision pipeline. Experimental candidate results are not report outcomes.
+
+L’expérience séparée conserve 68 cas rédigés avant son code, avec segments et
+candidats attendus par mode. Les tests ajoutent positions Unicode, désaccords,
+lectures incomplètes, bornes, CLI isolé et refus inchangé de l’extracteur actif.
+Elle est distribuée pour examen, jamais branchée sur les décisions normatives.

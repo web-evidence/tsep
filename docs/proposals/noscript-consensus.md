@@ -6,6 +6,13 @@ n’altère aucune règle, n’autorise aucun verdict et ne certifie aucune conf
 Le protocole actif reste `0.1.0-draft.7`. / **UNAPPLIED PROPOSAL — no decision
 recorded.** A possible future normative change, not an issued version or rule.
 
+**État du développement, 2026-10-10 :** l’[expérience isolée 1](../noscript-experiment.md)
+éprouve maintenant cette piste sur 68 documents synthétiques figés avant son code.
+Elle ne remplace pas le contrat : ses lectures sont lexicales et bornées, pas une
+preuve générale de construction d’arbre HTML5. La promotion normative reste en
+attente. / **Development status:** isolated experiment 1 implements bounded lexical
+hypotheses against 68 prefrozen authored cases. No normative promotion is applied.
+
 ## Français
 
 ### Problème précis
@@ -50,7 +57,8 @@ Les modes n’autorisent ni réparation silencieuse du document ni normalisation
 HTML5 contraire au contrat. Il reste à spécifier précisément leurs frontières
 lexicales et les situations de construction d’arbre nécessitant inconclusive.
 Les références de caractères dans RAWTEXT ne se traitent pas comme dans DATA.
-La proposition n’affirme pas qu’un interpréteur sait déjà réaliser les deux lectures.
+La proposition n’affirme pas qu’un interpréteur normatif sait réaliser ces lectures
+dans tous les contextes ; l’expérience séparée en éprouve un sous-ensemble explicite.
 
 ### Contre-exemples proposés, non exécutés comme règle TSEP
 
@@ -115,7 +123,8 @@ can change the rest of the document; a resolved prefix never establishes a resul
 Evidence must retain the full body hash, tool identity, per-reading boundaries,
 completeness, source-attributable segments, missing/present markers and agreement
 matrix. Lexical boundaries and cases requiring tree repair still need specification.
-The proposal does not assert that either tool already implements both readings.
+The proposal does not assert that the normative tool implements both readings;
+the separate experiment tests an explicitly bounded lexical subset.
 It does not assess actual DOM, rendering, form values, JavaScript behavior or visibility.
 
 Potential impact is NT becoming pass or fail; no old evidence changes. No real
