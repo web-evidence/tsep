@@ -1,0 +1,792 @@
+{
+  "fixture_version": "1",
+  "synthetic": true,
+  "frozen_at": "2026-10-10T04:51:16.225091+00:00",
+  "protocol": "0.1.0-draft.7",
+  "scope": "Implementation acceptance cases; does not alter normative conformance corpus. Required literal Expected, forbidden literal Forbidden. Some valid HTML remains deliberately unsupported.",
+  "cases": [
+    {
+      "id": "ordinary-header",
+      "html": "<html><head></head><body><header>Expected</header></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-nav",
+      "html": "<html><head></head><body><nav>Expected</nav></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-main",
+      "html": "<html><head></head><body><main>Expected</main></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-section",
+      "html": "<html><head></head><body><section>Expected</section></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-article",
+      "html": "<html><head></head><body><article>Expected</article></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-aside",
+      "html": "<html><head></head><body><aside>Expected</aside></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-footer",
+      "html": "<html><head></head><body><footer>Expected</footer></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-h2",
+      "html": "<html><head></head><body><h2>Expected</h2></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-h3",
+      "html": "<html><head></head><body><h3>Expected</h3></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-ul",
+      "html": "<html><head></head><body><ul>Expected</ul></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-ol",
+      "html": "<html><head></head><body><ol>Expected</ol></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-li",
+      "html": "<html><head></head><body><li>Expected</li></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-strong",
+      "html": "<html><head></head><body><strong>Expected</strong></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-b",
+      "html": "<html><head></head><body><b>Expected</b></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-small",
+      "html": "<html><head></head><body><small>Expected</small></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-sup",
+      "html": "<html><head></head><body><sup>Expected</sup></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-code",
+      "html": "<html><head></head><body><code>Expected</code></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-form",
+      "html": "<html><head></head><body><form>Expected</form></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-fieldset",
+      "html": "<html><head></head><body><fieldset>Expected</fieldset></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-legend",
+      "html": "<html><head></head><body><legend>Expected</legend></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-label",
+      "html": "<html><head></head><body><label>Expected</label></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-button",
+      "html": "<html><head></head><body><button>Expected</button></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-figure",
+      "html": "<html><head></head><body><figure>Expected</figure></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-figcaption",
+      "html": "<html><head></head><body><figcaption>Expected</figcaption></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-details",
+      "html": "<html><head></head><body><details>Expected</details></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-summary",
+      "html": "<html><head></head><body><summary>Expected</summary></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "ordinary-custom-element",
+      "html": "<html><head></head><body><custom-element>Expected</custom-element></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Ordinary balanced source tag boundaries; no visibility or DOM claim"
+    },
+    {
+      "id": "missing-required",
+      "html": "<html><head></head><body><section>Other resource</section></body></html>",
+      "segments": [
+        "Other resource"
+      ],
+      "outcome": "fail",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "forbidden-present",
+      "html": "<html><head></head><body><header>Expected</header><footer>Forbidden</footer></body></html>",
+      "segments": [
+        "Expected",
+        "Forbidden"
+      ],
+      "outcome": "fail",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "inert-comment",
+      "html": "<html><head></head><body><!--Expected--><p>Other</p></body></html>",
+      "segments": [
+        "Other"
+      ],
+      "outcome": "fail",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "forbidden-comment",
+      "html": "<html><head></head><body><p>Expected</p><!--Forbidden--></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "boundary-comment",
+      "html": "<html><head></head><body>Ex<!--anything-->pected</body></html>",
+      "segments": [
+        "Ex",
+        "pected"
+      ],
+      "outcome": "fail",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "boundary-tag",
+      "html": "<html><head></head><body>Ex<span></span>pected</body></html>",
+      "segments": [
+        "Ex",
+        "pected"
+      ],
+      "outcome": "fail",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "attribute-marker",
+      "html": "<html><head></head><body><input type=\"hidden\" name=\"token\" value=\"Expected\"><p>Other</p></body></html>",
+      "segments": [
+        "Other"
+      ],
+      "outcome": "fail",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "attribute-forbidden",
+      "html": "<html><head></head><body><input value=\"Forbidden\"><p>Expected</p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "quoted-angle",
+      "html": "<html><head></head><body><p title=\"a > b < c\">Expected</p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "unquoted-attribute",
+      "html": "<html><head></head><body><p id=known>Expected</p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "entity-decoding",
+      "html": "<html><head></head><body>Ex&#112;ected &amp; &#x80; &copy &notin;</body></html>",
+      "segments": [
+        "Expected & € © ∉"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "entity-nbsp",
+      "html": "<html><head></head><body>Ex&nbsp;pected</body></html>",
+      "segments": [
+        "Ex pected"
+      ],
+      "outcome": "fail",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "numeric-replacement",
+      "html": "<html><head></head><body>Expected &#0; &#x110000;</body></html>",
+      "segments": [
+        "Expected � �"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "line-endings",
+      "html": "<html><head></head><body>Expected\r\nraw\rtext</body></html>",
+      "segments": [
+        "Expected\r\nraw\rtext"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "literal-entity-less-than",
+      "html": "<html><head></head><body>Expected &lt;div&gt;</body></html>",
+      "segments": [
+        "Expected <div>"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "script-inert",
+      "html": "<html><head></head><body><script>Expected</script><p>Other</p></body></html>",
+      "segments": [
+        "Other"
+      ],
+      "outcome": "fail",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "script-forbidden-inert",
+      "html": "<html><head></head><body><script>Forbidden</script><p>Expected</p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "script-similar-end",
+      "html": "<html><head></head><body><script>\"</scripture>Forbidden\"</script><p>Expected</p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "script-uppercase-end",
+      "html": "<html><head></head><body><script>Forbidden</SCRIPT ><p>Expected</p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "style-inert",
+      "html": "<html><head></head><body><style>.a:after{content:\"Forbidden\"}</style><p>Expected</p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "title-rcdata",
+      "html": "<html><head><title>Expected &amp; <b>literal</b></title></head><body></body></html>",
+      "segments": [
+        "Expected & <b>literal</b>"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "textarea-empty",
+      "html": "<html><head></head><body><textarea name=\"message\"></textarea><p>Expected</p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "svg-icons",
+      "html": "<html><head></head><body><svg><g><path d=\"M0 0\"/><use href=\"#icon\"/><rect width=\"1\"/><animate attributeName=\"x\"/></g></svg><p>Expected</p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "svg-attribute-marker",
+      "html": "<html><head></head><body><svg><path id=\"Expected\"/></svg><p>Other</p></body></html>",
+      "segments": [
+        "Other"
+      ],
+      "outcome": "fail",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "empty-noscript",
+      "html": "<html><head></head><body><noscript></noscript><p>Expected</p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "empty-template",
+      "html": "<html><head></head><body><template></template><p>Expected</p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "doctype",
+      "html": "<!DOCTYPE html><html><head></head><body>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "Synthetic source-text counterexample"
+    },
+    {
+      "id": "noscript-text",
+      "html": "<html><head></head><body><noscript>Forbidden</noscript><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "noscript-markup",
+      "html": "<html><head></head><body><noscript><img src=\"x\"></noscript><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "template-text",
+      "html": "<html><head></head><body><template>Forbidden</template><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "textarea-text",
+      "html": "<html><head></head><body><textarea>Forbidden</textarea><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "textarea-fake-end",
+      "html": "<html><head></head><body><textarea></div>Forbidden</textarea><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "svg-text",
+      "html": "<html><head></head><body><svg><text>Forbidden</text></svg><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "svg-title",
+      "html": "<html><head></head><body><svg><title>Forbidden</title></svg><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "svg-direct-text",
+      "html": "<html><head></head><body><svg>Forbidden</svg><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "svg-cdata",
+      "html": "<html><head></head><body><svg><![CDATA[Forbidden]]></svg><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "svg-foreignobject",
+      "html": "<html><head></head><body><svg><foreignObject><p>Forbidden</p></foreignObject></svg><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "svg-breakout",
+      "html": "<html><head></head><body><svg><p>Forbidden</p></svg><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "svg-script",
+      "html": "<html><head></head><body><svg><script>Forbidden</script></svg><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "mathml",
+      "html": "<html><head></head><body><math><mi>Forbidden</mi></math><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "script-escaped",
+      "html": "<html><head></head><body><script><!--<script>Forbidden</script>--></script><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "script-self-close",
+      "html": "<html><head></head><body><script/>Forbidden<p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "script-end-attribute",
+      "html": "<html><head></head><body><script>Forbidden</script x><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "script-quoted-end",
+      "html": "<html><head></head><body><script>let x=\"</script>Forbidden\";</script><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "comment-abrupt",
+      "html": "<html><head></head><body><!-->Forbidden<p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "comment-bang-end",
+      "html": "<html><head></head><body><!--x--!>Forbidden<p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "comment-bogus",
+      "html": "<html><head></head><body><!x>Forbidden<p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "processing-instruction",
+      "html": "<html><head></head><body><?x>Forbidden<p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "comment-nested",
+      "html": "<html><head></head><body><!--a<!-->Forbidden--><p>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "comment-open",
+      "html": "<html><head></head><body><p>Expected</p><!-- Forbidden</body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "nul",
+      "html": "<html><head></head><body><p>Expected\u0000</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "end-tag-orphan",
+      "html": "<html><head></head><body>Ex</x>pected</body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "end-tag-attribute",
+      "html": "<html><head></head><body><p>Expected</p x></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "self-closing-ordinary",
+      "html": "<html><head></head><body><p/>Expected</body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "attribute-eof",
+      "html": "<html><head></head><body><p title=\"Expected</body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "attribute-duplicate",
+      "html": "<html><head></head><body><p id=\"a\" ID=\"b\">Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "unquoted-invalid",
+      "html": "<html><head></head><body><p title=a=b>Expected</p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "misnested",
+      "html": "<html><head></head><body><b><i>Expected</b></i></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "unclosed",
+      "html": "<html><head></head><body><section>Expected</body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "select-context",
+      "html": "<html><head></head><body><select><option>Expected</option></select></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "table-context",
+      "html": "<html><head></head><body><table>Expected<tr><td>value</td></tr></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "xmp-context",
+      "html": "<html><head></head><body><xmp>Expected</xmp></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "iframe-context",
+      "html": "<html><head></head><body><iframe>Expected</iframe></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "noembed-context",
+      "html": "<html><head></head><body><noembed>Expected</noembed></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "noframes-context",
+      "html": "<html><head></head><body><noframes>Expected</noframes></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "plaintext-context",
+      "html": "<html><head></head><body><plaintext>Expected</body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "listing-context",
+      "html": "<html><head></head><body><listing>Expected</listing></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "deep-nesting",
+      "html": "<html><head></head><body><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div><div>Expected</div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></div></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    },
+    {
+      "id": "unresolved-after-required",
+      "html": "<html><head></head><body><p>Expected</p><noscript>Forbidden</noscript></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Deliberately unresolved in bounded implementation; whole extraction must remain inconclusive"
+    }
+  ]
+}

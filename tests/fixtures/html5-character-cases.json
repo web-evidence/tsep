@@ -1,0 +1,1894 @@
+{
+  "upstream": "html5lib/html5lib-tests",
+  "revision": "c777c408b61078ea2eb4acefc2535f54dbc8b28a",
+  "license": "MIT, licenses/html5lib-tests.txt",
+  "scope": "Selected DATA-state character-reference expectations only; not a full HTML tokenizer oracle. No source-page input. Original inputs/outputs unchanged.",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/html5lib/html5lib-tests/c777c408b61078ea2eb4acefc2535f54dbc8b28a/tokenizer/entities.test",
+      "sha256": "fe17483810a00247579f5f129ca9c007fbab6755ba839523e29aa9f8875f4085"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/html5lib/html5lib-tests/c777c408b61078ea2eb4acefc2535f54dbc8b28a/tokenizer/numericEntities.test",
+      "sha256": "679296c976252322ece27e2b113a5358a0aa3b0b8ecd2d6d9b365f9d1b0f9632"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/html5lib/html5lib-tests/c777c408b61078ea2eb4acefc2535f54dbc8b28a/tokenizer/test1.test",
+      "sha256": "524fcfa4d561a14f0c4e72e0573549abe6341fd4dfb8e16bc2dcf59a608a7219"
+    }
+  ],
+  "cases": [
+    {
+      "id": "entities.test:10",
+      "upstream_description": "Semicolonless named entity 'not' followed by 'i;' in body",
+      "input": "&noti;",
+      "text": "¬i;"
+    },
+    {
+      "id": "entities.test:12",
+      "upstream_description": "CR as numeric entity",
+      "input": "&#013;",
+      "text": "\r"
+    },
+    {
+      "id": "entities.test:13",
+      "upstream_description": "CR as hexadecimal numeric entity",
+      "input": "&#x00D;",
+      "text": "\r"
+    },
+    {
+      "id": "entities.test:14",
+      "upstream_description": "Windows-1252 EURO SIGN numeric entity.",
+      "input": "&#0128;",
+      "text": "€"
+    },
+    {
+      "id": "entities.test:15",
+      "upstream_description": "Windows-1252 REPLACEMENT CHAR numeric entity.",
+      "input": "&#0129;",
+      "text": ""
+    },
+    {
+      "id": "entities.test:16",
+      "upstream_description": "Windows-1252 SINGLE LOW-9 QUOTATION MARK numeric entity.",
+      "input": "&#0130;",
+      "text": "‚"
+    },
+    {
+      "id": "entities.test:17",
+      "upstream_description": "Windows-1252 LATIN SMALL LETTER F WITH HOOK numeric entity.",
+      "input": "&#0131;",
+      "text": "ƒ"
+    },
+    {
+      "id": "entities.test:18",
+      "upstream_description": "Windows-1252 DOUBLE LOW-9 QUOTATION MARK numeric entity.",
+      "input": "&#0132;",
+      "text": "„"
+    },
+    {
+      "id": "entities.test:19",
+      "upstream_description": "Windows-1252 HORIZONTAL ELLIPSIS numeric entity.",
+      "input": "&#0133;",
+      "text": "…"
+    },
+    {
+      "id": "entities.test:20",
+      "upstream_description": "Windows-1252 DAGGER numeric entity.",
+      "input": "&#0134;",
+      "text": "†"
+    },
+    {
+      "id": "entities.test:21",
+      "upstream_description": "Windows-1252 DOUBLE DAGGER numeric entity.",
+      "input": "&#0135;",
+      "text": "‡"
+    },
+    {
+      "id": "entities.test:22",
+      "upstream_description": "Windows-1252 MODIFIER LETTER CIRCUMFLEX ACCENT numeric entity.",
+      "input": "&#0136;",
+      "text": "ˆ"
+    },
+    {
+      "id": "entities.test:23",
+      "upstream_description": "Windows-1252 PER MILLE SIGN numeric entity.",
+      "input": "&#0137;",
+      "text": "‰"
+    },
+    {
+      "id": "entities.test:24",
+      "upstream_description": "Windows-1252 LATIN CAPITAL LETTER S WITH CARON numeric entity.",
+      "input": "&#0138;",
+      "text": "Š"
+    },
+    {
+      "id": "entities.test:25",
+      "upstream_description": "Windows-1252 SINGLE LEFT-POINTING ANGLE QUOTATION MARK numeric entity.",
+      "input": "&#0139;",
+      "text": "‹"
+    },
+    {
+      "id": "entities.test:26",
+      "upstream_description": "Windows-1252 LATIN CAPITAL LIGATURE OE numeric entity.",
+      "input": "&#0140;",
+      "text": "Œ"
+    },
+    {
+      "id": "entities.test:27",
+      "upstream_description": "Windows-1252 REPLACEMENT CHAR numeric entity.",
+      "input": "&#0141;",
+      "text": ""
+    },
+    {
+      "id": "entities.test:28",
+      "upstream_description": "Windows-1252 LATIN CAPITAL LETTER Z WITH CARON numeric entity.",
+      "input": "&#0142;",
+      "text": "Ž"
+    },
+    {
+      "id": "entities.test:29",
+      "upstream_description": "Windows-1252 REPLACEMENT CHAR numeric entity.",
+      "input": "&#0143;",
+      "text": ""
+    },
+    {
+      "id": "entities.test:30",
+      "upstream_description": "Windows-1252 REPLACEMENT CHAR numeric entity.",
+      "input": "&#0144;",
+      "text": ""
+    },
+    {
+      "id": "entities.test:31",
+      "upstream_description": "Windows-1252 LEFT SINGLE QUOTATION MARK numeric entity.",
+      "input": "&#0145;",
+      "text": "‘"
+    },
+    {
+      "id": "entities.test:32",
+      "upstream_description": "Windows-1252 RIGHT SINGLE QUOTATION MARK numeric entity.",
+      "input": "&#0146;",
+      "text": "’"
+    },
+    {
+      "id": "entities.test:33",
+      "upstream_description": "Windows-1252 LEFT DOUBLE QUOTATION MARK numeric entity.",
+      "input": "&#0147;",
+      "text": "“"
+    },
+    {
+      "id": "entities.test:34",
+      "upstream_description": "Windows-1252 RIGHT DOUBLE QUOTATION MARK numeric entity.",
+      "input": "&#0148;",
+      "text": "”"
+    },
+    {
+      "id": "entities.test:35",
+      "upstream_description": "Windows-1252 BULLET numeric entity.",
+      "input": "&#0149;",
+      "text": "•"
+    },
+    {
+      "id": "entities.test:36",
+      "upstream_description": "Windows-1252 EN DASH numeric entity.",
+      "input": "&#0150;",
+      "text": "–"
+    },
+    {
+      "id": "entities.test:37",
+      "upstream_description": "Windows-1252 EM DASH numeric entity.",
+      "input": "&#0151;",
+      "text": "—"
+    },
+    {
+      "id": "entities.test:38",
+      "upstream_description": "Windows-1252 SMALL TILDE numeric entity.",
+      "input": "&#0152;",
+      "text": "˜"
+    },
+    {
+      "id": "entities.test:39",
+      "upstream_description": "Windows-1252 TRADE MARK SIGN numeric entity.",
+      "input": "&#0153;",
+      "text": "™"
+    },
+    {
+      "id": "entities.test:40",
+      "upstream_description": "Windows-1252 LATIN SMALL LETTER S WITH CARON numeric entity.",
+      "input": "&#0154;",
+      "text": "š"
+    },
+    {
+      "id": "entities.test:41",
+      "upstream_description": "Windows-1252 SINGLE RIGHT-POINTING ANGLE QUOTATION MARK numeric entity.",
+      "input": "&#0155;",
+      "text": "›"
+    },
+    {
+      "id": "entities.test:42",
+      "upstream_description": "Windows-1252 LATIN SMALL LIGATURE OE numeric entity.",
+      "input": "&#0156;",
+      "text": "œ"
+    },
+    {
+      "id": "entities.test:43",
+      "upstream_description": "Windows-1252 REPLACEMENT CHAR numeric entity.",
+      "input": "&#0157;",
+      "text": ""
+    },
+    {
+      "id": "entities.test:44",
+      "upstream_description": "Windows-1252 EURO SIGN hexadecimal numeric entity.",
+      "input": "&#x080;",
+      "text": "€"
+    },
+    {
+      "id": "entities.test:45",
+      "upstream_description": "Windows-1252 REPLACEMENT CHAR hexadecimal numeric entity.",
+      "input": "&#x081;",
+      "text": ""
+    },
+    {
+      "id": "entities.test:46",
+      "upstream_description": "Windows-1252 SINGLE LOW-9 QUOTATION MARK hexadecimal numeric entity.",
+      "input": "&#x082;",
+      "text": "‚"
+    },
+    {
+      "id": "entities.test:47",
+      "upstream_description": "Windows-1252 LATIN SMALL LETTER F WITH HOOK hexadecimal numeric entity.",
+      "input": "&#x083;",
+      "text": "ƒ"
+    },
+    {
+      "id": "entities.test:48",
+      "upstream_description": "Windows-1252 DOUBLE LOW-9 QUOTATION MARK hexadecimal numeric entity.",
+      "input": "&#x084;",
+      "text": "„"
+    },
+    {
+      "id": "entities.test:49",
+      "upstream_description": "Windows-1252 HORIZONTAL ELLIPSIS hexadecimal numeric entity.",
+      "input": "&#x085;",
+      "text": "…"
+    },
+    {
+      "id": "entities.test:50",
+      "upstream_description": "Windows-1252 DAGGER hexadecimal numeric entity.",
+      "input": "&#x086;",
+      "text": "†"
+    },
+    {
+      "id": "entities.test:51",
+      "upstream_description": "Windows-1252 DOUBLE DAGGER hexadecimal numeric entity.",
+      "input": "&#x087;",
+      "text": "‡"
+    },
+    {
+      "id": "entities.test:52",
+      "upstream_description": "Windows-1252 MODIFIER LETTER CIRCUMFLEX ACCENT hexadecimal numeric entity.",
+      "input": "&#x088;",
+      "text": "ˆ"
+    },
+    {
+      "id": "entities.test:53",
+      "upstream_description": "Windows-1252 PER MILLE SIGN hexadecimal numeric entity.",
+      "input": "&#x089;",
+      "text": "‰"
+    },
+    {
+      "id": "entities.test:54",
+      "upstream_description": "Windows-1252 LATIN CAPITAL LETTER S WITH CARON hexadecimal numeric entity.",
+      "input": "&#x08A;",
+      "text": "Š"
+    },
+    {
+      "id": "entities.test:55",
+      "upstream_description": "Windows-1252 SINGLE LEFT-POINTING ANGLE QUOTATION MARK hexadecimal numeric entity.",
+      "input": "&#x08B;",
+      "text": "‹"
+    },
+    {
+      "id": "entities.test:56",
+      "upstream_description": "Windows-1252 LATIN CAPITAL LIGATURE OE hexadecimal numeric entity.",
+      "input": "&#x08C;",
+      "text": "Œ"
+    },
+    {
+      "id": "entities.test:57",
+      "upstream_description": "Windows-1252 REPLACEMENT CHAR hexadecimal numeric entity.",
+      "input": "&#x08D;",
+      "text": ""
+    },
+    {
+      "id": "entities.test:58",
+      "upstream_description": "Windows-1252 LATIN CAPITAL LETTER Z WITH CARON hexadecimal numeric entity.",
+      "input": "&#x08E;",
+      "text": "Ž"
+    },
+    {
+      "id": "entities.test:59",
+      "upstream_description": "Windows-1252 REPLACEMENT CHAR hexadecimal numeric entity.",
+      "input": "&#x08F;",
+      "text": ""
+    },
+    {
+      "id": "entities.test:60",
+      "upstream_description": "Windows-1252 REPLACEMENT CHAR hexadecimal numeric entity.",
+      "input": "&#x090;",
+      "text": ""
+    },
+    {
+      "id": "entities.test:61",
+      "upstream_description": "Windows-1252 LEFT SINGLE QUOTATION MARK hexadecimal numeric entity.",
+      "input": "&#x091;",
+      "text": "‘"
+    },
+    {
+      "id": "entities.test:62",
+      "upstream_description": "Windows-1252 RIGHT SINGLE QUOTATION MARK hexadecimal numeric entity.",
+      "input": "&#x092;",
+      "text": "’"
+    },
+    {
+      "id": "entities.test:63",
+      "upstream_description": "Windows-1252 LEFT DOUBLE QUOTATION MARK hexadecimal numeric entity.",
+      "input": "&#x093;",
+      "text": "“"
+    },
+    {
+      "id": "entities.test:64",
+      "upstream_description": "Windows-1252 RIGHT DOUBLE QUOTATION MARK hexadecimal numeric entity.",
+      "input": "&#x094;",
+      "text": "”"
+    },
+    {
+      "id": "entities.test:65",
+      "upstream_description": "Windows-1252 BULLET hexadecimal numeric entity.",
+      "input": "&#x095;",
+      "text": "•"
+    },
+    {
+      "id": "entities.test:66",
+      "upstream_description": "Windows-1252 EN DASH hexadecimal numeric entity.",
+      "input": "&#x096;",
+      "text": "–"
+    },
+    {
+      "id": "entities.test:67",
+      "upstream_description": "Windows-1252 EM DASH hexadecimal numeric entity.",
+      "input": "&#x097;",
+      "text": "—"
+    },
+    {
+      "id": "entities.test:68",
+      "upstream_description": "Windows-1252 SMALL TILDE hexadecimal numeric entity.",
+      "input": "&#x098;",
+      "text": "˜"
+    },
+    {
+      "id": "entities.test:69",
+      "upstream_description": "Windows-1252 TRADE MARK SIGN hexadecimal numeric entity.",
+      "input": "&#x099;",
+      "text": "™"
+    },
+    {
+      "id": "entities.test:70",
+      "upstream_description": "Windows-1252 LATIN SMALL LETTER S WITH CARON hexadecimal numeric entity.",
+      "input": "&#x09A;",
+      "text": "š"
+    },
+    {
+      "id": "entities.test:71",
+      "upstream_description": "Windows-1252 SINGLE RIGHT-POINTING ANGLE QUOTATION MARK hexadecimal numeric entity.",
+      "input": "&#x09B;",
+      "text": "›"
+    },
+    {
+      "id": "entities.test:72",
+      "upstream_description": "Windows-1252 LATIN SMALL LIGATURE OE hexadecimal numeric entity.",
+      "input": "&#x09C;",
+      "text": "œ"
+    },
+    {
+      "id": "entities.test:73",
+      "upstream_description": "Windows-1252 REPLACEMENT CHAR hexadecimal numeric entity.",
+      "input": "&#x09D;",
+      "text": ""
+    },
+    {
+      "id": "entities.test:74",
+      "upstream_description": "Windows-1252 LATIN SMALL LETTER Z WITH CARON hexadecimal numeric entity.",
+      "input": "&#x09E;",
+      "text": "ž"
+    },
+    {
+      "id": "entities.test:75",
+      "upstream_description": "Windows-1252 LATIN CAPITAL LETTER Y WITH DIAERESIS hexadecimal numeric entity.",
+      "input": "&#x09F;",
+      "text": "Ÿ"
+    },
+    {
+      "id": "entities.test:76",
+      "upstream_description": "Decimal numeric entity followed by hex character a.",
+      "input": "&#97a",
+      "text": "aa"
+    },
+    {
+      "id": "entities.test:77",
+      "upstream_description": "Decimal numeric entity followed by hex character A.",
+      "input": "&#97A",
+      "text": "aA"
+    },
+    {
+      "id": "entities.test:78",
+      "upstream_description": "Decimal numeric entity followed by hex character f.",
+      "input": "&#97f",
+      "text": "af"
+    },
+    {
+      "id": "entities.test:79",
+      "upstream_description": "Decimal numeric entity followed by hex character A.",
+      "input": "&#97F",
+      "text": "aF"
+    },
+    {
+      "id": "numericEntities.test:37",
+      "upstream_description": "Invalid numeric entity character U+007F",
+      "input": "&#x007f;",
+      "text": ""
+    },
+    {
+      "id": "numericEntities.test:106",
+      "upstream_description": "Valid numeric entity character U+0009",
+      "input": "&#x0009;",
+      "text": "\t"
+    },
+    {
+      "id": "numericEntities.test:107",
+      "upstream_description": "Valid numeric entity character U+000A",
+      "input": "&#x000a;",
+      "text": "\n"
+    },
+    {
+      "id": "numericEntities.test:108",
+      "upstream_description": "Valid numeric entity character U+0020",
+      "input": "&#x0020;",
+      "text": " "
+    },
+    {
+      "id": "numericEntities.test:109",
+      "upstream_description": "Valid numeric entity character U+0021",
+      "input": "&#x0021;",
+      "text": "!"
+    },
+    {
+      "id": "numericEntities.test:110",
+      "upstream_description": "Valid numeric entity character U+0022",
+      "input": "&#x0022;",
+      "text": "\""
+    },
+    {
+      "id": "numericEntities.test:111",
+      "upstream_description": "Valid numeric entity character U+0023",
+      "input": "&#x0023;",
+      "text": "#"
+    },
+    {
+      "id": "numericEntities.test:112",
+      "upstream_description": "Valid numeric entity character U+0024",
+      "input": "&#x0024;",
+      "text": "$"
+    },
+    {
+      "id": "numericEntities.test:113",
+      "upstream_description": "Valid numeric entity character U+0025",
+      "input": "&#x0025;",
+      "text": "%"
+    },
+    {
+      "id": "numericEntities.test:114",
+      "upstream_description": "Valid numeric entity character U+0026",
+      "input": "&#x0026;",
+      "text": "&"
+    },
+    {
+      "id": "numericEntities.test:115",
+      "upstream_description": "Valid numeric entity character U+0027",
+      "input": "&#x0027;",
+      "text": "'"
+    },
+    {
+      "id": "numericEntities.test:116",
+      "upstream_description": "Valid numeric entity character U+0028",
+      "input": "&#x0028;",
+      "text": "("
+    },
+    {
+      "id": "numericEntities.test:117",
+      "upstream_description": "Valid numeric entity character U+0029",
+      "input": "&#x0029;",
+      "text": ")"
+    },
+    {
+      "id": "numericEntities.test:118",
+      "upstream_description": "Valid numeric entity character U+002A",
+      "input": "&#x002a;",
+      "text": "*"
+    },
+    {
+      "id": "numericEntities.test:119",
+      "upstream_description": "Valid numeric entity character U+002B",
+      "input": "&#x002b;",
+      "text": "+"
+    },
+    {
+      "id": "numericEntities.test:120",
+      "upstream_description": "Valid numeric entity character U+002C",
+      "input": "&#x002c;",
+      "text": ","
+    },
+    {
+      "id": "numericEntities.test:121",
+      "upstream_description": "Valid numeric entity character U+002D",
+      "input": "&#x002d;",
+      "text": "-"
+    },
+    {
+      "id": "numericEntities.test:122",
+      "upstream_description": "Valid numeric entity character U+002E",
+      "input": "&#x002e;",
+      "text": "."
+    },
+    {
+      "id": "numericEntities.test:123",
+      "upstream_description": "Valid numeric entity character U+002F",
+      "input": "&#x002f;",
+      "text": "/"
+    },
+    {
+      "id": "numericEntities.test:124",
+      "upstream_description": "Valid numeric entity character U+0030",
+      "input": "&#x0030;",
+      "text": "0"
+    },
+    {
+      "id": "numericEntities.test:125",
+      "upstream_description": "Valid numeric entity character U+0031",
+      "input": "&#x0031;",
+      "text": "1"
+    },
+    {
+      "id": "numericEntities.test:126",
+      "upstream_description": "Valid numeric entity character U+0032",
+      "input": "&#x0032;",
+      "text": "2"
+    },
+    {
+      "id": "numericEntities.test:127",
+      "upstream_description": "Valid numeric entity character U+0033",
+      "input": "&#x0033;",
+      "text": "3"
+    },
+    {
+      "id": "numericEntities.test:128",
+      "upstream_description": "Valid numeric entity character U+0034",
+      "input": "&#x0034;",
+      "text": "4"
+    },
+    {
+      "id": "numericEntities.test:129",
+      "upstream_description": "Valid numeric entity character U+0035",
+      "input": "&#x0035;",
+      "text": "5"
+    },
+    {
+      "id": "numericEntities.test:130",
+      "upstream_description": "Valid numeric entity character U+0036",
+      "input": "&#x0036;",
+      "text": "6"
+    },
+    {
+      "id": "numericEntities.test:131",
+      "upstream_description": "Valid numeric entity character U+0037",
+      "input": "&#x0037;",
+      "text": "7"
+    },
+    {
+      "id": "numericEntities.test:132",
+      "upstream_description": "Valid numeric entity character U+0038",
+      "input": "&#x0038;",
+      "text": "8"
+    },
+    {
+      "id": "numericEntities.test:133",
+      "upstream_description": "Valid numeric entity character U+0039",
+      "input": "&#x0039;",
+      "text": "9"
+    },
+    {
+      "id": "numericEntities.test:134",
+      "upstream_description": "Valid numeric entity character U+003A",
+      "input": "&#x003a;",
+      "text": ":"
+    },
+    {
+      "id": "numericEntities.test:135",
+      "upstream_description": "Valid numeric entity character U+003B",
+      "input": "&#x003b;",
+      "text": ";"
+    },
+    {
+      "id": "numericEntities.test:136",
+      "upstream_description": "Valid numeric entity character U+003C",
+      "input": "&#x003c;",
+      "text": "<"
+    },
+    {
+      "id": "numericEntities.test:137",
+      "upstream_description": "Valid numeric entity character U+003D",
+      "input": "&#x003d;",
+      "text": "="
+    },
+    {
+      "id": "numericEntities.test:138",
+      "upstream_description": "Valid numeric entity character U+003E",
+      "input": "&#x003e;",
+      "text": ">"
+    },
+    {
+      "id": "numericEntities.test:139",
+      "upstream_description": "Valid numeric entity character U+003F",
+      "input": "&#x003f;",
+      "text": "?"
+    },
+    {
+      "id": "numericEntities.test:140",
+      "upstream_description": "Valid numeric entity character U+0040",
+      "input": "&#x0040;",
+      "text": "@"
+    },
+    {
+      "id": "numericEntities.test:141",
+      "upstream_description": "Valid numeric entity character U+0041",
+      "input": "&#x0041;",
+      "text": "A"
+    },
+    {
+      "id": "numericEntities.test:142",
+      "upstream_description": "Valid numeric entity character U+0042",
+      "input": "&#x0042;",
+      "text": "B"
+    },
+    {
+      "id": "numericEntities.test:143",
+      "upstream_description": "Valid numeric entity character U+0043",
+      "input": "&#x0043;",
+      "text": "C"
+    },
+    {
+      "id": "numericEntities.test:144",
+      "upstream_description": "Valid numeric entity character U+0044",
+      "input": "&#x0044;",
+      "text": "D"
+    },
+    {
+      "id": "numericEntities.test:145",
+      "upstream_description": "Valid numeric entity character U+0045",
+      "input": "&#x0045;",
+      "text": "E"
+    },
+    {
+      "id": "numericEntities.test:146",
+      "upstream_description": "Valid numeric entity character U+0046",
+      "input": "&#x0046;",
+      "text": "F"
+    },
+    {
+      "id": "numericEntities.test:147",
+      "upstream_description": "Valid numeric entity character U+0047",
+      "input": "&#x0047;",
+      "text": "G"
+    },
+    {
+      "id": "numericEntities.test:148",
+      "upstream_description": "Valid numeric entity character U+0048",
+      "input": "&#x0048;",
+      "text": "H"
+    },
+    {
+      "id": "numericEntities.test:149",
+      "upstream_description": "Valid numeric entity character U+0049",
+      "input": "&#x0049;",
+      "text": "I"
+    },
+    {
+      "id": "numericEntities.test:150",
+      "upstream_description": "Valid numeric entity character U+004A",
+      "input": "&#x004a;",
+      "text": "J"
+    },
+    {
+      "id": "numericEntities.test:151",
+      "upstream_description": "Valid numeric entity character U+004B",
+      "input": "&#x004b;",
+      "text": "K"
+    },
+    {
+      "id": "numericEntities.test:152",
+      "upstream_description": "Valid numeric entity character U+004C",
+      "input": "&#x004c;",
+      "text": "L"
+    },
+    {
+      "id": "numericEntities.test:153",
+      "upstream_description": "Valid numeric entity character U+004D",
+      "input": "&#x004d;",
+      "text": "M"
+    },
+    {
+      "id": "numericEntities.test:154",
+      "upstream_description": "Valid numeric entity character U+004E",
+      "input": "&#x004e;",
+      "text": "N"
+    },
+    {
+      "id": "numericEntities.test:155",
+      "upstream_description": "Valid numeric entity character U+004F",
+      "input": "&#x004f;",
+      "text": "O"
+    },
+    {
+      "id": "numericEntities.test:156",
+      "upstream_description": "Valid numeric entity character U+0050",
+      "input": "&#x0050;",
+      "text": "P"
+    },
+    {
+      "id": "numericEntities.test:157",
+      "upstream_description": "Valid numeric entity character U+0051",
+      "input": "&#x0051;",
+      "text": "Q"
+    },
+    {
+      "id": "numericEntities.test:158",
+      "upstream_description": "Valid numeric entity character U+0052",
+      "input": "&#x0052;",
+      "text": "R"
+    },
+    {
+      "id": "numericEntities.test:159",
+      "upstream_description": "Valid numeric entity character U+0053",
+      "input": "&#x0053;",
+      "text": "S"
+    },
+    {
+      "id": "numericEntities.test:160",
+      "upstream_description": "Valid numeric entity character U+0054",
+      "input": "&#x0054;",
+      "text": "T"
+    },
+    {
+      "id": "numericEntities.test:161",
+      "upstream_description": "Valid numeric entity character U+0055",
+      "input": "&#x0055;",
+      "text": "U"
+    },
+    {
+      "id": "numericEntities.test:162",
+      "upstream_description": "Valid numeric entity character U+0056",
+      "input": "&#x0056;",
+      "text": "V"
+    },
+    {
+      "id": "numericEntities.test:163",
+      "upstream_description": "Valid numeric entity character U+0057",
+      "input": "&#x0057;",
+      "text": "W"
+    },
+    {
+      "id": "numericEntities.test:164",
+      "upstream_description": "Valid numeric entity character U+0058",
+      "input": "&#x0058;",
+      "text": "X"
+    },
+    {
+      "id": "numericEntities.test:165",
+      "upstream_description": "Valid numeric entity character U+0059",
+      "input": "&#x0059;",
+      "text": "Y"
+    },
+    {
+      "id": "numericEntities.test:166",
+      "upstream_description": "Valid numeric entity character U+005A",
+      "input": "&#x005a;",
+      "text": "Z"
+    },
+    {
+      "id": "numericEntities.test:167",
+      "upstream_description": "Valid numeric entity character U+005B",
+      "input": "&#x005b;",
+      "text": "["
+    },
+    {
+      "id": "numericEntities.test:168",
+      "upstream_description": "Valid numeric entity character U+005C",
+      "input": "&#x005c;",
+      "text": "\\"
+    },
+    {
+      "id": "numericEntities.test:169",
+      "upstream_description": "Valid numeric entity character U+005D",
+      "input": "&#x005d;",
+      "text": "]"
+    },
+    {
+      "id": "numericEntities.test:170",
+      "upstream_description": "Valid numeric entity character U+005E",
+      "input": "&#x005e;",
+      "text": "^"
+    },
+    {
+      "id": "numericEntities.test:171",
+      "upstream_description": "Valid numeric entity character U+005F",
+      "input": "&#x005f;",
+      "text": "_"
+    },
+    {
+      "id": "numericEntities.test:172",
+      "upstream_description": "Valid numeric entity character U+0060",
+      "input": "&#x0060;",
+      "text": "`"
+    },
+    {
+      "id": "numericEntities.test:173",
+      "upstream_description": "Valid numeric entity character U+0061",
+      "input": "&#x0061;",
+      "text": "a"
+    },
+    {
+      "id": "numericEntities.test:174",
+      "upstream_description": "Valid numeric entity character U+0062",
+      "input": "&#x0062;",
+      "text": "b"
+    },
+    {
+      "id": "numericEntities.test:175",
+      "upstream_description": "Valid numeric entity character U+0063",
+      "input": "&#x0063;",
+      "text": "c"
+    },
+    {
+      "id": "numericEntities.test:176",
+      "upstream_description": "Valid numeric entity character U+0064",
+      "input": "&#x0064;",
+      "text": "d"
+    },
+    {
+      "id": "numericEntities.test:177",
+      "upstream_description": "Valid numeric entity character U+0065",
+      "input": "&#x0065;",
+      "text": "e"
+    },
+    {
+      "id": "numericEntities.test:178",
+      "upstream_description": "Valid numeric entity character U+0066",
+      "input": "&#x0066;",
+      "text": "f"
+    },
+    {
+      "id": "numericEntities.test:179",
+      "upstream_description": "Valid numeric entity character U+0067",
+      "input": "&#x0067;",
+      "text": "g"
+    },
+    {
+      "id": "numericEntities.test:180",
+      "upstream_description": "Valid numeric entity character U+0068",
+      "input": "&#x0068;",
+      "text": "h"
+    },
+    {
+      "id": "numericEntities.test:181",
+      "upstream_description": "Valid numeric entity character U+0069",
+      "input": "&#x0069;",
+      "text": "i"
+    },
+    {
+      "id": "numericEntities.test:182",
+      "upstream_description": "Valid numeric entity character U+006A",
+      "input": "&#x006a;",
+      "text": "j"
+    },
+    {
+      "id": "numericEntities.test:183",
+      "upstream_description": "Valid numeric entity character U+006B",
+      "input": "&#x006b;",
+      "text": "k"
+    },
+    {
+      "id": "numericEntities.test:184",
+      "upstream_description": "Valid numeric entity character U+006C",
+      "input": "&#x006c;",
+      "text": "l"
+    },
+    {
+      "id": "numericEntities.test:185",
+      "upstream_description": "Valid numeric entity character U+006D",
+      "input": "&#x006d;",
+      "text": "m"
+    },
+    {
+      "id": "numericEntities.test:186",
+      "upstream_description": "Valid numeric entity character U+006E",
+      "input": "&#x006e;",
+      "text": "n"
+    },
+    {
+      "id": "numericEntities.test:187",
+      "upstream_description": "Valid numeric entity character U+006F",
+      "input": "&#x006f;",
+      "text": "o"
+    },
+    {
+      "id": "numericEntities.test:188",
+      "upstream_description": "Valid numeric entity character U+0070",
+      "input": "&#x0070;",
+      "text": "p"
+    },
+    {
+      "id": "numericEntities.test:189",
+      "upstream_description": "Valid numeric entity character U+0071",
+      "input": "&#x0071;",
+      "text": "q"
+    },
+    {
+      "id": "numericEntities.test:190",
+      "upstream_description": "Valid numeric entity character U+0072",
+      "input": "&#x0072;",
+      "text": "r"
+    },
+    {
+      "id": "numericEntities.test:191",
+      "upstream_description": "Valid numeric entity character U+0073",
+      "input": "&#x0073;",
+      "text": "s"
+    },
+    {
+      "id": "numericEntities.test:192",
+      "upstream_description": "Valid numeric entity character U+0074",
+      "input": "&#x0074;",
+      "text": "t"
+    },
+    {
+      "id": "numericEntities.test:193",
+      "upstream_description": "Valid numeric entity character U+0075",
+      "input": "&#x0075;",
+      "text": "u"
+    },
+    {
+      "id": "numericEntities.test:194",
+      "upstream_description": "Valid numeric entity character U+0076",
+      "input": "&#x0076;",
+      "text": "v"
+    },
+    {
+      "id": "numericEntities.test:195",
+      "upstream_description": "Valid numeric entity character U+0077",
+      "input": "&#x0077;",
+      "text": "w"
+    },
+    {
+      "id": "numericEntities.test:196",
+      "upstream_description": "Valid numeric entity character U+0078",
+      "input": "&#x0078;",
+      "text": "x"
+    },
+    {
+      "id": "numericEntities.test:197",
+      "upstream_description": "Valid numeric entity character U+0079",
+      "input": "&#x0079;",
+      "text": "y"
+    },
+    {
+      "id": "numericEntities.test:198",
+      "upstream_description": "Valid numeric entity character U+007A",
+      "input": "&#x007a;",
+      "text": "z"
+    },
+    {
+      "id": "numericEntities.test:199",
+      "upstream_description": "Valid numeric entity character U+007B",
+      "input": "&#x007b;",
+      "text": "{"
+    },
+    {
+      "id": "numericEntities.test:200",
+      "upstream_description": "Valid numeric entity character U+007C",
+      "input": "&#x007c;",
+      "text": "|"
+    },
+    {
+      "id": "numericEntities.test:201",
+      "upstream_description": "Valid numeric entity character U+007D",
+      "input": "&#x007d;",
+      "text": "}"
+    },
+    {
+      "id": "numericEntities.test:202",
+      "upstream_description": "Valid numeric entity character U+007E",
+      "input": "&#x007e;",
+      "text": "~"
+    },
+    {
+      "id": "numericEntities.test:203",
+      "upstream_description": "Valid numeric entity character U+00A0",
+      "input": "&#x00a0;",
+      "text": " "
+    },
+    {
+      "id": "numericEntities.test:204",
+      "upstream_description": "Valid numeric entity character U+00A1",
+      "input": "&#x00a1;",
+      "text": "¡"
+    },
+    {
+      "id": "numericEntities.test:205",
+      "upstream_description": "Valid numeric entity character U+00A2",
+      "input": "&#x00a2;",
+      "text": "¢"
+    },
+    {
+      "id": "numericEntities.test:206",
+      "upstream_description": "Valid numeric entity character U+00A3",
+      "input": "&#x00a3;",
+      "text": "£"
+    },
+    {
+      "id": "numericEntities.test:207",
+      "upstream_description": "Valid numeric entity character U+00A4",
+      "input": "&#x00a4;",
+      "text": "¤"
+    },
+    {
+      "id": "numericEntities.test:208",
+      "upstream_description": "Valid numeric entity character U+00A5",
+      "input": "&#x00a5;",
+      "text": "¥"
+    },
+    {
+      "id": "numericEntities.test:209",
+      "upstream_description": "Valid numeric entity character U+00A6",
+      "input": "&#x00a6;",
+      "text": "¦"
+    },
+    {
+      "id": "numericEntities.test:210",
+      "upstream_description": "Valid numeric entity character U+00A7",
+      "input": "&#x00a7;",
+      "text": "§"
+    },
+    {
+      "id": "numericEntities.test:211",
+      "upstream_description": "Valid numeric entity character U+00A8",
+      "input": "&#x00a8;",
+      "text": "¨"
+    },
+    {
+      "id": "numericEntities.test:212",
+      "upstream_description": "Valid numeric entity character U+00A9",
+      "input": "&#x00a9;",
+      "text": "©"
+    },
+    {
+      "id": "numericEntities.test:213",
+      "upstream_description": "Valid numeric entity character U+00AA",
+      "input": "&#x00aa;",
+      "text": "ª"
+    },
+    {
+      "id": "numericEntities.test:214",
+      "upstream_description": "Valid numeric entity character U+00AB",
+      "input": "&#x00ab;",
+      "text": "«"
+    },
+    {
+      "id": "numericEntities.test:215",
+      "upstream_description": "Valid numeric entity character U+00AC",
+      "input": "&#x00ac;",
+      "text": "¬"
+    },
+    {
+      "id": "numericEntities.test:216",
+      "upstream_description": "Valid numeric entity character U+00AD",
+      "input": "&#x00ad;",
+      "text": "­"
+    },
+    {
+      "id": "numericEntities.test:217",
+      "upstream_description": "Valid numeric entity character U+00AE",
+      "input": "&#x00ae;",
+      "text": "®"
+    },
+    {
+      "id": "numericEntities.test:218",
+      "upstream_description": "Valid numeric entity character U+00AF",
+      "input": "&#x00af;",
+      "text": "¯"
+    },
+    {
+      "id": "numericEntities.test:219",
+      "upstream_description": "Valid numeric entity character U+00B0",
+      "input": "&#x00b0;",
+      "text": "°"
+    },
+    {
+      "id": "numericEntities.test:220",
+      "upstream_description": "Valid numeric entity character U+00B1",
+      "input": "&#x00b1;",
+      "text": "±"
+    },
+    {
+      "id": "numericEntities.test:221",
+      "upstream_description": "Valid numeric entity character U+00B2",
+      "input": "&#x00b2;",
+      "text": "²"
+    },
+    {
+      "id": "numericEntities.test:222",
+      "upstream_description": "Valid numeric entity character U+00B3",
+      "input": "&#x00b3;",
+      "text": "³"
+    },
+    {
+      "id": "numericEntities.test:223",
+      "upstream_description": "Valid numeric entity character U+00B4",
+      "input": "&#x00b4;",
+      "text": "´"
+    },
+    {
+      "id": "numericEntities.test:224",
+      "upstream_description": "Valid numeric entity character U+00B5",
+      "input": "&#x00b5;",
+      "text": "µ"
+    },
+    {
+      "id": "numericEntities.test:225",
+      "upstream_description": "Valid numeric entity character U+00B6",
+      "input": "&#x00b6;",
+      "text": "¶"
+    },
+    {
+      "id": "numericEntities.test:226",
+      "upstream_description": "Valid numeric entity character U+00B7",
+      "input": "&#x00b7;",
+      "text": "·"
+    },
+    {
+      "id": "numericEntities.test:227",
+      "upstream_description": "Valid numeric entity character U+00B8",
+      "input": "&#x00b8;",
+      "text": "¸"
+    },
+    {
+      "id": "numericEntities.test:228",
+      "upstream_description": "Valid numeric entity character U+00B9",
+      "input": "&#x00b9;",
+      "text": "¹"
+    },
+    {
+      "id": "numericEntities.test:229",
+      "upstream_description": "Valid numeric entity character U+00BA",
+      "input": "&#x00ba;",
+      "text": "º"
+    },
+    {
+      "id": "numericEntities.test:230",
+      "upstream_description": "Valid numeric entity character U+00BB",
+      "input": "&#x00bb;",
+      "text": "»"
+    },
+    {
+      "id": "numericEntities.test:231",
+      "upstream_description": "Valid numeric entity character U+00BC",
+      "input": "&#x00bc;",
+      "text": "¼"
+    },
+    {
+      "id": "numericEntities.test:232",
+      "upstream_description": "Valid numeric entity character U+00BD",
+      "input": "&#x00bd;",
+      "text": "½"
+    },
+    {
+      "id": "numericEntities.test:233",
+      "upstream_description": "Valid numeric entity character U+00BE",
+      "input": "&#x00be;",
+      "text": "¾"
+    },
+    {
+      "id": "numericEntities.test:234",
+      "upstream_description": "Valid numeric entity character U+00BF",
+      "input": "&#x00bf;",
+      "text": "¿"
+    },
+    {
+      "id": "numericEntities.test:235",
+      "upstream_description": "Valid numeric entity character U+00C0",
+      "input": "&#x00c0;",
+      "text": "À"
+    },
+    {
+      "id": "numericEntities.test:236",
+      "upstream_description": "Valid numeric entity character U+00C1",
+      "input": "&#x00c1;",
+      "text": "Á"
+    },
+    {
+      "id": "numericEntities.test:237",
+      "upstream_description": "Valid numeric entity character U+00C2",
+      "input": "&#x00c2;",
+      "text": "Â"
+    },
+    {
+      "id": "numericEntities.test:238",
+      "upstream_description": "Valid numeric entity character U+00C3",
+      "input": "&#x00c3;",
+      "text": "Ã"
+    },
+    {
+      "id": "numericEntities.test:239",
+      "upstream_description": "Valid numeric entity character U+00C4",
+      "input": "&#x00c4;",
+      "text": "Ä"
+    },
+    {
+      "id": "numericEntities.test:240",
+      "upstream_description": "Valid numeric entity character U+00C5",
+      "input": "&#x00c5;",
+      "text": "Å"
+    },
+    {
+      "id": "numericEntities.test:241",
+      "upstream_description": "Valid numeric entity character U+00C6",
+      "input": "&#x00c6;",
+      "text": "Æ"
+    },
+    {
+      "id": "numericEntities.test:242",
+      "upstream_description": "Valid numeric entity character U+00C7",
+      "input": "&#x00c7;",
+      "text": "Ç"
+    },
+    {
+      "id": "numericEntities.test:243",
+      "upstream_description": "Valid numeric entity character U+00C8",
+      "input": "&#x00c8;",
+      "text": "È"
+    },
+    {
+      "id": "numericEntities.test:244",
+      "upstream_description": "Valid numeric entity character U+00C9",
+      "input": "&#x00c9;",
+      "text": "É"
+    },
+    {
+      "id": "numericEntities.test:245",
+      "upstream_description": "Valid numeric entity character U+00CA",
+      "input": "&#x00ca;",
+      "text": "Ê"
+    },
+    {
+      "id": "numericEntities.test:246",
+      "upstream_description": "Valid numeric entity character U+00CB",
+      "input": "&#x00cb;",
+      "text": "Ë"
+    },
+    {
+      "id": "numericEntities.test:247",
+      "upstream_description": "Valid numeric entity character U+00CC",
+      "input": "&#x00cc;",
+      "text": "Ì"
+    },
+    {
+      "id": "numericEntities.test:248",
+      "upstream_description": "Valid numeric entity character U+00CD",
+      "input": "&#x00cd;",
+      "text": "Í"
+    },
+    {
+      "id": "numericEntities.test:249",
+      "upstream_description": "Valid numeric entity character U+00CE",
+      "input": "&#x00ce;",
+      "text": "Î"
+    },
+    {
+      "id": "numericEntities.test:250",
+      "upstream_description": "Valid numeric entity character U+00CF",
+      "input": "&#x00cf;",
+      "text": "Ï"
+    },
+    {
+      "id": "numericEntities.test:251",
+      "upstream_description": "Valid numeric entity character U+00D0",
+      "input": "&#x00d0;",
+      "text": "Ð"
+    },
+    {
+      "id": "numericEntities.test:252",
+      "upstream_description": "Valid numeric entity character U+00D1",
+      "input": "&#x00d1;",
+      "text": "Ñ"
+    },
+    {
+      "id": "numericEntities.test:253",
+      "upstream_description": "Valid numeric entity character U+00D2",
+      "input": "&#x00d2;",
+      "text": "Ò"
+    },
+    {
+      "id": "numericEntities.test:254",
+      "upstream_description": "Valid numeric entity character U+00D3",
+      "input": "&#x00d3;",
+      "text": "Ó"
+    },
+    {
+      "id": "numericEntities.test:255",
+      "upstream_description": "Valid numeric entity character U+00D4",
+      "input": "&#x00d4;",
+      "text": "Ô"
+    },
+    {
+      "id": "numericEntities.test:256",
+      "upstream_description": "Valid numeric entity character U+00D5",
+      "input": "&#x00d5;",
+      "text": "Õ"
+    },
+    {
+      "id": "numericEntities.test:257",
+      "upstream_description": "Valid numeric entity character U+00D6",
+      "input": "&#x00d6;",
+      "text": "Ö"
+    },
+    {
+      "id": "numericEntities.test:258",
+      "upstream_description": "Valid numeric entity character U+00D7",
+      "input": "&#x00d7;",
+      "text": "×"
+    },
+    {
+      "id": "numericEntities.test:259",
+      "upstream_description": "Valid numeric entity character U+00D8",
+      "input": "&#x00d8;",
+      "text": "Ø"
+    },
+    {
+      "id": "numericEntities.test:260",
+      "upstream_description": "Valid numeric entity character U+00D9",
+      "input": "&#x00d9;",
+      "text": "Ù"
+    },
+    {
+      "id": "numericEntities.test:261",
+      "upstream_description": "Valid numeric entity character U+00DA",
+      "input": "&#x00da;",
+      "text": "Ú"
+    },
+    {
+      "id": "numericEntities.test:262",
+      "upstream_description": "Valid numeric entity character U+00DB",
+      "input": "&#x00db;",
+      "text": "Û"
+    },
+    {
+      "id": "numericEntities.test:263",
+      "upstream_description": "Valid numeric entity character U+00DC",
+      "input": "&#x00dc;",
+      "text": "Ü"
+    },
+    {
+      "id": "numericEntities.test:264",
+      "upstream_description": "Valid numeric entity character U+00DD",
+      "input": "&#x00dd;",
+      "text": "Ý"
+    },
+    {
+      "id": "numericEntities.test:265",
+      "upstream_description": "Valid numeric entity character U+00DE",
+      "input": "&#x00de;",
+      "text": "Þ"
+    },
+    {
+      "id": "numericEntities.test:266",
+      "upstream_description": "Valid numeric entity character U+00DF",
+      "input": "&#x00df;",
+      "text": "ß"
+    },
+    {
+      "id": "numericEntities.test:267",
+      "upstream_description": "Valid numeric entity character U+00E0",
+      "input": "&#x00e0;",
+      "text": "à"
+    },
+    {
+      "id": "numericEntities.test:268",
+      "upstream_description": "Valid numeric entity character U+00E1",
+      "input": "&#x00e1;",
+      "text": "á"
+    },
+    {
+      "id": "numericEntities.test:269",
+      "upstream_description": "Valid numeric entity character U+00E2",
+      "input": "&#x00e2;",
+      "text": "â"
+    },
+    {
+      "id": "numericEntities.test:270",
+      "upstream_description": "Valid numeric entity character U+00E3",
+      "input": "&#x00e3;",
+      "text": "ã"
+    },
+    {
+      "id": "numericEntities.test:271",
+      "upstream_description": "Valid numeric entity character U+00E4",
+      "input": "&#x00e4;",
+      "text": "ä"
+    },
+    {
+      "id": "numericEntities.test:272",
+      "upstream_description": "Valid numeric entity character U+00E5",
+      "input": "&#x00e5;",
+      "text": "å"
+    },
+    {
+      "id": "numericEntities.test:273",
+      "upstream_description": "Valid numeric entity character U+00E6",
+      "input": "&#x00e6;",
+      "text": "æ"
+    },
+    {
+      "id": "numericEntities.test:274",
+      "upstream_description": "Valid numeric entity character U+00E7",
+      "input": "&#x00e7;",
+      "text": "ç"
+    },
+    {
+      "id": "numericEntities.test:275",
+      "upstream_description": "Valid numeric entity character U+00E8",
+      "input": "&#x00e8;",
+      "text": "è"
+    },
+    {
+      "id": "numericEntities.test:276",
+      "upstream_description": "Valid numeric entity character U+00E9",
+      "input": "&#x00e9;",
+      "text": "é"
+    },
+    {
+      "id": "numericEntities.test:277",
+      "upstream_description": "Valid numeric entity character U+00EA",
+      "input": "&#x00ea;",
+      "text": "ê"
+    },
+    {
+      "id": "numericEntities.test:278",
+      "upstream_description": "Valid numeric entity character U+00EB",
+      "input": "&#x00eb;",
+      "text": "ë"
+    },
+    {
+      "id": "numericEntities.test:279",
+      "upstream_description": "Valid numeric entity character U+00EC",
+      "input": "&#x00ec;",
+      "text": "ì"
+    },
+    {
+      "id": "numericEntities.test:280",
+      "upstream_description": "Valid numeric entity character U+00ED",
+      "input": "&#x00ed;",
+      "text": "í"
+    },
+    {
+      "id": "numericEntities.test:281",
+      "upstream_description": "Valid numeric entity character U+00EE",
+      "input": "&#x00ee;",
+      "text": "î"
+    },
+    {
+      "id": "numericEntities.test:282",
+      "upstream_description": "Valid numeric entity character U+00EF",
+      "input": "&#x00ef;",
+      "text": "ï"
+    },
+    {
+      "id": "numericEntities.test:283",
+      "upstream_description": "Valid numeric entity character U+00F0",
+      "input": "&#x00f0;",
+      "text": "ð"
+    },
+    {
+      "id": "numericEntities.test:284",
+      "upstream_description": "Valid numeric entity character U+00F1",
+      "input": "&#x00f1;",
+      "text": "ñ"
+    },
+    {
+      "id": "numericEntities.test:285",
+      "upstream_description": "Valid numeric entity character U+00F2",
+      "input": "&#x00f2;",
+      "text": "ò"
+    },
+    {
+      "id": "numericEntities.test:286",
+      "upstream_description": "Valid numeric entity character U+00F3",
+      "input": "&#x00f3;",
+      "text": "ó"
+    },
+    {
+      "id": "numericEntities.test:287",
+      "upstream_description": "Valid numeric entity character U+00F4",
+      "input": "&#x00f4;",
+      "text": "ô"
+    },
+    {
+      "id": "numericEntities.test:288",
+      "upstream_description": "Valid numeric entity character U+00F5",
+      "input": "&#x00f5;",
+      "text": "õ"
+    },
+    {
+      "id": "numericEntities.test:289",
+      "upstream_description": "Valid numeric entity character U+00F6",
+      "input": "&#x00f6;",
+      "text": "ö"
+    },
+    {
+      "id": "numericEntities.test:290",
+      "upstream_description": "Valid numeric entity character U+00F7",
+      "input": "&#x00f7;",
+      "text": "÷"
+    },
+    {
+      "id": "numericEntities.test:291",
+      "upstream_description": "Valid numeric entity character U+00F8",
+      "input": "&#x00f8;",
+      "text": "ø"
+    },
+    {
+      "id": "numericEntities.test:292",
+      "upstream_description": "Valid numeric entity character U+00F9",
+      "input": "&#x00f9;",
+      "text": "ù"
+    },
+    {
+      "id": "numericEntities.test:293",
+      "upstream_description": "Valid numeric entity character U+00FA",
+      "input": "&#x00fa;",
+      "text": "ú"
+    },
+    {
+      "id": "numericEntities.test:294",
+      "upstream_description": "Valid numeric entity character U+00FB",
+      "input": "&#x00fb;",
+      "text": "û"
+    },
+    {
+      "id": "numericEntities.test:295",
+      "upstream_description": "Valid numeric entity character U+00FC",
+      "input": "&#x00fc;",
+      "text": "ü"
+    },
+    {
+      "id": "numericEntities.test:296",
+      "upstream_description": "Valid numeric entity character U+00FD",
+      "input": "&#x00fd;",
+      "text": "ý"
+    },
+    {
+      "id": "numericEntities.test:297",
+      "upstream_description": "Valid numeric entity character U+00FE",
+      "input": "&#x00fe;",
+      "text": "þ"
+    },
+    {
+      "id": "numericEntities.test:298",
+      "upstream_description": "Valid numeric entity character U+00FF",
+      "input": "&#x00ff;",
+      "text": "ÿ"
+    },
+    {
+      "id": "numericEntities.test:299",
+      "upstream_description": "Valid numeric entity character U+D7FF",
+      "input": "&#xd7ff;",
+      "text": "퟿"
+    },
+    {
+      "id": "numericEntities.test:300",
+      "upstream_description": "Valid numeric entity character U+E000",
+      "input": "&#xe000;",
+      "text": ""
+    },
+    {
+      "id": "numericEntities.test:301",
+      "upstream_description": "Valid numeric entity character U+FDCF",
+      "input": "&#xfdcf;",
+      "text": "﷏"
+    },
+    {
+      "id": "numericEntities.test:302",
+      "upstream_description": "Valid numeric entity character U+FDF0",
+      "input": "&#xfdf0;",
+      "text": "ﷰ"
+    },
+    {
+      "id": "numericEntities.test:303",
+      "upstream_description": "Valid numeric entity character U+FFFD",
+      "input": "&#xfffd;",
+      "text": "�"
+    },
+    {
+      "id": "numericEntities.test:304",
+      "upstream_description": "Valid numeric entity character U+10000",
+      "input": "&#x10000;",
+      "text": "𐀀"
+    },
+    {
+      "id": "numericEntities.test:305",
+      "upstream_description": "Valid numeric entity character U+1FFFD",
+      "input": "&#x1fffd;",
+      "text": "🿽"
+    },
+    {
+      "id": "numericEntities.test:306",
+      "upstream_description": "Valid numeric entity character U+20000",
+      "input": "&#x20000;",
+      "text": "𠀀"
+    },
+    {
+      "id": "numericEntities.test:307",
+      "upstream_description": "Valid numeric entity character U+2FFFD",
+      "input": "&#x2fffd;",
+      "text": "𯿽"
+    },
+    {
+      "id": "numericEntities.test:308",
+      "upstream_description": "Valid numeric entity character U+30000",
+      "input": "&#x30000;",
+      "text": "𰀀"
+    },
+    {
+      "id": "numericEntities.test:309",
+      "upstream_description": "Valid numeric entity character U+3FFFD",
+      "input": "&#x3fffd;",
+      "text": "𿿽"
+    },
+    {
+      "id": "numericEntities.test:310",
+      "upstream_description": "Valid numeric entity character U+40000",
+      "input": "&#x40000;",
+      "text": "񀀀"
+    },
+    {
+      "id": "numericEntities.test:311",
+      "upstream_description": "Valid numeric entity character U+4FFFD",
+      "input": "&#x4fffd;",
+      "text": "񏿽"
+    },
+    {
+      "id": "numericEntities.test:312",
+      "upstream_description": "Valid numeric entity character U+50000",
+      "input": "&#x50000;",
+      "text": "񐀀"
+    },
+    {
+      "id": "numericEntities.test:313",
+      "upstream_description": "Valid numeric entity character U+5FFFD",
+      "input": "&#x5fffd;",
+      "text": "񟿽"
+    },
+    {
+      "id": "numericEntities.test:314",
+      "upstream_description": "Valid numeric entity character U+60000",
+      "input": "&#x60000;",
+      "text": "񠀀"
+    },
+    {
+      "id": "numericEntities.test:315",
+      "upstream_description": "Valid numeric entity character U+6FFFD",
+      "input": "&#x6fffd;",
+      "text": "񯿽"
+    },
+    {
+      "id": "numericEntities.test:316",
+      "upstream_description": "Valid numeric entity character U+70000",
+      "input": "&#x70000;",
+      "text": "񰀀"
+    },
+    {
+      "id": "numericEntities.test:317",
+      "upstream_description": "Valid numeric entity character U+7FFFD",
+      "input": "&#x7fffd;",
+      "text": "񿿽"
+    },
+    {
+      "id": "numericEntities.test:318",
+      "upstream_description": "Valid numeric entity character U+80000",
+      "input": "&#x80000;",
+      "text": "򀀀"
+    },
+    {
+      "id": "numericEntities.test:319",
+      "upstream_description": "Valid numeric entity character U+8FFFD",
+      "input": "&#x8fffd;",
+      "text": "򏿽"
+    },
+    {
+      "id": "numericEntities.test:320",
+      "upstream_description": "Valid numeric entity character U+90000",
+      "input": "&#x90000;",
+      "text": "򐀀"
+    },
+    {
+      "id": "numericEntities.test:321",
+      "upstream_description": "Valid numeric entity character U+9FFFD",
+      "input": "&#x9fffd;",
+      "text": "򟿽"
+    },
+    {
+      "id": "numericEntities.test:322",
+      "upstream_description": "Valid numeric entity character U+A0000",
+      "input": "&#xa0000;",
+      "text": "򠀀"
+    },
+    {
+      "id": "numericEntities.test:323",
+      "upstream_description": "Valid numeric entity character U+AFFFD",
+      "input": "&#xafffd;",
+      "text": "򯿽"
+    },
+    {
+      "id": "numericEntities.test:324",
+      "upstream_description": "Valid numeric entity character U+B0000",
+      "input": "&#xb0000;",
+      "text": "򰀀"
+    },
+    {
+      "id": "numericEntities.test:325",
+      "upstream_description": "Valid numeric entity character U+BFFFD",
+      "input": "&#xbfffd;",
+      "text": "򿿽"
+    },
+    {
+      "id": "numericEntities.test:326",
+      "upstream_description": "Valid numeric entity character U+C0000",
+      "input": "&#xc0000;",
+      "text": "󀀀"
+    },
+    {
+      "id": "numericEntities.test:327",
+      "upstream_description": "Valid numeric entity character U+CFFFD",
+      "input": "&#xcfffd;",
+      "text": "󏿽"
+    },
+    {
+      "id": "numericEntities.test:328",
+      "upstream_description": "Valid numeric entity character U+D0000",
+      "input": "&#xd0000;",
+      "text": "󐀀"
+    },
+    {
+      "id": "numericEntities.test:329",
+      "upstream_description": "Valid numeric entity character U+DFFFD",
+      "input": "&#xdfffd;",
+      "text": "󟿽"
+    },
+    {
+      "id": "numericEntities.test:330",
+      "upstream_description": "Valid numeric entity character U+E0000",
+      "input": "&#xe0000;",
+      "text": "󠀀"
+    },
+    {
+      "id": "numericEntities.test:331",
+      "upstream_description": "Valid numeric entity character U+EFFFD",
+      "input": "&#xefffd;",
+      "text": "󯿽"
+    },
+    {
+      "id": "numericEntities.test:332",
+      "upstream_description": "Valid numeric entity character U+F0000",
+      "input": "&#xf0000;",
+      "text": "󰀀"
+    },
+    {
+      "id": "numericEntities.test:333",
+      "upstream_description": "Valid numeric entity character U+FFFFD",
+      "input": "&#xffffd;",
+      "text": "󿿽"
+    },
+    {
+      "id": "numericEntities.test:334",
+      "upstream_description": "Valid numeric entity character U+100000",
+      "input": "&#x100000;",
+      "text": "􀀀"
+    },
+    {
+      "id": "numericEntities.test:335",
+      "upstream_description": "Valid numeric entity character U+10FFFD",
+      "input": "&#x10fffd;",
+      "text": "􏿽"
+    },
+    {
+      "id": "test1.test:46",
+      "upstream_description": "Ampersand EOF",
+      "input": "&",
+      "text": "&"
+    },
+    {
+      "id": "test1.test:47",
+      "upstream_description": "Ampersand ampersand EOF",
+      "input": "&&",
+      "text": "&&"
+    },
+    {
+      "id": "test1.test:48",
+      "upstream_description": "Ampersand space EOF",
+      "input": "& ",
+      "text": "& "
+    },
+    {
+      "id": "test1.test:49",
+      "upstream_description": "Unfinished entity",
+      "input": "&f",
+      "text": "&f"
+    },
+    {
+      "id": "test1.test:52",
+      "upstream_description": "Entity with trailing semicolon (1)",
+      "input": "I'm &not;it",
+      "text": "I'm ¬it"
+    },
+    {
+      "id": "test1.test:53",
+      "upstream_description": "Entity with trailing semicolon (2)",
+      "input": "I'm &notin;",
+      "text": "I'm ∉"
+    },
+    {
+      "id": "test1.test:54",
+      "upstream_description": "Entity without trailing semicolon (1)",
+      "input": "I'm &notit",
+      "text": "I'm ¬it"
+    },
+    {
+      "id": "test1.test:55",
+      "upstream_description": "Entity without trailing semicolon (2)",
+      "input": "I'm &notin",
+      "text": "I'm ¬in"
+    },
+    {
+      "id": "test1.test:56",
+      "upstream_description": "Partial entity match at end of file",
+      "input": "I'm &no",
+      "text": "I'm &no"
+    },
+    {
+      "id": "test1.test:57",
+      "upstream_description": "Non-ASCII character reference name",
+      "input": "&¬;",
+      "text": "&¬;"
+    },
+    {
+      "id": "test1.test:58",
+      "upstream_description": "ASCII decimal entity",
+      "input": "&#0036;",
+      "text": "$"
+    },
+    {
+      "id": "test1.test:59",
+      "upstream_description": "ASCII hexadecimal entity",
+      "input": "&#x3f;",
+      "text": "?"
+    }
+  ]
+}
