@@ -1,0 +1,6256 @@
+{
+  "kind": "synthetic-replay-comparison-cases",
+  "profile": "python-supervisor-v1",
+  "scope": "Authored before comparator implementation, after an observed cross-Python mismatch. Synthetic structures; not browser captures or whole-control evidence.",
+  "cases": [
+    {
+      "id": "exact",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": true
+    },
+    {
+      "id": "three-registered-supervisors",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": true
+    },
+    {
+      "id": "TS10-A04-html-tree-links-v1",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v1",
+            "policy_version": "1",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v1",
+            "policy_version": "1",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": true
+    },
+    {
+      "id": "TS07-A01-html-tree-directives-v1",
+      "original": {
+        "rule_id": "TS07-A01",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-directives-v1",
+            "policy_version": "1",
+            "inventory": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS07-A01",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-directives-v1",
+            "policy_version": "1",
+            "inventory": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": true
+    },
+    {
+      "id": "TS07-A03-html-tree-directives-v1",
+      "original": {
+        "rule_id": "TS07-A03",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-directives-v1",
+            "policy_version": "1",
+            "inventory": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS07-A03",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-directives-v1",
+            "policy_version": "1",
+            "inventory": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": true
+    },
+    {
+      "id": "TS10-A01-html-tree-canonical-v1",
+      "original": {
+        "rule_id": "TS10-A01",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-canonical-v1",
+            "policy_version": "1",
+            "inventory": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              },
+              "head_extension": "1"
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A01",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-canonical-v1",
+            "policy_version": "1",
+            "inventory": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              },
+              "head_extension": "1"
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": true
+    },
+    {
+      "id": "TS10-A02-html-tree-canonical-v1",
+      "original": {
+        "rule_id": "TS10-A02",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-canonical-v1",
+            "policy_version": "1",
+            "inventory": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              },
+              "head_extension": "1"
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A02",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-canonical-v1",
+            "policy_version": "1",
+            "inventory": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              },
+              "head_extension": "1"
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": true
+    },
+    {
+      "id": "destination",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/other",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "node",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.20.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "limit",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 31
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "worker-source",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "changed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "fact-bool-to-int",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": 1,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "offset-int-to-float",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1.0
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "python-attribute",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.12.14"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "outcome",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "fail"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "target",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/other",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "unbound-python",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.13.0",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "number-python",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": 3.12,
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "empty-python",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "none-python",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": null,
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "reader-version",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "3",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "worker-version",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "2",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "unknown-reader",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "unknown",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "unknown",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "wrong-rule",
+      "original": {
+        "rule_id": "TS01-A01",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS01-A01",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "unknown-worker",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unrecognized",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unrecognized",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "unknown-metadata-extension",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "2",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "2",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "added-field",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              },
+              "added": "3.12.14"
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "missing-field",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "missing-python",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "added-observation",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          },
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "unknown-exact",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "unknown",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "unknown",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": true
+    },
+    {
+      "id": "refusal-exact",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "outcome": "inconclusive",
+            "reason": "Synthetic runtime unavailable"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "outcome": "inconclusive",
+            "reason": "Synthetic runtime unavailable"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": true
+    },
+    {
+      "id": "missing-runtime",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": null,
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "other-implementation",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "PyPy",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "old-python",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.8.0",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "unbound-original-runtime",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.10.1",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12.14",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    },
+    {
+      "id": "invalid-python-syntax",
+      "original": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.9.6",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.9.6",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.9.6",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "current": {
+        "rule_id": "TS10-A04",
+        "target": "https://example.com/p",
+        "observations": [
+          {
+            "reader": "html-tree-links-v2",
+            "policy_version": "2",
+            "inventory": {
+              "kind": "unapplied-link-elements",
+              "version": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python": "3.12.14",
+                "deadline_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "url_runs": [
+              {
+                "kind": "unapplied-url-resolution",
+                "version": "1",
+                "normative_effect": "none",
+                "supervisor": {
+                  "python": "3.12.14",
+                  "deadline_seconds": 10
+                },
+                "runtime": {
+                  "node": "v24.19.0"
+                },
+                "results": [
+                  {
+                    "ok": true,
+                    "href": "https://example.com/p"
+                  }
+                ]
+              }
+            ],
+            "base_policy_metadata": {
+              "kind": "unapplied-http-source-tree",
+              "experiment_version": "1",
+              "metadata_extension": "1",
+              "normative_effect": "none",
+              "supervisor": {
+                "python_version": "3.12.14",
+                "process_timeout_seconds": 30
+              },
+              "runtime": {
+                "node": "v24.19.0"
+              },
+              "source_sha256": {
+                "worker": "fixed"
+              },
+              "readings": {
+                "enabled": {
+                  "complete": true,
+                  "href": "https://example.com/p",
+                  "attributes": {
+                    "python": "3.9.6"
+                  },
+                  "offset": 1
+                }
+              }
+            },
+            "outcome": "pass"
+          }
+        ]
+      },
+      "original_runtime": {
+        "implementation": "CPython",
+        "python": "3.9.6",
+        "build": "synthetic 3.9.6",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "current_runtime": {
+        "implementation": "CPython",
+        "python": "3.12",
+        "build": "synthetic 3.12.14",
+        "stdlib_source_sha256": {
+          "html": "synthetic"
+        },
+        "scope": "Synthetic comparator fixture, no observed execution"
+      },
+      "expected_match": false
+    }
+  ]
+}

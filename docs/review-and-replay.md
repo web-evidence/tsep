@@ -1,3 +1,6 @@
+Current replay workflow: **3**, with [explicit comparison profiles](replay-comparison.md).
+Rejeu actuel : **3** ; égalité exacte par défaut, différence Python admise seulement sur option documentée.
+
 Current review workflow: **3**. TS10 questions now list structured snapshot and
 serialization digests alongside acquisition/state identity. Older requests retain
 their original tools; no human answers are prefilled.
@@ -29,8 +32,11 @@ réinterprète les octets de input.json dans un nouveau paquet, sans réseau.
 Un ancien paquet demande ses anciens outils ; un changement de version est une
 réévaluation distincte, pas un rejeu historique. Les versions de Python peuvent
 différer, mais cette différence est signalée et les résultats doivent rester identiques.
+Les observations source restent exactement comparées par défaut ; une différence
+de superviseur Python nécessite le [profil explicite du workflow 3](replay-comparison.md).
 
-Le code 0 signifie « mêmes observations atomiques, résultats de contrôle et décision ».
+Le code 0 signifie « mêmes observations atomiques, résultats de contrôle et décision,
+et observations source concordantes selon le profil de comparaison choisi ».
 Il peut accompagner NO_GO ou NT : reproduire un échec ne l'efface pas. Code 64 :
 entrée invalide, intégrité, outils incompatibles ou divergence. Une divergence
 calculée conserve sa sortie et replay.json pour examen. Un paquet d'entrée invalide
@@ -119,8 +125,10 @@ TS07/TS10 are **supplied-capture imports** with declared plans and existing limi
 Replay checks manifests, report/EARL consistency, protocol and exact interpreter/
 adapter source hashes before interpreting the same input into a new bundle.
 Historical replay requires historical tools; a new tool assessment is distinct.
-Runtime differences are disclosed. Exit 0 requires matching atoms, control results
-and gate, even for NC/NT/NO_GO. Exit 64 reports invalid inputs, incompatible tools
+Runtime differences are disclosed. Source observations are exact by default; the
+explicit workflow 3 profile permits only bound Python supervisor versions.
+Exit 0 requires matching atoms, control results, gate and source observations under
+the selected comparison, even for NC/NT/NO_GO. Exit 64 reports invalid inputs, incompatible tools
 or discrepancies; calculated discrepancies retain outputs for inspection.
 No network, collection or search-engine inference occurs.
 

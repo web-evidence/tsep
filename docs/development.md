@@ -1,4 +1,6 @@
-Current integration: draft.18, interpreter 18 / adapter 19 / replay 2.
+Current integration: draft.18, interpreter 18 / adapter 19 / replay 3.
+Replay 3 adds an explicit [Python supervisor comparison](replay-comparison.md), with exact comparison still the default.
+Rejeu 3 : les versions Python restent visibles ; seules leurs différences précisément liées peuvent être admises sur option.
 Prior [source links v2](source-link-policy-v2.md) retain uncertainty under an unparseable first base; v1 stays unchanged.
 Intégration actuelle : liens dépendants indéterminés, contradictions indépendantes conservées ; [migration](migration-draft.18.md).
 The milestones below describe their historical versions / Les jalons ci-dessous gardent leur version historique.
