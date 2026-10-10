@@ -1,0 +1,1333 @@
+{
+  "format_version": 1,
+  "experiment_version": "1",
+  "scope": "Synthetic authored experimental expectations; not normative TSEP cases, browser oracle or independent review.",
+  "cases": [
+    {
+      "id": "plain",
+      "html": "<html><head></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "empty",
+      "html": "<html><head></head><body>Expected<noscript></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "spaces",
+      "html": "<html><head></head><body>Expected<noscript> \r\n\t</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        " \r\n\t"
+      ],
+      "disabled_segments": [
+        "Expected",
+        " \r\n\t"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "image",
+      "html": "<html><head></head><body>Expected<noscript><img src=\"x\"></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<img src=\"x\">"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "forbidden-attribute",
+      "html": "<html><head></head><body>Expected<noscript><img alt=\"Forbidden\"></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<img alt=\"Forbidden\">"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "style",
+      "html": "<html><head></head><body>Expected<noscript><style>Forbidden</style></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<style>Forbidden</style>"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "comment",
+      "html": "<html><head></head><body>Expected<noscript><!--Forbidden--></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<!--Forbidden-->"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "script",
+      "html": "<html><head></head><body>Expected<noscript><script>Forbidden</script></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<script>Forbidden</script>"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "text",
+      "html": "<html><head></head><body>Expected<noscript>Expected</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected",
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "forbidden-text",
+      "html": "<html><head></head><body>Expected<noscript>Forbidden</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "Forbidden"
+      ],
+      "disabled_segments": [
+        "Expected",
+        "Forbidden"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "entity-forbidden",
+      "html": "<html><head></head><body>Expected<noscript>&#70;orbidden</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "&#70;orbidden"
+      ],
+      "disabled_segments": [
+        "Expected",
+        "Forbidden"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "named-entity",
+      "html": "<html><head></head><body>Expected<noscript>&amp;</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "&amp;"
+      ],
+      "disabled_segments": [
+        "Expected",
+        "&"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "rcdata",
+      "html": "<html><head></head><body>Expected<noscript><title>Expected</title></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<title>Expected</title>"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "pass",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "iframe",
+      "html": "<html><head></head><body>Expected<noscript><iframe>Forbidden</iframe></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<iframe>Forbidden</iframe>"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "fail",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "table",
+      "html": "<html><head></head><body>Expected<noscript><table><tr><td>Expected</td></tr></table></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<table><tr><td>Expected</td></tr></table>"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "pass",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "select",
+      "html": "<html><head></head><body>Expected<noscript><select><option>Expected</option></select></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<select><option>Expected</option></select>"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "pass",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "template",
+      "html": "<html><head></head><body>Expected<noscript><template></template></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<template></template>"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "pass",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "foreign",
+      "html": "<html><head></head><body>Expected<noscript><svg><path/></svg></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<svg><path/></svg>"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "required-attribute-only",
+      "html": "<html><head></head><body><noscript><img alt=\"Expected\"></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<img alt=\"Expected\">"
+      ],
+      "disabled_segments": [],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "required-entity-only",
+      "html": "<html><head></head><body><noscript>&#69;xpected</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "&#69;xpected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "both-fail-different-reasons",
+      "html": "<html><head></head><body><noscript><img alt=\"Expected\">Forbidden</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<img alt=\"Expected\">Forbidden"
+      ],
+      "disabled_segments": [
+        "Forbidden"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "no-cross-mode-union",
+      "html": "<html><head></head><body><noscript><img alt=\"A\">&#66;</noscript></body></html>",
+      "required_markers": [
+        "A",
+        "B"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<img alt=\"A\">&#66;"
+      ],
+      "disabled_segments": [
+        "B"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "raw-marker-spans-pseudotag",
+      "html": "<html><head></head><body><noscript>Ex<img>pected</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Ex<img>pected"
+      ],
+      "disabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "literal-markup-is-raw-text",
+      "html": "<html><head></head><body><noscript>Ex<img>pected</noscript></body></html>",
+      "required_markers": [
+        "Ex<img>pected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Ex<img>pected"
+      ],
+      "disabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "no-join-tag",
+      "html": "<html><head></head><body><noscript>Ex<span>pected</span></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Ex<span>pected</span>"
+      ],
+      "disabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "no-join-comment",
+      "html": "<html><head></head><body><noscript>Ex<!--x-->pected</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Ex<!--x-->pected"
+      ],
+      "disabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "no-join-noscript",
+      "html": "<html><head></head><body>Ex<noscript></noscript>pected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "disabled_segments": [
+        "Ex",
+        "pected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "two-global-modes",
+      "html": "<html><head></head><body><noscript><img alt=\"Expected\"></noscript><noscript>&#70;orbidden</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<img alt=\"Expected\">",
+        "&#70;orbidden"
+      ],
+      "disabled_segments": [
+        "Forbidden"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "case-and-space",
+      "html": "<html><head></head><body>Expected<NOSCRIPT><IMG src=x></NoScRiPt \t></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<IMG src=x>"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "exact-crlf",
+      "html": "<html><head></head><body><noscript>Ex\r\npected</noscript></body></html>",
+      "required_markers": [
+        "Ex\r\npected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Ex\r\npected"
+      ],
+      "disabled_segments": [
+        "Ex\r\npected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "unicode-not-normalized",
+      "html": "<html><head></head><body><noscript>é</noscript></body></html>",
+      "required_markers": [
+        "é"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "é"
+      ],
+      "disabled_segments": [
+        "é"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "forbidden-only-absent",
+      "html": "<html><head></head><body><noscript>Other</noscript></body></html>",
+      "required_markers": [],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Other"
+      ],
+      "disabled_segments": [
+        "Other"
+      ],
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "forbidden-only-present",
+      "html": "<html><head></head><body><noscript>Forbidden</noscript></body></html>",
+      "required_markers": [],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Forbidden"
+      ],
+      "disabled_segments": [
+        "Forbidden"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "case-sensitive",
+      "html": "<html><head></head><body><noscript>expected</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "expected"
+      ],
+      "disabled_segments": [
+        "expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "fail",
+      "candidate_consensus": "fail",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "lt-entity-not-markup",
+      "html": "<html><head></head><body><noscript>&lt;img alt=\"Expected\"&gt;</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "&lt;img alt=\"Expected\"&gt;"
+      ],
+      "disabled_segments": [
+        "<img alt=\"Expected\">"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "title-outside",
+      "html": "<html><head><title>Expected</title></head><body><noscript></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Body RAWTEXT keeps literal characters; disabled mode tokenizes markup and decodes DATA references."
+    },
+    {
+      "id": "head-link",
+      "html": "<html><head><noscript><link rel=\"stylesheet\" href=\"x\"></noscript></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<link rel=\"stylesheet\" href=\"x\">",
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Head noscript disabled subset allows whitespace, comments, link/meta/style only; any reprocessing is refused."
+    },
+    {
+      "id": "head-meta",
+      "html": "<html><head><noscript><meta name=\"x\" content=\"Forbidden\"></noscript></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<meta name=\"x\" content=\"Forbidden\">",
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "Head noscript disabled subset allows whitespace, comments, link/meta/style only; any reprocessing is refused."
+    },
+    {
+      "id": "head-style",
+      "html": "<html><head><noscript><style>Forbidden</style></noscript></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<style>Forbidden</style>",
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "Head noscript disabled subset allows whitespace, comments, link/meta/style only; any reprocessing is refused."
+    },
+    {
+      "id": "head-comment",
+      "html": "<html><head><noscript><!--Forbidden--></noscript></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<!--Forbidden-->",
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "fail",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "Head noscript disabled subset allows whitespace, comments, link/meta/style only; any reprocessing is refused."
+    },
+    {
+      "id": "head-space",
+      "html": "<html><head><noscript> \n</noscript></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        " \n",
+        "Expected"
+      ],
+      "disabled_segments": [
+        " \n",
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Head noscript disabled subset allows whitespace, comments, link/meta/style only; any reprocessing is refused."
+    },
+    {
+      "id": "head-entity-space",
+      "html": "<html><head><noscript>&#32;</noscript></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "&#32;",
+        "Expected"
+      ],
+      "disabled_segments": [
+        " ",
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "Head noscript disabled subset allows whitespace, comments, link/meta/style only; any reprocessing is refused."
+    },
+    {
+      "id": "head-nbsp",
+      "html": "<html><head><noscript>&nbsp;</noscript></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "&nbsp;",
+        "Expected"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "pass",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Head noscript disabled subset allows whitespace, comments, link/meta/style only; any reprocessing is refused."
+    },
+    {
+      "id": "head-text",
+      "html": "<html><head><noscript>Forbidden</noscript></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Forbidden",
+        "Expected"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "fail",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Head noscript disabled subset allows whitespace, comments, link/meta/style only; any reprocessing is refused."
+    },
+    {
+      "id": "head-img",
+      "html": "<html><head><noscript><img alt=\"Forbidden\"></noscript></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<img alt=\"Forbidden\">",
+        "Expected"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "fail",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Head noscript disabled subset allows whitespace, comments, link/meta/style only; any reprocessing is refused."
+    },
+    {
+      "id": "head-script",
+      "html": "<html><head><noscript><script>Forbidden</script></noscript></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<script>Forbidden</script>",
+        "Expected"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "fail",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Head noscript disabled subset allows whitespace, comments, link/meta/style only; any reprocessing is refused."
+    },
+    {
+      "id": "head-base",
+      "html": "<html><head><noscript><base href=\"x\"></noscript></head><body>Expected</body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "<base href=\"x\">",
+        "Expected"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "pass",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "Head noscript disabled subset allows whitespace, comments, link/meta/style only; any reprocessing is refused."
+    },
+    {
+      "id": "closing-inside-attribute",
+      "html": "<html><head></head><body><noscript><a title=\"</noscript>\">Expected</a></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "closing-inside-comment",
+      "html": "<html><head></head><body><noscript><!-- </noscript> -->Expected</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "closing-inside-script",
+      "html": "<html><head></head><body>Expected<noscript><script>\"</noscript>\"</script></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "closing-inside-style",
+      "html": "<html><head></head><body>Expected<noscript><style>\"</noscript>\"</style></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "nested-noscript",
+      "html": "<html><head></head><body>Expected<noscript><noscript></noscript></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "end-prefix-lookalike",
+      "html": "<html><head></head><body>Expected<noscript></noscriptx></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "</noscriptx>"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "pass",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "unsupported-tail",
+      "html": "<html><head></head><body>Expected<noscript>Forbidden</noscript><iframe></iframe></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "broken-tail",
+      "html": "<html><head></head><body>Expected<noscript></noscript><div></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "end-attributes",
+      "html": "<html><head></head><body>Expected<noscript></noscript x></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "self-closing-noscript",
+      "html": "<html><head></head><body>Expected<noscript/></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "noscript-in-svg",
+      "html": "<html><head></head><body>Expected<svg><noscript></noscript></svg></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "fake-in-script",
+      "html": "<html><head></head><body>Expected<script>\"<noscript>Forbidden</noscript>\"</script></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "fake-in-attribute",
+      "html": "<html><head></head><body>Expected<img alt=\"<noscript>Forbidden</noscript>\"></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "fake-in-comment",
+      "html": "<html><head></head><body>Expected<!--<noscript>Forbidden</noscript>--></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "nul",
+      "html": "<html><head></head><body>Expected<noscript>\u0000</noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "recovery-p-div",
+      "html": "<html><head></head><body><p>Expected<noscript><div>Other</div></noscript></p></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<div>Other</div>"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "pass",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "recovery-a-a",
+      "html": "<html><head></head><body><a>Expected<noscript><a>Other</a></noscript></a></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected",
+        "<a>Other</a>"
+      ],
+      "disabled_segments": null,
+      "enabled_candidate": "pass",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "missing-body",
+      "html": "<html><head></head><noscript>Expected</noscript></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "missing-html-close",
+      "html": "<html><head></head><body>Expected<noscript></noscript></body>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "duplicate-body",
+      "html": "<html><head></head><body>Expected</body><body></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": null,
+      "disabled_segments": null,
+      "enabled_candidate": "inconclusive",
+      "disabled_candidate": "inconclusive",
+      "candidate_consensus": "inconclusive",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    },
+    {
+      "id": "doctype",
+      "html": "<!doctype html><html><head></head><body>Expected<noscript></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "enabled_segments": [
+        "Expected"
+      ],
+      "disabled_segments": [
+        "Expected"
+      ],
+      "enabled_candidate": "pass",
+      "disabled_candidate": "pass",
+      "candidate_consensus": "pass",
+      "basis": "The entire document is parsed in each mode; an incomplete/unsupported reading returns no prefix segments."
+    }
+  ]
+}
