@@ -17,7 +17,7 @@ from conformance.http import Unknown, need
 from conformance.source_text import characters, tag_at, SPACE, VOID, SVG, CLOSE
 from provenance.runtime import runtime_identity
 
-VERSION = '2'
+VERSION = '3'
 MAX_CHARS = 8*1024*1024
 MAX_TOKENS = 100000
 MAX_DEPTH = 256
@@ -29,7 +29,9 @@ BODY = frozenset('a abbr address article aside audio b bdi bdo blockquote br but
                  'hr i img input ins kbd label legend li link main map mark menu meta '
                  'meter nav noscript ol output p picture pre progress q rp rt ruby s '
                  'samp search section small source span strong style sub summary sup '
-                 'script time track u ul var video wbr'.split()) - {'rp', 'rt', 'ruby'}
+                 'script select option optgroup textarea time track u ul var video wbr'.split()) - {'rp', 'rt', 'ruby'}
+SELECT_CHILDREN = {'select': frozenset(('option', 'optgroup')),
+                   'optgroup': frozenset(('option',)), 'option': frozenset()}
 CLOSES_P = frozenset('address article aside blockquote details dialog div dl fieldset '
                      'figcaption figure footer form h1 h2 h3 h4 h5 h6 header hgroup hr '
                      'main menu nav ol p pre search section ul'.split())
@@ -66,6 +68,10 @@ def reading(source, mode):
                 end = source.find('<', i)
                 end = len(source) if end < 0 else end
                 value = characters(source[i:end])
+                if stack and stack[-1] in ('select', 'optgroup'):
+                    # Only literal HTML whitespace between explicitly closed
+                    # choices. Entity-encoded whitespace is outside this subset.
+                    need(not source[i:end].strip(SPACE), 'Non-literal whitespace in select/optgroup')
                 if not stack or stack == ['html'] or 'head' in stack or 'svg' in stack:
                     need(not value.strip(SPACE), 'Text requires unsupported structural processing')
                 if stack:
@@ -105,6 +111,15 @@ def reading(source, mode):
                 body_seen = True
             else:
                 need('head' in stack or 'body' in stack, 'Element outside explicit head/body')
+                if 'select' in stack:
+                    need(tag in SELECT_CHILDREN.get(stack[-1], ()), 'Unsupported select child: '+tag)
+                elif tag == 'select':
+                    need('datalist' not in stack, 'Select inside datalist is unsupported')
+                if tag == 'option':
+                    need(stack[-1] in ('select', 'optgroup') and 'select' in stack,
+                         'Option outside supported select parent')
+                if tag == 'optgroup':
+                    need(stack[-1] == 'select', 'Optgroup outside direct select parent')
                 if 'svg' in stack or tag == 'svg':
                     need('body' in stack and (tag in SVG or tag == 'style'), 'Unsupported foreign context: '+tag)
                 elif 'head' in stack:
@@ -132,7 +147,7 @@ def reading(source, mode):
                 continue
             stack.append(tag)
             need(len(stack) <= MAX_DEPTH, 'Experimental nesting limit exceeded')
-            raw = tag in ('script', 'style', 'title') or (tag == 'noscript' and mode == 'enabled')
+            raw = tag in ('script', 'style', 'title', 'textarea') or (tag == 'noscript' and mode == 'enabled')
             if not raw:
                 i = end
                 continue
@@ -146,6 +161,8 @@ def reading(source, mode):
                 need('<!--' not in value, 'Escaped script data is unsupported')
             elif tag == 'title':
                 append(end, stop)
+            elif tag == 'textarea':
+                need(not value, 'Only literally empty textarea is covered')
             elif tag == 'noscript':
                 append(end, stop, decode=False)
             name, is_end, slash, after = tag_at(source, stop)

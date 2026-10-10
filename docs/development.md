@@ -339,3 +339,13 @@ L’expérience séparée conserve 68 cas rédigés avant son code, avec segment
 candidats attendus par mode. Les tests ajoutent positions Unicode, désaccords,
 lectures incomplètes, bornes, CLI isolé et refus inchangé de l’extracteur actif.
 Elle est distribuée pour examen, jamais branchée sur les décisions normatives.
+
+Experiment 3 adds 96 prefrozen form-control cases after the six list-scope cases.
+The initial 68-case file stays intact; a single explicit v3 expectation delta
+covers select inside disabled noscript. Reference comparisons with an isolated
+historical parser are private evidence, not a runtime dependency or browser claim.
+
+L'expérience 3 ajoute 96 cas de formulaires figés avant code après les six cas de
+listes. Le fichier initial reste intact ; un seul écart d'attente v3 est explicite.
+La comparaison externe historique reste une preuve privée limitée, sans dépendance
+supplémentaire ni assimilation du lecteur source à un navigateur.

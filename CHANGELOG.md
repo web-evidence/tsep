@@ -1,5 +1,21 @@
 # Change history / Historique
 
+## Noscript experiment 3 — 2026-10-10 — unapplied form-control coverage
+
+Add strictly balanced select/optgroup/option and literally empty textarea to the
+isolated experiment. Freeze 96 authored cases before implementation; preserve
+v1/v2 files and record the one changed v1 expectation explicitly. Option attributes,
+selection and visibility do not supply source text. Refuse complex children,
+omitted closes and nonempty textarea. No protocol, active interpreter or report
+migration. Compare synthetic inputs with an isolated historical external parser;
+retain CRLF and candidate disagreements rather than claim browser equivalence.
+
+Extension expérimentale bornée des listes et textarea littéralement vide ; 96 cas
+figés avant code, fichiers v1/v2 conservés et un changement d'attente explicite.
+Tous les textes d'option comptent, pas les attributs ni l'état de sélection.
+Les refus et écarts avec un parseur historique externe restent visibles. Aucun
+changement normatif ni migration des rapports. [Portée](docs/noscript-experiment.md).
+
 ## Noscript experiment 2 — 2026-10-10 — unapplied coverage correction
 
 The first retained-page reapplication exposed an overbroad ancestor-li guard.

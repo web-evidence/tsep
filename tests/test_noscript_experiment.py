@@ -17,6 +17,26 @@ from conformance.source_text import extract
 
 
 class NoscriptExperiment(unittest.TestCase):
+    def test_v3_form_controls_frozen_before_implementation(self):
+        path = ROOT/'tests/fixtures/noscript-experiment-v3-cases.json'
+        self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),
+                         (ROOT/'tests/fixtures/noscript-experiment-v3-freeze.sha256').read_text().strip())
+        fixture = json.loads(path.read_text())
+        self.assertEqual(fixture['base_fixture_sha256'], hashlib.sha256(
+            (ROOT/'tests/fixtures/noscript-experiment-cases.json').read_bytes()).hexdigest())
+        self.assertEqual(set(fixture['base_expectation_changes']), {'select'})
+        self.assertEqual(len(fixture['cases']), 96)
+        self.assertEqual(len({c['id'] for c in fixture['cases']}), 96)
+        for case in fixture['cases']:
+            with self.subTest(case=case['id']):
+                result = noscript.experiment(case['html'], {k: case[k] for k in ('required_markers', 'forbidden_markers')})
+                for mode in ('enabled', 'disabled'):
+                    reading = result['readings'][mode]
+                    actual = [s['text'] for s in reading['segments']] if reading['complete'] else None
+                    self.assertEqual(actual, case[mode+'_segments'])
+                    self.assertEqual(reading['markers']['candidate'], case[mode+'_candidate'])
+                self.assertEqual(result['candidate_consensus'], case['candidate_consensus'])
+
     def test_v2_nested_list_scope_frozen_before_fix(self):
         path = ROOT/'tests/fixtures/noscript-experiment-v2-cases.json'
         self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),
@@ -37,8 +57,12 @@ class NoscriptExperiment(unittest.TestCase):
         cases = json.loads(path.read_text())['cases']
         self.assertEqual(len(cases), 68)
         self.assertEqual(len({c['id'] for c in cases}), len(cases))
+        # Preserve the frozen v1 file; only the explicitly registered v3 delta
+        # changes the current expectation for the select-in-noscript case.
+        delta = json.loads((ROOT/'tests/fixtures/noscript-experiment-v3-cases.json').read_text())['base_expectation_changes']
         with patch('socket.socket', side_effect=AssertionError('network forbidden')), patch('socket.getaddrinfo', side_effect=AssertionError('DNS forbidden')):
             for case in cases:
+                case = dict(case, **delta.get(case['id'], {}))
                 with self.subTest(case=case['id']):
                     result = noscript.experiment(case['html'], {k: case[k] for k in ('required_markers', 'forbidden_markers')})
                     for mode in ('enabled', 'disabled'):
@@ -105,7 +129,7 @@ class NoscriptExperiment(unittest.TestCase):
                 result = noscript.reading(source, 'enabled')
                 self.assertFalse(result['complete'])
                 self.assertEqual(result['segments'], [])
-        for bad in ('textarea', 'template', 'iframe', 'select', 'table', 'math', 'xmp', 'custom-element'):
+        for bad in ('template', 'iframe', 'table', 'math', 'xmp', 'custom-element'):
             with self.subTest(tag=bad):
                 result = noscript.reading('<html><head></head><body>Expected<'+bad+'></'+bad+'></body></html>', 'disabled')
                 self.assertFalse(result['complete'])
