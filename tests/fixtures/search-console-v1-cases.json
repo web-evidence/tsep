@@ -1,0 +1,215 @@
+{
+  "kind": "authored-synthetic-expectations",
+  "version": "1",
+  "scope": "Frozen before Search Console diagnostic implementation; no API call, no actual Google observation",
+  "retrieved_at": "2026-10-10T12:00:00Z",
+  "cases": [
+    {
+      "id": "matching",
+      "index_status_result": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "lastCrawlTime": "2026-10-09T10:00:00.123456789Z",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://example.com/product",
+        "userCanonical": "https://example.com/product",
+        "crawledAs": "MOBILE"
+      },
+      "expected": {
+        "canonical": "equal",
+        "crawl": "present",
+        "indexing": "present"
+      }
+    },
+    {
+      "id": "different-canonical",
+      "index_status_result": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "lastCrawlTime": "2026-10-09T10:00:00.123456789Z",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://example.com/other",
+        "userCanonical": "https://example.com/product",
+        "crawledAs": "MOBILE"
+      },
+      "expected": {
+        "canonical": "different",
+        "crawl": "present",
+        "indexing": "present"
+      }
+    },
+    {
+      "id": "absent-google-canonical",
+      "index_status_result": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "lastCrawlTime": "2026-10-09T10:00:00.123456789Z",
+        "pageFetchState": "SUCCESSFUL",
+        "userCanonical": "https://example.com/product",
+        "crawledAs": "MOBILE"
+      },
+      "expected": {
+        "canonical": "unavailable",
+        "crawl": "present",
+        "indexing": "present"
+      }
+    },
+    {
+      "id": "empty-user-canonical",
+      "index_status_result": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "lastCrawlTime": "2026-10-09T10:00:00.123456789Z",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://example.com/product",
+        "userCanonical": "",
+        "crawledAs": "MOBILE"
+      },
+      "expected": {
+        "canonical": "unavailable",
+        "crawl": "present",
+        "indexing": "present"
+      }
+    },
+    {
+      "id": "unknown-indexing-enum",
+      "index_status_result": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "FUTURE_STATE",
+        "lastCrawlTime": "2026-10-09T10:00:00.123456789Z",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://example.com/product",
+        "userCanonical": "https://example.com/product",
+        "crawledAs": "MOBILE"
+      },
+      "expected": {
+        "canonical": "equal",
+        "crawl": "present",
+        "indexing": "unknown-value"
+      }
+    },
+    {
+      "id": "malformed-canonical",
+      "index_status_result": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "lastCrawlTime": "2026-10-09T10:00:00.123456789Z",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": 42,
+        "userCanonical": "https://example.com/product",
+        "crawledAs": "MOBILE"
+      },
+      "expected": {
+        "canonical": "unavailable",
+        "crawl": "present",
+        "indexing": "present"
+      }
+    },
+    {
+      "id": "never-reported-crawl",
+      "index_status_result": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://example.com/product",
+        "userCanonical": "https://example.com/product",
+        "crawledAs": "MOBILE"
+      },
+      "expected": {
+        "canonical": "equal",
+        "crawl": "absent",
+        "indexing": "present"
+      }
+    },
+    {
+      "id": "malformed-crawl",
+      "index_status_result": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "lastCrawlTime": "yesterday",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://example.com/product",
+        "userCanonical": "https://example.com/product",
+        "crawledAs": "MOBILE"
+      },
+      "expected": {
+        "canonical": "equal",
+        "crawl": "invalid",
+        "indexing": "present"
+      }
+    },
+    {
+      "id": "fractional-time",
+      "index_status_result": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "lastCrawlTime": "2026-10-09T12:00:00.123456789+02:00",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://example.com/product",
+        "userCanonical": "https://example.com/product",
+        "crawledAs": "MOBILE"
+      },
+      "expected": {
+        "canonical": "equal",
+        "crawl": "present",
+        "indexing": "present"
+      }
+    },
+    {
+      "id": "trailing-slash-difference",
+      "index_status_result": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_ALLOWED",
+        "lastCrawlTime": "2026-10-09T10:00:00.123456789Z",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://example.com/product/",
+        "userCanonical": "https://example.com/product",
+        "crawledAs": "MOBILE"
+      },
+      "expected": {
+        "canonical": "different",
+        "crawl": "present",
+        "indexing": "present"
+      }
+    },
+    {
+      "id": "default-enum",
+      "index_status_result": {
+        "verdict": "PASS",
+        "coverageState": "Submitted and indexed",
+        "robotsTxtState": "ALLOWED",
+        "indexingState": "INDEXING_STATE_UNSPECIFIED",
+        "lastCrawlTime": "2026-10-09T10:00:00.123456789Z",
+        "pageFetchState": "SUCCESSFUL",
+        "googleCanonical": "https://example.com/product",
+        "userCanonical": "https://example.com/product",
+        "crawledAs": "MOBILE"
+      },
+      "expected": {
+        "canonical": "equal",
+        "crawl": "present",
+        "indexing": "unspecified"
+      }
+    }
+  ]
+}

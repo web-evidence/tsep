@@ -1,4 +1,7 @@
 Current tools: interpreter 11 / adapter 12; protocol draft.11 unchanged.
+Offline [Search Console diagnostic 1](search-console-observations.md) links supplied
+inspection responses to replayed technical evidence; no account access or TS08/TS12 verdict.
+Ébauche Search Console disponible ; export réel et qualification humaine restent à obtenir.
 Prior TS02 [owner-plan workflow 1](redirect-plan-workflow.md) prepares blank decisions
 and binds supplied reviews to later captures, without collecting or inventing approval.
 Parcours préalable TS02 disponible ; décision humaine et collecte réelle restent à établir.

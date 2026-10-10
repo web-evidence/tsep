@@ -8,6 +8,8 @@ inconnues conservées. Le rapport distingue ce qui est établi de ce qui reste �
 
 Pour TS02, le [parcours du plan préalable](docs/redirect-plan-workflow.md) prépare
 une fiche lisible et lie une décision réellement fournie aux captures ultérieures.
+L'[ébauche Search Console](docs/search-console-observations.md) rapproche un export
+API fourni et les preuves techniques rejouées, sans verdict TS08/TS12 automatique.
 
 ## Pour qui
 

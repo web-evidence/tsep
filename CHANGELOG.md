@@ -1,5 +1,16 @@
 # Change history / Historique
 
+## Diagnostic — 2026-10-10 — supplied Search Console observations
+
+Offline diagnostic 1 retains original URL Inspection request/response bodies and
+compares them with an exact URL/member in a replayed technical bundle. Missing
+fields, errors, literal canonical differences and distinct dates remain visible.
+Eleven prefrozen synthetic cases; no account access, live URL test, TS08/TS12 verdict
+or normative change. [Usage and limitations](docs/search-console-observations.md).
+
+FR : rapprochement hors ligne des preuves techniques et d'une inspection fournie ;
+la date de crawl n'horodate pas tous les champs, aucun effet SEO causal n'est déduit.
+
 ## Workflow — 2026-10-10 — prior TS02 owner plan
 
 Workflow 1 adds a readable prior plan, blank owner response, supplied-decision

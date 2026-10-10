@@ -8,6 +8,8 @@ unknowns retained. The report distinguishes established findings from remaining 
 
 For TS02, the [prior owner-plan workflow](docs/redirect-plan-workflow.md) prepares
 a readable plan and binds a supplied decision to subsequent captures.
+The [Search Console preview](docs/search-console-observations.md) compares supplied
+API evidence with replayed technical records, without automatic TS08/TS12 verdicts.
 
 ## Who it is for
 

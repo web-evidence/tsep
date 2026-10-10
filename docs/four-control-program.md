@@ -36,8 +36,11 @@ manière explicite. Un 200 final n'est pas la conclusion. Une boucle n'est pas
 présentée comme terminant en 200 ; une borne de collecte n'est pas une boucle.
 Les captures synthétiques restent distinctes des captures réelles.
 
-L'ébauche Search Console rapprochera intention, état technique daté et état Google
-rapporté : URL déclarée canonique, URL canonique sélectionnée, état et dernier
+L'ébauche Search Console rapproche intention, état technique daté et état Google
+rapporté. Le [diagnostic d'import 1](search-console-observations.md) fournit ce
+rapprochement hors ligne avec rejeu technique et champs manquants conservés ;
+aucune donnée réelle du compte n'est établie par ses essais synthétiques.
+Le périmètre reste : URL déclarée canonique, URL canonique sélectionnée, état et dernier
 crawl. Sans données du compte, seuls des exemples synthétiques sont possibles.
 Des dates différentes ou champs absents ne démontrent pas une régression. Aucun
 gain de classement ni causalité ne sera attribué à TSEP sur cette seule base.
