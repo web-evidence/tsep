@@ -1,3 +1,6 @@
+Optional [source/head observation 1](source-head-observation.md) now qualifies canonical placement and source-token context, without changing draft.15 outcomes.
+Observation facultative de position canonical et de contexte source ; aucune promotion normative implicite.
+
 Current integration: draft.15, interpreter 15 / adapter 16 / replay 2.
 Optional prior [source directives](source-directives.md) now extends TS07-A01
 and the A03 source prerequisite; Node 24 qualification remains explicit and optional.

@@ -1,0 +1,921 @@
+{
+  "kind": "unapplied-http-source-tree",
+  "experiment_version": "1",
+  "metadata_extension": "1",
+  "head_extension": "1",
+  "normative_effect": "none",
+  "parser": {
+    "name": "parse5",
+    "version": "8.0.1",
+    "dependency": "entities@8.0.0"
+  },
+  "runtime": {
+    "node": "v24.19.0",
+    "v8": "13.6.233.17-node.51"
+  },
+  "parser_input_utf8_sha256": "e3c560af6d60ae7bf0161886f990d2d5f74dde8d0c71525a65ebb79dfd9a7449",
+  "source_offset_unit": "UTF-16 code units in exact decoded parser input, zero-based, exclusive end; body byte spans added by supervisor.",
+  "readings": {
+    "enabled": {
+      "complete": true,
+      "head_prefix": {
+        "complete": true,
+        "tokens": [
+          {
+            "kind": "doctype",
+            "tag": null,
+            "source_span_utf16": [
+              0,
+              15
+            ],
+            "raw": "<!doctype html>",
+            "before": [],
+            "mode_before": 0,
+            "after": [],
+            "mode_after": 1,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              3,
+              18
+            ]
+          },
+          {
+            "kind": "start-tag",
+            "tag": "html",
+            "source_span_utf16": [
+              15,
+              21
+            ],
+            "raw": "<html>",
+            "before": [],
+            "mode_before": 1,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 2,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              18,
+              24
+            ]
+          },
+          {
+            "kind": "start-tag",
+            "tag": "head",
+            "source_span_utf16": [
+              21,
+              27
+            ],
+            "raw": "<head>",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 2,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 3,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              24,
+              30
+            ]
+          },
+          {
+            "kind": "start-tag",
+            "tag": "title",
+            "source_span_utf16": [
+              27,
+              34
+            ],
+            "raw": "<title>",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 3,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "title",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 7,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              30,
+              37
+            ]
+          },
+          {
+            "kind": "characters",
+            "tag": null,
+            "source_span_utf16": [
+              34,
+              37
+            ],
+            "raw": "é😀",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "title",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 7,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "title",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 7,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              37,
+              43
+            ]
+          },
+          {
+            "kind": "end-tag",
+            "tag": "title",
+            "source_span_utf16": [
+              37,
+              45
+            ],
+            "raw": "</title>",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "title",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 7,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 3,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              43,
+              51
+            ]
+          },
+          {
+            "kind": "whitespace",
+            "tag": null,
+            "source_span_utf16": [
+              45,
+              47
+            ],
+            "raw": "\r\n",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 3,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 3,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              51,
+              53
+            ]
+          },
+          {
+            "kind": "start-tag",
+            "tag": "link",
+            "source_span_utf16": [
+              47,
+              114
+            ],
+            "raw": "<link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\">",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 3,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 3,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              53,
+              120
+            ]
+          },
+          {
+            "kind": "end-tag",
+            "tag": "head",
+            "source_span_utf16": [
+              114,
+              121
+            ],
+            "raw": "</head>",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 3,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 5,
+            "unmatched_end": false,
+            "closes_document_head": true,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              120,
+              127
+            ]
+          },
+          {
+            "kind": "start-tag",
+            "tag": "body",
+            "source_span_utf16": [
+              121,
+              127
+            ],
+            "raw": "<body>",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 5,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "body",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 6,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": true,
+            "body_span_bytes": [
+              127,
+              133
+            ]
+          }
+        ]
+      },
+      "inventory": {
+        "robots": [],
+        "canonical": [
+          {
+            "group": "canonical",
+            "tag": "link",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "context": "head",
+            "attributes": {
+              "id": "a",
+              "rel": "canonical",
+              "href": "https://example.test/preferred"
+            },
+            "ancestors": [
+              "#document",
+              "html",
+              "head"
+            ],
+            "ancestor_namespaces": [
+              null,
+              "http://www.w3.org/1999/xhtml",
+              "http://www.w3.org/1999/xhtml"
+            ],
+            "template_indices": [],
+            "source_span_utf16": [
+              47,
+              114
+            ],
+            "raw_tag": "<link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\">",
+            "body_span_bytes": [
+              53,
+              120
+            ]
+          }
+        ],
+        "anchors": [],
+        "bases": []
+      },
+      "template_signals": [],
+      "template_containers": [],
+      "metadata": [],
+      "encoding_declarations": [],
+      "inventory_order": [
+        {
+          "group": "canonical",
+          "index": 0
+        }
+      ],
+      "parse_errors": [],
+      "tree_nodes": 10,
+      "document_mode": "no-quirks"
+    },
+    "disabled": {
+      "complete": true,
+      "head_prefix": {
+        "complete": true,
+        "tokens": [
+          {
+            "kind": "doctype",
+            "tag": null,
+            "source_span_utf16": [
+              0,
+              15
+            ],
+            "raw": "<!doctype html>",
+            "before": [],
+            "mode_before": 0,
+            "after": [],
+            "mode_after": 1,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              3,
+              18
+            ]
+          },
+          {
+            "kind": "start-tag",
+            "tag": "html",
+            "source_span_utf16": [
+              15,
+              21
+            ],
+            "raw": "<html>",
+            "before": [],
+            "mode_before": 1,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 2,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              18,
+              24
+            ]
+          },
+          {
+            "kind": "start-tag",
+            "tag": "head",
+            "source_span_utf16": [
+              21,
+              27
+            ],
+            "raw": "<head>",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 2,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 3,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              24,
+              30
+            ]
+          },
+          {
+            "kind": "start-tag",
+            "tag": "title",
+            "source_span_utf16": [
+              27,
+              34
+            ],
+            "raw": "<title>",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 3,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "title",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 7,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              30,
+              37
+            ]
+          },
+          {
+            "kind": "characters",
+            "tag": null,
+            "source_span_utf16": [
+              34,
+              37
+            ],
+            "raw": "é😀",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "title",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 7,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "title",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 7,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              37,
+              43
+            ]
+          },
+          {
+            "kind": "end-tag",
+            "tag": "title",
+            "source_span_utf16": [
+              37,
+              45
+            ],
+            "raw": "</title>",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "title",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 7,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 3,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              43,
+              51
+            ]
+          },
+          {
+            "kind": "whitespace",
+            "tag": null,
+            "source_span_utf16": [
+              45,
+              47
+            ],
+            "raw": "\r\n",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 3,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 3,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              51,
+              53
+            ]
+          },
+          {
+            "kind": "start-tag",
+            "tag": "link",
+            "source_span_utf16": [
+              47,
+              114
+            ],
+            "raw": "<link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\">",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 3,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 3,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              53,
+              120
+            ]
+          },
+          {
+            "kind": "end-tag",
+            "tag": "head",
+            "source_span_utf16": [
+              114,
+              121
+            ],
+            "raw": "</head>",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "head",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 3,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 5,
+            "unmatched_end": false,
+            "closes_document_head": true,
+            "constructs_document_body": false,
+            "body_span_bytes": [
+              120,
+              127
+            ]
+          },
+          {
+            "kind": "start-tag",
+            "tag": "body",
+            "source_span_utf16": [
+              121,
+              127
+            ],
+            "raw": "<body>",
+            "before": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_before": 5,
+            "after": [
+              {
+                "tag": "html",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              },
+              {
+                "tag": "body",
+                "namespace": "http://www.w3.org/1999/xhtml"
+              }
+            ],
+            "mode_after": 6,
+            "unmatched_end": false,
+            "closes_document_head": false,
+            "constructs_document_body": true,
+            "body_span_bytes": [
+              127,
+              133
+            ]
+          }
+        ]
+      },
+      "inventory": {
+        "robots": [],
+        "canonical": [
+          {
+            "group": "canonical",
+            "tag": "link",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "context": "head",
+            "attributes": {
+              "id": "a",
+              "rel": "canonical",
+              "href": "https://example.test/preferred"
+            },
+            "ancestors": [
+              "#document",
+              "html",
+              "head"
+            ],
+            "ancestor_namespaces": [
+              null,
+              "http://www.w3.org/1999/xhtml",
+              "http://www.w3.org/1999/xhtml"
+            ],
+            "template_indices": [],
+            "source_span_utf16": [
+              47,
+              114
+            ],
+            "raw_tag": "<link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\">",
+            "body_span_bytes": [
+              53,
+              120
+            ]
+          }
+        ],
+        "anchors": [],
+        "bases": []
+      },
+      "template_signals": [],
+      "template_containers": [],
+      "metadata": [],
+      "encoding_declarations": [],
+      "inventory_order": [
+        {
+          "group": "canonical",
+          "index": 0
+        }
+      ],
+      "parse_errors": [],
+      "tree_nodes": 10,
+      "document_mode": "no-quirks"
+    }
+  },
+  "comparisons": {
+    "robots": "identical",
+    "canonical": "identical",
+    "anchors": "identical",
+    "bases": "identical"
+  },
+  "supplementary_comparisons": {
+    "template_containers": "identical",
+    "template_signals": "identical",
+    "encoding_declarations": "identical",
+    "metadata": "identical"
+  },
+  "networkGuard": {
+    "guarded": [
+      "node:net.connect",
+      "node:net.createConnection",
+      "node:net.createServer",
+      "node:net.Socket.connect",
+      "node:tls.connect",
+      "node:tls.createServer",
+      "node:http.request",
+      "node:http.get",
+      "node:http.createServer",
+      "node:https.request",
+      "node:https.get",
+      "node:https.createServer",
+      "node:http2.connect",
+      "node:http2.createServer",
+      "node:http2.createSecureServer",
+      "node:dgram.createSocket",
+      "node:dgram.Socket.connect",
+      "node:dns.lookup",
+      "node:dns.resolve",
+      "node:dns.resolve4",
+      "node:dns.resolve6",
+      "node:dns.resolveAny"
+    ],
+    "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+  },
+  "bounds": {
+    "source_bytes": 8388608,
+    "tree_nodes": 200000,
+    "tree_depth": 256,
+    "records": 50000,
+    "parse_errors": 1000
+  },
+  "scope": "Tokenizer prefix retained through the token constructing document body/frameset or EOF, including comments/raw text; numeric insertion modes are pinned parse5 internals, not an HTML validity API. Static whole-document hypotheses, no scripts executed. Template declarations and nesting retained; shadow attachment never asserted, including closed mode. Encoding meta retained without changing the certain declared HTTP decoding. Complete is bounded inventory completion, not HTML validity. No SEO decision, URL resolution, browser or Google observation.",
+  "decoding": {
+    "profile": "html-http-utf8-v1",
+    "content_types": [
+      "text/html; charset=utf-8"
+    ],
+    "body_sha256": "af3eb90a7ee859e2d47889b38ff4a6c78702fcef2ae8c4fa83df038c2aa8a8ab",
+    "body_bytes": 151,
+    "consumed_bom_bytes": 3,
+    "parser_input_utf8_sha256": "e3c560af6d60ae7bf0161886f990d2d5f74dde8d0c71525a65ebb79dfd9a7449",
+    "parser_input_utf16_units": 145,
+    "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+  },
+  "source_sha256": {
+    "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+    "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+    "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+    "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+    "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+    "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+    "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+    "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+    "experiments/source_head.py": "38261bae8306b794378b628e50431ac2d2d0b1496cbe713d43af617f8104b096",
+    "experiments/source_head.mjs": "c7c90546b1440c9d5e38402da11b7c33af1d337381b85c86dddca058ff3f6f4b"
+  },
+  "supervisor": {
+    "python_version": "3.9.6",
+    "process_timeout_seconds": 30,
+    "node_old_space_mib": 128,
+    "output_byte_limit": 33554432
+  }
+}

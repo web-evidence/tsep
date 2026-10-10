@@ -1,0 +1,1005 @@
+{
+  "kind": "source-head-position-oracle",
+  "version": "1",
+  "synthetic": true,
+  "normative_effect": "none",
+  "authored_at": "2026-10-10T19:52:56.380095+00:00",
+  "scope": "Tree/source facts only, not Google behavior or TSEP outcomes. Token prefix ends after the first token constructing an ordinary document body/frameset.",
+  "cases": [
+    {
+      "id": "explicit-head",
+      "html": "<!doctype html><html><head><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "implicit-head",
+      "html": "<!doctype html><html><title>x</title><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "after-head-reinserted",
+      "html": "<!doctype html><html><head><title>x</title></head><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"><body>x</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": true
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": true
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "after-head insertion reuses the head pointer; no Google admission inferred"
+    },
+    {
+      "id": "img-closes-head",
+      "html": "<!doctype html><html><head><img src=\"x\"><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "body",
+              "in_prefix": false,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "body",
+              "in_prefix": false,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "text-closes-head",
+      "html": "<!doctype html><html><head>unexpected<link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "body",
+              "in_prefix": false,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "body",
+              "in_prefix": false,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "body-canonical",
+      "html": "<!doctype html><html><head></head><body><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "body",
+              "in_prefix": false,
+              "after_explicit_head_close": true
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "body",
+              "in_prefix": false,
+              "after_explicit_head_close": true
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "first-correct-second-body",
+      "html": "<!doctype html><html><head><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"><img src=\"x\"><link id=\"b\" rel=\"canonical\" href=\"https://example.test/other\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            },
+            {
+              "id": "b",
+              "tree_context": "body",
+              "in_prefix": false,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            },
+            {
+              "id": "b",
+              "tree_context": "body",
+              "in_prefix": false,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "noscript-pixel",
+      "html": "<!doctype html><html><head><noscript><img src=\"pixel\"></noscript><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "body",
+              "in_prefix": false,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "scripts-enabled raw text versus scripts-disabled head closure"
+    },
+    {
+      "id": "noscript-iframe",
+      "html": "<!doctype html><html><head><noscript><iframe src=\"about:blank\"></iframe></noscript><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "body",
+              "in_prefix": false,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "noscript-canonical-only",
+      "html": "<!doctype html><html><head><noscript><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></noscript></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "noscript-canonical-plus-ordinary",
+      "html": "<!doctype html><html><head><noscript><link id=\"b\" rel=\"canonical\" href=\"https://example.test/other\"></noscript><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "b",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            },
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "stray-end-div",
+      "html": "<!doctype html><html><head></div><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": [
+            "div"
+          ]
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": [
+            "div"
+          ]
+        }
+      },
+      "basis": "ignored end tag remains in tokenizer evidence even without a parse5 error"
+    },
+    {
+      "id": "duplicate-head",
+      "html": "<!doctype html><html><head><head><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "comment-decoy",
+      "html": "<!doctype html><html><head><!-- <link id=\"b\" rel=\"canonical\" href=\"https://example.test/other\"> --><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "script-decoy",
+      "html": "<!doctype html><html><head><script>const s = \"<link id=\\\"b\\\" rel=\\\"canonical\\\" href=\\\"https://example.test/other\\\">\"</script><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "style-decoy",
+      "html": "<!doctype html><html><head><style>/* <link id=\"b\" rel=\"canonical\" href=\"https://example.test/other\"> */</style><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "title-decoy",
+      "html": "<!doctype html><html><head><title><link id=\"b\" rel=\"canonical\" href=\"https://example.test/other\"></title><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "template-only",
+      "html": "<!doctype html><html><head><template><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></template></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "template",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "template",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "template-and-ordinary",
+      "html": "<!doctype html><html><head><template><link id=\"b\" rel=\"canonical\" href=\"https://example.test/other\"></template><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "b",
+              "tree_context": "template",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            },
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "b",
+              "tree_context": "template",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            },
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "nested-template",
+      "html": "<!doctype html><html><head><template><template><link id=\"b\" rel=\"canonical\" href=\"https://example.test/other\"></template></template><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "b",
+              "tree_context": "template",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            },
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "b",
+              "tree_context": "template",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            },
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "shadow-template",
+      "html": "<!doctype html><html><head></head><body><div><template shadowrootmode=\"open\"><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "template",
+              "in_prefix": false,
+              "after_explicit_head_close": true
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "template",
+              "in_prefix": false,
+              "after_explicit_head_close": true
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "foreign-integration",
+      "html": "<!doctype html><html><head></head><body><svg><foreignObject><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></foreignObject></svg></body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "body",
+              "in_prefix": false,
+              "after_explicit_head_close": true
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "body",
+              "in_prefix": false,
+              "after_explicit_head_close": true
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "duplicates",
+      "html": "<!doctype html><html><head><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"><link id=\"b\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            },
+            {
+              "id": "b",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            },
+            {
+              "id": "b",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "conflicting-values",
+      "html": "<!doctype html><html><head><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"><link id=\"b\" rel=\"canonical\" href=\"https://example.test/other\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            },
+            {
+              "id": "b",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            },
+            {
+              "id": "b",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "relative",
+      "html": "<!doctype html><html><head><link id=\"a\" rel=\"canonical\" href=\"/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "base-absolute",
+      "html": "<!doctype html><html><head><base href=\"https://elsewhere.test/\"><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "base-relative",
+      "html": "<!doctype html><html><head><base href=\"/else/\"><link id=\"a\" rel=\"canonical\" href=\"preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "modifier-preserved",
+      "html": "<!doctype html><html><head><link id=\"a\" rel=\"canonical\" hreflang=\"fr\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "bom-and-unicode",
+      "html": "﻿<!doctype html><html><head><title>é😀</title>\r\n<link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "missing-head-close",
+      "html": "<!doctype html><html><head><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "head-close-decoy",
+      "html": "<!doctype html><html><head><script>const s = \"</head>\";</script><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": []
+        }
+      },
+      "basis": "ordinary HTML tree construction"
+    },
+    {
+      "id": "template-head-close",
+      "html": "<!doctype html><html><head><template></head></template><link id=\"a\" rel=\"canonical\" href=\"https://example.test/preferred\"></head><body>text</body></html>",
+      "expected": {
+        "enabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": [
+            "head"
+          ]
+        },
+        "disabled": {
+          "canonicals": [
+            {
+              "id": "a",
+              "tree_context": "head",
+              "in_prefix": true,
+              "after_explicit_head_close": false
+            }
+          ],
+          "unmatched_head_end_tags": [
+            "head"
+          ]
+        }
+      },
+      "basis": "head end tag inside a template does not close document head"
+    }
+  ]
+}

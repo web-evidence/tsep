@@ -1,0 +1,32 @@
+{
+  "kind": "source-head-observation-provenance",
+  "experiment_version": "1",
+  "normative_effect": "none",
+  "sources": [
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+      "observed_at": "2026-10-10T19:54:36.929561+00:00",
+      "scope": "Documented head placement, relative URL recommendation and canonical modifiers; not proof of observed Google interpretation.",
+      "capture": ".local/source-canonical-2026-10-10/references/google-canonical.html",
+      "sha256": "ce018f027736adf6e0e67d228c11260d220a61873dced1c0645836f03132fa1b",
+      "delivery": "Dated capture in separate qualification kit; repository contains URL, scope and fingerprint only."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/valid-page-metadata",
+      "observed_at": "2026-10-10T19:54:37.576514+00:00",
+      "scope": "Invalid head element frontier; does not explicitly qualify after-head reinsertion.",
+      "capture": ".local/source-canonical-2026-10-10/references/google-valid-metadata.html",
+      "sha256": "6098c956bad185e487e708acf0e6416b2a3e61e7a9f41ff2c553640208bbdb84",
+      "delivery": "Dated capture in separate qualification kit; repository contains URL, scope and fingerprint only."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/parsing.html",
+      "observed_at": "2026-10-10T19:54:38.577291+00:00",
+      "scope": "In-head, in-head-noscript, after-head, template and foreign-content tree construction, distinct from search-engine policy.",
+      "capture": ".local/source-canonical-2026-10-10/references/whatwg-parsing.html",
+      "sha256": "34e193906e6898ae7faf576a8d4c0f8de619a86ec99d85a3baeb2713171f1dbf",
+      "delivery": "Dated capture in separate qualification kit; repository contains URL, scope and fingerprint only."
+    }
+  ],
+  "parser": "parse5 8.0.1; pinned internal tokenizer callback wrapper qualified against its unchanged public parse inventory; see third_party/source-tree/packages.json"
+}
