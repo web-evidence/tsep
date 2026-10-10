@@ -3,6 +3,9 @@ Optional [static source-tree experiment 1](source-tree-experiment.md) now prepar
 TS07/TS10 source coverage with a pinned parser and separate Node qualification.
 It has no normative effect and adds no Node requirement to the core verifier.
 Expérience facultative d’arbre source disponible ; aucun changement de verdict.
+The [browser/source qualification](source-browser-qualification.md) records finite
+iframe observations with predeclared BOM/shadow differences, not normative promotion.
+Qualification en cadres navigateur disponible ; décodage et shadow restent distincts.
 Optional prior sitemap-locations-v1 separates page loc from known unassessed
 annotations. Legacy cases and missing reviews remain unchanged.
 Intégration actuelle : draft.14, URL de pages distinctes des annotations ;

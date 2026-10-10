@@ -1,0 +1,7 @@
+{
+  "url": "https://html.spec.whatwg.org/multipage/browsers.html",
+  "captured_at": "2026-10-10T18:53:50.944027+00:00",
+  "sha256": "2dce7edc46f2b7f58949578c7c261f23ecc821ef5bcd21c6841c18fcb90bc9a4",
+  "scope": "Sandbox flags and allow-same-origin for disabled-scripting DOM access; method reference, not browser observation.",
+  "retention": "Full dated capture retained by the development custodian in source-browser-2026-10-10/references; not redistributed."
+}

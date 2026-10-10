@@ -1,0 +1,854 @@
+{
+  "kind": "synthetic-source-browser-qualification",
+  "version": "1",
+  "registered_at": "2026-10-10T18:53:24.401558+00:00",
+  "fixture": "tests/fixtures/source-tree-cases-v2.json",
+  "fixture_sha256": "73c76f29ed09101a79acebf921bb691787cd833ce857ee9f3eb3b5b0adde6b82",
+  "authored_before_browser_measurement": true,
+  "scope": "Retained synthetic HTTP bodies only; existing static parser outputs known. Two sandbox configurations, script/noscript calibration, explicit UTF-8 response. No Google observation or TSEP verdict.",
+  "modes": {
+    "disabled": "allow-same-origin",
+    "enabled": "allow-same-origin allow-scripts"
+  },
+  "calibration": {
+    "disabled": {
+      "script": "not-run",
+      "noscript": true
+    },
+    "enabled": {
+      "script": "ran",
+      "noscript": false
+    }
+  },
+  "predicted_differences": {
+    "leading-bom": "HTTP UTF-8 decoder consumes the initial BOM; static experiment1 retains Unicode U+FEFF.",
+    "declarative-shadow-template": "Browser instantiates open declarative shadow root, while parser static inventory retains template content."
+  },
+  "cases": [
+    {
+      "id": "head-basic",
+      "source_sha256": "50110ed443d8dfd237e1754909ff5beb8de9cd9ff00981f0d77f72b38cb2d6ee",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "m",
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "m",
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "comment-inert",
+      "source_sha256": "50ac67b1c3e5e6e34cd7da6265b6df60aa96afa428bba66cb33698c6c7d44888",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "script-string-inert",
+      "source_sha256": "ee2f251ebf96c6b6d2e04efbdf7f11b31f94cfe29b14ed3a97789758417a269e",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "jsonld-string-inert",
+      "source_sha256": "5da76447223df89db6eac80079e6fbebea666c363610be89b1b2da72914176c6",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "style-string-inert",
+      "source_sha256": "f58229dcb5e3cb62c274b99aa531b270b4938dd7c550e9a86b555afbe42ee080",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "title-raw-markup",
+      "source_sha256": "25c648881809d72a2ac8685168cab911a7c05efaa6ffc3591d30ac6dbe459584",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "escaped-markup-text",
+      "source_sha256": "651494b9de7f9a6ab8cb58be52920ecd48966f482154c6c91e6a371d2f60dc7c",
+      "expected_browser": {
+        "enabled": {
+          "head": [],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "attribute-inert",
+      "source_sha256": "0d6ba2199a35ad9e85fa7f0bac0f955daa470225e13b8bd9696f4377c02e5d0c",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "textarea-inert",
+      "source_sha256": "7c7a6604e52d717490e8d1a8ac53b6f671d3e05cb4992d5f725995f569c77b2f",
+      "expected_browser": {
+        "enabled": {
+          "head": [],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "iframe-fallback-inert",
+      "source_sha256": "a490d2d12341486844b17c8fc703c97475f04dc89d22b1434c53a0ac820d3c03",
+      "expected_browser": {
+        "enabled": {
+          "head": [],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "template-head",
+      "source_sha256": "1ebb9acb80cc1d81296ee87555b9b6e7db67401211e0d76fbbaf4f034f436ad1",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [
+            "fake"
+          ],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [
+            "fake"
+          ],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "template-body",
+      "source_sha256": "5dabbd85825c926b29d4a622d337b36f3fb27b6eba2919d3db9749c1d66f88dc",
+      "expected_browser": {
+        "enabled": {
+          "head": [],
+          "body": [
+            "body"
+          ],
+          "template": [
+            "fake"
+          ],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "body"
+          ],
+          "template": [
+            "fake"
+          ],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "template-nested",
+      "source_sha256": "03b8fb41d1a433cfcc1e02517b35bc297a47cc437fd7aa443d3b308c30127df9",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [
+            "fake"
+          ],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [
+            "fake"
+          ],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "template-table-recovery",
+      "source_sha256": "30c8b0a32bceba8d9bdc3421b7593e48b6e24509434d7b0b214f148a8d474300",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [
+            "fake"
+          ],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [
+            "fake"
+          ],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "noscript-head",
+      "source_sha256": "d7cbd187b102836b3ff6e93da36e4a33608df4aea01c22fdd7454e99c07245d2",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "n",
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "noscript-body",
+      "source_sha256": "d00ec61246a1745fdc39aaffe0a1022232d27f9c514a29e4683d16e12c9944b9",
+      "expected_browser": {
+        "enabled": {
+          "head": [],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "n"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "noscript-head-img-then-canonical",
+      "source_sha256": "75aab4b8fbd8d5961e66a67f523d8ab91d7e5516819ebf1fe9bcd6d5981314d4",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "c"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "noscript-head-iframe-then-canonical",
+      "source_sha256": "d2df1536401e5f705fe26eafd0cb4c531fbd3377c5b7bf1e43a50484fcdc596d",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "c"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "head-img-boundary",
+      "source_sha256": "6590f18a9567bcb17bb2ee68f6ba59d5818fe460babb343c23d6989e9ca8af82",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "head-iframe-boundary",
+      "source_sha256": "ac38e629ef6c7ab22eb2e6c9197d3ba981ec80b6155b9a72bea49d59c7b14c4c",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "head-text-boundary",
+      "source_sha256": "df08e70a213facb1a13767829b98072090da45c3e1542dba4efde4e6c99fac27",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "head-entity-text-boundary",
+      "source_sha256": "ea6a65c0f3a512d259e402fc4beec7d74721a867c55dba70ce7bc721e2a74186",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "head-xml-whitespace",
+      "source_sha256": "f7e729de2804208caec1d99a5b30d06fae2bb0ecfe3f24c7e2977ef3c6f44497",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "before",
+            "after"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "before",
+            "after"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "head-nbsp-boundary",
+      "source_sha256": "ad2064326e72e989220e800ee86f63844b113cd6c237d72bb7e4a205dd04200b",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "after-head-before-body",
+      "source_sha256": "b1576b0b4c99c721b31c2603a1c2a679ba412640e2d9f2df9347f6c8fe06cdd4",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "late"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "late"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "body-metadata",
+      "source_sha256": "6cc94a17992fa32defb55e037e5179e40b86a1479f2b6d8f0cf638422fc165f9",
+      "expected_browser": {
+        "enabled": {
+          "head": [],
+          "body": [
+            "m",
+            "c"
+          ],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "m",
+            "c"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "reopened-head-in-body",
+      "source_sha256": "f2299849fac7ed2ffa07c18b9330de9317d833c310b27ae3faffa8ffec377f64",
+      "expected_browser": {
+        "enabled": {
+          "head": [],
+          "body": [
+            "m"
+          ],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "m"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "foreign-svg-breakout",
+      "source_sha256": "c46bf262f9e52945cdafd319bd803c2b3fa827f5ed113c5888656fb9da295a94",
+      "expected_browser": {
+        "enabled": {
+          "head": [],
+          "body": [
+            "m"
+          ],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "m"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "foreign-title-html-integration",
+      "source_sha256": "5ca83d3d541f035fdbf4c602f8afa05b472a349656557a4b6c50c1904d3519cc",
+      "expected_browser": {
+        "enabled": {
+          "head": [],
+          "body": [
+            "c"
+          ],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "c"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "declarative-shadow-template",
+      "source_sha256": "53d3ca817416ad6d7d3d12d9e4bf75fa0b0026d2df7772779e53e8c8f16221fc",
+      "expected_browser": {
+        "enabled": {
+          "head": [],
+          "body": [],
+          "template": [],
+          "shadow": [
+            "fake"
+          ]
+        },
+        "disabled": {
+          "head": [],
+          "body": [],
+          "template": [],
+          "shadow": [
+            "fake"
+          ]
+        }
+      }
+    },
+    {
+      "id": "noscript-closing-trap",
+      "source_sha256": "9979d18e122fcd90fb730754837c54bc40bcc2f4436947d75c4fd6054928e676",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [
+            "c"
+          ],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "c"
+          ],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "script-escaped-double-escaped",
+      "source_sha256": "ab22c50e031a6a758a8b86aba9a5e210545f6d8e86fd67f357563616a9109752",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "missing-explicit-head",
+      "source_sha256": "067b34fe5a446c55ee6d74e6f4636a18302b1243997e52fce47c52f8faefce7f",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "repeated-head-meta",
+      "source_sha256": "36e5abb456b2a95fbbb9d91e5e66e913c87151c508bd5b758cb2119f1013c06d",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "m",
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "m",
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "duplicate-name-first-wins",
+      "source_sha256": "8dc393741d8c16a657fb1ed1d801c1b61d06fafe3e8a17750ba32389fc3e1d3b",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    },
+    {
+      "id": "leading-bom",
+      "source_sha256": "81bf2553a7d130f3a3f5048f7831874109da2860acc61a705d953bc4d1413e10",
+      "expected_browser": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [],
+          "shadow": []
+        }
+      }
+    }
+  ]
+}
