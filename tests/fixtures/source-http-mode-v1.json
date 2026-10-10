@@ -1,0 +1,32 @@
+{
+  "kind": "source-http-document-mode-cases",
+  "version": "1",
+  "registered_at": "2026-10-10T19:11:21.711507+00:00",
+  "scope": "Added after Claude method review, before qualification; no browser measurement of these extra cases.",
+  "cases": [
+    {
+      "id": "single-bom",
+      "html": "﻿<!doctype html><p><table><tr><td><a id=\"a\" href=\"/a\">A</a></td></tr></table>",
+      "expected_document_mode": "no-quirks",
+      "expected_anchor_p_ancestor": false
+    },
+    {
+      "id": "double-bom",
+      "html": "﻿﻿<!doctype html><p><table><tr><td><a id=\"a\" href=\"/a\">A</a></td></tr></table>",
+      "expected_document_mode": "quirks",
+      "expected_anchor_p_ancestor": true
+    },
+    {
+      "id": "missing-doctype",
+      "html": "<p><table><tr><td><a id=\"a\" href=\"/a\">A</a></td></tr></table>",
+      "expected_document_mode": "quirks",
+      "expected_anchor_p_ancestor": true
+    },
+    {
+      "id": "limited-quirks",
+      "html": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"><p><table><tr><td><a id=\"a\" href=\"/a\">A</a></td></tr></table>",
+      "expected_document_mode": "limited-quirks",
+      "expected_anchor_p_ancestor": false
+    }
+  ]
+}

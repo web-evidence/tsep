@@ -1,0 +1,312 @@
+{
+  "kind": "authored-source-http-decoding-cases",
+  "version": "1",
+  "registered_at": "2026-10-10T19:08:10.328046+00:00",
+  "scope": "Expectations authored before implementation; bounded profile, not universal browser decoding. Bodies already decompressed, Content-Type values supplied unchanged.",
+  "cases": [
+    {
+      "id": "plain-utf8",
+      "body_hex": "3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": true,
+        "decoded": "<meta name=\"robots\" content=\"noindex\">",
+        "bom_bytes": 0
+      }
+    },
+    {
+      "id": "one-leading-bom",
+      "body_hex": "efbbbf3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": true,
+        "decoded": "<meta name=\"robots\" content=\"noindex\">",
+        "bom_bytes": 3
+      }
+    },
+    {
+      "id": "double-bom-consume-one",
+      "body_hex": "efbbbfefbbbf3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": true,
+        "decoded": "﻿<meta name=\"robots\" content=\"noindex\">",
+        "bom_bytes": 3
+      }
+    },
+    {
+      "id": "embedded-bom-retained",
+      "body_hex": "78efbbbf3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": true,
+        "decoded": "x﻿<meta name=\"robots\" content=\"noindex\">",
+        "bom_bytes": 0
+      }
+    },
+    {
+      "id": "leading-space-before-bom",
+      "body_hex": "20efbbbf3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": true,
+        "decoded": " ﻿<meta name=\"robots\" content=\"noindex\">",
+        "bom_bytes": 0
+      }
+    },
+    {
+      "id": "unicode-crlf",
+      "body_hex": "c3a9f09f98800d0a3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": true,
+        "decoded": "é😀\r\n<meta name=\"robots\" content=\"noindex\">",
+        "bom_bytes": 0
+      }
+    },
+    {
+      "id": "quoted-ascii-case",
+      "body_hex": "3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        " Text/HTML ; CHARSET = \"UTF-8\"\t"
+      ],
+      "expected": {
+        "available": true,
+        "decoded": "<meta name=\"robots\" content=\"noindex\">",
+        "bom_bytes": 0
+      }
+    },
+    {
+      "id": "empty-body",
+      "body_hex": "",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": true,
+        "decoded": "",
+        "bom_bytes": 0
+      }
+    },
+    {
+      "id": "utf16le-bom",
+      "body_hex": "fffe3c00",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-bom"
+      }
+    },
+    {
+      "id": "utf16be-bom",
+      "body_hex": "feff003c",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-bom"
+      }
+    },
+    {
+      "id": "utf32le-bom",
+      "body_hex": "fffe0000",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-bom"
+      }
+    },
+    {
+      "id": "utf32be-bom",
+      "body_hex": "0000feff",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-bom"
+      }
+    },
+    {
+      "id": "invalid-utf8",
+      "body_hex": "ff",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "invalid-utf8"
+      }
+    },
+    {
+      "id": "truncated-utf8",
+      "body_hex": "f09f98",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "invalid-utf8"
+      }
+    },
+    {
+      "id": "surrogate-utf8",
+      "body_hex": "eda080",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "invalid-utf8"
+      }
+    },
+    {
+      "id": "overlong-utf8",
+      "body_hex": "c0af",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "invalid-utf8"
+      }
+    },
+    {
+      "id": "bom-invalid-remainder",
+      "body_hex": "efbbbfff",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "invalid-utf8"
+      }
+    },
+    {
+      "id": "missing-type",
+      "body_hex": "3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [],
+      "expected": {
+        "available": false,
+        "error": "unsupported-content-type"
+      }
+    },
+    {
+      "id": "missing-charset",
+      "body_hex": "3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-content-type"
+      }
+    },
+    {
+      "id": "unsupported-label",
+      "body_hex": "3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html; charset=utf8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-content-type"
+      }
+    },
+    {
+      "id": "other-charset",
+      "body_hex": "3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html; charset=windows-1252"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-content-type"
+      }
+    },
+    {
+      "id": "duplicate-values",
+      "body_hex": "3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html; charset=utf-8",
+        "text/html; charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-content-type"
+      }
+    },
+    {
+      "id": "duplicate-charset",
+      "body_hex": "3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html; charset=utf-8; charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-content-type"
+      }
+    },
+    {
+      "id": "extra-parameter",
+      "body_hex": "3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html; charset=utf-8; example=yes"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-content-type"
+      }
+    },
+    {
+      "id": "wrong-media",
+      "body_hex": "3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "application/xhtml+xml; charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-content-type"
+      }
+    },
+    {
+      "id": "folded-header",
+      "body_hex": "3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html;\r\n charset=utf-8"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-content-type"
+      }
+    },
+    {
+      "id": "bom-does-not-authorize-missing-charset",
+      "body_hex": "efbbbf3c6d657461206e616d653d22726f626f74732220636f6e74656e743d226e6f696e646578223e",
+      "content_types": [
+        "text/html"
+      ],
+      "expected": {
+        "available": false,
+        "error": "unsupported-content-type"
+      }
+    }
+  ]
+}

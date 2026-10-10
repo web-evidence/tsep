@@ -1,0 +1,610 @@
+{
+  "kind": "authored-source-http-tree-cases",
+  "version": "1",
+  "registered_at": "2026-10-10T19:08:10.328663+00:00",
+  "scope": "Synthetic expectations before implementation; inventory declarations, never assert attached shadow roots. Both scripting hypotheses.",
+  "cases": [
+    {
+      "id": "ordinary-template",
+      "html": "<!doctype html><html><head></head><body><div><template id=\"t\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": null,
+              "value_state": "absent",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": null,
+              "value_state": "absent",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        }
+      }
+    },
+    {
+      "id": "open-declaration",
+      "html": "<!doctype html><html><head></head><body><div><template id=\"t\" shadowrootmode=\"open\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        }
+      }
+    },
+    {
+      "id": "closed-declaration",
+      "html": "<!doctype html><html><head></head><body><div><template id=\"t\" shadowrootmode=\"closed\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "closed",
+              "value_state": "closed",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "closed",
+              "value_state": "closed",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        }
+      }
+    },
+    {
+      "id": "uppercase-mode",
+      "html": "<!doctype html><html><head></head><body><div><template id=\"t\" shadowrootmode=\"OPEN\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "OPEN",
+              "value_state": "open",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "OPEN",
+              "value_state": "open",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        }
+      }
+    },
+    {
+      "id": "whitespace-mode",
+      "html": "<!doctype html><html><head></head><body><div><template id=\"t\" shadowrootmode=\" open \"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": " open ",
+              "value_state": "invalid",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": " open ",
+              "value_state": "invalid",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        }
+      }
+    },
+    {
+      "id": "empty-mode",
+      "html": "<!doctype html><html><head></head><body><div><template id=\"t\" shadowrootmode><meta id=\"m\" name=\"robots\" content=\"noindex\"></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "",
+              "value_state": "invalid",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "",
+              "value_state": "invalid",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        }
+      }
+    },
+    {
+      "id": "duplicate-mode",
+      "html": "<!doctype html><html><head></head><body><div><template id=\"t\" shadowrootmode=\"open\" shadowrootmode=\"closed\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [
+            "duplicate-attribute"
+          ],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [
+            "duplicate-attribute"
+          ],
+          "encoding_declaration_ids": []
+        }
+      }
+    },
+    {
+      "id": "nested-template-path",
+      "html": "<!doctype html><html><head></head><body><div><template id=\"outer\" shadowrootmode=\"open\"><template id=\"inner\" shadowrootmode=\"closed\"><link id=\"c\" rel=\"canonical\" href=\"/c\"></template></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [
+            {
+              "id": "outer",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "div",
+              "template_indices": []
+            },
+            {
+              "id": "inner",
+              "shadowrootmode": "closed",
+              "value_state": "closed",
+              "parent_tag": "#document-fragment",
+              "template_indices": [
+                0
+              ]
+            }
+          ],
+          "template_signal_paths": {
+            "c": [
+              0,
+              1
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "outer",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "div",
+              "template_indices": []
+            },
+            {
+              "id": "inner",
+              "shadowrootmode": "closed",
+              "value_state": "closed",
+              "parent_tag": "#document-fragment",
+              "template_indices": [
+                0
+              ]
+            }
+          ],
+          "template_signal_paths": {
+            "c": [
+              0,
+              1
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        }
+      }
+    },
+    {
+      "id": "two-declarations-one-parent",
+      "html": "<!doctype html><html><head></head><body><div><template id=\"a\" shadowrootmode=\"open\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template><template id=\"b\" shadowrootmode=\"closed\"><link id=\"c\" rel=\"canonical\" href=\"/c\"></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [
+            {
+              "id": "a",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "div",
+              "template_indices": []
+            },
+            {
+              "id": "b",
+              "shadowrootmode": "closed",
+              "value_state": "closed",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ],
+            "c": [
+              1
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "a",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "div",
+              "template_indices": []
+            },
+            {
+              "id": "b",
+              "shadowrootmode": "closed",
+              "value_state": "closed",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ],
+            "c": [
+              1
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        }
+      }
+    },
+    {
+      "id": "nonhost-not-assessed",
+      "html": "<!doctype html><html><head></head><body><a><template id=\"t\" shadowrootmode=\"open\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template></a></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "a",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "a",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        }
+      }
+    },
+    {
+      "id": "fake-in-comment-and-script",
+      "html": "<!doctype html><html><head></head><body><!-- <template shadowrootmode=\"open\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template> --><script>const x='<template shadowrootmode=\"closed\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template>';</script></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [],
+          "template_signal_paths": {},
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [],
+          "template_signal_paths": {},
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        }
+      }
+    },
+    {
+      "id": "noscript-declaration",
+      "html": "<!doctype html><html><head></head><body><noscript><template id=\"t\" shadowrootmode=\"open\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template></noscript></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [],
+          "template_signal_paths": {},
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "noscript",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        }
+      }
+    },
+    {
+      "id": "http-certain-meta-retained",
+      "html": "<!doctype html><html><head></head><body><meta id=\"encoding\" charset=\"windows-1252\"><div><template id=\"t\"><meta id=\"inner-encoding\" http-equiv=\"Content-Type\" content=\"text/html; charset=utf-16\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": null,
+              "value_state": "absent",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": [
+            "encoding",
+            "inner-encoding"
+          ]
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": null,
+              "value_state": "absent",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": [
+            "encoding",
+            "inner-encoding"
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-and-newlines",
+      "html": "<!doctype html><html><head></head><body>é😀\r\n<div><template id=\"t\" shadowrootmode=\"open\" data-x=\"é\r\n😀\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        },
+        "disabled": {
+          "templates": [
+            {
+              "id": "t",
+              "shadowrootmode": "open",
+              "value_state": "open",
+              "parent_tag": "div",
+              "template_indices": []
+            }
+          ],
+          "template_signal_paths": {
+            "m": [
+              0
+            ]
+          },
+          "parse_error_codes": [],
+          "encoding_declaration_ids": []
+        }
+      }
+    }
+  ]
+}

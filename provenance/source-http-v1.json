@@ -1,0 +1,25 @@
+{
+  "references": [
+    {
+      "url": "https://html.spec.whatwg.org/multipage/parsing.html",
+      "captured_at": "2026-10-10T19:08:26.372141+00:00",
+      "sha256": "34e193906e6898ae7faf576a8d4c0f8de619a86ec99d85a3baeb2713171f1dbf",
+      "scope": "Transport encoding confidence, initial BOM and HTML input preprocessing.",
+      "retention": "Full dated capture held by development custodian in source-http-2026-10-10/references; not redistributed."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/scripting.html",
+      "captured_at": "2026-10-10T19:08:27.419459+00:00",
+      "sha256": "7629c8213a7f5175d444f5a0eda1fcfb8c61f1eb2a21525ec174d79b0eb69529",
+      "scope": "Template declaration keywords, defaults and separation from attached shadow roots.",
+      "retention": "Full dated capture held by development custodian in source-http-2026-10-10/references; not redistributed."
+    },
+    {
+      "url": "https://encoding.spec.whatwg.org/",
+      "captured_at": "2026-10-10T19:08:28.580756+00:00",
+      "sha256": "6dc34b5b039ed96a492ac4816fa5c9b5124edc9846fe29b52423b6fb4077eeea",
+      "scope": "BOM handling; fatal UTF-8 decoding is an explicit narrower profile than browser replacement.",
+      "retention": "Full dated capture held by development custodian in source-http-2026-10-10/references; not redistributed."
+    }
+  ]
+}

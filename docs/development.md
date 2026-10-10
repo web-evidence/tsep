@@ -6,6 +6,10 @@ Expérience facultative d’arbre source disponible ; aucun changement de verdic
 The [browser/source qualification](source-browser-qualification.md) records finite
 iframe observations with predeclared BOM/shadow differences, not normative promotion.
 Qualification en cadres navigateur disponible ; décodage et shadow restent distincts.
+Optional [HTTP-source inventory 1](source-http-inventory.md) adds declared UTF-8/BOM
+decoding, original-byte attribution and explicit template declarations. No verdict
+changes; this reader remains separate from the normative pipeline.
+Inventaire HTTP facultatif : octets, décodage, templates et mode conservés.
 Optional prior sitemap-locations-v1 separates page loc from known unassessed
 annotations. Legacy cases and missing reviews remain unchanged.
 Intégration actuelle : draft.14, URL de pages distinctes des annotations ;
