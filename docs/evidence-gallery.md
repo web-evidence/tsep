@@ -2,7 +2,7 @@
 
 ## Current route / Parcours actuel — 2026-10-10
 
-Le protocole actuel est `0.1.0-draft.14`. Les paquets historiques conservent leur
+Le protocole actuel est `0.1.0-draft.17`. Les paquets historiques conservent leur
 version et leurs outils ; l'ordre des identifiants ne dicte pas l'ordre de lecture
 ou de développement. Le programme retient [quatre contrôles](four-control-program.md).
 
@@ -12,6 +12,7 @@ ou de développement. Le programme retient [quatre contrôles](four-control-prog
 | Le robot peut-il explorer les ressources prévues ? | [TS04](robots.md) : règle de préproduction et CSS déclaré requis ; ligne robots décisive, profil et preuves HTTP | Une permission robots ne démontre pas un accès effectif par Google. Une revue requise absente empêche de conclure C après correction. |
 | Les directives changent-elles après rendu ? | [TS07 et navigation attribuée](same-navigation-laboratory.md) : source compatible, état rendu contradictoire | Le navigateur réellement utilisé n'est pas Googlebot ; les états observés ne couvrent pas tous les états possibles. |
 | Les signaux désignent-ils la même canonical ? | [TS10 et cycles de correction](canonical-attribute-coverage.md) : canonical ou lien modifié, témoin puis réparation simulée | Un test atomique réussi n'achève pas les autres règles ni les revues de contenu. |
+| Où mène réellement ce href ? | [Liens source A04](source-link-policy.md) : href, base et destination conservés, famille déclarée et inconnues explicites | L'accord source ne remplace pas le rendu. Zéro lien ne démontre pas le maillage ; les fragments internes ne sont pas des liens provenant d'autres pages. |
 | Que rapporte la Search Console pour cette URL ? | [Diagnostic hors ligne](search-console-observations.md) : intention, preuves techniques rejouées, réponse d'inspection et dates distinctes | Sans réponse réelle fournie, présenter la méthode ; réserver les exemples fictifs à une démonstration explicitement synthétique. Aucun effet SEO causal ni verdict TS08/TS12. |
 
 Pour un insight, ouvrir sur le problème concret de TS02, puis montrer l'attente
@@ -22,7 +23,7 @@ TS01 séparée peut montrer les limites du lecteur sur un site ; elle ne valide 
 les quatre autres contrôles. Publier les fichiers sélectionnés et vérifier leur
 parcours reste une étape distincte de ce guide.
 
-EN: draft.14 is current; retained packages keep their own versions and tools.
+EN: draft.17 is current; retained packages keep their own versions and tools.
 Start with a migration that reaches the wrong page despite a final 200, then
 robots access, rendered directives and canonical consistency. Link each claim
 to prior expectations, exact evidence, a simulated laboratory repair and a new
@@ -31,6 +32,30 @@ and replay are the demonstrated contribution, not exclusive fault detection.
 Separate actual TS01 site observations, synthetic laboratories and future real
 Search Console inputs; never infer whole-control completion, human acceptance
 or engine behavior from them. The older draft.7 route below is retained as history.
+
+### Un dossier commun, des preuves séparées / One route, separate evidence
+
+Un dossier de présentation peut réunir les archives d'origine, leurs empreintes,
+des copies exactes de rapports pour la lecture et une commande de rejeu commune.
+Le catalogue indique pour chaque copie son archive et son chemin source. Le rejeu
+emploie les outils propres à cette archive dans un processus séparé ; il ne
+migre pas les résultats ni n'additionne les campagnes. Vérifier les rapports copiés
+contre les octets de l'archive, les liens locaux et les sorties des rejeux après
+extraction. Une vérification statique du HTML n'est pas une recette visuelle.
+
+Les quatre questions principales restent redirection, ressource robots, directive
+rendue et cohérence canonical/liens. Les pièces réelles sont proposées séparément,
+avec population, date, hypothèse opérateur et preuves manquantes. Les exemples
+Search Console sont une préparation du rapprochement, pas des données du compte.
+Cette organisation change la livraison et la lisibilité, pas le protocole normatif.
+
+EN: a shared delivery may contain unchanged original archives, checksums, exact
+report copies and one replay entry point. Attribute every copied report to its
+archive and source path. Replay each package with its own tools in a separate
+process; do not migrate outcomes or aggregate populations. Check copied bytes,
+local links and extracted replay results. Static HTML checking is not visual
+acceptance. Keep real observations, operator assumptions, missing evidence and
+synthetic Search Console examples distinct. Packaging changes no normative rule.
 
 ## Français
 

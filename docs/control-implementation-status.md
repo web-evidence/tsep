@@ -2,7 +2,13 @@
 
 ## Current snapshot / État actuel — 2026-10-10
 
-Reference / Référence : `0.1.0-draft.14`. TS10-A03 adds a prior bounded sitemap
+Reference / Référence : `0.1.0-draft.17`. Optional prior source profiles now cover
+TS07 directives and TS10 canonical declarations/family links, with attributed
+static hypotheses and explicit unknowns. Rendered readers and required reviews
+remain separate. [Migration](migration-draft.17.md).
+Les profils source n'inventent ni rendu, ni décision propriétaire, ni revue.
+
+Earlier draft.14: TS10-A03 adds a prior bounded sitemap
 reader; language/image annotations remain unassessed. [Migration](migration-draft.14.md).
 TS10-A03 distingue les loc des annotations ; les autres limites et revues restent.
 Earlier draft.13: TS04 and TS07 accept the optional prior
@@ -23,9 +29,9 @@ sans le même niveau de règles et d'outillage exécutables.
 | --- | --- | --- |
 | TS01, socle | HTTP final, identité selon critères déclarés, rejeu | La réévaluation des trois captures conservées reste NT : limite `noscript` non vide sur une cible. Ce n'est pas un défaut SEO démontré. |
 | TS02 | Plan préalable, import d'une décision fournie, liaison aux captures ultérieures, comparaison des chaînes | Décision réelle du responsable sur le plan, collecte ultérieure et résultats dans son périmètre |
-| TS04 | Profils robots explicites, matrice par origine, ressources requises, fiches de revue et rejeu | Matrice préalable réelle, captures et revues motivées des ressources |
-| TS07 | Directives HTTP/source/rendu ; client HTTP distinct de la sémantique du robot ; laboratoire de navigation attribuée | Plan de rendu, preuves et revues couvrant les cibles/états retenus |
-| TS10 | Déclarations canonical et liens structurés, attributs bornés, familles et parcours de revue | Application réelle, qualification des familles et revues de contenu nécessaires |
+| TS04 | Profils robots explicites, matrice par origine, ressources requises, fiches de revue et rejeu | Seize ressources autorisées selon la matrice opérateur capturée ; revues motivées manquantes, TS04 non établi |
+| TS07 | Directives HTTP/source/rendu ; source préalable html-tree-directives-v1 et rendu distinct ; client réel séparé du robot déclaré | Trois sources examinées sous le profil ; états et autres preuves/revues nécessaires non déduits, TS07 non établi |
+| TS10 | Source canonical A01/A02, sitemap A03, liens source A04 et ancien rendu structuré ; familles, revues et rejeu | Campagnes distinctes : sources canonical, sitemaps et liens ; qualification des familles opérateur, états rendus et revues de contenu encore nécessaires |
 
 Le [rapprochement Search Console](search-console-observations.md) est disponible
 comme diagnostic hors ligne. Ses essais sont synthétiques ; ils ne constituent

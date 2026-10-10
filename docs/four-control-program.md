@@ -8,10 +8,29 @@ la Search Console et un insight concret. Aucun ordre numérique n'est obligatoir
 | --- | --- | --- |
 | TS04 | Une règle de préproduction interdit l'exploration attendue | Draft.13 : deux règles, lecteur partagé TS07, registre fermé de champs hors portée accès, portée du client explicite, ressources et parcours de revue ; chaque application réelle et revue conserve son dossier |
 | TS02 | Une migration mène à la mauvaise destination, ajoute un détour ou boucle | Draft.8 : règles et laboratoire ; parcours préalable 1 prépare et importe la décision fournie puis lie les captures. Décision humaine et application Edikka à établir |
-| TS07 | Un noindex HTTP/source/rendu contredit l'intention ; robots peut empêcher sa lecture | Draft.11 : lecteur structuré et laboratoire de navigation attribuée ; exécutions livrées séparément, revue et application réelle à établir |
-| TS10 | Canonical HTTP, HTML, rendu, sitemap ou liens désignent des URL incompatibles | Draft.11 : lecteur structuré canonical/liens et laboratoire attribué ; exécutions livrées séparément, limites source et revue de contenu à éprouver |
+| TS07 | Un noindex HTTP/source/rendu contredit l'intention ; robots peut empêcher sa lecture | Draft.15 : profil source préalable, deux hypothèses statiques attribuées, lecteur rendu distinct ; trois sources Edikka examinées, contrôle entier non établi |
+| TS10 | Canonical HTTP, HTML, rendu, sitemap ou liens désignent des URL incompatibles | Draft.17 : profils source canonical A01/A02 et liens A04, sitemap A03 et rendu structuré distincts ; applications réelles limitées, familles opérateur et revues à qualifier |
 
 TS01 reste la base existante, sans être compté comme l'un de ces quatre objectifs.
+La version courante est draft.17 ; les démonstrations historiques restent liées à
+leurs outils d'origine. Le programme n'est pas un certificat d'achèvement.
+
+### Dossier concret à lire et à rejouer
+
+| Contrôle | Pièce décisive dans le laboratoire | Après correction simulée | Limite réelle actuelle |
+| --- | --- | --- | --- |
+| TS02 | Chaîne vers l'accueil alors que la nouvelle fiche produit était attendue | La même attente est satisfaite ; décisions préalables fictives fournies | La décision propriétaire Edikka reste absente ; ne pas la déduire du laboratoire |
+| TS04 | Ligne robots interdisant le CSS déclaré requis, même disponible en HTTP 200 | La contradiction disparaît ; revue des ressources absente, donc NT | Seize chemins autorisés dans une matrice opérateur ; TS04-A02 non établi |
+| TS07 | Noindex ajouté dans le DOM lié à la réponse de la même navigation | Accord des seuls tests source/rendu concernés ; autres exigences conservées | Trois sources compatibles ne fournissent pas les états rendus ou revues nécessaires |
+| TS10 | Canonical ou lien modifié dans un état rendu attribuable | Le test concerné redevient compatible ; autres règles et revues non déduites | Les captures source, sitemap et liens ont des populations distinctes, sans score commun |
+
+La commande de rejeu utilise la version archivée de chaque dossier. Un parcours
+commun vérifie l'intégrité, lance ces rejeux séparément et présente les résultats
+conservés ; il ne les fusionne pas en un rapport de conformité du site. Les liens
+de section d'une page ne sont pas des liens entrants depuis d'autres pages. Zéro
+lien vers une famille reste visible dans A04 et ne démontre pas la suffisance du
+maillage. L'ébauche Search Console garde son statut synthétique sans export réel.
+
 Le [parcours préalable TS02](redirect-plan-workflow.md) fournit la fiche pratique ;
 il ne remplit pas la décision du responsable ni ne collecte à sa place.
 L'ordre de dépendance recommandé est TS04, TS02, TS07, TS10. TS02 peut avancer
@@ -53,6 +72,14 @@ on TS04, TS02, TS07 and TS10, followed by a first Search Console comparison and 
 concrete insight. TS01 stays as existing infrastructure. This is a development
 program, not a completion claim. Keep rendered/human requirements, verify each
 method and distinguish technical completion from a real site's assessment.
+Current draft.17 includes prior source profiles for TS07 directives, TS10 canonical
+declarations and family links. Earlier rendered readers stay distinct. Three real
+source observations or sixteen allowed resource paths cannot supply missing rendered
+states, owner decisions or human reviews. Each historical demonstration must replay
+with its own archived tools. A combined reading route preserves separate populations,
+versions and results; it is not an aggregate site report. Synthetic fault/repair
+cycles show wrong redirects, blocked CSS and rendered directive/canonical/link
+changes. A repaired atomic test may still leave the complete control inconclusive.
 Demonstrate problem, evidence, requested correction and recapture, including a
 positive control. Search Console records remain separate dated observations,
 without live-test, ranking or causal claims. Publication remains a separate action.
