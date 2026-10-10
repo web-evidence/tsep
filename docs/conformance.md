@@ -1,9 +1,7 @@
-Current tool coverage: interpreter 13, 427 raw cases (409 retained + 18 robots-fields cases),
-796 rule/target pairs, including eight explicitly reduced-coverage pairs. Protocol draft.13.
-Couverture actuelle : 44 cas de lecteur et 18 cas de contrôle synthétiques figés,
-registre fermé et profils antérieurs conservés. [Migration](migration-draft.13.md).
-These software cases are not an independent implementation or a real-site assessment.
-Ces essais logiciels ne sont ni une implémentation indépendante ni un audit réel.
+Current tool coverage: interpreter 14, 451 raw cases (427 retained + 24 sitemap-location cases),
+820 rule/target pairs, including eight explicitly reduced-coverage pairs. Protocol draft.14.
+FR : lecteur sitemap préalable, annotations séparées, profils historiques conservés.
+[Method / Méthode](sitemap-locations.md), [migration](migration-draft.14.md).
 
 Earlier tool coverage: interpreter 12, 409 raw cases (383 retained + 26 TS04 client/product cases). Protocol draft.12.
 Couverture actuelle : portée du client TS04 explicite, 26 nouveaux cas synthétiques,

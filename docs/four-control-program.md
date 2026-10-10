@@ -56,3 +56,7 @@ method and distinguish technical completion from a real site's assessment.
 Demonstrate problem, evidence, requested correction and recapture, including a
 positive control. Search Console records remain separate dated observations,
 without live-test, ranking or causal claims. Publication remains a separate action.
+
+Draft.14: [sitemap page locations / URL de pages](sitemap-locations.md), explicit prior reader;
+language/image annotations retained without assessment. Profil historique conservé ;
+A03 seule ne suffit pas à établir TS10. [Migration](migration-draft.14.md).

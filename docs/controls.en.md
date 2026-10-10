@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.13 — Controls
+# TSEP 0.1.0-draft.14 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.13:TS01-A01`
+`TSEP@0.1.0-draft.14:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.13:TS01-A02`
+`TSEP@0.1.0-draft.14:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.13:TS02-A01`
+`TSEP@0.1.0-draft.14:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.13:TS02-A02`
+`TSEP@0.1.0-draft.14:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.13:TS04-A01`
+`TSEP@0.1.0-draft.14:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.13:TS04-A02`
+`TSEP@0.1.0-draft.14:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.13:TS07-A01`
+`TSEP@0.1.0-draft.14:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -344,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.13:TS07-A02`
+`TSEP@0.1.0-draft.14:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.13:TS07-A03`
+`TSEP@0.1.0-draft.14:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.13:TS10-A01`
+`TSEP@0.1.0-draft.14:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -490,7 +490,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.13:TS10-A02`
+`TSEP@0.1.0-draft.14:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -514,7 +514,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.13:TS10-A03`
+`TSEP@0.1.0-draft.14:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -524,23 +524,23 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Families associated with a sitemap under the declared strategy.
 
-**Method.** Compare entries from all sitemaps/indexes required for the family and preferred URL; retain exclusions justified by strategy. Reconcile captures of each index and all expected children. An observed failure remains fail when another branch is missing; an omission becomes fail only after the declared population has been fully examined.
+**Method.** Compare entries from all sitemaps/indexes required for the family and preferred URL; retain exclusions justified by strategy. Reconcile captures of each index and all expected children. An observed failure remains fail when another branch is missing; an omission becomes fail only after the declared population has been fully examined. Optional sitemap-locations-v1 must be declared before capture; absence uses the fixed legacy reader, unknown values never fall back. Only direct Sitemaps 0.9 loc under url counts as a page URL; under sitemap it identifies children. Decode XML and trim surrounding XML whitespace only, then compare literally without URL normalization. Record recognized XHTML alternate, image and ordinary fields separately, without comparing them as page URLs.
 
 **Acceptance.** Observed and required entries agree with declared preference; a duplicate published as a competing canonical without justification is fail.
 
-**Evidence.** Raw sitemaps and index coverage, family/entry mapping and justification of omissions.
+**Evidence.** Raw sitemaps and index coverage, family/entry mapping and justification of omissions. Retain XML bytes and complete annotation values; bounded reason preview with explicit truncation.
 
-**Assumptions.** Sitemap scope is declared; absence is not inferred from a 404 at one guessed path.
+**Assumptions.** Sitemap scope is declared; absence is not inferred from a 404 at one guessed path. The new reader requires explicitly covered namespaces and structures; prefixes are arbitrary and annotation values are not validated. Preference remains supplied intent, not observed engine choice.
 
-**Inconclusive.** Incomplete index, unavailable expected sitemap or unknown strategy: inconclusive.
+**Inconclusive.** Incomplete index, unavailable expected sitemap or unknown strategy: inconclusive. Unknown reader, missing/wrong namespace, unsupported extension/attribute, duplicate leaf, ambiguous structure, mixed text, DTD/entities, malformed XML or exceeded bound: entire document inconclusive.
 
 **When NA is allowed.** No sitemap used for this family, established by documented strategy and inventory. Retain a sitemap record explaining absence; no whole-TS10 NA.
 
-**Limits.** Sitemap = published preference, not engine selection or an exhaustive site inventory.
+**Limits.** Sitemap = published preference, not engine selection or an exhaustive site inventory. No hreflang, image or value-validity verdict. The bounded reader is not a full XML Schema validator. Profile, structural registry, limits and migration: docs/sitemap-locations.md and docs/migration-draft.14.md.
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.13:TS10-A04`
+`TSEP@0.1.0-draft.14:TS10-A04`
 
 **Required inputs**: crawl, intent.
 

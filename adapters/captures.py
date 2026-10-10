@@ -21,14 +21,14 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '14'
+VERSION = '15'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
 
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
-    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime'):
+    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     result = loaded_sources(ROOT, modules)
     result['collectors/rendered_metadata.js'] = tsep.digest(ROOT/'collectors/rendered_metadata.js')
@@ -36,6 +36,8 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state': 'implemented', 'fr': 'TS10-A03 : lecteur sitemap-locations-v1 préalable ; loc de pages distincts des annotations langues/images conservées sans évaluation. Profil historique inchangé, extensions inconnues indéterminées.',
+     'en': 'TS10-A03: prior sitemap-locations-v1 reader; page loc distinct from retained, unassessed language/image annotations. Legacy profile unchanged; unknown extensions inconclusive.'},
     {'state': 'implemented', 'fr': 'Profil robots google-robotstxt-fields-v2 : registre fermé de champs hors portée accès, valeurs conservées ; anciens profils inchangés, autres champs indéterminés.',
      'en': 'Robots profile google-robotstxt-fields-v2: closed registry of fields outside access scope, retained values; old profiles unchanged, other fields inconclusive.'},
     {'state': 'implemented', 'fr': 'TS04 : directive_crawler préalable distingue le groupe Googlebot et le client HTTP réel ; les refus HTTP restent propres au client observé, sans accès Googlebot déduit.',

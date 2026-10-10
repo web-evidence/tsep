@@ -2,7 +2,10 @@
 
 ## Current snapshot / État actuel — 2026-10-10
 
-Reference / Référence : `0.1.0-draft.13`. TS04 and TS07 accept the optional prior
+Reference / Référence : `0.1.0-draft.14`. TS10-A03 adds a prior bounded sitemap
+reader; language/image annotations remain unassessed. [Migration](migration-draft.14.md).
+TS10-A03 distingue les loc des annotations ; les autres limites et revues restent.
+Earlier draft.13: TS04 and TS07 accept the optional prior
 Google fields profile; client scope and human reviews remain required.
 [Migration](migration-draft.13.md). Les champs connus hors portée accès sont
 conservés sans verdict TS42 ; les inconnus restent indéterminés.

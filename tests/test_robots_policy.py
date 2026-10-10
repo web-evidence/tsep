@@ -141,7 +141,7 @@ class RobotsPolicy(unittest.TestCase):
         self.assertEqual(result['network_requests'], 0)
         self.assertIn('TS04-A01', robots.evaluate.RULES)
         self.assertNotIn('status', result)
-        self.assertEqual(json.loads((ROOT/'spec/protocol.json').read_text())['version'], '0.1.0-draft.13')
+        self.assertEqual(json.loads((ROOT/'spec/protocol.json').read_text())['version'], '0.1.0-draft.14')
 
     def test_cli_preserves_input_hash_and_refuses_overwrite(self):
         with tempfile.TemporaryDirectory() as folder:

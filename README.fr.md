@@ -1,6 +1,6 @@
 # TSEP — format d’échange de preuves
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.13 · initié par Edikka · [English](README.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.14 · initié par Edikka · [English](README.md)**
 
 Transmettre un audit SEO technique que son destinataire peut examiner, rejouer et
 contester : mêmes identifiants, périmètre explicite, preuves liées aux constats et
@@ -64,14 +64,14 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
    Le [diagnostic de couverture](docs/reference-diagnostics.md) inventorie les limites
    candidates sans produire de verdict. Le [diagnostic par paire](docs/diagnostic-campaign.md)
    compare des phases préenregistrées et les limites d’extraction des corps changés.
-   Le protocole est draft.13 ; la [proposition noscript](docs/proposals/noscript-consensus.md) est non appliquée.
+   Le protocole est draft.14 ; la [proposition noscript](docs/proposals/noscript-consensus.md) est non appliquée.
 2. **Déclarer une couverture partielle** : sélectionner une liste `custom`, conserver
    les inconnues en NT/inconclusive et relier chaque preuve à sa cible. Une sélection
    TS01/TS07 ne satisfait pas un profil nommé. Aucun test isolé ne valide son parent.
 3. **Passer la suite de conformance** : fournir un adaptateur JSON sur entrée/sortie
    standard, puis exécuter `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 mon_adaptateur.py'`
    pour ce sous-ensemble, ou omettre `--rules` pour les treize règles. Déclarer
-   « passes TSEP 0.1.0-draft.13 conformance for TS01-A01, TS01-A02 » avec les bornes
+   « passes TSEP 0.1.0-draft.14 conformance for TS01-A01, TS01-A02 » avec les bornes
    réellement prises en charge. [Format d’entrée et comparaison](docs/conformance.md). Publier séparément
    accords, désaccords et couverture réduite : les indéterminés acceptés sur des
    limites de référence signalées ne sont pas des évaluations réussies.
@@ -145,7 +145,7 @@ Aucun résultat ne garantit indexation, classement ou comportement futur d’un 
 [Gouvernance](GOVERNANCE.md) · [Contribuer](CONTRIBUTING.md) · [Historique](CHANGELOG.md) ·
 [Clause de recette](docs/acceptance-clause.md) · [Sonde HTTP](probes/README.md).
 
-Citer `TSEP@0.1.0-draft.13:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
+Citer `TSEP@0.1.0-draft.14:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
 Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](CITATION.cff).
 [Développement, vérification complète et dépôt autonome](docs/development.md).
 
@@ -162,3 +162,5 @@ Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](
 [Draft.12 — TS04 client scope / Portée du client TS04](docs/migration-draft.12.md)
 
 [Draft.13 — Known robots fields / Champs robots connus](docs/migration-draft.13.md)
+
+[Draft.14 — Sitemap page locations / URL de pages](docs/migration-draft.14.md)

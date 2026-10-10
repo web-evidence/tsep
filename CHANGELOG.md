@@ -1,5 +1,17 @@
 # Change history / Historique
 
+## 0.1.0-draft.14 — 2026-10-10 — page locations in annotated sitemaps
+
+Optional prior sitemap-locations-v1 distinguishes page loc from known XHTML/image
+annotations and ordinary fields, retaining values without validating them. Unknown
+structures remain inconclusive; legacy reader and full traversal requirements stay.
+Interpreter 14, adapter 15, reader 1; 52 prefrozen body and 24 control cases,
+with exact preservation of all 427 earlier inputs/results. [Migration](docs/migration-draft.14.md).
+
+FR : amélioration bornée de TS10-A03, sans verdict hreflang/image ni conformité
+TS10 entière ; cas synthétiques, aucune collecte réelle induite par la suite.
+
+
 ## 0.1.0-draft.13 — 2026-10-10 — known robots fields outside access scope
 
 Optional prior `google-robotstxt-fields-v2` records thirteen named fields without

@@ -1,7 +1,14 @@
-Current integration: draft.13, interpreter 13 / adapter 14 / robots reader 3.
+Current integration: draft.14, interpreter 14 / adapter 15 / sitemap reader 1.
+Optional prior sitemap-locations-v1 separates page loc from known unassessed
+annotations. Legacy cases and missing reviews remain unchanged.
+Intégration actuelle : draft.14, URL de pages distinctes des annotations ;
+[méthode](sitemap-locations.md) et [migration](migration-draft.14.md).
+The named milestones below are historical / Les jalons ci-dessous sont historiques.
+
+Earlier integration: draft.13, interpreter 13 / adapter 14 / robots reader 3.
 The optional, predeclared Google fields profile records a closed registry without
 treating these fields as access rules. Earlier profiles and reviews stay unchanged.
-Intégration actuelle : draft.13, champs robots hors portée accès relevés selon un
+Intégration antérieure : draft.13, champs robots hors portée accès relevés selon un
 registre épinglé ; aucun verdict TS42 ni observation Googlebot. [Migration](migration-draft.13.md).
 The named milestones below are historical / Les jalons nommés ci-dessous sont historiques.
 

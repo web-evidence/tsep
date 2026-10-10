@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.13
+# Contrat de rapport — TSEP 0.1.0-draft.14
 
 ## Périmètre déclaré
 
@@ -232,13 +232,13 @@ FR/EN affiche la même cause. Décision et codes de sortie restent inchangés.
 
 ## Versions et revendications d’implémentation
 
-Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.13:TS01`. Ne jamais
+Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.14:TS01`. Ne jamais
 remplacer silencieusement un artefact publié. Changer applicabilité, attendus,
 preuves ou décisions exige une nouvelle version et une note de migration.
 TS01–TS44 restent des identités permanentes.
 
 La suite démontre seulement « réussit les tests d’échange des rapports fournis
-avec 0.1.0-draft.13 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
+avec 0.1.0-draft.14 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
 plus large exige une correspondance par règle et des limites publiées. Aucune
 interopérabilité avec un outil tiers n’a encore été démontrée.
 
@@ -309,3 +309,14 @@ code), les valeurs conservées et les bornes d'affichage figurent dans la
 [migration draft.13](migration-draft.13.md). Aucun verdict TS42 n'en découle.
 Les noms proches et autres champs restent indéterminés ; anciens profils et
 exigences de revue inchangés. Aucune extension rétroactive d'une intention.
+
+## Lecture des URL de sitemap — draft.14
+
+TS10-A03 accepte le lecteur facultatif préalable `sitemap-locations-v1`. Les loc
+directs de pages restent distincts des annotations XHTML/image et des champs
+ordinaires relevés sans validation de leurs valeurs. Le profil historique ne
+change pas ; aucun repli depuis une valeur inconnue. Une omission exige toujours
+un parcours complet, une contradiction attribuable reste conservée. Les structures
+reconnues, namespaces, captures, bornes et inconnues sont définis dans la
+[méthode](sitemap-locations.md) et la [migration](migration-draft.14.md). Ce succès
+atomique seul ne donne ni C à TS10, ni validation hreflang/image, ni choix Google.

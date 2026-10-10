@@ -1,5 +1,5 @@
 {
-  "protocol_version": "0.1.0-draft.13",
+  "protocol_version": "0.1.0-draft.14",
   "synthetic": true,
   "expected_origin": "Authored normative expectations for this protocol version, independent of implementation coverage. Reference limits are explicitly marked per pair; synthetic inputs and supplied reviews are not live observations or independent validation.",
   "cases": [
@@ -81667,6 +81667,2341 @@
         {
           "rule_id": "TS07-A02",
           "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-combined-preferred",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\"/><i:image><i:loc>https://example.com/product?color=blue</i:loc></i:image></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-competitor-main",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url><url><loc>https://example.com/product?color=blue</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-competitor-annotations-only",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\"/><i:image><i:loc>https://example.com/product?color=blue</i:loc></i:image></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-preferred-only-annotations",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/unrelated</loc><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product\"/><i:image><i:loc>https://example.com/product</i:loc></i:image></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-absent-complete",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/unrelated</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-missing-child",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><sitemap><loc>https://example.com/child.xml</loc></sitemap></sitemapindex>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-competitor-survives-missing-branch",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml",
+                    "https://example.com/child.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product?color=blue</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-missing-branch-prevents-omission",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml",
+                    "https://example.com/child.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/unrelated</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-unknown-reader",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "unknown"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-null-reader",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": null
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-old-extensions-refused",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": []
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\"/><i:image><i:loc>https://example.com/product?color=blue</i:loc></i:image></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-old-plain",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": []
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-unknown-extension",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><unknown/></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-case-is-literal",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/Product</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-slash-is-literal",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product/</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-bad-tail",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product?color=blue</loc></url></urls"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-not-found",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-duplicate-capture",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></urlset>"
+                    }
+                  ]
+                },
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-unplanned-capture",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></urlset>"
+                    }
+                  ]
+                },
+                {
+                  "url": "https://example.com/child.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-missing-root",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": []
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-known-extension-child",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><sitemap><loc>https://example.com/child.xml</loc><lastmod>x</lastmod></sitemap></sitemapindex>"
+                    }
+                  ]
+                },
+                {
+                  "url": "https://example.com/child.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/child.xml",
+                      "complete": true,
+                      "request": "GET /child.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\"/><i:image><i:loc>https://example.com/product?color=blue</i:loc></i:image></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-exception-competitor",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [
+                    {
+                      "url": "https://example.com/product?color=blue",
+                      "reason": "SYNTHETIC explicit strategy exception"
+                    }
+                  ],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url><url><loc>https://example.com/product?color=blue</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-optional-omission",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": false,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1",
+                  "omission_reason": "SYNTHETIC prior optional inclusion"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "sitemap-locations-no-namespace",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS10-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-09T10:10:00Z",
+            "context": {
+              "id": "synthetic-desktop",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  },
+                  {
+                    "url": "https://example.com/product?color=blue",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ],
+                "sitemaps": {
+                  "mode": "required",
+                  "roots": [
+                    "https://example.com/sitemap.xml"
+                  ],
+                  "require_preferred": true,
+                  "exceptions": [],
+                  "reader": "sitemap-locations-v1"
+                },
+                "links": {
+                  "sources": [
+                    {
+                      "url": "https://example.com/catalog",
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ],
+                  "exceptions": []
+                }
+              }
+            },
+            "sitemaps": {
+              "documents": [
+                {
+                  "url": "https://example.com/sitemap.xml",
+                  "observed_at": "2026-10-09T10:00:00Z",
+                  "context_id": "synthetic-desktop",
+                  "http": [
+                    {
+                      "url": "https://example.com/sitemap.xml",
+                      "complete": true,
+                      "request": "GET /sitemap.xml HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: application/xml; charset=utf-8\r\n\r\n<urlset><url><loc>https://example.com/product</loc></url></urlset>"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
           "outcome": "inconclusive"
         }
       ]

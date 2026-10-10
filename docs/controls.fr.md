@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.13 — Contrôles
+# TSEP 0.1.0-draft.14 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.13:TS01-A01`
+`TSEP@0.1.0-draft.14:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.13:TS01-A02`
+`TSEP@0.1.0-draft.14:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.13:TS02-A01`
+`TSEP@0.1.0-draft.14:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.13:TS02-A02`
+`TSEP@0.1.0-draft.14:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -198,7 +198,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A01 — Politique par origine, robot et ressource
 
-`TSEP@0.1.0-draft.13:TS04-A01`
+`TSEP@0.1.0-draft.14:TS04-A01`
 
 **Entrées requises**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A02 — Accès aux ressources nécessaires
 
-`TSEP@0.1.0-draft.13:TS04-A02`
+`TSEP@0.1.0-draft.14:TS04-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.13:TS07-A01`
+`TSEP@0.1.0-draft.14:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -344,7 +344,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.13:TS07-A02`
+`TSEP@0.1.0-draft.14:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.13:TS07-A03`
+`TSEP@0.1.0-draft.14:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.13:TS10-A01`
+`TSEP@0.1.0-draft.14:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -490,7 +490,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.13:TS10-A02`
+`TSEP@0.1.0-draft.14:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -514,7 +514,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.13:TS10-A03`
+`TSEP@0.1.0-draft.14:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -524,23 +524,23 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Familles associées à un sitemap selon la stratégie déclarée.
 
-**Méthode.** Comparer les entrées de tous les sitemaps/index nécessaires à la famille et à l’URL préférée ; conserver les exclusions justifiées par la stratégie. Rapprocher les captures de chaque index et de tous ses enfants attendus. Un échec observé reste fail si une autre branche manque ; une omission ne devient fail qu’après examen complet de la population annoncée.
+**Méthode.** Comparer les entrées de tous les sitemaps/index nécessaires à la famille et à l’URL préférée ; conserver les exclusions justifiées par la stratégie. Rapprocher les captures de chaque index et de tous ses enfants attendus. Un échec observé reste fail si une autre branche manque ; une omission ne devient fail qu’après examen complet de la population annoncée. Le lecteur facultatif sitemap-locations-v1 doit être déclaré avant capture ; champ absent : lecteur historique fixe, valeur inconnue : aucun repli. Seuls les loc directs du namespace Sitemaps 0.9 sous url comptent comme URL de pages ; sous sitemap, ils désignent les enfants. Décoder XML et retirer les seuls espaces XML périphériques, puis comparer littéralement sans normalisation d’URL. Relever séparément les annotations XHTML alternate, image et champs ordinaires reconnus, sans les comparer comme URL de pages.
 
 **Attendus.** Les entrées observées et exigées concordent avec la préférence déclarée ; un doublon publié comme canonique concurrent sans justification est fail.
 
-**Preuves.** Sitemaps bruts et couverture des index, correspondance famille/entrées et justification des omissions.
+**Preuves.** Sitemaps bruts et couverture des index, correspondance famille/entrées et justification des omissions. Conserver les octets XML et valeurs intégrales des annotations ; aperçu borné dans le motif, troncatures explicites.
 
-**Hypothèses.** Le périmètre des sitemaps est déclaré ; leur absence ne se déduit pas du 404 d’un seul chemin supposé.
+**Hypothèses.** Le périmètre des sitemaps est déclaré ; leur absence ne se déduit pas du 404 d’un seul chemin supposé. Le nouveau lecteur exige les namespaces et structures explicitement couverts ; préfixes libres, valeurs des annotations non validées. La préférence reste une intention fournie, pas un choix observé du moteur.
 
-**Indéterminé.** Index incomplet, sitemap attendu indisponible ou stratégie inconnue : inconclusive.
+**Indéterminé.** Index incomplet, sitemap attendu indisponible ou stratégie inconnue : inconclusive. Lecteur inconnu, namespace absent ou erroné, extension/attribut non couvert, doublon de feuille, structure ambiguë, texte mixte, DTD/entités, XML mal formé ou borne dépassée : document entier indéterminé.
 
 **Conditions de NA.** Aucun sitemap utilisé pour cette famille, établi par stratégie et inventaire documentés. Conserver un record sitemap expliquant cette absence ; pas de NA de tout TS10.
 
-**Limites.** Sitemap = préférence publiée, pas sélection du moteur ni inventaire exhaustif du site.
+**Limites.** Sitemap = préférence publiée, pas sélection du moteur ni inventaire exhaustif du site. Aucun verdict hreflang, image ou validité des valeurs. Le lecteur borné n’est pas un validateur XML Schema complet. Profil, registre de structures, bornes et migration : docs/sitemap-locations.md et docs/migration-draft.14.md.
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.13:TS10-A04`
+`TSEP@0.1.0-draft.14:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 

@@ -1,0 +1,80 @@
+{
+  "kind": "primary-source-observation",
+  "version": 1,
+  "sources": [
+    {
+      "url": "https://www.sitemaps.org/protocol.html",
+      "captured_at": "2026-10-10T18:07:07.045480+00:00",
+      "local_file": "sitemaps-protocol.html",
+      "scope": "Primary-source reading of namespace and page-location semantics; no Google observation or full sitemap validity assessment",
+      "status": 200,
+      "resolved_url": "https://www.sitemaps.org/protocol.html",
+      "content_type": "text/html",
+      "sha256": "5e7570590fcb92d473d7015c88940a830383b6a61bc6c16be4df51e97f471654",
+      "bytes": 45292
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/combine-sitemap-extensions",
+      "captured_at": "2026-10-10T18:07:07.800920+00:00",
+      "local_file": "google-combine.html",
+      "scope": "Primary-source reading of namespace and page-location semantics; no Google observation or full sitemap validity assessment",
+      "status": 200,
+      "resolved_url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/combine-sitemap-extensions",
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "732120034ea10ff5440f2a08a7aab68eadf12fd6975977563ddea0d78e0453bd",
+      "bytes": 181245
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps",
+      "captured_at": "2026-10-10T18:07:09.054228+00:00",
+      "local_file": "google-images.html",
+      "scope": "Primary-source reading of namespace and page-location semantics; no Google observation or full sitemap validity assessment",
+      "status": 200,
+      "resolved_url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/image-sitemaps",
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "27941d1ee7b636195b456dc83cc6c7d80e908817f349dd58cf1779ee0ff1adac",
+      "bytes": 175827
+    },
+    {
+      "url": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+      "captured_at": "2026-10-10T18:07:09.764478+00:00",
+      "local_file": "google-localized.html",
+      "scope": "Primary-source reading of namespace and page-location semantics; no Google observation or full sitemap validity assessment",
+      "status": 200,
+      "resolved_url": "https://developers.google.com/search/docs/specialty/international/localized-versions",
+      "content_type": "text/html; charset=utf-8",
+      "sha256": "6746b5485ddafb969ffccf1a0cbf9086d21b99e78c8c02d00df969f47813b983",
+      "bytes": 198986
+    }
+  ],
+  "local_capture_location": ".local/sitemap-extensions-2026-10-10/references (not distributed)",
+  "capture_distribution_reason": "Dated public documentation captures retained locally with fingerprints. Distributed reader and synthetic fixtures are self-contained, without private infrastructure or online dependencies.",
+  "scope": "Namespace, direct page loc and extension separation only. No full sitemap validator, engine equivalence or human review claim.",
+  "fixture_freeze": {
+    "declared_at": "2026-10-10T18:13:24.496246+00:00",
+    "profile": "sitemap-locations-v1",
+    "version": "1",
+    "limits": {
+      "utf8_bytes": 8388608,
+      "nodes": 200000,
+      "depth": 8,
+      "entries": 50000,
+      "images_per_entry": 1000
+    },
+    "rules": [
+      "Exact expanded namespaces, only direct base loc is page/index URL; XML whitespace trimming only, literal decoded URL comparison.",
+      "Known base optional fields and schemaLocation retained without semantic validation or network.",
+      "XHTML alternate rel/hreflang/href exact nonblank attributes only; image block exactly one image loc, optional caption/geo_location/title/license at most once; values not semantically assessed.",
+      "Unknown names/namespaces/attributes, ambiguous structures, DTD/entities, malformed XML or bounds are inconclusive.",
+      "Complete parse before any result; old profile behavior unchanged; full traversal before omission; known competitor survives another missing branch."
+    ],
+    "baseline_cases": 427,
+    "baseline_sha256": "228691dd7b9e5f972fc57c80f3a7e67d2633373f618221d2deb98ddb9274e2db",
+    "body_cases": 52,
+    "control_cases": 24,
+    "fixture_sha256": {
+      "sitemap-locations-body-v1-cases": "be901fdafb75110c59da61219812df112df7dd7cb8cd546a0f61e9dd9642e83a",
+      "sitemap-locations-control-v1-cases": "ec24ede6848245594db911a8d619cb3e6df9ac2a0e43d1e601aa81cc7f398560"
+    }
+  }
+}

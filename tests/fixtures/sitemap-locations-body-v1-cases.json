@@ -1,0 +1,455 @@
+{
+  "synthetic": true,
+  "authored_at": "2026-10-10T18:13:24.496246+00:00",
+  "expectations_origin": "Authored before the new reader implementation; not a browser or independent human review.",
+  "cases": [
+    {
+      "id": "plain",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product"
+        ],
+        "annotations": 0
+      }
+    },
+    {
+      "id": "optional-core",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><lastmod>not-a-date</lastmod><changefreq>custom</changefreq><priority>9</priority></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product"
+        ],
+        "annotations": 3
+      }
+    },
+    {
+      "id": "index-lastmod",
+      "body": "<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><sitemap><loc>https://example.com/child.xml</loc><lastmod>2026-10-10</lastmod></sitemap></sitemapindex>",
+      "expected": {
+        "kind": "supported",
+        "index": true,
+        "locations": [
+          "https://example.com/child.xml"
+        ],
+        "annotations": 1
+      }
+    },
+    {
+      "id": "alternate-is-not-page",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\"/></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product"
+        ],
+        "annotations": 1
+      }
+    },
+    {
+      "id": "image-is-not-page",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><i:image><i:loc>https://example.com/product?color=blue</i:loc></i:image></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product"
+        ],
+        "annotations": 1
+      }
+    },
+    {
+      "id": "combined",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\"/><i:image><i:loc>https://example.com/product?color=blue</i:loc></i:image></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product"
+        ],
+        "annotations": 2
+      }
+    },
+    {
+      "id": "different-prefix",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:lang=\"http://www.w3.org/1999/xhtml\" xmlns:picture=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><lang:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\"/><picture:image><picture:loc>https://example.com/product?color=blue</picture:loc></picture:image></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product"
+        ],
+        "annotations": 2
+      }
+    },
+    {
+      "id": "named-base",
+      "body": "<s:urlset xmlns:s=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><s:url><s:loc>https://example.com/product</s:loc></s:url></s:urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product"
+        ],
+        "annotations": 0
+      }
+    },
+    {
+      "id": "entity-decoding",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product?a=1&amp;b=2</loc></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product?a=1&b=2"
+        ],
+        "annotations": 0
+      }
+    },
+    {
+      "id": "xml-space-only",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc> \t\nhttps://example.com/product\r\n </loc></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product"
+        ],
+        "annotations": 0
+      }
+    },
+    {
+      "id": "literal-case-slash",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://EXAMPLE.com/Product/</loc></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://EXAMPLE.com/Product/"
+        ],
+        "annotations": 0
+      }
+    },
+    {
+      "id": "schema-location-no-fetch",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"https://no-fetch.example/schema.xsd\"><url><loc>https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product"
+        ],
+        "annotations": 1
+      }
+    },
+    {
+      "id": "deprecated-image-metadata",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><i:image><i:loc>https://example.com/product?color=blue</i:loc><i:caption>caption</i:caption><i:geo_location>Paris</i:geo_location><i:title>Title</i:title><i:license>text</i:license></i:image></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product"
+        ],
+        "annotations": 1
+      }
+    },
+    {
+      "id": "empty-population",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [],
+        "annotations": 0
+      }
+    },
+    {
+      "id": "comments-and-pi",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><!-- ignored --><url><?note value?><loc>https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product"
+        ],
+        "annotations": 0
+      }
+    },
+    {
+      "id": "annotation-values-not-assessed",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" hreflang=\"bad language\" href=\"relative\"/><i:image><i:loc>relative</i:loc></i:image></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product"
+        ],
+        "annotations": 2
+      }
+    },
+    {
+      "id": "duplicate-page-entries",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url><url><loc>https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "supported",
+        "index": false,
+        "locations": [
+          "https://example.com/product",
+          "https://example.com/product"
+        ],
+        "annotations": 0
+      }
+    },
+    {
+      "id": "no-namespace",
+      "body": "<urlset><url><loc>https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "wrong-namespace",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9/wrong\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "unbound-prefix",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><z:link/></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "false-xhtml-namespace",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml/wrong\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\"/></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "unknown-extension",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><custom/></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "unknown-namespace",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><v:video xmlns:v=\"urn:video\"/></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "wrong-rel",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"canonical\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\"/></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "missing-href",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" hreflang=\"fr\"/></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "missing-hreflang",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" href=\"https://example.com/fr\"/></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "unknown-link-attribute",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\" title=\"x\"/></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "link-children",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\"><loc>https://example.com/product</loc></x:link></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "link-text",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\">text</x:link></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "image-missing-loc",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><i:image><i:title>T</i:title></i:image></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "image-duplicate-loc",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><i:image><i:loc>https://example.com/product?color=blue</i:loc><i:loc>https://example.com/product</i:loc></i:image></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "image-unknown-leaf",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><i:image><i:loc>https://example.com/product?color=blue</i:loc><i:unknown/></i:image></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "image-main-loc-in-wrong-namespace",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><i:image><loc>https://example.com/product</loc></i:image></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "duplicate-main-loc",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><loc>https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "duplicate-optional",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><lastmod>x</lastmod><lastmod>y</lastmod></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "nested-main-loc",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc><span>https://example.com/product</span></loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "missing-main-loc-only-alternate",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product\"/></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "extension-in-index",
+      "body": "<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><sitemap><loc>https://example.com/child.xml</loc><x:link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/product?color=blue\"/></sitemap></sitemapindex>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "unknown-root-attribute",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" custom=\"x\"><url><loc>https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "xml-base",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" xml:base=\"https://example.com/\"><url><loc>https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "entry-attributes",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url custom=\"x\"><loc>https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "doctype",
+      "body": "<!DOCTYPE urlset><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "entity-declaration",
+      "body": "<!DOCTYPE urlset [<!ENTITY p \"https://example.com/product\">]><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>&p;</loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "nul",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></urlset>\u0000",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "truncated",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url></ur",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "root-mixed-text",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" >not-whitespace<url><loc>https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "entry-tail-text",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc></url>not-whitespace</urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "loc-child-tail-text",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc>not-whitespace</url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "nbsp-not-trimmed",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc> https://example.com/product</loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "relative-page-url",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>/product</loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "fragment-page-url",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product#fragment</loc></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    },
+    {
+      "id": "duplicate-xml-attribute",
+      "body": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:x=\"http://www.w3.org/1999/xhtml\" xmlns:i=\"http://www.google.com/schemas/sitemap-image/1.1\" ><url><loc>https://example.com/product</loc><x:link rel=\"alternate\" rel=\"alternate\" hreflang=\"fr\" href=\"x\"/></url></urlset>",
+      "expected": {
+        "kind": "inconclusive"
+      }
+    }
+  ]
+}

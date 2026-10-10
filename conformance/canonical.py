@@ -342,6 +342,10 @@ def xml_entries(body):
 
 def sitemap_agreement(target, members, preferred):
     plan = target['intent']['canonical']['sitemaps']
+    # Absence means the fixed historical reader. Explicit unknown/null never falls back.
+    from conformance import sitemap_locations
+    modern = 'reader' in plan
+    need(not modern or plan['reader'] == sitemap_locations.PROFILE, 'Unsupported sitemap reader')
     record = target.get('sitemaps', {})
     if plan.get('mode') == 'unused':
         need(text_present(plan.get('reason')) and isinstance(plan.get('inventory'), list)
@@ -376,7 +380,12 @@ def sitemap_agreement(target, members, preferred):
         doc = capture(target, documents, url)
         final, status, headers, body = response(target, doc)
         need(final == url and status == 200 and utf8_media(headers, ('application/xml', 'text/xml')), 'Unavailable/unsupported sitemap response')
-        is_index, locations = xml_entries(body)
+        if modern:
+            reading = sitemap_locations.read(body)
+            is_index, locations = reading['index'], reading['locations']
+            findings.append(('pass', sitemap_locations.summary(reading)))
+        else:
+            is_index, locations = xml_entries(body)
         visited.add(url)
         if is_index:
             for location in locations:

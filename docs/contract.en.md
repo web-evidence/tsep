@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.13
+# Report contract — TSEP 0.1.0-draft.14
 
 ## Declared scope
 
@@ -226,13 +226,13 @@ summaries show the same cause. Neither the decision nor exit codes change.
 ## Versions and implementation claims
 
 Pin both version and protocol SHA-256. Cite IDs as
-`TSEP@0.1.0-draft.13:TS01`. Never silently replace a released artifact. Changes to
+`TSEP@0.1.0-draft.14:TS01`. Never silently replace a released artifact. Changes to
 applicability, expectations, required evidence or decisions require a new version
 and migration note. TS01–TS44 are permanent identities, not reusable slots.
 
 This candidate has one implementation of report validation. Passing its tests
 allows the narrow statement “passes the bundled report-interchange tests for
-0.1.0-draft.13.” It does not establish implementation of all 44 assessment methods.
+0.1.0-draft.14.” It does not establish implementation of all 44 assessment methods.
 An implementation must publish per-rule mapping and limitations before making a
 broader claim. No compatibility with a third-party tool has yet been demonstrated.
 
@@ -302,3 +302,14 @@ sources, retained values and display bounds are in the
 [draft.13 migration](migration-draft.13.md). No TS42 verdict follows. Near names
 and other fields remain inconclusive; old profiles and required reviews stay
 unchanged. Never extend a prior intent retroactively.
+
+## Sitemap page locations — draft.14
+
+TS10-A03 accepts optional prior reader `sitemap-locations-v1`. Direct page loc
+remains separate from XHTML/image annotations and ordinary fields retained without
+value validation. The legacy profile is unchanged; unknown explicit values never
+fall back. Omission still requires complete traversal; an attributable contradiction
+is retained. Recognized structures, namespaces, captures, bounds and unknowns are
+defined by the [method](sitemap-locations.md) and [migration](migration-draft.14.md).
+This atomic success alone establishes neither whole TS10 C, hreflang/image validity
+nor Google selection.

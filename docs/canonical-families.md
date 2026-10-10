@@ -291,3 +291,7 @@ indexing, whole-site exhaustiveness or future behavior.
 [Sitemaps protocol](https://www.sitemaps.org/protocol.html),
 [RFC 8288](https://www.rfc-editor.org/rfc/rfc8288).
 [Captures datées / Dated captures](source-observations.md) · [Migration](migration-draft.5.md).
+
+Draft.14: [sitemap page locations / URL de pages](sitemap-locations.md), explicit prior reader;
+language/image annotations retained without assessment. Profil historique conservé ;
+A03 seule ne suffit pas à établir TS10. [Migration](migration-draft.14.md).

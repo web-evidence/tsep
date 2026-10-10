@@ -1,6 +1,6 @@
 # TSEP — evidence interchange format
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.13 · initiated by Edikka · [Français](README.fr.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.14 · initiated by Edikka · [Français](README.fr.md)**
 
 Share a technical SEO assessment that its recipient can inspect, replay and
 challenge: stable identifiers, explicit scope, evidence linked to findings and
@@ -64,14 +64,14 @@ validation establishes consistency and file integrity.
    diagnostic](docs/reference-diagnostics.md) inventories candidate limitations
    without issuing verdicts. The [paired capture diagnostic](docs/diagnostic-campaign.md)
    compares registered phases and exposes extraction limits on changed bodies.
-   The protocol is draft.13; the [noscript proposal](docs/proposals/noscript-consensus.md) is unapplied.
+   The protocol is draft.14; the [noscript proposal](docs/proposals/noscript-consensus.md) is unapplied.
 2. **Declare partial coverage**: select a `custom` list, keep unknowns as
    NT/inconclusive and link each artifact to its target. Selecting TS01/TS07 does
    not satisfy a named profile. An isolated test cannot pass its parent control.
 3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
    `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 my_adapter.py'`
    for that subset, or omit `--rules` for all thirteen rules. State “passes TSEP
-   0.1.0-draft.13 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
+   0.1.0-draft.14 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
    [Input format and comparison](docs/conformance.md). Report exact agreements,
    disagreements and reduced coverage separately; accepted inconclusive results
    on marked reference limits are not successful assessments.
@@ -145,7 +145,7 @@ ranking or future engine behavior.
 [Governance](GOVERNANCE.md) · [Contribute](CONTRIBUTING.md) · [History](CHANGELOG.md) ·
 [Acceptance clause](docs/acceptance-clause.md) · [HTTP probe](probes/README.md).
 
-Cite `TSEP@0.1.0-draft.13:TS07` with scope, result, evidence and archive hash.
+Cite `TSEP@0.1.0-draft.14:TS07` with scope, result, evidence and archive hash.
 Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATION.cff).
 [Development, full verification and independent repository](docs/development.md).
 
@@ -162,3 +162,5 @@ Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATIO
 [Draft.12 — TS04 client scope / Portée du client TS04](docs/migration-draft.12.md)
 
 [Draft.13 — Known robots fields / Champs robots connus](docs/migration-draft.13.md)
+
+[Draft.14 — Sitemap page locations / URL de pages](docs/migration-draft.14.md)
