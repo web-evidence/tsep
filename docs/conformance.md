@@ -92,10 +92,11 @@ exactement Location. Aucun cookie ni Authorization dans ce sous-ensemble.
 
 TS01 compare le statut final, puis l’identité selon les critères préalables ci-dessus.
 La branche des marqueurs prend en charge text/plain et text/html avec charset
-UTF-8 explicite. L’interpréteur 5 utilise un [extracteur TS01 distinct](source-text-v5.md),
+UTF-8 explicite. L’interpréteur 6 utilise un [extracteur TS01 distinct](source-text-v6.md),
 avec document clos, balises équilibrées, segments séparés par le balisage,
 éléments ordinaires, titre RCDATA et icônes SVG dans une liste bornée, incluant
-les styles SVG sans `<` littéral avant leur fermeture. Noscript non vide reste indéterminé.
+les styles SVG sans `<` littéral avant leur fermeture, select/options et tableaux
+explicitement structurés. Noscript non vide reste indéterminé.
 Les zones ambiguës ou non prises en charge rendent toute l’extraction indéterminée.
 Le titre et le texte caché par CSS peuvent compter : aucune visibilité rendue
 n’est mesurée. `identity-marker-unsupported-element` conserve son attendu normatif
@@ -249,10 +250,10 @@ Ambiguous, incomplete or interrupted captures remain inconclusive.
 
 TS01 compares final status, then identity against the prior criteria above.
 The marker branch supports text/plain and text/html with explicit UTF-8 charset.
-Interpreter 5 uses a [separate TS01 extractor](source-text-v5.md): closed document,
+Interpreter 6 uses a [separate TS01 extractor](source-text-v6.md): closed document,
 balanced tags, markup-separated segments, ordinary elements, RCDATA title and
 SVG icons in a bounded allowlist, including SVG styles with no literal `<` before
-closure. Nonempty noscript remains unresolved. Ambiguous or unsupported contexts make
+closure, explicit select/options and explicitly structured tables. Nonempty noscript remains unresolved. Ambiguous or unsupported contexts make
 the whole extraction inconclusive. Title and CSS-hidden source text may count;
 rendered visibility is not measured. `identity-marker-unsupported-element` keeps
 its normative pass expectation and is now resolved. URL/digest/stability precedence

@@ -420,3 +420,13 @@ L’[expérience de séquences 1](canonical-state-sequences.md) conserve trois �
 prédéclarés par page, leurs écarts et leurs lacunes, sans verdict global ni preuve
 de stabilité. Les tests incluent altérations avec empreintes recalculées, ruptures
 de chaîne, marqueur divergent et rejeu hors réseau. Aucun changement normatif.
+
+## Source text v6 / Texte source v6
+
+[Source text v6](source-text-v6.md) adds explicit select/table coverage under the
+unchanged draft.7 contract. One historical synthetic expectation is explicitly
+superseded; its frozen file remains intact. Nonempty noscript stays unresolved.
+
+Le [lecteur v6](source-text-v6.md) accepte un sous-ensemble select/table explicite.
+Une attente historique change explicitement, sans réécrire le fichier figé.
+Le contrat draft.7 reste inchangé ; noscript non vide demeure indéterminé.

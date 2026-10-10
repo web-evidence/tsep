@@ -68,9 +68,45 @@ class SourceText(unittest.TestCase):
 
     def test_all_frozen_source_segments_and_atomic_outcomes(self):
         expected = json.loads((FIXTURES/'source-text-cases.json').read_text())['cases']
+        changes = {r['id']: r for r in json.loads((FIXTURES/'source-text-v6-cases.json').read_text())['supersedes']['changes']}
         for case, actual in zip(expected, frozen_results()):
             with self.subTest(case=case['id']):
+                self.assertEqual(actual, {k: changes.get(case['id'], case)[k] for k in ('id', 'segments', 'outcome')})
+
+    def test_v6_frozen_cases_and_explicit_v4_migration(self):
+        expected, name = (FIXTURES/'source-text-v6-freeze.sha256').read_text().strip().split('  ', 1)
+        self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(), expected)
+        data = json.loads((FIXTURES/'source-text-v6-cases.json').read_text())
+        prior = data['supersedes']
+        self.assertEqual(hashlib.sha256((ROOT/prior['file']).read_bytes()).hexdigest(), prior['sha256'])
+        self.assertEqual([r['id'] for r in prior['changes']], ['select-context'])
+        self.assertEqual(prior['changes'][0]['outcome'], 'pass')
+        for case, actual in zip(data['cases'], frozen_results(data['cases'])):
+            with self.subTest(case=case['id']):
                 self.assertEqual(actual, {k: case[k] for k in ('id', 'segments', 'outcome')})
+
+    def test_v6_common_complete_readings_match_experiment_without_noscript(self):
+        # Internal differential check only: both readers share lexical helpers.
+        # A refusal by either reader does not become an agreement or a pass.
+        from experiments.noscript import reading
+        both = 0
+        for name in ('source-text-cases.json', 'source-text-v5-cases.json',
+                     'source-text-v6-cases.json', 'noscript-experiment-v3-cases.json',
+                     'noscript-experiment-v4-cases.json'):
+            for case in json.loads((FIXTURES/name).read_text())['cases']:
+                if '<noscript' in case['html'].lower():
+                    continue
+                try:
+                    active = extract(case['html'])
+                except Unknown:
+                    continue
+                for mode in ('enabled', 'disabled'):
+                    trial = reading(case['html'], mode)
+                    if trial['complete']:
+                        both += 1
+                        with self.subTest(fixture=name, case=case['id'], mode=mode):
+                            self.assertEqual(active, [s['text'] for s in trial['segments']])
+        self.assertEqual(both, 324)
 
     def test_independent_character_reference_expectations(self):
         cases = json.loads((FIXTURES/'html5-character-cases.json').read_text())['cases']

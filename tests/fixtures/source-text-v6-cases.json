@@ -1,0 +1,400 @@
+{
+  "format_version": 1,
+  "tool_interpreter_version": "6",
+  "scope": "Synthetic bounded source-text implementation extension; no normative or browser-equivalence claim",
+  "required_markers": [
+    "Expected"
+  ],
+  "forbidden_markers": [
+    "Forbidden"
+  ],
+  "supersedes": {
+    "file": "tests/fixtures/source-text-cases.json",
+    "sha256": "11abfdd35d3ab9708019c242207e48c338b89b40002a49580f4010b7762af48c",
+    "changes": [
+      {
+        "id": "select-context",
+        "segments": [
+          "Expected"
+        ],
+        "outcome": "pass",
+        "reason": "Explicitly closed select/option subset now read; source text only."
+      }
+    ]
+  },
+  "cases": [
+    {
+      "id": "v6-select-text",
+      "html": "<html><head></head><body><select><option>Expected</option></select></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-select-group",
+      "html": "<html><head></head><body><select><optgroup label=\"Forbidden\"><option>Expected</option><option>Other</option></optgroup></select></body></html>",
+      "segments": [
+        "Expected",
+        "Other"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-select-forbidden",
+      "html": "<html><head></head><body><select><option>Expected Forbidden</option></select></body></html>",
+      "segments": [
+        "Expected Forbidden"
+      ],
+      "outcome": "fail"
+    },
+    {
+      "id": "v6-select-value-excluded",
+      "html": "<html><head></head><body><select><option value=\"Expected\">Other</option></select></body></html>",
+      "segments": [
+        "Other"
+      ],
+      "outcome": "fail"
+    },
+    {
+      "id": "v6-select-attribute-excluded",
+      "html": "<html><head></head><body><select title=\"Forbidden\"><option>Expected</option></select></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-select-segments",
+      "html": "<html><head></head><body><select><option>Ex</option><option>pected</option></select></body></html>",
+      "segments": [
+        "Ex",
+        "pected"
+      ],
+      "outcome": "fail"
+    },
+    {
+      "id": "v6-select-comment",
+      "html": "<html><head></head><body><select><option>Ex<!-- cut -->pected</option></select></body></html>",
+      "segments": [
+        "Ex",
+        "pected"
+      ],
+      "outcome": "fail"
+    },
+    {
+      "id": "v6-select-entities",
+      "html": "<html><head></head><body><select><option>&#69;xpected</option></select></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-select-literal-space",
+      "html": "<html><head></head><body><select>\n<optgroup>\t<option>Expected</option>\r\n</optgroup></select></body></html>",
+      "segments": [
+        "\n",
+        "\t",
+        "Expected",
+        "\r\n"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-select-empty",
+      "html": "<html><head></head><body>Expected<select></select></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-select-empty-option",
+      "html": "<html><head></head><body>Expected<select><option></option></select></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-select-autoclose",
+      "html": "<html><head></head><body><select><option>Expected<option>Other</select></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-nested",
+      "html": "<html><head></head><body><select><option><select></select></option></select></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-text-direct",
+      "html": "<html><head></head><body><select>Expected</select></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-entity-space",
+      "html": "<html><head></head><body><select>&#32;<option>Expected</option></select></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-option-child",
+      "html": "<html><head></head><body><select><option><span>Expected</span></option></select></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-script",
+      "html": "<html><head></head><body><select><script></script><option>Expected</option></select></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-datalist",
+      "html": "<html><head></head><body><datalist><select><option>Expected</option></select></datalist></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-option-outside",
+      "html": "<html><head></head><body><option>Expected</option></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-group-outside",
+      "html": "<html><head></head><body><optgroup><option>Expected</option></optgroup></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-nested-group",
+      "html": "<html><head></head><body><select><optgroup><optgroup></optgroup></optgroup></select></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-after-marker",
+      "html": "<html><head></head><body>Forbidden Expected<select><option><b>x</b></option></select></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-foreign",
+      "html": "<html><head></head><body><svg><select><option>Expected</option></select></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-p",
+      "html": "<html><head></head><body><p><select><option>Expected</option></select></p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-table-text",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected</td></tr></tbody></table></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-table-forbidden",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected</td><td>Forbidden</td></tr></tbody></table></body></html>",
+      "segments": [
+        "Expected",
+        "Forbidden"
+      ],
+      "outcome": "fail"
+    },
+    {
+      "id": "v6-table-complete",
+      "html": "<html><head></head><body><table><caption>Expected</caption><colgroup><col></colgroup><thead><tr><th>Header</th></tr></thead><tbody><tr><td>Cell</td></tr></tbody><tfoot><tr><td>Foot</td></tr></tfoot></table></body></html>",
+      "segments": [
+        "Expected",
+        "Header",
+        "Cell",
+        "Foot"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-table-multiple-bodies",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected</td></tr></tbody><tbody><tr><td>Other</td></tr></tbody></table></body></html>",
+      "segments": [
+        "Expected",
+        "Other"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-table-space",
+      "html": "<html><head></head><body><table>\n<tbody>\t<tr> <td>Expected</td>\r\n</tr></tbody></table></body></html>",
+      "segments": [
+        "\n",
+        "\t",
+        " ",
+        "Expected",
+        "\r\n"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-table-empty",
+      "html": "<html><head></head><body>Expected<table></table></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-table-attributes",
+      "html": "<html><head></head><body><table title=\"Forbidden\"><tbody><tr><td data-x=\"Forbidden\">Expected</td></tr></tbody></table></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-table-select-cell",
+      "html": "<html><head></head><body><table><tbody><tr><td><select><option>Expected</option></select></td></tr></tbody></table></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-table-fragmented",
+      "html": "<html><head></head><body><table><tbody><tr><td>Ex</td><td>pected</td></tr></tbody></table></body></html>",
+      "segments": [
+        "Ex",
+        "pected"
+      ],
+      "outcome": "fail"
+    },
+    {
+      "id": "v6-table-sequential",
+      "html": "<html><head></head><body><table><caption>Expected</caption></table><table><caption>Other</caption></table></body></html>",
+      "segments": [
+        "Expected",
+        "Other"
+      ],
+      "outcome": "pass"
+    },
+    {
+      "id": "v6-table-implicit-tbody",
+      "html": "<html><head></head><body><table><tr><td>Expected</td></tr></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-foster",
+      "html": "<html><head></head><body><table>Expected<tbody></tbody></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-foster-after-marker",
+      "html": "<html><head></head><body>Expected Forbidden<table><div>x</div></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-entity-space",
+      "html": "<html><head></head><body>Expected<table>&#32;<tbody></tbody></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-nested",
+      "html": "<html><head></head><body><table><tbody><tr><td><table><caption>Expected</caption></table></td></tr></tbody></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-repeated-head",
+      "html": "<html><head></head><body><table><thead></thead><thead></thead></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-caption-after-body",
+      "html": "<html><head></head><body><table><tbody></tbody><caption>Expected</caption></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-repeated-caption",
+      "html": "<html><head></head><body><table><caption>Expected</caption><caption>Other</caption></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-after-foot",
+      "html": "<html><head></head><body><table><tfoot></tfoot><tbody></tbody></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-wrong-cell-parent",
+      "html": "<html><head></head><body><table><tbody><td>Expected</td></tbody></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-cell-outside",
+      "html": "<html><head></head><body><td>Expected</td></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-col-outside",
+      "html": "<html><head></head><body>Expected<col></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-col-outside-colgroup",
+      "html": "<html><head></head><body>Expected<table><col></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-cell-autoclose",
+      "html": "<html><head></head><body><table><tbody><tr><td>Expected<td>Other</tr></tbody></table></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-in-select",
+      "html": "<html><head></head><body><select><option><table></table></option></select></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-in-paragraph",
+      "html": "<html><head></head><body><p>Expected<table></table></p></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-table-unsupported-tail",
+      "html": "<html><head></head><body><table><caption>Expected Forbidden</caption></table><iframe></iframe></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    },
+    {
+      "id": "v6-select-noscript-still-unknown",
+      "html": "<html><head></head><body>Expected<select><option>x</option></select><noscript>Other</noscript></body></html>",
+      "segments": null,
+      "outcome": "inconclusive"
+    }
+  ]
+}

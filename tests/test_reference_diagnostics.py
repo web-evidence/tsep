@@ -94,6 +94,10 @@ class ReferenceDiagnostics(unittest.TestCase):
         source='<html><body><p title="Expected">Other</p><script>Expected</script></body></html>'
         self.assertEqual(reference_check(HEADERS,source,'markers',['Expected'],[])['state'],'contradiction')
         source='<html><body>Forbidden<select></select></body></html>'
+        # v6 resolves this formerly unsupported empty select; keep the observed
+        # contradiction and use a still unsupported tail for the refusal guard.
+        self.assertEqual(reference_check(HEADERS,source,'markers',['Expected'],['Forbidden'])['state'],'contradiction')
+        source='<html><body>Forbidden<select><option><b>x</b></option></select></body></html>'
         self.assertEqual(reference_check(HEADERS,source,'markers',['Expected'],['Forbidden'])['state'],'unavailable')
         with self.assertRaises(ValueError):reference_check(HEADERS,source,'markers',[],[])
 

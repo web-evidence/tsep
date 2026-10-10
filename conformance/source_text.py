@@ -16,8 +16,15 @@ MAX_TOKENS = 100000
 NAME = re.compile(r'[A-Za-z][A-Za-z0-9:_-]*', re.ASCII)
 VOID = frozenset('area base br col embed hr img input link meta param source track wbr'.split())
 # These contexts require tree-construction, scripting or unresolved text semantics.
-UNSUPPORTED = frozenset('math plaintext xmp noembed noframes iframe frameset frame listing '
-                        'table caption colgroup tbody thead tfoot tr td th select option optgroup'.split())
+UNSUPPORTED = frozenset('math plaintext xmp noembed noframes iframe frameset frame listing'.split())
+SELECT_CHILDREN = {'select': frozenset(('option', 'optgroup')),
+                   'optgroup': frozenset(('option',)), 'option': frozenset()}
+TABLE_CHILDREN = {'table': frozenset(('caption', 'colgroup', 'thead', 'tbody', 'tfoot')),
+                  'colgroup': frozenset(('col',)), 'thead': frozenset(('tr',)),
+                  'tbody': frozenset(('tr',)), 'tfoot': frozenset(('tr',)),
+                  'tr': frozenset(('td', 'th'))}
+TABLE_PARENTS = {tag: frozenset(p for p, children in TABLE_CHILDREN.items() if tag in children)
+                 for tag in ('caption', 'colgroup', 'col', 'thead', 'tbody', 'tfoot', 'tr', 'td', 'th')}
 SVG = frozenset('svg g path rect circle ellipse line polyline polygon use symbol defs '
                 'clippath mask lineargradient radialgradient stop animate animatetransform set'.split())
 RAW = frozenset(('script', 'style', 'title', 'textarea', 'noscript', 'template'))
@@ -112,6 +119,7 @@ def extract(source):
     segments, stack = [], []
     roots = tokens = i = 0
     doctype = False
+    table_stage, table_caption = 0, False
     while i < len(source):
         tokens += 1
         need(tokens <= MAX_TOKENS, 'HTML token limit exceeded')
@@ -123,6 +131,8 @@ def extract(source):
             if stack:
                 if 'svg' in stack:
                     need(not value.strip(SPACE), 'Text in SVG is unsupported')
+                if stack[-1] in ('select', 'optgroup') or stack[-1] in TABLE_CHILDREN:
+                    need(not value.strip(SPACE), 'Non-literal whitespace in select/table container')
                 segments.append(characters(value))
             i = end
             continue
@@ -156,6 +166,40 @@ def extract(source):
             need(stack, 'Element outside HTML root: '+tag)
         if tag in ('head', 'body'):
             need(stack == ['html'], 'Unsupported HTML structural context: '+tag)
+        if tag == 'select' or tag == 'table' or tag in SELECT_CHILDREN or tag in TABLE_PARENTS:
+            need('body' in stack and 'head' not in stack and 'svg' not in stack,
+                 'Select/table outside explicit HTML body')
+        if stack and stack[-1] in TABLE_CHILDREN:
+            need(tag in TABLE_CHILDREN[stack[-1]], 'Unsupported table child: '+tag)
+        if tag in TABLE_PARENTS:
+            need(stack[-1] in TABLE_PARENTS[tag], 'Unsupported table parent: '+tag)
+        if tag == 'table':
+            need('table' not in stack and 'p' not in stack, 'Nested table or implicit paragraph close')
+            table_stage, table_caption = 0, False
+        elif stack and stack[-1] == 'table':
+            if tag == 'caption':
+                need(table_stage == 0 and not table_caption, 'Unsupported table caption order')
+                table_caption = True
+            elif tag == 'colgroup':
+                need(table_stage <= 1, 'Unsupported table column order')
+                table_stage = 1
+            elif tag == 'thead':
+                need(table_stage < 2, 'Unsupported table head order')
+                table_stage = 2
+            elif tag == 'tbody':
+                need(table_stage <= 3, 'Unsupported table body order')
+                table_stage = 3
+            elif tag == 'tfoot':
+                need(table_stage <= 3, 'Unsupported table foot order')
+                table_stage = 4
+        if 'select' in stack:
+            need(tag in SELECT_CHILDREN.get(stack[-1], ()), 'Unsupported select child: '+tag)
+        elif tag == 'select':
+            need('datalist' not in stack, 'Select inside datalist is unsupported')
+        if tag == 'option':
+            need(stack[-1] in ('select', 'optgroup') and 'select' in stack, 'Option outside select')
+        if tag == 'optgroup':
+            need(stack[-1] == 'select', 'Optgroup outside direct select parent')
         foreign = tag == 'svg' or 'svg' in stack
         if foreign:
             need(tag in SVG or tag == 'style', 'Unsupported SVG context: '+tag)

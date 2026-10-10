@@ -50,7 +50,9 @@ class Handler(BaseHTTPRequestHandler):
         content = ('<html><head><title>Test</title></head><body><p>'+marker+
                    '</p><p>Révision '+value+'</p></body></html>').encode()
         if self.path == '/unsupported':
-            content = content.replace(b'</body>', b'<select><option>Other</option></select></body>')
+            # v6 supports explicit select. Use a still unsupported child to
+            # exercise an unavailable preflight with an equal full-body digest.
+            content = content.replace(b'</body>', b'<select><option><b>Other</b></option></select></body>')
         if self.path == '/large':
             content = b'x'*4096
         coding = 'identity' if self.path in ('/large', '/slow', '/cut') else 'deflate' if self.path == '/deflate' else 'gzip'
@@ -180,7 +182,7 @@ class GuidedCapture(unittest.TestCase):
         self.assertEqual(evaluate(self.root/'first/reference', self.root/'intent.json', self.root/'assessment')['counts']['C'], 1)
         html = (self.root/'assessment/report-fr.html').read_text()
         self.assertIn('Précontrôle des marqueurs', html)
-        self.assertIn('Unsupported HTML context: select', html)
+        self.assertIn('Unsupported select child: b', html)
         self.assertIn('unavailable', html)
 
     def test_changed_media_is_disclosed_without_changing_the_normative_digest_result(self):

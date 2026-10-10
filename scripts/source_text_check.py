@@ -18,7 +18,8 @@ from provenance.runtime import runtime_identity
 
 def check():
     fixtures = ROOT/'tests/fixtures'
-    freeze = (fixtures/'source-text-freeze.sha256').read_text() + (fixtures/'source-text-v5-freeze.sha256').read_text()
+    freeze = ''.join((fixtures/name).read_text() for name in (
+        'source-text-freeze.sha256', 'source-text-v5-freeze.sha256', 'source-text-v6-freeze.sha256'))
     for line in freeze.splitlines():
         expected, name = line.split('  ', 1)
         if hashlib.sha256((ROOT/name).read_bytes()).hexdigest() != expected:
@@ -30,6 +31,15 @@ def check():
     if prior['changes'] != [] or hashlib.sha256((ROOT/prior['file']).read_bytes()).hexdigest() != prior['sha256']:
         raise ValueError('Unexpected replacement of v4 expectations')
     cases += extension['cases']
+    extension6 = json.loads((fixtures/'source-text-v6-cases.json').read_text())
+    prior6 = extension6['supersedes']
+    if hashlib.sha256((ROOT/prior6['file']).read_bytes()).hexdigest() != prior6['sha256']:
+        raise ValueError('Changed historical source fixture')
+    changes = {c['id']: c for c in prior6['changes']}
+    if set(changes) != {'select-context'}:
+        raise ValueError('Unexpected v6 migration')
+    cases = [dict(c, **{k: changes[c['id']][k] for k in ('segments', 'outcome')})
+             if c['id'] in changes else c for c in cases] + extension6['cases']
     if len({c['id'] for c in cases}) != len(cases):
         raise ValueError('Duplicate source-text case ID')
     for case in cases:

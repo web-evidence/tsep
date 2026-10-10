@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '6'
+VERSION = '7'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -46,8 +46,10 @@ COVERAGE_INVENTORY = [
      'en': 'Brotli, multi-member gzip, chunk extensions/trailers and raw HTTP/2: inconclusive.'},
     {'state': 'deferred', 'fr': 'Marqueurs : UTF-8 explicite et HTML borné seulement. Octets non UTF-8 conservés et empreintes comparables, sans extraction de texte implicite.',
      'en': 'Markers: explicit UTF-8 and bounded HTML only. Non-UTF-8 bytes retained and hashes comparable, without implicit text extraction.'},
-    {'state': 'deferred', 'fr': 'TS01 : noscript/template/textarea non vides, texte SVG, MathML, table/select, script échappé et HTML ambigu : extraction entière indéterminée.',
-     'en': 'TS01: nonempty noscript/template/textarea, SVG text, MathML, table/select, escaped script and ambiguous HTML: whole extraction inconclusive.'},
+    {'state': 'implemented', 'fr': 'TS01 : select/option/optgroup et tableaux explicitement structurés ; aucune fermeture implicite ni réparation.',
+     'en': 'TS01: explicitly structured select/option/optgroup and tables; no implied closure or repair.'},
+    {'state': 'deferred', 'fr': 'TS01 : noscript/template/textarea non vides, texte SVG, MathML, select/table hors sous-ensemble, script échappé et HTML ambigu : extraction entière indéterminée.',
+     'en': 'TS01: nonempty noscript/template/textarea, SVG text, MathML, unsupported select/table, escaped script and ambiguous HTML: whole extraction inconclusive.'},
     {'state': 'out-of-scope', 'fr': 'Cet adaptateur ne collecte pas, ne rend pas JavaScript et ne produit aucune revue humaine manquante.',
      'en': 'This adapter does not collect, render JavaScript or supply missing human reviews.'},
     {'state': 'out-of-scope', 'fr': 'Pas de preuve de Googlebot réel, indexation, classement ou conformité globale.',
