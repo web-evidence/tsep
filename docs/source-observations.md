@@ -1,5 +1,23 @@
 # Dated source observations / Observations de sources datées
 
+## Robots candidate — 2026-10-10
+
+Captures conservées hors distribution dans les preuves locales du lecteur candidat.
+Portée : règles de correspondance, groupes et politique des statuts ; ni observation
+de Googlebot, ni validation du moteur, ni copie de code tiers dans l'implémentation.
+Raw primary-source captures retained locally, outside distribution, for syntax and
+status-policy research. No engine observation, endorsement or copied third-party code.
+
+- [RFC 9309](https://www.rfc-editor.org/rfc/rfc9309.html) — 2026-10-10T14:51:38.164993+00:00 — SHA-256 `bbaa280636d3e38f0a1a130a5ce40e9753db1ed18c860945b0bf795ff8dc1a87`.
+- [Google robots specification](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec) — 2026-10-10T14:51:38.819526+00:00 — SHA-256 `20e4adf3914a490301e7602c0a8e8c8f69fe0ea9cc23d2d9161de33c2e1f4a62`.
+- [Google public parser source](https://raw.githubusercontent.com/google/robotstxt/master/robots.cc) — 2026-10-10T14:51:39.236205+00:00 — SHA-256 `d05a7fa74c0e8b9fc440d15f4c3ae9a80873c0d950e569de2926303fd75ed473`.
+
+The last URL is mutable master; the capture fingerprint identifies the examined
+bytes, not a released parser version. La dernière URL est une branche mutable ;
+l'empreinte désigne les octets examinés, pas une version publiée du parseur.
+
+## Previous observations
+
 Raw captures were retained locally on 2026-10-09 with the following SHA-256 values.
 They are working evidence, outside the distribution. These fingerprints do not
 establish a trusted collection time, endorsement or an independently verified archive.

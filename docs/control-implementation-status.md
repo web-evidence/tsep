@@ -24,8 +24,11 @@ séparées. Les 44 lignes ci-dessous restent le **point de référence draft.7**
 
 Draft.8 ajoute TS02-A01/A02 : onze règles sont désormais définies pour TS01, TS02,
 TS07 et TS10 (3 automatic, 6 semiAuto, 2 manual). Ce décompte inclut TS01, qui n'est
-pas l'un des quatre objectifs du jour ; TS04 reste à développer. Le laboratoire
-de redirection avant/après et les limites rendues/humaines restent dans le suivi.
+pas l'un des quatre objectifs du jour. Le laboratoire TS02 avant/après a réalisé
+20 requêtes locales synthétiques ; le parcours pratique du plan humain reste ouvert.
+TS04 dispose maintenant d'un [lecteur candidat](robots-policy-experiment.md) et
+d'un laboratoire ; ses règles atomiques et l'intégration partagée avec TS07 restent
+à réaliser. Les limites rendues/humaines restent dans le suivi.
 Ces nombres ne déclarent ni quatre méthodes finalisées, ni quatre audits réalisés.
 
 ### Décompte vérifié

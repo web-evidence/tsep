@@ -1,0 +1,457 @@
+{
+  "version": "1",
+  "scope": "Synthetic prefrozen RFC-oriented body-parser expectations. Experimental; no TS04 verdict or Google simulation. Normalized ASCII pattern length includes * and final $.",
+  "cases": [
+    {
+      "id": "default-empty",
+      "body": "",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "preproduction-all",
+      "body": "User-agent: *\nDisallow: /",
+      "target": "https://example.com/product",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "path-not-matched",
+      "body": "User-agent: *\nDisallow: /private",
+      "target": "https://example.com/product",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "case-sensitive-path",
+      "body": "User-agent: *\nDisallow: /Private",
+      "target": "https://example.com/private",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "prefix",
+      "body": "User-agent: *\nDisallow: /fish",
+      "target": "https://example.com/fishheads",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "case-insensitive-agent",
+      "body": "USER-AGENT: gOoGlEbOt\nDISALLOW: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "specific-over-star",
+      "body": "User-agent: *\nDisallow: /\nUser-agent: Googlebot\nAllow: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "specific-empty-over-star",
+      "body": "User-agent: *\nDisallow: /\nUser-agent: Googlebot\nDisallow:",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "unmatched-agent",
+      "body": "User-agent: Bingbot\nDisallow: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "fallback-star",
+      "body": "User-agent: Bingbot\nAllow: /\nUser-agent: *\nDisallow: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "merge-exact-groups",
+      "body": "User-agent: Googlebot\nAllow: /\nUser-agent: Googlebot\nDisallow: /private",
+      "target": "https://example.com/private",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "merge-group-reversed",
+      "body": "User-agent: Googlebot\nDisallow: /private\nUser-agent: Googlebot\nAllow: /",
+      "target": "https://example.com/private",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "multiple-agents-one-group",
+      "body": "User-agent: Otherbot\nUser-agent: Googlebot\nDisallow: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "ignore-unknown-record-group",
+      "body": "User-agent: Otherbot\nSitemap: https://example.com/map.xml\nCrawl-delay: 9\nUser-agent: Googlebot\nDisallow: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "empty-rule-delimits",
+      "body": "User-agent: Googlebot\nDisallow:\nUser-agent: Otherbot\nDisallow: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "do-not-inherit-bot-family",
+      "body": "User-agent: Googlebot-News\nDisallow: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "invalid-agent-suffix-rfc",
+      "body": "User-agent: Googlebot/1.2\nDisallow: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "allow",
+      "note": "RFC syntax only; Google has a different documented tolerance. Never claim Google policy."
+    },
+    {
+      "id": "orphan-rule",
+      "body": "Disallow: /\nUser-agent: Googlebot\nAllow: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "longer-disallow",
+      "body": "User-agent: *\nAllow: /\nDisallow: /assets/",
+      "target": "https://example.com/assets/main.css",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "longer-allow",
+      "body": "User-agent: *\nDisallow: /assets/\nAllow: /assets/main.css",
+      "target": "https://example.com/assets/main.css",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "allow-tie",
+      "body": "User-agent: *\nAllow: /same\nDisallow: /same",
+      "target": "https://example.com/same",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "allow-tie-reversed",
+      "body": "User-agent: *\nDisallow: /same\nAllow: /same",
+      "target": "https://example.com/same",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "wildcard-zero",
+      "body": "User-agent: *\nDisallow: /a*b",
+      "target": "https://example.com/ab",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "wildcard-many",
+      "body": "User-agent: *\nDisallow: /a*b",
+      "target": "https://example.com/axxxb",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "wildcard-prefix",
+      "body": "User-agent: *\nDisallow: /a*b",
+      "target": "https://example.com/axxxbc",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "anchored-end",
+      "body": "User-agent: *\nDisallow: /fish$",
+      "target": "https://example.com/fish",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "anchor-rejects-suffix",
+      "body": "User-agent: *\nDisallow: /fish$",
+      "target": "https://example.com/fishheads",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "anchor-rejects-query",
+      "body": "User-agent: *\nDisallow: /*.php$",
+      "target": "https://example.com/index.php?a=1",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "query-matches",
+      "body": "User-agent: *\nDisallow: /*?private=",
+      "target": "https://example.com/product?private=1",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "empty-query-preserved",
+      "body": "User-agent: *\nDisallow: /product?$",
+      "target": "https://example.com/product?",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "dollar-nonfinal-literal",
+      "body": "User-agent: *\nDisallow: /a$b",
+      "target": "https://example.com/a$b",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "multiple-stars",
+      "body": "User-agent: *\nDisallow: /a**b*c$",
+      "target": "https://example.com/abxxc",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "star-no-match",
+      "body": "User-agent: *\nDisallow: /a*b*c$",
+      "target": "https://example.com/abxxd",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "root-anchor-more-specific",
+      "body": "User-agent: *\nAllow: /\nDisallow: /$",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "wildcard-weight",
+      "body": "User-agent: *\nAllow: /page\nDisallow: /*.htm",
+      "target": "https://example.com/page.htm",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "wildcard-weight-tie",
+      "body": "User-agent: *\nAllow: /page\nDisallow: /*.ph",
+      "target": "https://example.com/page.php5",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "utf8-literal",
+      "body": "User-agent: *\nDisallow: /café",
+      "target": "https://example.com/caf%C3%A9",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "utf8-path",
+      "body": "User-agent: *\nDisallow: /caf%C3%A9",
+      "target": "https://example.com/café",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "encoded-hex-case",
+      "body": "User-agent: *\nDisallow: /caf%c3%a9",
+      "target": "https://example.com/caf%C3%A9",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "encoded-unreserved",
+      "body": "User-agent: *\nDisallow: /foo/%62%61%7A",
+      "target": "https://example.com/foo/baz",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "encoded-unreserved-target",
+      "body": "User-agent: *\nDisallow: /foo/baz",
+      "target": "https://example.com/foo/%62%61%7A",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "reserved-slash-not-decoded",
+      "body": "User-agent: *\nDisallow: /a/b",
+      "target": "https://example.com/a%2Fb",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "reserved-slash-match",
+      "body": "User-agent: *\nDisallow: /a%2fb",
+      "target": "https://example.com/a%2Fb",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "encoded-star-literal",
+      "body": "User-agent: *\nDisallow: /foo/%2A",
+      "target": "https://example.com/foo/%2a",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "encoded-star-not-wildcard",
+      "body": "User-agent: *\nDisallow: /foo/%2A",
+      "target": "https://example.com/foo/bar",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "encoded-dollar-not-anchor",
+      "body": "User-agent: *\nDisallow: /foo/%24",
+      "target": "https://example.com/foo/%24bar",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "encoded-hash",
+      "body": "User-agent: *\nDisallow: /foo%23bar",
+      "target": "https://example.com/foo%23bar",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "comments",
+      "body": "User-agent: * # bot\nDisallow: /private # memo",
+      "target": "https://example.com/private",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "bom-and-crlf",
+      "body": "﻿User-agent: *\r\nDisallow: /\r\n",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "cr-line-endings",
+      "body": "User-agent: *\rDisallow: /\r",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "invalid-lines-ignored",
+      "body": "User-agent: *\nnot a rule\nDisallow: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "unknown-does-not-reset-group",
+      "body": "User-agent: *\nHost: other.example\nDisallow: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "empty-rule-no-restriction",
+      "body": "User-agent: *\nDisallow:\nAllow:",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "robots-implicitly-allowed",
+      "body": "User-agent: *\nDisallow: /",
+      "target": "https://example.com/robots.txt",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "robots-case-not-equivalent",
+      "body": "User-agent: *\nDisallow: /",
+      "target": "https://example.com/Robots.txt",
+      "product_token": "Googlebot",
+      "expected": "disallow"
+    },
+    {
+      "id": "invalid-percent-target",
+      "body": "User-agent: *\nDisallow: /",
+      "target": "https://example.com/a%xy",
+      "product_token": "Googlebot",
+      "expected": "unknown"
+    },
+    {
+      "id": "invalid-percent-rule",
+      "body": "User-agent: *\nDisallow: /a%xy",
+      "target": "https://example.com/product",
+      "product_token": "Googlebot",
+      "expected": "unknown"
+    },
+    {
+      "id": "invalid-url-fragment",
+      "body": "User-agent: *\nDisallow: /",
+      "target": "https://example.com/p#f",
+      "product_token": "Googlebot",
+      "expected": "unknown"
+    },
+    {
+      "id": "path-control",
+      "body": "User-agent: *\nDisallow: /",
+      "target": "https://example.com/a\tb",
+      "product_token": "Googlebot",
+      "expected": "unknown"
+    },
+    {
+      "id": "path-space",
+      "body": "User-agent: *\nDisallow: /",
+      "target": "https://example.com/a b",
+      "product_token": "Googlebot",
+      "expected": "unknown"
+    },
+    {
+      "id": "non-rooted-rule",
+      "body": "User-agent: *\nDisallow: other",
+      "target": "https://example.com/other",
+      "product_token": "Googlebot",
+      "expected": "allow"
+    },
+    {
+      "id": "unsupported-control-body",
+      "body": "User-agent: *\nDisallow: /\u0000",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "unknown"
+    },
+    {
+      "id": "google-index-tolerance-not-rfc",
+      "body": "User-agent: *\nDisallow: /\nAllow: /index.htm",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "disallow",
+      "note": "RFC model does not implement Google parser index.htm normalization."
+    },
+    {
+      "id": "google-typo-not-rfc",
+      "body": "User-agent: *\nDisalow: /",
+      "target": "https://example.com/",
+      "product_token": "Googlebot",
+      "expected": "allow",
+      "note": "Unknown record under RFC; not a Google-policy claim."
+    }
+  ]
+}

@@ -1,0 +1,337 @@
+{
+  "version": "1",
+  "base_sha256": "4a4c1af65d63a4341ee46507da33f50f5fc8f4542b905b5f659ed77cf03c46bf",
+  "scope": "Conservative Google documented-core subset; unsupported parser tolerances and normalization remain unknown. Neither profile models cache or live Googlebot. Frozen before implementation.",
+  "google_profile": [
+    {
+      "id": "default-empty",
+      "expected": "allow"
+    },
+    {
+      "id": "preproduction-all",
+      "expected": "disallow"
+    },
+    {
+      "id": "path-not-matched",
+      "expected": "allow"
+    },
+    {
+      "id": "case-sensitive-path",
+      "expected": "allow"
+    },
+    {
+      "id": "prefix",
+      "expected": "disallow"
+    },
+    {
+      "id": "case-insensitive-agent",
+      "expected": "disallow"
+    },
+    {
+      "id": "specific-over-star",
+      "expected": "allow"
+    },
+    {
+      "id": "specific-empty-over-star",
+      "expected": "allow"
+    },
+    {
+      "id": "unmatched-agent",
+      "expected": "allow"
+    },
+    {
+      "id": "fallback-star",
+      "expected": "disallow"
+    },
+    {
+      "id": "merge-exact-groups",
+      "expected": "disallow"
+    },
+    {
+      "id": "merge-group-reversed",
+      "expected": "disallow"
+    },
+    {
+      "id": "multiple-agents-one-group",
+      "expected": "disallow"
+    },
+    {
+      "id": "ignore-unknown-record-group",
+      "expected": "disallow"
+    },
+    {
+      "id": "empty-rule-delimits",
+      "expected": "allow"
+    },
+    {
+      "id": "do-not-inherit-bot-family",
+      "expected": "allow"
+    },
+    {
+      "id": "invalid-agent-suffix-rfc",
+      "expected": "unknown"
+    },
+    {
+      "id": "orphan-rule",
+      "expected": "allow"
+    },
+    {
+      "id": "longer-disallow",
+      "expected": "disallow"
+    },
+    {
+      "id": "longer-allow",
+      "expected": "allow"
+    },
+    {
+      "id": "allow-tie",
+      "expected": "allow"
+    },
+    {
+      "id": "allow-tie-reversed",
+      "expected": "allow"
+    },
+    {
+      "id": "wildcard-zero",
+      "expected": "disallow"
+    },
+    {
+      "id": "wildcard-many",
+      "expected": "disallow"
+    },
+    {
+      "id": "wildcard-prefix",
+      "expected": "disallow"
+    },
+    {
+      "id": "anchored-end",
+      "expected": "disallow"
+    },
+    {
+      "id": "anchor-rejects-suffix",
+      "expected": "allow"
+    },
+    {
+      "id": "anchor-rejects-query",
+      "expected": "allow"
+    },
+    {
+      "id": "query-matches",
+      "expected": "disallow"
+    },
+    {
+      "id": "empty-query-preserved",
+      "expected": "disallow"
+    },
+    {
+      "id": "dollar-nonfinal-literal",
+      "expected": "disallow"
+    },
+    {
+      "id": "multiple-stars",
+      "expected": "disallow"
+    },
+    {
+      "id": "star-no-match",
+      "expected": "allow"
+    },
+    {
+      "id": "root-anchor-more-specific",
+      "expected": "disallow"
+    },
+    {
+      "id": "wildcard-weight",
+      "expected": "disallow"
+    },
+    {
+      "id": "wildcard-weight-tie",
+      "expected": "allow"
+    },
+    {
+      "id": "utf8-literal",
+      "expected": "disallow"
+    },
+    {
+      "id": "utf8-path",
+      "expected": "disallow"
+    },
+    {
+      "id": "encoded-hex-case",
+      "expected": "disallow"
+    },
+    {
+      "id": "encoded-unreserved",
+      "expected": "unknown"
+    },
+    {
+      "id": "encoded-unreserved-target",
+      "expected": "unknown"
+    },
+    {
+      "id": "reserved-slash-not-decoded",
+      "expected": "allow"
+    },
+    {
+      "id": "reserved-slash-match",
+      "expected": "disallow"
+    },
+    {
+      "id": "encoded-star-literal",
+      "expected": "disallow"
+    },
+    {
+      "id": "encoded-star-not-wildcard",
+      "expected": "allow"
+    },
+    {
+      "id": "encoded-dollar-not-anchor",
+      "expected": "disallow"
+    },
+    {
+      "id": "encoded-hash",
+      "expected": "disallow"
+    },
+    {
+      "id": "comments",
+      "expected": "disallow"
+    },
+    {
+      "id": "bom-and-crlf",
+      "expected": "disallow"
+    },
+    {
+      "id": "cr-line-endings",
+      "expected": "disallow"
+    },
+    {
+      "id": "invalid-lines-ignored",
+      "expected": "unknown"
+    },
+    {
+      "id": "unknown-does-not-reset-group",
+      "expected": "disallow"
+    },
+    {
+      "id": "empty-rule-no-restriction",
+      "expected": "allow"
+    },
+    {
+      "id": "robots-implicitly-allowed",
+      "expected": "unknown"
+    },
+    {
+      "id": "robots-case-not-equivalent",
+      "expected": "disallow"
+    },
+    {
+      "id": "invalid-percent-target",
+      "expected": "unknown"
+    },
+    {
+      "id": "invalid-percent-rule",
+      "expected": "unknown"
+    },
+    {
+      "id": "invalid-url-fragment",
+      "expected": "unknown"
+    },
+    {
+      "id": "path-control",
+      "expected": "unknown"
+    },
+    {
+      "id": "path-space",
+      "expected": "unknown"
+    },
+    {
+      "id": "non-rooted-rule",
+      "expected": "unknown"
+    },
+    {
+      "id": "unsupported-control-body",
+      "expected": "unknown"
+    },
+    {
+      "id": "google-index-tolerance-not-rfc",
+      "expected": "unknown"
+    },
+    {
+      "id": "google-typo-not-rfc",
+      "expected": "unknown"
+    }
+  ],
+  "http_status_cases": [
+    {
+      "status": 200,
+      "expected": "parse"
+    },
+    {
+      "status": 201,
+      "expected": "unknown"
+    },
+    {
+      "status": 204,
+      "expected": "empty"
+    },
+    {
+      "status": 206,
+      "expected": "unknown"
+    },
+    {
+      "status": 300,
+      "expected": "unknown"
+    },
+    {
+      "status": 301,
+      "expected": "unknown"
+    },
+    {
+      "status": 302,
+      "expected": "unknown"
+    },
+    {
+      "status": 304,
+      "expected": "unknown"
+    },
+    {
+      "status": 400,
+      "expected": "allow"
+    },
+    {
+      "status": 401,
+      "expected": "allow"
+    },
+    {
+      "status": 403,
+      "expected": "allow"
+    },
+    {
+      "status": 404,
+      "expected": "allow"
+    },
+    {
+      "status": 410,
+      "expected": "allow"
+    },
+    {
+      "status": 418,
+      "expected": "allow"
+    },
+    {
+      "status": 429,
+      "expected": "unknown"
+    },
+    {
+      "status": 451,
+      "expected": "allow"
+    },
+    {
+      "status": 500,
+      "expected": "unknown"
+    },
+    {
+      "status": 503,
+      "expected": "unknown"
+    }
+  ]
+}

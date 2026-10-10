@@ -6,8 +6,8 @@ la Search Console et un insight concret. Aucun ordre numérique n'est obligatoir
 
 | Contrôle | Problème métier à montrer | État à cette étape |
 | --- | --- | --- |
-| TS04 | Une règle de préproduction interdit l'exploration attendue | Règles atomiques et lecteur partagé à développer |
-| TS02 | Une migration mène à la mauvaise destination, ajoute un détour ou boucle | Draft.8 : règles et interpréteur ; laboratoire de collecte avant/après à terminer |
+| TS04 | Une règle de préproduction interdit l'exploration attendue | Lecteur partagé candidat et laboratoire robots vérifiés ; intégration normative et règles atomiques à réaliser |
+| TS02 | Une migration mène à la mauvaise destination, ajoute un détour ou boucle | Draft.8 : règles, interpréteur et laboratoire avant/après de 20 requêtes locales ; parcours pratique du plan humain à compléter |
 | TS07 | Un noindex HTTP/source/rendu contredit l'intention ; robots peut empêcher sa lecture | Méthode existante ; couverture rendue et parcours de revue à consolider |
 | TS10 | Canonical HTTP, HTML, rendu, sitemap ou liens désignent des URL incompatibles | Méthode existante ; limites DOM et revue de contenu à résoudre |
 
@@ -15,6 +15,11 @@ TS01 reste la base existante, sans être compté comme l'un de ces quatre object
 L'ordre de dépendance recommandé est TS04, TS02, TS07, TS10. TS02 peut avancer
 indépendamment pendant la définition TS04. Un lecteur robots commun doit servir
 TS04 et TS07, avec les politiques RFC/robot explicitement distinguées.
+
+Le [lecteur robots expérimental](robots-policy-experiment.md) conserve deux profils
+explicites et des cas inconnus. Son laboratoire utilise de vrais échanges locaux
+pour des défauts synthétiques ; il ne finalise pas TS04 et n'est pas encore appelé
+par TS07. L'intégration partagée dans la prochaine candidate reste nécessaire.
 
 Une méthode ne sera déclarée aboutie que lorsque ses règles FR/EN, cas conformes,
 contradictoires et indéterminés, preuves attribuables, collecte ou import explicite,

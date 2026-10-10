@@ -5,6 +5,11 @@ requested on October 10, superseding the ten-control target. Draft.8 adds two
 [TS02 rules](redirects.md), retaining the prior 216 raw cases and adding 38.
 Earlier CI figures below describe their named historical commits only.
 
+The [candidate shared robots reader](robots-policy-experiment.md) and portable
+loopback laboratory prepare TS04/TS07 without changing draft.8 or active rules.
+Le lecteur robots candidat prépare TS04/TS07 ; son intégration normative reste à
+faire. Ses observations expérimentales ne sont pas des verdicts de contrôle.
+
 Priorité actuelle : [quatre contrôles approfondis](four-control-program.md).
 Draft.8 ajoute deux règles TS02, sans finaliser le programme ni l'audit d'Edikka.
 Les résultats CI historiques ci-dessous ne concernent pas cette candidate.

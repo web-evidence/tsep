@@ -1,5 +1,18 @@
 # Change history / Historique
 
+## Robots reader experiment 1 / laboratory 2 — 2026-10-10
+
+Prepare the shared TS04/TS07 reader with explicit bounded RFC and conservative
+Google profiles, winning-line evidence and refusal bounds. Freeze 64 body cases
+under two profiles plus 18 HTTP states before code. Add a portable synthetic
+laboratory with 18 real loopback requests, corrections, retained bytes and offline
+reinterpretation. No active interpreter, protocol, control or report change.
+
+Lecteur robots candidat, profils distincts, preuves des règles retenues et cas
+indéterminés conservés. Le laboratoire 2 émet réellement `googlebot` en minuscules
+pour la comparaison TS07 active ; le premier essai et son refus de casse restent
+dans les preuves locales. [Portée et limites](docs/robots-policy-experiment.md).
+
 ## 0.1.0-draft.8 — 2026-10-10 — TS02 HTTP trajectories
 
 Add two bilingual redirect rules, prior owner-plan review, bounded HTTP comparison,
