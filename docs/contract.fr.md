@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.14
+# Contrat de rapport — TSEP 0.1.0-draft.16
 
 ## Périmètre déclaré
 
@@ -324,3 +324,12 @@ atomique seul ne donne ni C à TS10, ni validation hreflang/image, ni choix Goog
 ## Directives source — draft.15
 
 TS07-A01 et le préalable source A03 acceptent le profil facultatif préalable html-tree-directives-v1. L’accord de deux hypothèses statiques reste distinct des états rendus. Les contextes refusés, encodage, bornes, attribution aux octets, observations et rejeu sont normatifs dans [le contrat bilingue](source-directives.md), inclus dans les empreintes normatives. Les anciennes entrées et exigences de revue restent inchangées. Voir [migration](migration-draft.15.md).
+
+### Source canonical — draft.16
+
+Le profil facultatif préalable html-tree-canonical-v1 étend uniquement la source de
+TS10-A01/A02. Son [contrat normatif bilingue](source-canonical.md) définit applicabilité,
+entrées, hypothèses alternatives, contradictions qualifiées, inconnues, preuves et
+limites. Les revues de rendu/contenu restent exigées ; A04 et les lecteurs DOM ne
+changent pas. Les calculs conservent des observations comparées au rejeu. Voir la
+[migration](migration-draft.16.md), sans modifier rétroactivement une intention.

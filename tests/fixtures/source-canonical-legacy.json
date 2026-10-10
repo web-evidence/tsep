@@ -1,0 +1,6 @@
+{
+  "cases": 488,
+  "prior_corpus_sha256": "fef5f1de1102bfd24f78a0d685632f3b186390708085130897e50c61ac6bcfdd",
+  "sha256": "4f1668f73f17004522de4ec4739f0275a5d7e995bb2de9ba873cb9bb7dcb3f28",
+  "runtime": "Node 24.19.0 for prior TS07 source policy; see optional check script"
+}

@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.15",
+  "version": "0.1.0-draft.16",
   "status": "draft",
   "date": "2026-10-10",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.15"
+      "rule_version": "0.1.0-draft.16"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.15",
+      "rule_version": "0.1.0-draft.16",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.15",
+      "rule_version": "0.1.0-draft.16",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.15"
+      "rule_version": "0.1.0-draft.16"
     },
     {
       "id": "TS08",
@@ -1063,28 +1063,28 @@
             "en": "Each family member and its declared canonicalization strategy."
           },
           "procedure": {
-            "fr": "Lister membres, URL préférée et méthode attendue ; comparer URL finales, Link HTTP, rel=canonical HTML et états rendus nécessaires. Conserver les déclarations multiples, même identiques. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée.",
-            "en": "List members, preferred URL and expected method; compare final URLs, HTTP Link, HTML rel=canonical and required rendered states. Retain multiple declarations, even identical ones. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin."
+            "fr": "Lister membres, URL préférée et méthode attendue ; comparer URL finales, Link HTTP, rel=canonical HTML et états rendus nécessaires. Conserver les déclarations multiples, même identiques. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée. Le profil source facultatif intent.canonical.source_reader=html-tree-canonical-v1 est choisi avant capture ; il compare deux hypothèses statiques complètes, avec positions source/arbre attribuées aux octets. Le contrat source-canonical.md fixe ses frontières.",
+            "en": "List members, preferred URL and expected method; compare final URLs, HTTP Link, HTML rel=canonical and required rendered states. Retain multiple declarations, even identical ones. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.source_reader=html-tree-canonical-v1 compares two complete static source hypotheses with byte-attributed source/tree positions. The source-canonical.md contract defines its boundaries."
           },
           "acceptance": {
-            "fr": "Les signaux présents et ceux exigés par la stratégie désignent la même URL HTTP(S) absolue, sans fragment. HTML dans head ou en-tête Link sont acceptés ; pas d’obligation universelle d’une balise HTML. Une canonical relative est fail pour cette règle TSEP, sans affirmer son invalidité pour Google. Les déclarations répétées identiques sont conservées et peuvent converger ; un conflit attribuable demeure fail malgré une autre capture manquante.",
-            "en": "Present signals and those required by strategy identify the same absolute HTTP(S) URL without a fragment. HTML in head or HTTP Link are accepted; no universal HTML tag requirement. A relative canonical is fail for this TSEP rule without claiming Google cannot interpret it. Retain repeated identical declarations, which may agree; an attributable conflict remains fail despite another missing capture."
+            "fr": "Les signaux présents et ceux exigés par la stratégie désignent la même URL HTTP(S) absolue, sans fragment. HTML dans head ou en-tête Link sont acceptés ; pas d’obligation universelle d’une balise HTML. Une canonical relative est fail pour cette règle TSEP, sans affirmer son invalidité pour Google. Les déclarations répétées identiques sont conservées et peuvent converger ; un conflit attribuable demeure fail malgré une autre capture manquante. Deux lectures source pass donnent pass, deux fail donnent fail ; sinon inconclusive. Une canonical ordinaire dans body reste une contradiction, même de valeur égale. Les valeurs relatives ne sont jamais résolues via base. Les contradictions HTTP Link, redirections ou DOM attribuables restent indépendantes des inconnues source.",
+            "en": "Present signals and those required by strategy identify the same absolute HTTP(S) URL without a fragment. HTML in head or HTTP Link are accepted; no universal HTML tag requirement. A relative canonical is fail for this TSEP rule without claiming Google cannot interpret it. Retain repeated identical declarations, which may agree; an attributable conflict remains fail despite another missing capture. Two source pass yield pass, two fail yield fail, otherwise inconclusive. Ordinary body canonical remains a contradiction even for the preferred URL; relative values are never resolved through base. Attributable HTTP Link, redirect and DOM contradictions remain independent of source unknowns."
           },
           "evidence": {
-            "fr": "Inventaire de famille dans intent ; en-têtes et source (ou record html non applicable pour non-HTML) ; extraction avec emplacement et méthode, DOM requis joint si nécessaire. Relier chaque capture à la famille, au contexte et à la date. Déclarer les méthodes et les états DOM requis avant examen ; lier les DOM à la trace HTTP par empreinte. Une exemption de rendu exige une revue liée à la source et ses pièces, pas une simple affirmation « pas de JS ».",
-            "en": "Family inventory in intent; headers and source (or html non-applicability record for non-HTML); extraction with location and method, required DOM attached when needed. Bind each capture to the family, context and date. Declare required methods and DOM states before assessment; bind DOMs to the HTTP trace by fingerprint. A rendering exemption needs a source-bound review and supporting records, not a bare “no JS” claim."
+            "fr": "Inventaire de famille dans intent ; en-têtes et source (ou record html non applicable pour non-HTML) ; extraction avec emplacement et méthode, DOM requis joint si nécessaire. Relier chaque capture à la famille, au contexte et à la date. Déclarer les méthodes et les états DOM requis avant examen ; lier les DOM à la trace HTTP par empreinte. Une exemption de rendu exige une revue liée à la source et ses pièces, pas une simple affirmation « pas de JS ». Conserver aussi les observations du profil : document, corps, canonical/base, templates, tokens du préfixe, contexte, erreurs, décodage, sources/runtime et décisions séparées. Le rejeu les compare.",
+            "en": "Family inventory in intent; headers and source (or html non-applicability record for non-HTML); extraction with location and method, required DOM attached when needed. Bind each capture to the family, context and date. Declare required methods and DOM states before assessment; bind DOMs to the HTTP trace by fingerprint. A rendering exemption needs a source-bound review and supporting records, not a bare “no JS” claim. Also retain profile observations: document, body, canonical/base, templates, prefix tokens, context, errors, decoding, sources/runtime and separate decisions; replay compares these records."
           },
           "assumptions": {
-            "fr": "La stratégie distingue canonical préférée et doublons ; aucune suppression implicite de paramètres, casse ou slash lors des comparaisons. Dans le DOM structuré, une différence entre href absolu brut et propriété résolue empêche la conclusion de cette surface, sans substituer l’une des valeurs ni affirmer un défaut SEO. La canonical relative ou hors head dans le DOM ordinaire reste une contradiction TSEP ; le shadow ouvert reste indéterminé.",
-            "en": "Strategy distinguishes preferred canonical and duplicates; comparisons do not silently remove parameters or normalize case or slashes. In structured DOM, a difference between absolute raw href and the resolved property prevents a conclusion on that surface, without substituting either value or asserting an SEO defect. A relative or out-of-head canonical in ordinary DOM remains a TSEP contradiction; open shadow remains inconclusive."
+            "fr": "La stratégie distingue canonical préférée et doublons ; aucune suppression implicite de paramètres, casse ou slash lors des comparaisons. Dans le DOM structuré, une différence entre href absolu brut et propriété résolue empêche la conclusion de cette surface, sans substituer l’une des valeurs ni affirmer un défaut SEO. La canonical relative ou hors head dans le DOM ordinaire reste une contradiction TSEP ; le shadow ouvert reste indéterminé. Champ absent : lecteur historique. Nul/inconnu ou Node 24 absent : pas de repli. Ce profil ne valide pas HTML et ne remplace ni rendu ni jugement humain.",
+            "en": "Strategy distinguishes preferred canonical and duplicates; comparisons do not silently remove parameters or normalize case or slashes. In structured DOM, a difference between absolute raw href and the resolved property prevents a conclusion on that surface, without substituting either value or asserting an SEO defect. A relative or out-of-head canonical in ordinary DOM remains a TSEP contradiction; open shadow remains inconclusive. Absent field preserves legacy reading. Null/unknown or absent Node 24 never falls back. This profile neither validates HTML nor replaces rendering or supplied human judgment."
           },
           "inconclusive": {
-            "fr": "Famille/intention incomplète, Link ambigu, document tronqué ou état rendu requis absent : inconclusive. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation.",
-            "en": "Incomplete family/intent, ambiguous Link, truncated document or missing required rendered state: inconclusive. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation."
+            "fr": "Famille/intention incomplète, Link ambigu, document tronqué ou état rendu requis absent : inconclusive. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation. Réinsertion après fermeture explicite du head, descendant indirect, contexte étranger, modificateur/attribut inconnu, shadow déclaré, lecture ou diagnostic borné incomplet empêchent une réussite selon le contrat ; une contradiction distincte qualifiée reste conservée.",
+            "en": "Incomplete family/intent, ambiguous Link, truncated document or missing required rendered state: inconclusive. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. After-head reinsertion, indirect head descendant, foreign context, unknown/modifying attributes, declared shadow, incomplete bounded reading/diagnostics prevent success as defined by the contract; retain any separately qualified contradiction."
           },
           "limitations": {
-            "fr": "Relatif, placement et convergence sont des critères TSEP ; la sélection canonique du moteur n’est pas observée ici. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md.",
-            "en": "Relative URLs, placement and convergence are TSEP criteria; engine canonical selection is not observed here. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md."
+            "fr": "Relatif, placement et convergence sont des critères TSEP ; la sélection canonique du moteur n’est pas observée ici. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md. Portée source uniquement ; A04 et les lecteurs DOM ne sont pas étendus. Les deux hypothèses ne sont pas deux états rendus observés. Aucun choix canonique Google n’est déduit.",
+            "en": "Relative URLs, placement and convergence are TSEP criteria; engine canonical selection is not observed here. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source scope only; A04 and DOM readers are not extended. The hypotheses are not coexisting observed rendered states. No Google canonical choice is inferred."
           },
           "na_inputs": [],
           "non_applicability": {
@@ -1109,28 +1109,28 @@
             "en": "Every preferred destination in declared families."
           },
           "procedure": {
-            "fr": "Tester la destination, conserver GET et contenu ; vérifier que son éventuelle canonical ne repart pas ailleurs. Comparer le contenu à la famille déclarée. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée.",
-            "en": "Test the destination, retain GET and content; verify that any canonical there does not point elsewhere. Compare content with the declared family. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin."
+            "fr": "Tester la destination, conserver GET et contenu ; vérifier que son éventuelle canonical ne repart pas ailleurs. Comparer le contenu à la famille déclarée. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée. Le profil source facultatif intent.canonical.source_reader=html-tree-canonical-v1 est choisi avant capture ; il compare deux hypothèses statiques complètes, avec positions source/arbre attribuées aux octets. Le contrat source-canonical.md fixe ses frontières.",
+            "en": "Test the destination, retain GET and content; verify that any canonical there does not point elsewhere. Compare content with the declared family. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.source_reader=html-tree-canonical-v1 compares two complete static source hypotheses with byte-attributed source/tree positions. The source-canonical.md contract defines its boundaries."
           },
           "acceptance": {
-            "fr": "La destination attendue est accessible directement en 200, sans chaîne ni cycle canonique, avec contenu compatible. Un doublon peut rester en 200 et pointer vers la préférée ; l’URL finale de chaque doublon n’a pas à lui être identique.",
-            "en": "The expected destination is directly accessible with 200, without canonical chains or cycles, and compatible content. A duplicate may remain 200 and point to the preferred URL; not every duplicate final URL must equal it."
+            "fr": "La destination attendue est accessible directement en 200, sans chaîne ni cycle canonique, avec contenu compatible. Un doublon peut rester en 200 et pointer vers la préférée ; l’URL finale de chaque doublon n’a pas à lui être identique. Deux lectures source pass donnent pass, deux fail donnent fail ; sinon inconclusive. Une canonical ordinaire dans body reste une contradiction, même de valeur égale. Les valeurs relatives ne sont jamais résolues via base. Les contradictions HTTP Link, redirections ou DOM attribuables restent indépendantes des inconnues source.",
+            "en": "The expected destination is directly accessible with 200, without canonical chains or cycles, and compatible content. A duplicate may remain 200 and point to the preferred URL; not every duplicate final URL must equal it. Two source pass yield pass, two fail yield fail, otherwise inconclusive. Ordinary body canonical remains a contradiction even for the preferred URL; relative values are never resolved through base. Attributable HTTP Link, redirect and DOM contradictions remain independent of source unknowns."
           },
           "evidence": {
-            "fr": "Trace et corps de la destination reliés à la famille ; graphe des déclarations et comparaison de contenu motivée. La revue humaine de compatibilité identifie son auteur, sa date, chaque membre comparé à la préférence, le jugement motivé et les captures exactes examinées, par empreinte. Une référence manquante, périmée ou une comparaison non établie empêche pass.",
-            "en": "Destination trace and body tied to the family; declaration graph and reasoned content comparison. The human compatibility review identifies its author, date, each member compared with the preferred representation, reasoned judgment and exact examined captures by fingerprint. A missing/stale reference or unestablished comparison prevents pass."
+            "fr": "Trace et corps de la destination reliés à la famille ; graphe des déclarations et comparaison de contenu motivée. La revue humaine de compatibilité identifie son auteur, sa date, chaque membre comparé à la préférence, le jugement motivé et les captures exactes examinées, par empreinte. Une référence manquante, périmée ou une comparaison non établie empêche pass. Conserver aussi les observations du profil : document, corps, canonical/base, templates, tokens du préfixe, contexte, erreurs, décodage, sources/runtime et décisions séparées. Le rejeu les compare.",
+            "en": "Destination trace and body tied to the family; declaration graph and reasoned content comparison. The human compatibility review identifies its author, date, each member compared with the preferred representation, reasoned judgment and exact examined captures by fingerprint. A missing/stale reference or unestablished comparison prevents pass. Also retain profile observations: document, body, canonical/base, templates, prefix tokens, context, errors, decoding, sources/runtime and separate decisions; replay compares these records."
           },
           "assumptions": {
-            "fr": "La proximité du contenu est évaluée dans le contexte métier, sans seuil universel de similarité. Dans le DOM structuré, une différence entre href absolu brut et propriété résolue empêche la conclusion de cette surface, sans substituer l’une des valeurs ni affirmer un défaut SEO. La canonical relative ou hors head dans le DOM ordinaire reste une contradiction TSEP ; le shadow ouvert reste indéterminé.",
-            "en": "Content similarity is assessed in business context without a universal similarity threshold. In structured DOM, a difference between absolute raw href and the resolved property prevents a conclusion on that surface, without substituting either value or asserting an SEO defect. A relative or out-of-head canonical in ordinary DOM remains a TSEP contradiction; open shadow remains inconclusive."
+            "fr": "La proximité du contenu est évaluée dans le contexte métier, sans seuil universel de similarité. Dans le DOM structuré, une différence entre href absolu brut et propriété résolue empêche la conclusion de cette surface, sans substituer l’une des valeurs ni affirmer un défaut SEO. La canonical relative ou hors head dans le DOM ordinaire reste une contradiction TSEP ; le shadow ouvert reste indéterminé. Champ absent : lecteur historique. Nul/inconnu ou Node 24 absent : pas de repli. Ce profil ne valide pas HTML et ne remplace ni rendu ni jugement humain.",
+            "en": "Content similarity is assessed in business context without a universal similarity threshold. In structured DOM, a difference between absolute raw href and the resolved property prevents a conclusion on that surface, without substituting either value or asserting an SEO defect. A relative or out-of-head canonical in ordinary DOM remains a TSEP contradiction; open shadow remains inconclusive. Absent field preserves legacy reading. Null/unknown or absent Node 24 never falls back. This profile neither validates HTML nor replaces rendering or supplied human judgment."
           },
           "inconclusive": {
-            "fr": "Destination non collectée, délai ou contenu non comparable : inconclusive. Un 404/5xx, cycle ou saut observé est une contradiction. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation.",
-            "en": "Uncollected destination, timeout or incomparable content: inconclusive. An observed 404/5xx, cycle or hop is a contradiction. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation."
+            "fr": "Destination non collectée, délai ou contenu non comparable : inconclusive. Un 404/5xx, cycle ou saut observé est une contradiction. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation. Réinsertion après fermeture explicite du head, descendant indirect, contexte étranger, modificateur/attribut inconnu, shadow déclaré, lecture ou diagnostic borné incomplet empêchent une réussite selon le contrat ; une contradiction distincte qualifiée reste conservée.",
+            "en": "Uncollected destination, timeout or incomparable content: inconclusive. An observed 404/5xx, cycle or hop is a contradiction. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. After-head reinsertion, indirect head descendant, foreign context, unknown/modifying attributes, declared shadow, incomplete bounded reading/diagnostics prevent success as defined by the contract; retain any separately qualified contradiction."
           },
           "limitations": {
-            "fr": "Un GET réussi ne prouve pas que Google retiendra cette URL ; aucune stabilité dans le temps déduite d’un instant. Un comparateur peut vérifier les liens et la couverture de la revue fournie ; il ne transforme pas ce jugement en comparaison automatique du contenu. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md.",
-            "en": "A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant. A comparator can check the supplied review’s bindings and coverage; it does not turn that judgment into automatic content comparison. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md."
+            "fr": "Un GET réussi ne prouve pas que Google retiendra cette URL ; aucune stabilité dans le temps déduite d’un instant. Un comparateur peut vérifier les liens et la couverture de la revue fournie ; il ne transforme pas ce jugement en comparaison automatique du contenu. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md. Portée source uniquement ; A04 et les lecteurs DOM ne sont pas étendus. Les deux hypothèses ne sont pas deux états rendus observés. Aucun choix canonique Google n’est déduit.",
+            "en": "A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant. A comparator can check the supplied review’s bindings and coverage; it does not turn that judgment into automatic content comparison. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source scope only; A04 and DOM readers are not extended. The hypotheses are not coexisting observed rendered states. No Google canonical choice is inferred."
           },
           "na_inputs": [],
           "non_applicability": {
@@ -1233,7 +1233,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.15"
+      "rule_version": "0.1.0-draft.16"
     },
     {
       "id": "TS11",
@@ -3400,15 +3400,23 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "5daebd12148776e1055915bd9f438d8761ac3a5c213a3d568dac29825440e3ff"
+      "sha256": "e511cf13eeda1142009c7b23877b9607d73d78730a1c08ad29c496cc6cd83a87"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "14cead0d6a2a8c63222f68bc1264aee6ed2493578375900362d7be36f5cdcbb9"
+      "sha256": "fc796a7ddde95f313f8cf710b20c39a13ad80a6a7cb9d85c5cf5e8357bc66efc"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "1282bc2e3d0cc7b3106778543a19765aeb31c6fc17fc00cecd86f8ebd1cccc2a"
+      "sha256": "0217546c301a46f013a12b958cbbb4b9eba574e24176fa6429a68396a7eed211"
+    },
+    {
+      "path": "docs/source-directives.md",
+      "sha256": "f1f9e5e2b138f66817b6cf11c19361cfb837500752c44919171a0630a0102095"
+    },
+    {
+      "path": "docs/source-canonical.md",
+      "sha256": "75ecc60b33efaaeab0b894f4cd1543f8bcf32dc701abfcd0bfd9debd8a7feda3"
     }
   ]
 }

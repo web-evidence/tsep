@@ -21,24 +21,27 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '16'
+VERSION = '17'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
 
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
-    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'experiments.source_http', 'experiments.source_tree'):
+    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'conformance.source_canonical', 'experiments.source_head', 'experiments.source_http', 'experiments.source_tree'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     result = loaded_sources(ROOT, modules)
     result['collectors/rendered_metadata.js'] = tsep.digest(ROOT/'collectors/rendered_metadata.js')
     from experiments import source_http
     result.update(source_http.identity())
+    from experiments import source_head
+    result.update(source_head.identity())
     result['experiments/source_metadata.mjs'] = tsep.digest(ROOT/'experiments/source_metadata.mjs')
     return result
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS10-A01/A02 : lecteur source canonical préalable, positions et hypothèses attribuées ; rendu/revue toujours nécessaires.','en':'TS10-A01/A02: prior canonical source reader with attributed positions/hypotheses; rendering/reviews remain required.'},
     {'state':'implemented', 'fr':'TS07 : source_reader html-tree-directives-v1 préalable, deux hypothèses statiques et métadonnées attribuées aux octets ; Node 24 facultatif requis pour ce profil, aucun repli. Rendu et revues distincts.',
      'en':'TS07: prior html-tree-directives-v1 source_reader, two static hypotheses with byte-attributed metadata; optional Node 24 required for this profile, no fallback. Rendering and reviews remain separate.'},
     {'state': 'implemented', 'fr': 'TS10-A03 : lecteur sitemap-locations-v1 préalable ; loc de pages distincts des annotations langues/images conservées sans évaluation. Profil historique inchangé, extensions inconnues indéterminées.',

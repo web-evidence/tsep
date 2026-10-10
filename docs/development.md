@@ -1,3 +1,9 @@
+Current integration: draft.16, interpreter 16 / adapter 17 / replay 2.
+Optional prior [canonical source profile](source-canonical.md) extends TS10-A01/A02;
+[explicit migration](migration-draft.16.md), unchanged A04 and DOM readers.
+Intégration actuelle : canonical source qualifiée, preuves et revues toujours exigées.
+The milestones below are historical / Les jalons suivants sont historiques.
+
 Optional [source/head observation 1](source-head-observation.md) now qualifies canonical placement and source-token context, without changing draft.15 outcomes.
 Observation facultative de position canonical et de contexte source ; aucune promotion normative implicite.
 

@@ -1,0 +1,87 @@
+{
+  "kind": "retained-implementation-failure",
+  "synthetic": true,
+  "basis": "Three independent HTTP canonical conflicts were initially masked by media parsing or a missing rendering key in the new profile. Extra oracle frozen before repairing the implementation; expected decisions unchanged. The historical path remains unchanged.",
+  "before": [
+    {
+      "id": "source-canonical-extra-repeated-media-header-fail",
+      "expected": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional Node 24 source profile required; unavailable runtime may reduce coverage, never give a favorable fallback."
+        }
+      ],
+      "actual": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive",
+          "reason": "inconclusive: Missing or repeated Content-Type"
+        }
+      ]
+    },
+    {
+      "id": "source-canonical-extra-missing-media-header-fail",
+      "expected": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional Node 24 source profile required; unavailable runtime may reduce coverage, never give a favorable fallback."
+        }
+      ],
+      "actual": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive",
+          "reason": "inconclusive: Missing or repeated Content-Type"
+        }
+      ]
+    },
+    {
+      "id": "source-canonical-extra-missing-render-plan-header-fail",
+      "expected": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional Node 24 source profile required; unavailable runtime may reduce coverage, never give a favorable fallback."
+        }
+      ],
+      "actual": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive",
+          "reason": "inconclusive: 'rendering'"
+        }
+      ]
+    },
+    {
+      "id": "source-canonical-extra-invalid-render-plan-header-fail",
+      "expected": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional Node 24 source profile required; unavailable runtime may reduce coverage, never give a favorable fallback."
+        }
+      ],
+      "actual": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "fail",
+          "reason": "fail: fail: HTTP Link: [('https://example.com/other', True)]; inconclusive: HTTP source reader failed: /Users/bertrand/.nvm/versions/node/v22.12.0/bin/node: bad option: --permission\n; inconclusive: Missing rendering plan"
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,21 @@
 # Change history / Historique
 
+## 0.1.0-draft.16 — 2026-10-10 — canonical source decisions
+
+Prior optional html-tree-canonical-v1 extends TS10-A01/A02 with qualified source/head
+positions, alternative hypotheses and attributed replay. Independent HTTP/rendered
+conflicts survive source unknowns. 55 authored cases; 488 historical inputs/results
+preserved. Interpreter 16, adapter 17. [Migration](docs/migration-draft.16.md).
+
+FR : lecture source canonical bornée, sans extension implicite A04/DOM ni revue
+humaine inventée. Contrats détaillés désormais liés par empreinte normative.
+
+## 0.1.0-draft.15 — 2026-10-10 — source directives
+
+Prior optional html-tree-directives-v1 extends TS07-A01 and the A03 source prerequisite.
+37 authored cases, interpreter 15, adapter 16; [migration](docs/migration-draft.15.md).
+FR : hypothèses statiques distinctes et observations attribuées, aucun rendu déduit.
+
 ## 0.1.0-draft.14 — 2026-10-10 — page locations in annotated sitemaps
 
 Optional prior sitemap-locations-v1 distinguishes page loc from known XHTML/image

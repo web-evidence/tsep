@@ -191,7 +191,9 @@ def doms(target, doc, plan, final, headers):
     return results
 
 
-def surfaces(target, doc, plan):
+def surfaces(target, doc, plan, *, source_profile=False, required=False, diagnostics=None):
+    if source_profile and 'source_reader' in target['intent']['canonical']:
+        return profiled_surfaces(target, doc, plan, required, diagnostics)
     final, status, headers, body = response(target, doc)
     need(status == 200, 'Representation unavailable for canonical/link extraction')
     is_html = utf8_media(headers, ('text/html',))
@@ -211,17 +213,43 @@ def surfaces(target, doc, plan):
     return final, headers, parsers, rendered
 
 
+def profiled_surfaces(target, doc, plan, required, diagnostics):
+    # Keep final headers/redirects available even if the source media is unsupported.
+    from conformance.source_canonical import Surface, READER
+    final,status,headers,body=response(target,doc)
+    selection=target['intent']['canonical']['source_reader']
+    source=[]
+    if status!=200:
+        return final,headers,[(None,'Representation unavailable for canonical extraction')],[(None,'Rendered representation unavailable')]
+    try:nonhtml=utf8_media(headers,('text/plain',))
+    except ERRORS:nonhtml=False  # Source records the media refusal; headers remain separately assessable.
+    if nonhtml and selection==READER:
+        if not (isinstance(plan,dict) and plan.get('mode')=='exempt' and plan.get('basis')=='non-html'):
+            source=[(None,'Non-HTML rendering record required')]
+    else:
+        source=[(Surface(headers,body,selection,target['intent']['canonical']['preferred_url'],required,
+                         document_url=doc['url'],diagnostics=diagnostics),None)]
+    try:rendered=doms(target,doc,plan,final,headers)
+    except ERRORS as error:rendered=[(None,str(error))]
+    return final,headers,source,rendered
+
+
 def signals(values, preferred, label):
     bad = [(value, valid) for value, valid in values if not valid or value != preferred]
     return ('fail' if bad else 'pass', label + ': ' + repr(values))
 
 
-def declarations(target, member, preferred):
+def declarations(target, member, preferred, diagnostics=None):
     doc = capture(target, target.get('documents'), member['url'])
-    final, headers, source, rendered = surfaces(target, doc, member['rendering'])
+    modern = 'source_reader' in target['intent']['canonical']
+    if not modern:
+        final, headers, source, rendered = surfaces(target, doc, member['rendering'])
     required = member.get('required_methods')
     need(isinstance(required, list) and required and set(required) <= {'html', 'http', 'redirect', 'dom'}
          and len(required) == len(set(required)), 'Missing/unsupported required canonical methods')
+    if modern:
+        final, headers, source, rendered = surfaces(target, doc, member.get('rendering'), source_profile=True,
+                                                    required='html' in required, diagnostics=diagnostics)
     findings = []
     try:
         values = header_canonicals(headers)
@@ -241,6 +269,8 @@ def declarations(target, member, preferred):
         for parser, error in parsers:
             if error:
                 findings.append(('inconclusive', error)); continue
+            if hasattr(parser, 'source_decision'):
+                findings.append(parser.source_decision); continue
             try:
                 values = parser.canonicals
                 findings.append(signals(values, preferred, label + ' canonical' + ('; ' + parser.detail if hasattr(parser, 'detail') else '')))
@@ -259,8 +289,8 @@ def content_review(target, members):
     # Ensure the human review has complete, attributable representations to compare.
     for member in members:
         doc = capture(target, target.get('documents'), member['url'])
-        final, headers, source, rendered = surfaces(target, doc, member['rendering'])
-        need(all(error is None for _, error in source + rendered), 'Content review lacks complete source/DOM inputs')
+        final, headers, source, rendered = surfaces(target, doc, (member.get('rendering') if 'source_reader' in target['intent']['canonical'] else member['rendering']), source_profile=True)
+        need(all(error is None and getattr(parser,'reviewable',True) for parser, error in source + rendered), 'Content review lacks complete source/DOM inputs')
     review = target.get('content_review', {})
     need(review.get('mode') == 'manual' and text_present(review.get('reviewer'))
          and text_present(review.get('reason')), 'Missing reasoned manual content review')
@@ -281,7 +311,7 @@ def content_review(target, members):
     return combined(results)
 
 
-def destination(target, members, preferred):
+def destination(target, members, preferred, diagnostics=None):
     doc = capture(target, target.get('documents'), preferred)
     hops = doc.get('http')
     need(isinstance(hops, list) and hops, 'Missing preferred-URL HTTP capture')
@@ -290,7 +320,7 @@ def destination(target, members, preferred):
     if status != 200:
         return 'fail', 'Preferred URL does not return direct 200: ' + str(status) + '; content not established'
     member = next(m for m in members if m['url'] == preferred)
-    final, headers, source, rendered = surfaces(target, doc, member['rendering'])
+    final, headers, source, rendered = surfaces(target, doc, (member.get('rendering') if 'source_reader' in target['intent']['canonical'] else member['rendering']), source_profile=True, diagnostics=diagnostics)
     findings = []
     try:
         findings.append(signals([(v, True) for v in header_canonicals(headers)], preferred, 'Preferred HTTP canonical'))
@@ -299,6 +329,8 @@ def destination(target, members, preferred):
     for parser, error in source + rendered:
         if error:
             findings.append(('inconclusive', error))
+        elif hasattr(parser, 'source_decision'):
+            findings.append(parser.source_decision)
         else:
             findings.append(guarded(lambda: signals(parser.canonicals, preferred, 'Preferred HTML/DOM canonical'
                 + ('; ' + parser.detail if hasattr(parser, 'detail') else ''))))
@@ -446,7 +478,7 @@ def internal_links(target, members, preferred):
     return combined(findings)
 
 
-def assess(target, rule):
+def assess(target, rule, *, diagnostics=None):
     def run():
         intent, context = target['intent'], target['context']
         need(all(text_present(context.get(k)) for k in ('id', 'network', 'bounds', 'tool', 'tool_version')),
@@ -457,9 +489,9 @@ def assess(target, rule):
         urls = unique_urls([m['url'] for m in members], 'family inventory')
         need(preferred in urls and target['url'] == preferred, 'Target must identify the inventoried preferred family URL')
         if rule == 'TS10-A01':
-            return combined([guarded(declarations, target, member, preferred) for member in members])
+            return combined([guarded(declarations, target, member, preferred, diagnostics) for member in members])
         if rule == 'TS10-A02':
-            return destination(target, members, preferred)
+            return destination(target, members, preferred, diagnostics)
         if rule == 'TS10-A03':
             return sitemap_agreement(target, members, preferred)
         return internal_links(target, members, preferred)

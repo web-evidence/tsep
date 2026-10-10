@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.14
+# Report contract — TSEP 0.1.0-draft.16
 
 ## Declared scope
 
@@ -317,3 +317,12 @@ nor Google selection.
 ## Source directives — draft.15
 
 TS07-A01 and the A03 source prerequisite accept optional prior html-tree-directives-v1. Agreement of two static alternatives stays distinct from rendered states. Refused contexts, encoding, bounds, byte attribution, observations and replay are normative in the [bilingual contract](source-directives.md), included in normative fingerprints. Legacy inputs and review requirements remain unchanged. See [migration](migration-draft.15.md).
+
+### Canonical source — draft.16
+
+The prior optional html-tree-canonical-v1 profile extends TS10-A01/A02 source reading
+only. Its [normative bilingual contract](source-canonical.md) defines applicability,
+inputs, alternative hypotheses, qualified contradictions, unknown contexts, evidence
+and limits. All rendering/content reviews remain required; A04 and DOM readers are
+unchanged. New calculations retain observations compared by replay. See the
+[migration](migration-draft.16.md); no historical intent is retrofitted.
