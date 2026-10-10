@@ -27,7 +27,7 @@ from collectors.preflight import reference_check, media_comparison
 from reports.html import write as write_html
 from provenance.runtime import loaded_sources
 
-VERSION = '4'
+VERSION = '5'
 NAME = 'TSEP guided TS01 collector'
 RULES = ['TS01-A01', 'TS01-A02']
 MAX_TOTAL = 2*1024*1024  # Raw responses per phase; both phases fit input JSON v2.

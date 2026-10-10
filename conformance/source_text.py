@@ -158,7 +158,10 @@ def extract(source):
             need(stack == ['html'], 'Unsupported HTML structural context: '+tag)
         foreign = tag == 'svg' or 'svg' in stack
         if foreign:
-            need(tag in SVG, 'Unsupported SVG context: '+tag)
+            need(tag in SVG or tag == 'style', 'Unsupported SVG context: '+tag)
+            if tag == 'style':
+                need('body' in stack and 'head' not in stack,
+                     'SVG style outside explicit HTML body is unsupported')
         need(not self_closing or foreign or tag in VOID, 'Non-void self-closing HTML: '+tag)
         if tag in VOID or self_closing:
             i = end
@@ -172,7 +175,13 @@ def extract(source):
             need(close is not None, 'Unclosed HTML text context: '+tag)
             stop = close.start()
             value = source[end:stop]
-            if tag == 'script':
+            if foreign and tag == 'style':
+                # SVG style uses foreign-content tokenization, not HTML RAWTEXT.
+                # Reject every literal '<' before the closing tag: markup can
+                # break out of SVG, even inside CSS strings/comments. CDATA and
+                # HTML comments remain outside this deliberately small subset.
+                need('<' not in value, 'Markup in SVG style is unsupported')
+            elif tag == 'script':
                 need('<!--' not in value, 'Escaped script data is unsupported')
             elif tag == 'title':
                 if value:

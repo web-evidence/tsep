@@ -17,9 +17,11 @@ FIXTURES = ROOT/'tests/fixtures'
 HEADERS = {'content-type': ['text/html; charset=utf-8']}
 
 
-def frozen_results():
+def frozen_results(cases=None):
     rows = []
-    for case in json.loads((FIXTURES/'source-text-cases.json').read_text())['cases']:
+    if cases is None:
+        cases = json.loads((FIXTURES/'source-text-cases.json').read_text())['cases']
+    for case in cases:
         try:
             segments = identity_text(HEADERS, case['html'])
             outcome = identity_result('https://example.com/', HEADERS, case['html'],
@@ -33,6 +35,32 @@ def frozen_results():
 
 
 class SourceText(unittest.TestCase):
+    def test_v5_fixture_freeze_and_no_v4_expectation_replacement(self):
+        expected, name = (FIXTURES/'source-text-v5-freeze.sha256').read_text().strip().split('  ', 1)
+        self.assertEqual(hashlib.sha256((ROOT/name).read_bytes()).hexdigest(), expected)
+        data = json.loads((FIXTURES/'source-text-v5-cases.json').read_text())
+        prior = data['supersedes']
+        self.assertEqual(hashlib.sha256((ROOT/prior['file']).read_bytes()).hexdigest(), prior['sha256'])
+        self.assertEqual(prior['changes'], [])
+        original = json.loads((FIXTURES/'source-text-cases.json').read_text())['cases']
+        ids = [c['id'] for c in original+data['cases']]
+        self.assertEqual(len(ids), len(set(ids)))
+
+    def test_v5_frozen_segments_and_atomic_outcomes(self):
+        cases = json.loads((FIXTURES/'source-text-v5-cases.json').read_text())['cases']
+        for case, actual in zip(cases, frozen_results(cases)):
+            with self.subTest(case=case['id']):
+                self.assertEqual(actual, {k: case[k] for k in ('id', 'segments', 'outcome')})
+
+    def test_svg_style_preflight_uses_complete_extraction(self):
+        from collectors.preflight import reference_check
+        for content, state in [('<svg><style>Forbidden</style></svg>Expected', 'matches'),
+                               ('<svg><style>Expected</style></svg>Other', 'contradiction'),
+                               ('Expected Forbidden<svg><style><p>x</p></style></svg>', 'unavailable')]:
+            with self.subTest(state=state):
+                body = ('<html><body>'+content+'</body></html>').encode()
+                self.assertEqual(reference_check(HEADERS, body, 'markers', ['Expected'], ['Forbidden'])['state'], state)
+
     def test_frozen_inventory_is_unchanged(self):
         for row in (FIXTURES/'source-text-freeze.sha256').read_text().splitlines():
             expected, name = row.split('  ', 1)

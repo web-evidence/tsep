@@ -2,7 +2,9 @@
 
 ## Français
 
-`adapters/captures.py` version 5 transforme un fichier de captures fourni en un
+Version courante : [interpréteur 5 / adaptateur 6 / collecteur 5](source-text-v5.md), extension bornée des styles SVG ; draft.7 inchangé.
+
+`adapters/captures.py` version 6 transforme un fichier de captures fourni en un
 rapport TSEP draft.7, ses preuves, sa décision et son export EARL. Il appelle
 l’interpréteur de référence existant et calcule les résultats depuis les entrées
 brutes. Il ne lit pas les verdicts attendus du corpus. Ce composant interne ne
@@ -142,6 +144,8 @@ Ce contrôle du parcours ne constitue pas une seconde interprétation normative.
 
 ## English
 
+Current version: [interpreter 5 / adapter 6 / collector 5](source-text-v5.md), bounded SVG style extension; draft.7 unchanged.
+
 Interpreter 4 / adapter 5 / collector 3 migration is documented in
 [Source text v4](source-text-v4.md). Draft.7, binary input 2 and original captures
 are preserved; re-evaluation creates a new bundle. Selected Python HTML dependency
@@ -150,7 +154,7 @@ runtime difference.
 
 
 
-`adapters/captures.py` version 5 converts supplied offline captures into a TSEP
+`adapters/captures.py` version 6 converts supplied offline captures into a TSEP
 draft.7 report, evidence, decision and EARL export. It uses the existing bounded
 reference interpreter and computes outcomes from raw input, without reading
 conformance expectations. This internal component is neither an independent

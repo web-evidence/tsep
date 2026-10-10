@@ -52,9 +52,9 @@ validation establishes consistency and file integrity.
    The [standalone HTML report](docs/html-report.md) exposes evidence offline and
    compares retained assessments. The [guided TS01 workflow](docs/guided-capture.md)
    captures raw bytes, freezes criteria before measurement and replays offline;
-   interpreter 4 adds a [TS01 source-text extractor](docs/source-text-v4.md)
+   interpreter 5 provides a [TS01 source-text extractor](docs/source-text-v5.md)
    separate from TS07, with frozen counterexamples and explicit limits.
-   Collector 4 preflights reference markers; adapter 5 preserves traceability and
+   Collector 5 preflights reference markers; adapter 6 preserves traceability and
    HTML 4 displays preflight and observed media types. A separate [coverage
    diagnostic](docs/reference-diagnostics.md) inventories candidate limitations
    without issuing verdicts. The protocol remains draft.7.

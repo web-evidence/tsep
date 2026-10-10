@@ -1,5 +1,22 @@
 # Change history / Historique
 
+## Interpreter 5, adapter 6 and collector 5 — 2026-10-10 — local development
+
+Extend SVG style exclusion only within the bounded icon subset: explicit body,
+no literal `<` before the closing tag. Reject markup even inside CSS strings or
+comments; whole extraction stays inconclusive for ambiguity. Freeze 51 additional
+synthetic cases before implementation; preserve all v4 expectations. Nonempty
+noscript stays unresolved because scripting mode is not specified. No normative,
+TS07/TS10, report-format or corpus change. Diagnostic 1 remains explicitly tied
+to interpreter 4 coverage. [Scope and migration](docs/source-text-v5.md).
+
+Exclusion bornée des styles SVG, dans un body explicite, sans `<` littéral avant
+fermeture. Le balisage, même dans une chaîne CSS, garde toute l’extraction
+indéterminée. 51 nouveaux cas figés avant implémentation ; attentes v4 conservées.
+Noscript non vide reste indéterminé, faute de mode scripting précisé au contrat.
+Interpréteur 5, adaptateur 6, collecteur 5 ; protocole draft.7, TS07/TS10, formats
+et corpus inchangés. Aucune publication ni nouvelle CI distante revendiquée.
+
 ## Collector 4, HTML 4 and diagnostic 1 — 2026-10-10 — local development
 
 Add a separate offline HTML construction inventory with no TSEP outcomes. It

@@ -18,12 +18,20 @@ from provenance.runtime import runtime_identity
 
 def check():
     fixtures = ROOT/'tests/fixtures'
-    for line in (fixtures/'source-text-freeze.sha256').read_text().splitlines():
+    freeze = (fixtures/'source-text-freeze.sha256').read_text() + (fixtures/'source-text-v5-freeze.sha256').read_text()
+    for line in freeze.splitlines():
         expected, name = line.split('  ', 1)
         if hashlib.sha256((ROOT/name).read_bytes()).hexdigest() != expected:
             raise ValueError('Frozen fixture changed: '+name)
     rows = []
     cases = json.loads((fixtures/'source-text-cases.json').read_text())['cases']
+    extension = json.loads((fixtures/'source-text-v5-cases.json').read_text())
+    prior = extension['supersedes']
+    if prior['changes'] != [] or hashlib.sha256((ROOT/prior['file']).read_bytes()).hexdigest() != prior['sha256']:
+        raise ValueError('Unexpected replacement of v4 expectations')
+    cases += extension['cases']
+    if len({c['id'] for c in cases}) != len(cases):
+        raise ValueError('Duplicate source-text case ID')
     for case in cases:
         headers = {'content-type': ['text/html; charset=utf-8']}
         try:

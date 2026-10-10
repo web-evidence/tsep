@@ -2,14 +2,16 @@
 
 ## Français
 
+Version courante : [collecteur 5 / interpréteur 5 / adaptateur 6](source-text-v5.md). Styles SVG bornés ; nouvelle référence/intention exigée après changement d’outil.
+
 **Collecteur 4 / intention guidée 3 :** les marqueurs sont vérifiés sur la référence
 avant scellement. Contradiction → refus ; extraction non prise en charge → avertissement
 explicite conservé dans le reçu, l’intention et le rapport. La vérification est
 recalculée avant toute nouvelle requête. Les types de média sont observés séparément,
 sans changer TS01. Voir [diagnostic et migration](reference-diagnostics.md).
 
-Le collecteur version 4 réalise des GET anonymes sur **1 à 10 URL explicitement
-choisies et autorisées**, puis utilise l’interpréteur version 4, l’adaptateur version 5 et le
+Le collecteur version 5 réalise des GET anonymes sur **1 à 10 URL explicitement
+choisies et autorisées**, puis utilise l’interpréteur version 5, l’adaptateur version 6 et le
 rapport HTML version 4. Python 3.9+, bibliothèque standard. Protocole draft.7,
 TS01–TS44, contrat du rapport et corpus normatif inchangés. Cette couverture
 d’outil n’est ni une certification, ni une observation d’indexation/classement.
@@ -196,6 +198,8 @@ le HTML ; l’inventaire de couverture est déclaré par l’outil, sans validat
 
 ## English
 
+Current: [collector 5 / interpreter 5 / adapter 6](source-text-v5.md). Bounded SVG styles; new reference/intent required after tool changes.
+
 **Collector 4 / guided intent 3:** markers are checked on the reference before
 sealing. Contradiction refuses the seal; unsupported extraction is a recorded
 warning in the receipt, intent and report. It is rechecked before any evaluation
@@ -210,8 +214,8 @@ runtime difference.
 
 
 
-Collector version 4 performs anonymous GET requests for **1–10 explicitly selected,
-authorized URLs**, using interpreter 4, adapter 5 and HTML engine 4.
+Collector version 5 performs anonymous GET requests for **1–10 explicitly selected,
+authorized URLs**, using interpreter 5, adapter 6 and HTML engine 4.
 Python 3.9+ standard library only. Protocol draft.7, TS01–TS44, the report contract
 and normative corpus are unchanged. This is tool coverage, not certification or
 evidence of indexing/ranking.
