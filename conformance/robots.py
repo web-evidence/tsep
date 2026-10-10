@@ -16,9 +16,18 @@ import tsep
 from conformance import evaluate, http
 from conformance.http import Unknown, need
 
-VERSION = '2'
+VERSION = '3'
 RFC = 'rfc9309-bounded-v1'
 GOOGLE = 'google-documented-core-v1'
+GOOGLE_FIELDS = 'google-robotstxt-fields-v2'
+PROFILES = (RFC, GOOGLE, GOOGLE_FIELDS)
+GOOGLE_PROFILES = (GOOGLE, GOOGLE_FIELDS)
+# Closed registry, not an inference that every unknown field is harmless.
+# Source and retained capture fingerprints: provenance/robots-fields-v2.json.
+FIELDS_SOURCE = 'google/robotstxt@22b355ff855419e6a3ff8ff09c0ad7fdb17116f9/reporting_robots.cc'
+NON_ACCESS_FIELDS = frozenset(('sitemap', 'clean-param', 'content-signal',
+    'content-usage', 'crawl-delay', 'domain', 'host', 'noarchive', 'nofollow',
+    'noindex', 'request-rate', 'revisit-after', 'visit-time'))
 MAX_BYTES = 500 * 1024
 MAX_PATH = 8192
 MAX_LINES = 20000
@@ -102,8 +111,10 @@ def matches(path, pattern, budget):
 def body_policy(body, target, product_token, profile):
     result = {'profile': profile, 'decision': 'unknown', 'winning_lines': [],
               'selected_groups': [], 'ignored_lines': [], 'limitation': LIMITATION}
+    if profile == GOOGLE_FIELDS:
+        result.update(ignored_fields=[], ignored_fields_source=FIELDS_SOURCE)
     try:
-        need(profile in (RFC, GOOGLE), 'Explicit supported body profile required')
+        need(profile in PROFILES, 'Explicit supported body profile required')
         need(isinstance(product_token, str) and re.fullmatch('[A-Za-z_-]+', product_token),
              'Product token must be declared separately from HTTP User-Agent')
         _, path = address(target)
@@ -157,9 +168,14 @@ def body_policy(body, target, product_token, profile):
                 rules.append({'line': number, 'field': field, 'pattern': value,
                               'normalized': normalized(value, profile)})
             else:
-                need(profile == RFC or field in ('sitemap', 'crawl-delay', 'host'),
+                known = NON_ACCESS_FIELDS if profile == GOOGLE_FIELDS else ('sitemap', 'crawl-delay', 'host')
+                need(profile == RFC or field in known,
                      'Unknown directive/tolerance outside Google subset at line '+str(number))
                 result['ignored_lines'].append(number)
+                if profile == GOOGLE_FIELDS:
+                    result['ignored_fields'].append({'line': number, 'field': field,
+                        'value': value, 'raw_line': raw_line,
+                        'scope': 'Recorded field outside access-rule interpretation; no usage-policy assessment'})
         if agents:
             groups.append((agents, rules))
         specific = [(a, r) for a, r in groups if product_token.lower() in a]
@@ -209,7 +225,7 @@ def inspect_capture(data):
               'network_requests': 0}
     try:
         profile = data['profile']
-        need(profile in (RFC, GOOGLE), 'Explicit supported profile required')
+        need(profile in PROFILES, 'Explicit supported profile required')
         origin, origin_path = address(data['origin'])
         target_origin, _ = address(data['target'])
         need(origin == target_origin and origin_path == '/', 'Target must belong to declared origin')
@@ -233,10 +249,10 @@ def inspect_capture(data):
         result.update(robots_url=robots_url, final_robots_url=final_url, http_status=status,
                       redirects=len(hops)-1, observed_at=data['observed_at'])
         result['trace_sha256'] = evaluate.binding_digest(hops)
-        if profile == GOOGLE and google_status(status) == 'allow':
+        if profile in GOOGLE_PROFILES and google_status(status) == 'allow':
             result.update(decision='allow', reason='Observed 4xx except 429: no restrictions under documented Google status policy; cache not observed')
         else:
-            need(status in (200, 204) and (profile == GOOGLE or status == 200),
+            need(status in (200, 204) and (profile in GOOGLE_PROFILES or status == 200),
                  'HTTP/cache history outside declared profile coverage')
             if status == 204:
                 need(not body, '204 body must be empty')

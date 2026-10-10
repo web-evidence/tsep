@@ -1,0 +1,67 @@
+{
+  "kind": "primary-source-observation",
+  "version": 1,
+  "sources": [
+    {
+      "url": "https://api.github.com/repos/google/robotstxt/commits/master",
+      "resolved_url": "https://api.github.com/repos/google/robotstxt/commits/master",
+      "captured_at": "2026-10-10T17:36:51.793311+00:00",
+      "sha256": "c2713d1da54eac55095f8e43002eb05c90dd75b0dd537f640c3f8d6bd7456e90",
+      "bytes": 6982,
+      "scope": "Read-only primary-source documentation/code capture; code not executed"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/google/robotstxt/22b355ff855419e6a3ff8ff09c0ad7fdb17116f9/reporting_robots.cc",
+      "resolved_url": "https://raw.githubusercontent.com/google/robotstxt/22b355ff855419e6a3ff8ff09c0ad7fdb17116f9/reporting_robots.cc",
+      "captured_at": "2026-10-10T17:36:52.097985+00:00",
+      "sha256": "36153bf94160e063e8832a068240181ddab286ad1f705ef4d045198ff00a321f",
+      "bytes": 3347,
+      "scope": "Read-only primary-source documentation/code capture; code not executed"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/google/robotstxt/22b355ff855419e6a3ff8ff09c0ad7fdb17116f9/robots.cc",
+      "resolved_url": "https://raw.githubusercontent.com/google/robotstxt/22b355ff855419e6a3ff8ff09c0ad7fdb17116f9/robots.cc",
+      "captured_at": "2026-10-10T17:36:52.405768+00:00",
+      "sha256": "d05a7fa74c0e8b9fc440d15f4c3ae9a80873c0d950e569de2926303fd75ed473",
+      "bytes": 24644,
+      "scope": "Read-only primary-source documentation/code capture; code not executed"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/google/robotstxt/22b355ff855419e6a3ff8ff09c0ad7fdb17116f9/LICENSE",
+      "resolved_url": "https://raw.githubusercontent.com/google/robotstxt/22b355ff855419e6a3ff8ff09c0ad7fdb17116f9/LICENSE",
+      "captured_at": "2026-10-10T17:36:52.757044+00:00",
+      "sha256": "c79a7fea0e3cac04cd43f20e7b648e5a0ff8fa5344e644b0ee09ca1162b62747",
+      "bytes": 11361,
+      "scope": "Read-only primary-source documentation/code capture; code not executed"
+    },
+    {
+      "url": "https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec",
+      "resolved_url": "https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec",
+      "captured_at": "2026-10-10T17:36:53.688002+00:00",
+      "sha256": "aeab45c18a537edf6510100c7c04faebbccf192a9353c95a2d9be9321a7e275a",
+      "bytes": 99405,
+      "scope": "Read-only primary-source documentation/code capture; code not executed"
+    }
+  ],
+  "local_capture_location": ".local/robots-fields-2026-10-10/references (not distributed)",
+  "capture_distribution_reason": "Exact public sources retained privately for this observation. Distributed implementation is self-contained and links immutable code, with observed fingerprints; no private infrastructure dependency.",
+  "documentation_scope": "General ancillary-field grouping rule; separate from the named-field registry.",
+  "code_scope": "Pinned reporting registry and parser tolerance inspection; no Googlebot execution or full parser equivalence.",
+  "google_code_commit": "22b355ff855419e6a3ff8ff09c0ad7fdb17116f9",
+  "registry": [
+    "clean-param",
+    "content-signal",
+    "content-usage",
+    "crawl-delay",
+    "domain",
+    "host",
+    "noarchive",
+    "nofollow",
+    "noindex",
+    "request-rate",
+    "revisit-after",
+    "visit-time",
+    "sitemap"
+  ],
+  "source_license": "Google code repository Apache-2.0; local LICENSE capture retained. No third-party implementation copied."
+}

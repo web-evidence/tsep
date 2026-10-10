@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.12
+# Report contract — TSEP 0.1.0-draft.13
 
 ## Declared scope
 
@@ -226,13 +226,13 @@ summaries show the same cause. Neither the decision nor exit codes change.
 ## Versions and implementation claims
 
 Pin both version and protocol SHA-256. Cite IDs as
-`TSEP@0.1.0-draft.12:TS01`. Never silently replace a released artifact. Changes to
+`TSEP@0.1.0-draft.13:TS01`. Never silently replace a released artifact. Changes to
 applicability, expectations, required evidence or decisions require a new version
 and migration note. TS01–TS44 are permanent identities, not reusable slots.
 
 This candidate has one implementation of report validation. Passing its tests
 allows the narrow statement “passes the bundled report-interchange tests for
-0.1.0-draft.12.” It does not establish implementation of all 44 assessment methods.
+0.1.0-draft.13.” It does not establish implementation of all 44 assessment methods.
 An implementation must publish per-rule mapping and limitations before making a
 broader claim. No compatibility with a third-party tool has yet been demonstrated.
 
@@ -291,3 +291,14 @@ expected. It does not prove denial to Googlebot. Missing reviews and population
 limits remain; the extension alone cannot establish C. Absent field preserves
 legacy behavior. Retain the original package and declare a new plan before new
 captures: [draft.12 migration](migration-draft.12.md).
+
+## Known robots fields profile — draft.13
+
+Optional prior `google-robotstxt-fields-v2` records twelve fields classified as
+unused in google/robotstxt reporting at commit
+`22b355ff855419e6a3ff8ff09c0ad7fdb17116f9`, plus sitemap. These fields change neither
+access decisions nor groups. The closed registry, separate documentation/code
+sources, retained values and display bounds are in the
+[draft.13 migration](migration-draft.13.md). No TS42 verdict follows. Near names
+and other fields remain inconclusive; old profiles and required reviews stay
+unchanged. Never extend a prior intent retroactively.

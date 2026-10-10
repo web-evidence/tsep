@@ -2,6 +2,13 @@
 
 ## Français
 
+Draft.13 ajoute le profil préalable facultatif `google-robotstxt-fields-v2`.
+Le lecteur 3 conserve les champs d'un registre fermé issu de `google/robotstxt`
+et `sitemap`, sans leur attribuer d'effet sur les règles d'accès ni les groupes.
+Les noms inconnus restent indéterminés ; les profils antérieurs sont inchangés.
+Les valeurs relevées ne constituent pas une évaluation TS42 ou de préférences
+d'usage. Liste exacte, sources, conservation et migration : [draft.13](migration-draft.13.md).
+
 Draft.12 étend à TS04 le champ préalable `directive_crawler=googlebot` de TS07.
 Il conserve le client HTTP exact dans `crawler`, exige un `robots_policy` explicite
 avec produit Googlebot concordant, et limite la conclusion à la représentation
@@ -123,6 +130,12 @@ Le laboratoire local reste synthétique, même quand les requêtes HTTP sont ré
 Aucune réussite ne prouve l'indexation, le rendu du moteur ou une conformité d'Edikka.
 
 ## English
+
+Draft.13 adds optional predeclared `google-robotstxt-fields-v2`. Reader 3 records
+a closed registry from pinned `google/robotstxt` source plus sitemap, without
+turning these fields into access rules or group boundaries. Unknown names remain
+inconclusive; earlier profiles are unchanged. Recorded values are not a TS42 or
+usage-preference assessment. See [registry, sources and migration](migration-draft.13.md).
 
 Draft.12 extends TS07's prior `directive_crawler=googlebot` field to TS04. Keep
 the exact HTTP client in `crawler`, require an explicit matching Googlebot product

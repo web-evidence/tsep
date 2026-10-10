@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.12
+# Contrat de rapport — TSEP 0.1.0-draft.13
 
 ## Périmètre déclaré
 
@@ -232,13 +232,13 @@ FR/EN affiche la même cause. Décision et codes de sortie restent inchangés.
 
 ## Versions et revendications d’implémentation
 
-Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.12:TS01`. Ne jamais
+Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.13:TS01`. Ne jamais
 remplacer silencieusement un artefact publié. Changer applicabilité, attendus,
 preuves ou décisions exige une nouvelle version et une note de migration.
 TS01–TS44 restent des identités permanentes.
 
 La suite démontre seulement « réussit les tests d’échange des rapports fournis
-avec 0.1.0-draft.12 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
+avec 0.1.0-draft.13 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
 plus large exige une correspondance par règle et des limites publiées. Aucune
 interopérabilité avec un outil tiers n’a encore été démontrée.
 
@@ -298,3 +298,14 @@ ne prouve pas un refus à Googlebot. Les revues manquantes et limites de populat
 demeurent ; l'extension ne suffit pas à conclure C. Sans nouveau champ, les
 anciennes entrées gardent leur comportement. Conserver le dossier initial, puis
 déclarer un nouveau plan avant les nouvelles captures : [migration draft.12](migration-draft.12.md).
+
+## Profil robots à champs identifiés — draft.13
+
+Le profil facultatif `google-robotstxt-fields-v2`, déclaré avant capture, relève
+les douze champs classés inutilisés dans le reporting de google/robotstxt au commit
+`22b355ff855419e6a3ff8ff09c0ad7fdb17116f9`, plus sitemap. Ces champs ne modifient
+ni l'accès ni les groupes. La liste, les sources distinctes (documentation et
+code), les valeurs conservées et les bornes d'affichage figurent dans la
+[migration draft.13](migration-draft.13.md). Aucun verdict TS42 n'en découle.
+Les noms proches et autres champs restent indéterminés ; anciens profils et
+exigences de revue inchangés. Aucune extension rétroactive d'une intention.

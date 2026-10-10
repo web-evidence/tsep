@@ -6,7 +6,7 @@ la Search Console et un insight concret. Aucun ordre numérique n'est obligatoir
 
 | Contrôle | Problème métier à montrer | État à cette étape |
 | --- | --- | --- |
-| TS04 | Une règle de préproduction interdit l'exploration attendue | Draft.12 : deux règles, lecteur partagé TS07, portée du client explicite, ressources et parcours de revue ; chaque application réelle et revue conserve son dossier |
+| TS04 | Une règle de préproduction interdit l'exploration attendue | Draft.13 : deux règles, lecteur partagé TS07, registre fermé de champs hors portée accès, portée du client explicite, ressources et parcours de revue ; chaque application réelle et revue conserve son dossier |
 | TS02 | Une migration mène à la mauvaise destination, ajoute un détour ou boucle | Draft.8 : règles et laboratoire ; parcours préalable 1 prépare et importe la décision fournie puis lie les captures. Décision humaine et application Edikka à établir |
 | TS07 | Un noindex HTTP/source/rendu contredit l'intention ; robots peut empêcher sa lecture | Draft.11 : lecteur structuré et laboratoire de navigation attribuée ; exécutions livrées séparément, revue et application réelle à établir |
 | TS10 | Canonical HTTP, HTML, rendu, sitemap ou liens désignent des URL incompatibles | Draft.11 : lecteur structuré canonical/liens et laboratoire attribué ; exécutions livrées séparément, limites source et revue de contenu à éprouver |
@@ -19,7 +19,8 @@ indépendamment pendant la définition TS04. Un lecteur robots commun doit servi
 TS04 et TS07, avec les politiques RFC/robot explicitement distinguées.
 
 Le [lecteur robots partagé](robots.md) est intégré dans draft.9 pour TS04 et TS07,
-avec deux profils explicites et un profil historique fixe. Le laboratoire fournit
+avec deux profils explicites initiaux et un profil historique fixe ; draft.13 ajoute
+un troisième profil explicite, sans modifier les précédents. Le laboratoire fournit
 les paquets natifs et des questions de revue sans réponses inventées. Une méthode
 exécutable n'est pas une recette humaine ni une évaluation réelle d'Edikka.
 

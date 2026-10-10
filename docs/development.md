@@ -1,7 +1,14 @@
-Current integration: draft.12, interpreter 12 / adapter 13.
+Current integration: draft.13, interpreter 13 / adapter 14 / robots reader 3.
+The optional, predeclared Google fields profile records a closed registry without
+treating these fields as access rules. Earlier profiles and reviews stay unchanged.
+Intégration actuelle : draft.13, champs robots hors portée accès relevés selon un
+registre épinglé ; aucun verdict TS42 ni observation Googlebot. [Migration](migration-draft.13.md).
+The named milestones below are historical / Les jalons nommés ci-dessous sont historiques.
+
+Earlier integration: draft.12, interpreter 12 / adapter 13.
 TS04 shares TS07's prior directive_crawler declaration; actual HTTP client scope
 and engine observations remain distinct. [Migration](migration-draft.12.md).
-Intégration actuelle : draft.12, portée du client TS04 explicite ; aucune revue
+Intégration antérieure : draft.12, portée du client TS04 explicite ; aucune revue
 humaine ou observation Googlebot déduite. Les jalons ci-dessous sont historiques.
 Offline [Search Console diagnostic 1](search-console-observations.md) links supplied
 inspection responses to replayed technical evidence; no account access or TS08/TS12 verdict.

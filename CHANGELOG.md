@@ -1,5 +1,18 @@
 # Change history / Historique
 
+## 0.1.0-draft.13 — 2026-10-10 — known robots fields outside access scope
+
+Optional prior `google-robotstxt-fields-v2` records thirteen named fields without
+changing access rules or groups. The registry is pinned to Google source; unknown
+names and typos remain inconclusive. Earlier profiles, actual-client scope and
+human review requirements remain unchanged. Interpreter 13, adapter 14, reader 3;
+44 prefrozen body cases and 18 control cases, retaining all 409 earlier cases.
+[Migration and sources](docs/migration-draft.13.md). No engine or TS42 assessment.
+
+FR : registre fermé de champs conservés hors portée accès, nom du profil explicite,
+sources distinctes, inconnus et limites préservés. Une interprétation plus complète
+de la politique ne constitue ni une correction du site ni une revue humaine.
+
 ## 0.1.0-draft.12 — 2026-10-10 — TS04 actual-client scope
 
 TS04 accepts the prior directive_crawler=googlebot field already used by TS07,

@@ -9,10 +9,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
 from conformance import evaluate, http, robots as core
-from conformance.robots import (RFC, GOOGLE, MAX_BYTES, MAX_PATH, MAX_LINES, MAX_RULES,
+from conformance.robots import (RFC, GOOGLE, GOOGLE_FIELDS, MAX_BYTES, MAX_PATH, MAX_LINES, MAX_RULES,
                                 MAX_STEPS, LIMITATION, address, normalized, matches, need)
 from provenance.runtime import loaded_sources
-VERSION = '2'
+VERSION = '3'
 
 
 def body_policy(body, target, product_token, profile):

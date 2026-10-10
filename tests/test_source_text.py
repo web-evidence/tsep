@@ -123,7 +123,7 @@ class SourceText(unittest.TestCase):
     def test_ts07_and_ts10_outputs_match_prechange_baseline(self):
         corpus = json.loads((ROOT/'conformance/cases.json').read_text())
         additions = {c['id'] for c in json.loads((FIXTURES/'redirect-cases-v1.json').read_text())['cases']}
-        for name in ('robots-control-v1-cases.json', 'robots-control-v1-extra.json', 'structured-rendering-v1-cases.json', 'directive-agent-v1-cases.json', 'directive-agent-access-v1-cases.json', 'canonical-attributes-v1-cases.json', 'robots-agent-v1-cases.json', 'robots-agent-hops-v1-cases.json'):
+        for name in ('robots-control-v1-cases.json', 'robots-control-v1-extra.json', 'structured-rendering-v1-cases.json', 'directive-agent-v1-cases.json', 'directive-agent-access-v1-cases.json', 'canonical-attributes-v1-cases.json', 'robots-agent-v1-cases.json', 'robots-agent-hops-v1-cases.json', 'robots-fields-control-v1-cases.json'):
             additions.update(c['id'] for c in json.loads((FIXTURES/name).read_text())['cases'])
         data = [{'id': c['id'], 'rows': [r for r in evaluate(c['input']) if r['rule_id'].startswith(('TS07-', 'TS10-'))]}
                 for c in corpus['cases'] if c['id'] not in additions]

@@ -1,0 +1,717 @@
+{
+  "synthetic": true,
+  "known_non_access_fields": [
+    "clean-param",
+    "content-signal",
+    "content-usage",
+    "crawl-delay",
+    "domain",
+    "host",
+    "noarchive",
+    "nofollow",
+    "noindex",
+    "request-rate",
+    "revisit-after",
+    "visit-time",
+    "sitemap"
+  ],
+  "cases": [
+    {
+      "id": "clean-param-allow",
+      "body": "User-agent: *\nclean-param: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "clean-param"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "clean-param-disallow",
+      "body": "User-agent: *\nclean-param: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "clean-param"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "content-signal-allow",
+      "body": "User-agent: *\ncontent-signal: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "content-signal"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "content-signal-disallow",
+      "body": "User-agent: *\ncontent-signal: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "content-signal"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "content-usage-allow",
+      "body": "User-agent: *\ncontent-usage: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "content-usage"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "content-usage-disallow",
+      "body": "User-agent: *\ncontent-usage: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "content-usage"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "crawl-delay-allow",
+      "body": "User-agent: *\ncrawl-delay: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "crawl-delay"
+        ]
+      ],
+      "expected_v1": "allow"
+    },
+    {
+      "id": "crawl-delay-disallow",
+      "body": "User-agent: *\ncrawl-delay: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "crawl-delay"
+        ]
+      ],
+      "expected_v1": "disallow"
+    },
+    {
+      "id": "domain-allow",
+      "body": "User-agent: *\ndomain: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "domain"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "domain-disallow",
+      "body": "User-agent: *\ndomain: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "domain"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "host-allow",
+      "body": "User-agent: *\nhost: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "host"
+        ]
+      ],
+      "expected_v1": "allow"
+    },
+    {
+      "id": "host-disallow",
+      "body": "User-agent: *\nhost: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "host"
+        ]
+      ],
+      "expected_v1": "disallow"
+    },
+    {
+      "id": "noarchive-allow",
+      "body": "User-agent: *\nnoarchive: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "noarchive"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "noarchive-disallow",
+      "body": "User-agent: *\nnoarchive: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "noarchive"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "nofollow-allow",
+      "body": "User-agent: *\nnofollow: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "nofollow"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "nofollow-disallow",
+      "body": "User-agent: *\nnofollow: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "nofollow"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "noindex-allow",
+      "body": "User-agent: *\nnoindex: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "noindex"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "noindex-disallow",
+      "body": "User-agent: *\nnoindex: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "noindex"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "request-rate-allow",
+      "body": "User-agent: *\nrequest-rate: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "request-rate"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "request-rate-disallow",
+      "body": "User-agent: *\nrequest-rate: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "request-rate"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "revisit-after-allow",
+      "body": "User-agent: *\nrevisit-after: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "revisit-after"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "revisit-after-disallow",
+      "body": "User-agent: *\nrevisit-after: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "revisit-after"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "visit-time-allow",
+      "body": "User-agent: *\nvisit-time: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "visit-time"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "visit-time-disallow",
+      "body": "User-agent: *\nvisit-time: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "visit-time"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "sitemap-allow",
+      "body": "User-agent: *\nsitemap: unused\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "sitemap"
+        ]
+      ],
+      "expected_v1": "allow"
+    },
+    {
+      "id": "sitemap-disallow",
+      "body": "User-agent: *\nsitemap: unused\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "sitemap"
+        ]
+      ],
+      "expected_v1": "disallow"
+    },
+    {
+      "id": "interleaved-agents",
+      "body": "User-agent: Googlebot\nContent-signal: search=no\nUser-agent: Otherbot\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        4
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "content-signal"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "extension-after-rule",
+      "body": "User-agent: *\nDisallow: /\nContent-signal: search=yes\nUser-agent: Googlebot\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        5
+      ],
+      "ignored_fields": [
+        [
+          3,
+          "content-signal"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "specific-block",
+      "body": "User-agent: *\nAllow: /\nContent-signal: search=yes\nUser-agent: Googlebot\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        5
+      ],
+      "ignored_fields": [
+        [
+          3,
+          "content-signal"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "specific-merge",
+      "body": "User-agent: Googlebot\nDisallow: /page\nUser-agent: Otherbot\nDisallow: /other\nUser-agent: Googlebot\nContent-usage: none\nAllow: /page\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        7
+      ],
+      "ignored_fields": [
+        [
+          6,
+          "content-usage"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "before-agent",
+      "body": "Content-signal: search=no\nUser-agent: *\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          1,
+          "content-signal"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "mixed-case-tabs-empty",
+      "body": "User-agent: *\n\tCoNtEnT-SiGnAl\t: \t # comment\nDisallow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "disallow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "content-signal"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "empty-access-delimits",
+      "body": "User-agent: Otherbot\nDisallow:\nContent-signal: search=yes\nUser-agent: Googlebot\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        5
+      ],
+      "ignored_fields": [
+        [
+          3,
+          "content-signal"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "only-ancillary",
+      "body": "User-agent: *\nContent-signal: search=no\nNoindex: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [],
+      "ignored_fields": [
+        [
+          2,
+          "content-signal"
+        ],
+        [
+          3,
+          "noindex"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "value-cannot-inject-rule",
+      "body": "User-agent: *\nContent-signal: Disallow: /\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "allow",
+      "winning_lines": [
+        3
+      ],
+      "ignored_fields": [
+        [
+          2,
+          "content-signal"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "unknown-neighbor",
+      "body": "User-agent: *\nContent-signal: search=yes\nUnicorn: /\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "unknown",
+      "winning_lines": [],
+      "ignored_fields": [
+        [
+          2,
+          "content-signal"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "typo-access",
+      "body": "User-agent: *\nDisalow: /\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "unknown",
+      "winning_lines": [],
+      "ignored_fields": [],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "prefix-access",
+      "body": "User-agent: *\nDisallow-extra: /\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "unknown",
+      "winning_lines": [],
+      "ignored_fields": [],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "missing-colon",
+      "body": "User-agent: *\nContent-signal search=yes\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "unknown",
+      "winning_lines": [],
+      "ignored_fields": [],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "lookalike-extension",
+      "body": "User-agent: *\nContent_signal: search=yes\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "unknown",
+      "winning_lines": [],
+      "ignored_fields": [],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "bad-agent",
+      "body": "User-agent: Googlebot*\nContent-signal: search=yes\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "unknown",
+      "winning_lines": [],
+      "ignored_fields": [],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "percent-refusal",
+      "body": "User-agent: *\nContent-signal: search=yes\nAllow: /%61\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "unknown",
+      "winning_lines": [],
+      "ignored_fields": [
+        [
+          2,
+          "content-signal"
+        ]
+      ],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "unknown-content-signals",
+      "body": "User-agent: *\ncontent-signals: search=yes\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "unknown",
+      "winning_lines": [],
+      "ignored_fields": [],
+      "expected_v1": "unknown"
+    },
+    {
+      "id": "unknown-contentsignal",
+      "body": "User-agent: *\ncontentsignal: search=yes\nAllow: /\n",
+      "target": "https://example.com/page",
+      "product_token": "Googlebot",
+      "expected_v2": "unknown",
+      "winning_lines": [],
+      "ignored_fields": [],
+      "expected_v1": "unknown"
+    }
+  ]
+}

@@ -23,7 +23,7 @@ def plan(target):
     need(tsep.timestamp(intent['declared_at']) <= tsep.timestamp(target['observed_at']), 'Intention postérieure à l’observation')
     need(present(intent.get('crawler')), 'Client HTTP non déclaré')
     policy = intent.get('robots_policy', {})
-    need(policy.get('profile') in (robots.RFC, robots.GOOGLE) and present(policy.get('product_token')),
+    need(policy.get('profile') in robots.PROFILES and present(policy.get('product_token')),
          'Profil robots explicite et product token requis')
     value = intent.get('robots_plan', {})
     origin, path = robots.address(value.get('origin'))
@@ -66,6 +66,17 @@ def policy_for(target, url, client_representation_only=False):
     reading = observation.get('body_reading', {})
     lines = [(r['line'], r['field'], r['pattern']) for r in reading.get('winning_lines', [])]
     reason = observation['reason']+'; profil='+str(policy.get('profile'))+'; lignes='+json.dumps(lines, ensure_ascii=False)
+    if policy.get('profile') == robots.GOOGLE_FIELDS:
+        # Complete values remain in the retained robots response and reader output.
+        # Bound the repeated per-resource explanation without hiding truncation.
+        fields = reading.get('ignored_fields', [])
+        preview = [{'line': row['line'], 'field': row['field'], 'value': row['value'][:160],
+                    'value_truncated': len(row['value']) > 160} for row in fields[:16]]
+        reason += ('; champs relevés hors portée accès / fields outside access scope='
+                   + json.dumps(preview, ensure_ascii=False)
+                   + '; champs supplémentaires / additional fields='+str(max(0, len(fields)-16))
+                   + '; valeurs intégrales / complete values: retained robots response'
+                   + '; registre / registry='+robots.FIELDS_SOURCE)
     return observation['decision'], reason
 
 

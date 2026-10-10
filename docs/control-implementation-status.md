@@ -2,10 +2,11 @@
 
 ## Current snapshot / État actuel — 2026-10-10
 
-Reference / Référence : `0.1.0-draft.12`. TS04 shares TS07's explicit client/product
-scope; human reviews remain required. [Migration](migration-draft.12.md).
-TS04 distingue désormais explicitement client HTTP et produit robots ; les revues
-humaines restent nécessaires. Le précédent point d'implémentation était
+Reference / Référence : `0.1.0-draft.13`. TS04 and TS07 accept the optional prior
+Google fields profile; client scope and human reviews remain required.
+[Migration](migration-draft.13.md). Les champs connus hors portée accès sont
+conservés sans verdict TS42 ; les inconnus restent indéterminés.
+Le point d'implémentation draft.12 était `ab42410` ; le précédent était
 `e4ffe1a7859be59d2d3d1edaf670a1a85d2e2840` sous draft.11.
 
 Le programme actif porte sur **quatre contrôles approfondis : TS04, TS02, TS07,
@@ -31,7 +32,7 @@ Les huit couples de couverture réduite du corpus restent explicitement ouverts.
 Voir le [programme](four-control-program.md) et le [parcours de preuves](evidence-gallery.md).
 
 EN: the active scope is four deeply developed controls, TS04/TS02/TS07/TS10, with
-TS01 as a foundation. Draft.12 describes 44 controls; five have 13 executable
+TS01 as a foundation. Draft.13 describes 44 controls; five have 13 executable
 atomic rules (11 in the four priorities), while 39 remain without equivalent
 detailed executable coverage. Methods, synthetic laboratories, real assessment
 and human acceptance are separate milestones. Supplied Search Console comparison
