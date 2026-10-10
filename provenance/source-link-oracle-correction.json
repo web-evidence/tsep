@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-10T21:00:19.568109+00:00",
+  "kind": "authored-input-correction",
+  "initial": {
+    "fixture": "tests/fixtures/source-link-policy-v1.json",
+    "sha256": "e616f92b4ae827a77388f35361010244da44231e9a7649282f218e1f06907984",
+    "matched": 56,
+    "total": 57
+  },
+  "active": {
+    "fixture": "tests/fixtures/source-link-policy-v2.json",
+    "sha256": "349bd8eaad9b7a460b0607b3f9a44e8fcbe277ad6dbad9f1c6111a53a0c2988b",
+    "cases": 58
+  },
+  "failed_case": {
+    "id": "source-link-policy-backslash",
+    "expected": "fail",
+    "actual": "pass",
+    "link": {
+      "node_index": 5,
+      "tag": "a",
+      "href": "https:\\example.com\\product?color=blue",
+      "body_span_bytes": [
+        40,
+        89
+      ],
+      "resolution": {
+        "ok": true,
+        "href": "https://example.com/example.com/product?color=blue",
+        "protocol": "https:",
+        "origin": "https://example.com",
+        "without_fragment": "https://example.com/example.com/product?color=blue"
+      },
+      "standalone_resolution": {
+        "ok": true,
+        "href": "https://example.com/product?color=blue",
+        "protocol": "https:",
+        "origin": "https://example.com",
+        "without_fragment": "https://example.com/product?color=blue"
+      },
+      "base_independent_subset": false,
+      "destination": "https://example.com/example.com/product?color=blue",
+      "classification": "outside-declared-family"
+    }
+  },
+  "correction": "The intended authority-form reverse-solidus example was encoded with only one leading reverse solidus. Under a same-scheme base this becomes a path on the base host; standalone parsing differs. V2 supplies two leading reverse solidi for the intended authority case and keeps a separate post-observation single-solidus regression. Engine unchanged.",
+  "basis": "https://url.spec.whatwg.org/#special-relative-or-authority-state",
+  "reference_capture": ".local/source-link-policy-2026-10-10/references/url-standard.html",
+  "capture_manifest": ".local/source-link-policy-2026-10-10/references/manifest.json",
+  "scope": "Fixture authoring correction, not reinterpretation of historical protocol cases or external SEO evidence.",
+  "captured_reference": {
+    "url": "https://url.spec.whatwg.org/#special-relative-or-authority-state",
+    "retrieved_url": "https://url.spec.whatwg.org/",
+    "final_url": "https://url.spec.whatwg.org/",
+    "status": 200,
+    "at": "2026-10-10T21:00:21.300216+00:00",
+    "sha256": "9a9df6f2a4843089b1bc0ec6dda62e6fb5cc508b2f50c8a90ebb86a17853c800",
+    "scope": "Special relative/authority, relative slash and path states used to review single versus double reverse solidus in an authored URL fixture. Not an SEO or engine observation."
+  }
+}

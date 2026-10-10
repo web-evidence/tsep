@@ -1,5 +1,13 @@
 # Change history / Historique
 
+## 0.1.0-draft.17 — 2026-10-10 — source link decisions
+
+Optional prior A04 source profile qualifies HTML a/area href, final URL/base and
+WHATWG resolution while preserving all 543 historical input/result pairs. Keeps
+unknowns, declared-family scope and zero counts through report/gate/EARL. Source
+does not replace rendered evidence. Interpreter 17, adapter 18, replay 2.
+[Migration](docs/migration-draft.17.md), [method](docs/source-link-policy.md).
+
 ## 0.1.0-draft.16 — 2026-10-10 — canonical source decisions
 
 Prior optional html-tree-canonical-v1 extends TS10-A01/A02 with qualified source/head

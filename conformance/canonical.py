@@ -443,7 +443,9 @@ def sitemap_agreement(target, members, preferred):
     return combined(findings)
 
 
-def internal_links(target, members, preferred):
+def internal_links(target, members, preferred, diagnostics=None):
+    if 'source_reader' in target['intent']['canonical']['links']:
+        return profiled_internal_links(target, members, preferred, diagnostics)
     plan = target['intent']['canonical']['links']
     sources = plan['sources']
     urls = unique_urls([s['url'] for s in sources], 'source population')
@@ -478,6 +480,39 @@ def internal_links(target, members, preferred):
     return combined(findings)
 
 
+def profiled_internal_links(target, members, preferred, diagnostics):
+    from conformance.source_link_policy import Surface
+    plan = target['intent']['canonical']['links']; sources = plan['sources']
+    urls = unique_urls([s['url'] for s in sources], 'source population')
+    origin = urlsplit(preferred)[:2]
+    need(all(urlsplit(u)[:2] == origin for u in urls), 'Source outside declared internal origin')
+    family = [m['url'] for m in members]; exempt = exceptions(plan, family, urls)
+    documents = target.get('crawl', {}).get('documents')
+    need(isinstance(documents, list), 'Missing crawl inventory'); findings = []
+    for source in sources:
+        try:
+            doc = capture(target, documents, source['url'])
+            final, status, headers, body = response(target, doc)
+            need(status == 200 and urlsplit(final)[:2] == origin, 'Source unavailable or redirected outside internal origin')
+            surface = Surface(headers, body, plan['source_reader'], family, preferred,
+                {u for s, u in exempt if s == source['url']}, document_url=final, requested_url=source['url'], diagnostics=diagnostics)
+            findings.append(surface.source_decision)
+            # Rendered interpretation is independent and keeps its previous declared reader.
+            try: rendered = doms(target, doc, source.get('rendering'), final, headers)
+            except ERRORS as error: rendered = [(None, str(error))]
+            for parser, error in rendered:
+                if error: findings.append(('inconclusive', error)); continue
+                try:
+                    links = [(h, urldefrag(urljoin(final, h))[0]) for h in parser.anchors]
+                    bad = [(h, u) for h, u in links if u in family and u != preferred and (source['url'], u) not in exempt]
+                    findings.append(('fail' if bad else 'pass', source['url'] + ' rendered legacy href/destination pairs: ' + repr(links)
+                        + ('; ' + parser.detail if hasattr(parser, 'detail') else '')))
+                except ERRORS as error: findings.append(('inconclusive', str(error)))
+        except ERRORS as error: findings.append(('inconclusive', str(error)))
+    if any(d['url'] not in urls for d in documents): findings.append(('inconclusive', 'Unreconciled crawl capture outside planned population'))
+    return combined(findings)
+
+
 def assess(target, rule, *, diagnostics=None):
     def run():
         intent, context = target['intent'], target['context']
@@ -494,5 +529,5 @@ def assess(target, rule, *, diagnostics=None):
             return destination(target, members, preferred, diagnostics)
         if rule == 'TS10-A03':
             return sitemap_agreement(target, members, preferred)
-        return internal_links(target, members, preferred)
+        return internal_links(target, members, preferred, diagnostics)
     return guarded(run)

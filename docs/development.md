@@ -1,3 +1,8 @@
+Current integration: draft.17, interpreter 17 / adapter 18 / replay 2.
+Optional prior [A04 source links](source-link-policy.md); [migration](migration-draft.17.md).
+Convergence de famille déclarée, comptes et inconnues explicites ; lecteurs rendus inchangés.
+The milestones below are historical / Les jalons suivants sont historiques.
+
 Optional [link-element observer 1](link-elements-observer.md) distinguishes HTML/SVG elements and namespaced attributes before A04 policy selection; draft.16 remains unchanged.
 Observation des types de liens et templates, sans promotion normative.
 

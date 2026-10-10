@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.16 — Controls
+# TSEP 0.1.0-draft.17 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.16:TS01-A01`
+`TSEP@0.1.0-draft.17:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.16:TS01-A02`
+`TSEP@0.1.0-draft.17:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.16:TS02-A01`
+`TSEP@0.1.0-draft.17:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.16:TS02-A02`
+`TSEP@0.1.0-draft.17:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.16:TS04-A01`
+`TSEP@0.1.0-draft.17:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.16:TS04-A02`
+`TSEP@0.1.0-draft.17:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.16:TS07-A01`
+`TSEP@0.1.0-draft.17:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -344,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.16:TS07-A02`
+`TSEP@0.1.0-draft.17:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.16:TS07-A03`
+`TSEP@0.1.0-draft.17:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.16:TS10-A01`
+`TSEP@0.1.0-draft.17:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -490,7 +490,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.16:TS10-A02`
+`TSEP@0.1.0-draft.17:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -514,7 +514,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.16:TS10-A03`
+`TSEP@0.1.0-draft.17:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.16:TS10-A04`
+`TSEP@0.1.0-draft.17:TS10-A04`
 
 **Required inputs**: crawl, intent.
 
@@ -548,19 +548,19 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Each family and declared source-page population.
 
-**Method.** Extract links from the announced population; compare destinations and documented exceptions with canonical preference. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin.
+**Method.** Extract links from the announced population; compare destinations and documented exceptions with canonical preference. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.links.source_reader=html-tree-links-v1 qualifies attributed HTML a/area hrefs, base and WHATWG resolution under two static hypotheses. source-link-policy.md defines this method; earlier rendered readers remain unchanged.
 
-**Acceptance.** All assessed links follow strategy; no unexplained competing destination. Zero links can satisfy the rule only when the announced population is fully examined. An attributable competing link remains fail even if another source page or required state is missing.
+**Acceptance.** All assessed links follow strategy; no unexplained competing destination. Zero links can satisfy the rule only when the announced population is fully examined. An attributable competing link remains fail even if another source page or required state is missing. Two source passes yield pass, two failures yield fail, otherwise inconclusive. An uncertain base cannot establish failure for dependent hrefs; an independent qualified absolute conflict remains usable. Zero counts and limited convergence scope remain visible through control and gate without adding a link-presence requirement.
 
-**Evidence.** Crawl export with source URL, href, destination, pages actually visited, failures and exclusions; reconciliation with the declared population. Retain source HTML and DOMs needed for extraction, bound to their traces, contexts and dates; a rendering exemption is reviewed and supported. Exceptions identify source, destination and reason.
+**Evidence.** Crawl export with source URL, href, destination, pages actually visited, failures and exclusions; reconciliation with the declared population. Retain source HTML and DOMs needed for extraction, bound to their traces, contexts and dates; a rendering exemption is reviewed and supported. Exceptions identify source, destination and reason. The new profile retains inventory, namespaces, templates, tags/bytes, calculated URLs, bases/limits, versions, per-hypothesis decisions/counts in replayable observations.
 
-**Assumptions.** The crawl checks a declared population; it does not by itself prove that population exhaustive. Structured reader v2 retains raw hrefs; bounded resolution only without a base declaration and with baseURI equal to the final URL. Shadow links or unsupported syntax remain inconclusive.
+**Assumptions.** The crawl checks a declared population; it does not by itself prove that population exhaustive. Structured reader v2 retains raw hrefs; bounded resolution only without a base declaration and with baseURI equal to the final URL. Shadow links or unsupported syntax remain inconclusive. Family URLs must already equal their WHATWG serialization or source is inconclusive, without silent normalization. Outside-family URLs are retained, never guessed duplicates. No-namespace href with no nofollow/download filtering; static destination only.
 
-**Inconclusive.** Missing source pages, unexamined links or absent crawl: inconclusive, never success from zero results. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation.
+**Inconclusive.** Missing source pages, unexamined links or absent crawl: inconclusive, never success from zero results. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. Null/unknown source selection, missing Node24, incomplete traversal/diagnostic: inconclusive without fallback. SVG/foreign ancestors, declared shadow and duplicate link attributes remain unknown; unmodeled CSP/base prevents conclusive dependent-href resolution.
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** No extrapolation to external links, pages outside the population or future dates. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md.
+**Limits.** No extrapolation to external links, pages outside the population or future dates. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source profile measures neither activation, link presence/sufficiency, forms/events nor Google behavior. Bounds, retained out-of-scope elements and migration: source-link-policy.md and migration-draft.17.md.
 
 ## TS11 — Genuine duplicate variants converge without hiding distinct pages.
 

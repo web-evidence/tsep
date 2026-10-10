@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.16
+# Contrat de rapport — TSEP 0.1.0-draft.17
 
 ## Périmètre déclaré
 
@@ -333,3 +333,7 @@ entrées, hypothèses alternatives, contradictions qualifiées, inconnues, preuv
 limites. Les revues de rendu/contenu restent exigées ; A04 et les lecteurs DOM ne
 changent pas. Les calculs conservent des observations comparées au rejeu. Voir la
 [migration](migration-draft.16.md), sans modifier rétroactivement une intention.
+
+### Liens source — draft.17
+
+TS10-A04 accepte le profil préalable html-tree-links-v1 sous intent.canonical.links. Le [contrat bilingue normatif](source-link-policy.md) définit population, URL, base, hypothèses, inconnues et bornes. La portée de convergence, y compris zéro lien observé, accompagne les motifs atomiques/contrôle, HTML, EARL et scope_notes du gate. Rendu et revues inchangés ; [migration explicite](migration-draft.17.md).

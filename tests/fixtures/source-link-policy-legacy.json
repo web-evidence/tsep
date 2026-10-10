@@ -1,0 +1,5 @@
+{
+  "cases": 543,
+  "sha256": "b1d865164b843b01feb93ab87a84d9c576600353b0fe4fe8fa08f238e7f3598b",
+  "scope": "Exact inputs and computed outcomes/reasons with optional Node24, before source-link policy implementation."
+}

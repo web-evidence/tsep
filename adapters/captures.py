@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '17'
+VERSION = '18'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -36,11 +36,18 @@ def source_files():
     result.update(source_http.identity())
     from experiments import source_head
     result.update(source_head.identity())
+    from conformance import source_link_policy
+    from experiments import link_elements, url_resolution
+    result.update(loaded_sources(ROOT, {'conformance/source_link_policy.py': source_link_policy,
+        'experiments/link_elements.py': link_elements, 'experiments/url_resolution.py': url_resolution}))
+    result.update(link_elements.identity()); result.update(url_resolution.identity())
     result['experiments/source_metadata.mjs'] = tsep.digest(ROOT/'experiments/source_metadata.mjs')
     return result
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS10-A04 : profil source préalable html-tree-links-v1, liens HTML a/area attribués, base conditionnelle et URL sérialisées. Convergence dans une famille déclarée, pas présence ou suffisance du maillage ; rendu antérieur inchangé.',
+     'en':'TS10-A04: prior html-tree-links-v1 source profile, attributed HTML a/area, conditional base and serialized URLs. Declared-family convergence, not link presence or sufficiency; earlier rendered readers unchanged.'},
     {'state':'implemented','fr':'TS10-A01/A02 : lecteur source canonical préalable, positions et hypothèses attribuées ; rendu/revue toujours nécessaires.','en':'TS10-A01/A02: prior canonical source reader with attributed positions/hypotheses; rendering/reviews remain required.'},
     {'state':'implemented', 'fr':'TS07 : source_reader html-tree-directives-v1 préalable, deux hypothèses statiques et métadonnées attribuées aux octets ; Node 24 facultatif requis pour ce profil, aucun repli. Rendu et revues distincts.',
      'en':'TS07: prior html-tree-directives-v1 source_reader, two static hypotheses with byte-attributed metadata; optional Node 24 required for this profile, no fallback. Rendering and reviews remain separate.'},
@@ -318,6 +325,9 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                 report['results'][i] = control_result(cid, rows, controls[cid], targets)
                 if cid == 'TS04' and client_scope:
                     report['results'][i]['reason'] += ' ' + client_scope + '.'
+                for atom in rows:
+                    if atom['rule_id'] == 'TS10-A04' and 'html-tree-links-v1:' in atom['reason']:
+                        report['results'][i]['reason'] += ' A04 scope for ' + atom['target'] + ': ' + atom['reason']
         summary = tsep.validate(report, stage)
         write('report.json', report)
         write('gate.json', summary)

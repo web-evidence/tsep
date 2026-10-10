@@ -269,7 +269,7 @@ def decision(report, controls=None):
         gate = 'REVIEW'
     else:
         gate = 'GO_WITH_RESERVATIONS'
-    return {'valid': True, 'decision': gate, 'profile': report['profile'],
+    summary = {'valid': True, 'decision': gate, 'profile': report['profile'],
             'scope': report['scope'], 'counts': counts, 'blocking': blocking,
             'blocking_causes': [{'control_id': r['control_id'], 'status': r['status']}
                                 for r in report['results'] if r['control_id'] in blocking],
@@ -278,6 +278,11 @@ def decision(report, controls=None):
             'unevaluated_controls': sorted(set(controls) - set(report['controls'])),
             'interpretation': 'Declared scope and selected controls only; validates report '
                               'consistency and file integrity, not the truth of an assessment.'}
+    notes = [{'control_id': r['control_id'], 'target': a['target'], 'reason': a['reason']}
+             for r in report['results'] for a in r.get('atomic_results', [])
+             if a['rule_id'] == 'TS10-A04' and 'html-tree-links-v1:' in a['reason']]
+    if notes: summary['scope_notes'] = notes
+    return summary
 
 
 def initialize(targets, selected, profile, assessor, label, selection_method,
@@ -397,7 +402,8 @@ def readable_summary(summary, language):
         ('Portée limitée aux cibles et contrôles déclarés ; aucune conformité globale. '
          'Vérifie cohérence et intégrité, pas la vérité des constats.' if fr else
          'Declared targets and selected controls only; no global conformity. '
-         'Checks consistency and integrity, not the truth of findings.')])
+         'Checks consistency and integrity, not the truth of findings.')]
+        + [('Portée A04 / A04 scope: ' + n['target'] + ' — ' + n['reason']) for n in summary.get('scope_notes', [])])
 
 
 def main(argv=None):

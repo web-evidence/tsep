@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.16
+# Report contract — TSEP 0.1.0-draft.17
 
 ## Declared scope
 
@@ -326,3 +326,7 @@ inputs, alternative hypotheses, qualified contradictions, unknown contexts, evid
 and limits. All rendering/content reviews remain required; A04 and DOM readers are
 unchanged. New calculations retain observations compared by replay. See the
 [migration](migration-draft.16.md); no historical intent is retrofitted.
+
+### Source links — draft.17
+
+TS10-A04 accepts prior html-tree-links-v1 under intent.canonical.links. The [normative bilingual contract](source-link-policy.md) defines population, URLs, base, hypotheses, unknowns and bounds. Convergence scope, including zero observed links, accompanies atomic/control reasons, HTML, EARL and gate scope_notes. Rendering/reviews remain unchanged; [explicit migration](migration-draft.17.md).
