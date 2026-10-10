@@ -54,8 +54,10 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
    collecte les octets bruts, fige les critères avant mesure et rejoue hors ligne ;
    l’interpréteur 4 ajoute un [extracteur de texte source TS01](docs/source-text-v4.md)
    distinct de TS07, avec cas contradictoires figés et limites explicites.
-   Le collecteur 3 et l’adaptateur 5 vérifient les sources et enregistrent les
-   dépendances HTML de Python ; le HTML 3 explicite les critères. Le protocole reste draft.7.
+   Le collecteur 4 précontrôle les marqueurs sur la référence ; l’adaptateur 5
+   conserve la traçabilité et le HTML 4 affiche ce précontrôle et les types de média.
+   Le [diagnostic de couverture](docs/reference-diagnostics.md) inventorie les limites
+   candidates sans produire de verdict. Le protocole reste draft.7.
 2. **Déclarer une couverture partielle** : sélectionner une liste `custom`, conserver
    les inconnues en NT/inconclusive et relier chaque preuve à sa cible. Une sélection
    TS01/TS07 ne satisfait pas un profil nommé. Aucun test isolé ne valide son parent.

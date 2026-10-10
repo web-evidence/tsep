@@ -2,7 +2,7 @@
 
 ## Français
 
-Le moteur de présentation version 3 transforme un rapport TSEP valide et ses
+Le moteur de présentation version 4 transforme un rapport TSEP valide et ses
 preuves en un fichier HTML autonome en français ou en anglais. Python 3.9+ suffit.
 Il présente les résultats enregistrés, leurs règles, cibles, motifs, limites et
 preuves. Il ne réévalue pas les captures et ne collecte aucune URL.
@@ -64,7 +64,7 @@ présentées. Aucun verdict supplémentaire n’est calculé.
 
 ## English
 
-Presentation engine version 3 turns a valid TSEP report and its evidence into one
+Presentation engine version 4 turns a valid TSEP report and its evidence into one
 self-contained French or English HTML file using Python 3.9+. It presents recorded
 outcomes, rules, targets, reasons, limitations and evidence without reassessing
 captures or fetching URLs. Use the commands above with `--lang en`.
@@ -110,3 +110,20 @@ and supplied markers beside TS01 results. This metadata does not prove human
 review; collector consistency is labeled according to fingerprints checked at
 collection. Missing origin remains undeclared. The report states that only
 supplied runs are presented. No additional verdict is computed.
+
+## Version 4 — préparation et média / Preparation and media
+
+Le rapport affiche le précontrôle fourni des marqueurs de référence et la
+comparaison brute des champs Content-Type à côté de TS01-A02, lorsqu’ils sont
+présents. Ces éléments proviennent du contexte collecté : aucune extraction ni
+nouvelle décision n’a lieu à l’affichage. Une référence indéterminée n’est pas
+silencieusement validée par un résultat ultérieur fondé sur une empreinte égale.
+Un écart de média est une observation à examiner, jamais un fail ajouté à draft.7.
+Les anciens rapports sans ces champs restent lisibles, sans précontrôle inventé.
+
+The report displays supplied reference marker preflight and raw Content-Type
+comparison beside TS01-A02 when present. These come from collected context: no
+extraction or new decision occurs at presentation time. An unavailable reference
+check remains visible even if an equal digest later resolves identity. Media
+changes are observations to inspect, never extra draft.7 failures. Old reports
+remain readable without inventing missing preparation checks.

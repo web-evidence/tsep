@@ -1,5 +1,27 @@
 # Change history / Historique
 
+## Collector 4, HTML 4 and diagnostic 1 — 2026-10-10 — local development
+
+Add a separate offline HTML construction inventory with no TSEP outcomes. It
+continues beyond the first candidate limitation and records runtime/input hashes,
+with explicit non-exhaustiveness and sample-only counts. Collector 4 preflights
+markers on retained references before sealing: contradictions refuse the seal;
+unsupported extraction remains a visible warning. Guided intent 3 records and
+rechecks preparation before network evaluation. HTML 4 displays these supplied
+checks and raw Content-Type differences without changing outcomes. Interpreter 4,
+adapter 5, protocol draft.7, contracts and corpus remain unchanged. Old archives
+are retained. [Scope and migration](docs/reference-diagnostics.md).
+
+Inventaire HTML hors ligne distinct, sans résultat TSEP : poursuite après la
+première limite candidate, empreintes et runtime déclarés, comptage limité à
+l’échantillon et absence de garantie d’exhaustivité. Le collecteur 4 précontrôle
+les marqueurs de la référence avant scellement : contradiction refusée, extraction
+indisponible signalée. Intention guidée 3, revérifiée avant le réseau. HTML 4
+présente ces contrôles préparatoires et les écarts bruts de Content-Type sans
+changer les résultats. Interpréteur 4, adaptateur 5, draft.7, contrats et corpus
+inchangés. Anciennes archives conservées ; aucune publication ni CI distante nouvelle.
+
+
 ## Interpreter 4, adapter 5 and collector 3 — 2026-10-10 — local development
 
 Separate bounded TS01 source-text extraction from the unchanged TS07 parser.

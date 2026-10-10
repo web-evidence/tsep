@@ -23,10 +23,11 @@ from adapters.captures import build
 from conformance.evaluate import trace
 from conformance.http import Unknown, body_digest, encoded, header_fields, message, raw_bytes
 from collectors.http import request_bytes
+from collectors.preflight import reference_check, media_comparison
 from reports.html import write as write_html
 from provenance.runtime import loaded_sources
 
-VERSION = '3'
+VERSION = '4'
 NAME = 'TSEP guided TS01 collector'
 RULES = ['TS01-A01', 'TS01-A02']
 MAX_TOTAL = 2*1024*1024  # Raw responses per phase; both phases fit input JSON v2.
@@ -34,7 +35,7 @@ MAX_TOTAL = 2*1024*1024  # Raw responses per phase; both phases fit input JSON v
 
 def collection_sources():
     modules = {'collectors/ts01.py': sys.modules[__name__], 'tsep.py': tsep}
-    for name in ('collectors.http', 'conformance.http', 'conformance.evaluate', 'conformance.source_text', 'provenance.runtime'):
+    for name in ('collectors.http', 'collectors.preflight', 'conformance.http', 'conformance.evaluate', 'conformance.source_text', 'provenance.runtime'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     return loaded_sources(ROOT, modules)
 
@@ -254,17 +255,23 @@ def seal(reference_dir, output, *, assessor, label, policy='digest', criteria=No
             intent.update(required_markers=required, forbidden_markers=forbidden)
         else:
             tsep.require(not options.get('required_markers') and not options.get('forbidden_markers'), 'Markers require markers policy')
-        rows.append({'url': target['url'], 'intent': intent,
+        preflight = reference_check(headers, body, choice, intent.get('required_markers', []), intent.get('forbidden_markers', []))
+        tsep.require(preflight['state'] != 'contradiction',
+                     'Reference marker contradiction; seal refused for '+target['url']+': '+json.dumps(preflight, ensure_ascii=False))
+        rows.append({'url': target['url'], 'intent': intent, 'reference_preflight': preflight,
                      'identity_basis': {'origin': 'operator-final-url' if declared_final is not None else 'reference-adopted',
                                         'policy': choice, 'body_reference': 'captured-reference',
                                         'declared_final_url': declared_final}})
-    value = {'intent_version': '2', 'declared_at': declared, 'reference_manifest_sha256': tsep.digest(Path(reference_dir)/'SHA256SUMS'),
+    value = {'intent_version': '3', 'declared_at': declared, 'reference_manifest_sha256': tsep.digest(Path(reference_dir)/'SHA256SUMS'),
              'reference_source_files': ref['source_files'],
              'assessor': assessor, 'label': label, 'settings': ref['settings'], 'targets': rows,
              'meaning': 'Operator-selected prior criteria from retained references; no trusted timestamp or correctness certification.'}
     tsep.require(all(isinstance(x, str) and x.strip() for x in (assessor, label)), 'Declare assessor and label')
     save(output, value)
     return {'intent': str(output), 'sha256': tsep.digest(Path(output)), 'next': 'evaluate with this unchanged reference and intent',
+            'reference_preflight': [{'url': row['url'], **row['reference_preflight']} for row in rows],
+            'warnings': [{'url': row['url'], 'message': 'Reference markers could not be checked: '+row['reference_preflight']['reason']}
+                         for row in rows if row['reference_preflight']['state'] == 'unavailable'],
             'stable_policy_warning': 'Explicit stable policy: any decoded body change, including a nonce or timestamp, fails TS01-A02.'
                                      if any(row['identity_basis']['policy'] == 'stable' for row in rows) else None}
 
@@ -274,7 +281,7 @@ def evaluate(reference_dir, intent_path, output, language='fr'):
     reference_dir, intent_path = Path(reference_dir), Path(intent_path)
     ref, intent = tsep.read_json(reference_dir/'capture.json'), tsep.read_json(intent_path)
     same_collector(ref)
-    tsep.require(intent['intent_version'] == '2' and intent['reference_manifest_sha256'] == tsep.digest(reference_dir/'SHA256SUMS'), 'Intent/reference binding mismatch; use this collector version to create a new reference and intent')
+    tsep.require(intent['intent_version'] == '3' and intent['reference_manifest_sha256'] == tsep.digest(reference_dir/'SHA256SUMS'), 'Intent/reference binding mismatch; use this collector version to create a new reference and intent')
     tsep.require(intent.get('reference_source_files') == ref['source_files'], 'Intent collector sources differ from reference')
     tsep.require(intent['settings'] == ref['settings'], 'Request settings changed after reference')
     validate_settings(intent['settings'])
@@ -283,7 +290,7 @@ def evaluate(reference_dir, intent_path, output, language='fr'):
     started = now()
     tsep.require(tsep.timestamp(intent['declared_at']) <= tsep.timestamp(started), 'Intent is in the future')
     tsep.require(tsep.timestamp(ref['finished_at']) <= tsep.timestamp(intent['declared_at']), 'Intent predates reference completion')
-    for row in intent['targets']:
+    for row, prior in zip(intent['targets'], ref['targets']):
         tsep.require(row['intent']['declared_at'] == intent['declared_at'], 'Inconsistent intent dates')
         tsep.require(row['intent']['crawler'] == intent['settings']['agent'], 'Intent crawler differs from frozen request settings')
         basis = row.get('identity_basis', {})
@@ -293,6 +300,12 @@ def evaluate(reference_dir, intent_path, output, language='fr'):
                      'Identity basis does not match frozen criteria')
         tsep.require(basis.get('origin') != 'operator-final-url' or
                      basis.get('declared_final_url') == row['intent']['expected_final_url'], 'Declared final URL does not match intent')
+        final, _, headers, body = trace(prior['http'], prior['url'], ref['settings']['agent'])
+        checked = reference_check(headers, body, actual_policy, row['intent'].get('required_markers', []), row['intent'].get('forbidden_markers', []))
+        tsep.require(checked['state'] != 'contradiction' and checked == row.get('reference_preflight'),
+                     'Reference preflight differs from frozen intent; evaluation not started')
+        tsep.require(row['intent']['expected_final_url'] == final and row['intent']['expected_body_sha256'] == checked['decoded_body_sha256'],
+                     'Frozen reference URL/digest differ from retained bytes')
     output = new_directory(output)
     shutil.copyfile(intent_path, output/'intent.json')
     observations = capture(intent['settings'], output/'evaluation')
@@ -312,6 +325,13 @@ def evaluate(reference_dir, intent_path, output, language='fr'):
                              'collector_matches_reference': True, 'identity_basis': criteria['identity_basis'],
                              'run_selection': 'Only the supplied runs; this bundle does not establish an exhaustive campaign history.',
                              'intent_file_sha256': tsep.digest(output/'intent.json'), 'reference_manifest_sha256': intent['reference_manifest_sha256']}
+        target['context']['reference_preflight'] = criteria['reference_preflight']
+        try:
+            _, _, before, _ = trace(prior['http'], prior['url'], intent['settings']['agent'])
+            _, _, after, _ = trace(observation['http'], observation['url'], intent['settings']['agent'])
+            target['context']['media_comparison'] = media_comparison(before, after)
+        except (ValueError, KeyError, TypeError) as error:
+            target['context']['media_comparison'] = {'raw_headers_differ': None, 'unavailable_reason': str(error)}
         targets.append(target)
     data = {'input_version': '2', 'rules': RULES, 'targets': targets}
     save(output/'input.json', data)
@@ -359,7 +379,7 @@ def main():
     ref = sub.add_parser('reference', help='Collect explicit authorized targets; real network requests')
     ref.add_argument('--target', action='append', required=True)
     ref.add_argument('--allow-origin', action='append', default=[])
-    ref.add_argument('--agent', default='TSEP-TS01-collector/3')
+    ref.add_argument('--agent', default='TSEP-TS01-collector/4')
     ref.add_argument('--accept-encoding', choices=['identity', 'gzip, deflate'], default='gzip, deflate')
     ref.add_argument('--timeout', type=float, default=10)
     ref.add_argument('--max-bytes', type=int, default=524288)

@@ -54,8 +54,10 @@ validation establishes consistency and file integrity.
    captures raw bytes, freezes criteria before measurement and replays offline;
    interpreter 4 adds a [TS01 source-text extractor](docs/source-text-v4.md)
    separate from TS07, with frozen counterexamples and explicit limits.
-   Collector 3 and adapter 5 verify sources and record selected Python HTML
-   dependencies; HTML 3 makes criteria explicit. The protocol remains draft.7.
+   Collector 4 preflights reference markers; adapter 5 preserves traceability and
+   HTML 4 displays preflight and observed media types. A separate [coverage
+   diagnostic](docs/reference-diagnostics.md) inventories candidate limitations
+   without issuing verdicts. The protocol remains draft.7.
 2. **Declare partial coverage**: select a `custom` list, keep unknowns as
    NT/inconclusive and link each artifact to its target. Selecting TS01/TS07 does
    not satisfy a named profile. An isolated test cannot pass its parent control.

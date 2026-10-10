@@ -292,3 +292,20 @@ La vérification complète exécute aussi ces cas ; les sorties TS07 et TS10 du
 corpus doivent conserver leur empreinte antérieure. Les dépendances enregistrées
 ne constituent pas une authentification d’exécution. Voir [sources, licence et
 migration](source-text-v4.md). Préparer une matrice ne prouve pas une nouvelle CI distante.
+
+## Reference diagnostics / Diagnostic des références
+
+The diagnostic CLI imports HTTP decoding utilities, never the decision module.
+Tests exercise several candidate limitations in a single document, raw contexts,
+false tag spellings in attributes/scripts, bounded scanning, input preservation
+and an isolated CLI without evaluator imports. Guided tests reject contradictory
+reference markers, expose unavailable preparation checks even after a digest
+match, stop modified preflight records before network, and disclose changed media
+without changing normative outcomes. See [scope and migration](reference-diagnostics.md).
+
+Le diagnostic utilise le décodage HTTP, sans importer le module de décision.
+Les tests couvrent plusieurs limites candidates dans une page, les contextes bruts,
+le faux balisage dans les attributs/scripts, les bornes et la conservation des
+entrées. Le parcours guidé refuse les marqueurs contradictoires de référence,
+conserve les avertissements malgré une empreinte égale, refuse un précontrôle
+modifié avant le réseau et observe le média sans modifier le verdict normatif.

@@ -12,12 +12,16 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '3'
+VERSION = '4'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'preflight': 'Précontrôle des marqueurs sur la référence',
+        'preflight_note': 'Contrôle préparatoire déclaré, distinct du résultat TS01. Une empreinte identique peut conclure sans exécuter les marqueurs sur la mesure.',
+        'media_comparison': 'Type de média observé : référence et mesure',
+        'media_note': 'Un écart brut de Content-Type est à examiner ; il ne modifie pas la décision draft.7 et ne prouve pas à lui seul une incompatibilité.',
         'title': 'Rapport de preuves', 'subtitle': 'Des observations aux décisions, chaque résultat conserve ses preuves.',
         'offline': 'Document autonome · hors ligne', 'draft': 'Protocole expérimental',
         'overview': 'Vue d’ensemble', 'comparison': 'Comparaison', 'results': 'Résultats',
@@ -76,6 +80,10 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'preflight': 'Reference marker preflight',
+        'preflight_note': 'Supplied preparation check, separate from the TS01 result. An equal digest can resolve identity without checking evaluation markers.',
+        'media_comparison': 'Observed media type: reference and evaluation',
+        'media_note': 'A raw Content-Type difference needs inspection; it does not alter the draft.7 decision or alone establish incompatibility.',
         'title': 'Evidence report', 'subtitle': 'From observations to decisions, every result retains its evidence.',
         'offline': 'Self-contained · offline', 'draft': 'Experimental protocol',
         'overview': 'Overview', 'comparison': 'Comparison', 'results': 'Results',
@@ -256,6 +264,10 @@ def identity_context(target, words):
     out += '</dl>'
     if context.get('collector_matches_reference') is True:
         out += '<p class="small">' + esc(words['collector_consistency']) + '</p>'
+    for key, label, note in (('reference_preflight', 'preflight', 'preflight_note'),
+                             ('media_comparison', 'media_comparison', 'media_note')):
+        if isinstance(context.get(key), dict):
+            out += '<h5>'+esc(words[label])+'</h5><p class="small">'+esc(words[note])+'</p><pre>'+esc(pretty(context[key]))+'</pre>'
     return out + '</div>'
 
 

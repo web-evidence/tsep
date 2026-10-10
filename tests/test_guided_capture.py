@@ -49,12 +49,14 @@ class Handler(BaseHTTPRequestHandler):
         value = str(number) if self.path == '/dynamic' else 'stable'
         content = ('<html><head><title>Test</title></head><body><p>'+marker+
                    '</p><p>Révision '+value+'</p></body></html>').encode()
+        if self.path == '/unsupported':
+            content = content.replace(b'</body>', b'<select><option>Other</option></select></body>')
         if self.path == '/large':
             content = b'x'*4096
         coding = 'identity' if self.path in ('/large', '/slow', '/cut') else 'deflate' if self.path == '/deflate' else 'gzip'
         body = gzip.compress(content, mtime=0) if coding == 'gzip' else zlib.compress(content) if coding == 'deflate' else content
         self.send_response(200)
-        self.send_header('Content-Type', 'text/html; charset=UTF-8')
+        self.send_header('Content-Type', self.server.media)
         self.send_header('Content-Encoding', coding)
         self.send_header('Transfer-Encoding', 'chunked')
         self.end_headers()
@@ -86,6 +88,7 @@ class GuidedCapture(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory();self.root = Path(self.temp.name)
         self.server.requests = [];self.server.marker = True
+        self.server.media = 'text/html; charset=UTF-8'
 
     def tearDown(self):
         self.temp.cleanup()
@@ -157,6 +160,46 @@ class GuidedCapture(unittest.TestCase):
     def test_missing_required_marker_is_failure_not_unknown(self):
         self.prepare();self.server.marker = False
         self.assertEqual(evaluate(self.root/'first/reference', self.root/'intent.json', self.root/'assessment')['counts']['NC'], 1)
+
+    def test_reference_marker_contradiction_refuses_seal_without_second_request(self):
+        settings = self.settings(('/stable',))
+        reference(settings, self.root/'first')
+        for required, forbidden in [(['Absent'], []), (['Mission TSEP'], ['Révision'])]:
+            criteria = {settings['urls'][0]: {'policy': 'markers', 'required_markers': required, 'forbidden_markers': forbidden}}
+            with self.subTest(required=required), self.assertRaisesRegex(ValueError, 'Reference marker contradiction'):
+                seal(self.root/'first/reference', self.root/'intent.json', assessor='Test', label='Synthetic', criteria=criteria)
+            self.assertFalse((self.root/'intent.json').exists())
+        self.assertEqual(len(self.server.requests), 1)
+
+    def test_unavailable_preflight_stays_visible_even_when_digest_resolves_identity(self):
+        self.prepare(paths=('/unsupported',))
+        intent = tsep.read_json(self.root/'intent.json')
+        self.assertEqual(intent['intent_version'], '3')
+        self.assertEqual(intent['targets'][0]['reference_preflight']['state'], 'unavailable')
+        self.assertEqual(evaluate(self.root/'first/reference', self.root/'intent.json', self.root/'assessment')['counts']['C'], 1)
+        html = (self.root/'assessment/report-fr.html').read_text()
+        self.assertIn('Précontrôle des marqueurs', html)
+        self.assertIn('Unsupported HTML context: select', html)
+        self.assertIn('unavailable', html)
+
+    def test_changed_media_is_disclosed_without_changing_the_normative_digest_result(self):
+        self.prepare(paths=('/stable',))
+        self.server.media = 'text/plain; charset=UTF-8'
+        result = evaluate(self.root/'first/reference', self.root/'intent.json', self.root/'assessment')
+        self.assertEqual(result['counts']['C'], 1)
+        target = tsep.read_json(self.root/'assessment/input.json')['targets'][0]
+        self.assertTrue(target['context']['media_comparison']['raw_headers_differ'])
+        self.assertIn('Type de média observé', (self.root/'assessment/report-fr.html').read_text())
+
+    def test_changed_frozen_preflight_is_rejected_before_evaluation_network(self):
+        self.prepare()
+        intent = tsep.read_json(self.root/'intent.json')
+        intent['targets'][0]['reference_preflight']['state'] = 'unavailable'
+        (self.root/'tampered-intent.json').write_text(json.dumps(intent))
+        with self.assertRaisesRegex(ValueError, 'Reference preflight differs'):
+            evaluate(self.root/'first/reference', self.root/'tampered-intent.json', self.root/'assessment')
+        self.assertEqual(len(self.server.requests), 1)
+        self.assertFalse((self.root/'assessment').exists())
 
     def test_deflate_and_redirects_keep_each_raw_hop(self):
         self.prepare(paths=('/deflate', '/redirect'), policy='digest')
