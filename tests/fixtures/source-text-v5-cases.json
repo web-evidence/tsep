@@ -1,0 +1,424 @@
+{
+  "format_version": 1,
+  "tool_interpreter_version": "5",
+  "scope": "Synthetic implementation coverage, not normative protocol cases or independent review",
+  "required_markers": [
+    "Expected"
+  ],
+  "forbidden_markers": [
+    "Forbidden"
+  ],
+  "supersedes": {
+    "file": "tests/fixtures/source-text-cases.json",
+    "sha256": "11abfdd35d3ab9708019c242207e48c338b89b40002a49580f4010b7762af48c",
+    "changes": []
+  },
+  "cases": [
+    {
+      "id": "v5-style-css",
+      "html": "<html><head></head><body><svg><style>.a{fill:red}</style><path/></svg><p>Expected</p></body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-forbidden-css",
+      "html": "<html><head></head><body><svg><style>.a:after{content:\"Forbidden\"}</style></svg>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-required-only-css",
+      "html": "<html><head></head><body><svg><style>Expected</style></svg>Other</body></html>",
+      "segments": [
+        "Other"
+      ],
+      "outcome": "fail",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-empty",
+      "html": "<html><head></head><body><svg><style></style></svg>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-self-closing",
+      "html": "<html><head></head><body><svg><style id=\"Forbidden\"/></svg>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-case",
+      "html": "<html><head></head><body><SVG><STYLE>.a{fill:red}</sTyLe \t></SVG>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-defs",
+      "html": "<html><head></head><body><svg><defs><style>.a{fill:red}</style></defs><use href=\"#Expected\"/></svg>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-nested-svg",
+      "html": "<html><head></head><body><svg><g><svg><style>Forbidden</style></svg></g></svg>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-attribute-required",
+      "html": "<html><head></head><body><svg><style title=\"Expected\">Other</style></svg>Other</body></html>",
+      "segments": [
+        "Other"
+      ],
+      "outcome": "fail",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-quoted-delimiter-attribute",
+      "html": "<html><head></head><body><svg><style title=\"</style>Forbidden\">CSS</style></svg>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-entities",
+      "html": "<html><head></head><body><svg><style>&lt;p&gt;Forbidden&lt;/p&gt;&#60;/style&gt;</style></svg>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-css-comment",
+      "html": "<html><head></head><body><svg><style>/* Forbidden */ .a{fill:red}</style></svg>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-url",
+      "html": "<html><head></head><body><svg><style>@import url(https://example.invalid/Forbidden.css);</style></svg>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-crlf",
+      "html": "<html><head></head><body><svg><style>\r\n\tForbidden\r\n</style></svg>Expected\r\n</body></html>",
+      "segments": [
+        "Expected\r\n"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-multiple",
+      "html": "<html><head></head><body><svg><style>A</style><style>B</style></svg>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-outside-forbidden",
+      "html": "<html><head></head><body><svg><style>Other</style></svg>Expected Forbidden</body></html>",
+      "segments": [
+        "Expected Forbidden"
+      ],
+      "outcome": "fail",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-outside-entity",
+      "html": "<html><head></head><body><svg><style>Forbidden</style></svg>&#69;xpected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-split-required",
+      "html": "<html><head></head><body>Ex<svg><style>ignored</style></svg>pected</body></html>",
+      "segments": [
+        "Ex",
+        "pected"
+      ],
+      "outcome": "fail",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-split-forbidden",
+      "html": "<html><head></head><body>Expected For<svg><style>ignored</style></svg>bidden</body></html>",
+      "segments": [
+        "Expected For",
+        "bidden"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-preserve-whitespace",
+      "html": "<html><head></head><body><svg>\n<style>Forbidden</style>\t</svg>Expected</body></html>",
+      "segments": [
+        "\n",
+        "\t",
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-html-style-unchanged",
+      "html": "<html><head></head><body><style>literal <p>Forbidden</p></style>Expected</body></html>",
+      "segments": [
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-noscript-empty-unchanged",
+      "html": "<html><head></head><body><noscript> \t</noscript><svg><style>Forbidden</style></svg>Expected</body></html>",
+      "segments": [
+        " \t",
+        "Expected"
+      ],
+      "outcome": "pass",
+      "basis": "SVG style characters/attributes excluded; complete literal segments retained outside style"
+    },
+    {
+      "id": "v5-style-breakout",
+      "html": "<html><head></head><body>Expected<svg><style><p>Forbidden</p></style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-font-breakout",
+      "html": "<html><head></head><body>Expected<svg><style><font color=\"red\">Forbidden</font></style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-cdata",
+      "html": "<html><head></head><body>Expected<svg><style><![CDATA[Forbidden]]></style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-html-comment",
+      "html": "<html><head></head><body>Expected<svg><style><!--Forbidden--></style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-nested-style",
+      "html": "<html><head></head><body>Expected<svg><style><style>Forbidden</style></style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-foreign-object",
+      "html": "<html><head></head><body>Expected<svg><style><foreignObject><p>Forbidden</p></foreignObject></style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-script",
+      "html": "<html><head></head><body>Expected<svg><style><script>Forbidden</script></style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-tag-in-css-string",
+      "html": "<html><head></head><body>Expected<svg><style>.a{content:\"<p>Forbidden</p>\"}</style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-svg-close",
+      "html": "<html><head></head><body>Expected<svg><style></svg><p>Forbidden</p><svg></style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-style-prefix",
+      "html": "<html><head></head><body>Expected<svg><style></stylesheet>Forbidden</style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-literal-less-than",
+      "html": "<html><head></head><body>Expected<svg><style>.a{content:\"1 < 2\"}</style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-processing-instruction",
+      "html": "<html><head></head><body>Expected<svg><style><?test Forbidden?></style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-svg-child",
+      "html": "<html><head></head><body>Expected<svg><style><path/></style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-unclosed",
+      "html": "<html><head></head><body>Expected<svg><style>Forbidden</svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-end-attributes",
+      "html": "<html><head></head><body>Expected<svg><style>CSS</style title=\"x\"></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-end-slash",
+      "html": "<html><head></head><body>Expected<svg><style>CSS</style/></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-duplicate-attributes",
+      "html": "<html><head></head><body>Expected<svg><style a=\"1\" A=\"2\">CSS</style></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-misnested",
+      "html": "<html><head></head><body>Expected<svg><g><style>CSS</style></svg></g></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-svg-text-after",
+      "html": "<html><head></head><body>Expected<svg><style>CSS</style>Forbidden</svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-unknown-after-forbidden",
+      "html": "<html><head></head><body>Expected Forbidden<svg><style>CSS</style><text>x</text></svg></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-style-in-head",
+      "html": "<html><head><svg><style>CSS</style></svg></head><body>Expected</body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-noscript-image",
+      "html": "<html><head></head><body>Expected<noscript><img alt=\"Forbidden\" src=\"x\"></noscript></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-noscript-iframe",
+      "html": "<html><head></head><body>Expected<noscript><iframe src=\"x\"></iframe></noscript></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-noscript-comment",
+      "html": "<html><head></head><body>Expected<noscript><!--Forbidden--></noscript></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-noscript-text",
+      "html": "<html><head></head><body>Expected<noscript>Forbidden</noscript></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-noscript-entity",
+      "html": "<html><head></head><body>Expected<noscript>&#32;</noscript></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-noscript-head-link",
+      "html": "<html><head></head><body>Expected<noscript><link title=\"Forbidden\"></noscript></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-noscript-close-in-attribute",
+      "html": "<html><head></head><body>Expected<noscript><img title=\"</noscript>Forbidden\"></noscript></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    },
+    {
+      "id": "v5-noscript-nested",
+      "html": "<html><head></head><body>Expected<noscript><noscript></noscript></noscript></body></html>",
+      "segments": null,
+      "outcome": "inconclusive",
+      "basis": "Unsupported or ambiguous context aborts the entire extraction"
+    }
+  ]
+}
