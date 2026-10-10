@@ -1,0 +1,202 @@
+{
+  "kind": "unapplied-link-elements",
+  "version": "1",
+  "normative_effect": "none",
+  "parser": {
+    "name": "parse5",
+    "version": "8.0.1",
+    "dependency": "entities@8.0.0"
+  },
+  "runtime": {
+    "node": "v24.19.0",
+    "v8": "13.6.233.17-node.51"
+  },
+  "parser_input_utf8_sha256": "8831494b602f56b4ff1e434eed25b081990f2765b151aa690c110dd34648a359",
+  "readings": {
+    "enabled": {
+      "complete": true,
+      "records": [
+        {
+          "node_index": 6,
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "attributes": [
+            {
+              "local_name": "id",
+              "prefix": null,
+              "namespace": null,
+              "value": "a"
+            },
+            {
+              "local_name": "href",
+              "prefix": null,
+              "namespace": null,
+              "value": "/café?a=1&b=2"
+            }
+          ],
+          "ancestors": [
+            "#document",
+            "html",
+            "body"
+          ],
+          "ancestor_namespaces": [
+            null,
+            "http://www.w3.org/1999/xhtml",
+            "http://www.w3.org/1999/xhtml"
+          ],
+          "context": "body",
+          "template_indices": [],
+          "source_span_utf16": [
+            43,
+            76
+          ],
+          "raw_tag": "<a id=a href=\"/café?a=1&amp;b=2\">",
+          "body_span_bytes": [
+            46,
+            80
+          ]
+        }
+      ],
+      "templates": [],
+      "parse_errors": [],
+      "tree_nodes": 8,
+      "document_mode": "no-quirks",
+      "classification": [
+        {
+          "id": "a",
+          "kind": "html-a",
+          "href": "/café?a=1&b=2",
+          "xlink_href": null,
+          "template_depth": 0,
+          "foreign_ancestry": false,
+          "rel_tokens": []
+        }
+      ]
+    },
+    "disabled": {
+      "complete": true,
+      "records": [
+        {
+          "node_index": 6,
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "attributes": [
+            {
+              "local_name": "id",
+              "prefix": null,
+              "namespace": null,
+              "value": "a"
+            },
+            {
+              "local_name": "href",
+              "prefix": null,
+              "namespace": null,
+              "value": "/café?a=1&b=2"
+            }
+          ],
+          "ancestors": [
+            "#document",
+            "html",
+            "body"
+          ],
+          "ancestor_namespaces": [
+            null,
+            "http://www.w3.org/1999/xhtml",
+            "http://www.w3.org/1999/xhtml"
+          ],
+          "context": "body",
+          "template_indices": [],
+          "source_span_utf16": [
+            43,
+            76
+          ],
+          "raw_tag": "<a id=a href=\"/café?a=1&amp;b=2\">",
+          "body_span_bytes": [
+            46,
+            80
+          ]
+        }
+      ],
+      "templates": [],
+      "parse_errors": [],
+      "tree_nodes": 8,
+      "document_mode": "no-quirks",
+      "classification": [
+        {
+          "id": "a",
+          "kind": "html-a",
+          "href": "/café?a=1&b=2",
+          "xlink_href": null,
+          "template_depth": 0,
+          "foreign_ancestry": false,
+          "rel_tokens": []
+        }
+      ]
+    }
+  },
+  "networkGuard": {
+    "guarded": [
+      "node:net.connect",
+      "node:net.createConnection",
+      "node:net.createServer",
+      "node:net.Socket.connect",
+      "node:tls.connect",
+      "node:tls.createServer",
+      "node:http.request",
+      "node:http.get",
+      "node:http.createServer",
+      "node:https.request",
+      "node:https.get",
+      "node:https.createServer",
+      "node:http2.connect",
+      "node:http2.createServer",
+      "node:http2.createSecureServer",
+      "node:dgram.createSocket",
+      "node:dgram.Socket.connect",
+      "node:dns.lookup",
+      "node:dns.resolve",
+      "node:dns.resolve4",
+      "node:dns.resolve6",
+      "node:dns.resolveAny"
+    ],
+    "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+  },
+  "bounds": {
+    "source_bytes": 8388608,
+    "tree_nodes": 200000,
+    "tree_depth": 256,
+    "records": 50000,
+    "parse_errors": 1000
+  },
+  "scope": "Named a/area/link/base/form elements in all namespaces, HTML input/button formaction and templates. Complete only for this bounded structural inventory; no interaction inventory, shadow attachment, frame documents, activated link or SEO conclusion.",
+  "decoding": {
+    "profile": "html-http-utf8-v1",
+    "content_types": [
+      "text/html; charset=utf-8"
+    ],
+    "body_sha256": "8831494b602f56b4ff1e434eed25b081990f2765b151aa690c110dd34648a359",
+    "body_bytes": 99,
+    "consumed_bom_bytes": 0,
+    "parser_input_utf8_sha256": "8831494b602f56b4ff1e434eed25b081990f2765b151aa690c110dd34648a359",
+    "parser_input_utf16_units": 95,
+    "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+  },
+  "source_sha256": {
+    "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+    "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+    "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+    "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+    "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+    "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+    "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+    "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+    "experiments/link_elements.py": "b1e47f667289c5f94d368d7a50962565ff20eb991ac6b07c31665b67ac17041c",
+    "experiments/link_elements.mjs": "7da25bb82714282d9d49c65081f43edab0e032d91337439b10c47a402027214e"
+  },
+  "supervisor": {
+    "python": "3.9.6",
+    "deadline_seconds": 30,
+    "old_space_mib": 128,
+    "output_byte_limit": 33554432
+  }
+}

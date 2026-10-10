@@ -1,0 +1,942 @@
+{
+  "kind": "link-elements-authored-oracle",
+  "version": "1",
+  "synthetic": true,
+  "normative_effect": "none",
+  "authored_at": "2026-10-10T20:40:28.187599+00:00",
+  "scope": "Named element/namespace/attribute/template facts; no activated navigation, complete interaction inventory or TSEP decision.",
+  "cases": [
+    {
+      "id": "ordinary-anchor",
+      "html": "<!doctype html><html><head></head><body><a id=a href=/p>x</a></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "empty-anchor",
+      "html": "<!doctype html><html><head></head><body><a id=a href=\"\">x</a></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "missing-anchor",
+      "html": "<!doctype html><html><head></head><body><a id=a>x</a></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "rel-annotations",
+      "html": "<!doctype html><html><head></head><body><a id=a href=/p rel=\"NOFOLLOW  sponsored\tnofollow\">x</a></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": [
+              "nofollow",
+              "sponsored",
+              "nofollow"
+            ]
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": [
+              "nofollow",
+              "sponsored",
+              "nofollow"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "download-target",
+      "html": "<!doctype html><html><head></head><body><a id=a href=/p download target=_blank ping=/audit>x</a></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "script-href",
+      "html": "<!doctype html><html><head></head><body><a id=a href=\"javascript:alert(1)\">x</a></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "javascript:alert(1)",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "javascript:alert(1)",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "area",
+      "html": "<!doctype html><html><head></head><body><map name=m><area id=a href=/p><area id=b></map></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-area",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          },
+          {
+            "id": "b",
+            "kind": "html-area",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-area",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          },
+          {
+            "id": "b",
+            "kind": "html-area",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "svg-href",
+      "html": "<!doctype html><html><head></head><body><svg><a id=a href=/p><text>x</text></a></svg></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "svg-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "svg-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "svg-xlink",
+      "html": "<!doctype html><html><head></head><body><svg><a id=a xlink:href=/p></a></svg></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "svg-a",
+            "href": null,
+            "xlink_href": "/p",
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "svg-a",
+            "href": null,
+            "xlink_href": "/p",
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "svg-both-hrefs",
+      "html": "<!doctype html><html><head></head><body><svg><a id=a href=/new xlink:href=/old></a></svg></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "svg-a",
+            "href": "/new",
+            "xlink_href": "/old",
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "svg-a",
+            "href": "/new",
+            "xlink_href": "/old",
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "svg-no-href",
+      "html": "<!doctype html><html><head></head><body><svg><a id=a></a></svg></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "svg-a",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "svg-a",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "html-under-svg",
+      "html": "<!doctype html><html><head></head><body><svg><foreignObject><a id=a href=/p>x</a></foreignObject></svg></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "html-xlink-literal",
+      "html": "<!doctype html><html><head></head><body><a id=a xlink:href=/x>x</a></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "math-html-integration",
+      "html": "<!doctype html><html><head></head><body><math><mtext><a id=a href=/p>x</a></mtext></math></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "link-rel",
+      "html": "<!doctype html><html><head><link id=l href=/p rel=\"canonical alternate\"></head><body></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "l",
+            "kind": "html-link",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": [
+              "canonical",
+              "alternate"
+            ]
+          }
+        ],
+        "disabled": [
+          {
+            "id": "l",
+            "kind": "html-link",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": [
+              "canonical",
+              "alternate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "link-without-href",
+      "html": "<!doctype html><html><head><link id=l rel=stylesheet></head><body></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "l",
+            "kind": "html-link",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": [
+              "stylesheet"
+            ]
+          }
+        ],
+        "disabled": [
+          {
+            "id": "l",
+            "kind": "html-link",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": [
+              "stylesheet"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "base",
+      "html": "<!doctype html><html><head><base id=b href=/root/><base id=t target=_blank></head><body></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "b",
+            "kind": "html-base",
+            "href": "/root/",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          },
+          {
+            "id": "t",
+            "kind": "html-base",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "b",
+            "kind": "html-base",
+            "href": "/root/",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          },
+          {
+            "id": "t",
+            "kind": "html-base",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "form",
+      "html": "<!doctype html><html><head></head><body><form id=f action=/search><input name=q><button id=b formaction=/other>Go</button><input id=i type=submit formaction=/third></form></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "f",
+            "kind": "html-form",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          },
+          {
+            "id": "b",
+            "kind": "html-form-override",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          },
+          {
+            "id": "i",
+            "kind": "html-form-override",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "f",
+            "kind": "html-form",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          },
+          {
+            "id": "b",
+            "kind": "html-form-override",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          },
+          {
+            "id": "i",
+            "kind": "html-form-override",
+            "href": null,
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "plain-buttons",
+      "html": "<!doctype html><html><head></head><body><button onclick=\"location='/p'\">Go</button><input type=submit></body></html>",
+      "expected": {
+        "enabled": [],
+        "disabled": []
+      }
+    },
+    {
+      "id": "template",
+      "html": "<!doctype html><html><head></head><body><template><a id=a href=/p>x</a><area id=b href=/q></template></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 1,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          },
+          {
+            "id": "b",
+            "kind": "html-area",
+            "href": "/q",
+            "xlink_href": null,
+            "template_depth": 1,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 1,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          },
+          {
+            "id": "b",
+            "kind": "html-area",
+            "href": "/q",
+            "xlink_href": null,
+            "template_depth": 1,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "nested-template",
+      "html": "<!doctype html><html><head></head><body><template><template><a id=a href=/p>x</a></template></template></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 2,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 2,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "shadow-template",
+      "html": "<!doctype html><html><head></head><body><div><template shadowrootmode=closed><a id=a href=/p>x</a></template></div></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 1,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 1,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "noscript",
+      "html": "<!doctype html><html><head></head><body><noscript><a id=a href=/p>x</a></noscript></body></html>",
+      "expected": {
+        "enabled": [],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "textarea",
+      "html": "<!doctype html><html><head></head><body><textarea><a id=a href=/p>x</a></textarea></body></html>",
+      "expected": {
+        "enabled": [],
+        "disabled": []
+      }
+    },
+    {
+      "id": "script-text",
+      "html": "<!doctype html><html><head></head><body><script>const x=\"<a id=a href=/p>x</a>\";</script></body></html>",
+      "expected": {
+        "enabled": [],
+        "disabled": []
+      }
+    },
+    {
+      "id": "duplicate-href",
+      "html": "<!doctype html><html><head></head><body><a id=a href=/first href=/second>x</a></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/first",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/first",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "foreign-link",
+      "html": "<!doctype html><html><head></head><body><svg><link id=l href=/p rel=alternate /></svg></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "l",
+            "kind": "foreign-link",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": [
+              "alternate"
+            ]
+          }
+        ],
+        "disabled": [
+          {
+            "id": "l",
+            "kind": "foreign-link",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": [
+              "alternate"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "foreign-base",
+      "html": "<!doctype html><html><head></head><body><svg><base id=b href=/p /></svg></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "b",
+            "kind": "foreign-base",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "b",
+            "kind": "foreign-base",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": true,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "unicode-entity",
+      "html": "<!doctype html><html><head></head><body>é😀<a id=a href=\"/café?a=1&amp;b=2\">x</a></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/café?a=1&b=2",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/café?a=1&b=2",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "reordered-table",
+      "html": "<!doctype html><html><head></head><body><table><a id=a href=/p>x</a></table><a id=b href=/q>y</a></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          },
+          {
+            "id": "b",
+            "kind": "html-a",
+            "href": "/q",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          },
+          {
+            "id": "b",
+            "kind": "html-a",
+            "href": "/q",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "attribute-casing",
+      "html": "<!doctype html><html><head></head><body><A ID=A HREF=/p REL=\"NoFoLlOw\">x</A></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "A",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": [
+              "nofollow"
+            ]
+          }
+        ],
+        "disabled": [
+          {
+            "id": "A",
+            "kind": "html-a",
+            "href": "/p",
+            "xlink_href": null,
+            "template_depth": 0,
+            "foreign_ancestry": false,
+            "rel_tokens": [
+              "nofollow"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

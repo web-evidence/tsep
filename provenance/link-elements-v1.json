@@ -1,0 +1,28 @@
+{
+  "kind": "link-element-observer-provenance",
+  "normative_effect": "none",
+  "sources": [
+    {
+      "url": "https://html.spec.whatwg.org/multipage/links.html",
+      "at": "2026-10-10T20:40:27.019921+00:00",
+      "scope": "Element/attribute distinctions only; no engine or site assessment.",
+      "status": 200,
+      "final_url": "https://html.spec.whatwg.org/multipage/links.html",
+      "sha256": "dad236bbd0ae7bc0b5f46af9dac0125390ced1e9f381789f5972034d987504c2",
+      "capture": ".local/link-elements-2026-10-10/references/html-links.html",
+      "delivery": "Dated references retained in separate qualification kit; no dependency on private infrastructure."
+    },
+    {
+      "url": "https://www.w3.org/TR/SVG2/linking.html",
+      "at": "2026-10-10T20:40:28.125502+00:00",
+      "scope": "Element/attribute distinctions only; no engine or site assessment.",
+      "status": 200,
+      "final_url": "https://www.w3.org/TR/SVG2/linking.html",
+      "sha256": "9059ac402b83bbc22711cb4a096f72e26ce6f0a39a7fcc7494e990863a835955",
+      "capture": ".local/link-elements-2026-10-10/references/svg-links.html",
+      "delivery": "Dated references retained in separate qualification kit; no dependency on private infrastructure."
+    }
+  ],
+  "oracle": "31 synthetic documents authored before implementation; exact expected structural classifications, not browser/Google judgments.",
+  "fixture": "link-elements-observation-v1.json is a retained output used for transport/attribution guards, not an independently authored oracle."
+}

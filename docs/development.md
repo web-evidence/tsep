@@ -1,3 +1,6 @@
+Optional [link-element observer 1](link-elements-observer.md) distinguishes HTML/SVG elements and namespaced attributes before A04 policy selection; draft.16 remains unchanged.
+Observation des types de liens et templates, sans promotion normative.
+
 Optional [source link resolution experiment 1](source-links-experiment.md) prepares A04: explicit Node24 URL parsing, static base hypotheses and attributed anchors; no normative change.
 Expérience de liens source disponible, sans changement de verdict draft.16.
 
