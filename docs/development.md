@@ -358,3 +358,13 @@ explicitly. [Scope and migration](table-experiment-v4.md).
 L'expérience 4 ajoute 103 cas de tableaux figés avant code. Parents, ordre,
 espaces littéraux, refus intégral et hypothèses noscript sont éprouvés. Les
 anciens fichiers restent intacts ; un cas v3 change explicitement d'attente.
+
+The [prospective experiment](prospective-experiment.md) records criteria before
+measurement and keeps draft.7 reports separate from experimental candidates.
+Its nine prefrozen synthetic cases use loopback only; integrity and offline
+replay checks are included in verification and the explicit distribution.
+
+L'[expérience prospective](prospective-experiment.md) enregistre les critères avant
+mesure et conserve le rapport draft.7 séparé du prototype. Neuf cas synthétiques
+figés avant code, contrôles d'intégrité et rejeu hors ligne sont inclus dans la
+vérification et la distribution explicite, sans dépendance à Edikka.
