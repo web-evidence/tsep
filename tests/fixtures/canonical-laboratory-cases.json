@@ -1,0 +1,171 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "registered_at": "2026-10-10T10:05:49.033543+00:00",
+  "scope": "Expectations frozen before TS10 laboratory implementation. Actual HTTP/browser executions are separate future observations. No human review or engine selection inferred.",
+  "base_substitution": "{base} = http://127.0.0.1:<ephemeral-port>/<campaign>/<case>; recorded before captures",
+  "rules": [
+    "TS10-A01",
+    "TS10-A02",
+    "TS10-A03",
+    "TS10-A04"
+  ],
+  "required_states": [
+    {
+      "id": "loaded",
+      "interactions": [],
+      "wait": "document ready; laboratory state loaded visible"
+    }
+  ],
+  "family": [
+    "{base}/product",
+    "{base}/product?color=blue"
+  ],
+  "preferred": "{base}/product",
+  "link_sources": [
+    "{base}/catalog"
+  ],
+  "subresources": [],
+  "transport": "Uncompressed immutable HTTP/1.1, no-store, inline JavaScript/styles, loopback only",
+  "cases": [
+    {
+      "id": "reference",
+      "label": "Référence cohérente",
+      "expected": [
+        "pass",
+        "inconclusive",
+        "pass",
+        "pass"
+      ],
+      "control": "NT"
+    },
+    {
+      "id": "http-conflict",
+      "label": "HTTP Link contredit le HTML",
+      "expected": [
+        "fail",
+        "inconclusive",
+        "pass",
+        "pass"
+      ],
+      "control": "NC"
+    },
+    {
+      "id": "relative-canonical",
+      "label": "Canonical relative : hors critère absolu TSEP",
+      "expected": [
+        "fail",
+        "inconclusive",
+        "pass",
+        "pass"
+      ],
+      "control": "NC"
+    },
+    {
+      "id": "sitemap-variant",
+      "label": "Le sitemap retient la variante",
+      "expected": [
+        "pass",
+        "inconclusive",
+        "fail",
+        "pass"
+      ],
+      "control": "NC"
+    },
+    {
+      "id": "link-variant",
+      "label": "Le catalogue pointe vers la variante",
+      "expected": [
+        "pass",
+        "inconclusive",
+        "pass",
+        "fail"
+      ],
+      "control": "NC"
+    },
+    {
+      "id": "preferred-redirect",
+      "label": "La préférence redirige ailleurs",
+      "expected": [
+        "fail",
+        "fail",
+        "pass",
+        "pass"
+      ],
+      "control": "NC"
+    },
+    {
+      "id": "preferred-404",
+      "label": "La préférence répond 404",
+      "expected": [
+        "inconclusive",
+        "fail",
+        "pass",
+        "pass"
+      ],
+      "control": "NC"
+    },
+    {
+      "id": "sitemap-omission",
+      "label": "Préférence absente du sitemap complet",
+      "expected": [
+        "pass",
+        "inconclusive",
+        "fail",
+        "pass"
+      ],
+      "control": "NC"
+    },
+    {
+      "id": "missing-child",
+      "label": "Branche non collectée : omission indémontrable",
+      "expected": [
+        "pass",
+        "inconclusive",
+        "inconclusive",
+        "pass"
+      ],
+      "control": "NT"
+    },
+    {
+      "id": "contradiction-with-gap",
+      "label": "Variante observée malgré une branche non collectée",
+      "expected": [
+        "pass",
+        "inconclusive",
+        "fail",
+        "pass"
+      ],
+      "control": "NC"
+    },
+    {
+      "id": "js-canonical",
+      "label": "JavaScript réécrit la canonique vers la variante",
+      "expected": [
+        "fail",
+        "inconclusive",
+        "pass",
+        "pass"
+      ],
+      "control": "NC"
+    },
+    {
+      "id": "corrected",
+      "label": "Signaux corrigés, revue humaine manquante",
+      "expected": [
+        "pass",
+        "inconclusive",
+        "pass",
+        "pass"
+      ],
+      "control": "NT"
+    }
+  ],
+  "limits": [
+    "No manual content comparison, no fabricated exemption",
+    "Relative canonical failure is the TSEP absolute-URL criterion, not an assertion that search engines reject every relative URL",
+    "404 destination has no browser representation; required rendered state remains absent",
+    "Missing child exists in server configuration but is deliberately not requested; no claim of complete coverage",
+    "The rendered adapter is reused only for transport association via synthetic TS07 wrapper receipts; no TS07 verdict or report is derived from those wrappers"
+  ]
+}
