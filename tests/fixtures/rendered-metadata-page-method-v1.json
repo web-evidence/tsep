@@ -1,0 +1,16 @@
+{
+  "kind": "synthetic-page-instrumentation-method",
+  "version": "1",
+  "normative": false,
+  "recipe_sha256": "8af1c643f737798b72c5380cedd96c73d09fbe4cc637f16037ca842ddf990d4d",
+  "capture_script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+  "trigger": "One window.load callback registered after fixture scripts, no resampling",
+  "execution": "Page world by laboratory construction; unauthenticated and API overrides intentionally effective",
+  "transport": "One POST per navigation to token-scoped primary-loopback /capture endpoint; exact envelope bytes and server receipt retained",
+  "max_post_bytes": 2097152,
+  "scope": "24 frozen recipes in two environments. No external sites or normative results.",
+  "footprint": "Served inline instrumentation and initial receipt element are included in source and tree. No DOM write during traversal; receipt text only after POST completes.",
+  "coverage": "All existing bounds and exclusions unchanged. Incomplete remains incomplete.",
+  "timing": "load does not imply DOM stability, network idle or extension quiescence",
+  "fr": "Méthode distincte : relevé unique à load, POST local, reçus bruts conservés. API potentiellement altérées, aucune stabilité générale ni authenticité déduite. Attentes existantes inchangées."
+}

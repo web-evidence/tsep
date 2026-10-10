@@ -4,6 +4,7 @@ import argparse
 from collections import Counter
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import json
+import re
 from pathlib import Path
 import secrets
 import shutil
@@ -18,15 +19,18 @@ from experiments import rendered_metadata as metadata
 from conformance.http import raw_bytes
 from provenance.runtime import loaded_sources
 
-VERSION='1'
+VERSION='2'
 AGENT='TSEP-metadata-source/1'
+PAGE_SCRIPT='examples/rendered_metadata_page.js'
+PAGE_METHOD='tests/fixtures/rendered-metadata-page-method-v1.json'
 
 
 def sources():
     result=ts01.collection_sources()
     result.update(loaded_sources(ROOT,{'examples/rendered_metadata_lab.py':sys.modules[__name__],
                                        'experiments/rendered_metadata.py':metadata}))
-    for name in (metadata.SCRIPT,metadata.RECIPE,metadata.RECIPE.replace('.json','.sha256')):
+    for name in (metadata.SCRIPT,metadata.RECIPE,metadata.RECIPE.replace('.json','.sha256'),
+                 PAGE_SCRIPT,PAGE_METHOD,PAGE_METHOD.replace('.json','.sha256')):
         result[name]=tsep.digest(ROOT/name)
     return result
 
@@ -38,7 +42,24 @@ def substitute(value,base,cross):
     return value
 
 
-def page(case,token):
+def page_method():
+    path=ROOT/PAGE_METHOD
+    tsep.require(tsep.digest(path)==path.with_suffix('.sha256').read_text().split()[0],'Page method changed')
+    method=tsep.read_json(path)
+    tsep.require(method['capture_script_sha256']==metadata.script_digest() and
+                 method['recipe_sha256']==tsep.digest(ROOT/metadata.RECIPE),'Page method dependency changed')
+    return method
+
+
+def page(case,token,endpoint=None):
+    instrumentation=''
+    if endpoint:
+        script=(ROOT/PAGE_SCRIPT).read_text()
+        for key,value in [('__SCRIPT_SHA__',json.dumps(metadata.script_digest())),
+                          ('__CONTEXT__',json.dumps(token)),('__ENDPOINT__',json.dumps(endpoint))]:
+            script=script.replace(key,value)
+        script=script.replace('__CAPTURE_EXPRESSION__',(ROOT/metadata.SCRIPT).read_text().strip())
+        instrumentation='<p>Reçu local : <code id="lab-receipt">pending</code></p><script>'+script+'</script>'
     return ('<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>TSEP DOM · '+case['id']+'</title>'+
             case['head']+'<style>body{font:18px/1.6 system-ui;background:#102032;color:#edf3f8;max-width:1000px;margin:40px auto}h1{font-size:36px}code{color:#b8ed76;overflow-wrap:anywhere}</style></head><body>'+
             '<p>LABORATOIRE SYNTHÉTIQUE · INVENTAIRE SANS VERDICT</p><h1>'+case['id']+'</h1>'+
@@ -49,14 +70,14 @@ def page(case,token):
             'window.addEventListener("error",e=>error(e.message));window.addEventListener("unhandledrejection",e=>error(e.reason));'+
             'try{'+case['script']+'}catch(e){error(e)};'+
             'document.getElementById("lab-agent").textContent=navigator.userAgent;document.getElementById("lab-url").textContent=location.href;'+
-            'document.getElementById("lab-state").textContent="loaded";</script></body></html>')
+            'document.getElementById("lab-state").textContent="loaded";</script>'+instrumentation+'</body></html>')
 
 
-def wire(body,origins):
+def wire(body,origins,page_export=False):
     raw=body.encode('utf-8')
     header=('HTTP/1.1 200 Laboratory\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: '+str(len(raw))+
             "\r\nCache-Control: no-store\r\nContent-Security-Policy: default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; frame-src "+
-            ' '.join(origins)+" about:\r\nConnection: close\r\n\r\n")
+            ' '.join(origins)+" about:; connect-src "+("'self'" if page_export else "'none'")+"\r\nConnection: close\r\n\r\n")
     return header.encode('ascii')+raw
 
 
@@ -72,6 +93,56 @@ class Handler(BaseHTTPRequestHandler):
             with self.server.lock,(self.server.folder/'requests.jsonl').open('a') as f:f.write(json.dumps(row)+'\n')
         self.close_connection=True
 
+    def do_POST(self):
+        # This receiver accepts synthetic laboratory observations only.
+        self.connection.settimeout(5)
+        limit=2097152
+        try:count=int(self.headers.get('Content-Length','-1'))
+        except ValueError:count=-1
+        if not 0<=count<=limit:
+            row={'method':'POST','url':self.server.origin+self.path,'agent':self.headers.get('User-Agent'),
+                 'peer':self.client_address[0],'observed_at':ts01.now(),'status':400,'complete':False,
+                 'reason':'Invalid Content-Length or byte bound; body not collected'}
+            with self.server.lock,(self.server.folder/'requests.jsonl').open('a') as f:f.write(json.dumps(row)+'\n')
+            self.send_error(400,'Outside capture bound');self.close_connection=True;return
+        raw=self.rfile.read(count);receipt=metadata.sha(raw)
+        row={'method':'POST','url':self.server.origin+self.path,'agent':self.headers.get('User-Agent'),
+             'peer':self.client_address[0],'observed_at':ts01.now(),'receipt':receipt,'complete':False}
+        try:
+            tsep.require(self.server.origin+self.path==self.server.endpoint,'Outside capture scope')
+            tsep.require(len(raw)==count,'Incomplete POST');payload=decode_page_export(raw)
+            tsep.require(payload['context']==self.server.token and payload['url'] in self.server.task_urls,
+                         'Wrong capture context')
+            status=200;body=json.dumps({'receipt':receipt}).encode()
+        except (ValueError,KeyError,TypeError) as error:
+            status=400;body=json.dumps({'error':str(error)}).encode()
+        row['status']=status
+        response=('HTTP/1.1 '+str(status)+' Capture\r\nContent-Type: application/json\r\nContent-Length: '+str(len(body))+
+                  '\r\nConnection: close\r\n\r\n').encode()+body
+        row['response_sha256']=metadata.sha(response)
+        with self.server.lock:
+            folder=self.server.folder/'posts';folder.mkdir(exist_ok=True)
+            for suffix,data in [('.json',raw),('.response.bin',response)]:
+                path=folder/(receipt+suffix)
+                if not path.exists():path.write_bytes(data)
+        try:self.wfile.write(response);self.wfile.flush();row['complete']=True
+        finally:
+            with self.server.lock,(self.server.folder/'requests.jsonl').open('a') as f:f.write(json.dumps(row)+'\n')
+        self.close_connection=True
+
+
+def decode_page_export(raw):
+    tsep.require(len(raw)<=2097152,'Page export bound')
+    envelope=json.loads(raw)
+    tsep.require(isinstance(envelope,dict) and set(envelope)=={'payload','sha256'} and
+                 isinstance(envelope['payload'],str) and metadata.sha(envelope['payload'].encode())==envelope['sha256'],
+                 'Page payload digest mismatch')
+    payload=json.loads(envelope['payload'])
+    tsep.require(payload['kind']=='laboratory-page-inventory' and payload['version']=='1' and
+                 payload['script_sha256']==metadata.script_digest(),'Unsupported page export')
+    metadata.inventory(payload['tree'])
+    return payload
+
 
 def stop(servers,threads):
     for s,t in zip(servers,threads):
@@ -79,13 +150,15 @@ def stop(servers,threads):
         s.server_close();t.join()
 
 
-def start(output):
+def start(output,page_export=False):
     folder=ts01.new_directory(output);before=sources();recipes=metadata.recipes()
     token=secrets.token_hex(8);servers=[ThreadingHTTPServer(('127.0.0.1',0),Handler) for _ in range(2)]
     origins=['http://127.0.0.1:'+str(s.server_port) for s in servers]
     base,cross=[o+'/'+token for o in origins]
     cases=[substitute(c,base,cross) for c in recipes['cases']]
-    responses={base+'/case/'+c['id']:wire(page(c,token),origins) for c in cases}
+    method=page_method() if page_export else None
+    endpoint=base+'/capture' if page_export else None
+    responses={base+'/case/'+c['id']:wire(page(c,token,endpoint),origins,page_export) for c in cases}
     frames=[base+'/frame.html',cross+'/frame.html']
     for url in frames:responses[url]=wire('<!doctype html><html><head><link id="case-frame-link" rel="canonical" href="'+base+'/inner"></head><body>Separate frame document</body></html>',origins)
     reg={'kind':'synthetic-metadata-laboratory','version':VERSION,'registered_at':ts01.now(),
@@ -95,10 +168,12 @@ def start(output):
          'environments':['integrated','chrome'],'execution_context':'not-attested',
          'method':'One fixed read-only structured traversal after loaded, then logs/screenshot. No resampling or DOM cleanup.',
          'normative':False}
+    reg.update(page_method=method,capture_endpoint=endpoint)
     ts01.save(folder/'registration.json',reg);(folder/'requests.jsonl').touch()
     lock=threading.Lock();threads=[]
     for s,origin in zip(servers,origins):
         s.folder=folder;s.origin=origin;s.lock=lock;s.responses=responses;s.daemon_threads=True
+        s.endpoint=endpoint;s.token=token;s.task_urls={t['url'] for t in reg['tasks']}
         t=threading.Thread(target=s.serve_forever,daemon=True);t.start();threads.append(t)
     try:
         urls=[t['url'] for t in reg['tasks']]+frames
@@ -150,6 +225,7 @@ def analyze(source,observations):
     tsep.require(reg['source_files']==receipt['source_files']==sources() and reg['script_sha256']==metadata.script_digest(),
                  'Changed laboratory or capture script')
     tsep.require(receipt['registration_sha256']==tsep.digest(source/'registration.json'),'Registration changed')
+    tsep.require(reg['version']==VERSION,'Unsupported laboratory version')
     tsep.require(reg['recipe']==metadata.recipes() and reg['environments']==['integrated','chrome'], 'Changed recipes/environments')
     cases=[substitute(c,reg['base'],reg['cross']) for c in metadata.recipes()['cases']]
     tasks=[{'id':c['id'],'url':reg['base']+'/case/'+c['id']} for c in cases]
@@ -174,8 +250,20 @@ def analyze(source,observations):
                 tsep.require(sidecar.read_bytes()==raw_bytes(target['http'][0][kind]),'Source JSON/sidecar mismatch')
             raw=raw_bytes(target['http'][0]['response']);source_responses[target['url']]=raw
     logs=[json.loads(line) for line in (source/'requests.jsonl').read_text().splitlines()]
+    page_export=reg.get('page_method') is not None
+    tsep.require(reg.get('page_method')==(page_method() if page_export else None) and
+                 reg.get('capture_endpoint')==(reg['base']+'/capture' if page_export else None),'Changed page method')
     tsep.require(set(source_responses)==set(expected_urls),'Source scope mismatch')
     for row in logs:
+        if row.get('method')=='POST':
+            tsep.require(page_export and row['url']==reg['capture_endpoint'] and row['peer']=='127.0.0.1'
+                         and row['status']==200 and row['complete'] is True,'Invalid page POST')
+            tsep.require(re.fullmatch('[0-9a-f]{64}',row['receipt']) is not None,'Invalid receipt')
+            raw=(source/'posts'/(row['receipt']+'.json')).read_bytes()
+            tsep.require(metadata.sha(raw)==row['receipt'] and
+                         tsep.digest(source/'posts'/(row['receipt']+'.response.bin'))==row['response_sha256'],'Changed page POST bytes')
+            decode_page_export(raw)
+            continue
         tsep.require(row['url'] in source_responses and row['peer']=='127.0.0.1' and row['complete'] is True
                      and row['response_sha256']==metadata.sha(source_responses[row['url']]),'Unexpected/different server response')
     tsep.require(Counter(r['url'] for r in logs if r['agent']==AGENT)==Counter(expected_urls),'Source request scope')
@@ -186,6 +274,16 @@ def analyze(source,observations):
         rows=[];agent=None
         for case,task in zip(reg['cases'],reg['tasks']):
             record=records[case['id']];tree=record['tree']
+            if page_export:
+                receipt_id=record['page_receipt']
+                tsep.require(isinstance(receipt_id,str) and re.fullmatch('[0-9a-f]{64}',receipt_id),'Invalid page receipt')
+                payload=decode_page_export((source/'posts'/(receipt_id+'.json')).read_bytes())
+                tsep.require(all(payload[k]==record[k] for k in ('tree','script_sha256','context','url','state','errors'))
+                             and payload['user_agent']==record['browser']['user_agent'],'Page/operator record mismatch')
+                posts=[i for i,r in enumerate(logs) if r.get('receipt')==receipt_id and i not in used
+                       and r['agent']==payload['user_agent'] and
+                       tsep.timestamp(record['navigation_started_at'])<=tsep.timestamp(r['observed_at'])<=tsep.timestamp(record['observed_at'])]
+                tsep.require(len(posts)==1,'Missing/ambiguous page POST');used.add(posts[0])
             tsep.require(record['script_sha256']==receipt['script_sha256']==metadata.script_digest(),'Different capture script')
             tsep.require(tree['document_url']==task['url'] and record['context']==reg['token']
                          and record['url']==task['url'] and record['state']=='loaded','Wrong page/context/state')
@@ -215,6 +313,7 @@ def analyze(source,observations):
     remaining=[r for i,r in enumerate(logs) if i not in used and r['agent']!=AGENT]
     tsep.require(not remaining,'Extra browser requests')
     return {'kind':'experimental-metadata-campaign','version':VERSION,'normative':False,
+            'capture_method':'laboratory-page-post-v1' if page_export else 'operator-read-scope',
             'script_sha256':metadata.script_digest(),'environments':results,'server_requests':len(logs),
             'frame_server_log_indices':frame_requests,
             'observations':sum(len(r) for r in results.values()),
@@ -228,6 +327,10 @@ def source_names(root):
     receipt=tsep.read_json(root/'receipt.json')
     names=['registration.json','receipt.json','requests.jsonl']
     for phase in receipt['phases']:names += [phase+'/'+n for n in list(ts01.verify(root/phase))+['SHA256SUMS']]
+    for row in [json.loads(line) for line in (root/'requests.jsonl').read_text().splitlines()]:
+        if row.get('method')=='POST':
+            tsep.require(re.fullmatch('[0-9a-f]{64}',row['receipt']) is not None,'Invalid receipt path')
+            names += ['posts/'+row['receipt']+suffix for suffix in ('.json','.response.bin')]
     return names
 
 
@@ -254,13 +357,13 @@ def replay(folder):
 
 def main():
     p=argparse.ArgumentParser(description=__doc__);sub=p.add_subparsers(dest='command',required=True)
-    s=sub.add_parser('serve');s.add_argument('--output',required=True)
+    s=sub.add_parser('serve');s.add_argument('--output',required=True);s.add_argument('--page-export',action='store_true')
     f=sub.add_parser('finish');f.add_argument('source');f.add_argument('--observations',required=True);f.add_argument('--output',required=True)
     r=sub.add_parser('replay');r.add_argument('folder')
     a=p.parse_args()
     try:
         if a.command=='serve':
-            servers,threads,reg=start(a.output);print(json.dumps({'ready':True,'tasks':reg['tasks'],'script_sha256':reg['script_sha256']}),flush=True)
+            servers,threads,reg=start(a.output,a.page_export);print(json.dumps({'ready':True,'tasks':reg['tasks'],'script_sha256':reg['script_sha256']}),flush=True)
             try:threads[0].join()
             except KeyboardInterrupt:stop(servers,threads)
             return 0

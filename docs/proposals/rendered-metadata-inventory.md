@@ -5,10 +5,12 @@
 The active protocol remains `0.1.0-draft.7`. This plan concerns observations only.
 
 Implementation follow-up (2026-10-10): an [experimental inventory](../rendered-metadata-inventory.md)
-now exists separately. The plan below is retained as written; complete browser
-validation and its review criteria remain pending. / Un inventaire expérimental
-séparé est maintenant implémenté. Le plan ci-dessous reste conservé ; sa validation
-complète dans les navigateurs et sa revue restent à accomplir.
+now exists separately. The plan below is retained as written. A distinct page
+instrumentation method has 48 recorded observations across two browsers; the
+linked implementation document states partial coverage and API limitations.
+/ Un inventaire séparé est implémenté. Le plan ci-dessous reste conservé. Une
+méthode instrumentée distincte conserve 48 observations dans deux navigateurs ;
+ses couvertures partielles et limites d'API sont détaillées dans le document lié.
 
 ## Français
 

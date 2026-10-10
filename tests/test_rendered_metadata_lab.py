@@ -18,11 +18,12 @@ from test_rendered_metadata import tree
 
 
 class MetadataLaboratory(unittest.TestCase):
+    page_export=False
     @classmethod
     def setUpClass(cls):
         cls.temp=tempfile.TemporaryDirectory();cls.root=Path(cls.temp.name)
         cls.source=cls.root/'source'
-        servers,threads,reg=lab.start(cls.source)
+        servers,threads,reg=lab.start(cls.source,cls.page_export)
         cls.records={}
         try:
             for env in reg['environments']:
@@ -39,6 +40,15 @@ class MetadataLaboratory(unittest.TestCase):
                         'observed_at':ts01.now(),'url':task['url'],'context':reg['token'],'state':'loaded',
                         'errors':[],'devLogs':[],'tree':t,
                         'browser':{'name':'AUTHORED TEST CLIENT, NOT BROWSER','version':'unit fixture','user_agent':agent}}
+                    if cls.page_export:
+                        record=records[task['id']]
+                        payload={k:record[k] for k in ('tree','script_sha256','context','url','state','errors')}
+                        payload.update(kind='laboratory-page-inventory',version='1',user_agent=agent,
+                                       capture_started_at=started,captured_at=ts01.now())
+                        text=json.dumps(payload);raw=json.dumps({'payload':text,'sha256':metadata.sha(text.encode())}).encode()
+                        with urlopen(Request(reg['capture_endpoint'],data=raw,headers={'User-Agent':agent,'Content-Type':'application/json'}),timeout=3) as response:
+                            record['page_receipt']=json.loads(response.read())['receipt']
+                        record['observed_at']=ts01.now()
                 cls.records[env]=records
         finally:lab.stop(servers,threads)
         cls.observations=cls.root/'observations.json';ts01.save(cls.observations,cls.records)
@@ -49,7 +59,7 @@ class MetadataLaboratory(unittest.TestCase):
     def test_partial_observations_stay_unmatched_and_replay_without_network(self):
         output=self.root/'delivery'
         result=lab.finish(self.source,self.observations,output)
-        self.assertEqual(result['observations'],48);self.assertEqual(result['server_requests'],78)
+        self.assertEqual(result['observations'],48);self.assertEqual(result['server_requests'],126 if self.page_export else 78)
         self.assertFalse(result['all_recipe_checks_matched'])
         with patch.object(socket,'socket',side_effect=AssertionError('network forbidden')), \
              patch.object(socket,'getaddrinfo',side_effect=AssertionError('DNS forbidden')), \
@@ -93,3 +103,38 @@ class MetadataLaboratory(unittest.TestCase):
         row['agent']='different-client'
         (source/'requests.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in rows))
         with self.assertRaisesRegex(ValueError,'frame request'):lab.analyze(source,self.records)
+
+
+class PageMetadataLaboratory(MetadataLaboratory):
+    page_export=True
+
+    def test_duplicate_or_missing_post_is_rejected(self):
+        rows=[json.loads(x) for x in (self.source/'requests.jsonl').read_text().splitlines()]
+        post=next(r for r in rows if r.get('method')=='POST')
+        for suffix,changed in [('duplicate',rows+[post]),('missing',[r for r in rows if r is not post])]:
+            source=self.root/suffix;shutil.copytree(self.source,source)
+            (source/'requests.jsonl').write_text(''.join(json.dumps(r)+'\n' for r in changed))
+            with self.assertRaisesRegex(ValueError,'page POST'):lab.analyze(source,self.records)
+
+    def test_changed_payload_or_operator_tree_is_rejected(self):
+        records=copy.deepcopy(self.records);records['integrated']['corrected']['tree']['elapsed_ms']=1
+        with self.assertRaisesRegex(ValueError,'record mismatch'):lab.analyze(self.source,records)
+        record=self.records['integrated']['corrected']
+        raw=(self.source/'posts'/(record['page_receipt']+'.json')).read_bytes()
+        envelope=json.loads(raw);envelope['payload']+=' '
+        with self.assertRaisesRegex(ValueError,'digest'):lab.decode_page_export(json.dumps(envelope).encode())
+
+    def test_payload_count_mismatch_is_rejected_despite_new_digest(self):
+        record=self.records['integrated']['corrected']
+        envelope=json.loads((self.source/'posts'/(record['page_receipt']+'.json')).read_bytes())
+        payload=json.loads(envelope['payload']);payload['tree']['reported_node_count']=1
+        envelope['payload']=json.dumps(payload);envelope['sha256']=metadata.sha(envelope['payload'].encode())
+        with self.assertRaisesRegex(ValueError,'node count'):lab.decode_page_export(json.dumps(envelope).encode())
+
+    def test_instrumentation_is_served_after_fixture_and_no_export_for_frames(self):
+        reg=tsep.read_json(self.source/'registration.json');case=reg['cases'][0]
+        html=lab.page(case,reg['token'],reg['capture_endpoint'])
+        self.assertIn((metadata.ROOT/metadata.SCRIPT).read_text().strip(),html)
+        self.assertLess(html.index('textContent="loaded"'),html.index("window.addEventListener('load'"))
+        self.assertIn('Page world',html)
+        self.assertNotIn('capture',lab.page(case,reg['token']))

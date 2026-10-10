@@ -2,8 +2,8 @@
 
 **Observation tool 2. Unapplied to TSEP 0.1.0-draft.7.** No report outcomes,
 certification, indexing or ranking inference. This implementation follows the
-[design plan](proposals/rendered-metadata-inventory.md); it does not complete its
-two-browser delivery criteria.
+[design plan](proposals/rendered-metadata-inventory.md). A separate instrumented
+laboratory campaign has now been observed in two browsers; its scope is below.
 
 ## Français
 
@@ -44,6 +44,7 @@ le compteur et le signalement des API absentes. Aucun attendu de contenu n'a
 
 ```sh
 python3 examples/rendered_metadata_lab.py serve --output /tmp/nouvelle-campagne
+python3 examples/rendered_metadata_lab.py serve --page-export --output /tmp/nouvelle-campagne-instrumentee
 python3 experiments/rendered_metadata.py capture.json --output inventaire.json
 python3 examples/rendered_metadata_lab.py finish /tmp/nouvelle-campagne --observations observations.json --output /tmp/livraison
 python3 examples/rendered_metadata_lab.py replay /tmp/livraison
@@ -75,14 +76,65 @@ local des attributs. Le cas volumineux ne contient que 2 000 nœuds malgré la b
 2 048. Les 24 objets sont refusés par le contrat ; ils ne valident pas les
 recettes. La cause exacte de ces omissions n'est pas établie.
 
-L'ouverture de Chrome a dépassé le délai ; l'inventaire des surfaces a ensuite
+Lors de ces premières tentatives, l'ouverture de Chrome a dépassé le délai ; l'inventaire des surfaces a ensuite
 signalé le Mac verrouillé. Aucune observation Chrome n'est revendiquée pour
-cette campagne. La v2 et sa campagne complète restent à éprouver dans les deux
-navigateurs. Aucune nouvelle revue de Claude n'est revendiquée à ce stade.
+cette première campagne. Ces échecs ne sont pas remplacés par la campagne suivante.
 Les tests Python utilisent des arbres rédigés et des clients HTTP de test :
 ce ne sont pas des résultats navigateur. Les anciennes preuves draft.7 restent
 inchangées. Les preuves locales de ces tentatives sont privées et non incluses
 dans l'archive publique des outils.
+
+### Campagne instrumentée distincte
+
+Le précontrôle v2 suivant a conservé `api-error: document.baseURI` dans chacun
+des deux navigateurs. Une nouvelle méthode [figée avant collecte](../tests/fixtures/rendered-metadata-page-method-v1.json)
+sert le script v2 inchangé dans les octets de chaque page. Le laboratoire 2
+enregistre un unique callback `window.load` après les scripts de la recette.
+Ce choix ne prétend pas attendre la stabilité du DOM ou des extensions. Les API
+sont lues à cet instant et peuvent être redéfinies par la page ; aucune capture
+préalable de fonctions ni authentification n'est revendiquée.
+
+Un POST vers un point de réception du même serveur loopback transporte une chaîne
+JSON et son SHA-256 calculé dans la page. Le serveur conserve l'enveloppe exacte,
+sa réponse et le journal. Le récepteur est borné à 2 Mio. Le script de parcours
+ne modifie pas le DOM ; l'instrumentation affiche seulement un reçu après la
+mesure. Son code et l'élément initial de reçu sont inclus dans l'arbre et la
+source. La lecture par l'outil et cette instrumentation ont des navigations
+distinctes. Aucun export n'est injecté dans Edikka ou un autre site externe.
+
+Le rejeu exige la correspondance des octets, empreintes, compteurs, arbres et
+records opérateur, et exactement un POST pour chaque navigation instrumentée.
+Un reçu manquant ou dupliqué est refusé. Cette chaîne établit une cohérence
+interne, pas l'authenticité des API, du navigateur, de l'opérateur ou de l'horloge.
+Conserver les anciens outils avec leurs campagnes ; le laboratoire 2 n'accepte
+pas silencieusement les enregistrements du laboratoire 1.
+
+Résultats locaux du 10 octobre 2026 : **48 observations / 24 recettes / deux
+environnements**, IAB et Chrome via extension (UA rapporté Chrome/155.0.0.0).
+**118 vérifications de recettes concordent**, dont le cas de borne attendu :
+23 parcours complets dans le périmètre et un incomplet à 1 024 nœuds par
+environnement. Ce ne sont pas 48 captures exhaustives ni 118 tests normatifs.
+Le journal loopback contient 126 requêtes : 26 sources, 52 GET navigateur
+(frames comprises), 48 POST. Il ne mesure pas tout le trafic du navigateur.
+
+Les deux environnements relèvent la réécriture canonical vers `?color=blue`,
+l'attribut relatif distinct de sa résolution, les deux base après mutation,
+la canonique hors head/body et la disparition du noindex du DOM avec sa source
+conservée. Le cas d'API altérée donne un attribut brut `/product` (URL absolue
+du laboratoire) et une propriété résolue `https://altered.invalid/` : **parcours
+complet ne signifie pas API fiable**. Aucune ancienne décision TSEP n'est changée.
+
+Les fixtures ne signalent aucune erreur. Un message console IAB concernant
+`MutationObserver` apparaît avec le même horodatage dans 12 lectures successives
+du journal ; il est conservé comme un événement persistant, sans attribution
+causale ni affirmation d'innocuité. Les logs retournés pour Chrome sont vides.
+Les arbres diffèrent entre environnements ; aucun nœud n'a été filtré. Ces
+observations au chargement ne justifient aucune généralisation à des sites réels.
+
+Claude a examiné le bilan fourni et recommandé cette instrumentation distincte
+pour le laboratoire, avec instant déclaré, reçus stricts et limites explicites.
+Il n'a ni exécuté les tests ni effectué une revue humaine. Les échanges datés
+et captures d'écran restent joints aux preuves locales privées.
 
 ## English
 
@@ -128,3 +180,40 @@ observation, complete v2 browser campaign or new Claude review is claimed. Pytho
 tests use authored snapshots and test HTTP clients, never represented as browsers.
 Private attempt evidence is retained locally, outside the public tool archive.
 The normative protocol remains draft.7 and earlier reports remain unchanged.
+The following campaign supersedes none of these failed attempts.
+
+### Separate page instrumentation campaign
+
+A subsequent v2 preflight retained the same missing-baseURI API error in both
+read scopes. Laboratory 2 adds an explicitly frozen `--page-export` method:
+the unchanged v2 reader is served inline and runs once at `window.load`, after
+fixture scripts. This is page-world instrumentation by construction, not an
+authenticated execution context. APIs remain intentionally overridable. Load
+does not imply stability, network idle or extension quiescence. No external
+site is modified. The prior read-scope trials use separate navigations.
+
+The page posts a JSON string and its digest to a declared same-loopback endpoint.
+The receiver retains exact envelope/response bytes and limits requests to 2 MiB.
+Traversal is read-only; receipt UI updates happen afterwards. Its initial UI and
+instrumentation code belong to the captured source/tree. Replay requires matching
+payload hashes, node counts, operator records and exactly one POST per navigation.
+Missing/duplicate receipts fail. This is internal consistency, not authenticated
+browser APIs, operator identity or timing. Laboratory 1 records require their old
+tools; they are not silently migrated to version 2.
+
+Observed 2026-10-10: 48 records across 24 recipes and two environments (integrated
+browser and Chrome extension, UA-reported Chrome/155.0.0.0). All 118 recipe checks
+match, including an intentionally incomplete node-limit case in each environment:
+23 scope-complete traversals plus one 1,024-node prefix each. These are not 48
+exhaustive captures or normative tests. There are 126 loopback requests: 26 source,
+52 browser GET including frames, and 48 POST; other browser traffic is not measured.
+
+Both environments preserve the JS canonical rewrite, raw relative versus resolved
+URL, changed base, canonical outside head/body, and HTTP noindex despite removal
+from the observed DOM. The API-override case returns the original canonical raw
+attribute and an altered resolved property: complete traversal is not API trust.
+One IAB console MutationObserver event is retained across 12 log reads, without
+causal attribution or an assertion of harmlessness; returned Chrome logs are empty.
+The fixtures report no errors. Trees differ across environments without filtering.
+Claude's review concerns the supplied account only, without independent execution
+or human review; dated messages and screenshots are kept with private local evidence.
