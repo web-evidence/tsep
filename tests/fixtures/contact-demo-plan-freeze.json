@@ -1,0 +1,80 @@
+{
+  "scope": "Private retained Contact source; prospective authored mutation expectations, not normative tests",
+  "plan_sha256": "4b35ea80a28cb728ca62bdd4a3a7b4b86e6a98d7c1e752888b3870f04dbdf1ef",
+  "source_sha256": "4d42845988f2b6ed547eb6344baa4a62c9d25cbb11d6018fa3ff8881ee9f0a0a",
+  "criteria_sha256": "2d18f95fcb101eee93a3e24536db0e49abb8b1648693d8ed3336f19969cc794d",
+  "cases": [
+    {
+      "id": "observed",
+      "synthetic": false,
+      "expected": {
+        "enabled": "pass",
+        "disabled": "pass",
+        "consensus": "pass"
+      }
+    },
+    {
+      "id": "error-page",
+      "synthetic": true,
+      "expected": {
+        "enabled": "fail",
+        "disabled": "fail",
+        "consensus": "fail"
+      }
+    },
+    {
+      "id": "wrong-page",
+      "synthetic": true,
+      "expected": {
+        "enabled": "fail",
+        "disabled": "fail",
+        "consensus": "fail"
+      }
+    },
+    {
+      "id": "editorial",
+      "synthetic": true,
+      "expected": {
+        "enabled": "fail",
+        "disabled": "fail",
+        "consensus": "fail"
+      }
+    },
+    {
+      "id": "ambiguous",
+      "synthetic": true,
+      "expected": {
+        "enabled": "fail",
+        "disabled": "pass",
+        "consensus": "inconclusive"
+      }
+    },
+    {
+      "id": "blindspot",
+      "synthetic": true,
+      "expected": {
+        "enabled": "pass",
+        "disabled": "pass",
+        "consensus": "pass"
+      }
+    },
+    {
+      "id": "forbidden-only",
+      "synthetic": true,
+      "expected": {
+        "enabled": "fail",
+        "disabled": "fail",
+        "consensus": "fail"
+      }
+    },
+    {
+      "id": "truncated",
+      "synthetic": true,
+      "expected": {
+        "enabled": "inconclusive",
+        "disabled": "inconclusive",
+        "consensus": "inconclusive"
+      }
+    }
+  ]
+}
