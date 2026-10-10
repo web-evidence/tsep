@@ -115,6 +115,18 @@ Les résultats d’un autre navigateur appartiennent à une campagne distincte.
 Le comportement face aux nœuds hors head/body reste une limite de l’interpréteur,
 pas un défaut SEO automatiquement attribué au site.
 
+Une campagne Chrome distincte, également le 10 octobre 2026, a conservé 35 DOM
+et 86 requêtes loopback. Les états sont tous attribués, mais un élément personnalisé
+dans body et des éléments auxiliaires sous html dépassent le sous-ensemble pris
+en charge. Le refus rencontré est `Unsupported HTML element/context`. Même matrice
+atomique que la campagne intégrée : huit NC, quatre NT, aucune attente de scénario
+intégralement atteinte. Aucun nettoyage ni changement du parseur. Le journal
+loopback ne décrit pas le trafic éventuel des extensions ; leur absence ne peut
+pas être affirmée. UA observé : Chrome/155.0.0.0, version déclarée par l'UA seulement.
+Le [plan d'inventaire structuré](proposals/rendered-metadata-inventory.md) prépare
+une expérience séparée sans verdict, encore non implémentée. Il ne répare pas
+les rapports de ces campagnes.
+
 ## English
 
 Tool version **1** composes existing draft.7 TS10 rules with real bounded loopback
@@ -168,3 +180,12 @@ inconclusive. Captures/results are retained without removing the node or changin
 expectations. A pre-snapshot diagnostic also found the node. Read-only collection
 does not guarantee a browser free of injected UI. Any new method/environment
 requires a separate campaign; do not resample timing until a pass appears.
+
+A separate Chrome campaign on the same date retained 35 DOMs and 86 loopback
+requests. All states were attributed, but custom body elements and auxiliary HTML
+root children exceed the supported subset; the encountered rejection was
+Unsupported HTML element/context. The atomic matrix matches the integrated-browser
+campaign: eight NC, four NT, no scenario fully matches its frozen expectations.
+No cleanup or interpreter change. Loopback logs cannot establish no extension
+traffic. Chrome/155.0.0.0 is UA-reported only. The linked observation-only structured
+inventory plan is unimplemented and does not repair these reports.

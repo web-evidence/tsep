@@ -1,0 +1,268 @@
+{
+  "kind": "unapplied-observation-plan",
+  "version": "1",
+  "protocol_unchanged": "0.1.0-draft.7",
+  "date": "2026-10-10",
+  "implemented": false,
+  "executed": false,
+  "normative": false,
+  "scope": {
+    "fr": "Inventaire expérimental des métadonnées DOM, sans verdict TSEP.",
+    "en": "Experimental DOM metadata inventory, no TSEP verdict."
+  },
+  "cases": [
+    {
+      "id": "head-canonical",
+      "scenario": {
+        "fr": "Canonique absolue enfant direct de head",
+        "en": "Absolute canonical directly under head"
+      },
+      "required_observation": {
+        "fr": "Valeur DOM exacte et URL résolue séparées ; position head directe.",
+        "en": "Exact DOM value and separate resolved URL; direct-head position."
+      }
+    },
+    {
+      "id": "root-auxiliary",
+      "scenario": {
+        "fr": "Conteneur vide après body, sous html",
+        "en": "Empty container after body under html"
+      },
+      "required_observation": {
+        "fr": "Conserver le nœud et son chemin ; aucune origine déduite.",
+        "en": "Retain node and path; do not infer origin."
+      }
+    },
+    {
+      "id": "root-canonical",
+      "scenario": {
+        "fr": "Canonique contradictoire dans ce conteneur",
+        "en": "Conflicting canonical inside that container"
+      },
+      "required_observation": {
+        "fr": "Conserver la canonique hors head ; aucune exemption par ID.",
+        "en": "Retain canonical outside head; no ID exemption."
+      }
+    },
+    {
+      "id": "custom-neutral",
+      "scenario": {
+        "fr": "Élément personnalisé sans métadonnée",
+        "en": "Custom element without metadata"
+      },
+      "required_observation": {
+        "fr": "Consigner le nœud, ses descendants accessibles et les limites.",
+        "en": "Record node, accessible descendants and boundaries."
+      }
+    },
+    {
+      "id": "custom-canonical",
+      "scenario": {
+        "fr": "Canonique sous élément personnalisé",
+        "en": "Canonical below custom element"
+      },
+      "required_observation": {
+        "fr": "Relever la canonique avec son vrai parent ; ne pas sauter le sous-arbre.",
+        "en": "Record canonical with its actual parent; do not skip subtree."
+      }
+    },
+    {
+      "id": "relative-href",
+      "scenario": {
+        "fr": "href relatif mais propriété href absolue",
+        "en": "Relative href but absolute href property"
+      },
+      "required_observation": {
+        "fr": "Garder les deux valeurs distinctes, sans remplacer le relatif.",
+        "en": "Keep both values distinct; do not replace the relative attribute."
+      }
+    },
+    {
+      "id": "base-mutation",
+      "scenario": {
+        "fr": "Base modifiée par JS, deux éléments base",
+        "en": "JS changes base with two base elements"
+      },
+      "required_observation": {
+        "fr": "Ordre des base, valeurs brutes/résolues et baseURI de cet état.",
+        "en": "Base order, raw/resolved values and this state’s baseURI."
+      }
+    },
+    {
+      "id": "canonical-body",
+      "scenario": {
+        "fr": "Canonique HTML dans body",
+        "en": "HTML canonical in body"
+      },
+      "required_observation": {
+        "fr": "Position body, jamais reclassée dans head.",
+        "en": "Body position, never reclassified as head."
+      }
+    },
+    {
+      "id": "canonical-foreign",
+      "scenario": {
+        "fr": "Élément link dans espace SVG",
+        "en": "Link element in SVG namespace"
+      },
+      "required_observation": {
+        "fr": "Espace de noms conservé ; pas un link HTML.",
+        "en": "Preserve namespace; not an HTML link."
+      }
+    },
+    {
+      "id": "open-shadow",
+      "scenario": {
+        "fr": "Canonique dans shadow root ouvert",
+        "en": "Canonical in open shadow root"
+      },
+      "required_observation": {
+        "fr": "Chemin via hôte et racine distincte, sans aplatir.",
+        "en": "Path through host and separate root; no flattening."
+      }
+    },
+    {
+      "id": "closed-shadow",
+      "scenario": {
+        "fr": "Hôte avec shadow fermé et getter null",
+        "en": "Host with closed shadow and null getter"
+      },
+      "required_observation": {
+        "fr": "Exposition inconnue ; null ne démontre pas absence.",
+        "en": "Unknown exposure; null does not establish absence."
+      }
+    },
+    {
+      "id": "frame-srcdoc",
+      "scenario": {
+        "fr": "Métadonnée dans srcdoc",
+        "en": "Metadata inside srcdoc"
+      },
+      "required_observation": {
+        "fr": "Attribut de frame conservé ; document distinct non capturé.",
+        "en": "Retain frame attribute; separate document uncollected."
+      }
+    },
+    {
+      "id": "frame-same-origin",
+      "scenario": {
+        "fr": "Iframe même origine avec canonique",
+        "en": "Same-origin iframe with canonical"
+      },
+      "required_observation": {
+        "fr": "Document non capturé dans la première étape, jamais fusionné au parent.",
+        "en": "Document uncollected in step one, never merged into parent."
+      }
+    },
+    {
+      "id": "frame-cross-origin",
+      "scenario": {
+        "fr": "Iframe autre origine",
+        "en": "Cross-origin iframe"
+      },
+      "required_observation": {
+        "fr": "Élément relevé, aucun accès supplémentaire, contenu inconnu.",
+        "en": "Record element; no additional access, unknown contents."
+      }
+    },
+    {
+      "id": "template",
+      "scenario": {
+        "fr": "Canonique dans template.content",
+        "en": "Canonical in template.content"
+      },
+      "required_observation": {
+        "fr": "Fragment distinct exclu explicitement, pas un signal de head.",
+        "en": "Explicitly excluded separate fragment, not a head signal."
+      }
+    },
+    {
+      "id": "noscript-text",
+      "scenario": {
+        "fr": "Texte noscript ressemblant à une balise",
+        "en": "Noscript text resembling markup"
+      },
+      "required_observation": {
+        "fr": "Conserver son type texte ; aucun reparsing pour créer une métadonnée.",
+        "en": "Keep text node type; no reparsing into metadata."
+      }
+    },
+    {
+      "id": "source-noindex-removed",
+      "scenario": {
+        "fr": "noindex source retiré dans DOM",
+        "en": "Source noindex removed in DOM"
+      },
+      "required_observation": {
+        "fr": "Sources distinctes ; aucun verdict source effacé.",
+        "en": "Separate sources; no source verdict erased."
+      }
+    },
+    {
+      "id": "environment-meta",
+      "scenario": {
+        "fr": "Métadonnée ajoutée dans head, origine inconnue",
+        "en": "Metadata added in head, unknown origin"
+      },
+      "required_observation": {
+        "fr": "Relever sans attribution page/extension ni suppression.",
+        "en": "Record without page/extension attribution or removal."
+      }
+    },
+    {
+      "id": "duplicates",
+      "scenario": {
+        "fr": "Deux canoniques et robots contradictoires",
+        "en": "Duplicate canonicals and conflicting robots"
+      },
+      "required_observation": {
+        "fr": "Conserver ordre et toutes les valeurs ; aucun choix favorable.",
+        "en": "Retain order and all values; no favorable selection."
+      }
+    },
+    {
+      "id": "attribute-order",
+      "scenario": {
+        "fr": "Valeurs encodées source et décodées DOM",
+        "en": "Encoded source and decoded DOM values"
+      },
+      "required_observation": {
+        "fr": "Attributs DOM exacts et ordonnés, sans prétendre retrouver les octets source.",
+        "en": "Exact ordered DOM attributes without claiming original source bytes."
+      }
+    },
+    {
+      "id": "truncated-tree",
+      "scenario": {
+        "fr": "Borne atteinte avant une contradiction",
+        "en": "Bound reached before a contradiction"
+      },
+      "required_observation": {
+        "fr": "Couverture incomplète déclarée ; aucun résultat sur le seul préfixe.",
+        "en": "Declared incomplete coverage; no conclusion from captured prefix."
+      }
+    },
+    {
+      "id": "broken-path",
+      "scenario": {
+        "fr": "Parents incohérents ou nœuds dupliqués dans la capture fournie",
+        "en": "Inconsistent parents or duplicate nodes in supplied capture"
+      },
+      "required_observation": {
+        "fr": "Refuser la structure incohérente sans inventer un arbre corrigé.",
+        "en": "Reject inconsistent structure without inventing a repaired tree."
+      }
+    },
+    {
+      "id": "same-script",
+      "scenario": {
+        "fr": "Empreinte de script différente entre les environnements",
+        "en": "Different script fingerprints between environments"
+      },
+      "required_observation": {
+        "fr": "Comparaison non équivalente déclarée ; conserver les deux originaux.",
+        "en": "Declare non-equivalent comparison; retain both originals."
+      }
+    }
+  ]
+}
