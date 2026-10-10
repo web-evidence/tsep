@@ -349,3 +349,12 @@ L'expérience 3 ajoute 96 cas de formulaires figés avant code après les six ca
 listes. Le fichier initial reste intact ; un seul écart d'attente v3 est explicite.
 La comparaison externe historique reste une preuve privée limitée, sans dépendance
 supplémentaire ni assimilation du lecteur source à un navigateur.
+
+Experiment 4 adds 103 prefrozen explicit-table cases. Parent, order, literal
+whitespace, whole-source refusal and global noscript hypotheses are exercised.
+Earlier fixture files are preserved; one v3 empty-table expectation changes
+explicitly. [Scope and migration](table-experiment-v4.md).
+
+L'expérience 4 ajoute 103 cas de tableaux figés avant code. Parents, ordre,
+espaces littéraux, refus intégral et hypothèses noscript sont éprouvés. Les
+anciens fichiers restent intacts ; un cas v3 change explicitement d'attente.

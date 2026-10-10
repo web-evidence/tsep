@@ -1,5 +1,18 @@
 # Change history / Historique
 
+## Noscript experiment 4 — 2026-10-10 — unapplied explicit-table coverage
+
+Add explicit table/caption/column-group/section/row/cell grammar, with all closing
+tags required. Preserve text boundaries and reject fostered text, direct rows,
+nested tables and unsupported section order. Freeze 103 authored cases before
+implementation; retain all earlier fixture bytes with one explicit v3 expectation
+delta for an empty table. No normative or active interpreter change.
+
+Ajout des tableaux explicites, bornés et correctement imbriqués ; textes mal
+placés, sections implicites, tableaux imbriqués et fermetures omises restent
+refusés. 103 cas figés avant code et un seul écart antérieur explicite ; aucun
+changement normatif ni de l'interpréteur actif. [Portée](docs/table-experiment-v4.md).
+
 ## Noscript experiment 3 — 2026-10-10 — unapplied form-control coverage
 
 Add strictly balanced select/optgroup/option and literally empty textarea to the

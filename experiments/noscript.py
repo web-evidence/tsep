@@ -17,7 +17,7 @@ from conformance.http import Unknown, need
 from conformance.source_text import characters, tag_at, SPACE, VOID, SVG, CLOSE
 from provenance.runtime import runtime_identity
 
-VERSION = '3'
+VERSION = '4'
 MAX_CHARS = 8*1024*1024
 MAX_TOKENS = 100000
 MAX_DEPTH = 256
@@ -29,12 +29,19 @@ BODY = frozenset('a abbr address article aside audio b bdi bdo blockquote br but
                  'hr i img input ins kbd label legend li link main map mark menu meta '
                  'meter nav noscript ol output p picture pre progress q rp rt ruby s '
                  'samp search section small source span strong style sub summary sup '
-                 'script select option optgroup textarea time track u ul var video wbr'.split()) - {'rp', 'rt', 'ruby'}
+                 'script select option optgroup textarea time track u ul var video wbr '
+                 'table caption colgroup col thead tbody tfoot tr td th'.split()) - {'rp', 'rt', 'ruby'}
 SELECT_CHILDREN = {'select': frozenset(('option', 'optgroup')),
                    'optgroup': frozenset(('option',)), 'option': frozenset()}
+TABLE_CHILDREN = {'table': frozenset(('caption', 'colgroup', 'thead', 'tbody', 'tfoot')),
+                  'colgroup': frozenset(('col',)),
+                  'thead': frozenset(('tr',)), 'tbody': frozenset(('tr',)),
+                  'tfoot': frozenset(('tr',)), 'tr': frozenset(('td', 'th'))}
+TABLE_PARENTS = {tag: frozenset(parent for parent, children in TABLE_CHILDREN.items() if tag in children)
+                 for tag in ('caption', 'colgroup', 'col', 'thead', 'tbody', 'tfoot', 'tr', 'td', 'th')}
 CLOSES_P = frozenset('address article aside blockquote details dialog div dl fieldset '
                      'figcaption figure footer form h1 h2 h3 h4 h5 h6 header hgroup hr '
-                     'main menu nav ol p pre search section ul'.split())
+                     'main menu nav ol p pre search section table ul'.split())
 HEADINGS = frozenset(('h1', 'h2', 'h3', 'h4', 'h5', 'h6'))
 SOURCE_FILES = ('experiments/noscript.py', 'conformance/source_text.py',
                 'conformance/http.py', 'provenance/runtime.py', 'tsep.py')
@@ -50,6 +57,7 @@ def reading(source, mode):
     segments, stack = [], []
     roots = tokens = i = 0
     doctype = head_seen = body_seen = False
+    table_stage, table_caption = 0, False
 
     def append(start, end, decode=True):
         if end > start:
@@ -72,6 +80,8 @@ def reading(source, mode):
                     # Only literal HTML whitespace between explicitly closed
                     # choices. Entity-encoded whitespace is outside this subset.
                     need(not source[i:end].strip(SPACE), 'Non-literal whitespace in select/optgroup')
+                if stack and stack[-1] in TABLE_CHILDREN:
+                    need(not source[i:end].strip(SPACE), 'Unsupported text in table container')
                 if not stack or stack == ['html'] or 'head' in stack or 'svg' in stack:
                     need(not value.strip(SPACE), 'Text requires unsupported structural processing')
                 if stack:
@@ -111,6 +121,31 @@ def reading(source, mode):
                 body_seen = True
             else:
                 need('head' in stack or 'body' in stack, 'Element outside explicit head/body')
+                if stack[-1] in TABLE_CHILDREN:
+                    need(tag in TABLE_CHILDREN[stack[-1]], 'Unsupported table child: '+tag)
+                if tag in TABLE_PARENTS:
+                    need(stack[-1] in TABLE_PARENTS[tag], 'Unsupported table parent: '+tag)
+                if tag == 'table':
+                    need('table' not in stack, 'Nested tables are unsupported')
+                    table_stage, table_caption = 0, False
+                elif stack[-1] == 'table':
+                    # Deliberately narrower than browser recovery: one caption,
+                    # column groups, optional head, body groups, optional foot.
+                    if tag == 'caption':
+                        need(table_stage == 0 and not table_caption, 'Unsupported table caption order')
+                        table_caption = True
+                    elif tag == 'colgroup':
+                        need(table_stage <= 1, 'Unsupported table column order')
+                        table_stage = 1
+                    elif tag == 'thead':
+                        need(table_stage < 2, 'Unsupported table head order')
+                        table_stage = 2
+                    elif tag == 'tbody':
+                        need(table_stage <= 3, 'Unsupported table body order')
+                        table_stage = 3
+                    elif tag == 'tfoot':
+                        need(table_stage <= 3, 'Unsupported table foot order')
+                        table_stage = 4
                 if 'select' in stack:
                     need(tag in SELECT_CHILDREN.get(stack[-1], ()), 'Unsupported select child: '+tag)
                 elif tag == 'select':

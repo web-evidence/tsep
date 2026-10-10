@@ -1,4 +1,4 @@
-# Noscript experiment 3 / Expérience noscript 3
+# Noscript experiment 4 / Expérience noscript 4
 
 **UNAPPLIED / NON APPLIQUÉE.** This tool tests a proposal; it cannot emit a TSEP
 report, replace an assessment or alter the active `0.1.0-draft.7` contract.
@@ -23,6 +23,15 @@ La version 3 ajoute select/optgroup/option bornés et textarea **littéralement 
 Le texte de toute option compte, même désactivée/non sélectionnée ; pas label/value.
 Les commentaires séparent les segments ; NBSP reste distinct. 96 cas figés avant
 code ; fichiers v1/v2 intacts, un écart v1 explicite (`select`) dans le fichier v3.
+
+Version 4 adds [explicit tables](table-experiment-v4.md), with 103 expectations
+frozen before implementation. Direct rows, nested tables, fostered text and missing
+closes remain refused. The only new prior expectation delta is an empty table
+after select; the original direct-row table case stays inconclusive.
+
+La version 4 ajoute les [tableaux explicites](table-experiment-v4.md) : 103 cas
+figés avant code, un seul écart d'attente antérieure et aucune modification du
+protocole actif. Les réparations d'arbre ne sont pas ajoutées.
 
 ## Français
 
@@ -85,7 +94,7 @@ une construction de DOM, ni une garantie sur les réparations d’un navigateur.
   saut de ligne, entité ou commentaire à l'intérieur refuse la lecture entière.
   Cette borne est volontairement plus stricte que l'interpréteur actif ; aucun
   comportement RCDATA non vide ou saut de ligne initial n'est ajouté.
-- Tableaux, iframe, textarea non vide, template, MathML, autres contextes
+- Tableaux hors du [sous-ensemble explicite v4](table-experiment-v4.md), iframe, textarea non vide, template, MathML, autres contextes
   non listés, déclarations ambiguës, script échappé, doublons d’attributs et certaines
   fermetures implicites (p, a, form, button, listes, titres) sont refusés.
 - Bornes : 8 388 608 caractères Unicode, 100 000 étapes de scan, profondeur 256,
@@ -141,7 +150,7 @@ justifie pas cette promotion.
 
 ## English
 
-Experiment 3 takes a complete UTF-8 HTML source and optional exact marker lists.
+Experiment 4 takes a complete UTF-8 HTML source and optional exact marker lists.
 It applies enabled and disabled scripting hypotheses to the entire unchanged
 document. Enabled noscript is literal RAWTEXT; disabled noscript is tokenized,
 with a head subset limited to HTML whitespace, comments, link/meta/style. Trapped
@@ -150,7 +159,7 @@ prefix can establish a candidate result.
 
 This is a bounded lexical experiment, **not two certified HTML5/browser parses**.
 It requires explicit, unique html/head/body and balanced supported tags. Positive
-element lists and recovery guards are in the source. Unsupported tables,
+element lists and recovery guards are in the source. Tables outside the [explicit v4 subset](table-experiment-v4.md),
 iframe, nonempty textarea, template, foreign content and ambiguous structures refuse the
 whole reading. Existing SVG-style bounds are retained. Character references are
 decoded in DATA/title and left literal in enabled noscript. Script/style and

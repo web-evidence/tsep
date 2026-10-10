@@ -6,14 +6,14 @@ n’altère aucune règle, n’autorise aucun verdict et ne certifie aucune conf
 Le protocole actif reste `0.1.0-draft.7`. / **UNAPPLIED PROPOSAL — no decision
 recorded.** A possible future normative change, not an issued version or rule.
 
-**État du développement, 2026-10-10 :** l’[expérience isolée 3](../noscript-experiment.md)
-couvre 68 cas initiaux, six cas de listes et 96 cas de formulaires, figés avant
-leurs implémentations. Leurs fichiers restent intacts ; un écart d'attente est
-explicite pour select en v3. Une comparaison avec html5lib 1.1 apporte une référence
+**État du développement, 2026-10-10 :** l’[expérience isolée 4](../noscript-experiment.md)
+couvre 68 cas initiaux, six cas de listes, 96 cas de formulaires et 103 cas de tableaux, figés avant
+leurs implémentations. Leurs fichiers restent intacts ; les écarts d'attente sont
+explicites pour select en v3 et le tableau vide après select en v4. Une comparaison avec html5lib 1.1 apporte une référence
 externe historique limitée, avec des désaccords conservés sur les fins de ligne.
 **Elle ne prouve pas deux lectures navigateur : cette limite reste un verrou avant
-promotion normative.** / **Development status:** isolated experiment 3 has
-68 initial, six list and 96 form cases, each frozen before its implementation.
+promotion normative.** / **Development status:** isolated experiment 4 has
+68 initial, six list, 96 form and 103 table cases, each frozen before its implementation.
 A historical external parser comparison retains differences, including exact-marker
 outcomes across CRLF preprocessing. It does not establish browser equivalence or
 justify normative promotion. All existing protocol reports remain unchanged.

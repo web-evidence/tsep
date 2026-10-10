@@ -17,6 +17,29 @@ from conformance.source_text import extract
 
 
 class NoscriptExperiment(unittest.TestCase):
+    def test_v4_tables_frozen_before_implementation(self):
+        path = ROOT/'tests/fixtures/noscript-experiment-v4-cases.json'
+        self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),
+                         (ROOT/'tests/fixtures/noscript-experiment-v4-freeze.sha256').read_text().strip())
+        fixture = json.loads(path.read_text())
+        for name, digest in fixture['previous_fixture_sha256'].items():
+            self.assertEqual(hashlib.sha256((path.parent/name).read_bytes()).hexdigest(), digest)
+        self.assertEqual(fixture['previous_expectation_changes'], {
+            'noscript-experiment-v3-cases.json': {'v3-table-after-select': {
+                'enabled_segments':['Expected'], 'disabled_segments':['Expected'],
+                'enabled_candidate':'pass', 'disabled_candidate':'pass', 'candidate_consensus':'pass'}}})
+        self.assertEqual(len(fixture['cases']), 103)
+        self.assertEqual(len({c['id'] for c in fixture['cases']}), 103)
+        for case in fixture['cases']:
+            with self.subTest(case=case['id']):
+                result = noscript.experiment(case['html'], {k:case[k] for k in ('required_markers','forbidden_markers')})
+                for mode in ('enabled','disabled'):
+                    reading = result['readings'][mode]
+                    actual = [s['text'] for s in reading['segments']] if reading['complete'] else None
+                    self.assertEqual(actual, case[mode+'_segments'])
+                    self.assertEqual(reading['markers']['candidate'], case[mode+'_candidate'])
+                self.assertEqual(result['candidate_consensus'], case['candidate_consensus'])
+
     def test_v3_form_controls_frozen_before_implementation(self):
         path = ROOT/'tests/fixtures/noscript-experiment-v3-cases.json'
         self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),
@@ -27,7 +50,9 @@ class NoscriptExperiment(unittest.TestCase):
         self.assertEqual(set(fixture['base_expectation_changes']), {'select'})
         self.assertEqual(len(fixture['cases']), 96)
         self.assertEqual(len({c['id'] for c in fixture['cases']}), 96)
+        delta = json.loads((ROOT/'tests/fixtures/noscript-experiment-v4-cases.json').read_text())['previous_expectation_changes'][path.name]
         for case in fixture['cases']:
+            case = dict(case, **delta.get(case['id'], {}))
             with self.subTest(case=case['id']):
                 result = noscript.experiment(case['html'], {k: case[k] for k in ('required_markers', 'forbidden_markers')})
                 for mode in ('enabled', 'disabled'):
@@ -129,7 +154,7 @@ class NoscriptExperiment(unittest.TestCase):
                 result = noscript.reading(source, 'enabled')
                 self.assertFalse(result['complete'])
                 self.assertEqual(result['segments'], [])
-        for bad in ('template', 'iframe', 'table', 'math', 'xmp', 'custom-element'):
+        for bad in ('template', 'iframe', 'math', 'xmp', 'custom-element'):
             with self.subTest(tag=bad):
                 result = noscript.reading('<html><head></head><body>Expected<'+bad+'></'+bad+'></body></html>', 'disabled')
                 self.assertFalse(result['complete'])
