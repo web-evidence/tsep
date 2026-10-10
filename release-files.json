@@ -72,6 +72,7 @@
     "probes/README.md",
     "probes/http-page.py",
     "provenance/import.json",
+    "provenance/runtime.py",
     "release-files.json",
     "reports/html.py",
     "reports/report.css",
@@ -93,7 +94,9 @@
     "tests/test_http_transfer.py",
     "tests/test_rendered_states.py",
     "tests/test_reports.py",
+    "tests/test_runtime_provenance.py",
     "tests/test_verification.py",
+    "tests/tls_fixture.py",
     "tsep.py",
     "upstream/grid-v1.1.en.json",
     "upstream/grid-v1.1.fr.json"

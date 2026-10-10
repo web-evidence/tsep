@@ -8,6 +8,7 @@ always applied before delivery. Adapter versioning is separate from the protocol
 import argparse
 from datetime import datetime, timezone
 import hashlib
+import importlib
 import json
 from pathlib import Path
 import shutil
@@ -18,10 +19,20 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
+from provenance.runtime import loaded_sources
 
-VERSION = '3'
+VERSION = '4'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
+
+
+def source_files():
+    modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
+    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'provenance.runtime'):
+        modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
+    return loaded_sources(ROOT, modules)
+
+
 COVERAGE_INVENTORY = [
     {'state': 'implemented', 'fr': 'Octets HTTP exacts en entrée v2 ; lecture des anciennes entrées UTF-8 v1.',
      'en': 'Exact HTTP bytes in input v2; legacy UTF-8 input v1 retained.'},
@@ -139,6 +150,7 @@ def control_result(cid, atoms, control, targets):
 
 def build(input_path, output, *, assessor, label, selection_method, access, mode='manual', selected=None, exclusions=None):
     """New bundle only. Validation completes in staging before the output is created."""
+    sources = source_files()
     input_path, output = Path(input_path), Path(output)
     tsep.require(input_path.is_file() and not input_path.is_symlink(), 'Input must be a regular file, not a symlink')
     with input_path.open('rb') as handle:
@@ -172,6 +184,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
     declared_coverage = coverage(data, controls)
     # Only the raw input reaches the interpreter, never the conformance corpus.
     calculated = evaluate(data)
+    tsep.require(source_files() == sources, 'Tool source files changed during interpretation')
     # Reject malformed metadata and incompatible modes before opening a destination.
     tsep.validate(report, ROOT)
     tsep.require(not output.is_symlink() and not output.exists(), 'Output already exists; choose a new directory')
@@ -198,8 +211,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         metadata = {'adapter': {'name': NAME, 'version': VERSION}, 'protocol': report['protocol'],
                     'interpreter': {'name': 'TSEP bounded reference interpreter', 'version': INTERPRETER_VERSION},
                     'imported_at': issued_text, 'python': sys.version.split()[0],
-                    'source_files': {name: tsep.digest(ROOT/name) for name in
-                                     ('adapters/captures.py', 'conformance/evaluate.py', 'conformance/http.py', 'conformance/canonical.py', 'tsep.py')},
+                    'source_files': sources,
+                    'source_verification': 'Loaded module file/spec origins match this tool root; on-disk hashes checked before and after interpretation. Not execution authentication.',
                     'input_sha256': hashlib.sha256(original).hexdigest(), 'access': access,
                     'coverage_inventory': COVERAGE_INVENTORY,
                     'network_requests_by_adapter': 0, 'coverage': declared_coverage,

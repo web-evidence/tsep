@@ -53,6 +53,8 @@ validation establishes consistency and file integrity.
    compares retained assessments. The [guided TS01 workflow](docs/guided-capture.md)
    captures raw bytes, freezes criteria before measurement and replays offline;
    interpreter version 3 supports bounded chunked, gzip and deflate decoding.
+   Collector 2 checks source consistency across phases; adapter 4 checks module
+   origins and HTML 3 makes identity criteria explicit.
 2. **Declare partial coverage**: select a `custom` list, keep unknowns as
    NT/inconclusive and link each artifact to its target. Selecting TS01/TS07 does
    not satisfy a named profile. An isolated test cannot pass its parent control.

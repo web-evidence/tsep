@@ -2,9 +2,9 @@
 
 ## Français
 
-Le collecteur version 1 réalise des GET anonymes sur **1 à 10 URL explicitement
-choisies et autorisées**, puis utilise l’interpréteur/adaptateur version 3 et le
-rapport HTML version 2. Python 3.9+, bibliothèque standard. Protocole draft.7,
+Le collecteur version 2 réalise des GET anonymes sur **1 à 10 URL explicitement
+choisies et autorisées**, puis utilise l’interpréteur version 3, l’adaptateur version 4 et le
+rapport HTML version 3. Python 3.9+, bibliothèque standard. Protocole draft.7,
 TS01–TS44, contrat du rapport et corpus normatif inchangés. Cette couverture
 d’outil n’est ni une certification, ni une observation d’indexation/classement.
 
@@ -50,6 +50,7 @@ la mesure, après examen de la référence :
 ```json
 {
   "https://example.com/": {
+    "expected_final_url": "https://example.com/",
     "required_markers": ["Titre attendu"],
     "forbidden_markers": ["Service indisponible"]
   }
@@ -63,6 +64,37 @@ le parseur HTML conserve son sous-ensemble borné. Ne pas choisir les critères
 après avoir vu la mesure pour obtenir un résultat favorable. Une référence
 incomplète/non-200 ne peut pas être scellée ; toute tentative reste conservée.
 
+### Origine des critères et cohérence des outils
+
+Sans `expected_final_url` dans le fichier de critères, l’URL finale et l’empreinte
+sont **dérivées de la référence et adoptées lors de `seal`**. Ce choix ne prouve pas
+une intention indépendante ni une validation humaine. Le champ facultatif
+`expected_final_url` déclare explicitement l’URL attendue : une différence avec
+la référence bloque le scellement. L’empreinte reste issue de la capture.
+Le rapport affiche cette origine, la politique, la date et les littéraux près des
+résultats TS01. Une empreinte identique ne teste pas les marqueurs. `stable` est
+un choix explicite ; un nonce ou une date changeante suffit alors à échouer.
+
+Avant scellement et avant toute requête de mesure, le collecteur vérifie sa
+version et les empreintes des sources contre la référence. Il vérifie aussi les
+origines `__file__`/`__spec__.origin` des modules locaux inventoriés et leurs
+empreintes avant/après l’opération. L’adaptateur fait le même contrôle autour de
+l’interprétation. Une collecte dont les fichiers changent conserve les tentatives
+brutes sans émettre d’évaluation. Ces contrôles détectent notamment un mélange
+accidentel de copies ; ils n’authentifient pas l’exécution Python et ne constituent
+pas une attestation du code en mémoire ou de l’auteur. Le paquet présente les
+exécutions fournies, pas une preuve de campagne exhaustive.
+
+**Migration collecteur 1 → 2 / adaptateur 3 → 4 / HTML 2 → 3** : le protocole,
+l’interpréteur 3 et l’entrée binaire 2 ne changent pas. L’intention guidée passe à
+`intent_version: "2"`, avec origine des critères et empreintes de la référence.
+Ne pas réétiqueter les anciens fichiers : conserver leur archive d’outil et leurs
+rapports pour les rejouer. Préparer une nouvelle référence puis une nouvelle
+intention avec le collecteur 2 avant une nouvelle mesure. Une référence collectée
+par un autre code est refusée, même si son numéro de version paraît identique.
+Le format du paquet adaptateur reste 1 ; sa nouvelle identité de code apparaît
+dans `import.json`. Les anciens HTML restent consultables.
+
 ### Octets et limites de collecte
 
 Le worker conserve les octets HTTP/1.1 après déchiffrement TLS, pas les paquets
@@ -73,7 +105,7 @@ une preuve de transmission si la connexion échoue. DNS est contrôlé avant con
 à une adresse numérique vérifiée ; les adresses non publiques sont refusées.
 `--allow-loopback` autorise uniquement la boucle locale pour une recette synthétique.
 
-Valeurs par défaut : agent `TSEP-TS01-collector/1`, `Accept-Encoding: gzip, deflate`,
+Valeurs par défaut : agent `TSEP-TS01-collector/2`, `Accept-Encoding: gzip, deflate`,
 10 secondes par saut, 512 Kio de réponse par saut, 3 redirections. Bornes configurables :
 0,1–30 secondes, 1 Kio–1 Mio, 0–5 redirections. Le superviseur ajoute au plus une
 seconde au délai pour borner aussi DNS/processus. Maximum de **2 Mio de réponses
@@ -152,8 +184,8 @@ le HTML ; l’inventaire de couverture est déclaré par l’outil, sans validat
 
 ## English
 
-Collector version 1 performs anonymous GET requests for **1–10 explicitly selected,
-authorized URLs**, using interpreter/adapter version 3 and HTML engine version 2.
+Collector version 2 performs anonymous GET requests for **1–10 explicitly selected,
+authorized URLs**, using interpreter 3, adapter 4 and HTML engine 3.
 Python 3.9+ standard library only. Protocol draft.7, TS01–TS44, the report contract
 and normative corpus are unchanged. This is tool coverage, not certification or
 evidence of indexing/ranking.
@@ -177,12 +209,36 @@ space normalization or browser rendering. Comments and script/style are excluded
 the HTML parser remains a bounded subset. Do not choose criteria after seeing
 the evaluation. Incomplete/non-200 references cannot be sealed; attempts remain.
 
+Without `expected_final_url` in the criteria file, final URL and digest are
+**derived from the reference and adopted at `seal`**. This proves neither
+independent intent nor human validation. The optional field declares an expected
+final URL; any difference from the reference blocks sealing. The digest still
+comes from capture. The report places origin, policy, date and literal markers
+beside TS01 results. Matching digests do not test markers. `stable` is explicit:
+even a changing nonce or timestamp fails under that policy.
+
+Before sealing and before evaluation requests, the collector checks its version
+and source fingerprints against the reference. It also checks the inventoried
+local modules’ `__file__`/`__spec__.origin` and hashes before/after the operation.
+The adapter checks around interpretation. A collection whose sources change keeps
+raw attempts without issuing an assessment. These checks detect accidental mixed
+checkouts; they do not authenticate Python execution, attest in-memory code or
+identify the author. Bundles present supplied runs, not an exhaustive campaign.
+
+**Migration collector 1 → 2 / adapter 3 → 4 / HTML 2 → 3**: protocol, interpreter 3
+and binary input 2 are unchanged. Guided intent becomes `intent_version: "2"`,
+recording criteria origin and reference sources. Do not relabel old files: retain
+their tool archive and reports for replay. Collect a new reference and seal a new
+intent with collector 2 before evaluation. Different source fingerprints reject
+a reference even when the version number looks identical. Adapter bundle format
+remains 1; `import.json` records its new code identity. Old HTML remains readable.
+
 The worker retains HTTP/1.1 bytes after TLS, not network/TLS packets. HTTPS verifies
 certificate trust and hostname. Each hop retains its planned request, received
 response/prefix, dates, completion, errors and available peer/TLS data. A planned
 request does not prove transmission when connection fails. All DNS answers must
 be public, then a checked numeric address is used; `--allow-loopback` permits
-loopback only for synthetic local tests. Default agent `TSEP-TS01-collector/1`,
+loopback only for synthetic local tests. Default agent `TSEP-TS01-collector/2`,
 Accept-Encoding `gzip, deflate`, 10 seconds/hop, 512 KiB/response, 3 redirects.
 Configurable bounds: 0.1–30 seconds, 1 KiB–1 MiB, 0–5 redirects. The supervisor
 allows at most one extra second to bound DNS/process time. **2 MiB response total

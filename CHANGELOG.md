@@ -1,5 +1,25 @@
 # Change history / Historique
 
+## Collector 2, adapter 4 and HTML 3 — 2026-10-10 — local development
+
+Guard collector source equality before sealing/evaluation and verify loaded local
+module origins against the inventoried tool root. Retain raw attempts if source
+files change during collection. Guided intent v2 records criteria provenance;
+optional declared final URLs must match the reference. Display criteria beside
+TS01 results and state that supplied runs are not exhaustive. Add negative TLS,
+mixed-import, source-change and two-phase byte-budget tests. New reference/intent
+required with collector 2; preserve old tool archives for historical replay.
+Interpreter 3, draft.7, normative corpus and report contracts remain unchanged.
+
+Vérification du collecteur identique avant scellement/mesure et des origines des
+modules locaux inventoriés. Tentatives brutes conservées si les sources changent.
+Intention guidée v2 avec origine des critères et URL finale déclarée facultative,
+contrôlée contre la référence. Critères visibles près des résultats TS01 et
+périmètre des exécutions explicite. Tests TLS négatif, imports incohérents, sources
+modifiées et budget des deux phases. Nouvelle référence/intention requise avec le
+collecteur 2 ; anciennes archives préservées pour le rejeu. Interpréteur 3,
+draft.7, corpus normatif et contrats inchangés. Voir [migration](docs/guided-capture.md).
+
 ## Binary tools 3, guided collector 1 and HTML 2 — 2026-10-10 — local development
 
 Add exact-byte input v2 alongside unchanged legacy v1, bounded gzip and zlib-deflate

@@ -28,6 +28,10 @@ conformance suite, regenerates synthetic examples outside the source tree, runs 
 builds an archive, extracts it and checks that rebuilding yields identical bytes.
 Guided collector tests also bind 127.0.0.1 during the unit step: synthetic
 changing pages exercise gzip/deflate, frozen intent and network-forbidden replay.
+Tests also reject mixed module origins and changed collector sources before
+network access, verify the two-phase JSON size budget, and reject a synthetic
+self-signed TLS certificate before HTTP. `tests/tls_fixture.py` deliberately
+contains a public disposable test certificate/key; never deploy or trust them.
 The consumer workflow under `examples/` is prepared, not activated or observed
 on remote CI. See [guided capture](guided-capture.md).
 
@@ -184,6 +188,11 @@ du matériel et de sa charge ; ne revendiquer que les environnements mesurés.
 
 Les tests du collecteur ouvrent aussi 127.0.0.1 pendant l’étape unitaire : pages
 synthétiques changeantes, gzip/deflate, intention préalable et rejeu réseau interdit.
+Les tests refusent aussi les origines de modules incohérentes et les sources de
+collecteur modifiées avant le réseau, vérifient le budget JSON des deux phases et
+refusent un certificat TLS synthétique auto-signé avant HTTP. Le certificat et
+la clé de `tests/tls_fixture.py` sont des données de test volontairement publiques,
+à ne jamais déployer ni approuver comme autorité de confiance.
 Le workflow consommateur dans `examples/` est préparé, non activé et non observé
 en CI distante. Voir la [collecte guidée](guided-capture.md).
 

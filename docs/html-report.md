@@ -2,7 +2,7 @@
 
 ## Français
 
-Le moteur de présentation version 2 transforme un rapport TSEP valide et ses
+Le moteur de présentation version 3 transforme un rapport TSEP valide et ses
 preuves en un fichier HTML autonome en français ou en anglais. Python 3.9+ suffit.
 Il présente les résultats enregistrés, leurs règles, cibles, motifs, limites et
 preuves. Il ne réévalue pas les captures et ne collecte aucune URL.
@@ -55,9 +55,16 @@ et téléchargement des octets `.bin`, sans décoder les corps pour les afficher
 Le périmètre est adjacent à la décision ; l’inventaire de couverture fourni par
 l’adaptateur est affiché comme une déclaration de l’outil.
 
+La version 3 affiche aussi près des résultats TS01 l’origine déclarée des critères,
+la politique, la date, l’URL/empreinte attendues et les marqueurs fournis. Ces
+métadonnées ne prouvent pas une relecture humaine ; la cohérence du collecteur
+est signalée selon les empreintes vérifiées lors de la collecte. L’origine absente
+reste non déclarée. Le rapport rappelle que seules les exécutions fournies sont
+présentées. Aucun verdict supplémentaire n’est calculé.
+
 ## English
 
-Presentation engine version 2 turns a valid TSEP report and its evidence into one
+Presentation engine version 3 turns a valid TSEP report and its evidence into one
 self-contained French or English HTML file using Python 3.9+. It presents recorded
 outcomes, rules, targets, reasons, limitations and evidence without reassessing
 captures or fetching URLs. Use the commands above with `--lang en`.
@@ -97,3 +104,9 @@ bundles for complete evidence.
 Version 2 also presents binary v2 exchanges: escaped headers, digest and exact
 `.bin` downloads, without decoding bodies for display. Scope is adjacent to the
 decision; the adapter coverage inventory is labeled as tool-declared coverage.
+
+Version 3 also places declared criteria origin, policy, date, expected URL/digest
+and supplied markers beside TS01 results. This metadata does not prove human
+review; collector consistency is labeled according to fingerprints checked at
+collection. Missing origin remains undeclared. The report states that only
+supplied runs are presented. No additional verdict is computed.

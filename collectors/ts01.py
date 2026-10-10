@@ -3,6 +3,7 @@
 import argparse
 from datetime import datetime, timezone
 import hashlib
+import importlib
 import json
 from pathlib import Path, PurePosixPath
 import platform
@@ -23,11 +24,26 @@ from conformance.evaluate import trace
 from conformance.http import Unknown, body_digest, encoded, header_fields, message, raw_bytes
 from collectors.http import request_bytes
 from reports.html import write as write_html
+from provenance.runtime import loaded_sources
 
-VERSION = '1'
+VERSION = '2'
 NAME = 'TSEP guided TS01 collector'
 RULES = ['TS01-A01', 'TS01-A02']
 MAX_TOTAL = 2*1024*1024  # Raw responses per phase; both phases fit input JSON v2.
+
+
+def collection_sources():
+    modules = {'collectors/ts01.py': sys.modules[__name__], 'tsep.py': tsep}
+    for name in ('collectors.http', 'conformance.http', 'conformance.evaluate', 'provenance.runtime'):
+        modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
+    return loaded_sources(ROOT, modules)
+
+
+def same_collector(reference):
+    tsep.require(reference.get('collector_version') == VERSION and
+                 reference.get('sources_unchanged_during_collection') is True and
+                 reference.get('source_files') == collection_sources(),
+                 'Collector sources differ from reference; retain it and collect a new reference with this version')
 
 
 def now():
@@ -105,6 +121,7 @@ def validate_settings(settings):
 def capture(settings, output):
     """Retain every attempt, including partial responses and out-of-scope redirects."""
     validate_settings(settings)
+    sources = collection_sources()
     started, timer = now(), time.monotonic()
     output.mkdir()
     names, targets, total = [], [], 0
@@ -177,10 +194,13 @@ def capture(settings, output):
               'seconds': round(time.monotonic()-timer, 3), 'settings': settings,
               'phase_response_bytes': total, 'phase_response_byte_limit': MAX_TOTAL,
               'environment': {'python': platform.python_version(), 'platform': platform.platform(), 'openssl': ssl.OPENSSL_VERSION},
-              'source_files': {p: tsep.digest(ROOT/p) for p in ('collectors/ts01.py', 'collectors/http.py', 'conformance/http.py')},
+              'source_files': sources,
+              'sources_unchanged_during_collection': collection_sources() == sources,
               'targets': targets}
     save(output/'capture.json', result)
     manifest(output, names+['capture.json'])
+    tsep.require(result['sources_unchanged_during_collection'],
+                 'Collector source files changed during collection; raw attempts retained, no assessment emitted')
     return result
 
 
@@ -199,6 +219,7 @@ def reference(settings, output):
 def seal(reference_dir, output, *, assessor, label, policy='digest', criteria=None):
     verify(reference_dir)
     ref = tsep.read_json(Path(reference_dir)/'capture.json')
+    same_collector(ref)
     validate_settings(ref['settings'])
     tsep.require([t['url'] for t in ref['targets']] == ref['settings']['urls'], 'Reference target scope mismatch')
     tsep.require(policy in ('digest', 'stable', 'markers'), 'Unknown identity policy')
@@ -213,9 +234,13 @@ def seal(reference_dir, output, *, assessor, label, policy='digest', criteria=No
         tsep.require(candidate == target.get('reference_candidate'), 'Reference summary does not match retained bytes')
         tsep.require(candidate.get('status') == 200, 'Cannot seal incomplete/non-200 reference: '+target['url'])
         options = criteria.get(target['url'], {'policy': policy})
-        tsep.require(isinstance(options, dict) and set(options) <= {'policy', 'required_markers', 'forbidden_markers'}, 'Invalid identity criteria')
+        tsep.require(isinstance(options, dict) and set(options) <= {'policy', 'required_markers', 'forbidden_markers', 'expected_final_url'}, 'Invalid identity criteria')
         choice = options.get('policy', policy)
         tsep.require(choice in ('digest', 'stable', 'markers'), 'Unknown identity policy')
+        declared_final = options.get('expected_final_url')
+        if declared_final is not None:
+            origin(declared_final)
+            tsep.require(declared_final == final, 'Declared final URL differs from captured reference; seal refused')
         intent = {'declared_at': declared, 'public_canonical': True, 'crawler': ref['settings']['agent'],
                   'expected_final_url': candidate['expected_final_url'], 'expected_body_sha256': candidate['expected_body_sha256']}
         if choice == 'stable':
@@ -229,20 +254,28 @@ def seal(reference_dir, output, *, assessor, label, policy='digest', criteria=No
             intent.update(required_markers=required, forbidden_markers=forbidden)
         else:
             tsep.require(not options.get('required_markers') and not options.get('forbidden_markers'), 'Markers require markers policy')
-        rows.append({'url': target['url'], 'intent': intent})
-    value = {'intent_version': '1', 'declared_at': declared, 'reference_manifest_sha256': tsep.digest(Path(reference_dir)/'SHA256SUMS'),
+        rows.append({'url': target['url'], 'intent': intent,
+                     'identity_basis': {'origin': 'operator-final-url' if declared_final is not None else 'reference-adopted',
+                                        'policy': choice, 'body_reference': 'captured-reference',
+                                        'declared_final_url': declared_final}})
+    value = {'intent_version': '2', 'declared_at': declared, 'reference_manifest_sha256': tsep.digest(Path(reference_dir)/'SHA256SUMS'),
+             'reference_source_files': ref['source_files'],
              'assessor': assessor, 'label': label, 'settings': ref['settings'], 'targets': rows,
              'meaning': 'Operator-selected prior criteria from retained references; no trusted timestamp or correctness certification.'}
     tsep.require(all(isinstance(x, str) and x.strip() for x in (assessor, label)), 'Declare assessor and label')
     save(output, value)
-    return {'intent': str(output), 'sha256': tsep.digest(Path(output)), 'next': 'evaluate with this unchanged reference and intent'}
+    return {'intent': str(output), 'sha256': tsep.digest(Path(output)), 'next': 'evaluate with this unchanged reference and intent',
+            'stable_policy_warning': 'Explicit stable policy: any decoded body change, including a nonce or timestamp, fails TS01-A02.'
+                                     if any(row['identity_basis']['policy'] == 'stable' for row in rows) else None}
 
 
 def evaluate(reference_dir, intent_path, output, language='fr'):
     verify(reference_dir)
     reference_dir, intent_path = Path(reference_dir), Path(intent_path)
     ref, intent = tsep.read_json(reference_dir/'capture.json'), tsep.read_json(intent_path)
-    tsep.require(intent['intent_version'] == '1' and intent['reference_manifest_sha256'] == tsep.digest(reference_dir/'SHA256SUMS'), 'Intent/reference binding mismatch')
+    same_collector(ref)
+    tsep.require(intent['intent_version'] == '2' and intent['reference_manifest_sha256'] == tsep.digest(reference_dir/'SHA256SUMS'), 'Intent/reference binding mismatch; use this collector version to create a new reference and intent')
+    tsep.require(intent.get('reference_source_files') == ref['source_files'], 'Intent collector sources differ from reference')
     tsep.require(intent['settings'] == ref['settings'], 'Request settings changed after reference')
     validate_settings(intent['settings'])
     tsep.require([t['url'] for t in ref['targets']] == ref['settings']['urls'], 'Reference target scope mismatch')
@@ -253,19 +286,31 @@ def evaluate(reference_dir, intent_path, output, language='fr'):
     for row in intent['targets']:
         tsep.require(row['intent']['declared_at'] == intent['declared_at'], 'Inconsistent intent dates')
         tsep.require(row['intent']['crawler'] == intent['settings']['agent'], 'Intent crawler differs from frozen request settings')
+        basis = row.get('identity_basis', {})
+        actual_policy = ('stable' if row['intent'].get('representation') == 'stable' else
+                         'markers' if row['intent'].get('required_markers') else 'digest')
+        tsep.require(basis.get('policy') == actual_policy and basis.get('origin') in ('reference-adopted', 'operator-final-url'),
+                     'Identity basis does not match frozen criteria')
+        tsep.require(basis.get('origin') != 'operator-final-url' or
+                     basis.get('declared_final_url') == row['intent']['expected_final_url'], 'Declared final URL does not match intent')
     output = new_directory(output)
     shutil.copyfile(intent_path, output/'intent.json')
     observations = capture(intent['settings'], output/'evaluation')
+    tsep.require(observations['source_files'] == ref['source_files'],
+                 'Collector sources changed between phases; raw evaluation retained without assessment')
     targets = []
     for prior, criteria, observation in zip(ref['targets'], intent['targets'], observations['targets']):
         target = dict(observation)
         target['intent'] = criteria['intent']
         target['reference'] = {'observed_at': prior['observed_at'], 'http': prior['http'],
+                               'source_files': ref['source_files'],
                                'reference_manifest_sha256': intent['reference_manifest_sha256']}
         target['context'] = {'network': intent['settings']['network'], 'bounds': {k: intent['settings'][k] for k in
                               ('timeout', 'max_bytes', 'max_redirects', 'origins', 'allow_loopback')},
                              'tool': NAME, 'tool_version': VERSION, 'accept_encoding': intent['settings']['accept_encoding'],
                              'collection_environment': observations['environment'], 'collection_source_files': observations['source_files'],
+                             'collector_matches_reference': True, 'identity_basis': criteria['identity_basis'],
+                             'run_selection': 'Only the supplied runs; this bundle does not establish an exhaustive campaign history.',
                              'intent_file_sha256': tsep.digest(output/'intent.json'), 'reference_manifest_sha256': intent['reference_manifest_sha256']}
         targets.append(target)
     data = {'input_version': '2', 'rules': RULES, 'targets': targets}
@@ -311,7 +356,7 @@ def main():
     ref = sub.add_parser('reference', help='Collect explicit authorized targets; real network requests')
     ref.add_argument('--target', action='append', required=True)
     ref.add_argument('--allow-origin', action='append', default=[])
-    ref.add_argument('--agent', default='TSEP-TS01-collector/1')
+    ref.add_argument('--agent', default='TSEP-TS01-collector/2')
     ref.add_argument('--accept-encoding', choices=['identity', 'gzip, deflate'], default='gzip, deflate')
     ref.add_argument('--timeout', type=float, default=10)
     ref.add_argument('--max-bytes', type=int, default=524288)

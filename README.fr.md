@@ -53,6 +53,8 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
    ligne et de comparer deux évaluations conservées. Le [parcours guidé TS01](docs/guided-capture.md)
    collecte les octets bruts, fige les critères avant mesure et rejoue hors ligne ;
    l’interpréteur version 3 prend en charge chunked, gzip et deflate dans ses bornes.
+   Le collecteur 2 contrôle la cohérence des sources entre les phases ;
+   l’adaptateur 4 vérifie les origines des modules et le HTML 3 explicite les critères.
 2. **Déclarer une couverture partielle** : sélectionner une liste `custom`, conserver
    les inconnues en NT/inconclusive et relier chaque preuve à sa cible. Une sélection
    TS01/TS07 ne satisfait pas un profil nommé. Aucun test isolé ne valide son parent.

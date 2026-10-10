@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import shutil
 import socket
+import ssl
 import subprocess
 import sys
 import tempfile
@@ -18,8 +19,9 @@ import zlib
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
-from collectors.ts01 import reference, seal, evaluate, replay, capture, verify, validate_settings, origin
+from collectors.ts01 import reference, seal, evaluate, replay, capture, verify, validate_settings, origin, collection_sources, MAX_TOTAL
 from conformance.http import raw_bytes
+from tests.tls_fixture import CERTIFICATE, PUBLIC_TEST_KEY
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -224,6 +226,93 @@ class GuidedCapture(unittest.TestCase):
         verify(self.root/'failed')
         self.assertTrue(replay(self.root/'failed', self.root/'failed-replay')['replayed'])
         self.assertEqual(len(self.server.requests), 1)
+
+    def test_changed_collector_is_blocked_before_output_and_network(self):
+        self.prepare(paths=('/stable',), policy='digest')
+        altered = dict(collection_sources(), **{'collectors/http.py': '0'*64})
+        with patch('collectors.ts01.collection_sources', return_value=altered), \
+                patch('collectors.ts01.subprocess.run', side_effect=AssertionError('No request allowed')):
+            with self.assertRaisesRegex(ValueError, 'Collector sources differ'):
+                evaluate(self.root/'first/reference', self.root/'intent.json', self.root/'invalid')
+            with self.assertRaisesRegex(ValueError, 'Collector sources differ'):
+                seal(self.root/'first/reference', self.root/'new-intent.json', assessor='Test', label='Test')
+        self.assertFalse((self.root/'invalid').exists())
+        self.assertFalse((self.root/'new-intent.json').exists())
+        self.assertEqual(len(self.server.requests), 1)
+
+    def test_sources_changed_during_capture_preserve_attempt_without_assessment(self):
+        before = collection_sources()
+        changed = dict(before, **{'collectors/http.py': '0'*64})
+        with patch('collectors.ts01.collection_sources', side_effect=[before, changed]):
+            with self.assertRaisesRegex(ValueError, 'changed during collection'):
+                capture(self.settings(('/stable',)), self.root/'changed')
+        verify(self.root/'changed')
+        self.assertFalse(tsep.read_json(self.root/'changed/capture.json')['sources_unchanged_during_collection'])
+
+    def test_declared_final_url_is_checked_and_shown_beside_identity_verdict(self):
+        settings = self.settings(('/redirect',))
+        reference(settings, self.root/'first')
+        criteria = {self.base+'/redirect': {'expected_final_url': self.base+'/wrong'}}
+        with self.assertRaisesRegex(ValueError, 'Declared final URL differs'):
+            seal(self.root/'first/reference', self.root/'bad.json', assessor='Test', label='Test', criteria=criteria)
+        self.assertFalse((self.root/'bad.json').exists())
+        criteria[self.base+'/redirect']['expected_final_url'] = self.base+'/stable'
+        seal(self.root/'first/reference', self.root/'intent.json', assessor='Test', label='Test', criteria=criteria)
+        data = tsep.read_json(self.root/'intent.json')
+        self.assertEqual(data['targets'][0]['identity_basis']['policy'], 'digest')
+        evaluate(self.root/'first/reference', self.root/'intent.json', self.root/'assessment')
+        html = (self.root/'assessment/report-fr.html').read_text()
+        results = html.split('<section id="results">', 1)[1].split('<section id="captures">', 1)[0]
+        self.assertIn('URL finale déclarée par l’opérateur', results)
+        self.assertIn('digest —', results)
+        self.assertIn('Marqueurs requis', results)
+        self.assertIn('Collecteur identique', results)
+        self.assertIn('L’absence d’autres essais', html)
+
+    def test_invalid_tls_certificate_is_refused_before_http(self):
+        cert, key = self.root/'cert.pem', self.root/'key.pem'
+        cert.write_text(CERTIFICATE); key.write_text(PUBLIC_TEST_KEY)
+        server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+        server.requests = []; server.marker = True; server.daemon_threads = True
+        context = ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER)
+        context.load_cert_chain(cert, key)
+        server.socket = context.wrap_socket(server.socket, server_side=True)
+        thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
+        try:
+            url = 'https://127.0.0.1:'+str(server.server_port)+'/stable'
+            data = capture(self.settings(urls=[url], origins=[url]), self.root/'tls-rejected')
+            hop = data['targets'][0]['http'][0]
+            self.assertFalse(hop['complete'])
+            self.assertIn('CERTIFICATE_VERIFY_FAILED', hop['error'])
+            self.assertNotIn('tls_certificate_verified', hop)
+            self.assertEqual(raw_bytes(hop['response']), b'')
+            self.assertNotIn('reference_candidate', data['targets'][0])
+            self.assertEqual(server.requests, [])
+            verify(self.root/'tls-rejected')
+        finally:
+            server.shutdown();server.server_close();thread.join()
+
+    def test_phase_total_stops_requests_and_keeps_two_phases_under_json_limit(self):
+        def bounded_worker(*args, **kwargs):
+            config = json.loads(kwargs['input']); folder = Path(config['directory'])
+            prefix = b'HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\n\r\n'
+            response = prefix + b'x'*(config['max_bytes']-len(prefix))
+            (folder/'response.bin').write_bytes(response)
+            (folder/'metadata.json').write_text(json.dumps({'complete':True}))
+            return subprocess.CompletedProcess(args[0], 0, '', '')
+        settings = self.settings(tuple('/'+str(i)+'x'*3500 for i in range(10)), max_bytes=1024*1024)
+        with patch('collectors.ts01.subprocess.run', side_effect=bounded_worker) as worker:
+            first = capture(settings, self.root/'first')
+            second = capture(settings, self.root/'second')
+        self.assertEqual(worker.call_count, 4)
+        self.assertEqual(first['phase_response_bytes'], MAX_TOTAL)
+        self.assertEqual(second['phase_response_bytes'], MAX_TOTAL)
+        self.assertIn('Phase byte bound reached', first['targets'][2]['collection_error'])
+        for prior, target in zip(first['targets'], second['targets']):
+            target['reference'] = {'http': prior['http']}
+            target['context'] = {'bounds': settings, 'source_files': second['source_files']}
+        serialized = json.dumps({'input_version':'2', 'rules':['TS01-A01','TS01-A02'], 'targets':second['targets']}, indent=2).encode()
+        self.assertLess(len(serialized), tsep.MAX_JSON_BYTES)
 
 
 if __name__ == '__main__':
