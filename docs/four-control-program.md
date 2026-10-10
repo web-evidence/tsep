@@ -7,11 +7,13 @@ la Search Console et un insight concret. Aucun ordre numérique n'est obligatoir
 | Contrôle | Problème métier à montrer | État à cette étape |
 | --- | --- | --- |
 | TS04 | Une règle de préproduction interdit l'exploration attendue | Draft.9 : deux règles, lecteur partagé TS07, ressources et parcours de revue ; recette humaine/application réelle à établir |
-| TS02 | Une migration mène à la mauvaise destination, ajoute un détour ou boucle | Draft.8 : règles, interpréteur et laboratoire avant/après de 20 requêtes locales ; parcours pratique du plan humain à compléter |
+| TS02 | Une migration mène à la mauvaise destination, ajoute un détour ou boucle | Draft.8 : règles et laboratoire ; parcours préalable 1 prépare et importe la décision fournie puis lie les captures. Décision humaine et application Edikka à établir |
 | TS07 | Un noindex HTTP/source/rendu contredit l'intention ; robots peut empêcher sa lecture | Draft.11 : lecteur structuré et laboratoire de navigation attribuée ; exécutions livrées séparément, revue et application réelle à établir |
 | TS10 | Canonical HTTP, HTML, rendu, sitemap ou liens désignent des URL incompatibles | Draft.11 : lecteur structuré canonical/liens et laboratoire attribué ; exécutions livrées séparément, limites source et revue de contenu à éprouver |
 
 TS01 reste la base existante, sans être compté comme l'un de ces quatre objectifs.
+Le [parcours préalable TS02](redirect-plan-workflow.md) fournit la fiche pratique ;
+il ne remplit pas la décision du responsable ni ne collecte à sa place.
 L'ordre de dépendance recommandé est TS04, TS02, TS07, TS10. TS02 peut avancer
 indépendamment pendant la définition TS04. Un lecteur robots commun doit servir
 TS04 et TS07, avec les politiques RFC/robot explicitement distinguées.

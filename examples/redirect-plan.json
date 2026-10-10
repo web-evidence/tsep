@@ -1,0 +1,34 @@
+{
+  "kind": "tsep-redirect-plan",
+  "access": "synthetic",
+  "selection_reason": "Authored synthetic example only; no actual site or owner review. / Exemple synthétique, sans avis réel du responsable.",
+  "targets": [
+    {
+      "url": "https://example.com/old",
+      "intent": {
+        "declared_at": "2026-10-10T09:00:00Z",
+        "crawler": "Fixture/1",
+        "redirect_plan": {
+          "mechanism": "http",
+          "source_url": "https://example.com/old",
+          "expected_final_url": "https://example.com/new",
+          "min_redirects": 1,
+          "max_redirects": 1,
+          "redirect_statuses": [
+            301,
+            308
+          ],
+          "terminal_statuses": [
+            200
+          ]
+        }
+      },
+      "context": {
+        "network": "synthetic",
+        "bounds": "20 exchanges maximum",
+        "tool": "authored-fixture",
+        "tool_version": "1"
+      }
+    }
+  ]
+}

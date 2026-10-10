@@ -1,5 +1,16 @@
 # Change history / Historique
 
+## Workflow — 2026-10-10 — prior TS02 owner plan
+
+Workflow 1 adds a readable prior plan, blank owner response, supplied-decision
+import and exact binding to later captures. It retains rejected decisions, raw
+captures and replayable native bundles. No collection, invented judgment or
+normative change; draft.11, interpreter 11 and capture adapter 12 stay unchanged.
+[Usage and limits](docs/redirect-plan-workflow.md).
+
+FR : fiche préalable, réponse humaine réellement fournie et captures ultérieures
+liées au plan ; aucune validation rétroactive ni conformité Edikka déduite.
+
 ## Tool coverage — 2026-10-10 — canonical attributes and repair sequence
 
 Protocol draft.11 unchanged. Interpreter 11 / adapter 12 / structured reader 2

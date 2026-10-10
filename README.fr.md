@@ -6,6 +6,9 @@ Transmettre un audit SEO technique que son destinataire peut examiner, rejouer e
 contester : mêmes identifiants, périmètre explicite, preuves liées aux constats et
 inconnues conservées. Le rapport distingue ce qui est établi de ce qui reste à vérifier.
 
+Pour TS02, le [parcours du plan préalable](docs/redirect-plan-workflow.md) prépare
+une fiche lisible et lie une décision réellement fournie aux captures ultérieures.
+
 ## Pour qui
 
 Équipes SEO et développement qui préparent une recette, commanditaires qui examinent

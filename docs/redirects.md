@@ -64,8 +64,10 @@ compris une preuve de contradiction avant une réponse manquante. Ce corpus n'es
 pas une observation réelle, ni une preuve de pertinence métier des destinations.
 
 L'import utilise `adapters/captures.py`, le rapport `reports/html.py` et le rejeu
-`adapters/replay.py`, avec les outils de la même version. La préparation de revue
-`adapters/review.py` reste limitée à TS07/TS10 ; elle ne prépare pas A01 TS02.
+`adapters/replay.py`, avec les outils de la même version. La revue TS02 préalable
+utilise désormais [`adapters/redirect_plan.py`](redirect-plan-workflow.md) : fiche,
+réponse vide, import fourni puis liaison aux captures ultérieures. `adapters/review.py`
+reste le parcours distinct des revues après capture TS04/TS07/TS10.
 
 ## English
 
@@ -93,4 +95,6 @@ indexing or ranking conclusion is made.
 
 The 38 prefrozen synthetic expectations are copied unchanged into conformance.
 Capture import, HTML reporting and offline replay use the current pinned tool
-archive. The existing TS07/TS10 review preparer does not prepare TS02 approvals.
+archive. [Prior-plan workflow 1](redirect-plan-workflow.md) prepares blank TS02
+owner decisions and binds supplied responses to later captures; the separate
+TS04/TS07/TS10 post-capture review workflow remains unchanged.

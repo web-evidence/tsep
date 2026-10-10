@@ -6,6 +6,9 @@ Share a technical SEO assessment that its recipient can inspect, replay and
 challenge: stable identifiers, explicit scope, evidence linked to findings and
 unknowns retained. The report distinguishes established findings from remaining checks.
 
+For TS02, the [prior owner-plan workflow](docs/redirect-plan-workflow.md) prepares
+a readable plan and binds a supplied decision to subsequent captures.
+
 ## Who it is for
 
 SEO and development teams preparing acceptance checks, clients reviewing audit

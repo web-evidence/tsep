@@ -1,4 +1,7 @@
 Current tools: interpreter 11 / adapter 12; protocol draft.11 unchanged.
+Prior TS02 [owner-plan workflow 1](redirect-plan-workflow.md) prepares blank decisions
+and binds supplied reviews to later captures, without collecting or inventing approval.
+Parcours préalable TS02 disponible ; décision humaine et collecte réelle restent à établir.
 Outils actuels : [attributs de canonical et parcours de correction](canonical-attribute-coverage.md) ; recette humaine et application réelle restent distinctes.
 
 Current integration: draft.11 separates the actual HTTP client from TS07 directive semantics,
