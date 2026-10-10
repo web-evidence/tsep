@@ -152,3 +152,17 @@ Bounds: 1,024 files, 32 MiB per file, 128 MiB per package; input JSON stays boun
 at 8 MiB. Tests cover adverse/partial cases, offline replay and retained mismatch;
 a user acceptance trial separately records understanding, evidence retrieval,
 requested correction, replay and practical friction.
+
+
+## Revue version 2 — TS04 / Review version 2 — TS04
+
+Draft.9 ajoute les ressources nécessaires TS04-A02 au même parcours : questions
+vides par URL, réponses réellement fournies, liaison aux traces et contexte,
+conservation de l'entrée initiale. L'exemption d'inventaire préalable n'est pas
+fabriquée par une revue après collecte. [Format](robots.md). Les anciennes demandes
+restent avec leurs outils et leur version historiques.
+
+Draft.9 adds required-resource TS04-A02 reviews to this workflow: blank per-URL
+questions, supplied decisions, bindings and retained original input. Prior
+inventory exemptions are not fabricated after capture. Historical requests keep
+their pinned original tools.

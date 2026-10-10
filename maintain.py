@@ -104,7 +104,7 @@ def check():
                          'Missing bilingual text: ' + control['id'] + '.' + field)
         tsep.require(control['required_inputs'] and control['unit'], 'Missing contract inputs')
         if 'rules' in control:
-            tsep.require(control['id'] in ('TS01', 'TS02', 'TS07', 'TS10') and control['rules'],
+            tsep.require(control['id'] in ('TS01', 'TS02', 'TS04', 'TS07', 'TS10') and control['rules'],
                          'Unexpected atomic rule scope')
             tsep.require(control['rule_version'] == protocol['version'], 'Stale atomic rule version')
             tsep.unique([r['id'] for r in control['rules']], 'atomic rule')
@@ -120,7 +120,7 @@ def check():
                 tsep.require(rule['required_inputs'] and
                              set(rule['required_inputs'] + rule['na_inputs']) <= set(known_inputs),
                              'Invalid atomic input kind')
-    tsep.require({c['id'] for c in controls if 'rules' in c} == {'TS01', 'TS02', 'TS07', 'TS10'},
+    tsep.require({c['id'] for c in controls if 'rules' in c} == {'TS01', 'TS02', 'TS04', 'TS07', 'TS10'},
                  'Missing atomic control')
     for upstream in protocol['upstream']:
         tsep.require(tsep.digest(ROOT / upstream['path']) == upstream['sha256'],

@@ -30,6 +30,7 @@ EXTERNAL_CASE_IDS = (
     'canonical-sitemap-unjustified-omission', 'canonical-links-duplicate-destination',
     'unsupported-robots-wildcard',
     'redirect-direct', 'redirect-rejected-review', 'redirect-missing-review',
+    'robots-control-correct', 'robots-control-preproduction', 'robots-control-missing-robots',
     'redirect-wrong-destination', 'redirect-unfinished',
 )
 

@@ -91,7 +91,7 @@ class RobotsPolicy(unittest.TestCase):
         body = b'User-agent: *\nDisallow: /\n#'
         body += b'x'*(robots.MAX_BYTES-len(body))
         self.assertEqual(robots.body_policy(body, 'https://example.com/', 'Googlebot', robots.GOOGLE)['decision'], 'disallow')
-        with patch.object(robots, 'MAX_STEPS', 4):
+        with patch.object(robots.core, 'MAX_STEPS', 4):
             result = robots.body_policy('User-agent: *\nDisallow: /*z', 'https://example.com/abcdef', 'Googlebot', robots.GOOGLE)
             self.assertEqual(result['decision'], 'unknown')
 
@@ -139,9 +139,9 @@ class RobotsPolicy(unittest.TestCase):
             result = robots.inspect_capture(capture())
         self.assertEqual(result['decision'], 'disallow')
         self.assertEqual(result['network_requests'], 0)
-        self.assertNotIn('TS04-A01', robots.evaluate.RULES)
+        self.assertIn('TS04-A01', robots.evaluate.RULES)
         self.assertNotIn('status', result)
-        self.assertEqual(json.loads((ROOT/'spec/protocol.json').read_text())['version'], '0.1.0-draft.8')
+        self.assertEqual(json.loads((ROOT/'spec/protocol.json').read_text())['version'], '0.1.0-draft.9')
 
     def test_cli_preserves_input_hash_and_refuses_overwrite(self):
         with tempfile.TemporaryDirectory() as folder:

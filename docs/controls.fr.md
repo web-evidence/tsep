@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.8 — Contrôles
+# TSEP 0.1.0-draft.9 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.8:TS01-A01`
+`TSEP@0.1.0-draft.9:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.8:TS01-A02`
+`TSEP@0.1.0-draft.9:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.8:TS02-A01`
+`TSEP@0.1.0-draft.9:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.8:TS02-A02`
+`TSEP@0.1.0-draft.9:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -180,11 +180,11 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Hôtes et agents pour lesquels une politique d’exploration est évaluée.
 
-**Méthode.** Récupérer robots.txt pour chaque origine ; conserver le statut, les règles effectives du robot ciblé et la politique attendue. Examiner les erreurs selon la documentation du robot, sans assimiler toute absence à un échec.
+**Méthode.** Déclarer avant collecte une origine, le robot, le profil d’interprétation et une matrice de ressources avec politique attendue ; confronter règles et accès selon A01–A02.
 
 **Attendus.** Règles effectives et accès aux ressources correspondent à la politique déclarée ; une absence volontaire documentée peut être compatible, sans exiger systématiquement 200.
 
-**Preuves.** Origine, robot, statut, règles ou absence constatée, ressources testées et politique attendue.
+**Preuves.** Plan préalable, origine, product token et User-Agent, profil, robots brut daté, lignes retenues, réponses des ressources nécessaires et revues fournies.
 
 **Conditions de NA.** Aucun hôte explorable dans le périmètre.
 
@@ -192,9 +192,59 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
-**Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
+**Portée des sources.** Références techniques datées du 10 octobre 2026, captures et empreintes dans docs/source-observations.md. Les attendus restent une proposition TSEP.
 
-**Références**: [https://www.rfc-editor.org/rfc/rfc9309.html](https://www.rfc-editor.org/rfc/rfc9309.html)
+**Références**: [https://www.rfc-editor.org/rfc/rfc9309.html](https://www.rfc-editor.org/rfc/rfc9309.html); [https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec)
+
+### TS04-A01 — Politique par origine, robot et ressource
+
+`TSEP@0.1.0-draft.9:TS04-A01`
+
+**Entrées requises**: http, robots, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Chaque origine et matrice de chemins dont la politique d’exploration est évaluée.
+
+**Méthode.** Figer le profil et les autorisations/interdictions attendues avant les observations. Interpréter statut, groupes, règles et redirections du robots dans le contexte de l’origine initiale ; conserver les lignes qui déterminent chaque issue.
+
+**Attendus.** Chaque politique observée correspond à l’intention déclarée. Une permission inattendue comme une interdiction inattendue est une contradiction. Une absence volontaire peut convenir selon le profil ; aucun statut 200 universel.
+
+**Preuves.** Matrice complète, intention antérieure, contexte, requête et réponse robots intégrales, profil et résultat motivé par ressource.
+
+**Hypothèses.** Profil choisi avant mesure, identique pour un contexte de campagne ; pas de sélection a posteriori du profil favorable. Distinguer modèle RFC, politique Google documentée et cache réellement inconnu.
+
+**Indéterminé.** Profil absent, capture ou chronologie manquante, syntaxe hors couverture, erreur/cache non résolu : inconclusive. Une contradiction attribuable sur une autre ressource reste fail.
+
+**Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
+
+**Limites.** semiAuto : matrice et pertinence du profil restent déclarées. La référence est bornée à une origine, des profils documentés et des captures fournies ; aucune visite, ingestion ou indexation du moteur n’est démontrée.
+
+### TS04-A02 — Accès aux ressources nécessaires
+
+`TSEP@0.1.0-draft.9:TS04-A02`
+
+**Entrées requises**: http, robots, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Entrées pour exemption atomique**: intent.
+
+**Applicabilité.** Ressources explicitement nécessaires dans le périmètre déclaré, y compris les ressources de rendu retenues.
+
+**Méthode.** Comparer politique robots et trajectoires HTTP aux destinations/statuts prévus, puis examiner les réponses pour obstacles. Lier chaque revue fournie aux octets, dates, intention et contexte. Conserver séparément les lacunes.
+
+**Attendus.** Toutes les ressources nécessaires et leurs sauts observés sont autorisés sous le profil, atteignent la réponse prévue et ne présentent aucun obstacle selon la revue fournie. Blocage robots, réponse contradictoire ou obstacle étayé donne fail même avec une autre preuve manquante.
+
+**Preuves.** Plan de ressources, robots, traces HTTP complètes, revue motivée par ressource avec identité déclarée, date, provenance, assistance et empreinte de liaison.
+
+**Hypothèses.** Un client de test ne s’authentifie pas comme Googlebot ; un 200 seul ne prouve pas l’absence de challenge. La revue n’est pas produite par le logiciel et son identité n’est pas authentifiée.
+
+**Indéterminé.** Ressource ou revue manquante, revue non liée, réponse incomplète, doute ou portée hors couverture : inconclusive sans effacer une contradiction établie.
+
+**Conditions de NA.** Aucune ressource nécessaire dans ce périmètre, établi par une revue d’inventaire motivée et datée avant le plan ; une liste vide sans justification ne suffit pas.
+
+**Limites.** La suffisance de l’inventaire et le jugement humain restent hors automatisation complète. La référence couvre une origine et les trajectoires attribuables ; elle n’exécute pas le rendu et n’établit pas l’accès réel du moteur.
 
 ## TS05 — Une directive Disallow n’est jamais présentée comme une garantie de désindexation.
 
@@ -270,7 +320,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.8:TS07-A01`
+`TSEP@0.1.0-draft.9:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -294,7 +344,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.8:TS07-A02`
+`TSEP@0.1.0-draft.9:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -304,11 +354,11 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Méthode.** Confronter politique robots effective et conditions d’accès au robot cible ; distinguer réponse au client de test, blocage explicite et accès du robot non observé.
 
-**Attendus.** Aucun obstacle observé n’empêche de lire la directive dans le contexte déclaré. Une interdiction robots explicite contredit une stratégie reposant sur la lecture de noindex.
+**Attendus.** Aucun obstacle observé n’empêche de lire la directive dans le contexte déclaré. Une interdiction robots contredit une stratégie reposant sur la lecture de noindex. Un refus HTTP 401/403 attribuable reste fail même si la capture robots manque.
 
 **Preuves.** Capture et interprétation robots pour URL/robot, trace HTTP et hypothèses d’accès documentées dans l’intention.
 
-**Hypothèses.** La politique effective est interprétée selon TS04 ; son seul statut HTTP ne suffit pas. Le contexte de test est borné et ne simule pas une authentification de Googlebot.
+**Hypothèses.** La politique est interprétée par le lecteur partagé TS04. Un nouveau profil est déclaré dans l’intention avant capture. Sans champ robots_policy, les anciennes entrées restent sous le profil fixe legacy-exact-v1, sans extension implicite de sa couverture. Le client ne s’authentifie pas comme Googlebot.
 
 **Indéterminé.** Politique inaccessible ou ambiguë, challenge non résolu, capture manquante : inconclusive, jamais NA pour manque d’accès.
 
@@ -318,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.8:TS07-A03`
+`TSEP@0.1.0-draft.9:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -416,7 +466,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.8:TS10-A01`
+`TSEP@0.1.0-draft.9:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -440,7 +490,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.8:TS10-A02`
+`TSEP@0.1.0-draft.9:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -464,7 +514,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.8:TS10-A03`
+`TSEP@0.1.0-draft.9:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -490,7 +540,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.8:TS10-A04`
+`TSEP@0.1.0-draft.9:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded offline interpreter for eleven TSEP rules. Apache-2.0; no collection."""
+"""Bounded offline interpreter for thirteen TSEP rules. Apache-2.0; no collection."""
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -11,9 +11,9 @@ from urllib.parse import urljoin, urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import tsep
 
-RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
+RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS04-A01', 'TS04-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04')
-VERSION = '7'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '8'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -205,41 +205,8 @@ def directive_result(headers, body, intent):
 
 
 def robots_allowed(text, target, crawler):
-    groups, agents, rules = [], [], []
-    for raw in text.splitlines():
-        line = raw.split('#', 1)[0].strip()
-        if not line:
-            continue
-        need(':' in line, 'Unsupported robots line')
-        field, value = (s.strip() for s in line.split(':', 1))
-        field = field.lower()
-        if field == 'sitemap':
-            continue
-        if field == 'user-agent':
-            need(re.fullmatch(r'[A-Za-z_-]+|\*', value), 'Unsupported robots agent')
-            if rules:
-                groups.append((agents, rules)); agents, rules = [], []
-            agents.append(value.lower())
-        elif field in ('allow', 'disallow'):
-            # Empty values do not restrict, but still delimit a group.
-            need(not value or (value.startswith('/') and value.isascii() and
-                 not re.search(r'[%*$\s]', value)), 'Unsupported robots path pattern')
-            if agents:
-                rules.append((field, value))
-        else:
-            raise Unknown('Unsupported robots extension: ' + field)
-    if agents:
-        groups.append((agents, rules))
-    specific = [r for a, r in groups if crawler.lower() in a]
-    selected = specific if specific else [r for a, r in groups if '*' in a]
-    parts = url_parts(target)
-    path = (parts.path or '/') + ('?' + parts.query if parts.query else '')
-    need(path.isascii() and '%' not in path, 'Encoded/non-ASCII target path requires review')
-    if parts.path == '/robots.txt':
-        return True
-    matches = [(len(value), field == 'allow') for group in selected for field, value in group
-               if value and path.startswith(value)]
-    return max(matches)[1] if matches else True
+    from conformance.robots import legacy_allowed
+    return legacy_allowed(text, target, crawler)
 
 
 def binding_digest(hops):
@@ -343,6 +310,9 @@ def rendered_result(target, final_url, headers, body):
 
 
 def evaluate_target(target, rule):
+    if rule.startswith('TS04-'):
+        from conformance.robots_control import assess
+        return assess(target, rule)
     if rule.startswith('TS02-'):
         from conformance.redirects import assess
         return assess(target, rule)
@@ -366,24 +336,8 @@ def evaluate_target(target, rule):
             return directive_result(headers, body, intent)
         if rule == 'TS07-A03':
             return rendered_result(target, final_url, headers, body)
-        need(intent.get('access_basis') == 'test-client-only', 'Access assumptions not declared')
-        parts = url_parts(final_url)
-        robots_url = parts.scheme + '://' + parts.netloc + '/robots.txt'
-        robots = target.get('robots', {})
-        need(tsep.timestamp(robots['observed_at']) <= tsep.timestamp(target['observed_at']), 'Robots capture postdates assessment')
-        _, robot_status, robot_headers, robot_body = trace(robots.get('http'), robots_url, crawler)
-        need(robot_status == 200 and utf8_media(robot_headers, ('text/plain',), default_utf8=True), 'Unsupported robots response; no default access inferred')
-        allowed = robots_allowed(text_body(robot_body), final_url, crawler)
-        if not allowed:
-            return 'fail', 'Observed robots policy disallows this target crawler/path'
-        if status in (401, 403):
-            return 'fail', 'Observed HTTP access denial to test client'
-        review = target.get('access_review', {})
-        need(status == 200 and review.get('outcome') == 'no-obstacle' and review.get('reason'),
-             'HTTP access unresolved or challenge not reviewed')
-        need(tsep.timestamp(review['observed_at']) >= tsep.timestamp(target['observed_at']),
-             'Access review predates the HTTP capture')
-        return 'pass', 'Robots allows path and no obstacle observed for declared test client; actual engine access unobserved'
+        from conformance.robots_control import access_rule
+        return access_rule(target, final_url, status)
     except (Unknown, tsep.Invalid, KeyError, TypeError, ValueError) as error:
         return 'inconclusive', str(error)
 

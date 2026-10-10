@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.8",
+  "version": "0.1.0-draft.9",
   "status": "draft",
   "date": "2026-10-10",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.8"
+      "rule_version": "0.1.0-draft.9"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.8",
+      "rule_version": "0.1.0-draft.9",
       "rules": [
         {
           "na_inputs": [],
@@ -408,8 +408,8 @@
         "en": "Hosts and agents for which a crawl policy is assessed."
       },
       "procedure": {
-        "fr": "Récupérer robots.txt pour chaque origine ; conserver le statut, les règles effectives du robot ciblé et la politique attendue. Examiner les erreurs selon la documentation du robot, sans assimiler toute absence à un échec.",
-        "en": "Fetch robots.txt for each origin; retain status, effective target-bot rules and expected policy. Review errors against the bot documentation without treating every absence as failure."
+        "fr": "Déclarer avant collecte une origine, le robot, le profil d’interprétation et une matrice de ressources avec politique attendue ; confronter règles et accès selon A01–A02.",
+        "en": "Declare origin, crawler, interpretation profile and resource/expected-policy matrix before collection; compare policy and access under A01–A02."
       },
       "acceptance": {
         "fr": "Règles effectives et accès aux ressources correspondent à la politique déclarée ; une absence volontaire documentée peut être compatible, sans exiger systématiquement 200.",
@@ -420,8 +420,8 @@
         "en": "No crawlable host in scope."
       },
       "evidence": {
-        "fr": "Origine, robot, statut, règles ou absence constatée, ressources testées et politique attendue.",
-        "en": "Origin, bot, status, observed rules or absence, tested resources and expected policy."
+        "fr": "Plan préalable, origine, product token et User-Agent, profil, robots brut daté, lignes retenues, réponses des ressources nécessaires et revues fournies.",
+        "en": "Prior plan, origin, product token and User-Agent, profile, dated raw robots, selected lines, required-resource responses and supplied reviews."
       },
       "limitations": {
         "fr": "robots.txt est un protocole d’exploration, pas un contrôle d’accès.",
@@ -433,16 +433,114 @@
         "en": "Public"
       },
       "references": [
-        "https://www.rfc-editor.org/rfc/rfc9309.html"
+        "https://www.rfc-editor.org/rfc/rfc9309.html",
+        "https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec"
       ],
       "source_scope": {
-        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
-        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+        "fr": "Références techniques datées du 10 octobre 2026, captures et empreintes dans docs/source-observations.md. Les attendus restent une proposition TSEP.",
+        "en": "Technical references observed October 10, 2026; captures/fingerprints in docs/source-observations.md. Acceptance remains a TSEP proposal."
       },
       "acceptance_note": {
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
-      }
+      },
+      "rule_version": "0.1.0-draft.9",
+      "rules": [
+        {
+          "id": "TS04-A01",
+          "title": {
+            "fr": "Politique par origine, robot et ressource",
+            "en": "Policy per origin, crawler and resource"
+          },
+          "required_inputs": [
+            "http",
+            "robots",
+            "intent"
+          ],
+          "applicability": {
+            "fr": "Chaque origine et matrice de chemins dont la politique d’exploration est évaluée.",
+            "en": "Each origin and path matrix whose crawl policy is assessed."
+          },
+          "procedure": {
+            "fr": "Figer le profil et les autorisations/interdictions attendues avant les observations. Interpréter statut, groupes, règles et redirections du robots dans le contexte de l’origine initiale ; conserver les lignes qui déterminent chaque issue.",
+            "en": "Freeze the profile and expected allowances/disallows before observation. Interpret robots status, groups, rules and redirects in the initial origin context; retain the lines determining each outcome."
+          },
+          "acceptance": {
+            "fr": "Chaque politique observée correspond à l’intention déclarée. Une permission inattendue comme une interdiction inattendue est une contradiction. Une absence volontaire peut convenir selon le profil ; aucun statut 200 universel.",
+            "en": "Every observed policy matches declared intent. Unexpected permission and unexpected disallow are contradictions. Intentional absence can be compatible under the profile; no universal 200 requirement."
+          },
+          "evidence": {
+            "fr": "Matrice complète, intention antérieure, contexte, requête et réponse robots intégrales, profil et résultat motivé par ressource.",
+            "en": "Complete matrix, prior intent, context, full robots request/response, profile and reasoned per-resource result."
+          },
+          "assumptions": {
+            "fr": "Profil choisi avant mesure, identique pour un contexte de campagne ; pas de sélection a posteriori du profil favorable. Distinguer modèle RFC, politique Google documentée et cache réellement inconnu.",
+            "en": "Choose the profile before measurement and keep it fixed for a campaign context; never select the favorable profile after observation. Distinguish RFC model, documented Google policy and unobserved actual cache."
+          },
+          "inconclusive": {
+            "fr": "Profil absent, capture ou chronologie manquante, syntaxe hors couverture, erreur/cache non résolu : inconclusive. Une contradiction attribuable sur une autre ressource reste fail.",
+            "en": "Absent profile/capture/timing, unsupported syntax or unresolved error/cache: inconclusive. An attributable contradiction on another resource remains fail."
+          },
+          "limitations": {
+            "fr": "semiAuto : matrice et pertinence du profil restent déclarées. La référence est bornée à une origine, des profils documentés et des captures fournies ; aucune visite, ingestion ou indexation du moteur n’est démontrée.",
+            "en": "semiAuto: matrix and profile suitability remain declared. The reference is bounded to one origin, documented profiles and supplied captures; no engine visit, ingestion or indexing is established."
+          },
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "non_applicability": {
+            "fr": "Aucune exemption atomique quand le contrôle s’applique.",
+            "en": "No atomic exemption when the control applies."
+          }
+        },
+        {
+          "id": "TS04-A02",
+          "title": {
+            "fr": "Accès aux ressources nécessaires",
+            "en": "Access to required resources"
+          },
+          "required_inputs": [
+            "http",
+            "robots",
+            "intent"
+          ],
+          "applicability": {
+            "fr": "Ressources explicitement nécessaires dans le périmètre déclaré, y compris les ressources de rendu retenues.",
+            "en": "Resources explicitly required in the declared scope, including selected rendering resources."
+          },
+          "procedure": {
+            "fr": "Comparer politique robots et trajectoires HTTP aux destinations/statuts prévus, puis examiner les réponses pour obstacles. Lier chaque revue fournie aux octets, dates, intention et contexte. Conserver séparément les lacunes.",
+            "en": "Compare robots policy and HTTP trajectories with planned destinations/statuses, then review responses for obstacles. Bind each supplied review to bytes, dates, intent and context. Retain gaps separately."
+          },
+          "acceptance": {
+            "fr": "Toutes les ressources nécessaires et leurs sauts observés sont autorisés sous le profil, atteignent la réponse prévue et ne présentent aucun obstacle selon la revue fournie. Blocage robots, réponse contradictoire ou obstacle étayé donne fail même avec une autre preuve manquante.",
+            "en": "Every required resource and observed hop is allowed under the profile, reaches its planned response and has no obstacle according to supplied review. Robots blocking, a contradictory response or an evidenced obstacle gives fail even when other evidence is missing."
+          },
+          "evidence": {
+            "fr": "Plan de ressources, robots, traces HTTP complètes, revue motivée par ressource avec identité déclarée, date, provenance, assistance et empreinte de liaison.",
+            "en": "Resource plan, robots, complete HTTP traces, reasoned per-resource review with declared identity, date, provenance, assistance and binding digest."
+          },
+          "assumptions": {
+            "fr": "Un client de test ne s’authentifie pas comme Googlebot ; un 200 seul ne prouve pas l’absence de challenge. La revue n’est pas produite par le logiciel et son identité n’est pas authentifiée.",
+            "en": "A test client does not authenticate as Googlebot; 200 alone cannot establish absence of a challenge. Software does not produce the review or authenticate reviewer identity."
+          },
+          "inconclusive": {
+            "fr": "Ressource ou revue manquante, revue non liée, réponse incomplète, doute ou portée hors couverture : inconclusive sans effacer une contradiction établie.",
+            "en": "Missing resource/review, unbound review, incomplete response, uncertainty or unsupported scope: inconclusive without erasing an established contradiction."
+          },
+          "limitations": {
+            "fr": "La suffisance de l’inventaire et le jugement humain restent hors automatisation complète. La référence couvre une origine et les trajectoires attribuables ; elle n’exécute pas le rendu et n’établit pas l’accès réel du moteur.",
+            "en": "Inventory sufficiency and human judgment are not fully automated. The reference covers one origin and attributable trajectories; it does not execute rendering or establish actual engine access."
+          },
+          "automation": "semiAuto",
+          "na_inputs": [
+            "intent"
+          ],
+          "non_applicability": {
+            "fr": "Aucune ressource nécessaire dans ce périmètre, établi par une revue d’inventaire motivée et datée avant le plan ; une liste vide sans justification ne suffit pas.",
+            "en": "No required resource in this scope, established by reasoned inventory review dated before the plan; an unjustified empty list is insufficient."
+          }
+        }
+      ]
     },
     {
       "id": "TS05",
@@ -687,16 +785,16 @@
             "en": "Compare effective robots policy and access conditions for the target crawler; distinguish the test client response, explicit blocking and unobserved crawler access."
           },
           "acceptance": {
-            "fr": "Aucun obstacle observé n’empêche de lire la directive dans le contexte déclaré. Une interdiction robots explicite contredit une stratégie reposant sur la lecture de noindex.",
-            "en": "No observed obstacle prevents reading the directive in the declared context. An explicit robots disallow contradicts a strategy relying on reading noindex."
+            "fr": "Aucun obstacle observé n’empêche de lire la directive dans le contexte déclaré. Une interdiction robots contredit une stratégie reposant sur la lecture de noindex. Un refus HTTP 401/403 attribuable reste fail même si la capture robots manque.",
+            "en": "No observed obstacle prevents reading the directive in the declared context. Robots disallow contradicts a strategy relying on reading noindex. An attributable HTTP 401/403 remains fail even if robots evidence is missing."
           },
           "evidence": {
             "fr": "Capture et interprétation robots pour URL/robot, trace HTTP et hypothèses d’accès documentées dans l’intention.",
             "en": "Robots capture and interpretation for URL/crawler, HTTP trace and access assumptions documented in intent."
           },
           "assumptions": {
-            "fr": "La politique effective est interprétée selon TS04 ; son seul statut HTTP ne suffit pas. Le contexte de test est borné et ne simule pas une authentification de Googlebot.",
-            "en": "Effective policy is interpreted under TS04; its HTTP status alone is insufficient. The test context is bounded and does not simulate Googlebot authentication."
+            "fr": "La politique est interprétée par le lecteur partagé TS04. Un nouveau profil est déclaré dans l’intention avant capture. Sans champ robots_policy, les anciennes entrées restent sous le profil fixe legacy-exact-v1, sans extension implicite de sa couverture. Le client ne s’authentifie pas comme Googlebot.",
+            "en": "Policy is interpreted by the shared TS04 reader. A new profile is declared in intent before capture. Without robots_policy, legacy inputs retain the fixed legacy-exact-v1 profile without implicit coverage extension. The client does not authenticate as Googlebot."
           },
           "inconclusive": {
             "fr": "Politique inaccessible ou ambiguë, challenge non résolu, capture manquante : inconclusive, jamais NA pour manque d’accès.",
@@ -765,7 +863,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.8"
+      "rule_version": "0.1.0-draft.9"
     },
     {
       "id": "TS08",
@@ -1130,7 +1228,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.8"
+      "rule_version": "0.1.0-draft.9"
     },
     {
       "id": "TS11",
@@ -3263,15 +3361,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "9c6c252a8c29fbb23b0c81fb5c65e6987a79b6eae508e86050e8fd853e2b16fc"
+      "sha256": "4f7d4fa6fc16a584a02f2e7cfc0a71880ed1daa0ecb582928abdc9e9c700c806"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "35bb5c3126b2f025450570d93b355b0a6920ac7a22d2a370cf8501389632fee7"
+      "sha256": "b49af12eb74271c1efdd90894b2ef6d7d87c149302492eaff664b7dba846abf8"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "fef032ed6ebde8a80dde6424adc75971ea843e2be52ce20c9317fcd89c2d8c08"
+      "sha256": "313594a42fc207ed6096567d0b5bcbac74f604eaec448af84de4c233f8bffc0d"
     }
   ]
 }

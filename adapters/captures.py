@@ -21,19 +21,21 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '8'
+VERSION = '9'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
 
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
-    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.source_text', 'conformance.redirects', 'provenance.runtime'):
+    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'provenance.runtime'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     return loaded_sources(ROOT, modules)
 
 
 COVERAGE_INVENTORY = [
+    {'state': 'implemented', 'fr': 'TS04 : matrice robots préalable, ressources nécessaires, revues fournies et lecteur partagé TS07. Profils bornés explicites ; anciennes entrées TS07 sous profil historique fixe.',
+     'en': 'TS04: prior robots matrix, required resources, supplied reviews and shared TS07 reader. Explicit bounded profiles; legacy TS07 inputs use a fixed historical profile.'},
     {'state': 'implemented', 'fr': 'Octets HTTP exacts en entrée v2 ; lecture des anciennes entrées UTF-8 v1.',
      'en': 'Exact HTTP bytes in input v2; legacy UTF-8 input v1 retained.'},
     {'state': 'implemented', 'fr': 'HTTP/1.1 chunked borné, gzip simple et deflate enveloppé zlib ; SHA-256 après décodage, sans normalisation.',
@@ -89,8 +91,10 @@ def pieces(target):
     if 'intent' in target:
         result['intent'] = {k: target[k] for k in
                             ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review') if k in target}
-    if 'http' in target or 'documents' in target:
-        result['http'] = {k: target[k] for k in ('http', 'documents') if k in target}
+    host_policy = 'robots_plan' in target.get('intent', {})
+    if 'http' in target or 'documents' in target or (host_policy and 'robots' in target):
+        fields = ('http', 'documents', 'robots') if host_policy else ('http', 'documents')
+        result['http'] = {k: target[k] for k in fields if k in target}
         # These are source response records, not invented HTML for non-HTML resources.
         surfaces = []
         docs = ([target] if 'http' in target else []) + (
@@ -184,6 +188,15 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
             if review:
                 tsep.require((review.get('provenance') == 'synthetic-exercise') == (access == 'synthetic'),
                              'Redirect review provenance differs from evidence access')
+    if any(r.startswith('TS04-') for r in data['rules']):
+        for target in data['targets']:
+            documents = target.get('documents', [])
+            reviews = [d.get('access_review') for d in documents if isinstance(d, dict)] if isinstance(documents, list) else []
+            reviews.append(target.get('intent', {}).get('robots_plan', {}).get('no_required_resources'))
+            for review in reviews:
+                if review:
+                    tsep.require((review.get('provenance') == 'synthetic-exercise') == (access == 'synthetic'),
+                                 'Robots resource review provenance differs from evidence access')
     tsep.require(mode in ('manual', 'semiAuto', 'automatic'), 'Unknown assessment mode')
     parents = sorted({r.split('-')[0] for r in data['rules']})
     selected = parents if selected is None else selected

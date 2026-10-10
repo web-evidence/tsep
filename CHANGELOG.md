@@ -1,5 +1,18 @@
 # Change history / Historique
 
+## 0.1.0-draft.9 — 2026-10-10 — shared robots and TS04
+
+Add TS04-A01/A02, prior origin/profile/resource matrices, evidence-bound access
+reviews and shared TS07 policy interpretation. Preserve fixed legacy semantics;
+attributable HTTP denial survives missing robots. Add 45 prefrozen raw cases to
+the retained 254, blank TS04 review workflow, native loopback bundles and explicit
+[migration](docs/migration-draft.9.md). Interpreter 8, capture adapter 9, review 2.
+No publication, real engine observation or human approval is inferred.
+
+Ajout de TS04, du lecteur partagé TS07 et du parcours de revue de ressources, avec
+profils préalables, contradictions conservées et migration explicite. Treize règles,
+299 cas synthétiques ; aucune finalisation implicite du rendu ni conformité Edikka.
+
 ## Robots reader experiment 1 / laboratory 2 — 2026-10-10
 
 Prepare the shared TS04/TS07 reader with explicit bounded RFC and conservative

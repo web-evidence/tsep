@@ -6,13 +6,13 @@
 brutes aux attendus rédigés séparément dans `conformance/cases.json`. Chaque cas
 est synthétique. Aucun réseau, aucun site audité. Ce corpus est distinct des
 jugements de méthode dans `tests/fixtures/control-cases.json`, qui testent la
-cohérence des rapports pour les onze règles TS01/02/07/10.
+cohérence des rapports pour les treize règles TS01/02/04/07/10.
 
 Le corpus lie `protocol_version` à la version livrée. Chaque cas possède `id`,
 `input` et `expected`. L’interpréteur reçoit **seulement input** ; `expected` contient
 un verdict par couple `rule_id`/`target`. Le comparateur exige une matrice complète,
 sans doublon ni résultat supplémentaire, et pass/fail/inconclusive pour chacune
-des onze règles. Un désaccord renvoie 1, une entrée invalide 64 ; 0 signifie aucun désaccord,
+des treize règles. Un désaccord renvoie 1, une entrée invalide 64 ; 0 signifie aucun désaccord,
 avec éventuelle couverture réduite explicitement comptée.
 Il n’émet ni rapport C ni conformité globale.
 
@@ -27,7 +27,7 @@ y compris les inconnues de référence, sans leur substituer `expected`.
 ### Format input_version 1 (historique)
 
 Objet `{ "input_version": "1", "rules": [...], "targets": [...] }`. `rules` liste
-explicitement les onze IDs TS01-A01/A02, TS02-A01/A02, TS07-A01/A02/A03 et TS10-A01 à A04.
+explicitement les treize IDs TS01-A01/A02, TS02-A01/A02, TS04-A01/A02, TS07-A01/A02/A03 et TS10-A01 à A04.
 Les cibles TS10 suivent le [format famille](canonical-families.md) ; les champs
 ci-dessous décrivent les cibles TS01/07. Chaque cible TS01/07 contient :
 
@@ -101,7 +101,7 @@ Les zones ambiguës ou non prises en charge rendent toute l’extraction indéte
 Le titre et le texte caché par CSS peuvent compter : aucune visibilité rendue
 n’est mesurée. `identity-marker-unsupported-element` conserve son attendu normatif
 pass et est maintenant résolu. La priorité URL/empreinte/stabilité ne change pas.
-La couverture de TS07 ci-dessous reste distincte et inchangée.
+La couverture source/rendu TS07 ci-dessous reste distincte ; draft.9 ajoute les profils robots explicites.
 
 TS07-A01 applique
 la série Googlebot aux en-têtes finaux et meta robots/googlebot. Restrictions
@@ -113,7 +113,7 @@ nécessitant réparation par un navigateur → inconclusive. Les seuls élément
 acceptés sont html/head/body/title/meta/link/p/a/h1/div/span/script/style/br/img,
 avec balises explicites correctement emboîtées. Les scripts ne sont pas exécutés.
 
-TS07-A02 interprète un robots.txt complet en 200, text/plain UTF-8 : groupes du
+Le profil historique fixe legacy-exact-v1 de TS07-A02 interprète un robots.txt complet en 200, text/plain UTF-8 : groupes du
 robot exact ou `*`, fusion des groupes correspondants, chemins ASCII littéraux,
 préfixe le plus long, égalité départagée par Allow. Sitemap est ignoré. Motifs
 `*`/`$`, encodage `%`, extension inconnue ou réponse robots autre que 200 →
@@ -136,7 +136,7 @@ Pour une implémentation partielle, déclarer les règles effectivement testées
 python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 mon_adaptateur.py'
 ```
 
-Sans `--rules`, les onze règles restent exigées. L’option accepte une liste non
+Sans `--rules`, les treize règles restent exigées. L’option accepte une liste non
 vide d’identifiants atomiques connus, sans doublon ; elle restreint `input.rules`
 et la matrice attendue, sans transmettre `expected`. Les cas sans règle sélectionnée
 ne sont pas exécutés. Toutes les cibles de chaque cas retenu restent obligatoires.
@@ -149,7 +149,7 @@ erreurs ; les sorties ne sont jamais filtrées pour masquer un désaccord.
 Le corpus complet reste validé (version, matrices, cas contradictoires).
 `coverage.by_rule` contient accords, désaccords, couverture réduite, numérateur,
 dénominateur et pourcentage des attendus conclusifs pour chaque règle sélectionnée.
-Une réussite fournit `claim` : « passes TSEP 0.1.0-draft.8 conformance for
+Une réussite fournit `claim` : « passes TSEP 0.1.0-draft.9 conformance for
 TS01-A01, TS01-A02 ». Publier cette formulation avec les limites/couvertures
 réduites, jamais comme conformité globale, d’un profil, d’un contrôle ou d’un site.
 Un échec donne `claim: null`. Réussir A01 seule ne valide pas TS01.
@@ -199,7 +199,7 @@ base64/SHA-256, bounded gzip/deflate decoding and exact content-byte digests.
 The historical input v1 and corpus remain preserved.
 
 Input version 1 is `{ "input_version": "1", "rules": [...], "targets": [...] }`.
-Rules explicitly select the eleven IDs above. TS10 targets use the
+Rules explicitly select the thirteen IDs above. TS10 targets use the
 [family format](canonical-families.md); the fields below describe TS01/07.
 Each TS01/07 target has exact HTTP(S) `url`
 (no fragment/credentials), zoned `observed_at`, context strings `network`, `bounds`,
@@ -282,7 +282,7 @@ not free-text reasons. Use the command above (or your own adapter); argv is pars
 without a shell, with bounded execution.
 
 For a partial implementation, use `--rules TS01-A01,TS01-A02` with the adapter
-command. Without this option, all eleven rules remain required. The nonempty list
+command. Without this option, all thirteen rules remain required. The nonempty list
 must contain unique known atomic IDs. It restricts `input.rules` and the expected
 matrix; `expected` is never sent. Cases without a selected rule are skipped.
 All targets in retained cases remain required. Additional outputs, including
@@ -294,7 +294,7 @@ and `omitted_rule_target_pairs` expose the remainder. Full corpus validation
 (version, matrices, contradictory cases) still runs. `coverage.by_rule` provides
 agreements, disagreements, reduced coverage, conclusive numerator/denominator and
 percentage per selected rule. Successful output includes `claim`: “passes TSEP
-0.1.0-draft.8 conformance for TS01-A01, TS01-A02”. Accompany it with limits/reduced
+0.1.0-draft.9 conformance for TS01-A01, TS01-A02”. Accompany it with limits/reduced
 coverage; never claim global, profile, control or site conformity. Failure gives
 `claim: null`. Passing A01 alone does not pass TS01.
 
@@ -328,3 +328,16 @@ human content review and reconciliation of declared populations.
 ## TS02 — draft.8
 
 Two additional rules use [the redirect-plan format](redirects.md), with 38 prefrozen contradictory cases. Deux règles supplémentaires utilisent le [format de plan](redirects.md), avec 38 cas contradictoires figés avant code. The prior 216 cases remain unchanged apart from the corpus version.
+
+
+## TS04 / shared robots — draft.9
+
+TS04 adds a prior origin/profile/resource matrix and required-resource access with
+bound supplied reviews. TS07-A02 uses the same reader; absent profile retains the
+fixed historical subset. See [format, profiles and bounds](robots.md) and
+[migration](migration-draft.9.md). The full corpus now contains 299 cases: all 254
+previous cases and 45 prefrozen additions, covering thirteen rules.
+
+TS04 ajoute matrice préalable et accès aux ressources avec revues fournies. Le
+lecteur est commun à TS07-A02. Les 299 cas comprennent les 254 cas antérieurs et
+45 ajouts figés ; aucune observation réelle du moteur n'est revendiquée.

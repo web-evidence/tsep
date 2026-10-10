@@ -1,0 +1,777 @@
+{
+  "version": "1",
+  "scope": "Six supplemental expectations frozen before implementing redirected-resource policy coverage.",
+  "cases": [
+    {
+      "id": "robots-control-declared-resource-redirect",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS04-A01",
+          "TS04-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/",
+            "observed_at": "2026-10-10T09:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "declared URL matrix",
+              "tool": "fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T08:00:00Z",
+              "crawler": "googlebot",
+              "robots_policy": {
+                "profile": "google-documented-core-v1",
+                "product_token": "Googlebot"
+              },
+              "robots_plan": {
+                "origin": "https://example.com/",
+                "required_resources_basis": "Synthetic page and essential CSS selected before capture",
+                "resources": [
+                  {
+                    "url": "https://example.com/page",
+                    "expected": "allow",
+                    "required": true,
+                    "expected_final_url": "https://example.com/new",
+                    "terminal_statuses": [
+                      200
+                    ]
+                  },
+                  {
+                    "url": "https://example.com/assets/main.css",
+                    "expected": "allow",
+                    "required": true,
+                    "expected_final_url": "https://example.com/assets/main.css",
+                    "terminal_statuses": [
+                      200
+                    ]
+                  }
+                ]
+              }
+            },
+            "robots": {
+              "observed_at": "2026-10-10T08:30:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 23\r\n\r\nUser-agent: *\nAllow: /\n"
+                }
+              ]
+            },
+            "documents": [
+              {
+                "url": "https://example.com/page",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/page",
+                    "complete": true,
+                    "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 301 Test\r\nContent-Type: text/plain; charset=utf-8\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+                  },
+                  {
+                    "url": "https://example.com/new",
+                    "complete": true,
+                    "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T09:30:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "98bb4db29ee1c0b1e8d07d694b2d97cadffae67abb938eeeb52814042fc6f4bb"
+                }
+              },
+              {
+                "url": "https://example.com/assets/main.css",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/assets/main.css",
+                    "complete": true,
+                    "request": "GET /assets/main.css HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T09:30:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "be1c709c6a389ce70b8ee3c23ed601947aaf9bd6c8e30fb01361bc983bb1bc57"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS04-A01",
+          "target": "https://example.com/",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS04-A02",
+          "target": "https://example.com/",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "robots-control-final-resource-blocked",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS04-A01",
+          "TS04-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/",
+            "observed_at": "2026-10-10T09:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "declared URL matrix",
+              "tool": "fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T08:00:00Z",
+              "crawler": "googlebot",
+              "robots_policy": {
+                "profile": "google-documented-core-v1",
+                "product_token": "Googlebot"
+              },
+              "robots_plan": {
+                "origin": "https://example.com/",
+                "required_resources_basis": "Synthetic page and essential CSS selected before capture",
+                "resources": [
+                  {
+                    "url": "https://example.com/page",
+                    "expected": "allow",
+                    "required": true,
+                    "expected_final_url": "https://example.com/new",
+                    "terminal_statuses": [
+                      200
+                    ]
+                  },
+                  {
+                    "url": "https://example.com/assets/main.css",
+                    "expected": "allow",
+                    "required": true,
+                    "expected_final_url": "https://example.com/assets/main.css",
+                    "terminal_statuses": [
+                      200
+                    ]
+                  }
+                ]
+              }
+            },
+            "robots": {
+              "observed_at": "2026-10-10T08:30:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 29\r\n\r\nUser-agent: *\nDisallow: /new\n"
+                }
+              ]
+            },
+            "documents": [
+              {
+                "url": "https://example.com/page",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/page",
+                    "complete": true,
+                    "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 301 Test\r\nContent-Type: text/plain; charset=utf-8\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+                  },
+                  {
+                    "url": "https://example.com/new",
+                    "complete": true,
+                    "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T09:30:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "98bb4db29ee1c0b1e8d07d694b2d97cadffae67abb938eeeb52814042fc6f4bb"
+                }
+              },
+              {
+                "url": "https://example.com/assets/main.css",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/assets/main.css",
+                    "complete": true,
+                    "request": "GET /assets/main.css HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T09:30:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "be1c709c6a389ce70b8ee3c23ed601947aaf9bd6c8e30fb01361bc983bb1bc57"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS04-A01",
+          "target": "https://example.com/",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS04-A02",
+          "target": "https://example.com/",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "robots-control-intermediate-resource-blocked",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS04-A01",
+          "TS04-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/",
+            "observed_at": "2026-10-10T09:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "declared URL matrix",
+              "tool": "fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T08:00:00Z",
+              "crawler": "googlebot",
+              "robots_policy": {
+                "profile": "google-documented-core-v1",
+                "product_token": "Googlebot"
+              },
+              "robots_plan": {
+                "origin": "https://example.com/",
+                "required_resources_basis": "Synthetic page and essential CSS selected before capture",
+                "resources": [
+                  {
+                    "url": "https://example.com/page",
+                    "expected": "allow",
+                    "required": true,
+                    "expected_final_url": "https://example.com/new",
+                    "terminal_statuses": [
+                      200
+                    ]
+                  },
+                  {
+                    "url": "https://example.com/assets/main.css",
+                    "expected": "allow",
+                    "required": true,
+                    "expected_final_url": "https://example.com/assets/main.css",
+                    "terminal_statuses": [
+                      200
+                    ]
+                  }
+                ]
+              }
+            },
+            "robots": {
+              "observed_at": "2026-10-10T08:30:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 38\r\n\r\nUser-agent: *\nDisallow: /intermediate\n"
+                }
+              ]
+            },
+            "documents": [
+              {
+                "url": "https://example.com/page",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/page",
+                    "complete": true,
+                    "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 301 Test\r\nContent-Type: text/plain; charset=utf-8\r\nLocation: /intermediate\r\nContent-Length: 0\r\n\r\n"
+                  },
+                  {
+                    "url": "https://example.com/intermediate",
+                    "complete": true,
+                    "request": "GET /intermediate HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 301 Test\r\nContent-Type: text/plain; charset=utf-8\r\nLocation: /new\r\nContent-Length: 0\r\n\r\n"
+                  },
+                  {
+                    "url": "https://example.com/new",
+                    "complete": true,
+                    "request": "GET /new HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T09:30:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "7551e04b5837e0ab60d981ca44f035e0b6c212bf351bbbeaa234f33b4ad23e09"
+                }
+              },
+              {
+                "url": "https://example.com/assets/main.css",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/assets/main.css",
+                    "complete": true,
+                    "request": "GET /assets/main.css HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T09:30:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "be1c709c6a389ce70b8ee3c23ed601947aaf9bd6c8e30fb01361bc983bb1bc57"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS04-A01",
+          "target": "https://example.com/",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS04-A02",
+          "target": "https://example.com/",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "robots-control-foreign-final-outside-scope",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS04-A01",
+          "TS04-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/",
+            "observed_at": "2026-10-10T09:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "declared URL matrix",
+              "tool": "fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T08:00:00Z",
+              "crawler": "googlebot",
+              "robots_policy": {
+                "profile": "google-documented-core-v1",
+                "product_token": "Googlebot"
+              },
+              "robots_plan": {
+                "origin": "https://example.com/",
+                "required_resources_basis": "Synthetic page and essential CSS selected before capture",
+                "resources": [
+                  {
+                    "url": "https://example.com/page",
+                    "expected": "allow",
+                    "required": true,
+                    "expected_final_url": "https://other.example/new",
+                    "terminal_statuses": [
+                      200
+                    ]
+                  },
+                  {
+                    "url": "https://example.com/assets/main.css",
+                    "expected": "allow",
+                    "required": true,
+                    "expected_final_url": "https://example.com/assets/main.css",
+                    "terminal_statuses": [
+                      200
+                    ]
+                  }
+                ]
+              }
+            },
+            "robots": {
+              "observed_at": "2026-10-10T08:30:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 23\r\n\r\nUser-agent: *\nAllow: /\n"
+                }
+              ]
+            },
+            "documents": [
+              {
+                "url": "https://example.com/page",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/page",
+                    "complete": true,
+                    "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T09:30:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "8a2b9d56b756c218f55132125f95e0a12cd223f1e9a17724648bfb156b1a1e9d"
+                }
+              },
+              {
+                "url": "https://example.com/assets/main.css",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/assets/main.css",
+                    "complete": true,
+                    "request": "GET /assets/main.css HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T09:30:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "37c8951cb43dce38965b72b36441acca96cc93c1bb84ca9c740865bec81636e7"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS04-A01",
+          "target": "https://example.com/",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS04-A02",
+          "target": "https://example.com/",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "robots-control-duplicate-resource-capture",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS04-A01",
+          "TS04-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/",
+            "observed_at": "2026-10-10T09:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "declared URL matrix",
+              "tool": "fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T08:00:00Z",
+              "crawler": "googlebot",
+              "robots_policy": {
+                "profile": "google-documented-core-v1",
+                "product_token": "Googlebot"
+              },
+              "robots_plan": {
+                "origin": "https://example.com/",
+                "required_resources_basis": "Synthetic page and essential CSS selected before capture",
+                "resources": [
+                  {
+                    "url": "https://example.com/page",
+                    "expected": "allow",
+                    "required": true,
+                    "expected_final_url": "https://example.com/page",
+                    "terminal_statuses": [
+                      200
+                    ]
+                  },
+                  {
+                    "url": "https://example.com/assets/main.css",
+                    "expected": "allow",
+                    "required": true,
+                    "expected_final_url": "https://example.com/assets/main.css",
+                    "terminal_statuses": [
+                      200
+                    ]
+                  }
+                ]
+              }
+            },
+            "robots": {
+              "observed_at": "2026-10-10T08:30:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 23\r\n\r\nUser-agent: *\nAllow: /\n"
+                }
+              ]
+            },
+            "documents": [
+              {
+                "url": "https://example.com/page",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/page",
+                    "complete": true,
+                    "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T09:30:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "5b2b49b0317467fefed2dfea0dd2c2c875d17354993f63dc3b3de7dfdc45ea12"
+                }
+              },
+              {
+                "url": "https://example.com/assets/main.css",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/assets/main.css",
+                    "complete": true,
+                    "request": "GET /assets/main.css HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T09:30:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "8e710000e1b0afffe7427241a5d72a209163383e2d6f283b6fa12c9f32da2211"
+                }
+              },
+              {
+                "url": "https://example.com/page",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/page",
+                    "complete": true,
+                    "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T09:30:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "5b2b49b0317467fefed2dfea0dd2c2c875d17354993f63dc3b3de7dfdc45ea12"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS04-A01",
+          "target": "https://example.com/",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS04-A02",
+          "target": "https://example.com/",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "robots-control-review-before-resource",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS04-A01",
+          "TS04-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/",
+            "observed_at": "2026-10-10T09:00:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "declared URL matrix",
+              "tool": "fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T08:00:00Z",
+              "crawler": "googlebot",
+              "robots_policy": {
+                "profile": "google-documented-core-v1",
+                "product_token": "Googlebot"
+              },
+              "robots_plan": {
+                "origin": "https://example.com/",
+                "required_resources_basis": "Synthetic page and essential CSS selected before capture",
+                "resources": [
+                  {
+                    "url": "https://example.com/page",
+                    "expected": "allow",
+                    "required": true,
+                    "expected_final_url": "https://example.com/page",
+                    "terminal_statuses": [
+                      200
+                    ]
+                  },
+                  {
+                    "url": "https://example.com/assets/main.css",
+                    "expected": "allow",
+                    "required": true,
+                    "expected_final_url": "https://example.com/assets/main.css",
+                    "terminal_statuses": [
+                      200
+                    ]
+                  }
+                ]
+              }
+            },
+            "robots": {
+              "observed_at": "2026-10-10T08:30:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 23\r\n\r\nUser-agent: *\nAllow: /\n"
+                }
+              ]
+            },
+            "documents": [
+              {
+                "url": "https://example.com/page",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/page",
+                    "complete": true,
+                    "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T07:00:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "5b2b49b0317467fefed2dfea0dd2c2c875d17354993f63dc3b3de7dfdc45ea12"
+                }
+              },
+              {
+                "url": "https://example.com/assets/main.css",
+                "observed_at": "2026-10-10T08:45:00Z",
+                "http": [
+                  {
+                    "url": "https://example.com/assets/main.css",
+                    "complete": true,
+                    "request": "GET /assets/main.css HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                    "response": "HTTP/1.1 200 Test\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 8\r\n\r\nresource"
+                  }
+                ],
+                "access_review": {
+                  "reviewer": "Synthetic scenario author — not a real reviewer",
+                  "observed_at": "2026-10-10T09:30:00Z",
+                  "outcome": "no-obstacle",
+                  "reason": "Synthetic reviewed response for test only",
+                  "assistance": "Authored test fixture",
+                  "provenance": "synthetic-exercise",
+                  "source_sha256": "8e710000e1b0afffe7427241a5d72a209163383e2d6f283b6fa12c9f32da2211"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS04-A01",
+          "target": "https://example.com/",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS04-A02",
+          "target": "https://example.com/",
+          "outcome": "inconclusive"
+        }
+      ]
+    }
+  ]
+}

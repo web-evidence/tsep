@@ -2,7 +2,7 @@
 """Prepare blank evidence-bound reviews and import completed responses. Apache-2.0.
 
 Workflow only: no generated human opinion, no reviewer authentication, no changes
-of normative semantics. Supported records: TS07 access and TS10 content review.
+of normative semantics. Supported records: TS04/TS07 access and TS10 content review.
 """
 import argparse
 import copy
@@ -18,9 +18,10 @@ import tsep
 from adapters import captures, package
 from adapters.package import inventory, json_bytes, publish, regular, seal
 from conformance.canonical import content_binding
+from conformance.robots_control import access_binding
 from provenance.runtime import loaded_sources
 
-VERSION = '1'
+VERSION = '2'
 ACCESS = ('public', 'restricted', 'synthetic')
 
 
@@ -37,11 +38,22 @@ def tasks(data):
     result = []
     for index, target in enumerate(data['targets'], 1):
         for rule, field, title in (
+            ('TS04-A02', 'resources_review', 'Accès aux ressources nécessaires / Required resource access'),
             ('TS07-A02', 'access_review', 'Accès à la directive / Access to the directive'),
             ('TS10-A02', 'content_review', 'Compatibilité du contenu / Content compatibility')):
             if rule not in data['rules']:
                 continue
-            if rule == 'TS10-A02':
+            if rule == 'TS04-A02':
+                resources = target['intent']['robots_plan']['resources']
+                urls = [row['url'] for row in resources if row['required']]
+                if not urls:
+                    continue  # Prior inventory exemption is not fabricated after capture.
+                tsep.require(len(urls) == len(set(urls)), 'Duplicate required resources')
+                choices = ['no-obstacle', 'obstacle', 'inconclusive']
+                prompt = ('Examiner chaque réponse et son contenu : obstacle prouvé, absence d’obstacle observé ou doute. '
+                          'Le statut 200 seul ne suffit pas. / Review each actual resource response and content; '
+                          'a 200 status alone is insufficient. Explain evidence of an obstacle or any uncertainty.')
+            elif rule == 'TS10-A02':
                 members = target['intent']['canonical']['members']
                 urls = [row['url'] for row in members]
                 tsep.require(urls and len(urls) == len(set(urls)), 'Missing/duplicate canonical members')
@@ -57,7 +69,7 @@ def tasks(data):
             result.append({'id': 'target-'+str(index)+'-'+rule, 'target_index': index-1,
                 'target': target['url'], 'rule_id': rule, 'field': field, 'title': title,
                 'question': prompt, 'comparison_urls': urls, 'choices': choices})
-    tsep.require(result, 'No supported human review rule requested; select TS07-A02 or TS10-A02')
+    tsep.require(result, 'No supported human review task; select TS04-A02, TS07-A02 or TS10-A02 with applicable resources')
     return result
 
 
@@ -198,7 +210,17 @@ def apply_review(request_dir, response_file, output):
         target = data['targets'][task['target_index']]
         details = {key: answer[key] for key in ('reviewer', 'observed_at', 'reason', 'provenance', 'assistance', 'examined_evidence')}
         details['workflow_input_sha256'] = entries['input.json']
-        if task['field'] == 'access_review':
+        if task['field'] == 'resources_review':
+            for comparison in answer['comparisons']:
+                docs = [d for d in target.get('documents', []) if d.get('url') == comparison['url']]
+                tsep.require(len(docs) == 1, 'Required resource response missing or ambiguous')
+                doc = docs[0]
+                tsep.require(tsep.timestamp(answer['observed_at']) >= tsep.timestamp(doc['observed_at']),
+                             'Review predates resource capture')
+                doc['access_review'] = dict(details, outcome=comparison['outcome'], reason=comparison['reason'],
+                                            source_sha256=access_binding(target, doc))
+            continue
+        elif task['field'] == 'access_review':
             tsep.require(tsep.timestamp(answer['observed_at']) >= tsep.timestamp(target['observed_at']),
                          'Review predates access observation')
             details['outcome'] = answer['comparisons'][0]['outcome']

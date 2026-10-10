@@ -1,6 +1,6 @@
 # TSEP — format d’échange de preuves
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.8 · initié par Edikka · [English](README.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.9 · initié par Edikka · [English](README.md)**
 
 Transmettre un audit SEO technique que son destinataire peut examiner, rejouer et
 contester : mêmes identifiants, périmètre explicite, preuves liées aux constats et
@@ -59,14 +59,14 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
    Le [diagnostic de couverture](docs/reference-diagnostics.md) inventorie les limites
    candidates sans produire de verdict. Le [diagnostic par paire](docs/diagnostic-campaign.md)
    compare des phases préenregistrées et les limites d’extraction des corps changés.
-   Le protocole est draft.8 ; la [proposition noscript](docs/proposals/noscript-consensus.md) est non appliquée.
+   Le protocole est draft.9 ; la [proposition noscript](docs/proposals/noscript-consensus.md) est non appliquée.
 2. **Déclarer une couverture partielle** : sélectionner une liste `custom`, conserver
    les inconnues en NT/inconclusive et relier chaque preuve à sa cible. Une sélection
    TS01/TS07 ne satisfait pas un profil nommé. Aucun test isolé ne valide son parent.
 3. **Passer la suite de conformance** : fournir un adaptateur JSON sur entrée/sortie
    standard, puis exécuter `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 mon_adaptateur.py'`
-   pour ce sous-ensemble, ou omettre `--rules` pour les onze règles. Déclarer
-   « passes TSEP 0.1.0-draft.8 conformance for TS01-A01, TS01-A02 » avec les bornes
+   pour ce sous-ensemble, ou omettre `--rules` pour les treize règles. Déclarer
+   « passes TSEP 0.1.0-draft.9 conformance for TS01-A01, TS01-A02 » avec les bornes
    réellement prises en charge. [Format d’entrée et comparaison](docs/conformance.md). Publier séparément
    accords, désaccords et couverture réduite : les indéterminés acceptés sur des
    limites de référence signalées ne sont pas des évaluations réussies.
@@ -128,7 +128,7 @@ Le validateur vérifie les déclarations et les empreintes, pas leur authenticit
 la pertinence de l’intention ni l’exactitude de tous les jugements. Une empreinte
 ne prouve ni l’auteur ni la date réelle de collecte. Les cas fournis sont synthétiques.
 
-L’interpréteur couvre onze règles dans un sous-ensemble documenté ; les entrées
+L’interpréteur couvre treize règles dans un sous-ensemble documenté ; les entrées
 non prises en charge restent indéterminées. TS07-A03 compare des captures source/DOM fournies, sans exécuter JavaScript ;
 le plan et les exemptions nécessitent une revue. TS10 compare les signaux d’une famille déclarée et vérifie le rattachement de la revue
 humaine de contenu, sans en garantir la justesse. Un contrôle partiel ne produit jamais de conformité globale.
@@ -140,8 +140,10 @@ Aucun résultat ne garantit indexation, classement ou comportement futur d’un 
 [Gouvernance](GOVERNANCE.md) · [Contribuer](CONTRIBUTING.md) · [Historique](CHANGELOG.md) ·
 [Clause de recette](docs/acceptance-clause.md) · [Sonde HTTP](probes/README.md).
 
-Citer `TSEP@0.1.0-draft.8:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
+Citer `TSEP@0.1.0-draft.9:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
 Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](CITATION.cff).
 [Développement, vérification complète et dépôt autonome](docs/development.md).
 
 [TS02 HTTP trajectories / Trajectoires HTTP](docs/redirects.md) · [Draft.8 migration](docs/migration-draft.8.md)
+
+[TS04 / shared robots](docs/robots.md) · [Draft.9 migration](docs/migration-draft.9.md)

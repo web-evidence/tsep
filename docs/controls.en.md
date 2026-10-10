@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.8 — Controls
+# TSEP 0.1.0-draft.9 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.8:TS01-A01`
+`TSEP@0.1.0-draft.9:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.8:TS01-A02`
+`TSEP@0.1.0-draft.9:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.8:TS02-A01`
+`TSEP@0.1.0-draft.9:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.8:TS02-A02`
+`TSEP@0.1.0-draft.9:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -180,11 +180,11 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Hosts and agents for which a crawl policy is assessed.
 
-**Method.** Fetch robots.txt for each origin; retain status, effective target-bot rules and expected policy. Review errors against the bot documentation without treating every absence as failure.
+**Method.** Declare origin, crawler, interpretation profile and resource/expected-policy matrix before collection; compare policy and access under A01–A02.
 
 **Acceptance.** Effective rules and resource access match the declared policy; documented intentional absence may be compatible, without universally requiring 200.
 
-**Evidence.** Origin, bot, status, observed rules or absence, tested resources and expected policy.
+**Evidence.** Prior plan, origin, product token and User-Agent, profile, dated raw robots, selected lines, required-resource responses and supplied reviews.
 
 **When NA is allowed.** No crawlable host in scope.
 
@@ -192,9 +192,59 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
-**Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
+**Source scope.** Technical references observed October 10, 2026; captures/fingerprints in docs/source-observations.md. Acceptance remains a TSEP proposal.
 
-**References**: [https://www.rfc-editor.org/rfc/rfc9309.html](https://www.rfc-editor.org/rfc/rfc9309.html)
+**References**: [https://www.rfc-editor.org/rfc/rfc9309.html](https://www.rfc-editor.org/rfc/rfc9309.html); [https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec](https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec)
+
+### TS04-A01 — Policy per origin, crawler and resource
+
+`TSEP@0.1.0-draft.9:TS04-A01`
+
+**Required inputs**: http, robots, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Each origin and path matrix whose crawl policy is assessed.
+
+**Method.** Freeze the profile and expected allowances/disallows before observation. Interpret robots status, groups, rules and redirects in the initial origin context; retain the lines determining each outcome.
+
+**Acceptance.** Every observed policy matches declared intent. Unexpected permission and unexpected disallow are contradictions. Intentional absence can be compatible under the profile; no universal 200 requirement.
+
+**Evidence.** Complete matrix, prior intent, context, full robots request/response, profile and reasoned per-resource result.
+
+**Assumptions.** Choose the profile before measurement and keep it fixed for a campaign context; never select the favorable profile after observation. Distinguish RFC model, documented Google policy and unobserved actual cache.
+
+**Inconclusive.** Absent profile/capture/timing, unsupported syntax or unresolved error/cache: inconclusive. An attributable contradiction on another resource remains fail.
+
+**When NA is allowed.** No atomic exemption when the control applies.
+
+**Limits.** semiAuto: matrix and profile suitability remain declared. The reference is bounded to one origin, documented profiles and supplied captures; no engine visit, ingestion or indexing is established.
+
+### TS04-A02 — Access to required resources
+
+`TSEP@0.1.0-draft.9:TS04-A02`
+
+**Required inputs**: http, robots, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Atomic exemption inputs**: intent.
+
+**Applicability.** Resources explicitly required in the declared scope, including selected rendering resources.
+
+**Method.** Compare robots policy and HTTP trajectories with planned destinations/statuses, then review responses for obstacles. Bind each supplied review to bytes, dates, intent and context. Retain gaps separately.
+
+**Acceptance.** Every required resource and observed hop is allowed under the profile, reaches its planned response and has no obstacle according to supplied review. Robots blocking, a contradictory response or an evidenced obstacle gives fail even when other evidence is missing.
+
+**Evidence.** Resource plan, robots, complete HTTP traces, reasoned per-resource review with declared identity, date, provenance, assistance and binding digest.
+
+**Assumptions.** A test client does not authenticate as Googlebot; 200 alone cannot establish absence of a challenge. Software does not produce the review or authenticate reviewer identity.
+
+**Inconclusive.** Missing resource/review, unbound review, incomplete response, uncertainty or unsupported scope: inconclusive without erasing an established contradiction.
+
+**When NA is allowed.** No required resource in this scope, established by reasoned inventory review dated before the plan; an unjustified empty list is insufficient.
+
+**Limits.** Inventory sufficiency and human judgment are not fully automated. The reference covers one origin and attributable trajectories; it does not execute rendering or establish actual engine access.
 
 ## TS05 — A Disallow rule is never presented as a guarantee of deindexing.
 
@@ -270,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.8:TS07-A01`
+`TSEP@0.1.0-draft.9:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -294,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.8:TS07-A02`
+`TSEP@0.1.0-draft.9:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -304,11 +354,11 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Method.** Compare effective robots policy and access conditions for the target crawler; distinguish the test client response, explicit blocking and unobserved crawler access.
 
-**Acceptance.** No observed obstacle prevents reading the directive in the declared context. An explicit robots disallow contradicts a strategy relying on reading noindex.
+**Acceptance.** No observed obstacle prevents reading the directive in the declared context. Robots disallow contradicts a strategy relying on reading noindex. An attributable HTTP 401/403 remains fail even if robots evidence is missing.
 
 **Evidence.** Robots capture and interpretation for URL/crawler, HTTP trace and access assumptions documented in intent.
 
-**Assumptions.** Effective policy is interpreted under TS04; its HTTP status alone is insufficient. The test context is bounded and does not simulate Googlebot authentication.
+**Assumptions.** Policy is interpreted by the shared TS04 reader. A new profile is declared in intent before capture. Without robots_policy, legacy inputs retain the fixed legacy-exact-v1 profile without implicit coverage extension. The client does not authenticate as Googlebot.
 
 **Inconclusive.** Unavailable or ambiguous policy, unresolved challenge, missing capture: inconclusive, never NA for missing access.
 
@@ -318,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.8:TS07-A03`
+`TSEP@0.1.0-draft.9:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -416,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.8:TS10-A01`
+`TSEP@0.1.0-draft.9:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -440,7 +490,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.8:TS10-A02`
+`TSEP@0.1.0-draft.9:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -464,7 +514,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.8:TS10-A03`
+`TSEP@0.1.0-draft.9:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -490,7 +540,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.8:TS10-A04`
+`TSEP@0.1.0-draft.9:TS10-A04`
 
 **Required inputs**: crawl, intent.
 

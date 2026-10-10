@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.8
+# Contrat de rapport — TSEP 0.1.0-draft.9
 
 ## Périmètre déclaré
 
@@ -39,7 +39,7 @@ d’indexation documenté, pas une promesse d’indexation. TS34 établit une le
 correcte des mesures terrain ; C ne signifie pas que les performances mesurées
 sont bonnes. Conserver les mesures défavorables et leurs conséquences opérationnelles.
 
-## Règles atomiques TS01, TS02, TS07 et TS10
+## Règles atomiques TS01, TS02, TS04, TS07 et TS10
 
 Le format de rapport est `2`. Un **contrôle** garde son identifiant TSxx et son
 résultat C/NC/NA/NT sur le périmètre. Un **test atomique** répond à un attendu
@@ -47,7 +47,7 @@ identifié par `TSxx-Ayy` dans le JSON canonique. Une **observation** est une
 capture ou un constat daté dans un contexte donné ; son existence ne suffit pas
 à réussir le test. Chaque règle déclare `automation` : `automatic`, `semiAuto` ou `manual`.
 
-Pour ces quatre contrôles, `atomic_results` relie chaque couple `rule_id`/`target`
+Pour ces cinq contrôles, `atomic_results` relie chaque couple `rule_id`/`target`
 à un `outcome` (`pass`, `fail`, `not-applicable`, `inconclusive`), un `reason` et
 des `evidence_ids`. Les preuves doivent aussi figurer dans le résultat du contrôle
 et couvrir la cible. Tous les types d’entrée de la règle sont exigés pour `pass`.
@@ -80,7 +80,7 @@ affecte les déclarations, même si le validateur ne peut pas déterminer ce bes
 La CLI vérifie les déclarations, références et couvertures, pas la justesse de la
 lecture HTTP/HTML, de l’intention ou des exemptions. Les cas de méthode historiques
 ont des verdicts rédigés. La [suite exécutable distincte](conformance.md) interprète
-les entrées brutes de onze règles dans des limites documentées ; elle
+les entrées brutes de treize règles dans des limites documentées ; elle
 n’implémente pas tous les contrôles. Aucun C ne
 s’étend aux contrôles non sélectionnés, à un site entier ou à l’indexation réelle.
 Voir [migration et cas](migration-draft.2.md).
@@ -232,16 +232,34 @@ FR/EN affiche la même cause. Décision et codes de sortie restent inchangés.
 
 ## Versions et revendications d’implémentation
 
-Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.8:TS01`. Ne jamais
+Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.9:TS01`. Ne jamais
 remplacer silencieusement un artefact publié. Changer applicabilité, attendus,
 preuves ou décisions exige une nouvelle version et une note de migration.
 TS01–TS44 restent des identités permanentes.
 
 La suite démontre seulement « réussit les tests d’échange des rapports fournis
-avec 0.1.0-draft.8 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
+avec 0.1.0-draft.9 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
 plus large exige une correspondance par règle et des limites publiées. Aucune
 interopérabilité avec un outil tiers n’a encore été démontrée.
 
 ## TS02 — draft.8
 
 TS02-A01 exige un plan approuvé avant capture et une revue fournie, liée au plan et au contexte. TS02-A02 compare les trajectoires HTTP et conserve les contradictions de préfixe malgré les lacunes. Une revue absente empêche C ; une capture absente ne donne pas NA. Le périmètre serveur HTTP, le format, les bornes et la migration sont dans [redirections](redirects.md) et [migration draft.8](migration-draft.8.md). Les règles TS01/TS07/TS10 conservent leurs attendus.
+
+## TS04 et accès TS07 — draft.9
+
+TS04-A01 confronte une matrice préalable par origine/robot au profil robots déclaré.
+TS04-A02 exige l'accès aux ressources nécessaires, les trajectoires attendues et
+des revues fournies liées aux réponses. Une contradiction prouvée reste fail malgré
+d'autres lacunes ; une revue ou capture absente ne devient ni pass ni NA.
+L'exemption A02 exige une revue positive d'absence de ressource nécessaire avant
+le plan. Profils, format, bornes, empreintes et chronologie sont définis dans
+[la méthode robots](robots.md), en cohérence avec les règles de la source JSON.
+Le plan fixe son profil avant mesure ; ne pas choisir a posteriori celui qui réussit.
+
+TS07-A02 partage ce lecteur. Sans nouveau champ robots_policy, l'entrée conserve
+le profil fixe historique legacy-exact-v1 ; un profil explicite refusé ne se replie
+jamais vers ce profil. Un refus HTTP 401/403 attribuable conserve fail même sans
+robots. Les limites de rendu, autres directives et revues ne sont pas supprimées.
+Voir [migration draft.9](migration-draft.9.md). Aucune visite réelle du moteur,
+conformité globale ou indexation n'est déduite de ces résultats.

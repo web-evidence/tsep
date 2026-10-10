@@ -31,6 +31,11 @@ d'un laboratoire ; ses règles atomiques et l'intégration partagée avec TS07 r
 à réaliser. Les limites rendues/humaines restent dans le suivi.
 Ces nombres ne déclarent ni quatre méthodes finalisées, ni quatre audits réalisés.
 
+Draft.9 ajoute TS04-A01/A02 et le lecteur partagé TS07 : treize règles dans cinq
+contrôles, dont TS01 hors des quatre priorités. A01/A02 TS04 sont semiAuto, avec
+revue des ressources fournie et liée aux preuves. Le parcours est implémenté ; la
+recette humaine et l'application réelle ne sont pas déduites des essais synthétiques.
+
 ### Décompte vérifié
 
 - **44 contrôles décrits** dans `spec/protocol.json`, avec procédure et attendus.

@@ -19,8 +19,10 @@ sys.path.insert(0, str(ROOT))
 from conformance.evaluate import evaluate
 from conformance.http import encoded, message, need
 from experiments.robots_policy import GOOGLE, inspect_capture, LIMITATION
+from adapters.captures import build
+from adapters.review import prepare
 
-VERSION = '2'  # The first local run used Googlebot; active TS07 requires literal googlebot.
+VERSION = '3'  # Native draft.9 TS04 packages and blank resource reviews added.
 SCENARIOS = (
     {'id': 'preproduction', 'before': 'User-agent: *\nDisallow: /\n',
      'after': 'User-agent: *\nAllow: /\n', 'paths': ['/catalogue']},
@@ -65,6 +67,7 @@ def run(output):
     plan = {'label': 'SYNTHETIC LABORATORY; real loopback sockets, fictional defects',
             'declared_at': now(), 'profile': GOOGLE, 'scenarios': list(SCENARIOS),
             'expected_policy': 'allow for every listed path, including essential CSS and the noindex document',
+            'expected_resource_statuses': [200],
             'indexing_intent': {'/retired': 'exclude'}, 'limitation': LIMITATION}
     write(output/'plan-before-capture.json', plan)
     state, journal = {}, []
@@ -108,18 +111,29 @@ def run(output):
                 state.update(scenario=scenario['id'], phase=phase, robots=scenario[phase])
                 folder = output/scenario['id']/phase
                 folder.mkdir(parents=True)
+                context = {'network': '127.0.0.1 synthetic laboratory', 'bounds': 'one complete robots response; 500 KiB body model',
+                           'tool': 'tsep-experimental-robots-laboratory', 'tool_version': VERSION}
+                intent = {'declared_at': plan['declared_at'], 'crawler': 'googlebot',
+                          'robots_policy': {'profile': GOOGLE, 'product_token': 'Googlebot'},
+                          'robots_plan': {'origin': origin, 'required_resources_basis': 'Synthetic predeclared document/CSS population',
+                                          'resources': [{'url': origin.rstrip('/')+path, 'expected': 'allow', 'required': True,
+                                                         'expected_final_url': origin.rstrip('/')+path, 'terminal_statuses': [200]}
+                                                        for path in scenario['paths']]}}
+                write(folder/'intent-before-capture.json', {'intent': intent, 'context': context})
+                documents = []
                 robot_hop = collect(port, '/robots.txt')
                 captured = now()
                 for number, path in enumerate(scenario['paths'], 1):
                     data = {'profile': GOOGLE, 'origin': origin, 'target': origin.rstrip('/')+path,
                             'product_token': 'Googlebot', 'request_user_agent': 'googlebot',
                             'declared_at': plan['declared_at'], 'observed_at': captured,
-                            'context': {'network': '127.0.0.1 synthetic laboratory', 'bounds': 'one complete robots response; 500 KiB body model',
-                                        'tool': 'tsep-experimental-robots-laboratory', 'tool_version': VERSION},
+                            'context': context,
                             'http': [robot_hop]}
                     page = collect(port, path)
+                    resource_time = now()
+                    documents.append({'url': data['target'], 'observed_at': resource_time, 'http': [page]})
                     write(folder/('input-'+str(number)+'.json'), data)
-                    write(folder/('resource-'+str(number)+'.json'), {'captured_at': now(), 'http': [page],
+                    write(folder/('resource-'+str(number)+'.json'), {'captured_at': resource_time, 'http': [page],
                                                                    'role': 'required-css' if path.endswith('.css') else 'document'})
                     result = inspect_capture(data)
                     write(folder/('observation-'+str(number)+'.json'), result)
@@ -138,6 +152,15 @@ def run(output):
                         write(folder/'active-ts07-comparison.json', comparison)
                         row['active_ts07'] = comparison
                     rows.append(row)
+                native = {'input_version': '2', 'rules': ['TS04-A01', 'TS04-A02'],
+                          'targets': [{'url': origin, 'observed_at': now(), 'context': context, 'intent': intent,
+                                       'robots': {'observed_at': captured, 'http': [robot_hop]}, 'documents': documents}]}
+                write(folder/'ts04-input.json', native)
+                gate = build(folder/'ts04-input.json', folder/'ts04-bundle', assessor='Synthetic laboratory author',
+                             label=scenario['id']+' '+phase, selection_method='Four fixed synthetic loopback scenarios',
+                             access='synthetic', mode='manual')
+                prepare(folder/'ts04-bundle', folder/'review-request')
+                write(folder/'ts04-summary.json', {'gate': gate, 'human_reviews_created': 0})
     finally:
         server.shutdown()
         server.server_close()
@@ -148,7 +171,8 @@ def run(output):
                'human_review': 'None supplied; active TS07 access remains inconclusive after correction',
                'source_files': {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in (
                    'experiments/robots_laboratory.py', 'experiments/robots_policy.py',
-                   'conformance/evaluate.py', 'conformance/http.py', 'tsep.py')}}
+                   'conformance/evaluate.py', 'conformance/http.py', 'conformance/robots.py',
+                   'conformance/robots_control.py', 'adapters/captures.py', 'adapters/review.py', 'tsep.py')}}
     write(output/'summary.json', summary)
     inventory = sorted(p for p in output.rglob('*') if p.is_file())
     (output/'SHA256SUMS').write_text(''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.relative_to(output).as_posix()+'\n' for p in inventory))

@@ -1,6 +1,20 @@
 # Lecteur robots partagé candidat / Candidate shared robots reader
 
-## Français
+## Intégration draft.9 / Draft.9 integration
+
+Le modèle du lecteur version 1 est maintenant dans `conformance/robots.py`, partagé
+par TS04 et TS07. La CLI d'observation version 2 utilise ce module, sans produire
+elle-même de verdict de contrôle. Le laboratoire version 3 crée aussi des paquets
+TS04 natifs et des fiches de revue vides. Les outils et captures des expériences
+antérieures restent dans leurs archives d'origine. La description historique
+ci-dessous précise les choix du modèle ; [migration](migration-draft.9.md).
+
+Reader model 1 now lives in the shared conformance module. Observation CLI 2 wraps
+it; laboratory 3 additionally creates native TS04 bundles and blank review tasks.
+Earlier experiment packages remain pinned to their original tools. The following
+historical description records model choices, not current integration status.
+
+## Français — description historique
 
 Cette étape prépare TS04 et la dépendance TS07-A02. Elle **ne modifie pas** le
 protocole draft.8, son lecteur actif ou ses verdicts. `experiments/robots_policy.py`

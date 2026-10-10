@@ -1,3 +1,9 @@
+Current integration: draft.9 adds TS04-A01/A02 and the shared TS07 robots reader,
+with prior profiles, resource review workflow and [explicit migration](migration-draft.9.md).
+Intégration actuelle : draft.9 ajoute TS04 et le lecteur partagé TS07, sans finaliser
+les limites rendues ni transformer les essais synthétiques en audit Edikka.
+Earlier milestone descriptions below retain their historical scope.
+
 # Independent development / Développement autonome
 
 Current priority: [four deeply verified controls](four-control-program.md), as

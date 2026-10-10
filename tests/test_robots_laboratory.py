@@ -27,6 +27,14 @@ class RobotsLaboratory(unittest.TestCase):
             noindex = [r for r in summary['rows'] if r['scenario'] == 'noindex-disallow']
             self.assertEqual([[a['outcome'] for a in r['active_ts07']] for r in noindex],
                              [['pass', 'fail'], ['pass', 'inconclusive']])
+            for scenario in ('preproduction', 'essential-css', 'noindex-disallow', 'correct-control'):
+                for phase in ('before', 'after'):
+                    folder = root/scenario/phase
+                    report = json.loads((folder/'ts04-bundle/report.json').read_text())
+                    expected = 'NC' if phase == 'before' and scenario != 'correct-control' else 'NT'
+                    self.assertEqual(report['results'][0]['status'], expected)
+                    answers = json.loads((folder/'review-request/response-template.json').read_text())['responses']
+                    self.assertTrue(all(c['outcome'] is None for answer in answers for c in answer['comparisons']))
             for line in (root/'SHA256SUMS').read_text().splitlines():
                 digest, name = line.split('  ', 1)
                 self.assertEqual(hashlib.sha256((root/name).read_bytes()).hexdigest(), digest)

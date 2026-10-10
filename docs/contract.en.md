@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.8
+# Report contract — TSEP 0.1.0-draft.9
 
 ## Declared scope
 
@@ -41,14 +41,14 @@ indexation. TS34 establishes correctly read field metrics; a C there does not
 mean the measured performance is good. Record unfavorable underlying measures
 and their operational consequences explicitly.
 
-## Atomic rules for TS01, TS02, TS07 and TS10
+## Atomic rules for TS01, TS02, TS04, TS07 and TS10
 
 Report format is `2`. A **control** retains its TSxx identifier and scoped
 C/NC/NA/NT outcome. An **atomic test** addresses an expectation identified by
 `TSxx-Ayy` in the canonical JSON. An **observation** is a dated capture or finding
 in a given context; its existence alone does not pass a test. Each rule declares `automation`: `automatic`, `semiAuto` or `manual`.
 
-For these four controls, `atomic_results` links each `rule_id`/`target` pair to
+For these five controls, `atomic_results` links each `rule_id`/`target` pair to
 an `outcome` (`pass`, `fail`, `not-applicable`, `inconclusive`), a `reason` and
 `evidence_ids`. Evidence must also be linked by the control result and cover the
 target. A `pass` requires every input kind of the rule. A `fail` contradiction
@@ -80,7 +80,7 @@ declarations, although the validator cannot determine that need.
 
 The CLI checks declarations, references and coverage, not the correctness of
 HTTP/HTML interpretation, intent or exemptions. The historical method fixtures have authored reference verdicts. The separate
-[executable conformance suite](conformance.md) interprets raw inputs for eleven rules
+[executable conformance suite](conformance.md) interprets raw inputs for thirteen rules
 within documented bounds; it does not implement all controls. No C extends to unselected
 controls, an entire site or actual indexing. See [migration and cases](migration-draft.2.md).
 
@@ -226,16 +226,34 @@ summaries show the same cause. Neither the decision nor exit codes change.
 ## Versions and implementation claims
 
 Pin both version and protocol SHA-256. Cite IDs as
-`TSEP@0.1.0-draft.8:TS01`. Never silently replace a released artifact. Changes to
+`TSEP@0.1.0-draft.9:TS01`. Never silently replace a released artifact. Changes to
 applicability, expectations, required evidence or decisions require a new version
 and migration note. TS01–TS44 are permanent identities, not reusable slots.
 
 This candidate has one implementation of report validation. Passing its tests
 allows the narrow statement “passes the bundled report-interchange tests for
-0.1.0-draft.8.” It does not establish implementation of all 44 assessment methods.
+0.1.0-draft.9.” It does not establish implementation of all 44 assessment methods.
 An implementation must publish per-rule mapping and limitations before making a
 broader claim. No compatibility with a third-party tool has yet been demonstrated.
 
 ## TS02 — draft.8
 
 TS02-A01 requires a prior approved plan and a supplied review bound to plan/context. TS02-A02 compares HTTP trajectories and preserves prefix contradictions despite gaps. Missing review prevents C; missing capture does not establish NA. Server-side HTTP scope, format, bounds and migration are in [redirects](redirects.md) and [draft.8 migration](migration-draft.8.md). TS01/TS07/TS10 rule semantics remain unchanged.
+
+
+## TS04 and TS07 access — draft.9
+
+TS04-A01 compares a prior origin/crawler resource matrix with its declared robots
+profile. TS04-A02 requires planned access/trajectories and supplied resource reviews
+bound to the responses. A demonstrated contradiction remains fail despite other
+gaps; missing review/capture never becomes pass or NA. A02 exemption requires a
+positive inventory review of no required resources before intent. Profiles, format,
+bounds, digests and dates are specified in [robots method](robots.md), consistently
+with the canonical JSON rules. Choose the profile before measurement, never after
+seeing which profile yields a favorable result.
+
+TS07-A02 shares this reader. Inputs without robots_policy keep the fixed historical
+legacy-exact-v1 profile; explicit-profile refusal never falls back to it. Attributable
+HTTP 401/403 denial remains fail without robots. Rendering/directive/review limits
+remain. See [draft.9 migration](migration-draft.9.md). No actual engine visit,
+global conformity or indexing is inferred.

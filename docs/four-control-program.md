@@ -6,7 +6,7 @@ la Search Console et un insight concret. Aucun ordre numérique n'est obligatoir
 
 | Contrôle | Problème métier à montrer | État à cette étape |
 | --- | --- | --- |
-| TS04 | Une règle de préproduction interdit l'exploration attendue | Lecteur partagé candidat et laboratoire robots vérifiés ; intégration normative et règles atomiques à réaliser |
+| TS04 | Une règle de préproduction interdit l'exploration attendue | Draft.9 : deux règles, lecteur partagé TS07, ressources et parcours de revue ; recette humaine/application réelle à établir |
 | TS02 | Une migration mène à la mauvaise destination, ajoute un détour ou boucle | Draft.8 : règles, interpréteur et laboratoire avant/après de 20 requêtes locales ; parcours pratique du plan humain à compléter |
 | TS07 | Un noindex HTTP/source/rendu contredit l'intention ; robots peut empêcher sa lecture | Méthode existante ; couverture rendue et parcours de revue à consolider |
 | TS10 | Canonical HTTP, HTML, rendu, sitemap ou liens désignent des URL incompatibles | Méthode existante ; limites DOM et revue de contenu à résoudre |
@@ -16,10 +16,10 @@ L'ordre de dépendance recommandé est TS04, TS02, TS07, TS10. TS02 peut avancer
 indépendamment pendant la définition TS04. Un lecteur robots commun doit servir
 TS04 et TS07, avec les politiques RFC/robot explicitement distinguées.
 
-Le [lecteur robots expérimental](robots-policy-experiment.md) conserve deux profils
-explicites et des cas inconnus. Son laboratoire utilise de vrais échanges locaux
-pour des défauts synthétiques ; il ne finalise pas TS04 et n'est pas encore appelé
-par TS07. L'intégration partagée dans la prochaine candidate reste nécessaire.
+Le [lecteur robots partagé](robots.md) est intégré dans draft.9 pour TS04 et TS07,
+avec deux profils explicites et un profil historique fixe. Le laboratoire fournit
+les paquets natifs et des questions de revue sans réponses inventées. Une méthode
+exécutable n'est pas une recette humaine ni une évaluation réelle d'Edikka.
 
 Une méthode ne sera déclarée aboutie que lorsque ses règles FR/EN, cas conformes,
 contradictoires et indéterminés, preuves attribuables, collecte ou import explicite,

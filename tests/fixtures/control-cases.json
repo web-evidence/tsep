@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.8",
+  "protocol_version": "0.1.0-draft.9",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -2644,6 +2644,176 @@
           "reason": {
             "fr": "Jugement synthétique rédigé : unfinished",
             "en": "Authored synthetic judgment: unfinished"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS04-aligned",
+      "control_id": "TS04",
+      "description": {
+        "fr": "Cas de méthode synthétique TS04 : aligned",
+        "en": "Synthetic authored TS04 method case: aligned"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC prior origin/profile/resource matrix and supplied review: aligned",
+        "robots": "SYNTHETIC dated robots response and selected policy: aligned",
+        "http": "SYNTHETIC required-resource response and supplied review: aligned"
+      },
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS",
+      "atomic_results": [
+        {
+          "rule_id": "TS04-A01",
+          "outcome": "pass",
+          "evidence_ids": [
+            "intent",
+            "robots",
+            "http"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique fourni : aligned",
+            "en": "Supplied synthetic judgment: aligned"
+          }
+        },
+        {
+          "rule_id": "TS04-A02",
+          "outcome": "pass",
+          "evidence_ids": [
+            "intent",
+            "robots",
+            "http"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique fourni : aligned",
+            "en": "Supplied synthetic judgment: aligned"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS04-blocked",
+      "control_id": "TS04",
+      "description": {
+        "fr": "Cas de méthode synthétique TS04 : blocked",
+        "en": "Synthetic authored TS04 method case: blocked"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC prior origin/profile/resource matrix and supplied review: blocked",
+        "robots": "SYNTHETIC dated robots response and selected policy: blocked",
+        "http": "SYNTHETIC required-resource response and supplied review: blocked"
+      },
+      "expected_status": "NC",
+      "expected_gate": "NO_GO",
+      "atomic_results": [
+        {
+          "rule_id": "TS04-A01",
+          "outcome": "fail",
+          "evidence_ids": [
+            "intent",
+            "robots",
+            "http"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique fourni : blocked",
+            "en": "Supplied synthetic judgment: blocked"
+          }
+        },
+        {
+          "rule_id": "TS04-A02",
+          "outcome": "fail",
+          "evidence_ids": [
+            "intent",
+            "robots",
+            "http"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique fourni : blocked",
+            "en": "Supplied synthetic judgment: blocked"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS04-missing",
+      "control_id": "TS04",
+      "description": {
+        "fr": "Cas de méthode synthétique TS04 : missing",
+        "en": "Synthetic authored TS04 method case: missing"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC prior origin/profile/resource matrix and supplied review: missing",
+        "robots": "SYNTHETIC dated robots response and selected policy: missing",
+        "http": "SYNTHETIC required-resource response and supplied review: missing"
+      },
+      "expected_status": "NT",
+      "expected_gate": "NO_GO",
+      "atomic_results": [
+        {
+          "rule_id": "TS04-A01",
+          "outcome": "inconclusive",
+          "evidence_ids": [
+            "intent",
+            "robots",
+            "http"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique fourni : missing",
+            "en": "Supplied synthetic judgment: missing"
+          }
+        },
+        {
+          "rule_id": "TS04-A02",
+          "outcome": "inconclusive",
+          "evidence_ids": [
+            "intent",
+            "robots",
+            "http"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique fourni : missing",
+            "en": "Supplied synthetic judgment: missing"
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS04-no-required",
+      "control_id": "TS04",
+      "description": {
+        "fr": "Cas de méthode synthétique TS04 : no-required",
+        "en": "Synthetic authored TS04 method case: no-required"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC prior origin/profile/resource matrix and supplied review: no-required",
+        "robots": "SYNTHETIC dated robots response and selected policy: no-required",
+        "http": "SYNTHETIC required-resource response and supplied review: no-required"
+      },
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS",
+      "atomic_results": [
+        {
+          "rule_id": "TS04-A01",
+          "outcome": "pass",
+          "evidence_ids": [
+            "intent",
+            "robots",
+            "http"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique fourni : no-required",
+            "en": "Supplied synthetic judgment: no-required"
+          }
+        },
+        {
+          "rule_id": "TS04-A02",
+          "outcome": "not-applicable",
+          "evidence_ids": [
+            "intent"
+          ],
+          "reason": {
+            "fr": "Jugement synthétique fourni : no-required",
+            "en": "Supplied synthetic judgment: no-required"
           }
         }
       ]
