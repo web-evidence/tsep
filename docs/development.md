@@ -430,3 +430,14 @@ superseded; its frozen file remains intact. Nonempty noscript stays unresolved.
 Le [lecteur v6](source-text-v6.md) accepte un sous-ensemble select/table explicite.
 Une attente historique change explicitement, sans réécrire le fichier figé.
 Le contrat draft.7 reste inchangé ; noscript non vide demeure indéterminé.
+
+## Review and replay / Revue et rejeu
+
+[The review and replay workflow](review-and-replay.md) adds one offline replay
+command for all capture-adapter bundles and blank evidence-bound TS07/TS10 review
+requests. Tests preserve failures, unknowns and synthetic provenance; no actual
+human review or user acceptance is inferred. Protocol draft.7 is unchanged.
+
+Le [parcours de revue et rejeu](review-and-replay.md) fournit une commande commune
+et des fiches vides liées aux preuves. Les tests ne valent pas relecture humaine
+ni recette utilisateur. Les inconnues et contradictions restent conservées.

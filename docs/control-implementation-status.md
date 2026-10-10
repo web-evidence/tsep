@@ -8,6 +8,21 @@ jamais la conformité d’Edikka ou d’un site. La priorité de travail est dé
 la réalisation méthodique des **44 contrôles**, avec traitement des limites
 connues avant d’élargir les démonstrations. La galerie reste un point d’étape.
 
+### Avancement du 10 octobre après le point de référence
+
+Le commit `13cdd23` étend TS01 aux select/table explicitement structurés :
+[limites et migration de l’outil](source-text-v6.md). La réévaluation des mêmes
+entrées Edikka conserve TS01 NT, le refus suivant portant sur noscript. Le
+[parcours de revue et rejeu](review-and-replay.md) prépare des décisions humaines
+vides et permet le rejeu des trois types de paquets. Ni ce parcours ni les tests
+logiciels ne prouvent leur recette par Bertrand ou une revue effectivement réalisée.
+
+La cible de travail est de consolider les trois méthodes puis de viser dix :
+TS01, TS07, TS10, TS02, TS04, TS38, TS13, TS15, TS03 et TS23. Le nombre ne réduit
+aucune exigence de preuve. Les colonnes méthode, application réelle et recette
+utilisateur restent séparées. L’ébauche Search Console et l’insight suivent les
+résultats établis. Les 44 lignes ci-dessous restent le **point de référence**.
+
 ### Décompte vérifié
 
 - **44 contrôles décrits** dans `spec/protocol.json`, avec procédure et attendus.
