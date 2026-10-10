@@ -1,0 +1,74 @@
+{
+  "version": "1",
+  "synthetic": true,
+  "purpose": "Actual browser requests on synthetic local pages; not an Edikka or engine assessment",
+  "cases": [
+    {
+      "id": "baseline",
+      "mutation": "none",
+      "rules": [
+        "TS07-A01",
+        "TS07-A03"
+      ],
+      "expected": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "js-noindex",
+      "mutation": "noindex",
+      "rules": [
+        "TS07-A01",
+        "TS07-A03"
+      ],
+      "expected": [
+        "pass",
+        "fail"
+      ]
+    },
+    {
+      "id": "header-noindex",
+      "mutation": "none",
+      "x_robots_tag": "noindex",
+      "rules": [
+        "TS07-A01",
+        "TS07-A03"
+      ],
+      "expected": [
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "canonical-conflict",
+      "mutation": "canonical",
+      "rules": [
+        "TS10-A01"
+      ],
+      "expected": [
+        "fail"
+      ]
+    },
+    {
+      "id": "links-conflict",
+      "mutation": "links",
+      "rules": [
+        "TS10-A04"
+      ],
+      "expected": [
+        "fail"
+      ]
+    },
+    {
+      "id": "bounded-tree",
+      "mutation": "node-limit",
+      "rules": [
+        "TS07-A03"
+      ],
+      "expected": [
+        "inconclusive"
+      ]
+    }
+  ]
+}

@@ -1,3 +1,8 @@
+Current integration: draft.11 separates the actual HTTP client from TS07 directive semantics,
+with a [same-navigation laboratory](same-navigation-laboratory.md) and [migration](migration-draft.11.md).
+Intégration actuelle : draft.11 ; laboratoire synthétique, sans recette humaine ni conformité Edikka.
+Earlier integration descriptions below retain their historical scope.
+
 Current integration: draft.10 adds the predeclared [structured rendered reader](structured-rendering.md) for TS07/TS10.
 Intégration actuelle : draft.10, lecture structurée du rendu ; collecte réelle et recette humaine restent distinctes.
 The historical draft.9 integration and earlier milestones below retain their named scope.

@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.10
+# Report contract — TSEP 0.1.0-draft.11
 
 ## Declared scope
 
@@ -226,13 +226,13 @@ summaries show the same cause. Neither the decision nor exit codes change.
 ## Versions and implementation claims
 
 Pin both version and protocol SHA-256. Cite IDs as
-`TSEP@0.1.0-draft.10:TS01`. Never silently replace a released artifact. Changes to
+`TSEP@0.1.0-draft.11:TS01`. Never silently replace a released artifact. Changes to
 applicability, expectations, required evidence or decisions require a new version
 and migration note. TS01–TS44 are permanent identities, not reusable slots.
 
 This candidate has one implementation of report validation. Passing its tests
 allows the narrow statement “passes the bundled report-interchange tests for
-0.1.0-draft.10.” It does not establish implementation of all 44 assessment methods.
+0.1.0-draft.11.” It does not establish implementation of all 44 assessment methods.
 An implementation must publish per-rule mapping and limitations before making a
 broader claim. No compatibility with a third-party tool has yet been demonstrated.
 
@@ -266,3 +266,12 @@ separate acquisitions or known API alteration remain inconclusive. No fallback t
 serialization to gain agreement. Reviews, headers and source HTML retain their role;
 no engine equivalence. The [detailed contract](structured-rendering.md) and
 [migration](migration-draft.10.md) define bounds, decisions and experimental differences.
+
+## Collection agent and semantics — draft.11
+
+Optional prior TS07 directive_crawler=googlebot separates directive semantics
+from crawler, the unchanged exact HTTP agent. It assesses only this client's
+representation. A02 requires an explicit matching robots product profile; no
+Googlebot visit is inferred. Old inputs keep their behavior. The [same-navigation
+laboratory](same-navigation-laboratory.md) and [migration](migration-draft.11.md)
+describe evidence, refusals and limitations.

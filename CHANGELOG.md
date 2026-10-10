@@ -1,5 +1,18 @@
 # Change history / Historique
 
+## 0.1.0-draft.11 — 2026-10-10 — actual client and directive semantics
+
+Optional prior TS07 directive_crawler separates the exact HTTP agent from the
+bounded Googlebot directive policy. Explicit robots profiles must match this
+product. Old inputs retain their results. Same-navigation synthetic browser lab
+retains planned responses, exact received requests, sent responses, page exports
+and operator receipts, with offline native replay. 15 prefrozen raw cases added;
+338 prior cases unchanged. Interpreter 10, capture adapter 11, shared robots
+reader 2; no engine-visit claim, no completed human review. [Migration](docs/migration-draft.11.md).
+
+FR : agent HTTP réel distinct de la sémantique des directives, laboratoire
+synthétique de navigation attribuée et rejeu ; aucune assimilation à Googlebot.
+
 ## 0.1.0-draft.10 — 2026-10-10 — structured rendered states
 
 Integrate a predeclared structured reader for TS07-A03 and TS10-A01/A02/A04,

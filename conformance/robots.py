@@ -16,7 +16,7 @@ import tsep
 from conformance import evaluate, http
 from conformance.http import Unknown, need
 
-VERSION = '1'
+VERSION = '2'
 RFC = 'rfc9309-bounded-v1'
 GOOGLE = 'google-documented-core-v1'
 MAX_BYTES = 500 * 1024
@@ -215,8 +215,13 @@ def inspect_capture(data):
         need(origin == target_origin and origin_path == '/', 'Target must belong to declared origin')
         robots_url = data['origin'].rstrip('/')+'/robots.txt'
         ua, token = data['request_user_agent'], data['product_token']
-        need(isinstance(ua, str) and isinstance(token, str) and token.lower() in ua.lower(),
+        conditional = data.get('client_representation_only', False)
+        need(type(conditional) is bool, 'Invalid client-representation scope')
+        need(isinstance(ua, str) and bool(ua) and isinstance(token, str) and
+             (conditional or token.lower() in ua.lower()),
              'Declared product token absent from HTTP User-Agent')
+        if conditional:
+            result['limitation'] += ' Product semantics applied only to the declared client representation; not evidence of what the product crawler receives.'
         need(tsep.timestamp(data['declared_at']) <= tsep.timestamp(data['observed_at']),
              'Intent postdates robots capture')
         need(all(isinstance(data['context'].get(k), str) and data['context'][k].strip()

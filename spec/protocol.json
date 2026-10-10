@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.10",
+  "version": "0.1.0-draft.11",
   "status": "draft",
   "date": "2026-10-10",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10",
+      "rule_version": "0.1.0-draft.11",
       "rules": [
         {
           "na_inputs": [],
@@ -385,7 +385,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS04",
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10",
+      "rule_version": "0.1.0-draft.11",
       "rules": [
         {
           "id": "TS04-A01",
@@ -599,7 +599,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS06",
@@ -658,7 +658,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS07",
@@ -750,12 +750,12 @@
             "en": "Raw repeated headers, source HTML, token/crawler/effect table and dated technical reference. For non-HTML, the html-kind record documents why this surface does not apply, with Content-Type, without inventing HTML."
           },
           "assumptions": {
-            "fr": "Intention et robot figés avant revue ; ne pas extrapoler les règles Google à un autre moteur. En cas d’indexifembedded ou unavailable_after, inclure contexte d’intégration et date nécessaires.",
-            "en": "Intent and crawler fixed before review; do not extrapolate Google rules to another engine. For indexifembedded or unavailable_after, include the required embedding context and date."
+            "fr": "Intention et robot figés avant revue ; ne pas extrapoler les règles Google à un autre moteur. En cas d’indexifembedded ou unavailable_after, inclure contexte d’intégration et date nécessaires. L’intention conserve crawler comme User-Agent HTTP exact. Le champ facultatif directive_crawler, figé avant capture et limité ici à googlebot, choisit la sémantique des directives sur cette seule représentation cliente ; il ne décrit pas une réponse reçue par Googlebot. Sans ce champ, le comportement historique exige crawler=googlebot.",
+            "en": "Intent and crawler fixed before review; do not extrapolate Google rules to another engine. For indexifembedded or unavailable_after, include the required embedding context and date. Intent retains crawler as the exact HTTP User-Agent. Optional directive_crawler, frozen before collection and limited here to googlebot, selects directive semantics only for this client representation; it does not describe a response received by Googlebot. Without this field, historical behavior requires crawler=googlebot."
           },
           "inconclusive": {
-            "fr": "Objectif absent, syntaxe/portée inconnue, capture partielle ou contexte manquant : inconclusive. Une directive documentée comme ignorée est consignée, pas transformée automatiquement en erreur.",
-            "en": "Missing objective, unknown syntax/scope, partial capture or missing context: inconclusive. A documented ignored directive is recorded, not automatically treated as an error."
+            "fr": "Objectif absent, syntaxe/portée inconnue, capture partielle ou contexte manquant : inconclusive. Une directive documentée comme ignorée est consignée, pas transformée automatiquement en erreur. directive_crawler présent mais non pris en charge, nul ou incohérent : inconclusive ; aucun repli favorable.",
+            "en": "Missing objective, unknown syntax/scope, partial capture or missing context: inconclusive. A documented ignored directive is recorded, not automatically treated as an error. Present but unsupported, null or inconsistent directive_crawler: inconclusive; no favorable fallback."
           },
           "limitations": {
             "fr": "Évalue les déclarations observées, pas leur ingestion ni l’indexation réelle. A01 seul ne couvre pas l’accès ou le rendu. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue.",
@@ -784,8 +784,8 @@
             "en": "Every resource for which directive effects are assessed."
           },
           "procedure": {
-            "fr": "Confronter politique robots effective et conditions d’accès au robot cible ; distinguer réponse au client de test, blocage explicite et accès du robot non observé.",
-            "en": "Compare effective robots policy and access conditions for the target crawler; distinguish the test client response, explicit blocking and unobserved crawler access."
+            "fr": "Confronter politique robots effective et conditions d’accès au robot cible ; distinguer réponse au client de test, blocage explicite et accès du robot non observé. Avec directive_crawler explicite, exiger un robots_policy explicite dont product_token concorde avec googlebot sans distinction de casse ; sélectionner ce groupe et jamais le groupe de l’agent du navigateur par repli.",
+            "en": "Compare effective robots policy and access conditions for the target crawler; distinguish the test client response, explicit blocking and unobserved crawler access. With explicit directive_crawler, require an explicit robots_policy whose product_token matches googlebot case-insensitively; select that group and never fall back to the browser agent group."
           },
           "acceptance": {
             "fr": "Aucun obstacle observé n’empêche de lire la directive dans le contexte déclaré. Une interdiction robots contredit une stratégie reposant sur la lecture de noindex. Un refus HTTP 401/403 attribuable reste fail même si la capture robots manque.",
@@ -796,12 +796,12 @@
             "en": "Robots capture and interpretation for URL/crawler, HTTP trace and access assumptions documented in intent."
           },
           "assumptions": {
-            "fr": "La politique est interprétée par le lecteur partagé TS04. Un nouveau profil est déclaré dans l’intention avant capture. Sans champ robots_policy, les anciennes entrées restent sous le profil fixe legacy-exact-v1, sans extension implicite de sa couverture. Le client ne s’authentifie pas comme Googlebot.",
-            "en": "Policy is interpreted by the shared TS04 reader. A new profile is declared in intent before capture. Without robots_policy, legacy inputs retain the fixed legacy-exact-v1 profile without implicit coverage extension. The client does not authenticate as Googlebot."
+            "fr": "La politique est interprétée par le lecteur partagé TS04. Un nouveau profil est déclaré dans l’intention avant capture. Sans champ robots_policy, les anciennes entrées restent sous le profil fixe legacy-exact-v1, sans extension implicite de sa couverture. Le client ne s’authentifie pas comme Googlebot. L’intention conserve crawler comme User-Agent HTTP exact. Le champ facultatif directive_crawler, figé avant capture et limité ici à googlebot, choisit la sémantique des directives sur cette seule représentation cliente ; il ne décrit pas une réponse reçue par Googlebot. Sans ce champ, les profils robots historiques conservent leur comportement.",
+            "en": "Policy is interpreted by the shared TS04 reader. A new profile is declared in intent before capture. Without robots_policy, legacy inputs retain the fixed legacy-exact-v1 profile without implicit coverage extension. The client does not authenticate as Googlebot. Intent retains crawler as the exact HTTP User-Agent. Optional directive_crawler, frozen before collection and limited here to googlebot, selects directive semantics only for this client representation; it does not describe a response received by Googlebot. Without this field, historical robots profiles retain their behavior."
           },
           "inconclusive": {
-            "fr": "Politique inaccessible ou ambiguë, challenge non résolu, capture manquante : inconclusive, jamais NA pour manque d’accès.",
-            "en": "Unavailable or ambiguous policy, unresolved challenge, missing capture: inconclusive, never NA for missing access."
+            "fr": "Politique inaccessible ou ambiguë, challenge non résolu, capture manquante : inconclusive, jamais NA pour manque d’accès. Le nouveau chemin sans profil concordant reste indéterminé. Le refus HTTP 401/403 attribuable conserve sa priorité.",
+            "en": "Unavailable or ambiguous policy, unresolved challenge, missing capture: inconclusive, never NA for missing access. The new path without a matching profile remains inconclusive. Attributable HTTP 401/403 denial retains precedence."
           },
           "limitations": {
             "fr": "Aucune preuve de visite réelle du moteur ; TS04 et les autres contrôles d’accès ne sont pas globalement validés. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue.",
@@ -843,12 +843,12 @@
             "en": "Retained headers/source HTML, prior plan, dated raw DOMs with binding digest of the HTTP trace, final URL, context, browser/version, script state, interactions, waiting conditions and errors. Reasoned comparison and limitations; no simulated engine capture."
           },
           "assumptions": {
-            "fr": "Les états nécessaires sont listés avant le test ; rendu local et rendu du moteur restent distincts. Le lecteur structuré interprète les meta HTML enfants directs du head réel ; position ou shadow ambigu reste indéterminé. Il conserve la combinaison avec les en-têtes de la navigation déclarée.",
-            "en": "Required states are listed before the test; local and engine rendering remain distinct. The structured reader interprets HTML meta children directly in the real document head; ambiguous placement or shadow remains inconclusive. It retains combination with the declared navigation headers."
+            "fr": "Les états nécessaires sont listés avant le test ; rendu local et rendu du moteur restent distincts. Le lecteur structuré interprète les meta HTML enfants directs du head réel ; position ou shadow ambigu reste indéterminé. Il conserve la combinaison avec les en-têtes de la navigation déclarée. L’intention conserve crawler comme User-Agent HTTP exact. Le champ facultatif directive_crawler, figé avant capture et limité ici à googlebot, choisit la sémantique des directives sur cette seule représentation cliente ; il ne décrit pas une réponse reçue par Googlebot. Sans ce champ, le comportement historique exige crawler=googlebot.",
+            "en": "Required states are listed before the test; local and engine rendering remain distinct. The structured reader interprets HTML meta children directly in the real document head; ambiguous placement or shadow remains inconclusive. It retains combination with the declared navigation headers. Intent retains crawler as the exact HTTP User-Agent. Optional directive_crawler, frozen before collection and limited here to googlebot, selects directive semantics only for this client representation; it does not describe a response received by Googlebot. Without this field, historical behavior requires crawler=googlebot."
           },
           "inconclusive": {
-            "fr": "Plan ou capture requis absent, état tronqué, erreur de script, liaison source/cible/contexte incohérente, chronologie invalide, directive non interprétable ou retrait tardif du noindex initial : inconclusive sans réussite déduite. Une contradiction établie dans un autre état attribuable reste fail. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation.",
-            "en": "Missing required plan/capture, truncated state, script error, inconsistent source/target/context binding, invalid chronology, uninterpretable directive or late removal of initial noindex: inconclusive without an inferred pass. An established contradiction in another attributable state remains fail. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation."
+            "fr": "Plan ou capture requis absent, état tronqué, erreur de script, liaison source/cible/contexte incohérente, chronologie invalide, directive non interprétable ou retrait tardif du noindex initial : inconclusive sans réussite déduite. Une contradiction établie dans un autre état attribuable reste fail. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation. directive_crawler présent mais non pris en charge, nul ou incohérent : inconclusive ; aucun repli favorable.",
+            "en": "Missing required plan/capture, truncated state, script error, inconsistent source/target/context binding, invalid chronology, uninterpretable directive or late removal of initial noindex: inconclusive without an inferred pass. An established contradiction in another attributable state remains fail. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. Present but unsupported, null or inconsistent directive_crawler: inconclusive; no favorable fallback."
           },
           "limitations": {
             "fr": "semiAuto : le plan et la suffisance des observations nécessitent une revue. L’interpréteur compare des captures fournies ; il n’exécute pas JavaScript et ne démontre ni exhaustivité des états, ni TS25, ni rendu ou indexation du moteur. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md.",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS08",
@@ -924,7 +924,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS09",
@@ -982,7 +982,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS10",
@@ -1233,7 +1233,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS11",
@@ -1292,7 +1292,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS12",
@@ -1351,7 +1351,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS13",
@@ -1411,7 +1411,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS14",
@@ -1469,7 +1469,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS15",
@@ -1526,7 +1526,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS16",
@@ -1585,7 +1585,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS17",
@@ -1644,7 +1644,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS18",
@@ -1704,7 +1704,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS19",
@@ -1763,7 +1763,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS20",
@@ -1822,7 +1822,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS21",
@@ -1882,7 +1882,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS22",
@@ -1942,7 +1942,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS23",
@@ -2000,7 +2000,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS24",
@@ -2059,7 +2059,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS25",
@@ -2118,7 +2118,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS26",
@@ -2178,7 +2178,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS27",
@@ -2237,7 +2237,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS28",
@@ -2296,7 +2296,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS29",
@@ -2355,7 +2355,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS30",
@@ -2414,7 +2414,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS31",
@@ -2473,7 +2473,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS32",
@@ -2531,7 +2531,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS33",
@@ -2590,7 +2590,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS34",
@@ -2648,7 +2648,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS35",
@@ -2706,7 +2706,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS36",
@@ -2766,7 +2766,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS37",
@@ -2827,7 +2827,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS38",
@@ -2888,7 +2888,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS39",
@@ -2948,7 +2948,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS40",
@@ -3009,7 +3009,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS41",
@@ -3067,7 +3067,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS42",
@@ -3127,7 +3127,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS43",
@@ -3187,7 +3187,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     },
     {
       "id": "TS44",
@@ -3249,7 +3249,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.10"
+      "rule_version": "0.1.0-draft.11"
     }
   ],
   "profiles": [
@@ -3400,15 +3400,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "5c799981a6640d714b990c8684b1b00e65cadc43aa2b1e7e93d4de48ad5d3df3"
+      "sha256": "746a46f03e632ceca722a54ad1a55d47f2ad496298d7ac03db3d653eb55332c6"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "5d924423a33f53fb4507cc322575f5ad0c982feca1dc784302271698b1408967"
+      "sha256": "b618289c34d13c7e87f469bfe1557f4ea3cb8d67bc0dbad0947609499b1613d0"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "20dce1fefcc93df3bae997f025b6cf64969be470c626150df917b009b4a7483f"
+      "sha256": "bdd0fe90d84557c7fd9446fc24925f370c6b0d5b9be2c36b540827d44c5d04f4"
     }
   ]
 }

@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.10 — Controls
+# TSEP 0.1.0-draft.11 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.10:TS01-A01`
+`TSEP@0.1.0-draft.11:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.10:TS01-A02`
+`TSEP@0.1.0-draft.11:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.10:TS02-A01`
+`TSEP@0.1.0-draft.11:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.10:TS02-A02`
+`TSEP@0.1.0-draft.11:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.10:TS04-A01`
+`TSEP@0.1.0-draft.11:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.10:TS04-A02`
+`TSEP@0.1.0-draft.11:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.10:TS07-A01`
+`TSEP@0.1.0-draft.11:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -334,9 +334,9 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Evidence.** Raw repeated headers, source HTML, token/crawler/effect table and dated technical reference. For non-HTML, the html-kind record documents why this surface does not apply, with Content-Type, without inventing HTML.
 
-**Assumptions.** Intent and crawler fixed before review; do not extrapolate Google rules to another engine. For indexifembedded or unavailable_after, include the required embedding context and date.
+**Assumptions.** Intent and crawler fixed before review; do not extrapolate Google rules to another engine. For indexifembedded or unavailable_after, include the required embedding context and date. Intent retains crawler as the exact HTTP User-Agent. Optional directive_crawler, frozen before collection and limited here to googlebot, selects directive semantics only for this client representation; it does not describe a response received by Googlebot. Without this field, historical behavior requires crawler=googlebot.
 
-**Inconclusive.** Missing objective, unknown syntax/scope, partial capture or missing context: inconclusive. A documented ignored directive is recorded, not automatically treated as an error.
+**Inconclusive.** Missing objective, unknown syntax/scope, partial capture or missing context: inconclusive. A documented ignored directive is recorded, not automatically treated as an error. Present but unsupported, null or inconsistent directive_crawler: inconclusive; no favorable fallback.
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
@@ -344,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.10:TS07-A02`
+`TSEP@0.1.0-draft.11:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -352,15 +352,15 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Every resource for which directive effects are assessed.
 
-**Method.** Compare effective robots policy and access conditions for the target crawler; distinguish the test client response, explicit blocking and unobserved crawler access.
+**Method.** Compare effective robots policy and access conditions for the target crawler; distinguish the test client response, explicit blocking and unobserved crawler access. With explicit directive_crawler, require an explicit robots_policy whose product_token matches googlebot case-insensitively; select that group and never fall back to the browser agent group.
 
 **Acceptance.** No observed obstacle prevents reading the directive in the declared context. Robots disallow contradicts a strategy relying on reading noindex. An attributable HTTP 401/403 remains fail even if robots evidence is missing.
 
 **Evidence.** Robots capture and interpretation for URL/crawler, HTTP trace and access assumptions documented in intent.
 
-**Assumptions.** Policy is interpreted by the shared TS04 reader. A new profile is declared in intent before capture. Without robots_policy, legacy inputs retain the fixed legacy-exact-v1 profile without implicit coverage extension. The client does not authenticate as Googlebot.
+**Assumptions.** Policy is interpreted by the shared TS04 reader. A new profile is declared in intent before capture. Without robots_policy, legacy inputs retain the fixed legacy-exact-v1 profile without implicit coverage extension. The client does not authenticate as Googlebot. Intent retains crawler as the exact HTTP User-Agent. Optional directive_crawler, frozen before collection and limited here to googlebot, selects directive semantics only for this client representation; it does not describe a response received by Googlebot. Without this field, historical robots profiles retain their behavior.
 
-**Inconclusive.** Unavailable or ambiguous policy, unresolved challenge, missing capture: inconclusive, never NA for missing access.
+**Inconclusive.** Unavailable or ambiguous policy, unresolved challenge, missing capture: inconclusive, never NA for missing access. The new path without a matching profile remains inconclusive. Attributable HTTP 401/403 denial retains precedence.
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.10:TS07-A03`
+`TSEP@0.1.0-draft.11:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -384,9 +384,9 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Evidence.** Retained headers/source HTML, prior plan, dated raw DOMs with binding digest of the HTTP trace, final URL, context, browser/version, script state, interactions, waiting conditions and errors. Reasoned comparison and limitations; no simulated engine capture.
 
-**Assumptions.** Required states are listed before the test; local and engine rendering remain distinct. The structured reader interprets HTML meta children directly in the real document head; ambiguous placement or shadow remains inconclusive. It retains combination with the declared navigation headers.
+**Assumptions.** Required states are listed before the test; local and engine rendering remain distinct. The structured reader interprets HTML meta children directly in the real document head; ambiguous placement or shadow remains inconclusive. It retains combination with the declared navigation headers. Intent retains crawler as the exact HTTP User-Agent. Optional directive_crawler, frozen before collection and limited here to googlebot, selects directive semantics only for this client representation; it does not describe a response received by Googlebot. Without this field, historical behavior requires crawler=googlebot.
 
-**Inconclusive.** Missing required plan/capture, truncated state, script error, inconsistent source/target/context binding, invalid chronology, uninterpretable directive or late removal of initial noindex: inconclusive without an inferred pass. An established contradiction in another attributable state remains fail. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation.
+**Inconclusive.** Missing required plan/capture, truncated state, script error, inconsistent source/target/context binding, invalid chronology, uninterpretable directive or late removal of initial noindex: inconclusive without an inferred pass. An established contradiction in another attributable state remains fail. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. Present but unsupported, null or inconsistent directive_crawler: inconclusive; no favorable fallback.
 
 **When NA is allowed.** Non-HTML or directive stability demonstrated by documented review; intent evidence references this justification and supporting records. No unsupported “no JS” assertion.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.10:TS10-A01`
+`TSEP@0.1.0-draft.11:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -490,7 +490,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.10:TS10-A02`
+`TSEP@0.1.0-draft.11:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -514,7 +514,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.10:TS10-A03`
+`TSEP@0.1.0-draft.11:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.10:TS10-A04`
+`TSEP@0.1.0-draft.11:TS10-A04`
 
 **Required inputs**: crawl, intent.
 

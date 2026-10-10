@@ -36,6 +36,11 @@ contrôles, dont TS01 hors des quatre priorités. A01/A02 TS04 sont semiAuto, av
 revue des ressources fournie et liée aux preuves. Le parcours est implémenté ; la
 recette humaine et l'application réelle ne sont pas déduites des essais synthétiques.
 
+Draft.10 ajoute le lecteur DOM structuré ; draft.11 sépare l’agent HTTP réel des
+sémantiques TS07 et fournit un [laboratoire de navigation attribuée](same-navigation-laboratory.md).
+Les treize règles restent réparties dans cinq contrôles. Une exécution navigateur,
+une recette humaine et un audit du site exigent chacun leurs propres pièces.
+
 ### Décompte vérifié
 
 - **44 contrôles décrits** dans `spec/protocol.json`, avec procédure et attendus.

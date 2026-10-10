@@ -49,7 +49,7 @@ def plan(target):
     return value
 
 
-def policy_for(target, url):
+def policy_for(target, url, client_representation_only=False):
     intent = target['intent']
     policy = intent.get('robots_policy', {})
     record = target.get('robots', {})
@@ -61,6 +61,7 @@ def policy_for(target, url):
         'profile': policy.get('profile'), 'origin': parts.scheme+'://'+parts.netloc+'/',
         'target': url, 'product_token': policy.get('product_token'),
         'request_user_agent': intent['crawler'], 'declared_at': intent['declared_at'],
+        'client_representation_only': client_representation_only,
         'observed_at': record['observed_at'], 'context': target['context'], 'http': record.get('http')})
     reading = observation.get('body_reading', {})
     lines = [(r['line'], r['field'], r['pattern']) for r in reading.get('winning_lines', [])]
@@ -159,8 +160,13 @@ def access_rule(target, final_url, status):
     need(intent.get('access_basis') == 'test-client-only', 'Access assumptions not declared')
     if status in (401, 403):
         return 'fail', 'Observed HTTP access denial to test client'
+    if 'directive_crawler' in intent:
+        policy = intent.get('robots_policy')
+        need(intent['directive_crawler'] == 'googlebot' and isinstance(policy, dict) and
+             isinstance(policy.get('product_token'), str) and policy['product_token'].lower() == 'googlebot',
+             'Explicit directive crawler requires a matching robots product profile; HTTP agent is not the product token')
     if 'robots_policy' in intent:
-        actual, reason = policy_for(target, final_url)
+        actual, reason = policy_for(target, final_url, client_representation_only='directive_crawler' in intent)
         need(actual != 'unknown', reason)
         allowed = actual == 'allow'
     else:
@@ -172,9 +178,11 @@ def access_rule(target, final_url, status):
         _, code, headers, body = trace(record.get('http'), robots_url, intent['crawler'])
         need(code == 200 and utf8_media(headers, ('text/plain',), default_utf8=True), 'Unsupported robots response; no default access inferred')
         allowed = robots.legacy_allowed(text_body(body), final_url, intent['crawler'])
+    note = ('; directive_crawler=googlebot; policy applied only to HTTP client=' + intent['crawler']
+            + '; actual Googlebot representation unobserved') if 'directive_crawler' in intent else ''
     if not allowed:
-        return 'fail', 'Observed robots policy disallows this target crawler/path'
+        return 'fail', 'Observed robots policy disallows this target crawler/path' + note
     review = target.get('access_review', {})
     need(status == 200 and review.get('outcome') == 'no-obstacle' and review.get('reason'), 'HTTP access unresolved or challenge not reviewed')
     need(tsep.timestamp(review['observed_at']) >= tsep.timestamp(target['observed_at']), 'Access review predates the HTTP capture')
-    return 'pass', 'Robots allows path and no obstacle observed for declared test client; actual engine access unobserved'
+    return 'pass', 'Robots allows path and no obstacle observed for declared test client; actual engine access unobserved' + note

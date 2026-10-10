@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.10
+# Contrat de rapport — TSEP 0.1.0-draft.11
 
 ## Périmètre déclaré
 
@@ -232,13 +232,13 @@ FR/EN affiche la même cause. Décision et codes de sortie restent inchangés.
 
 ## Versions et revendications d’implémentation
 
-Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.10:TS01`. Ne jamais
+Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.11:TS01`. Ne jamais
 remplacer silencieusement un artefact publié. Changer applicabilité, attendus,
 preuves ou décisions exige une nouvelle version et une note de migration.
 TS01–TS44 restent des identités permanentes.
 
 La suite démontre seulement « réussit les tests d’échange des rapports fournis
-avec 0.1.0-draft.10 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
+avec 0.1.0-draft.11 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
 plus large exige une correspondance par règle et des limites publiées. Aucune
 interopérabilité avec un outil tiers n’a encore été démontrée.
 
@@ -273,3 +273,12 @@ restent indéterminées. Aucun repli vers la sérialisation pour obtenir un acco
 Les revues, en-têtes et sources conservent leur rôle ; aucune assimilation au moteur.
 Le [contrat détaillé](structured-rendering.md) et la [migration](migration-draft.10.md)
 définissent les bornes, décisions et distinctions avec les anciens candidats.
+
+## Agent de collecte et sémantique — draft.11
+
+Le champ facultatif préalable TS07 `directive_crawler=googlebot` distingue la
+sémantique des directives de `crawler`, agent HTTP exact inchangé. Il évalue
+uniquement la représentation reçue par ce client. A02 exige un profil robots
+explicite dont le produit concorde ; aucune assimilation à une visite Googlebot.
+Les anciennes entrées gardent leur comportement. Le [laboratoire attribué](same-navigation-laboratory.md)
+et la [migration](migration-draft.11.md) décrivent preuves, rejets et limites.

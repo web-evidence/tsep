@@ -8,8 +8,8 @@ la Search Console et un insight concret. Aucun ordre numérique n'est obligatoir
 | --- | --- | --- |
 | TS04 | Une règle de préproduction interdit l'exploration attendue | Draft.9 : deux règles, lecteur partagé TS07, ressources et parcours de revue ; recette humaine/application réelle à établir |
 | TS02 | Une migration mène à la mauvaise destination, ajoute un détour ou boucle | Draft.8 : règles, interpréteur et laboratoire avant/après de 20 requêtes locales ; parcours pratique du plan humain à compléter |
-| TS07 | Un noindex HTTP/source/rendu contredit l'intention ; robots peut empêcher sa lecture | Draft.10 : lecteur structuré intégré et cas figés ; collecte navigateur attribuable et revue à éprouver |
-| TS10 | Canonical HTTP, HTML, rendu, sitemap ou liens désignent des URL incompatibles | Draft.10 : lecteur structuré canonical/liens intégré ; collecte attribuable, limites source et revue de contenu à éprouver |
+| TS07 | Un noindex HTTP/source/rendu contredit l'intention ; robots peut empêcher sa lecture | Draft.11 : lecteur structuré et laboratoire de navigation attribuée ; exécutions livrées séparément, revue et application réelle à établir |
+| TS10 | Canonical HTTP, HTML, rendu, sitemap ou liens désignent des URL incompatibles | Draft.11 : lecteur structuré canonical/liens et laboratoire attribué ; exécutions livrées séparément, limites source et revue de contenu à éprouver |
 
 TS01 reste la base existante, sans être compté comme l'un de ces quatre objectifs.
 L'ordre de dépendance recommandé est TS04, TS02, TS07, TS10. TS02 peut avancer
