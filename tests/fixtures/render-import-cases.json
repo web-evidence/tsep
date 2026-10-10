@@ -1,0 +1,90 @@
+{
+  "format_version": 1,
+  "synthetic": true,
+  "registered_at": "2026-10-10T09:44:01.486943+00:00",
+  "scope": "Expectations frozen before importer and laboratory page implementation. Actual browser execution not yet established. No browser execution claimed by synthetic unit fixtures.",
+  "rules": [
+    "TS07-A01",
+    "TS07-A02",
+    "TS07-A03"
+  ],
+  "states": [
+    {
+      "id": "loaded",
+      "interactions": [],
+      "wait": "document ready; laboratory state loaded visible"
+    },
+    {
+      "id": "acted",
+      "interactions": [
+        "click #exercise"
+      ],
+      "wait": "laboratory state acted visible; synchronous click handler completed"
+    }
+  ],
+  "subresources": [],
+  "transport": "HTTP/1.1 uncompressed; inline scripts and style; unique campaign path; no-store; no external resources",
+  "cases": [
+    {
+      "id": "stable",
+      "label": "Page stable",
+      "expected": [
+        "pass",
+        "inconclusive",
+        "pass"
+      ],
+      "control": "NT"
+    },
+    {
+      "id": "added-after-click",
+      "label": "Noindex ajouté après le clic",
+      "expected": [
+        "pass",
+        "inconclusive",
+        "fail"
+      ],
+      "control": "NC"
+    },
+    {
+      "id": "corrected",
+      "label": "Scénario corrigé",
+      "expected": [
+        "pass",
+        "inconclusive",
+        "pass"
+      ],
+      "control": "NT"
+    },
+    {
+      "id": "removed-initial",
+      "label": "Noindex initial retiré par JavaScript",
+      "expected": [
+        "fail",
+        "inconclusive",
+        "inconclusive"
+      ],
+      "control": "NC"
+    },
+    {
+      "id": "script-error",
+      "label": "Erreur JavaScript après le clic",
+      "expected": [
+        "pass",
+        "inconclusive",
+        "inconclusive"
+      ],
+      "control": "NT"
+    }
+  ],
+  "import_counterexamples": [
+    "wrong source trace: A03 inconclusive",
+    "different navigation response bytes despite claimed source match: A03 inconclusive",
+    "missing planned state: A03 inconclusive",
+    "attributable failing state plus another misattributed: A03 fail",
+    "capture predates receipt: A03 inconclusive",
+    "navigation predates receipt or postdates DOM: A03 inconclusive",
+    "browser version absent, JS disabled, explicit errors, incomplete DOM: A03 inconclusive",
+    "altered input or receipt after preparation: import rejected",
+    "no automatic invented access review or C"
+  ]
+}
