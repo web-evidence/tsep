@@ -1,5 +1,10 @@
 # Independent development / Développement autonome
 
+The [evidence gallery guide](evidence-gallery.md) connects the existing methods
+and retained demonstrations without new collection or a cross-campaign score.
+Le [guide de galerie de preuves](evidence-gallery.md) organise les démonstrations
+existantes, en séparant cas réels, laboratoires et résultats expérimentaux.
+
 ## English
 
 This repository is TSEP's development source. It is independent of the Edikka
