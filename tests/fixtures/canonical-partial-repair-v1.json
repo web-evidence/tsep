@@ -1,0 +1,199 @@
+{
+  "version": "1",
+  "synthetic": true,
+  "protocol_version": "0.1.0-draft.18",
+  "purpose": "One fixed family, isolated/combined faults, partial repairs and sitemap regression. Actual browser/HTTP observations required. No supplied human content judgment.",
+  "rules": [
+    "TS10-A01",
+    "TS10-A02",
+    "TS10-A03",
+    "TS10-A04"
+  ],
+  "profiles": {
+    "canonical_source": "html-tree-canonical-v1",
+    "links_source": "html-tree-links-v2",
+    "dom": "structured-inventory-v2"
+  },
+  "roles": [
+    "preferred",
+    "variant",
+    "catalog"
+  ],
+  "paths": {
+    "preferred": "/product",
+    "variant": "/product?color=blue",
+    "catalog": "/catalog",
+    "landing": "/landing",
+    "sitemap": "/sitemap.xml"
+  },
+  "faults": {
+    "canonical": "Only the variant declares itself as canonical instead of the fixed preferred URL, in source and rendered state.",
+    "destination": "The preferred URL responds 302 to /landing, whose final 200 HTML still declares the original preference. This can fail A01 and A02.",
+    "sitemap": "The sitemap contains the preferred URL and the competing variant.",
+    "links": "The catalog anchor points to the competing variant instead of the preferred URL."
+  },
+  "acquisition": {
+    "navigation": "One real top-level browser navigation per HTML role per phase, 36 in order. Capture all redirect hops and exactly one rendered export per navigation.",
+    "sitemap": "The instrumented catalog page performs exactly one same-origin no-store fetch before its DOM capture. Preserve actual browser request and XML response plus the body digest reported by the page.",
+    "render_wait": "window.load after one declared sitemap fetch for catalog; no DOM mutation",
+    "body_review": "Never synthesize or prefill a human content decision; missing review keeps A02 inconclusive after objective destination contradictions disappear."
+  },
+  "phases": [
+    {
+      "id": "baseline",
+      "faults": [],
+      "expected": [
+        "pass",
+        "inconclusive",
+        "pass",
+        "pass"
+      ],
+      "expected_control": "NT"
+    },
+    {
+      "id": "isolated-canonical",
+      "faults": [
+        "canonical"
+      ],
+      "expected": [
+        "fail",
+        "inconclusive",
+        "pass",
+        "pass"
+      ],
+      "expected_control": "NC"
+    },
+    {
+      "id": "isolated-destination",
+      "faults": [
+        "destination"
+      ],
+      "expected": [
+        "fail",
+        "fail",
+        "pass",
+        "pass"
+      ],
+      "expected_control": "NC"
+    },
+    {
+      "id": "isolated-sitemap",
+      "faults": [
+        "sitemap"
+      ],
+      "expected": [
+        "pass",
+        "inconclusive",
+        "fail",
+        "pass"
+      ],
+      "expected_control": "NC"
+    },
+    {
+      "id": "isolated-links",
+      "faults": [
+        "links"
+      ],
+      "expected": [
+        "pass",
+        "inconclusive",
+        "pass",
+        "fail"
+      ],
+      "expected_control": "NC"
+    },
+    {
+      "id": "combined",
+      "faults": [
+        "canonical",
+        "destination",
+        "sitemap",
+        "links"
+      ],
+      "expected": [
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ],
+      "expected_control": "NC"
+    },
+    {
+      "id": "repair-destination",
+      "faults": [
+        "canonical",
+        "sitemap",
+        "links"
+      ],
+      "expected": [
+        "fail",
+        "inconclusive",
+        "fail",
+        "fail"
+      ],
+      "expected_control": "NC"
+    },
+    {
+      "id": "repair-canonical",
+      "faults": [
+        "sitemap",
+        "links"
+      ],
+      "expected": [
+        "pass",
+        "inconclusive",
+        "fail",
+        "fail"
+      ],
+      "expected_control": "NC"
+    },
+    {
+      "id": "repair-sitemap",
+      "faults": [
+        "links"
+      ],
+      "expected": [
+        "pass",
+        "inconclusive",
+        "pass",
+        "fail"
+      ],
+      "expected_control": "NC"
+    },
+    {
+      "id": "repair-links",
+      "faults": [],
+      "expected": [
+        "pass",
+        "inconclusive",
+        "pass",
+        "pass"
+      ],
+      "expected_control": "NT"
+    },
+    {
+      "id": "regress-sitemap",
+      "faults": [
+        "sitemap"
+      ],
+      "expected": [
+        "pass",
+        "inconclusive",
+        "fail",
+        "pass"
+      ],
+      "expected_control": "NC"
+    },
+    {
+      "id": "repair-regression",
+      "faults": [],
+      "expected": [
+        "pass",
+        "inconclusive",
+        "pass",
+        "pass"
+      ],
+      "expected_control": "NT"
+    }
+  ]
+}

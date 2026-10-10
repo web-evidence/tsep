@@ -1,0 +1,52 @@
+{
+  "frozen_at": "2026-10-10T23:01:43.887653+00:00",
+  "base_commit": "6f3877de40a60b13f52018fb13e024624898d060",
+  "fixture": "tests/fixtures/canonical-partial-repair-v1.json",
+  "sha256": "974988f197290076fe199466a619da0b24fa81e4f1a01699cb0cb862a4b671b6",
+  "phases": 12,
+  "browser_navigations": 36,
+  "implementation_started": false,
+  "scope": "Authored expected matrix frozen after a six-input engineering diagnostic, before this new laboratory implementation and actual browser collection. Not independent validation.",
+  "diagnostic_sha256": "4c7399061fe868cf83474f9b8f2bb7555f4a16fbebda9edefea0dbed240190e9",
+  "qualification": {
+    "scope": "Authored HTTP client + trees, not actual browser observations; finite preflight.",
+    "sha256": "69e7b852c8e105262a2d5dafc75b00fa47ed65d8640e700f93d5e03246ee63b7",
+    "phases": 12,
+    "all_expected_matched": true,
+    "node": "24.19.0",
+    "python": "3.9.6",
+    "actual_browser_campaign": false
+  },
+  "limitations": [
+    "Author-declared chronology and finite expectations, not independent validation",
+    "Transport HTTP requests are actual loopback requests made by a test client; all trees are authored",
+    "No real human content judgment, Edikka collection, GSC data or normative change"
+  ],
+  "post_review_qualification": {
+    "scope": "Authored HTTP client + trees, not actual browser observations; finite preflight.",
+    "sha256": "a602205f162d9c8ce99ced027ed2cd4390fe95db40aeb212312fbb893d3d9016",
+    "all_expected_matched": true,
+    "phases": 12,
+    "change": "Explicit phase/navigation witness in retained DOM; old-phase tree and missing/duplicate witnesses rejected",
+    "new_tests": 2,
+    "actual_browser_campaign": false
+  },
+  "empty_connection_correction": {
+    "observed_failure": {
+      "scope": "One actual Chrome calibration, no family control navigations",
+      "request_bytes": 0,
+      "reason": "Idle TCP connection timed out before any HTTP bytes",
+      "old_tools_sha256": "5c69ed8582e57f37d3f96bf3ce6c35e98a89000f8c06c7ec7c7cf27288611709",
+      "failure_record_sha256": "c742cae582ab9bc3252756174b5b25c789b4771b549598d7ef30fd6691c40e2f"
+    },
+    "new_behavior": "Retain zero-byte idle/closed TCP events separately, check exact diagnostic bytes, reject any partial HTTP, do not rewrite refused capture",
+    "qualification": {
+      "scope": "Authored HTTP client + trees, not actual browser observations; finite preflight.",
+      "sha256": "cb52b3ec85ce03ad98c0179a754ea4642fb7948572bc8612672b53e9d430e28d",
+      "all_expected_matched": true,
+      "phases": 12,
+      "actual_browser_campaign": false
+    },
+    "focused_tests": 12
+  }
+}

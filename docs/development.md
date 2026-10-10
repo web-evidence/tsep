@@ -1,4 +1,6 @@
 Current integration: draft.18, interpreter 18 / adapter 19 / replay 3.
+The [partial-family repair laboratory](canonical-partial-repair.md) provides a frozen twelve-phase recipe and an attributed browser/HTTP transport. Its actual browser campaign is separate from authored transport tests.
+Le laboratoire de corrections partielles garde une famille fixe et une revue finale vide ; la recette n’est pas une observation navigateur.
 Replay 3 adds an explicit [Python supervisor comparison](replay-comparison.md), with exact comparison still the default.
 Rejeu 3 : les versions Python restent visibles ; seules leurs différences précisément liées peuvent être admises sur option.
 Prior [source links v2](source-link-policy-v2.md) retain uncertainty under an unparseable first base; v1 stays unchanged.
