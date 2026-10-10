@@ -1,0 +1,72 @@
+{
+  "kind": "rendered-link-observation-provenance",
+  "normative_effect": "none",
+  "capture_attempts": [
+    {
+      "url": "https://html.spec.whatwg.org/multipage/links.html",
+      "at": "2026-10-10T21:34:22.632051+00:00",
+      "capture": null,
+      "reason": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "scope": "Reference lookup; capture failed."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/urls-and-fetching.html",
+      "at": "2026-10-10T21:34:22.641963+00:00",
+      "capture": null,
+      "reason": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "scope": "Reference lookup; capture failed."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/semantics.html",
+      "at": "2026-10-10T21:34:22.644138+00:00",
+      "capture": null,
+      "reason": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "scope": "Reference lookup; capture failed."
+    },
+    {
+      "url": "https://w3c.github.io/webappsec-csp/",
+      "at": "2026-10-10T21:34:22.646368+00:00",
+      "capture": null,
+      "reason": "<urlopen error [Errno 8] nodename nor servname provided, or not known>",
+      "scope": "Reference lookup; capture failed."
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://html.spec.whatwg.org/multipage/links.html",
+      "at": "2026-10-10T21:36:19.460892+00:00",
+      "status": 200,
+      "final_url": "https://html.spec.whatwg.org/multipage/links.html",
+      "sha256": "dad236bbd0ae7bc0b5f46af9dac0125390ced1e9f381789f5972034d987504c2",
+      "capture": ".local/rendered-link-observation-2026-10-10/references/html-links.html",
+      "scope": "href getter, document/frozen base and CSP base-uri only; no engine/site claim."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/urls-and-fetching.html",
+      "at": "2026-10-10T21:36:20.533561+00:00",
+      "status": 200,
+      "final_url": "https://html.spec.whatwg.org/multipage/urls-and-fetching.html",
+      "sha256": "ef521eb8dd53e3a86b383949f90208183aecedf30a94fcec35f36ee55dab92e4",
+      "capture": ".local/rendered-link-observation-2026-10-10/references/html-base.html",
+      "scope": "href getter, document/frozen base and CSP base-uri only; no engine/site claim."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/semantics.html",
+      "at": "2026-10-10T21:36:21.478402+00:00",
+      "status": 200,
+      "final_url": "https://html.spec.whatwg.org/multipage/semantics.html",
+      "sha256": "19dc5bf13461b20dcb5fabec098d726e319986b30fc6b84cba98a037472fc82f",
+      "capture": ".local/rendered-link-observation-2026-10-10/references/html-base-element.html",
+      "scope": "href getter, document/frozen base and CSP base-uri only; no engine/site claim."
+    },
+    {
+      "url": "https://w3c.github.io/webappsec-csp/",
+      "at": "2026-10-10T21:36:22.524677+00:00",
+      "status": 200,
+      "final_url": "https://w3c.github.io/webappsec-csp/",
+      "sha256": "75fb501f1353eecc75398403e13dbde1ad8ec25d6990340d33a3479f28111db2",
+      "capture": ".local/rendered-link-observation-2026-10-10/references/csp.html",
+      "scope": "href getter, document/frozen base and CSP base-uri only; no engine/site claim."
+    }
+  ]
+}

@@ -1,0 +1,492 @@
+{
+  "kind": "authored-rendered-link-recipes",
+  "version": "1",
+  "authored_at": "2026-10-10T21:35:04.336920+00:00",
+  "synthetic": true,
+  "normative_effect": "none",
+  "scope": "Prior-authored browser observations. No click, navigation to destinations, crawl, Google claim, validity proof or TSEP verdict.",
+  "placeholders": {
+    "${URL}": "exact case document URL without query",
+    "${ORIGIN}": "fresh loopback origin"
+  },
+  "cases": [
+    {
+      "id": "basic",
+      "head": "",
+      "body": "<a data-probe=\"absent\">lien</a><a data-probe=\"empty\" href=\"\">lien</a><a data-probe=\"fragment\" href=\"#part\">lien</a><a data-probe=\"query\" href=\"?q=1\">lien</a><a data-probe=\"relative\" href=\"../cible\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "absent": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": null,
+          "href_property": ""
+        },
+        "empty": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "",
+          "href_property": "${URL}"
+        },
+        "fragment": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "#part",
+          "href_property": "${URL}#part"
+        },
+        "query": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "?q=1",
+          "href_property": "${URL}?q=1"
+        },
+        "relative": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "../cible",
+          "href_property": "${ORIGIN}/cible"
+        }
+      }
+    },
+    {
+      "id": "first-base",
+      "head": "<base href=\"https://example.test/one/\"><base href=\"https://example.test/two/\">",
+      "body": "<a data-probe=\"link\" href=\"x\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "https://example.test/one/",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "x",
+          "href_property": "https://example.test/one/x"
+        }
+      }
+    },
+    {
+      "id": "target-only",
+      "head": "<base target=\"_blank\"><base href=\"https://example.test/two/\">",
+      "body": "<a data-probe=\"link\" href=\"x\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "https://example.test/two/",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "x",
+          "href_property": "https://example.test/two/x"
+        }
+      }
+    },
+    {
+      "id": "invalid-base",
+      "head": "<base href=\"http://[\"><base href=\"https://example.test/two/\">",
+      "body": "<a data-probe=\"link\" href=\"x\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "x",
+          "href_property": "${ORIGIN}/case/x"
+        }
+      }
+    },
+    {
+      "id": "data-base",
+      "head": "<base href=\"data:text/plain,x\"><base href=\"https://example.test/two/\">",
+      "body": "<a data-probe=\"link\" href=\"x\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "x",
+          "href_property": "${ORIGIN}/case/x"
+        }
+      }
+    },
+    {
+      "id": "javascript-base",
+      "head": "<base href=\"javascript:void(0)\"><base href=\"https://example.test/two/\">",
+      "body": "<a data-probe=\"link\" href=\"x\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "x",
+          "href_property": "${ORIGIN}/case/x"
+        }
+      }
+    },
+    {
+      "id": "changed-base",
+      "head": "<base id=\"b\" href=\"https://example.test/before/\">",
+      "body": "<a data-probe=\"link\" href=\"x\">lien</a>",
+      "setup": "document.getElementById('b').href='https://example.test/after/';",
+      "csp": "",
+      "expected_base": "https://example.test/after/",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "x",
+          "href_property": "https://example.test/after/x"
+        }
+      }
+    },
+    {
+      "id": "removed-base",
+      "head": "<base id=\"b\" href=\"https://example.test/before/\"><base href=\"https://example.test/after/\">",
+      "body": "<a data-probe=\"link\" href=\"x\">lien</a>",
+      "setup": "document.getElementById('b').remove();",
+      "csp": "",
+      "expected_base": "https://example.test/after/",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "x",
+          "href_property": "https://example.test/after/x"
+        }
+      }
+    },
+    {
+      "id": "csp-none",
+      "head": "<base href=\"https://example.test/blocked/\">",
+      "body": "<a data-probe=\"link\" href=\"x\">lien</a>",
+      "setup": "",
+      "csp": "base-uri 'none'",
+      "expected_base": "${URL}",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "x",
+          "href_property": "${ORIGIN}/case/x"
+        }
+      }
+    },
+    {
+      "id": "csp-self-allowed",
+      "head": "<base href=\"${ORIGIN}/allowed/\">",
+      "body": "<a data-probe=\"link\" href=\"x\">lien</a>",
+      "setup": "",
+      "csp": "base-uri 'self'",
+      "expected_base": "${ORIGIN}/allowed/",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "x",
+          "href_property": "${ORIGIN}/allowed/x"
+        }
+      }
+    },
+    {
+      "id": "csp-self-blocked",
+      "head": "<base href=\"https://example.test/blocked/\">",
+      "body": "<a data-probe=\"link\" href=\"x\">lien</a>",
+      "setup": "",
+      "csp": "base-uri 'self'",
+      "expected_base": "${URL}",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "x",
+          "href_property": "${ORIGIN}/case/x"
+        }
+      }
+    },
+    {
+      "id": "changed-href",
+      "head": "",
+      "body": "<a data-probe=\"link\" href=\"/before\">lien</a>",
+      "setup": "document.querySelector('[data-probe=link]').setAttribute('href','/after');",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "/after",
+          "href_property": "${ORIGIN}/after"
+        }
+      }
+    },
+    {
+      "id": "invalid-href",
+      "head": "",
+      "body": "<a data-probe=\"bad\" href=\"http://[mauvais\">lien</a><a data-probe=\"valid\" href=\"https://example.test/ok\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "bad": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "http://[mauvais",
+          "href_property": "http://[mauvais"
+        },
+        "valid": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "https://example.test/ok",
+          "href_property": "https://example.test/ok"
+        }
+      }
+    },
+    {
+      "id": "unicode",
+      "head": "",
+      "body": "<a data-probe=\"link\" href=\"/café?q=été\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "/café?q=été",
+          "href_property": "${ORIGIN}/caf%C3%A9?q=%C3%A9t%C3%A9"
+        }
+      }
+    },
+    {
+      "id": "non-http",
+      "head": "",
+      "body": "<a data-probe=\"mail\" href=\"mailto:contact@example.test\">lien</a><a data-probe=\"script\" href=\"javascript:void(0)\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "mail": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "mailto:contact@example.test",
+          "href_property": "mailto:contact@example.test"
+        },
+        "script": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "javascript:void(0)",
+          "href_property": "javascript:void(0)"
+        }
+      }
+    },
+    {
+      "id": "backslash",
+      "head": "",
+      "body": "<a data-probe=\"link\" href=\"http:\\x\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "http:\\x",
+          "href_property": "${ORIGIN}/x"
+        }
+      }
+    },
+    {
+      "id": "area",
+      "head": "",
+      "body": "<map name=\"m\"><area data-probe=\"area\" href=\"../area\"><area data-probe=\"empty\" href=\"\"></map>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "area": {
+          "tag": "area",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "../area",
+          "href_property": "${ORIGIN}/area"
+        },
+        "empty": {
+          "tag": "area",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "",
+          "href_property": "${URL}"
+        }
+      }
+    },
+    {
+      "id": "svg",
+      "head": "",
+      "body": "<svg xmlns=\"http://www.w3.org/2000/svg\"><a data-probe=\"svg\" href=\"/plain\" xlink:href=\"/legacy\" xmlns:xlink=\"http://www.w3.org/1999/xlink\"><text>SVG</text></a></svg>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "svg": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/2000/svg",
+          "raw_href": "/plain",
+          "href_property": null,
+          "xlink_href": "/legacy"
+        }
+      }
+    },
+    {
+      "id": "foreign-html",
+      "head": "",
+      "body": "<svg><foreignObject><a data-probe=\"link\" href=\"/html\">lien</a></foreignObject></svg>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "/html",
+          "href_property": "${ORIGIN}/html",
+          "foreign_ancestor": true
+        }
+      }
+    },
+    {
+      "id": "template",
+      "head": "",
+      "body": "<template data-probe=\"template\"><a data-probe=\"hidden\" href=\"/hidden\">lien</a></template><a data-probe=\"live\" href=\"/live\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "template": {
+          "tag": "template",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": null,
+          "href_property": null
+        },
+        "live": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "/live",
+          "href_property": "${ORIGIN}/live"
+        }
+      }
+    },
+    {
+      "id": "open-shadow",
+      "head": "",
+      "body": "<div id=\"host\"><a data-probe=\"light\" href=\"/light\">lien</a></div>",
+      "setup": "document.getElementById('host').attachShadow({mode:'open'}).innerHTML='<slot></slot><a data-probe=shadow href=/shadow>shadow</a>';",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "light": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "/light",
+          "href_property": "${ORIGIN}/light",
+          "in_shadow": false
+        },
+        "shadow": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "/shadow",
+          "href_property": "${ORIGIN}/shadow",
+          "in_shadow": true
+        }
+      }
+    },
+    {
+      "id": "closed-shadow",
+      "head": "",
+      "body": "<div id=\"host\"></div>",
+      "setup": "document.getElementById('host').attachShadow({mode:'closed'}).innerHTML='<a data-probe=closed href=/closed>closed</a>';",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {}
+    },
+    {
+      "id": "body-base",
+      "head": "",
+      "body": "<base href=\"https://example.test/body/\"><a data-probe=\"link\" href=\"x\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "https://example.test/body/",
+      "expected": {
+        "link": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "x",
+          "href_property": "https://example.test/body/x"
+        }
+      }
+    },
+    {
+      "id": "frame",
+      "head": "",
+      "body": "<iframe data-probe=\"frame\" srcdoc=\"&lt;a data-probe=hidden href=/inside&gt;inside&lt;/a&gt;\"></iframe><a data-probe=\"live\" href=\"/live\">lien</a>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "frame": {
+          "tag": "iframe",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": null,
+          "href_property": null
+        },
+        "live": {
+          "tag": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": "/live",
+          "href_property": "${ORIGIN}/live"
+        }
+      }
+    },
+    {
+      "id": "forms",
+      "head": "",
+      "body": "<form data-probe=\"form\" action=\"/send\"><button data-probe=\"button\" formaction=\"/other\">send</button><input data-probe=\"input\" formaction=\"/input\" type=\"submit\"></form>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {
+        "form": {
+          "tag": "form",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": null,
+          "href_property": null
+        },
+        "button": {
+          "tag": "button",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": null,
+          "href_property": null
+        },
+        "input": {
+          "tag": "input",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "raw_href": null,
+          "href_property": null
+        }
+      }
+    },
+    {
+      "id": "no-links",
+      "head": "",
+      "body": "<p>Aucun lien instrumenté</p>",
+      "setup": "",
+      "csp": "",
+      "expected_base": "${URL}",
+      "expected": {}
+    }
+  ]
+}

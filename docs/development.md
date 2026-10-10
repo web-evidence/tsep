@@ -1,3 +1,6 @@
+Experimental [rendered-link observer 1](rendered-link-observation.md) retains href properties and effective bases.
+Qualification navigateur : 25/26 attentes, divergence de base invalide conservée ; draft.17 inchangé.
+
 Current integration: draft.17, interpreter 17 / adapter 18 / replay 2.
 Optional prior [A04 source links](source-link-policy.md); [migration](migration-draft.17.md).
 Convergence de famille déclarée, comptes et inconnues explicites ; lecteurs rendus inchangés.

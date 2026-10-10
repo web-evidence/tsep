@@ -87,3 +87,8 @@ without live-test, ranking or causal claims. Publication remains a separate acti
 Draft.14: [sitemap page locations / URL de pages](sitemap-locations.md), explicit prior reader;
 language/image annotations retained without assessment. Profil historique conservé ;
 A03 seule ne suffit pas à établir TS10. [Migration](migration-draft.14.md).
+
+Expérience de [liens rendus](rendered-link-observation.md) : 26 recettes dans le navigateur,
+25 attentes satisfaites et une divergence de base invalide non résolue. Aucun nouveau
+verdict A04. Browser experiment: 25/26 matches; unresolved invalid-base discrepancy,
+no normative promotion or completion claim.
