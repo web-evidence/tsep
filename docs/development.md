@@ -398,3 +398,15 @@ Neuf recettes synthétiques prédéclarées, liaison sources/POST/chronologie et
 hors ligne. Le cœur de comparaison 1 reste intact ; migration explicite, tests
 d'altération, doublons, absence, indisponibilité et conservation des écarts.
 Aucune validation indépendante des règles ni modification normative.
+
+## Canonical state sequences / Séquences d’états canonical
+
+[Sequence experiment 1](canonical-state-sequences.md) adds an ordered ledger and
+a three-state synthetic laboratory. It preserves earlier contradictions, unknowns
+and missing states, without a sequence verdict or stability claim. One navigation
+per page, chained receipts, fixed actions, no retry. Candidate 1/2 remain unchanged.
+
+L’[expérience de séquences 1](canonical-state-sequences.md) conserve trois états
+prédéclarés par page, leurs écarts et leurs lacunes, sans verdict global ni preuve
+de stabilité. Les tests incluent altérations avec empreintes recalculées, ruptures
+de chaîne, marqueur divergent et rejeu hors réseau. Aucun changement normatif.

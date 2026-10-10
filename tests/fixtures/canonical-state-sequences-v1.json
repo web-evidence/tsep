@@ -1,0 +1,340 @@
+{
+  "kind": "synthetic-canonical-state-sequence-recipes",
+  "version": "1",
+  "frozen_at": "2026-10-10T13:07:38.680604+00:00",
+  "normative": false,
+  "capture_script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+  "environments": [
+    "integrated",
+    "chrome"
+  ],
+  "method": "canonical-state-sequence-v1",
+  "capture_timing": "initial synchronously in window.load callback; next states synchronously after the planned mutation in click handler, before first await; no timer",
+  "failure_policy": "Each next action waits for prior receipt. On missing/invalid receipt, stop sequence, keep attempts, mark remaining states not received, never retry.",
+  "summary_policy": "Ordered individual outcomes plus contradiction state ids, last planned state, missing/undetermined ids. No aggregate outcome, correction or stability verdict.",
+  "limitations": [
+    "Synthetic recipes designed knowing comparison rules",
+    "APIs, operator identity, clocks, causal connection and execution are not authenticated",
+    "Previous receipt is an internal chain, not a signature",
+    "No observation between captures; no proof of stability or engine processing",
+    "One navigation, three planned snapshots; these snapshots are not retries"
+  ],
+  "cases": [
+    {
+      "id": "unchanged",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "actions": [
+        "",
+        ""
+      ],
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": []
+      },
+      "states": [
+        {
+          "id": "initial",
+          "action": "load",
+          "expected": {
+            "outcome": "agreement-in-record",
+            "reasons": [
+              "exact-declarations-match"
+            ],
+            "ready_state": "complete",
+            "traversal_complete": true,
+            "stop_reason": null,
+            "canonicals": [
+              {
+                "id": "primary",
+                "raw_href": "{base}/product",
+                "resolved_href": "{base}/product",
+                "position": "head-direct"
+              }
+            ]
+          }
+        },
+        {
+          "id": "after-action-1",
+          "action": "click #advance 1",
+          "expected": {
+            "outcome": "agreement-in-record",
+            "reasons": [
+              "exact-declarations-match"
+            ],
+            "ready_state": "complete",
+            "traversal_complete": true,
+            "stop_reason": null,
+            "canonicals": [
+              {
+                "id": "primary",
+                "raw_href": "{base}/product",
+                "resolved_href": "{base}/product",
+                "position": "head-direct"
+              }
+            ]
+          }
+        },
+        {
+          "id": "after-action-2",
+          "action": "click #advance 2",
+          "expected": {
+            "outcome": "agreement-in-record",
+            "reasons": [
+              "exact-declarations-match"
+            ],
+            "ready_state": "complete",
+            "traversal_complete": true,
+            "stop_reason": null,
+            "canonicals": [
+              {
+                "id": "primary",
+                "raw_href": "{base}/product",
+                "resolved_href": "{base}/product",
+                "position": "head-direct"
+              }
+            ]
+          }
+        }
+      ],
+      "interpretation_limit": "Records are instants; no continuous stability claim"
+    },
+    {
+      "id": "conflict-then-return",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "actions": [
+        "document.getElementById('primary').setAttribute('href','{base}/other');",
+        "document.getElementById('primary').setAttribute('href','{base}/product');"
+      ],
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": []
+      },
+      "states": [
+        {
+          "id": "initial",
+          "action": "load",
+          "expected": {
+            "outcome": "agreement-in-record",
+            "reasons": [
+              "exact-declarations-match"
+            ],
+            "ready_state": "complete",
+            "traversal_complete": true,
+            "stop_reason": null,
+            "canonicals": [
+              {
+                "id": "primary",
+                "raw_href": "{base}/product",
+                "resolved_href": "{base}/product",
+                "position": "head-direct"
+              }
+            ]
+          }
+        },
+        {
+          "id": "after-action-1",
+          "action": "click #advance 1",
+          "expected": {
+            "outcome": "contradiction-in-record",
+            "reasons": [
+              "raw-href-differs"
+            ],
+            "ready_state": "complete",
+            "traversal_complete": true,
+            "stop_reason": null,
+            "canonicals": [
+              {
+                "id": "primary",
+                "raw_href": "{base}/other",
+                "resolved_href": "{base}/other",
+                "position": "head-direct"
+              }
+            ]
+          }
+        },
+        {
+          "id": "after-action-2",
+          "action": "click #advance 2",
+          "expected": {
+            "outcome": "agreement-in-record",
+            "reasons": [
+              "exact-declarations-match"
+            ],
+            "ready_state": "complete",
+            "traversal_complete": true,
+            "stop_reason": null,
+            "canonicals": [
+              {
+                "id": "primary",
+                "raw_href": "{base}/product",
+                "resolved_href": "{base}/product",
+                "position": "head-direct"
+              }
+            ]
+          }
+        }
+      ],
+      "interpretation_limit": "Records are instants; no continuous stability claim"
+    },
+    {
+      "id": "body-then-head",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "actions": [
+        "document.body.appendChild(document.getElementById('primary'));",
+        "document.head.appendChild(document.getElementById('primary'));"
+      ],
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": []
+      },
+      "states": [
+        {
+          "id": "initial",
+          "action": "load",
+          "expected": {
+            "outcome": "agreement-in-record",
+            "reasons": [
+              "exact-declarations-match"
+            ],
+            "ready_state": "complete",
+            "traversal_complete": true,
+            "stop_reason": null,
+            "canonicals": [
+              {
+                "id": "primary",
+                "raw_href": "{base}/product",
+                "resolved_href": "{base}/product",
+                "position": "head-direct"
+              }
+            ]
+          }
+        },
+        {
+          "id": "after-action-1",
+          "action": "click #advance 1",
+          "expected": {
+            "outcome": "undetermined",
+            "reasons": [
+              "ambiguous-placement"
+            ],
+            "ready_state": "complete",
+            "traversal_complete": true,
+            "stop_reason": null,
+            "canonicals": [
+              {
+                "id": "primary",
+                "raw_href": "{base}/product",
+                "resolved_href": "{base}/product",
+                "position": "body"
+              }
+            ]
+          }
+        },
+        {
+          "id": "after-action-2",
+          "action": "click #advance 2",
+          "expected": {
+            "outcome": "agreement-in-record",
+            "reasons": [
+              "exact-declarations-match"
+            ],
+            "ready_state": "complete",
+            "traversal_complete": true,
+            "stop_reason": null,
+            "canonicals": [
+              {
+                "id": "primary",
+                "raw_href": "{base}/product",
+                "resolved_href": "{base}/product",
+                "position": "head-direct"
+              }
+            ]
+          }
+        }
+      ],
+      "interpretation_limit": "Records are instants; no continuous stability claim"
+    },
+    {
+      "id": "constructed-between-captures",
+      "head": "<link id=\"primary\" rel=\"canonical\" href=\"{base}/product\">",
+      "actions": [
+        "const p=document.getElementById('primary');p.setAttribute('href','{base}/other');p.setAttribute('href','{base}/product');",
+        ""
+      ],
+      "intent": {
+        "preferred_url": "{base}/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": []
+      },
+      "states": [
+        {
+          "id": "initial",
+          "action": "load",
+          "expected": {
+            "outcome": "agreement-in-record",
+            "reasons": [
+              "exact-declarations-match"
+            ],
+            "ready_state": "complete",
+            "traversal_complete": true,
+            "stop_reason": null,
+            "canonicals": [
+              {
+                "id": "primary",
+                "raw_href": "{base}/product",
+                "resolved_href": "{base}/product",
+                "position": "head-direct"
+              }
+            ]
+          }
+        },
+        {
+          "id": "after-action-1",
+          "action": "click #advance 1",
+          "expected": {
+            "outcome": "agreement-in-record",
+            "reasons": [
+              "exact-declarations-match"
+            ],
+            "ready_state": "complete",
+            "traversal_complete": true,
+            "stop_reason": null,
+            "canonicals": [
+              {
+                "id": "primary",
+                "raw_href": "{base}/product",
+                "resolved_href": "{base}/product",
+                "position": "head-direct"
+              }
+            ]
+          }
+        },
+        {
+          "id": "after-action-2",
+          "action": "click #advance 2",
+          "expected": {
+            "outcome": "agreement-in-record",
+            "reasons": [
+              "exact-declarations-match"
+            ],
+            "ready_state": "complete",
+            "traversal_complete": true,
+            "stop_reason": null,
+            "canonicals": [
+              {
+                "id": "primary",
+                "raw_href": "{base}/product",
+                "resolved_href": "{base}/product",
+                "position": "head-direct"
+              }
+            ]
+          }
+        }
+      ],
+      "interpretation_limit": "Transition inside one handler is constructed, not an observed intermediate DOM"
+    }
+  ]
+}
