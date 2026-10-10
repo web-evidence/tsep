@@ -1,0 +1,700 @@
+{
+  "kind": "authored-rendered-canonical-url-prefix-cases",
+  "version": "1",
+  "normative": false,
+  "frozen_at": "2026-10-10T11:55:39.986450+00:00",
+  "origin": "After initial implementation and first review fixes, before the URL prefix guard extension. Based on a narrow reading of WHATWG URL preprocessing, not full URL parsing or browser observations.",
+  "pre_correction_code_sha256": "8f9d884c00fc6f5032013d3455661fea91b7efe661b16c2c339c4385b5897108",
+  "cases": [
+    {
+      "id": "leading-nul",
+      "record": {
+        "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+        "tree": {
+          "format": "rendered-metadata-tree",
+          "version": "2",
+          "limits": {
+            "nodes": 1024,
+            "depth": 64,
+            "tree_utf8_bytes": 524288,
+            "serialization_utf8_bytes": 262144,
+            "cooperative_ms": 2000,
+            "invocation_timeout_ms": 5000
+          },
+          "document_url": "https://example.test/page",
+          "base_uri": "https://example.test/page",
+          "ready_state": "complete",
+          "execution_context": "not-attested",
+          "scripting": "enabled-by-laboratory-plan",
+          "closed_shadow_coverage": "unknown",
+          "frame_documents": "not-collected",
+          "template_fragments": "not-collected",
+          "origin_attribution": "unknown",
+          "serialization": {
+            "available": true,
+            "html": "AUTHORED FIXTURE, NOT A BROWSER"
+          },
+          "nodes": [
+            {
+              "id": 0,
+              "parent": null,
+              "edge": "root",
+              "index": 0,
+              "type": 9,
+              "name": "#document",
+              "namespace": null,
+              "attributes": [],
+              "data": null,
+              "child_count": 1,
+              "shadow": "not-element",
+              "resolved_href": null
+            },
+            {
+              "id": 1,
+              "parent": 0,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "html",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 2,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            },
+            {
+              "id": 2,
+              "parent": 1,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "head",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 1,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            },
+            {
+              "id": 3,
+              "parent": 2,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "link",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [
+                {
+                  "name": "rel",
+                  "local_name": "rel",
+                  "namespace": null,
+                  "value": "canonical"
+                },
+                {
+                  "name": "href",
+                  "local_name": "href",
+                  "namespace": null,
+                  "value": "\u0000https://example.test/product"
+                }
+              ],
+              "data": null,
+              "child_count": 0,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": "https://example.test/product"
+            },
+            {
+              "id": 4,
+              "parent": 1,
+              "edge": "child",
+              "index": 1,
+              "type": 1,
+              "name": "body",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 0,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            }
+          ],
+          "reported_node_count": 5,
+          "traversal_complete": true,
+          "stop_reason": null,
+          "api_errors": [],
+          "elapsed_ms": 0
+        }
+      },
+      "intent": {
+        "format": "rendered-canonical-intent",
+        "version": "1",
+        "mode": "authored-synthetic",
+        "state_label": "authored load state, not browser-observed",
+        "document_url": "https://example.test/page",
+        "preferred_url": "https://example.test/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "record_sha256": "3715b756051971549e01815e6c62cc49ddbcf32bd5bfb8b95c7b60c945a67214"
+      },
+      "expected": {
+        "outcome": "undetermined",
+        "reasons": [
+          "absolute-raw-resolved-difference"
+        ]
+      }
+    },
+    {
+      "id": "leading-unit-separator",
+      "record": {
+        "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+        "tree": {
+          "format": "rendered-metadata-tree",
+          "version": "2",
+          "limits": {
+            "nodes": 1024,
+            "depth": 64,
+            "tree_utf8_bytes": 524288,
+            "serialization_utf8_bytes": 262144,
+            "cooperative_ms": 2000,
+            "invocation_timeout_ms": 5000
+          },
+          "document_url": "https://example.test/page",
+          "base_uri": "https://example.test/page",
+          "ready_state": "complete",
+          "execution_context": "not-attested",
+          "scripting": "enabled-by-laboratory-plan",
+          "closed_shadow_coverage": "unknown",
+          "frame_documents": "not-collected",
+          "template_fragments": "not-collected",
+          "origin_attribution": "unknown",
+          "serialization": {
+            "available": true,
+            "html": "AUTHORED FIXTURE, NOT A BROWSER"
+          },
+          "nodes": [
+            {
+              "id": 0,
+              "parent": null,
+              "edge": "root",
+              "index": 0,
+              "type": 9,
+              "name": "#document",
+              "namespace": null,
+              "attributes": [],
+              "data": null,
+              "child_count": 1,
+              "shadow": "not-element",
+              "resolved_href": null
+            },
+            {
+              "id": 1,
+              "parent": 0,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "html",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 2,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            },
+            {
+              "id": 2,
+              "parent": 1,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "head",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 1,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            },
+            {
+              "id": 3,
+              "parent": 2,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "link",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [
+                {
+                  "name": "rel",
+                  "local_name": "rel",
+                  "namespace": null,
+                  "value": "canonical"
+                },
+                {
+                  "name": "href",
+                  "local_name": "href",
+                  "namespace": null,
+                  "value": "\u001fhttps://example.test/product"
+                }
+              ],
+              "data": null,
+              "child_count": 0,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": "https://example.test/product"
+            },
+            {
+              "id": 4,
+              "parent": 1,
+              "edge": "child",
+              "index": 1,
+              "type": 1,
+              "name": "body",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 0,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            }
+          ],
+          "reported_node_count": 5,
+          "traversal_complete": true,
+          "stop_reason": null,
+          "api_errors": [],
+          "elapsed_ms": 0
+        }
+      },
+      "intent": {
+        "format": "rendered-canonical-intent",
+        "version": "1",
+        "mode": "authored-synthetic",
+        "state_label": "authored load state, not browser-observed",
+        "document_url": "https://example.test/page",
+        "preferred_url": "https://example.test/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "record_sha256": "8b7e67e6e070cee61338c94da28edf18694a8de5e045ee2fd7ea67f2d900f311"
+      },
+      "expected": {
+        "outcome": "undetermined",
+        "reasons": [
+          "absolute-raw-resolved-difference"
+        ]
+      }
+    },
+    {
+      "id": "tab-inside-scheme",
+      "record": {
+        "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+        "tree": {
+          "format": "rendered-metadata-tree",
+          "version": "2",
+          "limits": {
+            "nodes": 1024,
+            "depth": 64,
+            "tree_utf8_bytes": 524288,
+            "serialization_utf8_bytes": 262144,
+            "cooperative_ms": 2000,
+            "invocation_timeout_ms": 5000
+          },
+          "document_url": "https://example.test/page",
+          "base_uri": "https://example.test/page",
+          "ready_state": "complete",
+          "execution_context": "not-attested",
+          "scripting": "enabled-by-laboratory-plan",
+          "closed_shadow_coverage": "unknown",
+          "frame_documents": "not-collected",
+          "template_fragments": "not-collected",
+          "origin_attribution": "unknown",
+          "serialization": {
+            "available": true,
+            "html": "AUTHORED FIXTURE, NOT A BROWSER"
+          },
+          "nodes": [
+            {
+              "id": 0,
+              "parent": null,
+              "edge": "root",
+              "index": 0,
+              "type": 9,
+              "name": "#document",
+              "namespace": null,
+              "attributes": [],
+              "data": null,
+              "child_count": 1,
+              "shadow": "not-element",
+              "resolved_href": null
+            },
+            {
+              "id": 1,
+              "parent": 0,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "html",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 2,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            },
+            {
+              "id": 2,
+              "parent": 1,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "head",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 1,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            },
+            {
+              "id": 3,
+              "parent": 2,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "link",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [
+                {
+                  "name": "rel",
+                  "local_name": "rel",
+                  "namespace": null,
+                  "value": "canonical"
+                },
+                {
+                  "name": "href",
+                  "local_name": "href",
+                  "namespace": null,
+                  "value": "ht\ttps://example.test/product"
+                }
+              ],
+              "data": null,
+              "child_count": 0,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": "https://example.test/product"
+            },
+            {
+              "id": 4,
+              "parent": 1,
+              "edge": "child",
+              "index": 1,
+              "type": 1,
+              "name": "body",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 0,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            }
+          ],
+          "reported_node_count": 5,
+          "traversal_complete": true,
+          "stop_reason": null,
+          "api_errors": [],
+          "elapsed_ms": 0
+        }
+      },
+      "intent": {
+        "format": "rendered-canonical-intent",
+        "version": "1",
+        "mode": "authored-synthetic",
+        "state_label": "authored load state, not browser-observed",
+        "document_url": "https://example.test/page",
+        "preferred_url": "https://example.test/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "record_sha256": "3df19f0acffe350e415e073b1056c80d0d7435c0a1faf58283873d040b4a4f4c"
+      },
+      "expected": {
+        "outcome": "undetermined",
+        "reasons": [
+          "absolute-raw-resolved-difference"
+        ]
+      }
+    },
+    {
+      "id": "newline-inside-scheme",
+      "record": {
+        "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+        "tree": {
+          "format": "rendered-metadata-tree",
+          "version": "2",
+          "limits": {
+            "nodes": 1024,
+            "depth": 64,
+            "tree_utf8_bytes": 524288,
+            "serialization_utf8_bytes": 262144,
+            "cooperative_ms": 2000,
+            "invocation_timeout_ms": 5000
+          },
+          "document_url": "https://example.test/page",
+          "base_uri": "https://example.test/page",
+          "ready_state": "complete",
+          "execution_context": "not-attested",
+          "scripting": "enabled-by-laboratory-plan",
+          "closed_shadow_coverage": "unknown",
+          "frame_documents": "not-collected",
+          "template_fragments": "not-collected",
+          "origin_attribution": "unknown",
+          "serialization": {
+            "available": true,
+            "html": "AUTHORED FIXTURE, NOT A BROWSER"
+          },
+          "nodes": [
+            {
+              "id": 0,
+              "parent": null,
+              "edge": "root",
+              "index": 0,
+              "type": 9,
+              "name": "#document",
+              "namespace": null,
+              "attributes": [],
+              "data": null,
+              "child_count": 1,
+              "shadow": "not-element",
+              "resolved_href": null
+            },
+            {
+              "id": 1,
+              "parent": 0,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "html",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 2,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            },
+            {
+              "id": 2,
+              "parent": 1,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "head",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 1,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            },
+            {
+              "id": 3,
+              "parent": 2,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "link",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [
+                {
+                  "name": "rel",
+                  "local_name": "rel",
+                  "namespace": null,
+                  "value": "canonical"
+                },
+                {
+                  "name": "href",
+                  "local_name": "href",
+                  "namespace": null,
+                  "value": "ht\r\ntps://example.test/product"
+                }
+              ],
+              "data": null,
+              "child_count": 0,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": "https://example.test/product"
+            },
+            {
+              "id": 4,
+              "parent": 1,
+              "edge": "child",
+              "index": 1,
+              "type": 1,
+              "name": "body",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 0,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            }
+          ],
+          "reported_node_count": 5,
+          "traversal_complete": true,
+          "stop_reason": null,
+          "api_errors": [],
+          "elapsed_ms": 0
+        }
+      },
+      "intent": {
+        "format": "rendered-canonical-intent",
+        "version": "1",
+        "mode": "authored-synthetic",
+        "state_label": "authored load state, not browser-observed",
+        "document_url": "https://example.test/page",
+        "preferred_url": "https://example.test/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "record_sha256": "a72e3ca2a5ae2de5f68c89dcc5b4ce1e69570bb3a8bafc80f53da5711a48db4f"
+      },
+      "expected": {
+        "outcome": "undetermined",
+        "reasons": [
+          "absolute-raw-resolved-difference"
+        ]
+      }
+    },
+    {
+      "id": "nbsp-not-trimmed",
+      "record": {
+        "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+        "tree": {
+          "format": "rendered-metadata-tree",
+          "version": "2",
+          "limits": {
+            "nodes": 1024,
+            "depth": 64,
+            "tree_utf8_bytes": 524288,
+            "serialization_utf8_bytes": 262144,
+            "cooperative_ms": 2000,
+            "invocation_timeout_ms": 5000
+          },
+          "document_url": "https://example.test/page",
+          "base_uri": "https://example.test/page",
+          "ready_state": "complete",
+          "execution_context": "not-attested",
+          "scripting": "enabled-by-laboratory-plan",
+          "closed_shadow_coverage": "unknown",
+          "frame_documents": "not-collected",
+          "template_fragments": "not-collected",
+          "origin_attribution": "unknown",
+          "serialization": {
+            "available": true,
+            "html": "AUTHORED FIXTURE, NOT A BROWSER"
+          },
+          "nodes": [
+            {
+              "id": 0,
+              "parent": null,
+              "edge": "root",
+              "index": 0,
+              "type": 9,
+              "name": "#document",
+              "namespace": null,
+              "attributes": [],
+              "data": null,
+              "child_count": 1,
+              "shadow": "not-element",
+              "resolved_href": null
+            },
+            {
+              "id": 1,
+              "parent": 0,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "html",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 2,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            },
+            {
+              "id": 2,
+              "parent": 1,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "head",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 1,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            },
+            {
+              "id": 3,
+              "parent": 2,
+              "edge": "child",
+              "index": 0,
+              "type": 1,
+              "name": "link",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [
+                {
+                  "name": "rel",
+                  "local_name": "rel",
+                  "namespace": null,
+                  "value": "canonical"
+                },
+                {
+                  "name": "href",
+                  "local_name": "href",
+                  "namespace": null,
+                  "value": " https://example.test/product"
+                }
+              ],
+              "data": null,
+              "child_count": 0,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": "https://example.test/product"
+            },
+            {
+              "id": 4,
+              "parent": 1,
+              "edge": "child",
+              "index": 1,
+              "type": 1,
+              "name": "body",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "attributes": [],
+              "data": null,
+              "child_count": 0,
+              "shadow": "unexposed-or-absent",
+              "resolved_href": null
+            }
+          ],
+          "reported_node_count": 5,
+          "traversal_complete": true,
+          "stop_reason": null,
+          "api_errors": [],
+          "elapsed_ms": 0
+        }
+      },
+      "intent": {
+        "format": "rendered-canonical-intent",
+        "version": "1",
+        "mode": "authored-synthetic",
+        "state_label": "authored load state, not browser-observed",
+        "document_url": "https://example.test/page",
+        "preferred_url": "https://example.test/product",
+        "html_canonical_required": true,
+        "known_integrity_issues": [],
+        "record_sha256": "794bac1ac80054d1c8126557c85ff0078679aa6cffe63166692495663ae11949"
+      },
+      "expected": {
+        "outcome": "contradiction-in-record",
+        "reasons": [
+          "raw-href-differs"
+        ]
+      }
+    }
+  ]
+}

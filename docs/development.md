@@ -368,3 +368,20 @@ L'[expérience prospective](prospective-experiment.md) enregistre les critères 
 mesure et conserve le rapport draft.7 séparé du prototype. Neuf cas synthétiques
 figés avant code, contrôles d'intégrité et rejeu hors ligne sont inclus dans la
 vérification et la distribution explicite, sans dépendance à Edikka.
+
+## Rendered canonical candidate / Candidat canonical rendu
+
+The [standalone candidate 1](rendered-canonical-candidate.md) interprets structured
+inventory 2 records under explicit exact-string criteria. Its 59 authored cases
+were frozen before implementation; additional review cases are identified separately.
+It preserves missing evidence, API ambiguity, partial coverage and source/DOM
+boundaries. Verification includes offline evaluator-free CLI tests and packaging.
+It does not change the protocol, earlier captures or normative outcomes. The
+recorded 48-input application is retrospective, not independent validation.
+
+Le [candidat autonome 1](rendered-canonical-candidate.md) interprète les relevés
+d'inventaire 2 selon un critère explicite de chaîne exacte. Ses 59 cas rédigés
+sont figés avant implémentation ; les ajouts de revue restent identifiés séparément.
+Les tests incluent le CLI hors réseau sans import d'évaluateur, les limites de
+preuve et la distribution. Aucun changement normatif ou de capture ancienne.
+L'application consignée sur 48 entrées est rétrospective, sans validation indépendante.

@@ -1,0 +1,10 @@
+{
+  "url": "https://url.spec.whatwg.org/#concept-basic-url-parser",
+  "observed_at": "2026-10-10T11:55:39.988175+00:00",
+  "scope": "Basic URL parser, initial preprocessing steps only. Not a claim of implementing WHATWG URL.",
+  "capture_kind": "Selected text excerpt from web tool rendering, not raw HTTP",
+  "excerpts": [
+    "Remove any leading and trailing C0 control or space from input.",
+    "Remove all ASCII tab or newline from input."
+  ]
+}
