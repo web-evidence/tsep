@@ -151,3 +151,5 @@ Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATIO
 [Structured rendered states / États rendus structurés](docs/structured-rendering.md) · [Draft.10 migration](docs/migration-draft.10.md)
 
 [Same-navigation laboratory / Laboratoire avec navigation attribuée](docs/same-navigation-laboratory.md) · [Draft.11 migration](docs/migration-draft.11.md)
+
+[Canonical attributes / Attributs de canonical](docs/canonical-attribute-coverage.md) · interpreter 11 / adapter 12

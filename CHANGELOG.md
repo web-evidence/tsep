@@ -1,5 +1,17 @@
 # Change history / Historique
 
+## Tool coverage — 2026-10-10 — canonical attributes and repair sequence
+
+Protocol draft.11 unchanged. Interpreter 11 / adapter 12 / structured reader 2
+share a bounded canonical-attribute classifier; source id/class/data-/aria- no
+longer cause blanket refusal, while modifiers and unknown structured attributes
+remain inconclusive. Historical serialized DOM stays fixed. 30 prefrozen cases,
+353 earlier cases unchanged; laboratory 2 adds a same-URL baseline/fault/simulated
+repair recipe. [Coverage and migration](docs/canonical-attribute-coverage.md).
+
+FR : couverture source élargie et lecture DOM corrigée, anciennes pièces conservées ;
+la correction du laboratoire est synthétique et ne constitue pas une correction Edikka.
+
 ## 0.1.0-draft.11 — 2026-10-10 — actual client and directive semantics
 
 Optional prior TS07 directive_crawler separates the exact HTTP agent from the

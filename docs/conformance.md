@@ -1,3 +1,6 @@
+Current tool coverage: interpreter 11, 383 raw cases (353 retained + 30 canonical attribute cases). Protocol draft.11 unchanged.
+Couverture actuelle : [attributs de canonical](canonical-attribute-coverage.md), lecteur historique conservé, migration explicite.
+
 Current: draft.11, interpreter 10, 353 raw cases (338 retained + 15 transport/directive cases).
 Actuel : draft.11 ; [navigation attribuée](same-navigation-laboratory.md), sémantique sur représentation cliente et [migration](migration-draft.11.md). Earlier named milestones below remain historical.
 

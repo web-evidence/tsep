@@ -1,3 +1,6 @@
+Current tools: interpreter 11 / adapter 12; protocol draft.11 unchanged.
+Outils actuels : [attributs de canonical et parcours de correction](canonical-attribute-coverage.md) ; recette humaine et application réelle restent distinctes.
+
 Current integration: draft.11 separates the actual HTTP client from TS07 directive semantics,
 with a [same-navigation laboratory](same-navigation-laboratory.md) and [migration](migration-draft.11.md).
 Intégration actuelle : draft.11 ; laboratoire synthétique, sans recette humaine ni conformité Edikka.

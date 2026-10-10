@@ -21,14 +21,14 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '11'
+VERSION = '12'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
 
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
-    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime'):
+    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     result = loaded_sources(ROOT, modules)
     result['collectors/rendered_metadata.js'] = tsep.digest(ROOT/'collectors/rendered_metadata.js')
@@ -36,6 +36,8 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state': 'implemented', 'fr': 'TS10 : attributs ordinaires source et DOM structurés classés en commun ; modificateurs, namespaces et attributs inconnus indéterminés. DOM sérialisé historique inchangé.',
+     'en': 'TS10: shared source/structured canonical attribute classification; modifiers, namespaces and unknown attributes inconclusive. Historical serialized DOM unchanged.'},
     {'state': 'implemented', 'fr': 'TS07/TS10 : lecteur DOM structuré préalable, arbre complet, provenance fournie, sans authentification de navigation. Limites source et revues conservées.',
      'en': 'TS07/TS10: predeclared structured DOM reader, complete tree and supplied attribution, without navigation authentication. Source limits and reviews retained.'},
     {'state': 'implemented', 'fr': 'TS04 : matrice robots préalable, ressources nécessaires, revues fournies et lecteur partagé TS07. Profils bornés explicites ; anciennes entrées TS07 sous profil historique fixe.',

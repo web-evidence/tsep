@@ -21,7 +21,7 @@
       const started = new Date().toISOString();
       const tree = __CAPTURE_EXPRESSION__;
       const captured = new Date().toISOString();
-      const payload = JSON.stringify({kind:'same-navigation-page',version:'1',context:__CONTEXT__,
+      const payload = JSON.stringify({kind:'same-navigation-page',version:__EXPORT_VERSION__,context:__CONTEXT__,
         task_id:__TASK__,navigation_id:__NAVIGATION__,url:document.URL,user_agent:navigator.userAgent,
         script_sha256:__SCRIPT_SHA__,capture_started_at:started,captured_at:captured,errors:failures,tree});
       const bytes = new TextEncoder().encode(payload);

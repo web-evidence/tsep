@@ -1,3 +1,5 @@
+Current laboratory: version 2. Le [parcours de correction](canonical-attribute-coverage.md) ajoute neuf phases sur trois URL ; les six recettes initiales restent conservées.
+
 # Navigation attribuée — laboratoire synthétique / Same-navigation laboratory
 
 ## Français

@@ -10,7 +10,7 @@ from experiments import rendered_metadata as inventory
 from experiments.rendered_canonical import http_prefix, supported_url
 from conformance.evaluate import binding_digest, need, text_present
 
-VERSION = '1'
+VERSION = '2'
 READER = 'structured-inventory-v2'
 LEGACY = 'legacy-serialized-v1'
 
@@ -84,6 +84,9 @@ class Surface:
         rows = [r for r in self.facts['metadata'] if r['kind'] == 'canonical']
         values = []
         for row in rows:
+            from conformance.canonical_attributes import check
+            need(all(a['namespace'] is None for a in row['attributes']), 'Namespaced canonical attributes require review')
+            check(a['local_name'] for a in row['attributes'])
             need(row['position'] != 'open-shadow', 'Shadow canonical interpretation not established')
             raw, resolved = row['raw_href'], row['resolved_href']
             need(isinstance(resolved, str), 'Missing resolved canonical URL')

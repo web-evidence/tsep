@@ -23,8 +23,9 @@ from conformance.http import encoded, header_fields
 from experiments import rendered_metadata as metadata
 from provenance.runtime import loaded_sources
 
-VERSION = '1'
+VERSION = '2'
 RECIPE = 'tests/fixtures/same-navigation-lab-v1.json'
+REPAIR_RECIPE = 'tests/fixtures/repair-navigation-lab-v1.json'
 PAGE = 'examples/same_navigation_page.js'
 MAX_BODY = 2 * 1024 * 1024
 
@@ -42,15 +43,20 @@ def sources():
     result = dict(captures.source_files(), **loaded_sources(ROOT, {
         'examples/same_navigation_lab.py': sys.modules[__name__], 'adapters/package.py': package,
         'adapters/replay.py': replay}))
-    for name in (PAGE, RECIPE, RECIPE.replace('.json', '.sha256')):
+    for name in (PAGE, RECIPE, RECIPE.replace('.json', '.sha256'), REPAIR_RECIPE, REPAIR_RECIPE.replace('.json', '.sha256')):
         result[name] = tsep.digest(ROOT/name)
     return result
 
 
-def recipes():
-    path = ROOT/RECIPE
+def recipes(name=RECIPE):
+    tsep.require(name in (RECIPE, REPAIR_RECIPE), 'Unknown laboratory recipe')
+    path = ROOT/name
     tsep.require(tsep.digest(path) == path.with_suffix('.sha256').read_text().split()[0], 'Changed frozen recipe')
     return tsep.read_json(path)
+
+
+def task_url(server, case):
+    return server['base']+'/case/'+case.get('resource', case['id'])
 
 
 def wire(body, media='text/html; charset=utf-8', status=200, extra=''):
@@ -64,13 +70,14 @@ def page(task, server):
     script = (ROOT/PAGE).read_text()
     for key, value in [('__MUTATION__', task['mutation']), ('__CONTEXT__', server['token']),
                        ('__TASK__', task['id']), ('__NAVIGATION__', task['navigation_id']),
-                       ('__SCRIPT_SHA__', metadata.script_digest()), ('__ENDPOINT__', server['base']+'/capture')]:
+                       ('__SCRIPT_SHA__', metadata.script_digest()), ('__ENDPOINT__', server['base']+'/capture'),
+                       ('__EXPORT_VERSION__', VERSION)]:
         script = script.replace(key, json.dumps(value))
     script = script.replace('__CAPTURE_EXPRESSION__', (ROOT/metadata.SCRIPT).read_text().strip())
     url = html.escape(task['url'], quote=True)
     return ('<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>TSEP · '+task['id']+'</title>'+
             '<link rel="icon" href="data:,"><link id="primary-canonical" rel="canonical" href="'+url+'">'+
-            '<style>body{font:18px/1.6 system-ui;background:#102032;color:#edf3f8;max-width:1000px;margin:40px auto;padding:20px}h1{font-size:36px}span{overflow-wrap:anywhere}</style></head><body>'+
+            '<style>body{font:18px/1.6 system-ui;background:#102032;color:#edf3f8;max-width:1000px;margin:40px auto;padding:20px}h1{font-size:36px}span{overflow-wrap:anywhere}a{color:#9ed8ff}</style></head><body>'+
             '<p>LABORATOIRE SYNTHÉTIQUE · NAVIGATION UNIQUE</p><h1>'+task['id']+'</h1>'+
             '<p>Navigation : <span id="lab-navigation">'+task['navigation_id']+'</span></p>'+
             '<p>État : <span id="lab-state">pending</span></p><p>Reçu : <span id="lab-receipt">pending</span></p>'+
@@ -164,10 +171,22 @@ class Handler(socketserver.StreamRequestHandler):
         plan = tsep.read_json(folder/'plan.json')
         tsep.require(plan['source_files'] == sources(), 'Laboratory sources changed')
         if method == 'GET':
-            task = next((t for t in plan['tasks'] if t['url'] == url), None)
-            tsep.require(task is not None, 'Unplanned navigation')
-            response = package.regular(folder/'planned'/(task['id']+'.bin'))
-            tsep.require(hashlib.sha256(response).hexdigest() == task['response_sha256'], 'Planned response changed')
+            with self.server.lock:
+                if plan['recipe'].get('sequence'):
+                    index = self.server.navigation_index
+                    tsep.require(index < len(plan['tasks']), 'Completed sequence cannot be repeated')
+                    task = plan['tasks'][index]
+                    tsep.require(task['url'] == url, 'Out-of-order sequence navigation')
+                    if index:
+                        previous = plan['tasks'][index-1]['id']
+                        tsep.require(any(r.get('kind') == 'capture' and r.get('task_id') == previous
+                                         and r['complete'] for r in logs(folder)), 'Previous export missing before next phase')
+                else:
+                    task = next((t for t in plan['tasks'] if t['url'] == url), None)
+                tsep.require(task is not None, 'Unplanned navigation')
+                response = package.regular(folder/'planned'/(task['id']+'.bin'))
+                tsep.require(hashlib.sha256(response).hexdigest() == task['response_sha256'], 'Planned response changed')
+                if plan['recipe'].get('sequence'): self.server.navigation_index += 1
             return response, {'kind': 'navigation', 'task_id': task['id'], 'navigation_id': task['navigation_id']}
         tsep.require(url == server['base']+'/capture', 'Unplanned POST')
         data = decode(body)
@@ -179,17 +198,18 @@ class Handler(socketserver.StreamRequestHandler):
             'kind': 'capture', 'task_id': task['id'], 'navigation_id': task['navigation_id'], 'receipt': receipt}
 
 
-def start(output, origin_host='127.0.0.1'):
+def start(output, origin_host='127.0.0.1', recipe_file=RECIPE):
     tsep.require(origin_host in ('127.0.0.1', 'isolated-localhost'), 'Unsupported loopback origin')
+    recipes(recipe_file)
     folder = Path(output); tsep.require(not folder.exists() and folder.parent.is_dir(), 'Choose a new source directory')
     folder.mkdir(); server = Server(('127.0.0.1', 0), Handler)
     token = secrets.token_hex(8)
     host = token+'.localhost' if origin_host == 'isolated-localhost' else origin_host
     origin = 'http://'+host+':'+str(server.server_address[1])
     record = {'kind': 'same-navigation-server', 'version': VERSION, 'created_at': now(), 'origin': origin,
-              'token': token, 'base': origin+'/'+token, 'source_files': sources()}
+              'token': token, 'base': origin+'/'+token, 'source_files': sources(), 'recipe_file': recipe_file}
     save(folder/'server.json', record); (folder/'requests.jsonl').touch()
-    server.folder = folder; server.record = record; server.sequence = 0; server.lock = threading.Lock()
+    server.folder = folder; server.record = record; server.sequence = 0; server.lock = threading.Lock(); server.navigation_index = 0
     return server, record
 
 
@@ -201,10 +221,10 @@ def seal(folder, browser_name, browser_version):
                  and r['complete'] for r in rows), 'Calibration must be unique with no prior control attempt')
     tsep.require(not calibration[0].get('conditional_or_session'), 'Calibration carries conditional/session headers; use a separate isolated origin, never strip the capture')
     tsep.require(browser_name.strip() and browser_version.strip(), 'Declared browser identity required')
-    agent = calibration[0]['user_agent']; recipe = recipes(); tasks = []
+    agent = calibration[0]['user_agent']; recipe = recipes(server['recipe_file']); tasks = []
     (folder/'planned').mkdir()
     for case in recipe['cases']:
-        task = dict(case, url=server['base']+'/case/'+case['id'], navigation_id=server['token']+'-'+case['id'])
+        task = dict(case, url=task_url(server,case), navigation_id=server['token']+'-'+case['id'])
         extra = ('X-Robots-Tag: '+case['x_robots_tag']+'\r\n') if 'x_robots_tag' in case else ''
         raw = wire(page(task, server), extra=extra)
         (folder/'planned'/(case['id']+'.bin')).write_bytes(raw)
@@ -222,12 +242,14 @@ def analyze(folder, observations):
     folder = Path(folder); server = tsep.read_json(folder/'server.json'); plan = tsep.read_json(folder/'plan.json')
     closed = tsep.read_json(folder/'closed.json')
     tsep.require(server['source_files'] == plan['source_files'] == closed['source_files'] == sources(), 'Changed collection tools')
-    tsep.require(plan['server'] == server and plan['recipe'] == recipes(), 'Changed registration')
+    recipe_data = recipes(server['recipe_file'])
+    tsep.require(server['version'] == plan['version'] == VERSION, 'Unsupported laboratory version')
+    tsep.require(plan['server'] == server and plan['recipe'] == recipe_data, 'Changed registration')
     tsep.require(closed['plan_sha256'] == tsep.digest(folder/'plan.json') and
                  closed['log_sha256'] == tsep.digest(folder/'requests.jsonl'), 'Changed closed campaign')
     tsep.require(set(observations) == {t['id'] for t in plan['tasks']}, 'Incomplete operator observation inventory')
     rows = logs(folder); used = set(); results = []
-    tsep.require([t['id'] for t in plan['tasks']] == [c['id'] for c in recipes()['cases']],
+    tsep.require([t['id'] for t in plan['tasks']] == [c['id'] for c in recipe_data['cases']],
                  'Missing/reordered registered task')
     expected_files = {'server.json', 'plan.json', 'closed.json', 'requests.jsonl'}
     expected_files.update('planned/'+t['id']+'.bin' for t in plan['tasks'])
@@ -246,13 +268,17 @@ def analyze(folder, observations):
     tsep.require(len(calibration) == 1 and calibration[0]['id'] == plan['calibration_id']
                  and calibration[0]['user_agent'] == plan['agent']
                  and tsep.timestamp(calibration[0]['finished_at']) <= tsep.timestamp(plan['registered_at']), 'Invalid prior calibration')
-    for task, recipe in zip(plan['tasks'], recipes()['cases']):
-        tsep.require(all(task[k] == v for k,v in recipe.items()) and task['url'] == server['base']+'/case/'+recipe['id']
+    previous_observation = plan['registered_at']
+    for task, recipe in zip(plan['tasks'], recipe_data['cases']):
+        tsep.require(all(task[k] == v for k,v in recipe.items()) and task['url'] == task_url(server,recipe)
                      and task['navigation_id'] == server['token']+'-'+recipe['id'], 'Task differs from frozen recipe')
         get = [r for r in rows if r.get('kind') == 'navigation' and r.get('task_id') == task['id']]
         post = [r for r in rows if r.get('kind') == 'capture' and r.get('task_id') == task['id']]
         tsep.require(len(get) == len(post) == 1, 'Missing/duplicate navigation or capture: '+task['id'])
         get, post = get[0], post[0]; used.update([get['id'], post['id']]); observation = observations[task['id']]
+        if recipe_data.get('sequence'):
+            tsep.require(tsep.timestamp(previous_observation) <= tsep.timestamp(observation['navigation_started_at']), 'Reordered repair sequence')
+            previous_observation = observation['observed_at']
         _, _, body = header_fields((folder/(post['id']+'-request.bin')).read_bytes()); payload = decode(body)
         tsep.require(hashlib.sha256(body).hexdigest() == post['receipt'] == observation['receipt'], 'Operator/POST receipt mismatch')
         tsep.require(payload['context'] == server['token'] and payload['url'] == task['url'] == payload['tree']['document_url']
@@ -287,7 +313,7 @@ def analyze(folder, observations):
         if task['rules'][0].startswith('TS10-'):
             member={'url':task['url'],'required_methods':['html','dom'],'rendering':render_plan}
             members=[member]
-            if task['mutation']=='links':members.append(dict(member,url=task['url']+'?variant=1'))
+            if task['mutation']=='links' or task.get('resource')=='links':members.append(dict(member,url=task['url']+'?variant=1'))
             intent['canonical']={'preferred_url':task['url'],'members':members,'links':{'sources':[{'url':task['url'],'rendering':render_plan}],'exceptions':[]}}
             target={'url':task['url'],'observed_at':observation['observed_at'],'context':context,'intent':intent,'documents':[document],'crawl':{'documents':[document]}}
         data={'input_version':'2','rules':task['rules'],'targets':[target]}; actual=evaluate(data)
@@ -330,12 +356,13 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__);sub=parser.add_subparsers(dest='command',required=True)
     serve=sub.add_parser('serve');serve.add_argument('--output',required=True)
     serve.add_argument('--origin-host', choices=['isolated-localhost','127.0.0.1'], default='isolated-localhost')
+    serve.add_argument('--recipe', choices=['single','repair'], default='single')
     plan=sub.add_parser('seal');plan.add_argument('source');plan.add_argument('--browser-name',required=True);plan.add_argument('--browser-version',required=True)
     done=sub.add_parser('finish');done.add_argument('source');done.add_argument('--observations',required=True);done.add_argument('--output',required=True)
     check=sub.add_parser('replay');check.add_argument('folder');args=parser.parse_args()
     try:
         if args.command=='serve':
-            server,record=start(args.output,args.origin_host);print(json.dumps({'ready':True,'calibration_url':record['base']+'/calibrate'}),flush=True)
+            server,record=start(args.output,args.origin_host,REPAIR_RECIPE if args.recipe=='repair' else RECIPE);print(json.dumps({'ready':True,'calibration_url':record['base']+'/calibrate'}),flush=True)
             try:server.serve_forever()
             except KeyboardInterrupt:pass
             finally:

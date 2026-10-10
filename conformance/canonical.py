@@ -60,8 +60,9 @@ def response(target, doc):
 
 class Links(Meta):
     """Strict source/DOM subset; never recover malformed HTML as a browser would."""
-    def __init__(self):
+    def __init__(self, *, source=False):
         super().__init__()
+        self.source = source
         self.canonicals, self.anchors = [], []
         self.heads = self.bodies = 0
 
@@ -80,8 +81,14 @@ class Links(Meta):
         if tag in ('link', 'a'):
             need(len(attrs) == len(set(k for k, _ in attrs)), 'Duplicate link attributes')
             values = dict(attrs)
-            if tag == 'link' and 'canonical' in (values.get('rel') or '').lower().split():
-                need(set(values) <= {'rel', 'href'}, 'Unsupported canonical attributes')
+            tokens = (re.split(r'[\t\n\f\r ]+', (values.get('rel') or '').lower())
+                      if self.source else (values.get('rel') or '').lower().split())
+            if tag == 'link' and 'canonical' in tokens:
+                if self.source:
+                    from conformance.canonical_attributes import check
+                    check(values, historical_reason=True)
+                else:
+                    need(set(values) <= {'rel', 'href'}, 'Unsupported canonical attributes')
                 self.canonicals.append((values.get('href'), parent == 'head'))
             if tag == 'a' and 'href' in values:
                 need(isinstance(values['href'], str), 'Malformed anchor href')
@@ -92,10 +99,10 @@ class Links(Meta):
         self.handle_starttag(tag, attrs)
 
 
-def html(body):
+def html(body, *, source=False):
     body = text_body(body)
     need(isinstance(body, str) and re.search(r'</html\s*>\s*$', body, re.I), 'HTML end not captured')
-    parser = Links()
+    parser = Links(source=source)
     parser.feed(body)
     parser.close()
     need(parser.roots == parser.heads == parser.bodies == 1 and not parser.stack, 'Incomplete HTML structure')
@@ -192,7 +199,7 @@ def surfaces(target, doc, plan):
     parsers = []
     if is_html:
         try:
-            parsers.append((html(body), None))
+            parsers.append((html(body, source=True), None))
         except ERRORS as error:
             parsers.append((None, str(error)))
     else:

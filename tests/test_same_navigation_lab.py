@@ -53,7 +53,7 @@ class SameNavigation(unittest.TestCase):
    if task['mutation']=='noindex':add(t,2,'meta',[('name','robots'),('content','noindex')])
    b=add(t,1,'body');add(t,b,'a',[('href',task['url']+('?variant=1' if task['mutation']=='links' else ''))])
    if task['mutation']=='node-limit':t.update(traversal_complete=False,stop_reason='node-limit')
-   payload={'kind':'same-navigation-page','version':'1','context':self.info['token'],'task_id':task['id'],'navigation_id':task['navigation_id'],'url':task['url'],
+   payload={'kind':'same-navigation-page','version':lab.VERSION,'context':self.info['token'],'task_id':task['id'],'navigation_id':task['navigation_id'],'url':task['url'],
     'user_agent':plan['agent'],'script_sha256':metadata.script_digest(),'capture_started_at':lab.now(),'captured_at':lab.now(),'errors':[],'tree':t}
    text=json.dumps(payload);raw=json.dumps({'payload':text,'sha256':hashlib.sha256(text.encode()).hexdigest()}).encode()
    status,answer=self.request(self.info['base']+'/capture',raw);self.assertEqual(status,200)
@@ -102,3 +102,37 @@ class SameNavigation(unittest.TestCase):
    self.assertEqual(server.server_address[0],'127.0.0.1')
    self.assertEqual(urlsplit(record['origin']).hostname,record['token']+'.localhost')
   finally:server.server_close()
+
+ def repair_server(self):
+  self.server.shutdown();self.server.server_close();self.thread.join()
+  self.source=self.root/'repair'
+  self.server,self.info=lab.start(self.source,recipe_file=lab.REPAIR_RECIPE)
+  self.thread=threading.Thread(target=self.server.serve_forever,daemon=True);self.thread.start()
+
+ def test_preplanned_repair_sequence_uses_same_url_and_offline_replay(self):
+  self.assertEqual(tsep.digest(lab.ROOT/lab.REPAIR_RECIPE),'83d644bb2adbe7915dea3df7d8853e33c8593ba7af6cc7e99487731d5523c4fc')
+  self.repair_server();plan,observations=self.exercise();self.stop()
+  self.assertEqual(len(plan['tasks']),9)
+  for offset in (0,3,6):
+   tasks=plan['tasks'][offset:offset+3]
+   self.assertEqual([t['phase'] for t in tasks],['baseline','fault','repaired'])
+   self.assertEqual(len({t['url'] for t in tasks}),1)
+   self.assertEqual(len({t['navigation_id'] for t in tasks}),3)
+  path=self.root/'observations.json';lab.save(path,observations)
+  with patch('socket.socket',side_effect=AssertionError('offline')):
+   self.assertTrue(lab.finish(self.source,path,self.root/'delivery')['all_expected_matched'])
+   self.assertEqual(lab.replay_delivery(self.root/'delivery')['observations'],9)
+  self.assertEqual(len(lab.logs(self.source)),19)
+
+ def test_repair_sequence_refuses_wrong_resource_before_visit(self):
+  self.repair_server();plan=self.calibrate()
+  self.assertEqual(self.request(plan['tasks'][3]['url'])[0],400)
+  self.assertEqual(self.server.navigation_index,0)
+  self.assertIn('Out-of-order',lab.logs(self.source)[-1]['error'])
+
+ def test_repair_sequence_requires_export_before_next_phase(self):
+  self.repair_server();plan=self.calibrate()
+  self.assertEqual(self.request(plan['tasks'][0]['url'])[0],200)
+  self.assertEqual(self.request(plan['tasks'][1]['url'])[0],400)
+  self.assertEqual(self.server.navigation_index,1)
+  self.assertIn('Previous export missing',lab.logs(self.source)[-1]['error'])

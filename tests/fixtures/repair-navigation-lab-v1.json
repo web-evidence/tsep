@@ -1,0 +1,122 @@
+{
+  "version": "2",
+  "synthetic": true,
+  "sequence": true,
+  "purpose": "Three preplanned states of the same URL per resource: baseline, injected fault, simulated repair. Actual browser observations required; not a real site correction.",
+  "cases": [
+    {
+      "id": "directives-baseline",
+      "resource": "directives",
+      "phase": "baseline",
+      "mutation": "none",
+      "rules": [
+        "TS07-A01",
+        "TS07-A03"
+      ],
+      "expected": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "directives-fault",
+      "resource": "directives",
+      "phase": "fault",
+      "mutation": "noindex",
+      "rules": [
+        "TS07-A01",
+        "TS07-A03"
+      ],
+      "expected": [
+        "pass",
+        "fail"
+      ]
+    },
+    {
+      "id": "directives-repaired",
+      "resource": "directives",
+      "phase": "repaired",
+      "mutation": "none",
+      "rules": [
+        "TS07-A01",
+        "TS07-A03"
+      ],
+      "expected": [
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "canonical-baseline",
+      "resource": "canonical",
+      "phase": "baseline",
+      "mutation": "none",
+      "rules": [
+        "TS10-A01"
+      ],
+      "expected": [
+        "pass"
+      ]
+    },
+    {
+      "id": "canonical-fault",
+      "resource": "canonical",
+      "phase": "fault",
+      "mutation": "canonical",
+      "rules": [
+        "TS10-A01"
+      ],
+      "expected": [
+        "fail"
+      ]
+    },
+    {
+      "id": "canonical-repaired",
+      "resource": "canonical",
+      "phase": "repaired",
+      "mutation": "none",
+      "rules": [
+        "TS10-A01"
+      ],
+      "expected": [
+        "pass"
+      ]
+    },
+    {
+      "id": "links-baseline",
+      "resource": "links",
+      "phase": "baseline",
+      "mutation": "none",
+      "rules": [
+        "TS10-A04"
+      ],
+      "expected": [
+        "pass"
+      ]
+    },
+    {
+      "id": "links-fault",
+      "resource": "links",
+      "phase": "fault",
+      "mutation": "links",
+      "rules": [
+        "TS10-A04"
+      ],
+      "expected": [
+        "fail"
+      ]
+    },
+    {
+      "id": "links-repaired",
+      "resource": "links",
+      "phase": "repaired",
+      "mutation": "none",
+      "rules": [
+        "TS10-A04"
+      ],
+      "expected": [
+        "pass"
+      ]
+    }
+  ]
+}
