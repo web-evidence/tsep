@@ -1,5 +1,16 @@
 # Change history / Historique
 
+## Documentation — 2026-10-10 — four-control evidence route
+
+Separate the current draft.11 status (five controls with 13 atomic rules) from
+the retained draft.7 inventory. The active four-control scope has 11 rules, with
+TS01 as its foundation. The evidence route connects prior intent, captured
+contradiction, simulated repair and replay, with real-site and Search Console
+limits beside each claim. No normative change, new assessment or publication.
+
+FR : état actuel distinct de l'historique, parcours des quatre contrôles et limites
+des démonstrations ; aucune clôture d'audit ou validation humaine déduite.
+
 ## Diagnostic — 2026-10-10 — supplied Search Console observations
 
 Offline diagnostic 1 retains original URL Inspection request/response bodies and

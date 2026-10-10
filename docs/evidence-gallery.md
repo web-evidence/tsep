@@ -1,12 +1,45 @@
 # Evidence gallery / Galerie de preuves
 
+## Current route / Parcours actuel — 2026-10-10
+
+Le protocole actuel est `0.1.0-draft.11`. Les paquets historiques conservent leur
+version et leurs outils ; l'ordre des identifiants ne dicte pas l'ordre de lecture
+ou de développement. Le programme retient [quatre contrôles](four-control-program.md).
+
+| Question du lecteur | Méthode et démonstration | Limite de la conclusion |
+| --- | --- | --- |
+| La migration mène-t-elle à la page prévue ? | [TS02](redirects.md) : mauvaise destination malgré un 200 final, détour, boucle et trace incomplète ; [plan préalable](redirect-plan-workflow.md) | Une destination atteinte ne définit pas l'intention. La décision du responsable précède la mesure ; les décisions fictives restent synthétiques. |
+| Le robot peut-il explorer les ressources prévues ? | [TS04](robots.md) : règle de préproduction et CSS déclaré requis ; ligne robots décisive, profil et preuves HTTP | Une permission robots ne démontre pas un accès effectif par Google. Une revue requise absente empêche de conclure C après correction. |
+| Les directives changent-elles après rendu ? | [TS07 et navigation attribuée](same-navigation-laboratory.md) : source compatible, état rendu contradictoire | Le navigateur réellement utilisé n'est pas Googlebot ; les états observés ne couvrent pas tous les états possibles. |
+| Les signaux désignent-ils la même canonical ? | [TS10 et cycles de correction](canonical-attribute-coverage.md) : canonical ou lien modifié, témoin puis réparation simulée | Un test atomique réussi n'achève pas les autres règles ni les revues de contenu. |
+| Que rapporte la Search Console pour cette URL ? | [Diagnostic hors ligne](search-console-observations.md) : intention, preuves techniques rejouées, réponse d'inspection et dates distinctes | Sans réponse réelle fournie, présenter la méthode ; réserver les exemples fictifs à une démonstration explicitement synthétique. Aucun effet SEO causal ni verdict TS08/TS12. |
+
+Pour un insight, ouvrir sur le problème concret de TS02, puis montrer l'attente
+déclarée, la pièce exacte, la modification du laboratoire, la nouvelle observation
+et ce qui reste inconnu. La valeur démontrée est la traçabilité et le rejeu de la
+conclusion, sans revendiquer l'exclusivité de la détection. Une observation réelle
+TS01 séparée peut montrer les limites du lecteur sur un site ; elle ne valide pas
+les quatre autres contrôles. Publier les fichiers sélectionnés et vérifier leur
+parcours reste une étape distincte de ce guide.
+
+EN: draft.11 is current; retained packages keep their own versions and tools.
+Start with a migration that reaches the wrong page despite a final 200, then
+robots access, rendered directives and canonical consistency. Link each claim
+to prior expectations, exact evidence, a simulated laboratory repair and a new
+observation. Numeric identifiers do not impose a development order. Traceability
+and replay are the demonstrated contribution, not exclusive fault detection.
+Separate actual TS01 site observations, synthetic laboratories and future real
+Search Console inputs; never infer whole-control completion, human acceptance
+or engine behavior from them. The older draft.7 route below is retained as history.
+
 ## Français
 
 Cette galerie est un **parcours de lecture**, pas un nouveau comparateur ni un
 rapport global. Elle prépare une démonstration publique à partir de paquets
 conservés, avec leur méthode et leurs outils d’origine. L’assemblage ne constitue
 ni une nouvelle collecte, ni une validation indépendante. Le protocole normatif
-reste `0.1.0-draft.7` ; les expériences ne sont pas promues implicitement.
+était `0.1.0-draft.7` pour ce parcours historique ; les expériences ne sont pas
+promues implicitement.
 
 ### Parcours proposé
 
@@ -72,7 +105,7 @@ protocole ne découle de cette galerie.
 
 This is a **reading route**, not a new comparator or an aggregate report. It
 organizes retained packages with their original tools and methods, without new
-collection or independent validation. The normative protocol remains draft.7;
+collection or independent validation. This historical route used draft.7;
 experiments are not implicitly promoted. The table above connects the real TS01
 case, authored source perturbations, TS07 HTTP and rendered-state laboratories,
 the TS10 laboratory, structured DOM inventories, canonical candidates and ordered

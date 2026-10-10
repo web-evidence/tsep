@@ -1,8 +1,45 @@
 # Control implementation status / État de développement des contrôles
 
+## Current snapshot / État actuel — 2026-10-10
+
+Reference / Référence : `0.1.0-draft.11`, implementation commit
+`e4ffe1a7859be59d2d3d1edaf670a1a85d2e2840`.
+
+Le programme actif porte sur **quatre contrôles approfondis : TS04, TS02, TS07,
+TS10**, avec TS01 comme socle. Il remplace la cible antérieure de dix contrôles.
+La source décrit toujours 44 contrôles. **Cinq** disposent de règles atomiques
+exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS10 (4), soit **13 règles**.
+Les quatre priorités en représentent 11. Les 39 autres contrôles sont décrits,
+sans le même niveau de règles et d'outillage exécutables.
+
+| Contrôle | Méthode disponible | Ce qui reste à établir sur Edikka |
+| --- | --- | --- |
+| TS01, socle | HTTP final, identité selon critères déclarés, rejeu | La réévaluation des trois captures conservées reste NT : limite `noscript` non vide sur une cible. Ce n'est pas un défaut SEO démontré. |
+| TS02 | Plan préalable, import d'une décision fournie, liaison aux captures ultérieures, comparaison des chaînes | Décision réelle du responsable sur le plan, collecte ultérieure et résultats dans son périmètre |
+| TS04 | Profils robots explicites, matrice par origine, ressources requises, fiches de revue et rejeu | Matrice préalable réelle, captures et revues motivées des ressources |
+| TS07 | Directives HTTP/source/rendu ; client HTTP distinct de la sémantique du robot ; laboratoire de navigation attribuée | Plan de rendu, preuves et revues couvrant les cibles/états retenus |
+| TS10 | Déclarations canonical et liens structurés, attributs bornés, familles et parcours de revue | Application réelle, qualification des familles et revues de contenu nécessaires |
+
+Le [rapprochement Search Console](search-console-observations.md) est disponible
+comme diagnostic hors ligne. Ses essais sont synthétiques ; ils ne constituent
+ni un accès au compte, ni une application achevée de TS08/TS12. Les laboratoires
+et les tests logiciels ne prouvent aucune recette utilisateur ou revue humaine.
+Les huit couples de couverture réduite du corpus restent explicitement ouverts.
+Voir le [programme](four-control-program.md) et le [parcours de preuves](evidence-gallery.md).
+
+EN: the active scope is four deeply developed controls, TS04/TS02/TS07/TS10, with
+TS01 as a foundation. Draft.11 describes 44 controls; five have 13 executable
+atomic rules (11 in the four priorities), while 39 remain without equivalent
+detailed executable coverage. Methods, synthetic laboratories, real assessment
+and human acceptance are separate milestones. Supplied Search Console comparison
+is an offline diagnostic, not a real account observation or a TS08/TS12 verdict.
+Missing reviews, real inputs and eight known corpus coverage reductions remain
+open. The following draft.7 inventory and dated development notes are historical;
+their old counts and next steps must not be read as the current state.
+
 ## Français
 
-**Point de référence : 10 octobre 2026, protocole 0.1.0-draft.7, code 716899e.**
+**Inventaire historique : 10 octobre 2026, protocole 0.1.0-draft.7, code 716899e.**
 Document de pilotage non normatif. Il décrit la couverture du développement,
 jamais la conformité d’Edikka ou d’un site. La priorité de travail est désormais
 la réalisation méthodique des **44 contrôles**, avec traitement des limites
@@ -41,7 +78,7 @@ sémantiques TS07 et fournit un [laboratoire de navigation attribuée](same-navi
 Les treize règles restent réparties dans cinq contrôles. Une exécution navigateur,
 une recette humaine et un audit du site exigent chacun leurs propres pièces.
 
-### Décompte vérifié
+### Décompte historique vérifié à draft.7
 
 - **44 contrôles décrits** dans `spec/protocol.json`, avec procédure et attendus.
 - **3 contrôles possèdent des règles atomiques et un interpréteur borné** :
@@ -82,7 +119,7 @@ sans accès, mais pas déclarer leur application réelle achevée sans ces preuv
 L’attente d’une entrée externe n’empêche pas le travail indépendant sur les autres
 méthodes ; elle demeure un point ouvert explicite.
 
-### Les 44 contrôles, sans omission
+### Inventaire historique des 44 contrôles à draft.7
 
 Le tableau suit les identifiants permanents. La colonne suivante est un travail
 à réaliser, pas une nouvelle exigence normative ni une classification finale de
