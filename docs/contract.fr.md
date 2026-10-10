@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.17
+# Contrat de rapport — TSEP 0.1.0-draft.18
 
 ## Périmètre déclaré
 
@@ -337,3 +337,7 @@ changent pas. Les calculs conservent des observations comparées au rejeu. Voir 
 ### Liens source — draft.17
 
 TS10-A04 accepte le profil préalable html-tree-links-v1 sous intent.canonical.links. Le [contrat bilingue normatif](source-link-policy.md) définit population, URL, base, hypothèses, inconnues et bornes. La portée de convergence, y compris zéro lien observé, accompagne les motifs atomiques/contrôle, HTML, EARL et scope_notes du gate. Rendu et revues inchangés ; [migration explicite](migration-draft.17.md).
+
+### Bases non analysables — draft.18
+
+TS10-A04 accepte désormais aussi le profil préalable html-tree-links-v2. Une première base dont le href échoue à l’analyse WHATWG rend les href dépendants indéterminés, tout en conservant les contradictions indépendantes. Profil v1, A01/A02 et rendu inchangés. Le [contrat normatif bilingue](source-link-policy-v2.md) et la [migration](migration-draft.18.md) précisent les preuves, hypothèses, zéro observé et limites.

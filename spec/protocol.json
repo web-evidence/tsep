@@ -1,9 +1,9 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.17",
+  "version": "0.1.0-draft.18",
   "status": "draft",
-  "date": "2026-10-10",
+  "date": "2026-10-11",
   "languages": [
     "en",
     "fr"
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17",
+      "rule_version": "0.1.0-draft.18",
       "rules": [
         {
           "na_inputs": [],
@@ -385,7 +385,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS04",
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17",
+      "rule_version": "0.1.0-draft.18",
       "rules": [
         {
           "id": "TS04-A01",
@@ -599,7 +599,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS06",
@@ -658,7 +658,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS07",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS08",
@@ -924,7 +924,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS09",
@@ -982,7 +982,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS10",
@@ -1202,8 +1202,8 @@
             "en": "Each family and declared source-page population."
           },
           "procedure": {
-            "fr": "Extraire les liens de la population annoncée ; comparer leurs destinations et les exceptions documentées à la préférence canonique. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée. Le profil source facultatif préalable intent.canonical.links.source_reader=html-tree-links-v1 qualifie les href HTML a/area attribués, leur base et leur résolution WHATWG dans deux hypothèses statiques. Le contrat source-link-policy.md fixe cette méthode ; les lecteurs rendus antérieurs restent inchangés.",
-            "en": "Extract links from the announced population; compare destinations and documented exceptions with canonical preference. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.links.source_reader=html-tree-links-v1 qualifies attributed HTML a/area hrefs, base and WHATWG resolution under two static hypotheses. source-link-policy.md defines this method; earlier rendered readers remain unchanged."
+            "fr": "Extraire les liens de la population annoncée ; comparer leurs destinations et les exceptions documentées à la préférence canonique. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée. Le profil source facultatif préalable intent.canonical.links.source_reader=html-tree-links-v1 qualifie les href HTML a/area attribués, leur base et leur résolution WHATWG dans deux hypothèses statiques. Le contrat source-link-policy.md fixe cette méthode ; les lecteurs rendus antérieurs restent inchangés. Draft.18 ajoute html-tree-links-v2 : seule une première base dont le href échoue à l’analyse WHATWG ajoute une incertitude de base ; v1 reste inchangé. Le calcul avec l’URL finale est alors conditionnel, sans destination déduite pour un href dépendant. Le complément source-link-policy-v2.md définit cette différence.",
+            "en": "Extract links from the announced population; compare destinations and documented exceptions with canonical preference. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.links.source_reader=html-tree-links-v1 qualifies attributed HTML a/area hrefs, base and WHATWG resolution under two static hypotheses. source-link-policy.md defines this method; earlier rendered readers remain unchanged. Draft.18 adds html-tree-links-v2: a first base whose href fails WHATWG parsing adds base uncertainty; v1 remains unchanged. Computation against the final URL is then conditional, without inferring a destination for dependent hrefs. source-link-policy-v2.md defines this delta."
           },
           "acceptance": {
             "fr": "Tous les liens évalués suivent la stratégie ; aucune destination concurrente inexpliquée. Zéro lien peut satisfaire la règle uniquement si la population annoncée est intégralement examinée. Un lien concurrent attribuable reste fail même si une autre page source ou un état requis manque. Deux lectures source pass donnent pass, deux fail donnent fail, sinon inconclusive. Une base incertaine ne permet pas un fail sur un href dépendant ; une contradiction absolue qualifiée indépendante demeure exploitable. Les comptes zéro et la portée de convergence restent visibles jusque contrôle et gate, sans exigence de présence de lien.",
@@ -1214,16 +1214,16 @@
             "en": "Crawl export with source URL, href, destination, pages actually visited, failures and exclusions; reconciliation with the declared population. Retain source HTML and DOMs needed for extraction, bound to their traces, contexts and dates; a rendering exemption is reviewed and supported. Exceptions identify source, destination and reason. The new profile retains inventory, namespaces, templates, tags/bytes, calculated URLs, bases/limits, versions, per-hypothesis decisions/counts in replayable observations."
           },
           "assumptions": {
-            "fr": "Le crawl vérifie une population déclarée ; il n’en prouve pas à lui seul l’exhaustivité. Le lecteur structuré v2 conserve les href bruts ; résolution bornée seulement sans base déclarée et avec baseURI égale à l’URL finale. Un lien shadow ou une syntaxe non couverte reste indéterminé. Famille déjà identique à sa sérialisation WHATWG ou source indéterminée, sans normalisation implicite. URL hors famille conservées, pas de doublons devinés. href sans namespace, annotations nofollow/download non filtrantes ; destination statique seulement.",
-            "en": "The crawl checks a declared population; it does not by itself prove that population exhaustive. Structured reader v2 retains raw hrefs; bounded resolution only without a base declaration and with baseURI equal to the final URL. Shadow links or unsupported syntax remain inconclusive. Family URLs must already equal their WHATWG serialization or source is inconclusive, without silent normalization. Outside-family URLs are retained, never guessed duplicates. No-namespace href with no nofollow/download filtering; static destination only."
+            "fr": "Le crawl vérifie une population déclarée ; il n’en prouve pas à lui seul l’exhaustivité. Le lecteur structuré v2 conserve les href bruts ; résolution bornée seulement sans base déclarée et avec baseURI égale à l’URL finale. Un lien shadow ou une syntaxe non couverte reste indéterminé. Famille déjà identique à sa sérialisation WHATWG ou source indéterminée, sans normalisation implicite. URL hors famille conservées, pas de doublons devinés. href sans namespace, annotations nofollow/download non filtrantes ; destination statique seulement. href de base vide ou composé d’espaces, schémas data/javascript et CSP restent distincts de cet échec de parsing ; ne pas sélectionner une seconde base.",
+            "en": "The crawl checks a declared population; it does not by itself prove that population exhaustive. Structured reader v2 retains raw hrefs; bounded resolution only without a base declaration and with baseURI equal to the final URL. Shadow links or unsupported syntax remain inconclusive. Family URLs must already equal their WHATWG serialization or source is inconclusive, without silent normalization. Outside-family URLs are retained, never guessed duplicates. No-namespace href with no nofollow/download filtering; static destination only. Empty/whitespace base href, data/javascript schemes and CSP remain distinct from that parse failure; never select a second base instead."
           },
           "inconclusive": {
             "fr": "Pages sources manquantes, liens non examinés ou crawl absent : inconclusive, jamais réussite par zéro résultat. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation. Sélection source nulle/inconnue, runtime Node24 absent, parcours ou diagnostic incomplet : inconclusive sans repli. SVG/ancêtres étrangers, shadow déclaré et attributs dupliqués du lien restent inconnus ; CSP/base non modélisée empêche la résolution concluante des href dépendants.",
             "en": "Missing source pages, unexamined links or absent crawl: inconclusive, never success from zero results. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. Null/unknown source selection, missing Node24, incomplete traversal/diagnostic: inconclusive without fallback. SVG/foreign ancestors, declared shadow and duplicate link attributes remain unknown; unmodeled CSP/base prevents conclusive dependent-href resolution."
           },
           "limitations": {
-            "fr": "Aucun résultat étendu aux liens externes, pages hors population ou dates futures. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md. Le profil source ne mesure ni activation, ni présence/suffisance du maillage, ni formulaires/événements ou comportement Google. Bornes, portée des autres éléments conservés et migration : source-link-policy.md et migration-draft.17.md.",
-            "en": "No extrapolation to external links, pages outside the population or future dates. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source profile measures neither activation, link presence/sufficiency, forms/events nor Google behavior. Bounds, retained out-of-scope elements and migration: source-link-policy.md and migration-draft.17.md."
+            "fr": "Aucun résultat étendu aux liens externes, pages hors population ou dates futures. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md. Le profil source ne mesure ni activation, ni présence/suffisance du maillage, ni formulaires/événements ou comportement Google. Bornes, portée des autres éléments conservés et migration : source-link-policy.md et migration-draft.17.md. Correction v2 et conservation des anciens résultats : migration-draft.18.md. Aucun bug général de navigateur ni état Google n’est établi par le diagnostic.",
+            "en": "No extrapolation to external links, pages outside the population or future dates. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source profile measures neither activation, link presence/sufficiency, forms/events nor Google behavior. Bounds, retained out-of-scope elements and migration: source-link-policy.md and migration-draft.17.md. Version2 correction and preserved historical results: migration-draft.18.md. The diagnostic establishes neither a general browser bug nor a Google state."
           },
           "na_inputs": [],
           "non_applicability": {
@@ -1233,7 +1233,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS11",
@@ -1292,7 +1292,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS12",
@@ -1351,7 +1351,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS13",
@@ -1411,7 +1411,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS14",
@@ -1469,7 +1469,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS15",
@@ -1526,7 +1526,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS16",
@@ -1585,7 +1585,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS17",
@@ -1644,7 +1644,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS18",
@@ -1704,7 +1704,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS19",
@@ -1763,7 +1763,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS20",
@@ -1822,7 +1822,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS21",
@@ -1882,7 +1882,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS22",
@@ -1942,7 +1942,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS23",
@@ -2000,7 +2000,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS24",
@@ -2059,7 +2059,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS25",
@@ -2118,7 +2118,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS26",
@@ -2178,7 +2178,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS27",
@@ -2237,7 +2237,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS28",
@@ -2296,7 +2296,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS29",
@@ -2355,7 +2355,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS30",
@@ -2414,7 +2414,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS31",
@@ -2473,7 +2473,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS32",
@@ -2531,7 +2531,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS33",
@@ -2590,7 +2590,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS34",
@@ -2648,7 +2648,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS35",
@@ -2706,7 +2706,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS36",
@@ -2766,7 +2766,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS37",
@@ -2827,7 +2827,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS38",
@@ -2888,7 +2888,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS39",
@@ -2948,7 +2948,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS40",
@@ -3009,7 +3009,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS41",
@@ -3067,7 +3067,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS42",
@@ -3127,7 +3127,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS43",
@@ -3187,7 +3187,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     },
     {
       "id": "TS44",
@@ -3249,7 +3249,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.17"
+      "rule_version": "0.1.0-draft.18"
     }
   ],
   "profiles": [
@@ -3400,15 +3400,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "a91d85db2a0dad2689ec41b6be086b939a2dc063f281a8234f31b3e695272fcd"
+      "sha256": "763f8e8b3d9e56f2acf4ceb3c265a2002d5299d1c142b5fdc67d48c687d40739"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "71141c53ad01cd52fddad2b248c71e4d99c82bc0fe60b799fd20fd57df13ec7e"
+      "sha256": "519494db27f66816530690c8eb7668cabe9334f3af36726cdefa02852bf521ba"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "6d8844269a0c0dcf0d26f22a5c3d51acd019c6ff578a41936cd86ab407bf1cd0"
+      "sha256": "ed5678a08d274e071586983ca478e15ac8b4c96a49e53ee86bad9205cd04681a"
     },
     {
       "path": "docs/source-directives.md",
@@ -3421,6 +3421,10 @@
     {
       "path": "docs/source-link-policy.md",
       "sha256": "2a79702b2fa2caa9b3846e277b19be1d6d31aca17321dce1646fd60caa4a80f7"
+    },
+    {
+      "path": "docs/source-link-policy-v2.md",
+      "sha256": "6e7536cdb939c0f16620c7944d3af724c50390f6249d2ec9230fe8bc99879c4c"
     }
   ]
 }

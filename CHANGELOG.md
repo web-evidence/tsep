@@ -1,5 +1,15 @@
 # Change history / Historique
 
+## 0.1.0-draft.18 — 2026-10-11 — invalid first-base uncertainty
+
+Optional prior html-tree-links-v2 keeps base-dependent source hrefs inconclusive
+when the first base cannot be parsed. Independent contradictions, explicit zero,
+v1 semantics, A01/A02 and rendered requirements remain. Interpreter18/adapter19.
+
+Le profil source v2 conserve l’incertitude de base sans réécrire v1 ni effacer
+une contradiction indépendante. [Contrat](docs/source-link-policy-v2.md),
+[migration](docs/migration-draft.18.md). Aucun changement de capture historique.
+
 ## 0.1.0-draft.17 — 2026-10-10 — source link decisions
 
 Optional prior A04 source profile qualifies HTML a/area href, final URL/base and

@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.17
+# Report contract — TSEP 0.1.0-draft.18
 
 ## Declared scope
 
@@ -330,3 +330,7 @@ unchanged. New calculations retain observations compared by replay. See the
 ### Source links — draft.17
 
 TS10-A04 accepts prior html-tree-links-v1 under intent.canonical.links. The [normative bilingual contract](source-link-policy.md) defines population, URLs, base, hypotheses, unknowns and bounds. Convergence scope, including zero observed links, accompanies atomic/control reasons, HTML, EARL and gate scope_notes. Rendering/reviews remain unchanged; [explicit migration](migration-draft.17.md).
+
+### Unparseable bases — draft.18
+
+TS10-A04 also accepts prior html-tree-links-v2. A first base whose href fails WHATWG parsing makes dependent hrefs inconclusive, while independent contradictions survive. Profile v1, A01/A02 and rendering remain unchanged. The [normative bilingual contract](source-link-policy-v2.md) and [migration](migration-draft.18.md) define evidence, hypotheses, observed zero and limits.

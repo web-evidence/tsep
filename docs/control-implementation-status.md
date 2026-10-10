@@ -1,11 +1,13 @@
+[Source links v2 / Liens source v2](source-link-policy-v2.md) : première base non analysable explicitement incertaine ; v1 et preuves historiques conservés.
+
 # Control implementation status / État de développement des contrôles
 
-## Current snapshot / État actuel — 2026-10-10
+## Current snapshot / État actuel — 2026-10-11
 
-Reference / Référence : `0.1.0-draft.17`. Optional prior source profiles now cover
+Reference / Référence : `0.1.0-draft.18`. Optional prior source profiles now cover
 TS07 directives and TS10 canonical declarations/family links, with attributed
 static hypotheses and explicit unknowns. Rendered readers and required reviews
-remain separate. [Migration](migration-draft.17.md).
+remain separate. [Migration](migration-draft.18.md).
 Les profils source n'inventent ni rendu, ni décision propriétaire, ni revue.
 
 Earlier draft.14: TS10-A03 adds a prior bounded sitemap

@@ -1,3 +1,5 @@
+[Source links v2 / Liens source v2](source-link-policy-v2.md) : première base non analysable explicitement incertaine ; v1 et preuves historiques conservés.
+
 # Programme prioritaire — quatre contrôles
 
 Décision de Bertrand du 10 octobre 2026 : remplacer la cible quantitative de dix
@@ -12,7 +14,7 @@ la Search Console et un insight concret. Aucun ordre numérique n'est obligatoir
 | TS10 | Canonical HTTP, HTML, rendu, sitemap ou liens désignent des URL incompatibles | Draft.17 : profils source canonical A01/A02 et liens A04, sitemap A03 et rendu structuré distincts ; applications réelles limitées, familles opérateur et revues à qualifier |
 
 TS01 reste la base existante, sans être compté comme l'un de ces quatre objectifs.
-La version courante est draft.17 ; les démonstrations historiques restent liées à
+La version courante est draft.18 ; les démonstrations historiques restent liées à
 leurs outils d'origine. Le programme n'est pas un certificat d'achèvement.
 
 ### Dossier concret à lire et à rejouer
@@ -72,7 +74,7 @@ on TS04, TS02, TS07 and TS10, followed by a first Search Console comparison and 
 concrete insight. TS01 stays as existing infrastructure. This is a development
 program, not a completion claim. Keep rendered/human requirements, verify each
 method and distinguish technical completion from a real site's assessment.
-Current draft.17 includes prior source profiles for TS07 directives, TS10 canonical
+Current draft.18 includes prior source profiles for TS07 directives, TS10 canonical
 declarations and family links. Earlier rendered readers stay distinct. Three real
 source observations or sixteen allowed resource paths cannot supply missing rendered
 states, owner decisions or human reviews. Each historical demonstration must replay

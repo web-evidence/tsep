@@ -1,0 +1,6 @@
+{
+  "at": "2026-10-10T22:10:30.691686+00:00",
+  "cases": 601,
+  "sha256": "dd958665b034afc9d6afd414b56ef96637e97872b0f219ab6141e43b85f17096",
+  "scope": "601 historical inputs and computed reasons/outcomes under optional Node24, before v2 implementation"
+}

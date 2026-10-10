@@ -9,7 +9,8 @@ from conformance.source_canonical import ambiguous_attributes
 from experiments import link_elements, source_http, url_resolution
 
 READER = 'html-tree-links-v1'
-VERSION = '1'
+VERSION = '1'  # Historical v1 observation format remains unchanged.
+READERS = {READER: VERSION, 'html-tree-links-v2': '2'}
 HTML = link_elements.HTML
 MAX_DIAGNOSTIC_BYTES = 4 * 1024 * 1024
 attribute = link_elements.attribute
@@ -25,7 +26,7 @@ def qualified(record, errors):
     need(not ambiguous_attributes(record, errors), 'Duplicate attributes on href element need review')
 
 
-def decide_reading(reading, metadata, headers, fallback, family, preferred, exempt, resolve):
+def decide_reading(reading, metadata, headers, fallback, family, preferred, exempt, resolve, *, invalid_base_unknown=False):
     need(reading['complete'], 'Incomplete element inventory; no partial absence or failure claim')
     errors = reading['parse_errors']
     unknowns = ['Reported HTML parse errors require review'] if errors else []
@@ -49,7 +50,10 @@ def decide_reading(reading, metadata, headers, fallback, family, preferred, exem
             if csp: base_unknowns.append('CSP meta with base: policy not modeled')
         if headers.get('content-security-policy'): base_unknowns.append('CSP response with base: policy not modeled')
         candidate = resolve([{'url': attribute(first, 'href'), 'base': fallback}])[0]
-        if not candidate['ok']: basis = 'first-invalid-base-fallback'
+        if not candidate['ok']:
+            basis = 'first-invalid-base-unknown' if invalid_base_unknown else 'first-invalid-base-fallback'
+            if invalid_base_unknown:
+                base_unknowns.append('First base href cannot be parsed; fallback is conditional, not a determined destination')
         elif candidate['protocol'] in ('javascript:', 'data:'): basis = 'first-disallowed-base-fallback'
         else: base = candidate['href']; basis = 'first-base-href'
     links = []
@@ -104,10 +108,12 @@ def decide_reading(reading, metadata, headers, fallback, family, preferred, exem
 
 class Surface:
     def __init__(self, headers, body, selection, family, preferred, exempt, *, document_url, requested_url, diagnostics=None):
-        record = {'reader': selection, 'policy_version': VERSION, 'document_url': document_url,
+        version = READERS.get(selection, VERSION) if isinstance(selection, str) else VERSION
+        label = selection if isinstance(selection, str) and selection in READERS else READER
+        record = {'reader': selection, 'policy_version': version, 'document_url': document_url,
                   'requested_url': requested_url, 'scope': SCOPE}
         try:
-            need(selection == READER, 'Unsupported link source_reader; no legacy fallback')
+            need(isinstance(selection, str) and selection in READERS, 'Unsupported link source_reader; no legacy fallback')
             raw = body if type(body) is bytes else body.encode('utf-8')
             record['body_sha256'] = hashlib.sha256(raw).hexdigest(); runs = []; record['url_runs'] = runs
             node = os.environ.get('TSEP_SOURCE_NODE')
@@ -132,17 +138,18 @@ class Surface:
             for mode, reading in inventory['readings'].items():
                 try:
                     decisions[mode] = decide_reading(reading, metadata['readings'][mode] if metadata else None,
-                        headers, fallback['href'], family, preferred, exempt, resolve)
+                        headers, fallback['href'], family, preferred, exempt, resolve,
+                        invalid_base_unknown=selection == 'html-tree-links-v2')
                 except (Unknown, KeyError, TypeError, ValueError, OSError) as error:
                     decisions[mode] = {'outcome': 'inconclusive', 'reason': str(error)}
             record['hypotheses'] = decisions; outcome = consensus(decisions)
-            reason = READER + ': ' + '; '.join(m + '=' + d['outcome'] + ' (' + d['reason'] + ')' for m, d in decisions.items())
+            reason = label + ': ' + '; '.join(m + '=' + d['outcome'] + ' (' + d['reason'] + ')' for m, d in decisions.items())
         except (Unknown, KeyError, TypeError, ValueError, OSError) as error:
-            outcome, reason = 'inconclusive', READER + ': ' + str(error)
+            outcome, reason = 'inconclusive', label + ': ' + str(error)
         record.update(outcome=outcome, reason=reason)
         if len(json.dumps(record, ensure_ascii=False, indent=2).encode()) > MAX_DIAGNOSTIC_BYTES:
-            outcome, reason = 'inconclusive', READER + ': Source link diagnostic exceeds 4 MiB; no truncated decision'
-            record = {'reader': READER if selection == READER else '[unsupported; see input]', 'policy_version': VERSION,
+            outcome, reason = 'inconclusive', label + ': Source link diagnostic exceeds 4 MiB; no truncated decision'
+            record = {'reader': label if isinstance(selection, str) and selection in READERS else '[unsupported; see input]', 'policy_version': version,
                       'document_url': document_url, 'requested_url': requested_url,
                       'body_sha256': record.get('body_sha256'), 'outcome': outcome, 'reason': reason}
         self.source_decision = (outcome, reason)

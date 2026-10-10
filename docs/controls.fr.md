@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.17 — Contrôles
+# TSEP 0.1.0-draft.18 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.17:TS01-A01`
+`TSEP@0.1.0-draft.18:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.17:TS01-A02`
+`TSEP@0.1.0-draft.18:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.17:TS02-A01`
+`TSEP@0.1.0-draft.18:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.17:TS02-A02`
+`TSEP@0.1.0-draft.18:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -198,7 +198,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A01 — Politique par origine, robot et ressource
 
-`TSEP@0.1.0-draft.17:TS04-A01`
+`TSEP@0.1.0-draft.18:TS04-A01`
 
 **Entrées requises**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A02 — Accès aux ressources nécessaires
 
-`TSEP@0.1.0-draft.17:TS04-A02`
+`TSEP@0.1.0-draft.18:TS04-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.17:TS07-A01`
+`TSEP@0.1.0-draft.18:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -344,7 +344,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.17:TS07-A02`
+`TSEP@0.1.0-draft.18:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.17:TS07-A03`
+`TSEP@0.1.0-draft.18:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.17:TS10-A01`
+`TSEP@0.1.0-draft.18:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -490,7 +490,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.17:TS10-A02`
+`TSEP@0.1.0-draft.18:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -514,7 +514,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.17:TS10-A03`
+`TSEP@0.1.0-draft.18:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.17:TS10-A04`
+`TSEP@0.1.0-draft.18:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 
@@ -548,19 +548,19 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Chaque famille et population de pages sources déclarée.
 
-**Méthode.** Extraire les liens de la population annoncée ; comparer leurs destinations et les exceptions documentées à la préférence canonique. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée. Le profil source facultatif préalable intent.canonical.links.source_reader=html-tree-links-v1 qualifie les href HTML a/area attribués, leur base et leur résolution WHATWG dans deux hypothèses statiques. Le contrat source-link-policy.md fixe cette méthode ; les lecteurs rendus antérieurs restent inchangés.
+**Méthode.** Extraire les liens de la population annoncée ; comparer leurs destinations et les exceptions documentées à la préférence canonique. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée. Le profil source facultatif préalable intent.canonical.links.source_reader=html-tree-links-v1 qualifie les href HTML a/area attribués, leur base et leur résolution WHATWG dans deux hypothèses statiques. Le contrat source-link-policy.md fixe cette méthode ; les lecteurs rendus antérieurs restent inchangés. Draft.18 ajoute html-tree-links-v2 : seule une première base dont le href échoue à l’analyse WHATWG ajoute une incertitude de base ; v1 reste inchangé. Le calcul avec l’URL finale est alors conditionnel, sans destination déduite pour un href dépendant. Le complément source-link-policy-v2.md définit cette différence.
 
 **Attendus.** Tous les liens évalués suivent la stratégie ; aucune destination concurrente inexpliquée. Zéro lien peut satisfaire la règle uniquement si la population annoncée est intégralement examinée. Un lien concurrent attribuable reste fail même si une autre page source ou un état requis manque. Deux lectures source pass donnent pass, deux fail donnent fail, sinon inconclusive. Une base incertaine ne permet pas un fail sur un href dépendant ; une contradiction absolue qualifiée indépendante demeure exploitable. Les comptes zéro et la portée de convergence restent visibles jusque contrôle et gate, sans exigence de présence de lien.
 
 **Preuves.** Export de crawl avec URL source, href, destination, pages réellement parcourues, échecs et exclusions ; rapprochement avec la population déclarée. Conserver le HTML source et les DOM nécessaires à l’extraction, liés à leurs traces, contextes et dates ; une exemption de rendu est revue et étayée. Les exceptions identifient source, destination et motif. Le nouveau profil conserve inventaire, namespaces, templates, balises/octets, URL calculées, bases et limites, versions, décisions et comptes par hypothèse dans les observations rejouables.
 
-**Hypothèses.** Le crawl vérifie une population déclarée ; il n’en prouve pas à lui seul l’exhaustivité. Le lecteur structuré v2 conserve les href bruts ; résolution bornée seulement sans base déclarée et avec baseURI égale à l’URL finale. Un lien shadow ou une syntaxe non couverte reste indéterminé. Famille déjà identique à sa sérialisation WHATWG ou source indéterminée, sans normalisation implicite. URL hors famille conservées, pas de doublons devinés. href sans namespace, annotations nofollow/download non filtrantes ; destination statique seulement.
+**Hypothèses.** Le crawl vérifie une population déclarée ; il n’en prouve pas à lui seul l’exhaustivité. Le lecteur structuré v2 conserve les href bruts ; résolution bornée seulement sans base déclarée et avec baseURI égale à l’URL finale. Un lien shadow ou une syntaxe non couverte reste indéterminé. Famille déjà identique à sa sérialisation WHATWG ou source indéterminée, sans normalisation implicite. URL hors famille conservées, pas de doublons devinés. href sans namespace, annotations nofollow/download non filtrantes ; destination statique seulement. href de base vide ou composé d’espaces, schémas data/javascript et CSP restent distincts de cet échec de parsing ; ne pas sélectionner une seconde base.
 
 **Indéterminé.** Pages sources manquantes, liens non examinés ou crawl absent : inconclusive, jamais réussite par zéro résultat. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation. Sélection source nulle/inconnue, runtime Node24 absent, parcours ou diagnostic incomplet : inconclusive sans repli. SVG/ancêtres étrangers, shadow déclaré et attributs dupliqués du lien restent inconnus ; CSP/base non modélisée empêche la résolution concluante des href dépendants.
 
 **Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
 
-**Limites.** Aucun résultat étendu aux liens externes, pages hors population ou dates futures. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md. Le profil source ne mesure ni activation, ni présence/suffisance du maillage, ni formulaires/événements ou comportement Google. Bornes, portée des autres éléments conservés et migration : source-link-policy.md et migration-draft.17.md.
+**Limites.** Aucun résultat étendu aux liens externes, pages hors population ou dates futures. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md. Le profil source ne mesure ni activation, ni présence/suffisance du maillage, ni formulaires/événements ou comportement Google. Bornes, portée des autres éléments conservés et migration : source-link-policy.md et migration-draft.17.md. Correction v2 et conservation des anciens résultats : migration-draft.18.md. Aucun bug général de navigateur ni état Google n’est établi par le diagnostic.
 
 ## TS11 — Les variantes réellement dupliquées convergent sans masquer des pages distinctes.
 

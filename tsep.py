@@ -280,7 +280,8 @@ def decision(report, controls=None):
                               'consistency and file integrity, not the truth of an assessment.'}
     notes = [{'control_id': r['control_id'], 'target': a['target'], 'reason': a['reason']}
              for r in report['results'] for a in r.get('atomic_results', [])
-             if a['rule_id'] == 'TS10-A04' and 'html-tree-links-v1:' in a['reason']]
+             if a['rule_id'] == 'TS10-A04' and any(reader + ':' in a['reason']
+                 for reader in ('html-tree-links-v1', 'html-tree-links-v2'))]
     if notes: summary['scope_notes'] = notes
     return summary
 

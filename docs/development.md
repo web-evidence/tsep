@@ -1,3 +1,8 @@
+Current integration: draft.18, interpreter 18 / adapter 19 / replay 2.
+Prior [source links v2](source-link-policy-v2.md) retain uncertainty under an unparseable first base; v1 stays unchanged.
+Intégration actuelle : liens dépendants indéterminés, contradictions indépendantes conservées ; [migration](migration-draft.18.md).
+The milestones below describe their historical versions / Les jalons ci-dessous gardent leur version historique.
+
 The [invalid-base diagnostic](base-uri-diagnostic.md) reproduces the discrepancy in top-level and iframe contexts.
 Diagnostic d’isolement : 12/24 attentes navigateur, 48/48 calculs URL/base explicites ; draft.17 inchangé.
 
