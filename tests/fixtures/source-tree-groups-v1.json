@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "normative_effect": "none",
+  "authored_at": "2026-10-10T18:36:24.255920+00:00",
+  "scope": "Additional expectations frozen before portable experiment implementation; authored, not independent review.",
+  "cases": [
+    {
+      "id": "empty",
+      "html": "<!doctype html><html><head></head><body></body></html>",
+      "comparisons": {
+        "robots": "identical",
+        "canonical": "identical",
+        "anchors": "identical",
+        "bases": "identical"
+      }
+    },
+    {
+      "id": "basic",
+      "html": "<!doctype html><html><head><meta name=ROBOTS content=index><link rel=canonical href=/target></head><body><a href=/target>Link</a></body></html>",
+      "comparisons": {
+        "robots": "identical",
+        "canonical": "identical",
+        "anchors": "identical",
+        "bases": "identical"
+      }
+    },
+    {
+      "id": "noscript-anchor",
+      "html": "<!doctype html><html><head><meta name=robots content=index><link rel=canonical href=/target></head><body><noscript><a href=/audio.mp3>Audio</a></noscript></body></html>",
+      "comparisons": {
+        "robots": "identical",
+        "canonical": "identical",
+        "anchors": "different",
+        "bases": "identical"
+      }
+    },
+    {
+      "id": "noscript-robots",
+      "html": "<!doctype html><html><head><noscript><meta name=robots content=noindex></noscript></head><body></body></html>",
+      "comparisons": {
+        "robots": "different",
+        "canonical": "identical",
+        "anchors": "identical",
+        "bases": "identical"
+      }
+    },
+    {
+      "id": "noscript-canonical",
+      "html": "<!doctype html><html><head><noscript><link rel=canonical href=/target></noscript></head><body></body></html>",
+      "comparisons": {
+        "robots": "identical",
+        "canonical": "different",
+        "anchors": "identical",
+        "bases": "identical"
+      }
+    },
+    {
+      "id": "noscript-base",
+      "html": "<!doctype html><html><head></head><body><noscript><base href=https://example.test/></noscript></body></html>",
+      "comparisons": {
+        "robots": "identical",
+        "canonical": "identical",
+        "anchors": "identical",
+        "bases": "different"
+      }
+    },
+    {
+      "id": "body-robots-kept",
+      "html": "<!doctype html><html><head></head><body><meta name=robots content=noindex></body></html>",
+      "comparisons": {
+        "robots": "identical",
+        "canonical": "identical",
+        "anchors": "identical",
+        "bases": "identical"
+      },
+      "robots_contexts": [
+        "body"
+      ]
+    },
+    {
+      "id": "template-signals",
+      "html": "<!doctype html><html><head><template><meta name=robots content=noindex><link rel=canonical href=/bad><base href=/bad></template></head><body><template><a href=/bad>Fake</a></template></body></html>",
+      "comparisons": {
+        "robots": "identical",
+        "canonical": "identical",
+        "anchors": "identical",
+        "bases": "identical"
+      },
+      "active_counts": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "template_count": 4
+    },
+    {
+      "id": "raw-inert",
+      "html": "<!doctype html><html><head><script>throw new Error(\"MUST NOT EXECUTE\"); fetch(\"https://example.test/\"); const a='<link rel=canonical href=/bad>';</script><meta name=robots content=index></head><body><textarea><a href=/bad>Fake</a></textarea></body></html>",
+      "comparisons": {
+        "robots": "identical",
+        "canonical": "identical",
+        "anchors": "identical",
+        "bases": "identical"
+      },
+      "active_counts": [
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "duplicate-retained",
+      "html": "<!doctype html><html><head><meta name=robots name=description content=noindex></head><body></body></html>",
+      "comparisons": {
+        "robots": "identical",
+        "canonical": "identical",
+        "anchors": "identical",
+        "bases": "identical"
+      },
+      "parse_error": "duplicate-attribute"
+    },
+    {
+      "id": "unicode-crlf-offsets",
+      "html": "<!doctype html><html><head></head><body>é🙂\r\n<a href=\"?q=&#x1f642;&amp;z=1\">Link</a></body></html>",
+      "comparisons": {
+        "robots": "identical",
+        "canonical": "identical",
+        "anchors": "identical",
+        "bases": "identical"
+      },
+      "anchor_href": "?q=🙂&z=1"
+    },
+    {
+      "id": "base-not-resolved",
+      "html": "<!doctype html><html><head><base href=https://example.test/><link rel=canonical href=/target></head><body><a href=/target>Link</a></body></html>",
+      "comparisons": {
+        "robots": "identical",
+        "canonical": "identical",
+        "anchors": "identical",
+        "bases": "identical"
+      },
+      "anchor_href": "/target"
+    }
+  ]
+}

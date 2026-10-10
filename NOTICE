@@ -9,3 +9,9 @@ Selected HTML character-reference test data derives from html5lib/html5lib-tests
 revision c777c408b61078ea2eb4acefc2535f54dbc8b28a. Copyright 2006-2013 James Graham,
 Geoffrey Sneddon and other contributors. MIT license: licenses/html5lib-tests.txt.
 This test-only subset is not an endorsement or a complete HTML5 conformance suite.
+
+Optional static source-tree experiment ships unmodified official npm archives
+parse5 8.0.1 and entities 8.0.0 under their MIT licenses. Copyright notices are
+preserved in the archives and licenses/source-tree-parse5.txt and
+licenses/source-tree-entities.txt. These are optional experimental dependencies,
+not an endorsement, browser observation or normative TSEP parser.

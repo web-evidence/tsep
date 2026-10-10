@@ -1,0 +1,46 @@
+{
+  "kind": "source-tree-method-references",
+  "normative_effect": "none",
+  "references": [
+    {
+      "url": "https://html.spec.whatwg.org/multipage/parsing.html",
+      "resolved_url": "https://html.spec.whatwg.org/multipage/parsing.html",
+      "captured_at": "2026-10-10T18:26:45.637133+00:00",
+      "status": 200,
+      "bytes": 788775,
+      "sha256": "34e193906e6898ae7faf576a8d4c0f8de619a86ec99d85a3baeb2713171f1dbf",
+      "scope": "Primary-source parsing/policy method reference; no observed engine behavior",
+      "retention": "Dated full capture retained by the development custodian in source-signals-2026-10-10/references; not redistributed in the tool archive."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/valid-page-metadata",
+      "resolved_url": "https://developers.google.com/search/docs/crawling-indexing/valid-page-metadata",
+      "captured_at": "2026-10-10T18:26:46.230523+00:00",
+      "status": 200,
+      "bytes": 173390,
+      "sha256": "ecf96ad681c3db16d37e2ae1fe0af9b0671b45f158ad8ddd8bd4960a18efb3f1",
+      "scope": "Primary-source parsing/policy method reference; no observed engine behavior",
+      "retention": "Dated full capture retained by the development custodian in source-signals-2026-10-10/references; not redistributed in the tool archive."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+      "resolved_url": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+      "captured_at": "2026-10-10T18:26:47.298520+00:00",
+      "status": 200,
+      "bytes": 207939,
+      "sha256": "5daf9122e26095f65ed85d58d5fe13479db509b606df7297d5f67d964b2469db",
+      "scope": "Primary-source parsing/policy method reference; no observed engine behavior",
+      "retention": "Dated full capture retained by the development custodian in source-signals-2026-10-10/references; not redistributed in the tool archive."
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+      "resolved_url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+      "captured_at": "2026-10-10T18:26:48.179728+00:00",
+      "status": 200,
+      "bytes": 194790,
+      "sha256": "db5b959fb2322df1040094743cd8dbb2ef094a858370cb25ca531f04c04784c2",
+      "scope": "Primary-source parsing/policy method reference; no observed engine behavior",
+      "retention": "Dated full capture retained by the development custodian in source-signals-2026-10-10/references; not redistributed in the tool archive."
+    }
+  ]
+}

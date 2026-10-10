@@ -1,0 +1,824 @@
+{
+  "kind": "synthetic-source-tree-qualification",
+  "version": 2,
+  "authored_at": "2026-10-10T18:28:02.854601+00:00",
+  "synthetic": true,
+  "normative_effect": "none",
+  "oracle": "Authored expectations from retained primary parsing references before parser execution; not browser measurements, engine-policy outcomes or independent review. All mismatches retained.",
+  "projection": "HTML-namespace robots/googlebot meta and canonical link IDs in tree order; head/body/template are parsed tree contexts, not lexical ancestry. Template signals retained separately. No JS execution.",
+  "cases": [
+    {
+      "id": "head-basic",
+      "html": "<!doctype html><html><head><meta id=\"m\" name=\"robots\" content=\"noindex\"><link id=\"c\" rel=\"canonical\" href=\"https://example.com/c\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "m",
+            "c"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "m",
+            "c"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "comment-inert",
+      "html": "<!doctype html><html><head><!--<meta id=\"fake\" name=\"robots\" content=\"noindex\">--><link id=\"c\" rel=\"canonical\" href=\"https://example.com/c\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "script-string-inert",
+      "html": "<!doctype html><html><head><script>const x='<meta id=\"fake\" name=\"robots\" content=\"noindex\">';</script><link id=\"c\" rel=\"canonical\" href=\"https://example.com/c\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "jsonld-string-inert",
+      "html": "<!doctype html><html><head><script type=\"application/ld+json\">{\"x\":'<link id=\"fake\" rel=\"canonical\" href=\"https://example.com/fake\">'}</script><meta id=\"m\" name=\"robots\" content=\"noindex\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "style-string-inert",
+      "html": "<!doctype html><html><head><style>p::before{content:'<link id=\"fake\" rel=\"canonical\" href=\"https://example.com/fake\">'}</style><meta id=\"m\" name=\"robots\" content=\"noindex\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "title-raw-markup",
+      "html": "<!doctype html><html><head><title><meta id=\"fake\" name=\"robots\" content=\"noindex\"></title><link id=\"c\" rel=\"canonical\" href=\"https://example.com/c\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "escaped-markup-text",
+      "html": "<!doctype html><html><head></head><body>&lt;meta id=\"fake\" name=\"robots\" content=\"noindex\"></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "attribute-inert",
+      "html": "<!doctype html><html><head><meta name=\"description\" content='<link id=\"fake\" rel=\"canonical\" href=\"https://example.com/fake\">'><meta id=\"m\" name=\"robots\" content=\"noindex\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "textarea-inert",
+      "html": "<!doctype html><html><head></head><body><textarea><meta id=\"fake\" name=\"robots\" content=\"noindex\"></textarea></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "iframe-fallback-inert",
+      "html": "<!doctype html><html><head></head><body><iframe><meta id=\"fake\" name=\"robots\" content=\"noindex\"></iframe></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "template-head",
+      "html": "<!doctype html><html><head><template><meta id=\"fake\" name=\"robots\" content=\"noindex\"></template><link id=\"c\" rel=\"canonical\" href=\"https://example.com/c\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [
+            "fake"
+          ]
+        },
+        "disabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": [
+            "fake"
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "template-body",
+      "html": "<!doctype html><html><head></head><body><template><link id=\"fake\" rel=\"canonical\" href=\"https://example.com/fake\"></template><meta id=\"body\" name=\"robots\" content=\"noindex\"></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [],
+          "body": [
+            "body"
+          ],
+          "template": [
+            "fake"
+          ]
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "body"
+          ],
+          "template": [
+            "fake"
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "template-nested",
+      "html": "<!doctype html><html><head><template><template><link id=\"fake\" rel=\"canonical\" href=\"https://example.com/fake\"></template></template><meta id=\"m\" name=\"robots\" content=\"noindex\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [
+            "fake"
+          ]
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [
+            "fake"
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "template-table-recovery",
+      "html": "<!doctype html><html><head><template><table><link id=\"fake\" rel=\"canonical\" href=\"https://example.com/fake\"></table></template><meta id=\"m\" name=\"robots\" content=\"noindex\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [
+            "fake"
+          ]
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": [
+            "fake"
+          ]
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "noscript-head",
+      "html": "<!doctype html><html><head><noscript><meta id=\"n\" name=\"robots\" content=\"noindex\"></noscript><link id=\"c\" rel=\"canonical\" href=\"https://example.com/c\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "n",
+            "c"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "noscript-body",
+      "html": "<!doctype html><html><head></head><body><noscript><meta id=\"n\" name=\"robots\" content=\"noindex\"></noscript></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "n"
+          ],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "noscript-head-img-then-canonical",
+      "html": "<!doctype html><html><head><noscript><img src=\"x\"></noscript><link id=\"c\" rel=\"canonical\" href=\"https://example.com/c\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "c"
+          ],
+          "template": []
+        }
+      },
+      "note": "Disabled parsing leaves head after image; no automatic choice of favorable scripting hypothesis."
+    },
+    {
+      "id": "noscript-head-iframe-then-canonical",
+      "html": "<!doctype html><html><head><noscript><iframe></iframe></noscript><link id=\"c\" rel=\"canonical\" href=\"https://example.com/c\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "c"
+          ],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "head-img-boundary",
+      "html": "<!doctype html><html><head><meta id=\"before\" name=\"robots\" content=\"noindex\"><img src=\"x\"><link id=\"after\" rel=\"canonical\" href=\"https://example.com/after\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "head-iframe-boundary",
+      "html": "<!doctype html><html><head><meta id=\"before\" name=\"robots\" content=\"noindex\"><iframe></iframe><link id=\"after\" rel=\"canonical\" href=\"https://example.com/after\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "head-text-boundary",
+      "html": "<!doctype html><html><head><meta id=\"before\" name=\"robots\" content=\"noindex\">ordinary text<link id=\"after\" rel=\"canonical\" href=\"https://example.com/after\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "head-entity-text-boundary",
+      "html": "<!doctype html><html><head><meta id=\"before\" name=\"robots\" content=\"noindex\">&#65;<link id=\"after\" rel=\"canonical\" href=\"https://example.com/after\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "head-xml-whitespace",
+      "html": "<!doctype html><html><head><meta id=\"before\" name=\"robots\" content=\"noindex\">\r\n\t <link id=\"after\" rel=\"canonical\" href=\"https://example.com/after\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "before",
+            "after"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "before",
+            "after"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "head-nbsp-boundary",
+      "html": "<!doctype html><html><head><meta id=\"before\" name=\"robots\" content=\"noindex\"> <link id=\"after\" rel=\"canonical\" href=\"https://example.com/after\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "before"
+          ],
+          "body": [
+            "after"
+          ],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "after-head-before-body",
+      "html": "<!doctype html><html><head></head><meta id=\"late\" name=\"robots\" content=\"noindex\"><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "late"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "late"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": "Tree construction can reinsert this token into head; lexical ancestry alone is insufficient. This is not a claim about Google acceptance."
+    },
+    {
+      "id": "body-metadata",
+      "html": "<!doctype html><html><head></head><body><meta id=\"m\" name=\"robots\" content=\"noindex\"><link id=\"c\" rel=\"canonical\" href=\"https://example.com/c\"></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [],
+          "body": [
+            "m",
+            "c"
+          ],
+          "template": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "m",
+            "c"
+          ],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "reopened-head-in-body",
+      "html": "<!doctype html><html><head></head><body><head><meta id=\"m\" name=\"robots\" content=\"noindex\"></head></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [],
+          "body": [
+            "m"
+          ],
+          "template": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "m"
+          ],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "foreign-svg-breakout",
+      "html": "<!doctype html><html><head></head><body><svg><meta id=\"m\" name=\"robots\" content=\"noindex\"></svg></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [],
+          "body": [
+            "m"
+          ],
+          "template": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "m"
+          ],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "foreign-title-html-integration",
+      "html": "<!doctype html><html><head></head><body><svg><title><link id=\"c\" rel=\"canonical\" href=\"https://example.com/c\"></title></svg></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [],
+          "body": [
+            "c"
+          ],
+          "template": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "c"
+          ],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "declarative-shadow-template",
+      "html": "<!doctype html><html><head></head><body><div><template shadowrootmode=\"open\"><meta id=\"fake\" name=\"robots\" content=\"noindex\"></template></div></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [],
+          "body": [],
+          "template": [
+            "fake"
+          ]
+        },
+        "disabled": {
+          "head": [],
+          "body": [],
+          "template": [
+            "fake"
+          ]
+        }
+      },
+      "note": "Static parser template content only; not an instantiated browser shadow tree."
+    },
+    {
+      "id": "noscript-closing-trap",
+      "html": "<!doctype html><html><head><noscript><img alt=\"</noscript><meta id=\"m\" name=\"robots\" content=\"noindex\">\"></noscript><link id=\"c\" rel=\"canonical\" href=\"https://example.com/c\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [
+            "c"
+          ],
+          "template": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "c"
+          ],
+          "template": []
+        }
+      },
+      "note": "In enabled mode the embedded closing noscript terminates RAWTEXT; the following meta is inserted while still in head. The remaining quote/text then closes head before the canonical. Disabled mode treats the image as a tag; the trap text stays in its quoted attribute."
+    },
+    {
+      "id": "script-escaped-double-escaped",
+      "html": "<!doctype html><html><head><script><!--<script><meta id=\"fake\" name=\"robots\" content=\"noindex\"></script>--></script><link id=\"c\" rel=\"canonical\" href=\"https://example.com/c\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "c"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "missing-explicit-head",
+      "html": "<!doctype html><html><meta id=\"m\" name=\"robots\" content=\"noindex\"><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "repeated-head-meta",
+      "html": "<!doctype html><html><head><meta id=\"m\" name=\"robots\" content=\"noindex\"><meta id=\"m\" name=\"robots\" content=\"noindex\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "m",
+            "m"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "m",
+            "m"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": ""
+    },
+    {
+      "id": "duplicate-name-first-wins",
+      "html": "<!doctype html><html><head><meta id=\"m\" name=\"robots\" name=\"description\" content=\"noindex\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": []
+        },
+        "disabled": {
+          "head": [
+            "m"
+          ],
+          "body": [],
+          "template": []
+        }
+      },
+      "note": "Retain parser duplicate-attribute error; tree observation alone does not justify normative eligibility."
+    },
+    {
+      "id": "leading-bom",
+      "html": "﻿<!doctype html><html><head><meta id=\"m\" name=\"robots\" content=\"noindex\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "head": [],
+          "body": [
+            "m"
+          ],
+          "template": []
+        },
+        "disabled": {
+          "head": [],
+          "body": [
+            "m"
+          ],
+          "template": []
+        }
+      },
+      "note": "Unicode-string parser input retains U+FEFF as text. Transport BOM decoding is a separate stage, not silently normalized here."
+    }
+  ],
+  "corrected_at": "2026-10-10T18:30:57.876173+00:00",
+  "prior_fixture_sha256": "8ba41d063faf30ea517dc702ca6a8efb14e3be7b3a87896d376b01bea74d33d8",
+  "correction": {
+    "case": "noscript-closing-trap",
+    "mode": "enabled",
+    "old": {
+      "head": [],
+      "body": [
+        "m",
+        "c"
+      ],
+      "template": []
+    },
+    "new": {
+      "head": [
+        "m"
+      ],
+      "body": [
+        "c"
+      ],
+      "template": []
+    },
+    "reason": "Both parsers disagreed with the authored v1 expectation. Re-reading WHATWG RAWTEXT end-tag and in-head character-token processing shows meta m precedes the non-whitespace remainder that ends head. This is an explicit oracle correction after comparison; v1 and all mismatches remain retained, not a new prefrozen expectation."
+  }
+}
