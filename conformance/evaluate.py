@@ -13,6 +13,7 @@ import tsep
 
 RULES = ('TS01-A01', 'TS01-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04')
+VERSION = '2'  # Interpreter coverage version; normative protocol version is separate.
 
 
 class Unknown(ValueError):
@@ -85,6 +86,39 @@ def url_parts(url):
     return parts
 
 
+def unchunk(body):
+    """Decode a bounded RFC 9112 chunk stream without changing content bytes.
+
+    Input v1 stores raw messages as UTF-8 strings. Sizes count bytes, not Unicode
+    characters. Extensions, trailers and other transfer codings remain outside
+    this interpreter's coverage; never silently discard possible evidence.
+    """
+    wire = body.encode('utf-8')
+    need(len(wire) <= tsep.MAX_JSON_BYTES, 'Chunked body exceeds interpreter limit')
+    offset, content = 0, bytearray()
+    while True:
+        end = wire.find(b'\r\n', offset)
+        need(end != -1, 'Incomplete chunk-size line')
+        line = wire[offset:end]
+        need(re.fullmatch(b'[0-9A-Fa-f]{1,16}', line),
+             'Malformed or unsupported chunk-size line (extensions not supported)')
+        size = int(line, 16)
+        offset = end + 2
+        if size == 0:
+            need(wire[offset:offset + 2] == b'\r\n',
+                 'Incomplete chunked ending or unsupported trailers')
+            need(offset + 2 == len(wire), 'Unexpected bytes after chunked ending')
+            try:
+                return bytes(content).decode('utf-8')
+            except UnicodeDecodeError as error:
+                raise Unknown('Decoded chunked content is not UTF-8') from error
+        need(size <= len(wire) - offset, 'Incomplete chunk data')
+        need(wire[offset + size:offset + size + 2] == b'\r\n',
+             'Missing chunk-data CRLF or incorrect byte size')
+        content.extend(wire[offset:offset + size])
+        offset += size + 2
+
+
 def message(raw, response=False):
     need(isinstance(raw, str) and '\r\n\r\n' in raw, 'Missing raw HTTP header/body boundary')
     head, body = raw.split('\r\n\r\n', 1)
@@ -97,8 +131,15 @@ def message(raw, response=False):
     if response:
         match = re.fullmatch(r'HTTP/1\.[01] ([1-5][0-9]{2})(?: [^\r\n]*)?', lines[0])
         need(match, 'Unsupported HTTP status line')
-        need('transfer-encoding' not in headers and
-             headers.get('content-encoding', ['identity']) == ['identity'], 'Encoded body not supported')
+        need(headers.get('content-encoding', ['identity']) == ['identity'],
+             'Encoded body not supported')
+        if 'transfer-encoding' in headers:
+            need(lines[0].startswith('HTTP/1.1 '), 'Transfer-Encoding requires HTTP/1.1')
+            need('content-length' not in headers, 'Ambiguous Transfer-Encoding with Content-Length')
+            values = headers['transfer-encoding']
+            need(len(values) == 1 and values[0].lower() == 'chunked',
+                 'Unsupported or repeated Transfer-Encoding')
+            body = unchunk(body)
         if 'content-length' in headers:
             values = headers['content-length']
             need(len(values) == 1 and values[0].isdigit() and

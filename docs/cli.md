@@ -5,6 +5,8 @@
 Pour calculer les résultats à partir de captures structurées déjà fournies,
 utiliser le [parcours captures → paquet](capture-adapter.md). Le parcours ci-dessous
 enregistre les résultats explicitement fournis par l’évaluateur.
+`tsep.py html` produit un [rapport HTML autonome](html-report.md), avec preuves
+embarquées et comparaison facultative de deux rapports conservés.
 
 La CLI ne collecte aucune URL. `init` écrit sur stdout. `add-evidence` et `record`
 mettent à jour **le rapport existant sur disque**, seulement après validation du
@@ -64,6 +66,8 @@ INCOMPLETE/REVIEW 2, données invalides 64 (syntaxe CLI invalide : 2).
 To compute outcomes from supplied structured captures, use the
 [captures → bundle workflow](capture-adapter.md). The workflow below records
 outcomes explicitly supplied by the assessor.
+`tsep.py html` produces a [standalone HTML report](html-report.md), with embedded
+evidence and an optional comparison of two retained reports.
 
 The CLI never collects URLs. `init` writes stdout; `add-evidence` and `record`
 update the existing report **in place** only after validating it and every artifact.

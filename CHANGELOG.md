@@ -1,5 +1,27 @@
 # Change history / Historique
 
+## Tool coverage 2 and HTML reports — 2026-10-10 — local development
+
+The reference interpreter and captures adapter advance to tool version 2 with
+bounded HTTP/1.1 chunked decoding. Preserve decoded content bytes; malformed,
+ambiguous, compressed, extended or trailer-bearing captures remain inconclusive.
+Add the standalone bilingual HTML report engine version 1, embedded original
+evidence and optional comparison of retained reports. Add contradictory transfer
+tests and presentation integrity/portability tests. Document migration and limits.
+Protocol draft.7, normative fingerprints, report/input formats, the 216-case
+corpus and gate policy remain unchanged. No publication or new remote CI run is
+claimed. The earlier pilot baseline remains historical, not this new tool revision.
+
+L’interpréteur et l’adaptateur de captures passent en version d’outil 2 avec
+décodage HTTP/1.1 chunked borné. Octets du contenu préservés ; troncatures,
+ambiguïtés, compression, extensions et trailers restent indéterminés. Ajout du
+moteur de rapport HTML bilingue version 1, preuves originales embarquées et
+comparaison facultative de rapports conservés. Tests contradictoires du transfert,
+intégrité/portabilité de la présentation, migration et limites documentées.
+Contrat draft.7, empreintes normatives, formats, corpus de 216 cas et décision
+inchangés. Aucune publication ni nouvelle CI distante déclarée. La base du pilote
+précédent reste une référence historique, distincte de cette révision de l’outil.
+
 ## TS01 pilot kit — 2026-10-09
 
 Add a bilingual pilot plan, an explicitly unactivated registration template and

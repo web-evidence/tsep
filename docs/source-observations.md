@@ -46,3 +46,17 @@ cases, without independent validation or audited-site collection.
 - [rfc9110.html](https://www.rfc-editor.org/rfc/rfc9110.html) — 2026-10-09T12:49:32.217+00:00 — SHA-256 `d431760660ea44e130f6e919dab216df2d0b3a490567a98089267523368fe1e5` (capture réutilisée / reused capture).
 - [earl.html](https://www.w3.org/TR/EARL10-Schema/) — 2026-10-09T12:49:32.685+00:00 — SHA-256 `bd256af93da1fe22459a97a5ab18c1bc492932695e2e428ddd88a774c5338213` (capture réutilisée / reused capture).
 - [dcmi.html](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/) — 2026-10-09T12:51:29.581+00:00 — SHA-256 `fb32e12fa9bee1379acc0cf921ba7e79a6b85bd46253d993db0898847b9870a1` (capture réutilisée / reused capture).
+
+## HTTP transfer — 2026-10-10
+
+- [RFC 9112, text](https://www.rfc-editor.org/rfc/rfc9112.txt) — 2026-10-10 — SHA-256 `e4f426bac6206b67fdf9e0da826154f70588db2133a0a86b15cde4ff725d8937`.
+
+Capture locale `rfc9112-2026-10-10.txt`, hors distribution. Portée : §6.3 et §7.1,
+encadrement chunked, tailles en octets, terminaison, ambiguïtés et limites de
+l’interpréteur 2. Pas de conformité HTTP complète, de test réseau de site tiers,
+d’horodatage de confiance ni d’approbation IETF.
+
+Local capture `rfc9112-2026-10-10.txt`, outside distribution. Scope: §6.3 and §7.1,
+chunked framing, byte sizes, termination, ambiguities and interpreter 2 limits.
+No full HTTP compliance, third-party site network test, trusted timestamp or IETF
+endorsement.

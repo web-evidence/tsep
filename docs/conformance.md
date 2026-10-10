@@ -74,9 +74,13 @@ répétés sont conservés. Le HTML source est le corps de la réponse finale ; 
 est le corps de sa propre réponse. Exemple de requête :
 `GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n`.
 Le corps est du texte UTF-8 ; son SHA-256 porte sur ses octets exacts, sans
-normalisation d’espaces ou de fins de ligne. Ce format borné accepte seulement des
-corps non compressés, sans Transfer-Encoding ; il ne prétend pas capturer TLS ou
-les octets HTTP/2. Les captures ambiguës, tronquées et les chaînes interrompues
+normalisation d’espaces ou de fins de ligne, après décodage de transfert. Depuis
+l’interpréteur version 2, ce format borné accepte les corps non compressés sans
+Transfer-Encoding et un sous-ensemble HTTP/1.1 `chunked`, sans extensions ni trailers.
+Les tailles comptent les octets et la terminaison complète est obligatoire ;
+Transfer-Encoding avec Content-Length reste inconclusive. Il ne capture ni TLS
+ni les octets HTTP/2. [Couverture et migration de l’outil](http-transfer-v2.md).
+Les captures ambiguës, tronquées et les chaînes interrompues
 restent inconclusive. Tous les sauts doivent être des GET inconditionnels et suivre
 exactement Location. Aucun cookie ni Authorization dans ce sous-ensemble.
 
@@ -226,8 +230,12 @@ inconclusive. Other parameter values retain their case.
 Each hop has `url`, boolean `complete`, raw `request` and `response` strings using
 CRLF lines and a CRLF CRLF boundary. Preserve repeated headers. Source HTML and
 robots.txt are their response bodies. The SHA-256 covers exact UTF-8 body bytes,
-without whitespace/newline normalization. Only uncompressed bodies without
-Transfer-Encoding are supported, not TLS or HTTP/2 wire captures. Hops must be
+without whitespace/newline normalization, after transfer decoding. Interpreter
+version 2 supports uncompressed bodies without Transfer-Encoding and bounded
+HTTP/1.1 `chunked` messages without extensions or trailers. Sizes count bytes and
+complete termination is required; Transfer-Encoding with Content-Length remains
+inconclusive. TLS and HTTP/2 wire captures are unsupported. See
+[tool coverage and migration](http-transfer-v2.md). Hops must be
 unconditional GETs following Location exactly, without cookies/Authorization.
 Ambiguous, incomplete or interrupted captures remain inconclusive.
 

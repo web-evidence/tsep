@@ -17,9 +17,9 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
-from conformance.evaluate import RULES, evaluate, url_parts
+from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 
-VERSION = '1'
+VERSION = '2'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -180,6 +180,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         shared = [artifact('supplied-input', 'operator-docs', 'input.json', None, targets, issued_text,
                            'Original supplied bytes. Artifact date is import time; source dates are retained inside, not verified.', raw=original)]
         metadata = {'adapter': {'name': NAME, 'version': VERSION}, 'protocol': report['protocol'],
+                    'interpreter': {'name': 'TSEP bounded reference interpreter', 'version': INTERPRETER_VERSION},
                     'imported_at': issued_text, 'python': sys.version.split()[0],
                     'source_files': {name: tsep.digest(ROOT/name) for name in
                                      ('adapters/captures.py', 'conformance/evaluate.py', 'conformance/canonical.py', 'tsep.py')},

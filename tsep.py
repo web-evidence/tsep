@@ -413,11 +413,16 @@ def main(argv=None):
     init.add_argument('--mode', choices=['manual', 'semiAuto', 'automatic'], default='manual')
     init.add_argument('--tool')
     init.add_argument('--tool-version')
-    for command in ('validate', 'gate', 'earl', 'add-evidence', 'record'):
+    for command in ('validate', 'gate', 'earl', 'add-evidence', 'record', 'html'):
         p = sub.add_parser(command)
         p.add_argument('report', type=Path)
         p.add_argument('--evidence-root', type=Path,
                        help='Defaults to the directory containing the report')
+        if command == 'html':
+            p.add_argument('--output', type=Path, required=True, help='New standalone HTML file')
+            p.add_argument('--lang', choices=['en', 'fr'], default='en')
+            p.add_argument('--compare', type=Path, help='Previous report with the same declared scope')
+            p.add_argument('--compare-evidence-root', type=Path)
         if command == 'gate':
             p.add_argument('--summary', action='store_true', help='Human-readable scoped summary')
             p.add_argument('--lang', choices=['en', 'fr'], default='en')
@@ -445,6 +450,12 @@ def main(argv=None):
             atomic.add_argument('--atomic', action='append', help='One JSON atomic observation, including evidence_ids; repeat per rule/target')
     args = parser.parse_args(argv)
     try:
+        if args.command == 'html':
+            from reports.html import write
+            require(args.compare or not args.compare_evidence_root, '--compare-evidence-root requires --compare')
+            emit(write(args.report, args.output, evidence_root=args.evidence_root, language=args.lang,
+                       compare=args.compare, compare_root=args.compare_evidence_root))
+            return 0
         if args.command == 'init':
             require(bool(args.tool) == bool(args.tool_version), 'Use --tool and --tool-version together')
             report = initialize(args.target, args.controls.split(',') if args.controls else None,
