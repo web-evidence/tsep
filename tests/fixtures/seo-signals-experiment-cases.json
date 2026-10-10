@@ -1,0 +1,1118 @@
+{
+  "kind": "synthetic-authored-seo-signal-expectations",
+  "experiment_version": "1",
+  "recorded_at": "2026-10-10T09:03:48.358809+00:00",
+  "origin": "Authored before implementation; local self-attestation, no browser oracle or independent human review",
+  "scope": "Whole-source lexical signals, Python HTMLParser attribute decoding (explicitly not HTML5 attribute conformance), no TSEP verdict",
+  "cases": [
+    {
+      "id": "modern-body",
+      "html": "<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"><link rel=\"canonical\" href=\"https://example.test/page\"></head><body><header><nav><a href=\"/\">Home</a></nav></header><main><section>Body</section></main></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 65,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 65,
+              "end": 120,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/page\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/page"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 65,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 65,
+              "end": 120,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/page\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/page"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "empty-document",
+      "html": "<!doctype html><html><head></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": []
+        },
+        "disabled": {
+          "complete": true,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "comment-decoys",
+      "html": "<!doctype html><html><head><!--<meta name=\"robots\" content=\"noindex\"><link rel=\"canonical\" href=\"https://example.test/page\">--></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": []
+        },
+        "disabled": {
+          "complete": true,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "script-decoys",
+      "html": "<!doctype html><html><head><script>const x='<meta name=\"robots\" content=\"noindex\"><link rel=\"canonical\" href=\"https://example.test/page\">';</script></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": []
+        },
+        "disabled": {
+          "complete": true,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "style-decoys",
+      "html": "<!doctype html><html><head><style>x::after{content:'<meta name=\"robots\" content=\"noindex\"><link rel=\"canonical\" href=\"https://example.test/page\">'}</style></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": []
+        },
+        "disabled": {
+          "complete": true,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "title-decoys",
+      "html": "<!doctype html><html><head><title><meta name=\"robots\" content=\"noindex\"><link rel=\"canonical\" href=\"https://example.test/page\"></title></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": []
+        },
+        "disabled": {
+          "complete": true,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "attribute-decoys",
+      "html": "<!doctype html><html><head></head><body><div data-example='<meta name=\"robots\" content=\"noindex\"><link rel=\"canonical\" href=\"https://example.test/page\">'>Text</div></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": []
+        },
+        "disabled": {
+          "complete": true,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "head-noscript",
+      "html": "<!doctype html><html><head><noscript><meta name=\"robots\" content=\"noindex\"><link rel=\"canonical\" href=\"https://example.test/page\"></noscript></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": []
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 37,
+              "end": 75,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head",
+                "noscript"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 75,
+              "end": 130,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/page\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/page"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head",
+                "noscript"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "body-noscript",
+      "html": "<!doctype html><html><head></head><body><noscript><meta name=\"robots\" content=\"noindex\"><link rel=\"canonical\" href=\"https://example.test/page\"></noscript></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": []
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 50,
+              "end": 88,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "body",
+                "noscript"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 88,
+              "end": 143,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/page\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/page"
+              },
+              "lexical_ancestors": [
+                "html",
+                "body",
+                "noscript"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "body-placement-retained",
+      "html": "<!doctype html><html><head></head><body><meta name=\"robots\" content=\"noindex\"><link rel=\"canonical\" href=\"https://example.test/page\"></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 40,
+              "end": 78,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "body"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 78,
+              "end": 133,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/page\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/page"
+              },
+              "lexical_ancestors": [
+                "html",
+                "body"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 40,
+              "end": 78,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "body"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 78,
+              "end": 133,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/page\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/page"
+              },
+              "lexical_ancestors": [
+                "html",
+                "body"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "repeated-declarations",
+      "html": "<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"><meta name=\"robots\" content=\"noindex\"><link rel=\"canonical\" href=\"https://example.test/page\"><link rel=\"canonical\" href=\"https://example.test/page\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 65,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            },
+            {
+              "kind": "robots-meta",
+              "start": 65,
+              "end": 103,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 103,
+              "end": 158,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/page\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/page"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 158,
+              "end": 213,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/page\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/page"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 65,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            },
+            {
+              "kind": "robots-meta",
+              "start": 65,
+              "end": 103,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 103,
+              "end": 158,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/page\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/page"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 158,
+              "end": 213,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/page\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/page"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "case-and-void-slash",
+      "html": "<!doctype html><html><head><META NAME=\"GoOgLeBoT\" CONTENT=\"NOINDEX, FOLLOW\"/></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 77,
+              "raw_tag": "<META NAME=\"GoOgLeBoT\" CONTENT=\"NOINDEX, FOLLOW\"/>",
+              "attributes": {
+                "name": "GoOgLeBoT",
+                "content": "NOINDEX, FOLLOW"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 77,
+              "raw_tag": "<META NAME=\"GoOgLeBoT\" CONTENT=\"NOINDEX, FOLLOW\"/>",
+              "attributes": {
+                "name": "GoOgLeBoT",
+                "content": "NOINDEX, FOLLOW"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "ascii-rel-tokens-relative-href",
+      "html": "<!doctype html><html><head><link rel=\"alternate\tCANONICAL\" href=\"/relative\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "canonical-link",
+              "start": 27,
+              "end": 76,
+              "raw_tag": "<link rel=\"alternate\tCANONICAL\" href=\"/relative\">",
+              "attributes": {
+                "rel": "alternate\tCANONICAL",
+                "href": "/relative"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "canonical-link",
+              "start": 27,
+              "end": 76,
+              "raw_tag": "<link rel=\"alternate\tCANONICAL\" href=\"/relative\">",
+              "attributes": {
+                "rel": "alternate\tCANONICAL",
+                "href": "/relative"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "nbsp-is-not-rel-separator",
+      "html": "<!doctype html><html><head><link rel=\"alternate canonical\" href=\"/x\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": []
+        },
+        "disabled": {
+          "complete": true,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "attribute-character-references",
+      "html": "<!doctype html><html><head><meta name=\"robo&#116;s\" content=\"no&#105;ndex &amp; unknown\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 89,
+              "raw_tag": "<meta name=\"robo&#116;s\" content=\"no&#105;ndex &amp; unknown\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex & unknown"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 89,
+              "raw_tag": "<meta name=\"robo&#116;s\" content=\"no&#105;ndex &amp; unknown\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex & unknown"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "canonical-attribute-entity",
+      "html": "<!doctype html><html><head><link rel=\"canonical\" href=\"https://example.test/?a=1&amp;b=2\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "canonical-link",
+              "start": 27,
+              "end": 90,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/?a=1&amp;b=2\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/?a=1&b=2"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "canonical-link",
+              "start": 27,
+              "end": 90,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/?a=1&amp;b=2\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/?a=1&b=2"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "python-attribute-decoding-not-browser-claim",
+      "html": "<!doctype html><html><head><link rel=\"canonical\" href=\"?a&notit;=b\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "canonical-link",
+              "start": 27,
+              "end": 68,
+              "raw_tag": "<link rel=\"canonical\" href=\"?a&notit;=b\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "?a¬it;=b"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "canonical-link",
+              "start": 27,
+              "end": 68,
+              "raw_tag": "<link rel=\"canonical\" href=\"?a&notit;=b\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "?a¬it;=b"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unselected-metadata",
+      "html": "<!doctype html><html><head><meta name=\"bingbot\" content=\"noindex\"><meta name=\"viewport\" content=\"width=device-width\"><link rel=\"stylesheet\" href=\"/style.css\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": []
+        },
+        "disabled": {
+          "complete": true,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "missing-values-not-filled",
+      "html": "<!doctype html><html><head><meta name=\"robots\"><link rel=\"canonical\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 47,
+              "raw_tag": "<meta name=\"robots\">",
+              "attributes": {
+                "name": "robots"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 47,
+              "end": 69,
+              "raw_tag": "<link rel=\"canonical\">",
+              "attributes": {
+                "rel": "canonical"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 47,
+              "raw_tag": "<meta name=\"robots\">",
+              "attributes": {
+                "name": "robots"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 47,
+              "end": 69,
+              "raw_tag": "<link rel=\"canonical\">",
+              "attributes": {
+                "rel": "canonical"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "boolean-attribute-retained",
+      "html": "<!doctype html><html><head><meta name=\"robots\" content></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 55,
+              "raw_tag": "<meta name=\"robots\" content>",
+              "attributes": {
+                "name": "robots",
+                "content": null
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 55,
+              "raw_tag": "<meta name=\"robots\" content>",
+              "attributes": {
+                "name": "robots",
+                "content": null
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "unicode-and-crlf-offsets",
+      "html": "<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"></head><body>é🙂\r\n<section><link rel=\"canonical\" href=\"https://example.test/page\"></section></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 65,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 91,
+              "end": 146,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/page\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/page"
+              },
+              "lexical_ancestors": [
+                "html",
+                "body",
+                "section"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 65,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            },
+            {
+              "kind": "canonical-link",
+              "start": 91,
+              "end": 146,
+              "raw_tag": "<link rel=\"canonical\" href=\"https://example.test/page\">",
+              "attributes": {
+                "rel": "canonical",
+                "href": "https://example.test/page"
+              },
+              "lexical_ancestors": [
+                "html",
+                "body",
+                "section"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "bounded-table-and-select",
+      "html": "<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"></head><body><table><tbody><tr><td>Cell</td></tr></tbody></table><select><option>Choice</option></select></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 65,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 65,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "duplicate-attributes-refused",
+      "html": "<!doctype html><html><head><meta name=\"robots\" name=\"googlebot\" content=\"noindex\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": false,
+          "signals": []
+        },
+        "disabled": {
+          "complete": false,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "invalid-head-after-signal",
+      "html": "<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"><img src=\"pixel\"><link rel=\"canonical\" href=\"https://example.test/page\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": false,
+          "signals": []
+        },
+        "disabled": {
+          "complete": false,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "invalid-tail-discards-prefix",
+      "html": "<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"></head><body><iframe></iframe></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": false,
+          "signals": []
+        },
+        "disabled": {
+          "complete": false,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "unclosed-tail-discards-prefix",
+      "html": "<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"></head><body></body>",
+      "expected": {
+        "enabled": {
+          "complete": false,
+          "signals": []
+        },
+        "disabled": {
+          "complete": false,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "template-refused",
+      "html": "<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"></head><body><template><link rel=\"canonical\" href=\"https://example.test/page\"></template></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": false,
+          "signals": []
+        },
+        "disabled": {
+          "complete": false,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "textarea-content-refused",
+      "html": "<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"></head><body><textarea><link rel=\"canonical\" href=\"https://example.test/page\"></textarea></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": false,
+          "signals": []
+        },
+        "disabled": {
+          "complete": false,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "foreign-metadata-refused",
+      "html": "<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"></head><body><svg><link rel=\"canonical\" href=\"https://example.test/page\"></svg></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": false,
+          "signals": []
+        },
+        "disabled": {
+          "complete": false,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "duplicate-head-refused",
+      "html": "<html><head><meta name=\"robots\" content=\"noindex\"></head><head><link rel=\"canonical\" href=\"https://example.test/page\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": false,
+          "signals": []
+        },
+        "disabled": {
+          "complete": false,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "one-mode-refused-no-comparison",
+      "html": "<!doctype html><html><head><noscript><img src=\"x\"></noscript><meta name=\"robots\" content=\"noindex\"></head><body></body></html>",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 61,
+              "end": 99,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": false,
+          "signals": []
+        }
+      }
+    },
+    {
+      "id": "trailing-comment-retained",
+      "html": "<!doctype html><html><head><meta name=\"robots\" content=\"noindex\"></head><body></body></html><!-- retained trailing comment -->",
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 65,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "signals": [
+            {
+              "kind": "robots-meta",
+              "start": 27,
+              "end": 65,
+              "raw_tag": "<meta name=\"robots\" content=\"noindex\">",
+              "attributes": {
+                "name": "robots",
+                "content": "noindex"
+              },
+              "lexical_ancestors": [
+                "html",
+                "head"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
