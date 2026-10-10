@@ -1,4 +1,4 @@
-# Contrat de rapport — TSEP 0.1.0-draft.11
+# Contrat de rapport — TSEP 0.1.0-draft.12
 
 ## Périmètre déclaré
 
@@ -232,13 +232,13 @@ FR/EN affiche la même cause. Décision et codes de sortie restent inchangés.
 
 ## Versions et revendications d’implémentation
 
-Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.11:TS01`. Ne jamais
+Figer version et SHA-256 du protocole. Citer `TSEP@0.1.0-draft.12:TS01`. Ne jamais
 remplacer silencieusement un artefact publié. Changer applicabilité, attendus,
 preuves ou décisions exige une nouvelle version et une note de migration.
 TS01–TS44 restent des identités permanentes.
 
 La suite démontre seulement « réussit les tests d’échange des rapports fournis
-avec 0.1.0-draft.11 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
+avec 0.1.0-draft.12 ». Elle ne valide pas 44 algorithmes SEO. Toute revendication
 plus large exige une correspondance par règle et des limites publiées. Aucune
 interopérabilité avec un outil tiers n’a encore été démontrée.
 
@@ -282,3 +282,19 @@ uniquement la représentation reçue par ce client. A02 exige un profil robots
 explicite dont le produit concorde ; aucune assimilation à une visite Googlebot.
 Les anciennes entrées gardent leur comportement. Le [laboratoire attribué](same-navigation-laboratory.md)
 et la [migration](migration-draft.11.md) décrivent preuves, rejets et limites.
+
+## Portée du client TS04 — draft.12
+
+TS04 accepte désormais le même champ préalable `directive_crawler=googlebot` que
+TS07, avec `robots_policy` explicite et `product_token` concordant. `crawler`
+reste le User-Agent HTTP exact ; chaque trace est toujours liée à cet agent.
+La sélection du groupe Googlebot porte sur la représentation reçue par ce client,
+pas sur une réponse reçue par Googlebot. Les résultats l'indiquent explicitement.
+
+Un champ nul, inconnu ou incohérent ne se replie pas vers le groupe du client.
+Une réponse de ressource contraire au statut/destination déclaré reste un échec
+limité au client observé, y compris 401/403/429/5xx quand 200 est attendu. Elle
+ne prouve pas un refus à Googlebot. Les revues manquantes et limites de population
+demeurent ; l'extension ne suffit pas à conclure C. Sans nouveau champ, les
+anciennes entrées gardent leur comportement. Conserver le dossier initial, puis
+déclarer un nouveau plan avant les nouvelles captures : [migration draft.12](migration-draft.12.md).

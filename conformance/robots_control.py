@@ -69,11 +69,31 @@ def policy_for(target, url, client_representation_only=False):
     return observation['decision'], reason
 
 
+def directive_scope(intent):
+    """Shared explicit product/client separation; absent field keeps legacy scope."""
+    if 'directive_crawler' not in intent:
+        return False
+    policy = intent.get('robots_policy')
+    need(intent['directive_crawler'] == 'googlebot' and isinstance(policy, dict) and
+         isinstance(policy.get('product_token'), str) and policy['product_token'].lower() == 'googlebot',
+         'Explicit directive crawler requires a matching robots product profile; HTTP agent is not the product token')
+    return True
+
+
+def ts04_policy_for(target, url):
+    explicit = directive_scope(target['intent'])
+    decision, reason = policy_for(target, url, client_representation_only=explicit)
+    if explicit:
+        reason += ('; directive_crawler=googlebot; policy applied only to HTTP client='
+                   + target['intent']['crawler'] + '; actual Googlebot representation unobserved')
+    return decision, reason
+
+
 def policy_matrix(target, value):
     rows = []
     for expected in value['resources']:
         try:
-            actual, reason = policy_for(target, expected['url'])
+            actual, reason = ts04_policy_for(target, expected['url'])
             outcome = 'inconclusive' if actual == 'unknown' else 'pass' if actual == expected['expected'] else 'fail'
             rows.append((outcome, expected['url']+': attendu='+expected['expected']+', observé='+actual+'; '+reason))
         except (Unknown, tsep.Invalid, KeyError, ValueError, TypeError) as error:
@@ -116,7 +136,7 @@ def resources(target, value):
         url = expected['url']
         local = []
         try:
-            actual, reason = policy_for(target, url)
+            actual, reason = ts04_policy_for(target, url)
             local.append(('inconclusive' if actual == 'unknown' else 'pass' if actual == 'allow' else 'fail', reason))
         except (Unknown, tsep.Invalid, KeyError, ValueError, TypeError) as error:
             local.append(('inconclusive', str(error)))
@@ -128,7 +148,7 @@ def resources(target, value):
                  <= tsep.timestamp(target['observed_at']), 'Réponse hors période du plan')
             final, status, _, _ = trace(doc.get('http'), url, target['intent']['crawler'])
             for hop in doc['http'][1:]:
-                decision, detail = policy_for(target, hop['url'])
+                decision, detail = ts04_policy_for(target, hop['url'])
                 local.append(('inconclusive' if decision == 'unknown' else 'pass' if decision == 'allow' else 'fail',
                               'Accès au saut '+hop['url']+': '+detail))
             if final != expected['expected_final_url'] or status not in expected['terminal_statuses']:
@@ -138,6 +158,9 @@ def resources(target, value):
         except (Unknown, tsep.Invalid, KeyError, ValueError, TypeError) as error:
             local.append(('inconclusive', str(error)))
         outcome, reason = combine(local)
+        if 'directive_crawler' in target['intent']:
+            reason += ('; HTTP observations refer to declared client=' + target['intent']['crawler']
+                       + '; actual Googlebot HTTP access unobserved')
         rows.append((outcome, url+': '+reason))
     return combine(rows)
 
@@ -160,11 +183,7 @@ def access_rule(target, final_url, status):
     need(intent.get('access_basis') == 'test-client-only', 'Access assumptions not declared')
     if status in (401, 403):
         return 'fail', 'Observed HTTP access denial to test client'
-    if 'directive_crawler' in intent:
-        policy = intent.get('robots_policy')
-        need(intent['directive_crawler'] == 'googlebot' and isinstance(policy, dict) and
-             isinstance(policy.get('product_token'), str) and policy['product_token'].lower() == 'googlebot',
-             'Explicit directive crawler requires a matching robots product profile; HTTP agent is not the product token')
+    directive_scope(intent)
     if 'robots_policy' in intent:
         actual, reason = policy_for(target, final_url, client_representation_only='directive_crawler' in intent)
         need(actual != 'unknown', reason)

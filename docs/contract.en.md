@@ -1,4 +1,4 @@
-# Report contract — TSEP 0.1.0-draft.11
+# Report contract — TSEP 0.1.0-draft.12
 
 ## Declared scope
 
@@ -226,13 +226,13 @@ summaries show the same cause. Neither the decision nor exit codes change.
 ## Versions and implementation claims
 
 Pin both version and protocol SHA-256. Cite IDs as
-`TSEP@0.1.0-draft.11:TS01`. Never silently replace a released artifact. Changes to
+`TSEP@0.1.0-draft.12:TS01`. Never silently replace a released artifact. Changes to
 applicability, expectations, required evidence or decisions require a new version
 and migration note. TS01–TS44 are permanent identities, not reusable slots.
 
 This candidate has one implementation of report validation. Passing its tests
 allows the narrow statement “passes the bundled report-interchange tests for
-0.1.0-draft.11.” It does not establish implementation of all 44 assessment methods.
+0.1.0-draft.12.” It does not establish implementation of all 44 assessment methods.
 An implementation must publish per-rule mapping and limitations before making a
 broader claim. No compatibility with a third-party tool has yet been demonstrated.
 
@@ -275,3 +275,19 @@ representation. A02 requires an explicit matching robots product profile; no
 Googlebot visit is inferred. Old inputs keep their behavior. The [same-navigation
 laboratory](same-navigation-laboratory.md) and [migration](migration-draft.11.md)
 describe evidence, refusals and limitations.
+
+## TS04 client scope — draft.12
+
+TS04 now accepts the same prior `directive_crawler=googlebot` field as TS07,
+with an explicit `robots_policy` and matching `product_token`. `crawler` remains
+the exact HTTP User-Agent, and every trace must still match that agent. Googlebot
+group selection concerns the representation received by this client, not a
+response received by Googlebot. Results explicitly retain this qualification.
+
+Null, unsupported or inconsistent fields never fall back to the client group.
+A resource response contradicting its declared status/destination remains a
+failure limited to the observed client, including 401/403/429/5xx when 200 is
+expected. It does not prove denial to Googlebot. Missing reviews and population
+limits remain; the extension alone cannot establish C. Absent field preserves
+legacy behavior. Retain the original package and declare a new plan before new
+captures: [draft.12 migration](migration-draft.12.md).

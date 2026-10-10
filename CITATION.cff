@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "Cite this software using its version DOI once the Zenodo record is published; retain the draft version and archive checksum."
 title: "Technical SEO Evidence Protocol (TSEP)"
-version: "0.1.0-draft.11"
+version: "0.1.0-draft.12"
 type: software
 repository-code: "https://github.com/web-evidence/tsep"
 authors:

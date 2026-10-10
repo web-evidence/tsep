@@ -1,6 +1,6 @@
 # TSEP — evidence interchange format
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.11 · initiated by Edikka · [Français](README.fr.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.12 · initiated by Edikka · [Français](README.fr.md)**
 
 Share a technical SEO assessment that its recipient can inspect, replay and
 challenge: stable identifiers, explicit scope, evidence linked to findings and
@@ -25,8 +25,8 @@ atomic rules use pass, fail, not-applicable or inconclusive.
 
 **TS01–TS44 are the permanent identifiers inherited from grid 1.1.** TSEP has a
 separate version sequence; the original FR/EN sources and provenance remain intact.
-Eleven rules specify TS01, TS02, TS07 and TS10, with a bounded interpreter over raw inputs:
-TS01-A01/A02, TS02-A01/A02, TS07-A01/A02/A03 and TS10-A01 through A04. TS10-A02 content comparison
+Thirteen rules specify TS01, TS02, TS04, TS07 and TS10, with a bounded interpreter over raw inputs:
+TS01-A01/A02, TS02-A01/A02, TS04-A01/A02, TS07-A01/A02/A03 and TS10-A01 through A04. TS10-A02 content comparison
 remains a supplied human review bound to the captures.
 
 ## Try it in two minutes
@@ -64,14 +64,14 @@ validation establishes consistency and file integrity.
    diagnostic](docs/reference-diagnostics.md) inventories candidate limitations
    without issuing verdicts. The [paired capture diagnostic](docs/diagnostic-campaign.md)
    compares registered phases and exposes extraction limits on changed bodies.
-   The protocol is draft.11; the [noscript proposal](docs/proposals/noscript-consensus.md) is unapplied.
+   The protocol is draft.12; the [noscript proposal](docs/proposals/noscript-consensus.md) is unapplied.
 2. **Declare partial coverage**: select a `custom` list, keep unknowns as
    NT/inconclusive and link each artifact to its target. Selecting TS01/TS07 does
    not satisfy a named profile. An isolated test cannot pass its parent control.
 3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
    `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 my_adapter.py'`
    for that subset, or omit `--rules` for all thirteen rules. State “passes TSEP
-   0.1.0-draft.11 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
+   0.1.0-draft.12 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
    [Input format and comparison](docs/conformance.md). Report exact agreements,
    disagreements and reduced coverage separately; accepted inconclusive results
    on marked reference limits are not successful assessments.
@@ -145,7 +145,7 @@ ranking or future engine behavior.
 [Governance](GOVERNANCE.md) · [Contribute](CONTRIBUTING.md) · [History](CHANGELOG.md) ·
 [Acceptance clause](docs/acceptance-clause.md) · [HTTP probe](probes/README.md).
 
-Cite `TSEP@0.1.0-draft.11:TS07` with scope, result, evidence and archive hash.
+Cite `TSEP@0.1.0-draft.12:TS07` with scope, result, evidence and archive hash.
 Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATION.cff).
 [Development, full verification and independent repository](docs/development.md).
 
@@ -158,3 +158,5 @@ Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATIO
 [Same-navigation laboratory / Laboratoire avec navigation attribuée](docs/same-navigation-laboratory.md) · [Draft.11 migration](docs/migration-draft.11.md)
 
 [Canonical attributes / Attributs de canonical](docs/canonical-attribute-coverage.md) · interpreter 11 / adapter 12
+
+[Draft.12 — TS04 client scope / Portée du client TS04](docs/migration-draft.12.md)

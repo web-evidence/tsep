@@ -1,5 +1,18 @@
 # Change history / Historique
 
+## 0.1.0-draft.12 — 2026-10-10 — TS04 actual-client scope
+
+TS04 accepts the prior directive_crawler=googlebot field already used by TS07,
+with shared product-profile validation and actual request-agent attribution.
+Robots decisions concern the declared product on the client's captured bytes;
+HTTP denials remain failures for that client, not claims about Googlebot access.
+Absent field preserves historical outcomes; reviews remain required. Interpreter
+12, capture adapter 13; 26 prefrozen cases, 383 prior cases retained.
+[Migration](docs/migration-draft.12.md). No publication or site conformity claim.
+
+FR : groupe robots distinct du client HTTP réel pour TS04, sans repli ni revue
+inventée ; conserver les anciens dossiers et déclarer les options avant collecte.
+
 ## Documentation — 2026-10-10 — four-control evidence route
 
 Separate the current draft.11 status (five controls with 13 atomic rules) from

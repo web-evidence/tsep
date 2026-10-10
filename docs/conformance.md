@@ -1,4 +1,7 @@
-Current tool coverage: interpreter 11, 383 raw cases (353 retained + 30 canonical attribute cases). Protocol draft.11 unchanged.
+Current tool coverage: interpreter 12, 409 raw cases (383 retained + 26 TS04 client/product cases). Protocol draft.12.
+Couverture actuelle : portée du client TS04 explicite, 26 nouveaux cas synthétiques,
+aucune revue humaine ou visite de moteur déduite. [Migration](migration-draft.12.md).
+Earlier named milestones below retain their historical scope.
 Couverture actuelle : [attributs de canonical](canonical-attribute-coverage.md), lecteur historique conservé, migration explicite.
 
 Current: draft.11, interpreter 10, 353 raw cases (338 retained + 15 transport/directive cases).

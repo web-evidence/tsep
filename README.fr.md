@@ -1,6 +1,6 @@
 # TSEP — format d’échange de preuves
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.11 · initié par Edikka · [English](README.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.12 · initié par Edikka · [English](README.md)**
 
 Transmettre un audit SEO technique que son destinataire peut examiner, rejouer et
 contester : mêmes identifiants, périmètre explicite, preuves liées aux constats et
@@ -25,8 +25,8 @@ NC, NA ou NT ; les règles atomiques portent pass, fail, not-applicable ou incon
 
 **TS01–TS44 sont les identifiants permanents hérités de la grille 1.1.** La séquence
 de versions TSEP est distincte ; les sources FR/EN et leur provenance restent intactes.
-Onze règles précisent TS01, TS02, TS07 et TS10 et disposent d’un interpréteur borné sur
-entrées brutes : TS01-A01/A02, TS02-A01/A02, TS07-A01/A02/A03 et TS10-A01 à A04. La comparaison
+Treize règles précisent TS01, TS02, TS04, TS07 et TS10 et disposent d’un interpréteur borné sur
+entrées brutes : TS01-A01/A02, TS02-A01/A02, TS04-A01/A02, TS07-A01/A02/A03 et TS10-A01 à A04. La comparaison
 de contenu TS10-A02 reste une revue humaine fournie et liée aux captures.
 
 ## Essayer en deux minutes
@@ -64,14 +64,14 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
    Le [diagnostic de couverture](docs/reference-diagnostics.md) inventorie les limites
    candidates sans produire de verdict. Le [diagnostic par paire](docs/diagnostic-campaign.md)
    compare des phases préenregistrées et les limites d’extraction des corps changés.
-   Le protocole est draft.11 ; la [proposition noscript](docs/proposals/noscript-consensus.md) est non appliquée.
+   Le protocole est draft.12 ; la [proposition noscript](docs/proposals/noscript-consensus.md) est non appliquée.
 2. **Déclarer une couverture partielle** : sélectionner une liste `custom`, conserver
    les inconnues en NT/inconclusive et relier chaque preuve à sa cible. Une sélection
    TS01/TS07 ne satisfait pas un profil nommé. Aucun test isolé ne valide son parent.
 3. **Passer la suite de conformance** : fournir un adaptateur JSON sur entrée/sortie
    standard, puis exécuter `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 mon_adaptateur.py'`
    pour ce sous-ensemble, ou omettre `--rules` pour les treize règles. Déclarer
-   « passes TSEP 0.1.0-draft.11 conformance for TS01-A01, TS01-A02 » avec les bornes
+   « passes TSEP 0.1.0-draft.12 conformance for TS01-A01, TS01-A02 » avec les bornes
    réellement prises en charge. [Format d’entrée et comparaison](docs/conformance.md). Publier séparément
    accords, désaccords et couverture réduite : les indéterminés acceptés sur des
    limites de référence signalées ne sont pas des évaluations réussies.
@@ -145,7 +145,7 @@ Aucun résultat ne garantit indexation, classement ou comportement futur d’un 
 [Gouvernance](GOVERNANCE.md) · [Contribuer](CONTRIBUTING.md) · [Historique](CHANGELOG.md) ·
 [Clause de recette](docs/acceptance-clause.md) · [Sonde HTTP](probes/README.md).
 
-Citer `TSEP@0.1.0-draft.11:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
+Citer `TSEP@0.1.0-draft.12:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
 Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](CITATION.cff).
 [Développement, vérification complète et dépôt autonome](docs/development.md).
 
@@ -158,3 +158,5 @@ Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](
 [Same-navigation laboratory / Laboratoire avec navigation attribuée](docs/same-navigation-laboratory.md) · [Draft.11 migration](docs/migration-draft.11.md)
 
 [Canonical attributes / Attributs de canonical](docs/canonical-attribute-coverage.md) · interpreter 11 / adapter 12
+
+[Draft.12 — TS04 client scope / Portée du client TS04](docs/migration-draft.12.md)

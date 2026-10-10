@@ -1,4 +1,8 @@
-Current tools: interpreter 11 / adapter 12; protocol draft.11 unchanged.
+Current integration: draft.12, interpreter 12 / adapter 13.
+TS04 shares TS07's prior directive_crawler declaration; actual HTTP client scope
+and engine observations remain distinct. [Migration](migration-draft.12.md).
+Intégration actuelle : draft.12, portée du client TS04 explicite ; aucune revue
+humaine ou observation Googlebot déduite. Les jalons ci-dessous sont historiques.
 Offline [Search Console diagnostic 1](search-console-observations.md) links supplied
 inspection responses to replayed technical evidence; no account access or TS08/TS12 verdict.
 Ébauche Search Console disponible ; export réel et qualification humaine restent à obtenir.

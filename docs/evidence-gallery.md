@@ -2,7 +2,7 @@
 
 ## Current route / Parcours actuel — 2026-10-10
 
-Le protocole actuel est `0.1.0-draft.11`. Les paquets historiques conservent leur
+Le protocole actuel est `0.1.0-draft.12`. Les paquets historiques conservent leur
 version et leurs outils ; l'ordre des identifiants ne dicte pas l'ordre de lecture
 ou de développement. Le programme retient [quatre contrôles](four-control-program.md).
 
@@ -22,7 +22,7 @@ TS01 séparée peut montrer les limites du lecteur sur un site ; elle ne valide 
 les quatre autres contrôles. Publier les fichiers sélectionnés et vérifier leur
 parcours reste une étape distincte de ce guide.
 
-EN: draft.11 is current; retained packages keep their own versions and tools.
+EN: draft.12 is current; retained packages keep their own versions and tools.
 Start with a migration that reaches the wrong page despite a final 200, then
 robots access, rendered directives and canonical consistency. Link each claim
 to prior expectations, exact evidence, a simulated laboratory repair and a new

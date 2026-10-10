@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.11 — Contrôles
+# TSEP 0.1.0-draft.12 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.11:TS01-A01`
+`TSEP@0.1.0-draft.12:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.11:TS01-A02`
+`TSEP@0.1.0-draft.12:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.11:TS02-A01`
+`TSEP@0.1.0-draft.12:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.11:TS02-A02`
+`TSEP@0.1.0-draft.12:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -198,7 +198,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A01 — Politique par origine, robot et ressource
 
-`TSEP@0.1.0-draft.11:TS04-A01`
+`TSEP@0.1.0-draft.12:TS04-A01`
 
 **Entrées requises**: http, robots, intent.
 
@@ -212,17 +212,17 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Preuves.** Matrice complète, intention antérieure, contexte, requête et réponse robots intégrales, profil et résultat motivé par ressource.
 
-**Hypothèses.** Profil choisi avant mesure, identique pour un contexte de campagne ; pas de sélection a posteriori du profil favorable. Distinguer modèle RFC, politique Google documentée et cache réellement inconnu.
+**Hypothèses.** Profil choisi avant mesure, identique pour un contexte de campagne ; pas de sélection a posteriori du profil favorable. Distinguer modèle RFC, politique Google documentée et cache réellement inconnu. Le champ facultatif directive_crawler=googlebot, figé avant capture, sélectionne la politique Googlebot sur la seule représentation reçue par crawler, le User-Agent HTTP exact. robots_policy explicite et product_token concordant avec googlebot sans distinction de casse sont requis, comme pour TS07. Sans ce champ, le comportement historique est conservé.
 
-**Indéterminé.** Profil absent, capture ou chronologie manquante, syntaxe hors couverture, erreur/cache non résolu : inconclusive. Une contradiction attribuable sur une autre ressource reste fail.
+**Indéterminé.** Profil absent, capture ou chronologie manquante, syntaxe hors couverture, erreur/cache non résolu : inconclusive. Une contradiction attribuable sur une autre ressource reste fail. Un directive_crawler nul, inconnu ou incohérent rend la politique indéterminée sans repli vers le groupe du client. Une contradiction HTTP indépendante reste limitée au client observé.
 
 **Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
 
-**Limites.** semiAuto : matrice et pertinence du profil restent déclarées. La référence est bornée à une origine, des profils documentés et des captures fournies ; aucune visite, ingestion ou indexation du moteur n’est démontrée.
+**Limites.** semiAuto : matrice et pertinence du profil restent déclarées. La référence est bornée à une origine, des profils documentés et des captures fournies ; aucune visite, ingestion ou indexation du moteur n’est démontrée. En mode explicite, toute conclusion robots concerne le produit déclaré sur les octets reçus par le client, sans prouver la représentation reçue par Googlebot. Un statut HTTP contraire au plan (dont 401/403/429/5xx quand 200 est attendu) reste fail pour ce client, jamais une preuve de refus à Googlebot.
 
 ### TS04-A02 — Accès aux ressources nécessaires
 
-`TSEP@0.1.0-draft.11:TS04-A02`
+`TSEP@0.1.0-draft.12:TS04-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -238,13 +238,13 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Preuves.** Plan de ressources, robots, traces HTTP complètes, revue motivée par ressource avec identité déclarée, date, provenance, assistance et empreinte de liaison.
 
-**Hypothèses.** Un client de test ne s’authentifie pas comme Googlebot ; un 200 seul ne prouve pas l’absence de challenge. La revue n’est pas produite par le logiciel et son identité n’est pas authentifiée.
+**Hypothèses.** Un client de test ne s’authentifie pas comme Googlebot ; un 200 seul ne prouve pas l’absence de challenge. La revue n’est pas produite par le logiciel et son identité n’est pas authentifiée. Le champ facultatif directive_crawler=googlebot, figé avant capture, sélectionne la politique Googlebot sur la seule représentation reçue par crawler, le User-Agent HTTP exact. robots_policy explicite et product_token concordant avec googlebot sans distinction de casse sont requis, comme pour TS07. Sans ce champ, le comportement historique est conservé.
 
-**Indéterminé.** Ressource ou revue manquante, revue non liée, réponse incomplète, doute ou portée hors couverture : inconclusive sans effacer une contradiction établie.
+**Indéterminé.** Ressource ou revue manquante, revue non liée, réponse incomplète, doute ou portée hors couverture : inconclusive sans effacer une contradiction établie. Un directive_crawler nul, inconnu ou incohérent rend la politique indéterminée sans repli vers le groupe du client. Une contradiction HTTP indépendante reste limitée au client observé.
 
 **Conditions de NA.** Aucune ressource nécessaire dans ce périmètre, établi par une revue d’inventaire motivée et datée avant le plan ; une liste vide sans justification ne suffit pas.
 
-**Limites.** La suffisance de l’inventaire et le jugement humain restent hors automatisation complète. La référence couvre une origine et les trajectoires attribuables ; elle n’exécute pas le rendu et n’établit pas l’accès réel du moteur.
+**Limites.** La suffisance de l’inventaire et le jugement humain restent hors automatisation complète. La référence couvre une origine et les trajectoires attribuables ; elle n’exécute pas le rendu et n’établit pas l’accès réel du moteur. En mode explicite, toute conclusion robots concerne le produit déclaré sur les octets reçus par le client, sans prouver la représentation reçue par Googlebot. Un statut HTTP contraire au plan (dont 401/403/429/5xx quand 200 est attendu) reste fail pour ce client, jamais une preuve de refus à Googlebot.
 
 ## TS05 — Une directive Disallow n’est jamais présentée comme une garantie de désindexation.
 
@@ -320,7 +320,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.11:TS07-A01`
+`TSEP@0.1.0-draft.12:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -344,7 +344,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.11:TS07-A02`
+`TSEP@0.1.0-draft.12:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.11:TS07-A03`
+`TSEP@0.1.0-draft.12:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.11:TS10-A01`
+`TSEP@0.1.0-draft.12:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -490,7 +490,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.11:TS10-A02`
+`TSEP@0.1.0-draft.12:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -514,7 +514,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.11:TS10-A03`
+`TSEP@0.1.0-draft.12:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.11:TS10-A04`
+`TSEP@0.1.0-draft.12:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 

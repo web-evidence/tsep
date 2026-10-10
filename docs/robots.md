@@ -2,6 +2,13 @@
 
 ## Français
 
+Draft.12 étend à TS04 le champ préalable `directive_crawler=googlebot` de TS07.
+Il conserve le client HTTP exact dans `crawler`, exige un `robots_policy` explicite
+avec produit Googlebot concordant, et limite la conclusion à la représentation
+reçue par ce client. Les refus HTTP de ressources sont qualifiés pour ce client,
+sans conclure à un refus Googlebot. Champ absent : ancien comportement ; champ
+invalide : aucune politique favorable par repli. [Migration](migration-draft.12.md).
+
 Draft.9 ajoute TS04-A01 (politique contre intention) et TS04-A02 (accès aux
 ressources nécessaires avec revue fournie). Les deux sont semiAuto. Une réussite
 de la politique seule ne valide pas tout TS04 ; une contradiction connue n'est
@@ -73,7 +80,7 @@ clés triées, ensure_ascii=False, séparateurs `(',', ':')`, sans saut final.
 Une revue périmée ne réussit pas. Le nom, la sincérité et la suffisance du jugement
 ne sont pas authentifiés. Un exercice synthétique ne peut être importé comme réel.
 
-Le parcours `adapters/review.py` version 2 prépare les questions TS04-A02, sans
+Le parcours `adapters/review.py` version 3 prépare les questions TS04-A02, sans
 préremplir les réponses, puis importe les décisions fournies dans un nouveau paquet.
 Il conserve les réponses originales, pièces examinées et historique. Une revue
 positive n'efface ni un blocage robots ni une limite du lecteur. Voir aussi le
@@ -116,6 +123,13 @@ Le laboratoire local reste synthétique, même quand les requêtes HTTP sont ré
 Aucune réussite ne prouve l'indexation, le rendu du moteur ou une conformité d'Edikka.
 
 ## English
+
+Draft.12 extends TS07's prior `directive_crawler=googlebot` field to TS04. Keep
+the exact HTTP client in `crawler`, require an explicit matching Googlebot product
+profile and qualify results as interpretation of this client's representation.
+Resource HTTP denials concern this client, without inferring Googlebot denial.
+Absent field keeps legacy behavior; invalid values never fall back favorably.
+See [migration](migration-draft.12.md).
 
 Draft.9 adds semiAuto TS04-A01 (declared policy matrix) and TS04-A02 (required
 resource access with supplied review). TS04 and TS07-A02 share one reader.

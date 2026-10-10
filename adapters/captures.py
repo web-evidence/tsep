@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '12'
+VERSION = '13'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -36,6 +36,8 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state': 'implemented', 'fr': 'TS04 : directive_crawler préalable distingue le groupe Googlebot et le client HTTP réel ; les refus HTTP restent propres au client observé, sans accès Googlebot déduit.',
+     'en': 'TS04: prior directive_crawler separates the Googlebot group from the actual HTTP client; HTTP denials concern the observed client, without inferring Googlebot access.'},
     {'state': 'implemented', 'fr': 'TS10 : attributs ordinaires source et DOM structurés classés en commun ; modificateurs, namespaces et attributs inconnus indéterminés. DOM sérialisé historique inchangé.',
      'en': 'TS10: shared source/structured canonical attribute classification; modifiers, namespaces and unknown attributes inconclusive. Historical serialized DOM unchanged.'},
     {'state': 'implemented', 'fr': 'TS07/TS10 : lecteur DOM structuré préalable, arbre complet, provenance fournie, sans authentification de navigation. Limites source et revues conservées.',
@@ -220,6 +222,17 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
     parents = sorted({r.split('-')[0] for r in data['rules']})
     selected = parents if selected is None else selected
     tsep.require(set(parents) <= set(selected), 'Selected controls cannot omit requested-rule parents')
+    client_scope = ''
+    if 'TS04' in parents:
+        scoped = [t for t in data['targets'] if 'directive_crawler' in t.get('intent', {})]
+        if scoped:
+            clients = sorted({str(t['intent'].get('crawler', '[undeclared]')) for t in scoped})
+            client_scope = ('TS04 — client HTTP observé / observed HTTP client: '
+                            + json.dumps(clients, ensure_ascii=False)
+                            + '; accès réel Googlebot non observé / actual Googlebot access unobserved')
+            # Replay receives the original label; do not duplicate its qualification.
+            if not label.endswith(client_scope):
+                label += ' | ' + client_scope
     report = tsep.initialize(targets, selected, 'custom', assessor, label, selection_method,
                              mode=mode, tool={'name': NAME, 'version': VERSION})
     report['issued_at'] = issued_text
@@ -282,6 +295,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
             rows = [a for a in atoms if a['rule_id'].startswith(cid + '-')]
             if rows:
                 report['results'][i] = control_result(cid, rows, controls[cid], targets)
+                if cid == 'TS04' and client_scope:
+                    report['results'][i]['reason'] += ' ' + client_scope + '.'
         summary = tsep.validate(report, stage)
         write('report.json', report)
         write('gate.json', summary)
