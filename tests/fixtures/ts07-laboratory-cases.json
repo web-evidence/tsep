@@ -1,0 +1,353 @@
+{
+  "format_version": 1,
+  "synthetic": true,
+  "registered_at": "2026-10-10T09:22:17.802138+00:00",
+  "scope": "Authored laboratory stimuli and expected outcomes frozen before runner implementation. Real loopback HTTP collection, no actual engine/browser/human review. Separate allow/exclude intent series declared before all measurements.",
+  "rules": [
+    "TS07-A01",
+    "TS07-A02",
+    "TS07-A03"
+  ],
+  "cases": [
+    {
+      "id": "initial",
+      "label": {
+        "fr": "État initial : preuves encore partielles",
+        "en": "Initial state: evidence still partial"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow:\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "pass",
+          "inconclusive",
+          "inconclusive"
+        ],
+        "control_status": "NT",
+        "inventory_comparison": "identical",
+        "body_equals_initial": true
+      }
+    },
+    {
+      "id": "meta-noindex",
+      "label": {
+        "fr": "Ajout de noindex dans le HTML",
+        "en": "Add noindex to HTML"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title><meta name=\"robots\" content=\"noindex\"></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow:\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "fail",
+          "inconclusive",
+          "inconclusive"
+        ],
+        "control_status": "NC",
+        "inventory_comparison": "identical",
+        "body_equals_initial": false
+      }
+    },
+    {
+      "id": "meta-corrected",
+      "label": {
+        "fr": "Retrait du noindex HTML",
+        "en": "Remove HTML noindex"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow:\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "pass",
+          "inconclusive",
+          "inconclusive"
+        ],
+        "control_status": "NT",
+        "inventory_comparison": "identical",
+        "body_equals_initial": true
+      }
+    },
+    {
+      "id": "header-noindex",
+      "label": {
+        "fr": "HTML inchangé, noindex dans la réponse HTTP",
+        "en": "Unchanged HTML, noindex in HTTP response"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [
+        [
+          "X-Robots-Tag",
+          "noindex"
+        ]
+      ],
+      "robots_body": "User-agent: *\nDisallow:\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "fail",
+          "inconclusive",
+          "inconclusive"
+        ],
+        "control_status": "NC",
+        "inventory_comparison": "identical",
+        "body_equals_initial": true
+      }
+    },
+    {
+      "id": "header-corrected",
+      "label": {
+        "fr": "Retrait du noindex HTTP",
+        "en": "Remove HTTP noindex"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow:\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "pass",
+          "inconclusive",
+          "inconclusive"
+        ],
+        "control_status": "NT",
+        "inventory_comparison": "identical",
+        "body_equals_initial": true
+      }
+    },
+    {
+      "id": "robots-blocked",
+      "label": {
+        "fr": "robots.txt interdit /page",
+        "en": "robots.txt disallows /page"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow: /page\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "pass",
+          "fail",
+          "inconclusive"
+        ],
+        "control_status": "NC",
+        "inventory_comparison": "identical",
+        "body_equals_initial": true
+      }
+    },
+    {
+      "id": "robots-corrected",
+      "label": {
+        "fr": "Retrait de l’interdiction robots",
+        "en": "Remove robots disallow"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow:\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "pass",
+          "inconclusive",
+          "inconclusive"
+        ],
+        "control_status": "NT",
+        "inventory_comparison": "identical",
+        "body_equals_initial": true
+      }
+    },
+    {
+      "id": "editorial-change",
+      "label": {
+        "fr": "Changement de texte sans directive nouvelle",
+        "en": "Text change without new directive"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique réécrit.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow:\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "pass",
+          "inconclusive",
+          "inconclusive"
+        ],
+        "control_status": "NT",
+        "inventory_comparison": "identical",
+        "body_equals_initial": false
+      }
+    },
+    {
+      "id": "unsupported-source",
+      "label": {
+        "fr": "noscript : limite du lecteur actif",
+        "en": "noscript: active reader limitation"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title><noscript><meta name=\"robots\" content=\"noindex\"></noscript></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow:\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "inconclusive",
+          "inconclusive",
+          "inconclusive"
+        ],
+        "control_status": "NT",
+        "inventory_comparison": "different",
+        "body_equals_initial": false
+      }
+    },
+    {
+      "id": "blocked-unsupported",
+      "label": {
+        "fr": "Interdiction robots malgré le HTML non interprété",
+        "en": "Robots disallow despite uninterpreted HTML"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title><noscript><meta name=\"robots\" content=\"noindex\"></noscript></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow: /page\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "inconclusive",
+          "fail",
+          "inconclusive"
+        ],
+        "control_status": "NC",
+        "inventory_comparison": "different",
+        "body_equals_initial": false
+      }
+    },
+    {
+      "id": "robot-specific",
+      "label": {
+        "fr": "Permission générale, interdiction Googlebot spécifique",
+        "en": "General permission, specific Googlebot disallow"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow:\n\nUser-agent: Googlebot\nDisallow: /page\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "pass",
+          "fail",
+          "inconclusive"
+        ],
+        "control_status": "NC",
+        "inventory_comparison": "identical",
+        "body_equals_initial": true
+      }
+    },
+    {
+      "id": "otherbot-header",
+      "label": {
+        "fr": "noindex réservé à un autre robot",
+        "en": "noindex scoped to another crawler"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [
+        [
+          "X-Robots-Tag",
+          "otherbot: noindex"
+        ]
+      ],
+      "robots_body": "User-agent: *\nDisallow:\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "pass",
+          "inconclusive",
+          "inconclusive"
+        ],
+        "control_status": "NT",
+        "inventory_comparison": "identical",
+        "body_equals_initial": true
+      }
+    },
+    {
+      "id": "exclude-blocked",
+      "label": {
+        "fr": "Objectif distinct : exclure, mais lecture interdite",
+        "en": "Separate intent: exclude, but reading disallowed"
+      },
+      "indexing": "exclude",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title><meta name=\"robots\" content=\"noindex\"></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow: /page\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "pass",
+          "fail",
+          "inconclusive"
+        ],
+        "control_status": "NC",
+        "inventory_comparison": "identical",
+        "body_equals_initial": false
+      }
+    },
+    {
+      "id": "exclude-corrected",
+      "label": {
+        "fr": "Objectif exclure : lecture du noindex permise",
+        "en": "Exclude intent: noindex reading permitted"
+      },
+      "indexing": "exclude",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title><meta name=\"robots\" content=\"noindex\"></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow:\n",
+      "robots_status": 200,
+      "expected": {
+        "atomic_outcomes": [
+          "pass",
+          "inconclusive",
+          "inconclusive"
+        ],
+        "control_status": "NT",
+        "inventory_comparison": "identical",
+        "body_equals_initial": false
+      }
+    },
+    {
+      "id": "robots-unavailable",
+      "label": {
+        "fr": "robots.txt répond 503 : accès non établi",
+        "en": "robots.txt responds 503: access unresolved"
+      },
+      "indexing": "allow",
+      "page_body": "<!doctype html><html><head><title>Laboratoire TS07</title></head><body><h1>Page de laboratoire</h1><p>Contenu synthétique témoin.</p></body></html>",
+      "page_headers": [],
+      "robots_body": "User-agent: *\nDisallow:\n",
+      "robots_status": 503,
+      "expected": {
+        "atomic_outcomes": [
+          "pass",
+          "inconclusive",
+          "inconclusive"
+        ],
+        "control_status": "NT",
+        "inventory_comparison": "identical",
+        "body_equals_initial": true
+      }
+    }
+  ]
+}
