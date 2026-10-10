@@ -19,16 +19,16 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
-from provenance.runtime import loaded_sources
+from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '4'
+VERSION = '5'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
 
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
-    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'provenance.runtime'):
+    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.source_text', 'provenance.runtime'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     return loaded_sources(ROOT, modules)
 
@@ -40,10 +40,14 @@ COVERAGE_INVENTORY = [
      'en': 'Bounded HTTP/1.1 chunked, single gzip member and zlib-wrapped deflate; SHA-256 after decoding, without normalization.'},
     {'state': 'implemented', 'fr': 'Rapport hors ligne, preuves originales et comparaison ; inconnues et échecs conservés.',
      'en': 'Offline report, original evidence and comparison; unknowns and failures retained.'},
+    {'state': 'implemented', 'fr': 'TS01 : extracteur de texte source distinct de TS07 ; éléments ordinaires équilibrés, références de caractères, titre RCDATA et icônes SVG bornées sans texte.',
+     'en': 'TS01: source-text extractor separate from TS07; balanced ordinary elements, character references, RCDATA title and bounded text-free SVG icons.'},
     {'state': 'deferred', 'fr': 'Brotli, gzip multimembre, extensions/trailers chunked, HTTP/2 brut : indéterminés.',
      'en': 'Brotli, multi-member gzip, chunk extensions/trailers and raw HTTP/2: inconclusive.'},
     {'state': 'deferred', 'fr': 'Marqueurs : UTF-8 explicite et HTML borné seulement. Octets non UTF-8 conservés et empreintes comparables, sans extraction de texte implicite.',
      'en': 'Markers: explicit UTF-8 and bounded HTML only. Non-UTF-8 bytes retained and hashes comparable, without implicit text extraction.'},
+    {'state': 'deferred', 'fr': 'TS01 : noscript/template/textarea non vides, texte SVG, MathML, table/select, script échappé et HTML ambigu : extraction entière indéterminée.',
+     'en': 'TS01: nonempty noscript/template/textarea, SVG text, MathML, table/select, escaped script and ambiguous HTML: whole extraction inconclusive.'},
     {'state': 'out-of-scope', 'fr': 'Cet adaptateur ne collecte pas, ne rend pas JavaScript et ne produit aucune revue humaine manquante.',
      'en': 'This adapter does not collect, render JavaScript or supply missing human reviews.'},
     {'state': 'out-of-scope', 'fr': 'Pas de preuve de Googlebot réel, indexation, classement ou conformité globale.',
@@ -151,6 +155,7 @@ def control_result(cid, atoms, control, targets):
 def build(input_path, output, *, assessor, label, selection_method, access, mode='manual', selected=None, exclusions=None):
     """New bundle only. Validation completes in staging before the output is created."""
     sources = source_files()
+    runtime = runtime_identity()
     input_path, output = Path(input_path), Path(output)
     tsep.require(input_path.is_file() and not input_path.is_symlink(), 'Input must be a regular file, not a symlink')
     with input_path.open('rb') as handle:
@@ -185,6 +190,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
     # Only the raw input reaches the interpreter, never the conformance corpus.
     calculated = evaluate(data)
     tsep.require(source_files() == sources, 'Tool source files changed during interpretation')
+    tsep.require(runtime_identity() == runtime, 'Selected runtime dependencies changed during interpretation')
     # Reject malformed metadata and incompatible modes before opening a destination.
     tsep.validate(report, ROOT)
     tsep.require(not output.is_symlink() and not output.exists(), 'Output already exists; choose a new directory')
@@ -211,7 +217,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         metadata = {'adapter': {'name': NAME, 'version': VERSION}, 'protocol': report['protocol'],
                     'interpreter': {'name': 'TSEP bounded reference interpreter', 'version': INTERPRETER_VERSION},
                     'imported_at': issued_text, 'python': sys.version.split()[0],
-                    'source_files': sources,
+                    'source_files': sources, 'runtime': runtime,
                     'source_verification': 'Loaded module file/spec origins match this tool root; on-disk hashes checked before and after interpretation. Not execution authentication.',
                     'input_sha256': hashlib.sha256(original).hexdigest(), 'access': access,
                     'coverage_inventory': COVERAGE_INVENTORY,

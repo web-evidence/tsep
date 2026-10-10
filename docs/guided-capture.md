@@ -2,8 +2,8 @@
 
 ## Français
 
-Le collecteur version 2 réalise des GET anonymes sur **1 à 10 URL explicitement
-choisies et autorisées**, puis utilise l’interpréteur version 3, l’adaptateur version 4 et le
+Le collecteur version 3 réalise des GET anonymes sur **1 à 10 URL explicitement
+choisies et autorisées**, puis utilise l’interpréteur version 4, l’adaptateur version 5 et le
 rapport HTML version 3. Python 3.9+, bibliothèque standard. Protocole draft.7,
 TS01–TS44, contrat du rapport et corpus normatif inchangés. Cette couverture
 d’outil n’est ni une certification, ni une observation d’indexation/classement.
@@ -120,6 +120,12 @@ Le protocole et l’agent choisis ne simulent pas Googlebot. Chaque erreur, plaf
 redirection non suivie et limite d’interprétation est conservé ; rien n’est
 transformé en réussite. Une capture terminée peut rester ininterprétable.
 
+La migration vers **interpréteur 4 / adaptateur 5 / collecteur 3** est décrite dans
+[Texte source v4](source-text-v4.md). Elle conserve draft.7, l’entrée binaire 2 et
+les captures originales ; réévaluer crée un nouveau paquet, pas un remplacement.
+Les empreintes des dépendances HTML de Python sont enregistrées. Un rejeu compare
+les résultats et signale séparément une différence d’environnement Python.
+
 ### Entrée binaire version 2 et migration
 
 L’objet conserve les champs `rules` et `targets` ; `input_version` devient `"2"`.
@@ -184,8 +190,16 @@ le HTML ; l’inventaire de couverture est déclaré par l’outil, sans validat
 
 ## English
 
-Collector version 2 performs anonymous GET requests for **1–10 explicitly selected,
-authorized URLs**, using interpreter 3, adapter 4 and HTML engine 3.
+Interpreter 4 / adapter 5 / collector 3 migration is documented in
+[Source text v4](source-text-v4.md). Draft.7, binary input 2 and original captures
+are preserved; re-evaluation creates a new bundle. Selected Python HTML dependency
+hashes are recorded. Replay compares results and separately discloses a Python
+runtime difference.
+
+
+
+Collector version 3 performs anonymous GET requests for **1–10 explicitly selected,
+authorized URLs**, using interpreter 4, adapter 5 and HTML engine 3.
 Python 3.9+ standard library only. Protocol draft.7, TS01–TS44, the report contract
 and normative corpus are unchanged. This is tool coverage, not certification or
 evidence of indexing/ranking.

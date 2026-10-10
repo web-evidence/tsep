@@ -141,6 +141,19 @@ class GuidedCapture(unittest.TestCase):
                 for name in ('first', 'assessment'):shutil.rmtree(self.root/name)
                 (self.root/'intent.json').unlink()
 
+    def test_runtime_difference_is_disclosed_without_claiming_identical_environment(self):
+        self.prepare()
+        evaluate(self.root/'first/reference', self.root/'intent.json', self.root/'assessment')
+        runtime = tsep.read_json(self.root/'assessment/bundle/import.json')['runtime']
+        runtime['build'] += ' (synthetic runtime difference)'
+        with patch('adapters.captures.runtime_identity', return_value=runtime), \
+                patch('socket.socket', side_effect=AssertionError('Network forbidden')):
+            replay(self.root/'assessment', self.root/'replay')
+        receipt = tsep.read_json(self.root/'replay/replay.json')
+        self.assertFalse(receipt['same_recorded_runtime'])
+        self.assertTrue(receipt['same_atomic_observations_and_gate'])
+        self.assertTrue(receipt['same_interpreter_adapter_sources'])
+
     def test_missing_required_marker_is_failure_not_unknown(self):
         self.prepare();self.server.marker = False
         self.assertEqual(evaluate(self.root/'first/reference', self.root/'intent.json', self.root/'assessment')['counts']['NC'], 1)

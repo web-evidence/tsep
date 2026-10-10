@@ -1,5 +1,25 @@
 # Change history / Historique
 
+## Interpreter 4, adapter 5 and collector 3 — 2026-10-10 — local development
+
+Separate bounded TS01 source-text extraction from the unchanged TS07 parser.
+Freeze 96 synthetic counterexamples and 312 selected upstream character-reference
+expectations before implementation. Preserve numeric characters Python unescape
+would drop. Unsupported regions remain wholly inconclusive. Record selected
+Python HTML dependency hashes and disclose runtime differences on replay.
+Draft.7, its contract/fingerprint, 216 normative cases, binary input 2 and HTML 3
+remain unchanged. [Scope and migration](docs/source-text-v4.md). No public release
+or new remote CI execution is claimed.
+
+Extraction bornée TS01 distincte du parseur TS07 inchangé. 96 contre-exemples
+synthétiques et 312 attentes externes de références de caractères figés avant
+implémentation. Caractères numériques conservés même lorsque Python unescape les
+supprimerait. Zone non prise en charge : extraction entière indéterminée.
+Empreintes des dépendances HTML de Python enregistrées ; différences de runtime
+signalées au rejeu. Draft.7, contrat/empreinte, 216 cas normatifs, entrée binaire 2
+et HTML 3 inchangés. Aucune publication ni nouvelle CI distante revendiquée.
+
+
 ## Collector 2, adapter 4 and HTML 3 — 2026-10-10 — local development
 
 Guard collector source equality before sealing/evaluation and verify loaded local

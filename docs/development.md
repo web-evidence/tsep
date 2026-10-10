@@ -269,3 +269,26 @@ Ces résultats et empreintes appartiennent à ce commit, antérieur à cette mis
 jour documentaire. Toute révision suivante, même documentaire, exige sa propre
 vérification et produit une autre archive si les octets distribués changent.
 Le protocole reste `0.1.0-draft.7` ; le tag initial n’est pas remplacé.
+
+## Source-text extraction checks / Vérifications du texte source
+
+Interpreter 4 has 96 synthetic counterexamples and 312 selected upstream HTML
+character-reference expectations, frozen before implementation. Run
+`python3 scripts/source_text_check.py` with each available Python: matching
+`result_sha256` values compare exact segments/outcomes for this finite selection,
+not all HTML or all runtime behavior. The command has no network dependency.
+`python3 scripts/verify.py` also runs these fixtures through unit tests; the TS07
+and TS10 corpus outputs must match their pre-change fingerprint. Runtime source
+hashes are selected dependencies, not execution authentication. See
+[source scope, license and migration](source-text-v4.md). No new remote CI run
+is established by preparing tests or a matrix.
+
+L’interpréteur 4 dispose de 96 contre-exemples synthétiques et de 312 attentes de
+références de caractères issues d’un corpus externe, figés avant implémentation.
+Exécuter `python3 scripts/source_text_check.py` avec chaque Python disponible :
+un `result_sha256` identique compare les segments/résultats exacts de cette
+sélection finie, sans prouver tous les comportements HTML ou Python. Aucun réseau.
+La vérification complète exécute aussi ces cas ; les sorties TS07 et TS10 du
+corpus doivent conserver leur empreinte antérieure. Les dépendances enregistrées
+ne constituent pas une authentification d’exécution. Voir [sources, licence et
+migration](source-text-v4.md). Préparer une matrice ne prouve pas une nouvelle CI distante.

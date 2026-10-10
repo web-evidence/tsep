@@ -52,9 +52,10 @@ validation establishes consistency and file integrity.
    The [standalone HTML report](docs/html-report.md) exposes evidence offline and
    compares retained assessments. The [guided TS01 workflow](docs/guided-capture.md)
    captures raw bytes, freezes criteria before measurement and replays offline;
-   interpreter version 3 supports bounded chunked, gzip and deflate decoding.
-   Collector 2 checks source consistency across phases; adapter 4 checks module
-   origins and HTML 3 makes identity criteria explicit.
+   interpreter 4 adds a [TS01 source-text extractor](docs/source-text-v4.md)
+   separate from TS07, with frozen counterexamples and explicit limits.
+   Collector 3 and adapter 5 verify sources and record selected Python HTML
+   dependencies; HTML 3 makes criteria explicit. The protocol remains draft.7.
 2. **Declare partial coverage**: select a `custom` list, keep unknowns as
    NT/inconclusive and link each artifact to its target. Selecting TS01/TS07 does
    not satisfy a named profile. An isolated test cannot pass its parent control.

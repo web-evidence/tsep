@@ -13,7 +13,7 @@ import tsep
 
 RULES = ('TS01-A01', 'TS01-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04')
-VERSION = '3'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '4'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -151,36 +151,6 @@ class Meta(HTMLParser):
         need('<' not in data or self.stack[-1] in ('script', 'style'), 'Unparsed HTML markup')
 
 
-class IdentityText(Meta):
-    """Bounded source text, never rendered visibility or concatenated markup."""
-    def __init__(self):
-        super().__init__()
-        self.segments = []
-
-    def handle_starttag(self, tag, attrs):
-        need(not self.stack or self.stack[-1] != 'title', 'Markup in title needs browser parsing')
-        super().handle_starttag(tag, attrs)
-
-    def handle_startendtag(self, tag, attrs):
-        need(tag in ('meta', 'link', 'br', 'img'), 'Non-void self-closing HTML needs browser parsing')
-        self.handle_starttag(tag, attrs)
-
-    def handle_data(self, data):
-        # Character references are already decoded by HTMLParser. A decoded '<'
-        # is text, so do not apply Meta's raw-markup heuristic to it.
-        need(not data.strip() or self.stack, 'Text outside HTML root')
-        if self.stack and not any(tag in ('script', 'style') for tag in self.stack):
-            self.segments.append(data)
-
-    def handle_decl(self, decl):
-        need(decl.lower() == 'doctype html', 'Unsupported HTML declaration')
-
-    def unknown_decl(self, decl):
-        raise Unknown('Unsupported HTML marked section')
-
-    def handle_pi(self, data):
-        raise Unknown('Unsupported HTML processing instruction')
-
 
 def identity_text(headers, body):
     body = text_body(body)
@@ -190,11 +160,8 @@ def identity_text(headers, body):
         return [body]
     need(kind == 'text/html', 'Unsupported identity marker media type')
     need(bool(re.search(r'</html\s*>\s*$', body, re.I)), 'HTML end not captured')
-    parser = IdentityText()
-    parser.feed(body)
-    parser.close()
-    need(parser.roots == 1 and not parser.stack, 'Incomplete HTML structure')
-    return parser.segments
+    from conformance.source_text import extract
+    return extract(body)
 
 
 def directive_result(headers, body, intent):

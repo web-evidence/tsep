@@ -2,19 +2,25 @@
 
 ## Français
 
-`adapters/captures.py` version 4 transforme un fichier de captures fourni en un
+`adapters/captures.py` version 5 transforme un fichier de captures fourni en un
 rapport TSEP draft.7, ses preuves, sa décision et son export EARL. Il appelle
 l’interpréteur de référence existant et calcule les résultats depuis les entrées
 brutes. Il ne lit pas les verdicts attendus du corpus. Ce composant interne ne
 constitue pas une implémentation indépendante. Son format de paquet reste en
 version 1 ; l’évaluation suit la [migration normative draft.7](migration-draft.7.md).
-L’interpréteur version 3 étend la [couverture binaire et gzip/deflate](guided-capture.md),
+Depuis la version 3, l’interpréteur étend la [couverture binaire et gzip/deflate](guided-capture.md),
 sans changer le contrat. Les deux versions d’outil figurent dans `import.json`. La version 4 vérifie aussi
 l’origine des modules locaux chargés et leurs empreintes avant/après interprétation.
 Voir la [migration des outils](guided-capture.md) ; aucune authentification de
 l’exécution Python n’est revendiquée.
 Un [rapport HTML autonome](html-report.md) peut présenter le paquet et comparer
 deux évaluations conservées.
+
+La migration vers **interpréteur 4 / adaptateur 5 / collecteur 3** est décrite dans
+[Texte source v4](source-text-v4.md). Elle conserve draft.7, l’entrée binaire 2 et
+les captures originales ; réévaluer crée un nouveau paquet, pas un remplacement.
+Les empreintes des dépendances HTML de Python sont enregistrées. Un rejeu compare
+les résultats et signale séparément une différence d’environnement Python.
 
 ### Premier paquet
 
@@ -136,13 +142,21 @@ Ce contrôle du parcours ne constitue pas une seconde interprétation normative.
 
 ## English
 
-`adapters/captures.py` version 4 converts supplied offline captures into a TSEP
+Interpreter 4 / adapter 5 / collector 3 migration is documented in
+[Source text v4](source-text-v4.md). Draft.7, binary input 2 and original captures
+are preserved; re-evaluation creates a new bundle. Selected Python HTML dependency
+hashes are recorded. Replay compares results and separately discloses a Python
+runtime difference.
+
+
+
+`adapters/captures.py` version 5 converts supplied offline captures into a TSEP
 draft.7 report, evidence, decision and EARL export. It uses the existing bounded
 reference interpreter and computes outcomes from raw input, without reading
 conformance expectations. This internal component is neither an independent
 implementation. Its bundle format remains version 1; assessment follows the
 [draft.7 normative migration](migration-draft.7.md).
-Interpreter version 3 extends [binary and gzip/deflate coverage](guided-capture.md),
+Since version 3 the interpreter extends [binary and gzip/deflate coverage](guided-capture.md),
 without changing the contract. Both tool versions appear in `import.json`. Version 4 also checks loaded local
 module origins and fingerprints before/after interpretation. See the
 [tool migration](guided-capture.md); this does not authenticate Python execution.

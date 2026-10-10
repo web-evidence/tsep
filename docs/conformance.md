@@ -92,15 +92,14 @@ exactement Location. Aucun cookie ni Authorization dans ce sous-ensemble.
 
 TS01 compare le statut final, puis l’identité selon les critères préalables ci-dessus.
 La branche des marqueurs prend en charge text/plain et text/html avec charset
-UTF-8 explicite. Pour HTML, l’extracteur utilise le même ensemble d’éléments borné
-ci-dessous, un document clos et des balises emboîtées. Les éléments vides
-meta/link/br/img acceptent aussi `/>` ; une telle fermeture sur script/style ou
-un autre élément non vide reste indéterminée. Déclarations autres que doctype html,
-instructions de traitement et balisage dans title ne sont pas pris en charge.
+UTF-8 explicite. L’interpréteur 4 utilise un [extracteur TS01 distinct](source-text-v4.md),
+avec document clos, balises équilibrées, segments séparés par le balisage,
+éléments ordinaires, titre RCDATA et icônes SVG sans texte dans une liste bornée.
+Les zones ambiguës ou non prises en charge rendent toute l’extraction indéterminée.
 Le titre et le texte caché par CSS peuvent compter : aucune visibilité rendue
-n’est mesurée. `identity-marker-unsupported-element` conserve un attendu normatif
-pass pour le texte d’une section valide ; la référence compte ce couple en
-couverture réduite. La priorité URL/empreinte/stabilité reste inchangée.
+n’est mesurée. `identity-marker-unsupported-element` conserve son attendu normatif
+pass et est maintenant résolu. La priorité URL/empreinte/stabilité ne change pas.
+La couverture de TS07 ci-dessous reste distincte et inchangée.
 
 TS07-A01 applique
 la série Googlebot aux en-têtes finaux et meta robots/googlebot. Restrictions
@@ -249,14 +248,13 @@ Ambiguous, incomplete or interrupted captures remain inconclusive.
 
 TS01 compares final status, then identity against the prior criteria above.
 The marker branch supports text/plain and text/html with explicit UTF-8 charset.
-For HTML, extraction uses the same bounded element set below, a closed document
-and nested tags. Void meta/link/br/img also accept `/>`; self-closing script/style
-or other non-void tags remain inconclusive. Declarations other than doctype html,
-processing instructions and markup inside title are unsupported. Title and
-CSS-hidden text may count; rendered visibility is not measured.
-`identity-marker-unsupported-element` retains normative pass for valid section
-text; the reference counts this pair as reduced coverage. URL/digest/stability
-precedence is unchanged.
+Interpreter 4 uses a [separate TS01 extractor](source-text-v4.md): closed document,
+balanced tags, markup-separated segments, ordinary elements, RCDATA title and
+text-free SVG icons in a bounded allowlist. Ambiguous or unsupported contexts make
+the whole extraction inconclusive. Title and CSS-hidden source text may count;
+rendered visibility is not measured. `identity-marker-unsupported-element` keeps
+its normative pass expectation and is now resolved. URL/digest/stability precedence
+is unchanged. The TS07 coverage below remains separate and unchanged.
 
 TS07-A01 implements a
 Googlebot subset over final headers and robots/googlebot meta tags: restrictive

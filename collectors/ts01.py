@@ -26,7 +26,7 @@ from collectors.http import request_bytes
 from reports.html import write as write_html
 from provenance.runtime import loaded_sources
 
-VERSION = '2'
+VERSION = '3'
 NAME = 'TSEP guided TS01 collector'
 RULES = ['TS01-A01', 'TS01-A02']
 MAX_TOTAL = 2*1024*1024  # Raw responses per phase; both phases fit input JSON v2.
@@ -34,7 +34,7 @@ MAX_TOTAL = 2*1024*1024  # Raw responses per phase; both phases fit input JSON v
 
 def collection_sources():
     modules = {'collectors/ts01.py': sys.modules[__name__], 'tsep.py': tsep}
-    for name in ('collectors.http', 'conformance.http', 'conformance.evaluate', 'provenance.runtime'):
+    for name in ('collectors.http', 'conformance.http', 'conformance.evaluate', 'conformance.source_text', 'provenance.runtime'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     return loaded_sources(ROOT, modules)
 
@@ -342,9 +342,12 @@ def replay(source, output, language='fr'):
             and summary == tsep.read_json(source/'bundle/gate.json'))
     same_tools = (tsep.read_json(output/'bundle/import.json')['source_files'] ==
                   tsep.read_json(source/'bundle/import.json')['source_files'])
+    same_runtime = (tsep.read_json(output/'bundle/import.json').get('runtime') ==
+                    tsep.read_json(source/'bundle/import.json').get('runtime'))
     save(output/'replay.json', {'same_atomic_observations_and_gate': same, 'input_sha256': tsep.digest(source/'input.json'),
                               'same_interpreter_adapter_sources': same_tools,
-                              'network_requests': 0, 'scope': 'Same tool/protocol and retained input; no new collection'})
+                              'same_recorded_runtime': same_runtime,
+                              'network_requests': 0, 'scope': 'Same tool sources/protocol and retained input; runtime differences disclosed, outcomes must match; no new collection'})
     tsep.require(same and same_tools, 'Replay outcomes or tool sources differ; retained output requires examination')
     write_html(output/'bundle/report.json', output/('report-'+language+'.html'), language=language)
     return {'replayed': True, 'decision': summary['decision'], 'output': str(output)}
@@ -356,7 +359,7 @@ def main():
     ref = sub.add_parser('reference', help='Collect explicit authorized targets; real network requests')
     ref.add_argument('--target', action='append', required=True)
     ref.add_argument('--allow-origin', action='append', default=[])
-    ref.add_argument('--agent', default='TSEP-TS01-collector/2')
+    ref.add_argument('--agent', default='TSEP-TS01-collector/3')
     ref.add_argument('--accept-encoding', choices=['identity', 'gzip, deflate'], default='gzip, deflate')
     ref.add_argument('--timeout', type=float, default=10)
     ref.add_argument('--max-bytes', type=int, default=524288)
