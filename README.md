@@ -28,13 +28,14 @@ atomic rules use pass, fail, not-applicable or inconclusive.
 
 **TS01–TS44 are the permanent identifiers inherited from grid 1.1.** TSEP has a
 separate version sequence; the original FR/EN sources and provenance remain intact.
-Eighteen rules specify TS01, TS02, TS04, TS07, TS10, TS34 and TS35, with a bounded interpreter over raw inputs:
-TS01-A01/A02, TS02-A01/A02, TS04-A01/A02, TS07-A01/A02/A03, TS10-A01 through A04, TS34-A01/A02/A03 and TS35-A01/A02. TS10-A02 content comparison
+Twenty-seven rules specify ten controls: TS01, TS02, TS04, TS07, TS10, TS34, TS35, TS42, TS43 and TS44, with a bounded interpreter over raw inputs. TS10-A02 content comparison
 remains a supplied human review bound to the captures.
 
 Performance imports keep field p75/classes (CrUX) separate from laboratory diagnostics
 (Lighthouse series). Decisions and hypotheses must be supplied; missing reviews stay
 unknown. See the [performance method and limitations](docs/performance-evidence.md).
+
+The [TS44 laboratory](docs/critical-content-laboratory.md) compares four variants over six actual local HTTP exchanges, with explicitly authored DOM and reviews.
 
 ## Try it in two minutes
 

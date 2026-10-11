@@ -1,3 +1,8 @@
+## Critical-content laboratory 1 — 2026-10-11 — non-normative
+
+Four prefrozen TS44 variants, six actual bounded loopback exchanges, native request logs and offline replay. DOM and reviews remain explicitly authored; no browser, agent or Edikka assessment. Draft.24 rules unchanged.
+FR : HTTP réellement observé sur site fictif, états rédigés et revues synthétiques distincts. [Method / Méthode](docs/critical-content-laboratory.md).
+
 ## 0.1.0-draft.24 — 2026-10-11 — critical content without JavaScript
 
 TS44 adds prior critical scope, declared no-JS delivery and bound representation coherence/review. Source HTML or explicitly linked HTML/JSON, separate attributed rendered states, no invented truth or agent consumption. 68 prefrozen cases plus 3 code-review boundary cases frozen before fixes; 980 previous cases retained.

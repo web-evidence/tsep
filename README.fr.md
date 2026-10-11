@@ -27,13 +27,14 @@ NC, NA ou NT ; les règles atomiques portent pass, fail, not-applicable ou incon
 
 **TS01–TS44 sont les identifiants permanents hérités de la grille 1.1.** La séquence
 de versions TSEP est distincte ; les sources FR/EN et leur provenance restent intactes.
-Dix-huit règles précisent TS01, TS02, TS04, TS07, TS10, TS34 et TS35 et disposent d’un interpréteur borné sur
-entrées brutes : TS01-A01/A02, TS02-A01/A02, TS04-A01/A02, TS07-A01/A02/A03, TS10-A01 à A04, TS34-A01/A02/A03 et TS35-A01/A02. La comparaison
+Vingt-sept règles précisent dix contrôles : TS01, TS02, TS04, TS07, TS10, TS34, TS35, TS42, TS43 et TS44. Elles disposent d’un interpréteur borné sur entrées brutes. La comparaison
 de contenu TS10-A02 reste une revue humaine fournie et liée aux captures.
 
 Les imports de performance séparent les p75/classes terrain (CrUX) des diagnostics
 de laboratoire (séries Lighthouse). Décisions et hypothèses restent fournies ; une
 revue manquante demeure inconnue. Voir la [méthode et ses limites](docs/performance-evidence.md).
+
+Le [laboratoire TS44](docs/critical-content-laboratory.md) compare quatre variantes sur six échanges HTTP locaux réels, avec DOM et revues explicitement rédigés.
 
 ## Essayer en deux minutes
 

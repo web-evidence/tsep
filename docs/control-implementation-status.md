@@ -26,10 +26,10 @@ sans le même niveau de règles et d'outillage exécutables.
 | TS34 | Import CrUX hors ligne : cohorte, période, appareil, p75 et classes ; décision fournie liée aux sources | Aucun nouveau relevé terrain Edikka ; autres formats non qualifiés ; C documentaire ne signifie pas bonnes performances |
 | TS35 | Série Lighthouse : plan préalable, conditions exactes, mesures, dispersion et hypothèse fournie | Aucune nouvelle campagne réelle Edikka ; autres formats et comparaison avant/après non qualifiés |
 | TS42 | Correspondances liées aux sources et revues, décisions du responsable, arbitrages et lecture robots bornée | Aucune décision réelle du responsable Edikka ni visite d’agent établie ; autres mécanismes non qualifiés |
-| TS44 | Inventaire préalable, chemin public sans JS, valeurs HTML/JSON et rendu attribué, revues liées | Laboratoire HTTP contrôlé et application Edikka encore à produire ; captures/revues synthétiques actuelles |
+| TS44 | Inventaire préalable, chemin public sans JS, valeurs HTML/JSON et rendu attribué, revues liées | Laboratoire contrôlé disponible : six HTTP réels, DOM et revues rédigés ; application Edikka encore à produire |
 | TS43 | Traitement prévu du client de test, chaîne complète et journaux JSONL liés, attribution explicite | Expérience contrôlée loopback disponible ; aucun accès réel de l’opérateur, identité ou visite établis ; application TS44 distincte |
 
-TS44 dispose désormais de [trois règles exécutables](critical-content-evidence.md) : plan critique préalable, accès sans JS et cohérence des représentations avec revues liées. Le laboratoire HTTP contrôlé et l’application réelle restent à réaliser ; les cas actuels sont synthétiques.
+TS44 dispose désormais de [trois règles exécutables](critical-content-evidence.md) : plan critique préalable, accès sans JS et cohérence des représentations avec revues liées. Le [laboratoire contrôlé](critical-content-laboratory.md) conserve six échanges HTTP réels sur quatre variantes fictives ; DOM et revues restent rédigés. L’application réelle à Edikka reste à réaliser.
 
 Les extensions récentes sont [les liens source v2](source-link-policy-v2.md),
 [le contexte HTTP canonical](http-canonical-context.md) et
@@ -103,7 +103,7 @@ controls are specified. On October 11 the user explicitly added TS34/TS35 perfor
 The user then added TS42–TS44 agents, in that order after performance.
 Ten controls now have 27 executable atomic rules, including 11 for the four SEO
 priorities, five for performance and nine for TS42/TS43/TS44. The other 34 lack equivalent executable coverage.
-TS42 binds source mappings, supplied owner decisions and tradeoffs to a bounded robots comparison. No real owner approval or agent visit is established. TS43 now supplies planned test-client treatment, reviewed native-log correlation and explicit attribution, with a controlled loopback experiment. Actual operator access/identity/visits remain unestablished. TS44 now has three bounded executable [critical-content rules](critical-content-evidence.md); the controlled HTTP laboratory and real application remain pending.
+TS42 binds source mappings, supplied owner decisions and tradeoffs to a bounded robots comparison. No real owner approval or agent visit is established. TS43 now supplies planned test-client treatment, reviewed native-log correlation and explicit attribution, with a controlled loopback experiment. Actual operator access/identity/visits remain unestablished. TS44 now has three bounded executable [critical-content rules](critical-content-evidence.md); a controlled laboratory retains six actual loopback exchanges with authored DOM/reviews, while real Edikka application remains pending.
 TS34 imports CrUX cohorts/p75 with exact classes and supplied decisions. TS35 imports
 planned repeated Lighthouse reports with declared context, spread and supplied hypotheses.
 No new real Edikka performance campaign, other-source reader or before/after comparison
