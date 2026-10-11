@@ -1,0 +1,40 @@
+{
+  "kind": "critical-content-evidence-provenance",
+  "version": "1",
+  "protocol": "0.1.0-draft.24",
+  "sources": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc6901",
+      "observed_at": "2026-10-11T04:59:59.589Z",
+      "scope": "JSON data model and pointer syntax, not SEO/agent behavior",
+      "capture": ".local/critical-content-2026-10-11/json-primary-source-extract.json",
+      "sha256": "a298f481d464d76504143fccc8971b56bb2235134944468fd650958507c3800e",
+      "capture_kind": "Combined bounded web-tool text extract, not complete original HTTP",
+      "delivery": "Local capture retained; metadata distributed; no private runtime dependency"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8259",
+      "observed_at": "2026-10-11T04:59:59.589Z",
+      "scope": "JSON data model and pointer syntax, not SEO/agent behavior",
+      "capture": ".local/critical-content-2026-10-11/json-primary-source-extract.json",
+      "sha256": "a298f481d464d76504143fccc8971b56bb2235134944468fd650958507c3800e",
+      "capture_kind": "Combined bounded web-tool text extract, not complete original HTTP",
+      "delivery": "Local capture retained; metadata distributed; no private runtime dependency"
+    }
+  ],
+  "initial_cases": {
+    "path": "tests/fixtures/critical-content-v1.json",
+    "sha256": "d0f1b2ff60b1488ceb49a390a59596771501423f246b93ac80832b092f785adf",
+    "cases": 68,
+    "frozen_before_interpreter": true
+  },
+  "boundary_cases": {
+    "path": "tests/fixtures/critical-content-boundaries-v1.json",
+    "sha256": "a60506ac83b45a300a54bde3e9a0ec6cbcbbb8abd68a7b699b75a8140fbc2b06",
+    "cases": 3,
+    "frozen_before_boundary_fixes": true,
+    "frozen_before_interpreter": false,
+    "former_results": ".local/critical-content-2026-10-11/critical-boundaries-before-fix.json"
+  },
+  "scope": "Authored supplied evidence and fictional reviews/DOMs; no live site or human validation. Prior Claude methodology and source observer provenance preserved in source-content-v1.json."
+}

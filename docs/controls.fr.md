@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.23 — Contrôles
+# TSEP 0.1.0-draft.24 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.23:TS01-A01`
+`TSEP@0.1.0-draft.24:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.23:TS01-A02`
+`TSEP@0.1.0-draft.24:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.23:TS02-A01`
+`TSEP@0.1.0-draft.24:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.23:TS02-A02`
+`TSEP@0.1.0-draft.24:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -198,7 +198,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A01 — Politique par origine, robot et ressource
 
-`TSEP@0.1.0-draft.23:TS04-A01`
+`TSEP@0.1.0-draft.24:TS04-A01`
 
 **Entrées requises**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A02 — Accès aux ressources nécessaires
 
-`TSEP@0.1.0-draft.23:TS04-A02`
+`TSEP@0.1.0-draft.24:TS04-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.23:TS07-A01`
+`TSEP@0.1.0-draft.24:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -344,7 +344,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.23:TS07-A02`
+`TSEP@0.1.0-draft.24:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.23:TS07-A03`
+`TSEP@0.1.0-draft.24:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.23:TS10-A01`
+`TSEP@0.1.0-draft.24:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -490,7 +490,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.23:TS10-A02`
+`TSEP@0.1.0-draft.24:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -514,7 +514,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.23:TS10-A03`
+`TSEP@0.1.0-draft.24:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.23:TS10-A04`
+`TSEP@0.1.0-draft.24:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 
@@ -1140,7 +1140,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A01 — Cohorte terrain attribuable
 
-`TSEP@0.1.0-draft.23:TS34-A01`
+`TSEP@0.1.0-draft.24:TS34-A01`
 
 **Entrées requises**: field-data, intent.
 
@@ -1164,7 +1164,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A02 — Mesures p75 et classes conservées
 
-`TSEP@0.1.0-draft.23:TS34-A02`
+`TSEP@0.1.0-draft.24:TS34-A02`
 
 **Entrées requises**: field-data, intent.
 
@@ -1188,7 +1188,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A03 — Décision motivée liée aux mesures
 
-`TSEP@0.1.0-draft.23:TS34-A03`
+`TSEP@0.1.0-draft.24:TS34-A03`
 
 **Entrées requises**: field-data, intent.
 
@@ -1236,7 +1236,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A01 — Contexte et mesures de laboratoire reproductibles
 
-`TSEP@0.1.0-draft.23:TS35-A01`
+`TSEP@0.1.0-draft.24:TS35-A01`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1260,7 +1260,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A02 — Hypothèse de diagnostic et prochaine vérification
 
-`TSEP@0.1.0-draft.23:TS35-A02`
+`TSEP@0.1.0-draft.24:TS35-A02`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1452,7 +1452,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A01 — Usages et mécanismes documentés
 
-`TSEP@0.1.0-draft.23:TS42-A01`
+`TSEP@0.1.0-draft.24:TS42-A01`
 
 **Entrées requises**: operator-docs, intent.
 
@@ -1476,7 +1476,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A02 — Décisions du responsable et arbitrages
 
-`TSEP@0.1.0-draft.23:TS42-A02`
+`TSEP@0.1.0-draft.24:TS42-A02`
 
 **Entrées requises**: intent.
 
@@ -1500,7 +1500,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A03 — Politique capturée et choix effectif
 
-`TSEP@0.1.0-draft.23:TS42-A03`
+`TSEP@0.1.0-draft.24:TS42-A03`
 
 **Entrées requises**: configuration, operator-docs, intent.
 
@@ -1548,7 +1548,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A01 — Client complet et traitement attendu
 
-`TSEP@0.1.0-draft.23:TS43-A01`
+`TSEP@0.1.0-draft.24:TS43-A01`
 
 **Entrées requises**: http, operator-docs, intent.
 
@@ -1572,7 +1572,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A02 — Chaîne rapprochée des journaux
 
-`TSEP@0.1.0-draft.23:TS43-A02`
+`TSEP@0.1.0-draft.24:TS43-A02`
 
 **Entrées requises**: http, logs, intent.
 
@@ -1596,7 +1596,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A03 — Origine du test et identité non inventée
 
-`TSEP@0.1.0-draft.23:TS43-A03`
+`TSEP@0.1.0-draft.24:TS43-A03`
 
 **Entrées requises**: http, intent.
 
@@ -1622,22 +1622,94 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Sévérité**: major. **Unité**: page.
 
-**Entrées requises**: html, render, content, intent.
+**Entrées requises**: http, html, render, content, intent.
 
 **Applicabilité.** Contenus destinés à des consommateurs automatisés déclarés.
 
-**Méthode.** Comparer la réponse HTML brute, la version rendue et, lorsqu’elle existe, une ressource machine publique ; vérifier titres, faits, sources, liens et date de mise à jour.
+**Méthode.** Déclarer les faits critiques et leurs chemins avant collecte ; vérifier accès sans JS, valeurs et revues exactes des représentations selon critical-content-nojs-v1.
 
-**Attendus.** Les éléments critiques et leurs preuves sont accessibles dans le HTML serveur ou une ressource publique reliée ; cohérence et capacités supposées sont explicites.
+**Attendus.** Les trois règles réussissent pour le client de référence sans JavaScript, avec livraison qualifiée, valeurs cohérentes et revues liées ; aucune consommation réelle déduite.
 
-**Preuves.** Faits et sources essentiels dans le HTML serveur ou une ressource publique reliée, avec une version cohérente et une URL stable.
+**Preuves.** Plan et revue préalables, chaînes HTTP complètes, HTML/JSON brut, arbre rendu attribué et revues de contexte liées.
 
 **Conditions de NA.** Aucun contenu destiné à ces consommateurs dans le périmètre.
 
-**Limites.** Un fichier llms.txt ou Markdown peut faciliter l’accès, mais aucun de ces fichiers ne garantit une citation ni un classement.
+**Limites.** Premier profil HTML/JSON borné, Node facultatif et rendu fourni ; pas de visibilité CSS, vérité, identité du relecteur, ingestion ou citation authentifiées. DOM rédigé explicitement synthétique.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Portée partielle : la source Google documente le rendu JavaScript pour Google Search. Le contrôle étend prudemment la vérification à des consommateurs dont les capacités de rendu ne sont pas uniformément documentées.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics); [https://developers.openai.com/api/docs/bots](https://developers.openai.com/api/docs/bots); [https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)
+
+### TS44-A01 — Périmètre critique préalable
+
+`TSEP@0.1.0-draft.24:TS44-A01`
+
+**Entrées requises**: content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Contenus destinés à des consommateurs automatisés déclarés.
+
+**Méthode.** Vérifier inventaire, client sans JS, états et ressources prévus, puis revue liée antérieure aux captures.
+
+**Attendus.** Périmètre complet soutenu par la revue ; rejet lié = fail.
+
+**Preuves.** Plan et revue préalables, chaînes HTTP complètes, HTML/JSON brut, arbre rendu attribué et revues de contexte liées.
+
+**Hypothèses.** Inventaire, références attendues, contexte et revues fournis ; portée fixée avant capture, pièces non authentifiées.
+
+**Indéterminé.** Plan/revue absent, tardif, non lié, incomplet ou capacité de référence différente.
+
+**Conditions de NA.** Aucune exemption atomique automatique.
+
+**Limites.** Premier profil HTML/JSON borné, Node facultatif et rendu fourni ; pas de visibilité CSS, vérité, identité du relecteur, ingestion ou citation authentifiées. DOM rédigé explicitement synthétique.
+
+### TS44-A02 — Chemin de livraison sans JavaScript
+
+`TSEP@0.1.0-draft.24:TS44-A02`
+
+**Entrées requises**: http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Contenus destinés à des consommateurs automatisés déclarés.
+
+**Méthode.** Vérifier le chemin préalable, le lien explicite si ressource, HTTP anonyme et présence de tous les éléments critiques.
+
+**Attendus.** Destination/réponse attendues et éléments présents ; tout refus, chemin contraire ou absence qualifiée échoue.
+
+**Preuves.** Plan et revue préalables, chaînes HTTP complètes, HTML/JSON brut, arbre rendu attribué et revues de contexte liées.
+
+**Hypothèses.** Inventaire, références attendues, contexte et revues fournis ; portée fixée avant capture, pièces non authentifiées.
+
+**Indéterminé.** Capture, format, runtime, lien/contexte ou lecture incomplète et non qualifiée.
+
+**Conditions de NA.** Aucune exemption atomique automatique.
+
+**Limites.** Premier profil HTML/JSON borné, Node facultatif et rendu fourni ; pas de visibilité CSS, vérité, identité du relecteur, ingestion ou citation authentifiées. DOM rédigé explicitement synthétique.
+
+### TS44-A03 — Cohérence des valeurs et du contexte
+
+`TSEP@0.1.0-draft.24:TS44-A03`
+
+**Entrées requises**: http, html, render, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Contenus destinés à des consommateurs automatisés déclarés.
+
+**Méthode.** Comparer les valeurs qualifiées de chaque représentation et état rendu au plan ; relire le contexte critique entier avec des revues propres à chaque pièce.
+
+**Attendus.** Valeurs et revues cohérentes ; contradiction qualifiée conservée malgré une autre pièce manquante.
+
+**Preuves.** Plan et revue préalables, chaînes HTTP complètes, HTML/JSON brut, arbre rendu attribué et revues de contexte liées.
+
+**Hypothèses.** Inventaire, références attendues, contexte et revues fournis ; portée fixée avant capture, pièces non authentifiées.
+
+**Indéterminé.** Revue, rendu, valeur ou attribution absent/inconnu ; état fourni hors du plan ou contexte non pris en charge.
+
+**Conditions de NA.** Aucune exemption atomique automatique.
+
+**Limites.** Premier profil HTML/JSON borné, Node facultatif et rendu fourni ; pas de visibilité CSS, vérité, identité du relecteur, ingestion ou citation authentifiées. DOM rédigé explicitement synthétique.

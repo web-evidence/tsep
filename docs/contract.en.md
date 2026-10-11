@@ -1,4 +1,8 @@
-# Report contract — TSEP 0.1.0-draft.23
+# Report contract — TSEP 0.1.0-draft.24
+
+### Critical content — draft.24
+
+TS44 adds three rules: prior scope, no-JS delivery, representation coherence and review. [Contract](critical-content-evidence.md), [migration](migration-draft.24.md). No factual truth, actual agent access or citation inferred.
 
 ### Agent access and logs — draft.23
 
@@ -66,14 +70,14 @@ indexation. TS34 establishes correctly read field metrics; a C there does not
 mean the measured performance is good. Record unfavorable underlying measures
 and their operational consequences explicitly.
 
-## Atomic rules for TS01, TS02, TS04, TS07, TS10, TS34, TS35, TS42 and TS43
+## Atomic rules for TS01, TS02, TS04, TS07, TS10, TS34, TS35, TS42, TS43 and TS44
 
 Report format is `2`. A **control** retains its TSxx identifier and scoped
 C/NC/NA/NT outcome. An **atomic test** addresses an expectation identified by
 `TSxx-Ayy` in the canonical JSON. An **observation** is a dated capture or finding
 in a given context; its existence alone does not pass a test. Each rule declares `automation`: `automatic`, `semiAuto` or `manual`.
 
-For these nine controls, `atomic_results` links each `rule_id`/`target` pair to
+For these ten controls, `atomic_results` links each `rule_id`/`target` pair to
 an `outcome` (`pass`, `fail`, `not-applicable`, `inconclusive`), a `reason` and
 `evidence_ids`. Evidence must also be linked by the control result and cover the
 target. A `pass` requires every input kind of the rule. A `fail` contradiction
@@ -105,7 +109,7 @@ declarations, although the validator cannot determine that need.
 
 The CLI checks declarations, references and coverage, not the correctness of
 HTTP/HTML interpretation, intent or exemptions. The historical method fixtures have authored reference verdicts. The separate
-[executable conformance suite](conformance.md) interprets raw inputs for twenty-four rules
+[executable conformance suite](conformance.md) interprets raw inputs for twenty-seven rules
 within documented bounds; it does not implement all controls. No C extends to unselected
 controls, an entire site or actual indexing. See [migration and cases](migration-draft.2.md).
 

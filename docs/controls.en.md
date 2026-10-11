@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.23 — Controls
+# TSEP 0.1.0-draft.24 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.23:TS01-A01`
+`TSEP@0.1.0-draft.24:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.23:TS01-A02`
+`TSEP@0.1.0-draft.24:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.23:TS02-A01`
+`TSEP@0.1.0-draft.24:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.23:TS02-A02`
+`TSEP@0.1.0-draft.24:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.23:TS04-A01`
+`TSEP@0.1.0-draft.24:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.23:TS04-A02`
+`TSEP@0.1.0-draft.24:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.23:TS07-A01`
+`TSEP@0.1.0-draft.24:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -344,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.23:TS07-A02`
+`TSEP@0.1.0-draft.24:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.23:TS07-A03`
+`TSEP@0.1.0-draft.24:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.23:TS10-A01`
+`TSEP@0.1.0-draft.24:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -490,7 +490,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.23:TS10-A02`
+`TSEP@0.1.0-draft.24:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -514,7 +514,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.23:TS10-A03`
+`TSEP@0.1.0-draft.24:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.23:TS10-A04`
+`TSEP@0.1.0-draft.24:TS10-A04`
 
 **Required inputs**: crawl, intent.
 
@@ -1140,7 +1140,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A01 — Attributable field cohort
 
-`TSEP@0.1.0-draft.23:TS34-A01`
+`TSEP@0.1.0-draft.24:TS34-A01`
 
 **Required inputs**: field-data, intent.
 
@@ -1164,7 +1164,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A02 — Retained p75 measurements and classes
 
-`TSEP@0.1.0-draft.23:TS34-A02`
+`TSEP@0.1.0-draft.24:TS34-A02`
 
 **Required inputs**: field-data, intent.
 
@@ -1188,7 +1188,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A03 — Reasoned decision bound to measurements
 
-`TSEP@0.1.0-draft.23:TS34-A03`
+`TSEP@0.1.0-draft.24:TS34-A03`
 
 **Required inputs**: field-data, intent.
 
@@ -1236,7 +1236,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A01 — Repeatable laboratory context and measurements
 
-`TSEP@0.1.0-draft.23:TS35-A01`
+`TSEP@0.1.0-draft.24:TS35-A01`
 
 **Required inputs**: lab-data, intent.
 
@@ -1260,7 +1260,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A02 — Diagnostic hypothesis and next verification
 
-`TSEP@0.1.0-draft.23:TS35-A02`
+`TSEP@0.1.0-draft.24:TS35-A02`
 
 **Required inputs**: lab-data, intent.
 
@@ -1452,7 +1452,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A01 — Documented purposes and mechanisms
 
-`TSEP@0.1.0-draft.23:TS42-A01`
+`TSEP@0.1.0-draft.24:TS42-A01`
 
 **Required inputs**: operator-docs, intent.
 
@@ -1476,7 +1476,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A02 — Owner decisions and tradeoffs
 
-`TSEP@0.1.0-draft.23:TS42-A02`
+`TSEP@0.1.0-draft.24:TS42-A02`
 
 **Required inputs**: intent.
 
@@ -1500,7 +1500,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A03 — Captured policy and effective choice
 
-`TSEP@0.1.0-draft.23:TS42-A03`
+`TSEP@0.1.0-draft.24:TS42-A03`
 
 **Required inputs**: configuration, operator-docs, intent.
 
@@ -1548,7 +1548,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A01 — Full client and expected treatment
 
-`TSEP@0.1.0-draft.23:TS43-A01`
+`TSEP@0.1.0-draft.24:TS43-A01`
 
 **Required inputs**: http, operator-docs, intent.
 
@@ -1572,7 +1572,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A02 — Chain reconciled with logs
 
-`TSEP@0.1.0-draft.23:TS43-A02`
+`TSEP@0.1.0-draft.24:TS43-A02`
 
 **Required inputs**: http, logs, intent.
 
@@ -1596,7 +1596,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A03 — Test origin without invented identity
 
-`TSEP@0.1.0-draft.23:TS43-A03`
+`TSEP@0.1.0-draft.24:TS43-A03`
 
 **Required inputs**: http, intent.
 
@@ -1622,22 +1622,94 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Severity**: major. **Unit**: page.
 
-**Required inputs**: html, render, content, intent.
+**Required inputs**: http, html, render, content, intent.
 
 **Applicability.** Content intended for declared automated consumers.
 
-**Method.** Compare raw HTML, rendered content and any public machine-readable resource; verify titles, facts, sources, links and update date.
+**Method.** Declare critical facts and paths before collection; verify no-JS access, values and exact representation reviews under critical-content-nojs-v1.
 
-**Acceptance.** Critical elements and their evidence are available in server HTML or a linked public resource; consistency and assumed capabilities are explicit.
+**Acceptance.** All three rules pass for the no-JavaScript reference client, with qualified delivery, coherent values and bound reviews; no actual consumption inferred.
 
-**Evidence.** Essential facts and sources in server HTML or a linked public resource, with a consistent version and stable URL.
+**Evidence.** Prior plan/review, complete HTTP chains, raw HTML/JSON, attributed rendered tree and bound context reviews.
 
 **When NA is allowed.** No content intended for these consumers in scope.
 
-**Limits.** An llms.txt or Markdown file may ease access, but neither guarantees citation nor rankings.
+**Limits.** First bounded HTML/JSON profile, optional Node and supplied rendered evidence; no authenticated CSS visibility, truth, reviewer identity, ingestion or citation. Authored DOM explicitly synthetic.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Partial scope: Google documents JavaScript rendering for Google Search. This control cautiously extends verification to consumers whose rendering capabilities are not uniformly documented.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics); [https://developers.openai.com/api/docs/bots](https://developers.openai.com/api/docs/bots); [https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)
+
+### TS44-A01 — Prior critical scope
+
+`TSEP@0.1.0-draft.24:TS44-A01`
+
+**Required inputs**: content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Content intended for declared automated consumers.
+
+**Method.** Check inventory, no-JS client, planned states/resources and bound review predating captures.
+
+**Acceptance.** Complete scope supported by review; bound rejection = fail.
+
+**Evidence.** Prior plan/review, complete HTTP chains, raw HTML/JSON, attributed rendered tree and bound context reviews.
+
+**Assumptions.** Supplied inventory, expected references, context and reviews; scope fixed before capture, unauthenticated evidence.
+
+**Inconclusive.** Missing, late, unbound or incomplete plan/review, or different reference capability.
+
+**When NA is allowed.** No automatic atomic exemption.
+
+**Limits.** First bounded HTML/JSON profile, optional Node and supplied rendered evidence; no authenticated CSS visibility, truth, reviewer identity, ingestion or citation. Authored DOM explicitly synthetic.
+
+### TS44-A02 — Delivery path without JavaScript
+
+`TSEP@0.1.0-draft.24:TS44-A02`
+
+**Required inputs**: http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Content intended for declared automated consumers.
+
+**Method.** Check the prior path, explicit resource link if needed, anonymous HTTP and all critical elements.
+
+**Acceptance.** Expected destination/response and present elements; any qualified denial, wrong path or absence fails.
+
+**Evidence.** Prior plan/review, complete HTTP chains, raw HTML/JSON, attributed rendered tree and bound context reviews.
+
+**Assumptions.** Supplied inventory, expected references, context and reviews; scope fixed before capture, unauthenticated evidence.
+
+**Inconclusive.** Missing capture, unsupported format/runtime/link/context or incomplete unqualified reading.
+
+**When NA is allowed.** No automatic atomic exemption.
+
+**Limits.** First bounded HTML/JSON profile, optional Node and supplied rendered evidence; no authenticated CSS visibility, truth, reviewer identity, ingestion or citation. Authored DOM explicitly synthetic.
+
+### TS44-A03 — Value and context coherence
+
+`TSEP@0.1.0-draft.24:TS44-A03`
+
+**Required inputs**: http, html, render, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Content intended for declared automated consumers.
+
+**Method.** Compare qualified values from each representation/rendered state to the plan; review whole critical context with representation-specific bindings.
+
+**Acceptance.** Coherent values and reviews; qualified contradiction retained despite other missing evidence.
+
+**Evidence.** Prior plan/review, complete HTTP chains, raw HTML/JSON, attributed rendered tree and bound context reviews.
+
+**Assumptions.** Supplied inventory, expected references, context and reviews; scope fixed before capture, unauthenticated evidence.
+
+**Inconclusive.** Missing/unknown review, rendering, value or attribution; unplanned supplied state or unsupported context.
+
+**When NA is allowed.** No automatic atomic exemption.
+
+**Limits.** First bounded HTML/JSON profile, optional Node and supplied rendered evidence; no authenticated CSS visibility, truth, reviewer identity, ingestion or citation. Authored DOM explicitly synthetic.

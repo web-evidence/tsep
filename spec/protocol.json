@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.23",
+  "version": "0.1.0-draft.24",
   "status": "draft",
   "date": "2026-10-11",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.23"
+      "rule_version": "0.1.0-draft.24"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.23",
+      "rule_version": "0.1.0-draft.24",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.23",
+      "rule_version": "0.1.0-draft.24",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.23"
+      "rule_version": "0.1.0-draft.24"
     },
     {
       "id": "TS08",
@@ -1233,7 +1233,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.23"
+      "rule_version": "0.1.0-draft.24"
     },
     {
       "id": "TS11",
@@ -2648,7 +2648,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.23",
+      "rule_version": "0.1.0-draft.24",
       "rules": [
         {
           "id": "TS34-A01",
@@ -2843,7 +2843,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.23",
+      "rule_version": "0.1.0-draft.24",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3356,7 +3356,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.23",
+      "rule_version": "0.1.0-draft.24",
       "rules": [
         {
           "id": "TS42-A01",
@@ -3553,7 +3553,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.23",
+      "rule_version": "0.1.0-draft.24",
       "rules": [
         {
           "id": "TS43-A01",
@@ -3707,6 +3707,7 @@
       "severity": "major",
       "unit": "page",
       "required_inputs": [
+        "http",
         "html",
         "render",
         "content",
@@ -3717,24 +3718,24 @@
         "en": "Content intended for declared automated consumers."
       },
       "procedure": {
-        "fr": "Comparer la réponse HTML brute, la version rendue et, lorsqu’elle existe, une ressource machine publique ; vérifier titres, faits, sources, liens et date de mise à jour.",
-        "en": "Compare raw HTML, rendered content and any public machine-readable resource; verify titles, facts, sources, links and update date."
+        "fr": "Déclarer les faits critiques et leurs chemins avant collecte ; vérifier accès sans JS, valeurs et revues exactes des représentations selon critical-content-nojs-v1.",
+        "en": "Declare critical facts and paths before collection; verify no-JS access, values and exact representation reviews under critical-content-nojs-v1."
       },
       "acceptance": {
-        "fr": "Les éléments critiques et leurs preuves sont accessibles dans le HTML serveur ou une ressource publique reliée ; cohérence et capacités supposées sont explicites.",
-        "en": "Critical elements and their evidence are available in server HTML or a linked public resource; consistency and assumed capabilities are explicit."
+        "fr": "Les trois règles réussissent pour le client de référence sans JavaScript, avec livraison qualifiée, valeurs cohérentes et revues liées ; aucune consommation réelle déduite.",
+        "en": "All three rules pass for the no-JavaScript reference client, with qualified delivery, coherent values and bound reviews; no actual consumption inferred."
       },
       "non_applicability": {
         "fr": "Aucun contenu destiné à ces consommateurs dans le périmètre.",
         "en": "No content intended for these consumers in scope."
       },
       "evidence": {
-        "fr": "Faits et sources essentiels dans le HTML serveur ou une ressource publique reliée, avec une version cohérente et une URL stable.",
-        "en": "Essential facts and sources in server HTML or a linked public resource, with a consistent version and stable URL."
+        "fr": "Plan et revue préalables, chaînes HTTP complètes, HTML/JSON brut, arbre rendu attribué et revues de contexte liées.",
+        "en": "Prior plan/review, complete HTTP chains, raw HTML/JSON, attributed rendered tree and bound context reviews."
       },
       "limitations": {
-        "fr": "Un fichier llms.txt ou Markdown peut faciliter l’accès, mais aucun de ces fichiers ne garantit une citation ni un classement.",
-        "en": "An llms.txt or Markdown file may ease access, but neither guarantees citation nor rankings."
+        "fr": "Premier profil HTML/JSON borné, Node facultatif et rendu fourni ; pas de visibilité CSS, vérité, identité du relecteur, ingestion ou citation authentifiées. DOM rédigé explicitement synthétique.",
+        "en": "First bounded HTML/JSON profile, optional Node and supplied rendered evidence; no authenticated CSS visibility, truth, reviewer identity, ingestion or citation. Authored DOM explicitly synthetic."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -3754,7 +3755,148 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.24",
+      "rules": [
+        {
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Contenus destinés à des consommateurs automatisés déclarés.",
+            "en": "Content intended for declared automated consumers."
+          },
+          "evidence": {
+            "fr": "Plan et revue préalables, chaînes HTTP complètes, HTML/JSON brut, arbre rendu attribué et revues de contexte liées.",
+            "en": "Prior plan/review, complete HTTP chains, raw HTML/JSON, attributed rendered tree and bound context reviews."
+          },
+          "limitations": {
+            "fr": "Premier profil HTML/JSON borné, Node facultatif et rendu fourni ; pas de visibilité CSS, vérité, identité du relecteur, ingestion ou citation authentifiées. DOM rédigé explicitement synthétique.",
+            "en": "First bounded HTML/JSON profile, optional Node and supplied rendered evidence; no authenticated CSS visibility, truth, reviewer identity, ingestion or citation. Authored DOM explicitly synthetic."
+          },
+          "assumptions": {
+            "fr": "Inventaire, références attendues, contexte et revues fournis ; portée fixée avant capture, pièces non authentifiées.",
+            "en": "Supplied inventory, expected references, context and reviews; scope fixed before capture, unauthenticated evidence."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "id": "TS44-A01",
+          "title": {
+            "fr": "Périmètre critique préalable",
+            "en": "Prior critical scope"
+          },
+          "required_inputs": [
+            "content",
+            "intent"
+          ],
+          "procedure": {
+            "fr": "Vérifier inventaire, client sans JS, états et ressources prévus, puis revue liée antérieure aux captures.",
+            "en": "Check inventory, no-JS client, planned states/resources and bound review predating captures."
+          },
+          "acceptance": {
+            "fr": "Périmètre complet soutenu par la revue ; rejet lié = fail.",
+            "en": "Complete scope supported by review; bound rejection = fail."
+          },
+          "inconclusive": {
+            "fr": "Plan/revue absent, tardif, non lié, incomplet ou capacité de référence différente.",
+            "en": "Missing, late, unbound or incomplete plan/review, or different reference capability."
+          }
+        },
+        {
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Contenus destinés à des consommateurs automatisés déclarés.",
+            "en": "Content intended for declared automated consumers."
+          },
+          "evidence": {
+            "fr": "Plan et revue préalables, chaînes HTTP complètes, HTML/JSON brut, arbre rendu attribué et revues de contexte liées.",
+            "en": "Prior plan/review, complete HTTP chains, raw HTML/JSON, attributed rendered tree and bound context reviews."
+          },
+          "limitations": {
+            "fr": "Premier profil HTML/JSON borné, Node facultatif et rendu fourni ; pas de visibilité CSS, vérité, identité du relecteur, ingestion ou citation authentifiées. DOM rédigé explicitement synthétique.",
+            "en": "First bounded HTML/JSON profile, optional Node and supplied rendered evidence; no authenticated CSS visibility, truth, reviewer identity, ingestion or citation. Authored DOM explicitly synthetic."
+          },
+          "assumptions": {
+            "fr": "Inventaire, références attendues, contexte et revues fournis ; portée fixée avant capture, pièces non authentifiées.",
+            "en": "Supplied inventory, expected references, context and reviews; scope fixed before capture, unauthenticated evidence."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "id": "TS44-A02",
+          "title": {
+            "fr": "Chemin de livraison sans JavaScript",
+            "en": "Delivery path without JavaScript"
+          },
+          "required_inputs": [
+            "http",
+            "html",
+            "intent"
+          ],
+          "procedure": {
+            "fr": "Vérifier le chemin préalable, le lien explicite si ressource, HTTP anonyme et présence de tous les éléments critiques.",
+            "en": "Check the prior path, explicit resource link if needed, anonymous HTTP and all critical elements."
+          },
+          "acceptance": {
+            "fr": "Destination/réponse attendues et éléments présents ; tout refus, chemin contraire ou absence qualifiée échoue.",
+            "en": "Expected destination/response and present elements; any qualified denial, wrong path or absence fails."
+          },
+          "inconclusive": {
+            "fr": "Capture, format, runtime, lien/contexte ou lecture incomplète et non qualifiée.",
+            "en": "Missing capture, unsupported format/runtime/link/context or incomplete unqualified reading."
+          }
+        },
+        {
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Contenus destinés à des consommateurs automatisés déclarés.",
+            "en": "Content intended for declared automated consumers."
+          },
+          "evidence": {
+            "fr": "Plan et revue préalables, chaînes HTTP complètes, HTML/JSON brut, arbre rendu attribué et revues de contexte liées.",
+            "en": "Prior plan/review, complete HTTP chains, raw HTML/JSON, attributed rendered tree and bound context reviews."
+          },
+          "limitations": {
+            "fr": "Premier profil HTML/JSON borné, Node facultatif et rendu fourni ; pas de visibilité CSS, vérité, identité du relecteur, ingestion ou citation authentifiées. DOM rédigé explicitement synthétique.",
+            "en": "First bounded HTML/JSON profile, optional Node and supplied rendered evidence; no authenticated CSS visibility, truth, reviewer identity, ingestion or citation. Authored DOM explicitly synthetic."
+          },
+          "assumptions": {
+            "fr": "Inventaire, références attendues, contexte et revues fournis ; portée fixée avant capture, pièces non authentifiées.",
+            "en": "Supplied inventory, expected references, context and reviews; scope fixed before capture, unauthenticated evidence."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "id": "TS44-A03",
+          "title": {
+            "fr": "Cohérence des valeurs et du contexte",
+            "en": "Value and context coherence"
+          },
+          "required_inputs": [
+            "http",
+            "html",
+            "render",
+            "content",
+            "intent"
+          ],
+          "procedure": {
+            "fr": "Comparer les valeurs qualifiées de chaque représentation et état rendu au plan ; relire le contexte critique entier avec des revues propres à chaque pièce.",
+            "en": "Compare qualified values from each representation/rendered state to the plan; review whole critical context with representation-specific bindings."
+          },
+          "acceptance": {
+            "fr": "Valeurs et revues cohérentes ; contradiction qualifiée conservée malgré une autre pièce manquante.",
+            "en": "Coherent values and reviews; qualified contradiction retained despite other missing evidence."
+          },
+          "inconclusive": {
+            "fr": "Revue, rendu, valeur ou attribution absent/inconnu ; état fourni hors du plan ou contexte non pris en charge.",
+            "en": "Missing/unknown review, rendering, value or attribution; unplanned supplied state or unsupported context."
+          }
+        }
+      ]
     }
   ],
   "profiles": [
@@ -3905,15 +4047,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "26f1357e1522dce5a1e6b93e0a0935728428c60e63e783f1d4b9c9aba2807800"
+      "sha256": "25af9bf434019ec849bb0ffb4f5ea0330c446bd97be727ccec5c34914c40da60"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "52b02d3a3356f9d2d22458a41a7364c8afc92d267eb0c3f33c343ce24556e415"
+      "sha256": "7309d77b663dcbcc52b7999dba2ab23d73463f47061f035f0bb658051d7442d6"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "3cb3b175771a66b90f35992afca0c54893c5273a7b84b18e13c96c7820e500b7"
+      "sha256": "ab0b2d6880f45829b5b36582f9a4465c17858e46b87ff4dca581a1f64ceec4a7"
     },
     {
       "path": "docs/source-directives.md",
@@ -3950,6 +4092,10 @@
     {
       "path": "docs/agent-access-evidence.md",
       "sha256": "8aab6de24ab28fb1af533f4de584eb3361da0c7ea836c5887f465c37639774c7"
+    },
+    {
+      "path": "docs/critical-content-evidence.md",
+      "sha256": "20ca39ecb2c8ed5b9e7b103eceac0bb0cf17dfbb7a593d9c94e54059968f62f5"
     }
   ]
 }

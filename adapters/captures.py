@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '24'
+VERSION = '25'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -33,6 +33,8 @@ def source_files():
     modules['conformance/performance.py'] = importlib.import_module('conformance.performance')
     modules['conformance/agent_policy.py'] = importlib.import_module('conformance.agent_policy')
     modules['conformance/agent_access.py'] = importlib.import_module('conformance.agent_access')
+    modules['conformance/critical_content.py'] = importlib.import_module('conformance.critical_content')
+    modules['experiments/source_content.py'] = importlib.import_module('experiments.source_content')
     for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'conformance.source_canonical', 'experiments.source_head', 'experiments.source_http', 'experiments.source_tree'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     result = loaded_sources(ROOT, modules)
@@ -41,6 +43,8 @@ def source_files():
     result.update(source_http.identity())
     from experiments import source_head
     result.update(source_head.identity())
+    from experiments import source_content
+    result.update(source_content.identity())
     from conformance import source_link_policy
     from experiments import link_elements, url_resolution
     result.update(loaded_sources(ROOT, {'conformance/source_link_policy.py': source_link_policy,
@@ -133,6 +137,9 @@ def pieces(target):
     if 'intent' in target:
         result['intent'] = {k: target[k] for k in
                             ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review', 'agent_decision', 'execution', 'attribution', 'log_review') if k in target}
+    critical = ('critical_plan_review','critical_reviews')
+    if any(k in target for k in critical):
+        result['content'] = {k:target[k] for k in critical if k in target}
     documents = ('agent_documents', 'agent_reviews', 'client_documents', 'client_review')
     if any(k in target for k in documents):
         result['operator-docs'] = {k: target[k] for k in documents if k in target}
@@ -251,7 +258,9 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         agent_reviews = target.get('agent_reviews')
         records = list(agent_reviews) if isinstance(agent_reviews, list) else []
         records.append(target.get('agent_decision'))
-        records.extend(target.get(k) for k in ('client_review', 'log_review', 'attribution'))
+        records.extend(target.get(k) for k in ('client_review', 'log_review', 'attribution', 'critical_plan_review'))
+        critical_reviews=target.get('critical_reviews')
+        if isinstance(critical_reviews,list):records.extend(critical_reviews)
         for record in records:
             if isinstance(record, dict) and record.get('provenance') in ('human', 'human-assisted', 'synthetic-exercise'):
                 tsep.require((record['provenance'] == 'synthetic-exercise') == (access == 'synthetic'),
@@ -367,6 +376,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += '\n'.join(a['rule_id'] + ' — ' + a['reason'] for a in rows)
                 if cid == 'TS42':
                     report['results'][i]['reason'] += ' Usages déclarés et pièces fournies seulement / Declared usages and supplied evidence only; no real agent visit, identity, operator compliance or citation established.'
+                if cid == 'TS44':
+                    report['results'][i]['reason'] += ' Référence sans JS et représentations fournies / No-JS reference and supplied representations; no agent consumption, factual truth or citation established. Authored DOM is not a browser observation.'
                 if cid == 'TS43':
                     report['results'][i]['reason'] += ' C = traitement documenté du client de test / documented test-client treatment. An expected denial may conform; real operator access, identity and visits remain unestablished.'
                 if cid == 'TS04' and client_scope:

@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.23",
+  "protocol_version": "0.1.0-draft.24",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -3668,6 +3668,326 @@
             "http",
             "logs",
             "operator-docs"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS44-authored-coherent",
+      "control_id": "TS44",
+      "description": {
+        "fr": "Jugement fictif d’agrégation TS44 : coherent ; pas une observation réelle.",
+        "en": "Authored TS44 aggregation judgment: coherent; no real observation."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: authored coherent aggregation only; no parsing, human review or agent observation.",
+        "http": "SYNTHETIC: authored coherent aggregation only; no parsing, human review or agent observation.",
+        "html": "SYNTHETIC: authored coherent aggregation only; no parsing, human review or agent observation.",
+        "render": "SYNTHETIC: authored coherent aggregation only; no parsing, human review or agent observation.",
+        "content": "SYNTHETIC: authored coherent aggregation only; no parsing, human review or agent observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS44-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : coherent ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: coherent; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        },
+        {
+          "rule_id": "TS44-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : coherent ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: coherent; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        },
+        {
+          "rule_id": "TS44-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : coherent ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: coherent; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS44-authored-scope-rejected",
+      "control_id": "TS44",
+      "description": {
+        "fr": "Jugement fictif d’agrégation TS44 : scope-rejected ; pas une observation réelle.",
+        "en": "Authored TS44 aggregation judgment: scope-rejected; no real observation."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: authored scope-rejected aggregation only; no parsing, human review or agent observation.",
+        "http": "SYNTHETIC: authored scope-rejected aggregation only; no parsing, human review or agent observation.",
+        "html": "SYNTHETIC: authored scope-rejected aggregation only; no parsing, human review or agent observation.",
+        "render": "SYNTHETIC: authored scope-rejected aggregation only; no parsing, human review or agent observation.",
+        "content": "SYNTHETIC: authored scope-rejected aggregation only; no parsing, human review or agent observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS44-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : scope-rejected ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: scope-rejected; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        },
+        {
+          "rule_id": "TS44-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : scope-rejected ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: scope-rejected; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        },
+        {
+          "rule_id": "TS44-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : scope-rejected ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: scope-rejected; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS44-authored-delivery-missing",
+      "control_id": "TS44",
+      "description": {
+        "fr": "Jugement fictif d’agrégation TS44 : delivery-missing ; pas une observation réelle.",
+        "en": "Authored TS44 aggregation judgment: delivery-missing; no real observation."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: authored delivery-missing aggregation only; no parsing, human review or agent observation.",
+        "http": "SYNTHETIC: authored delivery-missing aggregation only; no parsing, human review or agent observation.",
+        "html": "SYNTHETIC: authored delivery-missing aggregation only; no parsing, human review or agent observation.",
+        "render": "SYNTHETIC: authored delivery-missing aggregation only; no parsing, human review or agent observation.",
+        "content": "SYNTHETIC: authored delivery-missing aggregation only; no parsing, human review or agent observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS44-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : delivery-missing ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: delivery-missing; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        },
+        {
+          "rule_id": "TS44-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : delivery-missing ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: delivery-missing; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        },
+        {
+          "rule_id": "TS44-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : delivery-missing ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: delivery-missing; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS44-authored-stale-resource",
+      "control_id": "TS44",
+      "description": {
+        "fr": "Jugement fictif d’agrégation TS44 : stale-resource ; pas une observation réelle.",
+        "en": "Authored TS44 aggregation judgment: stale-resource; no real observation."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: authored stale-resource aggregation only; no parsing, human review or agent observation.",
+        "http": "SYNTHETIC: authored stale-resource aggregation only; no parsing, human review or agent observation.",
+        "html": "SYNTHETIC: authored stale-resource aggregation only; no parsing, human review or agent observation.",
+        "render": "SYNTHETIC: authored stale-resource aggregation only; no parsing, human review or agent observation.",
+        "content": "SYNTHETIC: authored stale-resource aggregation only; no parsing, human review or agent observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS44-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : stale-resource ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: stale-resource; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        },
+        {
+          "rule_id": "TS44-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : stale-resource ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: stale-resource; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        },
+        {
+          "rule_id": "TS44-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : stale-resource ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: stale-resource; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS44-authored-missing",
+      "control_id": "TS44",
+      "description": {
+        "fr": "Jugement fictif d’agrégation TS44 : missing ; pas une observation réelle.",
+        "en": "Authored TS44 aggregation judgment: missing; no real observation."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: authored missing aggregation only; no parsing, human review or agent observation.",
+        "http": "SYNTHETIC: authored missing aggregation only; no parsing, human review or agent observation.",
+        "html": "SYNTHETIC: authored missing aggregation only; no parsing, human review or agent observation.",
+        "render": "SYNTHETIC: authored missing aggregation only; no parsing, human review or agent observation.",
+        "content": "SYNTHETIC: authored missing aggregation only; no parsing, human review or agent observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS44-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : missing ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: missing; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        },
+        {
+          "rule_id": "TS44-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : missing ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: missing; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
+          ]
+        },
+        {
+          "rule_id": "TS44-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS44 : missing ; pas une observation réelle.",
+            "en": "Authored TS44 aggregation judgment: missing; no real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "http",
+            "html",
+            "render",
+            "content"
           ]
         }
       ],

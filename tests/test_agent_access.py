@@ -35,7 +35,7 @@ class AgentAccess(unittest.TestCase):
         self.assertEqual(len(cases), 71)
         self.assertEqual(sum(len(c['expected']) for c in cases), 213)
         corpus = tsep.read_json(ROOT/'conformance/cases.json')['cases']
-        self.assertEqual(corpus[909:], cases)
+        self.assertEqual(corpus[909:980], cases)
         for case in cases:
             with self.subTest(case=case['id']):
                 self.assertEqual([{k:r[k] for k in ('rule_id','target','outcome')}

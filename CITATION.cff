@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "Cite this software using its version DOI once the Zenodo record is published; retain the draft version and archive checksum."
 title: "Technical SEO Evidence Protocol (TSEP)"
-version: "0.1.0-draft.23"
+version: "0.1.0-draft.24"
 type: software
 repository-code: "https://github.com/web-evidence/tsep"
 authors:
@@ -12,5 +12,5 @@ authors:
 abstract: "Working draft: 44 bilingual technical SEO assessment controls and an evidence-report interchange reference implementation. Not independently reviewed or certified."
 license: Apache-2.0
 # This citation describes the software; protocol text/data are CC-BY-4.0.
-# No version DOI is assigned to this unpublished draft.23 candidate.
+# No version DOI is assigned to this unpublished draft.24 candidate.
 # The previous candidate citation remains in Git and its original archive.

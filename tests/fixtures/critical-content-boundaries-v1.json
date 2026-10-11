@@ -1,0 +1,1853 @@
+{
+  "format": "tsep-critical-content-boundary-cases",
+  "version": "1",
+  "synthetic": true,
+  "frozen_before_boundary_fixes": true,
+  "scope": "Additional code-review boundary findings, not retroactively claimed as pre-interpreter oracle.",
+  "cases": [
+    {
+      "id": "critical-boundary-linked-entry-denied",
+      "reference_limit": true,
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS44-A01",
+          "TS44-A02",
+          "TS44-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.test/article",
+            "observed_at": "2026-10-10T10:10:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "authored bounded exercise",
+              "tool": "authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "TSEPContentTest/1.0",
+              "critical_content": {
+                "reader": "critical-content-nojs-v1",
+                "javascript": false,
+                "consumers": [
+                  {
+                    "name": "Declared reference consumer",
+                    "basis": "reference-no-js",
+                    "reason": "Bounded test, no provider capability claim"
+                  }
+                ],
+                "window_start": "2026-10-10T10:00:00Z",
+                "window_end": "2026-10-10T10:05:00Z",
+                "max_duration_ms": 60000,
+                "origins": [
+                  "https://example.test/"
+                ],
+                "items": [
+                  {
+                    "id": "title",
+                    "role": "title",
+                    "expected": "Example finding"
+                  },
+                  {
+                    "id": "fact",
+                    "role": "fact",
+                    "expected": "Observed value: 1.8 s"
+                  },
+                  {
+                    "id": "citation",
+                    "role": "citation",
+                    "expected": "https://example.test/evidence"
+                  },
+                  {
+                    "id": "updated",
+                    "role": "updated",
+                    "expected": "2026-10-10"
+                  },
+                  {
+                    "id": "version",
+                    "role": "version",
+                    "expected": "r2"
+                  }
+                ],
+                "delivery": "resource",
+                "representations": [
+                  {
+                    "id": "page",
+                    "url": "https://example.test/article",
+                    "final_url": "https://example.test/article",
+                    "format": "html",
+                    "selectors": {}
+                  },
+                  {
+                    "id": "resource",
+                    "url": "https://example.test/article.json",
+                    "final_url": "https://example.test/article.json",
+                    "format": "json",
+                    "selectors": {
+                      "title": {
+                        "kind": "json-pointer",
+                        "value": "/title"
+                      },
+                      "fact": {
+                        "kind": "json-pointer",
+                        "value": "/fact"
+                      },
+                      "citation": {
+                        "kind": "json-pointer",
+                        "value": "/citation"
+                      },
+                      "updated": {
+                        "kind": "json-pointer",
+                        "value": "/updated"
+                      },
+                      "version": {
+                        "kind": "json-pointer",
+                        "value": "/version"
+                      }
+                    },
+                    "discovery": {
+                      "from": "page",
+                      "element_id": "alternate"
+                    }
+                  }
+                ],
+                "states": [
+                  {
+                    "id": "loaded",
+                    "reason": "Planned critical-content comparison",
+                    "dom_reader": "structured-inventory-v2",
+                    "selectors": {
+                      "title": {
+                        "kind": "id-text",
+                        "value": "title"
+                      },
+                      "fact": {
+                        "kind": "id-text",
+                        "value": "fact"
+                      },
+                      "citation": {
+                        "kind": "id-href",
+                        "value": "citation"
+                      },
+                      "updated": {
+                        "kind": "id-text",
+                        "value": "updated"
+                      },
+                      "version": {
+                        "kind": "id-text",
+                        "value": "version"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.test/article",
+                "complete": true,
+                "sent_at": "2026-10-10T10:00:00Z",
+                "received_at": "2026-10-10T10:00:01Z",
+                "request": "GET /article HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPContentTest/1.0\r\n\r\n",
+                "response": "HTTP/1.1 403 Example\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 160\r\n\r\n<!doctype html><html><head><title>Example</title></head><body><a id=\"alternate\" href=\"https://example.test/article.json\">Public representation</a></body></html>"
+              }
+            ],
+            "documents": [
+              {
+                "id": "resource",
+                "url": "https://example.test/article.json",
+                "http": [
+                  {
+                    "url": "https://example.test/article.json",
+                    "complete": true,
+                    "sent_at": "2026-10-10T10:00:00Z",
+                    "received_at": "2026-10-10T10:00:01Z",
+                    "request": "GET /article.json HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPContentTest/1.0\r\n\r\n",
+                    "response": "HTTP/1.1 200 Example\r\nContent-Type: application/json\r\nContent-Length: 148\r\n\r\n{\"title\": \"Example finding\", \"fact\": \"Observed value: 1.8 s\", \"citation\": \"https://example.test/evidence\", \"updated\": \"2026-10-10\", \"version\": \"r2\"}"
+                  }
+                ]
+              }
+            ],
+            "render": {
+              "states": [
+                {
+                  "id": "loaded",
+                  "observed_at": "2026-10-10T10:02:00Z",
+                  "complete": true,
+                  "browser": "Authored fixture, no browser",
+                  "browser_version": "not-observed",
+                  "javascript_enabled": true,
+                  "errors": [],
+                  "structured_dom": {
+                    "snapshot": {
+                      "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+                      "tree": {
+                        "format": "rendered-metadata-tree",
+                        "version": "2",
+                        "limits": {
+                          "nodes": 1024,
+                          "depth": 64,
+                          "tree_utf8_bytes": 524288,
+                          "serialization_utf8_bytes": 262144,
+                          "cooperative_ms": 2000,
+                          "invocation_timeout_ms": 5000
+                        },
+                        "document_url": "https://example.test/article",
+                        "base_uri": "https://example.test/article",
+                        "ready_state": "complete",
+                        "execution_context": "not-attested",
+                        "scripting": "enabled-by-laboratory-plan",
+                        "closed_shadow_coverage": "unknown",
+                        "frame_documents": "not-collected",
+                        "template_fragments": "not-collected",
+                        "origin_attribution": "unknown",
+                        "serialization": {
+                          "available": true,
+                          "html": "<!doctype html><html><head><title>Example</title></head><body><p id=\"title\">Example finding</p><p id=\"fact\">Observed value: 1.8 s</p><a id=\"citation\" href=\"https://example.test/evidence\">Evidence</a><p id=\"updated\">2026-10-10</p><p id=\"version\">r2</p></body></html>"
+                        },
+                        "nodes": [
+                          {
+                            "id": 0,
+                            "parent": null,
+                            "edge": "root",
+                            "index": 0,
+                            "type": 9,
+                            "name": "#document",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 1,
+                            "parent": 0,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "html",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 2,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 2,
+                            "parent": 1,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "head",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 0,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 3,
+                            "parent": 1,
+                            "edge": "child",
+                            "index": 1,
+                            "type": 1,
+                            "name": "body",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 5,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 4,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "title"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 5,
+                            "parent": 4,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "Example finding",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 6,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 1,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "fact"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 7,
+                            "parent": 6,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "Observed value: 1.8 s",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 8,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 2,
+                            "type": 1,
+                            "name": "a",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "citation"
+                              },
+                              {
+                                "name": "href",
+                                "local_name": "href",
+                                "namespace": null,
+                                "value": "https://example.test/evidence"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 9,
+                            "parent": 8,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "Evidence",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 10,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 3,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "updated"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 11,
+                            "parent": 10,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "2026-10-10",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 12,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 4,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "version"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 13,
+                            "parent": 12,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "r2",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          }
+                        ],
+                        "reported_node_count": 14,
+                        "traversal_complete": true,
+                        "stop_reason": null,
+                        "api_errors": [],
+                        "elapsed_ms": 0
+                      }
+                    },
+                    "snapshot_sha256": "b3a2377b602e6e3f1f9d74e88c6ad2f4fdbb8134c6b249bce84c1d61d9c91914",
+                    "known_integrity_issues": [],
+                    "acquisition": {
+                      "kind": "authored-synthetic",
+                      "navigation_id": "authored-ts44",
+                      "http_sha256": "82499e961797711499cf7898275ec877d7d238bab4eb382f29a6e303baae23e2",
+                      "user_agent": "TSEPContentTest/1.0",
+                      "support": [
+                        {
+                          "name": "attribution",
+                          "content": "DOM rédigé, non observé dans un navigateur. Synthetic exercise.",
+                          "sha256": "74c4ae058016be34b09e5ad42a020889404c8a55ffa015ddb489c3304db51d6d"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "critical_plan_review": {
+              "binding_sha256": "74ef6ba492112faa98e383cdd79433ea98679424bac579ea2fd8576a0acf7ed7",
+              "observed_at": "2026-10-10T09:01:00Z",
+              "reviewer": "Fictional reviewer",
+              "assistance": "Authored fixture, no human review",
+              "reason": "Synthetic qualification of the declared whole critical context",
+              "provenance": "synthetic-exercise",
+              "judgment": "supported",
+              "complete": true
+            },
+            "critical_reviews": [
+              {
+                "binding_sha256": "4367f83ddd4c90d17a8e4ae3ee6deea01e4414f56913f074a4c3012c27212635",
+                "observed_at": "2026-10-10T10:06:00Z",
+                "reviewer": "Fictional reviewer",
+                "assistance": "Authored fixture, no human review",
+                "reason": "Synthetic qualification of the declared whole critical context",
+                "provenance": "synthetic-exercise",
+                "judgment": "supported",
+                "complete": true,
+                "representation_id": "resource"
+              },
+              {
+                "binding_sha256": "49224aace25ed26a91b0296a70d760328df27b9c4231e0c0bb14f875a51c9359",
+                "observed_at": "2026-10-10T10:06:00Z",
+                "reviewer": "Fictional reviewer",
+                "assistance": "Authored fixture, no human review",
+                "reason": "Synthetic qualification of the declared whole critical context",
+                "provenance": "synthetic-exercise",
+                "judgment": "supported",
+                "complete": true,
+                "representation_id": "render:loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS44-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS44-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional qualified Node 24 source/URL reader may be unavailable; expectations are retained, not changed to match runtime limits."
+        },
+        {
+          "rule_id": "TS44-A03",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "critical-boundary-selected-fact-inside-open-shadow",
+      "reference_limit": true,
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS44-A01",
+          "TS44-A02",
+          "TS44-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.test/article",
+            "observed_at": "2026-10-10T10:10:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "authored bounded exercise",
+              "tool": "authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "TSEPContentTest/1.0",
+              "critical_content": {
+                "reader": "critical-content-nojs-v1",
+                "javascript": false,
+                "consumers": [
+                  {
+                    "name": "Declared reference consumer",
+                    "basis": "reference-no-js",
+                    "reason": "Bounded test, no provider capability claim"
+                  }
+                ],
+                "window_start": "2026-10-10T10:00:00Z",
+                "window_end": "2026-10-10T10:05:00Z",
+                "max_duration_ms": 60000,
+                "origins": [
+                  "https://example.test/"
+                ],
+                "items": [
+                  {
+                    "id": "title",
+                    "role": "title",
+                    "expected": "Example finding"
+                  },
+                  {
+                    "id": "fact",
+                    "role": "fact",
+                    "expected": "Observed value: 1.8 s"
+                  },
+                  {
+                    "id": "citation",
+                    "role": "citation",
+                    "expected": "https://example.test/evidence"
+                  },
+                  {
+                    "id": "updated",
+                    "role": "updated",
+                    "expected": "2026-10-10"
+                  },
+                  {
+                    "id": "version",
+                    "role": "version",
+                    "expected": "r2"
+                  }
+                ],
+                "delivery": "page",
+                "representations": [
+                  {
+                    "id": "page",
+                    "url": "https://example.test/article",
+                    "final_url": "https://example.test/article",
+                    "format": "html",
+                    "selectors": {
+                      "title": {
+                        "kind": "id-text",
+                        "value": "title"
+                      },
+                      "fact": {
+                        "kind": "id-text",
+                        "value": "fact"
+                      },
+                      "citation": {
+                        "kind": "id-href",
+                        "value": "citation"
+                      },
+                      "updated": {
+                        "kind": "id-text",
+                        "value": "updated"
+                      },
+                      "version": {
+                        "kind": "id-text",
+                        "value": "version"
+                      }
+                    }
+                  }
+                ],
+                "states": [
+                  {
+                    "id": "loaded",
+                    "reason": "Planned critical-content comparison",
+                    "dom_reader": "structured-inventory-v2",
+                    "selectors": {
+                      "title": {
+                        "kind": "id-text",
+                        "value": "title"
+                      },
+                      "fact": {
+                        "kind": "id-text",
+                        "value": "fact"
+                      },
+                      "citation": {
+                        "kind": "id-href",
+                        "value": "citation"
+                      },
+                      "updated": {
+                        "kind": "id-text",
+                        "value": "updated"
+                      },
+                      "version": {
+                        "kind": "id-text",
+                        "value": "version"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.test/article",
+                "complete": true,
+                "sent_at": "2026-10-10T10:00:00Z",
+                "received_at": "2026-10-10T10:00:01Z",
+                "request": "GET /article HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPContentTest/1.0\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 265\r\n\r\n<!doctype html><html><head><title>Example</title></head><body><p id=\"title\">Example finding</p><p id=\"fact\">Observed value: 1.8 s</p><a id=\"citation\" href=\"https://example.test/evidence\">Evidence</a><p id=\"updated\">2026-10-10</p><p id=\"version\">r2</p></body></html>"
+              }
+            ],
+            "render": {
+              "states": [
+                {
+                  "id": "loaded",
+                  "observed_at": "2026-10-10T10:02:00Z",
+                  "complete": true,
+                  "browser": "Authored fixture, no browser",
+                  "browser_version": "not-observed",
+                  "javascript_enabled": true,
+                  "errors": [],
+                  "structured_dom": {
+                    "snapshot": {
+                      "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+                      "tree": {
+                        "format": "rendered-metadata-tree",
+                        "version": "2",
+                        "limits": {
+                          "nodes": 1024,
+                          "depth": 64,
+                          "tree_utf8_bytes": 524288,
+                          "serialization_utf8_bytes": 262144,
+                          "cooperative_ms": 2000,
+                          "invocation_timeout_ms": 5000
+                        },
+                        "document_url": "https://example.test/article",
+                        "base_uri": "https://example.test/article",
+                        "ready_state": "complete",
+                        "execution_context": "not-attested",
+                        "scripting": "enabled-by-laboratory-plan",
+                        "closed_shadow_coverage": "unknown",
+                        "frame_documents": "not-collected",
+                        "template_fragments": "not-collected",
+                        "origin_attribution": "unknown",
+                        "serialization": {
+                          "available": true,
+                          "html": "<!doctype html><html><head><title>Example</title></head><body><p id=\"title\">Example finding</p><p id=\"fact\">Observed value: 1.8 s</p><a id=\"citation\" href=\"https://example.test/evidence\">Evidence</a><p id=\"updated\">2026-10-10</p><p id=\"version\">r2</p></body></html>"
+                        },
+                        "nodes": [
+                          {
+                            "id": 0,
+                            "parent": null,
+                            "edge": "root",
+                            "index": 0,
+                            "type": 9,
+                            "name": "#document",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 1,
+                            "parent": 0,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "html",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 2,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 2,
+                            "parent": 1,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "head",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 0,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 3,
+                            "parent": 1,
+                            "edge": "child",
+                            "index": 1,
+                            "type": 1,
+                            "name": "body",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 5,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 4,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "title"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 5,
+                            "parent": 4,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "Example finding",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 6,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 1,
+                            "type": 1,
+                            "name": "div",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 0,
+                            "shadow": "open",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 7,
+                            "parent": 6,
+                            "edge": "shadow",
+                            "index": 0,
+                            "type": 11,
+                            "name": "#document-fragment",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 8,
+                            "parent": 7,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "fact"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 9,
+                            "parent": 8,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "Observed value: 1.8 s",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 10,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 2,
+                            "type": 1,
+                            "name": "a",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "citation"
+                              },
+                              {
+                                "name": "href",
+                                "local_name": "href",
+                                "namespace": null,
+                                "value": "https://example.test/evidence"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 11,
+                            "parent": 10,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "Evidence",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 12,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 3,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "updated"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 13,
+                            "parent": 12,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "2026-10-10",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 14,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 4,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "version"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 15,
+                            "parent": 14,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "r2",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          }
+                        ],
+                        "reported_node_count": 16,
+                        "traversal_complete": true,
+                        "stop_reason": null,
+                        "api_errors": [],
+                        "elapsed_ms": 0
+                      }
+                    },
+                    "snapshot_sha256": "f82649d2541d9b33e1be3c154c082cb3527b2d63eb072067502c124940368eb4",
+                    "known_integrity_issues": [],
+                    "acquisition": {
+                      "kind": "authored-synthetic",
+                      "navigation_id": "authored-ts44",
+                      "http_sha256": "dc595185ffba9a55f6b34ba6f8541d7e72274aef0a86a4cca76c78f32e96c8de",
+                      "user_agent": "TSEPContentTest/1.0",
+                      "support": [
+                        {
+                          "name": "attribution",
+                          "content": "DOM rédigé, non observé dans un navigateur. Synthetic exercise.",
+                          "sha256": "74c4ae058016be34b09e5ad42a020889404c8a55ffa015ddb489c3304db51d6d"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "critical_plan_review": {
+              "binding_sha256": "35db35ca14b33485c102b621c2454068cb1ab0065785e04c1a314590436d3006",
+              "observed_at": "2026-10-10T09:01:00Z",
+              "reviewer": "Fictional reviewer",
+              "assistance": "Authored fixture, no human review",
+              "reason": "Synthetic qualification of the declared whole critical context",
+              "provenance": "synthetic-exercise",
+              "judgment": "supported",
+              "complete": true
+            },
+            "critical_reviews": [
+              {
+                "binding_sha256": "d1ea26155af73628d21b13151169cc8ef41e4aae630579551bca63f77253a9e4",
+                "observed_at": "2026-10-10T10:06:00Z",
+                "reviewer": "Fictional reviewer",
+                "assistance": "Authored fixture, no human review",
+                "reason": "Synthetic qualification of the declared whole critical context",
+                "provenance": "synthetic-exercise",
+                "judgment": "supported",
+                "complete": true,
+                "representation_id": "page"
+              },
+              {
+                "binding_sha256": "5aa0f5b31bc3aaf4971fc4c732fee1a07e7ca95cf28acfceedc9b0a91e80f20a",
+                "observed_at": "2026-10-10T10:06:00Z",
+                "reviewer": "Fictional reviewer",
+                "assistance": "Authored fixture, no human review",
+                "reason": "Synthetic qualification of the declared whole critical context",
+                "provenance": "synthetic-exercise",
+                "judgment": "supported",
+                "complete": true,
+                "representation_id": "render:loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS44-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS44-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional qualified Node 24 source/URL reader may be unavailable; expectations are retained, not changed to match runtime limits."
+        },
+        {
+          "rule_id": "TS44-A03",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "critical-boundary-unplanned-render-state",
+      "reference_limit": true,
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS44-A01",
+          "TS44-A02",
+          "TS44-A03"
+        ],
+        "targets": [
+          {
+            "url": "https://example.test/article",
+            "observed_at": "2026-10-10T10:10:00Z",
+            "context": {
+              "network": "synthetic",
+              "bounds": "authored bounded exercise",
+              "tool": "authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-10T09:00:00Z",
+              "crawler": "TSEPContentTest/1.0",
+              "critical_content": {
+                "reader": "critical-content-nojs-v1",
+                "javascript": false,
+                "consumers": [
+                  {
+                    "name": "Declared reference consumer",
+                    "basis": "reference-no-js",
+                    "reason": "Bounded test, no provider capability claim"
+                  }
+                ],
+                "window_start": "2026-10-10T10:00:00Z",
+                "window_end": "2026-10-10T10:05:00Z",
+                "max_duration_ms": 60000,
+                "origins": [
+                  "https://example.test/"
+                ],
+                "items": [
+                  {
+                    "id": "title",
+                    "role": "title",
+                    "expected": "Example finding"
+                  },
+                  {
+                    "id": "fact",
+                    "role": "fact",
+                    "expected": "Observed value: 1.8 s"
+                  },
+                  {
+                    "id": "citation",
+                    "role": "citation",
+                    "expected": "https://example.test/evidence"
+                  },
+                  {
+                    "id": "updated",
+                    "role": "updated",
+                    "expected": "2026-10-10"
+                  },
+                  {
+                    "id": "version",
+                    "role": "version",
+                    "expected": "r2"
+                  }
+                ],
+                "delivery": "page",
+                "representations": [
+                  {
+                    "id": "page",
+                    "url": "https://example.test/article",
+                    "final_url": "https://example.test/article",
+                    "format": "html",
+                    "selectors": {
+                      "title": {
+                        "kind": "id-text",
+                        "value": "title"
+                      },
+                      "fact": {
+                        "kind": "id-text",
+                        "value": "fact"
+                      },
+                      "citation": {
+                        "kind": "id-href",
+                        "value": "citation"
+                      },
+                      "updated": {
+                        "kind": "id-text",
+                        "value": "updated"
+                      },
+                      "version": {
+                        "kind": "id-text",
+                        "value": "version"
+                      }
+                    }
+                  }
+                ],
+                "states": [
+                  {
+                    "id": "loaded",
+                    "reason": "Planned critical-content comparison",
+                    "dom_reader": "structured-inventory-v2",
+                    "selectors": {
+                      "title": {
+                        "kind": "id-text",
+                        "value": "title"
+                      },
+                      "fact": {
+                        "kind": "id-text",
+                        "value": "fact"
+                      },
+                      "citation": {
+                        "kind": "id-href",
+                        "value": "citation"
+                      },
+                      "updated": {
+                        "kind": "id-text",
+                        "value": "updated"
+                      },
+                      "version": {
+                        "kind": "id-text",
+                        "value": "version"
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "http": [
+              {
+                "url": "https://example.test/article",
+                "complete": true,
+                "sent_at": "2026-10-10T10:00:00Z",
+                "received_at": "2026-10-10T10:00:01Z",
+                "request": "GET /article HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPContentTest/1.0\r\n\r\n",
+                "response": "HTTP/1.1 200 Example\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 265\r\n\r\n<!doctype html><html><head><title>Example</title></head><body><p id=\"title\">Example finding</p><p id=\"fact\">Observed value: 1.8 s</p><a id=\"citation\" href=\"https://example.test/evidence\">Evidence</a><p id=\"updated\">2026-10-10</p><p id=\"version\">r2</p></body></html>"
+              }
+            ],
+            "render": {
+              "states": [
+                {
+                  "id": "loaded",
+                  "observed_at": "2026-10-10T10:02:00Z",
+                  "complete": true,
+                  "browser": "Authored fixture, no browser",
+                  "browser_version": "not-observed",
+                  "javascript_enabled": true,
+                  "errors": [],
+                  "structured_dom": {
+                    "snapshot": {
+                      "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+                      "tree": {
+                        "format": "rendered-metadata-tree",
+                        "version": "2",
+                        "limits": {
+                          "nodes": 1024,
+                          "depth": 64,
+                          "tree_utf8_bytes": 524288,
+                          "serialization_utf8_bytes": 262144,
+                          "cooperative_ms": 2000,
+                          "invocation_timeout_ms": 5000
+                        },
+                        "document_url": "https://example.test/article",
+                        "base_uri": "https://example.test/article",
+                        "ready_state": "complete",
+                        "execution_context": "not-attested",
+                        "scripting": "enabled-by-laboratory-plan",
+                        "closed_shadow_coverage": "unknown",
+                        "frame_documents": "not-collected",
+                        "template_fragments": "not-collected",
+                        "origin_attribution": "unknown",
+                        "serialization": {
+                          "available": true,
+                          "html": "<!doctype html><html><head><title>Example</title></head><body><p id=\"title\">Example finding</p><p id=\"fact\">Observed value: 1.8 s</p><a id=\"citation\" href=\"https://example.test/evidence\">Evidence</a><p id=\"updated\">2026-10-10</p><p id=\"version\">r2</p></body></html>"
+                        },
+                        "nodes": [
+                          {
+                            "id": 0,
+                            "parent": null,
+                            "edge": "root",
+                            "index": 0,
+                            "type": 9,
+                            "name": "#document",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 1,
+                            "parent": 0,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "html",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 2,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 2,
+                            "parent": 1,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "head",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 0,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 3,
+                            "parent": 1,
+                            "edge": "child",
+                            "index": 1,
+                            "type": 1,
+                            "name": "body",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 5,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 4,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "title"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 5,
+                            "parent": 4,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "Example finding",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 6,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 1,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "fact"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 7,
+                            "parent": 6,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "Observed value: 1.8 s",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 8,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 2,
+                            "type": 1,
+                            "name": "a",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "citation"
+                              },
+                              {
+                                "name": "href",
+                                "local_name": "href",
+                                "namespace": null,
+                                "value": "https://example.test/evidence"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 9,
+                            "parent": 8,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "Evidence",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 10,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 3,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "updated"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 11,
+                            "parent": 10,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "2026-10-10",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 12,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 4,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "version"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 13,
+                            "parent": 12,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "r2",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          }
+                        ],
+                        "reported_node_count": 14,
+                        "traversal_complete": true,
+                        "stop_reason": null,
+                        "api_errors": [],
+                        "elapsed_ms": 0
+                      }
+                    },
+                    "snapshot_sha256": "b3a2377b602e6e3f1f9d74e88c6ad2f4fdbb8134c6b249bce84c1d61d9c91914",
+                    "known_integrity_issues": [],
+                    "acquisition": {
+                      "kind": "authored-synthetic",
+                      "navigation_id": "authored-ts44",
+                      "http_sha256": "dc595185ffba9a55f6b34ba6f8541d7e72274aef0a86a4cca76c78f32e96c8de",
+                      "user_agent": "TSEPContentTest/1.0",
+                      "support": [
+                        {
+                          "name": "attribution",
+                          "content": "DOM rédigé, non observé dans un navigateur. Synthetic exercise.",
+                          "sha256": "74c4ae058016be34b09e5ad42a020889404c8a55ffa015ddb489c3304db51d6d"
+                        }
+                      ]
+                    }
+                  }
+                },
+                {
+                  "id": "unplanned",
+                  "observed_at": "2026-10-10T10:02:00Z",
+                  "complete": true,
+                  "browser": "Authored fixture, no browser",
+                  "browser_version": "not-observed",
+                  "javascript_enabled": true,
+                  "errors": [],
+                  "structured_dom": {
+                    "snapshot": {
+                      "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+                      "tree": {
+                        "format": "rendered-metadata-tree",
+                        "version": "2",
+                        "limits": {
+                          "nodes": 1024,
+                          "depth": 64,
+                          "tree_utf8_bytes": 524288,
+                          "serialization_utf8_bytes": 262144,
+                          "cooperative_ms": 2000,
+                          "invocation_timeout_ms": 5000
+                        },
+                        "document_url": "https://example.test/article",
+                        "base_uri": "https://example.test/article",
+                        "ready_state": "complete",
+                        "execution_context": "not-attested",
+                        "scripting": "enabled-by-laboratory-plan",
+                        "closed_shadow_coverage": "unknown",
+                        "frame_documents": "not-collected",
+                        "template_fragments": "not-collected",
+                        "origin_attribution": "unknown",
+                        "serialization": {
+                          "available": true,
+                          "html": "<!doctype html><html><head><title>Example</title></head><body><p id=\"title\">Example finding</p><p id=\"fact\">Observed value: 1.8 s</p><a id=\"citation\" href=\"https://example.test/evidence\">Evidence</a><p id=\"updated\">2026-10-10</p><p id=\"version\">r2</p></body></html>"
+                        },
+                        "nodes": [
+                          {
+                            "id": 0,
+                            "parent": null,
+                            "edge": "root",
+                            "index": 0,
+                            "type": 9,
+                            "name": "#document",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 1,
+                            "parent": 0,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "html",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 2,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 2,
+                            "parent": 1,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "head",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 0,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 3,
+                            "parent": 1,
+                            "edge": "child",
+                            "index": 1,
+                            "type": 1,
+                            "name": "body",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [],
+                            "data": null,
+                            "child_count": 5,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 4,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "title"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 5,
+                            "parent": 4,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "Example finding",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 6,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 1,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "fact"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 7,
+                            "parent": 6,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "Observed value: 1.8 s",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 8,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 2,
+                            "type": 1,
+                            "name": "a",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "citation"
+                              },
+                              {
+                                "name": "href",
+                                "local_name": "href",
+                                "namespace": null,
+                                "value": "https://example.test/evidence"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 9,
+                            "parent": 8,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "Evidence",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 10,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 3,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "updated"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 11,
+                            "parent": 10,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "2026-10-10",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 12,
+                            "parent": 3,
+                            "edge": "child",
+                            "index": 4,
+                            "type": 1,
+                            "name": "p",
+                            "namespace": "http://www.w3.org/1999/xhtml",
+                            "attributes": [
+                              {
+                                "name": "id",
+                                "local_name": "id",
+                                "namespace": null,
+                                "value": "version"
+                              }
+                            ],
+                            "data": null,
+                            "child_count": 1,
+                            "shadow": "unexposed-or-absent",
+                            "resolved_href": null
+                          },
+                          {
+                            "id": 13,
+                            "parent": 12,
+                            "edge": "child",
+                            "index": 0,
+                            "type": 3,
+                            "name": "#text",
+                            "namespace": null,
+                            "attributes": [],
+                            "data": "r2",
+                            "child_count": 0,
+                            "shadow": "not-element",
+                            "resolved_href": null
+                          }
+                        ],
+                        "reported_node_count": 14,
+                        "traversal_complete": true,
+                        "stop_reason": null,
+                        "api_errors": [],
+                        "elapsed_ms": 0
+                      }
+                    },
+                    "snapshot_sha256": "b3a2377b602e6e3f1f9d74e88c6ad2f4fdbb8134c6b249bce84c1d61d9c91914",
+                    "known_integrity_issues": [],
+                    "acquisition": {
+                      "kind": "authored-synthetic",
+                      "navigation_id": "authored-ts44",
+                      "http_sha256": "dc595185ffba9a55f6b34ba6f8541d7e72274aef0a86a4cca76c78f32e96c8de",
+                      "user_agent": "TSEPContentTest/1.0",
+                      "support": [
+                        {
+                          "name": "attribution",
+                          "content": "DOM rédigé, non observé dans un navigateur. Synthetic exercise.",
+                          "sha256": "74c4ae058016be34b09e5ad42a020889404c8a55ffa015ddb489c3304db51d6d"
+                        }
+                      ]
+                    }
+                  }
+                }
+              ]
+            },
+            "critical_plan_review": {
+              "binding_sha256": "35db35ca14b33485c102b621c2454068cb1ab0065785e04c1a314590436d3006",
+              "observed_at": "2026-10-10T09:01:00Z",
+              "reviewer": "Fictional reviewer",
+              "assistance": "Authored fixture, no human review",
+              "reason": "Synthetic qualification of the declared whole critical context",
+              "provenance": "synthetic-exercise",
+              "judgment": "supported",
+              "complete": true
+            },
+            "critical_reviews": [
+              {
+                "binding_sha256": "d1ea26155af73628d21b13151169cc8ef41e4aae630579551bca63f77253a9e4",
+                "observed_at": "2026-10-10T10:06:00Z",
+                "reviewer": "Fictional reviewer",
+                "assistance": "Authored fixture, no human review",
+                "reason": "Synthetic qualification of the declared whole critical context",
+                "provenance": "synthetic-exercise",
+                "judgment": "supported",
+                "complete": true,
+                "representation_id": "page"
+              },
+              {
+                "binding_sha256": "9491740fa73fb2361e7ef1eb8a148ad62a38d226c6ca0710380f6cb502177e73",
+                "observed_at": "2026-10-10T10:06:00Z",
+                "reviewer": "Fictional reviewer",
+                "assistance": "Authored fixture, no human review",
+                "reason": "Synthetic qualification of the declared whole critical context",
+                "provenance": "synthetic-exercise",
+                "judgment": "supported",
+                "complete": true,
+                "representation_id": "render:loaded"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS44-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS44-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional qualified Node 24 source/URL reader may be unavailable; expectations are retained, not changed to match runtime limits."
+        },
+        {
+          "rule_id": "TS44-A03",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ]
+    }
+  ]
+}

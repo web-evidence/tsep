@@ -1,4 +1,7 @@
-Current / Actuel : draft.23 — 980 authored cases / cas synthétiques, 1,729 rule-target pairs / couples.
+Current / Actuel : draft.24 — 1,051 authored cases / cas synthétiques, 1,942 rule-target pairs / couples.
+Twenty-seven rules across ten controls; TS44 adds 68 initial prefrozen cases plus 3 boundary cases frozen before fixes, 213 pairs. Optional Node limits remain explicit; no real site audit.
+
+Historical / Historique : draft.23 — 980 authored cases / cas synthétiques, 1,729 rule-target pairs / couples.
 Twenty-four rules across nine controls; TS43 adds 71 prefrozen cases / 213 pairs.
 Vingt-quatre règles sur neuf contrôles ; aucune visite réelle ou identité opérateur déduite.
 

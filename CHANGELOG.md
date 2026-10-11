@@ -1,3 +1,8 @@
+## 0.1.0-draft.24 — 2026-10-11 — critical content without JavaScript
+
+TS44 adds prior critical scope, declared no-JS delivery and bound representation coherence/review. Source HTML or explicitly linked HTML/JSON, separate attributed rendered states, no invented truth or agent consumption. 68 prefrozen cases plus 3 code-review boundary cases frozen before fixes; 980 previous cases retained.
+FR : faits et sources critiques, chemin public déclaré et versions cohérentes ; DOM rédigé explicitement synthétique. [Contrat](docs/critical-content-evidence.md), [migration](docs/migration-draft.24.md).
+
 ## Source content observation 1 — 2026-10-11 — non-normative
 
 Optional bounded content tree prepares TS44: literal IDs, duplicate/context retention, two static scripting hypotheses and original-byte attribution. Thirty authored cases frozen before implementation. Draft.23 and its existing rules remain unchanged.
