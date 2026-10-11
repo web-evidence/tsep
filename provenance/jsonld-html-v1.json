@@ -1,0 +1,247 @@
+{
+  "kind": "html-jsonld-observation-provenance",
+  "version": "1",
+  "recorded_at": "2026-10-11T10:27:10.196308+00:00",
+  "normative_effect": "none",
+  "protocol": "0.1.0-draft.27",
+  "executable_controls": 12,
+  "atomic_rules": 33,
+  "scope": "Optional preparation of TS31–33, not control completion, certification, human review or an Edikka conformity verdict.",
+  "source_sha256": {
+    "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+    "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+    "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+    "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+    "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+    "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+    "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+    "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+    "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+    "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a",
+    "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+    "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+    "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+    "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+    "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a",
+    "experiments/jsonld_html.py": "448c20e9359d274041552a588afe5f290b38e125513fa8584129e3df4ad54a00"
+  },
+  "fixtures": [
+    {
+      "path": "tests/fixtures/source-scripts-boundaries-observations-v1.json",
+      "sha256": "006268636e6a7a0e277a9225d2d38ce0801f39c7c3b791a69cbdb42ee92beff1",
+      "bytes": 32176
+    },
+    {
+      "path": "tests/fixtures/source-scripts-boundaries-v1.json",
+      "sha256": "a8cb39f25b2a756b8ae638229803689d71394f69f23a80430c0b0f28c5c9cbfb",
+      "bytes": 1256
+    },
+    {
+      "path": "tests/fixtures/source-scripts-observations-v1.json",
+      "sha256": "71bb20d3f8a359751af243a3fe62e28cbf210bfbf7d4bdeda3d47a303a349fa8",
+      "bytes": 305019
+    },
+    {
+      "path": "tests/fixtures/source-scripts-v1.json",
+      "sha256": "9a949232eb31915da78a88dcdc959be34a66d6e51509ef53677e2abfde335fb7",
+      "bytes": 24828
+    },
+    {
+      "path": "tests/fixtures/jsonld-html-graphs-observations-v1.json",
+      "sha256": "2e138e97452557aa47c0704008ad089a4a3b5cb67a3806544e671fba496c622e",
+      "bytes": 122676
+    },
+    {
+      "path": "tests/fixtures/jsonld-html-graphs-v1.json",
+      "sha256": "b85efada9d9c3922f32eda860b2ad9d7ba753fbc5673a1c24ee563e7ff23cf47",
+      "bytes": 5177
+    },
+    {
+      "path": "tests/fixtures/jsonld-html-observations-v1.json",
+      "sha256": "c0aca3437acd717ad27af40a0c9a1ff0a5c6dbadd1ebe3a9f9b7303f712b62de",
+      "bytes": 457248
+    },
+    {
+      "path": "tests/fixtures/jsonld-html-v1.json",
+      "sha256": "145582b752c7bacad66dfacf2a7133af2906a9628f345602e924c58fc9c10185",
+      "bytes": 13629
+    }
+  ],
+  "qualification": {
+    "matched": 126,
+    "total": 126,
+    "replayed": 63,
+    "limit_matched": 10,
+    "limit_total": 10,
+    "failures": []
+  },
+  "additional_boundaries": {
+    "matched": 6,
+    "total": 6,
+    "frozen_before_execution": true
+  },
+  "python_tests": {
+    "count": 20,
+    "scope": "Python input, attribution, retained-observation and replay-boundary checks; no implicit Node execution."
+  },
+  "sources": {
+    "urls": [
+      "https://www.w3.org/TR/json-ld11-api/#html-content-algorithms",
+      "https://www.w3.org/TR/json-ld11/#embedding-json-ld-in-html-documents"
+    ],
+    "captured_excerpts": [
+      {
+        "path": ".local/structured-data-2026-10-11/sources/html-jsonld-extracts-r3.json",
+        "sha256": "ae5dbef42d66aaddaedac5c4eab9b4744703e7f0ec40ab4958e3c0e17fdedbc1",
+        "bytes": 33271
+      }
+    ]
+  },
+  "historical_real_application": {
+    "html_capture_date": "2026-10-10",
+    "context_capture_date": "2026-10-11",
+    "urls": [
+      "https://www.edikka.com/",
+      "https://www.edikka.com/contact",
+      "https://www.edikka.com/insights/developpement-web/seo-technique-fondations"
+    ],
+    "scope": "Three historical real HTML bodies, final URL supplied as base hypothesis, no base elements observed; no browser, current-site assessment, vocabulary or consumer eligibility claim. Context dates differ intentionally and remain explicit.",
+    "initial_result": "Each page selected one script but processing was unavailable without https://schema.org context.",
+    "context_retrieval": "Initial restricted-network DNS failure retained. Public HTTPS GET then returned HTML with explicit alternate Link; a separate bounded GET captured the linked application/ld+json context.",
+    "context_url": "https://schema.org/docs/jsonldcontext.jsonld",
+    "requested_context_url": "https://schema.org",
+    "context_sha256": "65d0c5d17def9b171b7697bb0929eed17aa32f19af539e15302b6c20479b8930",
+    "result": "Three observations processed with supplied context and exact replay; graph containers remain intact, root list length is not entity count."
+  },
+  "retained_failures": [
+    "First targeted Python run had one test-only missing sys import; corrected without changing frozen expectations.",
+    "Restricted network DNS failure and initial missing-context processing outcomes retained."
+  ],
+  "local_evidence": [
+    {
+      "path": ".local/structured-data-2026-10-11/html-layer-freeze-r1.json",
+      "sha256": "32ef61bb0e25ca4ed45656fd6e55be2b695e317491385bceef2cbca0976888ec",
+      "bytes": 492
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/html-qualification-r1/qualification.json",
+      "sha256": "fc8bf47dad8d90b919f572ba91aa5d19a271c224481c8483e9d8777a150d9414",
+      "bytes": 73830
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/html-boundaries-freeze-v1.json",
+      "sha256": "8c3cc01833b1c25dcef543182a571fe1f6b1d09330d4982e5d83f20729575c0d",
+      "bytes": 155
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/html-boundaries-r1/comparison.json",
+      "sha256": "97e55fc084807d4f0d2ce009855d29bf10307430bf2f2b998ad7d57589d5176e",
+      "bytes": 544
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/html-tests-r1.log",
+      "sha256": "254e6cc16bdd5b25a381b05eb96f6f36f7049e6654b02a3c72ce1072351ab2cc",
+      "bytes": 2760
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/html-tests-r2.log",
+      "sha256": "6d4d5ce08a0bd222b7212502ab744281e198ab18b5794cf3face16797512092e",
+      "bytes": 2184
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/html-tests-r3.log",
+      "sha256": "cb6a6610cb6b124ca1a0995e2e848eab92dae6f791d87d5d39e6d76583f19295",
+      "bytes": 2308
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/edikka-html-r1/plan-before-observation.json",
+      "sha256": "8c83438b22bfef11f42279fb5ba0f7e199d194171dd964a2353be20f505670f9",
+      "bytes": 783
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/edikka-html-r1/schema-org-context-fetch.json",
+      "sha256": "1600de8fa331b07450c59fc510d321a77c420eea5397152be0b46e7236a43251",
+      "bytes": 710
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/edikka-html-r1/schema-org-context-fetch-r2.json",
+      "sha256": "bf73d2bd533b73139723899f20271a2b9635d3a201fc251dc72f8f26bb1f53bd",
+      "bytes": 2084
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/edikka-html-r1/alternate-context-fetch.json",
+      "sha256": "1064373d2c156d19bb7e8a96f226b14d4ea2450bed15b81d632b60127e0660be",
+      "bytes": 1955
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/edikka-html-r1/alternate-context.jsonld",
+      "sha256": "65d0c5d17def9b171b7697bb0929eed17aa32f19af539e15302b6c20479b8930",
+      "bytes": 210636
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/edikka-html-r1/summary.json",
+      "sha256": "38c4ab64552c62e2079fef28067916246a814766cb99743d376c705e5a7cce71",
+      "bytes": 2027
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/edikka-html-r2/plan-before-observation.json",
+      "sha256": "59d4f48bf84640f0c29a26dd5fe1cf3c7d67a57aba7c7714656b2a5d36f86837",
+      "bytes": 777
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/edikka-html-r2/summary.json",
+      "sha256": "135684c02d975f5f5884e62e78a055d04549d7ac8e650dad34dd2e00717a4cb4",
+      "bytes": 1777
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/html-graphs-freeze-v1.json",
+      "sha256": "7e1fc3fa1072e52a98e859948b709a3ffa5a5da892ebcd284877130509f9f1e4",
+      "bytes": 155
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/html-qualification-r2/qualification.json",
+      "sha256": "d1541b9293487e5957673fe2993f97c32aa2aae8300ebc30b5d4f66e70b489aa",
+      "bytes": 87632
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/html-tests-r4.log",
+      "sha256": "5d656725934d5eeb74a201be0a55a4fe7835292da01332e2196037173ff78a10",
+      "bytes": 2434
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/claude-graph-provenance.json",
+      "sha256": "1debc8abeed3190eb40c01fcafafff29b84c86c9e26d90da69f4f7f7bf4018f0",
+      "bytes": 952
+    }
+  ],
+  "remaining": [
+    "Attributed rendered script extraction and effective base qualification",
+    "Pinned vocabulary and exact consumer-feature criteria",
+    "Input-bound validator reports and visible-fact reviews",
+    "Corpus graph/identity/reference review",
+    "Versioned bilingual TS31–33 atomic integration and migration",
+    "TS36 and updated insight handoff"
+  ],
+  "verification": "Full source/archive verification must be read from the local verification record for the exact distributed revision; no remote run inferred.",
+  "additional_graph_cases": {
+    "count": 5,
+    "frozen_before_execution": true,
+    "scope": "Frozen after observing graph-container structure in real Edikka reanalysis, before these authored cases were executed; not independent of all earlier processor observations."
+  },
+  "method_discussion": {
+    "captured_at": "2026-10-11T10:25:31.412851+00:00",
+    "url": "https://claude.ai/chat/1c87d570-5d15-4448-8575-f5fff2bd61d3",
+    "scope": "Method discussion only; no private code/files, human review or software audit.",
+    "text_sha256": "438f18be3c57ee4fb1e11d27a0d9de378d719a901c6c35d68dbd232e88b0a43f",
+    "screenshot_sha256": "0b151b69b03f157521c7fc987598c9a16b0a0b199b29ee8b28779ba986abaf3e",
+    "accepted": [
+      "Use the same all-script array procedure even for a single script.",
+      "Keep graph boundaries and distinguish identified resources, attributed descriptions and document-scoped blank nodes.",
+      "Exact replay compares all observations including labels under fixed input/source/runtime; semantic RDF comparison is a separate possible tool, not a replacement."
+    ],
+    "not_adopted": [
+      "No inference about Google graph-union behavior.",
+      "No unqualified RDF canonicalization added or used to hide exact replay differences."
+    ]
+  }
+}

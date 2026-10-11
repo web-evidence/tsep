@@ -1,3 +1,8 @@
+## Optional HTML JSON-LD observation 1 — 2026-10-11 — non-normative
+
+Attributed static script inventory, original bytes and parsed text, template/namespace context, two separate scripting hypotheses and combined-document processing with exact offline replay. 34 prefrozen HTML cases, 24 prefrozen graph scenarios and three additional frozen tokenizer/context boundaries. Source completeness, effective base and rendered states remain separate evidence; no TS31–33 atomic integration or normative change.
+FR : trois captures Edikka historiques retraitées avec un contexte public capturé séparément ; erreurs initiales et limites conservées. Ni revue humaine, ni validité Schema.org/Google déduite. [Méthode](docs/jsonld-html-observation.md).
+
 ## Optional JSON-LD processing 1 — 2026-10-11 — non-normative
 
 Pinned jsonld.js 9.0.0, explicit Node 24 subprocess, exact local contexts and per-document cache, expanded/flattened observations, warnings and exact replay. Forty initial and eight additional frozen authored cases; invalid Unicode-key failure retained and corrected. A captured official Schema.org context exposed an insufficient initial context-size limit; corrected bound, expected expansion and replay verified with authored data. Draft.27 and the normative corpus unchanged.

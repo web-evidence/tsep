@@ -1,0 +1,408 @@
+{
+  "format_version": 1,
+  "synthetic": true,
+  "frozen_at": "2026-10-11T10:09:16.261655+00:00",
+  "scope": "Authored expectations frozen before HTML workflow implementation or execution. Explicit supplied base hypothesis; exact HTML MIME selection; no browser or normative verdict. Modes tested separately, never merged.",
+  "cases": [
+    {
+      "id": "shared-blank-id",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >{\"@id\":\"_:x\",\"https://schema.org/name\":\"A\"}</script><script type=\"application/ld+json\" >{\"@id\":\"_:x\",\"https://schema.org/url\":{\"@id\":\"https://example.test/\"}}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "flattened": [
+          {
+            "@id": "_:b0",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ],
+            "https://schema.org/url": [
+              {
+                "@id": "https://example.test/"
+              }
+            ]
+          }
+        ],
+        "selected_count": 2
+      }
+    },
+    {
+      "id": "unnamed-nodes-distinct",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >{\"https://schema.org/name\":\"A\"}</script><script type=\"application/ld+json\" >{\"https://schema.org/name\":\"B\"}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "flattened": [
+          {
+            "@id": "_:b0",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          },
+          {
+            "@id": "_:b1",
+            "https://schema.org/name": [
+              {
+                "@value": "B"
+              }
+            ]
+          }
+        ],
+        "selected_count": 2
+      }
+    },
+    {
+      "id": "same-iri-enrichment",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >{\"@id\":\"#person\",\"https://schema.org/name\":\"A\"}</script><script type=\"application/ld+json\" >{\"@id\":\"#person\",\"https://schema.org/url\":{\"@id\":\"https://example.test/\"}}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "flattened": [
+          {
+            "@id": "https://example.test/page#person",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ],
+            "https://schema.org/url": [
+              {
+                "@id": "https://example.test/"
+              }
+            ]
+          }
+        ],
+        "selected_count": 2
+      }
+    },
+    {
+      "id": "legitimate-multiple-values",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >{\"@id\":\"#person\",\"https://schema.org/name\":\"A\"}</script><script type=\"application/ld+json\" >{\"@id\":\"#person\",\"https://schema.org/name\":\"B\"}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "flattened": [
+          {
+            "@id": "https://example.test/page#person",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              },
+              {
+                "@value": "B"
+              }
+            ]
+          }
+        ],
+        "selected_count": 2
+      }
+    },
+    {
+      "id": "array-roots-combined",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]</script><script type=\"application/ld+json\" >[{\"@id\":\"#b\",\"https://schema.org/name\":\"B\"}]</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "flattened": [
+          {
+            "@id": "https://example.test/page#a",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          },
+          {
+            "@id": "https://example.test/page#b",
+            "https://schema.org/name": [
+              {
+                "@value": "B"
+              }
+            ]
+          }
+        ],
+        "selected_count": 2
+      }
+    },
+    {
+      "id": "valid-then-invalid",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}</script><script type=\"application/ld+json\" >{broken</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "script-error",
+        "flattened": null,
+        "selected_count": 2
+      }
+    },
+    {
+      "id": "empty-script-is-error",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" ></script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "script-error",
+        "flattened": null,
+        "selected_count": 1
+      }
+    },
+    {
+      "id": "no-script",
+      "html": "<!doctype html><html><head></head><body><p>Example</p></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "absent",
+        "flattened": null,
+        "selected_count": 0
+      }
+    },
+    {
+      "id": "empty-array-present",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >[]</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "flattened": [],
+        "selected_count": 1
+      }
+    },
+    {
+      "id": "template-excluded",
+      "html": "<!doctype html><html><head></head><body><template><script type=\"application/ld+json\" >{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}</script></template></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "absent",
+        "flattened": null,
+        "selected_count": 0
+      }
+    },
+    {
+      "id": "src-not-fetched",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" src=\"https://not-fetched.example.test/x.jsonld\">{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "flattened": [
+          {
+            "@id": "https://example.test/page#a",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          }
+        ],
+        "selected_count": 1
+      }
+    },
+    {
+      "id": "missing-context",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >{\"@context\":\"https://not-fetched.example.test/context\",\"name\":\"A\"}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processing-unavailable",
+        "flattened": null,
+        "selected_count": 1
+      }
+    },
+    {
+      "id": "local-contexts-do-not-leak",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"#a\",\"name\":\"A\"}</script><script type=\"application/ld+json\" >{\"@id\":\"#b\",\"name\":\"B\"}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "flattened": [
+          {
+            "@id": "https://example.test/page#a",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          }
+        ],
+        "selected_count": 2
+      }
+    },
+    {
+      "id": "duplicate-keys-refused",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >{\"https://schema.org/name\":\"A\",\"https://schema.org/name\":\"B\"}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "script-error",
+        "flattened": null,
+        "selected_count": 1
+      }
+    },
+    {
+      "id": "unsafe-number-refused",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >{\"https://schema.org/ratingValue\":9007199254740992}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "script-unsupported",
+        "flattened": null,
+        "selected_count": 1
+      }
+    },
+    {
+      "id": "uppercase-type-unresolved",
+      "html": "<!doctype html><html><head></head><body><script type=\"APPLICATION/LD+JSON\">{}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "selection-unresolved",
+        "flattened": null,
+        "selected_count": 0
+      }
+    },
+    {
+      "id": "spaced-type-unresolved",
+      "html": "<!doctype html><html><head></head><body><script type=\" application/ld+json \">{}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "selection-unresolved",
+        "flattened": null,
+        "selected_count": 0
+      }
+    },
+    {
+      "id": "parameter-type-unresolved",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json; charset=utf-8\">{}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "selection-unresolved",
+        "flattened": null,
+        "selected_count": 0
+      }
+    },
+    {
+      "id": "other-type-excluded",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/json\">{}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "absent",
+        "flattened": null,
+        "selected_count": 0
+      }
+    },
+    {
+      "id": "local-base-context",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >{\"@context\":{\"@base\":\"https://example.test/other/\"},\"@id\":\"x\",\"https://schema.org/name\":\"A\"}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "flattened": [
+          {
+            "@id": "https://example.test/other/x",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          }
+        ],
+        "selected_count": 1
+      }
+    },
+    {
+      "id": "entities-not-html-decoded",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >{\"https://schema.org/name\":\"A &amp; B\"}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "flattened": [
+          {
+            "@id": "_:b0",
+            "https://schema.org/name": [
+              {
+                "@value": "A &amp; B"
+              }
+            ]
+          }
+        ],
+        "selected_count": 1
+      }
+    },
+    {
+      "id": "scalar-root-retained-refusal",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >true</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "script-unsupported",
+        "flattened": null,
+        "selected_count": 1
+      }
+    },
+    {
+      "id": "duplicate-html-id-no-collapse",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" id=\"s\">{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}</script><script type=\"application/ld+json\" id=\"s\">{\"@id\":\"#b\",\"https://schema.org/name\":\"B\"}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "flattened": [
+          {
+            "@id": "https://example.test/page#a",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          },
+          {
+            "@id": "https://example.test/page#b",
+            "https://schema.org/name": [
+              {
+                "@value": "B"
+              }
+            ]
+          }
+        ],
+        "selected_count": 2
+      }
+    },
+    {
+      "id": "same-blank-id-new-document",
+      "html": "<!doctype html><html><head></head><body><script type=\"application/ld+json\" >{\"@id\":\"_:x\",\"https://schema.org/name\":\"Elsewhere\"}</script></body></html>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "flattened": [
+          {
+            "@id": "_:b0",
+            "https://schema.org/name": [
+              {
+                "@value": "Elsewhere"
+              }
+            ]
+          }
+        ],
+        "selected_count": 1
+      }
+    }
+  ]
+}

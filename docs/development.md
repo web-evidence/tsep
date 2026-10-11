@@ -1,6 +1,8 @@
 Current integration: draft.27, interpreter 26 / adapter 27 / HTML 10 / replay 3.
+Optional [HTML JSON-LD observation 1](jsonld-html-observation.md): original-byte script attribution, two static hypotheses and combined documents under an explicit supplied-base hypothesis; 126 frozen expected readings, 63 exact replays and 10 over-limit refusals.
+FR : captures historiques de trois pages Edikka retraitées avec contexte fourni ; ni état rendu, ni validation Schema.org/Google, ni règles TS31–33 déduits.
 Optional [JSON-LD processing observation 1](jsonld-processing.md) prepares TS31–33: pinned offline processor, 48 frozen authored cases and exact explicit-Node replay.
-FR : traitement JSON-LD qualifié sur ces cas ; extraction HTML/rendue, faits visibles, identités et règles TS31–33 restent à intégrer. Toujours 12 contrôles / 33 règles.
+FR : traitement JSON-LD qualifié sur ces cas, avec extraction HTML statique ci-dessus ; états rendus, base effective, faits visibles, identités et règles TS31–33 restent à intégrer. Toujours 12 contrôles / 33 règles.
 [Controlled delivery laboratory 1](delivery-laboratory.md): eight frozen scenarios, 38 actual local HTTP exchanges, retained cache state/purge and offline replay; authored reviews.
 FR : quatre C, trois NC et un NT dans le périmètre fictif ; aucune application Edikka.
 [Delivery evidence](delivery-evidence.md): TS39 prior reviewed matrix, native SEO signals and context/cache attribution. [Migration](migration-draft.27.md).

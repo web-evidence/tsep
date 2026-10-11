@@ -1,0 +1,923 @@
+{
+  "synthetic": true,
+  "scope": "Actual retained parser observations for authored frozen boundary cases; no browser.",
+  "observations": {
+    "double-escaped-script-state": {
+      "kind": "unapplied-source-scripts",
+      "version": "1",
+      "normative_effect": "none",
+      "parser": {
+        "name": "parse5",
+        "version": "8.0.1",
+        "dependency": "entities@8.0.0"
+      },
+      "runtime": {
+        "node": "v24.19.0",
+        "v8": "13.6.233.17-node.51"
+      },
+      "bounds": {
+        "source_bytes": 8388608,
+        "tree_nodes": 20000,
+        "tree_depth": 128,
+        "parse_errors": 1000,
+        "scripts": 512,
+        "context_elements": 512,
+        "payload_parts": 20000,
+        "payload_bytes": 8388608
+      },
+      "networkGuard": {
+        "guarded": [
+          "node:net.connect",
+          "node:net.createConnection",
+          "node:net.createServer",
+          "node:net.Socket.connect",
+          "node:tls.connect",
+          "node:tls.createServer",
+          "node:http.request",
+          "node:http.get",
+          "node:http.createServer",
+          "node:https.request",
+          "node:https.get",
+          "node:https.createServer",
+          "node:http2.connect",
+          "node:http2.createServer",
+          "node:http2.createSecureServer",
+          "node:dgram.createSocket",
+          "node:dgram.Socket.connect",
+          "node:dns.lookup",
+          "node:dns.resolve",
+          "node:dns.resolve4",
+          "node:dns.resolve6",
+          "node:dns.resolveAny"
+        ],
+        "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+      },
+      "parser_input_utf8_sha256": "d1274a6668c9f776d0808b39e558ce2376c03f6d4de640d353ad1374c6b4db20",
+      "readings": {
+        "enabled": {
+          "complete": true,
+          "document_mode": "no-quirks",
+          "visited_nodes": 7,
+          "scripts": [
+            {
+              "node_id": 4,
+              "name": "script",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "ancestors": [
+                {
+                  "node_id": 2,
+                  "name": "html",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                },
+                {
+                  "node_id": 3,
+                  "name": "head",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                }
+              ],
+              "template_path": [],
+              "attributes": [
+                {
+                  "name": "type",
+                  "namespace": null,
+                  "prefix": null,
+                  "value": "application/ld+json"
+                }
+              ],
+              "start_tag": {
+                "source_span_utf16": [
+                  15,
+                  50
+                ],
+                "raw_source": "<script type=\"application/ld+json\">",
+                "body_span_bytes": [
+                  15,
+                  50
+                ]
+              },
+              "end_tag": {
+                "source_span_utf16": [
+                  81,
+                  90
+                ],
+                "raw_source": "</script>",
+                "body_span_bytes": [
+                  81,
+                  90
+                ]
+              },
+              "payload_parts": [
+                {
+                  "node_id": 5,
+                  "data": "<!--<script></script>-->{\"x\":1}",
+                  "location": {
+                    "source_span_utf16": [
+                      50,
+                      81
+                    ],
+                    "raw_source": "<!--<script></script>-->{\"x\":1}",
+                    "body_span_bytes": [
+                      50,
+                      81
+                    ]
+                  }
+                }
+              ],
+              "payload": "<!--<script></script>-->{\"x\":1}"
+            }
+          ],
+          "context_elements": [],
+          "parse_errors": []
+        },
+        "disabled": {
+          "complete": true,
+          "document_mode": "no-quirks",
+          "visited_nodes": 7,
+          "scripts": [
+            {
+              "node_id": 4,
+              "name": "script",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "ancestors": [
+                {
+                  "node_id": 2,
+                  "name": "html",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                },
+                {
+                  "node_id": 3,
+                  "name": "head",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                }
+              ],
+              "template_path": [],
+              "attributes": [
+                {
+                  "name": "type",
+                  "namespace": null,
+                  "prefix": null,
+                  "value": "application/ld+json"
+                }
+              ],
+              "start_tag": {
+                "source_span_utf16": [
+                  15,
+                  50
+                ],
+                "raw_source": "<script type=\"application/ld+json\">",
+                "body_span_bytes": [
+                  15,
+                  50
+                ]
+              },
+              "end_tag": {
+                "source_span_utf16": [
+                  81,
+                  90
+                ],
+                "raw_source": "</script>",
+                "body_span_bytes": [
+                  81,
+                  90
+                ]
+              },
+              "payload_parts": [
+                {
+                  "node_id": 5,
+                  "data": "<!--<script></script>-->{\"x\":1}",
+                  "location": {
+                    "source_span_utf16": [
+                      50,
+                      81
+                    ],
+                    "raw_source": "<!--<script></script>-->{\"x\":1}",
+                    "body_span_bytes": [
+                      50,
+                      81
+                    ]
+                  }
+                }
+              ],
+              "payload": "<!--<script></script>-->{\"x\":1}"
+            }
+          ],
+          "context_elements": [],
+          "parse_errors": []
+        }
+      },
+      "decoding": {
+        "profile": "html-http-utf8-v1",
+        "content_types": [
+          "text/html; charset=utf-8"
+        ],
+        "body_sha256": "d1274a6668c9f776d0808b39e558ce2376c03f6d4de640d353ad1374c6b4db20",
+        "body_bytes": 90,
+        "consumed_bom_bytes": 0,
+        "parser_input_utf8_sha256": "d1274a6668c9f776d0808b39e558ce2376c03f6d4de640d353ad1374c6b4db20",
+        "parser_input_utf16_units": 90,
+        "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+      },
+      "source_sha256": {
+        "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+        "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+        "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+        "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+        "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+        "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+        "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+        "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+        "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+        "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a"
+      },
+      "supervisor": {
+        "python": "3.9.6",
+        "process_timeout_seconds": 30,
+        "node_old_space_mib": 128,
+        "output_byte_limit": 33554432
+      },
+      "limitations": [
+        "Two static HTML hypotheses; no source JavaScript, browser, CSS visibility or search-engine reading.",
+        "Template fragments and foreign scripts are inventoried separately; no shadow attachment or frame document extraction.",
+        "Original bytes, parser text and locations are distinct; text normalization is not repaired or hidden.",
+        "Source completeness and actual HTTP/navigation provenance must be established by separate capture evidence.",
+        "Inventory only; no JSON-LD selection, graph, vocabulary validation or TSEP verdict."
+      ]
+    },
+    "entity-decoded-type": {
+      "kind": "unapplied-source-scripts",
+      "version": "1",
+      "normative_effect": "none",
+      "parser": {
+        "name": "parse5",
+        "version": "8.0.1",
+        "dependency": "entities@8.0.0"
+      },
+      "runtime": {
+        "node": "v24.19.0",
+        "v8": "13.6.233.17-node.51"
+      },
+      "bounds": {
+        "source_bytes": 8388608,
+        "tree_nodes": 20000,
+        "tree_depth": 128,
+        "parse_errors": 1000,
+        "scripts": 512,
+        "context_elements": 512,
+        "payload_parts": 20000,
+        "payload_bytes": 8388608
+      },
+      "networkGuard": {
+        "guarded": [
+          "node:net.connect",
+          "node:net.createConnection",
+          "node:net.createServer",
+          "node:net.Socket.connect",
+          "node:tls.connect",
+          "node:tls.createServer",
+          "node:http.request",
+          "node:http.get",
+          "node:http.createServer",
+          "node:https.request",
+          "node:https.get",
+          "node:https.createServer",
+          "node:http2.connect",
+          "node:http2.createServer",
+          "node:http2.createSecureServer",
+          "node:dgram.createSocket",
+          "node:dgram.Socket.connect",
+          "node:dns.lookup",
+          "node:dns.resolve",
+          "node:dns.resolve4",
+          "node:dns.resolve6",
+          "node:dns.resolveAny"
+        ],
+        "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+      },
+      "parser_input_utf8_sha256": "c5bb71442b07efe9511f2ff8c98219505eb26b4b25b88bd49a4b67069b56c11b",
+      "readings": {
+        "enabled": {
+          "complete": true,
+          "document_mode": "no-quirks",
+          "visited_nodes": 7,
+          "scripts": [
+            {
+              "node_id": 4,
+              "name": "script",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "ancestors": [
+                {
+                  "node_id": 2,
+                  "name": "html",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                },
+                {
+                  "node_id": 3,
+                  "name": "head",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                }
+              ],
+              "template_path": [],
+              "attributes": [
+                {
+                  "name": "type",
+                  "namespace": null,
+                  "prefix": null,
+                  "value": "application/ld+json"
+                }
+              ],
+              "start_tag": {
+                "source_span_utf16": [
+                  15,
+                  55
+                ],
+                "raw_source": "<script type=\"application&#x2F;ld+json\">",
+                "body_span_bytes": [
+                  15,
+                  55
+                ]
+              },
+              "end_tag": {
+                "source_span_utf16": [
+                  86,
+                  95
+                ],
+                "raw_source": "</script>",
+                "body_span_bytes": [
+                  86,
+                  95
+                ]
+              },
+              "payload_parts": [
+                {
+                  "node_id": 5,
+                  "data": "{\"https://schema.org/name\":\"A\"}",
+                  "location": {
+                    "source_span_utf16": [
+                      55,
+                      86
+                    ],
+                    "raw_source": "{\"https://schema.org/name\":\"A\"}",
+                    "body_span_bytes": [
+                      55,
+                      86
+                    ]
+                  }
+                }
+              ],
+              "payload": "{\"https://schema.org/name\":\"A\"}"
+            }
+          ],
+          "context_elements": [],
+          "parse_errors": []
+        },
+        "disabled": {
+          "complete": true,
+          "document_mode": "no-quirks",
+          "visited_nodes": 7,
+          "scripts": [
+            {
+              "node_id": 4,
+              "name": "script",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "ancestors": [
+                {
+                  "node_id": 2,
+                  "name": "html",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                },
+                {
+                  "node_id": 3,
+                  "name": "head",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                }
+              ],
+              "template_path": [],
+              "attributes": [
+                {
+                  "name": "type",
+                  "namespace": null,
+                  "prefix": null,
+                  "value": "application/ld+json"
+                }
+              ],
+              "start_tag": {
+                "source_span_utf16": [
+                  15,
+                  55
+                ],
+                "raw_source": "<script type=\"application&#x2F;ld+json\">",
+                "body_span_bytes": [
+                  15,
+                  55
+                ]
+              },
+              "end_tag": {
+                "source_span_utf16": [
+                  86,
+                  95
+                ],
+                "raw_source": "</script>",
+                "body_span_bytes": [
+                  86,
+                  95
+                ]
+              },
+              "payload_parts": [
+                {
+                  "node_id": 5,
+                  "data": "{\"https://schema.org/name\":\"A\"}",
+                  "location": {
+                    "source_span_utf16": [
+                      55,
+                      86
+                    ],
+                    "raw_source": "{\"https://schema.org/name\":\"A\"}",
+                    "body_span_bytes": [
+                      55,
+                      86
+                    ]
+                  }
+                }
+              ],
+              "payload": "{\"https://schema.org/name\":\"A\"}"
+            }
+          ],
+          "context_elements": [],
+          "parse_errors": []
+        }
+      },
+      "decoding": {
+        "profile": "html-http-utf8-v1",
+        "content_types": [
+          "text/html; charset=utf-8"
+        ],
+        "body_sha256": "c5bb71442b07efe9511f2ff8c98219505eb26b4b25b88bd49a4b67069b56c11b",
+        "body_bytes": 95,
+        "consumed_bom_bytes": 0,
+        "parser_input_utf8_sha256": "c5bb71442b07efe9511f2ff8c98219505eb26b4b25b88bd49a4b67069b56c11b",
+        "parser_input_utf16_units": 95,
+        "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+      },
+      "source_sha256": {
+        "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+        "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+        "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+        "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+        "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+        "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+        "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+        "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+        "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+        "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a"
+      },
+      "supervisor": {
+        "python": "3.9.6",
+        "process_timeout_seconds": 30,
+        "node_old_space_mib": 128,
+        "output_byte_limit": 33554432
+      },
+      "limitations": [
+        "Two static HTML hypotheses; no source JavaScript, browser, CSS visibility or search-engine reading.",
+        "Template fragments and foreign scripts are inventoried separately; no shadow attachment or frame document extraction.",
+        "Original bytes, parser text and locations are distinct; text normalization is not repaired or hidden.",
+        "Source completeness and actual HTTP/navigation provenance must be established by separate capture evidence.",
+        "Inventory only; no JSON-LD selection, graph, vocabulary validation or TSEP verdict."
+      ]
+    },
+    "base-csp-context-retained": {
+      "kind": "unapplied-source-scripts",
+      "version": "1",
+      "normative_effect": "none",
+      "parser": {
+        "name": "parse5",
+        "version": "8.0.1",
+        "dependency": "entities@8.0.0"
+      },
+      "runtime": {
+        "node": "v24.19.0",
+        "v8": "13.6.233.17-node.51"
+      },
+      "bounds": {
+        "source_bytes": 8388608,
+        "tree_nodes": 20000,
+        "tree_depth": 128,
+        "parse_errors": 1000,
+        "scripts": 512,
+        "context_elements": 512,
+        "payload_parts": 20000,
+        "payload_bytes": 8388608
+      },
+      "networkGuard": {
+        "guarded": [
+          "node:net.connect",
+          "node:net.createConnection",
+          "node:net.createServer",
+          "node:net.Socket.connect",
+          "node:tls.connect",
+          "node:tls.createServer",
+          "node:http.request",
+          "node:http.get",
+          "node:http.createServer",
+          "node:https.request",
+          "node:https.get",
+          "node:https.createServer",
+          "node:http2.connect",
+          "node:http2.createServer",
+          "node:http2.createSecureServer",
+          "node:dgram.createSocket",
+          "node:dgram.Socket.connect",
+          "node:dns.lookup",
+          "node:dns.resolve",
+          "node:dns.resolve4",
+          "node:dns.resolve6",
+          "node:dns.resolveAny"
+        ],
+        "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+      },
+      "parser_input_utf8_sha256": "f78097ca4b85fa9c14cc580fd0af8d740603a6ae24293a38d87feb8f6919c0ad",
+      "readings": {
+        "enabled": {
+          "complete": true,
+          "document_mode": "no-quirks",
+          "visited_nodes": 9,
+          "scripts": [
+            {
+              "node_id": 6,
+              "name": "script",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "ancestors": [
+                {
+                  "node_id": 2,
+                  "name": "html",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                },
+                {
+                  "node_id": 3,
+                  "name": "head",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                }
+              ],
+              "template_path": [],
+              "attributes": [
+                {
+                  "name": "type",
+                  "namespace": null,
+                  "prefix": null,
+                  "value": "application/ld+json"
+                }
+              ],
+              "start_tag": {
+                "source_span_utf16": [
+                  140,
+                  175
+                ],
+                "raw_source": "<script type=\"application/ld+json\">",
+                "body_span_bytes": [
+                  140,
+                  175
+                ]
+              },
+              "end_tag": {
+                "source_span_utf16": [
+                  217,
+                  226
+                ],
+                "raw_source": "</script>",
+                "body_span_bytes": [
+                  217,
+                  226
+                ]
+              },
+              "payload_parts": [
+                {
+                  "node_id": 7,
+                  "data": "{\"@id\":\"#x\",\"https://schema.org/name\":\"A\"}",
+                  "location": {
+                    "source_span_utf16": [
+                      175,
+                      217
+                    ],
+                    "raw_source": "{\"@id\":\"#x\",\"https://schema.org/name\":\"A\"}",
+                    "body_span_bytes": [
+                      175,
+                      217
+                    ]
+                  }
+                }
+              ],
+              "payload": "{\"@id\":\"#x\",\"https://schema.org/name\":\"A\"}"
+            }
+          ],
+          "context_elements": [
+            {
+              "node_id": 4,
+              "name": "base",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "ancestors": [
+                {
+                  "node_id": 2,
+                  "name": "html",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                },
+                {
+                  "node_id": 3,
+                  "name": "head",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                }
+              ],
+              "template_path": [],
+              "attributes": [
+                {
+                  "name": "href",
+                  "namespace": null,
+                  "prefix": null,
+                  "value": "https://different.example.test/"
+                }
+              ],
+              "start_tag": {
+                "source_span_utf16": [
+                  21,
+                  66
+                ],
+                "raw_source": "<base href=\"https://different.example.test/\">",
+                "body_span_bytes": [
+                  21,
+                  66
+                ]
+              },
+              "end_tag": null
+            },
+            {
+              "node_id": 5,
+              "name": "meta",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "ancestors": [
+                {
+                  "node_id": 2,
+                  "name": "html",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                },
+                {
+                  "node_id": 3,
+                  "name": "head",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                }
+              ],
+              "template_path": [],
+              "attributes": [
+                {
+                  "name": "http-equiv",
+                  "namespace": null,
+                  "prefix": null,
+                  "value": "Content-Security-Policy"
+                },
+                {
+                  "name": "content",
+                  "namespace": null,
+                  "prefix": null,
+                  "value": "base-uri none"
+                }
+              ],
+              "start_tag": {
+                "source_span_utf16": [
+                  66,
+                  133
+                ],
+                "raw_source": "<meta http-equiv=\"Content-Security-Policy\" content=\"base-uri none\">",
+                "body_span_bytes": [
+                  66,
+                  133
+                ]
+              },
+              "end_tag": null
+            }
+          ],
+          "parse_errors": [
+            {
+              "code": "abandoned-head-element-child",
+              "startLine": 1,
+              "startCol": 141,
+              "startOffset": 140,
+              "endLine": 1,
+              "endCol": 176,
+              "endOffset": 175,
+              "body_span_bytes": [
+                140,
+                175
+              ]
+            }
+          ]
+        },
+        "disabled": {
+          "complete": true,
+          "document_mode": "no-quirks",
+          "visited_nodes": 9,
+          "scripts": [
+            {
+              "node_id": 6,
+              "name": "script",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "ancestors": [
+                {
+                  "node_id": 2,
+                  "name": "html",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                },
+                {
+                  "node_id": 3,
+                  "name": "head",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                }
+              ],
+              "template_path": [],
+              "attributes": [
+                {
+                  "name": "type",
+                  "namespace": null,
+                  "prefix": null,
+                  "value": "application/ld+json"
+                }
+              ],
+              "start_tag": {
+                "source_span_utf16": [
+                  140,
+                  175
+                ],
+                "raw_source": "<script type=\"application/ld+json\">",
+                "body_span_bytes": [
+                  140,
+                  175
+                ]
+              },
+              "end_tag": {
+                "source_span_utf16": [
+                  217,
+                  226
+                ],
+                "raw_source": "</script>",
+                "body_span_bytes": [
+                  217,
+                  226
+                ]
+              },
+              "payload_parts": [
+                {
+                  "node_id": 7,
+                  "data": "{\"@id\":\"#x\",\"https://schema.org/name\":\"A\"}",
+                  "location": {
+                    "source_span_utf16": [
+                      175,
+                      217
+                    ],
+                    "raw_source": "{\"@id\":\"#x\",\"https://schema.org/name\":\"A\"}",
+                    "body_span_bytes": [
+                      175,
+                      217
+                    ]
+                  }
+                }
+              ],
+              "payload": "{\"@id\":\"#x\",\"https://schema.org/name\":\"A\"}"
+            }
+          ],
+          "context_elements": [
+            {
+              "node_id": 4,
+              "name": "base",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "ancestors": [
+                {
+                  "node_id": 2,
+                  "name": "html",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                },
+                {
+                  "node_id": 3,
+                  "name": "head",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                }
+              ],
+              "template_path": [],
+              "attributes": [
+                {
+                  "name": "href",
+                  "namespace": null,
+                  "prefix": null,
+                  "value": "https://different.example.test/"
+                }
+              ],
+              "start_tag": {
+                "source_span_utf16": [
+                  21,
+                  66
+                ],
+                "raw_source": "<base href=\"https://different.example.test/\">",
+                "body_span_bytes": [
+                  21,
+                  66
+                ]
+              },
+              "end_tag": null
+            },
+            {
+              "node_id": 5,
+              "name": "meta",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "ancestors": [
+                {
+                  "node_id": 2,
+                  "name": "html",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                },
+                {
+                  "node_id": 3,
+                  "name": "head",
+                  "namespace": "http://www.w3.org/1999/xhtml"
+                }
+              ],
+              "template_path": [],
+              "attributes": [
+                {
+                  "name": "http-equiv",
+                  "namespace": null,
+                  "prefix": null,
+                  "value": "Content-Security-Policy"
+                },
+                {
+                  "name": "content",
+                  "namespace": null,
+                  "prefix": null,
+                  "value": "base-uri none"
+                }
+              ],
+              "start_tag": {
+                "source_span_utf16": [
+                  66,
+                  133
+                ],
+                "raw_source": "<meta http-equiv=\"Content-Security-Policy\" content=\"base-uri none\">",
+                "body_span_bytes": [
+                  66,
+                  133
+                ]
+              },
+              "end_tag": null
+            }
+          ],
+          "parse_errors": [
+            {
+              "code": "abandoned-head-element-child",
+              "startLine": 1,
+              "startCol": 141,
+              "startOffset": 140,
+              "endLine": 1,
+              "endCol": 176,
+              "endOffset": 175,
+              "body_span_bytes": [
+                140,
+                175
+              ]
+            }
+          ]
+        }
+      },
+      "decoding": {
+        "profile": "html-http-utf8-v1",
+        "content_types": [
+          "text/html; charset=utf-8"
+        ],
+        "body_sha256": "f78097ca4b85fa9c14cc580fd0af8d740603a6ae24293a38d87feb8f6919c0ad",
+        "body_bytes": 226,
+        "consumed_bom_bytes": 0,
+        "parser_input_utf8_sha256": "f78097ca4b85fa9c14cc580fd0af8d740603a6ae24293a38d87feb8f6919c0ad",
+        "parser_input_utf16_units": 226,
+        "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+      },
+      "source_sha256": {
+        "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+        "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+        "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+        "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+        "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+        "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+        "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+        "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+        "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+        "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a"
+      },
+      "supervisor": {
+        "python": "3.9.6",
+        "process_timeout_seconds": 30,
+        "node_old_space_mib": 128,
+        "output_byte_limit": 33554432
+      },
+      "limitations": [
+        "Two static HTML hypotheses; no source JavaScript, browser, CSS visibility or search-engine reading.",
+        "Template fragments and foreign scripts are inventoried separately; no shadow attachment or frame document extraction.",
+        "Original bytes, parser text and locations are distinct; text normalization is not repaired or hidden.",
+        "Source completeness and actual HTTP/navigation provenance must be established by separate capture evidence.",
+        "Inventory only; no JSON-LD selection, graph, vocabulary validation or TSEP verdict."
+      ]
+    }
+  }
+}

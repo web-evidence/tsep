@@ -1,0 +1,812 @@
+{
+  "kind": "authored-jsonld-html-script-observation-expectations",
+  "version": "1",
+  "synthetic": true,
+  "normative_effect": "none",
+  "scope": "Inventory all script elements under each static HTML parsing hypothesis, including inert/foreign records. Each expected list retains parsed ID/type/text/template/namespace; this does not decide MIME eligibility, visible content, document graph or TS31–33.",
+  "expected_origin": "Authored and frozen before any JSON-LD HTML extraction reader or execution of these inputs; existing general parse5 source tools predate this fixture. Primary W3C/HTML sources and method discussion retained separately.",
+  "cases": [
+    {
+      "id": "head-block",
+      "html": "<!doctype html><html><head><script id=\"s\" type=\"application/ld+json\">{}</script></head><body></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "body-block",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\">{}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "other-json-type",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/json\">{}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "missing-type",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\">{}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": null,
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": null,
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "empty-type",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"\">{}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mime-uppercase-retained",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"APPLICATION/LD+JSON\">{}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "APPLICATION/LD+JSON",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "APPLICATION/LD+JSON",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mime-whitespace-retained",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\" application/ld+json \">{}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": " application/ld+json ",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": " application/ld+json ",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "mime-parameters-retained",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json; charset=utf-8\">{}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json; charset=utf-8",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json; charset=utf-8",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "duplicate-type-javascript-first",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"text/javascript\" type=\"application/ld+json\">{}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "text/javascript",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "text/javascript",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "duplicate-type-jsonld-first",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\" type=\"text/javascript\">{}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "template-block",
+      "html": "<!doctype html><html><head></head><body><template><script id=\"s\" type=\"application/ld+json\">{}</script></template></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": true,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": true,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nested-template-block",
+      "html": "<!doctype html><html><head></head><body><template><template><script id=\"s\" type=\"application/ld+json\">{}</script></template></template></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": true,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": true,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "noscript-body",
+      "html": "<!doctype html><html><head></head><body><noscript><script id=\"s\" type=\"application/ld+json\">{}</script></noscript></body></html>",
+      "expected": {
+        "enabled": [],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "comment-is-not-script",
+      "html": "<!doctype html><html><head></head><body><!-- <script id=\"s\" type=\"application/ld+json\">{}</script> --></body></html>",
+      "expected": {
+        "enabled": [],
+        "disabled": []
+      }
+    },
+    {
+      "id": "textarea-is-not-script",
+      "html": "<!doctype html><html><head></head><body><textarea><script id=\"s\" type=\"application/ld+json\">{}</script></textarea></body></html>",
+      "expected": {
+        "enabled": [],
+        "disabled": []
+      }
+    },
+    {
+      "id": "literal-entities",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\">{\"name\":\"A &amp; B\"}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"name\":\"A &amp; B\"}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"name\":\"A &amp; B\"}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "empty-script",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\"></script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "whitespace-script",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\"> \n\t</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": " \n\t",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": " \n\t",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unclosed-script",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\">{\"x\":1}",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"x\":1}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"x\":1}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "premature-script-close",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\">{\"name\":\"end </script> suffix\"}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"name\":\"end ",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"name\":\"end ",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unicode-escaped-script-close",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\">{\"name\":\"\\u003c/script>\"}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"name\":\"\\u003c/script>\"}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"name\":\"\\u003c/script>\"}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "json-comment-not-repaired",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\">/* x */ {}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "/* x */ {}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "/* x */ {}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "duplicate-element-ids",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\">{\"x\":1}</script><script id=\"s\" type=\"application/ld+json\">{\"y\":2}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"x\":1}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          },
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"y\":2}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"x\":1}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          },
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"y\":2}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "two-root-arrays",
+      "html": "<!doctype html><html><head></head><body><script id=\"a\" type=\"application/ld+json\">[{\"x\":1}]</script><script id=\"b\" type=\"application/ld+json\">[{\"y\":2}]</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "type": "application/ld+json",
+            "payload": "[{\"x\":1}]",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          },
+          {
+            "id": "b",
+            "type": "application/ld+json",
+            "payload": "[{\"y\":2}]",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "type": "application/ld+json",
+            "payload": "[{\"x\":1}]",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          },
+          {
+            "id": "b",
+            "type": "application/ld+json",
+            "payload": "[{\"y\":2}]",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "same-blank-id-two-blocks",
+      "html": "<!doctype html><html><head></head><body><script id=\"a\" type=\"application/ld+json\">{\"@id\":\"_:x\",\"https://schema.org/name\":\"A\"}</script><script id=\"b\" type=\"application/ld+json\">{\"@id\":\"_:x\",\"https://schema.org/url\":{\"@id\":\"https://example.test/\"}}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "a",
+            "type": "application/ld+json",
+            "payload": "{\"@id\":\"_:x\",\"https://schema.org/name\":\"A\"}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          },
+          {
+            "id": "b",
+            "type": "application/ld+json",
+            "payload": "{\"@id\":\"_:x\",\"https://schema.org/url\":{\"@id\":\"https://example.test/\"}}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "a",
+            "type": "application/ld+json",
+            "payload": "{\"@id\":\"_:x\",\"https://schema.org/name\":\"A\"}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          },
+          {
+            "id": "b",
+            "type": "application/ld+json",
+            "payload": "{\"@id\":\"_:x\",\"https://schema.org/url\":{\"@id\":\"https://example.test/\"}}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "crlf-normalized",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\">{\r\n\"x\":1\r\n}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\n\"x\":1\n}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\n\"x\":1\n}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nul-replacement-retained",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\">{\"name\":\"A\u0000B\"}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"name\":\"A�B\"}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"name\":\"A�B\"}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unicode-and-bom",
+      "html": "﻿<!doctype html><html><head><script id=\"s\" type=\"application/ld+json\">{\"name\":\"É😀\"}</script></head><body></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"name\":\"É😀\"}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"name\":\"É😀\"}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "src-with-inline",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\" src=\"https://not-fetched.example.test/x.jsonld\">{\"x\":1}</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"x\":1}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{\"x\":1}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "src-with-empty",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"application/ld+json\" src=\"https://not-fetched.example.test/x.jsonld\"></script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "svg-script",
+      "html": "<!doctype html><html><head></head><body><svg><script id=\"s\" type=\"application/ld+json\">{}</script></svg></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/2000/svg"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/2000/svg"
+          }
+        ]
+      }
+    },
+    {
+      "id": "foreignobject-html-script",
+      "html": "<!doctype html><html><head></head><body><svg><foreignObject><script id=\"s\" type=\"application/ld+json\">{}</script></foreignObject></svg></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "application/ld+json",
+            "payload": "{}",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "module-never-executed",
+      "html": "<!doctype html><html><head></head><body><script id=\"s\" type=\"module\">throw new Error(\"do not execute\")</script></body></html>",
+      "expected": {
+        "enabled": [
+          {
+            "id": "s",
+            "type": "module",
+            "payload": "throw new Error(\"do not execute\")",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ],
+        "disabled": [
+          {
+            "id": "s",
+            "type": "module",
+            "payload": "throw new Error(\"do not execute\")",
+            "template": false,
+            "namespace": "http://www.w3.org/1999/xhtml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "no-script",
+      "html": "<!doctype html><html><head></head><body><p>Example</p></body></html>",
+      "expected": {
+        "enabled": [],
+        "disabled": []
+      }
+    }
+  ]
+}

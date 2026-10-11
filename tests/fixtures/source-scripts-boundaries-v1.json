@@ -1,0 +1,26 @@
+{
+  "captured_at": "2026-10-11T10:15:57.243075+00:00",
+  "cases": [
+    {
+      "id": "double-escaped-script-state",
+      "html": "<!doctype html><script type=\"application/ld+json\"><!--<script></script>-->{\"x\":1}</script>",
+      "expected_payload": "<!--<script></script>-->{\"x\":1}"
+    },
+    {
+      "id": "entity-decoded-type",
+      "html": "<!doctype html><script type=\"application&#x2F;ld+json\">{\"https://schema.org/name\":\"A\"}</script>",
+      "expected_payload": "{\"https://schema.org/name\":\"A\"}",
+      "expected_type": "application/ld+json"
+    },
+    {
+      "id": "base-csp-context-retained",
+      "html": "<!doctype html><head><base href=\"https://different.example.test/\"><meta http-equiv=\"Content-Security-Policy\" content=\"base-uri none\"></head><script type=\"application/ld+json\">{\"@id\":\"#x\",\"https://schema.org/name\":\"A\"}</script>",
+      "expected_payload": "{\"@id\":\"#x\",\"https://schema.org/name\":\"A\"}",
+      "expected_context_names": [
+        "base",
+        "meta"
+      ]
+    }
+  ],
+  "scope": "Additional frozen authored boundary expectations before execution, after initial finite qualification. Base/CSP observations retained only; supplied base never claimed to be actual browser base."
+}

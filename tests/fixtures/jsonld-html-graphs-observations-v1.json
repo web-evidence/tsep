@@ -1,0 +1,3036 @@
+{
+  "synthetic": true,
+  "observed_at": "2026-10-11T10:26:45.192138+00:00",
+  "scope": "Actual Node outputs for five additional authored graph-boundary cases. Historical source identity retained; Python tests do not re-execute Node.",
+  "observations": {
+    "single-root-graph-always-array": {
+      "kind": "unapplied-html-jsonld",
+      "version": "1",
+      "normative_effect": "none",
+      "profile": "html-jsonld-exact-type-all-supplied-base-v1",
+      "input": {
+        "body_base64": "PCFkb2N0eXBlIGh0bWw+PHNjcmlwdCB0eXBlPSJhcHBsaWNhdGlvbi9sZCtqc29uIj57IkBncmFwaCI6W3siQGlkIjoiI2EiLCJodHRwczovL3NjaGVtYS5vcmcvbmFtZSI6IkEifV19PC9zY3JpcHQ+",
+        "content_types": [
+          "text/html; charset=utf-8"
+        ],
+        "base_iri": "https://example.test/page",
+        "contexts": []
+      },
+      "input_sha256": "d05e624197fe285e8d34ff828298c4b7d97bbf20193cf6dd78ecc88054979e7f",
+      "source_sha256": {
+        "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+        "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+        "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+        "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+        "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+        "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+        "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+        "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+        "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+        "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a",
+        "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+        "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+        "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+        "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+        "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a",
+        "experiments/jsonld_html.py": "448c20e9359d274041552a588afe5f290b38e125513fa8584129e3df4ad54a00"
+      },
+      "source": {
+        "kind": "unapplied-source-scripts",
+        "version": "1",
+        "normative_effect": "none",
+        "parser": {
+          "name": "parse5",
+          "version": "8.0.1",
+          "dependency": "entities@8.0.0"
+        },
+        "runtime": {
+          "node": "v24.19.0",
+          "v8": "13.6.233.17-node.51"
+        },
+        "bounds": {
+          "source_bytes": 8388608,
+          "tree_nodes": 20000,
+          "tree_depth": 128,
+          "parse_errors": 1000,
+          "scripts": 512,
+          "context_elements": 512,
+          "payload_parts": 20000,
+          "payload_bytes": 8388608
+        },
+        "networkGuard": {
+          "guarded": [
+            "node:net.connect",
+            "node:net.createConnection",
+            "node:net.createServer",
+            "node:net.Socket.connect",
+            "node:tls.connect",
+            "node:tls.createServer",
+            "node:http.request",
+            "node:http.get",
+            "node:http.createServer",
+            "node:https.request",
+            "node:https.get",
+            "node:https.createServer",
+            "node:http2.connect",
+            "node:http2.createServer",
+            "node:http2.createSecureServer",
+            "node:dgram.createSocket",
+            "node:dgram.Socket.connect",
+            "node:dns.lookup",
+            "node:dns.resolve",
+            "node:dns.resolve4",
+            "node:dns.resolve6",
+            "node:dns.resolveAny"
+          ],
+          "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+        },
+        "parser_input_utf8_sha256": "f683e8c29774def1da8d62579efa8e9e38ea6a030312ee05a5e974620aa3f5fb",
+        "readings": {
+          "enabled": {
+            "complete": true,
+            "document_mode": "no-quirks",
+            "visited_nodes": 7,
+            "scripts": [
+              {
+                "node_id": 4,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    15,
+                    50
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    15,
+                    50
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    105,
+                    114
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    105,
+                    114
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 5,
+                    "data": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        50,
+                        105
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                      "body_span_bytes": [
+                        50,
+                        105
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}"
+              }
+            ],
+            "context_elements": [],
+            "parse_errors": []
+          },
+          "disabled": {
+            "complete": true,
+            "document_mode": "no-quirks",
+            "visited_nodes": 7,
+            "scripts": [
+              {
+                "node_id": 4,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    15,
+                    50
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    15,
+                    50
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    105,
+                    114
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    105,
+                    114
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 5,
+                    "data": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        50,
+                        105
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                      "body_span_bytes": [
+                        50,
+                        105
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}"
+              }
+            ],
+            "context_elements": [],
+            "parse_errors": []
+          }
+        },
+        "decoding": {
+          "profile": "html-http-utf8-v1",
+          "content_types": [
+            "text/html; charset=utf-8"
+          ],
+          "body_sha256": "f683e8c29774def1da8d62579efa8e9e38ea6a030312ee05a5e974620aa3f5fb",
+          "body_bytes": 114,
+          "consumed_bom_bytes": 0,
+          "parser_input_utf8_sha256": "f683e8c29774def1da8d62579efa8e9e38ea6a030312ee05a5e974620aa3f5fb",
+          "parser_input_utf16_units": 114,
+          "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+        },
+        "source_sha256": {
+          "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+          "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+          "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+          "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+          "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+          "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+          "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+          "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+          "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+          "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a"
+        },
+        "supervisor": {
+          "python": "3.9.6",
+          "process_timeout_seconds": 30,
+          "node_old_space_mib": 128,
+          "output_byte_limit": 33554432
+        },
+        "limitations": [
+          "Two static HTML hypotheses; no source JavaScript, browser, CSS visibility or search-engine reading.",
+          "Template fragments and foreign scripts are inventoried separately; no shadow attachment or frame document extraction.",
+          "Original bytes, parser text and locations are distinct; text normalization is not repaired or hidden.",
+          "Source completeness and actual HTTP/navigation provenance must be established by separate capture evidence.",
+          "Inventory only; no JSON-LD selection, graph, vocabulary validation or TSEP verdict."
+        ]
+      },
+      "readings": {
+        "enabled": {
+          "status": "processed",
+          "selected_count": 1,
+          "diagnostics": [
+            {
+              "node_id": 4,
+              "selection": "selected",
+              "payload_sha256": "2c1ed27b5e49aac150609b36a2e1e64e4e28c436144a605aa1ac910f96c902e0",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            }
+          ],
+          "combined_sha256": "ac927fefe0af308bffee44dbc05872869ad1b91f24686a5eb8bef4b513e7e5b8",
+          "root_items": 1,
+          "processing_index": 0
+        },
+        "disabled": {
+          "status": "processed",
+          "selected_count": 1,
+          "diagnostics": [
+            {
+              "node_id": 4,
+              "selection": "selected",
+              "payload_sha256": "2c1ed27b5e49aac150609b36a2e1e64e4e28c436144a605aa1ac910f96c902e0",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            }
+          ],
+          "combined_sha256": "ac927fefe0af308bffee44dbc05872869ad1b91f24686a5eb8bef4b513e7e5b8",
+          "root_items": 1,
+          "processing_index": 1
+        }
+      },
+      "processing": {
+        "kind": "unapplied-jsonld-processing",
+        "version": "1",
+        "normative_effect": "none",
+        "request_sha256": "edad3452a3676094ad947eb33aa57ddc167eca5c0886a93c90ffe9c64e5268da",
+        "processor": {
+          "name": "jsonld",
+          "version": "9.0.0",
+          "member": "dist/jsonld.esm.js"
+        },
+        "runtime": {
+          "node": "v24.19.0",
+          "v8": "13.6.233.17-node.51"
+        },
+        "network_guard": {
+          "guarded": [
+            "node:net.connect",
+            "node:net.createConnection",
+            "node:net.createServer",
+            "node:net.Socket.connect",
+            "node:tls.connect",
+            "node:tls.createServer",
+            "node:http.request",
+            "node:http.get",
+            "node:http.createServer",
+            "node:https.request",
+            "node:https.get",
+            "node:https.createServer",
+            "node:http2.connect",
+            "node:http2.createServer",
+            "node:http2.createSecureServer",
+            "node:dgram.createSocket",
+            "node:dgram.Socket.connect",
+            "node:dns.lookup",
+            "node:dns.resolve",
+            "node:dns.resolve4",
+            "node:dns.resolve6",
+            "node:dns.resolveAny"
+          ],
+          "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+        },
+        "documents": [
+          {
+            "id": "enabled",
+            "base_iri": "https://example.test/page",
+            "raw_json_sha256": "ac927fefe0af308bffee44dbc05872869ad1b91f24686a5eb8bef4b513e7e5b8",
+            "contexts": [],
+            "status": "observed",
+            "expanded": [
+              {
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flattened": [
+              {
+                "@id": "_:b0",
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "notices": [],
+            "context_loads": [],
+            "error": null
+          },
+          {
+            "id": "disabled",
+            "base_iri": "https://example.test/page",
+            "raw_json_sha256": "ac927fefe0af308bffee44dbc05872869ad1b91f24686a5eb8bef4b513e7e5b8",
+            "contexts": [],
+            "status": "observed",
+            "expanded": [
+              {
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flattened": [
+              {
+                "@id": "_:b0",
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "notices": [],
+            "context_loads": [],
+            "error": null
+          }
+        ],
+        "input": {
+          "documents": [
+            {
+              "id": "enabled",
+              "base_iri": "https://example.test/page",
+              "contexts": [],
+              "raw_json": "[{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}]"
+            },
+            {
+              "id": "disabled",
+              "base_iri": "https://example.test/page",
+              "contexts": [],
+              "raw_json": "[{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}]"
+            }
+          ]
+        },
+        "source_sha256": {
+          "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+          "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+          "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+          "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+          "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+          "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a"
+        },
+        "supervisor": {
+          "python": "3.9.6",
+          "process_timeout_seconds": 30,
+          "node_old_space_mib": 128,
+          "input_byte_limit": 4194304,
+          "output_byte_limit": 16777216,
+          "document_byte_limit": 131072,
+          "context_byte_limit": 1048576
+        },
+        "limitations": [
+          "Processing observations only; no Schema.org or search-feature validation, visible facts or TSEP outcome.",
+          "All local contexts are supplied evidence, not authenticated authoritative contexts.",
+          "Notices retain omitted or transformed information; observed is not a validity or conformance verdict.",
+          "Blank-node identifiers are document scoped; separate document results are not silently merged.",
+          "Numbers use the processor JavaScript representation; unsafe integers are refused, raw numeric text remains retained.",
+          "No HTML extraction, browser observation, rendering, indexing, ranking or content truth is established."
+        ]
+      },
+      "base_parameter": {
+        "iri": "https://example.test/page",
+        "status": "supplied-hypothesis",
+        "scope": "Explicit processor input, not an inferred or observed document.baseURI. Retained base/meta elements may require another hypothesis or attributed rendered capture."
+      },
+      "limitations": [
+        "Exact application/ld+json type in ordinary HTML tree; case/space/parameter variants remain unresolved, not declared invalid.",
+        "All selected scripts in one representation are combined before processing; separate representations/documents have separate blank-node namespaces.",
+        "Any selected invalid or unsupported script prevents a combined graph; valid subsets are not promoted to a complete page.",
+        "Absence is only within this static HTML selection profile. It is not NA, a rendered-page result, or absence of Microdata/RDFa.",
+        "Base IRI is a caller-supplied hypothesis. HTML base selection, CSP, navigation attribution and actual rendered base remain to establish.",
+        "No targeted fragment/profile extraction, external script fetching, JavaScript execution or browser behavior.",
+        "Processed means transformation completed under declared inputs; notices and empty graphs remain visible. No Schema.org validation, visible-fact truth, rich-result eligibility or TSEP outcome."
+      ]
+    },
+    "two-root-graphs-remain-separate": {
+      "kind": "unapplied-html-jsonld",
+      "version": "1",
+      "normative_effect": "none",
+      "profile": "html-jsonld-exact-type-all-supplied-base-v1",
+      "input": {
+        "body_base64": "PCFkb2N0eXBlIGh0bWw+PHNjcmlwdCB0eXBlPSJhcHBsaWNhdGlvbi9sZCtqc29uIj57IkBncmFwaCI6W3siQGlkIjoiI2EiLCJodHRwczovL3NjaGVtYS5vcmcvbmFtZSI6IkEifV19PC9zY3JpcHQ+PHNjcmlwdCB0eXBlPSJhcHBsaWNhdGlvbi9sZCtqc29uIj57IkBncmFwaCI6W3siQGlkIjoiI2IiLCJodHRwczovL3NjaGVtYS5vcmcvbmFtZSI6IkIifV19PC9zY3JpcHQ+",
+        "content_types": [
+          "text/html; charset=utf-8"
+        ],
+        "base_iri": "https://example.test/page",
+        "contexts": []
+      },
+      "input_sha256": "edcd3690f163051dcdc84eba02774180f539cf7b9156c2899c03c6346fa32d36",
+      "source_sha256": {
+        "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+        "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+        "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+        "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+        "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+        "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+        "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+        "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+        "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+        "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a",
+        "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+        "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+        "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+        "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+        "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a",
+        "experiments/jsonld_html.py": "448c20e9359d274041552a588afe5f290b38e125513fa8584129e3df4ad54a00"
+      },
+      "source": {
+        "kind": "unapplied-source-scripts",
+        "version": "1",
+        "normative_effect": "none",
+        "parser": {
+          "name": "parse5",
+          "version": "8.0.1",
+          "dependency": "entities@8.0.0"
+        },
+        "runtime": {
+          "node": "v24.19.0",
+          "v8": "13.6.233.17-node.51"
+        },
+        "bounds": {
+          "source_bytes": 8388608,
+          "tree_nodes": 20000,
+          "tree_depth": 128,
+          "parse_errors": 1000,
+          "scripts": 512,
+          "context_elements": 512,
+          "payload_parts": 20000,
+          "payload_bytes": 8388608
+        },
+        "networkGuard": {
+          "guarded": [
+            "node:net.connect",
+            "node:net.createConnection",
+            "node:net.createServer",
+            "node:net.Socket.connect",
+            "node:tls.connect",
+            "node:tls.createServer",
+            "node:http.request",
+            "node:http.get",
+            "node:http.createServer",
+            "node:https.request",
+            "node:https.get",
+            "node:https.createServer",
+            "node:http2.connect",
+            "node:http2.createServer",
+            "node:http2.createSecureServer",
+            "node:dgram.createSocket",
+            "node:dgram.Socket.connect",
+            "node:dns.lookup",
+            "node:dns.resolve",
+            "node:dns.resolve4",
+            "node:dns.resolve6",
+            "node:dns.resolveAny"
+          ],
+          "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+        },
+        "parser_input_utf8_sha256": "834faaaafb8eda418fae8374b2acfd769e725b85e31d7c4fb5649544ddd62206",
+        "readings": {
+          "enabled": {
+            "complete": true,
+            "document_mode": "no-quirks",
+            "visited_nodes": 9,
+            "scripts": [
+              {
+                "node_id": 4,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    15,
+                    50
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    15,
+                    50
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    105,
+                    114
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    105,
+                    114
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 5,
+                    "data": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        50,
+                        105
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                      "body_span_bytes": [
+                        50,
+                        105
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}"
+              },
+              {
+                "node_id": 6,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    114,
+                    149
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    114,
+                    149
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    204,
+                    213
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    204,
+                    213
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 7,
+                    "data": "{\"@graph\":[{\"@id\":\"#b\",\"https://schema.org/name\":\"B\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        149,
+                        204
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"#b\",\"https://schema.org/name\":\"B\"}]}",
+                      "body_span_bytes": [
+                        149,
+                        204
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"#b\",\"https://schema.org/name\":\"B\"}]}"
+              }
+            ],
+            "context_elements": [],
+            "parse_errors": []
+          },
+          "disabled": {
+            "complete": true,
+            "document_mode": "no-quirks",
+            "visited_nodes": 9,
+            "scripts": [
+              {
+                "node_id": 4,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    15,
+                    50
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    15,
+                    50
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    105,
+                    114
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    105,
+                    114
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 5,
+                    "data": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        50,
+                        105
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                      "body_span_bytes": [
+                        50,
+                        105
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}"
+              },
+              {
+                "node_id": 6,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    114,
+                    149
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    114,
+                    149
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    204,
+                    213
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    204,
+                    213
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 7,
+                    "data": "{\"@graph\":[{\"@id\":\"#b\",\"https://schema.org/name\":\"B\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        149,
+                        204
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"#b\",\"https://schema.org/name\":\"B\"}]}",
+                      "body_span_bytes": [
+                        149,
+                        204
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"#b\",\"https://schema.org/name\":\"B\"}]}"
+              }
+            ],
+            "context_elements": [],
+            "parse_errors": []
+          }
+        },
+        "decoding": {
+          "profile": "html-http-utf8-v1",
+          "content_types": [
+            "text/html; charset=utf-8"
+          ],
+          "body_sha256": "834faaaafb8eda418fae8374b2acfd769e725b85e31d7c4fb5649544ddd62206",
+          "body_bytes": 213,
+          "consumed_bom_bytes": 0,
+          "parser_input_utf8_sha256": "834faaaafb8eda418fae8374b2acfd769e725b85e31d7c4fb5649544ddd62206",
+          "parser_input_utf16_units": 213,
+          "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+        },
+        "source_sha256": {
+          "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+          "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+          "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+          "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+          "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+          "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+          "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+          "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+          "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+          "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a"
+        },
+        "supervisor": {
+          "python": "3.9.6",
+          "process_timeout_seconds": 30,
+          "node_old_space_mib": 128,
+          "output_byte_limit": 33554432
+        },
+        "limitations": [
+          "Two static HTML hypotheses; no source JavaScript, browser, CSS visibility or search-engine reading.",
+          "Template fragments and foreign scripts are inventoried separately; no shadow attachment or frame document extraction.",
+          "Original bytes, parser text and locations are distinct; text normalization is not repaired or hidden.",
+          "Source completeness and actual HTTP/navigation provenance must be established by separate capture evidence.",
+          "Inventory only; no JSON-LD selection, graph, vocabulary validation or TSEP verdict."
+        ]
+      },
+      "readings": {
+        "enabled": {
+          "status": "processed",
+          "selected_count": 2,
+          "diagnostics": [
+            {
+              "node_id": 4,
+              "selection": "selected",
+              "payload_sha256": "2c1ed27b5e49aac150609b36a2e1e64e4e28c436144a605aa1ac910f96c902e0",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            },
+            {
+              "node_id": 6,
+              "selection": "selected",
+              "payload_sha256": "5edae64946f53d7abece342140170a7af4afc0b9e534b12da913ab25f6e08429",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            }
+          ],
+          "combined_sha256": "55dfce713d40d4385441ab90f4a6d761b77d7faff4107ecc54b319f9ce931dd0",
+          "root_items": 2,
+          "processing_index": 0
+        },
+        "disabled": {
+          "status": "processed",
+          "selected_count": 2,
+          "diagnostics": [
+            {
+              "node_id": 4,
+              "selection": "selected",
+              "payload_sha256": "2c1ed27b5e49aac150609b36a2e1e64e4e28c436144a605aa1ac910f96c902e0",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            },
+            {
+              "node_id": 6,
+              "selection": "selected",
+              "payload_sha256": "5edae64946f53d7abece342140170a7af4afc0b9e534b12da913ab25f6e08429",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            }
+          ],
+          "combined_sha256": "55dfce713d40d4385441ab90f4a6d761b77d7faff4107ecc54b319f9ce931dd0",
+          "root_items": 2,
+          "processing_index": 1
+        }
+      },
+      "processing": {
+        "kind": "unapplied-jsonld-processing",
+        "version": "1",
+        "normative_effect": "none",
+        "request_sha256": "f6429ae206487ce50d25241ce9026ecd106126fce5048e71d5fc76a0c31f04a9",
+        "processor": {
+          "name": "jsonld",
+          "version": "9.0.0",
+          "member": "dist/jsonld.esm.js"
+        },
+        "runtime": {
+          "node": "v24.19.0",
+          "v8": "13.6.233.17-node.51"
+        },
+        "network_guard": {
+          "guarded": [
+            "node:net.connect",
+            "node:net.createConnection",
+            "node:net.createServer",
+            "node:net.Socket.connect",
+            "node:tls.connect",
+            "node:tls.createServer",
+            "node:http.request",
+            "node:http.get",
+            "node:http.createServer",
+            "node:https.request",
+            "node:https.get",
+            "node:https.createServer",
+            "node:http2.connect",
+            "node:http2.createServer",
+            "node:http2.createSecureServer",
+            "node:dgram.createSocket",
+            "node:dgram.Socket.connect",
+            "node:dns.lookup",
+            "node:dns.resolve",
+            "node:dns.resolve4",
+            "node:dns.resolve6",
+            "node:dns.resolveAny"
+          ],
+          "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+        },
+        "documents": [
+          {
+            "id": "enabled",
+            "base_iri": "https://example.test/page",
+            "raw_json_sha256": "55dfce713d40d4385441ab90f4a6d761b77d7faff4107ecc54b319f9ce931dd0",
+            "contexts": [],
+            "status": "observed",
+            "expanded": [
+              {
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#b",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flattened": [
+              {
+                "@id": "_:b0",
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@id": "_:b1",
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#b",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "notices": [],
+            "context_loads": [],
+            "error": null
+          },
+          {
+            "id": "disabled",
+            "base_iri": "https://example.test/page",
+            "raw_json_sha256": "55dfce713d40d4385441ab90f4a6d761b77d7faff4107ecc54b319f9ce931dd0",
+            "contexts": [],
+            "status": "observed",
+            "expanded": [
+              {
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#b",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flattened": [
+              {
+                "@id": "_:b0",
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@id": "_:b1",
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#b",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "notices": [],
+            "context_loads": [],
+            "error": null
+          }
+        ],
+        "input": {
+          "documents": [
+            {
+              "id": "enabled",
+              "base_iri": "https://example.test/page",
+              "contexts": [],
+              "raw_json": "[{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]},{\"@graph\":[{\"@id\":\"#b\",\"https://schema.org/name\":\"B\"}]}]"
+            },
+            {
+              "id": "disabled",
+              "base_iri": "https://example.test/page",
+              "contexts": [],
+              "raw_json": "[{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]},{\"@graph\":[{\"@id\":\"#b\",\"https://schema.org/name\":\"B\"}]}]"
+            }
+          ]
+        },
+        "source_sha256": {
+          "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+          "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+          "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+          "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+          "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+          "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a"
+        },
+        "supervisor": {
+          "python": "3.9.6",
+          "process_timeout_seconds": 30,
+          "node_old_space_mib": 128,
+          "input_byte_limit": 4194304,
+          "output_byte_limit": 16777216,
+          "document_byte_limit": 131072,
+          "context_byte_limit": 1048576
+        },
+        "limitations": [
+          "Processing observations only; no Schema.org or search-feature validation, visible facts or TSEP outcome.",
+          "All local contexts are supplied evidence, not authenticated authoritative contexts.",
+          "Notices retain omitted or transformed information; observed is not a validity or conformance verdict.",
+          "Blank-node identifiers are document scoped; separate document results are not silently merged.",
+          "Numbers use the processor JavaScript representation; unsafe integers are refused, raw numeric text remains retained.",
+          "No HTML extraction, browser observation, rendering, indexing, ranking or content truth is established."
+        ]
+      },
+      "base_parameter": {
+        "iri": "https://example.test/page",
+        "status": "supplied-hypothesis",
+        "scope": "Explicit processor input, not an inferred or observed document.baseURI. Retained base/meta elements may require another hypothesis or attributed rendered capture."
+      },
+      "limitations": [
+        "Exact application/ld+json type in ordinary HTML tree; case/space/parameter variants remain unresolved, not declared invalid.",
+        "All selected scripts in one representation are combined before processing; separate representations/documents have separate blank-node namespaces.",
+        "Any selected invalid or unsupported script prevents a combined graph; valid subsets are not promoted to a complete page.",
+        "Absence is only within this static HTML selection profile. It is not NA, a rendered-page result, or absence of Microdata/RDFa.",
+        "Base IRI is a caller-supplied hypothesis. HTML base selection, CSP, navigation attribution and actual rendered base remain to establish.",
+        "No targeted fragment/profile extraction, external script fetching, JavaScript execution or browser behavior.",
+        "Processed means transformation completed under declared inputs; notices and empty graphs remain visible. No Schema.org validation, visible-fact truth, rich-result eligibility or TSEP outcome."
+      ]
+    },
+    "same-iri-descriptions-different-graphs": {
+      "kind": "unapplied-html-jsonld",
+      "version": "1",
+      "normative_effect": "none",
+      "profile": "html-jsonld-exact-type-all-supplied-base-v1",
+      "input": {
+        "body_base64": "PCFkb2N0eXBlIGh0bWw+PHNjcmlwdCB0eXBlPSJhcHBsaWNhdGlvbi9sZCtqc29uIj57IkBncmFwaCI6W3siQGlkIjoiI2EiLCJodHRwczovL3NjaGVtYS5vcmcvbmFtZSI6IkEifV19PC9zY3JpcHQ+PHNjcmlwdCB0eXBlPSJhcHBsaWNhdGlvbi9sZCtqc29uIj57IkBncmFwaCI6W3siQGlkIjoiI2EiLCJodHRwczovL3NjaGVtYS5vcmcvbmFtZSI6IkIifV19PC9zY3JpcHQ+",
+        "content_types": [
+          "text/html; charset=utf-8"
+        ],
+        "base_iri": "https://example.test/page",
+        "contexts": []
+      },
+      "input_sha256": "10ddd9f3fee12b889ff890f1459eeba0094a96d65bcb3566589030dabed1f7a3",
+      "source_sha256": {
+        "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+        "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+        "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+        "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+        "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+        "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+        "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+        "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+        "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+        "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a",
+        "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+        "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+        "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+        "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+        "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a",
+        "experiments/jsonld_html.py": "448c20e9359d274041552a588afe5f290b38e125513fa8584129e3df4ad54a00"
+      },
+      "source": {
+        "kind": "unapplied-source-scripts",
+        "version": "1",
+        "normative_effect": "none",
+        "parser": {
+          "name": "parse5",
+          "version": "8.0.1",
+          "dependency": "entities@8.0.0"
+        },
+        "runtime": {
+          "node": "v24.19.0",
+          "v8": "13.6.233.17-node.51"
+        },
+        "bounds": {
+          "source_bytes": 8388608,
+          "tree_nodes": 20000,
+          "tree_depth": 128,
+          "parse_errors": 1000,
+          "scripts": 512,
+          "context_elements": 512,
+          "payload_parts": 20000,
+          "payload_bytes": 8388608
+        },
+        "networkGuard": {
+          "guarded": [
+            "node:net.connect",
+            "node:net.createConnection",
+            "node:net.createServer",
+            "node:net.Socket.connect",
+            "node:tls.connect",
+            "node:tls.createServer",
+            "node:http.request",
+            "node:http.get",
+            "node:http.createServer",
+            "node:https.request",
+            "node:https.get",
+            "node:https.createServer",
+            "node:http2.connect",
+            "node:http2.createServer",
+            "node:http2.createSecureServer",
+            "node:dgram.createSocket",
+            "node:dgram.Socket.connect",
+            "node:dns.lookup",
+            "node:dns.resolve",
+            "node:dns.resolve4",
+            "node:dns.resolve6",
+            "node:dns.resolveAny"
+          ],
+          "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+        },
+        "parser_input_utf8_sha256": "fbd064021712a54ace031cbc3fe189a37a6b9516cc682083badfe60378b842ef",
+        "readings": {
+          "enabled": {
+            "complete": true,
+            "document_mode": "no-quirks",
+            "visited_nodes": 9,
+            "scripts": [
+              {
+                "node_id": 4,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    15,
+                    50
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    15,
+                    50
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    105,
+                    114
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    105,
+                    114
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 5,
+                    "data": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        50,
+                        105
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                      "body_span_bytes": [
+                        50,
+                        105
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}"
+              },
+              {
+                "node_id": 6,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    114,
+                    149
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    114,
+                    149
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    204,
+                    213
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    204,
+                    213
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 7,
+                    "data": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"B\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        149,
+                        204
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"B\"}]}",
+                      "body_span_bytes": [
+                        149,
+                        204
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"B\"}]}"
+              }
+            ],
+            "context_elements": [],
+            "parse_errors": []
+          },
+          "disabled": {
+            "complete": true,
+            "document_mode": "no-quirks",
+            "visited_nodes": 9,
+            "scripts": [
+              {
+                "node_id": 4,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    15,
+                    50
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    15,
+                    50
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    105,
+                    114
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    105,
+                    114
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 5,
+                    "data": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        50,
+                        105
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                      "body_span_bytes": [
+                        50,
+                        105
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}"
+              },
+              {
+                "node_id": 6,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    114,
+                    149
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    114,
+                    149
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    204,
+                    213
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    204,
+                    213
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 7,
+                    "data": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"B\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        149,
+                        204
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"B\"}]}",
+                      "body_span_bytes": [
+                        149,
+                        204
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"B\"}]}"
+              }
+            ],
+            "context_elements": [],
+            "parse_errors": []
+          }
+        },
+        "decoding": {
+          "profile": "html-http-utf8-v1",
+          "content_types": [
+            "text/html; charset=utf-8"
+          ],
+          "body_sha256": "fbd064021712a54ace031cbc3fe189a37a6b9516cc682083badfe60378b842ef",
+          "body_bytes": 213,
+          "consumed_bom_bytes": 0,
+          "parser_input_utf8_sha256": "fbd064021712a54ace031cbc3fe189a37a6b9516cc682083badfe60378b842ef",
+          "parser_input_utf16_units": 213,
+          "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+        },
+        "source_sha256": {
+          "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+          "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+          "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+          "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+          "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+          "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+          "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+          "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+          "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+          "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a"
+        },
+        "supervisor": {
+          "python": "3.9.6",
+          "process_timeout_seconds": 30,
+          "node_old_space_mib": 128,
+          "output_byte_limit": 33554432
+        },
+        "limitations": [
+          "Two static HTML hypotheses; no source JavaScript, browser, CSS visibility or search-engine reading.",
+          "Template fragments and foreign scripts are inventoried separately; no shadow attachment or frame document extraction.",
+          "Original bytes, parser text and locations are distinct; text normalization is not repaired or hidden.",
+          "Source completeness and actual HTTP/navigation provenance must be established by separate capture evidence.",
+          "Inventory only; no JSON-LD selection, graph, vocabulary validation or TSEP verdict."
+        ]
+      },
+      "readings": {
+        "enabled": {
+          "status": "processed",
+          "selected_count": 2,
+          "diagnostics": [
+            {
+              "node_id": 4,
+              "selection": "selected",
+              "payload_sha256": "2c1ed27b5e49aac150609b36a2e1e64e4e28c436144a605aa1ac910f96c902e0",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            },
+            {
+              "node_id": 6,
+              "selection": "selected",
+              "payload_sha256": "84dd9be9cbbdd3f1ada6c18d8fb7e26823de43acf02df93091051c7b5723e4de",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            }
+          ],
+          "combined_sha256": "91278d987816d010015f0c489348d7880a1eb725b7af97ff8781f907e91d29fa",
+          "root_items": 2,
+          "processing_index": 0
+        },
+        "disabled": {
+          "status": "processed",
+          "selected_count": 2,
+          "diagnostics": [
+            {
+              "node_id": 4,
+              "selection": "selected",
+              "payload_sha256": "2c1ed27b5e49aac150609b36a2e1e64e4e28c436144a605aa1ac910f96c902e0",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            },
+            {
+              "node_id": 6,
+              "selection": "selected",
+              "payload_sha256": "84dd9be9cbbdd3f1ada6c18d8fb7e26823de43acf02df93091051c7b5723e4de",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            }
+          ],
+          "combined_sha256": "91278d987816d010015f0c489348d7880a1eb725b7af97ff8781f907e91d29fa",
+          "root_items": 2,
+          "processing_index": 1
+        }
+      },
+      "processing": {
+        "kind": "unapplied-jsonld-processing",
+        "version": "1",
+        "normative_effect": "none",
+        "request_sha256": "3b2faa674e69955c8d6761ae41c12997447d4842b52b82f735344e3a8d807dee",
+        "processor": {
+          "name": "jsonld",
+          "version": "9.0.0",
+          "member": "dist/jsonld.esm.js"
+        },
+        "runtime": {
+          "node": "v24.19.0",
+          "v8": "13.6.233.17-node.51"
+        },
+        "network_guard": {
+          "guarded": [
+            "node:net.connect",
+            "node:net.createConnection",
+            "node:net.createServer",
+            "node:net.Socket.connect",
+            "node:tls.connect",
+            "node:tls.createServer",
+            "node:http.request",
+            "node:http.get",
+            "node:http.createServer",
+            "node:https.request",
+            "node:https.get",
+            "node:https.createServer",
+            "node:http2.connect",
+            "node:http2.createServer",
+            "node:http2.createSecureServer",
+            "node:dgram.createSocket",
+            "node:dgram.Socket.connect",
+            "node:dns.lookup",
+            "node:dns.resolve",
+            "node:dns.resolve4",
+            "node:dns.resolve6",
+            "node:dns.resolveAny"
+          ],
+          "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+        },
+        "documents": [
+          {
+            "id": "enabled",
+            "base_iri": "https://example.test/page",
+            "raw_json_sha256": "91278d987816d010015f0c489348d7880a1eb725b7af97ff8781f907e91d29fa",
+            "contexts": [],
+            "status": "observed",
+            "expanded": [
+              {
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flattened": [
+              {
+                "@id": "_:b0",
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@id": "_:b1",
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "notices": [],
+            "context_loads": [],
+            "error": null
+          },
+          {
+            "id": "disabled",
+            "base_iri": "https://example.test/page",
+            "raw_json_sha256": "91278d987816d010015f0c489348d7880a1eb725b7af97ff8781f907e91d29fa",
+            "contexts": [],
+            "status": "observed",
+            "expanded": [
+              {
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flattened": [
+              {
+                "@id": "_:b0",
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@id": "_:b1",
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "notices": [],
+            "context_loads": [],
+            "error": null
+          }
+        ],
+        "input": {
+          "documents": [
+            {
+              "id": "enabled",
+              "base_iri": "https://example.test/page",
+              "contexts": [],
+              "raw_json": "[{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]},{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"B\"}]}]"
+            },
+            {
+              "id": "disabled",
+              "base_iri": "https://example.test/page",
+              "contexts": [],
+              "raw_json": "[{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]},{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"B\"}]}]"
+            }
+          ]
+        },
+        "source_sha256": {
+          "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+          "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+          "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+          "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+          "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+          "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a"
+        },
+        "supervisor": {
+          "python": "3.9.6",
+          "process_timeout_seconds": 30,
+          "node_old_space_mib": 128,
+          "input_byte_limit": 4194304,
+          "output_byte_limit": 16777216,
+          "document_byte_limit": 131072,
+          "context_byte_limit": 1048576
+        },
+        "limitations": [
+          "Processing observations only; no Schema.org or search-feature validation, visible facts or TSEP outcome.",
+          "All local contexts are supplied evidence, not authenticated authoritative contexts.",
+          "Notices retain omitted or transformed information; observed is not a validity or conformance verdict.",
+          "Blank-node identifiers are document scoped; separate document results are not silently merged.",
+          "Numbers use the processor JavaScript representation; unsafe integers are refused, raw numeric text remains retained.",
+          "No HTML extraction, browser observation, rendering, indexing, ranking or content truth is established."
+        ]
+      },
+      "base_parameter": {
+        "iri": "https://example.test/page",
+        "status": "supplied-hypothesis",
+        "scope": "Explicit processor input, not an inferred or observed document.baseURI. Retained base/meta elements may require another hypothesis or attributed rendered capture."
+      },
+      "limitations": [
+        "Exact application/ld+json type in ordinary HTML tree; case/space/parameter variants remain unresolved, not declared invalid.",
+        "All selected scripts in one representation are combined before processing; separate representations/documents have separate blank-node namespaces.",
+        "Any selected invalid or unsupported script prevents a combined graph; valid subsets are not promoted to a complete page.",
+        "Absence is only within this static HTML selection profile. It is not NA, a rendered-page result, or absence of Microdata/RDFa.",
+        "Base IRI is a caller-supplied hypothesis. HTML base selection, CSP, navigation attribution and actual rendered base remain to establish.",
+        "No targeted fragment/profile extraction, external script fetching, JavaScript execution or browser behavior.",
+        "Processed means transformation completed under declared inputs; notices and empty graphs remain visible. No Schema.org validation, visible-fact truth, rich-result eligibility or TSEP outcome."
+      ]
+    },
+    "blank-node-shared-between-graphs": {
+      "kind": "unapplied-html-jsonld",
+      "version": "1",
+      "normative_effect": "none",
+      "profile": "html-jsonld-exact-type-all-supplied-base-v1",
+      "input": {
+        "body_base64": "PCFkb2N0eXBlIGh0bWw+PHNjcmlwdCB0eXBlPSJhcHBsaWNhdGlvbi9sZCtqc29uIj57IkBncmFwaCI6W3siQGlkIjoiXzpwZXJzb24iLCJodHRwczovL3NjaGVtYS5vcmcvbmFtZSI6IkEifV19PC9zY3JpcHQ+PHNjcmlwdCB0eXBlPSJhcHBsaWNhdGlvbi9sZCtqc29uIj57IkBncmFwaCI6W3siQGlkIjoiXzpwZXJzb24iLCJodHRwczovL3NjaGVtYS5vcmcvbmFtZSI6IkIifV19PC9zY3JpcHQ+",
+        "content_types": [
+          "text/html; charset=utf-8"
+        ],
+        "base_iri": "https://example.test/page",
+        "contexts": []
+      },
+      "input_sha256": "fe6ee365811e7047e5cfa79e14200164f2638da5d642879133ab8a4c35c212b7",
+      "source_sha256": {
+        "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+        "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+        "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+        "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+        "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+        "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+        "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+        "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+        "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+        "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a",
+        "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+        "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+        "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+        "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+        "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a",
+        "experiments/jsonld_html.py": "448c20e9359d274041552a588afe5f290b38e125513fa8584129e3df4ad54a00"
+      },
+      "source": {
+        "kind": "unapplied-source-scripts",
+        "version": "1",
+        "normative_effect": "none",
+        "parser": {
+          "name": "parse5",
+          "version": "8.0.1",
+          "dependency": "entities@8.0.0"
+        },
+        "runtime": {
+          "node": "v24.19.0",
+          "v8": "13.6.233.17-node.51"
+        },
+        "bounds": {
+          "source_bytes": 8388608,
+          "tree_nodes": 20000,
+          "tree_depth": 128,
+          "parse_errors": 1000,
+          "scripts": 512,
+          "context_elements": 512,
+          "payload_parts": 20000,
+          "payload_bytes": 8388608
+        },
+        "networkGuard": {
+          "guarded": [
+            "node:net.connect",
+            "node:net.createConnection",
+            "node:net.createServer",
+            "node:net.Socket.connect",
+            "node:tls.connect",
+            "node:tls.createServer",
+            "node:http.request",
+            "node:http.get",
+            "node:http.createServer",
+            "node:https.request",
+            "node:https.get",
+            "node:https.createServer",
+            "node:http2.connect",
+            "node:http2.createServer",
+            "node:http2.createSecureServer",
+            "node:dgram.createSocket",
+            "node:dgram.Socket.connect",
+            "node:dns.lookup",
+            "node:dns.resolve",
+            "node:dns.resolve4",
+            "node:dns.resolve6",
+            "node:dns.resolveAny"
+          ],
+          "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+        },
+        "parser_input_utf8_sha256": "8284b5d77cae287a4b7e9111663c2cc4832cf5160bb99c050d8b6882550234a2",
+        "readings": {
+          "enabled": {
+            "complete": true,
+            "document_mode": "no-quirks",
+            "visited_nodes": 9,
+            "scripts": [
+              {
+                "node_id": 4,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    15,
+                    50
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    15,
+                    50
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    111,
+                    120
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    111,
+                    120
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 5,
+                    "data": "{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"A\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        50,
+                        111
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"A\"}]}",
+                      "body_span_bytes": [
+                        50,
+                        111
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"A\"}]}"
+              },
+              {
+                "node_id": 6,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    120,
+                    155
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    120,
+                    155
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    216,
+                    225
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    216,
+                    225
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 7,
+                    "data": "{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"B\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        155,
+                        216
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"B\"}]}",
+                      "body_span_bytes": [
+                        155,
+                        216
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"B\"}]}"
+              }
+            ],
+            "context_elements": [],
+            "parse_errors": []
+          },
+          "disabled": {
+            "complete": true,
+            "document_mode": "no-quirks",
+            "visited_nodes": 9,
+            "scripts": [
+              {
+                "node_id": 4,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    15,
+                    50
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    15,
+                    50
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    111,
+                    120
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    111,
+                    120
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 5,
+                    "data": "{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"A\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        50,
+                        111
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"A\"}]}",
+                      "body_span_bytes": [
+                        50,
+                        111
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"A\"}]}"
+              },
+              {
+                "node_id": 6,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    120,
+                    155
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    120,
+                    155
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    216,
+                    225
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    216,
+                    225
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 7,
+                    "data": "{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"B\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        155,
+                        216
+                      ],
+                      "raw_source": "{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"B\"}]}",
+                      "body_span_bytes": [
+                        155,
+                        216
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"B\"}]}"
+              }
+            ],
+            "context_elements": [],
+            "parse_errors": []
+          }
+        },
+        "decoding": {
+          "profile": "html-http-utf8-v1",
+          "content_types": [
+            "text/html; charset=utf-8"
+          ],
+          "body_sha256": "8284b5d77cae287a4b7e9111663c2cc4832cf5160bb99c050d8b6882550234a2",
+          "body_bytes": 225,
+          "consumed_bom_bytes": 0,
+          "parser_input_utf8_sha256": "8284b5d77cae287a4b7e9111663c2cc4832cf5160bb99c050d8b6882550234a2",
+          "parser_input_utf16_units": 225,
+          "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+        },
+        "source_sha256": {
+          "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+          "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+          "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+          "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+          "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+          "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+          "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+          "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+          "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+          "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a"
+        },
+        "supervisor": {
+          "python": "3.9.6",
+          "process_timeout_seconds": 30,
+          "node_old_space_mib": 128,
+          "output_byte_limit": 33554432
+        },
+        "limitations": [
+          "Two static HTML hypotheses; no source JavaScript, browser, CSS visibility or search-engine reading.",
+          "Template fragments and foreign scripts are inventoried separately; no shadow attachment or frame document extraction.",
+          "Original bytes, parser text and locations are distinct; text normalization is not repaired or hidden.",
+          "Source completeness and actual HTTP/navigation provenance must be established by separate capture evidence.",
+          "Inventory only; no JSON-LD selection, graph, vocabulary validation or TSEP verdict."
+        ]
+      },
+      "readings": {
+        "enabled": {
+          "status": "processed",
+          "selected_count": 2,
+          "diagnostics": [
+            {
+              "node_id": 4,
+              "selection": "selected",
+              "payload_sha256": "688d1f0819a6f527ed306c5d1b4e6eb689014225504b9a692955eb39a1ee9313",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            },
+            {
+              "node_id": 6,
+              "selection": "selected",
+              "payload_sha256": "cffcd9275a0bbea78f61d2f923aaaeb66af9c71cafad7bf1204338e434d414de",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            }
+          ],
+          "combined_sha256": "06261b44255434205f7dcd32f7000f387ee9a8dd4780967181cb5d59b0b6444c",
+          "root_items": 2,
+          "processing_index": 0
+        },
+        "disabled": {
+          "status": "processed",
+          "selected_count": 2,
+          "diagnostics": [
+            {
+              "node_id": 4,
+              "selection": "selected",
+              "payload_sha256": "688d1f0819a6f527ed306c5d1b4e6eb689014225504b9a692955eb39a1ee9313",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            },
+            {
+              "node_id": 6,
+              "selection": "selected",
+              "payload_sha256": "cffcd9275a0bbea78f61d2f923aaaeb66af9c71cafad7bf1204338e434d414de",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            }
+          ],
+          "combined_sha256": "06261b44255434205f7dcd32f7000f387ee9a8dd4780967181cb5d59b0b6444c",
+          "root_items": 2,
+          "processing_index": 1
+        }
+      },
+      "processing": {
+        "kind": "unapplied-jsonld-processing",
+        "version": "1",
+        "normative_effect": "none",
+        "request_sha256": "659b78166fe117041fee9ba0d7524e1a0462135b369441d6e27d0704c88de18d",
+        "processor": {
+          "name": "jsonld",
+          "version": "9.0.0",
+          "member": "dist/jsonld.esm.js"
+        },
+        "runtime": {
+          "node": "v24.19.0",
+          "v8": "13.6.233.17-node.51"
+        },
+        "network_guard": {
+          "guarded": [
+            "node:net.connect",
+            "node:net.createConnection",
+            "node:net.createServer",
+            "node:net.Socket.connect",
+            "node:tls.connect",
+            "node:tls.createServer",
+            "node:http.request",
+            "node:http.get",
+            "node:http.createServer",
+            "node:https.request",
+            "node:https.get",
+            "node:https.createServer",
+            "node:http2.connect",
+            "node:http2.createServer",
+            "node:http2.createSecureServer",
+            "node:dgram.createSocket",
+            "node:dgram.Socket.connect",
+            "node:dns.lookup",
+            "node:dns.resolve",
+            "node:dns.resolve4",
+            "node:dns.resolve6",
+            "node:dns.resolveAny"
+          ],
+          "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+        },
+        "documents": [
+          {
+            "id": "enabled",
+            "base_iri": "https://example.test/page",
+            "raw_json_sha256": "06261b44255434205f7dcd32f7000f387ee9a8dd4780967181cb5d59b0b6444c",
+            "contexts": [],
+            "status": "observed",
+            "expanded": [
+              {
+                "@graph": [
+                  {
+                    "@id": "_:person",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@graph": [
+                  {
+                    "@id": "_:person",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flattened": [
+              {
+                "@id": "_:b0",
+                "@graph": [
+                  {
+                    "@id": "_:b1",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@id": "_:b2",
+                "@graph": [
+                  {
+                    "@id": "_:b1",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "notices": [],
+            "context_loads": [],
+            "error": null
+          },
+          {
+            "id": "disabled",
+            "base_iri": "https://example.test/page",
+            "raw_json_sha256": "06261b44255434205f7dcd32f7000f387ee9a8dd4780967181cb5d59b0b6444c",
+            "contexts": [],
+            "status": "observed",
+            "expanded": [
+              {
+                "@graph": [
+                  {
+                    "@id": "_:person",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@graph": [
+                  {
+                    "@id": "_:person",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flattened": [
+              {
+                "@id": "_:b0",
+                "@graph": [
+                  {
+                    "@id": "_:b1",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "@id": "_:b2",
+                "@graph": [
+                  {
+                    "@id": "_:b1",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "B"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "notices": [],
+            "context_loads": [],
+            "error": null
+          }
+        ],
+        "input": {
+          "documents": [
+            {
+              "id": "enabled",
+              "base_iri": "https://example.test/page",
+              "contexts": [],
+              "raw_json": "[{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"A\"}]},{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"B\"}]}]"
+            },
+            {
+              "id": "disabled",
+              "base_iri": "https://example.test/page",
+              "contexts": [],
+              "raw_json": "[{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"A\"}]},{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"B\"}]}]"
+            }
+          ]
+        },
+        "source_sha256": {
+          "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+          "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+          "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+          "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+          "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+          "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a"
+        },
+        "supervisor": {
+          "python": "3.9.6",
+          "process_timeout_seconds": 30,
+          "node_old_space_mib": 128,
+          "input_byte_limit": 4194304,
+          "output_byte_limit": 16777216,
+          "document_byte_limit": 131072,
+          "context_byte_limit": 1048576
+        },
+        "limitations": [
+          "Processing observations only; no Schema.org or search-feature validation, visible facts or TSEP outcome.",
+          "All local contexts are supplied evidence, not authenticated authoritative contexts.",
+          "Notices retain omitted or transformed information; observed is not a validity or conformance verdict.",
+          "Blank-node identifiers are document scoped; separate document results are not silently merged.",
+          "Numbers use the processor JavaScript representation; unsafe integers are refused, raw numeric text remains retained.",
+          "No HTML extraction, browser observation, rendering, indexing, ranking or content truth is established."
+        ]
+      },
+      "base_parameter": {
+        "iri": "https://example.test/page",
+        "status": "supplied-hypothesis",
+        "scope": "Explicit processor input, not an inferred or observed document.baseURI. Retained base/meta elements may require another hypothesis or attributed rendered capture."
+      },
+      "limitations": [
+        "Exact application/ld+json type in ordinary HTML tree; case/space/parameter variants remain unresolved, not declared invalid.",
+        "All selected scripts in one representation are combined before processing; separate representations/documents have separate blank-node namespaces.",
+        "Any selected invalid or unsupported script prevents a combined graph; valid subsets are not promoted to a complete page.",
+        "Absence is only within this static HTML selection profile. It is not NA, a rendered-page result, or absence of Microdata/RDFa.",
+        "Base IRI is a caller-supplied hypothesis. HTML base selection, CSP, navigation attribution and actual rendered base remain to establish.",
+        "No targeted fragment/profile extraction, external script fetching, JavaScript execution or browser behavior.",
+        "Processed means transformation completed under declared inputs; notices and empty graphs remain visible. No Schema.org validation, visible-fact truth, rich-result eligibility or TSEP outcome."
+      ]
+    },
+    "aliased-root-graph": {
+      "kind": "unapplied-html-jsonld",
+      "version": "1",
+      "normative_effect": "none",
+      "profile": "html-jsonld-exact-type-all-supplied-base-v1",
+      "input": {
+        "body_base64": "PCFkb2N0eXBlIGh0bWw+PHNjcmlwdCB0eXBlPSJhcHBsaWNhdGlvbi9sZCtqc29uIj57IkBjb250ZXh0Ijp7ImciOiJAZ3JhcGgifSwiZyI6W3siQGlkIjoiI2EiLCJodHRwczovL3NjaGVtYS5vcmcvbmFtZSI6IkEifV19PC9zY3JpcHQ+",
+        "content_types": [
+          "text/html; charset=utf-8"
+        ],
+        "base_iri": "https://example.test/page",
+        "contexts": []
+      },
+      "input_sha256": "5a2bf6fc47a0b24567c248aa5781e6e4dfa2a71ed2533ccd65caa0840e5e46e4",
+      "source_sha256": {
+        "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+        "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+        "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+        "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+        "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+        "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+        "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+        "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+        "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+        "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a",
+        "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+        "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+        "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+        "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+        "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a",
+        "experiments/jsonld_html.py": "448c20e9359d274041552a588afe5f290b38e125513fa8584129e3df4ad54a00"
+      },
+      "source": {
+        "kind": "unapplied-source-scripts",
+        "version": "1",
+        "normative_effect": "none",
+        "parser": {
+          "name": "parse5",
+          "version": "8.0.1",
+          "dependency": "entities@8.0.0"
+        },
+        "runtime": {
+          "node": "v24.19.0",
+          "v8": "13.6.233.17-node.51"
+        },
+        "bounds": {
+          "source_bytes": 8388608,
+          "tree_nodes": 20000,
+          "tree_depth": 128,
+          "parse_errors": 1000,
+          "scripts": 512,
+          "context_elements": 512,
+          "payload_parts": 20000,
+          "payload_bytes": 8388608
+        },
+        "networkGuard": {
+          "guarded": [
+            "node:net.connect",
+            "node:net.createConnection",
+            "node:net.createServer",
+            "node:net.Socket.connect",
+            "node:tls.connect",
+            "node:tls.createServer",
+            "node:http.request",
+            "node:http.get",
+            "node:http.createServer",
+            "node:https.request",
+            "node:https.get",
+            "node:https.createServer",
+            "node:http2.connect",
+            "node:http2.createServer",
+            "node:http2.createSecureServer",
+            "node:dgram.createSocket",
+            "node:dgram.Socket.connect",
+            "node:dns.lookup",
+            "node:dns.resolve",
+            "node:dns.resolve4",
+            "node:dns.resolve6",
+            "node:dns.resolveAny"
+          ],
+          "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+        },
+        "parser_input_utf8_sha256": "67617d792a06e0786c3889dabbdd3e360e102979bed1899d8e85796e2f4d2926",
+        "readings": {
+          "enabled": {
+            "complete": true,
+            "document_mode": "no-quirks",
+            "visited_nodes": 7,
+            "scripts": [
+              {
+                "node_id": 4,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    15,
+                    50
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    15,
+                    50
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    126,
+                    135
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    126,
+                    135
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 5,
+                    "data": "{\"@context\":{\"g\":\"@graph\"},\"g\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        50,
+                        126
+                      ],
+                      "raw_source": "{\"@context\":{\"g\":\"@graph\"},\"g\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                      "body_span_bytes": [
+                        50,
+                        126
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@context\":{\"g\":\"@graph\"},\"g\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}"
+              }
+            ],
+            "context_elements": [],
+            "parse_errors": []
+          },
+          "disabled": {
+            "complete": true,
+            "document_mode": "no-quirks",
+            "visited_nodes": 7,
+            "scripts": [
+              {
+                "node_id": 4,
+                "name": "script",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "ancestors": [
+                  {
+                    "node_id": 2,
+                    "name": "html",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  },
+                  {
+                    "node_id": 3,
+                    "name": "head",
+                    "namespace": "http://www.w3.org/1999/xhtml"
+                  }
+                ],
+                "template_path": [],
+                "attributes": [
+                  {
+                    "name": "type",
+                    "namespace": null,
+                    "prefix": null,
+                    "value": "application/ld+json"
+                  }
+                ],
+                "start_tag": {
+                  "source_span_utf16": [
+                    15,
+                    50
+                  ],
+                  "raw_source": "<script type=\"application/ld+json\">",
+                  "body_span_bytes": [
+                    15,
+                    50
+                  ]
+                },
+                "end_tag": {
+                  "source_span_utf16": [
+                    126,
+                    135
+                  ],
+                  "raw_source": "</script>",
+                  "body_span_bytes": [
+                    126,
+                    135
+                  ]
+                },
+                "payload_parts": [
+                  {
+                    "node_id": 5,
+                    "data": "{\"@context\":{\"g\":\"@graph\"},\"g\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                    "location": {
+                      "source_span_utf16": [
+                        50,
+                        126
+                      ],
+                      "raw_source": "{\"@context\":{\"g\":\"@graph\"},\"g\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}",
+                      "body_span_bytes": [
+                        50,
+                        126
+                      ]
+                    }
+                  }
+                ],
+                "payload": "{\"@context\":{\"g\":\"@graph\"},\"g\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}"
+              }
+            ],
+            "context_elements": [],
+            "parse_errors": []
+          }
+        },
+        "decoding": {
+          "profile": "html-http-utf8-v1",
+          "content_types": [
+            "text/html; charset=utf-8"
+          ],
+          "body_sha256": "67617d792a06e0786c3889dabbdd3e360e102979bed1899d8e85796e2f4d2926",
+          "body_bytes": 135,
+          "consumed_bom_bytes": 0,
+          "parser_input_utf8_sha256": "67617d792a06e0786c3889dabbdd3e360e102979bed1899d8e85796e2f4d2926",
+          "parser_input_utf16_units": 135,
+          "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+        },
+        "source_sha256": {
+          "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+          "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+          "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+          "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+          "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+          "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+          "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+          "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+          "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+          "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a"
+        },
+        "supervisor": {
+          "python": "3.9.6",
+          "process_timeout_seconds": 30,
+          "node_old_space_mib": 128,
+          "output_byte_limit": 33554432
+        },
+        "limitations": [
+          "Two static HTML hypotheses; no source JavaScript, browser, CSS visibility or search-engine reading.",
+          "Template fragments and foreign scripts are inventoried separately; no shadow attachment or frame document extraction.",
+          "Original bytes, parser text and locations are distinct; text normalization is not repaired or hidden.",
+          "Source completeness and actual HTTP/navigation provenance must be established by separate capture evidence.",
+          "Inventory only; no JSON-LD selection, graph, vocabulary validation or TSEP verdict."
+        ]
+      },
+      "readings": {
+        "enabled": {
+          "status": "processed",
+          "selected_count": 1,
+          "diagnostics": [
+            {
+              "node_id": 4,
+              "selection": "selected",
+              "payload_sha256": "205d5b32043f7d47541c31397685c3f59a676047bb44d55b7dd3718e7e8e5b14",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            }
+          ],
+          "combined_sha256": "368929c953eed32f9b323307fd2daf2fde69b6c266e9c1e73b2dfeff06048277",
+          "root_items": 1,
+          "processing_index": 0
+        },
+        "disabled": {
+          "status": "processed",
+          "selected_count": 1,
+          "diagnostics": [
+            {
+              "node_id": 4,
+              "selection": "selected",
+              "payload_sha256": "205d5b32043f7d47541c31397685c3f59a676047bb44d55b7dd3718e7e8e5b14",
+              "status": "json-parsed",
+              "reason": null,
+              "root_items": 1
+            }
+          ],
+          "combined_sha256": "368929c953eed32f9b323307fd2daf2fde69b6c266e9c1e73b2dfeff06048277",
+          "root_items": 1,
+          "processing_index": 1
+        }
+      },
+      "processing": {
+        "kind": "unapplied-jsonld-processing",
+        "version": "1",
+        "normative_effect": "none",
+        "request_sha256": "5bf9f4c985463f838d5ef1aa04654695ed4881ce9e94079ff38de217ccaacc5d",
+        "processor": {
+          "name": "jsonld",
+          "version": "9.0.0",
+          "member": "dist/jsonld.esm.js"
+        },
+        "runtime": {
+          "node": "v24.19.0",
+          "v8": "13.6.233.17-node.51"
+        },
+        "network_guard": {
+          "guarded": [
+            "node:net.connect",
+            "node:net.createConnection",
+            "node:net.createServer",
+            "node:net.Socket.connect",
+            "node:tls.connect",
+            "node:tls.createServer",
+            "node:http.request",
+            "node:http.get",
+            "node:http.createServer",
+            "node:https.request",
+            "node:https.get",
+            "node:https.createServer",
+            "node:http2.connect",
+            "node:http2.createServer",
+            "node:http2.createSecureServer",
+            "node:dgram.createSocket",
+            "node:dgram.Socket.connect",
+            "node:dns.lookup",
+            "node:dns.resolve",
+            "node:dns.resolve4",
+            "node:dns.resolve6",
+            "node:dns.resolveAny"
+          ],
+          "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+        },
+        "documents": [
+          {
+            "id": "enabled",
+            "base_iri": "https://example.test/page",
+            "raw_json_sha256": "368929c953eed32f9b323307fd2daf2fde69b6c266e9c1e73b2dfeff06048277",
+            "contexts": [],
+            "status": "observed",
+            "expanded": [
+              {
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flattened": [
+              {
+                "@id": "_:b0",
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "notices": [],
+            "context_loads": [],
+            "error": null
+          },
+          {
+            "id": "disabled",
+            "base_iri": "https://example.test/page",
+            "raw_json_sha256": "368929c953eed32f9b323307fd2daf2fde69b6c266e9c1e73b2dfeff06048277",
+            "contexts": [],
+            "status": "observed",
+            "expanded": [
+              {
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "flattened": [
+              {
+                "@id": "_:b0",
+                "@graph": [
+                  {
+                    "@id": "https://example.test/page#a",
+                    "https://schema.org/name": [
+                      {
+                        "@value": "A"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "notices": [],
+            "context_loads": [],
+            "error": null
+          }
+        ],
+        "input": {
+          "documents": [
+            {
+              "id": "enabled",
+              "base_iri": "https://example.test/page",
+              "contexts": [],
+              "raw_json": "[{\"@context\":{\"g\":\"@graph\"},\"g\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}]"
+            },
+            {
+              "id": "disabled",
+              "base_iri": "https://example.test/page",
+              "contexts": [],
+              "raw_json": "[{\"@context\":{\"g\":\"@graph\"},\"g\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}]"
+            }
+          ]
+        },
+        "source_sha256": {
+          "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+          "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+          "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+          "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+          "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+          "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a"
+        },
+        "supervisor": {
+          "python": "3.9.6",
+          "process_timeout_seconds": 30,
+          "node_old_space_mib": 128,
+          "input_byte_limit": 4194304,
+          "output_byte_limit": 16777216,
+          "document_byte_limit": 131072,
+          "context_byte_limit": 1048576
+        },
+        "limitations": [
+          "Processing observations only; no Schema.org or search-feature validation, visible facts or TSEP outcome.",
+          "All local contexts are supplied evidence, not authenticated authoritative contexts.",
+          "Notices retain omitted or transformed information; observed is not a validity or conformance verdict.",
+          "Blank-node identifiers are document scoped; separate document results are not silently merged.",
+          "Numbers use the processor JavaScript representation; unsafe integers are refused, raw numeric text remains retained.",
+          "No HTML extraction, browser observation, rendering, indexing, ranking or content truth is established."
+        ]
+      },
+      "base_parameter": {
+        "iri": "https://example.test/page",
+        "status": "supplied-hypothesis",
+        "scope": "Explicit processor input, not an inferred or observed document.baseURI. Retained base/meta elements may require another hypothesis or attributed rendered capture."
+      },
+      "limitations": [
+        "Exact application/ld+json type in ordinary HTML tree; case/space/parameter variants remain unresolved, not declared invalid.",
+        "All selected scripts in one representation are combined before processing; separate representations/documents have separate blank-node namespaces.",
+        "Any selected invalid or unsupported script prevents a combined graph; valid subsets are not promoted to a complete page.",
+        "Absence is only within this static HTML selection profile. It is not NA, a rendered-page result, or absence of Microdata/RDFa.",
+        "Base IRI is a caller-supplied hypothesis. HTML base selection, CSP, navigation attribution and actual rendered base remain to establish.",
+        "No targeted fragment/profile extraction, external script fetching, JavaScript execution or browser behavior.",
+        "Processed means transformation completed under declared inputs; notices and empty graphs remain visible. No Schema.org validation, visible-fact truth, rich-result eligibility or TSEP outcome."
+      ]
+    }
+  }
+}

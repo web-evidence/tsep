@@ -1,0 +1,171 @@
+{
+  "synthetic": true,
+  "frozen_at": "2026-10-11T10:24:40.751440+00:00",
+  "scope": "Additional graph-boundary expectations frozen before their authored-case execution, after observing graph containers in historical Edikka processing. Not an oracle independent of all prior processor use. Exact all-script array profile; graph names and descriptions remain separate.",
+  "cases": [
+    {
+      "id": "single-root-graph-always-array",
+      "html": "<!doctype html><script type=\"application/ld+json\">{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}</script>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "selected_count": 1,
+        "flattened": [
+          {
+            "@id": "_:b0",
+            "@graph": [
+              {
+                "@id": "https://example.test/page#a",
+                "https://schema.org/name": [
+                  {
+                    "@value": "A"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "two-root-graphs-remain-separate",
+      "html": "<!doctype html><script type=\"application/ld+json\">{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}</script><script type=\"application/ld+json\">{\"@graph\":[{\"@id\":\"#b\",\"https://schema.org/name\":\"B\"}]}</script>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "selected_count": 2,
+        "flattened": [
+          {
+            "@id": "_:b0",
+            "@graph": [
+              {
+                "@id": "https://example.test/page#a",
+                "https://schema.org/name": [
+                  {
+                    "@value": "A"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@id": "_:b1",
+            "@graph": [
+              {
+                "@id": "https://example.test/page#b",
+                "https://schema.org/name": [
+                  {
+                    "@value": "B"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "same-iri-descriptions-different-graphs",
+      "html": "<!doctype html><script type=\"application/ld+json\">{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}</script><script type=\"application/ld+json\">{\"@graph\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"B\"}]}</script>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "selected_count": 2,
+        "flattened": [
+          {
+            "@id": "_:b0",
+            "@graph": [
+              {
+                "@id": "https://example.test/page#a",
+                "https://schema.org/name": [
+                  {
+                    "@value": "A"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@id": "_:b1",
+            "@graph": [
+              {
+                "@id": "https://example.test/page#a",
+                "https://schema.org/name": [
+                  {
+                    "@value": "B"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "blank-node-shared-between-graphs",
+      "html": "<!doctype html><script type=\"application/ld+json\">{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"A\"}]}</script><script type=\"application/ld+json\">{\"@graph\":[{\"@id\":\"_:person\",\"https://schema.org/name\":\"B\"}]}</script>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "selected_count": 2,
+        "flattened": [
+          {
+            "@id": "_:b0",
+            "@graph": [
+              {
+                "@id": "_:b1",
+                "https://schema.org/name": [
+                  {
+                    "@value": "A"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "@id": "_:b2",
+            "@graph": [
+              {
+                "@id": "_:b1",
+                "https://schema.org/name": [
+                  {
+                    "@value": "B"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "aliased-root-graph",
+      "html": "<!doctype html><script type=\"application/ld+json\">{\"@context\":{\"g\":\"@graph\"},\"g\":[{\"@id\":\"#a\",\"https://schema.org/name\":\"A\"}]}</script>",
+      "base_iri": "https://example.test/page",
+      "contexts": [],
+      "expected": {
+        "status": "processed",
+        "selected_count": 1,
+        "flattened": [
+          {
+            "@id": "_:b0",
+            "@graph": [
+              {
+                "@id": "https://example.test/page#a",
+                "https://schema.org/name": [
+                  {
+                    "@value": "A"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
