@@ -1,5 +1,7 @@
 Current local edition: **0.1.0-draft.27** — [deployment process evidence](docs/release-invariants.md), [migration](docs/migration-draft.27.md), [agent access evidence](docs/agent-access-evidence.md), [usage policy](docs/agent-usage-policy.md) and [performance](docs/performance-evidence.md). Test-client treatment and log correlation never establish actual operator access.
 
+Optional TS31–33 preparation: [supplied rendered states and source/DOM comparison](docs/jsonld-rendered-observation.md), without browser collection or control outcomes. Current priority: consolidate the existing 12 controls before deciding the application.
+
 Preparing TS31–33: [offline JSON-LD processing](docs/jsonld-processing.md), then [attributed HTML extraction and combined scripts](docs/jsonld-html-observation.md). Frozen contradictory cases and exact replay; effective bases, visible facts and validators remain to qualify. The count stays at 12 executable controls / 33 rules.
 
 The [TS39 laboratory](docs/delivery-laboratory.md) adds eight prefrozen experiments, 38 actual local origin/cache HTTP exchanges, repair with purge and offline replay; pages and reviews remain fictional.

@@ -1,0 +1,577 @@
+{
+  "kind": "supplied-rendered-jsonld-provenance",
+  "version": "1",
+  "recorded_at": "2026-10-11T11:01:37.645322+00:00",
+  "protocol": "0.1.0-draft.27",
+  "executable_controls": 12,
+  "atomic_rules": 33,
+  "normative_effect": "none",
+  "scope": "Optional supplied-state preparation of TS31–33. All qualification inputs are authored; no browser capture, Edikka audit, independent review or control completion.",
+  "source_sha256": {
+    "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+    "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+    "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+    "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+    "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+    "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+    "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+    "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+    "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+    "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a",
+    "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+    "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+    "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+    "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+    "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a",
+    "experiments/jsonld_html.py": "448c20e9359d274041552a588afe5f290b38e125513fa8584129e3df4ad54a00",
+    "experiments/jsonld_rendered.py": "523c3a4ef41d2df9c9bf90da977b4a0a6c136e32b1d75c9abb56a815e6e832af",
+    "conformance/structured_dom.py": "1cc8f48106e16dabbb1635260b8c8d26bb86c974d9ba3298a27056ac9f2044d6",
+    "conformance/evaluate.py": "49c520d21235f19a7b50e60bbde892ef2836771760cafca9a045edfe2c0fac68",
+    "conformance/http.py": "4fdaf8eda589461979d0e05e5fb7fd2041b017d13b9b61c8540c6e677b3c3e56",
+    "experiments/rendered_metadata.py": "6020756b55332d1b126cb44cb563a50ce6d1083939d11231ce6fde525a6fea08",
+    "experiments/rendered_canonical.py": "46095e01906adebab50d4b1f55cc3fc28ec6d5286724228d62a0cb2840fb07fe",
+    "provenance/runtime.py": "5480de2ede016b64e9cb6ab692c59250a84eda2a68bc1474131494187a4b4be0",
+    "tsep.py": "177d6d63dac61ff318fff3c5b14e452fdf94e697b8a9f2284d7cd14d37478900",
+    "collectors/rendered_metadata.js": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206"
+  },
+  "qualifier_sha256": "cb0dc2ff946d2ee5bc897fb5b8a99a0556c7695923954b523e511356fc1773f5",
+  "qualification": {
+    "matched": 63,
+    "total": 63,
+    "replayed": 29,
+    "failures": []
+  },
+  "fixture_chronology": [
+    {
+      "path": "tests/fixtures/jsonld-rendered-surfaces-v1.json",
+      "cases": 29,
+      "timing": "Frozen before implementation; byte-exact copy of retained v2 authored input; v1 correction retained before execution."
+    },
+    {
+      "path": "tests/fixtures/jsonld-rendered-workflow-v1.json",
+      "cases": 23,
+      "timing": "Frozen before implementation."
+    },
+    {
+      "path": "tests/fixtures/jsonld-rendered-boundaries-v1.json",
+      "cases": 8,
+      "timing": "Frozen after r1, before two boundary corrections and their execution."
+    },
+    {
+      "path": "tests/fixtures/jsonld-rendered-dom-boundaries-v1.json",
+      "cases": 3,
+      "timing": "Frozen after r2 and method discussion, before execution; no production-code change."
+    }
+  ],
+  "fixtures": [
+    {
+      "path": "tests/fixtures/jsonld-rendered-boundaries-v1.json",
+      "sha256": "78a80ee4df9cdc038923c259db4fc29c23a60a6867e78f804532847d0418ab4b",
+      "bytes": 77617
+    },
+    {
+      "path": "tests/fixtures/jsonld-rendered-dom-boundaries-v1.json",
+      "sha256": "fc25f35d46d53b5e8b11f732463070115950f62d9b16360b82d60c7ad1108d3c",
+      "bytes": 25106
+    },
+    {
+      "path": "tests/fixtures/jsonld-rendered-qualification-v1.json",
+      "sha256": "f2c44b61beb3762d49d9dc612808f716dc84da5f14a06b15552d3ed31f93fbad",
+      "bytes": 54188
+    },
+    {
+      "path": "tests/fixtures/jsonld-rendered-surfaces-v1.json",
+      "sha256": "a671f34b6eec1bea255f5b061787f2a651c57af5d6c5cc83847bbb541418fef3",
+      "bytes": 199726
+    },
+    {
+      "path": "tests/fixtures/jsonld-rendered-workflow-v1.json",
+      "sha256": "70907fca0419fac10ecb8d7de091ac8ee04236144d9ef9a61a7006fd41413d06",
+      "bytes": 192092
+    }
+  ],
+  "python_tests": {
+    "count": 21,
+    "scope": "Observed Python boundary and replay checks; no implicit Node or browser."
+  },
+  "retained_failures": [
+    "Initial Python run: 19 tests, 17 errors because sidecars contained a filename; reader requires bare SHA-256. Sidecar format alone corrected; JSON inputs and expected results preserved.",
+    "Review after first qualification tightened malformed HTTP member and unexpected outer-state fields; first executed code retained."
+  ],
+  "previous_runs": [
+    {
+      "run": "r1",
+      "matched": 52,
+      "total": 52,
+      "replayed": 19
+    },
+    {
+      "run": "r2",
+      "matched": 60,
+      "total": 60,
+      "replayed": 26
+    }
+  ],
+  "sources": {
+    "urls": [
+      "https://www.w3.org/TR/json-ld11-api/",
+      "https://dom.spec.whatwg.org/#concept-descendant-text-content",
+      "https://html.spec.whatwg.org/multipage/urls-and-fetching.html#document-base-url"
+    ],
+    "capture_scope": "Dated web-tool extracts, not original HTTP bodies. Private working captures identified below are not included in the distribution.",
+    "captures": [
+      {
+        "path": ".local/structured-data-2026-10-11/sources/dom-rendered-extracts-r1.json",
+        "sha256": "139d25f9608ba811cab05aced2225eda24184973fc2dd03dae399cb823184eac",
+        "bytes": 28169
+      },
+      {
+        "path": ".local/structured-data-2026-10-11/sources/jsonld-api-textcontent-r1.json",
+        "sha256": "26425d6edbf8cb0190e6304943e6f296f79ed9c7085a158bdcd30cb7b7ee9335",
+        "bytes": 16222
+      }
+    ]
+  },
+  "method_discussion": {
+    "url": "https://claude.ai/chat/1c87d570-5d15-4448-8575-f5fff2bd61d3",
+    "date": "2026-10-11",
+    "scope": "AI method discussion only, not independent human validation. TextContent, parsed-source CRLF and unavailable opaque base discussed; latest priority is consolidation of the existing 12 controls."
+  },
+  "limitations": [
+    "Provided HTTP/DOM/browser/base/chronology facts are checked, not authenticated.",
+    "Real rendered capture chain not qualified by authored trees.",
+    "No cross-state node identity, stability, JavaScript causation or semantic equivalence inferred.",
+    "No Schema.org, Google eligibility, indexing/ranking, TSEP verdict or whole-page absence inferred.",
+    "Frames, template fragments and closed shadow excluded; open shadow inventoried separately and not processed.",
+    "TS31–33/TS36 remain deferred after this in-flight component."
+  ],
+  "local_evidence": [
+    {
+      "path": ".local/structured-data-2026-10-11/claude-rendered-review.jpg",
+      "sha256": "c81b1d803fdd5fb73f63f1d3409d30487321e7353a775ae8234efa9a7ab0b380",
+      "bytes": 117208
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/claude-rendered-review.txt",
+      "sha256": "95f463977cfcc172d3aec30bea2076b499364de2c5bcd63f844e96f3dfbfe03b",
+      "bytes": 20844
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-jsonld-boundaries-freeze-v1.json",
+      "sha256": "c076d80c90d0bed7daabbbe0d27f156c922f029a833f34a4e9524d1a9d703eee",
+      "bytes": 242
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-jsonld-dom-boundaries-freeze-v1.json",
+      "sha256": "43fc0dd0772e765a8e6d7c48af5313d077711355c3597c14543bcabbd6ee088e",
+      "bytes": 164
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-jsonld-freeze-v1.json",
+      "sha256": "db47ef685847bdd345f836acd67b4669a5d9660099d7e342f1a1011a5fe870be",
+      "bytes": 205
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-jsonld-freeze-v2.json",
+      "sha256": "d3fe4cdc53fd79ac14503d7d4ec4127fc47c54dca3cc11a1f4d59e4b69f65e5e",
+      "bytes": 449
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-jsonld-workflow-freeze-v1.json",
+      "sha256": "44e560bcf9ca7027c9c3150111193c083c46f061a939dcce2d219ab271708f4b",
+      "bytes": 251
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r1/code/experiments/jsonld_rendered.py",
+      "sha256": "98a47ad56c9f82e57b5eb9ef4e9278dcb27dd04fb730290de046e954d2e9a768",
+      "bytes": 15982
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r1/code/scripts/jsonld_rendered_check.py",
+      "sha256": "1b6c74361dc927a5b5b9b9835a7e18c02a412d02dc2ef2ef430cb61b1ecba62f",
+      "bytes": 4713
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r1/code/tests/test_jsonld_rendered.py",
+      "sha256": "4cbbedb76c1a9f182d095503017ade7ebeb673ceeb7526d59efb3842fb2c0fee",
+      "bytes": 8023
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r1/qualification.json",
+      "sha256": "c0301a5213372cc96041c37ae2770a253cfb90f203c80990cfeefa55ac96db56",
+      "bytes": 41027
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r2/qualification.json",
+      "sha256": "04ba077390b1361141c6e239e0985688edb47ad7e1d9e2a7ab8e8be7034b6198",
+      "bytes": 50664
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/qualification.json",
+      "sha256": "f2c44b61beb3762d49d9dc612808f716dc84da5f14a06b15552d3ed31f93fbad",
+      "bytes": 54188
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-tests-r1-correction.json",
+      "sha256": "be41a8e04cd37955b3161bac40200e7a2cd1cea0223844f6603cfe241d39e319",
+      "bytes": 295
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-tests-r1.log",
+      "sha256": "dd7d21f7c06753070e0355e93130a293a1e45021d8ea3dedce92c8fcb5d226e3",
+      "bytes": 21069
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-tests-r2.log",
+      "sha256": "e1d3df4940238edde3b687cd6a97c6fbbb2daf20797891a48effe71bb72d04bc",
+      "bytes": 1864
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-tests-r3.log",
+      "sha256": "beba6a095f82cd6669211078ff7920f0f6ed84c89af8c76bae5caf41d689c95c",
+      "bytes": 2055
+    }
+  ],
+  "local_observations": [
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/jsonld-rendered-boundaries-v1.json",
+      "sha256": "78a80ee4df9cdc038923c259db4fc29c23a60a6867e78f804532847d0418ab4b",
+      "bytes": 77617
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/jsonld-rendered-dom-boundaries-v1.json",
+      "sha256": "fc25f35d46d53b5e8b11f732463070115950f62d9b16360b82d60c7ad1108d3c",
+      "bytes": 25106
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/jsonld-rendered-surfaces-v1.json",
+      "sha256": "a671f34b6eec1bea255f5b061787f2a651c57af5d6c5cc83847bbb541418fef3",
+      "bytes": 199726
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/jsonld-rendered-workflow-v1.json",
+      "sha256": "70907fca0419fac10ecb8d7de091ac8ee04236144d9ef9a61a7006fd41413d06",
+      "bytes": 192092
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/qualification.json",
+      "sha256": "f2c44b61beb3762d49d9dc612808f716dc84da5f14a06b15552d3ed31f93fbad",
+      "bytes": 54188
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-api-error-refusal.json",
+      "sha256": "39abb761bb60e975b39ecd300ee18a614fa158b06ca468134a7528d49b766436",
+      "bytes": 130
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-changed-supplied-base.json",
+      "sha256": "8f8bd15de8175c9078155efff96978306c73766d5f7acf7d982f20ec51e371f4",
+      "bytes": 1481
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-duplicate-html-id.json",
+      "sha256": "0115ef53e18a58fb6a545cf103eb126dc81dafe2da743f4b52088514341b8218",
+      "bytes": 2374
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-foreign-script.json",
+      "sha256": "d271f77cfed79f64b1d30ba0e49604b3e176febbb14e9ed4496c660717070d93",
+      "bytes": 1478
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-foreignobject-html-script.json",
+      "sha256": "a8f81cdd79fe8715571b3430d4cac6e0f6c1f650bc7074d8bec6309fe382f524",
+      "bytes": 1510
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-frame-boundary.json",
+      "sha256": "2a3e11fe45b8b674a835d5c031b3606320696cc1d0099a866123dcb5a1701e43",
+      "bytes": 908
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-incomplete-state-refusal.json",
+      "sha256": "c3c6e7eb1033b0cf94a9ce01ed233999262ad22991289ef3209e0977204bcc05",
+      "bytes": 109
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-invalid-base-refusal.json",
+      "sha256": "62162d5ea0c5a7c9015c573496fdc826e48f2271393122abf95d1dcb6d977892",
+      "bytes": 86
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-literal-entity-text.json",
+      "sha256": "da5259a674a5a1965c34fa3314bf7023df2ea73a54c858b51e8b6b7c501ded79",
+      "bytes": 1449
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-loading-state-refusal.json",
+      "sha256": "39abb761bb60e975b39ecd300ee18a614fa158b06ca468134a7528d49b766436",
+      "bytes": 130
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-missing-base-refusal.json",
+      "sha256": "f3647c207d8ca2b961fadd63c9aca73c8420bb20feae0c726726708ee062f20c",
+      "bytes": 88
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-missing-support-refusal.json",
+      "sha256": "226367bbf0a3f20917f370fab20607433f3ebfc2b82eac1ca4aa016cc5dd31c3",
+      "bytes": 103
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-multiple-text-nodes-comments.json",
+      "sha256": "c14cee5ab6720bcb5ff0433eb5326057483b16476d5ab2d133c1f11cdcc86ba6",
+      "bytes": 1508
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-no-script.json",
+      "sha256": "3187e3d42cc1ac3048570ebe9fd0dce70946f3555177c1f35c34eb2abc0ca960",
+      "bytes": 810
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-null-text-data-refusal.json",
+      "sha256": "9718422883a21f54c4f7856c505f7a14d18635170bf9d56b382d72547c4ee1ef",
+      "bytes": 105
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-open-shadow-separated.json",
+      "sha256": "7774629c4bfb3f829085d6d5f7805c389af82c763365eea768c0c1c09acde4e8",
+      "bytes": 1514
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-ordinary-head-script.json",
+      "sha256": "ccab1ef0a950c519483e596358e82bcd9c3afe3c474dc0511c1374506128b5f1",
+      "bytes": 1474
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-partial-tree-refusal.json",
+      "sha256": "39abb761bb60e975b39ecd300ee18a614fa158b06ca468134a7528d49b766436",
+      "bytes": 130
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-script-added-in-render.json",
+      "sha256": "e995b9a0bb062afb6a43efac1372bafdf8688436eaef02d20bfda47a95d26ca2",
+      "bytes": 1469
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-script-removed-in-render.json",
+      "sha256": "e94f2e24d18ef0f16b30434a60d3ab53c1f5e384835a746110b78fb748bfb572",
+      "bytes": 825
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-script-value-changed-in-render.json",
+      "sha256": "ef33c3edea4fc9626f96db522d065415698656fde765af7dff0c3392179fc50d",
+      "bytes": 1466
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-state-after-window-refusal.json",
+      "sha256": "2e33dff0f0f426c527c48cfca044a80c1340c7b8acadb6a1726525ce3039e9b8",
+      "bytes": 120
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-state-before-http-refusal.json",
+      "sha256": "2e33dff0f0f426c527c48cfca044a80c1340c7b8acadb6a1726525ce3039e9b8",
+      "bytes": 120
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-template-boundary.json",
+      "sha256": "e3fee4d661a17e1fb0c24760e0f426ceeaeb79995afca1dce1a840ab672c51d2",
+      "bytes": 913
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-wrong-agent-refusal.json",
+      "sha256": "9702b978119eea11b8513148080582acf9da554071d1ffcce60ff18afff53e2c",
+      "bytes": 117
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-wrong-collector-refusal.json",
+      "sha256": "f38f2a7b5f89c1f4724542f42b2bfd4175503a162e48e7a69e396c6132c136f3",
+      "bytes": 101
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-wrong-document-url-refusal.json",
+      "sha256": "b009c05c4b06e7a0f9fb9d887783f9303bbc966f0774e61a5a0735260b5e14c8",
+      "bytes": 98
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-wrong-http-binding-refusal.json",
+      "sha256": "8559367c2b153ff0a335b82d2134c11d4486256cc7c32679ad7f74fe74557c0e",
+      "bytes": 98
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/surface-wrong-snapshot-sha-refusal.json",
+      "sha256": "5e44295b6fc2e68d2afc2f55750edee3af6a660e2f6a795772ac146daf3cfa56",
+      "bytes": 106
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-added.json",
+      "sha256": "26ce47ad45fbba0c2e5f5f68405b73a9f9f942c7d5dfe8d900c37a1d7d19420c",
+      "bytes": 28158
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-base-changed.json",
+      "sha256": "a4d124f64b88a80caceb881a481a7f6afcee6eb1cff5fd9812fd79b53ab8209c",
+      "bytes": 38121
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-dom-crlf-not-html-reparsed.json",
+      "sha256": "9e6f584a05e8ce391bb3cd78b5394b6a8911f1946f93612904168a93c69812c8",
+      "bytes": 38745
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-duplicate-required-id-refusal.json",
+      "sha256": "da4e06583334293d14cac66f89b0639350077d671b398707bb6949a5be0cdf26",
+      "bytes": 110
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-duplicate-state.json",
+      "sha256": "f3c676a4348a0ff06c87db82a749274d64b3889ae42ee19d4a9682b6de717c01",
+      "bytes": 37036
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-element-descendant-textcontent.json",
+      "sha256": "b67e2aae752fa38aca77a55511279be625eac19b56f71e2cc800569c81ec4955",
+      "bytes": 38562
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-empty-rendered-script.json",
+      "sha256": "472a2748795a2f7aa767bd0d39305394e4207a22edefb579332c18be4010cb76",
+      "bytes": 34086
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-foreign-script.json",
+      "sha256": "3aa6753f56ffe7f159c11df2ce1133d804e7fd523e99f81c9728cb4374f6da0c",
+      "bytes": 34388
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-good-state-after-refused-state.json",
+      "sha256": "e78cc1afe2d2fc3d878ed3cc2a4d295ba7b0870472f97ac9ab0367e3d13267be",
+      "bytes": 45585
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-html-in-foreignobject.json",
+      "sha256": "b63e905d547a58934dd4ca1196cc2ac38cf0e3fdb6707c8e0d08d6ffc1533181",
+      "bytes": 39100
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-http-before-window-refusal.json",
+      "sha256": "4198afbff17e1313ddbd7a8da077fedf3eaec56516768f1f786645ebdf17258c",
+      "bytes": 103
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-javascript-disabled.json",
+      "sha256": "5f7e2600dd2b20f681f449655bbaeb51f9809c570370327ed8c93130fd36f682",
+      "bytes": 31434
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-late-plan-refusal.json",
+      "sha256": "4198afbff17e1313ddbd7a8da077fedf3eaec56516768f1f786645ebdf17258c",
+      "bytes": 103
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-malformed-http-member-refusal.json",
+      "sha256": "8093d1d5f34a8e8d252ff5d1ea0d93d9a5196361d6f1dc96261541a51f2f66d3",
+      "bytes": 87
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-missing-required-state.json",
+      "sha256": "a964fa6fdf923e6399fe09df93ec3580857319dcdbeb7769870aa0a3e84aeb71",
+      "bytes": 25810
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-native-http-agent-mismatch-refusal.json",
+      "sha256": "b0cb3bcbbfad6dd369d3349a057134cc03b298b7ce60e8a28234a74734ba4195",
+      "bytes": 95
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-opaque-base-unavailable-not-json-error.json",
+      "sha256": "c8d86a0c65ceab4856a92673cf3df476eab211355d0953aa9b2dfd32521bf5f1",
+      "bytes": 31414
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-removed.json",
+      "sha256": "25865c8bb9b24b49278c964970b9cda38d28a78083f908c920e48629f5e52bcf",
+      "bytes": 31598
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-rendered-context-missing-source-survives.json",
+      "sha256": "2545f18b4a66467e2fe8e7607af88485e331d0e00f08c7bc49d219f7bd7af78e",
+      "bytes": 39068
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-rendered-type-variant.json",
+      "sha256": "71ffd42f1b44d129919e8c5e0e953db4802a1f3813e4c5c5933a050efa137ee2",
+      "bytes": 33643
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-serialization-unavailable.json",
+      "sha256": "abeb74ee958459a466849b747246aa43bfa29da69647c84f05655a0ff520fac1",
+      "bytes": 31373
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-shadow-separate.json",
+      "sha256": "f71627e8ee37b519e8005291c17836e0e281656efb373860bba19237cf1083c5",
+      "bytes": 34883
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-source-crlf-dom-lf-equal.json",
+      "sha256": "30be0ba1cc1c880ea0ee69f81f80e1f0d641c59dcaa7eb357c35232e9ed00cf4",
+      "bytes": 38107
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-source-error-render-missing.json",
+      "sha256": "d3c462789fc556a4dbbbde5b87e0ef1e20258cf8401955b14ffcf2ba2a76737a",
+      "bytes": 26299
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-supplied-same-navigation.json",
+      "sha256": "744690133b709d9f45156fdc4c3a5a47ea8077f82cd3fc033d4d0e97128411da",
+      "bytes": 38073
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-two-independent-states.json",
+      "sha256": "7c4c19fa8050cd69ae6c5ce8ae747a00ab9b8b0b65544313d2ffeb9d09ec081b",
+      "bytes": 52230
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-unchanged.json",
+      "sha256": "1a5ae60662856f3405d1dd109dfda90e6adba0a3687f9bfe42473321836ca320",
+      "bytes": 38081
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-unexpected-state-retained.json",
+      "sha256": "7563aabc5520b53a52d796e054a39691017398fee33b43a4f7f58c488f692aca",
+      "bytes": 43849
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-unrecognized-outer-state-url.json",
+      "sha256": "6762a63c5f2cec054a078ab4974416769a9d385e1d1b5ef45ff767ab8778e7cc",
+      "bytes": 31460
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-value-changed.json",
+      "sha256": "7e03a0987ef6268926085f658376e4709dd406603c1272ccdf3486728c8b0b85",
+      "bytes": 38697
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-wrong-browser.json",
+      "sha256": "ac26a7d97af5ade44a3aa3487930a6eda1a41dd9bcab1cee360f73962108797d",
+      "bytes": 31434
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-wrong-browser_version.json",
+      "sha256": "36e376844b4b1a525c2b68c697b066a4ad45419eb496774fc8d54560164fc194",
+      "bytes": 31437
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-wrong-scenario.json",
+      "sha256": "0b09c1872940c390e2ef2be81243d5e627f6a45f69703f4d0682b85c2c3752fd",
+      "bytes": 31430
+    },
+    {
+      "path": ".local/structured-data-2026-10-11/rendered-qualification-r3/workflow-wrong-snapshot.json",
+      "sha256": "4795f3ee19062e186a1d7a0381e144902c1fcee23d8cd519663749677352d430",
+      "bytes": 31428
+    }
+  ]
+}

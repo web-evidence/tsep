@@ -1,0 +1,2070 @@
+{
+  "kind": "rendered-jsonld-qualification",
+  "synthetic": true,
+  "normative_effect": "none",
+  "source_sha256": {
+    "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+    "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+    "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+    "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+    "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+    "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+    "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+    "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+    "experiments/source_scripts.py": "d0bb74b4a5b70191195578ccd7d85abbf3e6166f27530b2d00622b510fa623db",
+    "experiments/source_scripts.mjs": "417aef0ddb89d9006231e4c2165b67d53ae3d87d3dc61e57b75817278cbf288a",
+    "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+    "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+    "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+    "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+    "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a",
+    "experiments/jsonld_html.py": "448c20e9359d274041552a588afe5f290b38e125513fa8584129e3df4ad54a00",
+    "experiments/jsonld_rendered.py": "523c3a4ef41d2df9c9bf90da977b4a0a6c136e32b1d75c9abb56a815e6e832af",
+    "conformance/structured_dom.py": "1cc8f48106e16dabbb1635260b8c8d26bb86c974d9ba3298a27056ac9f2044d6",
+    "conformance/evaluate.py": "49c520d21235f19a7b50e60bbde892ef2836771760cafca9a045edfe2c0fac68",
+    "conformance/http.py": "4fdaf8eda589461979d0e05e5fb7fd2041b017d13b9b61c8540c6e677b3c3e56",
+    "experiments/rendered_metadata.py": "6020756b55332d1b126cb44cb563a50ce6d1083939d11231ce6fde525a6fea08",
+    "experiments/rendered_canonical.py": "46095e01906adebab50d4b1f55cc3fc28ec6d5286724228d62a0cb2840fb07fe",
+    "provenance/runtime.py": "5480de2ede016b64e9cb6ab692c59250a84eda2a68bc1474131494187a4b4be0",
+    "tsep.py": "177d6d63dac61ff318fff3c5b14e452fdf94e697b8a9f2284d7cd14d37478900",
+    "collectors/rendered_metadata.js": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206"
+  },
+  "qualifier_sha256": "cb0dc2ff946d2ee5bc897fb5b8a99a0556c7695923954b523e511356fc1773f5",
+  "matched": 63,
+  "total": 63,
+  "expected_total": 63,
+  "replayed": 29,
+  "expected_replays": 29,
+  "rows": [
+    {
+      "id": "surface-ordinary-head-script",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-multiple-text-nodes-comments",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"https://schema.org/name\":\"A\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"https://schema.org/name\":\"A\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-no-script",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-script-added-in-render",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-script-removed-in-render",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-duplicate-html-id",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}",
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}",
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-literal-entity-text",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"https://schema.org/name\":\"A &amp; B\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"https://schema.org/name\":\"A &amp; B\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-open-shadow-separated",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [],
+        "open_shadow_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [],
+        "open_shadow_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-template-boundary",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-frame-boundary",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-foreign-script",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-foreignobject-html-script",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-changed-supplied-base",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/elsewhere/",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"A\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/elsewhere/",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "surface-wrong-http-binding",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "wrong-http-binding",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Navigation/HTTP binding mismatch"
+    },
+    {
+      "id": "surface-wrong-agent",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "wrong-agent",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Navigation agent differs from HTTP assessment agent"
+    },
+    {
+      "id": "surface-missing-support",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "missing-support",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Missing acquisition supporting record"
+    },
+    {
+      "id": "surface-wrong-collector",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "wrong-collector",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Different structured capture script"
+    },
+    {
+      "id": "surface-wrong-snapshot-sha",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "wrong-snapshot-sha",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Structured snapshot fingerprint mismatch"
+    },
+    {
+      "id": "surface-incomplete-state",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "incomplete-state",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Incomplete state or missing browser context"
+    },
+    {
+      "id": "surface-loading-state",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "loading-state",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Incomplete/failed structured traversal or document still loading"
+    },
+    {
+      "id": "surface-state-before-http",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "state-before-http",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Rendered state outside supplied HTTP/window chronology"
+    },
+    {
+      "id": "surface-state-after-window",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "state-after-window",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Rendered state outside supplied HTTP/window chronology"
+    },
+    {
+      "id": "surface-null-text-data",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "null-text-data",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Missing character data in supplied tree"
+    },
+    {
+      "id": "surface-invalid-base",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "invalid-base",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Invalid declared IRI"
+    },
+    {
+      "id": "surface-missing-base",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "missing-base",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Missing document facts"
+    },
+    {
+      "id": "surface-api-error",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "api-error",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Incomplete/failed structured traversal or document still loading"
+    },
+    {
+      "id": "surface-partial-tree",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "partial-tree",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Incomplete/failed structured traversal or document still loading"
+    },
+    {
+      "id": "surface-wrong-document-url",
+      "expected": {
+        "usable_surface": false,
+        "reason_class": "wrong-document-url",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": false
+      },
+      "matches": true,
+      "reason": "Structured document URL mismatch"
+    },
+    {
+      "id": "surface-script-value-changed-in-render",
+      "expected": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"B\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "actual": {
+        "usable_surface": true,
+        "ordinary_html_script_payloads": [
+          "{\"@id\":\"#entity\",\"https://schema.org/name\":\"B\"}"
+        ],
+        "open_shadow_script_payloads": [],
+        "foreign_script_payloads": [],
+        "base_uri": "https://example.test/page",
+        "authored": true
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-unchanged",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-added",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "absent",
+          "absent"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "absent",
+          "absent"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-removed",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "absent",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 0,
+            "base_uri": "https://example.test/page",
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "absent",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 0,
+            "base_uri": "https://example.test/page",
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-value-changed",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-base-changed",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/elsewhere/",
+            "first_id": "https://example.test/elsewhere/#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/elsewhere/",
+            "first_id": "https://example.test/elsewhere/#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-shadow-separate",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "absent",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 0,
+            "base_uri": "https://example.test/page",
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "absent",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 0,
+            "base_uri": "https://example.test/page",
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-foreign-script",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "absent",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 0,
+            "base_uri": "https://example.test/page",
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "absent",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 0,
+            "base_uri": "https://example.test/page",
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-html-in-foreignobject",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-missing-required-state",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-duplicate-state",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-unexpected-state-retained",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": [
+          "unplanned"
+        ]
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": [
+          "unplanned"
+        ]
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-wrong-scenario",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-wrong-browser",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-wrong-browser_version",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-late-plan",
+      "expected": {
+        "accepted": false
+      },
+      "actual": {
+        "accepted": false
+      },
+      "matches": true,
+      "reason": "Plan or HTTP/window chronology inconsistent"
+    },
+    {
+      "id": "workflow-http-before-window",
+      "expected": {
+        "accepted": false
+      },
+      "actual": {
+        "accepted": false
+      },
+      "matches": true,
+      "reason": "Plan or HTTP/window chronology inconsistent"
+    },
+    {
+      "id": "workflow-duplicate-required-id",
+      "expected": {
+        "accepted": false
+      },
+      "actual": {
+        "accepted": false
+      },
+      "matches": true,
+      "reason": "Invalid/repeated planned state or browser/scenario"
+    },
+    {
+      "id": "workflow-empty-rendered-script",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "script-error",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "script-error",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-rendered-type-variant",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "selection-unresolved",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": 0,
+            "base_uri": "https://example.test/page",
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "selection-unresolved",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": 0,
+            "base_uri": "https://example.test/page",
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-source-error-render-missing",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "script-error",
+          "script-error"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "script-error",
+          "script-error"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-wrong-snapshot",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-native-http-agent-mismatch",
+      "expected": {
+        "accepted": false
+      },
+      "actual": {
+        "accepted": false
+      },
+      "matches": true,
+      "reason": "Request crawler differs from intent"
+    },
+    {
+      "id": "workflow-supplied-same-navigation",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-malformed-http-member",
+      "expected": {
+        "accepted": false
+      },
+      "actual": {
+        "accepted": false
+      },
+      "matches": true,
+      "reason": "Malformed HTTP trace member"
+    },
+    {
+      "id": "workflow-unrecognized-outer-state-url",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-javascript-disabled",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-two-independent-states",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          },
+          {
+            "id": "second",
+            "status": "processed",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          },
+          {
+            "id": "second",
+            "status": "processed",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-good-state-after-refused-state",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          },
+          {
+            "id": "second",
+            "status": "processed",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          },
+          {
+            "id": "second",
+            "status": "processed",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-dom-crlf-not-html-reparsed",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-rendered-context-missing-source-survives",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processing-unavailable",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processing-unavailable",
+            "comparison": [
+              "different",
+              "different"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-serialization-unavailable",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-element-descendant-textcontent",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-source-crlf-dom-lf-equal",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "processed",
+            "comparison": [
+              "equal",
+              "equal"
+            ],
+            "selected_count": 1,
+            "base_uri": "https://example.test/page",
+            "first_id": "https://example.test/page#entity"
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    },
+    {
+      "id": "workflow-opaque-base-unavailable-not-json-error",
+      "expected": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "actual": {
+        "accepted": true,
+        "source_status": [
+          "processed",
+          "processed"
+        ],
+        "states": [
+          {
+            "id": "ready",
+            "status": "unavailable",
+            "comparison": [
+              "unavailable",
+              "unavailable"
+            ],
+            "selected_count": null,
+            "base_uri": null,
+            "first_id": null
+          }
+        ],
+        "unexpected_states": []
+      },
+      "matches": true,
+      "reason": null
+    }
+  ],
+  "replays": [
+    "workflow-unchanged",
+    "workflow-added",
+    "workflow-removed",
+    "workflow-value-changed",
+    "workflow-base-changed",
+    "workflow-shadow-separate",
+    "workflow-foreign-script",
+    "workflow-html-in-foreignobject",
+    "workflow-missing-required-state",
+    "workflow-duplicate-state",
+    "workflow-unexpected-state-retained",
+    "workflow-wrong-scenario",
+    "workflow-wrong-browser",
+    "workflow-wrong-browser_version",
+    "workflow-empty-rendered-script",
+    "workflow-rendered-type-variant",
+    "workflow-source-error-render-missing",
+    "workflow-wrong-snapshot",
+    "workflow-supplied-same-navigation",
+    "workflow-unrecognized-outer-state-url",
+    "workflow-javascript-disabled",
+    "workflow-two-independent-states",
+    "workflow-good-state-after-refused-state",
+    "workflow-dom-crlf-not-html-reparsed",
+    "workflow-rendered-context-missing-source-survives",
+    "workflow-serialization-unavailable",
+    "workflow-element-descendant-textcontent",
+    "workflow-source-crlf-dom-lf-equal",
+    "workflow-opaque-base-unavailable-not-json-error"
+  ],
+  "failures": [],
+  "scope": "29 authored supplied surfaces, 23 prefrozen authored workflows and eleven later frozen review boundaries. Actual reader/processor execution, no browser execution or site assessment."
+}

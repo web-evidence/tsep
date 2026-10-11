@@ -1,3 +1,9 @@
+## Supplied rendered JSON-LD observation 1 — 2026-10-11
+
+- Optional planned source/DOM workflow, supplied base attribution, exact payload comparison and offline replay; no normative version or control-count change.
+- Lecture des états structurés fournis, erreurs/inconnues et frontières conservées ; aucune collecte navigateur ni validation Edikka.
+- Latest priority / priorité : consolider les 12 contrôles existants avant la décision sur l’application Edikka.
+
 ## Optional HTML JSON-LD observation 1 — 2026-10-11 — non-normative
 
 Attributed static script inventory, original bytes and parsed text, template/namespace context, two separate scripting hypotheses and combined-document processing with exact offline replay. 34 prefrozen HTML cases, 24 prefrozen graph scenarios and three additional frozen tokenizer/context boundaries. Source completeness, effective base and rendered states remain separate evidence; no TS31–33 atomic integration or normative change.

@@ -12,7 +12,8 @@ TS10**, avec TS01 comme socle. Il remplace la cible antérieure de dix contrôle
 Le 11 octobre, Bertrand a ajouté explicitement la performance : TS34 et TS35.
 Le même jour, il a demandé les agents IA après les performances : TS42, puis TS43 et TS44.
 Le même jour, il a autorisé TS41, TS39, TS36 et TS31–33. TS41 et TS39 sont intégrés ; TS36 et TS31–33 restent à développer.
-Une [base de traitement JSON-LD facultative](jsonld-processing.md), puis une [extraction HTML attribuée avec combinaison des blocs](jsonld-html-observation.md), préparent TS31–33. Elles ne comptent pas comme trois contrôles supplémentaires ; extraction rendue, base effective, vocabulaire, contenu visible, identités et validateurs restent à qualifier.
+**Dernière priorité donnée le 11 octobre : consolider les 12 contrôles existants, puis aviser pour l’application Edikka.** Achever la vérification du composant rendu déjà engagé ; différer les couches suivantes de TS31–33/TS36. Cette priorité ne déclare pas les 12 usages réels achevés.
+Une [base de traitement JSON-LD facultative](jsonld-processing.md), puis une [extraction HTML attribuée avec combinaison des blocs](jsonld-html-observation.md), préparent TS31–33. Une [lecture des états rendus fournis](jsonld-rendered-observation.md) complète ces composants. Ils ne comptent pas comme trois contrôles supplémentaires ; vraie chaîne de capture rendue, base effective authentifiée, vocabulaire, contenu visible, identités et validateurs restent à qualifier.
 La source décrit **44 contrôles**. **Douze** disposent de règles atomiques
 exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS10 (4), TS34 (3), TS35 (2), TS39 (3), TS41 (3), TS42 (3), TS43 (3), TS44 (3),
 soit **33 règles**. Les quatre priorités SEO en représentent 11. Les 32 autres sont décrits,
@@ -44,7 +45,7 @@ explicites ; un ancien dossier ne sélectionne pas automatiquement un nouveau le
 ### Critères d'achèvement encore ouverts
 
 Les contrats bilingues, cas contradictoires, outils d'import, rapports et rejeux
-existent. Leur vérification logicielle ne suffit pas à déclarer les quatre
+existent. Leur vérification logicielle ne suffit pas à déclarer les douze
 méthodes entièrement qualifiées dans un usage réel. La suite doit établir une
 voie de preuve praticable pour chaque type d'entrée requis, avec les inconnues
 expliquées. Obtenir C n'est pas une condition : un NC ou NT justifié est utile.
@@ -103,7 +104,9 @@ The local edition is **0.1.0-draft.27**, with interpreter **26**, capture adapte
 **27** and replay **3**. These version numbers do not establish a public release
 or stable 1.0. Historical packages keep their exact tools and fingerprints.
 
-The active human priority is four deeply developed controls, TS04/TS02/TS07/TS10,
+Latest October 11 instruction: consolidate the existing 12 controls before deciding the Edikka application; finish verification of the in-flight rendered component, then defer further TS31–33/TS36 layers. Real use remains incomplete.
+
+The earlier human priority is four deeply developed controls, TS04/TS02/TS07/TS10,
 with TS01 as the foundation, superseding the older ten-control target. Forty-four
 controls are specified. On October 11 the user explicitly added TS34/TS35 performance.
 The user then added TS42–TS44 agents, in that order after performance.
@@ -111,7 +114,7 @@ The user also authorized TS41, TS39, TS36 and TS31–33. TS41 and TS39 are integ
 The [controlled TS39 laboratory](delivery-laboratory.md) now retains eight prefrozen scenarios, 38 actual local origin/cache exchanges and repair with explicit purge. Policies and reviews remain authored; no production CDN or Edikka assessment.
 Twelve controls now have 33 executable atomic rules, including 11 for the four SEO
 priorities, five for performance, three for TS39, three for TS41 and nine for TS42/TS43/TS44. The other 32 lack equivalent executable coverage.
-Optional HTML JSON-LD extraction now attributes scripts to source bytes and combines them under an explicit supplied-base hypothesis. Frozen fixtures and historical Edikka source reanalysis do not complete TS31–33; rendered states, effective bases, vocabulary, visible facts, corpus identity and validators remain to qualify.
+Optional HTML JSON-LD extraction attributes scripts to source bytes; a supplied-rendered layer now binds planned states and retains their supplied bases, without browser execution. Frozen fixtures and historical Edikka source reanalysis do not complete TS31–33; rendered states, effective bases, vocabulary, visible facts, corpus identity and validators remain to qualify.
 TS42 binds source mappings, supplied owner decisions and tradeoffs to a bounded robots comparison. No real owner approval or agent visit is established. TS43 now supplies planned test-client treatment, reviewed native-log correlation and explicit attribution, with a controlled loopback experiment. Actual operator access/identity/visits remain unestablished. TS44 now has three bounded executable [critical-content rules](critical-content-evidence.md); a controlled laboratory retains six actual loopback exchanges with authored DOM/reviews, while real Edikka application remains pending.
 TS34 imports CrUX cohorts/p75 with exact classes and supplied decisions. TS35 imports
 planned repeated Lighthouse reports with declared context, spread and supplied hypotheses.

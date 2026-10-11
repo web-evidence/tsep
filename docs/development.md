@@ -1,4 +1,7 @@
 Current integration: draft.27, interpreter 26 / adapter 27 / HTML 10 / replay 3.
+Current priority: consolidate the existing 12 controls before deciding the Edikka application; further TS31–33/TS36 layers are deferred after the in-flight rendered component.
+FR : priorité donnée par Bertrand le 11 octobre à la finalisation des 12 contrôles ; ne pas attendre les 44 pour décider ensuite de l’application.
+Optional [supplied rendered JSON-LD observation 1](jsonld-rendered-observation.md) binds planned supplied DOM states to HTTP, retains snapshot bases and compares exact parsed-source/rendered texts. No browser execution or new control.
 Optional [HTML JSON-LD observation 1](jsonld-html-observation.md): original-byte script attribution, two static hypotheses and combined documents under an explicit supplied-base hypothesis; 126 frozen expected readings, 63 exact replays and 10 over-limit refusals.
 FR : captures historiques de trois pages Edikka retraitées avec contexte fourni ; ni état rendu, ni validation Schema.org/Google, ni règles TS31–33 déduits.
 Optional [JSON-LD processing observation 1](jsonld-processing.md) prepares TS31–33: pinned offline processor, 48 frozen authored cases and exact explicit-Node replay.
