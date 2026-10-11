@@ -1,0 +1,359 @@
+{
+  "input_version": "1",
+  "rules": [
+    "TS39-A01",
+    "TS39-A02",
+    "TS39-A03"
+  ],
+  "targets": [
+    {
+      "url": "https://example.com/delivery-scope",
+      "observed_at": "2026-10-11T10:05:00Z",
+      "context": {
+        "network": "none; authored inputs",
+        "bounds": "two fictional contexts",
+        "tool": "AuthoredFixture",
+        "tool_version": "1"
+      },
+      "delivery_synthetic": true,
+      "intent": {
+        "declared_at": "2026-10-11T09:00:00Z",
+        "delivery": {
+          "reader": "delivery-evidence-v1",
+          "window_start": "2026-10-11T09:10:00Z",
+          "window_end": "2026-10-11T10:00:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.com/product",
+              "user_agent": "googlebot",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR"
+              },
+              "context_id": "a",
+              "mode": "representation",
+              "expectation": {
+                "status": 200,
+                "final_url": "https://example.com/product",
+                "language": "fr",
+                "content": "declared product"
+              },
+              "seo_intent": {
+                "declared_at": "2026-10-11T09:00:00Z",
+                "crawler": "googlebot",
+                "canonical": {
+                  "preferred_url": "https://example.com/product",
+                  "members": [
+                    {
+                      "url": "https://example.com/product",
+                      "required_methods": [
+                        "html"
+                      ],
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ]
+                },
+                "public_canonical": true,
+                "indexing": "allow",
+                "following": "unspecified",
+                "access_basis": "test-client-only",
+                "rendering": {
+                  "mode": "exempt",
+                  "basis": "reviewed-stable"
+                }
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.com/product",
+              "user_agent": "googlebot",
+              "request_fields": {
+                "accept-language": null
+              },
+              "context_claims": {
+                "region": "US"
+              },
+              "context_id": "b",
+              "mode": "representation",
+              "expectation": {
+                "status": 200,
+                "final_url": "https://example.com/product",
+                "language": "fr",
+                "content": "declared product"
+              },
+              "seo_intent": {
+                "declared_at": "2026-10-11T09:00:00Z",
+                "crawler": "googlebot",
+                "canonical": {
+                  "preferred_url": "https://example.com/product",
+                  "members": [
+                    {
+                      "url": "https://example.com/product",
+                      "required_methods": [
+                        "html"
+                      ],
+                      "rendering": {
+                        "mode": "exempt",
+                        "basis": "reviewed-stable"
+                      }
+                    }
+                  ]
+                },
+                "public_canonical": true,
+                "indexing": "allow",
+                "following": "unspecified",
+                "access_basis": "test-client-only",
+                "rendering": {
+                  "mode": "exempt",
+                  "basis": "reviewed-stable"
+                }
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ],
+          "mechanisms": [
+            "negotiation"
+          ],
+          "cache_checks": []
+        }
+      },
+      "delivery_configuration": {
+        "id": "config-source",
+        "source_uri": "https://example.test/config",
+        "observed_at": "2026-10-11T09:00:00Z",
+        "raw_text": "SYNTHETIC configuration: documented variants, test contexts, Googlebot policy and no hidden gate. Not a real configuration observation.",
+        "sha256": "e957a04a15496795bd0796dae11f16a856226a5f2dac0f996f11cae1b60c105c"
+      },
+      "delivery_sources": [
+        {
+          "id": "config-source",
+          "source_uri": "https://example.test/config",
+          "observed_at": "2026-10-11T09:00:00Z",
+          "raw_text": "SYNTHETIC configuration: documented variants, test contexts, Googlebot policy and no hidden gate. Not a real configuration observation.",
+          "sha256": "e957a04a15496795bd0796dae11f16a856226a5f2dac0f996f11cae1b60c105c"
+        }
+      ],
+      "delivery_observations": [
+        {
+          "cell_id": "a",
+          "http": [
+            {
+              "url": "https://example.com/product",
+              "complete": true,
+              "request": "GET /product HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\nAccept-Language: fr\r\n\r\n",
+              "response": "HTTP/1.1 200 Synthetic\r\nVary: Accept-Language\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<html><head><title>Synthetic product</title><link rel=\"canonical\" href=\"https://example.com/product\"></head><body><p>SYNTHETIC product content</p></body></html>",
+              "sent_at": "2026-10-11T09:20:00Z",
+              "received_at": "2026-10-11T09:20:01Z"
+            }
+          ],
+          "native": {
+            "url": "https://example.com/product",
+            "observed_at": "2026-10-11T09:20:02Z",
+            "context": {
+              "id": "a",
+              "network": "offline fixture",
+              "bounds": "Declared family and source only",
+              "tool": "SyntheticFixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T09:00:00Z",
+              "crawler": "googlebot",
+              "canonical": {
+                "preferred_url": "https://example.com/product",
+                "members": [
+                  {
+                    "url": "https://example.com/product",
+                    "required_methods": [
+                      "html"
+                    ],
+                    "rendering": {
+                      "mode": "exempt",
+                      "basis": "reviewed-stable"
+                    }
+                  }
+                ]
+              },
+              "public_canonical": true,
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only",
+              "rendering": {
+                "mode": "exempt",
+                "basis": "reviewed-stable"
+              }
+            },
+            "documents": [
+              {
+                "url": "https://example.com/product",
+                "observed_at": "2026-10-11T09:20:02Z",
+                "context_id": "a",
+                "http": [
+                  {
+                    "url": "https://example.com/product",
+                    "complete": true,
+                    "request": "GET /product HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\nAccept-Language: fr\r\n\r\n",
+                    "response": "HTTP/1.1 200 Synthetic\r\nVary: Accept-Language\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<html><head><title>Synthetic product</title><link rel=\"canonical\" href=\"https://example.com/product\"></head><body><p>SYNTHETIC product content</p></body></html>",
+                    "sent_at": "2026-10-11T09:20:00Z",
+                    "received_at": "2026-10-11T09:20:01Z"
+                  }
+                ],
+                "exemption_review": {
+                  "basis": "reviewed-stable",
+                  "reviewer": "Synthetic review author",
+                  "reason": "SYNTHETIC supplied review of static representation and retained implementation record",
+                  "observed_at": "2026-10-11T09:20:02Z",
+                  "source_http_sha256": "f7eadec4e3b4a7b28dbf1bdeca0bf99f5acb1bf850ea4f6857da9b75b6d84b42",
+                  "support": [
+                    {
+                      "name": "SYNTHETIC reviewed inventory",
+                      "content": "SYNTHETIC template/configuration inventory: supplied representation has no later canonical or anchor mutations.",
+                      "sha256": "f477194993cafe1e801d2536db0dfb18fac60c851ea0fcff2dffbe07bf6c3d16"
+                    }
+                  ]
+                }
+              }
+            ],
+            "http": [
+              {
+                "url": "https://example.com/product",
+                "complete": true,
+                "request": "GET /product HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nVary: Accept-Language\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<html><head><title>Synthetic product</title><link rel=\"canonical\" href=\"https://example.com/product\"></head><body><p>SYNTHETIC product content</p></body></html>",
+                "sent_at": "2026-10-11T09:20:00Z",
+                "received_at": "2026-10-11T09:20:01Z"
+              }
+            ],
+            "exemption_review": {
+              "basis": "reviewed-stable",
+              "reviewer": "Synthetic review author",
+              "reason": "SYNTHETIC supplied review of static representation and retained implementation record",
+              "observed_at": "2026-10-11T09:20:02Z",
+              "source_http_sha256": "f7eadec4e3b4a7b28dbf1bdeca0bf99f5acb1bf850ea4f6857da9b75b6d84b42",
+              "support": [
+                {
+                  "name": "SYNTHETIC reviewed inventory",
+                  "content": "SYNTHETIC template/configuration inventory: supplied representation has no later canonical or anchor mutations.",
+                  "sha256": "f477194993cafe1e801d2536db0dfb18fac60c851ea0fcff2dffbe07bf6c3d16"
+                }
+              ]
+            },
+            "robots": {
+              "observed_at": "2026-10-11T09:20:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-11T09:20:02Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        }
+      ],
+      "delivery_cache_records": [],
+      "delivery_plan_review": {
+        "reviewer": "Fictional reviewer",
+        "assistance": "Authored test",
+        "reason": "SYNTHETIC supplied judgment; no human assessment",
+        "provenance": "synthetic-exercise",
+        "observed_at": "2026-10-11T09:05:00Z",
+        "binding_sha256": "3cd5b88937a0580191278a650b3b1b1f80305cfb1e7629eb2b789b537a79958f",
+        "complete": true,
+        "judgment": "supported",
+        "representative": true,
+        "operator_policy_supported": true
+      },
+      "delivery_semantic_reviews": [
+        {
+          "reviewer": "Fictional reviewer",
+          "assistance": "Authored test",
+          "reason": "SYNTHETIC supplied judgment; no human assessment",
+          "provenance": "synthetic-exercise",
+          "observed_at": "2026-10-11T10:01:00Z",
+          "binding_sha256": "875298be55f2b787ef2afcf1bbf228d2ba42615a8d2517b059ab7ca003fe5b75",
+          "complete": true,
+          "language": "supported",
+          "content": "supported",
+          "accessibility": "supported",
+          "cell_id": "a"
+        },
+        {
+          "reviewer": "Fictional reviewer",
+          "assistance": "Authored test",
+          "reason": "SYNTHETIC supplied judgment; no human assessment",
+          "provenance": "synthetic-exercise",
+          "observed_at": "2026-10-11T10:01:00Z",
+          "binding_sha256": "ef2cd7eb44058d534e3b542f1ea9b20400684addb60ed0b6b39716f1f32c607b",
+          "complete": true,
+          "language": "supported",
+          "content": "supported",
+          "accessibility": "supported",
+          "cell_id": "b"
+        }
+      ],
+      "delivery_context_reviews": [
+        {
+          "reviewer": "Fictional reviewer",
+          "assistance": "Authored test",
+          "reason": "SYNTHETIC supplied judgment; no human assessment",
+          "provenance": "synthetic-exercise",
+          "observed_at": "2026-10-11T10:01:00Z",
+          "binding_sha256": "9aca83ba7507af5bf49b0394edbcb316240f74ebe767b0a3ca8afca5cbe82d75",
+          "complete": true,
+          "context": "supported",
+          "mechanism": "supported",
+          "operator_policy": "supported",
+          "actual_context": {
+            "region": "FR"
+          },
+          "claims_operator_visit": false,
+          "cell_id": "a",
+          "source_ids": [
+            "config-source"
+          ]
+        },
+        {
+          "reviewer": "Fictional reviewer",
+          "assistance": "Authored test",
+          "reason": "SYNTHETIC supplied judgment; no human assessment",
+          "provenance": "synthetic-exercise",
+          "observed_at": "2026-10-11T10:01:00Z",
+          "binding_sha256": "73dca72c130415096be410902e189102d96a559ec7b623a8ed934bd610b4c370",
+          "complete": true,
+          "context": "supported",
+          "mechanism": "supported",
+          "operator_policy": "supported",
+          "actual_context": {
+            "region": "US"
+          },
+          "claims_operator_visit": false,
+          "cell_id": "b",
+          "source_ids": [
+            "config-source"
+          ]
+        }
+      ]
+    }
+  ]
+}

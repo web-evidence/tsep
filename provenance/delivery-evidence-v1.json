@@ -1,0 +1,94 @@
+{
+  "kind": "delivery-evidence-v1 normative integration",
+  "base_commit": "214c3f92972702d5bc7cb3db1d147f0f796bea7e",
+  "protocol_version": "0.1.0-draft.27",
+  "fixtures": {
+    "initial": {
+      "frozen_at": "2026-10-11T08:09:10.096409+00:00",
+      "cases": 60,
+      "pairs": 180,
+      "sha256": "36de11fded451086c2a764dd40faf499a8ab309c581fa8faab5930e00c06cf4b",
+      "bytes": 878245,
+      "contract_sha256": "d5dd9fbd17048beded696b0324aad43f0a11e1be4c55eeefe0473ae4597a83a9",
+      "reader_present": false,
+      "base_commit": "214c3f92972702d5bc7cb3db1d147f0f796bea7e"
+    },
+    "corrected_inputs": {
+      "frozen_at": "2026-10-11T08:11:37.602796+00:00",
+      "cases": 60,
+      "pairs": 180,
+      "sha256": "2270ccd2e3d08e94ebdd27d03f6b1d7cb10af93203218967b15d289267e76619",
+      "bytes": 878245,
+      "contract_sha256": "d5dd9fbd17048beded696b0324aad43f0a11e1be4c55eeefe0473ae4597a83a9",
+      "reader_present": true,
+      "supersedes_inputs_only": "v1 inconsistent exemption timestamp; expectations unchanged",
+      "base_commit": "214c3f92972702d5bc7cb3db1d147f0f796bea7e"
+    },
+    "boundaries": {
+      "frozen_at": "2026-10-11T08:13:13.820453+00:00",
+      "cases": 17,
+      "pairs": 51,
+      "sha256": "beae3e0c4adc8b5d51d45215028c056928a3b1f46ff0367a2077d06a79417f4c",
+      "reader_sha256": "7f4f7573ef7d3eb238d37a9307836d4fdad26f0d93477de7a989e67b96c93675"
+    }
+  },
+  "history": {
+    "first_reader": "146/180: 34 falsely expected positive pairs left inconclusive because authored review timestamps postdated assessment.",
+    "v2": "Correct only input timestamps and derived bindings; unchanged expectations; 180/180 without reader change.",
+    "boundary_generator": "First attempt failed before writing fixture: extra unplanned cache record could not be bound by fixture helper; moved insertion after binding.",
+    "boundaries": "50/51 before correction: header-only preview scope created false failure despite valid HTML nosnippet.",
+    "reader_correction": "Auxiliary header view checks additive exclusions only; full native interpretation remains required. Final 231/231 matched.",
+    "first_targeted_suite": "42/43 tests: authored TS39 C aggregation expected GO, but the existing validator correctly returns GO_WITH_RESERVATIONS for limited scope; corrected expected gate only.",
+    "second_targeted_suite": "43/43 tests passed: 77 active cases, retained initial fixture failure, partial evidence, native semantics, cache attribution, import/report/replay C/NC/NT, scope and synthetic provenance.",
+    "first_full_suite": "799/803 tests passed; four failures: three historical corpus selectors accidentally included 77 TS39 additions; external CLI sample lacked pass/fail/inconclusive examples for the three new rules. No changed_source_files during verification.",
+    "compatibility_test_correction": "Exclude only the new frozen TS39 cases from historical subsets while retaining all prior counts and hashes; extend external CLI sample with five named contradictory TS39 cases. No reader, fixture expectation or normative rule changed.",
+    "first_compatibility_rerun": "2/4 passed: the two prefix-based historical selectors still included the 17 delivery-boundary cases. Added their explicit prefix; original expected counts and hashes unchanged.",
+    "second_compatibility_rerun": "4/4 passed. All historical expected counts and fingerprints remain unchanged; external transport sample now covers pass/fail/inconclusive for TS39-A01/A02/A03."
+  },
+  "source_observations": {
+    "prior": "provenance/delivery-variants-v1.json",
+    "additional_rfc_url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-8.8.3.3",
+    "additional_capture": {
+      "retained_at": "2026-10-11T07:58:39.174897+00:00",
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-8.8.3.3",
+      "scope": "Les ETag forts de représentations encodées et non encodées diffèrent ; une différence de validateur ne suffit pas à démontrer une péremption. Source pour la conception future TS39, aucun changement normatif courant.",
+      "capture": {
+        "file": "sources/validators-web-extract.json",
+        "bytes": 16199,
+        "sha256": "729ac546f4c4248cd94f3a5977d5db67a72adfb5946fd5b0464f4c121292f067"
+      },
+      "format": "Résultat textuel normalisé du navigateur web, pas capture HTTP originale."
+    }
+  },
+  "claude_method": {
+    "observed_at": "2026-10-11T07:58:39.174897+00:00",
+    "url": "https://claude.ai/chat/1c87d570-5d15-4448-8575-f5fff2bd61d3",
+    "scope": "Discussion méthodologique TS39 uniquement ; aucun code ou fichier privé transmis, aucune validation du code ou revue humaine.",
+    "captures": [
+      {
+        "file": "claude-method-review.txt",
+        "bytes": 18927,
+        "sha256": "a1d397f3713eb013ddc75378254b8ea91c74e53cd5698e408f22e5f0cf472860"
+      },
+      {
+        "file": "claude-method-review.jpg",
+        "bytes": 86317,
+        "sha256": "01c7f2d95a4064c391e1024fe59f62fb51ea9948d8d0eca3a8d3c9cfb58e936e"
+      }
+    ],
+    "retained_agreements": [
+      "ETag/Last-Modified différents ne prouvent pas seuls la péremption.",
+      "Une mauvaise variante prouve une contradiction de diffusion si la politique est qualifiée ; la cause cache demande une attribution supplémentaire.",
+      "La langue attendue sans Accept-Language dépend de la politique et du contexte géographique."
+    ],
+    "limitations": [
+      "Avis IA, pas approbation indépendante.",
+      "Les raccourcis de la première réponse sont conservés dans la capture puis explicitement corrigés."
+    ]
+  },
+  "limitations": [
+    "Authored tests and reviews, no real CDN or Googlebot visit.",
+    "No independent human review or Edikka conformity.",
+    "Existing reader boundaries and optional-runtime gaps remain."
+  ]
+}

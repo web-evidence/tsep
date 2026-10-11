@@ -1,4 +1,8 @@
-Current integration: draft.26, interpreter 25 / adapter 26 / HTML 9 / replay 3.
+Current integration: draft.27, interpreter 26 / adapter 27 / HTML 10 / replay 3.
+[Delivery evidence](delivery-evidence.md): TS39 prior reviewed matrix, native SEO signals and context/cache attribution. [Migration](migration-draft.27.md).
+FR : trois règles semiAuto, variantes légitimes et inconnues distinctes ; 77 cas rédigés, aucun audit Edikka ni accès réel Googlebot déduit.
+
+Historical integration: draft.26, interpreter 25 / adapter 26 / HTML 9 / replay 3.
 Optional [delivery variants observer 1](delivery-variants-observation.md) prepares TS39: prior cells, raw HTTP differences and bounded stored-side Vary matching, without a control verdict.
 FR : matrice et inconnues conservées ; contexte géographique, réutilisation du cache et cohérence SEO restent à qualifier avant intégration normative TS39.
 [TS41 bilingual erratum](migration-draft.26.md) clarifies unknown recalculation without changing reader behavior.

@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.26",
+  "version": "0.1.0-draft.27",
   "status": "draft",
   "date": "2026-10-11",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.26"
+      "rule_version": "0.1.0-draft.27"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.26",
+      "rule_version": "0.1.0-draft.27",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.26",
+      "rule_version": "0.1.0-draft.27",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.26"
+      "rule_version": "0.1.0-draft.27"
     },
     {
       "id": "TS08",
@@ -1233,7 +1233,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.26"
+      "rule_version": "0.1.0-draft.27"
     },
     {
       "id": "TS11",
@@ -2648,7 +2648,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.26",
+      "rule_version": "0.1.0-draft.27",
       "rules": [
         {
           "id": "TS34-A01",
@@ -2843,7 +2843,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.26",
+      "rule_version": "0.1.0-draft.27",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3141,24 +3141,24 @@
         "en": "Delivery varying by region, cache, device or negotiation."
       },
       "procedure": {
-        "fr": "Comparer code, canonical, robots, langue et contenu depuis plusieurs régions ou clés de cache ; inspecter Vary, redirections géographiques et règles edge.",
-        "en": "Compare status, canonical, robots, language and content across regions or cache keys; inspect Vary, geolocation redirects and edge rules."
+        "fr": "Déclarer et faire revoir matrice, configuration et politique avant collecte ; comparer signaux natifs, contenu et accès par cellule ; qualifier contextes et réutilisations du cache avec pièces liées selon delivery-evidence-v1.",
+        "en": "Declare and review matrix, configuration and policy before collection; compare native signals, content and access per cell; qualify contexts and cache reuse through bound evidence under delivery-evidence-v1."
       },
       "acceptance": {
-        "fr": "La matrice de conditions est déclarée ; les signaux observés suivent la politique et les variantes restent accessibles selon celle-ci ; cases non testées visibles.",
-        "en": "The condition matrix is declared; observed signals follow policy and variants remain accessible under it; untested cells are visible."
+        "fr": "Les trois règles réussissent sur les cellules déclarées : politique revue, signaux cohérents et mécanismes attribués ; variations légitimes, défauts indépendants et cellules non qualifiées restent distincts.",
+        "en": "All three rules pass over declared cells: reviewed policy, consistent signals and attributed mechanisms; legitimate variations, independent defects and unqualified cells remain distinct."
       },
       "non_applicability": {
         "fr": "Absence de mécanisme de variation attestée par configuration.",
         "en": "Configuration attests to the absence of variation mechanisms."
       },
       "evidence": {
-        "fr": "Mêmes signaux SEO pour une même URL, ou variantes explicitement documentées et accessibles à Googlebot.",
-        "en": "Identical SEO signals for the same URL, or explicitly documented variants accessible to Googlebot."
+        "fr": "Configuration, matrice préalable, HTTP natifs, rendus ou exemptions positives, revues liées et journaux du cache lorsqu’il est testé. Politique d’accès Googlebot qualifiée séparément des requêtes du client de test ; aucune visite réelle déduite.",
+        "en": "Configuration, prior matrix, native HTTP, rendered states or positive exemptions, bound reviews and cache journals where tested. Googlebot access policy is qualified separately from test-client requests; no actual visit inferred."
       },
       "limitations": {
-        "fr": "Deux points de test ne couvrent pas toutes les routes, tous les POP ni toutes les clés de cache.",
-        "en": "Two test locations do not cover every route, POP or cache key."
+        "fr": "Premier profil borné avec un membre canonical par cellule et réutilisation sans transformation. Revues, sources, régions, horloges et journaux fournis sans authentification ; pas de simulation générale du cache. Deux points ne couvrent pas tous les POP/routes, et C n’établit pas l’accès réel de Googlebot.",
+        "en": "First bounded profile with one canonical member per cell and reuse without transformation. Supplied reviews, sources, regions, clocks and logs are not authenticated; no general cache simulation. Two points do not cover all POPs/routes, and C does not establish actual Googlebot access."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -3177,7 +3177,147 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.27",
+      "rules": [
+        {
+          "applicability": {
+            "fr": "Diffusion variant selon région, cache, appareil ou négociation.",
+            "en": "Delivery varying by region, cache, device or negotiation."
+          },
+          "evidence": {
+            "fr": "Configuration, matrice préalable, HTTP natifs, rendus ou exemptions positives, revues liées et journaux du cache lorsqu’il est testé. Politique d’accès Googlebot qualifiée séparément des requêtes du client de test ; aucune visite réelle déduite.",
+            "en": "Configuration, prior matrix, native HTTP, rendered states or positive exemptions, bound reviews and cache journals where tested. Googlebot access policy is qualified separately from test-client requests; no actual visit inferred."
+          },
+          "limitations": {
+            "fr": "Premier profil borné avec un membre canonical par cellule et réutilisation sans transformation. Revues, sources, régions, horloges et journaux fournis sans authentification ; pas de simulation générale du cache. Deux points ne couvrent pas tous les POP/routes, et C n’établit pas l’accès réel de Googlebot.",
+            "en": "First bounded profile with one canonical member per cell and reuse without transformation. Supplied reviews, sources, regions, clocks and logs are not authenticated; no general cache simulation. Two points do not cover all POPs/routes, and C does not establish actual Googlebot access."
+          },
+          "id": "TS39-A01",
+          "title": {
+            "fr": "Matrice préalable et configuration revues",
+            "en": "Reviewed prior matrix and configuration"
+          },
+          "required_inputs": [
+            "configuration",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "assumptions": {
+            "fr": "Intention, contexte et qualifications des sources/revues fournis ; leur vérité reste à vérifier.",
+            "en": "Supplied intent, context and source/review qualifications; their truth remains to verify."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "procedure": {
+            "fr": "Vérifier fenêtre, cellules, mécanismes, configuration conservée et revue liée avant collecte, incluant représentativité et politique d’accès Googlebot.",
+            "en": "Check window, cells, mechanisms, retained configuration and bound prior review, including representativeness and Googlebot access policy."
+          },
+          "acceptance": {
+            "fr": "Configuration et matrice qualifiées par une revue favorable ; rejet documenté = fail.",
+            "en": "Configuration and matrix qualified by supported review; documented rejection = fail."
+          },
+          "inconclusive": {
+            "fr": "Configuration/revue absente, tardive, non liée ; minimum de matrice ou mécanisme non qualifié.",
+            "en": "Missing, late or unbound configuration/review; unqualified matrix minimum or mechanism."
+          }
+        },
+        {
+          "applicability": {
+            "fr": "Diffusion variant selon région, cache, appareil ou négociation.",
+            "en": "Delivery varying by region, cache, device or negotiation."
+          },
+          "evidence": {
+            "fr": "Configuration, matrice préalable, HTTP natifs, rendus ou exemptions positives, revues liées et journaux du cache lorsqu’il est testé. Politique d’accès Googlebot qualifiée séparément des requêtes du client de test ; aucune visite réelle déduite.",
+            "en": "Configuration, prior matrix, native HTTP, rendered states or positive exemptions, bound reviews and cache journals where tested. Googlebot access policy is qualified separately from test-client requests; no actual visit inferred."
+          },
+          "limitations": {
+            "fr": "Premier profil borné avec un membre canonical par cellule et réutilisation sans transformation. Revues, sources, régions, horloges et journaux fournis sans authentification ; pas de simulation générale du cache. Deux points ne couvrent pas tous les POP/routes, et C n’établit pas l’accès réel de Googlebot.",
+            "en": "First bounded profile with one canonical member per cell and reuse without transformation. Supplied reviews, sources, regions, clocks and logs are not authenticated; no general cache simulation. Two points do not cover all POPs/routes, and C does not establish actual Googlebot access."
+          },
+          "id": "TS39-A02",
+          "title": {
+            "fr": "Cohérence des signaux dans chaque contexte",
+            "en": "Signal consistency in each context"
+          },
+          "required_inputs": [
+            "http",
+            "content",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "assumptions": {
+            "fr": "Intention, contexte et qualifications des sources/revues fournis ; leur vérité reste à vérifier.",
+            "en": "Supplied intent, context and source/review qualifications; their truth remains to verify."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "procedure": {
+            "fr": "Comparer statut/URL finale, recalculer TS07-A01/A02/A03 et TS10-A01, puis confronter langue/contenu/accessibilité aux revues liées ; conserver chaque inconnue.",
+            "en": "Compare status/final URL, recalculate TS07-A01/A02/A03 and TS10-A01, then compare language/content/accessibility through bound reviews; retain each unknown."
+          },
+          "acceptance": {
+            "fr": "Toutes les cellules suivent la politique ; exemption de rendu positive conservée. Toute contradiction attribuable donne fail malgré les autres inconnues.",
+            "en": "All cells follow policy; positive rendering exemption retained. Any attributable contradiction fails despite other unknowns."
+          },
+          "inconclusive": {
+            "fr": "Cellule, source, rendu, revue ou profil manquant ; corps incomplet, contexte non lié ou sémantique inconnue.",
+            "en": "Missing cell, source, rendering, review or profile; incomplete body, unbound context or unknown semantics."
+          }
+        },
+        {
+          "applicability": {
+            "fr": "Diffusion variant selon région, cache, appareil ou négociation.",
+            "en": "Delivery varying by region, cache, device or negotiation."
+          },
+          "evidence": {
+            "fr": "Configuration, matrice préalable, HTTP natifs, rendus ou exemptions positives, revues liées et journaux du cache lorsqu’il est testé. Politique d’accès Googlebot qualifiée séparément des requêtes du client de test ; aucune visite réelle déduite.",
+            "en": "Configuration, prior matrix, native HTTP, rendered states or positive exemptions, bound reviews and cache journals where tested. Googlebot access policy is qualified separately from test-client requests; no actual visit inferred."
+          },
+          "limitations": {
+            "fr": "Premier profil borné avec un membre canonical par cellule et réutilisation sans transformation. Revues, sources, régions, horloges et journaux fournis sans authentification ; pas de simulation générale du cache. Deux points ne couvrent pas tous les POP/routes, et C n’établit pas l’accès réel de Googlebot.",
+            "en": "First bounded profile with one canonical member per cell and reuse without transformation. Supplied reviews, sources, regions, clocks and logs are not authenticated; no general cache simulation. Two points do not cover all POPs/routes, and C does not establish actual Googlebot access."
+          },
+          "id": "TS39-A03",
+          "title": {
+            "fr": "Attribution des contextes et du cache",
+            "en": "Context and cache attribution"
+          },
+          "required_inputs": [
+            "configuration",
+            "http",
+            "logs",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "assumptions": {
+            "fr": "Intention, contexte et qualifications des sources/revues fournis ; leur vérité reste à vérifier.",
+            "en": "Supplied intent, context and source/review qualifications; their truth remains to verify."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "procedure": {
+            "fr": "Qualifier contextes/mécanismes sur sources liées ; pour le cache, rapprocher entrée stockée, requête servie, couche, horloge, Vary et revue de fraîcheur.",
+            "en": "Qualify contexts/mechanisms through bound sources; for cache, link stored entry, served request, layer, clock, Vary and freshness review."
+          },
+          "acceptance": {
+            "fr": "Attribution et politique cohérentes sur toutes les cellules/checks ; réutilisation attribuée incompatible avec Vary ou politique = fail. Un test n’est pas une visite opérateur.",
+            "en": "Consistent attribution and policy over all cells/checks; attributed reuse incompatible with Vary or policy fails. A test is not an operator visit."
+          },
+          "inconclusive": {
+            "fr": "Région, source, journal, lien ou fraîcheur non qualifié ; Age/HIT, User-Agent, séquence ou ETag seuls insuffisants.",
+            "en": "Unqualified region, source, journal, linkage or freshness; Age/HIT, User-Agent, sequence or ETag alone are insufficient."
+          }
+        }
+      ]
     },
     {
       "id": "TS40",
@@ -3296,7 +3436,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.26",
+      "rule_version": "0.1.0-draft.27",
       "rules": [
         {
           "applicability": {
@@ -3497,7 +3637,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.26",
+      "rule_version": "0.1.0-draft.27",
       "rules": [
         {
           "id": "TS42-A01",
@@ -3694,7 +3834,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.26",
+      "rule_version": "0.1.0-draft.27",
       "rules": [
         {
           "id": "TS43-A01",
@@ -3896,7 +4036,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.26",
+      "rule_version": "0.1.0-draft.27",
       "rules": [
         {
           "na_inputs": [],
@@ -4188,15 +4328,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "786d7cb7c59cec048a331c45b202a581db21a87f4d5b7ef151a7cc56c18ca83e"
+      "sha256": "f8cab17755516e56dff2b32ea0562d9ce4c5233f8e3a30e9ae416b8e41ccee15"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "58ae5402fc3991c6c3277f39e776ca8f522e4220f64ba74e4986faca71423e0b"
+      "sha256": "d169699a0d9892f47215c4b19bda810b55d5755bc4c6ffc39595264141d50ad2"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "7d43ad85d7a516092b6f04e848adf970d12b8e39a90e5b3d03802509414fcf4a"
+      "sha256": "f46f39cb4a3e2287e4b0de7b1b84e290b3718a6dc22047941cda3e1f97e4e052"
     },
     {
       "path": "docs/source-directives.md",
@@ -4241,6 +4381,10 @@
     {
       "path": "docs/release-invariants.md",
       "sha256": "57497166b33ca7eec61667b479a29a7d9cb0f92c890475fd251b0e53335d0ab0"
+    },
+    {
+      "path": "docs/delivery-evidence.md",
+      "sha256": "2fafe53a6def2e40f8ebdb7bbd94480c8c635259f93c45b9814ae305cb08836c"
     }
   ]
 }

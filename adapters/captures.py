@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '26'
+VERSION = '27'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -34,6 +34,8 @@ def source_files():
     modules['conformance/agent_policy.py'] = importlib.import_module('conformance.agent_policy')
     modules['conformance/agent_access.py'] = importlib.import_module('conformance.agent_access')
     modules['conformance/critical_content.py'] = importlib.import_module('conformance.critical_content')
+    modules['conformance/delivery.py'] = importlib.import_module('conformance.delivery')
+    modules['experiments/delivery_variants.py'] = importlib.import_module('experiments.delivery_variants')
     modules['conformance/release_invariants.py'] = importlib.import_module('conformance.release_invariants')
     modules['experiments/source_content.py'] = importlib.import_module('experiments.source_content')
     for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'conformance.source_canonical', 'experiments.source_head', 'experiments.source_http', 'experiments.source_tree'):
@@ -56,6 +58,8 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS39 : matrice/configuration revues, signaux natifs TS07/TS10 et revues sémantiques, contextes et cache liés aux preuves fournies. Aucune région, visite Googlebot ou production authentifiée.',
+     'en':'TS39: reviewed matrix/configuration, native TS07/TS10 signals and semantic reviews, context/cache tied to supplied evidence. No authenticated geography, Googlebot visit or production.'},
     {'state':'implemented', 'fr':'TS41 : plan préalable, sorties natives recalculées, journal et réaction aux échecs/inconnues. C qualifie le dispositif déclaré ; les défauts SEO restent visibles. Aucune commande fournie exécutée ni CI distante authentifiée.',
      'en':'TS41: prior plan, recalculated native outputs, journal and failure/unknown response. C qualifies the declared process; SEO defects stay visible. No supplied command executed or remote CI authenticated.'},
     {'state': 'implemented', 'fr': 'TS43 : client de test documenté, réponse prévue, journaux JSONL natifs et corrélation revue. Un refus prévu peut être cohérent ; aucune identité, visite ou accessibilité réelle de l’opérateur établie.',
@@ -139,7 +143,7 @@ def pieces(target):
     result = {}
     if 'intent' in target:
         result['intent'] = {k: target[k] for k in
-                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review', 'agent_decision', 'execution', 'attribution', 'log_review', 'release_plan_review', 'release_review') if k in target}
+                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review', 'agent_decision', 'execution', 'attribution', 'log_review', 'release_plan_review', 'release_review', 'delivery_plan_review') if k in target}
     if 'release' in target.get('intent', {}):
         result['configuration'] = {'release':target['intent']['release'],
                                    'basis':'Supplied release plan; command identities are never executed'}
@@ -191,6 +195,13 @@ def pieces(target):
                     rendered.append({k: doc[k] for k in ('url', 'context_id', 'observed_at', 'render') if k in doc})
     if rendered:
         result['render'] = rendered
+    if 'delivery' in target.get('intent', {}):
+        config={k:target[k] for k in ('delivery_configuration','delivery_sources') if k in target}
+        if config:result['configuration']=config
+        if 'delivery_observations' in target:result['http']={'delivery_observations':target['delivery_observations']}
+        if 'delivery_semantic_reviews' in target:result['content']={'delivery_semantic_reviews':target['delivery_semantic_reviews']}
+        logs={k:target[k] for k in ('delivery_context_reviews','delivery_cache_records') if k in target}
+        if logs:result['logs']=logs
     return result
 
 
@@ -280,6 +291,19 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         elif isinstance(value, list):
             for child in value:
                 synthetic_dom(child)
+    def delivery_provenance(value):
+        if isinstance(value,dict):
+            if value.get('provenance') in ('human','human-assisted','synthetic-exercise'):
+                tsep.require((value['provenance']=='synthetic-exercise')==(access=='synthetic'),
+                             'Delivery review provenance differs from evidence access')
+            for child in value.values():delivery_provenance(child)
+        elif isinstance(value,list):
+            for child in value:delivery_provenance(child)
+    for target in evidence_targets:
+        if 'delivery' in target.get('intent',{}):
+            tsep.require((target.get('delivery_synthetic') is True)==(access=='synthetic'),
+                         'Delivery synthetic provenance differs from evidence access')
+            delivery_provenance(target)
     synthetic_dom(evidence_targets)
     for target in evidence_targets:
         agent_reviews = target.get('agent_reviews')
@@ -403,6 +427,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += '\n'.join(a['rule_id'] + ' — ' + a['reason'] for a in rows)
                 if cid == 'TS42':
                     report['results'][i]['reason'] += ' Usages déclarés et pièces fournies seulement / Declared usages and supplied evidence only; no real agent visit, identity, operator compliance or citation established.'
+                if cid == 'TS39':
+                    report['results'][i]['reason'] += ' Matrice de diffusion déclarée et preuves fournies / Declared delivery matrix and supplied evidence; native tests are not whole-control assessments, no actual Googlebot visit, region or cache cause without qualified linked evidence.'
                 if cid == 'TS44':
                     report['results'][i]['reason'] += ' Référence sans JS et représentations fournies / No-JS reference and supplied representations; no agent consumption, factual truth or citation established. Authored DOM is not a browser observation.'
                 if cid == 'TS43':

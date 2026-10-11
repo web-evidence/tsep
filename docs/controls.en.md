@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.26 — Controls
+# TSEP 0.1.0-draft.27 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.26:TS01-A01`
+`TSEP@0.1.0-draft.27:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.26:TS01-A02`
+`TSEP@0.1.0-draft.27:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.26:TS02-A01`
+`TSEP@0.1.0-draft.27:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.26:TS02-A02`
+`TSEP@0.1.0-draft.27:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.26:TS04-A01`
+`TSEP@0.1.0-draft.27:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.26:TS04-A02`
+`TSEP@0.1.0-draft.27:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.26:TS07-A01`
+`TSEP@0.1.0-draft.27:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -344,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.26:TS07-A02`
+`TSEP@0.1.0-draft.27:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.26:TS07-A03`
+`TSEP@0.1.0-draft.27:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.26:TS10-A01`
+`TSEP@0.1.0-draft.27:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -490,7 +490,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.26:TS10-A02`
+`TSEP@0.1.0-draft.27:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -514,7 +514,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.26:TS10-A03`
+`TSEP@0.1.0-draft.27:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.26:TS10-A04`
+`TSEP@0.1.0-draft.27:TS10-A04`
 
 **Required inputs**: crawl, intent.
 
@@ -1140,7 +1140,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A01 — Attributable field cohort
 
-`TSEP@0.1.0-draft.26:TS34-A01`
+`TSEP@0.1.0-draft.27:TS34-A01`
 
 **Required inputs**: field-data, intent.
 
@@ -1164,7 +1164,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A02 — Retained p75 measurements and classes
 
-`TSEP@0.1.0-draft.26:TS34-A02`
+`TSEP@0.1.0-draft.27:TS34-A02`
 
 **Required inputs**: field-data, intent.
 
@@ -1188,7 +1188,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A03 — Reasoned decision bound to measurements
 
-`TSEP@0.1.0-draft.26:TS34-A03`
+`TSEP@0.1.0-draft.27:TS34-A03`
 
 **Required inputs**: field-data, intent.
 
@@ -1236,7 +1236,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A01 — Repeatable laboratory context and measurements
 
-`TSEP@0.1.0-draft.26:TS35-A01`
+`TSEP@0.1.0-draft.27:TS35-A01`
 
 **Required inputs**: lab-data, intent.
 
@@ -1260,7 +1260,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A02 — Diagnostic hypothesis and next verification
 
-`TSEP@0.1.0-draft.26:TS35-A02`
+`TSEP@0.1.0-draft.27:TS35-A02`
 
 **Required inputs**: lab-data, intent.
 
@@ -1362,21 +1362,93 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Delivery varying by region, cache, device or negotiation.
 
-**Method.** Compare status, canonical, robots, language and content across regions or cache keys; inspect Vary, geolocation redirects and edge rules.
+**Method.** Declare and review matrix, configuration and policy before collection; compare native signals, content and access per cell; qualify contexts and cache reuse through bound evidence under delivery-evidence-v1.
 
-**Acceptance.** The condition matrix is declared; observed signals follow policy and variants remain accessible under it; untested cells are visible.
+**Acceptance.** All three rules pass over declared cells: reviewed policy, consistent signals and attributed mechanisms; legitimate variations, independent defects and unqualified cells remain distinct.
 
-**Evidence.** Identical SEO signals for the same URL, or explicitly documented variants accessible to Googlebot.
+**Evidence.** Configuration, prior matrix, native HTTP, rendered states or positive exemptions, bound reviews and cache journals where tested. Googlebot access policy is qualified separately from test-client requests; no actual visit inferred.
 
 **When NA is allowed.** Configuration attests to the absence of variation mechanisms.
 
-**Limits.** Two test locations do not cover every route, POP or cache key.
+**Limits.** First bounded profile with one canonical member per cell and reuse without transformation. Supplied reviews, sources, regions, clocks and logs are not authenticated; no general cache simulation. Two points do not cover all POPs/routes, and C does not establish actual Googlebot access.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** RFC 9110 defines Vary and HTTP response semantics. Google separately documents locale-adaptive page behavior.
 
 **References**: [https://www.rfc-editor.org/rfc/rfc9110](https://www.rfc-editor.org/rfc/rfc9110); [https://developers.google.com/search/docs/specialty/international/locale-adaptive-pages](https://developers.google.com/search/docs/specialty/international/locale-adaptive-pages)
+
+### TS39-A01 — Reviewed prior matrix and configuration
+
+`TSEP@0.1.0-draft.27:TS39-A01`
+
+**Required inputs**: configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Delivery varying by region, cache, device or negotiation.
+
+**Method.** Check window, cells, mechanisms, retained configuration and bound prior review, including representativeness and Googlebot access policy.
+
+**Acceptance.** Configuration and matrix qualified by supported review; documented rejection = fail.
+
+**Evidence.** Configuration, prior matrix, native HTTP, rendered states or positive exemptions, bound reviews and cache journals where tested. Googlebot access policy is qualified separately from test-client requests; no actual visit inferred.
+
+**Assumptions.** Supplied intent, context and source/review qualifications; their truth remains to verify.
+
+**Inconclusive.** Missing, late or unbound configuration/review; unqualified matrix minimum or mechanism.
+
+**When NA is allowed.** No automatic atomic exemption.
+
+**Limits.** First bounded profile with one canonical member per cell and reuse without transformation. Supplied reviews, sources, regions, clocks and logs are not authenticated; no general cache simulation. Two points do not cover all POPs/routes, and C does not establish actual Googlebot access.
+
+### TS39-A02 — Signal consistency in each context
+
+`TSEP@0.1.0-draft.27:TS39-A02`
+
+**Required inputs**: http, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Delivery varying by region, cache, device or negotiation.
+
+**Method.** Compare status/final URL, recalculate TS07-A01/A02/A03 and TS10-A01, then compare language/content/accessibility through bound reviews; retain each unknown.
+
+**Acceptance.** All cells follow policy; positive rendering exemption retained. Any attributable contradiction fails despite other unknowns.
+
+**Evidence.** Configuration, prior matrix, native HTTP, rendered states or positive exemptions, bound reviews and cache journals where tested. Googlebot access policy is qualified separately from test-client requests; no actual visit inferred.
+
+**Assumptions.** Supplied intent, context and source/review qualifications; their truth remains to verify.
+
+**Inconclusive.** Missing cell, source, rendering, review or profile; incomplete body, unbound context or unknown semantics.
+
+**When NA is allowed.** No automatic atomic exemption.
+
+**Limits.** First bounded profile with one canonical member per cell and reuse without transformation. Supplied reviews, sources, regions, clocks and logs are not authenticated; no general cache simulation. Two points do not cover all POPs/routes, and C does not establish actual Googlebot access.
+
+### TS39-A03 — Context and cache attribution
+
+`TSEP@0.1.0-draft.27:TS39-A03`
+
+**Required inputs**: configuration, http, logs, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Delivery varying by region, cache, device or negotiation.
+
+**Method.** Qualify contexts/mechanisms through bound sources; for cache, link stored entry, served request, layer, clock, Vary and freshness review.
+
+**Acceptance.** Consistent attribution and policy over all cells/checks; attributed reuse incompatible with Vary or policy fails. A test is not an operator visit.
+
+**Evidence.** Configuration, prior matrix, native HTTP, rendered states or positive exemptions, bound reviews and cache journals where tested. Googlebot access policy is qualified separately from test-client requests; no actual visit inferred.
+
+**Assumptions.** Supplied intent, context and source/review qualifications; their truth remains to verify.
+
+**Inconclusive.** Unqualified region, source, journal, linkage or freshness; Age/HIT, User-Agent, sequence or ETag alone are insufficient.
+
+**When NA is allowed.** No automatic atomic exemption.
+
+**Limits.** First bounded profile with one canonical member per cell and reuse without transformation. Supplied reviews, sources, regions, clocks and logs are not authenticated; no general cache simulation. Two points do not cover all POPs/routes, and C does not establish actual Googlebot access.
 
 ## TS40 — The hreflang methods in use are complete and consistent.
 
@@ -1428,7 +1500,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS41-A01 — Prior plan and representativeness
 
-`TSEP@0.1.0-draft.26:TS41-A01`
+`TSEP@0.1.0-draft.27:TS41-A01`
 
 **Required inputs**: configuration, intent.
 
@@ -1452,7 +1524,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS41-A02 — Execution coverage and output fidelity
 
-`TSEP@0.1.0-draft.26:TS41-A02`
+`TSEP@0.1.0-draft.27:TS41-A02`
 
 **Required inputs**: configuration, ci-output, change-history, intent.
 
@@ -1476,7 +1548,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS41-A03 — Negative rehearsal and process response
 
-`TSEP@0.1.0-draft.26:TS41-A03`
+`TSEP@0.1.0-draft.27:TS41-A03`
 
 **Required inputs**: configuration, ci-output, change-history, intent.
 
@@ -1524,7 +1596,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A01 — Documented purposes and mechanisms
 
-`TSEP@0.1.0-draft.26:TS42-A01`
+`TSEP@0.1.0-draft.27:TS42-A01`
 
 **Required inputs**: operator-docs, intent.
 
@@ -1548,7 +1620,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A02 — Owner decisions and tradeoffs
 
-`TSEP@0.1.0-draft.26:TS42-A02`
+`TSEP@0.1.0-draft.27:TS42-A02`
 
 **Required inputs**: intent.
 
@@ -1572,7 +1644,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A03 — Captured policy and effective choice
 
-`TSEP@0.1.0-draft.26:TS42-A03`
+`TSEP@0.1.0-draft.27:TS42-A03`
 
 **Required inputs**: configuration, operator-docs, intent.
 
@@ -1620,7 +1692,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A01 — Full client and expected treatment
 
-`TSEP@0.1.0-draft.26:TS43-A01`
+`TSEP@0.1.0-draft.27:TS43-A01`
 
 **Required inputs**: http, operator-docs, intent.
 
@@ -1644,7 +1716,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A02 — Chain reconciled with logs
 
-`TSEP@0.1.0-draft.26:TS43-A02`
+`TSEP@0.1.0-draft.27:TS43-A02`
 
 **Required inputs**: http, logs, intent.
 
@@ -1668,7 +1740,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A03 — Test origin without invented identity
 
-`TSEP@0.1.0-draft.26:TS43-A03`
+`TSEP@0.1.0-draft.27:TS43-A03`
 
 **Required inputs**: http, intent.
 
@@ -1716,7 +1788,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS44-A01 — Prior critical scope
 
-`TSEP@0.1.0-draft.26:TS44-A01`
+`TSEP@0.1.0-draft.27:TS44-A01`
 
 **Required inputs**: content, intent.
 
@@ -1740,7 +1812,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS44-A02 — Delivery path without JavaScript
 
-`TSEP@0.1.0-draft.26:TS44-A02`
+`TSEP@0.1.0-draft.27:TS44-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -1764,7 +1836,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS44-A03 — Value and context coherence
 
-`TSEP@0.1.0-draft.26:TS44-A03`
+`TSEP@0.1.0-draft.27:TS44-A03`
 
 **Required inputs**: http, html, render, content, intent.
 

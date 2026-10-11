@@ -1,3 +1,8 @@
+## 0.1.0-draft.27 — 2026-10-11 — Delivery evidence
+
+Three TS39 rules connect prior reviewed configuration/matrix, native TS07/TS10 signals, semantic reviews and attributed context/cache evidence. 77 authored cases / 231 new pairs; all 1,104 earlier cases unchanged. No live CDN or Edikka assessment.
+FR : deux erreurs de qualification conservées et corrigées ; [contrat](docs/delivery-evidence.md), [migration](docs/migration-draft.27.md).
+
 ## Critical-content laboratory 1 — 2026-10-11 — non-normative
 
 Four prefrozen TS44 variants, six actual bounded loopback exchanges, native request logs and offline replay. DOM and reviews remain explicitly authored; no browser, agent or Edikka assessment. Draft.24 rules unchanged.

@@ -1,4 +1,7 @@
-Current / Actuel : draft.26 — 1,104 authored cases / cas synthétiques, 2,101 rule-target pairs / couples.
+Current addition / Ajout courant — draft.27 : TS39-A01/A02/A03, 77 authored cases / 231 pairs. Corpus total: 1181 cases / 2332 pairs, 33 rules. Historical results below retain their versions; current runtime verification is recorded separately.
+FR : corpus historique préservé, reformatté compact pour rester sous 8 Mio ; v1 de préparation avec dates incohérentes conservée hors corpus actif, v2 corrigée.
+
+Historical / Historique : draft.26 — 1,104 authored cases / cas synthétiques, 2,101 rule-target pairs / couples.
 Thirty rules across eleven controls. One frozen TS41 boundary clarifies unknown recalculation versus altered output; all previous 1,103 cases and reader code unchanged. [Migration](migration-draft.26.md). The optional controlled laboratory is a separate observation campaign.
 
 Historical / Historique : draft.25 — 1,103 authored cases / cas synthétiques, 2,098 rule-target pairs / couples.

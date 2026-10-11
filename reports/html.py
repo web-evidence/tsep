@@ -12,12 +12,15 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '9'
+VERSION = '10'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'delivery_note': 'TS39 compare les cellules déclarées à leur politique. Les variations légitimes restent distinctes des défauts. Revues et traces fournies ; aucune visite réelle Googlebot ou couverture de tous les POP déduite.',
+        'delivery_values': 'Signaux et attribution par cellule',
+        'delivery_native': 'Résultats des tests natifs conservés',
         'release_note': 'TS41 évalue le dispositif de déploiement. Un défaut SEO bien détecté et bloqué peut accompagner C ; ses résultats restent visibles ci-dessous. Reçus et revues fournis, sans authentification de CI distante.',
         'release_values': 'Vérifications du dispositif',
         'release_native': 'Résultats SEO sous-jacents conservés',
@@ -96,6 +99,9 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'delivery_note': 'TS39 compares declared cells against policy. Legitimate variation remains distinct from defects. Supplied reviews and traces; no actual Googlebot visit or whole-POP coverage inferred.',
+        'delivery_values': 'Signals and attribution per cell',
+        'delivery_native': 'Retained native test results',
         'release_note': 'TS41 assesses the deployment process. A correctly detected and blocked SEO defect can accompany C; its results stay visible below. Supplied receipts/reviews, without remote CI authentication.',
         'release_values': 'Process checks',
         'release_native': 'Retained underlying SEO results',
@@ -396,6 +402,26 @@ def release_values(atom, words):
     return out+'<details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(reason)+'</pre></details>'
 
 
+def delivery_values(atom, words):
+    """Display supplied TS39 diagnostics; never re-run the interpreter."""
+    reason=atom.get('reason','');prefix='Delivery evidence / preuves de diffusion: '
+    try:
+        if not reason.startswith(prefix):raise ValueError('prefix')
+        note=json.loads(reason[len(prefix):]);rows=note['rows']
+        if not isinstance(rows,list):raise ValueError('rows')
+    except (ValueError,KeyError,TypeError):return '<p class="reason">'+esc(reason)+'</p>'
+    out='<div class="table-wrap"><table><caption>'+esc(words['delivery_values'])+'</caption><thead><tr>'
+    out+=''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('release_subject','result','reason'))+'</tr></thead><tbody>'
+    for row in rows:
+        if isinstance(row,dict):
+            out+='<tr><th scope="row">'+esc(row.get('subject',''))+'</th><td>'+esc(words.get(row.get('outcome'),words['unknown']))+'</td><td>'+esc(row.get('reason',''))+'</td></tr>'
+    out+='</tbody></table></div>'
+    native=note.get('native_results',[])
+    if isinstance(native,list) and native:
+        out+='<details><summary>'+esc(words['delivery_native'])+'</summary><pre>'+esc(pretty(native))+'</pre></details>'
+    return out+'<details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(reason)+'</pre></details>'
+
+
 def results(bundle, controls, words, language):
     report = bundle['report']
     data = captures(bundle)
@@ -408,6 +434,8 @@ def results(bundle, controls, words, language):
         out += '<article class="card control"><div class="row"><div><span class="eyebrow">' + esc(cid) + '</span><h3 class="control-title">' + esc(control['title'][language]) + '</h3></div>' + badge(result['status'], words) + '</div>'
         if cid in ('TS34', 'TS35'):
             out += performance_values(result, words)
+        if cid == 'TS39':
+            out += '<div class="notice"><strong>' + esc(words['delivery_note']) + '</strong></div>'
         if cid == 'TS41':
             out += '<div class="notice"><strong>' + esc(words['release_note']) + '</strong></div>'
         if cid == 'TS42':
@@ -423,7 +451,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (release_values(atom, words) if cid == 'TS41' else
+            out += (delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

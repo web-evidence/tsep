@@ -1,4 +1,9 @@
-# Contrat de rapport — TSEP 0.1.0-draft.26
+# Contrat de rapport — TSEP 0.1.0-draft.27
+
+### Diffusion et variantes — draft.27
+
+TS39 ajoute trois règles : matrice/configuration, signaux par cellule et attribution des contextes/cache. [Contrat](delivery-evidence.md), [migration](migration-draft.27.md). Les tests natifs et les revues restent explicites ; aucun accès réel Googlebot déduit.
+
 
 ### Clarification TS41 — draft.26
 
@@ -76,7 +81,7 @@ d’indexation documenté, pas une promesse d’indexation. TS34 établit une le
 correcte des mesures terrain ; C ne signifie pas que les performances mesurées
 sont bonnes. Conserver les mesures défavorables et leurs conséquences opérationnelles.
 
-## Règles atomiques TS01, TS02, TS04, TS07, TS10, TS34, TS35, TS41, TS42, TS43 et TS44
+## Règles atomiques TS01, TS02, TS04, TS07, TS10, TS34, TS35, TS39, TS41, TS42, TS43 et TS44
 
 Le format de rapport est `2`. Un **contrôle** garde son identifiant TSxx et son
 résultat C/NC/NA/NT sur le périmètre. Un **test atomique** répond à un attendu
@@ -84,7 +89,7 @@ identifié par `TSxx-Ayy` dans le JSON canonique. Une **observation** est une
 capture ou un constat daté dans un contexte donné ; son existence ne suffit pas
 à réussir le test. Chaque règle déclare `automation` : `automatic`, `semiAuto` ou `manual`.
 
-Pour ces onze contrôles, `atomic_results` relie chaque couple `rule_id`/`target`
+Pour ces douze contrôles, `atomic_results` relie chaque couple `rule_id`/`target`
 à un `outcome` (`pass`, `fail`, `not-applicable`, `inconclusive`), un `reason` et
 des `evidence_ids`. Les preuves doivent aussi figurer dans le résultat du contrôle
 et couvrir la cible. Tous les types d’entrée de la règle sont exigés pour `pass`.
@@ -117,7 +122,7 @@ affecte les déclarations, même si le validateur ne peut pas déterminer ce bes
 La CLI vérifie les déclarations, références et couvertures, pas la justesse de la
 lecture HTTP/HTML, de l’intention ou des exemptions. Les cas de méthode historiques
 ont des verdicts rédigés. La [suite exécutable distincte](conformance.md) interprète
-les entrées brutes de trente règles dans des limites documentées ; elle
+les entrées brutes de trente-trois règles dans des limites documentées ; elle
 n’implémente pas tous les contrôles. Aucun C ne
 s’étend aux contrôles non sélectionnés, à un site entier ou à l’indexation réelle.
 Voir [migration et cas](migration-draft.2.md).

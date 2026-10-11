@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.26",
+  "protocol_version": "0.1.0-draft.27",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -4287,6 +4287,326 @@
             "configuration",
             "ci-output",
             "change-history",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS39-authored-complete",
+      "control_id": "TS39",
+      "description": {
+        "fr": "Jugement fictif d’agrégation TS39 : complete ; aucune diffusion réelle.",
+        "en": "Authored TS39 aggregation judgment: complete; no actual delivery observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "http": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "content": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "logs": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "intent": "SYNTHETIC authored aggregation only, no real CDN or review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS39-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : complete ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: complete; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS39-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : complete ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: complete; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS39-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : complete ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: complete; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS39-authored-rejected-plan",
+      "control_id": "TS39",
+      "description": {
+        "fr": "Jugement fictif d’agrégation TS39 : rejected-plan ; aucune diffusion réelle.",
+        "en": "Authored TS39 aggregation judgment: rejected-plan; no actual delivery observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "http": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "content": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "logs": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "intent": "SYNTHETIC authored aggregation only, no real CDN or review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS39-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : rejected-plan ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: rejected-plan; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS39-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : rejected-plan ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: rejected-plan; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS39-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : rejected-plan ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: rejected-plan; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS39-authored-wrong-signals",
+      "control_id": "TS39",
+      "description": {
+        "fr": "Jugement fictif d’agrégation TS39 : wrong-signals ; aucune diffusion réelle.",
+        "en": "Authored TS39 aggregation judgment: wrong-signals; no actual delivery observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "http": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "content": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "logs": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "intent": "SYNTHETIC authored aggregation only, no real CDN or review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS39-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : wrong-signals ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: wrong-signals; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS39-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : wrong-signals ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: wrong-signals; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS39-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : wrong-signals ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: wrong-signals; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS39-authored-wrong-cache",
+      "control_id": "TS39",
+      "description": {
+        "fr": "Jugement fictif d’agrégation TS39 : wrong-cache ; aucune diffusion réelle.",
+        "en": "Authored TS39 aggregation judgment: wrong-cache; no actual delivery observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "http": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "content": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "logs": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "intent": "SYNTHETIC authored aggregation only, no real CDN or review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS39-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : wrong-cache ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: wrong-cache; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS39-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : wrong-cache ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: wrong-cache; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS39-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : wrong-cache ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: wrong-cache; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS39-authored-missing",
+      "control_id": "TS39",
+      "description": {
+        "fr": "Jugement fictif d’agrégation TS39 : missing ; aucune diffusion réelle.",
+        "en": "Authored TS39 aggregation judgment: missing; no actual delivery observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "http": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "content": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "logs": "SYNTHETIC authored aggregation only, no real CDN or review.",
+        "intent": "SYNTHETIC authored aggregation only, no real CDN or review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS39-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : missing ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: missing; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS39-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : missing ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: missing; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS39-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement fictif d’agrégation TS39 : missing ; aucune diffusion réelle.",
+            "en": "Authored TS39 aggregation judgment: missing; no actual delivery observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "logs",
             "intent"
           ]
         }

@@ -44,8 +44,10 @@ class DeliveryVariants(unittest.TestCase):
 
     def test_normative_rule_and_corpus_inventory_unchanged(self):
         from conformance.evaluate import RULES
-        self.assertFalse(any(r.startswith('TS39-') for r in RULES))
-        p=json.loads((ROOT/'conformance/cases.json').read_text());self.assertEqual(len(p['cases']),1104)
+        p=json.loads((ROOT/'conformance/cases.json').read_text())
+        raw=json.dumps(p['cases'][:1104],ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
+        self.assertEqual(hashlib.sha256(raw).hexdigest(),'da811a5bb9900c3d94dadd8d55bc209630cf2e75bfc1fdae36d160b1ecd5c2ef')
+        self.assertEqual(dv.observe(self.data())['normative_effect'],'none')
 
     def test_same_observations_not_same_authenticity_or_semantics(self):
         r=dv.observe(self.data('context-claims-unverified'))
