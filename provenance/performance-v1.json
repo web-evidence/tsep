@@ -1,0 +1,43 @@
+{
+  "observed_at": "2026-10-11",
+  "kind": "Editorial performance contract and synthetic qualification; no new field or laboratory measurements",
+  "fixture_sha256": "ce52294b70b4f52246325b513723097692999a979e6073481c84a47cbf3cabbe",
+  "cases": 82,
+  "pairs": 216,
+  "sources": [
+    {
+      "url": "https://web.dev/articles/defining-core-web-vitals-thresholds",
+      "date": "2026-10-11",
+      "scope": "Three p75 thresholds and exact inclusive/exclusive bounds",
+      "capture": ".local/performance-evidence-2026-10-11/threshold-web-capture.json",
+      "capture_sha256": "3032c078a41a0fa13483655c9e435d68aa9b2b7f2400c5e65a2ab239e6345b4c",
+      "capture_kind": "Rendered web-tool response, not original HTTP bytes; locally retained"
+    },
+    {
+      "url": "https://web.dev/articles/vitals",
+      "date": "2026-10-11",
+      "scope": "Field/lab distinction and TBT not INP",
+      "capture": ".local/performance-evidence-2026-10-11/primary-web-capture.json",
+      "capture_sha256": "e1e37889eabe0b5dde268b04f9ff15dbce5b9ab8bc8f464aa8ab190a715298a8",
+      "capture_kind": "Rendered web-tool response, not original HTTP bytes; locally retained"
+    },
+    {
+      "url": "https://developer.chrome.com/docs/crux/api",
+      "date": "2026-10-11",
+      "scope": "Request/returned cohort, units, periods, missing population detail",
+      "capture": ".local/performance-evidence-2026-10-11/primary-web-capture.json",
+      "capture_sha256": "e1e37889eabe0b5dde268b04f9ff15dbce5b9ab8bc8f464aa8ab190a715298a8",
+      "capture_kind": "Rendered web-tool response, not original HTTP bytes; locally retained"
+    },
+    {
+      "url": "https://web.dev/articles/lab-and-field-data-differences",
+      "date": "2026-10-11",
+      "scope": "Different populations and laboratory context",
+      "capture": ".local/performance-evidence-2026-10-11/primary-web-capture.json",
+      "capture_sha256": "e1e37889eabe0b5dde268b04f9ff15dbce5b9ab8bc8f464aa8ab190a715298a8",
+      "capture_kind": "Rendered web-tool response, not original HTTP bytes; locally retained"
+    }
+  ],
+  "original_fixture_sha256": "5e4d6b657b158f8ae9c4f2348a414d782678306807f584b4718059bd81215182",
+  "fixture_revision": "Original expectations unchanged; lab originals explicitly state mode and cache/header/resource settings. New adversarial cases authored before hardening."
+}

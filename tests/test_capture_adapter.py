@@ -1,5 +1,6 @@
 """Offline capture-to-bundle workflow, truth preservation and delivery safety. Apache-2.0."""
 import copy
+from datetime import datetime, timezone
 import json
 from pathlib import Path
 import shutil
@@ -40,7 +41,10 @@ class CaptureAdapter(unittest.TestCase):
         # Expected verdicts are never supplied to this adapter.
         for name,case in CASES.items():
             with self.subTest(case=name):
-                summary=self.emit(case['input'])
+                # Fixed import clock keeps future-to-assessment fixtures deterministic.
+                with patch('adapters.captures.datetime') as clock:
+                    clock.now.return_value=datetime(2026,10,12,tzinfo=timezone.utc)
+                    summary=self.emit(case['input'])
                 report=tsep.read_json(self.output/'report.json')
                 self.assertEqual(summary,tsep.validate(report,self.output))
                 actual=[a for r in report['results'] for a in r.get('atomic_results',[])]

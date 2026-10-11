@@ -33,6 +33,10 @@ EXTERNAL_CASE_IDS = (
     'robots-control-correct', 'robots-control-preproduction', 'robots-control-missing-robots',
     'redirect-wrong-destination', 'redirect-unfinished',
     'structured-ts07-compatible', 'structured-ts07-added-noindex', 'structured-canonical-absolute-api-difference',
+    'performance-field-good-boundaries', 'performance-field-misclassified',
+    'performance-field-lab-substitution', 'performance-field-stale',
+    'performance-lab-context-and-supplied-review', 'performance-lab-url-contradiction',
+    'performance-lab-field-claim', 'performance-lab-no-plan',
 )
 
 

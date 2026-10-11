@@ -122,7 +122,7 @@ class RobotsFields(unittest.TestCase):
 
     def test_prior_cases_and_body_profiles_are_exactly_preserved(self):
         corpus=tsep.read_json(ROOT/'conformance/cases.json')['cases']
-        prior=[{'case':c,'rows':evaluate(c['input'])} for c in corpus if not c['id'].startswith(('robots-fields-', 'sitemap-locations-', 'source-directives-', 'source-canonical-', 'source-link-policy-', 'http-canonical-', 'preview-'))]
+        prior=[{'case':c,'rows':evaluate(c['input'])} for c in corpus if not c['id'].startswith(('robots-fields-', 'sitemap-locations-', 'source-directives-', 'source-canonical-', 'source-link-policy-', 'http-canonical-', 'preview-', 'performance-'))]
         self.assertEqual(len(prior),409)
         self.assertEqual(canonical_digest(prior),'4f7a447d9c6b54fbc1bf331a33861451ad0ce5cff73ee2a1c823dfb89c675da5')
         body=[{'case':c['id'],'profile':p,'result':robots.body_policy(c['body'],c['target'],c['product_token'],p)}

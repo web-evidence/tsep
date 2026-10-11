@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.20",
+  "version": "0.1.0-draft.21",
   "status": "draft",
   "date": "2026-10-11",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.20"
+      "rule_version": "0.1.0-draft.21"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.20",
+      "rule_version": "0.1.0-draft.21",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.20",
+      "rule_version": "0.1.0-draft.21",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.20"
+      "rule_version": "0.1.0-draft.21"
     },
     {
       "id": "TS08",
@@ -1233,7 +1233,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.20"
+      "rule_version": "0.1.0-draft.21"
     },
     {
       "id": "TS11",
@@ -2648,7 +2648,144 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.21",
+      "rules": [
+        {
+          "id": "TS34-A01",
+          "title": {
+            "fr": "Cohorte terrain attribuable",
+            "en": "Attributable field cohort"
+          },
+          "automation": "semiAuto",
+          "required_inputs": [
+            "field-data",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Périmètre de performance déclaré pour ce contrôle et profil de lecture qualifié.",
+            "en": "Declared performance scope for this control and qualified reading profile."
+          },
+          "procedure": {
+            "fr": "Identifier source, requête et clé retournée, URL/origine, appareil, période et population selon performance-evidence-v1. Aucun repli de portée implicite.",
+            "en": "Identify source, request/returned key, URL/origin, device, period and population under performance-evidence-v1. No implicit scope fallback."
+          },
+          "acceptance": {
+            "fr": "La cohorte correspond au plan et conserve ses dates et sa provenance. Une substitution explicite laboratoire/terrain échoue ; une cohorte différente ou ancienne reste indéterminée.",
+            "en": "Cohort matches the plan with retained dates/provenance. Explicit lab-for-field substitution fails; a different or old cohort remains inconclusive."
+          },
+          "evidence": {
+            "fr": "Originaux JSON conservés avec source, date, empreinte ; plan et revue fournie quand exigée, diagnostics et limites selon docs/performance-evidence.md.",
+            "en": "Original JSON with source/date/hash; plan and supplied review when required, diagnostics and limits under docs/performance-evidence.md."
+          },
+          "assumptions": {
+            "fr": "Les données et revues fournies ne sont pas authentifiées. Le plan précède l’évaluation et les exécutions laboratoire ; une cohorte historique n’est pas un préenregistrement.",
+            "en": "Supplied data/reviews are not authenticated. Plan precedes assessment and lab runs; a historical cohort is not preregistration."
+          },
+          "inconclusive": {
+            "fr": "Source, plan, dates ou mesures insuffisants ; format/profil non qualifié, incohérence de portée, borne dépassée ou revue manquante selon le contrat. Aucune absence ne devient C ou NA.",
+            "en": "Insufficient source/plan/dates/measures; unsupported format/profile, scope mismatch, exceeded bounds or missing review under the contract. Absence never becomes C or NA."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique ; la non-applicabilité du contrôle exige sa preuve propre.",
+            "en": "No automatic atomic exemption; whole-control non-applicability requires its own evidence."
+          },
+          "limitations": {
+            "fr": "C qualifie la documentation, pas de bonnes performances. Aucun affichage, classement, cause démontrée, revue humaine automatique ou conformité globale. Rejeu sans nouvelle mesure.",
+            "en": "C describes documentation, not good performance. No display/ranking, demonstrated cause, automatic human review or global conformity. Replay performs no new measurement."
+          }
+        },
+        {
+          "id": "TS34-A02",
+          "title": {
+            "fr": "Mesures p75 et classes conservées",
+            "en": "Retained p75 measurements and classes"
+          },
+          "automation": "automatic",
+          "required_inputs": [
+            "field-data",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Périmètre de performance déclaré pour ce contrôle et profil de lecture qualifié.",
+            "en": "Declared performance scope for this control and qualified reading profile."
+          },
+          "procedure": {
+            "fr": "Lire LCP, INP et CLS p75 dans les unités natives ; comparer exactement aux seuils cités, sans renommer FID ou TBT. Conserver les valeurs mauvaises et les inconnues.",
+            "en": "Read LCP/INP/CLS p75 in native units and compare exactly with cited thresholds, without relabeling FID/TBT. Retain poor values and unknowns."
+          },
+          "acceptance": {
+            "fr": "Les trois mesures sont classées correctement. Une classification liée contraire à un p75 est fail ; une performance mauvaise correctement documentée donne pass.",
+            "en": "All three measures are classified correctly. A bound classification contradicting p75 fails; correctly documented poor performance passes."
+          },
+          "evidence": {
+            "fr": "Originaux JSON conservés avec source, date, empreinte ; plan et revue fournie quand exigée, diagnostics et limites selon docs/performance-evidence.md.",
+            "en": "Original JSON with source/date/hash; plan and supplied review when required, diagnostics and limits under docs/performance-evidence.md."
+          },
+          "assumptions": {
+            "fr": "Les données et revues fournies ne sont pas authentifiées. Le plan précède l’évaluation et les exécutions laboratoire ; une cohorte historique n’est pas un préenregistrement.",
+            "en": "Supplied data/reviews are not authenticated. Plan precedes assessment and lab runs; a historical cohort is not preregistration."
+          },
+          "inconclusive": {
+            "fr": "Source, plan, dates ou mesures insuffisants ; format/profil non qualifié, incohérence de portée, borne dépassée ou revue manquante selon le contrat. Aucune absence ne devient C ou NA.",
+            "en": "Insufficient source/plan/dates/measures; unsupported format/profile, scope mismatch, exceeded bounds or missing review under the contract. Absence never becomes C or NA."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique ; la non-applicabilité du contrôle exige sa preuve propre.",
+            "en": "No automatic atomic exemption; whole-control non-applicability requires its own evidence."
+          },
+          "limitations": {
+            "fr": "C qualifie la documentation, pas de bonnes performances. Aucun affichage, classement, cause démontrée, revue humaine automatique ou conformité globale. Rejeu sans nouvelle mesure.",
+            "en": "C describes documentation, not good performance. No display/ranking, demonstrated cause, automatic human review or global conformity. Replay performs no new measurement."
+          }
+        },
+        {
+          "id": "TS34-A03",
+          "title": {
+            "fr": "Décision motivée liée aux mesures",
+            "en": "Reasoned decision bound to measurements"
+          },
+          "automation": "manual",
+          "required_inputs": [
+            "field-data",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Périmètre de performance déclaré pour ce contrôle et profil de lecture qualifié.",
+            "en": "Declared performance scope for this control and qualified reading profile."
+          },
+          "procedure": {
+            "fr": "Conserver la revue fournie, auteur, provenance, date, empreinte et décision pour chacune des trois métriques ; vérifier la liaison sans fabriquer un jugement.",
+            "en": "Retain supplied review, author, provenance, date, source hash and decision for each metric; verify binding without fabricating judgment."
+          },
+          "acceptance": {
+            "fr": "Chaque métrique garde sa classe, un motif et une action. Une classe contradictoire échoue. Revue absente/incomplète/non liée : indéterminé.",
+            "en": "Each metric retains its class, reason and action. A contradictory class fails. Missing/incomplete/unbound review is inconclusive."
+          },
+          "evidence": {
+            "fr": "Originaux JSON conservés avec source, date, empreinte ; plan et revue fournie quand exigée, diagnostics et limites selon docs/performance-evidence.md.",
+            "en": "Original JSON with source/date/hash; plan and supplied review when required, diagnostics and limits under docs/performance-evidence.md."
+          },
+          "assumptions": {
+            "fr": "Les données et revues fournies ne sont pas authentifiées. Le plan précède l’évaluation et les exécutions laboratoire ; une cohorte historique n’est pas un préenregistrement.",
+            "en": "Supplied data/reviews are not authenticated. Plan precedes assessment and lab runs; a historical cohort is not preregistration."
+          },
+          "inconclusive": {
+            "fr": "Source, plan, dates ou mesures insuffisants ; format/profil non qualifié, incohérence de portée, borne dépassée ou revue manquante selon le contrat. Aucune absence ne devient C ou NA.",
+            "en": "Insufficient source/plan/dates/measures; unsupported format/profile, scope mismatch, exceeded bounds or missing review under the contract. Absence never becomes C or NA."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique ; la non-applicabilité du contrôle exige sa preuve propre.",
+            "en": "No automatic atomic exemption; whole-control non-applicability requires its own evidence."
+          },
+          "limitations": {
+            "fr": "C qualifie la documentation, pas de bonnes performances. Aucun affichage, classement, cause démontrée, revue humaine automatique ou conformité globale. Rejeu sans nouvelle mesure.",
+            "en": "C describes documentation, not good performance. No display/ranking, demonstrated cause, automatic human review or global conformity. Replay performs no new measurement."
+          }
+        }
+      ]
     },
     {
       "id": "TS35",
@@ -2706,7 +2843,99 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.21",
+      "rules": [
+        {
+          "id": "TS35-A01",
+          "title": {
+            "fr": "Contexte et mesures de laboratoire reproductibles",
+            "en": "Repeatable laboratory context and measurements"
+          },
+          "automation": "semiAuto",
+          "required_inputs": [
+            "lab-data",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Périmètre de performance déclaré pour ce contrôle et profil de lecture qualifié.",
+            "en": "Declared performance scope for this control and qualified reading profile."
+          },
+          "procedure": {
+            "fr": "Conserver une série prévue de 2 à 10 rapports Lighthouse distincts, dates, URL, outil/version, client, appareil, bridage, mesures natives et dispersion.",
+            "en": "Retain a planned series of 2–10 distinct Lighthouse reports, dates, URLs, tool/version, client, device, throttling, native measures and spread."
+          },
+          "acceptance": {
+            "fr": "La série respecte le contexte et le nombre prévus. URL contraire au plan : fail ; autre contexte, mesure manquante ou erreur runtime : indéterminé.",
+            "en": "Series matches planned context/count. URL contrary to plan fails; different context, missing measure or runtime error remains inconclusive."
+          },
+          "evidence": {
+            "fr": "Originaux JSON conservés avec source, date, empreinte ; plan et revue fournie quand exigée, diagnostics et limites selon docs/performance-evidence.md.",
+            "en": "Original JSON with source/date/hash; plan and supplied review when required, diagnostics and limits under docs/performance-evidence.md."
+          },
+          "assumptions": {
+            "fr": "Les données et revues fournies ne sont pas authentifiées. Le plan précède l’évaluation et les exécutions laboratoire ; une cohorte historique n’est pas un préenregistrement.",
+            "en": "Supplied data/reviews are not authenticated. Plan precedes assessment and lab runs; a historical cohort is not preregistration."
+          },
+          "inconclusive": {
+            "fr": "Source, plan, dates ou mesures insuffisants ; format/profil non qualifié, incohérence de portée, borne dépassée ou revue manquante selon le contrat. Aucune absence ne devient C ou NA.",
+            "en": "Insufficient source/plan/dates/measures; unsupported format/profile, scope mismatch, exceeded bounds or missing review under the contract. Absence never becomes C or NA."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique ; la non-applicabilité du contrôle exige sa preuve propre.",
+            "en": "No automatic atomic exemption; whole-control non-applicability requires its own evidence."
+          },
+          "limitations": {
+            "fr": "C qualifie la documentation, pas de bonnes performances. Aucun affichage, classement, cause démontrée, revue humaine automatique ou conformité globale. Rejeu sans nouvelle mesure.",
+            "en": "C describes documentation, not good performance. No display/ranking, demonstrated cause, automatic human review or global conformity. Replay performs no new measurement."
+          }
+        },
+        {
+          "id": "TS35-A02",
+          "title": {
+            "fr": "Hypothèse de diagnostic et prochaine vérification",
+            "en": "Diagnostic hypothesis and next verification"
+          },
+          "automation": "manual",
+          "required_inputs": [
+            "lab-data",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Périmètre de performance déclaré pour ce contrôle et profil de lecture qualifié.",
+            "en": "Declared performance scope for this control and qualified reading profile."
+          },
+          "procedure": {
+            "fr": "Relier une revue fournie aux rapports ordonnés, aux métriques, à une hypothèse et à une prochaine mesure. Séparer laboratoire, INP et terrain.",
+            "en": "Bind a supplied review to ordered reports, measured metrics, a hypothesis and next measurement. Separate laboratory, INP and field results."
+          },
+          "acceptance": {
+            "fr": "La revue liée expose hypothèse, métriques et action sans assimilation au terrain. Une assimilation explicite laboratoire/CWV ou TBT/INP échoue ; revue absente : indéterminé.",
+            "en": "Bound review names hypothesis, metrics and action without field substitution. Explicit lab/CWV or TBT/INP substitution fails; absent review is inconclusive."
+          },
+          "evidence": {
+            "fr": "Originaux JSON conservés avec source, date, empreinte ; plan et revue fournie quand exigée, diagnostics et limites selon docs/performance-evidence.md.",
+            "en": "Original JSON with source/date/hash; plan and supplied review when required, diagnostics and limits under docs/performance-evidence.md."
+          },
+          "assumptions": {
+            "fr": "Les données et revues fournies ne sont pas authentifiées. Le plan précède l’évaluation et les exécutions laboratoire ; une cohorte historique n’est pas un préenregistrement.",
+            "en": "Supplied data/reviews are not authenticated. Plan precedes assessment and lab runs; a historical cohort is not preregistration."
+          },
+          "inconclusive": {
+            "fr": "Source, plan, dates ou mesures insuffisants ; format/profil non qualifié, incohérence de portée, borne dépassée ou revue manquante selon le contrat. Aucune absence ne devient C ou NA.",
+            "en": "Insufficient source/plan/dates/measures; unsupported format/profile, scope mismatch, exceeded bounds or missing review under the contract. Absence never becomes C or NA."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique ; la non-applicabilité du contrôle exige sa preuve propre.",
+            "en": "No automatic atomic exemption; whole-control non-applicability requires its own evidence."
+          },
+          "limitations": {
+            "fr": "C qualifie la documentation, pas de bonnes performances. Aucun affichage, classement, cause démontrée, revue humaine automatique ou conformité globale. Rejeu sans nouvelle mesure.",
+            "en": "C describes documentation, not good performance. No display/ranking, demonstrated cause, automatic human review or global conformity. Replay performs no new measurement."
+          }
+        }
+      ]
     },
     {
       "id": "TS36",
@@ -3400,15 +3629,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "e52354411382707398ec92bc438bc5a015c5ca6a08538cd3f593077445b503a3"
+      "sha256": "bf591b3c51b7a3917a2b0456e11d1021f6b7dc4f6562c66e331d9c54ff08dee0"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "0da8dbec72f2cd0bed8957128ee1d645c482486701ee19cc4fee29498f100812"
+      "sha256": "4731b1466a55379ff227d2f0afb3d96e6d05a28cca62d84c1bb15d40834e7d34"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "439727f61644d821cc71f690dc748187c9db62b57524d903cc248db80953ee48"
+      "sha256": "ec7b4ceddee3363178a5b41f7dfd3787e1400f58c9b3474440152c7ab4de268e"
     },
     {
       "path": "docs/source-directives.md",
@@ -3433,6 +3662,10 @@
     {
       "path": "docs/preview-intent.md",
       "sha256": "b59561e1a961378e4b79d4f8eef6285f8efd8556488041ef8a47744e045cd1be"
+    },
+    {
+      "path": "docs/performance-evidence.md",
+      "sha256": "9363eec5bf6b5546fb3e888f3a7569a2edd8c96da5d94a4f28d57d262462fa1a"
     }
   ]
 }

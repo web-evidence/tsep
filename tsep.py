@@ -283,6 +283,11 @@ def decision(report, controls=None):
              if a['rule_id'] == 'TS10-A04' and any(reader + ':' in a['reason']
                  for reader in ('html-tree-links-v1', 'html-tree-links-v2'))]
     if notes: summary['scope_notes'] = notes
+    performance = [{'control_id': r['control_id'], 'status': r['status'], 'reason': r['reason']}
+                   for r in report['results'] if r['control_id'] in ('TS34', 'TS35')]
+    if performance:
+        summary['performance_documentation'] = performance
+        summary['performance_interpretation'] = 'C = documentation conforme / conforming documentation; not a good-performance or field-CWV verdict. Read the retained measurements and limits.'
     return summary
 
 
@@ -404,7 +409,9 @@ def readable_summary(summary, language):
          'Vérifie cohérence et intégrité, pas la vérité des constats.' if fr else
          'Declared targets and selected controls only; no global conformity. '
          'Checks consistency and integrity, not the truth of findings.')]
-        + [('Portée A04 / A04 scope: ' + n['target'] + ' — ' + n['reason']) for n in summary.get('scope_notes', [])])
+        + [('Portée A04 / A04 scope: ' + n['target'] + ' — ' + n['reason']) for n in summary.get('scope_notes', [])]
+        + ([summary['performance_interpretation']] if 'performance_interpretation' in summary else [])
+        + [r['control_id'] + ' — ' + r['reason'] for r in summary.get('performance_documentation', [])])
 
 
 def main(argv=None):

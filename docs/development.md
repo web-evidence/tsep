@@ -1,4 +1,8 @@
-Current integration: draft.20, interpreter 20 / adapter 21 / replay 3.
+Current integration: draft.21, interpreter 21 / adapter 22 / replay 3.
+[Performance evidence](performance-evidence.md): TS34 field documentation and TS35 lab diagnosis; metric quality stays separate from C/NC/NT.
+FR : cinq règles de performance ajoutées ; aucune mesure Edikka ni revue humaine déduite. [Migration](migration-draft.21.md).
+
+Historical integration: draft.20, interpreter 20 / adapter 21 / replay 3.
 Prior [preview intent](preview-intent.md) extends TS07-A01/A03 with permission intervals and retained unknowns.
 FR : intentions de présentation préalables ; aucun affichage ou résultat Google déduit. [Migration](migration-draft.20.md).
 
@@ -117,7 +121,10 @@ Earlier milestone descriptions below retain their historical scope.
 
 # Independent development / Développement autonome
 
-Current priority: [four deeply verified controls](four-control-program.md), as
+Current priority also includes TS34/TS35 performance, explicitly requested on October 11.
+The [performance contract](performance-evidence.md) separates method outcomes from metric quality.
+
+Earlier priority: [four deeply verified controls](four-control-program.md), as
 requested on October 10, superseding the ten-control target. Draft.8 adds two
 [TS02 rules](redirects.md), retaining the prior 216 raw cases and adding 38.
 Earlier CI figures below describe their named historical commits only.
@@ -127,7 +134,8 @@ loopback laboratory prepare TS04/TS07 without changing draft.8 or active rules.
 Le lecteur robots candidat prépare TS04/TS07 ; son intégration normative reste à
 faire. Ses observations expérimentales ne sont pas des verdicts de contrôle.
 
-Priorité actuelle : [quatre contrôles approfondis](four-control-program.md).
+Priorité élargie le 11 octobre à TS34/TS35 performance ; couverture de formats partielle.
+Priorité antérieure : [quatre contrôles approfondis](four-control-program.md).
 Draft.8 ajoute deux règles TS02, sans finaliser le programme ni l'audit d'Edikka.
 Les résultats CI historiques ci-dessous ne concernent pas cette candidate.
 

@@ -1,8 +1,13 @@
+Current / Actuel : draft.21 — 857 authored cases / cas synthétiques, 1,360 rule-target pairs / couples.
+[Current coverage and limits / Couverture et limites actuelles](control-implementation-status.md).
+Eighteen rules across seven controls; performance adds 82 cases / 216 pairs.
+Dix-huit règles dans sept contrôles ; aucune mesure réelle déduite des tests.
+
 # Executable conformance / Conformance exécutable
 
 <a id="draft20-runtime-coverage"></a>
 
-## Current draft.20 runtime coverage / Couverture courante — 2026-10-11
+## Historical draft.20 runtime coverage / Couverture historique — 2026-10-11
 
 Protocol **0.1.0-draft.20**, interpreter **20**: **775 authored synthetic cases**,
 **1,144 rule/target pairs**. The core result is retained from the successful

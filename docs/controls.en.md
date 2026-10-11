@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.20 — Controls
+# TSEP 0.1.0-draft.21 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.20:TS01-A01`
+`TSEP@0.1.0-draft.21:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.20:TS01-A02`
+`TSEP@0.1.0-draft.21:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.20:TS02-A01`
+`TSEP@0.1.0-draft.21:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.20:TS02-A02`
+`TSEP@0.1.0-draft.21:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.20:TS04-A01`
+`TSEP@0.1.0-draft.21:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.20:TS04-A02`
+`TSEP@0.1.0-draft.21:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.20:TS07-A01`
+`TSEP@0.1.0-draft.21:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -344,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.20:TS07-A02`
+`TSEP@0.1.0-draft.21:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.20:TS07-A03`
+`TSEP@0.1.0-draft.21:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.20:TS10-A01`
+`TSEP@0.1.0-draft.21:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -490,7 +490,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.20:TS10-A02`
+`TSEP@0.1.0-draft.21:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -514,7 +514,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.20:TS10-A03`
+`TSEP@0.1.0-draft.21:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.20:TS10-A04`
+`TSEP@0.1.0-draft.21:TS10-A04`
 
 **Required inputs**: crawl, intent.
 
@@ -1138,6 +1138,78 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://web.dev/articles/defining-core-web-vitals-thresholds](https://web.dev/articles/defining-core-web-vitals-thresholds)
 
+### TS34-A01 — Attributable field cohort
+
+`TSEP@0.1.0-draft.21:TS34-A01`
+
+**Required inputs**: field-data, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Declared performance scope for this control and qualified reading profile.
+
+**Method.** Identify source, request/returned key, URL/origin, device, period and population under performance-evidence-v1. No implicit scope fallback.
+
+**Acceptance.** Cohort matches the plan with retained dates/provenance. Explicit lab-for-field substitution fails; a different or old cohort remains inconclusive.
+
+**Evidence.** Original JSON with source/date/hash; plan and supplied review when required, diagnostics and limits under docs/performance-evidence.md.
+
+**Assumptions.** Supplied data/reviews are not authenticated. Plan precedes assessment and lab runs; a historical cohort is not preregistration.
+
+**Inconclusive.** Insufficient source/plan/dates/measures; unsupported format/profile, scope mismatch, exceeded bounds or missing review under the contract. Absence never becomes C or NA.
+
+**When NA is allowed.** No automatic atomic exemption; whole-control non-applicability requires its own evidence.
+
+**Limits.** C describes documentation, not good performance. No display/ranking, demonstrated cause, automatic human review or global conformity. Replay performs no new measurement.
+
+### TS34-A02 — Retained p75 measurements and classes
+
+`TSEP@0.1.0-draft.21:TS34-A02`
+
+**Required inputs**: field-data, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Declared performance scope for this control and qualified reading profile.
+
+**Method.** Read LCP/INP/CLS p75 in native units and compare exactly with cited thresholds, without relabeling FID/TBT. Retain poor values and unknowns.
+
+**Acceptance.** All three measures are classified correctly. A bound classification contradicting p75 fails; correctly documented poor performance passes.
+
+**Evidence.** Original JSON with source/date/hash; plan and supplied review when required, diagnostics and limits under docs/performance-evidence.md.
+
+**Assumptions.** Supplied data/reviews are not authenticated. Plan precedes assessment and lab runs; a historical cohort is not preregistration.
+
+**Inconclusive.** Insufficient source/plan/dates/measures; unsupported format/profile, scope mismatch, exceeded bounds or missing review under the contract. Absence never becomes C or NA.
+
+**When NA is allowed.** No automatic atomic exemption; whole-control non-applicability requires its own evidence.
+
+**Limits.** C describes documentation, not good performance. No display/ranking, demonstrated cause, automatic human review or global conformity. Replay performs no new measurement.
+
+### TS34-A03 — Reasoned decision bound to measurements
+
+`TSEP@0.1.0-draft.21:TS34-A03`
+
+**Required inputs**: field-data, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicability.** Declared performance scope for this control and qualified reading profile.
+
+**Method.** Retain supplied review, author, provenance, date, source hash and decision for each metric; verify binding without fabricating judgment.
+
+**Acceptance.** Each metric retains its class, reason and action. A contradictory class fails. Missing/incomplete/unbound review is inconclusive.
+
+**Evidence.** Original JSON with source/date/hash; plan and supplied review when required, diagnostics and limits under docs/performance-evidence.md.
+
+**Assumptions.** Supplied data/reviews are not authenticated. Plan precedes assessment and lab runs; a historical cohort is not preregistration.
+
+**Inconclusive.** Insufficient source/plan/dates/measures; unsupported format/profile, scope mismatch, exceeded bounds or missing review under the contract. Absence never becomes C or NA.
+
+**When NA is allowed.** No automatic atomic exemption; whole-control non-applicability requires its own evidence.
+
+**Limits.** C describes documentation, not good performance. No display/ranking, demonstrated cause, automatic human review or global conformity. Replay performs no new measurement.
+
 ## TS35 — Laboratory tests support diagnosis rather than simulate field data.
 
 **Severity**: minor. **Unit**: page.
@@ -1161,6 +1233,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://web.dev/articles/lab-and-field-data-differences](https://web.dev/articles/lab-and-field-data-differences)
+
+### TS35-A01 — Repeatable laboratory context and measurements
+
+`TSEP@0.1.0-draft.21:TS35-A01`
+
+**Required inputs**: lab-data, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Declared performance scope for this control and qualified reading profile.
+
+**Method.** Retain a planned series of 2–10 distinct Lighthouse reports, dates, URLs, tool/version, client, device, throttling, native measures and spread.
+
+**Acceptance.** Series matches planned context/count. URL contrary to plan fails; different context, missing measure or runtime error remains inconclusive.
+
+**Evidence.** Original JSON with source/date/hash; plan and supplied review when required, diagnostics and limits under docs/performance-evidence.md.
+
+**Assumptions.** Supplied data/reviews are not authenticated. Plan precedes assessment and lab runs; a historical cohort is not preregistration.
+
+**Inconclusive.** Insufficient source/plan/dates/measures; unsupported format/profile, scope mismatch, exceeded bounds or missing review under the contract. Absence never becomes C or NA.
+
+**When NA is allowed.** No automatic atomic exemption; whole-control non-applicability requires its own evidence.
+
+**Limits.** C describes documentation, not good performance. No display/ranking, demonstrated cause, automatic human review or global conformity. Replay performs no new measurement.
+
+### TS35-A02 — Diagnostic hypothesis and next verification
+
+`TSEP@0.1.0-draft.21:TS35-A02`
+
+**Required inputs**: lab-data, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicability.** Declared performance scope for this control and qualified reading profile.
+
+**Method.** Bind a supplied review to ordered reports, measured metrics, a hypothesis and next measurement. Separate laboratory, INP and field results.
+
+**Acceptance.** Bound review names hypothesis, metrics and action without field substitution. Explicit lab/CWV or TBT/INP substitution fails; absent review is inconclusive.
+
+**Evidence.** Original JSON with source/date/hash; plan and supplied review when required, diagnostics and limits under docs/performance-evidence.md.
+
+**Assumptions.** Supplied data/reviews are not authenticated. Plan precedes assessment and lab runs; a historical cohort is not preregistration.
+
+**Inconclusive.** Insufficient source/plan/dates/measures; unsupported format/profile, scope mismatch, exceeded bounds or missing review under the contract. Absence never becomes C or NA.
+
+**When NA is allowed.** No automatic atomic exemption; whole-control non-applicability requires its own evidence.
+
+**Limits.** C describes documentation, not good performance. No display/ranking, demonstrated cause, automatic human review or global conformity. Replay performs no new measurement.
 
 ## TS36 — Monitoring connects Search Console, logs and deployments to decision dates.
 

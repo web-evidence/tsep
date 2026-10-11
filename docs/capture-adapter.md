@@ -1,3 +1,8 @@
+Current / Actuel : draft.21, interpreter 21, adapter 22, replay 3.
+[Performance imports / Imports de performance](performance-evidence.md) add TS34/TS35.
+The versioned descriptions below are historical; see [current coverage](control-implementation-status.md).
+Les descriptions versionnées ci-dessous sont historiques ; voir la couverture actuelle.
+
 # Offline captures → evidence bundle / Captures locales → paquet de preuves
 
 ## Français
@@ -145,7 +150,7 @@ Ce contrôle du parcours ne constitue pas une seconde interprétation normative.
 
 ## English
 
-Current: interpreter 5 / adapter 6, [bounded SVG styles](source-text-v5.md);
+Historical: interpreter 5 / adapter 6, [bounded SVG styles](source-text-v5.md);
 [collector 6](diagnostic-campaign.md), draft.7 unchanged.
 
 Interpreter 4 / adapter 5 / collector 3 migration is documented in

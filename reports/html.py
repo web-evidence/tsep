@@ -12,12 +12,17 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '4'
+VERSION = '5'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'performance_note': 'C signifie « documentation conforme ». La qualité des performances est indiquée séparément ci-dessous ; le laboratoire ne mesure pas les Core Web Vitals terrain.',
+        'performance_values': 'Mesures de performance conservées',
+        'metric_name': 'Métrique', 'metric_value': 'Valeur conservée', 'metric_quality': 'Qualité / portée',
+        'good': 'Bon', 'needs-improvement': 'À améliorer', 'poor': 'Mauvais', 'unknown': 'Inconnu',
+        'lab_only': 'Laboratoire · INP non mesuré', 'median_range': 'médiane ; min–max',
         'preflight': 'Précontrôle des marqueurs sur la référence',
         'preflight_note': 'Contrôle préparatoire déclaré, distinct du résultat TS01. Une empreinte identique peut conclure sans exécuter les marqueurs sur la mesure.',
         'media_comparison': 'Type de média observé : référence et mesure',
@@ -80,6 +85,11 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'performance_note': 'C means conforming documentation. Performance quality is shown separately below; laboratory measurements do not establish field Core Web Vitals.',
+        'performance_values': 'Retained performance measurements',
+        'metric_name': 'Metric', 'metric_value': 'Retained value', 'metric_quality': 'Quality / scope',
+        'good': 'Good', 'needs-improvement': 'Needs improvement', 'poor': 'Poor', 'unknown': 'Unknown',
+        'lab_only': 'Laboratory · INP not measured', 'median_range': 'median; min–max',
         'preflight': 'Reference marker preflight',
         'preflight_note': 'Supplied preparation check, separate from the TS01 result. An equal digest can resolve identity without checking evaluation markers.',
         'media_comparison': 'Observed media type: reference and evaluation',
@@ -271,6 +281,38 @@ def identity_context(target, words):
     return out + '</div>'
 
 
+def performance_values(result, words):
+    """Present retained reader diagnostics; never infer or recalculate a metric."""
+    out = '<div class="notice"><strong>' + esc(words['performance_note']) + '</strong></div>'
+    seen = set()
+    for atom in result.get('atomic_results', []):
+        if atom['target'] in seen:
+            continue
+        prefix = 'Performance documentation / documentation de performance: '
+        if not atom['reason'].startswith(prefix):
+            continue
+        try:
+            note = json.loads(atom['reason'][len(prefix):])
+        except ValueError:
+            continue
+        if not isinstance(note, dict) or not isinstance(note.get('metrics'), dict):
+            continue
+        seen.add(atom['target'])
+        rows = ''
+        for name, value in note['metrics'].items():
+            if not isinstance(value, dict):
+                continue
+            if 'classification' in value:
+                display = str(value.get('p75', '—')) + ' ' + str(value.get('unit', '')) + ' · p75'
+                quality = words.get(value['classification'], words['unknown'])
+            else:
+                display = str(value.get('median', '—')) + ' ; ' + str(value.get('minimum', '—')) + '–' + str(value.get('maximum', '—')) + ' ' + str(value.get('unit', '')) + ' (' + words['median_range'] + ')'
+                quality = words['lab_only']
+            rows += '<tr><th scope="row">' + esc(name) + '</th><td>' + esc(display) + '</td><td>' + esc(quality) + '</td></tr>'
+        out += '<p class="rule-target">' + esc(atom['target']) + '</p><div class="table-wrap"><table><caption>' + esc(words['performance_values']) + '</caption><thead><tr>' + ''.join('<th scope="col">' + esc(words[k]) + '</th>' for k in ('metric_name', 'metric_value', 'metric_quality')) + '</tr></thead><tbody>' + rows + '</tbody></table></div>'
+    return out
+
+
 def results(bundle, controls, words, language):
     report = bundle['report']
     data = captures(bundle)
@@ -281,6 +323,8 @@ def results(bundle, controls, words, language):
         control = controls[cid]
         rules = {r['id']: r for r in control.get('rules', [])}
         out += '<article class="card control"><div class="row"><div><span class="eyebrow">' + esc(cid) + '</span><h3 class="control-title">' + esc(control['title'][language]) + '</h3></div>' + badge(result['status'], words) + '</div>'
+        if cid in ('TS34', 'TS35'):
+            out += performance_values(result, words)
         out += '<p class="reason">' + esc(result['reason']) + '</p><details><summary>' + esc(words['procedure']) + '</summary><p class="small">' + esc(result['procedure']) + '</p>' + proof_links(result['evidence_ids'], 'current') + '</details>'
         seen = set()
         for atom in result.get('atomic_results', []):
@@ -387,6 +431,9 @@ def render(report_path, *, evidence_root=None, language='en', compare=None, comp
     out += '<div class="card"><span class="eyebrow">' + esc(words['controls']) + '</span><p class="metric">' + str(summary['selected_controls']) + ' <span class="muted">/ ' + str(summary['protocol_controls']) + '</span></p><p class="small muted">' + str(len(summary['unevaluated_controls'])) + ' ' + esc(words['not_evaluated']) + '</p></div>'
     out += '<div class="card"><span class="eyebrow">' + esc(words['targets']) + '</span><p class="metric">' + str(len(report['scope']['targets'])) + '</p><p class="small muted">' + str(len(report['artifacts'])) + ' ' + esc(words['artifact_count']) + '</p></div></div>'
     out += '<div class="notice"><strong>' + esc(words['valid']) + '</strong>' + esc(words['integrity_limit']) + '</div>'
+    for result in report['results']:
+        if result['control_id'] in ('TS34', 'TS35'):
+            out += '<div class="card"><h3>' + esc(result['control_id']) + ' · ' + esc(words['performance_values']) + '</h3>' + performance_values(result, words) + '</div>'
     out += '<p class="small muted">' + esc(words['run_selection']) + '</p>'
     for access, label in [('synthetic', 'synthetic'), ('restricted', 'restricted')]:
         if any(a['access'] == access for bundle in (current, previous) if bundle

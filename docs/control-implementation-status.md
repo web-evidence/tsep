@@ -2,16 +2,17 @@
 
 ## Current snapshot / État actuel — 2026-10-11
 
-La version locale est **0.1.0-draft.20**. Les versions des outils sont distinctes :
-interpréteur **20**, adaptateur de captures **21**, rejeu **3**. Ces numéros ne
+La version locale est **0.1.0-draft.21**. Les versions des outils sont distinctes :
+interpréteur **21**, adaptateur de captures **22**, rejeu **3**. Ces numéros ne
 prouvent ni une publication distante ni une version stable 1.0. Chaque dossier
 historique reste lié à sa version et à ses empreintes ; il n'est jamais remplacé.
 
 Le programme actif porte sur **quatre contrôles approfondis : TS04, TS02, TS07,
 TS10**, avec TS01 comme socle. Il remplace la cible antérieure de dix contrôles.
-La source décrit **44 contrôles**. **Cinq** disposent de règles atomiques
-exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS10 (4), soit **13 règles**.
-Les quatre priorités en représentent 11. Les 39 autres contrôles sont décrits,
+Le 11 octobre, Bertrand a ajouté explicitement la performance : TS34 et TS35.
+La source décrit **44 contrôles**. **Sept** disposent de règles atomiques
+exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS10 (4), TS34 (3), TS35 (2),
+soit **18 règles**. Les quatre priorités SEO en représentent 11. Les 37 autres sont décrits,
 sans le même niveau de règles et d'outillage exécutables.
 
 | Contrôle | Méthode exécutable disponible | Application réelle encore incomplète |
@@ -22,9 +23,13 @@ sans le même niveau de règles et d'outillage exécutables.
 | TS07 | Directives HTTP/source/rendu, hypothèses source distinctes, objectifs de permissions texte/image/vidéo préalables | Trois sources examinées ne remplacent pas les états rendus attribués et revues exigés ; aucune observation Google déduite |
 | TS10 | Canonical HTTP avec contexte, source, rendu, sitemaps et liens ; familles déclarées et rejeu | Les populations des campagnes sont distinctes ; qualification des familles, états rendus et revues de contenu encore nécessaires |
 
+| TS34 | Import CrUX hors ligne : cohorte, période, appareil, p75 et classes ; décision fournie liée aux sources | Aucun nouveau relevé terrain Edikka ; autres formats non qualifiés ; C documentaire ne signifie pas bonnes performances |
+| TS35 | Série Lighthouse : plan préalable, conditions exactes, mesures, dispersion et hypothèse fournie | Aucune nouvelle campagne réelle Edikka ; autres formats et comparaison avant/après non qualifiés |
+
 Les extensions récentes sont [les liens source v2](source-link-policy-v2.md),
 [le contexte HTTP canonical](http-canonical-context.md) et
-[les intentions de présentation](preview-intent.md). Leurs migrations sont
+[les intentions de présentation](preview-intent.md), puis
+[les preuves de performance](performance-evidence.md). Leurs migrations sont
 explicites ; un ancien dossier ne sélectionne pas automatiquement un nouveau lecteur.
 
 ### Critères d'achèvement encore ouverts
@@ -52,7 +57,14 @@ présentés comme le préalable qui manque à toutes les pages.
 
 ### Ce que mesurent les tests
 
-Sur **775 cas synthétiques / 1 144 couples règle-cible**, le relevé draft.20 trouve
+Le lot performance ajoute **82 cas synthétiques / 216 couples règle-cible** avec
+216 accords sur les attentes, y compris les inconnues prévues. Le corpus draft.21
+compte **857 cas / 1 360 couples** : 1 249 accords, zéro désaccord et 111 couvertures
+réduites sans Node optionnel. Les accords comprennent 536 attendus indéterminés.
+Le [relevé conservé](../provenance/performance-core-2026-10-11.json) décrit cette
+exécution ; ce n’est ni un audit Edikka ni une validation humaine.
+
+Relevé historique draft.20, avant la performance : sur **775 cas synthétiques / 1 144 couples règle-cible**, le relevé draft.20 trouve
 1 033 accords et 111 couvertures réduites sans Node optionnel ; avec Node 24.19.0
 explicitement fourni, 1 136 accords et huit couvertures réduites. Aucun désaccord
 interdit dans ces exécutions. Les accords comprennent **433 attendus indéterminés**.
@@ -62,18 +74,23 @@ Voir les [résultats, empreintes et limites](conformance.md#draft20-runtime-cove
 
 Les 628 tests de vérification exécutés dans la source puis dans l'archive du lot
 preview-intent vérifient des propriétés logicielles. Ils ne prouvent ni 628 audits,
-ni cinq contrôles terminés, ni une revue humaine ou une exécution CI distante.
+ni contrôles terminés, ni une revue humaine ou une exécution CI distante.
 
 ## English — current state
 
-The local edition is **0.1.0-draft.20**, with interpreter **20**, capture adapter
-**21** and replay **3**. These version numbers do not establish a public release
+The local edition is **0.1.0-draft.21**, with interpreter **21**, capture adapter
+**22** and replay **3**. These version numbers do not establish a public release
 or stable 1.0. Historical packages keep their exact tools and fingerprints.
 
 The active human priority is four deeply developed controls, TS04/TS02/TS07/TS10,
 with TS01 as the foundation, superseding the older ten-control target. Forty-four
-controls are specified; five have 13 executable atomic rules, including 11 for
-the four priorities. The other 39 do not have equivalent executable coverage.
+controls are specified. On October 11 the user explicitly added TS34/TS35 performance.
+Seven controls now have 18 executable atomic rules, including 11 for the four SEO
+priorities and five for performance. The other 37 lack equivalent executable coverage.
+TS34 imports CrUX cohorts/p75 with exact classes and supplied decisions. TS35 imports
+planned repeated Lighthouse reports with declared context, spread and supplied hypotheses.
+No new real Edikka performance campaign, other-source reader or before/after comparison
+is established. Conforming documentation can accompany poor performance.
 
 Available methods include prior redirect decisions, shared robots policies,
 attributed source/rendered directives, preview permission objectives, canonical
@@ -94,7 +111,13 @@ exercises, not real Edikka account data or a TS08/TS12 assessment. The bilingual
 insight handoff is prepared; CMS integration, visual acceptance and publication
 remain separate and unperformed.
 
-The current 775-case / 1,144-pair corpus gives 1,033 agreements and 111 reduced pairs
+The performance addition has 82 synthetic cases / 216 pairs, all matching authored
+expectations, including unknowns. Draft.21 has 857 cases / 1,360 pairs: 1,249
+agreements, zero disagreements and 111 reduced pairs without optional Node.
+Agreements include 536 inconclusive expectations. The [retained observation](../provenance/performance-core-2026-10-11.json)
+is software evidence, not a real Edikka assessment or human validation.
+
+The historical draft.20 775-case / 1,144-pair corpus gives 1,033 agreements and 111 reduced pairs
 without optional Node, or 1,136 agreements and eight reduced pairs with explicit
 Node 24.19.0, with no disallowed disagreement. Agreements include 433 normative
 inconclusive expectations. The eight legacy-profile limits are not a complete

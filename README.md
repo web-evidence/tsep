@@ -1,9 +1,9 @@
-Current local edition / Édition locale courante : **0.1.0-draft.20**, optional [preview permission intent](docs/preview-intent.md), [migration](docs/migration-draft.20.md). No actual Google display or completed control inferred.
+Current local edition: **0.1.0-draft.21** — [performance evidence](docs/performance-evidence.md) and [migration](docs/migration-draft.21.md). C describes documentation, not good performance; no new real measurement is implied.
 [Current versions and remaining evidence / Versions et preuves manquantes](docs/control-implementation-status.md).
 
 # TSEP — evidence interchange format
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.15 · initiated by Edikka · [Français](README.fr.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.21 · initiated by Edikka · [Français](README.fr.md)**
 
 Share a technical SEO assessment that its recipient can inspect, replay and
 challenge: stable identifiers, explicit scope, evidence linked to findings and
@@ -28,9 +28,13 @@ atomic rules use pass, fail, not-applicable or inconclusive.
 
 **TS01–TS44 are the permanent identifiers inherited from grid 1.1.** TSEP has a
 separate version sequence; the original FR/EN sources and provenance remain intact.
-Thirteen rules specify TS01, TS02, TS04, TS07 and TS10, with a bounded interpreter over raw inputs:
-TS01-A01/A02, TS02-A01/A02, TS04-A01/A02, TS07-A01/A02/A03 and TS10-A01 through A04. TS10-A02 content comparison
+Eighteen rules specify TS01, TS02, TS04, TS07, TS10, TS34 and TS35, with a bounded interpreter over raw inputs:
+TS01-A01/A02, TS02-A01/A02, TS04-A01/A02, TS07-A01/A02/A03, TS10-A01 through A04, TS34-A01/A02/A03 and TS35-A01/A02. TS10-A02 content comparison
 remains a supplied human review bound to the captures.
+
+Performance imports keep field p75/classes (CrUX) separate from laboratory diagnostics
+(Lighthouse series). Decisions and hypotheses must be supplied; missing reviews stay
+unknown. See the [performance method and limitations](docs/performance-evidence.md).
 
 ## Try it in two minutes
 
@@ -67,14 +71,14 @@ validation establishes consistency and file integrity.
    diagnostic](docs/reference-diagnostics.md) inventories candidate limitations
    without issuing verdicts. The [paired capture diagnostic](docs/diagnostic-campaign.md)
    compares registered phases and exposes extraction limits on changed bodies.
-   The protocol is draft.15; the [TS01 noscript proposal](docs/proposals/noscript-consensus.md) is unapplied.
+   The protocol is draft.21; the [TS01 noscript proposal](docs/proposals/noscript-consensus.md) is unapplied.
 2. **Declare partial coverage**: select a `custom` list, keep unknowns as
    NT/inconclusive and link each artifact to its target. Selecting TS01/TS07 does
    not satisfy a named profile. An isolated test cannot pass its parent control.
 3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
    `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 my_adapter.py'`
-   for that subset, or omit `--rules` for all thirteen rules. State “passes TSEP
-   0.1.0-draft.15 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
+   for that subset, or omit `--rules` for all eighteen rules. State “passes TSEP
+   0.1.0-draft.21 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
    [Input format and comparison](docs/conformance.md). Report exact agreements,
    disagreements and reduced coverage separately; accepted inconclusive results
    on marked reference limits are not successful assessments.
@@ -135,7 +139,7 @@ checks declarations and hashes, not authenticity, appropriate intent or every
 assessment judgment. A hash does not establish authorship or actual collection
 time. Bundled cases are synthetic.
 
-The interpreter covers thirteen rules within a documented subset; unsupported inputs
+The interpreter covers eighteen rules within a documented subset; unsupported inputs
 remain inconclusive. TS07-A03 compares supplied source/DOM captures without executing JavaScript;
 the plan and exemptions require review. TS10 compares declared family signals and checks the binding of the supplied
 human content review, without guaranteeing its correctness.
@@ -148,7 +152,7 @@ ranking or future engine behavior.
 [Governance](GOVERNANCE.md) · [Contribute](CONTRIBUTING.md) · [History](CHANGELOG.md) ·
 [Acceptance clause](docs/acceptance-clause.md) · [HTTP probe](probes/README.md).
 
-Cite `TSEP@0.1.0-draft.15:TS07` with scope, result, evidence and archive hash.
+Cite `TSEP@0.1.0-draft.21:TS07` with scope, result, evidence and archive hash.
 Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATION.cff).
 [Development, full verification and independent repository](docs/development.md).
 

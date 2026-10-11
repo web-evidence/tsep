@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.20 — Contrôles
+# TSEP 0.1.0-draft.21 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.20:TS01-A01`
+`TSEP@0.1.0-draft.21:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.20:TS01-A02`
+`TSEP@0.1.0-draft.21:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.20:TS02-A01`
+`TSEP@0.1.0-draft.21:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.20:TS02-A02`
+`TSEP@0.1.0-draft.21:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -198,7 +198,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A01 — Politique par origine, robot et ressource
 
-`TSEP@0.1.0-draft.20:TS04-A01`
+`TSEP@0.1.0-draft.21:TS04-A01`
 
 **Entrées requises**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A02 — Accès aux ressources nécessaires
 
-`TSEP@0.1.0-draft.20:TS04-A02`
+`TSEP@0.1.0-draft.21:TS04-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.20:TS07-A01`
+`TSEP@0.1.0-draft.21:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -344,7 +344,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.20:TS07-A02`
+`TSEP@0.1.0-draft.21:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.20:TS07-A03`
+`TSEP@0.1.0-draft.21:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.20:TS10-A01`
+`TSEP@0.1.0-draft.21:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -490,7 +490,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.20:TS10-A02`
+`TSEP@0.1.0-draft.21:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -514,7 +514,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.20:TS10-A03`
+`TSEP@0.1.0-draft.21:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.20:TS10-A04`
+`TSEP@0.1.0-draft.21:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 
@@ -1138,6 +1138,78 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://web.dev/articles/defining-core-web-vitals-thresholds](https://web.dev/articles/defining-core-web-vitals-thresholds)
 
+### TS34-A01 — Cohorte terrain attribuable
+
+`TSEP@0.1.0-draft.21:TS34-A01`
+
+**Entrées requises**: field-data, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Périmètre de performance déclaré pour ce contrôle et profil de lecture qualifié.
+
+**Méthode.** Identifier source, requête et clé retournée, URL/origine, appareil, période et population selon performance-evidence-v1. Aucun repli de portée implicite.
+
+**Attendus.** La cohorte correspond au plan et conserve ses dates et sa provenance. Une substitution explicite laboratoire/terrain échoue ; une cohorte différente ou ancienne reste indéterminée.
+
+**Preuves.** Originaux JSON conservés avec source, date, empreinte ; plan et revue fournie quand exigée, diagnostics et limites selon docs/performance-evidence.md.
+
+**Hypothèses.** Les données et revues fournies ne sont pas authentifiées. Le plan précède l’évaluation et les exécutions laboratoire ; une cohorte historique n’est pas un préenregistrement.
+
+**Indéterminé.** Source, plan, dates ou mesures insuffisants ; format/profil non qualifié, incohérence de portée, borne dépassée ou revue manquante selon le contrat. Aucune absence ne devient C ou NA.
+
+**Conditions de NA.** Aucune exemption atomique automatique ; la non-applicabilité du contrôle exige sa preuve propre.
+
+**Limites.** C qualifie la documentation, pas de bonnes performances. Aucun affichage, classement, cause démontrée, revue humaine automatique ou conformité globale. Rejeu sans nouvelle mesure.
+
+### TS34-A02 — Mesures p75 et classes conservées
+
+`TSEP@0.1.0-draft.21:TS34-A02`
+
+**Entrées requises**: field-data, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicabilité.** Périmètre de performance déclaré pour ce contrôle et profil de lecture qualifié.
+
+**Méthode.** Lire LCP, INP et CLS p75 dans les unités natives ; comparer exactement aux seuils cités, sans renommer FID ou TBT. Conserver les valeurs mauvaises et les inconnues.
+
+**Attendus.** Les trois mesures sont classées correctement. Une classification liée contraire à un p75 est fail ; une performance mauvaise correctement documentée donne pass.
+
+**Preuves.** Originaux JSON conservés avec source, date, empreinte ; plan et revue fournie quand exigée, diagnostics et limites selon docs/performance-evidence.md.
+
+**Hypothèses.** Les données et revues fournies ne sont pas authentifiées. Le plan précède l’évaluation et les exécutions laboratoire ; une cohorte historique n’est pas un préenregistrement.
+
+**Indéterminé.** Source, plan, dates ou mesures insuffisants ; format/profil non qualifié, incohérence de portée, borne dépassée ou revue manquante selon le contrat. Aucune absence ne devient C ou NA.
+
+**Conditions de NA.** Aucune exemption atomique automatique ; la non-applicabilité du contrôle exige sa preuve propre.
+
+**Limites.** C qualifie la documentation, pas de bonnes performances. Aucun affichage, classement, cause démontrée, revue humaine automatique ou conformité globale. Rejeu sans nouvelle mesure.
+
+### TS34-A03 — Décision motivée liée aux mesures
+
+`TSEP@0.1.0-draft.21:TS34-A03`
+
+**Entrées requises**: field-data, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicabilité.** Périmètre de performance déclaré pour ce contrôle et profil de lecture qualifié.
+
+**Méthode.** Conserver la revue fournie, auteur, provenance, date, empreinte et décision pour chacune des trois métriques ; vérifier la liaison sans fabriquer un jugement.
+
+**Attendus.** Chaque métrique garde sa classe, un motif et une action. Une classe contradictoire échoue. Revue absente/incomplète/non liée : indéterminé.
+
+**Preuves.** Originaux JSON conservés avec source, date, empreinte ; plan et revue fournie quand exigée, diagnostics et limites selon docs/performance-evidence.md.
+
+**Hypothèses.** Les données et revues fournies ne sont pas authentifiées. Le plan précède l’évaluation et les exécutions laboratoire ; une cohorte historique n’est pas un préenregistrement.
+
+**Indéterminé.** Source, plan, dates ou mesures insuffisants ; format/profil non qualifié, incohérence de portée, borne dépassée ou revue manquante selon le contrat. Aucune absence ne devient C ou NA.
+
+**Conditions de NA.** Aucune exemption atomique automatique ; la non-applicabilité du contrôle exige sa preuve propre.
+
+**Limites.** C qualifie la documentation, pas de bonnes performances. Aucun affichage, classement, cause démontrée, revue humaine automatique ou conformité globale. Rejeu sans nouvelle mesure.
+
 ## TS35 — Les tests de laboratoire servent au diagnostic, pas à simuler le terrain.
 
 **Sévérité**: minor. **Unité**: page.
@@ -1161,6 +1233,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://web.dev/articles/lab-and-field-data-differences](https://web.dev/articles/lab-and-field-data-differences)
+
+### TS35-A01 — Contexte et mesures de laboratoire reproductibles
+
+`TSEP@0.1.0-draft.21:TS35-A01`
+
+**Entrées requises**: lab-data, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Périmètre de performance déclaré pour ce contrôle et profil de lecture qualifié.
+
+**Méthode.** Conserver une série prévue de 2 à 10 rapports Lighthouse distincts, dates, URL, outil/version, client, appareil, bridage, mesures natives et dispersion.
+
+**Attendus.** La série respecte le contexte et le nombre prévus. URL contraire au plan : fail ; autre contexte, mesure manquante ou erreur runtime : indéterminé.
+
+**Preuves.** Originaux JSON conservés avec source, date, empreinte ; plan et revue fournie quand exigée, diagnostics et limites selon docs/performance-evidence.md.
+
+**Hypothèses.** Les données et revues fournies ne sont pas authentifiées. Le plan précède l’évaluation et les exécutions laboratoire ; une cohorte historique n’est pas un préenregistrement.
+
+**Indéterminé.** Source, plan, dates ou mesures insuffisants ; format/profil non qualifié, incohérence de portée, borne dépassée ou revue manquante selon le contrat. Aucune absence ne devient C ou NA.
+
+**Conditions de NA.** Aucune exemption atomique automatique ; la non-applicabilité du contrôle exige sa preuve propre.
+
+**Limites.** C qualifie la documentation, pas de bonnes performances. Aucun affichage, classement, cause démontrée, revue humaine automatique ou conformité globale. Rejeu sans nouvelle mesure.
+
+### TS35-A02 — Hypothèse de diagnostic et prochaine vérification
+
+`TSEP@0.1.0-draft.21:TS35-A02`
+
+**Entrées requises**: lab-data, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicabilité.** Périmètre de performance déclaré pour ce contrôle et profil de lecture qualifié.
+
+**Méthode.** Relier une revue fournie aux rapports ordonnés, aux métriques, à une hypothèse et à une prochaine mesure. Séparer laboratoire, INP et terrain.
+
+**Attendus.** La revue liée expose hypothèse, métriques et action sans assimilation au terrain. Une assimilation explicite laboratoire/CWV ou TBT/INP échoue ; revue absente : indéterminé.
+
+**Preuves.** Originaux JSON conservés avec source, date, empreinte ; plan et revue fournie quand exigée, diagnostics et limites selon docs/performance-evidence.md.
+
+**Hypothèses.** Les données et revues fournies ne sont pas authentifiées. Le plan précède l’évaluation et les exécutions laboratoire ; une cohorte historique n’est pas un préenregistrement.
+
+**Indéterminé.** Source, plan, dates ou mesures insuffisants ; format/profil non qualifié, incohérence de portée, borne dépassée ou revue manquante selon le contrat. Aucune absence ne devient C ou NA.
+
+**Conditions de NA.** Aucune exemption atomique automatique ; la non-applicabilité du contrôle exige sa preuve propre.
+
+**Limites.** C qualifie la documentation, pas de bonnes performances. Aucun affichage, classement, cause démontrée, revue humaine automatique ou conformité globale. Rejeu sans nouvelle mesure.
 
 ## TS36 — Le suivi relie Search Console, logs et déploiements à des dates de décision.
 

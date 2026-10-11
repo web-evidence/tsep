@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '21'
+VERSION = '22'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -30,6 +30,7 @@ def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
     modules['conformance/http_canonical.py'] = importlib.import_module('conformance.http_canonical')
     modules['conformance/preview_intent.py'] = importlib.import_module('conformance.preview_intent')
+    modules['conformance/performance.py'] = importlib.import_module('conformance.performance')
     for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'conformance.source_canonical', 'experiments.source_head', 'experiments.source_http', 'experiments.source_tree'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     result = loaded_sources(ROOT, modules)
@@ -48,6 +49,8 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented', 'fr':'TS34/TS35 : imports CrUX et Lighthouse distincts, valeurs et classes conservées ; C décrit la documentation, jamais une garantie de bonnes performances. Revues fournies sans authentification ; aucune collecte.',
+     'en':'TS34/TS35: separate CrUX and Lighthouse imports with retained values/classes; C describes documentation, never a guarantee of good performance. Supplied reviews are not authenticated; no collection.'},
     {'state':'implemented', 'fr':'TS07-A01/A03 : profil préalable google-preview-intent-v1, intervalles de permission texte/image/vidéo, contradictions et inconnues conservées. Aucun affichage Google ou usage de contenu déduit.',
      'en':'TS07-A01/A03: prior google-preview-intent-v1, text/image/video permission intervals, retained contradictions and unknowns. No inferred Google display or content usage.'},
     {'state':'implemented', 'fr':'TS10-A01/A02 : http-link-context-v1 préalable, premier rel, contexte anchor attribué et inconnues conservées ; destination comparée littéralement. Ancien lecteur inchangé ; aucun choix Google déduit.',
@@ -123,7 +126,10 @@ def pieces(target):
     result = {}
     if 'intent' in target:
         result['intent'] = {k: target[k] for k in
-                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review') if k in target}
+                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review') if k in target}
+    for source, kind in (('field', 'field-data'), ('lab', 'lab-data')):
+        if source in target:
+            result[kind] = target[source]
     host_policy = 'robots_plan' in target.get('intent', {})
     if 'http' in target or 'documents' in target or (host_policy and 'robots' in target):
         fields = ('http', 'documents', 'robots') if host_policy else ('http', 'documents')
@@ -228,6 +234,12 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
             for child in value:
                 synthetic_dom(child)
     synthetic_dom(data)
+    for target in data['targets']:
+        for name in ('field_review', 'lab_review'):
+            review = target.get(name)
+            if isinstance(review, dict) and review.get('provenance') in ('synthetic-exercise', 'supplied-review'):
+                tsep.require((review['provenance'] == 'synthetic-exercise') == (access == 'synthetic'),
+                             'Performance review provenance differs from evidence access')
     if any(r.startswith('TS02-') for r in data['rules']):
         for target in data['targets']:
             review = target.get('intent', {}).get('redirect_review', {})
@@ -329,6 +341,9 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
             rows = [a for a in atoms if a['rule_id'].startswith(cid + '-')]
             if rows:
                 report['results'][i] = control_result(cid, rows, controls[cid], targets)
+                if cid in ('TS34', 'TS35'):
+                    report['results'][i]['reason'] += ' C = documentation conforme / conforming documentation, not good performance. '
+                    report['results'][i]['reason'] += '\n'.join(a['rule_id'] + ' — ' + a['reason'] for a in rows)
                 if cid == 'TS04' and client_scope:
                     report['results'][i]['reason'] += ' ' + client_scope + '.'
                 for atom in rows:
