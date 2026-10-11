@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '25'
+VERSION = '26'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -34,6 +34,7 @@ def source_files():
     modules['conformance/agent_policy.py'] = importlib.import_module('conformance.agent_policy')
     modules['conformance/agent_access.py'] = importlib.import_module('conformance.agent_access')
     modules['conformance/critical_content.py'] = importlib.import_module('conformance.critical_content')
+    modules['conformance/release_invariants.py'] = importlib.import_module('conformance.release_invariants')
     modules['experiments/source_content.py'] = importlib.import_module('experiments.source_content')
     for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'conformance.source_canonical', 'experiments.source_head', 'experiments.source_http', 'experiments.source_tree'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
@@ -55,6 +56,8 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented', 'fr':'TS41 : plan préalable, sorties natives recalculées, journal et réaction aux échecs/inconnues. C qualifie le dispositif déclaré ; les défauts SEO restent visibles. Aucune commande fournie exécutée ni CI distante authentifiée.',
+     'en':'TS41: prior plan, recalculated native outputs, journal and failure/unknown response. C qualifies the declared process; SEO defects stay visible. No supplied command executed or remote CI authenticated.'},
     {'state': 'implemented', 'fr': 'TS43 : client de test documenté, réponse prévue, journaux JSONL natifs et corrélation revue. Un refus prévu peut être cohérent ; aucune identité, visite ou accessibilité réelle de l’opérateur établie.',
      'en': 'TS43: documented test client, planned response, native JSONL logs and reviewed correlation. An expected denial can conform; no actual operator identity, visit or access established.'},
     {'state': 'implemented', 'fr': 'TS42 : usages documentés, décisions du responsable et arbitrages fournis ; comparaison robots bornée sur la représentation du client. Aucun agent réel ni respect des règles par un opérateur établi.',
@@ -136,7 +139,12 @@ def pieces(target):
     result = {}
     if 'intent' in target:
         result['intent'] = {k: target[k] for k in
-                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review', 'agent_decision', 'execution', 'attribution', 'log_review') if k in target}
+                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review', 'agent_decision', 'execution', 'attribution', 'log_review', 'release_plan_review', 'release_review') if k in target}
+    if 'release' in target.get('intent', {}):
+        result['configuration'] = {'release':target['intent']['release'],
+                                   'basis':'Supplied release plan; command identities are never executed'}
+    for source,kind in (('release_runs','ci-output'),('release_events','change-history')):
+        if source in target:result[kind]=target[source]
     critical = ('critical_plan_review','critical_reviews')
     if any(k in target for k in critical):
         result['content'] = {k:target[k] for k in critical if k in target}
@@ -211,7 +219,8 @@ def control_result(cid, atoms, control, targets):
             'evaluation_state': 'inconclusive' if status == 'NT' else 'complete',
             'reason': 'Computed supplied-capture outcomes: ' + ', '.join(
                 label + '=' + str(outcomes.count(label)) for label in ('pass', 'fail', 'not-applicable', 'inconclusive'))
-                + '; omitted pairs=' + str(len(missing)) + '; declared scope only.',
+                + '; omitted pairs=' + str(len(missing)) + '; declared scope only.'
+                + (' TS41 C: process evidence only; underlying SEO failures and unknowns remain distinct.' if cid=='TS41' else ''),
             'procedure': NAME + ' ' + VERSION + '; bounded reference interpretation, supplied reviews retained; no collection.',
             'evaluated_targets': [target for target in targets if any(a['target'] == target for a in atoms)],
             'evidence_ids': sorted({ref for a in atoms for ref in a['evidence_ids']}), 'atomic_results': atoms}
@@ -241,6 +250,24 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
     targets = [t['url'] for t in data['targets']]
     tsep.unique(targets, 'capture target')
     tsep.require(access in ACCESS, 'Explicit evidence access is required')
+    # Native release inputs are retained as strings. Inspect their supplied
+    # provenance as well: wrapping synthetic evidence cannot make it public.
+    # One bounded level only; recursive TS41 inputs are unsupported by the reader.
+    evidence_targets=list(data['targets'])
+    for target in data['targets']:
+        runs=target.get('release_runs')
+        if not isinstance(runs,list):continue
+        for run in runs[:64]:
+            raw=run.get('input_json') if isinstance(run,dict) else None
+            if not isinstance(raw,str) or len(raw.encode())>512*1024:continue
+            try:native=tsep.parse_json(raw.encode())
+            except (ValueError,TypeError):continue
+            nested=native.get('targets') if isinstance(native,dict) else None
+            if isinstance(nested,list):
+                for child in nested[:100]:
+                    if isinstance(child,dict):
+                        dated(child,child.get('observed_at'),issued_text)
+                        evidence_targets.append(child)
     def synthetic_dom(value):
         if isinstance(value, dict):
             structured = value.get('structured_dom')
@@ -253,12 +280,12 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         elif isinstance(value, list):
             for child in value:
                 synthetic_dom(child)
-    synthetic_dom(data)
-    for target in data['targets']:
+    synthetic_dom(evidence_targets)
+    for target in evidence_targets:
         agent_reviews = target.get('agent_reviews')
         records = list(agent_reviews) if isinstance(agent_reviews, list) else []
         records.append(target.get('agent_decision'))
-        records.extend(target.get(k) for k in ('client_review', 'log_review', 'attribution', 'critical_plan_review'))
+        records.extend(target.get(k) for k in ('client_review', 'log_review', 'attribution', 'critical_plan_review', 'release_plan_review', 'release_review'))
         critical_reviews=target.get('critical_reviews')
         if isinstance(critical_reviews,list):records.extend(critical_reviews)
         for record in records:
@@ -270,14 +297,14 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
             if isinstance(review, dict) and review.get('provenance') in ('synthetic-exercise', 'supplied-review'):
                 tsep.require((review['provenance'] == 'synthetic-exercise') == (access == 'synthetic'),
                              'Performance review provenance differs from evidence access')
-    if any(r.startswith('TS02-') for r in data['rules']):
-        for target in data['targets']:
+    if any(r.startswith(('TS02-','TS41-')) for r in data['rules']):
+        for target in evidence_targets:
             review = target.get('intent', {}).get('redirect_review', {})
             if review:
                 tsep.require((review.get('provenance') == 'synthetic-exercise') == (access == 'synthetic'),
                              'Redirect review provenance differs from evidence access')
-    if any(r.startswith('TS04-') for r in data['rules']):
-        for target in data['targets']:
+    if any(r.startswith(('TS04-','TS41-')) for r in data['rules']):
+        for target in evidence_targets:
             documents = target.get('documents', [])
             reviews = [d.get('access_review') for d in documents if isinstance(d, dict)] if isinstance(documents, list) else []
             reviews.append(target.get('intent', {}).get('robots_plan', {}).get('no_required_resources'))

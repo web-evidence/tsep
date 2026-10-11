@@ -3,6 +3,12 @@
 Four prefrozen TS44 variants, six actual bounded loopback exchanges, native request logs and offline replay. DOM and reviews remain explicitly authored; no browser, agent or Edikka assessment. Draft.24 rules unchanged.
 FR : HTTP réellement observé sur site fictif, états rédigés et revues synthétiques distincts. [Method / Méthode](docs/critical-content-laboratory.md).
 
+## 0.1.0-draft.25 — 2026-10-11 — deployment process evidence
+
+Three TS41 rules distinguish process adequacy from underlying SEO outcomes. Native inputs and supplied journal are replayed without executing evidence commands; unknown never becomes green.
+FR : plan préalable, couverture et réaction aux échecs/inconnues ; revues liées, défaut correctement bloqué conservé. 52 cas synthétiques ajoutés, 1 051 antérieurs inchangés. [Contrat](docs/release-invariants.md), [migration](docs/migration-draft.25.md).
+Interpreter 25 / adapter 26 / HTML 9 / replay 3. Actual TS41 process laboratory and Edikka application remain pending.
+
 ## 0.1.0-draft.24 — 2026-10-11 — critical content without JavaScript
 
 TS44 adds prior critical scope, declared no-JS delivery and bound representation coherence/review. Source HTML or explicitly linked HTML/JSON, separate attributed rendered states, no invented truth or agent consumption. 68 prefrozen cases plus 3 code-review boundary cases frozen before fixes; 980 previous cases retained.

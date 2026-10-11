@@ -22,6 +22,10 @@ SELECTED = ['TS01-A01', 'TS01-A02']
 # CLI transport/selection regressions need contradictory examples, not hundreds
 # of interpreter startups. verify.py still runs the complete conformance corpus.
 EXTERNAL_CASE_IDS = (
+    'release-invariants-complete-cycle',
+    'release-invariants-plan-review-rejected',
+    'release-invariants-native-failure-forged-pass',
+    'release-invariants-unknown-reader',
     'two-targets-must-stay-distinct', 'canonical-all-signals-agree',
     'truncated-capture', 'media-ts10-non-utf8', 'render-initial-noindex-removed',
     'explicit-disallow', 'wrong-expected-url', 'render-all-states-compatible',

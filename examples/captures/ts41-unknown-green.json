@@ -1,0 +1,153 @@
+{
+  "input_version": "1",
+  "rules": [
+    "TS41-A01",
+    "TS41-A02",
+    "TS41-A03"
+  ],
+  "targets": [
+    {
+      "url": "https://example.com/release-scope",
+      "observed_at": "2026-10-11T10:01:00Z",
+      "context": {
+        "network": "none; authored pipeline",
+        "bounds": "bounded native inputs and journal",
+        "tool": "authored-fixture",
+        "tool_version": "1"
+      },
+      "intent": {
+        "declared_at": "2026-10-11T09:00:00Z",
+        "release": {
+          "reader": "release-invariants-v1",
+          "window_start": "2026-10-11T09:02:00Z",
+          "window_end": "2026-10-11T09:59:00Z",
+          "population": [
+            {
+              "id": "d1",
+              "before_artifact": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+              "candidate_artifact": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            }
+          ],
+          "matrix": [
+            {
+              "id": "status",
+              "rule_id": "TS01-A01",
+              "target": "https://example.com/page",
+              "intent_sha256": "fe13a29a97f67229db51e0633c2917b828432604ef8afefa21f2727159c4e7b5",
+              "context_sha256": "eda6e7b4ba2d4168d78faa54d1d98125f2ad9dd440e58f8d038d6e307a0710f8"
+            },
+            {
+              "id": "index",
+              "rule_id": "TS07-A01",
+              "target": "https://example.com/page",
+              "intent_sha256": "fe13a29a97f67229db51e0633c2917b828432604ef8afefa21f2727159c4e7b5",
+              "context_sha256": "eda6e7b4ba2d4168d78faa54d1d98125f2ad9dd440e58f8d038d6e307a0710f8"
+            }
+          ],
+          "command": {
+            "argv": [
+              "python3",
+              "fixed-runner.py"
+            ],
+            "version": "1",
+            "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "environment": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          },
+          "policy": {
+            "pass": 0,
+            "fail": 1,
+            "inconclusive": 2,
+            "pre": "block",
+            "post": "hold",
+            "overrides": "forbidden"
+          },
+          "negative": {
+            "id": "negative",
+            "artifact_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+            "required_failures": [
+              "index"
+            ]
+          }
+        }
+      },
+      "release_runs": [
+        {
+          "id": "negative-run",
+          "attempt_id": "negative",
+          "phase": "negative",
+          "artifact_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+          "trigger_event_id": "negative-run-trigger",
+          "started_at": "2026-10-11T09:03:00Z",
+          "ended_at": "2026-10-11T09:04:00Z",
+          "complete": true,
+          "command": {
+            "argv": [
+              "python3",
+              "fixed-runner.py"
+            ],
+            "version": "1",
+            "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "environment": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          },
+          "input_json": "{\"input_version\":\"1\",\"rules\":[\"TS01-A01\",\"TS07-A01\"],\"targets\":[{\"context\":{\"bounds\":\"10s; 20 hops; 1 MiB\",\"network\":\"none; synthetic\",\"tool\":\"authored-native-input\",\"tool_version\":\"1\"},\"http\":[{\"complete\":true,\"request\":\"GET /page HTTP/1.1\\r\\nHost: example.com\\r\\nUser-Agent: googlebot\\r\\n\\r\\n\",\"response\":\"HTTP/1.1 200 Synthetic\\r\\nContent-Type: text/html; charset=utf-8\\r\\n\\r\\n<!doctype html><html><head><meta name=\\\"robots\\\" content=\\\"noindex\\\"><title>Reference</title></head><body><p>Expected content</p></body></html>\",\"url\":\"https://example.com/page\"}],\"intent\":{\"access_basis\":\"test-client-only\",\"crawler\":\"googlebot\",\"declared_at\":\"2026-10-11T08:00:00Z\",\"expected_body_sha256\":\"1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da\",\"expected_final_url\":\"https://example.com/page\",\"following\":\"unspecified\",\"indexing\":\"allow\",\"public_canonical\":true},\"observed_at\":\"2026-10-11T09:03:00Z\",\"url\":\"https://example.com/page\"}]}",
+          "input_sha256": "2f6490fa925e1c09d4a4501658e47e041a0e464b275e9b9bb5eda77ab3716ee9",
+          "stdout_json": "[{\"outcome\":\"pass\",\"reason\":\"Final complete GET status: 200\",\"rule_id\":\"TS01-A01\",\"target\":\"https://example.com/page\"},{\"outcome\":\"fail\",\"reason\":\"Combined source directives compared with declared indexing/link intent; previews not assessed\",\"rule_id\":\"TS07-A01\",\"target\":\"https://example.com/page\"}]",
+          "stdout_sha256": "f0128aaa0a8cad43b9b79683dc048e5b825f78d9c0972adfdb499b81ecbb9a5c",
+          "exit_code": 1
+        },
+        {
+          "id": "d1-pre",
+          "attempt_id": "d1",
+          "phase": "pre",
+          "artifact_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "trigger_event_id": "d1-pre-trigger",
+          "started_at": "2026-10-11T09:10:00Z",
+          "ended_at": "2026-10-11T09:11:00Z",
+          "complete": true,
+          "command": {
+            "argv": [
+              "python3",
+              "fixed-runner.py"
+            ],
+            "version": "1",
+            "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+            "environment": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+          },
+          "input_json": "{\"input_version\":\"1\",\"rules\":[\"TS01-A01\",\"TS07-A01\"],\"targets\":[{\"context\":{\"bounds\":\"10s; 20 hops; 1 MiB\",\"network\":\"none; synthetic\",\"tool\":\"authored-native-input\",\"tool_version\":\"1\"},\"http\":[{\"complete\":false,\"request\":\"GET /page HTTP/1.1\\r\\nHost: example.com\\r\\nUser-Agent: googlebot\\r\\n\\r\\n\",\"response\":\"HTTP/1.1 200 Synthetic\\r\\nContent-Type: text/html; charset=utf-8\\r\\n\\r\\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>\",\"url\":\"https://example.com/page\"}],\"intent\":{\"access_basis\":\"test-client-only\",\"crawler\":\"googlebot\",\"declared_at\":\"2026-10-11T08:00:00Z\",\"expected_body_sha256\":\"1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da\",\"expected_final_url\":\"https://example.com/page\",\"following\":\"unspecified\",\"indexing\":\"allow\",\"public_canonical\":true},\"observed_at\":\"2026-10-11T09:10:00Z\",\"url\":\"https://example.com/page\"}]}",
+          "input_sha256": "b6ab2481f4aeaac0612e367414a9cd0760fdf2ff8d939055d1d971bb648636c6",
+          "stdout_json": "[{\"outcome\":\"inconclusive\",\"reason\":\"Incomplete HTTP capture\",\"rule_id\":\"TS01-A01\",\"target\":\"https://example.com/page\"},{\"outcome\":\"inconclusive\",\"reason\":\"Incomplete HTTP capture\",\"rule_id\":\"TS07-A01\",\"target\":\"https://example.com/page\"}]",
+          "stdout_sha256": "5544bbe4c90f2c9dd17e2bd606fbcb1977215ceae1a1738f000b8e40647e8a77",
+          "exit_code": 0
+        }
+      ],
+      "release_events": {
+        "raw_jsonl": "{\"artifact_sha256\":\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\",\"at\":\"2026-10-11T09:02:30Z\",\"attempt_id\":\"negative\",\"id\":\"negative-run-trigger\",\"kind\":\"trigger-negative\",\"run_id\":\"negative-run\"}\n{\"artifact_sha256\":\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\",\"at\":\"2026-10-11T09:04:01Z\",\"attempt_id\":\"negative\",\"id\":\"negative-held\",\"kind\":\"negative-held\",\"run_id\":\"negative-run\"}\n{\"artifact_sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"at\":\"2026-10-11T09:09:59Z\",\"attempt_id\":\"d1\",\"id\":\"d1-pre-trigger\",\"kind\":\"trigger-pre\",\"run_id\":\"d1-pre\"}\n{\"artifact_sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"at\":\"2026-10-11T09:12:00Z\",\"attempt_id\":\"d1\",\"id\":\"d1-action\",\"kind\":\"blocked\",\"run_id\":\"d1-pre\"}\n",
+        "sha256": "321b1161b59e517e83f1e3dcd00cabae366299f1354ec90d10a52a92b4bcea32",
+        "exported_at": "2026-10-11T09:59:30Z"
+      },
+      "release_plan_review": {
+        "reviewer": "Fictional reviewer",
+        "assistance": "Authored fixture",
+        "reason": "Fictional bounded review; no real CI or human approval",
+        "provenance": "synthetic-exercise",
+        "observed_at": "2026-10-11T09:01:00Z",
+        "binding_sha256": "d3c4606e140ff5cbb5e55c3fa778e2f83b027ef572db4cfe0324897c6959a03a",
+        "complete": true,
+        "judgment": "supported"
+      },
+      "release_review": {
+        "reviewer": "Fictional reviewer",
+        "assistance": "Authored fixture",
+        "reason": "Fictional bounded review; no real CI or human approval",
+        "provenance": "synthetic-exercise",
+        "observed_at": "2026-10-11T10:00:00Z",
+        "binding_sha256": "54069d75b81885d1bf78bb8e25826c4ea0735da09a693734db07921039e84baf",
+        "complete": true,
+        "judgment": "supported",
+        "population_complete": true,
+        "attribution_supported": true,
+        "clock_supported": true
+      }
+    }
+  ]
+}

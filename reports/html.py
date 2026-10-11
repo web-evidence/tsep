@@ -12,12 +12,17 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '8'
+VERSION = '9'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'release_note': 'TS41 évalue le dispositif de déploiement. Un défaut SEO bien détecté et bloqué peut accompagner C ; ses résultats restent visibles ci-dessous. Reçus et revues fournis, sans authentification de CI distante.',
+        'release_values': 'Vérifications du dispositif',
+        'release_native': 'Résultats SEO sous-jacents conservés',
+        'release_subject': 'Vérification',
+        'release_execution': 'Exécution et phase',
         'critical_content_note': 'TS44 relie les faits critiques déclarés à des représentations fournies, sous une référence sans JavaScript. Un DOM rédigé reste un exemple ; aucune lecture réelle par un agent ni vérité des faits déduite.',
         'agent_access_note': 'C décrit le traitement prévu du client de test et ses traces. Un refus attendu peut être cohérent ; l’accès réel, l’identité et les visites de l’opérateur restent non établis.',
         'agent_note': 'Politique déclarée et décisions fournies : aucune visite réelle, identité d’agent ou application par un opérateur démontrée.',
@@ -91,6 +96,11 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'release_note': 'TS41 assesses the deployment process. A correctly detected and blocked SEO defect can accompany C; its results stay visible below. Supplied receipts/reviews, without remote CI authentication.',
+        'release_values': 'Process checks',
+        'release_native': 'Retained underlying SEO results',
+        'release_subject': 'Check',
+        'release_execution': 'Execution and phase',
         'critical_content_note': 'TS44 binds declared critical facts to supplied representations under a no-JavaScript reference. An authored DOM remains an example; no actual agent consumption or factual truth inferred.',
         'agent_access_note': 'C describes planned test-client treatment and its traces. Expected denial can conform; real operator access, identity and visits remain unestablished.',
         'agent_note': 'Declared policy and supplied decisions: no actual visit, agent identity or operator compliance established.',
@@ -357,6 +367,35 @@ def agent_values(atom, words):
     return out + '</tbody></table></div><details><summary>' + esc(words['agent_raw']) + '</summary><pre>' + esc(reason) + '</pre></details>'
 
 
+def release_values(atom, words):
+    """Render saved process and native outcomes separately, without reevaluation."""
+    reason=atom.get('reason','');prefix='Release process / dispositif de déploiement: '
+    try:
+        if not reason.startswith(prefix):raise ValueError('prefix')
+        note=json.loads(reason[len(prefix):]);rows=note['rows']
+        if not isinstance(rows,list):raise ValueError('rows')
+    except (ValueError,KeyError,TypeError):
+        return '<p class="reason">'+esc(reason)+'</p>'
+    out='<div class="table-wrap"><table><caption>'+esc(words['release_values'])+'</caption><thead><tr>'
+    out+=''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('release_subject','result','reason'))+'</tr></thead><tbody>'
+    for row in rows:
+        if isinstance(row,dict):
+            out+='<tr><th scope="row">'+esc(row.get('subject',''))+'</th><td>'+esc(words.get(row.get('outcome'),words['unknown']))+'</td><td>'+esc(row.get('reason',''))+'</td></tr>'
+    out+='</tbody></table></div>'
+    executions=note.get('executions',[])
+    native=''
+    if isinstance(executions,list):
+        for run in executions:
+            if not isinstance(run,dict):continue
+            for result in run.get('recalculated_results',[]):
+                if isinstance(result,dict):
+                    native+='<tr><th scope="row">'+esc(str(run.get('run_id',''))+' · '+str(run.get('phase','')))+'</th><td>'+esc(result.get('rule_id',''))+'<br>'+esc(result.get('target',''))+'</td><td>'+esc(words.get(result.get('outcome'),words['unknown']))+'</td></tr>'
+    if native:
+        out+='<div class="table-wrap"><table><caption>'+esc(words['release_native'])+'</caption><thead><tr>'
+        out+=''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('release_execution','release_subject','result'))+'</tr></thead><tbody>'+native+'</tbody></table></div>'
+    return out+'<details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(reason)+'</pre></details>'
+
+
 def results(bundle, controls, words, language):
     report = bundle['report']
     data = captures(bundle)
@@ -369,6 +408,8 @@ def results(bundle, controls, words, language):
         out += '<article class="card control"><div class="row"><div><span class="eyebrow">' + esc(cid) + '</span><h3 class="control-title">' + esc(control['title'][language]) + '</h3></div>' + badge(result['status'], words) + '</div>'
         if cid in ('TS34', 'TS35'):
             out += performance_values(result, words)
+        if cid == 'TS41':
+            out += '<div class="notice"><strong>' + esc(words['release_note']) + '</strong></div>'
         if cid == 'TS42':
             out += '<div class="notice"><strong>' + esc(words['agent_note']) + '</strong></div>'
         if cid == 'TS44':
@@ -382,7 +423,8 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>'
+            out += (release_values(atom, words) if cid == 'TS41' else
+                    agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):
                 out += identity_context(targets.get(atom['target']), words)

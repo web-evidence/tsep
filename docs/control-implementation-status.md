@@ -2,8 +2,8 @@
 
 ## Current snapshot / État actuel — 2026-10-11
 
-La version locale est **0.1.0-draft.24**. Les versions des outils sont distinctes :
-interpréteur **24**, adaptateur de captures **25**, rejeu **3**. Ces numéros ne
+La version locale est **0.1.0-draft.25**. Les versions des outils sont distinctes :
+interpréteur **25**, adaptateur de captures **26**, rejeu **3**. Ces numéros ne
 prouvent ni une publication distante ni une version stable 1.0. Chaque dossier
 historique reste lié à sa version et à ses empreintes ; il n'est jamais remplacé.
 
@@ -11,9 +11,10 @@ Le programme actif porte sur **quatre contrôles approfondis : TS04, TS02, TS07,
 TS10**, avec TS01 comme socle. Il remplace la cible antérieure de dix contrôles.
 Le 11 octobre, Bertrand a ajouté explicitement la performance : TS34 et TS35.
 Le même jour, il a demandé les agents IA après les performances : TS42, puis TS43 et TS44.
-La source décrit **44 contrôles**. **Dix** disposent de règles atomiques
-exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS10 (4), TS34 (3), TS35 (2), TS42 (3), TS43 (3), TS44 (3),
-soit **27 règles**. Les quatre priorités SEO en représentent 11. Les 34 autres sont décrits,
+Le même jour, il a autorisé TS41, TS39, TS36 et TS31–33. TS41 est intégré en premier ; les cinq autres restent à développer.
+La source décrit **44 contrôles**. **Onze** disposent de règles atomiques
+exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS10 (4), TS34 (3), TS35 (2), TS41 (3), TS42 (3), TS43 (3), TS44 (3),
+soit **30 règles**. Les quatre priorités SEO en représentent 11. Les 33 autres sont décrits,
 sans le même niveau de règles et d'outillage exécutables.
 
 | Contrôle | Méthode exécutable disponible | Application réelle encore incomplète |
@@ -25,6 +26,7 @@ sans le même niveau de règles et d'outillage exécutables.
 | TS10 | Canonical HTTP avec contexte, source, rendu, sitemaps et liens ; familles déclarées et rejeu | Les populations des campagnes sont distinctes ; qualification des familles, états rendus et revues de contenu encore nécessaires |
 | TS34 | Import CrUX hors ligne : cohorte, période, appareil, p75 et classes ; décision fournie liée aux sources | Aucun nouveau relevé terrain Edikka ; autres formats non qualifiés ; C documentaire ne signifie pas bonnes performances |
 | TS35 | Série Lighthouse : plan préalable, conditions exactes, mesures, dispersion et hypothèse fournie | Aucune nouvelle campagne réelle Edikka ; autres formats et comparaison avant/après non qualifiés |
+| TS41 | Plan préalable, reçus natifs recalculés, couverture de la population et réaction aux échecs/inconnues | Cas rédigés vérifiés ; laboratoire de processus réel et application Edikka encore à produire. C ne garantit pas la santé SEO |
 | TS42 | Correspondances liées aux sources et revues, décisions du responsable, arbitrages et lecture robots bornée | Aucune décision réelle du responsable Edikka ni visite d’agent établie ; autres mécanismes non qualifiés |
 | TS44 | Inventaire préalable, chemin public sans JS, valeurs HTML/JSON et rendu attribué, revues liées | Laboratoire contrôlé disponible : six HTTP réels, DOM et revues rédigés ; application Edikka encore à produire |
 | TS43 | Traitement prévu du client de test, chaîne complète et journaux JSONL liés, attribution explicite | Expérience contrôlée loopback disponible ; aucun accès réel de l’opérateur, identité ou visite établis ; application TS44 distincte |
@@ -93,16 +95,17 @@ ni contrôles terminés, ni une revue humaine ou une exécution CI distante.
 
 ## English — current state
 
-The local edition is **0.1.0-draft.24**, with interpreter **24**, capture adapter
-**25** and replay **3**. These version numbers do not establish a public release
+The local edition is **0.1.0-draft.25**, with interpreter **25**, capture adapter
+**26** and replay **3**. These version numbers do not establish a public release
 or stable 1.0. Historical packages keep their exact tools and fingerprints.
 
 The active human priority is four deeply developed controls, TS04/TS02/TS07/TS10,
 with TS01 as the foundation, superseding the older ten-control target. Forty-four
 controls are specified. On October 11 the user explicitly added TS34/TS35 performance.
 The user then added TS42–TS44 agents, in that order after performance.
-Ten controls now have 27 executable atomic rules, including 11 for the four SEO
-priorities, five for performance and nine for TS42/TS43/TS44. The other 34 lack equivalent executable coverage.
+The user also authorized TS41, TS39, TS36 and TS31–33. TS41 is integrated first; the other five remain pending.
+Eleven controls now have 30 executable atomic rules, including 11 for the four SEO
+priorities, five for performance, three for TS41 and nine for TS42/TS43/TS44. The other 33 lack equivalent executable coverage.
 TS42 binds source mappings, supplied owner decisions and tradeoffs to a bounded robots comparison. No real owner approval or agent visit is established. TS43 now supplies planned test-client treatment, reviewed native-log correlation and explicit attribution, with a controlled loopback experiment. Actual operator access/identity/visits remain unestablished. TS44 now has three bounded executable [critical-content rules](critical-content-evidence.md); a controlled laboratory retains six actual loopback exchanges with authored DOM/reviews, while real Edikka application remains pending.
 TS34 imports CrUX cohorts/p75 with exact classes and supplied decisions. TS35 imports
 planned repeated Lighthouse reports with declared context, spread and supplied hypotheses.
@@ -279,7 +282,7 @@ l’automatisation. Des sous-ensembles utiles existent déjà dans des composant
 | TS38 | Les variantes d’hôte, de casse et de slash convergent vers une règle unique. | Décrit ; règles atomiques à détailler | Définir les variantes pertinentes et les rapprochements redirection/canonical/sitemap/liens. |
 | TS39 | Le CDN, Vary et la géolocalisation ne servent pas des signaux SEO contradictoires. | Décrit ; règles atomiques à détailler | Définir régions, clés de cache, Vary, contextes et comparaisons ; couverture partielle explicite. |
 | TS40 | Les méthodes hreflang utilisées sont complètes et cohérentes. | Décrit ; règles atomiques à détailler | Définir toutes les méthodes hreflang présentes et leurs contradictions sans mélanger les populations. |
-| TS41 | Les invariants SEO critiques sont rejoués automatiquement avant et après déploiement. | Décrit ; règles atomiques à détailler | Définir invariants, périmètre et preuves de CI réellement exécutée ; CI de développement ≠ contrôle d’un déploiement. |
+| TS41 | Les invariants SEO critiques sont rejoués automatiquement avant et après déploiement. | Trois règles exécutables ; entrées natives et journal fourni | Plan et revues préalables, couverture et réaction aux échecs/inconnues ; laboratoire de processus réel et application Edikka encore à produire. |
 | TS42 | Chaque agent automatisé est gouverné selon son usage documenté. | Décrit ; règles atomiques à détailler | Structurer usages, sources opérateur datées, décision et responsable ; aucune identité déduite du jeton seul. |
 | TS43 | L’accès des crawlers autorisés est testé avec leur chaîne complète et rapproché des journaux. | Décrit ; règles atomiques à détailler | Définir requêtes avec agent complet, rapprochement logs et limites d’identité ; imitation ≠ visite réelle. |
 | TS44 | Le contenu critique et ses preuves restent accessibles sans dépendre d’une exécution JavaScript non documentée. | Décrit ; règles atomiques à détailler | Définir les faits/contenus critiques et leurs preuves accessibles ; aucune promesse de citation par un moteur. |

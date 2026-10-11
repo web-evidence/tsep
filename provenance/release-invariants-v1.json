@@ -1,0 +1,69 @@
+{
+  "observed_at": "2026-10-11T06:43:06.241758+00:00",
+  "kind": "Authored-case reader development, not observed CI",
+  "base_commit": "6a6a2810d9df5f212e4e49c380427f166c662443",
+  "initial_freeze": {
+    "frozen_at": "2026-10-11T06:28:42.847015+00:00",
+    "cases": 43,
+    "pairs": 129,
+    "fixture_sha256": "8aa0e19abe98ab4fe619ddc25897cdad6bbe4c87c27e405cfd90ecd2c5c0ab75",
+    "contract_sha256": "22b777019db6d292580f8603896ad0e7b90cbf7669143ff476df09200ebfd340",
+    "interpreter_present": false,
+    "base_head": "6a6a2810d9df5f212e4e49c380427f166c662443",
+    "scope": "Authored expectations, not observed case results"
+  },
+  "boundary_freeze": {
+    "at": "2026-10-11T06:37:39.023835+00:00",
+    "sha256": "7d49f6d79f82a649e147f60813e125896f0798be5d2c1f076b19a62acf9caef4",
+    "cases": 9
+  },
+  "first_initial_run": {
+    "matched": 40,
+    "cases": 43,
+    "failures": [
+      "wrong-artifact",
+      "wrong-command",
+      "late-trigger"
+    ],
+    "correction": "Rejected binding is not a qualified basis for later behavioral accusation"
+  },
+  "first_boundary_run": {
+    "matched": 6,
+    "cases": 9,
+    "failures": [
+      "orphan-trigger",
+      "duplicate-trigger",
+      "foreign-phase-action"
+    ],
+    "correction": "Require exactly one trigger and phase-specific action per receipt, no orphan events"
+  },
+  "after_reader_corrections": {
+    "matched": 52,
+    "cases": 52,
+    "pairs": 156
+  },
+  "limits": [
+    "Authored native receipts, synthetic reviews and dates; no actual pipeline execution",
+    "Original 43 cases and nine additional cases retained without expected-outcome edits",
+    "Initial contract clarified pre/post candidate identity and earlier artifact as supplied context",
+    "Importer unit tests explicitly use fictional later clock; ordinary importer rejects future evidence",
+    "Full source/archive verification is recorded separately, not inferred here"
+  ],
+  "initial_integration_test": {
+    "tests": 27,
+    "failures": 1,
+    "correction": "Authored aggregation gate expected GO_WITH_RESERVATIONS instead of GO: unselected controls remain reservations. No raw fixture expectation changed."
+  },
+  "first_full_verification": {
+    "tests": 759,
+    "failures": 4,
+    "source_changed_during_verification": false,
+    "affected": [
+      "external CLI representative case selection",
+      "409 historical robots cases",
+      "427 historical sitemap cases",
+      "216 historical source-text cases"
+    ],
+    "correction": "Add TS41 representative cases to external CLI test; exclude new cases from older historical sets. Old fixed counts, fingerprints and expectations remain unchanged."
+  }
+}

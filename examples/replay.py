@@ -75,7 +75,10 @@ def generate(output_root=ROOT):
         result.append({'case': case, 'status': status, 'decision': summary['decision']})
     # Raw adapter demonstrations are controlled derivatives, with no expected verdicts.
     corpus = {case['id']: case['input'] for case in tsep.read_json(ROOT.parent/'conformance/cases.json')['cases']}
-    capture_examples = {'ts01-markers': ('identity-timestamp-markers', ['TS01-A01', 'TS01-A02']),
+    capture_examples = {'ts41-blocked': ('release-invariants-defect-detected-blocked', ['TS41-A01','TS41-A02','TS41-A03']),
+                        'ts41-unknown-green': ('release-invariants-unknown-green', ['TS41-A01','TS41-A02','TS41-A03']),
+                        'ts41-partial': ('release-invariants-post-missing', ['TS41-A01','TS41-A02','TS41-A03']),
+                        'ts01-markers': ('identity-timestamp-markers', ['TS01-A01', 'TS01-A02']),
                         'ts07-source-only': ('complete-reference', ['TS07-A01', 'TS07-A02']),
                         'ts10-family': ('canonical-all-signals-agree', ['TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04'])}
     (output_root/'captures').mkdir(parents=True, exist_ok=True)

@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.24 — Contrôles
+# TSEP 0.1.0-draft.25 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.24:TS01-A01`
+`TSEP@0.1.0-draft.25:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.24:TS01-A02`
+`TSEP@0.1.0-draft.25:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.24:TS02-A01`
+`TSEP@0.1.0-draft.25:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.24:TS02-A02`
+`TSEP@0.1.0-draft.25:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -198,7 +198,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A01 — Politique par origine, robot et ressource
 
-`TSEP@0.1.0-draft.24:TS04-A01`
+`TSEP@0.1.0-draft.25:TS04-A01`
 
 **Entrées requises**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A02 — Accès aux ressources nécessaires
 
-`TSEP@0.1.0-draft.24:TS04-A02`
+`TSEP@0.1.0-draft.25:TS04-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.24:TS07-A01`
+`TSEP@0.1.0-draft.25:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -344,7 +344,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.24:TS07-A02`
+`TSEP@0.1.0-draft.25:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.24:TS07-A03`
+`TSEP@0.1.0-draft.25:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.24:TS10-A01`
+`TSEP@0.1.0-draft.25:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -490,7 +490,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.24:TS10-A02`
+`TSEP@0.1.0-draft.25:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -514,7 +514,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.24:TS10-A03`
+`TSEP@0.1.0-draft.25:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.24:TS10-A04`
+`TSEP@0.1.0-draft.25:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 
@@ -1140,7 +1140,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A01 — Cohorte terrain attribuable
 
-`TSEP@0.1.0-draft.24:TS34-A01`
+`TSEP@0.1.0-draft.25:TS34-A01`
 
 **Entrées requises**: field-data, intent.
 
@@ -1164,7 +1164,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A02 — Mesures p75 et classes conservées
 
-`TSEP@0.1.0-draft.24:TS34-A02`
+`TSEP@0.1.0-draft.25:TS34-A02`
 
 **Entrées requises**: field-data, intent.
 
@@ -1188,7 +1188,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A03 — Décision motivée liée aux mesures
 
-`TSEP@0.1.0-draft.24:TS34-A03`
+`TSEP@0.1.0-draft.25:TS34-A03`
 
 **Entrées requises**: field-data, intent.
 
@@ -1236,7 +1236,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A01 — Contexte et mesures de laboratoire reproductibles
 
-`TSEP@0.1.0-draft.24:TS35-A01`
+`TSEP@0.1.0-draft.25:TS35-A01`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1260,7 +1260,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A02 — Hypothèse de diagnostic et prochaine vérification
 
-`TSEP@0.1.0-draft.24:TS35-A02`
+`TSEP@0.1.0-draft.25:TS35-A02`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1410,21 +1410,93 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Déploiements soumis aux invariants SEO définis par le projet.
 
-**Méthode.** Exécuter dans la CI un jeu d’URL représentatif : code final, redirections, robots/noindex, canonical, hreflang, contenu serveur, liens essentiels et JSON-LD.
+**Méthode.** Fixer population, matrice et politique avant les tentatives ; relire les entrées/sorties natives, événements liés et exercice négatif selon release-invariants-v1.
 
-**Attendus.** Commande et version, jeux d’URL, seuils, sorties avant/après et lien au déploiement sont conservés ; un test contradictoire prouve le comportement d’échec.
+**Attendus.** Plan représentatif revu, exécutions couvertes et réaction correcte aux échecs/inconnues ; les trois règles réussissent. Un défaut SEO correctement bloqué reste visible et ne condamne pas le dispositif.
 
-**Preuves.** Commande versionnée, sortie horodatée, seuil d’échec explicite et lien vers le déploiement concerné.
+**Preuves.** Plan et revues liées, commande/environnement identifiés, reçus avec entrées/sorties natives, codes processus, journal JSONL et artefacts avant/après application.
 
 **Conditions de NA.** Aucun déploiement ou pipeline concerné dans le périmètre et la période.
 
-**Limites.** Une CI valide des invariants connus ; elle ne remplace ni Search Console, ni les logs, ni une revue éditoriale.
+**Limites.** Premier profil natif TSEP strict sans dérogation ; commandes jamais exécutées. Revues, complétude, horloges et runner fournis, non authentifiés. C qualifie le dispositif déclaré, sans santé SEO globale, effet causal ni CI distante déduite.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Contrôle de gouvernance et de non-régression proposé par Edikka ; aucune documentation officielle unique ne prescrit ce pipeline complet.
 
 **Références**: TSEP / Edikka method.
+
+### TS41-A01 — Plan préalable et représentativité
+
+`TSEP@0.1.0-draft.25:TS41-A01`
+
+**Entrées requises**: configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Déploiements soumis aux invariants SEO définis par le projet.
+
+**Méthode.** Vérifier fenêtre, tentatives, matrice, politique stricte et revue de représentativité liée avant la fenêtre.
+
+**Attendus.** Plan complet et revue favorable ; rejet explicite lié = fail.
+
+**Preuves.** Plan et revues liées, commande/environnement identifiés, reçus avec entrées/sorties natives, codes processus, journal JSONL et artefacts avant/après application.
+
+**Hypothèses.** Population, contexte comparable, identité des artefacts et revues fournis ; leur véracité reste à qualifier.
+
+**Indéterminé.** Plan ou revue absent, non lié, tardif, incomplet ; profil, seuil ou portée non qualifiés.
+
+**Conditions de NA.** Aucune exemption atomique automatique.
+
+**Limites.** Premier profil natif TSEP strict sans dérogation ; commandes jamais exécutées. Revues, complétude, horloges et runner fournis, non authentifiés. C qualifie le dispositif déclaré, sans santé SEO globale, effet causal ni CI distante déduite.
+
+### TS41-A02 — Couverture et fidélité des exécutions
+
+`TSEP@0.1.0-draft.25:TS41-A02`
+
+**Entrées requises**: configuration, ci-output, change-history, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Déploiements soumis aux invariants SEO définis par le projet.
+
+**Méthode.** Recalculer les entrées conservées ; vérifier matrice, artefacts, commande, déclencheurs et chronologie, sans exécuter argv.
+
+**Attendus.** Population exacte et sorties fidèles, y compris inconnues conservées ; contradiction conclusive de rattachement ou sortie = fail.
+
+**Preuves.** Plan et revues liées, commande/environnement identifiés, reçus avec entrées/sorties natives, codes processus, journal JSONL et artefacts avant/après application.
+
+**Hypothèses.** Population, contexte comparable, identité des artefacts et revues fournis ; leur véracité reste à qualifier.
+
+**Indéterminé.** Reçu, cellule, revue, événement ou runtime manquant ; journal ambigu, exécution supplémentaire ou recalcul indéterminé différent.
+
+**Conditions de NA.** Aucune exemption atomique automatique.
+
+**Limites.** Premier profil natif TSEP strict sans dérogation ; commandes jamais exécutées. Revues, complétude, horloges et runner fournis, non authentifiés. C qualifie le dispositif déclaré, sans santé SEO globale, effet causal ni CI distante déduite.
+
+### TS41-A03 — Exercice négatif et réaction du dispositif
+
+`TSEP@0.1.0-draft.25:TS41-A03`
+
+**Entrées requises**: configuration, ci-output, change-history, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Déploiements soumis aux invariants SEO définis par le projet.
+
+**Méthode.** Vérifier échec négatif préalable, codes distincts pass/fail/inconclusive et événement explicite de blocage/application ou acceptation/suspension.
+
+**Attendus.** Exercice négatif effectif et réactions conformes à la phase ; échec/inconnu masqué, mauvaise action ou dérogation observée = fail.
+
+**Preuves.** Plan et revues liées, commande/environnement identifiés, reçus avec entrées/sorties natives, codes processus, journal JSONL et artefacts avant/après application.
+
+**Hypothèses.** Population, contexte comparable, identité des artefacts et revues fournis ; leur véracité reste à qualifier.
+
+**Indéterminé.** Exercice, code processus, lien ou action absent/non qualifié ; absence dans un journal insuffisante pour prouver un blocage.
+
+**Conditions de NA.** Aucune exemption atomique automatique.
+
+**Limites.** Premier profil natif TSEP strict sans dérogation ; commandes jamais exécutées. Revues, complétude, horloges et runner fournis, non authentifiés. C qualifie le dispositif déclaré, sans santé SEO globale, effet causal ni CI distante déduite.
 
 ## TS42 — Chaque agent automatisé est gouverné selon son usage documenté.
 
@@ -1452,7 +1524,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A01 — Usages et mécanismes documentés
 
-`TSEP@0.1.0-draft.24:TS42-A01`
+`TSEP@0.1.0-draft.25:TS42-A01`
 
 **Entrées requises**: operator-docs, intent.
 
@@ -1476,7 +1548,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A02 — Décisions du responsable et arbitrages
 
-`TSEP@0.1.0-draft.24:TS42-A02`
+`TSEP@0.1.0-draft.25:TS42-A02`
 
 **Entrées requises**: intent.
 
@@ -1500,7 +1572,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A03 — Politique capturée et choix effectif
 
-`TSEP@0.1.0-draft.24:TS42-A03`
+`TSEP@0.1.0-draft.25:TS42-A03`
 
 **Entrées requises**: configuration, operator-docs, intent.
 
@@ -1548,7 +1620,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A01 — Client complet et traitement attendu
 
-`TSEP@0.1.0-draft.24:TS43-A01`
+`TSEP@0.1.0-draft.25:TS43-A01`
 
 **Entrées requises**: http, operator-docs, intent.
 
@@ -1572,7 +1644,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A02 — Chaîne rapprochée des journaux
 
-`TSEP@0.1.0-draft.24:TS43-A02`
+`TSEP@0.1.0-draft.25:TS43-A02`
 
 **Entrées requises**: http, logs, intent.
 
@@ -1596,7 +1668,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A03 — Origine du test et identité non inventée
 
-`TSEP@0.1.0-draft.24:TS43-A03`
+`TSEP@0.1.0-draft.25:TS43-A03`
 
 **Entrées requises**: http, intent.
 
@@ -1644,7 +1716,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS44-A01 — Périmètre critique préalable
 
-`TSEP@0.1.0-draft.24:TS44-A01`
+`TSEP@0.1.0-draft.25:TS44-A01`
 
 **Entrées requises**: content, intent.
 
@@ -1668,7 +1740,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS44-A02 — Chemin de livraison sans JavaScript
 
-`TSEP@0.1.0-draft.24:TS44-A02`
+`TSEP@0.1.0-draft.25:TS44-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -1692,7 +1764,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS44-A03 — Cohérence des valeurs et du contexte
 
-`TSEP@0.1.0-draft.24:TS44-A03`
+`TSEP@0.1.0-draft.25:TS44-A03`
 
 **Entrées requises**: http, html, render, content, intent.
 

@@ -1,4 +1,8 @@
-Current / Actuel : draft.24 — 1,051 authored cases / cas synthétiques, 1,942 rule-target pairs / couples.
+Current / Actuel : draft.25 — 1,103 authored cases / cas synthétiques, 2,098 rule-target pairs / couples.
+Thirty rules across eleven controls; TS41 adds 43 prefrozen initial cases and 9 boundary cases, 156 pairs. Prior 1,051 cases unchanged. Authored receipts/reviews, no observed remote CI or site audit.
+[Method and limitations / Méthode et limites](release-invariants.md) · [Migration](migration-draft.25.md).
+
+Historical / Historique : draft.24 — 1,051 authored cases / cas synthétiques, 1,942 rule-target pairs / couples.
 Twenty-seven rules across ten controls; TS44 adds 68 initial prefrozen cases plus 3 boundary cases frozen before fixes, 213 pairs. Optional Node limits remain explicit; no real site audit.
 
 Historical / Historique : draft.23 — 980 authored cases / cas synthétiques, 1,729 rule-target pairs / couples.

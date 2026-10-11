@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.24",
+  "version": "0.1.0-draft.25",
   "status": "draft",
   "date": "2026-10-11",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.24"
+      "rule_version": "0.1.0-draft.25"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.24",
+      "rule_version": "0.1.0-draft.25",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.24",
+      "rule_version": "0.1.0-draft.25",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.24"
+      "rule_version": "0.1.0-draft.25"
     },
     {
       "id": "TS08",
@@ -1233,7 +1233,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.24"
+      "rule_version": "0.1.0-draft.25"
     },
     {
       "id": "TS11",
@@ -2648,7 +2648,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.24",
+      "rule_version": "0.1.0-draft.25",
       "rules": [
         {
           "id": "TS34-A01",
@@ -2843,7 +2843,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.24",
+      "rule_version": "0.1.0-draft.25",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3263,24 +3263,24 @@
         "en": "Deployments subject to project-defined SEO invariants."
       },
       "procedure": {
-        "fr": "Exécuter dans la CI un jeu d’URL représentatif : code final, redirections, robots/noindex, canonical, hreflang, contenu serveur, liens essentiels et JSON-LD.",
-        "en": "Run a representative URL set in CI: final status, redirects, robots/noindex, canonical, hreflang, server content, essential links and JSON-LD."
+        "fr": "Fixer population, matrice et politique avant les tentatives ; relire les entrées/sorties natives, événements liés et exercice négatif selon release-invariants-v1.",
+        "en": "Fix the population, matrix and policy before attempts; replay native inputs/outputs, bound events and negative rehearsal under release-invariants-v1."
       },
       "acceptance": {
-        "fr": "Commande et version, jeux d’URL, seuils, sorties avant/après et lien au déploiement sont conservés ; un test contradictoire prouve le comportement d’échec.",
-        "en": "Command and version, URL sets, thresholds, before/after outputs and deployment link are retained; a negative case demonstrates failure behavior."
+        "fr": "Plan représentatif revu, exécutions couvertes et réaction correcte aux échecs/inconnues ; les trois règles réussissent. Un défaut SEO correctement bloqué reste visible et ne condamne pas le dispositif.",
+        "en": "Reviewed representative plan, covered executions and correct failure/unknown handling; all three rules pass. A correctly blocked SEO defect stays visible without failing the process."
       },
       "non_applicability": {
         "fr": "Aucun déploiement ou pipeline concerné dans le périmètre et la période.",
         "en": "No relevant deployment or pipeline within the scope and period."
       },
       "evidence": {
-        "fr": "Commande versionnée, sortie horodatée, seuil d’échec explicite et lien vers le déploiement concerné.",
-        "en": "Versioned command, timestamped output, explicit failure threshold and link to the relevant deployment."
+        "fr": "Plan et revues liées, commande/environnement identifiés, reçus avec entrées/sorties natives, codes processus, journal JSONL et artefacts avant/après application.",
+        "en": "Bound plan/reviews, identified command/environment, native input/output receipts, process exit codes, JSONL journal and artifacts around application."
       },
       "limitations": {
-        "fr": "Une CI valide des invariants connus ; elle ne remplace ni Search Console, ni les logs, ni une revue éditoriale.",
-        "en": "CI validates known invariants; it replaces neither Search Console, logs nor editorial review."
+        "fr": "Premier profil natif TSEP strict sans dérogation ; commandes jamais exécutées. Revues, complétude, horloges et runner fournis, non authentifiés. C qualifie le dispositif déclaré, sans santé SEO globale, effet causal ni CI distante déduite.",
+        "en": "First strict native TSEP profile without overrides; supplied commands are never executed. Reviews, completeness, clocks and runner are supplied, not authenticated. C qualifies the declared process, not global SEO health, causality or remote CI."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -3296,7 +3296,148 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.25",
+      "rules": [
+        {
+          "applicability": {
+            "fr": "Déploiements soumis aux invariants SEO définis par le projet.",
+            "en": "Deployments subject to project-defined SEO invariants."
+          },
+          "evidence": {
+            "fr": "Plan et revues liées, commande/environnement identifiés, reçus avec entrées/sorties natives, codes processus, journal JSONL et artefacts avant/après application.",
+            "en": "Bound plan/reviews, identified command/environment, native input/output receipts, process exit codes, JSONL journal and artifacts around application."
+          },
+          "limitations": {
+            "fr": "Premier profil natif TSEP strict sans dérogation ; commandes jamais exécutées. Revues, complétude, horloges et runner fournis, non authentifiés. C qualifie le dispositif déclaré, sans santé SEO globale, effet causal ni CI distante déduite.",
+            "en": "First strict native TSEP profile without overrides; supplied commands are never executed. Reviews, completeness, clocks and runner are supplied, not authenticated. C qualifies the declared process, not global SEO health, causality or remote CI."
+          },
+          "id": "TS41-A01",
+          "title": {
+            "fr": "Plan préalable et représentativité",
+            "en": "Prior plan and representativeness"
+          },
+          "required_inputs": [
+            "configuration",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "assumptions": {
+            "fr": "Population, contexte comparable, identité des artefacts et revues fournis ; leur véracité reste à qualifier.",
+            "en": "Supplied population, comparable context, artifact identities and reviews; their truth remains to qualify."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "procedure": {
+            "fr": "Vérifier fenêtre, tentatives, matrice, politique stricte et revue de représentativité liée avant la fenêtre.",
+            "en": "Check the window, attempts, matrix, strict policy and bound representativeness review before the window."
+          },
+          "acceptance": {
+            "fr": "Plan complet et revue favorable ; rejet explicite lié = fail.",
+            "en": "Complete plan and supported review; explicit bound rejection = fail."
+          },
+          "inconclusive": {
+            "fr": "Plan ou revue absent, non lié, tardif, incomplet ; profil, seuil ou portée non qualifiés.",
+            "en": "Missing, unbound, late or incomplete plan/review; unsupported profile, threshold or scope."
+          }
+        },
+        {
+          "applicability": {
+            "fr": "Déploiements soumis aux invariants SEO définis par le projet.",
+            "en": "Deployments subject to project-defined SEO invariants."
+          },
+          "evidence": {
+            "fr": "Plan et revues liées, commande/environnement identifiés, reçus avec entrées/sorties natives, codes processus, journal JSONL et artefacts avant/après application.",
+            "en": "Bound plan/reviews, identified command/environment, native input/output receipts, process exit codes, JSONL journal and artifacts around application."
+          },
+          "limitations": {
+            "fr": "Premier profil natif TSEP strict sans dérogation ; commandes jamais exécutées. Revues, complétude, horloges et runner fournis, non authentifiés. C qualifie le dispositif déclaré, sans santé SEO globale, effet causal ni CI distante déduite.",
+            "en": "First strict native TSEP profile without overrides; supplied commands are never executed. Reviews, completeness, clocks and runner are supplied, not authenticated. C qualifies the declared process, not global SEO health, causality or remote CI."
+          },
+          "id": "TS41-A02",
+          "title": {
+            "fr": "Couverture et fidélité des exécutions",
+            "en": "Execution coverage and output fidelity"
+          },
+          "required_inputs": [
+            "configuration",
+            "ci-output",
+            "change-history",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "assumptions": {
+            "fr": "Population, contexte comparable, identité des artefacts et revues fournis ; leur véracité reste à qualifier.",
+            "en": "Supplied population, comparable context, artifact identities and reviews; their truth remains to qualify."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "procedure": {
+            "fr": "Recalculer les entrées conservées ; vérifier matrice, artefacts, commande, déclencheurs et chronologie, sans exécuter argv.",
+            "en": "Recalculate retained inputs; check matrix, artifacts, command, triggers and chronology without executing argv."
+          },
+          "acceptance": {
+            "fr": "Population exacte et sorties fidèles, y compris inconnues conservées ; contradiction conclusive de rattachement ou sortie = fail.",
+            "en": "Exact population and faithful outputs including retained unknowns; conclusive binding or output contradiction = fail."
+          },
+          "inconclusive": {
+            "fr": "Reçu, cellule, revue, événement ou runtime manquant ; journal ambigu, exécution supplémentaire ou recalcul indéterminé différent.",
+            "en": "Missing receipt, cell, review, event or runtime; ambiguous journal, extra execution or differing inconclusive recalculation."
+          }
+        },
+        {
+          "applicability": {
+            "fr": "Déploiements soumis aux invariants SEO définis par le projet.",
+            "en": "Deployments subject to project-defined SEO invariants."
+          },
+          "evidence": {
+            "fr": "Plan et revues liées, commande/environnement identifiés, reçus avec entrées/sorties natives, codes processus, journal JSONL et artefacts avant/après application.",
+            "en": "Bound plan/reviews, identified command/environment, native input/output receipts, process exit codes, JSONL journal and artifacts around application."
+          },
+          "limitations": {
+            "fr": "Premier profil natif TSEP strict sans dérogation ; commandes jamais exécutées. Revues, complétude, horloges et runner fournis, non authentifiés. C qualifie le dispositif déclaré, sans santé SEO globale, effet causal ni CI distante déduite.",
+            "en": "First strict native TSEP profile without overrides; supplied commands are never executed. Reviews, completeness, clocks and runner are supplied, not authenticated. C qualifies the declared process, not global SEO health, causality or remote CI."
+          },
+          "id": "TS41-A03",
+          "title": {
+            "fr": "Exercice négatif et réaction du dispositif",
+            "en": "Negative rehearsal and process response"
+          },
+          "required_inputs": [
+            "configuration",
+            "ci-output",
+            "change-history",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "assumptions": {
+            "fr": "Population, contexte comparable, identité des artefacts et revues fournis ; leur véracité reste à qualifier.",
+            "en": "Supplied population, comparable context, artifact identities and reviews; their truth remains to qualify."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "procedure": {
+            "fr": "Vérifier échec négatif préalable, codes distincts pass/fail/inconclusive et événement explicite de blocage/application ou acceptation/suspension.",
+            "en": "Check prior negative failure, distinct pass/fail/inconclusive exit codes and explicit block/apply or accept/hold event."
+          },
+          "acceptance": {
+            "fr": "Exercice négatif effectif et réactions conformes à la phase ; échec/inconnu masqué, mauvaise action ou dérogation observée = fail.",
+            "en": "Effective negative rehearsal and phase-correct responses; masked failure/unknown, wrong action or observed override = fail."
+          },
+          "inconclusive": {
+            "fr": "Exercice, code processus, lien ou action absent/non qualifié ; absence dans un journal insuffisante pour prouver un blocage.",
+            "en": "Missing/unqualified rehearsal, process exit, binding or action; journal absence cannot establish a block."
+          }
+        }
+      ]
     },
     {
       "id": "TS42",
@@ -3356,7 +3497,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.24",
+      "rule_version": "0.1.0-draft.25",
       "rules": [
         {
           "id": "TS42-A01",
@@ -3553,7 +3694,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.24",
+      "rule_version": "0.1.0-draft.25",
       "rules": [
         {
           "id": "TS43-A01",
@@ -3755,7 +3896,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.24",
+      "rule_version": "0.1.0-draft.25",
       "rules": [
         {
           "na_inputs": [],
@@ -4047,15 +4188,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "25af9bf434019ec849bb0ffb4f5ea0330c446bd97be727ccec5c34914c40da60"
+      "sha256": "737b40c03f616ad0bf3018a93aff126f299215468361c798785dc8cb2d5858d0"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "7309d77b663dcbcc52b7999dba2ab23d73463f47061f035f0bb658051d7442d6"
+      "sha256": "46688141d521bcba10421ba5dd04cbf96cc93cb28fd95eb500444450cb2ed595"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "ab0b2d6880f45829b5b36582f9a4465c17858e46b87ff4dca581a1f64ceec4a7"
+      "sha256": "436a35878a9206d777ff4dcce1a10f8679ea3a5f3301d318d7bc418ab967c0a5"
     },
     {
       "path": "docs/source-directives.md",
@@ -4096,6 +4237,10 @@
     {
       "path": "docs/critical-content-evidence.md",
       "sha256": "20ca39ecb2c8ed5b9e7b103eceac0bb0cf17dfbb7a593d9c94e54059968f62f5"
+    },
+    {
+      "path": "docs/release-invariants.md",
+      "sha256": "ba955fa76f97ad47c5212051349c66816ed22895bb931a3ed543d0c5554eaa16"
     }
   ]
 }

@@ -1,7 +1,13 @@
-Current integration: draft.24, interpreter 24 / adapter 25 / HTML 8 / replay 3.
+Current integration: draft.25, interpreter 25 / adapter 26 / HTML 9 / replay 3.
+[Release process evidence](release-invariants.md): TS41 prior plan, native replay and negative-case response. [Migration](migration-draft.25.md).
+FR : un défaut SEO correctement bloqué peut accompagner TS41 C ; premier profil strict sans dérogation. Le laboratoire de processus réel reste à produire.
+EN: Authored cases and bounded native reader; actual process laboratory remains pending.
+The complete bilingual insight r5 was prepared locally before this TS41 extension; CMS integration remains separate.
+
+Historical integration: draft.24, interpreter 24 / adapter 25 / HTML 8 / replay 3.
 [Critical content evidence](critical-content-evidence.md): TS44 prior scope, no-JS delivery and representation coherence, with bound supplied reviews. [Migration](migration-draft.24.md).
 FR : trois règles TS44 ajoutées ; pas de lecture réelle d’agent ni de vérité des faits déduite.
-Le [laboratoire contrôlé TS44](critical-content-laboratory.md) conserve quatre variantes et six requêtes HTTP réelles, avec DOM et revues rédigés. Nouvelle intégration complète de l’insight encore à produire.
+Le [laboratoire contrôlé TS44](critical-content-laboratory.md) conserve quatre variantes et six requêtes HTTP réelles, avec DOM et revues rédigés. Intégration complète de l’insight préparée ensuite localement (r5), sans publication.
 EN: Four controlled variants retain six actual loopback exchanges with authored DOM/reviews; no browser or agent observation.
 
 Optional [source content observation 1](source-content-observation.md) prepares TS44 with two static scripting hypotheses, retained context and original-byte attribution. Draft.23 unchanged; atomic TS44 rules remain to integrate.
