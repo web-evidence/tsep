@@ -1,4 +1,62 @@
-Current tool coverage: interpreter 14, 451 raw cases (427 retained + 24 sitemap-location cases),
+## Current runtime coverage / Couverture selon le runtime — 2026-10-11
+
+Draft.18, interpreter 18: the same **640 synthetic cases and 1,009 rule/target
+pairs** were executed in two configurations. Inputs, expected outcomes and prior
+reader selections were unchanged. Retained outputs and source fingerprints are in
+[the observation record](../provenance/runtime-coverage-2026-10-11/observation.json).
+
+| Configuration | Exact agreements / Accords exacts | Reduced coverage / Couverture réduite | Resolved conclusive expectations / Attendus conclusifs résolus | Disagreements / Désaccords |
+| --- | ---: | ---: | ---: | ---: |
+| `TSEP_SOURCE_NODE` unset / absent | 900 | 109 | 520 / 629 (82.67%) | 0 |
+| Explicit Node 24.19.0 / Node 24.19.0 explicite | 1,001 | 8 | 621 / 629 (98.73%) | 0 |
+
+FR : les **640 cas synthétiques et 1 009 couples règle/cible** sont identiques
+dans les deux exécutions. Le lecteur Node optionnel résout 101 couples dont le
+profil était déjà déclaré dans les entrées. Sans ce runtime, ils restent
+indéterminés ; aucun lecteur de repli ne les fait réussir. Les 380 attendus
+normativement indéterminés comptent dans les accords exacts, hors du dénominateur
+des 629 attendus conclusifs. Un exit 0 signifie zéro désaccord interdit, pas la
+résolution de tous les cas. Ces pourcentages ne mesurent ni 44 contrôles achevés,
+ni la qualité SEO d'un site, ni une qualification indépendante.
+
+EN: the optional runtime resolves 101 pairs whose source profiles were already
+declared in the inputs. Without that runtime, those pairs remain inconclusive;
+there is no favorable fallback. Exact agreements include 380 normatively
+inconclusive expectations, excluded from the 629 conclusive-expectation denominator.
+Exit 0 means no disallowed disagreement, not complete implementation coverage.
+These percentages do not measure completion of 44 controls, site SEO quality or
+independent qualification.
+
+Across all 1,009 pairs, 908 outcomes are unchanged and 101 move from inconclusive
+to their declared conclusive expectation; no conclusive outcome changes to a
+different conclusion. The remaining eight stay inconclusive in both runs.
+Sur les 1 009 couples, 908 résultats restent identiques et 101 passent
+d'indéterminé à l'attendu conclusif ; aucune conclusion ne devient une conclusion
+différente. Les huit limites restantes sont indéterminées dans les deux cas.
+
+Reproduce with Python 3.9.6 and the explicitly selected Node 24.19.0 used in this
+observation / Reproduction dans les versions observées :
+
+```sh
+env -u TSEP_SOURCE_NODE python3 -B conformance/run.py
+TSEP_SOURCE_NODE=/path/to/node24 python3 -B conformance/run.py
+```
+
+The eight remaining pairs and their exact reasons are retained in the observation
+record. They cover historical robots matching, presentation intent, a rendered
+directive, canonical source/HTTP contexts and a sitemap DTD. Installing Node does
+not silently migrate a legacy reader. This finite corpus also does not cover all
+known tool boundaries, such as TS01's unresolved nonempty noscript proposal.
+
+Les huit limites restantes et leurs motifs exacts sont conservés dans le relevé :
+matching robots historique, intention de présentation, directive rendue, contextes
+canonical source/HTTP et DTD de sitemap. Installer Node ne migre pas les profils
+historiques. Ce corpus fini ne représente pas toutes les limites connues, dont la
+proposition noscript non vide de TS01, toujours non promue.
+
+The milestones below are historical / Les jalons suivants sont historiques.
+
+Earlier tool coverage: interpreter 14, 451 raw cases (427 retained + 24 sitemap-location cases),
 820 rule/target pairs, including eight explicitly reduced-coverage pairs. Protocol draft.14.
 FR : lecteur sitemap préalable, annotations séparées, profils historiques conservés.
 [Method / Méthode](sitemap-locations.md), [migration](migration-draft.14.md).

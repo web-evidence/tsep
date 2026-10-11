@@ -39,17 +39,23 @@ Le [rapprochement Search Console](search-console-observations.md) est disponible
 comme diagnostic hors ligne. Ses essais sont synthétiques ; ils ne constituent
 ni un accès au compte, ni une application achevée de TS08/TS12. Les laboratoires
 et les tests logiciels ne prouvent aucune recette utilisateur ou revue humaine.
-Les huit couples de couverture réduite du corpus restent explicitement ouverts.
+Avec Node 24.19.0 explicitement fourni, huit couples de couverture réduite du
+corpus restent ouverts. Sans le runtime source optionnel, ils sont 109 : la
+différence de 101 couples porte sur des profils déjà déclarés dans les entrées.
+Voir la [mesure selon le runtime](conformance.md#current-runtime-coverage--couverture-selon-le-runtime--2026-10-11).
 Voir le [programme](four-control-program.md) et le [parcours de preuves](evidence-gallery.md).
 
 EN: the active scope is four deeply developed controls, TS04/TS02/TS07/TS10, with
-TS01 as a foundation. Draft.13 describes 44 controls; five have 13 executable
+TS01 as a foundation. Draft.18 describes 44 controls; five have 13 executable
 atomic rules (11 in the four priorities), while 39 remain without equivalent
 detailed executable coverage. Methods, synthetic laboratories, real assessment
 and human acceptance are separate milestones. Supplied Search Console comparison
 is an offline diagnostic, not a real account observation or a TS08/TS12 verdict.
-Missing reviews, real inputs and eight known corpus coverage reductions remain
-open. The following draft.7 inventory and dated development notes are historical;
+Missing reviews and real inputs remain open. The corpus has eight reduced-coverage
+pairs with explicit Node 24.19.0, or 109 without the optional source runtime; the
+101-pair difference does not change any input or expectation. See the
+[runtime observation](conformance.md#current-runtime-coverage--couverture-selon-le-runtime--2026-10-11).
+The following draft.7 inventory and dated development notes are historical;
 their old counts and next steps must not be read as the current state.
 
 ## Français

@@ -1,0 +1,1360 @@
+{
+  "success": true,
+  "protocol_version": "0.1.0-draft.18",
+  "synthetic": true,
+  "cases": 640,
+  "rule_target_pairs": 1009,
+  "rules": [
+    "TS01-A01",
+    "TS01-A02",
+    "TS02-A01",
+    "TS02-A02",
+    "TS04-A01",
+    "TS04-A02",
+    "TS07-A01",
+    "TS07-A02",
+    "TS07-A03",
+    "TS10-A01",
+    "TS10-A02",
+    "TS10-A03",
+    "TS10-A04"
+  ],
+  "available_rules": [
+    "TS01-A01",
+    "TS01-A02",
+    "TS02-A01",
+    "TS02-A02",
+    "TS04-A01",
+    "TS04-A02",
+    "TS07-A01",
+    "TS07-A02",
+    "TS07-A03",
+    "TS10-A01",
+    "TS10-A02",
+    "TS10-A03",
+    "TS10-A04"
+  ],
+  "omitted_rules": [],
+  "total_cases": 640,
+  "skipped_cases": 0,
+  "total_rule_target_pairs": 1009,
+  "omitted_rule_target_pairs": 0,
+  "claim": "passes TSEP 0.1.0-draft.18 conformance for TS01-A01, TS01-A02, TS02-A01, TS02-A02, TS04-A01, TS04-A02, TS07-A01, TS07-A02, TS07-A03, TS10-A01, TS10-A02, TS10-A03, TS10-A04",
+  "agreements": 900,
+  "disagreements": 0,
+  "coverage": {
+    "conclusive_expected": 629,
+    "conclusive_agreements": 520,
+    "percent": 82.67,
+    "reduced_pairs": 109,
+    "by_rule": {
+      "TS01-A01": {
+        "agreements": 87,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 79,
+        "conclusive_agreements": 79,
+        "percent": 100.0
+      },
+      "TS01-A02": {
+        "agreements": 87,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 61,
+        "conclusive_agreements": 61,
+        "percent": 100.0
+      },
+      "TS02-A01": {
+        "agreements": 38,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 27,
+        "conclusive_agreements": 27,
+        "percent": 100.0
+      },
+      "TS02-A02": {
+        "agreements": 38,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 23,
+        "conclusive_agreements": 23,
+        "percent": 100.0
+      },
+      "TS04-A01": {
+        "agreements": 80,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 49,
+        "conclusive_agreements": 49,
+        "percent": 100.0
+      },
+      "TS04-A02": {
+        "agreements": 80,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 36,
+        "conclusive_agreements": 36,
+        "percent": 100.0
+      },
+      "TS07-A01": {
+        "agreements": 80,
+        "disagreements": 0,
+        "reduced_coverage": 18,
+        "conclusive_expected": 67,
+        "conclusive_agreements": 49,
+        "percent": 73.13
+      },
+      "TS07-A02": {
+        "agreements": 71,
+        "disagreements": 0,
+        "reduced_coverage": 1,
+        "conclusive_expected": 49,
+        "conclusive_agreements": 48,
+        "percent": 97.96
+      },
+      "TS07-A03": {
+        "agreements": 77,
+        "disagreements": 0,
+        "reduced_coverage": 2,
+        "conclusive_expected": 21,
+        "conclusive_agreements": 19,
+        "percent": 90.48
+      },
+      "TS10-A01": {
+        "agreements": 101,
+        "disagreements": 0,
+        "reduced_coverage": 31,
+        "conclusive_expected": 84,
+        "conclusive_agreements": 53,
+        "percent": 63.1
+      },
+      "TS10-A02": {
+        "agreements": 36,
+        "disagreements": 0,
+        "reduced_coverage": 2,
+        "conclusive_expected": 22,
+        "conclusive_agreements": 20,
+        "percent": 90.91
+      },
+      "TS10-A03": {
+        "agreements": 53,
+        "disagreements": 0,
+        "reduced_coverage": 1,
+        "conclusive_expected": 35,
+        "conclusive_agreements": 34,
+        "percent": 97.14
+      },
+      "TS10-A04": {
+        "agreements": 72,
+        "disagreements": 0,
+        "reduced_coverage": 54,
+        "conclusive_expected": 76,
+        "conclusive_agreements": 22,
+        "percent": 28.95
+      }
+    }
+  },
+  "reduced_coverage": [
+    {
+      "case": "unsupported-robots-wildcard",
+      "pairs": [
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "unsupported-presentation-objective",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "render-unknown-directive",
+      "pairs": [
+        {
+          "rule_id": "TS07-A03",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "canonical-base-needs-browser",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "canonical-typed-canonical-needs-review",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "canonical-ambiguous-link-parameter",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "canonical-link-anchor-unsupported",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "canonical-sitemap-dtd-unsupported",
+      "pairs": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-ordinary-body",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-head-noindex",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-body-noindex",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-exclude-intent",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-header-conflict",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-scoped-other-header",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-googlebot-meta",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-other-meta",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-template-inert",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-template-not-exclude",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-noscript-two-fail",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-noscript-two-pass",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-foreign-breakout",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-foreign-adjacent",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-parse-error",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-bom",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-rcdata-decoy",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-directives-render-source-pass",
+      "pairs": [
+        {
+          "rule_id": "TS07-A03",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-ordinary-head",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-implicit-head",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-modern-html",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-body-same-value",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-head-body-same-value",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-head-body-conflict",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-img-closes-head",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-text-closes-head",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-noscript-style",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-comment-decoy",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-script-decoy",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-duplicates-identical",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-conflicting-values",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-relative-canonical",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-relative-with-base",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-fragment",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-ordinary-template-only",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-ordinary-template-decoy",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-shadow-known-conflict",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-foreign-link-not-html",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-unknown-plus-known-conflict",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-bom-unicode",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-missing-required",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-body-fail-missing-review",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-header-only",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-preferred-reviewed",
+      "pairs": [
+        {
+          "rule_id": "TS10-A02",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-preferred-conflict-review-missing",
+      "pairs": [
+        {
+          "rule_id": "TS10-A02",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-canonical-levels-known-contradiction-both",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-ordinary",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-competing-relative",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-mixed-first",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-mixed-last",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-nofollow-download",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-area",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-missing-href",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-empty-no-base",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-fragment-final-variant",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-redirect-final-fallback",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-fragment-base-preferred",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-fragment-base-variant",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-empty-base-variant",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-external-base-outside-family",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-first-base",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-first-base",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-target-only-base",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-javascript-base-fallback",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-csp-no-base",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-csp-base-absolute-independent",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-meta-csp-independent",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-noscript-same-destination",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-ordinary-template",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-shadow-independent-fail",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-svg-independent-fail",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-duplicate-independent-fail",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-zero-family-links",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-outside-family",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-failure-missing-page",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-failure-missing-review",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-exception",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-entity-and-fragment",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-backslash",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-non-http",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-form-link-outside-scope",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-single-backslash-same-scheme",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-absolute-preferred",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-absolute-competing",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-absolute-outside",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-independent-conflict-plus-relative",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-zero-href",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-href-absent",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-first-valid-later-invalid",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-base-href-absent",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-base-href-empty",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-base-href-whitespace",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-no-base",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-data-base",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-javascript-base",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-noscript-independent-conflict",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-area-independent",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-template-invalid-inert",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-missing-review-independent-fail",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-absolute-exception",
+      "pairs": [
+        {
+          "rule_id": "TS10-A04",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "source-link-policy-invalid-base-v2-a01-literal-unchanged",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    }
+  ],
+  "failures": [],
+  "limitations": "Declared rules only; reduced coverage must accompany any claim. Bounded supplied source/DOM/XML comparison and human TS10 content review. No JavaScript execution, global conformity or live observations."
+}

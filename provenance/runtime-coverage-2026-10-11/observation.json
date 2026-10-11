@@ -1,0 +1,234 @@
+{
+  "recorded_at": "2026-10-11T00:01:56.233258+00:00",
+  "kind": "Observed runtime-dependent corpus coverage, not site assessment",
+  "synthetic": true,
+  "base_commit": "4ce3d66d2e4142eb3880c4119ebe4aa77917190d",
+  "protocol": "0.1.0-draft.18",
+  "interpreter": "18",
+  "adapter": "19",
+  "replay": "3",
+  "python": "3.9.6",
+  "node": "v24.19.0",
+  "source_archive_sha256": "277a9c6e19d58e0712a8241d55adbf1b19edbc40511f24647e2d4890b1ff6864",
+  "corpus_sha256": "2b4e744434c74e4b1b781e2b566ede9f65adab114e62b1fa06eea5d2b9b15944",
+  "protocol_sha256": "2c1cb7aa7646ed1dfa9edfc79a7d8a43ab33cc236424f7bfe9c064c70c36fc15",
+  "evaluator_sha256": "082fd54a23974edf77ff29f6946957efd49435ed052105960d72de0f8ee55a36",
+  "runner_sha256": "dd303b76b71a3a74db2ac360ee2f7258a1aab86520eb31949d3c776095aa04c6",
+  "configurations": [
+    {
+      "name": "core",
+      "source_node": "unset",
+      "file": "core.json",
+      "sha256": "0809e428b6b32a7490b48cdae22fdd1336dffb0c5d9a577c88f2f8e907f53187",
+      "exit_code": 0,
+      "cases": 640,
+      "pairs": 1009,
+      "agreements": 900,
+      "disagreements": 0,
+      "conclusive_expected": 629,
+      "conclusive_agreements": 520,
+      "reduced_pairs": 109,
+      "conclusive_coverage_percent": 82.67
+    },
+    {
+      "name": "node24",
+      "source_node": "Explicit Node 24.19.0 executable",
+      "file": "node24.json",
+      "sha256": "34d084ec9bb2fffaf388a91db9c7ee48d27bfa0ebf7d411ac81a24c2711251e8",
+      "exit_code": 0,
+      "cases": 640,
+      "pairs": 1009,
+      "agreements": 1001,
+      "disagreements": 0,
+      "conclusive_expected": 629,
+      "conclusive_agreements": 621,
+      "reduced_pairs": 8,
+      "conclusive_coverage_percent": 98.73
+    }
+  ],
+  "resolved_by_explicit_runtime_pairs": 101,
+  "normative_inconclusive_pairs": 380,
+  "remaining": [
+    {
+      "case": "unsupported-robots-wildcard",
+      "expected": [
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "RFC 9309 sections 2.2.2–2.2.3: /*? does not match /page. Robots permits this path and the supplied access review establishes no test-client obstacle."
+        }
+      ],
+      "observed": [
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reason": "Unsupported robots path pattern"
+        }
+      ]
+    },
+    {
+      "case": "unsupported-presentation-objective",
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Prior max_snippet: 0 requires a no-snippet directive; neither max-snippet:0 nor nosnippet is present. Google robots meta specification."
+        }
+      ],
+      "observed": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reason": "Presentation restrictions require review"
+        }
+      ]
+    },
+    {
+      "case": "render-unknown-directive",
+      "expected": [
+        {
+          "rule_id": "TS07-A03",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Google robots meta specification: indexifembedded without noindex has no effect. All supplied states still match allow intent."
+        }
+      ],
+      "observed": [
+        {
+          "rule_id": "TS07-A03",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reason": "pass — loaded: Combined source directives compared with declared indexing/link intent; previews not assessed; inconclusive — expanded: Unsupported directive or scope: indexifembedded; source: pass — Combined source directives compared with declared indexing/link intent; previews not assessed; source contradiction/removal or incomplete comparison cannot yield pass"
+        }
+      ]
+    },
+    {
+      "case": "canonical-base-needs-browser",
+      "expected": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "The sole base URL does not alter the absolute canonical URL; all family declarations match the preference."
+        }
+      ],
+      "observed": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive",
+          "reason": "pass: pass: HTTP Link: []; pass: html canonical: [('https://example.com/product', True)]; inconclusive: pass: HTTP Link: []; inconclusive: Invalid head element"
+        }
+      ]
+    },
+    {
+      "case": "canonical-typed-canonical-needs-review",
+      "expected": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Google canonical documentation excludes annotations with type. The member has no usable declaration for its required HTML method."
+        }
+      ],
+      "observed": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive",
+          "reason": "pass: pass: HTTP Link: []; pass: html canonical: [('https://example.com/product', True)]; inconclusive: pass: HTTP Link: []; inconclusive: Unsupported canonical attributes"
+        }
+      ]
+    },
+    {
+      "case": "canonical-ambiguous-link-parameter",
+      "expected": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "RFC 8288 section 3.3: ignore rel occurrences after the first. The retained canonical relation and HTML agree."
+        }
+      ],
+      "observed": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive",
+          "reason": "pass: pass: HTTP Link: []; pass: html canonical: [('https://example.com/product', True)]; inconclusive: inconclusive: Ambiguous Link parameters; pass: html canonical: [('https://example.com/product', True)]"
+        }
+      ]
+    },
+    {
+      "case": "canonical-link-anchor-unsupported",
+      "expected": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "RFC 8288 section 3.2: anchor changes the link context to /other; it does not contradict this family member. Its required HTML canonical agrees."
+        }
+      ],
+      "observed": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive",
+          "reason": "pass: pass: HTTP Link: []; pass: html canonical: [('https://example.com/product', True)]; inconclusive: inconclusive: Canonical Link context/extension requires review; pass: html canonical: [('https://example.com/product', True)]"
+        }
+      ]
+    },
+    {
+      "case": "canonical-sitemap-dtd-unsupported",
+      "expected": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "The local DTD declares an unused entity; all literal loc values are present, complete and agree with the strategy. No external entity resolution is needed."
+        }
+      ],
+      "observed": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "outcome": "inconclusive",
+          "reason": "inconclusive: DTD/entities unsupported; inconclusive: Unreconciled sitemap captures; pass: Examined declared sitemap inventory; no engine-selection inference"
+        }
+      ]
+    }
+  ],
+  "commands": {
+    "core": "env -u TSEP_SOURCE_NODE python3 -B conformance/run.py",
+    "node24": "TSEP_SOURCE_NODE=/path/to/node24 python3 -B conformance/run.py"
+  },
+  "limitations": [
+    "Only the frozen authored corpus is assessed; no external-site or actual browser observations",
+    "An exact agreement can be a normative inconclusive result",
+    "The percentage denominator is 629 conclusive rule/target expectations, not 44 controls or a website score",
+    "Adding the optional runtime resolves 101 declared pairs without changing inputs, expected outcomes or reader selections",
+    "The eight remaining limits are retained under their selected historical reader paths; no silent profile migration",
+    "TS01 nonempty noscript remains a separate unpromoted proposal, regardless of 100 percent conclusive coverage in the current TS01 corpus",
+    "No human review, Search Console access, publication or remote CI run inferred"
+  ],
+  "paired_transition_audit": {
+    "pairs": 1009,
+    "unchanged": 908,
+    "changed_from_inconclusive_to_expected": 101,
+    "conclusive_to_other_conclusive": 0,
+    "remaining_reduced_both": 8,
+    "comparison_method": "Each non-reduced pair equals its expected value under conformance.run.compare; substitute retained reduced outcomes, then compare all 1009 keys"
+  }
+}

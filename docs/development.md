@@ -1,4 +1,10 @@
 Current integration: draft.18, interpreter 18 / adapter 19 / replay 3.
+The [runtime coverage observation](conformance.md#current-runtime-coverage--couverture-selon-le-runtime--2026-10-11)
+distinguishes 109 reduced-coverage pairs without the optional source runtime from
+eight with explicit Node 24.19.0, over the same 640 authored cases. A successful
+verification is not complete method coverage or a site assessment.
+La couverture observée dépend du runtime explicitement fourni ; les limites et
+les attendus indéterminés restent visibles, sans score de site ni clôture implicite.
 The [partial-family repair laboratory](canonical-partial-repair.md) provides a frozen twelve-phase recipe and an attributed browser/HTTP transport. Its actual browser campaign is separate from authored transport tests.
 Le laboratoire de corrections partielles garde une famille fixe et une revue finale vide ; la recette n’est pas une observation navigateur.
 Replay 3 adds an explicit [Python supervisor comparison](replay-comparison.md), with exact comparison still the default.
