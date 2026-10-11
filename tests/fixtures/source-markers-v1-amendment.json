@@ -1,0 +1,23 @@
+{
+  "kind": "explicit-authored-oracle-correction",
+  "recorded_at": "2026-10-11T11:45:25.615586+00:00",
+  "original_sha256": "85023fd80f3beefed0e78b04ae82959ac5fb8692d6a024bcf3312e73714f8922",
+  "case_id": "entity-cr-retained",
+  "reason": "Original expectation omitted control-character-reference reported for numeric U+000D. Parsed text retains CR, but the predeclared first projection rejects any reported parse5 error. Do not relax the implementation or silently replace the original oracle.",
+  "reference": "https://html.spec.whatwg.org/multipage/parsing.html#numeric-character-reference-end-state",
+  "expected": {
+    "enabled": {
+      "complete": false,
+      "segments": null,
+      "candidate_outcome": "inconclusive"
+    },
+    "disabled": {
+      "complete": false,
+      "segments": null,
+      "candidate_outcome": "inconclusive"
+    }
+  },
+  "candidate_consensus": "inconclusive",
+  "additional_parsed_text_expectation": "Expected\rvalue",
+  "normative_effect": "none"
+}

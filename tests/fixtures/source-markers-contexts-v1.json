@@ -1,0 +1,228 @@
+{
+  "kind": "authored-source-marker-context-oracle",
+  "version": "1",
+  "frozen_at": "2026-10-11T11:47:40.384597+00:00",
+  "scope": "Explicit SVG script/style exclusion and retained other foreign-text refusal; frozen before classifier correction",
+  "cases": [
+    {
+      "id": "svg-style-excluded",
+      "html": "<!doctype html><html><head></head><body><p>Expected</p><svg><style>.a { content: \"Forbidden\" }</style></svg></body></html>",
+      "criteria": {
+        "required_markers": [
+          "Expected"
+        ],
+        "forbidden_markers": [
+          "Forbidden"
+        ]
+      },
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "segments": [
+            "Expected"
+          ],
+          "candidate_outcome": "pass"
+        },
+        "disabled": {
+          "complete": true,
+          "segments": [
+            "Expected"
+          ],
+          "candidate_outcome": "pass"
+        }
+      },
+      "candidate_consensus": "pass"
+    },
+    {
+      "id": "svg-script-excluded",
+      "html": "<!doctype html><html><head></head><body><p>Expected</p><svg><script>Forbidden</script></svg></body></html>",
+      "criteria": {
+        "required_markers": [
+          "Expected"
+        ],
+        "forbidden_markers": [
+          "Forbidden"
+        ]
+      },
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "segments": [
+            "Expected"
+          ],
+          "candidate_outcome": "pass"
+        },
+        "disabled": {
+          "complete": true,
+          "segments": [
+            "Expected"
+          ],
+          "candidate_outcome": "pass"
+        }
+      },
+      "candidate_consensus": "pass"
+    },
+    {
+      "id": "svg-style-entity-excluded",
+      "html": "<!doctype html><html><head></head><body><p>Expected</p><svg><style>&lt;p&gt;Forbidden&lt;/p&gt;</style></svg></body></html>",
+      "criteria": {
+        "required_markers": [
+          "Expected"
+        ],
+        "forbidden_markers": [
+          "Forbidden"
+        ]
+      },
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "segments": [
+            "Expected"
+          ],
+          "candidate_outcome": "pass"
+        },
+        "disabled": {
+          "complete": true,
+          "segments": [
+            "Expected"
+          ],
+          "candidate_outcome": "pass"
+        }
+      },
+      "candidate_consensus": "pass"
+    },
+    {
+      "id": "svg-style-not-required",
+      "html": "<!doctype html><html><head></head><body><svg><style>Expected</style></svg></body></html>",
+      "criteria": {
+        "required_markers": [
+          "Expected"
+        ],
+        "forbidden_markers": [
+          "Forbidden"
+        ]
+      },
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "segments": [],
+          "candidate_outcome": "fail"
+        },
+        "disabled": {
+          "complete": true,
+          "segments": [],
+          "candidate_outcome": "fail"
+        }
+      },
+      "candidate_consensus": "fail"
+    },
+    {
+      "id": "svg-style-breakout",
+      "html": "<!doctype html><html><head></head><body><p>Expected</p><svg><style><p>Forbidden</p></style></svg></body></html>",
+      "criteria": {
+        "required_markers": [
+          "Expected"
+        ],
+        "forbidden_markers": [
+          "Forbidden"
+        ]
+      },
+      "expected": {
+        "enabled": {
+          "complete": false,
+          "segments": null,
+          "candidate_outcome": "inconclusive"
+        },
+        "disabled": {
+          "complete": false,
+          "segments": null,
+          "candidate_outcome": "inconclusive"
+        }
+      },
+      "candidate_consensus": "inconclusive"
+    },
+    {
+      "id": "foreign-text-after-style",
+      "html": "<!doctype html><html><head></head><body><p>Expected</p><svg><style>x</style><text>Forbidden</text></svg></body></html>",
+      "criteria": {
+        "required_markers": [
+          "Expected"
+        ],
+        "forbidden_markers": [
+          "Forbidden"
+        ]
+      },
+      "expected": {
+        "enabled": {
+          "complete": false,
+          "segments": null,
+          "candidate_outcome": "inconclusive"
+        },
+        "disabled": {
+          "complete": false,
+          "segments": null,
+          "candidate_outcome": "inconclusive"
+        }
+      },
+      "candidate_consensus": "inconclusive"
+    },
+    {
+      "id": "template-svg-excluded",
+      "html": "<!doctype html><html><head></head><body><p>Expected</p><template><svg><style>x</style><text>Forbidden</text></svg></template></body></html>",
+      "criteria": {
+        "required_markers": [
+          "Expected"
+        ],
+        "forbidden_markers": [
+          "Forbidden"
+        ]
+      },
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "segments": [
+            "Expected"
+          ],
+          "candidate_outcome": "pass"
+        },
+        "disabled": {
+          "complete": true,
+          "segments": [
+            "Expected"
+          ],
+          "candidate_outcome": "pass"
+        }
+      },
+      "candidate_consensus": "pass"
+    },
+    {
+      "id": "svg-style-cdata-excluded",
+      "html": "<!doctype html><html><head></head><body><p>Expected</p><svg><style><![CDATA[Forbidden]]></style></svg></body></html>",
+      "criteria": {
+        "required_markers": [
+          "Expected"
+        ],
+        "forbidden_markers": [
+          "Forbidden"
+        ]
+      },
+      "expected": {
+        "enabled": {
+          "complete": true,
+          "segments": [
+            "Expected"
+          ],
+          "candidate_outcome": "pass"
+        },
+        "disabled": {
+          "complete": true,
+          "segments": [
+            "Expected"
+          ],
+          "candidate_outcome": "pass"
+        }
+      },
+      "candidate_consensus": "pass"
+    }
+  ]
+}

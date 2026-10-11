@@ -102,6 +102,15 @@ def projection(reading, ids):
 
 def validate_and_attribute(result, source, raw, decoding, ids):
     selectors(ids)
+    validate_tree_and_attribute(result, source, raw, decoding)
+    for reading in result['readings'].values():
+        selected=projection(reading,ids)
+        if 'selections' in reading: need(reading['selections']==selected, 'Stored selection differs from tree')
+        reading['selections']=selected
+
+
+def validate_tree_and_attribute(result, source, raw, decoding):
+    """Attribute the complete tree independently of any selected element IDs."""
     need(result.get('kind') == 'unapplied-source-content-tree' and result.get('experiment_version') == '1' and
          result.get('normative_effect') == 'none' and result.get('bounds') == BOUNDS, 'Unexpected reader identity or bounds')
     need(result.get('parser') == {'name':'parse5','version':'8.0.1','dependency':'entities@8.0.0'}, 'Unexpected parser')
@@ -182,14 +191,20 @@ def validate_and_attribute(result, source, raw, decoding, ids):
         need(raw[a:b].decode('utf-8')==n['raw_source'], 'Located source differs from original body bytes')
         n['body_span_bytes']=[a,b]
     for e in errors:e['body_span_bytes']=[mapped[e['startOffset']],mapped[e['endOffset']]]
-    for reading in result['readings'].values():
-        selected=projection(reading,ids)
-        if 'selections' in reading: need(reading['selections']==selected, 'Stored selection differs from tree')
-        reading['selections']=selected
 
 
 def inventory(raw, *, content_types, ids, node=None, root=ROOT):
     selectors(ids)
+    result=tree_inventory(raw,content_types=content_types,node=node,root=root)
+    for reading in result['readings'].values():
+        reading['selections']=projection(reading,ids)
+    result['requested_ids']=ids
+    need(len(json.dumps(result,ensure_ascii=False).encode('utf-8'))<=MAX_OUTPUT,'Attributed result byte bound exceeded')
+    return result
+
+
+def tree_inventory(raw, *, content_types, node=None, root=ROOT):
+    """Same attributed static trees without invoking the ID selection projection."""
     source,decoding=http.decode(raw,content_types)
     node=shutil.which(node or 'node')
     need(node is not None,'Optional Node 24 runtime unavailable; no fallback reader')
@@ -216,8 +231,8 @@ def inventory(raw, *, content_types, ids, node=None, root=ROOT):
         need(len(output)<=MAX_OUTPUT,'Source result byte bound exceeded')
         result=json.loads(output)
     need(identity(root)==before,'Reader files changed during execution')
-    validate_and_attribute(result,source,raw,decoding,ids)
-    result.update(decoding=decoding,requested_ids=ids,source_sha256=before,
+    validate_tree_and_attribute(result,source,raw,decoding)
+    result.update(decoding=decoding,source_sha256=before,
                   supervisor=dict(python_version=sys.version.split()[0],process_timeout_seconds=TIMEOUT,
                                   node_old_space_mib=128,output_byte_limit=MAX_OUTPUT))
     need(len(json.dumps(result,ensure_ascii=False).encode('utf-8'))<=MAX_OUTPUT,'Attributed result byte bound exceeded')

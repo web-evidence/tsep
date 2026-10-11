@@ -1,0 +1,240 @@
+{
+  "kind": "source-marker-readings-provenance",
+  "experiment_version": "1",
+  "normative_effect": "none",
+  "protocol_unchanged": "0.1.0-draft.27",
+  "sources": [
+    {
+      "url": "https://html.spec.whatwg.org/multipage/parsing.html#preprocessing-the-input-stream",
+      "observed_at": "2026-10-11T11:38:59.268Z",
+      "scope": "Static source marker hypothesis semantics; HTML preprocessing, noscript and parse5 source location API. No browser or real-site measurement.",
+      "capture": ".local/source-markers-2026-10-11/primary-sources.json",
+      "sha256": "4ea779b48bac869eb2756a081d132e637f224bb70faacce0d2f84f6737ad58f5",
+      "capture_kind": "Bounded web-tool extracted text, not complete original HTTP",
+      "delivery": "Local text extract retained, no runtime dependency"
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/scripting.html#the-noscript-element",
+      "observed_at": "2026-10-11T11:38:59.268Z",
+      "scope": "Static source marker hypothesis semantics; HTML preprocessing, noscript and parse5 source location API. No browser or real-site measurement.",
+      "capture": ".local/source-markers-2026-10-11/primary-sources.json",
+      "sha256": "4ea779b48bac869eb2756a081d132e637f224bb70faacce0d2f84f6737ad58f5",
+      "capture_kind": "Bounded web-tool extracted text, not complete original HTTP",
+      "delivery": "Local text extract retained, no runtime dependency"
+    },
+    {
+      "url": "https://parse5.js.org/interfaces/parse5.ParserOptions.html",
+      "observed_at": "2026-10-11T11:38:59.268Z",
+      "scope": "Static source marker hypothesis semantics; HTML preprocessing, noscript and parse5 source location API. No browser or real-site measurement.",
+      "capture": ".local/source-markers-2026-10-11/primary-sources.json",
+      "sha256": "4ea779b48bac869eb2756a081d132e637f224bb70faacce0d2f84f6737ad58f5",
+      "capture_kind": "Bounded web-tool extracted text, not complete original HTTP",
+      "delivery": "Local text extract retained, no runtime dependency"
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/parsing.html#numeric-character-reference-end-state",
+      "observed_at": "2026-10-11T11:56:18.784Z",
+      "scope": "HTML numeric CR character reference is retained with a parse error; source for explicit oracle correction, not an SEO outcome.",
+      "capture": ".local/source-markers-2026-10-11/numeric-cr-source.json",
+      "sha256": "6dba5334c539652475577c423b2c83afbadcc4d2a2957b2f9d2f52393e10a75b",
+      "capture_kind": "Bounded web-tool text extract, not raw HTTP",
+      "delivery": "Local text extract retained, no runtime dependency"
+    }
+  ],
+  "oracles": [
+    {
+      "path": "tests/fixtures/source-markers-v1.json",
+      "sha256": "85023fd80f3beefed0e78b04ae82959ac5fb8692d6a024bcf3312e73714f8922",
+      "authored": true,
+      "frozen_before_relevant_implementation": true,
+      "cases": 44
+    },
+    {
+      "path": "tests/fixtures/source-markers-contexts-v1.json",
+      "sha256": "25b6f6ca71e74e91b0df10e9f82c416e6f808e81272f5a14d82ba25008c0d4b1",
+      "authored": true,
+      "frozen_before_relevant_implementation": true,
+      "cases": 8
+    }
+  ],
+  "explicit_corrections": [
+    {
+      "path": "tests/fixtures/source-markers-v1-amendment.json",
+      "sha256": "a188d681d48a77d575eed5cf90da0b9ab54cfca3346b4897af6e0136a7043ef5"
+    },
+    {
+      "path": "tests/fixtures/source-markers-contexts-v1-amendment.json",
+      "sha256": "492e3ed2be83f7ef5a31e958c464b7a02a3aaf260040d9fa620a23c4e47b2c82"
+    }
+  ],
+  "retained_actual_parser_inventories": {
+    "path": "tests/fixtures/source-markers-observations-v1.json",
+    "sha256": "14e730db3bf397cb52b569ab5e3a28bf37b3cb4e6ec8ddc86ee49daf0a06ccd3",
+    "synthetic_sources": true,
+    "browser_observed": false,
+    "cases": 52
+  },
+  "qualification": {
+    "path": ".local/source-markers-2026-10-11/qualification-r4/qualification.json",
+    "sha256": "168708708215c3c391a1409ea7c5634c2e02c719e069c0b1693ae37bfa92b985",
+    "matches": 104,
+    "original_matches": 100,
+    "total": 104,
+    "exact_replays": 52,
+    "runtimes": [
+      {
+        "node": "v24.19.0",
+        "v8": "13.6.233.17-node.51"
+      }
+    ],
+    "source_sha256": {
+      "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+      "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+      "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+      "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+      "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+      "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+      "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+      "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+      "experiments/source_content.py": "fc4f4fa08e0f232fec3bc1e13b7a7ddde3a4bf755f10f26d663d2d232b297ff4",
+      "experiments/source_content.mjs": "cd11892ed619f60f8b1d29bdfc9d298d04168f15267bf463be0695afbe1e19e2",
+      "experiments/source_markers.py": "1c683182a4a1fe3800d52c049dbeae5fe9ac77202fce15a205689b933c4ad3cb",
+      "conformance/source_text.py": "ce2a519368049ab5da3e0c9e542f8b29a6de0e4ed9ce66c27a59c36b0ac8b343"
+    },
+    "script_sha256": "13374f9491608fb731703a0b18a3e0de4ad1a7e971bb27a702f87443946f7c09",
+    "scope": "Actual offline parsing of authored documents; no browser/site acquisition, prior real owner intent or TS01 assessment"
+  },
+  "historical_edikka": {
+    "scope": "Retrospective offline parsing of retained complete HTTP bodies; no fresh capture, prior real marker criteria, candidate outcome, TS01 or whole-site assessment. Local capture paths are evidence locations, never runtime dependencies.",
+    "plan": {
+      "path": ".local/source-markers-2026-10-11/retained-edikka-r3/plan-before-observation.json",
+      "sha256": "147a6bd29f73522de7219e17d9b7509f75197cbb4caae8a2ae2761af6221e97e"
+    },
+    "recorded_at": "2026-10-11T11:50:39.588776+00:00",
+    "capture": {
+      "path": ".local/structured-data-2026-10-11/edikka-html-r1/historical-capture.json",
+      "sha256": "87a45167d1d4e888c112012a72064c528d3daecfda43b0d2050f46b48877cb10"
+    },
+    "summary": {
+      "path": ".local/source-markers-2026-10-11/retained-edikka-r3/summary.json",
+      "sha256": "d41f43d279c88771a31d6cb1459d522895dddc7f4b1a505e275e6b3fbbb2ceec"
+    },
+    "observations": [
+      {
+        "url": "https://www.edikka.com/",
+        "capture_observed_at": "2026-10-10T20:21:16.358026+00:00",
+        "body_sha256": "fec0325a5b747a86f8d87c2ce6771b71015ef95a70089a865a78ee3e3693bbd0",
+        "bytes": 150858,
+        "readings": {
+          "enabled": {
+            "complete": true,
+            "reason": null,
+            "segment_count": 2095,
+            "parse_errors": []
+          },
+          "disabled": {
+            "complete": true,
+            "reason": null,
+            "segment_count": 2092,
+            "parse_errors": []
+          }
+        },
+        "candidate_consensus": null,
+        "exact_replay": true,
+        "observation": {
+          "path": ".local/source-markers-2026-10-11/retained-edikka-r3/page-0.json",
+          "sha256": "8bb5347e5adfff1f5f86d51914bd993c1d048c0e33623d79e716d8d7b945e894"
+        },
+        "body": {
+          "path": ".local/source-markers-2026-10-11/retained-edikka-r3/page-0.html",
+          "sha256": "fec0325a5b747a86f8d87c2ce6771b71015ef95a70089a865a78ee3e3693bbd0"
+        }
+      },
+      {
+        "url": "https://www.edikka.com/contact",
+        "capture_observed_at": "2026-10-10T20:21:16.593028+00:00",
+        "body_sha256": "9740af36dd03a260d961b3d94ab8c7d41d3a6a5a0068b4865dc5d1b9869fb9fc",
+        "bytes": 89586,
+        "readings": {
+          "enabled": {
+            "complete": true,
+            "reason": null,
+            "segment_count": 813,
+            "parse_errors": []
+          },
+          "disabled": {
+            "complete": true,
+            "reason": null,
+            "segment_count": 812,
+            "parse_errors": []
+          }
+        },
+        "candidate_consensus": null,
+        "exact_replay": true,
+        "observation": {
+          "path": ".local/source-markers-2026-10-11/retained-edikka-r3/page-1.json",
+          "sha256": "0f326eeb9d8a0e7d6b09d2cf48c2e0a7769e2b21c67b22c8849474ad545e9b71"
+        },
+        "body": {
+          "path": ".local/source-markers-2026-10-11/retained-edikka-r3/page-1.html",
+          "sha256": "9740af36dd03a260d961b3d94ab8c7d41d3a6a5a0068b4865dc5d1b9869fb9fc"
+        }
+      },
+      {
+        "url": "https://www.edikka.com/insights/developpement-web/seo-technique-fondations",
+        "capture_observed_at": "2026-10-10T20:21:16.972510+00:00",
+        "body_sha256": "1dfb950ce412c742cec0e50b88094269c73c13855b5f2a5c0bd77ff7d61acb2c",
+        "bytes": 296304,
+        "readings": {
+          "enabled": {
+            "complete": true,
+            "reason": null,
+            "segment_count": 2849,
+            "parse_errors": []
+          },
+          "disabled": {
+            "complete": true,
+            "reason": null,
+            "segment_count": 2848,
+            "parse_errors": []
+          }
+        },
+        "candidate_consensus": null,
+        "exact_replay": true,
+        "observation": {
+          "path": ".local/source-markers-2026-10-11/retained-edikka-r3/page-2.json",
+          "sha256": "681d8345aa03035f7fc03ea3d5eb426ad7bcc21f6e8ea0f89c35fa233b2e6940"
+        },
+        "body": {
+          "path": ".local/source-markers-2026-10-11/retained-edikka-r3/page-2.html",
+          "sha256": "1dfb950ce412c742cec0e50b88094269c73c13855b5f2a5c0bd77ff7d61acb2c"
+        }
+      }
+    ],
+    "complete_readings": 6,
+    "reported_parse_errors": 0,
+    "unattributable_interval_refusals": 0,
+    "candidate_criteria": null,
+    "earlier_diagnostic": {
+      "path": ".local/source-markers-2026-10-11/retained-edikka-r2/summary.json",
+      "sha256": "098589287c1ed406928fb1bc9dd88f91c7754ac89cbd8b4f51638f9d8fecf355",
+      "scope": "Six initial refusals for SVG styles, no reported parse5 error; retained before context correction"
+    }
+  },
+  "consultation": {
+    "provider": "Claude",
+    "url": "https://claude.ai/chat/1c87d570-5d15-4448-8575-f5fff2bd61d3",
+    "observed_on": "2026-10-11",
+    "capture": {
+      "path": ".local/source-markers-2026-10-11/claude-review.txt",
+      "sha256": "85dfa0bae174ebf4b759c87cc8d15ef767c5b6ab258e0028b52cabfa4ddf1117"
+    },
+    "screenshot": {
+      "path": ".local/source-markers-2026-10-11/claude-review.jpg",
+      "sha256": "fb710ffe5a305574e87b20fd49d1cf2114d318d7bc8ccebb36f708eed304d21e"
+    },
+    "scope": "Authorized AI methodology discussion about distinct parsed/lexical semantics, whole hypotheses, literal CR markers, span refusal and separate real refusal causes. No repository inspection, human decision, endorsement or independent review.",
+    "delivery": "Private chat evidence retained locally, not distributed or required at runtime"
+  },
+  "pending": "Separate normative version, bilingual migration, prior profile selection, contradictory atomic cases and actual assessments. No identity_reader field enabled."
+}

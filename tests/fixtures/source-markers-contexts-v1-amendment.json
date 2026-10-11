@@ -1,0 +1,27 @@
+{
+  "kind": "explicit-authored-oracle-correction",
+  "recorded_at": "2026-10-11T11:49:01.476795+00:00",
+  "original_sha256": "25b6f6ca71e74e91b0df10e9f82c416e6f808e81272f5a14d82ba25008c0d4b1",
+  "case_id": "svg-style-breakout",
+  "reason": "Original expectation assumed parse5 would report an error when HTML p breaks out of SVG style. Retained parse5 output has no reported error and creates an ordinary HTML p containing Forbidden outside SVG. Its contiguous source interval supports the contradiction. This does not establish valid HTML or browser equivalence. Original fixture unchanged.",
+  "expected": {
+    "enabled": {
+      "complete": true,
+      "segments": [
+        "Expected",
+        "Forbidden"
+      ],
+      "candidate_outcome": "fail"
+    },
+    "disabled": {
+      "complete": true,
+      "segments": [
+        "Expected",
+        "Forbidden"
+      ],
+      "candidate_outcome": "fail"
+    }
+  },
+  "candidate_consensus": "fail",
+  "normative_effect": "none"
+}

@@ -1,4 +1,6 @@
 Current integration: draft.27, interpreter 26 / adapter 27 / HTML 10 / replay 3.
+Optional [source-marker readings 1](source-marker-readings.md) prepares TS01 with attributed parsed segments and two whole-document hypotheses; no normative promotion or historical migration.
+FR : 52 documents synthétiques, 104 attentes après deux corrections explicites ; diagnostic rétrospectif de trois corps Edikka sans critères ni verdict TS01.
 Current priority: consolidate the existing 12 controls before deciding the Edikka application; further TS31–33/TS36 layers are deferred after the in-flight rendered component.
 FR : priorité donnée par Bertrand le 11 octobre à la finalisation des 12 contrôles ; ne pas attendre les 44 pour décider ensuite de l’application.
 Optional [supplied rendered JSON-LD observation 1](jsonld-rendered-observation.md) binds planned supplied DOM states to HTTP, retains snapshot bases and compares exact parsed-source/rendered texts. No browser execution or new control.
