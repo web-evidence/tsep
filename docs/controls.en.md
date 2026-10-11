@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.27 — Controls
+# TSEP 0.1.0-draft.28 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.27:TS01-A01`
+`TSEP@0.1.0-draft.28:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.27:TS01-A02`
+`TSEP@0.1.0-draft.28:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -62,19 +62,19 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Each final response whose content can be compared to intent.
 
-**Method.** First compare the final URL with expected_final_url, then the complete body SHA-256 with expected_body_sha256. Fix these references and, if needed, representation: stable or required_markers / forbidden_markers before measurement. For a changed non-stable body, match markers against source text extracted under the draft.7 contract; the digest still covers the unchanged complete body.
+**Method.** First compare final URL with expected_final_url, then complete-body SHA-256 with expected_body_sha256. Fix references, any stable policy and markers before measurement. The changed non-stable body branch uses the historical reader unless prior identity_reader: html-tree-markers-v1 selects two whole-document static hypotheses, byte-attributed parsed segments and literal criteria. Hashing still covers the unchanged complete body.
 
-**Acceptance.** Different final URL: fail. At the same URL, identical digest: pass. Otherwise, representation: stable requires fail. Otherwise, valid markers yield fail if any required marker is missing or any forbidden marker is present. Pass requires at least one required marker, all required markers present and all forbidden markers absent. Forbidden-only markers all absent: inconclusive. Without markers or declared stability: inconclusive. HTTP status does not replace this comparison.
+**Acceptance.** Different final URL: fail. At the same URL, identical digest: pass. Otherwise, representation: stable requires fail. Otherwise, under the historical reader, valid markers yield fail if any required marker is missing or any forbidden marker is present. Pass requires at least one required marker, all required markers present and all forbidden markers absent. Forbidden-only markers all absent: inconclusive. Without markers or declared stability: inconclusive. HTTP status does not replace this comparison. Under html-tree-markers-v1, each complete reading compares all markers; both pass gives pass, both fail gives fail, every other pair is inconclusive. URL, hash and stability precedence remains unchanged.
 
-**Evidence.** HTTP trace, complete body and dated prior intent with URL, reference digest and any markers/stability policy; extraction, computed values and tool/version. Hash after transfer and content decoding, before any transformation. Literal case-sensitive markers within each decoded HTML source-text segment: character references resolved; comments, script/style, tags and attributes excluded; segments never concatenated across markup. For text/plain, the entire decoded body. No whitespace normalization or regular expressions.
+**Evidence.** HTTP trace, complete body and dated prior intent with URL, reference digest and any markers/stability policy; extraction, computed values and tool/version. Hash after transfer and content decoding, before any transformation. Literal case-sensitive markers within each decoded HTML source-text segment: character references resolved; comments, script/style, tags and attributes excluded; segments never concatenated across markup. For text/plain, the entire decoded body. No whitespace normalization or regular expressions. The distinct parsed profile normalizes source CRLF/CR to LF before reference expansion without changing criteria; retain both projections, contexts, positions, reported errors, results and tools. Identical contexts are referenced without removing segments; trees can be reconstructed from the body and exact tools.
 
-**Assumptions.** The owner fixes a reference representation before collection; its business relevance remains their responsibility. Comparison is automatic; defining intent is not.
+**Assumptions.** The owner fixes a reference representation before collection; its business relevance remains their responsibility. Comparison is automatic; defining intent is not. Any selected profile and its criteria are declared in new intent before capture; no silent selection or conversion of historical intents.
 
-**Inconclusive.** Missing/truncated capture, unknown decoding, missing/invalid reference URL or subsequent intent: inconclusive. At an identical URL, missing/invalid reference digest: inconclusive. When digests differ without stability, absent, empty, malformed or contradictory markers, unresolved extraction, or forbidden-only markers all absent: inconclusive. A different URL remains fail even without a reference digest.
+**Inconclusive.** Missing/truncated capture, unknown decoding, missing/invalid reference URL or subsequent intent: inconclusive. At an identical URL, missing/invalid reference digest: inconclusive. When digests differ without stability, absent, empty, malformed or contradictory markers, unresolved extraction, or forbidden-only markers all absent: inconclusive. A different URL remains fail even without a reference digest. For the parsed profile: divergent hypotheses, reported parse5 errors, nonblank foreign text outside exclusions, unsupported frames/contexts, unattributable spans, unavailable runtime or exceeded bound remain inconclusive without fallback.
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** A changed digest alone does not prove wrong content. Source-text extraction measures neither CSS/DOM visibility nor semantic similarity; title and CSS-hidden text may count. Appropriate markers and a correct reference remain the owner’s responsibility. Wrong intent can validate wrong content. No engine soft-404 classification, indexing or undeclared routes.
+**Limits.** A changed digest alone does not prove wrong content. Source-text extraction measures neither CSS/DOM visibility nor semantic similarity; title and CSS-hidden text may count. Appropriate markers and a correct reference remain the owner’s responsibility. Wrong intent can validate wrong content. No engine soft-404 classification, indexing or undeclared routes. The new profile retains title/textarea/options/hidden text, excludes HTML/SVG scripts/styles and inactive templates; its contract specifies refusals. No browser behavior, complete HTML validity or new Edikka assessment follows.
 
 ## TS02 — Redirects are intentional, direct and loop-free.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.27:TS02-A01`
+`TSEP@0.1.0-draft.28:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.27:TS02-A02`
+`TSEP@0.1.0-draft.28:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.27:TS04-A01`
+`TSEP@0.1.0-draft.28:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.27:TS04-A02`
+`TSEP@0.1.0-draft.28:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.27:TS07-A01`
+`TSEP@0.1.0-draft.28:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -344,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.27:TS07-A02`
+`TSEP@0.1.0-draft.28:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.27:TS07-A03`
+`TSEP@0.1.0-draft.28:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.27:TS10-A01`
+`TSEP@0.1.0-draft.28:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -490,7 +490,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.27:TS10-A02`
+`TSEP@0.1.0-draft.28:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -514,7 +514,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.27:TS10-A03`
+`TSEP@0.1.0-draft.28:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.27:TS10-A04`
+`TSEP@0.1.0-draft.28:TS10-A04`
 
 **Required inputs**: crawl, intent.
 
@@ -1140,7 +1140,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A01 — Attributable field cohort
 
-`TSEP@0.1.0-draft.27:TS34-A01`
+`TSEP@0.1.0-draft.28:TS34-A01`
 
 **Required inputs**: field-data, intent.
 
@@ -1164,7 +1164,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A02 — Retained p75 measurements and classes
 
-`TSEP@0.1.0-draft.27:TS34-A02`
+`TSEP@0.1.0-draft.28:TS34-A02`
 
 **Required inputs**: field-data, intent.
 
@@ -1188,7 +1188,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A03 — Reasoned decision bound to measurements
 
-`TSEP@0.1.0-draft.27:TS34-A03`
+`TSEP@0.1.0-draft.28:TS34-A03`
 
 **Required inputs**: field-data, intent.
 
@@ -1236,7 +1236,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A01 — Repeatable laboratory context and measurements
 
-`TSEP@0.1.0-draft.27:TS35-A01`
+`TSEP@0.1.0-draft.28:TS35-A01`
 
 **Required inputs**: lab-data, intent.
 
@@ -1260,7 +1260,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A02 — Diagnostic hypothesis and next verification
 
-`TSEP@0.1.0-draft.27:TS35-A02`
+`TSEP@0.1.0-draft.28:TS35-A02`
 
 **Required inputs**: lab-data, intent.
 
@@ -1380,7 +1380,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS39-A01 — Reviewed prior matrix and configuration
 
-`TSEP@0.1.0-draft.27:TS39-A01`
+`TSEP@0.1.0-draft.28:TS39-A01`
 
 **Required inputs**: configuration, intent.
 
@@ -1404,7 +1404,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS39-A02 — Signal consistency in each context
 
-`TSEP@0.1.0-draft.27:TS39-A02`
+`TSEP@0.1.0-draft.28:TS39-A02`
 
 **Required inputs**: http, content, intent.
 
@@ -1428,7 +1428,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS39-A03 — Context and cache attribution
 
-`TSEP@0.1.0-draft.27:TS39-A03`
+`TSEP@0.1.0-draft.28:TS39-A03`
 
 **Required inputs**: configuration, http, logs, intent.
 
@@ -1500,7 +1500,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS41-A01 — Prior plan and representativeness
 
-`TSEP@0.1.0-draft.27:TS41-A01`
+`TSEP@0.1.0-draft.28:TS41-A01`
 
 **Required inputs**: configuration, intent.
 
@@ -1524,7 +1524,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS41-A02 — Execution coverage and output fidelity
 
-`TSEP@0.1.0-draft.27:TS41-A02`
+`TSEP@0.1.0-draft.28:TS41-A02`
 
 **Required inputs**: configuration, ci-output, change-history, intent.
 
@@ -1548,7 +1548,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS41-A03 — Negative rehearsal and process response
 
-`TSEP@0.1.0-draft.27:TS41-A03`
+`TSEP@0.1.0-draft.28:TS41-A03`
 
 **Required inputs**: configuration, ci-output, change-history, intent.
 
@@ -1596,7 +1596,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A01 — Documented purposes and mechanisms
 
-`TSEP@0.1.0-draft.27:TS42-A01`
+`TSEP@0.1.0-draft.28:TS42-A01`
 
 **Required inputs**: operator-docs, intent.
 
@@ -1620,7 +1620,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A02 — Owner decisions and tradeoffs
 
-`TSEP@0.1.0-draft.27:TS42-A02`
+`TSEP@0.1.0-draft.28:TS42-A02`
 
 **Required inputs**: intent.
 
@@ -1644,7 +1644,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A03 — Captured policy and effective choice
 
-`TSEP@0.1.0-draft.27:TS42-A03`
+`TSEP@0.1.0-draft.28:TS42-A03`
 
 **Required inputs**: configuration, operator-docs, intent.
 
@@ -1692,7 +1692,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A01 — Full client and expected treatment
 
-`TSEP@0.1.0-draft.27:TS43-A01`
+`TSEP@0.1.0-draft.28:TS43-A01`
 
 **Required inputs**: http, operator-docs, intent.
 
@@ -1716,7 +1716,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A02 — Chain reconciled with logs
 
-`TSEP@0.1.0-draft.27:TS43-A02`
+`TSEP@0.1.0-draft.28:TS43-A02`
 
 **Required inputs**: http, logs, intent.
 
@@ -1740,7 +1740,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A03 — Test origin without invented identity
 
-`TSEP@0.1.0-draft.27:TS43-A03`
+`TSEP@0.1.0-draft.28:TS43-A03`
 
 **Required inputs**: http, intent.
 
@@ -1788,7 +1788,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS44-A01 — Prior critical scope
 
-`TSEP@0.1.0-draft.27:TS44-A01`
+`TSEP@0.1.0-draft.28:TS44-A01`
 
 **Required inputs**: content, intent.
 
@@ -1812,7 +1812,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS44-A02 — Delivery path without JavaScript
 
-`TSEP@0.1.0-draft.27:TS44-A02`
+`TSEP@0.1.0-draft.28:TS44-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -1836,7 +1836,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS44-A03 — Value and context coherence
 
-`TSEP@0.1.0-draft.27:TS44-A03`
+`TSEP@0.1.0-draft.28:TS44-A03`
 
 **Required inputs**: http, html, render, content, intent.
 

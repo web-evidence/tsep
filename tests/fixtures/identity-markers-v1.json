@@ -1,0 +1,4068 @@
+{
+  "synthetic": true,
+  "frozen_before_policy_implementation": true,
+  "policy": "html-tree-markers-v1",
+  "recorded_at": "2026-10-11T12:16:49.571230+00:00",
+  "cases": [
+    {
+      "id": "identity-markers-ordinary",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-noscript-image",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><noscript><img src=\"x\"></noscript></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-noscript-forbidden-attribute",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><noscript><img alt=\"Forbidden\"></noscript></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-noscript-required-attribute",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><noscript><img alt=\"Expected\"></noscript></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-noscript-literal",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><noscript>Expected</noscript></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-noscript-forbidden",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><noscript>Forbidden</noscript></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-noscript-entity",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><noscript>&#69;xpected</noscript></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-noscript-two-no-union",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><noscript><img alt=\"Expected\"></noscript><noscript>&#70;orbidden</noscript></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-noscript-head-link",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><noscript><link rel=\"stylesheet\" href=\"x\"></noscript></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-title-counts",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Expected</title></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-title-raw-angle",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected <b>"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Expected <b></title></head><body></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-textarea-counts",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><textarea>Expected</textarea></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-textarea-leading-lf",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><textarea>\nExpected</textarea></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-textarea-entities",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><textarea>&#69;xpected</textarea></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-pre-leading-lf",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><pre>\nExpected</pre></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-option-all-text",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><select><option>Expected</option><option disabled>Forbidden</option></select></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-comment-split",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Ex<!-- separator -->pected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-tag-split",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Ex<span>pected</span></p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-entity-contiguous",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Ex&#112;ected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-literal-case",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-hidden-counts",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p hidden>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-script-excluded",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><script>Expected</script></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-style-excluded",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><style>Expected</style></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-template-excluded",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><template>Forbidden</template></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-shadow-outside",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><div><template shadowrootmode=\"open\">Forbidden</template></div></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-foreign-text-outside",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><svg><text>Forbidden</text></svg></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-empty-svg-icon",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><svg><path d=\"M0 0\"></path></svg></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-frame-outside",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><iframe>Forbidden</iframe></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-orphan-end-no-join",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Ex</x>pected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-foster-parent-no-join",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body>Ex<table>pected<tr><td>X</td></tr></table></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-raw-crlf-normalized",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected\nvalue"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected\r\nvalue</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-literal-crlf-marker-missing",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected\r\nvalue"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected\r\nvalue</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-entity-cr-retained",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected\rvalue"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected&#13;value</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json; explicit amendment retained"
+    },
+    {
+      "id": "identity-markers-cr-then-entity-lf",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected\n\nvalue"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected\r&#10;value</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-raw-noscript-crlf",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected\nvalue"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><noscript>Expected\r\nvalue</noscript></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-unicode-nbsp",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected value"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>É💡 Expected&nbsp;value</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-numeric-lt-not-markup",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "<b>Expected</b>"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>&lt;b&gt;Expected&lt;/b&gt;</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-forbidden-after-good",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><p>Forbidden</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-unsupported-after-forbidden",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected Forbidden</p><iframe></iframe></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-forbidden-only-absent",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>ordinary</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-forbidden-split-is-not-found",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected For<span>bidden</span></p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-duplicate-attribute-error",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p id=\"x\" id=\"y\">Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-bom-preserved-in-body",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>﻿Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-ordinary-raw-less-than",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected 1 < 2</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-v1.json"
+    },
+    {
+      "id": "identity-markers-svg-style-excluded",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><svg><style>.a { content: \"Forbidden\" }</style></svg></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-contexts-v1.json"
+    },
+    {
+      "id": "identity-markers-svg-script-excluded",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><svg><script>Forbidden</script></svg></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-contexts-v1.json"
+    },
+    {
+      "id": "identity-markers-svg-style-entity-excluded",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><svg><style>&lt;p&gt;Forbidden&lt;/p&gt;</style></svg></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-contexts-v1.json"
+    },
+    {
+      "id": "identity-markers-svg-style-not-required",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><svg><style>Expected</style></svg></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-contexts-v1.json"
+    },
+    {
+      "id": "identity-markers-svg-style-breakout",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><svg><style><p>Forbidden</p></style></svg></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-contexts-v1.json; explicit amendment retained"
+    },
+    {
+      "id": "identity-markers-foreign-text-after-style",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><svg><style>x</style><text>Forbidden</text></svg></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-contexts-v1.json"
+    },
+    {
+      "id": "identity-markers-template-svg-excluded",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><template><svg><style>x</style><text>Forbidden</text></svg></template></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-contexts-v1.json"
+    },
+    {
+      "id": "identity-markers-svg-style-cdata-excluded",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><svg><style><![CDATA[Forbidden]]></style></svg></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true,
+      "basis": "Authored structural oracle source-markers-contexts-v1.json"
+    },
+    {
+      "id": "identity-markers-legacy-ordinary",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ]
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-legacy-noscript",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ]
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><noscript><img src=\"x\"></noscript></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-unknown-profile",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "unknown"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-null-profile",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": null
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-wrong-url-before-missing-hash",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/expected",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-missing-hash-before-marker",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-invalid-hash-before-marker",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "invalid",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-equal-hash-before-unknown-profile",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "87e8a3aecefce07d58d77104cc16b346b8f196312dd2f83b0246763d9f7c66c0",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "unknown"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><noscript><img src=\"x\"></noscript></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-equal-hash-before-projection",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "87e8a3aecefce07d58d77104cc16b346b8f196312dd2f83b0246763d9f7c66c0",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><noscript><img src=\"x\"></noscript></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-stable-before-marker",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1",
+              "representation": "stable"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-unsupported-representation",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1",
+              "representation": "unknown"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-missing-hash-before-stability",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1",
+              "representation": "stable"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-plain-under-new-profile",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nExpected"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-legacy-plain",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ]
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nExpected"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-missing-explicit-charset",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-unsupported-charset",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=iso-8859-1\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-contradictory-criteria",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Expected"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-missing-all-markers",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [],
+              "forbidden_markers": [],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-forbidden-only-present",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [],
+              "forbidden_markers": [
+                "Expected"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail",
+          "reference_limit": true,
+          "basis": "Optional pinned Node 24 required for parsed-source projection; unavailable runtime remains inconclusive without fallback."
+        }
+      ],
+      "reference_limit": true
+    },
+    {
+      "id": "identity-markers-excessive-marker-count",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "0",
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24",
+                "25",
+                "26",
+                "27",
+                "28",
+                "29",
+                "30",
+                "31",
+                "32",
+                "33",
+                "34",
+                "35",
+                "36",
+                "37",
+                "38",
+                "39",
+                "40",
+                "41",
+                "42",
+                "43",
+                "44",
+                "45",
+                "46",
+                "47",
+                "48",
+                "49",
+                "50",
+                "51",
+                "52",
+                "53",
+                "54",
+                "55",
+                "56",
+                "57",
+                "58",
+                "59",
+                "60",
+                "61",
+                "62",
+                "63",
+                "64"
+              ],
+              "forbidden_markers": [],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-excessive-marker-size",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+              ],
+              "forbidden_markers": [],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-incomplete-http",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": false,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-late-intent",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T10:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "identity_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "identity-markers-ts07-field-does-not-select-identity",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS01-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-11T09:00:00Z",
+            "context": {
+              "network": "none; authored synthetic input",
+              "bounds": "20 hops; 8 MiB",
+              "tool": "authored-source-marker-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-11T08:00:00Z",
+              "public_canonical": true,
+              "crawler": "TSEP-SyntheticIdentity/1",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "c8f3e8bbb31af38071be4eab42ca9cdc79faa9820e83958000b7a67eb870431a",
+              "required_markers": [
+                "Expected"
+              ],
+              "forbidden_markers": [
+                "Forbidden"
+              ],
+              "source_reader": "html-tree-markers-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-SyntheticIdentity/1\r\n\r\n",
+                "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head></head><body><p>Expected</p><noscript><img src=\"x\"></noscript></body></html>"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS01-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    }
+  ]
+}

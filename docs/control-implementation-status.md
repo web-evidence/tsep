@@ -2,8 +2,8 @@
 
 ## Current snapshot / État actuel — 2026-10-11
 
-La version locale est **0.1.0-draft.27**. Les versions des outils sont distinctes :
-interpréteur **26**, adaptateur de captures **27**, rejeu **3**. Ces numéros ne
+La version locale est **0.1.0-draft.28**. Les versions des outils sont distinctes :
+interpréteur **27**, adaptateur de captures **28**, rejeu **3**. Ces numéros ne
 prouvent ni une publication distante ni une version stable 1.0. Chaque dossier
 historique reste lié à sa version et à ses empreintes ; il n'est jamais remplacé.
 
@@ -21,7 +21,7 @@ sans le même niveau de règles et d'outillage exécutables.
 
 | Contrôle | Méthode exécutable disponible | Application réelle encore incomplète |
 | --- | --- | --- |
-| TS01, socle | HTTP final, identité selon critères préalables, rapport et rejeu ; [lecture facultative de marqueurs parsés](source-marker-readings.md) encore non appliquée | Les rapports Edikka historiques restent NT, notamment à cause de noscript non vide. Le nouveau diagnostic lit trois corps historiques sans critères ni verdict ; migration et plan préalable restent à établir. La proposition lexicale n'est pas qualifiée comme deux lectures navigateur. Ce refus ne démontre pas un défaut SEO. |
+| TS01, socle | HTTP final, identité selon critères préalables, rapport et rejeu ; [profil préalable de marqueurs parsés](source-markers.md) | Les rapports Edikka historiques restent NT, notamment à cause de noscript non vide. Le nouveau diagnostic lit trois corps historiques sans critères ni verdict ; nouvelle intention et capture restent à établir. La proposition lexicale n'est pas qualifiée comme deux lectures navigateur. Ce refus ne démontre pas un défaut SEO. |
 | TS02 | Plan préalable, import d'une décision fournie, liaison aux captures, comparaison des chaînes | Décision réelle du responsable, collecte ultérieure et résultats dans le périmètre décidé |
 | TS04 | Lecteur robots partagé, profils explicites, matrice par origine, ressources requises, parcours de revue et rejeu | Seize chemins autorisés selon la matrice opérateur capturée ; revues motivées manquantes, contrôle entier non établi |
 | TS07 | Directives HTTP/source/rendu, hypothèses source distinctes, objectifs de permissions texte/image/vidéo préalables | Trois sources examinées ne remplacent pas les états rendus attribués et revues exigés ; aucune observation Google déduite |
@@ -100,12 +100,12 @@ ni contrôles terminés, ni une revue humaine ou une exécution CI distante.
 
 ## English — current state
 
-The local edition is **0.1.0-draft.27**, with interpreter **26**, capture adapter
-**27** and replay **3**. These version numbers do not establish a public release
+The local edition is **0.1.0-draft.28**, with interpreter **27**, capture adapter
+**28** and replay **3**. These version numbers do not establish a public release
 or stable 1.0. Historical packages keep their exact tools and fingerprints.
 
 Latest October 11 instruction: consolidate the existing 12 controls before deciding the Edikka application; finish verification of the in-flight rendered component, then defer further TS31–33/TS36 layers. Real use remains incomplete.
-Optional [source-marker readings](source-marker-readings.md) remain unapplied: three historical Edikka bodies were processed without marker criteria or a new TS01 outcome. Legacy NT reports and the unqualified lexical proposal remain unchanged; normative migration and a prior real plan are still needed.
+Optional [parsed-source marker policy](source-markers.md) is now available through prior profile selection. Three historical Edikka bodies were processed without marker criteria or a new TS01 outcome. Legacy NT reports and the historical lexical proposal remain unchanged; new prior intent and capture are still needed for actual use.
 
 The earlier human priority is four deeply developed controls, TS04/TS02/TS07/TS10,
 with TS01 as the foundation, superseding the older ten-control target. Forty-four

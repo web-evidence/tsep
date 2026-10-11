@@ -1,0 +1,44 @@
+{
+  "synthetic": true,
+  "frozen_before_bundle_qualification": true,
+  "recorded_at": "2026-10-11T12:22:39.228592+00:00",
+  "rules": [
+    "TS01-A01",
+    "TS01-A02"
+  ],
+  "cases": [
+    {
+      "case_id": "identity-markers-noscript-image",
+      "expected_control_status": "C"
+    },
+    {
+      "case_id": "identity-markers-noscript-forbidden",
+      "expected_control_status": "NC"
+    },
+    {
+      "case_id": "identity-markers-noscript-forbidden-attribute",
+      "expected_control_status": "NT"
+    },
+    {
+      "case_id": "identity-markers-foreign-text-outside",
+      "expected_control_status": "NT"
+    },
+    {
+      "case_id": "identity-markers-stable-before-marker",
+      "expected_control_status": "NC"
+    },
+    {
+      "case_id": "identity-markers-equal-hash-before-unknown-profile",
+      "expected_control_status": "C"
+    },
+    {
+      "case_id": "identity-markers-literal-crlf-marker-missing",
+      "expected_control_status": "NC"
+    },
+    {
+      "case_id": "identity-markers-legacy-noscript",
+      "expected_control_status": "NT"
+    }
+  ],
+  "scope": "Authored TS01 bundle expectations; use frozen body/intent and add A01 final-200 comparison. Not real-site assessments."
+}

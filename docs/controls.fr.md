@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.27 — Contrôles
+# TSEP 0.1.0-draft.28 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.27:TS01-A01`
+`TSEP@0.1.0-draft.28:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.27:TS01-A02`
+`TSEP@0.1.0-draft.28:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -62,19 +62,19 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Chaque réponse finale dont le contenu peut être comparé à l’intention.
 
-**Méthode.** Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer ces références et, si nécessaire, representation: stable ou required_markers / forbidden_markers avant la mesure. En cas de variation sans stabilité, comparer les marqueurs au texte source extrait selon le contrat draft.7 ; l’empreinte porte toujours sur le corps complet inchangé.
+**Méthode.** Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer références, éventuelle stabilité et marqueurs avant la mesure. La branche de variation sans stabilité utilise le lecteur historique, sauf identity_reader: html-tree-markers-v1 déclaré au préalable : deux hypothèses statiques globales, segments parsés attribués aux octets et critères littéraux. L’empreinte porte toujours sur le corps complet inchangé.
 
-**Attendus.** URL finale différente : fail. À URL identique, empreinte identique : pass. Sinon, representation: stable impose fail. Sinon, des marqueurs valides donnent fail si un requis manque ou si un interdit apparaît. Pass exige au moins un marqueur requis, tous les requis présents et tous les interdits absents. Interdits seuls absents : inconclusive. Sans marqueurs ni stabilité déclarée : inconclusive. Le statut HTTP ne remplace pas cette comparaison.
+**Attendus.** URL finale différente : fail. À URL identique, empreinte identique : pass. Sinon, representation: stable impose fail. Sinon, sous le lecteur historique, des marqueurs valides donnent fail si un requis manque ou si un interdit apparaît. Pass exige au moins un marqueur requis, tous les requis présents et tous les interdits absents. Interdits seuls absents : inconclusive. Sans marqueurs ni stabilité déclarée : inconclusive. Le statut HTTP ne remplace pas cette comparaison. Sous html-tree-markers-v1, chaque lecture complète compare tous les marqueurs ; deux pass donnent pass, deux fail donnent fail, tout autre couple donne inconclusive. Les priorités URL, empreinte et stabilité restent inchangées.
 
-**Preuves.** Trace HTTP, corps complet et intention préalable datée avec URL, empreinte de référence et éventuels marqueurs/politique de stabilité ; extraction, valeurs calculées et outil/version. Empreinte après décodage de transfert et de contenu, avant toute transformation. Marqueurs littéraux sensibles à la casse dans chaque segment de texte source HTML décodé : entités résolues, commentaires, script/style, balises et attributs exclus, segments jamais concaténés à travers le balisage. Pour text/plain, corps décodé intégral. Ni normalisation des espaces ni expression régulière.
+**Preuves.** Trace HTTP, corps complet et intention préalable datée avec URL, empreinte de référence et éventuels marqueurs/politique de stabilité ; extraction, valeurs calculées et outil/version. Empreinte après décodage de transfert et de contenu, avant toute transformation. Marqueurs littéraux sensibles à la casse dans chaque segment de texte source HTML décodé : entités résolues, commentaires, script/style, balises et attributs exclus, segments jamais concaténés à travers le balisage. Pour text/plain, corps décodé intégral. Ni normalisation des espaces ni expression régulière. Le profil parsé distinct normalise CRLF/CR source en LF avant expansion des références, sans modifier les critères ; conserve les deux projections, contextes, positions, erreurs rapportées, résultats et outils. Les contextes identiques sont référencés sans suppression de segments ; arbres reconstructibles à partir du corps et des outils exacts.
 
-**Hypothèses.** Le responsable fixe une représentation de référence avant la collecte ; sa pertinence métier reste sa responsabilité. La comparaison est automatique, la définition de l’intention ne l’est pas.
+**Hypothèses.** Le responsable fixe une représentation de référence avant la collecte ; sa pertinence métier reste sa responsabilité. La comparaison est automatique, la définition de l’intention ne l’est pas. Le profil éventuel et ses critères sont déclarés dans une nouvelle intention avant capture ; aucune sélection ou conversion silencieuse des anciennes intentions.
 
-**Indéterminé.** Capture absente/tronquée, décodage inconnu, référence URL absente/invalide, intention postérieure : inconclusive. À URL identique, empreinte de référence absente/invalide : inconclusive. Si les empreintes diffèrent sans stabilité, marqueurs absents, vides, malformés ou contradictoires, extraction indéterminée, ou interdits seuls tous absents : inconclusive. Une URL différente reste fail même sans empreinte de référence.
+**Indéterminé.** Capture absente/tronquée, décodage inconnu, référence URL absente/invalide, intention postérieure : inconclusive. À URL identique, empreinte de référence absente/invalide : inconclusive. Si les empreintes diffèrent sans stabilité, marqueurs absents, vides, malformés ou contradictoires, extraction indéterminée, ou interdits seuls tous absents : inconclusive. Une URL différente reste fail même sans empreinte de référence. Pour le profil parsé : divergence des hypothèses, erreur rapportée par parse5, texte étranger non blanc hors exclusions, frames/contextes non qualifiés, intervalles non attribuables, runtime indisponible ou borne dépassée restent inconclusive, sans repli.
 
 **Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
 
-**Limites.** Une variation d’empreinte seule ne prouve pas un contenu erroné. L’extraction du texte source ne mesure ni visibilité CSS/DOM, ni similarité sémantique ; titre et texte masqué par CSS peuvent compter. Des marqueurs pertinents et une référence correcte restent la responsabilité du propriétaire. Une mauvaise intention peut valider un mauvais contenu. Ni classification soft 404 du moteur, ni indexation, ni routes non déclarées.
+**Limites.** Une variation d’empreinte seule ne prouve pas un contenu erroné. L’extraction du texte source ne mesure ni visibilité CSS/DOM, ni similarité sémantique ; titre et texte masqué par CSS peuvent compter. Des marqueurs pertinents et une référence correcte restent la responsabilité du propriétaire. Une mauvaise intention peut valider un mauvais contenu. Ni classification soft 404 du moteur, ni indexation, ni routes non déclarées. Le nouveau profil conserve title/textarea/options/textes masqués, exclut scripts/styles HTML/SVG et templates inactifs ; le contrat précise les refus. Aucun comportement navigateur, validité HTML complète ou nouvelle évaluation Edikka déduit.
 
 ## TS02 — Les redirections sont intentionnelles, directes et sans boucle.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.27:TS02-A01`
+`TSEP@0.1.0-draft.28:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.27:TS02-A02`
+`TSEP@0.1.0-draft.28:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -198,7 +198,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A01 — Politique par origine, robot et ressource
 
-`TSEP@0.1.0-draft.27:TS04-A01`
+`TSEP@0.1.0-draft.28:TS04-A01`
 
 **Entrées requises**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A02 — Accès aux ressources nécessaires
 
-`TSEP@0.1.0-draft.27:TS04-A02`
+`TSEP@0.1.0-draft.28:TS04-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.27:TS07-A01`
+`TSEP@0.1.0-draft.28:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -344,7 +344,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.27:TS07-A02`
+`TSEP@0.1.0-draft.28:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.27:TS07-A03`
+`TSEP@0.1.0-draft.28:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.27:TS10-A01`
+`TSEP@0.1.0-draft.28:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -490,7 +490,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.27:TS10-A02`
+`TSEP@0.1.0-draft.28:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -514,7 +514,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.27:TS10-A03`
+`TSEP@0.1.0-draft.28:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.27:TS10-A04`
+`TSEP@0.1.0-draft.28:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 
@@ -1140,7 +1140,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A01 — Cohorte terrain attribuable
 
-`TSEP@0.1.0-draft.27:TS34-A01`
+`TSEP@0.1.0-draft.28:TS34-A01`
 
 **Entrées requises**: field-data, intent.
 
@@ -1164,7 +1164,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A02 — Mesures p75 et classes conservées
 
-`TSEP@0.1.0-draft.27:TS34-A02`
+`TSEP@0.1.0-draft.28:TS34-A02`
 
 **Entrées requises**: field-data, intent.
 
@@ -1188,7 +1188,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A03 — Décision motivée liée aux mesures
 
-`TSEP@0.1.0-draft.27:TS34-A03`
+`TSEP@0.1.0-draft.28:TS34-A03`
 
 **Entrées requises**: field-data, intent.
 
@@ -1236,7 +1236,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A01 — Contexte et mesures de laboratoire reproductibles
 
-`TSEP@0.1.0-draft.27:TS35-A01`
+`TSEP@0.1.0-draft.28:TS35-A01`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1260,7 +1260,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A02 — Hypothèse de diagnostic et prochaine vérification
 
-`TSEP@0.1.0-draft.27:TS35-A02`
+`TSEP@0.1.0-draft.28:TS35-A02`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1380,7 +1380,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS39-A01 — Matrice préalable et configuration revues
 
-`TSEP@0.1.0-draft.27:TS39-A01`
+`TSEP@0.1.0-draft.28:TS39-A01`
 
 **Entrées requises**: configuration, intent.
 
@@ -1404,7 +1404,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS39-A02 — Cohérence des signaux dans chaque contexte
 
-`TSEP@0.1.0-draft.27:TS39-A02`
+`TSEP@0.1.0-draft.28:TS39-A02`
 
 **Entrées requises**: http, content, intent.
 
@@ -1428,7 +1428,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS39-A03 — Attribution des contextes et du cache
 
-`TSEP@0.1.0-draft.27:TS39-A03`
+`TSEP@0.1.0-draft.28:TS39-A03`
 
 **Entrées requises**: configuration, http, logs, intent.
 
@@ -1500,7 +1500,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS41-A01 — Plan préalable et représentativité
 
-`TSEP@0.1.0-draft.27:TS41-A01`
+`TSEP@0.1.0-draft.28:TS41-A01`
 
 **Entrées requises**: configuration, intent.
 
@@ -1524,7 +1524,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS41-A02 — Couverture et fidélité des exécutions
 
-`TSEP@0.1.0-draft.27:TS41-A02`
+`TSEP@0.1.0-draft.28:TS41-A02`
 
 **Entrées requises**: configuration, ci-output, change-history, intent.
 
@@ -1548,7 +1548,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS41-A03 — Exercice négatif et réaction du dispositif
 
-`TSEP@0.1.0-draft.27:TS41-A03`
+`TSEP@0.1.0-draft.28:TS41-A03`
 
 **Entrées requises**: configuration, ci-output, change-history, intent.
 
@@ -1596,7 +1596,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A01 — Usages et mécanismes documentés
 
-`TSEP@0.1.0-draft.27:TS42-A01`
+`TSEP@0.1.0-draft.28:TS42-A01`
 
 **Entrées requises**: operator-docs, intent.
 
@@ -1620,7 +1620,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A02 — Décisions du responsable et arbitrages
 
-`TSEP@0.1.0-draft.27:TS42-A02`
+`TSEP@0.1.0-draft.28:TS42-A02`
 
 **Entrées requises**: intent.
 
@@ -1644,7 +1644,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A03 — Politique capturée et choix effectif
 
-`TSEP@0.1.0-draft.27:TS42-A03`
+`TSEP@0.1.0-draft.28:TS42-A03`
 
 **Entrées requises**: configuration, operator-docs, intent.
 
@@ -1692,7 +1692,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A01 — Client complet et traitement attendu
 
-`TSEP@0.1.0-draft.27:TS43-A01`
+`TSEP@0.1.0-draft.28:TS43-A01`
 
 **Entrées requises**: http, operator-docs, intent.
 
@@ -1716,7 +1716,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A02 — Chaîne rapprochée des journaux
 
-`TSEP@0.1.0-draft.27:TS43-A02`
+`TSEP@0.1.0-draft.28:TS43-A02`
 
 **Entrées requises**: http, logs, intent.
 
@@ -1740,7 +1740,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A03 — Origine du test et identité non inventée
 
-`TSEP@0.1.0-draft.27:TS43-A03`
+`TSEP@0.1.0-draft.28:TS43-A03`
 
 **Entrées requises**: http, intent.
 
@@ -1788,7 +1788,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS44-A01 — Périmètre critique préalable
 
-`TSEP@0.1.0-draft.27:TS44-A01`
+`TSEP@0.1.0-draft.28:TS44-A01`
 
 **Entrées requises**: content, intent.
 
@@ -1812,7 +1812,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS44-A02 — Chemin de livraison sans JavaScript
 
-`TSEP@0.1.0-draft.27:TS44-A02`
+`TSEP@0.1.0-draft.28:TS44-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -1836,7 +1836,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS44-A03 — Cohérence des valeurs et du contexte
 
-`TSEP@0.1.0-draft.27:TS44-A03`
+`TSEP@0.1.0-draft.28:TS44-A03`
 
 **Entrées requises**: http, html, render, content, intent.
 

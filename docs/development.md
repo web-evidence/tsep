@@ -1,4 +1,8 @@
-Current integration: draft.27, interpreter 26 / adapter 27 / HTML 10 / replay 3.
+Current integration: draft.28, interpreter 27 / adapter 28 / HTML 11 / replay 3.
+Optional prior [parsed-source markers](source-markers.md) extend TS01-A02; [migration](migration-draft.28.md) preserves historical readers and URL/hash/stability precedence.
+FR : 76 cas atomiques rédigés, huit scénarios de paquets synthétiques ; aucune activation sur les captures historiques Edikka. Toujours 12 contrôles / 33 règles.
+
+Historical integration: draft.27, interpreter 26 / adapter 27 / HTML 10 / replay 3.
 Optional [source-marker readings 1](source-marker-readings.md) prepares TS01 with attributed parsed segments and two whole-document hypotheses; no normative promotion or historical migration.
 FR : 52 documents synthétiques, 104 attentes après deux corrections explicites ; diagnostic rétrospectif de trois corps Edikka sans critères ni verdict TS01.
 Current priority: consolidate the existing 12 controls before deciding the Edikka application; further TS31–33/TS36 layers are deferred after the in-flight rendered component.

@@ -12,7 +12,7 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '10'
+VERSION = '11'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
@@ -67,6 +67,8 @@ TEXT = {
         'unobserved_note': 'Ces couples règle/cible ne figurent pas dans le rapport ; aucune réussite n’est ajoutée.',
         'intent': 'Intention préalable fournie', 'declared': 'Date de déclaration',
         'expected_url': 'URL finale attendue', 'expected_hash': 'Empreinte du corps attendue',
+        'identity_reader': 'Lecteur de marqueurs déclaré', 'identity_legacy': 'Lecteur historique (aucun profil fourni)',
+        'identity_parsed_note': 'Texte parsé selon deux hypothèses statiques ; aucune visibilité ni exécution JavaScript mesurée. Ce profil ne remplace pas les priorités URL, empreinte et stabilité.',
         'representation': 'Politique de représentation', 'markers': 'Marqueurs requis / interdits',
         'observed': 'Date d’observation déclarée', 'request_context': 'Contexte de la capture',
         'raw_response': 'Lire la réponse HTTP conservée', 'raw_request': 'Lire la requête conservée',
@@ -148,6 +150,8 @@ TEXT = {
         'unobserved_note': 'These rule/target pairs are absent from the report; no passing result is added.',
         'intent': 'Supplied prior intent', 'declared': 'Declaration date',
         'expected_url': 'Expected final URL', 'expected_hash': 'Expected body digest',
+        'identity_reader': 'Declared marker reader', 'identity_legacy': 'Historical reader (no supplied profile)',
+        'identity_parsed_note': 'Parsed text under two static hypotheses; no measured visibility or JavaScript execution. This profile does not replace URL, hash and stability precedence.',
         'representation': 'Representation policy', 'markers': 'Required / forbidden markers',
         'observed': 'Declared observation date', 'request_context': 'Capture context',
         'raw_response': 'Read retained HTTP response', 'raw_request': 'Read retained request',
@@ -297,9 +301,12 @@ def identity_context(target, words):
     out += item(words['declared'], intent.get('declared_at', words['not_supplied']))
     out += item(words['expected_url'], intent.get('expected_final_url', words['not_supplied']))
     out += item(words['expected_hash'], intent.get('expected_body_sha256', words['not_supplied']), True)
+    out += item(words['identity_reader'], intent.get('identity_reader', words['identity_legacy']))
     for label in ('required_markers', 'forbidden_markers'):
         out += item(words[label], pretty(intent.get(label, [])))
     out += '</dl>'
+    if intent.get('identity_reader') == 'html-tree-markers-v1':
+        out += '<p class="small">' + esc(words['identity_parsed_note']) + '</p>'
     if context.get('collector_matches_reference') is True:
         out += '<p class="small">' + esc(words['collector_consistency']) + '</p>'
     for key, label, note in (('reference_preflight', 'preflight', 'preflight_note'),

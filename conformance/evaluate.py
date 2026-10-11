@@ -15,7 +15,7 @@ RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS04-A01', 'TS04-A02',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04',
          'TS34-A01', 'TS34-A02', 'TS34-A03', 'TS35-A01', 'TS35-A02',
          'TS42-A01', 'TS42-A02', 'TS42-A03', 'TS43-A01', 'TS43-A02', 'TS43-A03', 'TS44-A01', 'TS44-A02', 'TS44-A03', 'TS41-A01', 'TS41-A02', 'TS41-A03', 'TS39-A01', 'TS39-A02', 'TS39-A03')
-VERSION = '26'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '27'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -46,7 +46,7 @@ def utf8_media(headers, kinds, default_utf8=False):
     return kind in kinds and params.get('charset', 'utf-8' if default_utf8 else None) == 'utf-8'
 
 
-def identity_result(final_url, headers, body, intent):
+def identity_result(final_url, headers, body, intent, *, diagnostics=None):
     expected_url = intent.get('expected_final_url')
     need(isinstance(expected_url, str), 'Missing reference URL')
     url_parts(expected_url)
@@ -60,6 +60,9 @@ def identity_result(final_url, headers, body, intent):
     if intent.get('representation') == 'stable':
         return 'fail', 'Declared stable representation changed: ' + actual
     need('representation' not in intent, 'Unsupported representation policy')
+    if 'identity_reader' in intent:
+        from conformance.source_markers import assess
+        return assess(headers, body, intent, diagnostics=diagnostics)
     required, forbidden = intent.get('required_markers', []), intent.get('forbidden_markers', [])
     for markers in (required, forbidden):
         need(isinstance(markers, list) and all(text_present(m) for m in markers)
@@ -387,7 +390,7 @@ def evaluate_target(target, rule, *, diagnostics=None):
         if rule == 'TS01-A01':
             return ('pass' if status == 200 else 'fail', 'Final complete GET status: ' + str(status))
         if rule == 'TS01-A02':
-            return identity_result(final_url, headers, body, intent)
+            return identity_result(final_url, headers, body, intent, diagnostics=diagnostics)
         if rule == 'TS07-A01':
             return directive_result(headers, body, intent, source=True, diagnostics=diagnostics)
         if rule == 'TS07-A03':

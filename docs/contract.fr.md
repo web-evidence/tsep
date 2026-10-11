@@ -199,7 +199,7 @@ littéralement avec casse dans le **texte source extrait**, sans regex :
   contenu de `script` et `style`, balises et attributs exclus. Ne jamais concaténer
   les segments à travers une balise ou un commentaire pour créer un marqueur.
 - `text/plain` : corps décodé intégral, sans interprétation de pseudo-balisage.
-- Pas de normalisation des espaces ou de la casse. Une extraction ou un décodage
+- Sans profil distinct, pas de normalisation des espaces ou de la casse. Une extraction ou un décodage
   indéterminé ne permet aucun verdict conclusif fondé sur les marqueurs.
 
 Cette extraction n’affecte pas le SHA-256 du corps complet. Elle ne mesure pas la
@@ -216,6 +216,15 @@ la pertinence des références et marqueurs. Une variation horodatée seule n’
 un défaut SEO. NT sur TS01 bloquant donne toujours NO_GO.
 TS07-A01/A02/A03 et TS10-A01/A03/A04 sont semiAuto ; TS10-A02 reste manual.
 Voir la [migration draft.7](migration-draft.7.md) pour la réévaluation obligatoire.
+
+Draft.28 ajoute le profil préalable facultatif `identity_reader: "html-tree-markers-v1"`
+dans la seule branche des marqueurs HTML. Le [contrat des marqueurs parsés](source-markers.md)
+précise ses deux hypothèses globales, les segments attribués, le prétraitement CRLF/CR
+vers LF et les contextes/erreurs hors portée. Les critères restent littéraux ; deux
+lectures pass donnent pass, deux fail donnent fail, sinon inconclusive. Sans ce
+champ, le lecteur historique reste inchangé. URL, empreinte et stabilité conservent
+leurs priorités. Nouvelle intention puis nouvelle capture : aucune migration
+implicite d'un ancien dossier ; voir [migration draft.28](migration-draft.28.md).
 
 Voir [migration depuis draft.2](migration-draft.3.md) et [parcours CLI](cli.md).
 `add-evidence` et `record` valident avant de remplacer le rapport, actualisent sa

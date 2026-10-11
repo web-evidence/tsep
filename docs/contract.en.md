@@ -196,7 +196,7 @@ sensitively in **extracted source text**, without regex:
   and `style` content, tags and attributes excluded. Never concatenate segments
   across a tag or comment to manufacture a marker.
 - `text/plain`: the entire decoded body, without interpreting apparent markup.
-- No whitespace or case normalization. Unresolved extraction or decoding cannot
+- Without a distinct profile, no whitespace or case normalization. Unresolved extraction or decoding cannot
   establish a conclusive marker-based verdict.
 
 Extraction does not affect the complete-body SHA-256. It does not measure
@@ -212,6 +212,15 @@ The owner remains responsible for reference and marker relevance. A timestamp
 change alone is not an SEO failure. NT for blocking TS01 still yields NO_GO.
 TS07-A01/A02/A03 and TS10-A01/A03/A04 are semiAuto; TS10-A02 is manual.
 See [draft.7 migration](migration-draft.7.md) for mandatory reassessment.
+
+Draft.28 adds optional prior `identity_reader: "html-tree-markers-v1"` only to the
+HTML marker branch. The [parsed-marker contract](source-markers.md) defines its two
+whole-document hypotheses, attributed segments, raw CRLF/CR preprocessing to LF
+and unsupported contexts/reported errors. Criteria remain literal; both pass gives
+pass, both fail gives fail, otherwise inconclusive. Absent this field preserves the
+historical reader. URL/hash/stability precedence remains. New intent followed by new
+capture is required, without implicit historical migration; see
+[draft.28 migration](migration-draft.28.md).
 
 See [migration from draft.2](migration-draft.3.md) and [CLI workflow](cli.md).
 `add-evidence` and `record` validate before replacing the report, refresh its

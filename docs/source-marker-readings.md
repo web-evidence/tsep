@@ -1,3 +1,5 @@
+Historical draft.27 precursor / Précurseur historique draft.27 : the separate [draft.28 policy](source-markers.md) now uses these readings under explicit prior selection. The experiment itself still emits no TS01 assessment. / Le profil normatif distinct utilise désormais ces lectures ; l’expérience seule ne produit toujours aucun verdict TS01.
+
 # Source-marker readings 1 / Lectures des marqueurs source 1
 
 ## Français

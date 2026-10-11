@@ -1,0 +1,9 @@
+{
+  "kind": "legacy-ts01-input-result-baseline",
+  "corpus_prefix_cases": 1181,
+  "selected_cases": 86,
+  "rule_target_pairs": 174,
+  "sha256": "62e6898c4f009cd772300347fd42afc340144b97c6e1ae8fbac8e282ae078d4d",
+  "node_env": null,
+  "scope": "Computed historical TS01 results before new normative implementation; no new expectations derived from the future reader."
+}

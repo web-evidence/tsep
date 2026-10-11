@@ -1,0 +1,123 @@
+{
+  "kind": "ts01-parsed-marker-policy-provenance",
+  "protocol_version": "0.1.0-draft.28",
+  "reader": "html-tree-markers-v1",
+  "policy_version": "1",
+  "recorded_at": "2026-10-11T12:53:36.369753+00:00",
+  "scope": "Normative opt-in changed-body marker branch; actual offline parser qualification over authored synthetic inputs. No live site, browser, human owner decision or independent code review.",
+  "sources": [
+    {
+      "url": "https://html.spec.whatwg.org/multipage/parsing.html#preprocessing-the-input-stream",
+      "observed_at": "2026-10-11T11:38:59.268Z",
+      "scope": "Static source marker hypothesis semantics; HTML preprocessing, noscript and parse5 source location API. No browser or real-site measurement.",
+      "capture": ".local/source-markers-2026-10-11/primary-sources.json",
+      "sha256": "4ea779b48bac869eb2756a081d132e637f224bb70faacce0d2f84f6737ad58f5",
+      "capture_kind": "Bounded web-tool extracted text, not complete original HTTP",
+      "delivery": "Local text extract retained, no runtime dependency"
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/scripting.html#the-noscript-element",
+      "observed_at": "2026-10-11T11:38:59.268Z",
+      "scope": "Static source marker hypothesis semantics; HTML preprocessing, noscript and parse5 source location API. No browser or real-site measurement.",
+      "capture": ".local/source-markers-2026-10-11/primary-sources.json",
+      "sha256": "4ea779b48bac869eb2756a081d132e637f224bb70faacce0d2f84f6737ad58f5",
+      "capture_kind": "Bounded web-tool extracted text, not complete original HTTP",
+      "delivery": "Local text extract retained, no runtime dependency"
+    },
+    {
+      "url": "https://parse5.js.org/interfaces/parse5.ParserOptions.html",
+      "observed_at": "2026-10-11T11:38:59.268Z",
+      "scope": "Static source marker hypothesis semantics; HTML preprocessing, noscript and parse5 source location API. No browser or real-site measurement.",
+      "capture": ".local/source-markers-2026-10-11/primary-sources.json",
+      "sha256": "4ea779b48bac869eb2756a081d132e637f224bb70faacce0d2f84f6737ad58f5",
+      "capture_kind": "Bounded web-tool extracted text, not complete original HTTP",
+      "delivery": "Local text extract retained, no runtime dependency"
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/parsing.html#numeric-character-reference-end-state",
+      "observed_at": "2026-10-11T11:56:18.784Z",
+      "scope": "HTML numeric CR character reference is retained with a parse error; source for explicit oracle correction, not an SEO outcome.",
+      "capture": ".local/source-markers-2026-10-11/numeric-cr-source.json",
+      "sha256": "6dba5334c539652475577c423b2c83afbadcc4d2a2957b2f9d2f52393e10a75b",
+      "capture_kind": "Bounded web-tool text extract, not raw HTTP",
+      "delivery": "Local text extract retained, no runtime dependency"
+    }
+  ],
+  "prior_experiment": {
+    "path": "provenance/source-markers-v1.json",
+    "sha256": "084bb2e6945fac6b65f6ac0bdb4e2ecab9f9e3178c0bcf557f74dd39f43df694"
+  },
+  "freeze": {
+    "path": ".local/ts01-parsed-markers-2026-10-11/freeze.json",
+    "sha256": "f960ba491f72c1f87010b5071a7b9b62cefc01d3bc2950b0643dfd93ff33b395"
+  },
+  "oracles": [
+    {
+      "path": "tests/fixtures/identity-markers-v1.json",
+      "sha256": "e8e1a444da99cf1d7a31b902d71c668e9d1ee618cc2d0e28ded3634b7c4d48c6"
+    },
+    {
+      "path": "tests/fixtures/identity-markers-bundles-v1.json",
+      "sha256": "6aec0197ef7986468eaff02706b5df618dddeace4b62a00b10617f2cc8a31588"
+    },
+    {
+      "path": "tests/fixtures/identity-markers-legacy.json",
+      "sha256": "cfaebbe848943d247d5ab8cb23b0953dc21322ed8643710eea5e333df13d446d"
+    }
+  ],
+  "legacy": {
+    "corpus_objects_preserved": 1181,
+    "selected_ts01_cases": 86,
+    "rule_target_results_preserved": 174,
+    "method": "Exact canonical input/result fingerprint frozen before normative integration; no opt-in for historical inputs."
+  },
+  "qualification": {
+    "path": ".local/ts01-parsed-markers-2026-10-11/qualification-r3/qualification.json",
+    "sha256": "bee79c74fd771589208f9e5d307aca7bd6b753bb87f63a5823ac3e4bb98623e4",
+    "matched": 76,
+    "total": 76,
+    "bundle_matches": 8,
+    "bundle_total": 8,
+    "exact_bundle_replays": 8,
+    "scope": "Authored inputs, actual offline parsing, native report/replay and FR/EN HTML generation. No network, browser rendering, visual QA, real owner intent or Edikka assessment."
+  },
+  "implementation": {
+    "conformance/source_markers.py": "f1e7b22f3e2d10df62835581f0b39c34b8e23c6221b7e485a9b83e10f92169c2",
+    "conformance/evaluate.py": "7060e73f5b0c7813c67c931f6b245041e239d4d0424d428bf7545763177860ba",
+    "experiments/source_markers.py": "1c683182a4a1fe3800d52c049dbeae5fe9ac77202fce15a205689b933c4ad3cb",
+    "scripts/identity_markers_check.py": "30decbe1fe5f31cfb45a73d123f4743aac7b465d5826c3359a609bc21f059d46"
+  },
+  "compact_projection": {
+    "context_fields": [
+      "name",
+      "namespace"
+    ],
+    "tables": "Local to each scripting hypothesis; first occurrence across admitted then excluded records. Not DOM identity or attribute comparison.",
+    "integrity": "Every assessment expands and compares every retained record, projection metadata/outcome and tree state/errors; discrepancy is inconclusive.",
+    "limit_bytes": 4194304,
+    "overflow": "Compact refusal only, never conclusive; original capture input retained separately.",
+    "runtime": "Recorded exact Node and V8 versions; executable not distributed or authenticated. Full tree reconstruction requires that environment and exact tools."
+  },
+  "consultation": {
+    "provider": "Claude",
+    "url": "https://claude.ai/chat/1c87d570-5d15-4448-8575-f5fff2bd61d3",
+    "observed_on": "2026-10-11",
+    "capture": {
+      "path": ".local/ts01-parsed-markers-2026-10-11/claude-review.txt",
+      "sha256": "788743719d0ad77d06b6d143cfd648baf0fa70064b1ce6c2cd550f1d62758f75"
+    },
+    "screenshot": {
+      "path": ".local/ts01-parsed-markers-2026-10-11/claude-review.jpg",
+      "sha256": "7a01b42be10ac175a09dcf4dfa7627819ea5603dcf1448744673aa4809192615"
+    },
+    "scope": "Authorized critique of a methodological summary only; no supplied code, repository inspection, human approval or endorsement.",
+    "action": "Added per-assessment expansion integrity check; clarified projected name/namespace context versus full tree attributes and exact runtime availability."
+  },
+  "delivery": "Local captures and qualification paths document retained evidence; they are not runtime dependencies or distributed private content. Oracles, tests and qualification command are included in the explicit archive.",
+  "pending": "Complete source/archive verification and independent archive qualification recorded outside this pre-verification provenance. New real-site intent/capture remains separate; historical Edikka reports unchanged.",
+  "bounds_order": "Profile selected after unchanged URL/hash/stability precedence; marker count/type/length bounds precede cross-product marker checks and parser invocation. Instrumented pre-fix failure retained locally, then regression tested.",
+  "retained_attempts": {
+    "path": ".local/ts01-parsed-markers-2026-10-11/attempts.json",
+    "scope": "Earlier HTML fixture-version failures, six historical-selector/current-version failures, intentional verifier interruption for early marker bound fix; not erased or treated as passing."
+  }
+}

@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '27'
+VERSION = '28'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -38,6 +38,8 @@ def source_files():
     modules['experiments/delivery_variants.py'] = importlib.import_module('experiments.delivery_variants')
     modules['conformance/release_invariants.py'] = importlib.import_module('conformance.release_invariants')
     modules['experiments/source_content.py'] = importlib.import_module('experiments.source_content')
+    modules['conformance/source_markers.py'] = importlib.import_module('conformance.source_markers')
+    modules['experiments/source_markers.py'] = importlib.import_module('experiments.source_markers')
     for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'conformance.source_canonical', 'experiments.source_head', 'experiments.source_http', 'experiments.source_tree'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     result = loaded_sources(ROOT, modules)
@@ -58,6 +60,8 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented', 'fr':'TS01-A02 : identity_reader html-tree-markers-v1 préalable, segments parsés attribués et deux hypothèses globales. CRLF/CR bruts deviennent LF ; critères littéraux inchangés. Ni visibilité ni navigateur observés. Ancien lecteur et priorités URL/empreinte/stabilité conservés ; Node 24 requis pour cette seule branche, sans repli.',
+     'en':'TS01-A02: prior html-tree-markers-v1 identity_reader, attributed parsed segments and two whole-document hypotheses. Raw CRLF/CR become LF; literal criteria unchanged. No visibility or browser observation. Historical reader and URL/hash/stability precedence retained; Node 24 required for this branch, without fallback.'},
     {'state':'implemented','fr':'TS39 : matrice/configuration revues, signaux natifs TS07/TS10 et revues sémantiques, contextes et cache liés aux preuves fournies. Aucune région, visite Googlebot ou production authentifiée.',
      'en':'TS39: reviewed matrix/configuration, native TS07/TS10 signals and semantic reviews, context/cache tied to supplied evidence. No authenticated geography, Googlebot visit or production.'},
     {'state':'implemented', 'fr':'TS41 : plan préalable, sorties natives recalculées, journal et réaction aux échecs/inconnues. C qualifie le dispositif déclaré ; les défauts SEO restent visibles. Aucune commande fournie exécutée ni CI distante authentifiée.',
@@ -103,8 +107,8 @@ COVERAGE_INVENTORY = [
      'en': 'Markers: explicit UTF-8 and bounded HTML only. Non-UTF-8 bytes retained and hashes comparable, without implicit text extraction.'},
     {'state': 'implemented', 'fr': 'TS01 : select/option/optgroup et tableaux explicitement structurés ; aucune fermeture implicite ni réparation.',
      'en': 'TS01: explicitly structured select/option/optgroup and tables; no implied closure or repair.'},
-    {'state': 'deferred', 'fr': 'TS01 : noscript/template/textarea non vides, texte SVG, MathML, select/table hors sous-ensemble, script échappé et HTML ambigu : extraction entière indéterminée.',
-     'en': 'TS01: nonempty noscript/template/textarea, SVG text, MathML, unsupported select/table, escaped script and ambiguous HTML: whole extraction inconclusive.'},
+    {'state': 'deferred', 'fr': 'TS01 sans identity_reader : noscript/template/textarea non vides, texte SVG, MathML, select/table hors sous-ensemble, script échappé et HTML ambigu : extraction entière indéterminée. Le profil parsé distinct garde les erreurs rapportées, texte étranger non blanc, frames et intervalles non attribuables indéterminés.',
+     'en': 'TS01 without identity_reader: nonempty noscript/template/textarea, SVG text, MathML, unsupported select/table, escaped script and ambiguous HTML: whole extraction inconclusive. The distinct parsed profile keeps reported errors, nonblank foreign text, frames and unattributable spans inconclusive.'},
     {'state': 'out-of-scope', 'fr': 'Cet adaptateur ne collecte pas, ne rend pas JavaScript et ne produit aucune revue humaine manquante.',
      'en': 'This adapter does not collect, render JavaScript or supply missing human reviews.'},
     {'state': 'out-of-scope', 'fr': 'Pas de preuve de Googlebot réel, indexation, classement ou conformité globale.',
