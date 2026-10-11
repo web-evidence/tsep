@@ -1,0 +1,75 @@
+{
+  "recorded_at": "2026-10-11T01:15:25.879470+00:00",
+  "kind": "Observed runtime-dependent authored corpus coverage; no site assessment",
+  "synthetic": true,
+  "source_commit": "8401f0ae4fb0794304212c0b654e2da4415ce823",
+  "protocol": "0.1.0-draft.20",
+  "interpreter": "20",
+  "adapter": "21",
+  "replay": "3",
+  "python": "3.9.6",
+  "node": "v24.19.0",
+  "source_archive_sha256": "76cb814f796838c55210a2cca27a6af9a248e82813938ef078ba1dca74ee56d3",
+  "fingerprints": {
+    "spec/protocol.json": "f7b43d1be186410cd769c54e8fb345f3f58b3413798c9d41909d787332b8690d",
+    "conformance/cases.json": "01f3420f705a0ddddaf641c4b4cbca11e5a58a3dd1e3325404bc4cc26d89e543",
+    "conformance/evaluate.py": "25f7cc720b60692231b0b7f50e13c6e1264a732cf7e9ac70ea561ed7b57c1808",
+    "conformance/run.py": "dd303b76b71a3a74db2ac360ee2f7258a1aab86520eb31949d3c776095aa04c6",
+    "conformance/preview_intent.py": "748b6f27f3f75b37a78ac131f3d813dba57f3f5d5a181c4c42e048a9afa91d33"
+  },
+  "cases": 775,
+  "rule_target_pairs": 1144,
+  "configurations": [
+    {
+      "name": "core",
+      "file": "core.json",
+      "sha256": "f925f568cc3af805c889dbea1579aa0bb972b6fb5b80b1c47a789c8e3b8f08df",
+      "exit_code": 0,
+      "origin": "Retained stdout from draft.20 verify-r2 raw-input conformance step",
+      "agreements": 1033,
+      "reduced_pairs": 111,
+      "conclusive_expected": 711,
+      "conclusive_agreements": 600
+    },
+    {
+      "name": "node24",
+      "file": "node24.json",
+      "sha256": "90d4bdaba2db39c2f7922d3b8ef835d853270b5247d8a74a0fba520dab74737f",
+      "exit_code": 0,
+      "origin": "New full corpus run with explicit Node 24.19.0",
+      "agreements": 1136,
+      "reduced_pairs": 8,
+      "conclusive_expected": 711,
+      "conclusive_agreements": 703
+    }
+  ],
+  "normative_inconclusive_pairs": 433,
+  "paired_transition_audit": {
+    "pairs": 1144,
+    "unchanged": 1041,
+    "inconclusive_to_expected": 103,
+    "conclusive_to_other_conclusive": 0,
+    "method": "Each non-reduced pair equals its expected outcome under conformance.run; substitute retained reduced outcomes and compare all keys"
+  },
+  "remaining_case_ids": [
+    "unsupported-robots-wildcard",
+    "unsupported-presentation-objective",
+    "render-unknown-directive",
+    "canonical-base-needs-browser",
+    "canonical-typed-canonical-needs-review",
+    "canonical-ambiguous-link-parameter",
+    "canonical-link-anchor-unsupported",
+    "canonical-sitemap-dtd-unsupported"
+  ],
+  "commands": {
+    "core": "env -u TSEP_SOURCE_NODE python3 -B conformance/run.py",
+    "node24": "TSEP_SOURCE_NODE=/path/to/node24 python3 -B conformance/run.py"
+  },
+  "limitations": [
+    "Retained core run and new optional-runtime run use the same unchanged protocol, corpus and executable code; only nonnormative documentation differs",
+    "The eight reduced legacy pairs are not a count of all outstanding method boundaries",
+    "Unknown expected outcomes count as agreements; the 711 conclusive expectations are the denominator for conclusive coverage",
+    "No historical input migrated to an optional reader",
+    "No browser qualification, human review, Google account observation or site conformity inferred"
+  ]
+}

@@ -2,13 +2,19 @@ Current integration: draft.20, interpreter 20 / adapter 21 / replay 3.
 Prior [preview intent](preview-intent.md) extends TS07-A01/A03 with permission intervals and retained unknowns.
 FR : intentions de présentation préalables ; aucun affichage ou résultat Google déduit. [Migration](migration-draft.20.md).
 
+Versions distinguish the normative protocol, interpreter, capture adapter and replay tool.
+See the [current readiness table](control-implementation-status.md); historical package
+versions are retained and are not silently upgraded.
+FR : une édition locale ne prouve pas une publication ; les numéros des outils
+évoluent séparément et les anciens dossiers se rejouent avec leurs outils exacts.
+
 Earlier milestones / Jalons antérieurs :
-Current integration: draft.19, interpreter 19 / adapter 20 / replay 3.
+Historical integration: draft.19, interpreter 19 / adapter 20 / replay 3.
 Prior [HTTP canonical context](http-canonical-context.md) extends TS10-A01/A02 with retained raw parameters and context exclusions; [migration](migration-draft.19.md).
 FR : premier rel et contexte anchor explicites ; aucun ancien profil migré et aucune revue déduite.
 
 Earlier runtime measurement (draft.18) / Mesure antérieure selon le runtime :
-Current integration: draft.18, interpreter 18 / adapter 19 / replay 3.
+Historical integration: draft.18, interpreter 18 / adapter 19 / replay 3.
 The [runtime coverage observation](conformance.md#current-runtime-coverage--couverture-selon-le-runtime--2026-10-11)
 distinguishes 109 reduced-coverage pairs without the optional source runtime from
 eight with explicit Node 24.19.0, over the same 640 authored cases. A successful
@@ -20,7 +26,7 @@ Le laboratoire de corrections partielles garde une famille fixe et une revue fin
 Replay 3 adds an explicit [Python supervisor comparison](replay-comparison.md), with exact comparison still the default.
 Rejeu 3 : les versions Python restent visibles ; seules leurs différences précisément liées peuvent être admises sur option.
 Prior [source links v2](source-link-policy-v2.md) retain uncertainty under an unparseable first base; v1 stays unchanged.
-Intégration actuelle : liens dépendants indéterminés, contradictions indépendantes conservées ; [migration](migration-draft.18.md).
+Intégration historique : liens dépendants indéterminés, contradictions indépendantes conservées ; [migration](migration-draft.18.md).
 The milestones below describe their historical versions / Les jalons ci-dessous gardent leur version historique.
 
 The [invalid-base diagnostic](base-uri-diagnostic.md) reproduces the discrepancy in top-level and iframe contexts.
@@ -29,7 +35,7 @@ Diagnostic d’isolement : 12/24 attentes navigateur, 48/48 calculs URL/base exp
 Experimental [rendered-link observer 1](rendered-link-observation.md) retains href properties and effective bases.
 Qualification navigateur : 25/26 attentes, divergence de base invalide conservée ; draft.17 inchangé.
 
-Current integration: draft.17, interpreter 17 / adapter 18 / replay 2.
+Historical integration: draft.17, interpreter 17 / adapter 18 / replay 2.
 Optional prior [A04 source links](source-link-policy.md); [migration](migration-draft.17.md).
 Convergence de famille déclarée, comptes et inconnues explicites ; lecteurs rendus inchangés.
 The milestones below are historical / Les jalons suivants sont historiques.
@@ -40,23 +46,23 @@ Observation des types de liens et templates, sans promotion normative.
 Optional [source link resolution experiment 1](source-links-experiment.md) prepares A04: explicit Node24 URL parsing, static base hypotheses and attributed anchors; no normative change.
 Expérience de liens source disponible, sans changement de verdict draft.16.
 
-Current integration: draft.16, interpreter 16 / adapter 17 / replay 2.
+Historical integration: draft.16, interpreter 16 / adapter 17 / replay 2.
 Optional prior [canonical source profile](source-canonical.md) extends TS10-A01/A02;
 [explicit migration](migration-draft.16.md), unchanged A04 and DOM readers.
-Intégration actuelle : canonical source qualifiée, preuves et revues toujours exigées.
+Intégration historique : canonical source qualifiée, preuves et revues toujours exigées.
 The milestones below are historical / Les jalons suivants sont historiques.
 
 Optional [source/head observation 1](source-head-observation.md) now qualifies canonical placement and source-token context, without changing draft.15 outcomes.
 Observation facultative de position canonical et de contexte source ; aucune promotion normative implicite.
 
-Current integration: draft.15, interpreter 15 / adapter 16 / replay 2.
+Historical integration: draft.15, interpreter 15 / adapter 16 / replay 2.
 Optional prior [source directives](source-directives.md) now extends TS07-A01
 and the A03 source prerequisite; Node 24 qualification remains explicit and optional.
-Intégration actuelle : directives source TS07, deux hypothèses et preuves attribuées ;
+Intégration historique : directives source TS07, deux hypothèses et preuves attribuées ;
 [contrat et limites](source-directives.md), [migration](migration-draft.15.md).
 The named milestones below are historical / Les jalons ci-dessous sont historiques.
 
-Current integration: draft.14, interpreter 14 / adapter 15 / sitemap reader 1.
+Historical integration: draft.14, interpreter 14 / adapter 15 / sitemap reader 1.
 Optional [static source-tree experiment 1](source-tree-experiment.md) now prepares
 TS07/TS10 source coverage with a pinned parser and separate Node qualification.
 It has no normative effect and adds no Node requirement to the core verifier.
@@ -70,7 +76,7 @@ changes; this reader remains separate from the normative pipeline.
 Inventaire HTTP facultatif : octets, décodage, templates et mode conservés.
 Optional prior sitemap-locations-v1 separates page loc from known unassessed
 annotations. Legacy cases and missing reviews remain unchanged.
-Intégration actuelle : draft.14, URL de pages distinctes des annotations ;
+Intégration historique : draft.14, URL de pages distinctes des annotations ;
 [méthode](sitemap-locations.md) et [migration](migration-draft.14.md).
 The named milestones below are historical / Les jalons ci-dessous sont historiques.
 
@@ -92,20 +98,20 @@ inspection responses to replayed technical evidence; no account access or TS08/T
 Prior TS02 [owner-plan workflow 1](redirect-plan-workflow.md) prepares blank decisions
 and binds supplied reviews to later captures, without collecting or inventing approval.
 Parcours préalable TS02 disponible ; décision humaine et collecte réelle restent à établir.
-Outils actuels : [attributs de canonical et parcours de correction](canonical-attribute-coverage.md) ; recette humaine et application réelle restent distinctes.
+Outils de ce jalon : [attributs de canonical et parcours de correction](canonical-attribute-coverage.md) ; recette humaine et application réelle restent distinctes.
 
-Current integration: draft.11 separates the actual HTTP client from TS07 directive semantics,
+Historical integration: draft.11 separates the actual HTTP client from TS07 directive semantics,
 with a [same-navigation laboratory](same-navigation-laboratory.md) and [migration](migration-draft.11.md).
-Intégration actuelle : draft.11 ; laboratoire synthétique, sans recette humaine ni conformité Edikka.
+Intégration historique : draft.11 ; laboratoire synthétique, sans recette humaine ni conformité Edikka.
 Earlier integration descriptions below retain their historical scope.
 
-Current integration: draft.10 adds the predeclared [structured rendered reader](structured-rendering.md) for TS07/TS10.
-Intégration actuelle : draft.10, lecture structurée du rendu ; collecte réelle et recette humaine restent distinctes.
+Historical integration: draft.10 adds the predeclared [structured rendered reader](structured-rendering.md) for TS07/TS10.
+Intégration historique : draft.10, lecture structurée du rendu ; collecte réelle et recette humaine restent distinctes.
 The historical draft.9 integration and earlier milestones below retain their named scope.
 
-Current integration: draft.9 adds TS04-A01/A02 and the shared TS07 robots reader,
+Historical integration: draft.9 adds TS04-A01/A02 and the shared TS07 robots reader,
 with prior profiles, resource review workflow and [explicit migration](migration-draft.9.md).
-Intégration actuelle : draft.9 ajoute TS04 et le lecteur partagé TS07, sans finaliser
+Intégration historique : draft.9 ajoute TS04 et le lecteur partagé TS07, sans finaliser
 les limites rendues ni transformer les essais synthétiques en audit Edikka.
 Earlier milestone descriptions below retain their historical scope.
 

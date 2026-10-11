@@ -1,70 +1,109 @@
-Current edition / Édition courante : draft.20. [Preview intent / Présentation](preview-intent.md) extends TS07-A01/A03; no complete control or real-site qualification inferred.
-Les états nommés ci-dessous conservent leur version historique.
-
-Current extension / Extension actuelle — draft.19 : [HTTP canonical context](http-canonical-context.md),
-TS10-A01/A02, 61 cas synthétiques supplémentaires. Le lecteur historique et ses résultats restent inchangés ;
-la couverture de contrôles, les preuves réelles et les revues manquantes ne sont pas clôturées.
-Historical runtime counts below describe draft.18 / Les comptes ci-dessous décrivent draft.18.
-
-[Source links v2 / Liens source v2](source-link-policy-v2.md) : première base non analysable explicitement incertaine ; v1 et preuves historiques conservés.
-
 # Control implementation status / État de développement des contrôles
 
 ## Current snapshot / État actuel — 2026-10-11
 
-Reference / Référence : `0.1.0-draft.18`. Optional prior source profiles now cover
-TS07 directives and TS10 canonical declarations/family links, with attributed
-static hypotheses and explicit unknowns. Rendered readers and required reviews
-remain separate. [Migration](migration-draft.18.md).
-Les profils source n'inventent ni rendu, ni décision propriétaire, ni revue.
-
-Earlier draft.14: TS10-A03 adds a prior bounded sitemap
-reader; language/image annotations remain unassessed. [Migration](migration-draft.14.md).
-TS10-A03 distingue les loc des annotations ; les autres limites et revues restent.
-Earlier draft.13: TS04 and TS07 accept the optional prior
-Google fields profile; client scope and human reviews remain required.
-[Migration](migration-draft.13.md). Les champs connus hors portée accès sont
-conservés sans verdict TS42 ; les inconnus restent indéterminés.
-Le point d'implémentation draft.12 était `ab42410` ; le précédent était
-`e4ffe1a7859be59d2d3d1edaf670a1a85d2e2840` sous draft.11.
+La version locale est **0.1.0-draft.20**. Les versions des outils sont distinctes :
+interpréteur **20**, adaptateur de captures **21**, rejeu **3**. Ces numéros ne
+prouvent ni une publication distante ni une version stable 1.0. Chaque dossier
+historique reste lié à sa version et à ses empreintes ; il n'est jamais remplacé.
 
 Le programme actif porte sur **quatre contrôles approfondis : TS04, TS02, TS07,
 TS10**, avec TS01 comme socle. Il remplace la cible antérieure de dix contrôles.
-La source décrit toujours 44 contrôles. **Cinq** disposent de règles atomiques
+La source décrit **44 contrôles**. **Cinq** disposent de règles atomiques
 exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS10 (4), soit **13 règles**.
 Les quatre priorités en représentent 11. Les 39 autres contrôles sont décrits,
 sans le même niveau de règles et d'outillage exécutables.
 
-| Contrôle | Méthode disponible | Ce qui reste à établir sur Edikka |
+| Contrôle | Méthode exécutable disponible | Application réelle encore incomplète |
 | --- | --- | --- |
-| TS01, socle | HTTP final, identité selon critères déclarés, rejeu | La réévaluation des trois captures conservées reste NT : limite `noscript` non vide sur une cible. Ce n'est pas un défaut SEO démontré. |
-| TS02 | Plan préalable, import d'une décision fournie, liaison aux captures ultérieures, comparaison des chaînes | Décision réelle du responsable sur le plan, collecte ultérieure et résultats dans son périmètre |
-| TS04 | Profils robots explicites, matrice par origine, ressources requises, fiches de revue et rejeu | Seize ressources autorisées selon la matrice opérateur capturée ; revues motivées manquantes, TS04 non établi |
-| TS07 | Directives HTTP/source/rendu ; source préalable html-tree-directives-v1 et rendu distinct ; client réel séparé du robot déclaré | Trois sources examinées sous le profil ; états et autres preuves/revues nécessaires non déduits, TS07 non établi |
-| TS10 | Source canonical A01/A02, sitemap A03, liens source A04 et ancien rendu structuré ; familles, revues et rejeu | Campagnes distinctes : sources canonical, sitemaps et liens ; qualification des familles opérateur, états rendus et revues de contenu encore nécessaires |
+| TS01, socle | HTTP final, identité selon critères préalables, rapport et rejeu | Les captures Edikka conservées restent NT, notamment à cause de noscript non vide. La proposition lexicale n'est pas qualifiée comme deux lectures navigateur. Ce refus ne démontre pas un défaut SEO. |
+| TS02 | Plan préalable, import d'une décision fournie, liaison aux captures, comparaison des chaînes | Décision réelle du responsable, collecte ultérieure et résultats dans le périmètre décidé |
+| TS04 | Lecteur robots partagé, profils explicites, matrice par origine, ressources requises, parcours de revue et rejeu | Seize chemins autorisés selon la matrice opérateur capturée ; revues motivées manquantes, contrôle entier non établi |
+| TS07 | Directives HTTP/source/rendu, hypothèses source distinctes, objectifs de permissions texte/image/vidéo préalables | Trois sources examinées ne remplacent pas les états rendus attribués et revues exigés ; aucune observation Google déduite |
+| TS10 | Canonical HTTP avec contexte, source, rendu, sitemaps et liens ; familles déclarées et rejeu | Les populations des campagnes sont distinctes ; qualification des familles, états rendus et revues de contenu encore nécessaires |
 
-Le [rapprochement Search Console](search-console-observations.md) est disponible
-comme diagnostic hors ligne. Ses essais sont synthétiques ; ils ne constituent
-ni un accès au compte, ni une application achevée de TS08/TS12. Les laboratoires
-et les tests logiciels ne prouvent aucune recette utilisateur ou revue humaine.
-Avec Node 24.19.0 explicitement fourni, huit couples de couverture réduite du
-corpus restent ouverts. Sans le runtime source optionnel, ils sont 109 : la
-différence de 101 couples porte sur des profils déjà déclarés dans les entrées.
-Voir la [mesure selon le runtime](conformance.md#current-runtime-coverage--couverture-selon-le-runtime--2026-10-11).
-Voir le [programme](four-control-program.md) et le [parcours de preuves](evidence-gallery.md).
+Les extensions récentes sont [les liens source v2](source-link-policy-v2.md),
+[le contexte HTTP canonical](http-canonical-context.md) et
+[les intentions de présentation](preview-intent.md). Leurs migrations sont
+explicites ; un ancien dossier ne sélectionne pas automatiquement un nouveau lecteur.
 
-EN: the active scope is four deeply developed controls, TS04/TS02/TS07/TS10, with
-TS01 as a foundation. Draft.18 describes 44 controls; five have 13 executable
-atomic rules (11 in the four priorities), while 39 remain without equivalent
-detailed executable coverage. Methods, synthetic laboratories, real assessment
-and human acceptance are separate milestones. Supplied Search Console comparison
-is an offline diagnostic, not a real account observation or a TS08/TS12 verdict.
-Missing reviews and real inputs remain open. The corpus has eight reduced-coverage
-pairs with explicit Node 24.19.0, or 109 without the optional source runtime; the
-101-pair difference does not change any input or expectation. See the
-[runtime observation](conformance.md#current-runtime-coverage--couverture-selon-le-runtime--2026-10-11).
-The following draft.7 inventory and dated development notes are historical;
-their old counts and next steps must not be read as the current state.
+### Critères d'achèvement encore ouverts
+
+Les contrats bilingues, cas contradictoires, outils d'import, rapports et rejeux
+existent. Leur vérification logicielle ne suffit pas à déclarer les quatre
+méthodes entièrement qualifiées dans un usage réel. La suite doit établir une
+voie de preuve praticable pour chaque type d'entrée requis, avec les inconnues
+expliquées. Obtenir C n'est pas une condition : un NC ou NT justifié est utile.
+
+| Besoin | Preuve qui permettrait de le clôturer | Situation actuelle |
+| --- | --- | --- |
+| Décision TS02 | Plan daté du responsable et revue liée, puis captures postérieures | Parcours disponible ; décision réelle non fournie |
+| Accès et ressources TS04/TS07 | Revue motivée des ressources/captures dans le client et le périmètre déclarés | Fiches préparées ; réponses humaines non inventées |
+| Rendu TS07/TS10 | Plan préalable, captures des états nécessaires, HTTP et DOM liés à la même navigation, contexte et erreurs conservés | Outils et anciens exemples existent ; nouvelle campagne de douze phases bloquée dès le premier contrôle, zéro capture HTTP/DOM de contrôle |
+| Équivalence TS10 | Revue de contenu motivée, liée aux membres et aux preuves examinées | Parcours disponible ; revue humaine réelle absente |
+| Ébauche Search Console | Diagnostic hors ligne et exercices rejouables ; observation réelle séparée si fournie | Ébauche implémentée ; aucun export réel du compte Edikka fourni |
+| Insight | Texte FR/EN, preuves, liens et parcours d'intégration vérifiés ; recette de la page séparée | Préparation livrée ; intégration CMS, recette visuelle et publication non réalisées |
+
+Le blocage navigateur `ERR_BLOCKED_BY_CLIENT` est conservé. Il n'est pas contourné
+par un changement d'origine, de navigateur ou des protections. Les lectures locales
+et cas rédigés ne remplacent pas la campagne manquante. Les contextes temporels et
+indexifembedded de TS07 restent une extension à qualifier ; ils ne sont pas
+présentés comme le préalable qui manque à toutes les pages.
+
+### Ce que mesurent les tests
+
+Sur **775 cas synthétiques / 1 144 couples règle-cible**, le relevé draft.20 trouve
+1 033 accords et 111 couvertures réduites sans Node optionnel ; avec Node 24.19.0
+explicitement fourni, 1 136 accords et huit couvertures réduites. Aucun désaccord
+interdit dans ces exécutions. Les accords comprennent **433 attendus indéterminés**.
+Les huit cas restants suivent leurs anciens profils : ce nombre ne recense pas
+toutes les limites des méthodes et ne doit pas devenir un objectif de « zéro NT ».
+Voir les [résultats, empreintes et limites](conformance.md#draft20-runtime-coverage).
+
+Les 628 tests de vérification exécutés dans la source puis dans l'archive du lot
+preview-intent vérifient des propriétés logicielles. Ils ne prouvent ni 628 audits,
+ni cinq contrôles terminés, ni une revue humaine ou une exécution CI distante.
+
+## English — current state
+
+The local edition is **0.1.0-draft.20**, with interpreter **20**, capture adapter
+**21** and replay **3**. These version numbers do not establish a public release
+or stable 1.0. Historical packages keep their exact tools and fingerprints.
+
+The active human priority is four deeply developed controls, TS04/TS02/TS07/TS10,
+with TS01 as the foundation, superseding the older ten-control target. Forty-four
+controls are specified; five have 13 executable atomic rules, including 11 for
+the four priorities. The other 39 do not have equivalent executable coverage.
+
+Available methods include prior redirect decisions, shared robots policies,
+attributed source/rendered directives, preview permission objectives, canonical
+HTTP context, sitemaps and family links. Imports, reports, contradictory cases
+and offline replay exist. Real method qualification still needs a practical route
+for every required evidence type; a justified NC or NT is valid, with no obligation
+to obtain C. Owner decisions, required human reviews and complete attributed rendered
+paths are not supplied by authored tests. TS01's noscript proposal remains unpromoted.
+
+The twelve-phase browser campaign was blocked at its first control and obtained
+zero control HTTP/DOM captures. Keep the failed attempt and do not bypass the
+browser restriction. TS07's time/embedding semantics remain an extension to qualify,
+not the universal missing prerequisite for ordinary pages. Separate A01 declared
+permissions from A02 access and actual Google observations.
+
+The Search Console draft is an implemented offline diagnostic with synthetic
+exercises, not real Edikka account data or a TS08/TS12 assessment. The bilingual
+insight handoff is prepared; CMS integration, visual acceptance and publication
+remain separate and unperformed.
+
+The current 775-case / 1,144-pair corpus gives 1,033 agreements and 111 reduced pairs
+without optional Node, or 1,136 agreements and eight reduced pairs with explicit
+Node 24.19.0, with no disallowed disagreement. Agreements include 433 normative
+inconclusive expectations. The eight legacy-profile limits are not a complete
+inventory of method boundaries. The preview-intent source/archive verification
+ran 628 software tests in each location, not 628 audits or human acceptance.
+See the [dated measurements](conformance.md#draft20-runtime-coverage).
+
+The inventory and dated development notes below are historical. Their old counts,
+priorities and next steps must not be read as the current state.
 
 ## Français
 

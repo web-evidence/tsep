@@ -1,4 +1,5 @@
 Current local edition / Édition locale courante : **0.1.0-draft.20**, optional [preview permission intent](docs/preview-intent.md), [migration](docs/migration-draft.20.md). No actual Google display or completed control inferred.
+[Current versions and remaining evidence / Versions et preuves manquantes](docs/control-implementation-status.md).
 
 # TSEP — evidence interchange format
 

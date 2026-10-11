@@ -465,6 +465,9 @@
     "third_party/source-tree/parse5-8.0.1.tgz",
     "tsep.py",
     "upstream/grid-v1.1.en.json",
-    "upstream/grid-v1.1.fr.json"
+    "upstream/grid-v1.1.fr.json",
+    "provenance/runtime-coverage-draft20-2026-10-11/core.json",
+    "provenance/runtime-coverage-draft20-2026-10-11/node24.json",
+    "provenance/runtime-coverage-draft20-2026-10-11/observation.json"
   ]
 }

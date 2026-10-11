@@ -1,4 +1,49 @@
-Current draft.19 adds optional prior [http-link-context-v1](http-canonical-context.md) for TS10-A01/A02.
+# Executable conformance / Conformance exécutable
+
+<a id="draft20-runtime-coverage"></a>
+
+## Current draft.20 runtime coverage / Couverture courante — 2026-10-11
+
+Protocol **0.1.0-draft.20**, interpreter **20**: **775 authored synthetic cases**,
+**1,144 rule/target pairs**. The core result is retained from the successful
+preview-intent verification; the optional-runtime result is a new full-corpus run
+on the same unchanged executable sources, inputs and expectations. Exact outputs,
+source hashes and their different acquisition origins are preserved in the
+[observation record](../provenance/runtime-coverage-draft20-2026-10-11/observation.json).
+
+| Configuration | Exact agreements / Accords | Reduced pairs / Réduits | Conclusive expectations resolved / Attendus conclusifs résolus | Disagreements / Désaccords |
+| --- | ---: | ---: | ---: | ---: |
+| Without optional Node / sans Node optionnel | 1,033 | 111 | 600 / 711 | 0 |
+| Explicit Node 24.19.0 / explicite | 1,136 | 8 | 703 / 711 | 0 |
+
+FR : **433 attendus indéterminés** font partie des accords. Le runtime optionnel
+résout 103 couples dont les profils sont déjà fixés dans les entrées ; 1 041
+résultats restent identiques et aucune conclusion ne devient une autre conclusion.
+Les huit couvertures réduites suivent des lecteurs historiques non migrés. Leur
+maintien n'annule pas les nouveaux profils et leur suppression n'est pas un
+critère d'achèvement. TS01 noscript et les preuves réelles manquantes restent
+hors de ce simple décompte. Aucune note SEO, validation Google ou revue humaine.
+
+EN: agreements include **433 normatively inconclusive expectations**. Explicit
+Node resolves 103 pairs under their already-selected profiles; 1,041 outcomes
+are unchanged and no conclusive outcome changes to another conclusion. The eight
+remaining legacy-reader limits are retained without silent migration. They are
+not an exhaustive inventory of method limitations; eliminating them is not a
+completion criterion. See [current readiness](control-implementation-status.md).
+
+Reproduce the current corpus / Rejouer le corpus courant :
+
+```sh
+env -u TSEP_SOURCE_NODE python3 -B conformance/run.py
+TSEP_SOURCE_NODE=/path/to/node24 python3 -B conformance/run.py
+```
+
+The draft.18 observation below is historical; rerunning these commands on current
+sources produces the current edition, not its old numbers. Use the archived tools
+for a historical reproduction. / Les chiffres draft.18 ne sont pas ceux du code
+courant ; utiliser les outils archivés pour reproduire cette mesure historique.
+
+Earlier draft.19 added optional prior [http-link-context-v1](http-canonical-context.md) for TS10-A01/A02.
 Sixty-one additional authored cases retain all 640 historical inputs/outcomes; [migration](migration-draft.19.md).
 FR : 61 nouveaux cas synthétiques, anciens lecteurs et leurs limites conservés ; aucune note SEO.
 
@@ -68,15 +113,15 @@ FR : lecteur sitemap préalable, annotations séparées, profils historiques con
 [Method / Méthode](sitemap-locations.md), [migration](migration-draft.14.md).
 
 Earlier tool coverage: interpreter 12, 409 raw cases (383 retained + 26 TS04 client/product cases). Protocol draft.12.
-Couverture actuelle : portée du client TS04 explicite, 26 nouveaux cas synthétiques,
+Couverture de ce jalon : portée du client TS04 explicite, 26 nouveaux cas synthétiques,
 aucune revue humaine ou visite de moteur déduite. [Migration](migration-draft.12.md).
 Earlier named milestones below retain their historical scope.
-Couverture actuelle : [attributs de canonical](canonical-attribute-coverage.md), lecteur historique conservé, migration explicite.
+Couverture de ce jalon : [attributs de canonical](canonical-attribute-coverage.md), lecteur historique conservé, migration explicite.
 
-Current: draft.11, interpreter 10, 353 raw cases (338 retained + 15 transport/directive cases).
+Historical: draft.11, interpreter 10, 353 raw cases (338 retained + 15 transport/directive cases).
 Actuel : draft.11 ; [navigation attribuée](same-navigation-laboratory.md), sémantique sur représentation cliente et [migration](migration-draft.11.md). Earlier named milestones below remain historical.
 
-Current: draft.10, interpreter 9, 338 raw cases (299 retained + 39 structured rendered cases).
+Historical: draft.10, interpreter 9, 338 raw cases (299 retained + 39 structured rendered cases).
 Actuel : draft.10 ; [lecture structurée](structured-rendering.md), bornes, provenance et [migration](migration-draft.10.md). Earlier named milestones below remain historical.
 
 # Executable conformance / Conformance exécutable

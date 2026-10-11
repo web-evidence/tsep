@@ -1,0 +1,249 @@
+{
+  "success": true,
+  "protocol_version": "0.1.0-draft.20",
+  "synthetic": true,
+  "cases": 775,
+  "rule_target_pairs": 1144,
+  "rules": [
+    "TS01-A01",
+    "TS01-A02",
+    "TS02-A01",
+    "TS02-A02",
+    "TS04-A01",
+    "TS04-A02",
+    "TS07-A01",
+    "TS07-A02",
+    "TS07-A03",
+    "TS10-A01",
+    "TS10-A02",
+    "TS10-A03",
+    "TS10-A04"
+  ],
+  "available_rules": [
+    "TS01-A01",
+    "TS01-A02",
+    "TS02-A01",
+    "TS02-A02",
+    "TS04-A01",
+    "TS04-A02",
+    "TS07-A01",
+    "TS07-A02",
+    "TS07-A03",
+    "TS10-A01",
+    "TS10-A02",
+    "TS10-A03",
+    "TS10-A04"
+  ],
+  "omitted_rules": [],
+  "total_cases": 775,
+  "skipped_cases": 0,
+  "total_rule_target_pairs": 1144,
+  "omitted_rule_target_pairs": 0,
+  "claim": "passes TSEP 0.1.0-draft.20 conformance for TS01-A01, TS01-A02, TS02-A01, TS02-A02, TS04-A01, TS04-A02, TS07-A01, TS07-A02, TS07-A03, TS10-A01, TS10-A02, TS10-A03, TS10-A04",
+  "agreements": 1136,
+  "disagreements": 0,
+  "coverage": {
+    "conclusive_expected": 711,
+    "conclusive_agreements": 703,
+    "percent": 98.87,
+    "reduced_pairs": 8,
+    "by_rule": {
+      "TS01-A01": {
+        "agreements": 87,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 79,
+        "conclusive_agreements": 79,
+        "percent": 100.0
+      },
+      "TS01-A02": {
+        "agreements": 87,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 61,
+        "conclusive_agreements": 61,
+        "percent": 100.0
+      },
+      "TS02-A01": {
+        "agreements": 38,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 27,
+        "conclusive_agreements": 27,
+        "percent": 100.0
+      },
+      "TS02-A02": {
+        "agreements": 38,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 23,
+        "conclusive_agreements": 23,
+        "percent": 100.0
+      },
+      "TS04-A01": {
+        "agreements": 80,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 49,
+        "conclusive_agreements": 49,
+        "percent": 100.0
+      },
+      "TS04-A02": {
+        "agreements": 80,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 36,
+        "conclusive_agreements": 36,
+        "percent": 100.0
+      },
+      "TS07-A01": {
+        "agreements": 165,
+        "disagreements": 0,
+        "reduced_coverage": 1,
+        "conclusive_expected": 108,
+        "conclusive_agreements": 107,
+        "percent": 99.07
+      },
+      "TS07-A02": {
+        "agreements": 71,
+        "disagreements": 0,
+        "reduced_coverage": 1,
+        "conclusive_expected": 49,
+        "conclusive_agreements": 48,
+        "percent": 97.96
+      },
+      "TS07-A03": {
+        "agreements": 84,
+        "disagreements": 0,
+        "reduced_coverage": 1,
+        "conclusive_expected": 24,
+        "conclusive_agreements": 23,
+        "percent": 95.83
+      },
+      "TS10-A01": {
+        "agreements": 185,
+        "disagreements": 0,
+        "reduced_coverage": 4,
+        "conclusive_expected": 119,
+        "conclusive_agreements": 115,
+        "percent": 96.64
+      },
+      "TS10-A02": {
+        "agreements": 42,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 25,
+        "conclusive_agreements": 25,
+        "percent": 100.0
+      },
+      "TS10-A03": {
+        "agreements": 53,
+        "disagreements": 0,
+        "reduced_coverage": 1,
+        "conclusive_expected": 35,
+        "conclusive_agreements": 34,
+        "percent": 97.14
+      },
+      "TS10-A04": {
+        "agreements": 126,
+        "disagreements": 0,
+        "reduced_coverage": 0,
+        "conclusive_expected": 76,
+        "conclusive_agreements": 76,
+        "percent": 100.0
+      }
+    }
+  },
+  "reduced_coverage": [
+    {
+      "case": "unsupported-robots-wildcard",
+      "pairs": [
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "unsupported-presentation-objective",
+      "pairs": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://example.com/page",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "render-unknown-directive",
+      "pairs": [
+        {
+          "rule_id": "TS07-A03",
+          "target": "https://example.com/page",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "canonical-base-needs-browser",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "canonical-typed-canonical-needs-review",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "fail",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "canonical-ambiguous-link-parameter",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "canonical-link-anchor-unsupported",
+      "pairs": [
+        {
+          "rule_id": "TS10-A01",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    },
+    {
+      "case": "canonical-sitemap-dtd-unsupported",
+      "pairs": [
+        {
+          "rule_id": "TS10-A03",
+          "target": "https://example.com/product",
+          "expected": "pass",
+          "actual": "inconclusive"
+        }
+      ]
+    }
+  ],
+  "failures": [],
+  "limitations": "Declared rules only; reduced coverage must accompany any claim. Bounded supplied source/DOM/XML comparison and human TS10 content review. No JavaScript execution, global conformity or live observations."
+}

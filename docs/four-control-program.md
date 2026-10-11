@@ -13,12 +13,15 @@ la Search Console et un insight concret. Aucun ordre numérique n'est obligatoir
 | --- | --- | --- |
 | TS04 | Une règle de préproduction interdit l'exploration attendue | Draft.13 : deux règles, lecteur partagé TS07, registre fermé de champs hors portée accès, portée du client explicite, ressources et parcours de revue ; chaque application réelle et revue conserve son dossier |
 | TS02 | Une migration mène à la mauvaise destination, ajoute un détour ou boucle | Draft.8 : règles et laboratoire ; parcours préalable 1 prépare et importe la décision fournie puis lie les captures. Décision humaine et application Edikka à établir |
-| TS07 | Un noindex HTTP/source/rendu contredit l'intention ; robots peut empêcher sa lecture | Draft.15 : profil source préalable, deux hypothèses statiques attribuées, lecteur rendu distinct ; trois sources Edikka examinées, contrôle entier non établi |
-| TS10 | Canonical HTTP, HTML, rendu, sitemap ou liens désignent des URL incompatibles | Draft.17 : profils source canonical A01/A02 et liens A04, sitemap A03 et rendu structuré distincts ; applications réelles limitées, familles opérateur et revues à qualifier |
+| TS07 | Un noindex HTTP/source/rendu ou une restriction d'aperçu contredit l'intention ; robots peut empêcher sa lecture | Draft.20 : profils source et permissions d'aperçu préalables, hypothèses statiques et états rendus distincts ; applications réelles et revues encore incomplètes |
+| TS10 | Canonical HTTP, HTML, rendu, sitemap ou liens désignent des URL incompatibles | Draft.20 conserve les profils source/sitemap/liens et ajoute depuis draft.19 le contexte HTTP Link ; familles opérateur, rendu et revues à qualifier |
 
 TS01 reste la base existante, sans être compté comme l'un de ces quatre objectifs.
-La version courante est draft.18 ; les démonstrations historiques restent liées à
+La version courante est **0.1.0-draft.20**, avec interpréteur 20, adaptateur 21 et
+rejeu 3. Les démonstrations historiques restent liées à
 leurs outils d'origine. Le programme n'est pas un certificat d'achèvement.
+Le [suivi courant](control-implementation-status.md) distingue la spécification,
+la couverture exécutable, la praticabilité et l'application réelle.
 
 ### Dossier concret à lire et à rejouer
 
@@ -77,8 +80,10 @@ on TS04, TS02, TS07 and TS10, followed by a first Search Console comparison and 
 concrete insight. TS01 stays as existing infrastructure. This is a development
 program, not a completion claim. Keep rendered/human requirements, verify each
 method and distinguish technical completion from a real site's assessment.
-Current draft.18 includes prior source profiles for TS07 directives, TS10 canonical
-declarations and family links. Earlier rendered readers stay distinct. Three real
+Current draft.20 retains prior source profiles for TS07 directives, TS10 canonical
+declarations and family links. Draft.19 added HTTP Link context; draft.20 adds
+preview permission intervals. Interpreter 20, adapter 21 and replay 3 have separate
+version numbers. Earlier rendered readers stay distinct. Three real
 source observations or sixteen allowed resource paths cannot supply missing rendered
 states, owner decisions or human reviews. Each historical demonstration must replay
 with its own archived tools. A combined reading route preserves separate populations,
