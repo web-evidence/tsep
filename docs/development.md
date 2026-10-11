@@ -1,4 +1,6 @@
 Current integration: draft.21, interpreter 21 / adapter 22 / replay 3.
+Optional [performance intake workflow 1](performance-intake.md) keeps native files, numbered attempts and blank review requests offline.
+FR : import natif, passages numérotés et revues fournies ; aucune nouvelle règle normative.
 [Performance evidence](performance-evidence.md): TS34 field documentation and TS35 lab diagnosis; metric quality stays separate from C/NC/NT.
 FR : cinq règles de performance ajoutées ; aucune mesure Edikka ni revue humaine déduite. [Migration](migration-draft.21.md).
 

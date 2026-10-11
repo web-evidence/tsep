@@ -478,6 +478,11 @@
     "upstream/grid-v1.1.fr.json",
     "tests/fixtures/performance-v2.json",
     "tests/fixtures/performance-v2.sha256",
-    "provenance/performance-core-2026-10-11.json"
+    "provenance/performance-core-2026-10-11.json",
+    "adapters/performance_intake.py",
+    "docs/performance-intake.md",
+    "tests/fixtures/performance-intake-v1.json",
+    "tests/fixtures/performance-intake-v1.sha256",
+    "tests/test_performance_intake.py"
   ]
 }

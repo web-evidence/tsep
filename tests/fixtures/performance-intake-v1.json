@@ -1,0 +1,163 @@
+{
+  "kind": "Authored workflow acceptance matrix frozen before implementation",
+  "created_at": "2026-10-11",
+  "protocol": "0.1.0-draft.21",
+  "normative_changes": false,
+  "scenarios": [
+    {
+      "id": "field-byte-preservation",
+      "expectation": "Preserve UTF-8/BOM/CRLF and unknown native properties byte for byte; automatic intake leaves missing review NT",
+      "result": "NT"
+    },
+    {
+      "id": "lab-complete-no-review",
+      "expectation": "Three ordered supplied runs under calibration-derived prior settings; no invented hypothesis",
+      "result": "NT"
+    },
+    {
+      "id": "field-complete-synthetic-review",
+      "expectation": "A separately authored complete synthetic response produces documentary C with original poor values",
+      "result": "C"
+    },
+    {
+      "id": "lab-complete-synthetic-review",
+      "expectation": "A separately authored complete synthetic hypothesis preserves the native reports",
+      "result": "C"
+    },
+    {
+      "id": "field-wrong-classification",
+      "expectation": "Supplied contradictory class is retained and evaluated rather than corrected by importer",
+      "result": "NC"
+    },
+    {
+      "id": "lab-false-field-claim",
+      "expectation": "Supplied field/INP substitution remains a contradiction",
+      "result": "NC"
+    },
+    {
+      "id": "blank-review",
+      "expectation": "No default reviewer, classification, hypothesis or claim limit accepted",
+      "result": "reject"
+    },
+    {
+      "id": "wrong-review-binding",
+      "expectation": "Response for a different request is rejected",
+      "result": "reject"
+    },
+    {
+      "id": "wrong-evidence-binding",
+      "expectation": "Claimed examined evidence must equal retained original identities",
+      "result": "reject"
+    },
+    {
+      "id": "real-synthetic-mismatch",
+      "expectation": "Synthetic source cannot acquire a purported real human review",
+      "result": "reject"
+    },
+    {
+      "id": "review-before-request",
+      "expectation": "Review timestamp must follow request",
+      "result": "reject"
+    },
+    {
+      "id": "missing-field",
+      "expectation": "Declared unavailable field record stays distinct from valid data",
+      "result": "NT"
+    },
+    {
+      "id": "missing-lab-slot",
+      "expectation": "Declared failed slot remains in ledger and cannot be replaced",
+      "result": "NT"
+    },
+    {
+      "id": "unrecorded-lab-slot",
+      "expectation": "Finalizing a partial session preserves unrecorded slots without inventing an attempt",
+      "result": "NT"
+    },
+    {
+      "id": "runtime-error",
+      "expectation": "Native runtime error preserved in its planned slot",
+      "result": "NT"
+    },
+    {
+      "id": "wrong-url",
+      "expectation": "Observed incompatible final URL survives import as failure",
+      "result": "NC"
+    },
+    {
+      "id": "changed-settings",
+      "expectation": "A changed cache setting stays noncomparable",
+      "result": "NT"
+    },
+    {
+      "id": "calibration-reuse",
+      "expectation": "Calibration supplied as a later attempt remains traceable and unqualified",
+      "result": "NT"
+    },
+    {
+      "id": "invalid-native-json",
+      "expectation": "Invalid UTF-8 JSON text remains exact evidence and inconclusive",
+      "result": "NT"
+    },
+    {
+      "id": "non-utf8",
+      "expectation": "Unsupported encoding is refused without replacing input or creating a partial output",
+      "result": "reject"
+    },
+    {
+      "id": "oversize",
+      "expectation": "Native and assembled input bounds remain enforced",
+      "result": "reject"
+    },
+    {
+      "id": "out-of-order-slot",
+      "expectation": "Cannot skip a planned slot during append",
+      "result": "reject"
+    },
+    {
+      "id": "replace-slot",
+      "expectation": "Cannot replace an already-recorded slot",
+      "result": "reject"
+    },
+    {
+      "id": "extra-slot",
+      "expectation": "Cannot silently add or select extra runs outside the frozen count",
+      "result": "reject"
+    },
+    {
+      "id": "manifest-tamper",
+      "expectation": "Changed evidence without new matching receipt rejected",
+      "result": "reject"
+    },
+    {
+      "id": "rehashed-receipt-tamper",
+      "expectation": "An internally inconsistent resealed journal rejected",
+      "result": "reject"
+    },
+    {
+      "id": "plan-tamper",
+      "expectation": "A changed plan conflicts with retained earlier manifest and receipts",
+      "result": "reject"
+    },
+    {
+      "id": "source-change",
+      "expectation": "Workflow or normative source drift requires historical tools",
+      "result": "reject"
+    },
+    {
+      "id": "output-existing",
+      "expectation": "Never overwrite an earlier plan, record, intake or reviewed package",
+      "result": "reject"
+    },
+    {
+      "id": "network-free",
+      "expectation": "Plan, record, finalize, review and replay perform no network operation",
+      "result": "offline"
+    },
+    {
+      "id": "portable",
+      "expectation": "Reconstruct and replay with extracted tools, without original absolute file paths",
+      "result": "portable"
+    }
+  ]
+}
