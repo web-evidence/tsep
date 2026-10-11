@@ -67,6 +67,25 @@ versions are retained and are not silently upgraded.
 FR : une édition locale ne prouve pas une publication ; les numéros des outils
 évoluent séparément et les anciens dossiers se rejouent avec leurs outils exacts.
 
+### Draft.28 publication checks / Vérification de publication draft.28
+
+The CI workflow now explicitly selects Node 24.19.0 through `TSEP_SOURCE_NODE`
+on its seven Python/OS combinations, so optional parsed-source tests are exercised.
+It keeps a bounded 1,800-second subprocess deadline and a 60-minute job deadline.
+The earlier 120-second subprocess / 10-minute job settings are too short for the
+expanded suite with the optional runtime. The CLI default remains 120 seconds;
+use `TSEP_VERIFY_STEP_TIMEOUT=1800` explicitly for this full verification profile.
+These workflow settings describe prepared checks, not an observed remote success.
+Read the run attached to the exact published commit for its actual result.
+
+La CI sélectionne désormais Node 24.19.0 via `TSEP_SOURCE_NODE` sur ses sept
+combinaisons Python/OS, afin d'exécuter les tests facultatifs de lecture parsée.
+Chaque sous-processus reste limité à 1 800 secondes et chaque job à 60 minutes.
+Les anciennes limites de 120 secondes par étape et 10 minutes par job sont trop
+courtes pour la suite étendue avec ce runtime. Le défaut CLI reste 120 secondes ;
+déclarer `TSEP_VERIFY_STEP_TIMEOUT=1800` pour ce profil complet. Cette préparation
+ne prouve aucun succès distant : consulter le run du commit publié exact.
+
 Earlier milestones / Jalons antérieurs :
 Historical integration: draft.19, interpreter 19 / adapter 20 / replay 3.
 Prior [HTTP canonical context](http-canonical-context.md) extends TS10-A01/A02 with retained raw parameters and context exclusions; [migration](migration-draft.19.md).

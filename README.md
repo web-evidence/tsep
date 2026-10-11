@@ -1,4 +1,4 @@
-Current local edition: **0.1.0-draft.28** — optional [TS01 parsed-source markers](docs/source-markers.md) and [explicit migration](docs/migration-draft.28.md). Two complete static HTML readings compare literal markers; historical readers and URL/hash/stability precedence remain unchanged. No browser visibility or Edikka conformity is inferred.
+Development edition: **0.1.0-draft.28** — optional [TS01 parsed-source markers](docs/source-markers.md) and [explicit migration](docs/migration-draft.28.md). Two complete static HTML readings compare literal markers; historical readers and URL/hash/stability precedence remain unchanged. No browser visibility or Edikka conformity is inferred.
 
 Optional TS31–33 preparation: [supplied rendered states and source/DOM comparison](docs/jsonld-rendered-observation.md), without browser collection or control outcomes. Current priority: consolidate the existing 12 controls before deciding the application.
 

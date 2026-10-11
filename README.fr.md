@@ -1,4 +1,4 @@
-Édition locale courante : **0.1.0-draft.28** — [marqueurs HTML parsés TS01](docs/source-markers.md) facultatifs et [migration explicite](docs/migration-draft.28.md). Deux lectures statiques complètes comparent les marqueurs littéraux ; le lecteur historique et les priorités URL/empreinte/stabilité sont conservés. Aucune visibilité navigateur ou conformité d’Edikka n’est déduite.
+Édition de développement : **0.1.0-draft.28** — [marqueurs HTML parsés TS01](docs/source-markers.md) facultatifs et [migration explicite](docs/migration-draft.28.md). Deux lectures statiques complètes comparent les marqueurs littéraux ; le lecteur historique et les priorités URL/empreinte/stabilité sont conservés. Aucune visibilité navigateur ou conformité d’Edikka n’est déduite.
 
 Préparation TS31–33 : [états rendus fournis et comparaison source/DOM](docs/jsonld-rendered-observation.md), sans nouvelle collecte ni verdict. Priorité actuelle : consolider les 12 contrôles existants avant de décider l’application.
 
