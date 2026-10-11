@@ -77,8 +77,9 @@ validation establishes consistency and file integrity.
    captures raw bytes, freezes criteria before measurement and replays offline;
    interpreter 5 provides a [TS01 source-text extractor](docs/source-text-v5.md)
    separate from TS07, with frozen counterexamples and explicit limits.
-   Collector 6 preflights reference markers; adapter 6 preserves traceability and
-   HTML 4 displays preflight and observed media types. A separate [coverage
+   Collector 8 preflights reference markers; its [parsed guided profile](docs/guided-parsed-markers.md)
+   refuses any complete contradictory hypothesis and requires Node 24 during preparation.
+   Adapter 28 retains evidence; HTML 11 displays preflight. A separate [coverage
    diagnostic](docs/reference-diagnostics.md) inventories candidate limitations
    without issuing verdicts. The [paired capture diagnostic](docs/diagnostic-campaign.md)
    compares registered phases and exposes extraction limits on changed bodies.

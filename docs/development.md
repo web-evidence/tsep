@@ -1,4 +1,6 @@
 Current integration: draft.28, interpreter 27 / adapter 28 / HTML 11 / replay 3.
+Guided collector 8 / preflight 3 / intent 4: [parsed preparation and exact replay](guided-parsed-markers.md).
+FR : préparation prospective avec refus des contradictions complètes par hypothèse ; sources/runtime liés, aucune application réelle déduite.
 Optional prior [parsed-source markers](source-markers.md) extend TS01-A02; [migration](migration-draft.28.md) preserves historical readers and URL/hash/stability precedence.
 FR : 76 cas atomiques rédigés, huit scénarios de paquets synthétiques ; aucune activation sur les captures historiques Edikka. Toujours 12 contrôles / 33 règles.
 

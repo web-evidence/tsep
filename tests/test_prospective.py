@@ -143,6 +143,20 @@ class ProspectiveTests(unittest.TestCase):
             prospective.prepare(self.root/'first/reference', self.root/'intent.json', self.root/'receipt.json')
         self.assertEqual(old, (self.root/'receipt.json').read_bytes())
 
+    def test_parsed_profile_cannot_be_silently_compared_as_lexical_experiment(self):
+        def change(d):
+            d['targets'][0]['intent']['identity_reader'] = 'html-tree-markers-v1'
+            d['targets'][0]['identity_basis']['identity_reader'] = 'html-tree-markers-v1'
+        self.modify('intent.json', change)
+        with self.assertRaisesRegex(ValueError, 'Lexical experiment requires the historical'):
+            prospective.prepare(self.root/'first/reference', self.root/'intent.json', self.root/'invalid.json')
+        self.assertFalse((self.root/'invalid.json').exists())
+
+    def test_old_intent_version_requires_its_historical_tool_archive(self):
+        self.modify('intent.json', lambda d: d.update(intent_version='3'))
+        with self.assertRaisesRegex(ValueError, 'Intent/reference settings mismatch'):
+            prospective.prepare(self.root/'first/reference', self.root/'intent.json', self.root/'invalid.json')
+
 
 if __name__ == '__main__':
     unittest.main()

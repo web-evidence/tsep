@@ -177,7 +177,7 @@ class GuidedCapture(unittest.TestCase):
     def test_unavailable_preflight_stays_visible_even_when_digest_resolves_identity(self):
         self.prepare(paths=('/unsupported',))
         intent = tsep.read_json(self.root/'intent.json')
-        self.assertEqual(intent['intent_version'], '3')
+        self.assertEqual(intent['intent_version'], '4')
         self.assertEqual(intent['targets'][0]['reference_preflight']['state'], 'unavailable')
         self.assertEqual(evaluate(self.root/'first/reference', self.root/'intent.json', self.root/'assessment')['counts']['C'], 1)
         html = (self.root/'assessment/report-fr.html').read_text()

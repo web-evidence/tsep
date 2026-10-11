@@ -19,15 +19,15 @@ from urllib.parse import urljoin, urlsplit
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
-from adapters.captures import build
+from adapters.captures import build, source_files as adapter_sources
 from conformance.evaluate import trace
 from conformance.http import Unknown, body_digest, encoded, header_fields, message, raw_bytes
 from collectors.http import request_bytes
-from collectors.preflight import reference_check, media_comparison
+from collectors.preflight import reference_check, media_comparison, marker_reader
 from reports.html import write as write_html
 from provenance.runtime import loaded_sources
 
-VERSION = '7'
+VERSION = '8'
 NAME = 'TSEP guided TS01 collector'
 RULES = ['TS01-A01', 'TS01-A02']
 MAX_TOTAL = 2*1024*1024  # Raw responses per phase; both phases fit input JSON v2.
@@ -37,7 +37,7 @@ def collection_sources():
     modules = {'collectors/ts01.py': sys.modules[__name__], 'tsep.py': tsep}
     for name in ('collectors.http', 'collectors.preflight', 'conformance.http', 'conformance.evaluate', 'conformance.source_text', 'provenance.runtime'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
-    return loaded_sources(ROOT, modules)
+    return dict(adapter_sources(), **loaded_sources(ROOT, modules))
 
 
 def same_collector(reference):
@@ -235,9 +235,10 @@ def seal(reference_dir, output, *, assessor, label, policy='digest', criteria=No
         tsep.require(candidate == target.get('reference_candidate'), 'Reference summary does not match retained bytes')
         tsep.require(candidate.get('status') == 200, 'Cannot seal incomplete/non-200 reference: '+target['url'])
         options = criteria.get(target['url'], {'policy': policy})
-        tsep.require(isinstance(options, dict) and set(options) <= {'policy', 'required_markers', 'forbidden_markers', 'expected_final_url'}, 'Invalid identity criteria')
+        tsep.require(isinstance(options, dict) and set(options) <= {'policy', 'required_markers', 'forbidden_markers', 'expected_final_url', 'identity_reader'}, 'Invalid identity criteria')
         choice = options.get('policy', policy)
         tsep.require(choice in ('digest', 'stable', 'markers'), 'Unknown identity policy')
+        selected_reader = marker_reader(options, choice)
         declared_final = options.get('expected_final_url')
         if declared_final is not None:
             origin(declared_final)
@@ -248,21 +249,21 @@ def seal(reference_dir, output, *, assessor, label, policy='digest', criteria=No
             intent['representation'] = 'stable'
         if choice == 'markers':
             required, forbidden = options.get('required_markers', []), options.get('forbidden_markers', [])
-            tsep.require(isinstance(required, list) and required and isinstance(forbidden, list), 'Markers require a positive required marker')
-            for values in (required, forbidden):
-                tsep.require(all(isinstance(v, str) and v.strip() for v in values) and len(values) == len(set(values)), 'Invalid/duplicate markers')
-            tsep.require(not any(bad in good for good in required for bad in forbidden), 'Contradictory markers')
+            # reference_check validates the selected reader's bounds and criteria.
             intent.update(required_markers=required, forbidden_markers=forbidden)
+            if selected_reader is not None:
+                intent['identity_reader'] = selected_reader
         else:
             tsep.require(not options.get('required_markers') and not options.get('forbidden_markers'), 'Markers require markers policy')
-        preflight = reference_check(headers, body, choice, intent.get('required_markers', []), intent.get('forbidden_markers', []))
+        preflight = reference_check(headers, body, choice, intent.get('required_markers', []), intent.get('forbidden_markers', []), identity_reader=selected_reader)
         tsep.require(preflight['state'] != 'contradiction',
                      'Reference marker contradiction; seal refused for '+target['url']+': '+json.dumps(preflight, ensure_ascii=False))
         rows.append({'url': target['url'], 'intent': intent, 'reference_preflight': preflight,
                      'identity_basis': {'origin': 'operator-final-url' if declared_final is not None else 'reference-adopted',
                                         'policy': choice, 'body_reference': 'captured-reference',
-                                        'declared_final_url': declared_final}})
-    value = {'intent_version': '3', 'declared_at': declared, 'reference_manifest_sha256': tsep.digest(Path(reference_dir)/'SHA256SUMS'),
+                                        'declared_final_url': declared_final, 'identity_reader': selected_reader}})
+    same_collector(ref)
+    value = {'intent_version': '4', 'declared_at': declared, 'reference_manifest_sha256': tsep.digest(Path(reference_dir)/'SHA256SUMS'),
              'reference_source_files': ref['source_files'],
              'assessor': assessor, 'label': label, 'settings': ref['settings'], 'targets': rows,
              'meaning': 'Operator-selected prior criteria from retained references; no trusted timestamp or correctness certification.'}
@@ -281,7 +282,7 @@ def evaluate(reference_dir, intent_path, output, language='fr'):
     reference_dir, intent_path = Path(reference_dir), Path(intent_path)
     ref, intent = tsep.read_json(reference_dir/'capture.json'), tsep.read_json(intent_path)
     same_collector(ref)
-    tsep.require(intent['intent_version'] == '3' and intent['reference_manifest_sha256'] == tsep.digest(reference_dir/'SHA256SUMS'), 'Intent/reference binding mismatch; use this collector version to create a new reference and intent')
+    tsep.require(intent['intent_version'] == '4' and intent['reference_manifest_sha256'] == tsep.digest(reference_dir/'SHA256SUMS'), 'Intent/reference binding mismatch; use this collector version to create a new reference and intent')
     tsep.require(intent.get('reference_source_files') == ref['source_files'], 'Intent collector sources differ from reference')
     tsep.require(intent['settings'] == ref['settings'], 'Request settings changed after reference')
     validate_settings(intent['settings'])
@@ -296,16 +297,20 @@ def evaluate(reference_dir, intent_path, output, language='fr'):
         basis = row.get('identity_basis', {})
         actual_policy = ('stable' if row['intent'].get('representation') == 'stable' else
                          'markers' if row['intent'].get('required_markers') else 'digest')
+        selected_reader = marker_reader(row['intent'], actual_policy)
+        tsep.require('identity_reader' in basis and basis['identity_reader'] == selected_reader,
+                     'Identity reader differs from frozen basis')
         tsep.require(basis.get('policy') == actual_policy and basis.get('origin') in ('reference-adopted', 'operator-final-url'),
                      'Identity basis does not match frozen criteria')
         tsep.require(basis.get('origin') != 'operator-final-url' or
                      basis.get('declared_final_url') == row['intent']['expected_final_url'], 'Declared final URL does not match intent')
         final, _, headers, body = trace(prior['http'], prior['url'], ref['settings']['agent'])
-        checked = reference_check(headers, body, actual_policy, row['intent'].get('required_markers', []), row['intent'].get('forbidden_markers', []))
+        checked = reference_check(headers, body, actual_policy, row['intent'].get('required_markers', []), row['intent'].get('forbidden_markers', []), identity_reader=selected_reader)
         tsep.require(checked['state'] != 'contradiction' and checked == row.get('reference_preflight'),
                      'Reference preflight differs from frozen intent; evaluation not started')
         tsep.require(row['intent']['expected_final_url'] == final and row['intent']['expected_body_sha256'] == checked['decoded_body_sha256'],
                      'Frozen reference URL/digest differ from retained bytes')
+    same_collector(ref)
     output = new_directory(output)
     shutil.copyfile(intent_path, output/'intent.json')
     observations = capture(intent['settings'], output/'evaluation')
@@ -351,9 +356,45 @@ def evaluate(reference_dir, intent_path, output, language='fr'):
 def replay(source, output, language='fr'):
     """Recompute from retained input only, without collecting or refreezing intent."""
     source = Path(source)
-    verify(source)
+    original_entries = verify(source)
+    bundle_entries = verify(source/'bundle')
     report = tsep.read_json(source/'bundle/report.json')
+    original_gate = tsep.validate(report, source/'bundle')
+    tsep.require(original_gate == tsep.read_json(source/'bundle/gate.json') and
+                 tsep.earl(report, original_gate) == tsep.read_json(source/'bundle/earl.jsonld'),
+                 'Guided replay report, gate or EARL disagree')
     intent = tsep.read_json(source/'intent.json')
+    data = tsep.read_json(source/'input.json')
+    tsep.require(intent.get('intent_version') == '4' and intent.get('reference_source_files') == collection_sources(),
+                 'Guided intent/tool sources differ; use the historical tool archive')
+    tsep.require((source/'input.json').read_bytes() == (source/'bundle/input.json').read_bytes(),
+                 'Guided input differs from native bundle input')
+    tsep.require([r['url'] for r in intent['targets']] == intent['settings']['urls'] ==
+                 [t['url'] for t in data['targets']], 'Guided replay target scope differs')
+    for row, target in zip(intent['targets'], data['targets']):
+        context, prior = target['context'], target['reference']
+        tsep.require(target['intent'] == row['intent'] and context.get('identity_basis') == row['identity_basis']
+                     and context.get('reference_preflight') == row['reference_preflight']
+                     and context.get('intent_file_sha256') == tsep.digest(source/'intent.json')
+                     and prior.get('source_files') == intent['reference_source_files']
+                     and prior.get('reference_manifest_sha256') == intent['reference_manifest_sha256'],
+                     'Guided replay intent/reference binding mismatch')
+        policy = row['identity_basis']['policy']
+        actual_policy = ('stable' if row['intent'].get('representation') == 'stable' else
+                         'markers' if row['intent'].get('required_markers') else 'digest')
+        tsep.require(policy == actual_policy and row['intent']['declared_at'] == intent['declared_at']
+                     and row['intent']['crawler'] == intent['settings']['agent']
+                     and tsep.timestamp(prior['observed_at']) <= tsep.timestamp(intent['declared_at'])
+                     <= tsep.timestamp(target['started_at']), 'Guided replay policy or chronology differs')
+        reader = marker_reader(row['intent'], policy)
+        tsep.require(row['identity_basis'].get('identity_reader') == reader, 'Guided replay reader differs')
+        final, _, headers, body = trace(prior['http'], row['url'], intent['settings']['agent'])
+        checked = reference_check(headers, body, policy, row['intent'].get('required_markers', []),
+                                  row['intent'].get('forbidden_markers', []), identity_reader=reader)
+        tsep.require(checked == row['reference_preflight'] and checked['state'] != 'contradiction'
+                     and final == row['intent']['expected_final_url']
+                     and body_digest(body) == row['intent']['expected_body_sha256'],
+                     'Guided replay reference preflight differs')
     output = new_directory(output)
     summary = build(source/'input.json', output/'bundle', assessor=report['assessor']['name'], label=report['scope']['label'],
                     selection_method=report['scope']['selection_method'], access=intent['settings']['access'],
@@ -364,12 +405,29 @@ def replay(source, output, language='fr'):
                   tsep.read_json(source/'bundle/import.json')['source_files'])
     same_runtime = (tsep.read_json(output/'bundle/import.json').get('runtime') ==
                     tsep.read_json(source/'bundle/import.json').get('runtime'))
+    original_names = {name for name in bundle_entries if name.startswith('observations/source-observation-')}
+    replay_names = {name for name in verify(output/'bundle') if name.startswith('observations/source-observation-')}
+    different_observations = sorted(name for name in original_names & replay_names
+        if tsep.read_json(source/'bundle'/name) != tsep.read_json(output/'bundle'/name))
+    same_observations = original_names == replay_names and not different_observations
+    same_report = tsep.read_json(output/'bundle/report.json')['results'] == report['results']
+    unchanged = verify(source) == original_entries and collection_sources() == intent['reference_source_files']
     save(output/'replay.json', {'same_atomic_observations_and_gate': same, 'input_sha256': tsep.digest(source/'input.json'),
                               'same_interpreter_adapter_sources': same_tools,
                               'same_recorded_runtime': same_runtime,
-                              'network_requests': 0, 'scope': 'Same tool sources/protocol and retained input; runtime differences disclosed, outcomes must match; no new collection'})
-    tsep.require(same and same_tools, 'Replay outcomes or tool sources differ; retained output requires examination')
-    write_html(output/'bundle/report.json', output/('report-'+language+'.html'), language=language)
+                              'same_source_observations': same_observations, 'same_report_results': same_report,
+                              'different_source_observations': different_observations,
+                              'original_only_observations': sorted(original_names-replay_names),
+                              'current_only_observations': sorted(replay_names-original_names),
+                              'source_and_tools_unchanged': unchanged,
+                              'network_requests': 0, 'scope': 'Exact reference preflight, source diagnostics and report results; Python runtime differences disclosed; no new collection or authentication.'})
+    replayed = same and same_tools and same_observations and same_report and unchanged
+    if replayed:
+        write_html(output/'bundle/report.json', output/('report-'+language+'.html'), language=language)
+    manifest(output, ['replay.json', 'bundle/SHA256SUMS']+['bundle/'+n for n in verify(output/'bundle')]
+             + (['report-'+language+'.html'] if replayed else []))
+    tsep.require(replayed,
+                 'Replay outcomes, source diagnostics, report or tool sources differ; retained output requires examination')
     return {'replayed': True, 'decision': summary['decision'], 'output': str(output)}
 
 

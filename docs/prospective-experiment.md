@@ -1,12 +1,17 @@
-# Prospective comparison experiment 1 / Comparaison prospective expérimentale 1
+# Prospective comparison experiment 2 / Comparaison prospective expérimentale 2
 
 ## English
 
-`experiments/prospective.py` connects guided collector 6 to the **separate**
-noscript experiment 4. The active protocol remains **0.1.0-draft.7**. TS01–TS44,
+`experiments/prospective.py` connects guided collector 8 to the **separate**
+lexical noscript experiment 4. The active protocol remains **0.1.0-draft.28**. TS01–TS44,
 report schema, interpretation and gate are unchanged. No normative migration.
 Older captures keep their pinned tools; this workflow requires new references,
-a version 3 intent and its own receipt.
+a version 4 intent and its own receipt. Experiment 2 accepts only the historical
+identity reader; an explicit parsed reader is refused rather than mixed with the
+lexical prototype. Use [parsed guided capture](guided-parsed-markers.md) instead.
+Migration 1 → 2 requires a new reference, intent and receipt with these tools;
+retain version-1 receipts and their exact historical tool archive. No old result
+is relabeled or migrated implicitly.
 
 Before measurement, `prepare` checks the complete reference trace, decoded body
 digest, declared final URL, active preflight, criteria and collector settings.
@@ -17,7 +22,7 @@ reference evidence refuses preparation. This command never fetches.
 
 After measurement, `compare` rechecks those bindings, including raw sidecars,
 input/reference/evaluation correspondence, collection context and local time
-ordering. It replays the original draft.7 report offline, keeping its atomic
+ordering. It replays the original bound report offline, keeping its atomic
 observations unchanged. Experimental markers run only for a complete HTTP 200,
 the expected final URL, changed decoded bytes and an explicit marker policy.
 Equal digests need no marker probe. A non-200, wrong URL or changed stable-policy
@@ -36,11 +41,16 @@ whitespace handling, continue to apply.
 
 ## Français
 
-`experiments/prospective.py` relie le collecteur guidé 6 à l'expérience noscript 4
-**séparée**. Le protocole actif reste **0.1.0-draft.7** ; TS01–TS44, contrat,
+`experiments/prospective.py` relie le collecteur guidé 8 à l'expérience lexicale noscript 4
+**séparée**. Le protocole actif reste **0.1.0-draft.28** ; TS01–TS44, contrat,
 schéma, interprétation et décision du rapport ne changent pas. Aucune migration
 normative. Les anciennes captures gardent leurs outils figés ; cette chaîne exige
-une nouvelle référence, une intention version 3 et son propre reçu.
+une nouvelle référence, une intention version 4 et son propre reçu. L'expérience 2
+accepte uniquement le lecteur d'identité historique ; un lecteur parsé explicite
+est refusé pour éviter de le mélanger au prototype lexical. Utiliser alors le
+[parcours guidé parsé](guided-parsed-markers.md). Migration 1 → 2 : nouvelle
+référence, intention et reçu ; conserver les reçus 1 avec leurs outils historiques
+exacts. Aucun résultat ancien n'est réétiqueté ou migré implicitement.
 
 Avant mesure, `prepare` vérifie la trace complète de référence, son empreinte
 décodée, l'URL finale déclarée, le précontrôle actif, les critères et les réglages.
@@ -50,7 +60,7 @@ de l'intention et de la référence. Contradiction, preuve absente ou lecture
 expérimentale non prise en charge refusent la préparation. Aucun accès réseau.
 
 Après mesure, `compare` vérifie à nouveau ces liens, fichiers bruts, entrée de
-rapport, contexte et ordre des dates locales. Il rejoue le rapport draft.7 hors
+rapport, contexte et ordre des dates locales. Il rejoue le rapport lié aux preuves hors
 ligne et conserve ses observations atomiques. Les marqueurs expérimentaux ne
 s'exécutent que pour un HTTP 200 complet, à l'URL attendue, avec octets décodés
 modifiés et politique marqueurs explicite. Une empreinte égale n'a pas besoin de

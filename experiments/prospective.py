@@ -18,7 +18,7 @@ from diagnostics import campaign
 from experiments import noscript
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '1'
+VERSION = '2'
 need = tsep.require
 
 
@@ -53,7 +53,7 @@ def inspect_reference(reference, intent_path):
     raw, intent = campaign.read(Path(intent_path))
     ts01.same_collector(ref)
     ts01.validate_settings(ref['settings'])
-    need(intent['intent_version'] == '3' and intent['settings'] == ref['settings'], 'Intent/reference settings mismatch')
+    need(intent['intent_version'] == '4' and intent['settings'] == ref['settings'], 'Intent/reference settings mismatch')
     need(intent['reference_manifest_sha256'] == binding['manifest_sha256'] and
          intent['reference_source_files'] == ref['source_files'], 'Intent/reference binding mismatch')
     urls = ref['settings']['urls']
@@ -63,6 +63,8 @@ def inspect_reference(reference, intent_path):
     rows = []
     for target, chosen in zip(ref['targets'], intent['targets']):
         criterion, basis = chosen['intent'], chosen['identity_basis']
+        need('identity_reader' not in criterion and basis.get('identity_reader') is None,
+             'Lexical experiment requires the historical identity reader; use the separate parsed guided workflow')
         need(criterion['declared_at'] == intent['declared_at'] and criterion['public_canonical'] is True and
              criterion['crawler'] == ref['settings']['agent'], 'Inconsistent intent context')
         need(tsep.timestamp(target['observed_at']) <= declared, 'Reference after intent')

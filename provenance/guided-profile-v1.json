@@ -1,0 +1,124 @@
+{
+  "kind": "guided-profile-qualification-provenance",
+  "recorded_at": "2026-10-11T13:26:31.885079+00:00",
+  "scope": "Collector 8 / preflight 3 / guided intent 4; normative draft.28 unchanged. Local qualification only, full distribution verification recorded separately.",
+  "fixtures": {
+    "guided-profile-v1.json": "c42887fca7edba060c408bfab57cc7b5d711b32bd7f6f4caafb9447c653f67b1",
+    "guided-profile-v2.json": "9ea1527b4279c31334fde4bf33d40220fe8a982600457db9a557160968330a33"
+  },
+  "implementation": {
+    "collectors/ts01.py": "3e691843e54b31f15f58734104cbc63473b6d6d2dbc596f89cc0bbe385a5a384",
+    "collectors/preflight.py": "aaddfd3e9c257638155a2c149b7f00f74fdb80aa38f05ef9ee7cdc87e876fcfc",
+    "scripts/guided_profile_check.py": "5a63b8d56867ed9865c4ff01b35958be2447cb1a3ba76fc101109c3b364fe943",
+    "tests/test_guided_profile.py": "6493a0dfeaf8ec7be96a4297cdd6ed4a0b58bb416437b636a622b04f270c29c6",
+    "experiments/prospective.py": "d7ec93cb928aee53f7a501cc99064199192a8911e658ca90b1ead60021240bd3",
+    "tests/test_prospective.py": "c18afaa8ae5b15fa534d0aa142031e275210037e40c11711e87a4ba3f3c3a829"
+  },
+  "focused_tests": {
+    "passed": 32,
+    "log_sha256": "519acc7978d52dc049531b21306cb34e72b19c628ebb1ca3643bcf3a35c881b2"
+  },
+  "actual_cli_laboratory": {
+    "kind": "guided-ts01-parsed-profile-laboratory",
+    "fixture_sha256": "9ea1527b4279c31334fde4bf33d40220fe8a982600457db9a557160968330a33",
+    "runner_sha256": "5a63b8d56867ed9865c4ff01b35958be2447cb1a3ba76fc101109c3b364fe943",
+    "cases": 8,
+    "matched": 8,
+    "requests": 14,
+    "exact_replays": 6,
+    "seal_refusals": 2,
+    "scope": "Authored pages and intent; actual loopback HTTP and CLI exits. No real-site conformity, browser or human approval.",
+    "results": [
+      {
+        "id": "noscript-image",
+        "seal": "accepted",
+        "expected": "C",
+        "actual": "C",
+        "matches": true,
+        "exact_replay": true
+      },
+      {
+        "id": "required-missing",
+        "seal": "accepted",
+        "expected": "NC",
+        "actual": "NC",
+        "matches": true,
+        "exact_replay": true
+      },
+      {
+        "id": "noscript-forbidden",
+        "seal": "accepted",
+        "expected": "NC",
+        "actual": "NC",
+        "matches": true,
+        "exact_replay": true
+      },
+      {
+        "id": "noscript-forbidden-attribute",
+        "seal": "accepted",
+        "expected": "NT",
+        "actual": "NT",
+        "matches": true,
+        "exact_replay": true
+      },
+      {
+        "id": "foreign-text-outside",
+        "seal": "accepted",
+        "expected": "NT",
+        "actual": "NT",
+        "matches": true,
+        "exact_replay": true
+      },
+      {
+        "id": "legacy-noscript",
+        "seal": "accepted",
+        "expected": "NT",
+        "actual": "NT",
+        "matches": true,
+        "exact_replay": true
+      },
+      {
+        "id": "reference-missing",
+        "seal": "refused",
+        "evaluation_requests": 0,
+        "matches": true
+      },
+      {
+        "id": "reference-divergence",
+        "seal": "refused",
+        "evaluation_requests": 0,
+        "matches": true
+      }
+    ]
+  },
+  "attempts": [
+    {
+      "attempt": "cli-lab-r1",
+      "result": "Failed at seal before evaluation: replacing socket.socket before importing ssl prevented SSLSocket class creation. Qualification harness imports ssl first; production collector was not changed for this issue. Original attempt retained.",
+      "stderr_sha256": "aa21c0ca310ace099904094dfea09c3202deaf6091b04eb6d36a4f403b7860ae"
+    },
+    {
+      "attempt": "verification-r1",
+      "result": "Full source test step timed out at 600 seconds with 641 success lines and one setup error; no source changes during verification. Isolated failure: lexical prospective workflow still required guided intent 3. Workflow 2 now requires intent 4, rejects parsed-reader mixing, retains old archives and versioned migration.",
+      "report_sha256": "defe45384d6724a50b5d548ab336139b38456da3998b6237764b85ad27ac7859"
+    }
+  ],
+  "methodological_exchange": {
+    "url": "https://claude.ai/chat/1c87d570-5d15-4448-8575-f5fff2bd61d3",
+    "observed_at": "2026-10-11T13:26:31.885079+00:00",
+    "scope": "Claude criticized a prose summary, not code or human validation; retained partial-hypothesis and unavailable-runtime preparation guards.",
+    "capture_sha256": "bbdae5c3bfe742129e92519a16f27fe6399fb59190f196acbfc51b9ebbb0d51b",
+    "screenshot_sha256": "5838e68d845d2308167dfc82be328690beadfed7cafbc1355e178f28eeebef29",
+    "capture_distribution": "Private conversation captures retained locally, not redistributed in the public tools archive."
+  },
+  "limitations": [
+    "Authored pages and criteria, not Edikka conformity or owner approval.",
+    "Actual loopback HTTP only; no browser rendering or Googlebot observation.",
+    "Node runtime not distributed or authenticated.",
+    "No publication, push, remote CI run or independent human review."
+  ],
+  "prospective_migration_tests": {
+    "passed": 13,
+    "scope": "Existing nine-scenario lexical experiment plus explicit old-intent and parsed-reader rejection; session 31355 exit 0."
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "kind": "authored-guided-ts01-profile-cases",
+  "version": "1",
+  "frozen_at": "2026-10-11T13:15:32.011099+00:00",
+  "scope": "Authored pages and criteria; actual loopback transport through reference, seal, evaluate and replay. No real site or owner review.",
+  "cases": [
+    {
+      "id": "noscript-image",
+      "reference_body": "<!doctype html><html><head></head><body><p>Expected reference-0</p><noscript><img src=\"x\"></noscript></body></html>",
+      "evaluation_body": "<!doctype html><html><head></head><body><p>Expected</p><noscript><img src=\"x\"></noscript></body></html>",
+      "identity_reader": "html-tree-markers-v1",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "expected_control_status": "C",
+      "expected_reference_preflight": "matches"
+    },
+    {
+      "id": "required-missing",
+      "reference_body": "<!doctype html><html><head></head><body><p>Expected reference-0</p><noscript><img src=\"x\"></noscript></body></html>",
+      "evaluation_body": "<!doctype html><html><head></head><body><p>Other page</p></body></html>",
+      "identity_reader": "html-tree-markers-v1",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "expected_control_status": "NC",
+      "expected_reference_preflight": "matches"
+    },
+    {
+      "id": "noscript-forbidden",
+      "reference_body": "<!doctype html><html><head></head><body><p>Expected reference-0</p><noscript><img src=\"x\"></noscript></body></html>",
+      "evaluation_body": "<!doctype html><html><head></head><body><p>Expected</p><noscript>Forbidden</noscript></body></html>",
+      "identity_reader": "html-tree-markers-v1",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "expected_control_status": "NC",
+      "expected_reference_preflight": "matches"
+    },
+    {
+      "id": "noscript-forbidden-attribute",
+      "reference_body": "<!doctype html><html><head></head><body><p>Expected reference-0</p><noscript><img src=\"x\"></noscript></body></html>",
+      "evaluation_body": "<!doctype html><html><head></head><body><p>Expected</p><noscript><img alt=\"Forbidden\"></noscript></body></html>",
+      "identity_reader": "html-tree-markers-v1",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "expected_control_status": "NT",
+      "expected_reference_preflight": "matches"
+    },
+    {
+      "id": "foreign-text-outside",
+      "reference_body": "<!doctype html><html><head></head><body><p>Expected reference-0</p><noscript><img src=\"x\"></noscript></body></html>",
+      "evaluation_body": "<!doctype html><html><head></head><body><p>Expected</p><svg><text>Forbidden</text></svg></body></html>",
+      "identity_reader": "html-tree-markers-v1",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "expected_control_status": "NT",
+      "expected_reference_preflight": "matches"
+    },
+    {
+      "id": "legacy-noscript",
+      "reference_body": "<!doctype html><html><head></head><body><p>Expected reference-0</p><noscript><img src=\"x\"></noscript></body></html>",
+      "evaluation_body": "<!doctype html><html><head></head><body><p>Expected</p><noscript><img src=\"x\"></noscript></body></html>",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "expected_control_status": "NT",
+      "expected_reference_preflight": "unavailable"
+    },
+    {
+      "id": "reference-missing",
+      "reference_body": "<!doctype html><html><head></head><body><p>Other</p></body></html>",
+      "evaluation_body": "<!doctype html><html><head></head><body><p>Expected</p><noscript><img src=\"x\"></noscript></body></html>",
+      "identity_reader": "html-tree-markers-v1",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "expected_control_status": null,
+      "expected_reference_preflight": "contradiction"
+    },
+    {
+      "id": "reference-divergence",
+      "reference_body": "<!doctype html><html><head></head><body><p>Expected</p><noscript><img alt=\"Forbidden\"></noscript></body></html>",
+      "evaluation_body": "<!doctype html><html><head></head><body><p>Expected</p><noscript><img src=\"x\"></noscript></body></html>",
+      "identity_reader": "html-tree-markers-v1",
+      "required_markers": [
+        "Expected"
+      ],
+      "forbidden_markers": [
+        "Forbidden"
+      ],
+      "expected_control_status": "C",
+      "expected_reference_preflight": "unavailable"
+    }
+  ],
+  "guards": [
+    "Unknown/null profile rejected; profile on digest/stable rejected before Node",
+    "65 markers refused before substring cross-product",
+    "Reference contradiction refuses seal; no evaluation request",
+    "Changed profile/basis, preflight, Node/V8 or tool fingerprints refused before evaluation request",
+    "Unavailable runtime is explicit and cannot silently become another preparation result",
+    "Coherently rehashed source diagnostic/report mutation rejected by exact guided replay",
+    "Replay binding checks intent/reference/input and recalculates prior reference without network",
+    "Historical no-field behavior retained; no synthetic approval for Edikka"
+  ]
+}

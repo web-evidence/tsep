@@ -2,9 +2,11 @@
 
 ## Français
 
-Version courante : [collecteur 6 / précontrôle 2](diagnostic-campaign.md).
-Un Content-Type absent dans une réponse complète est une observation ; nouvelle
-référence/intention exigée après changement d’outil. Interpréteur 5 / adaptateur 6.
+Version courante : **collecteur 8 / précontrôle 3 / intention guidée 4**, avec
+interpréteur 27, adaptateur 28, HTML 11 et protocole draft.28.
+[Profil guidé parsé et migration](guided-parsed-markers.md) : choix explicite,
+préparation plus stricte et comparaison exacte des diagnostics lors du rejeu.
+Les jalons numérotés plus bas sont historiques.
 
 **Collecteur 4 / intention guidée 3 :** les marqueurs sont vérifiés sur la référence
 avant scellement. Contradiction → refus ; extraction non prise en charge → avertissement
@@ -12,10 +14,10 @@ explicite conservé dans le reçu, l’intention et le rapport. La vérification
 recalculée avant toute nouvelle requête. Les types de média sont observés séparément,
 sans changer TS01. Voir [diagnostic et migration](reference-diagnostics.md).
 
-Le collecteur version 6 réalise des GET anonymes sur **1 à 10 URL explicitement
-choisies et autorisées**, puis utilise l’interpréteur version 5, l’adaptateur version 6 et le
-rapport HTML version 4. Python 3.9+, bibliothèque standard. Protocole draft.7,
-TS01–TS44, contrat du rapport et corpus normatif inchangés. Cette couverture
+Le collecteur version 8 réalise des GET anonymes sur **1 à 10 URL explicitement
+choisies et autorisées**. Python 3.9+ ; Node 24 et les dépendances archivées sont
+nécessaires seulement au profil parsé facultatif. Les règles TS01–TS44 de draft.28
+restent inchangées par cette extension du parcours. Cette couverture
 d’outil n’est ni une certification, ni une observation d’indexation/classement.
 
 ### Une référence, des critères préalables, puis une mesure
@@ -67,7 +69,7 @@ la mesure, après examen de la référence :
 }
 ```
 
-Les marqueurs sont des littéraux sensibles à la casse dans le texte source UTF-8
+Sans `identity_reader`, les marqueurs sont des littéraux sensibles à la casse dans le texte source UTF-8
 extrait, selon le [contrat d’entrée](conformance.md). Pas de rendu navigateur,
 regex ou normalisation d’espaces. Les commentaires et script/style sont exclus ;
 le parseur HTML conserve son sous-ensemble borné. Ne pas choisir les critères
@@ -115,7 +117,7 @@ une preuve de transmission si la connexion échoue. DNS est contrôlé avant con
 à une adresse numérique vérifiée ; les adresses non publiques sont refusées.
 `--allow-loopback` autorise uniquement la boucle locale pour une recette synthétique.
 
-Valeurs par défaut : agent `TSEP-TS01-collector/2`, `Accept-Encoding: gzip, deflate`,
+Valeurs par défaut : agent `TSEP-TS01-collector/4` (identifiant de requête historique), `Accept-Encoding: gzip, deflate`,
 10 secondes par saut, 512 Kio de réponse par saut, 3 redirections. Bornes configurables :
 0,1–30 secondes, 1 Kio–1 Mio, 0–5 redirections. Le superviseur ajoute au plus une
 seconde au délai pour borner aussi DNS/processus. Maximum de **2 Mio de réponses
@@ -200,9 +202,10 @@ le HTML ; l’inventaire de couverture est déclaré par l’outil, sans validat
 
 ## English
 
-Current: [collector 6 / preflight 2](diagnostic-campaign.md). Observed absence of
-Content-Type is distinguished from unavailable evidence; fresh reference/intent
-required after tool changes. Interpreter 5 / adapter 6 unchanged.
+Current: **collector 8 / preflight 3 / guided intent 4**, interpreter 27, adapter 28,
+HTML 11 and protocol draft.28. [Parsed guided profile and migration](guided-parsed-markers.md):
+explicit selection, stricter preparation and exact diagnostic replay.
+Numbered milestones below are historical.
 
 **Collector 4 / guided intent 3:** markers are checked on the reference before
 sealing. Contradiction refuses the seal; unsupported extraction is a recorded
@@ -218,10 +221,10 @@ runtime difference.
 
 
 
-Collector version 6 performs anonymous GET requests for **1–10 explicitly selected,
-authorized URLs**, using interpreter 5, adapter 6 and HTML engine 4.
-Python 3.9+ standard library only. Protocol draft.7, TS01–TS44, the report contract
-and normative corpus are unchanged. This is tool coverage, not certification or
+Collector version 8 performs anonymous GET requests for **1–10 explicitly selected,
+authorized URLs**. Python 3.9+; Node 24 and archived dependencies are required only
+for the optional parsed profile. This workflow extension leaves draft.28's TS01–TS44
+rules unchanged. This is tool coverage, not certification or
 evidence of indexing/ranking.
 
 Use the commands above with real network/selection/assessor descriptions and
