@@ -1,0 +1,432 @@
+{
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "partial-content-is-not-whole-representation",
+      "description": "Authored additional boundary; expectation frozen before reader correction.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 206 Status\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.body": "unavailable",
+        "pairs.0.status": "different",
+        "cells.1.complete": false
+      }
+    },
+    {
+      "id": "not-modified-does-not-invent-body",
+      "description": "Authored additional boundary; expectation frozen before reader correction.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 304 Status\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.body": "unavailable",
+        "pairs.0.status": "different",
+        "cells.1.complete": false
+      }
+    },
+    {
+      "id": "missing-body-status-keeps-headers",
+      "description": "Authored additional boundary; expectation frozen before reader correction.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 204 Status\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.body": "unavailable",
+        "pairs.0.status": "different",
+        "cells.1.complete": false
+      }
+    },
+    {
+      "id": "encoding-normalized",
+      "description": "Authored additional boundary; expectation frozen before reader correction.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\nAccept-Encoding: gzip\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Encoding\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\nAccept-Encoding: GZIP;q=1.000\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Encoding\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "matching"
+      }
+    },
+    {
+      "id": "known-mismatch-survives-unqualified-field",
+      "description": "Authored additional boundary; expectation frozen before reader correction.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "en"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\nX-Custom: x\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: X-Custom, Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: en\r\nX-Custom: y\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "nonmatching",
+        "pairs.0.vary.fields.x-custom.comparison": "undetermined"
+      }
+    }
+  ]
+}

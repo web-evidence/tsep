@@ -1,4 +1,6 @@
 Current integration: draft.26, interpreter 25 / adapter 26 / HTML 9 / replay 3.
+Optional [delivery variants observer 1](delivery-variants-observation.md) prepares TS39: prior cells, raw HTTP differences and bounded stored-side Vary matching, without a control verdict.
+FR : matrice et inconnues conservées ; contexte géographique, réutilisation du cache et cohérence SEO restent à qualifier avant intégration normative TS39.
 [TS41 bilingual erratum](migration-draft.26.md) clarifies unknown recalculation without changing reader behavior.
 [Controlled release laboratory 1](release-laboratory.md) links actual loopback HTTP, process exits and local artifact operations; reviews remain authored.
 FR : les six scénarios figés distinguent défaut détecté/bloqué et dispositif défectueux, sans audit Edikka.

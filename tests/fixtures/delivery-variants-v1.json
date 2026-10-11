@@ -1,0 +1,3739 @@
+{
+  "synthetic": true,
+  "kind": "prefrozen-delivery-observation-cases",
+  "cases": [
+    {
+      "id": "identical",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "matching",
+        "pairs.0.body": "equal",
+        "cells.1.complete": true
+      }
+    },
+    {
+      "id": "language-diff-same-body",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "en"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: en\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "nonmatching",
+        "pairs.0.body": "equal"
+      }
+    },
+    {
+      "id": "body-diff-no-seo-verdict",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 5\r\nVary: Accept-Language\r\n\r\nAutre"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "matching",
+        "pairs.0.body": "different"
+      }
+    },
+    {
+      "id": "vary-left-only",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "en"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: en\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "nonmatching",
+        "pairs.0.header_changes.vary": "different"
+      }
+    },
+    {
+      "id": "no-vary-is-not-cache-proof",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "en"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: en\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "unconstrained",
+        "pairs.0.body": "equal"
+      }
+    },
+    {
+      "id": "vary-empty",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: \r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "unconstrained",
+        "cells.0.hops.0.vary.present": true
+      }
+    },
+    {
+      "id": "absent-on-both",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": null
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": null
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "matching"
+      }
+    },
+    {
+      "id": "absent-vs-present",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": null
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "nonmatching"
+      }
+    },
+    {
+      "id": "absent-vs-empty",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": null
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  ""
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: \r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "nonmatching"
+      }
+    },
+    {
+      "id": "wildcard",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: *\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "nonmatching"
+      }
+    },
+    {
+      "id": "wildcard-among-fields",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language, *, Accept-Encoding\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "nonmatching",
+        "cells.0.hops.0.vary.valid": true
+      }
+    },
+    {
+      "id": "vary-repeated-and-case",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: ACCEPT-language\r\nVary: ,accept-LANGUAGE, \r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "matching",
+        "cells.0.hops.0.vary.fields": [
+          "accept-language"
+        ]
+      }
+    },
+    {
+      "id": "vary-invalid-quoted",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: \"Accept-Language\"\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "undetermined",
+        "cells.0.complete": true
+      }
+    },
+    {
+      "id": "language-normalized-q",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "FR;q=1.000"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: FR;q=1.000\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "matching"
+      }
+    },
+    {
+      "id": "language-q-difference",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr;q=0.5"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr;q=0.5\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "nonmatching"
+      }
+    },
+    {
+      "id": "language-invalid-q",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr;q=1.1"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr;q=1.1\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "undetermined"
+      }
+    },
+    {
+      "id": "language-order-only-uncertain",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr, en"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "en,fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr, en\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: en,fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "undetermined"
+      }
+    },
+    {
+      "id": "language-list-ows",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr, en;q=0.5"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "FR ,en ; q=0.500"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr, en;q=0.5\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: FR ,en ; q=0.500\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "matching"
+      }
+    },
+    {
+      "id": "unknown-field-identical",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: User-Agent\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "matching"
+      }
+    },
+    {
+      "id": "unknown-field-different",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\nX-Variant: FR\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: X-Variant\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\nX-Variant: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.vary.match": "undetermined"
+      }
+    },
+    {
+      "id": "incomplete-body-keeps-headers",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 100\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.complete": false,
+        "pairs.0.body": "unavailable",
+        "pairs.0.status": "equal",
+        "pairs.0.vary.match": "matching"
+      }
+    },
+    {
+      "id": "declared-incomplete",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": false,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.complete": false,
+        "pairs.0.body": "unavailable",
+        "pairs.0.status": "equal"
+      }
+    },
+    {
+      "id": "partial-header",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-T"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.complete": false,
+        "pairs.0.status": "unavailable",
+        "pairs.0.vary.match": "undetermined"
+      }
+    },
+    {
+      "id": "missing-cell",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.observed": false,
+        "pairs.0.body": "unavailable"
+      }
+    },
+    {
+      "id": "same-body-distinct-url",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/other",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/other",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /other HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.same_resource": false,
+        "pairs.0.body": "equal",
+        "pairs.0.vary.match": "not-comparable"
+      }
+    },
+    {
+      "id": "different-status",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 403 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.status": "different",
+        "pairs.0.body": "equal"
+      }
+    },
+    {
+      "id": "request-host-mismatch",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: other.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.complete": false,
+        "pairs.0.status": "unavailable"
+      }
+    },
+    {
+      "id": "request-client-mismatch",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: Googlebot/2.1\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.complete": false,
+        "pairs.0.status": "unavailable"
+      }
+    },
+    {
+      "id": "request-dimension-mismatch",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: en\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.complete": false,
+        "cells.1.request_plan_matches": false,
+        "pairs.0.status": "equal",
+        "pairs.0.vary.match": "nonmatching"
+      }
+    },
+    {
+      "id": "context-claims-unverified",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "AU",
+                "pop": "sydney",
+                "cache": "warm"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.context_authentication": "not-established",
+        "pairs.0.body": "equal"
+      }
+    },
+    {
+      "id": "outside-prior-window",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T08:59:59Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.complete": false,
+        "pairs.0.body": "unavailable"
+      }
+    },
+    {
+      "id": "duplicate-cell-evidence",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_error": "Duplicate observation"
+    },
+    {
+      "id": "unplanned-cell",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "outside",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_error": "Unplanned observation"
+    },
+    {
+      "id": "duplicate-plan-cell",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_error": "Duplicate planned cell"
+    },
+    {
+      "id": "self-comparison",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "a"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_error": "Invalid comparison"
+    },
+    {
+      "id": "declaration-after-window",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T09:00:30Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_error": "Prior bounded window"
+    },
+    {
+      "id": "gzip-same-content",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIE9LDQpDb250ZW50LVR5cGU6IHRleHQvcGxhaW47IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyNw0KVmFyeTogQWNjZXB0LUxhbmd1YWdlDQpDb250ZW50LUVuY29kaW5nOiBnemlwDQoNCh+LCAAAAAAAAv9zys/Lyi8tAgBUyQtqBwAAAA==",
+                  "sha256": "916b4ee19eb08b1cb7ce7bfd77a7cba919475af2a19687d211d496771f5b0d09"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.body": "equal",
+        "pairs.0.header_changes.content-encoding": "different"
+      }
+    },
+    {
+      "id": "binary-bad-fingerprint",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIE9LDQpDb250ZW50LVR5cGU6IHRleHQvcGxhaW47IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyNw0KVmFyeTogQWNjZXB0LUxhbmd1YWdlDQpDb250ZW50LUVuY29kaW5nOiBnemlwDQoNCh+LCAAAAAAAAv9zys/Lyi8tAgBUyQtqBwAAAA==",
+                  "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.complete": false,
+        "pairs.0.body": "unavailable"
+      }
+    },
+    {
+      "id": "unfinished-redirect",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 302 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\nLocation: /fr\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.complete": false,
+        "cells.1.terminal": null,
+        "pairs.0.status": "unavailable"
+      }
+    },
+    {
+      "id": "complete-redirect",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 302 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\nLocation: /fr\r\n\r\nBonjour"
+              },
+              {
+                "url": "https://example.test/fr",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:03Z",
+                "received_at": "2026-10-11T09:00:04Z",
+                "request": "GET /fr HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.complete": true,
+        "cells.1.final_url": "https://example.test/fr",
+        "pairs.0.same_resource": false
+      }
+    },
+    {
+      "id": "headers-seo-differ",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\nX-Robots-Tag: noindex\r\nLink: <https://example.test/other>; rel=\"canonical\"\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "pairs.0.header_changes.x-robots-tag": "different",
+        "pairs.0.header_changes.link": "different",
+        "pairs.0.body": "equal"
+      }
+    },
+    {
+      "id": "age-does-not-authenticate-hit",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\nAge: 100\r\nX-Cache: HIT\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.cache_reuse": "not-established",
+        "pairs.0.body": "equal"
+      }
+    },
+    {
+      "id": "plan-selector-uppercase",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ],
+                "Accept-Language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected_error": "Lowercase request field"
+    },
+    {
+      "id": "request-body-unsupported",
+      "description": "Authored synthetic observation; no collection, SEO verdict or human review.",
+      "input": {
+        "kind": "delivery-variants-input",
+        "version": "1",
+        "synthetic": true,
+        "plan": {
+          "declared_at": "2026-10-11T08:59:00Z",
+          "window_start": "2026-10-11T09:00:00Z",
+          "window_end": "2026-10-11T09:01:00Z",
+          "cells": [
+            {
+              "id": "a",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            },
+            {
+              "id": "b",
+              "url": "https://example.test/page",
+              "user_agent": "TSEPDeliveryTest/1.0",
+              "request_fields": {
+                "accept-language": [
+                  "fr"
+                ]
+              },
+              "context_claims": {
+                "region": "FR",
+                "pop": "authored-paris",
+                "cache": "unspecified"
+              }
+            }
+          ],
+          "pairs": [
+            {
+              "id": "ab",
+              "left": "a",
+              "right": "b"
+            }
+          ]
+        },
+        "observations": [
+          {
+            "cell_id": "a",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          },
+          {
+            "cell_id": "b",
+            "http": [
+              {
+                "url": "https://example.test/page",
+                "complete": true,
+                "sent_at": "2026-10-11T09:00:01Z",
+                "received_at": "2026-10-11T09:00:02Z",
+                "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: TSEPDeliveryTest/1.0\r\nAccept-Language: fr\r\n\r\nunexpected",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 7\r\nVary: Accept-Language\r\n\r\nBonjour"
+              }
+            ]
+          }
+        ]
+      },
+      "expected": {
+        "cells.1.complete": false,
+        "pairs.0.status": "unavailable"
+      }
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "kind": "non-normative delivery variants observer 1",
+  "observed_at": "2026-10-11T07:50:31.490841+00:00",
+  "base_commit": "ee063fad10e163014d1deed1ad0596316bae3a4c",
+  "protocol_version_unchanged": "0.1.0-draft.26",
+  "normative_effect": "none",
+  "fixture": {
+    "path": "tests/fixtures/delivery-variants-v1.json",
+    "sha256": "68ba064c53654c75e5369770b20ac54d7c05da91e5f3d712be030b959ebb6b09",
+    "cases": 44,
+    "frozen_before_reader": true
+  },
+  "boundaries": {
+    "path": "tests/fixtures/delivery-variants-boundaries-v1.json",
+    "sha256": "bbcd45353e71ee22ea86a6f979f899379bd5fea1544f1161a55ccfb1a8d97d7b",
+    "cases": 5,
+    "frozen_before_correction": true
+  },
+  "observed_development": {
+    "initial_cases_matched": 44,
+    "initial_boundaries_matched": 4,
+    "boundary_error": "HTTP 206 incorrectly compared as a complete representation; fixed without changing frozen expectations",
+    "first_targeted_tests": "14/15: test expected an empty observation list to be invalid, contrary to the requirement to retain all missing cells; test corrected, reader unchanged for empty list",
+    "second_targeted_tests": "15/15 passed; all 49 frozen observations matched",
+    "scope": "Synthetic offline inputs; no collection, cache, region, operator or SEO control outcome"
+  },
+  "sources": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-12.5.5",
+      "scope": "Vary selection dimensions and list grammar, including wildcard member"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.html#section-4.1",
+      "scope": "Stored-side Vary request matching; absence and wildcard behavior; other reuse conditions remain separate"
+    },
+    {
+      "url": "https://developers.google.com/search/docs/specialty/international/locale-adaptive-pages",
+      "scope": "Locale adaptive Google documentation: no Accept-Language request header, geo-distributed contexts"
+    },
+    {
+      "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers",
+      "scope": "HTTP User-Agent is not operator identity; source redirected from earlier search-docs URL"
+    }
+  ],
+  "source_capture_format": "Dated normalized web-tool text, not original HTTP or full page; retained locally for provenance, not runtime dependencies or distributed third-party documents.",
+  "retained_source_captures": [
+    {
+      "name": "google-web-extract.txt",
+      "sha256": "26925a6480b4edb3e7d7f3b2efb057777f91639922f267b58254f6d5f3474eaa",
+      "bytes": 14326
+    },
+    {
+      "name": "initial-web-extract.txt",
+      "sha256": "0f758852fd64f65cc704ddc20c2f87516c29f69e1c36a6d659c6cc825c307a3a",
+      "bytes": 35157
+    },
+    {
+      "name": "vary-web-extract.txt",
+      "sha256": "c7ce8981fb0689ce67227b5f2c2298b96d19ad82f816e59ea523ab03d58b7a8f",
+      "bytes": 16162
+    }
+  ],
+  "raw_http_capture_unavailable_reason": "The web tool supplied normalized text extracts rather than original HTTP messages.",
+  "not_established": [
+    "TS39 atomic rules or control completion",
+    "actual cache reuse, freshness, storage or validation",
+    "region/POP/real operator authenticity",
+    "semantic content/language/SEO consistency",
+    "Edikka assessment or publication"
+  ]
+}

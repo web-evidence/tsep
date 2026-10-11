@@ -12,6 +12,8 @@ Pour TS02, le [parcours du plan préalable](docs/redirect-plan-workflow.md) pré
 une fiche lisible et lie une décision réellement fournie aux captures ultérieures.
 L'[ébauche Search Console](docs/search-console-observations.md) rapproche un export
 API fourni et les preuves techniques rejouées, sans verdict TS08/TS12 automatique.
+L'[observateur de variantes de diffusion](docs/delivery-variants-observation.md)
+prépare TS39 : différences HTTP et correspondance Vary bornée, sans verdict de contrôle.
 
 ## Pour qui
 

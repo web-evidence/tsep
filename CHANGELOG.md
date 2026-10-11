@@ -3,6 +3,11 @@
 Four prefrozen TS44 variants, six actual bounded loopback exchanges, native request logs and offline replay. DOM and reviews remain explicitly authored; no browser, agent or Edikka assessment. Draft.24 rules unchanged.
 FR : HTTP réellement observé sur site fictif, états rédigés et revues synthétiques distincts. [Method / Méthode](docs/critical-content-laboratory.md).
 
+## Optional delivery variants observer 1 — 2026-10-11
+
+Preparatory TS39 observations: prior cells, raw HTTP chains and bounded stored-side Vary matching. Forty-nine frozen authored cases; no network or normative change. Draft.26 and its 30 rules remain unchanged.
+FR : les en-têtes indépendants survivent à un corps tronqué ; ni région, réutilisation du cache, équivalence sémantique ni verdict TS39 déduits. [Method / Méthode](docs/delivery-variants-observation.md).
+
 ## 0.1.0-draft.26 — 2026-10-11 — TS41 bilingual clarification and local laboratory
 
 Clarify inconclusive recalculation versus retained positive output; reader behavior and previous 1,103 cases unchanged. One additional frozen boundary, 1,104 cases / 2,101 pairs.

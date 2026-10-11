@@ -13,6 +13,8 @@ For TS02, the [prior owner-plan workflow](docs/redirect-plan-workflow.md) prepar
 a readable plan and binds a supplied decision to subsequent captures.
 The [Search Console preview](docs/search-console-observations.md) compares supplied
 API evidence with replayed technical records, without automatic TS08/TS12 verdicts.
+The [delivery variants observer](docs/delivery-variants-observation.md) prepares
+TS39 with raw HTTP differences and bounded Vary matching, without control outcomes.
 
 ## Who it is for
 
