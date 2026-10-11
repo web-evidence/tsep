@@ -2,7 +2,7 @@
 
 ## Français
 
-Le profil explicite `release-invariants-v1` de TS41 (draft.25) examine le dispositif
+Le profil explicite `release-invariants-v1` de TS41 (draft.26) examine le dispositif
 sur une population préalable de **tentatives de déploiement**, pas la conformité
 SEO globale. Les résultats SEO sous-jacents restent distincts. Un défaut détecté
 et effectivement bloqué peut accompagner un dispositif conforme ; aucune inconnue
@@ -63,8 +63,8 @@ raisons recalculées séparément. Les versions exactes sont requises pour le re
 un rapport ancien n'est pas promu silencieusement. Si un runtime optionnel manque,
 la limite reste visible ; elle ne permet pas d'accuser l'ancien résultat d'être
 faux. Une différence d'outcome n'étaye fail que lorsque le recalcul est conclusif,
-ou lorsque stdout prétend pass alors que l'entrée documente explicitement une
-inconnue indépendante du runtime. Un recalcul indéterminé seul ne prouve pas une
+et jamais sur la seule base d’un recalcul inconclusif. Un code processus 0 avec
+des sorties inconnues inchangées contredit séparément la politique de sortie. Un recalcul indéterminé seul ne prouve pas une
 falsification du rapport conservé.
 
 `release_events` conserve raw_jsonl, sha256, exported_at. Au plus 128 lignes non
@@ -153,6 +153,8 @@ old reports are not silently upgraded. Missing optional runtime cannot establish
 that an old conclusive result was false. A conclusively recalculated mismatch can
 fail; an inconclusive recalculation alone cannot prove report falsification.
 An exit code 0 accompanying unchanged unknown outputs is a separate contradiction.
+If positive supplied outputs differ from unknown recalculation, the result remains
+inconclusive; it cannot establish process C or, alone, prove falsification.
 
 release_events retains raw_jsonl, sha256, exported_at: ≤128 nonempty strict JSON
 lines, ≤512KiB, unique IDs and nondecreasing timestamps. Rows have id, attempt_id,

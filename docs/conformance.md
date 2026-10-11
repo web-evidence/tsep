@@ -1,4 +1,7 @@
-Current / Actuel : draft.25 — 1,103 authored cases / cas synthétiques, 2,098 rule-target pairs / couples.
+Current / Actuel : draft.26 — 1,104 authored cases / cas synthétiques, 2,101 rule-target pairs / couples.
+Thirty rules across eleven controls. One frozen TS41 boundary clarifies unknown recalculation versus altered output; all previous 1,103 cases and reader code unchanged. [Migration](migration-draft.26.md). The optional controlled laboratory is a separate observation campaign.
+
+Historical / Historique : draft.25 — 1,103 authored cases / cas synthétiques, 2,098 rule-target pairs / couples.
 Thirty rules across eleven controls; TS41 adds 43 prefrozen initial cases and 9 boundary cases, 156 pairs. Prior 1,051 cases unchanged. Authored receipts/reviews, no observed remote CI or site audit.
 [Method and limitations / Méthode et limites](release-invariants.md) · [Migration](migration-draft.25.md).
 

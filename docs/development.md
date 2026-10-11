@@ -1,4 +1,9 @@
-Current integration: draft.25, interpreter 25 / adapter 26 / HTML 9 / replay 3.
+Current integration: draft.26, interpreter 25 / adapter 26 / HTML 9 / replay 3.
+[TS41 bilingual erratum](migration-draft.26.md) clarifies unknown recalculation without changing reader behavior.
+[Controlled release laboratory 1](release-laboratory.md) links actual loopback HTTP, process exits and local artifact operations; reviews remain authored.
+FR : les six scénarios figés distinguent défaut détecté/bloqué et dispositif défectueux, sans audit Edikka.
+
+Historical integration: draft.25, interpreter 25 / adapter 26 / HTML 9 / replay 3.
 [Release process evidence](release-invariants.md): TS41 prior plan, native replay and negative-case response. [Migration](migration-draft.25.md).
 FR : un défaut SEO correctement bloqué peut accompagner TS41 C ; premier profil strict sans dérogation. Le laboratoire de processus réel reste à produire.
 EN: Authored cases and bounded native reader; actual process laboratory remains pending.

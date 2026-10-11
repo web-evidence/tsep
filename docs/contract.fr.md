@@ -1,4 +1,8 @@
-# Contrat de rapport — TSEP 0.1.0-draft.25
+# Contrat de rapport — TSEP 0.1.0-draft.26
+
+### Clarification TS41 — draft.26
+
+Le recalcul inconclusif ne suffit pas à accuser une ancienne sortie positive ; une inconnue inchangée masquée par un code 0 reste une contradiction. [Migration et correction FR/EN](migration-draft.26.md). Lecteur inchangé.
 
 ### Dispositif de déploiement — draft.25
 

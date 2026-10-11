@@ -1,4 +1,8 @@
-# Report contract — TSEP 0.1.0-draft.25
+# Report contract — TSEP 0.1.0-draft.26
+
+### TS41 clarification — draft.26
+
+Inconclusive recalculation cannot alone accuse an old positive output; unchanged unknown output masked by exit 0 remains a contradiction. [Migration and FR/EN correction](migration-draft.26.md). Reader unchanged.
 
 ### Deployment process — draft.25
 

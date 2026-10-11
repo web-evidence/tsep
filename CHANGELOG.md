@@ -3,6 +3,12 @@
 Four prefrozen TS44 variants, six actual bounded loopback exchanges, native request logs and offline replay. DOM and reviews remain explicitly authored; no browser, agent or Edikka assessment. Draft.24 rules unchanged.
 FR : HTTP réellement observé sur site fictif, états rédigés et revues synthétiques distincts. [Method / Méthode](docs/critical-content-laboratory.md).
 
+## 0.1.0-draft.26 — 2026-10-11 — TS41 bilingual clarification and local laboratory
+
+Clarify inconclusive recalculation versus retained positive output; reader behavior and previous 1,103 cases unchanged. One additional frozen boundary, 1,104 cases / 2,101 pairs.
+FR : correction explicite d’une divergence de rédaction FR/EN ; nouvelle version, anciens dossiers conservés. [Migration](docs/migration-draft.26.md).
+Optional [release laboratory 1](docs/release-laboratory.md): six prefrozen scenarios, actual local HTTP/process/file operations, authored reviews. No production deployment or Edikka assessment. Interpreter 25 / adapter 26 / HTML 9 / replay 3 unchanged.
+
 ## 0.1.0-draft.25 — 2026-10-11 — deployment process evidence
 
 Three TS41 rules distinguish process adequacy from underlying SEO outcomes. Native inputs and supplied journal are replayed without executing evidence commands; unknown never becomes green.

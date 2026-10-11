@@ -18,7 +18,7 @@ from conformance.run import compare
 from reports import html
 
 ROOT=Path(__file__).resolve().parents[1]
-NAMES=('release-invariants-v1.json','release-invariants-boundaries-v1.json')
+NAMES=('release-invariants-v1.json','release-invariants-boundaries-v1.json','release-invariants-uncertain-output-v1.json')
 
 
 def cases():
@@ -42,8 +42,8 @@ class ReleaseInvariants(unittest.TestCase):
         return copy.deepcopy(next(c['input'] for c in cases() if c['id']=='release-invariants-'+name))
 
     def test_frozen_cases_preserved_and_match_without_network_or_processes(self):
-        rows=cases();self.assertEqual(len(rows),52)
-        self.assertEqual(tsep.read_json(ROOT/'conformance/cases.json')['cases'][1051:1103],rows)
+        rows=cases();self.assertEqual(len(rows),53)
+        self.assertEqual(tsep.read_json(ROOT/'conformance/cases.json')['cases'][1051:1104],rows)
         with patch.object(socket,'socket',side_effect=AssertionError('No network')),patch.object(subprocess,'Popen',side_effect=AssertionError('No process')):
             for c in rows:
                 with self.subTest(case=c['id']):

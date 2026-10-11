@@ -1,0 +1,28 @@
+{
+  "kind": "TS41 bilingual normative erratum; no reader behavior change",
+  "base_commit": "c2e7cff7a7513c7c0892fe952699613065e39b4f",
+  "old_protocol": "0.1.0-draft.25",
+  "new_protocol": "0.1.0-draft.26",
+  "boundary_fixture": "tests/fixtures/release-invariants-uncertain-output-v1.json",
+  "sha256": "53eab890b2da034f7d58732854eeb83238bf86ea144842903b1dccf18cd33024",
+  "correction": "French draft.25 included an unimplemented exception for unknown recalculation versus supplied positive output. Draft.26 aligns with existing English/code: inconclusive is not enough to accuse old positive output; unchanged unknown output with exit0 remains failure.",
+  "old_cases_preserved": 1103,
+  "reader_code_unchanged": true,
+  "laboratory_recipe_sha256": "1eb18ebfabaa2ed0a9ab92dcc2870f9936efcd349d2d8cc0a182e02faad61f0a",
+  "first_development_observation": {
+    "protocol": "0.1.0-draft.25",
+    "scenarios_matched": 6,
+    "actual_http_requests": 16,
+    "actual_processes": 16,
+    "limits": "Development run before final hardening; fictional site/reviews. Final verified delivery will be separate."
+  },
+  "targeted_verification": {
+    "tests": 28,
+    "passed": 28,
+    "scope": "18 controlled laboratory tests and 10 TS41 reader/integration tests",
+    "loopback_and_child_processes": true,
+    "offline_replay_forbids_network_processes_and_file_application": true,
+    "failures": 0,
+    "limits": "Not full source/archive verification; final delivery is recorded separately"
+  }
+}
