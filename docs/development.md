@@ -1,4 +1,9 @@
-Current integration: draft.22, interpreter 22 / adapter 23 / HTML 6 / replay 3.
+Current integration: draft.23, interpreter 23 / adapter 24 / HTML 7 / replay 3.
+[Agent access evidence](agent-access-evidence.md): TS43 test treatment, reviewed log correlation and honest attribution.
+FR : un refus attendu du client de test peut être cohérent ; aucun accès réel de l’opérateur déduit.
+[Migration](migration-draft.23.md). TS44 remains the next control.
+
+Historical integration: draft.22, interpreter 22 / adapter 23 / HTML 6 / replay 3.
 [Agent usage policy](agent-usage-policy.md): TS42 source mappings, owner decisions and qualified robots comparison.
 FR : agents IA ajoutés après les performances sur demande du 11 octobre ; TS43/TS44 restent les étapes suivantes.
 [Migration](migration-draft.22.md). No actual agent visit or operator compliance inferred.
@@ -587,3 +592,5 @@ human review or user acceptance is inferred. Protocol draft.7 is unchanged.
 Le [parcours de revue et rejeu](review-and-replay.md) fournit une commande commune
 et des fiches vides liées aux preuves. Les tests ne valent pas relecture humaine
 ni recette utilisateur. Les inconnues et contradictions restent conservées.
+
+[TS43 controlled loopback laboratory / Laboratoire contrôlé TS43](agent-access-laboratory.md): six prefrozen scenarios, eight local requests and offline replay; no real provider visit.

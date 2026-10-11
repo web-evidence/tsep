@@ -1,8 +1,8 @@
-Édition locale courante : **0.1.0-draft.22** — [usages agents](docs/agent-usage-policy.md), [migration](docs/migration-draft.22.md) et [preuves de performance](docs/performance-evidence.md). TS42 ajoute une lecture bornée de la politique ; aucune visite réelle ni conformité opérateur déduite.
+Édition locale courante : **0.1.0-draft.23** — [accès et journaux agents](docs/agent-access-evidence.md), [migration](docs/migration-draft.23.md), [usages](docs/agent-usage-policy.md) et [performance](docs/performance-evidence.md). Le traitement du client de test et ses traces ne prouvent pas l’accès réel de l’opérateur.
 
 # TSEP — format d’échange de preuves
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.22 · initié par Edikka · [English](README.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.23 · initié par Edikka · [English](README.md)**
 
 Transmettre un audit SEO technique que son destinataire peut examiner, rejouer et
 contester : mêmes identifiants, périmètre explicite, preuves liées aux constats et
@@ -70,14 +70,14 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
    Le [diagnostic de couverture](docs/reference-diagnostics.md) inventorie les limites
    candidates sans produire de verdict. Le [diagnostic par paire](docs/diagnostic-campaign.md)
    compare des phases préenregistrées et les limites d’extraction des corps changés.
-   Le protocole est draft.22 ; la [proposition noscript TS01](docs/proposals/noscript-consensus.md) est non appliquée.
+   Le protocole est draft.23 ; la [proposition noscript TS01](docs/proposals/noscript-consensus.md) est non appliquée.
 2. **Déclarer une couverture partielle** : sélectionner une liste `custom`, conserver
    les inconnues en NT/inconclusive et relier chaque preuve à sa cible. Une sélection
    TS01/TS07 ne satisfait pas un profil nommé. Aucun test isolé ne valide son parent.
 3. **Passer la suite de conformance** : fournir un adaptateur JSON sur entrée/sortie
    standard, puis exécuter `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 mon_adaptateur.py'`
-   pour ce sous-ensemble, ou omettre `--rules` pour les vingt et une règles. Déclarer
-   « passes TSEP 0.1.0-draft.22 conformance for TS01-A01, TS01-A02 » avec les bornes
+   pour ce sous-ensemble, ou omettre `--rules` pour les vingt-quatre règles. Déclarer
+   « passes TSEP 0.1.0-draft.23 conformance for TS01-A01, TS01-A02 » avec les bornes
    réellement prises en charge. [Format d’entrée et comparaison](docs/conformance.md). Publier séparément
    accords, désaccords et couverture réduite : les indéterminés acceptés sur des
    limites de référence signalées ne sont pas des évaluations réussies.
@@ -139,7 +139,7 @@ Le validateur vérifie les déclarations et les empreintes, pas leur authenticit
 la pertinence de l’intention ni l’exactitude de tous les jugements. Une empreinte
 ne prouve ni l’auteur ni la date réelle de collecte. Les cas fournis sont synthétiques.
 
-L’interpréteur couvre vingt et une règles dans un sous-ensemble documenté ; les entrées
+L’interpréteur couvre vingt-quatre règles dans un sous-ensemble documenté ; les entrées
 non prises en charge restent indéterminées. TS07-A03 compare des captures source/DOM fournies, sans exécuter JavaScript ;
 le plan et les exemptions nécessitent une revue. TS10 compare les signaux d’une famille déclarée et vérifie le rattachement de la revue
 humaine de contenu, sans en garantir la justesse. Un contrôle partiel ne produit jamais de conformité globale.
@@ -151,7 +151,7 @@ Aucun résultat ne garantit indexation, classement ou comportement futur d’un 
 [Gouvernance](GOVERNANCE.md) · [Contribuer](CONTRIBUTING.md) · [Historique](CHANGELOG.md) ·
 [Clause de recette](docs/acceptance-clause.md) · [Sonde HTTP](probes/README.md).
 
-Citer `TSEP@0.1.0-draft.22:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
+Citer `TSEP@0.1.0-draft.23:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
 Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](CITATION.cff).
 [Développement, vérification complète et dépôt autonome](docs/development.md).
 
@@ -172,3 +172,5 @@ Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](
 [Draft.14 — Sitemap page locations / URL de pages](docs/migration-draft.14.md)
 
 [Draft.15 — Source directives / Directives source](docs/migration-draft.15.md)
+
+[TS43 controlled loopback laboratory / Laboratoire contrôlé TS43](docs/agent-access-laboratory.md) : six prefrozen scenarios, eight actual local requests, fictional sources/reviews; no provider visit.

@@ -1,4 +1,7 @@
-Current / Actuel : draft.22, interpreter 22, adapter 23, HTML 6, replay 3.
+Current / Actuel : draft.23, interpreter 23, adapter 24, HTML 7, replay 3.
+TS43: [test client and log evidence / client de test et journaux](agent-access-evidence.md), supplied reviews and unverified operator identity.
+
+Historical / Historique : draft.22, interpreter 22, adapter 23, HTML 6, replay 3.
 TS42: [usage policy / usages agents](agent-usage-policy.md), explicit synthetic provenance and retained source/decision evidence.
 
 Historical / Historique : draft.21, interpreter 21, adapter 22, replay 3.

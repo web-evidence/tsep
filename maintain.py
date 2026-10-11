@@ -104,7 +104,7 @@ def check():
                          'Missing bilingual text: ' + control['id'] + '.' + field)
         tsep.require(control['required_inputs'] and control['unit'], 'Missing contract inputs')
         if 'rules' in control:
-            tsep.require(control['id'] in ('TS01', 'TS02', 'TS04', 'TS07', 'TS10', 'TS34', 'TS35', 'TS42') and control['rules'],
+            tsep.require(control['id'] in ('TS01', 'TS02', 'TS04', 'TS07', 'TS10', 'TS34', 'TS35', 'TS42', 'TS43') and control['rules'],
                          'Unexpected atomic rule scope')
             tsep.require(control['rule_version'] == protocol['version'], 'Stale atomic rule version')
             tsep.unique([r['id'] for r in control['rules']], 'atomic rule')
@@ -120,7 +120,7 @@ def check():
                 tsep.require(rule['required_inputs'] and
                              set(rule['required_inputs'] + rule['na_inputs']) <= set(known_inputs),
                              'Invalid atomic input kind')
-    tsep.require({c['id'] for c in controls if 'rules' in c} == {'TS01', 'TS02', 'TS04', 'TS07', 'TS10', 'TS34', 'TS35', 'TS42'},
+    tsep.require({c['id'] for c in controls if 'rules' in c} == {'TS01', 'TS02', 'TS04', 'TS07', 'TS10', 'TS34', 'TS35', 'TS42', 'TS43'},
                  'Missing atomic control')
     for upstream in protocol['upstream']:
         tsep.require(tsep.digest(ROOT / upstream['path']) == upstream['sha256'],
@@ -176,7 +176,7 @@ def main():
         protocol = tsep.read_json(tsep.PROTOCOL_PATH)
         protocol['normative_documents'] = [{'path': name, 'sha256': tsep.digest(ROOT / name)}
             for name in ('schemas/report.schema.json', 'docs/contract.en.md', 'docs/contract.fr.md',
-                         'docs/source-directives.md', 'docs/source-canonical.md', 'docs/source-link-policy.md', 'docs/source-link-policy-v2.md', 'docs/http-canonical-context.md', 'docs/preview-intent.md', 'docs/performance-evidence.md', 'docs/agent-usage-policy.md')]
+                         'docs/source-directives.md', 'docs/source-canonical.md', 'docs/source-link-policy.md', 'docs/source-link-policy-v2.md', 'docs/http-canonical-context.md', 'docs/preview-intent.md', 'docs/performance-evidence.md', 'docs/agent-usage-policy.md', 'docs/agent-access-evidence.md')]
         tsep.PROTOCOL_PATH.write_bytes((json.dumps(protocol, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
         for lang in ('fr', 'en'):
             (ROOT / ('docs/controls.' + lang + '.md')).write_bytes(rendered(protocol, lang).encode('utf-8'))

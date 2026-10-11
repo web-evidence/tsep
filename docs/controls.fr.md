@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.22 — Contrôles
+# TSEP 0.1.0-draft.23 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.22:TS01-A01`
+`TSEP@0.1.0-draft.23:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.22:TS01-A02`
+`TSEP@0.1.0-draft.23:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.22:TS02-A01`
+`TSEP@0.1.0-draft.23:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.22:TS02-A02`
+`TSEP@0.1.0-draft.23:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -198,7 +198,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A01 — Politique par origine, robot et ressource
 
-`TSEP@0.1.0-draft.22:TS04-A01`
+`TSEP@0.1.0-draft.23:TS04-A01`
 
 **Entrées requises**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A02 — Accès aux ressources nécessaires
 
-`TSEP@0.1.0-draft.22:TS04-A02`
+`TSEP@0.1.0-draft.23:TS04-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.22:TS07-A01`
+`TSEP@0.1.0-draft.23:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -344,7 +344,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.22:TS07-A02`
+`TSEP@0.1.0-draft.23:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.22:TS07-A03`
+`TSEP@0.1.0-draft.23:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.22:TS10-A01`
+`TSEP@0.1.0-draft.23:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -490,7 +490,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.22:TS10-A02`
+`TSEP@0.1.0-draft.23:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -514,7 +514,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.22:TS10-A03`
+`TSEP@0.1.0-draft.23:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.22:TS10-A04`
+`TSEP@0.1.0-draft.23:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 
@@ -1140,7 +1140,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A01 — Cohorte terrain attribuable
 
-`TSEP@0.1.0-draft.22:TS34-A01`
+`TSEP@0.1.0-draft.23:TS34-A01`
 
 **Entrées requises**: field-data, intent.
 
@@ -1164,7 +1164,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A02 — Mesures p75 et classes conservées
 
-`TSEP@0.1.0-draft.22:TS34-A02`
+`TSEP@0.1.0-draft.23:TS34-A02`
 
 **Entrées requises**: field-data, intent.
 
@@ -1188,7 +1188,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A03 — Décision motivée liée aux mesures
 
-`TSEP@0.1.0-draft.22:TS34-A03`
+`TSEP@0.1.0-draft.23:TS34-A03`
 
 **Entrées requises**: field-data, intent.
 
@@ -1236,7 +1236,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A01 — Contexte et mesures de laboratoire reproductibles
 
-`TSEP@0.1.0-draft.22:TS35-A01`
+`TSEP@0.1.0-draft.23:TS35-A01`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1260,7 +1260,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A02 — Hypothèse de diagnostic et prochaine vérification
 
-`TSEP@0.1.0-draft.22:TS35-A02`
+`TSEP@0.1.0-draft.23:TS35-A02`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1452,7 +1452,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A01 — Usages et mécanismes documentés
 
-`TSEP@0.1.0-draft.22:TS42-A01`
+`TSEP@0.1.0-draft.23:TS42-A01`
 
 **Entrées requises**: operator-docs, intent.
 
@@ -1476,7 +1476,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A02 — Décisions du responsable et arbitrages
 
-`TSEP@0.1.0-draft.22:TS42-A02`
+`TSEP@0.1.0-draft.23:TS42-A02`
 
 **Entrées requises**: intent.
 
@@ -1500,7 +1500,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A03 — Politique capturée et choix effectif
 
-`TSEP@0.1.0-draft.22:TS42-A03`
+`TSEP@0.1.0-draft.23:TS42-A03`
 
 **Entrées requises**: configuration, operator-docs, intent.
 
@@ -1530,21 +1530,93 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Tests de politique d’accès pour des agents déclarés.
 
-**Méthode.** Envoyer une requête GET avec le user-agent complet documenté, relever code et redirections, puis rechercher la requête dans les logs et vérifier l’identité lorsque l’opérateur publie une méthode.
+**Méthode.** Déclarer séparément l’accès de l’opérateur et le traitement du client de test ; comparer sa chaîne complète, rapprocher les journaux et qualifier honnêtement son origine selon agent-access-v1.
 
-**Attendus.** Chaîne complète, réponse et trace serveur sont rapprochées ; identité vérifiée ou non vérifiée explicite ; imitation jamais présentée comme visite réelle.
+**Attendus.** Les trois règles réussissent sur le périmètre de tests déclaré, avec réponse prévue, rapprochement qualifié et identité opérateur explicitement non vérifiée ; un refus prévu peut être conforme.
 
-**Preuves.** Commande, chaîne complète, réponse finale, horodatage, trace serveur et statut d’identité vérifiée ou non vérifiée.
+**Preuves.** Plan préalable, chaîne User-Agent revue, HTTP brut, journal JSONL natif, revues liées, commande/reçu fourni et qualification d’identité.
 
 **Conditions de NA.** Aucun agent à tester dans la politique déclarée.
 
-**Limites.** Imiter un user-agent ne reproduit pas l’infrastructure du crawler ; le test valide la politique applicative, pas la visite réelle de l’opérateur.
+**Limites.** Premier profil : client de test initié par l’évaluateur ; aucune visite, identité réelle, sécurité ou accessibilité de l’opérateur déduite. Sources, journaux, revues et reçu non authentifiés.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.openai.com/api/docs/bots](https://developers.openai.com/api/docs/bots)
+
+### TS43-A01 — Client complet et traitement attendu
+
+`TSEP@0.1.0-draft.23:TS43-A01`
+
+**Entrées requises**: http, operator-docs, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Chaque URL et client HTTP du périmètre de tests préalablement déclaré.
+
+**Méthode.** Relire les sources et leur revue liée ; vérifier la chaîne HTTP datée puis la réponse et le corps prévus pour le client de test.
+
+**Attendus.** Documentation revue et réponse conformes au plan du test ; contradiction indépendante conservée même si une autre preuve manque.
+
+**Preuves.** Pièces, dates, liaisons et observations selon docs/agent-access-evidence.md.
+
+**Hypothèses.** Sources, contexte, qualité du journal et revues fournis ; portée du test limitée à son client.
+
+**Indéterminé.** Client/source/revue absent, trace incomplète, traitement attendu ou référence de corps manquant.
+
+**Conditions de NA.** Aucune exemption atomique automatique.
+
+**Limites.** Premier profil : client de test initié par l’évaluateur ; aucune visite, identité réelle, sécurité ou accessibilité de l’opérateur déduite. Sources, journaux, revues et reçu non authentifiés.
+
+### TS43-A02 — Chaîne rapprochée des journaux
+
+`TSEP@0.1.0-draft.23:TS43-A02`
+
+**Entrées requises**: http, logs, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Chaque URL et client HTTP du périmètre de tests préalablement déclaré.
+
+**Méthode.** Vérifier export, revue de couche/identifiant/cache/horloge, puis identifier chaque ligne unique dans sa fenêtre avant comparaison littérale.
+
+**Attendus.** Chaque saut a une ligne attribuée dont méthode, URL, chaîne client et statut concordent ; tout écart qualifié échoue malgré un autre saut absent.
+
+**Preuves.** Pièces, dates, liaisons et observations selon docs/agent-access-evidence.md.
+
+**Hypothèses.** Sources, contexte, qualité du journal et revues fournis ; portée du test limitée à son client.
+
+**Indéterminé.** Logs absents, ID client ou rejoué, doublon, mauvaise couche, format inconnu, fenêtre/revue insuffisante.
+
+**Conditions de NA.** Aucune exemption atomique automatique.
+
+**Limites.** Premier profil : client de test initié par l’évaluateur ; aucune visite, identité réelle, sécurité ou accessibilité de l’opérateur déduite. Sources, journaux, revues et reçu non authentifiés.
+
+### TS43-A03 — Origine du test et identité non inventée
+
+`TSEP@0.1.0-draft.23:TS43-A03`
+
+**Entrées requises**: http, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Chaque URL et client HTTP du périmètre de tests préalablement déclaré.
+
+**Méthode.** Vérifier reçu d’exécution et qualification fournie liés ; distinguer test initié par l’évaluateur et visite de l’opérateur.
+
+**Attendus.** Origine assessor-test, identité opérateur not-verified et aucune revendication de visite réelle ; toute revendication liée contraire échoue.
+
+**Preuves.** Pièces, dates, liaisons et observations selon docs/agent-access-evidence.md.
+
+**Hypothèses.** Sources, contexte, qualité du journal et revues fournis ; portée du test limitée à son client.
+
+**Indéterminé.** Reçu/commande/qualification manquant, dates incohérentes, liaison absente ou statut d’identité ambigu.
+
+**Conditions de NA.** Aucune exemption atomique automatique.
+
+**Limites.** Premier profil : client de test initié par l’évaluateur ; aucune visite, identité réelle, sécurité ou accessibilité de l’opérateur déduite. Sources, journaux, revues et reçu non authentifiés.
 
 ## TS44 — Le contenu critique et ses preuves restent accessibles sans dépendre d’une exécution JavaScript non documentée.
 

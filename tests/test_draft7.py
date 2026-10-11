@@ -39,6 +39,8 @@ EXTERNAL_CASE_IDS = (
     'performance-lab-field-claim', 'performance-lab-no-plan',
     'agents-documented-search', 'agents-review-contradicts-mapping',
     'agents-owner-rejects', 'agents-documented-denial', 'agents-no-plan',
+    'agent-access-ua-only-allows-test', 'agent-access-unexpected-denial',
+    'agent-access-wrong-log-status', 'agent-access-claims-real-operator-visit', 'agent-access-missing-plan',
 )
 
 

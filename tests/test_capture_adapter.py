@@ -43,7 +43,8 @@ class CaptureAdapter(unittest.TestCase):
             with self.subTest(case=name):
                 # Fixed import clock keeps future-to-assessment fixtures deterministic.
                 with patch('adapters.captures.datetime') as clock:
-                    clock.now.return_value=datetime(2026,10,12,tzinfo=timezone.utc)
+                    # After every supplied fixture date; future-to-assessment remains unknown.
+                    clock.now.return_value=datetime(2026,10,13,tzinfo=timezone.utc)
                     summary=self.emit(case['input'])
                 report=tsep.read_json(self.output/'report.json')
                 self.assertEqual(summary,tsep.validate(report,self.output))

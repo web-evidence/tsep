@@ -1,0 +1,96 @@
+{
+  "frozen_at": "2026-10-11T03:58:26.501958+00:00",
+  "kind": "planned controlled loopback experiment; fictional provider documentation and reviews",
+  "max_requests": 8,
+  "cases": [
+    {
+      "id": "ua-only",
+      "path": "/ua-only",
+      "basis": "ua-only",
+      "test_action": "allow",
+      "expected_status": 200,
+      "expected_body": "Expected public content",
+      "atomic_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "control_status": "C"
+    },
+    {
+      "id": "identity-gated",
+      "path": "/identity-gated",
+      "basis": "identity-gated",
+      "test_action": "deny",
+      "expected_status": 403,
+      "atomic_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "control_status": "C"
+    },
+    {
+      "id": "forwarded-spoof",
+      "path": "/identity-gated",
+      "basis": "identity-gated",
+      "test_action": "deny",
+      "expected_status": 403,
+      "forwarded_for": "192.0.2.5",
+      "atomic_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "control_status": "C"
+    },
+    {
+      "id": "gate-removed",
+      "path": "/gate-removed",
+      "basis": "identity-gated",
+      "test_action": "deny",
+      "expected_status": 403,
+      "atomic_outcomes": [
+        "fail",
+        "pass",
+        "pass"
+      ],
+      "control_status": "NC"
+    },
+    {
+      "id": "cached-id",
+      "path": "/cached",
+      "basis": "ua-only",
+      "test_action": "allow",
+      "expected_status": 200,
+      "expected_body": "Expected public content",
+      "atomic_outcomes": [
+        "pass",
+        "inconclusive",
+        "pass"
+      ],
+      "control_status": "NT"
+    },
+    {
+      "id": "redirect",
+      "path": "/redirect",
+      "final_path": "/ua-only",
+      "basis": "ua-only",
+      "test_action": "allow",
+      "expected_status": 200,
+      "expected_body": "Expected public content",
+      "atomic_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "control_status": "C"
+    }
+  ],
+  "primer": {
+    "path": "/cached",
+    "user_agent": "OtherClient/1",
+    "before_plans": true
+  },
+  "identity_limit": "An actual socket peer is compared only to a fictional controlled allowlist; no provider identity or visitor is established."
+}

@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.22",
+  "version": "0.1.0-draft.23",
   "status": "draft",
   "date": "2026-10-11",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.22"
+      "rule_version": "0.1.0-draft.23"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.22",
+      "rule_version": "0.1.0-draft.23",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.22",
+      "rule_version": "0.1.0-draft.23",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.22"
+      "rule_version": "0.1.0-draft.23"
     },
     {
       "id": "TS08",
@@ -1233,7 +1233,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.22"
+      "rule_version": "0.1.0-draft.23"
     },
     {
       "id": "TS11",
@@ -2648,7 +2648,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.22",
+      "rule_version": "0.1.0-draft.23",
       "rules": [
         {
           "id": "TS34-A01",
@@ -2843,7 +2843,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.22",
+      "rule_version": "0.1.0-draft.23",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3356,7 +3356,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.22",
+      "rule_version": "0.1.0-draft.23",
       "rules": [
         {
           "id": "TS42-A01",
@@ -3518,24 +3518,24 @@
         "en": "Access-policy tests for declared agents."
       },
       "procedure": {
-        "fr": "Envoyer une requête GET avec le user-agent complet documenté, relever code et redirections, puis rechercher la requête dans les logs et vérifier l’identité lorsque l’opérateur publie une méthode.",
-        "en": "Send a GET request using the documented full user-agent, record status and redirects, find the request in logs and verify identity when the operator publishes a method."
+        "fr": "Déclarer séparément l’accès de l’opérateur et le traitement du client de test ; comparer sa chaîne complète, rapprocher les journaux et qualifier honnêtement son origine selon agent-access-v1.",
+        "en": "Declare operator access separately from test-client treatment; compare its full chain, reconcile logs and qualify its origin honestly under agent-access-v1."
       },
       "acceptance": {
-        "fr": "Chaîne complète, réponse et trace serveur sont rapprochées ; identité vérifiée ou non vérifiée explicite ; imitation jamais présentée comme visite réelle.",
-        "en": "Full user-agent string, response and server trace are reconciled; verified or unverified identity is explicit; imitation is never presented as a real visit."
+        "fr": "Les trois règles réussissent sur le périmètre de tests déclaré, avec réponse prévue, rapprochement qualifié et identité opérateur explicitement non vérifiée ; un refus prévu peut être conforme.",
+        "en": "All three rules pass for the declared test scope, with planned response, qualified correlation and explicitly unverified operator identity; an intended denial can conform."
       },
       "non_applicability": {
         "fr": "Aucun agent à tester dans la politique déclarée.",
         "en": "No agent to test in the declared policy."
       },
       "evidence": {
-        "fr": "Commande, chaîne complète, réponse finale, horodatage, trace serveur et statut d’identité vérifiée ou non vérifiée.",
-        "en": "Command, full string, final response, timestamp, server trace and verified/unverified identity status."
+        "fr": "Plan préalable, chaîne User-Agent revue, HTTP brut, journal JSONL natif, revues liées, commande/reçu fourni et qualification d’identité.",
+        "en": "Prior plan, reviewed full User-Agent, raw HTTP, native JSONL logs, bound supplied reviews, command/receipt and identity qualification."
       },
       "limitations": {
-        "fr": "Imiter un user-agent ne reproduit pas l’infrastructure du crawler ; le test valide la politique applicative, pas la visite réelle de l’opérateur.",
-        "en": "Imitating a user agent does not reproduce crawler infrastructure; the test validates application policy, not a real operator visit."
+        "fr": "Premier profil : client de test initié par l’évaluateur ; aucune visite, identité réelle, sécurité ou accessibilité de l’opérateur déduite. Sources, journaux, revues et reçu non authentifiés.",
+        "en": "First profile: assessor-initiated test client; no actual visit, identity, security or operator access inferred. Sources, logs, reviews and receipt are unauthenticated."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -3553,7 +3553,146 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.23",
+      "rules": [
+        {
+          "id": "TS43-A01",
+          "title": {
+            "fr": "Client complet et traitement attendu",
+            "en": "Full client and expected treatment"
+          },
+          "required_inputs": [
+            "http",
+            "operator-docs",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Chaque URL et client HTTP du périmètre de tests préalablement déclaré.",
+            "en": "Each URL and HTTP client within the previously declared test scope."
+          },
+          "procedure": {
+            "fr": "Relire les sources et leur revue liée ; vérifier la chaîne HTTP datée puis la réponse et le corps prévus pour le client de test.",
+            "en": "Read sources and bound review; check the dated HTTP chain then planned test-client response/body."
+          },
+          "acceptance": {
+            "fr": "Documentation revue et réponse conformes au plan du test ; contradiction indépendante conservée même si une autre preuve manque.",
+            "en": "Reviewed documentation and response agree with the test plan; retain independent contradictions despite other missing evidence."
+          },
+          "evidence": {
+            "fr": "Pièces, dates, liaisons et observations selon docs/agent-access-evidence.md.",
+            "en": "Evidence, dates, bindings and observations under docs/agent-access-evidence.md."
+          },
+          "assumptions": {
+            "fr": "Sources, contexte, qualité du journal et revues fournis ; portée du test limitée à son client.",
+            "en": "Supplied sources, context, log quality and reviews; test scope limited to its client."
+          },
+          "inconclusive": {
+            "fr": "Client/source/revue absent, trace incomplète, traitement attendu ou référence de corps manquant.",
+            "en": "Missing client/source/review, incomplete chain, absent test expectation or required body reference."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "limitations": {
+            "fr": "Premier profil : client de test initié par l’évaluateur ; aucune visite, identité réelle, sécurité ou accessibilité de l’opérateur déduite. Sources, journaux, revues et reçu non authentifiés.",
+            "en": "First profile: assessor-initiated test client; no actual visit, identity, security or operator access inferred. Sources, logs, reviews and receipt are unauthenticated."
+          }
+        },
+        {
+          "id": "TS43-A02",
+          "title": {
+            "fr": "Chaîne rapprochée des journaux",
+            "en": "Chain reconciled with logs"
+          },
+          "required_inputs": [
+            "http",
+            "logs",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Chaque URL et client HTTP du périmètre de tests préalablement déclaré.",
+            "en": "Each URL and HTTP client within the previously declared test scope."
+          },
+          "procedure": {
+            "fr": "Vérifier export, revue de couche/identifiant/cache/horloge, puis identifier chaque ligne unique dans sa fenêtre avant comparaison littérale.",
+            "en": "Check export and layer/ID/cache/clock review, then identify each unique in-window line before literal comparison."
+          },
+          "acceptance": {
+            "fr": "Chaque saut a une ligne attribuée dont méthode, URL, chaîne client et statut concordent ; tout écart qualifié échoue malgré un autre saut absent.",
+            "en": "Every hop has an attributed record with matching method, URL, client and status; any qualified difference fails despite another missing hop."
+          },
+          "evidence": {
+            "fr": "Pièces, dates, liaisons et observations selon docs/agent-access-evidence.md.",
+            "en": "Evidence, dates, bindings and observations under docs/agent-access-evidence.md."
+          },
+          "assumptions": {
+            "fr": "Sources, contexte, qualité du journal et revues fournis ; portée du test limitée à son client.",
+            "en": "Supplied sources, context, log quality and reviews; test scope limited to its client."
+          },
+          "inconclusive": {
+            "fr": "Logs absents, ID client ou rejoué, doublon, mauvaise couche, format inconnu, fenêtre/revue insuffisante.",
+            "en": "Missing logs, client-supplied/reused ID, duplicate, other layer, unknown format or insufficient window/review."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "limitations": {
+            "fr": "Premier profil : client de test initié par l’évaluateur ; aucune visite, identité réelle, sécurité ou accessibilité de l’opérateur déduite. Sources, journaux, revues et reçu non authentifiés.",
+            "en": "First profile: assessor-initiated test client; no actual visit, identity, security or operator access inferred. Sources, logs, reviews and receipt are unauthenticated."
+          }
+        },
+        {
+          "id": "TS43-A03",
+          "title": {
+            "fr": "Origine du test et identité non inventée",
+            "en": "Test origin without invented identity"
+          },
+          "required_inputs": [
+            "http",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Chaque URL et client HTTP du périmètre de tests préalablement déclaré.",
+            "en": "Each URL and HTTP client within the previously declared test scope."
+          },
+          "procedure": {
+            "fr": "Vérifier reçu d’exécution et qualification fournie liés ; distinguer test initié par l’évaluateur et visite de l’opérateur.",
+            "en": "Check bound execution receipt and supplied attribution; distinguish assessor test from an operator visit."
+          },
+          "acceptance": {
+            "fr": "Origine assessor-test, identité opérateur not-verified et aucune revendication de visite réelle ; toute revendication liée contraire échoue.",
+            "en": "Assessor-test origin, not-verified operator identity and no real-visit claim; any bound contrary claim fails."
+          },
+          "evidence": {
+            "fr": "Pièces, dates, liaisons et observations selon docs/agent-access-evidence.md.",
+            "en": "Evidence, dates, bindings and observations under docs/agent-access-evidence.md."
+          },
+          "assumptions": {
+            "fr": "Sources, contexte, qualité du journal et revues fournis ; portée du test limitée à son client.",
+            "en": "Supplied sources, context, log quality and reviews; test scope limited to its client."
+          },
+          "inconclusive": {
+            "fr": "Reçu/commande/qualification manquant, dates incohérentes, liaison absente ou statut d’identité ambigu.",
+            "en": "Missing receipt/command/attribution, inconsistent dates, absent binding or ambiguous identity status."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "limitations": {
+            "fr": "Premier profil : client de test initié par l’évaluateur ; aucune visite, identité réelle, sécurité ou accessibilité de l’opérateur déduite. Sources, journaux, revues et reçu non authentifiés.",
+            "en": "First profile: assessor-initiated test client; no actual visit, identity, security or operator access inferred. Sources, logs, reviews and receipt are unauthenticated."
+          }
+        }
+      ]
     },
     {
       "id": "TS44",
@@ -3766,15 +3905,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "1695d860d757cd17439e5ee28528a2a9a6f0f4141b674b873e979d0e99df0b6d"
+      "sha256": "26f1357e1522dce5a1e6b93e0a0935728428c60e63e783f1d4b9c9aba2807800"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "a9743aa377ad7df8d08a1bc50415752d2050cfd914e72925d070156632ac932c"
+      "sha256": "52b02d3a3356f9d2d22458a41a7364c8afc92d267eb0c3f33c343ce24556e415"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "b6d8248f12239572f56f7281461e69f5fc555dcda2797fbf29fd41e6d7897fcf"
+      "sha256": "3cb3b175771a66b90f35992afca0c54893c5273a7b84b18e13c96c7820e500b7"
     },
     {
       "path": "docs/source-directives.md",
@@ -3807,6 +3946,10 @@
     {
       "path": "docs/agent-usage-policy.md",
       "sha256": "aace4ea767fb48d53fcbe1ec6e904762d6f882b88ccc4779f0e440a587b44619"
+    },
+    {
+      "path": "docs/agent-access-evidence.md",
+      "sha256": "8aab6de24ab28fb1af533f4de584eb3361da0c7ea836c5887f465c37639774c7"
     }
   ]
 }

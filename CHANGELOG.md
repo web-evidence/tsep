@@ -1,3 +1,8 @@
+## 0.1.0-draft.23 — 2026-10-11 — agent access and logs
+
+TS43 adds three rules: documented test-client treatment, reviewed native-log correlation and attribution without invented identity. Expected denial can conform. 71 prefrozen cases; prior 909 cases and 21 rules retained.
+FR : réponse prévue du client, traces et attribution séparées ; refus attendu possible, aucune visite ni identité opérateur déduite. [Contract / Contrat](docs/agent-access-evidence.md), [migration](docs/migration-draft.23.md).
+
 ## 0.1.0-draft.22 — 2026-10-11 — agent usage policy
 
 TS42 gains three atomic rules: supplied source interpretation, distinct owner decisions and bounded robots comparison. Coupled purposes retain explicit owner tradeoffs; 52 prefrozen synthetic cases. Prior eighteen rules and 857 cases retained.

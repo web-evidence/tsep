@@ -1,0 +1,36 @@
+{
+  "recorded_at": "2026-10-11T04:13:21.034760+00:00",
+  "scope": "Editorial TS43 evidence method, not independent human review, code audit or certification. No files or code were sent.",
+  "consultation": {
+    "url": "https://claude.ai/chat/1c87d570-5d15-4448-8575-f5fff2bd61d3",
+    "date": "2026-10-11",
+    "retained_capture_kind": "Local browser accessibility text and screenshot; not original HTTP bytes",
+    "capture_distribution": "Retained locally; no private conversation content or dependency distributed",
+    "captures": [
+      {
+        "kind": "accessibility-text",
+        "sha256": "e491fb3149455f336fc1e23f380e1745bc9b491f1aa4cf4ce7c21812d8575d90"
+      },
+      {
+        "kind": "screenshot",
+        "sha256": "a547e64c4ab104a2bb56a0598abae08c6fb8e8695543365382eb00c73fcc403e"
+      }
+    ],
+    "adopted_points": [
+      "Separate intended operator access from prior treatment of the assessor test; an identity-gated denial may conform.",
+      "A passing test documents only that client, never real operator access or a provider visit.",
+      "Matching request ID alone is insufficient; stale cache/time and duplicate candidates remain unknown."
+    ]
+  },
+  "fixtures": [
+    {
+      "path": "tests/fixtures/agent-access-v1.json",
+      "sha256": "f0715c84ce6e13363d6a8075336c85ec9053d1abef4ac3e6f4d42da3c306d62c"
+    },
+    {
+      "path": "tests/fixtures/agent-access-laboratory-v1.json",
+      "sha256": "8a355f76b3af9122935dc4a5b25fe1dc297c96327aab27107a0e28b454cc6d6d"
+    }
+  ],
+  "historical_controls": "Earlier 909 raw cases and 21 atomic rules retained; no assessment of Edikka or real provider collection."
+}

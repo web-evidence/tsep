@@ -1,4 +1,8 @@
-Current / Actuel : draft.22 — 909 authored cases / cas synthétiques, 1,516 rule-target pairs / couples.
+Current / Actuel : draft.23 — 980 authored cases / cas synthétiques, 1,729 rule-target pairs / couples.
+Twenty-four rules across nine controls; TS43 adds 71 prefrozen cases / 213 pairs.
+Vingt-quatre règles sur neuf contrôles ; aucune visite réelle ou identité opérateur déduite.
+
+Historical / Historique : draft.22 — 909 authored cases / cas synthétiques, 1,516 rule-target pairs / couples.
 Twenty-one rules across eight controls; TS42 adds 52 prefrozen cases / 156 pairs.
 Vingt et une règles sur huit contrôles ; aucune visite réelle, revue humaine ou conformité opérateur déduite.
 

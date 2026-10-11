@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.22 — Controls
+# TSEP 0.1.0-draft.23 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.22:TS01-A01`
+`TSEP@0.1.0-draft.23:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.22:TS01-A02`
+`TSEP@0.1.0-draft.23:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.22:TS02-A01`
+`TSEP@0.1.0-draft.23:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.22:TS02-A02`
+`TSEP@0.1.0-draft.23:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.22:TS04-A01`
+`TSEP@0.1.0-draft.23:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.22:TS04-A02`
+`TSEP@0.1.0-draft.23:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.22:TS07-A01`
+`TSEP@0.1.0-draft.23:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -344,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.22:TS07-A02`
+`TSEP@0.1.0-draft.23:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.22:TS07-A03`
+`TSEP@0.1.0-draft.23:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.22:TS10-A01`
+`TSEP@0.1.0-draft.23:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -490,7 +490,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.22:TS10-A02`
+`TSEP@0.1.0-draft.23:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -514,7 +514,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.22:TS10-A03`
+`TSEP@0.1.0-draft.23:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.22:TS10-A04`
+`TSEP@0.1.0-draft.23:TS10-A04`
 
 **Required inputs**: crawl, intent.
 
@@ -1140,7 +1140,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A01 — Attributable field cohort
 
-`TSEP@0.1.0-draft.22:TS34-A01`
+`TSEP@0.1.0-draft.23:TS34-A01`
 
 **Required inputs**: field-data, intent.
 
@@ -1164,7 +1164,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A02 — Retained p75 measurements and classes
 
-`TSEP@0.1.0-draft.22:TS34-A02`
+`TSEP@0.1.0-draft.23:TS34-A02`
 
 **Required inputs**: field-data, intent.
 
@@ -1188,7 +1188,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A03 — Reasoned decision bound to measurements
 
-`TSEP@0.1.0-draft.22:TS34-A03`
+`TSEP@0.1.0-draft.23:TS34-A03`
 
 **Required inputs**: field-data, intent.
 
@@ -1236,7 +1236,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A01 — Repeatable laboratory context and measurements
 
-`TSEP@0.1.0-draft.22:TS35-A01`
+`TSEP@0.1.0-draft.23:TS35-A01`
 
 **Required inputs**: lab-data, intent.
 
@@ -1260,7 +1260,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A02 — Diagnostic hypothesis and next verification
 
-`TSEP@0.1.0-draft.22:TS35-A02`
+`TSEP@0.1.0-draft.23:TS35-A02`
 
 **Required inputs**: lab-data, intent.
 
@@ -1452,7 +1452,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A01 — Documented purposes and mechanisms
 
-`TSEP@0.1.0-draft.22:TS42-A01`
+`TSEP@0.1.0-draft.23:TS42-A01`
 
 **Required inputs**: operator-docs, intent.
 
@@ -1476,7 +1476,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A02 — Owner decisions and tradeoffs
 
-`TSEP@0.1.0-draft.22:TS42-A02`
+`TSEP@0.1.0-draft.23:TS42-A02`
 
 **Required inputs**: intent.
 
@@ -1500,7 +1500,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A03 — Captured policy and effective choice
 
-`TSEP@0.1.0-draft.22:TS42-A03`
+`TSEP@0.1.0-draft.23:TS42-A03`
 
 **Required inputs**: configuration, operator-docs, intent.
 
@@ -1530,21 +1530,93 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Access-policy tests for declared agents.
 
-**Method.** Send a GET request using the documented full user-agent, record status and redirects, find the request in logs and verify identity when the operator publishes a method.
+**Method.** Declare operator access separately from test-client treatment; compare its full chain, reconcile logs and qualify its origin honestly under agent-access-v1.
 
-**Acceptance.** Full user-agent string, response and server trace are reconciled; verified or unverified identity is explicit; imitation is never presented as a real visit.
+**Acceptance.** All three rules pass for the declared test scope, with planned response, qualified correlation and explicitly unverified operator identity; an intended denial can conform.
 
-**Evidence.** Command, full string, final response, timestamp, server trace and verified/unverified identity status.
+**Evidence.** Prior plan, reviewed full User-Agent, raw HTTP, native JSONL logs, bound supplied reviews, command/receipt and identity qualification.
 
 **When NA is allowed.** No agent to test in the declared policy.
 
-**Limits.** Imitating a user agent does not reproduce crawler infrastructure; the test validates application policy, not a real operator visit.
+**Limits.** First profile: assessor-initiated test client; no actual visit, identity, security or operator access inferred. Sources, logs, reviews and receipt are unauthenticated.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.openai.com/api/docs/bots](https://developers.openai.com/api/docs/bots)
+
+### TS43-A01 — Full client and expected treatment
+
+`TSEP@0.1.0-draft.23:TS43-A01`
+
+**Required inputs**: http, operator-docs, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Each URL and HTTP client within the previously declared test scope.
+
+**Method.** Read sources and bound review; check the dated HTTP chain then planned test-client response/body.
+
+**Acceptance.** Reviewed documentation and response agree with the test plan; retain independent contradictions despite other missing evidence.
+
+**Evidence.** Evidence, dates, bindings and observations under docs/agent-access-evidence.md.
+
+**Assumptions.** Supplied sources, context, log quality and reviews; test scope limited to its client.
+
+**Inconclusive.** Missing client/source/review, incomplete chain, absent test expectation or required body reference.
+
+**When NA is allowed.** No automatic atomic exemption.
+
+**Limits.** First profile: assessor-initiated test client; no actual visit, identity, security or operator access inferred. Sources, logs, reviews and receipt are unauthenticated.
+
+### TS43-A02 — Chain reconciled with logs
+
+`TSEP@0.1.0-draft.23:TS43-A02`
+
+**Required inputs**: http, logs, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Each URL and HTTP client within the previously declared test scope.
+
+**Method.** Check export and layer/ID/cache/clock review, then identify each unique in-window line before literal comparison.
+
+**Acceptance.** Every hop has an attributed record with matching method, URL, client and status; any qualified difference fails despite another missing hop.
+
+**Evidence.** Evidence, dates, bindings and observations under docs/agent-access-evidence.md.
+
+**Assumptions.** Supplied sources, context, log quality and reviews; test scope limited to its client.
+
+**Inconclusive.** Missing logs, client-supplied/reused ID, duplicate, other layer, unknown format or insufficient window/review.
+
+**When NA is allowed.** No automatic atomic exemption.
+
+**Limits.** First profile: assessor-initiated test client; no actual visit, identity, security or operator access inferred. Sources, logs, reviews and receipt are unauthenticated.
+
+### TS43-A03 — Test origin without invented identity
+
+`TSEP@0.1.0-draft.23:TS43-A03`
+
+**Required inputs**: http, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Each URL and HTTP client within the previously declared test scope.
+
+**Method.** Check bound execution receipt and supplied attribution; distinguish assessor test from an operator visit.
+
+**Acceptance.** Assessor-test origin, not-verified operator identity and no real-visit claim; any bound contrary claim fails.
+
+**Evidence.** Evidence, dates, bindings and observations under docs/agent-access-evidence.md.
+
+**Assumptions.** Supplied sources, context, log quality and reviews; test scope limited to its client.
+
+**Inconclusive.** Missing receipt/command/attribution, inconsistent dates, absent binding or ambiguous identity status.
+
+**When NA is allowed.** No automatic atomic exemption.
+
+**Limits.** First profile: assessor-initiated test client; no actual visit, identity, security or operator access inferred. Sources, logs, reviews and receipt are unauthenticated.
 
 ## TS44 — Critical content and evidence remain accessible without undocumented JavaScript execution.
 
