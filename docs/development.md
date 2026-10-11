@@ -1,3 +1,6 @@
+Optional [source content observation 1](source-content-observation.md) prepares TS44 with two static scripting hypotheses, retained context and original-byte attribution. Draft.23 unchanged; atomic TS44 rules remain to integrate.
+FR : observation structurelle, sans verdict TS44 ni rendu navigateur ; 30 documents contradictoires figés.
+
 Current integration: draft.23, interpreter 23 / adapter 24 / HTML 7 / replay 3.
 [Agent access evidence](agent-access-evidence.md): TS43 test treatment, reviewed log correlation and honest attribution.
 FR : un refus attendu du client de test peut être cohérent ; aucun accès réel de l’opérateur déduit.

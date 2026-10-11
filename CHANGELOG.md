@@ -1,3 +1,8 @@
+## Source content observation 1 — 2026-10-11 — non-normative
+
+Optional bounded content tree prepares TS44: literal IDs, duplicate/context retention, two static scripting hypotheses and original-byte attribution. Thirty authored cases frozen before implementation. Draft.23 and its existing rules remain unchanged.
+FR : préparation structurelle TS44, sans verdict ni observation navigateur. [Method / Méthode](docs/source-content-observation.md).
+
 ## 0.1.0-draft.23 — 2026-10-11 — agent access and logs
 
 TS43 adds three rules: documented test-client treatment, reviewed native-log correlation and attribution without invented identity. Expected denial can conform. 71 prefrozen cases; prior 909 cases and 21 rules retained.

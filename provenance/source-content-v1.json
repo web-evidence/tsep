@@ -1,0 +1,68 @@
+{
+  "kind": "source-content-observation-provenance",
+  "experiment_version": "1",
+  "normative_effect": "none",
+  "protocol_unchanged": "0.1.0-draft.23",
+  "sources": [
+    {
+      "url": "https://dom.spec.whatwg.org/#concept-descendant-text-content",
+      "observed_at": "2026-10-11T04:35:57.066Z",
+      "scope": "Structural text, noscript hypotheses and parse API terminology; no browser observation, semantic sufficiency or consumer capability claim.",
+      "capture": ".local/critical-content-2026-10-11/primary-source-extract.json",
+      "sha256": "6907a3c2d6cae6997964552d4008b924d0a38186adfbc81c2d7e6cd05a019bbe",
+      "capture_kind": "Combined bounded web-tool text extracts, not complete raw HTTP bodies",
+      "delivery": "Local capture retained; URL/date/scope/fingerprint distributed. Tool-independent runtime does not read this local file."
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/scripting.html#the-noscript-element",
+      "observed_at": "2026-10-11T04:35:57.066Z",
+      "scope": "Structural text, noscript hypotheses and parse API terminology; no browser observation, semantic sufficiency or consumer capability claim.",
+      "capture": ".local/critical-content-2026-10-11/primary-source-extract.json",
+      "sha256": "6907a3c2d6cae6997964552d4008b924d0a38186adfbc81c2d7e6cd05a019bbe",
+      "capture_kind": "Combined bounded web-tool text extracts, not complete raw HTTP bodies",
+      "delivery": "Local capture retained; URL/date/scope/fingerprint distributed. Tool-independent runtime does not read this local file."
+    },
+    {
+      "url": "https://parse5.js.org/functions/parse5.parse.html",
+      "observed_at": "2026-10-11T04:35:57.066Z",
+      "scope": "Structural text, noscript hypotheses and parse API terminology; no browser observation, semantic sufficiency or consumer capability claim.",
+      "capture": ".local/critical-content-2026-10-11/primary-source-extract.json",
+      "sha256": "6907a3c2d6cae6997964552d4008b924d0a38186adfbc81c2d7e6cd05a019bbe",
+      "capture_kind": "Combined bounded web-tool text extracts, not complete raw HTTP bodies",
+      "delivery": "Local capture retained; URL/date/scope/fingerprint distributed. Tool-independent runtime does not read this local file."
+    }
+  ],
+  "oracle": {
+    "path": "tests/fixtures/source-content-v1.json",
+    "sha256": "bcb37b8890a5c2e693a1efe72b82092c6c00a7c65b525f3dfea528eb86b3798c",
+    "cases": 30,
+    "hypothesis_expectations": 60,
+    "frozen_before_implementation": true,
+    "scope": "Authored expectations, never copied from parser output"
+  },
+  "retained_observation": {
+    "path": "tests/fixtures/source-content-observation-v1.json",
+    "sha256": "a6c5631dca487d445291293dcdce27c25b0f7f661b3f3aec314a6ed224e89c25",
+    "case": "unicode-bom-byte-spans",
+    "scope": "Actual offline Node parsing of an authored source; not a browser or site capture"
+  },
+  "qualification": {
+    "path": ".local/critical-content-2026-10-11/source-content-r3/qualification.json",
+    "sha256": "f8a43bc5e5c80257c673a17cc9487114539ee45ddea523fdd7c74c8d71b56ce2",
+    "expectation_matches": 60,
+    "expectation_total": 60,
+    "limit_matches": 6,
+    "limit_total": 6,
+    "node": "24.19.0",
+    "scope": "Finite authored structural and resource-limit cases; no TS44 outcome"
+  },
+  "consultation": {
+    "provider": "Claude",
+    "url": "https://claude.ai/chat/1c87d570-5d15-4448-8575-f5fff2bd61d3",
+    "observed_at": "2026-10-11T04:35:16.793820+00:00",
+    "capture": ".local/critical-content-2026-10-11/claude-review.txt",
+    "sha256": "e75502c65301b934ad3fd3e5fe4f1969f78e5dff4df2961d5dccc253a63f1812",
+    "scope": "AI methodology discussion only; fixed no-JS reference, representation-bound review and explicit authored-DOM attribution. No human review, approval or inspection of repository code claimed.",
+    "delivery": "Private chat capture retained locally; no runtime dependency or public endorsement."
+  }
+}

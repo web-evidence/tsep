@@ -1,0 +1,1644 @@
+{
+  "format": "tsep-source-content-authored-oracle",
+  "version": "1",
+  "synthetic": true,
+  "normative_effect": "none",
+  "frozen_before_reader_implementation": true,
+  "selection": "Exact case-sensitive unqualified id; all matches retained, including duplicates and inert/foreign/head contexts. No CSS selector execution.",
+  "text_policy": "Ordinary text joins tree-ordered descendant text outside head/template/script/style/foreign/frame contexts and under body. Flagged text is retained, not declared visible or semantically sufficient. Both modes parse without executing scripts.",
+  "cases": [
+    {
+      "id": "server-fact-and-citation",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\">LCP : 1,8 s. <a href=\"https://example.test/proof\">Source</a></article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "LCP : 1,8 s. Source",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": [
+                {
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "href": "https://example.test/proof",
+                  "context": [
+                    "body"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "LCP : 1,8 s. Source",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": [
+                {
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "href": "https://example.test/proof",
+                  "context": [
+                    "body"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "script-only-fact",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\"></article><script>document.getElementById(\"critical\").textContent=\"LCP : 1,8 s\";</script></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "script-inside-selected-block",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\">Avant<script>\"LCP : 1,8 s\"</script>Après</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "AvantAprès",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "\"LCP : 1,8 s\"",
+                  "context": [
+                    "body",
+                    "script"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "AvantAprès",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "\"LCP : 1,8 s\"",
+                  "context": [
+                    "body",
+                    "script"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "comment-is-not-text",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\">A<!-- LCP : 1,8 s -->B</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "AB",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "AB",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "style-is-not-text",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\">A<style>.x:before {content:\"Fait\"}</style>B</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "AB",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": ".x:before {content:\"Fait\"}",
+                  "context": [
+                    "body",
+                    "style"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "AB",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": ".x:before {content:\"Fait\"}",
+                  "context": [
+                    "body",
+                    "style"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "inline-text-order-entities",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\">A <strong>B &amp; C</strong> D<br>E&nbsp;F</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "A B & C DE F",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "A B & C DE F",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "unicode-bom-byte-spans",
+      "html": "﻿<!doctype html><html><head></head><body><article id=\"critical\">É 😀 <a href=\"/preuve?x=1&amp;y=2\">référence</a></article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "É 😀 référence",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": [
+                {
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "href": "/preuve?x=1&y=2",
+                  "context": [
+                    "body"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "É 😀 référence",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": [
+                {
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "href": "/preuve?x=1&y=2",
+                  "context": [
+                    "body"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "nested-hidden-inert",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\">A<span hidden inert>B</span>C</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "ABC",
+              "flagged_runs": [
+                {
+                  "data": "B",
+                  "context": [
+                    "body",
+                    "hidden",
+                    "inert"
+                  ]
+                }
+              ],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "ABC",
+              "flagged_runs": [
+                {
+                  "data": "B",
+                  "context": [
+                    "body",
+                    "hidden",
+                    "inert"
+                  ]
+                }
+              ],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "aria-and-style-retained",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\" aria-hidden=\"true\" style=\"display:none\">Fait</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "aria-hidden",
+                "body",
+                "inline-style"
+              ],
+              "ordinary_text": "Fait",
+              "flagged_runs": [
+                {
+                  "data": "Fait",
+                  "context": [
+                    "aria-hidden",
+                    "body",
+                    "inline-style"
+                  ]
+                }
+              ],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "aria-hidden",
+                "body",
+                "inline-style"
+              ],
+              "ordinary_text": "Fait",
+              "flagged_runs": [
+                {
+                  "data": "Fait",
+                  "context": [
+                    "aria-hidden",
+                    "body",
+                    "inline-style"
+                  ]
+                }
+              ],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "aria-false-is-not-hidden",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\" aria-hidden=\"false\">Fait</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "Fait",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "Fait",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "duplicate-literal-id",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\">A</article><p id=\"critical\">B</p></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "A",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            },
+            {
+              "name": "p",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "B",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "A",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            },
+            {
+              "name": "p",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "B",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "missing-id-no-guess",
+      "html": "<!doctype html><html><head></head><body><article id=\"Critical\">Fait</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": []
+        },
+        "enabled": {
+          "critical": []
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "template-content-not-active",
+      "html": "<!doctype html><html><head></head><body><template><article id=\"critical\">Fait</article></template></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body",
+                "template"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Fait",
+                  "context": [
+                    "body",
+                    "template"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body",
+                "template"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Fait",
+                  "context": [
+                    "body",
+                    "template"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "nested-template-does-not-merge",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\">A<template><span>B</span></template>C</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "AC",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "B",
+                  "context": [
+                    "body",
+                    "template"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "AC",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "B",
+                  "context": [
+                    "body",
+                    "template"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "shadow-declaration-not-attachment",
+      "html": "<!doctype html><html><head></head><body><div><template shadowrootmode=\"closed\"><article id=\"critical\">Fait</article></template></div></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body",
+                "shadow-declaration",
+                "template"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Fait",
+                  "context": [
+                    "body",
+                    "shadow-declaration",
+                    "template"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body",
+                "shadow-declaration",
+                "template"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Fait",
+                  "context": [
+                    "body",
+                    "shadow-declaration",
+                    "template"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "noscript-two-static-hypotheses",
+      "html": "<!doctype html><html><head></head><body><noscript><article id=\"critical\">Sans JS</article></noscript></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body",
+                "noscript"
+              ],
+              "ordinary_text": "Sans JS",
+              "flagged_runs": [
+                {
+                  "data": "Sans JS",
+                  "context": [
+                    "body",
+                    "noscript"
+                  ]
+                }
+              ],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": []
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "noscript-descendant",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\">A<noscript>B</noscript>C</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "ABC",
+              "flagged_runs": [
+                {
+                  "data": "B",
+                  "context": [
+                    "body",
+                    "noscript"
+                  ]
+                }
+              ],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "ABC",
+              "flagged_runs": [
+                {
+                  "data": "B",
+                  "context": [
+                    "body",
+                    "noscript"
+                  ]
+                }
+              ],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "head-title-not-body",
+      "html": "<!doctype html><html><head><title id=\"critical\">Titre</title></head><body><article>Corps</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "title",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "head"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Titre",
+                  "context": [
+                    "head"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "title",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "head"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Titre",
+                  "context": [
+                    "head"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "svg-text-retained-outside-html-profile",
+      "html": "<!doctype html><html><head></head><body><svg><text id=\"critical\">Fait</text></svg></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "text",
+              "namespace": "http://www.w3.org/2000/svg",
+              "context": [
+                "body",
+                "foreign"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Fait",
+                  "context": [
+                    "body",
+                    "foreign"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "text",
+              "namespace": "http://www.w3.org/2000/svg",
+              "context": [
+                "body",
+                "foreign"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Fait",
+                  "context": [
+                    "body",
+                    "foreign"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "foreign-object-html-still-foreign-context",
+      "html": "<!doctype html><html><head></head><body><svg><foreignObject><article id=\"critical\">Fait</article></foreignObject></svg></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body",
+                "foreign"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Fait",
+                  "context": [
+                    "body",
+                    "foreign"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body",
+                "foreign"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Fait",
+                  "context": [
+                    "body",
+                    "foreign"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "mathml-retained-outside-html-profile",
+      "html": "<!doctype html><html><head></head><body><math><mi id=\"critical\">x</mi></math></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "mi",
+              "namespace": "http://www.w3.org/1998/Math/MathML",
+              "context": [
+                "body",
+                "foreign"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "x",
+                  "context": [
+                    "body",
+                    "foreign"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "mi",
+              "namespace": "http://www.w3.org/1998/Math/MathML",
+              "context": [
+                "body",
+                "foreign"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "x",
+                  "context": [
+                    "body",
+                    "foreign"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "template-and-ordinary-same-id",
+      "html": "<!doctype html><html><head></head><body><template><p id=\"critical\">Modèle</p></template><article id=\"critical\">Actif</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "p",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body",
+                "template"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Modèle",
+                  "context": [
+                    "body",
+                    "template"
+                  ]
+                }
+              ],
+              "links": []
+            },
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "Actif",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "p",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body",
+                "template"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Modèle",
+                  "context": [
+                    "body",
+                    "template"
+                  ]
+                }
+              ],
+              "links": []
+            },
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "Actif",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "link-attributes-stay-literal",
+      "html": "<!doctype html><html><head><base href=\"https://other.test/base/\"></head><body><article id=\"critical\"><a href=\"../source\">S</a><a href=\"javascript:alert(1)\">J</a><a href=\"\">V</a></article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "SJV",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": [
+                {
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "href": "../source",
+                  "context": [
+                    "body"
+                  ]
+                },
+                {
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "href": "javascript:alert(1)",
+                  "context": [
+                    "body"
+                  ]
+                },
+                {
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "href": "",
+                  "context": [
+                    "body"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "SJV",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": [
+                {
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "href": "../source",
+                  "context": [
+                    "body"
+                  ]
+                },
+                {
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "href": "javascript:alert(1)",
+                  "context": [
+                    "body"
+                  ]
+                },
+                {
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "href": "",
+                  "context": [
+                    "body"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "duplicate-href-recovery-recorded",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\"><a href=\"/first\" href=\"/second\">S</a></article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "S",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": [
+                {
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "href": "/first",
+                  "context": [
+                    "body"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "S",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": [
+                {
+                  "name": "a",
+                  "namespace": "http://www.w3.org/1999/xhtml",
+                  "href": "/first",
+                  "context": [
+                    "body"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "required_parse_errors": [
+        "duplicate-attribute"
+      ]
+    },
+    {
+      "id": "foster-parent-text-outside-table",
+      "html": "<!doctype html><html><head></head><body><table id=\"critical\">Fait<tr><td>Cellule</td></tr></table></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "table",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "Cellule",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "table",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "Cellule",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "details-dialog-not-visibility",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\"><details><summary>Titre</summary>Fait</details><dialog>Autre</dialog></article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "TitreFaitAutre",
+              "flagged_runs": [
+                {
+                  "data": "Titre",
+                  "context": [
+                    "body",
+                    "details"
+                  ]
+                },
+                {
+                  "data": "Fait",
+                  "context": [
+                    "body",
+                    "details"
+                  ]
+                },
+                {
+                  "data": "Autre",
+                  "context": [
+                    "body",
+                    "dialog"
+                  ]
+                }
+              ],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "TitreFaitAutre",
+              "flagged_runs": [
+                {
+                  "data": "Titre",
+                  "context": [
+                    "body",
+                    "details"
+                  ]
+                },
+                {
+                  "data": "Fait",
+                  "context": [
+                    "body",
+                    "details"
+                  ]
+                },
+                {
+                  "data": "Autre",
+                  "context": [
+                    "body",
+                    "dialog"
+                  ]
+                }
+              ],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "line-endings-and-null-replacement",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\">A\r\nB\rC\u0000D</article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "A\nB\nCD",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "A\nB\nCD",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": [
+        "unexpected-null-character"
+      ]
+    },
+    {
+      "id": "selected-script-is-not-fact",
+      "html": "<!doctype html><html><head></head><body><script id=\"critical\">\"Fait\"</script></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "script",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body",
+                "script"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "\"Fait\"",
+                  "context": [
+                    "body",
+                    "script"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "script",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body",
+                "script"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "\"Fait\"",
+                  "context": [
+                    "body",
+                    "script"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "iframe-fallback-not-child-document",
+      "html": "<!doctype html><html><head></head><body><article id=\"critical\"><iframe src=\"/frame\">Fait</iframe></article></body></html>",
+      "ids": [
+        "critical"
+      ],
+      "expected": {
+        "disabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Fait",
+                  "context": [
+                    "body",
+                    "frame"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "critical": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "",
+              "flagged_runs": [],
+              "excluded_text": [
+                {
+                  "data": "Fait",
+                  "context": [
+                    "body",
+                    "frame"
+                  ]
+                }
+              ],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    },
+    {
+      "id": "css-selector-is-literal-id",
+      "html": "<!doctype html><html><head></head><body><article id=\"a:b\">Fait</article></body></html>",
+      "ids": [
+        "a:b"
+      ],
+      "expected": {
+        "disabled": {
+          "a:b": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "Fait",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        },
+        "enabled": {
+          "a:b": [
+            {
+              "name": "article",
+              "namespace": "http://www.w3.org/1999/xhtml",
+              "context": [
+                "body"
+              ],
+              "ordinary_text": "Fait",
+              "flagged_runs": [],
+              "excluded_text": [],
+              "links": []
+            }
+          ]
+        }
+      },
+      "required_parse_errors": []
+    }
+  ]
+}

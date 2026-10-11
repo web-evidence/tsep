@@ -28,6 +28,8 @@ sans le même niveau de règles et d'outillage exécutables.
 | TS42 | Correspondances liées aux sources et revues, décisions du responsable, arbitrages et lecture robots bornée | Aucune décision réelle du responsable Edikka ni visite d’agent établie ; autres mécanismes non qualifiés |
 | TS43 | Traitement prévu du client de test, chaîne complète et journaux JSONL liés, attribution explicite | Expérience contrôlée loopback disponible ; aucun accès réel de l’opérateur, identité ou visite établis ; TS44 à développer |
 
+TS44 dispose maintenant d’un [observateur structurel facultatif](source-content-observation.md) : 30 documents figés, deux hypothèses de scripts, contextes et octets conservés. Ce jalon ne crée aucune règle atomique ; plan critique, revues, découverte des ressources, cohérence et laboratoire restent à intégrer.
+
 Les extensions récentes sont [les liens source v2](source-link-policy-v2.md),
 [le contexte HTTP canonical](http-canonical-context.md) et
 [les intentions de présentation](preview-intent.md), puis
@@ -98,7 +100,7 @@ controls are specified. On October 11 the user explicitly added TS34/TS35 perfor
 The user then added TS42–TS44 agents, in that order after performance.
 Nine controls now have 24 executable atomic rules, including 11 for the four SEO
 priorities, five for performance and six for TS42/TS43. The other 35 lack equivalent executable coverage.
-TS42 binds source mappings, supplied owner decisions and tradeoffs to a bounded robots comparison. No real owner approval or agent visit is established. TS43 now supplies planned test-client treatment, reviewed native-log correlation and explicit attribution, with a controlled loopback experiment. Actual operator access/identity/visits remain unestablished. TS44 remains to develop.
+TS42 binds source mappings, supplied owner decisions and tradeoffs to a bounded robots comparison. No real owner approval or agent visit is established. TS43 now supplies planned test-client treatment, reviewed native-log correlation and explicit attribution, with a controlled loopback experiment. Actual operator access/identity/visits remain unestablished. TS44 now has an optional [static content observer](source-content-observation.md); prior critical inventories, reviews, resource discovery/coherence, atomic rules and the laboratory remain to integrate.
 TS34 imports CrUX cohorts/p75 with exact classes and supplied decisions. TS35 imports
 planned repeated Lighthouse reports with declared context, spread and supplied hypotheses.
 No new real Edikka performance campaign, other-source reader or before/after comparison

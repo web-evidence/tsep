@@ -1,0 +1,558 @@
+{
+  "kind": "unapplied-source-content-tree",
+  "experiment_version": "1",
+  "normative_effect": "none",
+  "parser": {
+    "name": "parse5",
+    "version": "8.0.1",
+    "dependency": "entities@8.0.0"
+  },
+  "runtime": {
+    "node": "v24.19.0",
+    "v8": "13.6.233.17-node.51"
+  },
+  "parser_input_utf8_sha256": "c46c872b58f7574ec3028a50110ad15641ab4722aacae96480ef1647a533c504",
+  "readings": {
+    "enabled": {
+      "complete": true,
+      "document_mode": "no-quirks",
+      "nodes": [
+        {
+          "id": 0,
+          "parent": null,
+          "edge": "root",
+          "index": 0,
+          "kind": "document",
+          "name": "#document",
+          "namespace": null,
+          "attributes": [],
+          "data": null,
+          "child_count": 2,
+          "template_content": false,
+          "source_span_utf16": null,
+          "raw_source": null,
+          "body_span_bytes": null
+        },
+        {
+          "id": 1,
+          "parent": 0,
+          "edge": "child",
+          "index": 0,
+          "kind": "doctype",
+          "name": "#documentType",
+          "namespace": null,
+          "attributes": [],
+          "data": null,
+          "child_count": 0,
+          "template_content": false,
+          "source_span_utf16": [
+            0,
+            15
+          ],
+          "raw_source": "<!doctype html>",
+          "body_span_bytes": [
+            3,
+            18
+          ]
+        },
+        {
+          "id": 2,
+          "parent": 0,
+          "edge": "child",
+          "index": 1,
+          "kind": "element",
+          "name": "html",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "attributes": [],
+          "data": null,
+          "child_count": 2,
+          "template_content": false,
+          "source_span_utf16": [
+            15,
+            21
+          ],
+          "raw_source": "<html>",
+          "body_span_bytes": [
+            18,
+            24
+          ]
+        },
+        {
+          "id": 3,
+          "parent": 2,
+          "edge": "child",
+          "index": 0,
+          "kind": "element",
+          "name": "head",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "attributes": [],
+          "data": null,
+          "child_count": 0,
+          "template_content": false,
+          "source_span_utf16": [
+            21,
+            27
+          ],
+          "raw_source": "<head>",
+          "body_span_bytes": [
+            24,
+            30
+          ]
+        },
+        {
+          "id": 4,
+          "parent": 2,
+          "edge": "child",
+          "index": 1,
+          "kind": "element",
+          "name": "body",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "attributes": [],
+          "data": null,
+          "child_count": 1,
+          "template_content": false,
+          "source_span_utf16": [
+            34,
+            40
+          ],
+          "raw_source": "<body>",
+          "body_span_bytes": [
+            37,
+            43
+          ]
+        },
+        {
+          "id": 5,
+          "parent": 4,
+          "edge": "child",
+          "index": 0,
+          "kind": "element",
+          "name": "article",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "attributes": [
+            {
+              "name": "id",
+              "namespace": null,
+              "prefix": null,
+              "value": "critical"
+            }
+          ],
+          "data": null,
+          "child_count": 2,
+          "template_content": false,
+          "source_span_utf16": [
+            40,
+            63
+          ],
+          "raw_source": "<article id=\"critical\">",
+          "body_span_bytes": [
+            43,
+            66
+          ]
+        },
+        {
+          "id": 6,
+          "parent": 5,
+          "edge": "child",
+          "index": 0,
+          "kind": "text",
+          "name": "#text",
+          "namespace": null,
+          "attributes": [],
+          "data": "É 😀 ",
+          "child_count": 0,
+          "template_content": false,
+          "source_span_utf16": [
+            63,
+            68
+          ],
+          "raw_source": "É 😀 ",
+          "body_span_bytes": [
+            66,
+            74
+          ]
+        },
+        {
+          "id": 7,
+          "parent": 5,
+          "edge": "child",
+          "index": 1,
+          "kind": "element",
+          "name": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "attributes": [
+            {
+              "name": "href",
+              "namespace": null,
+              "prefix": null,
+              "value": "/preuve?x=1&y=2"
+            }
+          ],
+          "data": null,
+          "child_count": 1,
+          "template_content": false,
+          "source_span_utf16": [
+            68,
+            98
+          ],
+          "raw_source": "<a href=\"/preuve?x=1&amp;y=2\">",
+          "body_span_bytes": [
+            74,
+            104
+          ]
+        },
+        {
+          "id": 8,
+          "parent": 7,
+          "edge": "child",
+          "index": 0,
+          "kind": "text",
+          "name": "#text",
+          "namespace": null,
+          "attributes": [],
+          "data": "référence",
+          "child_count": 0,
+          "template_content": false,
+          "source_span_utf16": [
+            98,
+            107
+          ],
+          "raw_source": "référence",
+          "body_span_bytes": [
+            104,
+            115
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "selections": {
+        "critical": [
+          {
+            "name": "article",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "context": [
+              "body"
+            ],
+            "ordinary_text": "É 😀 référence",
+            "flagged_runs": [],
+            "excluded_text": [],
+            "links": [
+              {
+                "name": "a",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "href": "/preuve?x=1&y=2",
+                "context": [
+                  "body"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "disabled": {
+      "complete": true,
+      "document_mode": "no-quirks",
+      "nodes": [
+        {
+          "id": 0,
+          "parent": null,
+          "edge": "root",
+          "index": 0,
+          "kind": "document",
+          "name": "#document",
+          "namespace": null,
+          "attributes": [],
+          "data": null,
+          "child_count": 2,
+          "template_content": false,
+          "source_span_utf16": null,
+          "raw_source": null,
+          "body_span_bytes": null
+        },
+        {
+          "id": 1,
+          "parent": 0,
+          "edge": "child",
+          "index": 0,
+          "kind": "doctype",
+          "name": "#documentType",
+          "namespace": null,
+          "attributes": [],
+          "data": null,
+          "child_count": 0,
+          "template_content": false,
+          "source_span_utf16": [
+            0,
+            15
+          ],
+          "raw_source": "<!doctype html>",
+          "body_span_bytes": [
+            3,
+            18
+          ]
+        },
+        {
+          "id": 2,
+          "parent": 0,
+          "edge": "child",
+          "index": 1,
+          "kind": "element",
+          "name": "html",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "attributes": [],
+          "data": null,
+          "child_count": 2,
+          "template_content": false,
+          "source_span_utf16": [
+            15,
+            21
+          ],
+          "raw_source": "<html>",
+          "body_span_bytes": [
+            18,
+            24
+          ]
+        },
+        {
+          "id": 3,
+          "parent": 2,
+          "edge": "child",
+          "index": 0,
+          "kind": "element",
+          "name": "head",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "attributes": [],
+          "data": null,
+          "child_count": 0,
+          "template_content": false,
+          "source_span_utf16": [
+            21,
+            27
+          ],
+          "raw_source": "<head>",
+          "body_span_bytes": [
+            24,
+            30
+          ]
+        },
+        {
+          "id": 4,
+          "parent": 2,
+          "edge": "child",
+          "index": 1,
+          "kind": "element",
+          "name": "body",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "attributes": [],
+          "data": null,
+          "child_count": 1,
+          "template_content": false,
+          "source_span_utf16": [
+            34,
+            40
+          ],
+          "raw_source": "<body>",
+          "body_span_bytes": [
+            37,
+            43
+          ]
+        },
+        {
+          "id": 5,
+          "parent": 4,
+          "edge": "child",
+          "index": 0,
+          "kind": "element",
+          "name": "article",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "attributes": [
+            {
+              "name": "id",
+              "namespace": null,
+              "prefix": null,
+              "value": "critical"
+            }
+          ],
+          "data": null,
+          "child_count": 2,
+          "template_content": false,
+          "source_span_utf16": [
+            40,
+            63
+          ],
+          "raw_source": "<article id=\"critical\">",
+          "body_span_bytes": [
+            43,
+            66
+          ]
+        },
+        {
+          "id": 6,
+          "parent": 5,
+          "edge": "child",
+          "index": 0,
+          "kind": "text",
+          "name": "#text",
+          "namespace": null,
+          "attributes": [],
+          "data": "É 😀 ",
+          "child_count": 0,
+          "template_content": false,
+          "source_span_utf16": [
+            63,
+            68
+          ],
+          "raw_source": "É 😀 ",
+          "body_span_bytes": [
+            66,
+            74
+          ]
+        },
+        {
+          "id": 7,
+          "parent": 5,
+          "edge": "child",
+          "index": 1,
+          "kind": "element",
+          "name": "a",
+          "namespace": "http://www.w3.org/1999/xhtml",
+          "attributes": [
+            {
+              "name": "href",
+              "namespace": null,
+              "prefix": null,
+              "value": "/preuve?x=1&y=2"
+            }
+          ],
+          "data": null,
+          "child_count": 1,
+          "template_content": false,
+          "source_span_utf16": [
+            68,
+            98
+          ],
+          "raw_source": "<a href=\"/preuve?x=1&amp;y=2\">",
+          "body_span_bytes": [
+            74,
+            104
+          ]
+        },
+        {
+          "id": 8,
+          "parent": 7,
+          "edge": "child",
+          "index": 0,
+          "kind": "text",
+          "name": "#text",
+          "namespace": null,
+          "attributes": [],
+          "data": "référence",
+          "child_count": 0,
+          "template_content": false,
+          "source_span_utf16": [
+            98,
+            107
+          ],
+          "raw_source": "référence",
+          "body_span_bytes": [
+            104,
+            115
+          ]
+        }
+      ],
+      "parse_errors": [],
+      "selections": {
+        "critical": [
+          {
+            "name": "article",
+            "namespace": "http://www.w3.org/1999/xhtml",
+            "context": [
+              "body"
+            ],
+            "ordinary_text": "É 😀 référence",
+            "flagged_runs": [],
+            "excluded_text": [],
+            "links": [
+              {
+                "name": "a",
+                "namespace": "http://www.w3.org/1999/xhtml",
+                "href": "/preuve?x=1&y=2",
+                "context": [
+                  "body"
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "bounds": {
+    "source_bytes": 8388608,
+    "tree_nodes": 20000,
+    "tree_depth": 128,
+    "parse_errors": 1000
+  },
+  "networkGuard": {
+    "guarded": [
+      "node:net.connect",
+      "node:net.createConnection",
+      "node:net.createServer",
+      "node:net.Socket.connect",
+      "node:tls.connect",
+      "node:tls.createServer",
+      "node:http.request",
+      "node:http.get",
+      "node:http.createServer",
+      "node:https.request",
+      "node:https.get",
+      "node:https.createServer",
+      "node:http2.connect",
+      "node:http2.createServer",
+      "node:http2.createSecureServer",
+      "node:dgram.createSocket",
+      "node:dgram.Socket.connect",
+      "node:dns.lookup",
+      "node:dns.resolve",
+      "node:dns.resolve4",
+      "node:dns.resolve6",
+      "node:dns.resolveAny"
+    ],
+    "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+  },
+  "scope": "Static HTML tree in two scripting hypotheses; source JavaScript never executed. Templates retained as separate fragments; shadow attachment, child frame documents, CSS visibility, discovery, consumer reading and semantic sufficiency not established. Complete means bounded traversal completed, not valid HTML or a TS44 outcome.",
+  "decoding": {
+    "profile": "html-http-utf8-v1",
+    "content_types": [
+      "text/html; charset=utf-8"
+    ],
+    "body_sha256": "8bbeae9cf9b633ffccd03639777e0833b7b95205c65544e3c975de629b8f1930",
+    "body_bytes": 143,
+    "consumed_bom_bytes": 3,
+    "parser_input_utf8_sha256": "c46c872b58f7574ec3028a50110ad15641ab4722aacae96480ef1647a533c504",
+    "parser_input_utf16_units": 135,
+    "scope": "Already decompressed body; one initial UTF-8 BOM consumed. No charset sniffing, newline normalization or invalid-byte replacement. HTTP origin and completeness are caller evidence, not proved by this decoder."
+  },
+  "requested_ids": [
+    "critical"
+  ],
+  "source_sha256": {
+    "experiments/source_tree.py": "3ae30f859dfe71925c1ff02905175c2de9991ffe9525da4fb73c9c9f63d0c30b",
+    "experiments/source_tree.mjs": "0d0a5dc94237b37ee6ba9b65435598d923a2b6aa217cb4a33abe5ab96a711422",
+    "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+    "third_party/source-tree/packages.json": "32757186a1ceda70ee76295042b6f0d812ee7dc36bd0506fd82ceebe0f5e8099",
+    "third_party/source-tree/parse5-8.0.1.tgz": "d94ec8606e3cef24b8ec001ac121df5d7938f015be69615da27b53a082f86832",
+    "third_party/source-tree/entities-8.0.0.tgz": "8e8b16388e19c12fc80f9f75f518a0f83d99428be6765a38f04c264a078cc25b",
+    "experiments/source_http.py": "2fd3d17815d00bf50716676ee7e45148a6b723276d13dd55512aea69df2c8924",
+    "experiments/source_http.mjs": "cbc87a6d0a27f25b26970d78290b38e4bf9f2cd83f4d5897eda3080f35714586",
+    "experiments/source_content.py": "6ca7b1a05372bb1e43fa4380fc2995bf6062d2a503ed7adb3e5f0af288be0221",
+    "experiments/source_content.mjs": "cd11892ed619f60f8b1d29bdfc9d298d04168f15267bf463be0695afbe1e19e2"
+  },
+  "supervisor": {
+    "python_version": "3.9.6",
+    "process_timeout_seconds": 30,
+    "node_old_space_mib": 128,
+    "output_byte_limit": 33554432
+  }
+}
