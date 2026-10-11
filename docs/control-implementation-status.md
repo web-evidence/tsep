@@ -2,17 +2,18 @@
 
 ## Current snapshot / État actuel — 2026-10-11
 
-La version locale est **0.1.0-draft.21**. Les versions des outils sont distinctes :
-interpréteur **21**, adaptateur de captures **22**, rejeu **3**. Ces numéros ne
+La version locale est **0.1.0-draft.22**. Les versions des outils sont distinctes :
+interpréteur **22**, adaptateur de captures **23**, rejeu **3**. Ces numéros ne
 prouvent ni une publication distante ni une version stable 1.0. Chaque dossier
 historique reste lié à sa version et à ses empreintes ; il n'est jamais remplacé.
 
 Le programme actif porte sur **quatre contrôles approfondis : TS04, TS02, TS07,
 TS10**, avec TS01 comme socle. Il remplace la cible antérieure de dix contrôles.
 Le 11 octobre, Bertrand a ajouté explicitement la performance : TS34 et TS35.
-La source décrit **44 contrôles**. **Sept** disposent de règles atomiques
-exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS10 (4), TS34 (3), TS35 (2),
-soit **18 règles**. Les quatre priorités SEO en représentent 11. Les 37 autres sont décrits,
+Le même jour, il a demandé les agents IA après les performances : TS42, puis TS43 et TS44.
+La source décrit **44 contrôles**. **Huit** disposent de règles atomiques
+exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS10 (4), TS34 (3), TS35 (2), TS42 (3),
+soit **21 règles**. Les quatre priorités SEO en représentent 11. Les 36 autres sont décrits,
 sans le même niveau de règles et d'outillage exécutables.
 
 | Contrôle | Méthode exécutable disponible | Application réelle encore incomplète |
@@ -22,9 +23,9 @@ sans le même niveau de règles et d'outillage exécutables.
 | TS04 | Lecteur robots partagé, profils explicites, matrice par origine, ressources requises, parcours de revue et rejeu | Seize chemins autorisés selon la matrice opérateur capturée ; revues motivées manquantes, contrôle entier non établi |
 | TS07 | Directives HTTP/source/rendu, hypothèses source distinctes, objectifs de permissions texte/image/vidéo préalables | Trois sources examinées ne remplacent pas les états rendus attribués et revues exigés ; aucune observation Google déduite |
 | TS10 | Canonical HTTP avec contexte, source, rendu, sitemaps et liens ; familles déclarées et rejeu | Les populations des campagnes sont distinctes ; qualification des familles, états rendus et revues de contenu encore nécessaires |
-
 | TS34 | Import CrUX hors ligne : cohorte, période, appareil, p75 et classes ; décision fournie liée aux sources | Aucun nouveau relevé terrain Edikka ; autres formats non qualifiés ; C documentaire ne signifie pas bonnes performances |
 | TS35 | Série Lighthouse : plan préalable, conditions exactes, mesures, dispersion et hypothèse fournie | Aucune nouvelle campagne réelle Edikka ; autres formats et comparaison avant/après non qualifiés |
+| TS42 | Correspondances liées aux sources et revues, décisions du responsable, arbitrages et lecture robots bornée | Aucune décision réelle du responsable Edikka ni visite d’agent établie ; autres mécanismes non qualifiés ; TS43/TS44 à développer |
 
 Les extensions récentes sont [les liens source v2](source-link-policy-v2.md),
 [le contexte HTTP canonical](http-canonical-context.md) et
@@ -57,7 +58,11 @@ présentés comme le préalable qui manque à toutes les pages.
 
 ### Ce que mesurent les tests
 
-Le lot performance ajoute **82 cas synthétiques / 216 couples règle-cible** avec
+Le lot TS42 ajoute **52 cas figés / 156 couples**, tous synthétiques. Le corpus draft.22
+contient **909 cas / 1 516 couples** ; la vérification complète et ses limites
+sont conservées dans le journal local du lot. Aucun audit Edikka ne découle de ces cas.
+
+Relevé historique performance : le lot performance ajoute **82 cas synthétiques / 216 couples règle-cible** avec
 216 accords sur les attentes, y compris les inconnues prévues. Le corpus draft.21
 compte **857 cas / 1 360 couples** : 1 249 accords, zéro désaccord et 111 couvertures
 réduites sans Node optionnel. Les accords comprennent 536 attendus indéterminés.
@@ -78,15 +83,17 @@ ni contrôles terminés, ni une revue humaine ou une exécution CI distante.
 
 ## English — current state
 
-The local edition is **0.1.0-draft.21**, with interpreter **21**, capture adapter
-**22** and replay **3**. These version numbers do not establish a public release
+The local edition is **0.1.0-draft.22**, with interpreter **22**, capture adapter
+**23** and replay **3**. These version numbers do not establish a public release
 or stable 1.0. Historical packages keep their exact tools and fingerprints.
 
 The active human priority is four deeply developed controls, TS04/TS02/TS07/TS10,
 with TS01 as the foundation, superseding the older ten-control target. Forty-four
 controls are specified. On October 11 the user explicitly added TS34/TS35 performance.
-Seven controls now have 18 executable atomic rules, including 11 for the four SEO
-priorities and five for performance. The other 37 lack equivalent executable coverage.
+The user then added TS42–TS44 agents, in that order after performance.
+Eight controls now have 21 executable atomic rules, including 11 for the four SEO
+priorities, five for performance and three for TS42. The other 36 lack equivalent executable coverage.
+TS42 binds source mappings, supplied owner decisions and tradeoffs to a bounded robots comparison. No real owner approval or agent visit is established; TS43/TS44 remain to develop.
 TS34 imports CrUX cohorts/p75 with exact classes and supplied decisions. TS35 imports
 planned repeated Lighthouse reports with declared context, spread and supplied hypotheses.
 No new real Edikka performance campaign, other-source reader or before/after comparison

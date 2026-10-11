@@ -1,4 +1,8 @@
-Current / Actuel : draft.21 — 857 authored cases / cas synthétiques, 1,360 rule-target pairs / couples.
+Current / Actuel : draft.22 — 909 authored cases / cas synthétiques, 1,516 rule-target pairs / couples.
+Twenty-one rules across eight controls; TS42 adds 52 prefrozen cases / 156 pairs.
+Vingt et une règles sur huit contrôles ; aucune visite réelle, revue humaine ou conformité opérateur déduite.
+
+Historical / Historique : draft.21 — 857 authored cases / cas synthétiques, 1,360 rule-target pairs / couples.
 [Current coverage and limits / Couverture et limites actuelles](control-implementation-status.md).
 Eighteen rules across seven controls; performance adds 82 cases / 216 pairs.
 Dix-huit règles dans sept contrôles ; aucune mesure réelle déduite des tests.

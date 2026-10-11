@@ -37,6 +37,8 @@ EXTERNAL_CASE_IDS = (
     'performance-field-lab-substitution', 'performance-field-stale',
     'performance-lab-context-and-supplied-review', 'performance-lab-url-contradiction',
     'performance-lab-field-claim', 'performance-lab-no-plan',
+    'agents-documented-search', 'agents-review-contradicts-mapping',
+    'agents-owner-rejects', 'agents-documented-denial', 'agents-no-plan',
 )
 
 

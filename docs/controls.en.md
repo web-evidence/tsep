@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.21 — Controls
+# TSEP 0.1.0-draft.22 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.21:TS01-A01`
+`TSEP@0.1.0-draft.22:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.21:TS01-A02`
+`TSEP@0.1.0-draft.22:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.21:TS02-A01`
+`TSEP@0.1.0-draft.22:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.21:TS02-A02`
+`TSEP@0.1.0-draft.22:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.21:TS04-A01`
+`TSEP@0.1.0-draft.22:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.21:TS04-A02`
+`TSEP@0.1.0-draft.22:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.21:TS07-A01`
+`TSEP@0.1.0-draft.22:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -344,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.21:TS07-A02`
+`TSEP@0.1.0-draft.22:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.21:TS07-A03`
+`TSEP@0.1.0-draft.22:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.21:TS10-A01`
+`TSEP@0.1.0-draft.22:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -490,7 +490,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.21:TS10-A02`
+`TSEP@0.1.0-draft.22:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -514,7 +514,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.21:TS10-A03`
+`TSEP@0.1.0-draft.22:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.21:TS10-A04`
+`TSEP@0.1.0-draft.22:TS10-A04`
 
 **Required inputs**: crawl, intent.
 
@@ -1140,7 +1140,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A01 — Attributable field cohort
 
-`TSEP@0.1.0-draft.21:TS34-A01`
+`TSEP@0.1.0-draft.22:TS34-A01`
 
 **Required inputs**: field-data, intent.
 
@@ -1164,7 +1164,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A02 — Retained p75 measurements and classes
 
-`TSEP@0.1.0-draft.21:TS34-A02`
+`TSEP@0.1.0-draft.22:TS34-A02`
 
 **Required inputs**: field-data, intent.
 
@@ -1188,7 +1188,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A03 — Reasoned decision bound to measurements
 
-`TSEP@0.1.0-draft.21:TS34-A03`
+`TSEP@0.1.0-draft.22:TS34-A03`
 
 **Required inputs**: field-data, intent.
 
@@ -1236,7 +1236,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A01 — Repeatable laboratory context and measurements
 
-`TSEP@0.1.0-draft.21:TS35-A01`
+`TSEP@0.1.0-draft.22:TS35-A01`
 
 **Required inputs**: lab-data, intent.
 
@@ -1260,7 +1260,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A02 — Diagnostic hypothesis and next verification
 
-`TSEP@0.1.0-draft.21:TS35-A02`
+`TSEP@0.1.0-draft.22:TS35-A02`
 
 **Required inputs**: lab-data, intent.
 
@@ -1434,21 +1434,93 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Automated agents covered by site policy.
 
-**Method.** Map each relevant token to its documented purpose (search, user action, training, advertising or other), a decision and an owner; retain a dated operator source.
+**Method.** Document mappings and their review, retain the owner decision, then compare its implementation under agent-governance-v1; retain coupled purposes and unknowns.
 
-**Acceptance.** Each token is linked to its documented purpose, a decision, a dated operator source and an owner; advertising use is distinguished where relevant.
+**Acceptance.** All three rules pass for each declared target and mechanism; qualified policy matches the accepted choice, with supplied review and responsibility.
 
-**Evidence.** Table of user agent, purpose, rule, operator source and review date, without conflating live search with training.
+**Evidence.** Mechanism/purpose inventory, dated operator sources bound to reviews, owner decision and tradeoffs, captured robots policy.
 
 **When NA is allowed.** No agent policy in the declared scope, with a reason provided.
 
-**Limits.** A robots directive is declarative; it proves neither the requester’s identity nor compliance by every operator.
+**Limits.** Supplied scope and bounded robots profile; no automatic registry. Sources, reviews and decisions are unauthenticated; no inferred visit, real identity, operator compliance, indexing or citation.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.openai.com/api/docs/bots](https://developers.openai.com/api/docs/bots); [https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)
+
+### TS42-A01 — Documented purposes and mechanisms
+
+`TSEP@0.1.0-draft.22:TS42-A01`
+
+**Required inputs**: operator-docs, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Each target URL and mechanism of the previously declared policy.
+
+**Method.** Bind operator, actor, token, mechanism and purposes to dated UTF-8 sources; check hashes and supplied bound review.
+
+**Acceptance.** Every mapping has a complete, dated, bound supported review with explicit robots applicability. A bound contradiction fails.
+
+**Evidence.** Inputs, dates, hashes and detailed findings under docs/agent-usage-policy.md.
+
+**Assumptions.** Supplied inventory; declared source interpretation and personal authority, without automatic authentication.
+
+**Inconclusive.** Missing, stale or ambiguous source; missing hash, binding, completeness or review.
+
+**When NA is allowed.** No automatic atomic exemption.
+
+**Limits.** Supplied scope and bounded robots profile; no automatic registry. Sources, reviews and decisions are unauthenticated; no inferred visit, real identity, operator compliance, indexing or citation.
+
+### TS42-A02 — Owner decisions and tradeoffs
+
+`TSEP@0.1.0-draft.22:TS42-A02`
+
+**Required inputs**: intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Each target URL and mechanism of the previously declared policy.
+
+**Method.** Check every reasoned choice, the separate declared owner/delegate decision and its plan binding; retain any arbitration of coupled purposes.
+
+**Acceptance.** Each mechanism/purpose pair has a choice and reason; the owner accepts the plan and its exact tradeoffs. A bound rejection fails.
+
+**Evidence.** Inputs, dates, hashes and detailed findings under docs/agent-usage-policy.md.
+
+**Assumptions.** Supplied inventory; declared source interpretation and personal authority, without automatic authentication.
+
+**Inconclusive.** Missing/undeclared author, unbound decision, inconsistent dates, incomplete choice or arbitration.
+
+**When NA is allowed.** No automatic atomic exemption.
+
+**Limits.** Supplied scope and bounded robots profile; no automatic registry. Sources, reviews and decisions are unauthenticated; no inferred visit, real identity, operator compliance, indexing or citation.
+
+### TS42-A03 — Captured policy and effective choice
+
+`TSEP@0.1.0-draft.22:TS42-A03`
+
+**Required inputs**: configuration, operator-docs, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Each target URL and mechanism of the previously declared policy.
+
+**Method.** Group tokens case-insensitively, qualify mappings and compare Allow/Disallow with the effective choice; retain reading, tradeoffs, contradictions and unknowns.
+
+**Acceptance.** For each qualified group, the attributable client robots 200 policy matches the accepted choice. Any independent contradiction fails.
+
+**Evidence.** Inputs, dates, hashes and detailed findings under docs/agent-usage-policy.md.
+
+**Assumptions.** Supplied inventory; declared source interpretation and personal authority, without automatic authentication.
+
+**Inconclusive.** Opposing purposes without arbitration, unsupported mechanism, ignored field or missing HTTP/source/decision evidence; other robots profiles unqualified.
+
+**When NA is allowed.** No automatic atomic exemption.
+
+**Limits.** Supplied scope and bounded robots profile; no automatic registry. Sources, reviews and decisions are unauthenticated; no inferred visit, real identity, operator compliance, indexing or citation.
 
 ## TS43 — Access for authorized crawlers is tested with the full user-agent string and reconciled with logs.
 

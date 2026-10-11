@@ -1,0 +1,38 @@
+{
+  "recorded_at": "2026-10-11T03:33:34.926031+00:00",
+  "scope": "Research of operator purpose distinctions and non-HTTP control tokens. No hardcoded provider registry, real site policy, owner approval or reviewer identity inferred.",
+  "sources": [
+    {
+      "url": "https://developers.openai.com/api/docs/bots",
+      "consulted_at": "2026-10-11T03:11:45.032Z",
+      "retained_capture_sha256": "245342d767c1588d75c4085b819e1bc82cff7dcbfe3ea0c75215b9744a668d9a",
+      "capture_kind": "Dated web-tool extracted text, not original HTTP bytes",
+      "capture_distribution": "Local research record retained, not redistributed; no runtime dependency on this capture. Public reader uses only supplied case documents.",
+      "scope": "Purpose and control-mechanism distinctions; editorial method, not an operator certification."
+    },
+    {
+      "url": "https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler",
+      "consulted_at": "2026-10-11T03:11:45.032Z",
+      "retained_capture_sha256": "245342d767c1588d75c4085b819e1bc82cff7dcbfe3ea0c75215b9744a668d9a",
+      "capture_kind": "Dated web-tool extracted text, not original HTTP bytes",
+      "capture_distribution": "Local research record retained, not redistributed; no runtime dependency on this capture. Public reader uses only supplied case documents.",
+      "scope": "Purpose and control-mechanism distinctions; editorial method, not an operator certification."
+    },
+    {
+      "url": "https://developers.google.com/crawling/docs/crawlers-fetchers/google-common-crawlers#google-extended",
+      "consulted_at": "2026-10-11T03:13:00.618Z",
+      "retained_capture_sha256": "8fc5e3f9764acb75e197588b8c5f9ba68cc964396dca9671cfd9d70593098960",
+      "capture_kind": "Dated web-tool extracted text, not original HTTP bytes",
+      "capture_distribution": "Local research record retained, not redistributed; no runtime dependency on this capture. Public reader uses only supplied case documents.",
+      "scope": "Purpose and control-mechanism distinctions; editorial method, not an operator certification."
+    },
+    {
+      "url": "https://support.apple.com/en-ie/119829",
+      "consulted_at": "2026-10-11T03:13:00.618Z",
+      "retained_capture_sha256": "8fc5e3f9764acb75e197588b8c5f9ba68cc964396dca9671cfd9d70593098960",
+      "capture_kind": "Dated web-tool extracted text, not original HTTP bytes",
+      "capture_distribution": "Local research record retained, not redistributed; no runtime dependency on this capture. Public reader uses only supplied case documents.",
+      "scope": "Purpose and control-mechanism distinctions; editorial method, not an operator certification."
+    }
+  ]
+}

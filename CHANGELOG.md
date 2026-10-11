@@ -1,3 +1,8 @@
+## 0.1.0-draft.22 — 2026-10-11 — agent usage policy
+
+TS42 gains three atomic rules: supplied source interpretation, distinct owner decisions and bounded robots comparison. Coupled purposes retain explicit owner tradeoffs; 52 prefrozen synthetic cases. Prior eighteen rules and 857 cases retained.
+FR : sources et revues liées, décision du responsable distincte et arbitrages explicites ; aucune visite réelle ni conformité des opérateurs déduite. [Contract / Contrat](docs/agent-usage-policy.md), [migration](docs/migration-draft.22.md).
+
 ## 0.1.0-draft.20 — 2026-10-11
 
 Optional prior preview-intent profile for TS07-A01/A03; minimum permission and maximum protection intervals, ordered raw directives, conservative image/video ambiguities and replayed diagnostics. Earlier readers and 701 raw cases unchanged. 74 prefrozen authored cases; no live Google observations.

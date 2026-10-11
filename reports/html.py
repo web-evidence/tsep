@@ -12,12 +12,16 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '5'
+VERSION = '6'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'agent_note': 'Politique déclarée et décisions fournies : aucune visite réelle, identité d’agent ou application par un opérateur démontrée.',
+        'agent_values': 'Usages et décisions conservés', 'agent_subject': 'Mécanisme / rôle',
+        'agent_evidence': 'Preuves et choix fournis', 'agent_effective': 'Choix effectif',
+        'agent_tradeoff': 'Arbitrage explicite', 'agent_raw': 'Diagnostic complet conservé',
         'performance_note': 'C signifie « documentation conforme ». La qualité des performances est indiquée séparément ci-dessous ; le laboratoire ne mesure pas les Core Web Vitals terrain.',
         'performance_values': 'Mesures de performance conservées',
         'metric_name': 'Métrique', 'metric_value': 'Valeur conservée', 'metric_quality': 'Qualité / portée',
@@ -85,6 +89,10 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'agent_note': 'Declared policy and supplied decisions: no actual visit, agent identity or operator compliance established.',
+        'agent_values': 'Retained purposes and decisions', 'agent_subject': 'Mechanism / role',
+        'agent_evidence': 'Supplied evidence and choices', 'agent_effective': 'Effective choice',
+        'agent_tradeoff': 'Explicit tradeoff', 'agent_raw': 'Complete retained diagnostic',
         'performance_note': 'C means conforming documentation. Performance quality is shown separately below; laboratory measurements do not establish field Core Web Vitals.',
         'performance_values': 'Retained performance measurements',
         'metric_name': 'Metric', 'metric_value': 'Retained value', 'metric_quality': 'Quality / scope',
@@ -313,6 +321,36 @@ def performance_values(result, words):
     return out
 
 
+def agent_values(atom, words):
+    """Format saved diagnostics without reading source documents or reassessing policy."""
+    prefix = 'Agent usage governance / gouvernance des usages agents: '
+    reason = atom.get('reason', '')
+    if not reason.startswith(prefix):
+        return '<p class="reason">' + esc(reason) + '</p>'
+    try:
+        diagnostic = json.loads(reason[len(prefix):])
+        rows = diagnostic['rows']
+        if not isinstance(rows, list):
+            raise ValueError('rows')
+    except (ValueError, KeyError, TypeError):
+        return '<p class="reason">' + esc(reason) + '</p>'
+    out = '<div class="table-wrap"><table><caption>' + esc(words['agent_values']) + '</caption><thead><tr>'
+    out += ''.join('<th scope="col">' + esc(words[k]) + '</th>' for k in ('agent_subject', 'agent_evidence', 'result', 'reason')) + '</tr></thead><tbody>'
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        retained = []
+        for key in ('actor_kind', 'purposes', 'reviewer', 'review_provenance', 'source_urls', 'source_sha256', 'decisions'):
+            if key in row:
+                retained.append('<div><strong>' + esc(key) + '</strong><pre>' + esc(pretty(row[key])) + '</pre></div>')
+        if 'effective_choice' in row:
+            retained.append('<p><strong>' + esc(words['agent_effective']) + '</strong> · ' + esc(row['effective_choice'] or words['unknown']) + '</p>')
+        if row.get('arbitration'):
+            retained.append('<p><strong>' + esc(words['agent_tradeoff']) + '</strong></p><pre>' + esc(pretty(row['arbitration'])) + '</pre>')
+        out += '<tr><th scope="row">' + esc(row.get('subject', '')) + '</th><td>' + ''.join(retained) + '</td><td>' + esc(words.get(row.get('outcome', ''), words['unknown'])) + '</td><td>' + esc(row.get('reason', '')) + '</td></tr>'
+    return out + '</tbody></table></div><details><summary>' + esc(words['agent_raw']) + '</summary><pre>' + esc(reason) + '</pre></details>'
+
+
 def results(bundle, controls, words, language):
     report = bundle['report']
     data = captures(bundle)
@@ -325,13 +363,17 @@ def results(bundle, controls, words, language):
         out += '<article class="card control"><div class="row"><div><span class="eyebrow">' + esc(cid) + '</span><h3 class="control-title">' + esc(control['title'][language]) + '</h3></div>' + badge(result['status'], words) + '</div>'
         if cid in ('TS34', 'TS35'):
             out += performance_values(result, words)
+        if cid == 'TS42':
+            out += '<div class="notice"><strong>' + esc(words['agent_note']) + '</strong></div>'
         out += '<p class="reason">' + esc(result['reason']) + '</p><details><summary>' + esc(words['procedure']) + '</summary><p class="small">' + esc(result['procedure']) + '</p>' + proof_links(result['evidence_ids'], 'current') + '</details>'
         seen = set()
         for atom in result.get('atomic_results', []):
             rule = rules[atom['rule_id']]
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
-            out += '<p class="rule-target">' + esc(atom['target']) + '</p><p class="reason">' + esc(atom['reason']) + '</p>' + proof_links(atom['evidence_ids'], 'current')
+            out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
+            out += agent_values(atom, words) if cid == 'TS42' else '<p class="reason">' + esc(atom['reason']) + '</p>'
+            out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):
                 out += identity_context(targets.get(atom['target']), words)
             out += '<details><summary>' + esc(words['expectation']) + '</summary><dl>' + item(words['expectation'], rule['acceptance'][language]) + item(words['automation'], rule['automation']) + item(words['inputs'], ', '.join(rule['required_inputs'])) + item(words['limits'], rule['limitations'][language]) + '</dl></details></div>'

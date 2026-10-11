@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.21",
+  "version": "0.1.0-draft.22",
   "status": "draft",
   "date": "2026-10-11",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.21"
+      "rule_version": "0.1.0-draft.22"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.21",
+      "rule_version": "0.1.0-draft.22",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.21",
+      "rule_version": "0.1.0-draft.22",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.21"
+      "rule_version": "0.1.0-draft.22"
     },
     {
       "id": "TS08",
@@ -1233,7 +1233,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.21"
+      "rule_version": "0.1.0-draft.22"
     },
     {
       "id": "TS11",
@@ -2648,7 +2648,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.21",
+      "rule_version": "0.1.0-draft.22",
       "rules": [
         {
           "id": "TS34-A01",
@@ -2843,7 +2843,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.21",
+      "rule_version": "0.1.0-draft.22",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3320,24 +3320,24 @@
         "en": "Automated agents covered by site policy."
       },
       "procedure": {
-        "fr": "Relier chaque jeton concerné à son usage documenté (recherche, action utilisateur, entraînement, publicité ou autre), à une décision et à un propriétaire ; conserver la source opérateur datée.",
-        "en": "Map each relevant token to its documented purpose (search, user action, training, advertising or other), a decision and an owner; retain a dated operator source."
+        "fr": "Documenter les correspondances et leur revue, retenir la décision du responsable, puis comparer sa traduction selon agent-governance-v1 ; conserver les finalités couplées et les inconnues.",
+        "en": "Document mappings and their review, retain the owner decision, then compare its implementation under agent-governance-v1; retain coupled purposes and unknowns."
       },
       "acceptance": {
-        "fr": "Chaque jeton est relié à son usage documenté, à une décision, une source opérateur datée et un responsable ; usages publicitaires distingués si concernés.",
-        "en": "Each token is linked to its documented purpose, a decision, a dated operator source and an owner; advertising use is distinguished where relevant."
+        "fr": "Les trois règles réussissent pour chaque cible et mécanisme déclaré ; la politique qualifiée correspond au choix accepté, avec revue et responsabilité fournies.",
+        "en": "All three rules pass for each declared target and mechanism; qualified policy matches the accepted choice, with supplied review and responsibility."
       },
       "non_applicability": {
         "fr": "Aucune politique d’agents dans le périmètre déclaré, raison fournie.",
         "en": "No agent policy in the declared scope, with a reason provided."
       },
       "evidence": {
-        "fr": "Table user-agent / finalité / règle / source opérateur / date de revue, sans confondre recherche en direct et entraînement.",
-        "en": "Table of user agent, purpose, rule, operator source and review date, without conflating live search with training."
+        "fr": "Inventaire mécanisme/finalité, sources opérateurs datées et liées aux revues, décision du responsable et arbitrages, politique robots capturée.",
+        "en": "Mechanism/purpose inventory, dated operator sources bound to reviews, owner decision and tradeoffs, captured robots policy."
       },
       "limitations": {
-        "fr": "Une directive robots est déclarative ; elle ne prouve ni l’identité réelle du requérant ni le respect par tous les opérateurs.",
-        "en": "A robots directive is declarative; it proves neither the requester’s identity nor compliance by every operator."
+        "fr": "Périmètre fourni et profil robots borné ; aucun registre automatique. Sources, revues et décisions non authentifiées ; aucune visite, identité réelle, conformité opérateur, indexation ou citation déduite.",
+        "en": "Supplied scope and bounded robots profile; no automatic registry. Sources, reviews and decisions are unauthenticated; no inferred visit, real identity, operator compliance, indexing or citation."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -3356,7 +3356,144 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.22",
+      "rules": [
+        {
+          "id": "TS42-A01",
+          "title": {
+            "fr": "Usages et mécanismes documentés",
+            "en": "Documented purposes and mechanisms"
+          },
+          "required_inputs": [
+            "operator-docs",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Chaque cible URL et mécanisme de la politique préalablement déclarée.",
+            "en": "Each target URL and mechanism of the previously declared policy."
+          },
+          "procedure": {
+            "fr": "Lier opérateur, acteur, jeton, mécanisme et finalités aux sources UTF-8 datées ; vérifier empreintes et revue fournie liée.",
+            "en": "Bind operator, actor, token, mechanism and purposes to dated UTF-8 sources; check hashes and supplied bound review."
+          },
+          "acceptance": {
+            "fr": "Chaque correspondance a une revue supported, complète, datée et liée aux sources, avec applicabilité robots explicite. Une contradiction liée échoue.",
+            "en": "Every mapping has a complete, dated, bound supported review with explicit robots applicability. A bound contradiction fails."
+          },
+          "evidence": {
+            "fr": "Entrées, dates, empreintes et résultats détaillés selon docs/agent-usage-policy.md.",
+            "en": "Inputs, dates, hashes and detailed findings under docs/agent-usage-policy.md."
+          },
+          "assumptions": {
+            "fr": "Inventaire fourni ; interprétation des sources et autorité des personnes déclarées, sans authentification automatique.",
+            "en": "Supplied inventory; declared source interpretation and personal authority, without automatic authentication."
+          },
+          "inconclusive": {
+            "fr": "Source absente, trop ancienne ou ambiguë ; empreinte, liaison, complétude ou revue manquante.",
+            "en": "Missing, stale or ambiguous source; missing hash, binding, completeness or review."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "limitations": {
+            "fr": "Périmètre fourni et profil robots borné ; aucun registre automatique. Sources, revues et décisions non authentifiées ; aucune visite, identité réelle, conformité opérateur, indexation ou citation déduite.",
+            "en": "Supplied scope and bounded robots profile; no automatic registry. Sources, reviews and decisions are unauthenticated; no inferred visit, real identity, operator compliance, indexing or citation."
+          }
+        },
+        {
+          "id": "TS42-A02",
+          "title": {
+            "fr": "Décisions du responsable et arbitrages",
+            "en": "Owner decisions and tradeoffs"
+          },
+          "required_inputs": [
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Chaque cible URL et mécanisme de la politique préalablement déclarée.",
+            "en": "Each target URL and mechanism of the previously declared policy."
+          },
+          "procedure": {
+            "fr": "Vérifier chaque décision motivée, la décision séparée du responsable ou délégué déclaré et sa liaison au plan ; conserver tout arbitrage des finalités couplées.",
+            "en": "Check every reasoned choice, the separate declared owner/delegate decision and its plan binding; retain any arbitration of coupled purposes."
+          },
+          "acceptance": {
+            "fr": "Chaque couple mécanisme/finalité porte un choix et un motif ; le responsable accepte le plan et ses arbitrages exacts. Son refus lié échoue.",
+            "en": "Each mechanism/purpose pair has a choice and reason; the owner accepts the plan and its exact tradeoffs. A bound rejection fails."
+          },
+          "evidence": {
+            "fr": "Entrées, dates, empreintes et résultats détaillés selon docs/agent-usage-policy.md.",
+            "en": "Inputs, dates, hashes and detailed findings under docs/agent-usage-policy.md."
+          },
+          "assumptions": {
+            "fr": "Inventaire fourni ; interprétation des sources et autorité des personnes déclarées, sans authentification automatique.",
+            "en": "Supplied inventory; declared source interpretation and personal authority, without automatic authentication."
+          },
+          "inconclusive": {
+            "fr": "Auteur absent ou non déclaré, décision non liée, dates incohérentes, choix ou arbitrage incomplet.",
+            "en": "Missing/undeclared author, unbound decision, inconsistent dates, incomplete choice or arbitration."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "limitations": {
+            "fr": "Périmètre fourni et profil robots borné ; aucun registre automatique. Sources, revues et décisions non authentifiées ; aucune visite, identité réelle, conformité opérateur, indexation ou citation déduite.",
+            "en": "Supplied scope and bounded robots profile; no automatic registry. Sources, reviews and decisions are unauthenticated; no inferred visit, real identity, operator compliance, indexing or citation."
+          }
+        },
+        {
+          "id": "TS42-A03",
+          "title": {
+            "fr": "Politique capturée et choix effectif",
+            "en": "Captured policy and effective choice"
+          },
+          "required_inputs": [
+            "configuration",
+            "operator-docs",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Chaque cible URL et mécanisme de la politique préalablement déclarée.",
+            "en": "Each target URL and mechanism of the previously declared policy."
+          },
+          "procedure": {
+            "fr": "Regrouper les jetons identiques sans casse, qualifier les correspondances et comparer Allow/Disallow à la décision effective ; conserver lecture, arbitrages, contradictions et inconnues.",
+            "en": "Group tokens case-insensitively, qualify mappings and compare Allow/Disallow with the effective choice; retain reading, tradeoffs, contradictions and unknowns."
+          },
+          "acceptance": {
+            "fr": "Dans chaque groupe qualifié, la réponse robots 200 attribuée au client suit le choix accepté. Toute contradiction indépendante échoue.",
+            "en": "For each qualified group, the attributable client robots 200 policy matches the accepted choice. Any independent contradiction fails."
+          },
+          "evidence": {
+            "fr": "Entrées, dates, empreintes et résultats détaillés selon docs/agent-usage-policy.md.",
+            "en": "Inputs, dates, hashes and detailed findings under docs/agent-usage-policy.md."
+          },
+          "assumptions": {
+            "fr": "Inventaire fourni ; interprétation des sources et autorité des personnes déclarées, sans authentification automatique.",
+            "en": "Supplied inventory; declared source interpretation and personal authority, without automatic authentication."
+          },
+          "inconclusive": {
+            "fr": "Finalités opposées sans arbitrage, mécanisme non qualifié, champ ignoré ou preuve HTTP/source/décision absente ; autres profils robots non qualifiés.",
+            "en": "Opposing purposes without arbitration, unsupported mechanism, ignored field or missing HTTP/source/decision evidence; other robots profiles unqualified."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique automatique.",
+            "en": "No automatic atomic exemption."
+          },
+          "limitations": {
+            "fr": "Périmètre fourni et profil robots borné ; aucun registre automatique. Sources, revues et décisions non authentifiées ; aucune visite, identité réelle, conformité opérateur, indexation ou citation déduite.",
+            "en": "Supplied scope and bounded robots profile; no automatic registry. Sources, reviews and decisions are unauthenticated; no inferred visit, real identity, operator compliance, indexing or citation."
+          }
+        }
+      ]
     },
     {
       "id": "TS43",
@@ -3629,15 +3766,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "bf591b3c51b7a3917a2b0456e11d1021f6b7dc4f6562c66e331d9c54ff08dee0"
+      "sha256": "1695d860d757cd17439e5ee28528a2a9a6f0f4141b674b873e979d0e99df0b6d"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "4731b1466a55379ff227d2f0afb3d96e6d05a28cca62d84c1bb15d40834e7d34"
+      "sha256": "a9743aa377ad7df8d08a1bc50415752d2050cfd914e72925d070156632ac932c"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "ec7b4ceddee3363178a5b41f7dfd3787e1400f58c9b3474440152c7ab4de268e"
+      "sha256": "b6d8248f12239572f56f7281461e69f5fc555dcda2797fbf29fd41e6d7897fcf"
     },
     {
       "path": "docs/source-directives.md",
@@ -3666,6 +3803,10 @@
     {
       "path": "docs/performance-evidence.md",
       "sha256": "9363eec5bf6b5546fb3e888f3a7569a2edd8c96da5d94a4f28d57d262462fa1a"
+    },
+    {
+      "path": "docs/agent-usage-policy.md",
+      "sha256": "aace4ea767fb48d53fcbe1ec6e904762d6f882b88ccc4779f0e440a587b44619"
     }
   ]
 }

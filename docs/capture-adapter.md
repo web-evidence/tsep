@@ -1,4 +1,7 @@
-Current / Actuel : draft.21, interpreter 21, adapter 22, replay 3.
+Current / Actuel : draft.22, interpreter 22, adapter 23, HTML 6, replay 3.
+TS42: [usage policy / usages agents](agent-usage-policy.md), explicit synthetic provenance and retained source/decision evidence.
+
+Historical / Historique : draft.21, interpreter 21, adapter 22, replay 3.
 [Performance imports / Imports de performance](performance-evidence.md) add TS34/TS35.
 The versioned descriptions below are historical; see [current coverage](control-implementation-status.md).
 Les descriptions versionnées ci-dessous sont historiques ; voir la couverture actuelle.

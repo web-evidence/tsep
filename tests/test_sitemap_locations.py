@@ -55,7 +55,7 @@ class SitemapLocations(unittest.TestCase):
     def test_427_historical_inputs_and_full_results_unchanged(self):
         prior = [{'case':c,'rows':evaluate(c['input'])}
                  for c in tsep.read_json(ROOT/'conformance/cases.json')['cases']
-                 if not c['id'].startswith(('sitemap-locations-', 'source-directives-', 'source-canonical-', 'source-link-policy-', 'http-canonical-', 'preview-', 'performance-'))]
+                 if not c['id'].startswith(('sitemap-locations-', 'source-directives-', 'source-canonical-', 'source-link-policy-', 'http-canonical-', 'preview-', 'performance-', 'agents-'))]
         self.assertEqual(len(prior),427)
         raw = json.dumps(prior,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
         self.assertEqual(hashlib.sha256(raw).hexdigest(),

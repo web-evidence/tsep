@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '22'
+VERSION = '23'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -31,6 +31,7 @@ def source_files():
     modules['conformance/http_canonical.py'] = importlib.import_module('conformance.http_canonical')
     modules['conformance/preview_intent.py'] = importlib.import_module('conformance.preview_intent')
     modules['conformance/performance.py'] = importlib.import_module('conformance.performance')
+    modules['conformance/agent_policy.py'] = importlib.import_module('conformance.agent_policy')
     for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'conformance.source_canonical', 'experiments.source_head', 'experiments.source_http', 'experiments.source_tree'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     result = loaded_sources(ROOT, modules)
@@ -49,6 +50,8 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state': 'implemented', 'fr': 'TS42 : usages documentés, décisions du responsable et arbitrages fournis ; comparaison robots bornée sur la représentation du client. Aucun agent réel ni respect des règles par un opérateur établi.',
+     'en': 'TS42: documented purposes, supplied owner decisions and tradeoffs; bounded robots comparison on the client representation. No actual agent or operator compliance established.'},
     {'state':'implemented', 'fr':'TS34/TS35 : imports CrUX et Lighthouse distincts, valeurs et classes conservées ; C décrit la documentation, jamais une garantie de bonnes performances. Revues fournies sans authentification ; aucune collecte.',
      'en':'TS34/TS35: separate CrUX and Lighthouse imports with retained values/classes; C describes documentation, never a guarantee of good performance. Supplied reviews are not authenticated; no collection.'},
     {'state':'implemented', 'fr':'TS07-A01/A03 : profil préalable google-preview-intent-v1, intervalles de permission texte/image/vidéo, contradictions et inconnues conservées. Aucun affichage Google ou usage de contenu déduit.',
@@ -126,7 +129,11 @@ def pieces(target):
     result = {}
     if 'intent' in target:
         result['intent'] = {k: target[k] for k in
-                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review') if k in target}
+                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review', 'agent_decision') if k in target}
+    if 'agent_documents' in target or 'agent_reviews' in target:
+        result['operator-docs'] = {k: target[k] for k in ('agent_documents', 'agent_reviews') if k in target}
+    if 'agent_policy' in target.get('intent', {}) and 'robots' in target:
+        result['configuration'] = {'robots': target['robots'], 'basis': 'Supplied policy representation, not server configuration access'}
     for source, kind in (('field', 'field-data'), ('lab', 'lab-data')):
         if source in target:
             result[kind] = target[source]
@@ -235,6 +242,13 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                 synthetic_dom(child)
     synthetic_dom(data)
     for target in data['targets']:
+        agent_reviews = target.get('agent_reviews')
+        records = list(agent_reviews) if isinstance(agent_reviews, list) else []
+        records.append(target.get('agent_decision'))
+        for record in records:
+            if isinstance(record, dict) and record.get('provenance') in ('human', 'human-assisted', 'synthetic-exercise'):
+                tsep.require((record['provenance'] == 'synthetic-exercise') == (access == 'synthetic'),
+                             'Agent review/decision provenance differs from evidence access')
         for name in ('field_review', 'lab_review'):
             review = target.get(name)
             if isinstance(review, dict) and review.get('provenance') in ('synthetic-exercise', 'supplied-review'):
@@ -344,6 +358,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                 if cid in ('TS34', 'TS35'):
                     report['results'][i]['reason'] += ' C = documentation conforme / conforming documentation, not good performance. '
                     report['results'][i]['reason'] += '\n'.join(a['rule_id'] + ' — ' + a['reason'] for a in rows)
+                if cid == 'TS42':
+                    report['results'][i]['reason'] += ' Usages déclarés et pièces fournies seulement / Declared usages and supplied evidence only; no real agent visit, identity, operator compliance or citation established.'
                 if cid == 'TS04' and client_scope:
                     report['results'][i]['reason'] += ' ' + client_scope + '.'
                 for atom in rows:

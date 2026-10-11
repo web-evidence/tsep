@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.21",
+  "protocol_version": "0.1.0-draft.22",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -3088,6 +3088,286 @@
           "evidence_ids": [
             "intent",
             "lab-data"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS42-authored-complete",
+      "control_id": "TS42",
+      "description": {
+        "fr": "Jugement synthétique : Correspondances, décisions et politique cohérentes. Aucun constat réel.",
+        "en": "Authored synthetic judgment: Mappings, decisions and policy agree. No real observation."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: scoped mechanisms, purposes and owner decision for aggregation tests only; no real approval. Mappings, decisions and policy agree.",
+        "operator-docs": "SYNTHETIC: supplied documentation judgment for aggregation only. Mappings, decisions and policy agree.",
+        "configuration": "SYNTHETIC: authored policy representation; not a collected response. Mappings, decisions and policy agree."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS42-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement synthétique : Correspondances, décisions et politique cohérentes. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Mappings, decisions and policy agree. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        },
+        {
+          "rule_id": "TS42-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement synthétique : Correspondances, décisions et politique cohérentes. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Mappings, decisions and policy agree. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        },
+        {
+          "rule_id": "TS42-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement synthétique : Correspondances, décisions et politique cohérentes. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Mappings, decisions and policy agree. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS42-authored-mapping-conflict",
+      "control_id": "TS42",
+      "description": {
+        "fr": "Jugement synthétique : Revue liée contraire à la correspondance ; comparaison non qualifiée. Aucun constat réel.",
+        "en": "Authored synthetic judgment: Bound review contradicts mapping; comparison unqualified. No real observation."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: scoped mechanisms, purposes and owner decision for aggregation tests only; no real approval. Bound review contradicts mapping; comparison unqualified.",
+        "operator-docs": "SYNTHETIC: supplied documentation judgment for aggregation only. Bound review contradicts mapping; comparison unqualified.",
+        "configuration": "SYNTHETIC: authored policy representation; not a collected response. Bound review contradicts mapping; comparison unqualified."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS42-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Jugement synthétique : Revue liée contraire à la correspondance ; comparaison non qualifiée. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Bound review contradicts mapping; comparison unqualified. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        },
+        {
+          "rule_id": "TS42-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement synthétique : Revue liée contraire à la correspondance ; comparaison non qualifiée. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Bound review contradicts mapping; comparison unqualified. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        },
+        {
+          "rule_id": "TS42-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement synthétique : Revue liée contraire à la correspondance ; comparaison non qualifiée. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Bound review contradicts mapping; comparison unqualified. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS42-authored-owner-rejects",
+      "control_id": "TS42",
+      "description": {
+        "fr": "Jugement synthétique : Responsable fictif refuse le plan lié ; aucune décision acceptée à comparer. Aucun constat réel.",
+        "en": "Authored synthetic judgment: Fictitious owner rejects the bound plan; no accepted choice to compare. No real observation."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: scoped mechanisms, purposes and owner decision for aggregation tests only; no real approval. Fictitious owner rejects the bound plan; no accepted choice to compare.",
+        "operator-docs": "SYNTHETIC: supplied documentation judgment for aggregation only. Fictitious owner rejects the bound plan; no accepted choice to compare.",
+        "configuration": "SYNTHETIC: authored policy representation; not a collected response. Fictitious owner rejects the bound plan; no accepted choice to compare."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS42-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement synthétique : Responsable fictif refuse le plan lié ; aucune décision acceptée à comparer. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Fictitious owner rejects the bound plan; no accepted choice to compare. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        },
+        {
+          "rule_id": "TS42-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Jugement synthétique : Responsable fictif refuse le plan lié ; aucune décision acceptée à comparer. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Fictitious owner rejects the bound plan; no accepted choice to compare. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        },
+        {
+          "rule_id": "TS42-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement synthétique : Responsable fictif refuse le plan lié ; aucune décision acceptée à comparer. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Fictitious owner rejects the bound plan; no accepted choice to compare. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS42-authored-policy-conflict",
+      "control_id": "TS42",
+      "description": {
+        "fr": "Jugement synthétique : Politique qualifiée contraire au choix accepté. Aucun constat réel.",
+        "en": "Authored synthetic judgment: Qualified policy contradicts accepted choice. No real observation."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: scoped mechanisms, purposes and owner decision for aggregation tests only; no real approval. Qualified policy contradicts accepted choice.",
+        "operator-docs": "SYNTHETIC: supplied documentation judgment for aggregation only. Qualified policy contradicts accepted choice.",
+        "configuration": "SYNTHETIC: authored policy representation; not a collected response. Qualified policy contradicts accepted choice."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS42-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement synthétique : Politique qualifiée contraire au choix accepté. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Qualified policy contradicts accepted choice. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        },
+        {
+          "rule_id": "TS42-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement synthétique : Politique qualifiée contraire au choix accepté. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Qualified policy contradicts accepted choice. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        },
+        {
+          "rule_id": "TS42-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Jugement synthétique : Politique qualifiée contraire au choix accepté. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Qualified policy contradicts accepted choice. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS42-authored-missing",
+      "control_id": "TS42",
+      "description": {
+        "fr": "Jugement synthétique : Pièces manquantes et interprétations non établies. Aucun constat réel.",
+        "en": "Authored synthetic judgment: Missing evidence and unestablished interpretations. No real observation."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: scoped mechanisms, purposes and owner decision for aggregation tests only; no real approval. Missing evidence and unestablished interpretations.",
+        "operator-docs": "SYNTHETIC: supplied documentation judgment for aggregation only. Missing evidence and unestablished interpretations.",
+        "configuration": "SYNTHETIC: authored policy representation; not a collected response. Missing evidence and unestablished interpretations."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS42-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement synthétique : Pièces manquantes et interprétations non établies. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Missing evidence and unestablished interpretations. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        },
+        {
+          "rule_id": "TS42-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement synthétique : Pièces manquantes et interprétations non établies. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Missing evidence and unestablished interpretations. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
+          ]
+        },
+        {
+          "rule_id": "TS42-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement synthétique : Pièces manquantes et interprétations non établies. Aucun constat réel.",
+            "en": "Authored synthetic judgment: Missing evidence and unestablished interpretations. No real observation."
+          },
+          "evidence_ids": [
+            "intent",
+            "operator-docs",
+            "configuration"
           ]
         }
       ],

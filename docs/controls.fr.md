@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.21 — Contrôles
+# TSEP 0.1.0-draft.22 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.21:TS01-A01`
+`TSEP@0.1.0-draft.22:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.21:TS01-A02`
+`TSEP@0.1.0-draft.22:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.21:TS02-A01`
+`TSEP@0.1.0-draft.22:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.21:TS02-A02`
+`TSEP@0.1.0-draft.22:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -198,7 +198,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A01 — Politique par origine, robot et ressource
 
-`TSEP@0.1.0-draft.21:TS04-A01`
+`TSEP@0.1.0-draft.22:TS04-A01`
 
 **Entrées requises**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A02 — Accès aux ressources nécessaires
 
-`TSEP@0.1.0-draft.21:TS04-A02`
+`TSEP@0.1.0-draft.22:TS04-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.21:TS07-A01`
+`TSEP@0.1.0-draft.22:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -344,7 +344,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.21:TS07-A02`
+`TSEP@0.1.0-draft.22:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.21:TS07-A03`
+`TSEP@0.1.0-draft.22:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.21:TS10-A01`
+`TSEP@0.1.0-draft.22:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -490,7 +490,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.21:TS10-A02`
+`TSEP@0.1.0-draft.22:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -514,7 +514,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.21:TS10-A03`
+`TSEP@0.1.0-draft.22:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.21:TS10-A04`
+`TSEP@0.1.0-draft.22:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 
@@ -1140,7 +1140,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A01 — Cohorte terrain attribuable
 
-`TSEP@0.1.0-draft.21:TS34-A01`
+`TSEP@0.1.0-draft.22:TS34-A01`
 
 **Entrées requises**: field-data, intent.
 
@@ -1164,7 +1164,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A02 — Mesures p75 et classes conservées
 
-`TSEP@0.1.0-draft.21:TS34-A02`
+`TSEP@0.1.0-draft.22:TS34-A02`
 
 **Entrées requises**: field-data, intent.
 
@@ -1188,7 +1188,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A03 — Décision motivée liée aux mesures
 
-`TSEP@0.1.0-draft.21:TS34-A03`
+`TSEP@0.1.0-draft.22:TS34-A03`
 
 **Entrées requises**: field-data, intent.
 
@@ -1236,7 +1236,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A01 — Contexte et mesures de laboratoire reproductibles
 
-`TSEP@0.1.0-draft.21:TS35-A01`
+`TSEP@0.1.0-draft.22:TS35-A01`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1260,7 +1260,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A02 — Hypothèse de diagnostic et prochaine vérification
 
-`TSEP@0.1.0-draft.21:TS35-A02`
+`TSEP@0.1.0-draft.22:TS35-A02`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1434,21 +1434,93 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Agents automatisés visés par la politique du site.
 
-**Méthode.** Relier chaque jeton concerné à son usage documenté (recherche, action utilisateur, entraînement, publicité ou autre), à une décision et à un propriétaire ; conserver la source opérateur datée.
+**Méthode.** Documenter les correspondances et leur revue, retenir la décision du responsable, puis comparer sa traduction selon agent-governance-v1 ; conserver les finalités couplées et les inconnues.
 
-**Attendus.** Chaque jeton est relié à son usage documenté, à une décision, une source opérateur datée et un responsable ; usages publicitaires distingués si concernés.
+**Attendus.** Les trois règles réussissent pour chaque cible et mécanisme déclaré ; la politique qualifiée correspond au choix accepté, avec revue et responsabilité fournies.
 
-**Preuves.** Table user-agent / finalité / règle / source opérateur / date de revue, sans confondre recherche en direct et entraînement.
+**Preuves.** Inventaire mécanisme/finalité, sources opérateurs datées et liées aux revues, décision du responsable et arbitrages, politique robots capturée.
 
 **Conditions de NA.** Aucune politique d’agents dans le périmètre déclaré, raison fournie.
 
-**Limites.** Une directive robots est déclarative ; elle ne prouve ni l’identité réelle du requérant ni le respect par tous les opérateurs.
+**Limites.** Périmètre fourni et profil robots borné ; aucun registre automatique. Sources, revues et décisions non authentifiées ; aucune visite, identité réelle, conformité opérateur, indexation ou citation déduite.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.openai.com/api/docs/bots](https://developers.openai.com/api/docs/bots); [https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler](https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler)
+
+### TS42-A01 — Usages et mécanismes documentés
+
+`TSEP@0.1.0-draft.22:TS42-A01`
+
+**Entrées requises**: operator-docs, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Chaque cible URL et mécanisme de la politique préalablement déclarée.
+
+**Méthode.** Lier opérateur, acteur, jeton, mécanisme et finalités aux sources UTF-8 datées ; vérifier empreintes et revue fournie liée.
+
+**Attendus.** Chaque correspondance a une revue supported, complète, datée et liée aux sources, avec applicabilité robots explicite. Une contradiction liée échoue.
+
+**Preuves.** Entrées, dates, empreintes et résultats détaillés selon docs/agent-usage-policy.md.
+
+**Hypothèses.** Inventaire fourni ; interprétation des sources et autorité des personnes déclarées, sans authentification automatique.
+
+**Indéterminé.** Source absente, trop ancienne ou ambiguë ; empreinte, liaison, complétude ou revue manquante.
+
+**Conditions de NA.** Aucune exemption atomique automatique.
+
+**Limites.** Périmètre fourni et profil robots borné ; aucun registre automatique. Sources, revues et décisions non authentifiées ; aucune visite, identité réelle, conformité opérateur, indexation ou citation déduite.
+
+### TS42-A02 — Décisions du responsable et arbitrages
+
+`TSEP@0.1.0-draft.22:TS42-A02`
+
+**Entrées requises**: intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Chaque cible URL et mécanisme de la politique préalablement déclarée.
+
+**Méthode.** Vérifier chaque décision motivée, la décision séparée du responsable ou délégué déclaré et sa liaison au plan ; conserver tout arbitrage des finalités couplées.
+
+**Attendus.** Chaque couple mécanisme/finalité porte un choix et un motif ; le responsable accepte le plan et ses arbitrages exacts. Son refus lié échoue.
+
+**Preuves.** Entrées, dates, empreintes et résultats détaillés selon docs/agent-usage-policy.md.
+
+**Hypothèses.** Inventaire fourni ; interprétation des sources et autorité des personnes déclarées, sans authentification automatique.
+
+**Indéterminé.** Auteur absent ou non déclaré, décision non liée, dates incohérentes, choix ou arbitrage incomplet.
+
+**Conditions de NA.** Aucune exemption atomique automatique.
+
+**Limites.** Périmètre fourni et profil robots borné ; aucun registre automatique. Sources, revues et décisions non authentifiées ; aucune visite, identité réelle, conformité opérateur, indexation ou citation déduite.
+
+### TS42-A03 — Politique capturée et choix effectif
+
+`TSEP@0.1.0-draft.22:TS42-A03`
+
+**Entrées requises**: configuration, operator-docs, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Chaque cible URL et mécanisme de la politique préalablement déclarée.
+
+**Méthode.** Regrouper les jetons identiques sans casse, qualifier les correspondances et comparer Allow/Disallow à la décision effective ; conserver lecture, arbitrages, contradictions et inconnues.
+
+**Attendus.** Dans chaque groupe qualifié, la réponse robots 200 attribuée au client suit le choix accepté. Toute contradiction indépendante échoue.
+
+**Preuves.** Entrées, dates, empreintes et résultats détaillés selon docs/agent-usage-policy.md.
+
+**Hypothèses.** Inventaire fourni ; interprétation des sources et autorité des personnes déclarées, sans authentification automatique.
+
+**Indéterminé.** Finalités opposées sans arbitrage, mécanisme non qualifié, champ ignoré ou preuve HTTP/source/décision absente ; autres profils robots non qualifiés.
+
+**Conditions de NA.** Aucune exemption atomique automatique.
+
+**Limites.** Périmètre fourni et profil robots borné ; aucun registre automatique. Sources, revues et décisions non authentifiées ; aucune visite, identité réelle, conformité opérateur, indexation ou citation déduite.
 
 ## TS43 — L’accès des crawlers autorisés est testé avec leur chaîne complète et rapproché des journaux.
 

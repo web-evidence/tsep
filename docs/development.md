@@ -1,4 +1,9 @@
-Current integration: draft.21, interpreter 21 / adapter 22 / replay 3.
+Current integration: draft.22, interpreter 22 / adapter 23 / HTML 6 / replay 3.
+[Agent usage policy](agent-usage-policy.md): TS42 source mappings, owner decisions and qualified robots comparison.
+FR : agents IA ajoutés après les performances sur demande du 11 octobre ; TS43/TS44 restent les étapes suivantes.
+[Migration](migration-draft.22.md). No actual agent visit or operator compliance inferred.
+
+Historical integration: draft.21, interpreter 21 / adapter 22 / replay 3.
 Optional [performance intake workflow 1](performance-intake.md) keeps native files, numbered attempts and blank review requests offline.
 FR : import natif, passages numérotés et revues fournies ; aucune nouvelle règle normative.
 [Performance evidence](performance-evidence.md): TS34 field documentation and TS35 lab diagnosis; metric quality stays separate from C/NC/NT.
