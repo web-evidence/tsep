@@ -1,5 +1,7 @@
 Current local edition: **0.1.0-draft.27** — [deployment process evidence](docs/release-invariants.md), [migration](docs/migration-draft.27.md), [agent access evidence](docs/agent-access-evidence.md), [usage policy](docs/agent-usage-policy.md) and [performance](docs/performance-evidence.md). Test-client treatment and log correlation never establish actual operator access.
 
+Preparing TS31–33: [offline JSON-LD processing](docs/jsonld-processing.md), 48 frozen cases and exact replay with a pinned processor. Complete controls remain to integrate; the count stays at 12 executable controls / 33 rules.
+
 The [TS39 laboratory](docs/delivery-laboratory.md) adds eight prefrozen experiments, 38 actual local origin/cache HTTP exchanges, repair with purge and offline replay; pages and reviews remain fictional.
 
 TS39 has [three delivery rules](docs/delivery-evidence.md): prior matrix, per-context signals and cache attribution, with bound reviews and explicit unknowns.

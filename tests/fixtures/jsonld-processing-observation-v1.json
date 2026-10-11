@@ -1,0 +1,1516 @@
+{
+  "kind": "unapplied-jsonld-processing",
+  "version": "1",
+  "normative_effect": "none",
+  "request_sha256": "535d5f00af65e4147e80f545478f9ee0b6e8d874dabbee3fb67ec549967e13fb",
+  "processor": {
+    "name": "jsonld",
+    "version": "9.0.0",
+    "member": "dist/jsonld.esm.js"
+  },
+  "runtime": {
+    "node": "v24.19.0",
+    "v8": "13.6.233.17-node.51"
+  },
+  "network_guard": {
+    "guarded": [
+      "node:net.connect",
+      "node:net.createConnection",
+      "node:net.createServer",
+      "node:net.Socket.connect",
+      "node:tls.connect",
+      "node:tls.createServer",
+      "node:http.request",
+      "node:http.get",
+      "node:http.createServer",
+      "node:https.request",
+      "node:https.get",
+      "node:https.createServer",
+      "node:http2.connect",
+      "node:http2.createServer",
+      "node:http2.createSecureServer",
+      "node:dgram.createSocket",
+      "node:dgram.Socket.connect",
+      "node:dns.lookup",
+      "node:dns.resolve",
+      "node:dns.resolve4",
+      "node:dns.resolve6",
+      "node:dns.resolveAny"
+    ],
+    "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+  },
+  "documents": [
+    {
+      "id": "inline-context",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "12c190e1c8b52d336071de0567d44f2b5defba5ca0ae751045769b6871d09721",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@id": "https://example.test/page#org",
+          "https://schema.org/name": [
+            {
+              "@value": "Example"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "https://example.test/page#org",
+          "https://schema.org/name": [
+            {
+              "@value": "Example"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "pinned-context",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "0f756a5efc72a49679513d626b8bfae89a3c88a7abfb97fe7c34042dafd54bee",
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/core",
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        }
+      ],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [
+        {
+          "phase": "expand",
+          "url": "https://contexts.example.test/core",
+          "supplied": true,
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        },
+        {
+          "phase": "flatten",
+          "url": "https://contexts.example.test/core",
+          "supplied": true,
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "missing-context",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "4d9c35d3c81172caa0286be64d87ee6d464eb34144fd978633286e378bee3d08",
+      "contexts": [],
+      "status": "unavailable",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [
+        {
+          "phase": "expand",
+          "url": "https://not-supplied.example.test/context",
+          "supplied": false,
+          "sha256": null
+        }
+      ],
+      "error": {
+        "name": "jsonld.InvalidUrl",
+        "code": "loading remote context failed",
+        "message": "Dereferencing a URL did not result in a valid JSON-LD object. Possible causes are an inaccessible URL perhaps due to a same-origin policy (ensure the server uses CORS if you are using client-side JavaScript), too many redirects, a non-JSON response, or more than one HTTP Link Header was provided for a remote context. URL: \"https://not-supplied.example.test/context\".",
+        "phase": "expand"
+      }
+    },
+    {
+      "id": "nested-pinned-context",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "8b98cf280c4b69b0055ee591f3df3abec2c919e9eed03d278f8914506ef0f1c7",
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/core",
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        },
+        {
+          "url": "https://contexts.example.test/outer",
+          "sha256": "6a2ec5daab5d1597a1597a1681b3708c0edc850532920d2d66aff004ce3096c7"
+        }
+      ],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [
+        {
+          "phase": "expand",
+          "url": "https://contexts.example.test/outer",
+          "supplied": true,
+          "sha256": "6a2ec5daab5d1597a1597a1681b3708c0edc850532920d2d66aff004ce3096c7"
+        },
+        {
+          "phase": "expand",
+          "url": "https://contexts.example.test/core",
+          "supplied": true,
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        },
+        {
+          "phase": "flatten",
+          "url": "https://contexts.example.test/outer",
+          "supplied": true,
+          "sha256": "6a2ec5daab5d1597a1597a1681b3708c0edc850532920d2d66aff004ce3096c7"
+        },
+        {
+          "phase": "flatten",
+          "url": "https://contexts.example.test/core",
+          "supplied": true,
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "missing-nested-context",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "8b98cf280c4b69b0055ee591f3df3abec2c919e9eed03d278f8914506ef0f1c7",
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/outer",
+          "sha256": "6a2ec5daab5d1597a1597a1681b3708c0edc850532920d2d66aff004ce3096c7"
+        }
+      ],
+      "status": "unavailable",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [
+        {
+          "phase": "expand",
+          "url": "https://contexts.example.test/outer",
+          "supplied": true,
+          "sha256": "6a2ec5daab5d1597a1597a1681b3708c0edc850532920d2d66aff004ce3096c7"
+        },
+        {
+          "phase": "expand",
+          "url": "https://contexts.example.test/core",
+          "supplied": false,
+          "sha256": null
+        }
+      ],
+      "error": {
+        "name": "jsonld.InvalidUrl",
+        "code": "loading remote context failed",
+        "message": "Dereferencing a URL did not result in a valid JSON-LD object. Possible causes are an inaccessible URL perhaps due to a same-origin policy (ensure the server uses CORS if you are using client-side JavaScript), too many redirects, a non-JSON response, or more than one HTTP Link Header was provided for a remote context. URL: \"https://contexts.example.test/core\".",
+        "phase": "expand"
+      }
+    },
+    {
+      "id": "keyword-alias",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "fcd0ec7a57dc95a80ddea326060e305af9484a9cdc5ddbc6ac0e86f53525a7df",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@id": "https://example.test/page#x",
+          "@type": [
+            "https://schema.org/Thing"
+          ],
+          "https://schema.org/name": [
+            {
+              "@value": "X"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "https://example.test/page#x",
+          "@type": [
+            "https://schema.org/Thing"
+          ],
+          "https://schema.org/name": [
+            {
+              "@value": "X"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "explicit-base",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "f5fea02ce7b167bc85770938f48d3705e69e1f45f18e6864b9bfc461781ab96e",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@id": "https://other.example.test/path/child",
+          "https://schema.org/name": [
+            {
+              "@value": "X"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "https://other.example.test/path/child",
+          "https://schema.org/name": [
+            {
+              "@value": "X"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "vocabulary",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "a8f8c94f53fc90bbcfc44db2f637b659db35cbe885677e43882b616072104d48",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@type": [
+            "https://schema.org/Thing"
+          ],
+          "https://schema.org/name": [
+            {
+              "@value": "X"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "@type": [
+            "https://schema.org/Thing"
+          ],
+          "https://schema.org/name": [
+            {
+              "@value": "X"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "array-of-nodes",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "35679c37475b444dec2582547748069a3a4f65359df6d69030d72355b29a92f3",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@id": "https://example.test/page#a",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        },
+        {
+          "@id": "https://example.test/page#b",
+          "https://schema.org/name": [
+            {
+              "@value": "B"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "https://example.test/page#a",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        },
+        {
+          "@id": "https://example.test/page#b",
+          "https://schema.org/name": [
+            {
+              "@value": "B"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "same-id-enrichment",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "e1ed3e418cb5317c319f7618aae039af2f673fd6a3544fbde6b3870562b84acb",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@id": "https://example.test/page#a",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        },
+        {
+          "@id": "https://example.test/page#a",
+          "https://schema.org/description": [
+            {
+              "@value": "Description"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "https://example.test/page#a",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ],
+          "https://schema.org/description": [
+            {
+              "@value": "Description"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "same-id-multiple-values",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "721535856ff9c231c24201ccbba2885a5518accc4b9aeb6f2dc6fb81162df1a2",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@id": "https://example.test/page#a",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        },
+        {
+          "@id": "https://example.test/page#a",
+          "https://schema.org/name": [
+            {
+              "@value": "B"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "https://example.test/page#a",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            },
+            {
+              "@value": "B"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "multiple-types",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "431ec90d1aee6d4cca559fb720b771fd682f2a9ff3768f433e2d020d7eb2c3de",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@type": [
+            "https://schema.org/Thing",
+            "https://schema.org/Organization"
+          ],
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "@type": [
+            "https://schema.org/Thing",
+            "https://schema.org/Organization"
+          ],
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "language-tag",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "1ee4ab70e8c6f121b31b06b4beba58277a12e01415d28004c408ba58c6a72265",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://schema.org/name": [
+            {
+              "@language": "fr",
+              "@value": "Bonjour"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://schema.org/name": [
+            {
+              "@language": "fr",
+              "@value": "Bonjour"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "reverse-property",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "0db776f774ee72ad470434892142d89fa6244d1a45ade8eb387cce9df4cc9573",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@id": "https://example.test/page#a",
+          "@reverse": {
+            "https://schema.org/knows": [
+              {
+                "@id": "https://example.test/page#b"
+              }
+            ]
+          }
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "https://example.test/page#b",
+          "https://schema.org/knows": [
+            {
+              "@id": "https://example.test/page#a"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "ordered-list",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "f51863490050d9807caac433efd8eb70f3dfff3a725cae4e4fa69ce5b416a45c",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://schema.org/itemListElement": [
+            {
+              "@list": [
+                {
+                  "@value": "B"
+                },
+                {
+                  "@value": "A"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://schema.org/itemListElement": [
+            {
+              "@list": [
+                {
+                  "@value": "B"
+                },
+                {
+                  "@value": "A"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "explicit-set",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "9980235da6b9e87c513c965aca49485af5310e865b14b05d1fbf17a284652d5b",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://schema.org/name": [
+            {
+              "@value": "B"
+            },
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://schema.org/name": [
+            {
+              "@value": "B"
+            },
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "json-literal",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "1ab376b04472cd2c72d3579b9ebd8b571c14d8dc136771221a685a8116cfb2de",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://example.test/data": [
+            {
+              "@type": "@json",
+              "@value": {
+                "a": [
+                  1,
+                  true,
+                  null
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://example.test/data": [
+            {
+              "@type": "@json",
+              "@value": {
+                "a": [
+                  1,
+                  true,
+                  null
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "named-graph",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "298798f49df988729dd4ca63bf6dcb06fd78d610bfc4ddee928f964d08aaa30c",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@graph": [
+            {
+              "@id": "https://example.test/page#a",
+              "https://schema.org/name": [
+                {
+                  "@value": "A"
+                }
+              ]
+            }
+          ],
+          "@id": "https://example.test/page#graph"
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "https://example.test/page#graph",
+          "@graph": [
+            {
+              "@id": "https://example.test/page#a",
+              "https://schema.org/name": [
+                {
+                  "@value": "A"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "blank-node-document-a",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "915c2e7f690512150be48f15ec95ce5a8742f58efd21afe282fe5d4f5e1988b6",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@id": "_:same",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "blank-node-document-b",
+      "base_iri": "https://example.test/other",
+      "raw_json_sha256": "52054629e6b6b91d980948954b4d7b36318cbd58695da63eebb6d6ae8b84a174",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@id": "_:same",
+          "https://schema.org/name": [
+            {
+              "@value": "B"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://schema.org/name": [
+            {
+              "@value": "B"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "unmapped-property-notice",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "30f38e5f9ec804930c2e56a7f9045001a8df9203da11304400689f99c5ff947e",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "notices": [
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "flatten",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        }
+      ],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "invalid-context",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "d6e6611500f9655d4962e6f0e1dd6e9133a33594cc607a403400cfab4e13a18b",
+      "contexts": [],
+      "status": "processor-error",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [],
+      "error": {
+        "name": "jsonld.SyntaxError",
+        "code": "invalid local context",
+        "message": "Invalid JSON-LD syntax; @context must be an object.",
+        "phase": "expand"
+      }
+    },
+    {
+      "id": "invalid-node-id",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "77ff1ed1071943028feae15930b637f54ed97dd2426755f2f29e5300d58c7e56",
+      "contexts": [],
+      "status": "processor-error",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [],
+      "error": {
+        "name": "jsonld.SyntaxError",
+        "code": "invalid @id value",
+        "message": "Invalid JSON-LD syntax; \"@id\" value must a string.",
+        "phase": "expand"
+      }
+    },
+    {
+      "id": "invalid-value-object",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "5a30a235df1028434834b7c6762f5609f7b6da84dc88b632a8d1a8c0cc2d64a7",
+      "contexts": [],
+      "status": "processor-error",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [],
+      "error": {
+        "name": "jsonld.SyntaxError",
+        "code": "invalid value object",
+        "message": "Invalid JSON-LD syntax; an element containing \"@value\" may only have an \"@index\" property and either \"@type\" or either or both \"@language\" or \"@direction\".",
+        "phase": "expand"
+      }
+    },
+    {
+      "id": "raw-script-entity-remains-literal",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "f147061d7d8e51d78efad01ef7970006e759fdc56c478edae3d2a24a0aaf5d44",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://schema.org/name": [
+            {
+              "@value": "A &amp; B"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://schema.org/name": [
+            {
+              "@value": "A &amp; B"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "unicode-and-escape",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "e997d7b87118a2a794a3299faad62ef4fe2a9626829dbedc193ecb96cca4a7c6",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://schema.org/name": [
+            {
+              "@value": "été 😀 \n fin"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://schema.org/name": [
+            {
+              "@value": "été 😀 \n fin"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "absolute-id-not-fetched",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "992719a08f6e3d0328ad90495876bc267768750e367c6ca188c7065e7460ecce",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@id": "https://not-contacted.example.test/entity",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "https://not-contacted.example.test/entity",
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "safe-integer",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "bce03f99607f0079d74cf3f73c0c01c8a2c077621bdd63093a6bb4e1ab791183",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://example.test/n": [
+            {
+              "@value": 9007199254740991
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://example.test/n": [
+            {
+              "@value": 9007199254740991
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "unsafe-integer",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "c81a3b89d0ce41c643f2f33ddb2c2ec4f9f8f98fb9b30f55911d4db258b90b77",
+      "contexts": [],
+      "status": "unsupported-input",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [],
+      "error": "Integer exceeds exact JavaScript range"
+    },
+    {
+      "id": "document-url-string-not-loaded",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "28f08dbbe98b0267e6a5dcfab7e0beb36d38ad7be9bd660dc3284a1bbd00ef75",
+      "contexts": [],
+      "status": "unsupported-input",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [],
+      "error": "Root JSON value outside object/array profile"
+    },
+    {
+      "id": "id-only-root-notice",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "761216057e44cc694c4dbad95d36faf1fed8789331ec3ae100fe46f1a8da25f3",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [],
+      "flattened": [],
+      "notices": [
+        {
+          "phase": "expand",
+          "code": "object with only @id",
+          "level": "warning",
+          "message": "Dropping object with only @id."
+        },
+        {
+          "phase": "flatten",
+          "code": "object with only @id",
+          "level": "warning",
+          "message": "Dropping object with only @id."
+        }
+      ],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "null-value-is-absent",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "35f8f304da55ef5c7e67d3740dbf9ba5e5b1932dde092aebf6f17cdc507805da",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [],
+      "flattened": [],
+      "notices": [
+        {
+          "phase": "expand",
+          "code": "empty object",
+          "level": "warning",
+          "message": "Dropping empty object."
+        },
+        {
+          "phase": "flatten",
+          "code": "empty object",
+          "level": "warning",
+          "message": "Dropping empty object."
+        }
+      ],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "cyclic-local-context",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "1c91c836c556d3198b3487f8042ed705fbcd280db0241c29a49903e5bdba66a8",
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/cycle",
+          "sha256": "ef182f9a1956257441e2aa43d01f320ab4f7134928c65c04ad32a8e363df1756"
+        }
+      ],
+      "status": "processor-error",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [
+        {
+          "phase": "expand",
+          "url": "https://contexts.example.test/cycle",
+          "supplied": true,
+          "sha256": "ef182f9a1956257441e2aa43d01f320ab4f7134928c65c04ad32a8e363df1756"
+        }
+      ],
+      "error": {
+        "name": "jsonld.ContextUrlError",
+        "code": "context overflow",
+        "message": "Cyclical @context URLs detected.",
+        "phase": "expand"
+      }
+    },
+    {
+      "id": "protected-term-redefinition",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "1744b8cbd5d5fb5f16555fe0daf1d4a6b2d094c33e31ec2709d6d17001172e82",
+      "contexts": [],
+      "status": "processor-error",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [],
+      "error": {
+        "name": "jsonld.SyntaxError",
+        "code": "protected term redefinition",
+        "message": "Invalid JSON-LD syntax; tried to redefine a protected term.",
+        "phase": "expand"
+      }
+    },
+    {
+      "id": "context-scoped-type",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "debdfec7030cab39506aa250cdfca244b4646bd754b9c3dc7983e9cd89d57e04",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [
+        {
+          "@type": [
+            "https://schema.org/Thing"
+          ],
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "@type": [
+            "https://schema.org/Thing"
+          ],
+          "https://schema.org/name": [
+            {
+              "@value": "A"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "duplicate-json-key",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "8d608e509f8392405ed23f476e757d11dfb95f60aa34a3ee35cf428e66d80def",
+      "contexts": [],
+      "status": "json-error",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [],
+      "error": "Duplicate JSON object key: name"
+    },
+    {
+      "id": "nested-duplicate-json-key",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "722e1baa72becd08a6af2b54cb9adba02b4486e07ff5f1c873dddfdce4eba276",
+      "contexts": [],
+      "status": "json-error",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [],
+      "error": "Duplicate JSON object key: name"
+    },
+    {
+      "id": "invalid-json",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "0908e12ebfb4efa061eb5a29c801c7431d2c3006f96cf4bcefc1ee61a80a4342",
+      "contexts": [],
+      "status": "json-error",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [],
+      "error": "Expecting value: line 1 column 9 (char 8)"
+    },
+    {
+      "id": "json-comments",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "c9821a91b8017814f01a0d8e8a356220ae3d5dd6f38fdf3785605e63974c5eec",
+      "contexts": [],
+      "status": "json-error",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [],
+      "error": "Expecting property name enclosed in double quotes: line 1 column 2 (char 1)"
+    },
+    {
+      "id": "nonfinite-json",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "85eee1ec8c934034fa557b72376e798678056074f4dbdfcf9e65f7d537aeff08",
+      "contexts": [],
+      "status": "json-error",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [],
+      "error": "Non-JSON numeric constant: NaN"
+    }
+  ],
+  "input": {
+    "documents": [
+      {
+        "id": "inline-context",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"#org\",\"name\":\"Example\"}",
+        "contexts": []
+      },
+      {
+        "id": "pinned-context",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/core\",\"name\":\"A\"}",
+        "contexts": [
+          {
+            "url": "https://contexts.example.test/core",
+            "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"}}",
+            "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+          }
+        ]
+      },
+      {
+        "id": "missing-context",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://not-supplied.example.test/context\",\"name\":\"A\"}",
+        "contexts": []
+      },
+      {
+        "id": "nested-pinned-context",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/outer\",\"name\":\"A\"}",
+        "contexts": [
+          {
+            "url": "https://contexts.example.test/core",
+            "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"}}",
+            "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+          },
+          {
+            "url": "https://contexts.example.test/outer",
+            "raw_json": "{\"@context\":\"https://contexts.example.test/core\"}",
+            "sha256": "6a2ec5daab5d1597a1597a1681b3708c0edc850532920d2d66aff004ce3096c7"
+          }
+        ]
+      },
+      {
+        "id": "missing-nested-context",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/outer\",\"name\":\"A\"}",
+        "contexts": [
+          {
+            "url": "https://contexts.example.test/outer",
+            "raw_json": "{\"@context\":\"https://contexts.example.test/core\"}",
+            "sha256": "6a2ec5daab5d1597a1597a1681b3708c0edc850532920d2d66aff004ce3096c7"
+          }
+        ]
+      },
+      {
+        "id": "keyword-alias",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"identifier\":\"@id\",\"kind\":\"@type\",\"name\":\"https://schema.org/name\",\"Thing\":\"https://schema.org/Thing\"},\"identifier\":\"#x\",\"kind\":\"Thing\",\"name\":\"X\"}",
+        "contexts": []
+      },
+      {
+        "id": "explicit-base",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@base\":\"https://other.example.test/path/\",\"name\":\"https://schema.org/name\"},\"@id\":\"child\",\"name\":\"X\"}",
+        "contexts": []
+      },
+      {
+        "id": "vocabulary",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\"},\"@type\":\"Thing\",\"name\":\"X\"}",
+        "contexts": []
+      },
+      {
+        "id": "array-of-nodes",
+        "base_iri": "https://example.test/page",
+        "raw_json": "[{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"#a\",\"name\":\"A\"},{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"#b\",\"name\":\"B\"}]",
+        "contexts": []
+      },
+      {
+        "id": "same-id-enrichment",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\"},\"@graph\":[{\"@id\":\"#a\",\"name\":\"A\"},{\"@id\":\"#a\",\"description\":\"Description\"}]}",
+        "contexts": []
+      },
+      {
+        "id": "same-id-multiple-values",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\"},\"@graph\":[{\"@id\":\"#a\",\"name\":\"A\"},{\"@id\":\"#a\",\"name\":\"B\"}]}",
+        "contexts": []
+      },
+      {
+        "id": "multiple-types",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\"},\"@type\":[\"Thing\",\"Organization\"],\"name\":\"A\"}",
+        "contexts": []
+      },
+      {
+        "id": "language-tag",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":{\"@value\":\"Bonjour\",\"@language\":\"fr\"}}",
+        "contexts": []
+      },
+      {
+        "id": "reverse-property",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"knownBy\":{\"@reverse\":\"https://schema.org/knows\"}},\"@id\":\"#a\",\"knownBy\":{\"@id\":\"#b\"}}",
+        "contexts": []
+      },
+      {
+        "id": "ordered-list",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"steps\":{\"@id\":\"https://schema.org/itemListElement\",\"@container\":\"@list\"}},\"steps\":[\"B\",\"A\"]}",
+        "contexts": []
+      },
+      {
+        "id": "explicit-set",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":{\"@set\":[\"B\",\"A\"]}}",
+        "contexts": []
+      },
+      {
+        "id": "json-literal",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"data\":{\"@id\":\"https://example.test/data\",\"@type\":\"@json\"}},\"data\":{\"a\":[1,true,null]}}",
+        "contexts": []
+      },
+      {
+        "id": "named-graph",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"#graph\",\"@graph\":[{\"@id\":\"#a\",\"name\":\"A\"}]}",
+        "contexts": []
+      },
+      {
+        "id": "blank-node-document-a",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"_:same\",\"name\":\"A\"}",
+        "contexts": []
+      },
+      {
+        "id": "blank-node-document-b",
+        "base_iri": "https://example.test/other",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"_:same\",\"name\":\"B\"}",
+        "contexts": []
+      },
+      {
+        "id": "unmapped-property-notice",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":\"A\",\"unknown\":\"retained in raw input\"}",
+        "contexts": []
+      },
+      {
+        "id": "invalid-context",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":17,\"name\":\"A\"}",
+        "contexts": []
+      },
+      {
+        "id": "invalid-node-id",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":17,\"name\":\"A\"}",
+        "contexts": []
+      },
+      {
+        "id": "invalid-value-object",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\"},\"name\":{\"@value\":\"A\",\"name\":\"B\"}}",
+        "contexts": []
+      },
+      {
+        "id": "raw-script-entity-remains-literal",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":\"A &amp; B\"}",
+        "contexts": []
+      },
+      {
+        "id": "unicode-and-escape",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":\"été 😀 \\n fin\"}",
+        "contexts": []
+      },
+      {
+        "id": "absolute-id-not-fetched",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"https://not-contacted.example.test/entity\",\"name\":\"A\"}",
+        "contexts": []
+      },
+      {
+        "id": "safe-integer",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"n\":\"https://example.test/n\"},\"n\":9007199254740991}",
+        "contexts": []
+      },
+      {
+        "id": "unsafe-integer",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"n\":\"https://example.test/n\"},\"n\":9007199254740993}",
+        "contexts": []
+      },
+      {
+        "id": "document-url-string-not-loaded",
+        "base_iri": "https://example.test/page",
+        "raw_json": "\"https://not-contacted.example.test/document\"",
+        "contexts": []
+      },
+      {
+        "id": "id-only-root-notice",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@id\":\"https://example.test/id\"}",
+        "contexts": []
+      },
+      {
+        "id": "null-value-is-absent",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":null}",
+        "contexts": []
+      },
+      {
+        "id": "cyclic-local-context",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/cycle\",\"name\":\"A\"}",
+        "contexts": [
+          {
+            "url": "https://contexts.example.test/cycle",
+            "raw_json": "{\"@context\":\"https://contexts.example.test/cycle\"}",
+            "sha256": "ef182f9a1956257441e2aa43d01f320ab4f7134928c65c04ad32a8e363df1756"
+          }
+        ]
+      },
+      {
+        "id": "protected-term-redefinition",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":[{\"@protected\":true,\"name\":\"https://schema.org/name\"},{\"name\":\"https://schema.org/description\"}],\"name\":\"A\"}",
+        "contexts": []
+      },
+      {
+        "id": "context-scoped-type",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\",\"Thing\":{\"@id\":\"https://schema.org/Thing\",\"@context\":{\"label\":\"https://schema.org/name\"}}},\"@type\":\"Thing\",\"label\":\"A\"}",
+        "contexts": []
+      },
+      {
+        "id": "duplicate-json-key",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":\"A\",\"name\":\"B\"}",
+        "contexts": []
+      },
+      {
+        "id": "nested-duplicate-json-key",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\",\"name\":\"https://schema.org/description\"},\"name\":\"A\"}",
+        "contexts": []
+      },
+      {
+        "id": "invalid-json",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"name\":",
+        "contexts": []
+      },
+      {
+        "id": "json-comments",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{/* invalid JSON */\"name\":\"A\"}",
+        "contexts": []
+      },
+      {
+        "id": "nonfinite-json",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"number\":NaN}",
+        "contexts": []
+      }
+    ]
+  },
+  "source_sha256": {
+    "experiments/jsonld_processing.py": "93055a05b9fbc05c67372507b1d7812b4a3c39509860d1118256eccb94de54ef",
+    "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+    "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+    "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+    "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+    "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a"
+  },
+  "supervisor": {
+    "python": "3.9.6",
+    "process_timeout_seconds": 30,
+    "node_old_space_mib": 128,
+    "input_byte_limit": 4194304,
+    "output_byte_limit": 16777216
+  },
+  "limitations": [
+    "Processing observations only; no Schema.org or search-feature validation, visible facts or TSEP outcome.",
+    "All local contexts are supplied evidence, not authenticated authoritative contexts.",
+    "Notices retain omitted or transformed information; observed is not a validity or conformance verdict.",
+    "Blank-node identifiers are document scoped; separate document results are not silently merged.",
+    "Numbers use the processor JavaScript representation; unsafe integers are refused, raw numeric text remains retained.",
+    "No HTML extraction, browser observation, rendering, indexing, ranking or content truth is established."
+  ]
+}

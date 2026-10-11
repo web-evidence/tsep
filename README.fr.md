@@ -1,5 +1,7 @@
 Édition locale courante : **0.1.0-draft.27** — [dispositif de déploiement](docs/release-invariants.md), [migration](docs/migration-draft.27.md), [accès et journaux agents](docs/agent-access-evidence.md), [usages](docs/agent-usage-policy.md) et [performance](docs/performance-evidence.md). Le traitement du client de test et ses traces ne prouvent pas l’accès réel de l’opérateur.
 
+Préparation TS31–33 : [traitement JSON-LD hors ligne](docs/jsonld-processing.md), 48 cas figés et rejeu avec processeur épinglé. Les contrôles complets restent à intégrer ; le total reste 12 contrôles / 33 règles exécutables.
+
 Le [laboratoire TS39](docs/delivery-laboratory.md) ajoute huit expériences figées, 38 échanges HTTP réels entre origine et cache locaux, une correction avec purge et un rejeu hors ligne ; pages et revues restent fictives.
 
 TS39 dispose de [trois règles de diffusion](docs/delivery-evidence.md) : matrice préalable, signaux par contexte et attribution du cache, avec revues liées et inconnues explicites.

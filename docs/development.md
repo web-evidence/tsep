@@ -1,4 +1,6 @@
 Current integration: draft.27, interpreter 26 / adapter 27 / HTML 10 / replay 3.
+Optional [JSON-LD processing observation 1](jsonld-processing.md) prepares TS31–33: pinned offline processor, 48 frozen authored cases and exact explicit-Node replay.
+FR : traitement JSON-LD qualifié sur ces cas ; extraction HTML/rendue, faits visibles, identités et règles TS31–33 restent à intégrer. Toujours 12 contrôles / 33 règles.
 [Controlled delivery laboratory 1](delivery-laboratory.md): eight frozen scenarios, 38 actual local HTTP exchanges, retained cache state/purge and offline replay; authored reviews.
 FR : quatre C, trois NC et un NT dans le périmètre fictif ; aucune application Edikka.
 [Delivery evidence](delivery-evidence.md): TS39 prior reviewed matrix, native SEO signals and context/cache attribution. [Migration](migration-draft.27.md).

@@ -1,0 +1,814 @@
+{
+  "kind": "authored-jsonld-processing-expectations",
+  "version": "1",
+  "synthetic": true,
+  "normative_effect": "none",
+  "scope": "Finite JSON-LD expansion/flattening observations, not Schema.org validation, browser extraction, semantic facts or TS31–33 outcomes.",
+  "expected_origin": "Authored before candidate supervisor/worker implementation; only a one-document package availability probe had run. W3C JSON-LD 1.1 syntax and pinned jsonld.js event names consulted.",
+  "backend": "jsonld@9.0.0, bundled dist/jsonld.esm.js, Node 24; no implicit network contexts",
+  "cases": [
+    {
+      "id": "inline-context",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"#org\",\"name\":\"Example\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "@id": "https://example.test/page#org",
+            "https://schema.org/name": [
+              {
+                "@value": "Example"
+              }
+            ]
+          }
+        ],
+        "notice_codes": []
+      }
+    },
+    {
+      "id": "pinned-context",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/core\",\"name\":\"A\"}"
+      },
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/core",
+          "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"}}",
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        }
+      ],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          }
+        ],
+        "notice_codes": []
+      }
+    },
+    {
+      "id": "missing-context",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://not-supplied.example.test/context\",\"name\":\"A\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "unavailable"
+      }
+    },
+    {
+      "id": "nested-pinned-context",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/outer\",\"name\":\"A\"}"
+      },
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/core",
+          "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"}}",
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        },
+        {
+          "url": "https://contexts.example.test/outer",
+          "raw_json": "{\"@context\":\"https://contexts.example.test/core\"}",
+          "sha256": "6a2ec5daab5d1597a1597a1681b3708c0edc850532920d2d66aff004ce3096c7"
+        }
+      ],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "missing-nested-context",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/outer\",\"name\":\"A\"}"
+      },
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/outer",
+          "raw_json": "{\"@context\":\"https://contexts.example.test/core\"}",
+          "sha256": "6a2ec5daab5d1597a1597a1681b3708c0edc850532920d2d66aff004ce3096c7"
+        }
+      ],
+      "expected": {
+        "status": "unavailable"
+      }
+    },
+    {
+      "id": "keyword-alias",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"identifier\":\"@id\",\"kind\":\"@type\",\"name\":\"https://schema.org/name\",\"Thing\":\"https://schema.org/Thing\"},\"identifier\":\"#x\",\"kind\":\"Thing\",\"name\":\"X\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "@id": "https://example.test/page#x",
+            "@type": [
+              "https://schema.org/Thing"
+            ],
+            "https://schema.org/name": [
+              {
+                "@value": "X"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "explicit-base",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@base\":\"https://other.example.test/path/\",\"name\":\"https://schema.org/name\"},\"@id\":\"child\",\"name\":\"X\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "@id": "https://other.example.test/path/child",
+            "https://schema.org/name": [
+              {
+                "@value": "X"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "vocabulary",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\"},\"@type\":\"Thing\",\"name\":\"X\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "@type": [
+              "https://schema.org/Thing"
+            ],
+            "https://schema.org/name": [
+              {
+                "@value": "X"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "array-of-nodes",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "[{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"#a\",\"name\":\"A\"},{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"#b\",\"name\":\"B\"}]"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "@id": "https://example.test/page#a",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          },
+          {
+            "@id": "https://example.test/page#b",
+            "https://schema.org/name": [
+              {
+                "@value": "B"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "same-id-enrichment",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\"},\"@graph\":[{\"@id\":\"#a\",\"name\":\"A\"},{\"@id\":\"#a\",\"description\":\"Description\"}]}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "flattened": [
+          {
+            "@id": "https://example.test/page#a",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ],
+            "https://schema.org/description": [
+              {
+                "@value": "Description"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "same-id-multiple-values",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\"},\"@graph\":[{\"@id\":\"#a\",\"name\":\"A\"},{\"@id\":\"#a\",\"name\":\"B\"}]}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "flattened": [
+          {
+            "@id": "https://example.test/page#a",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              },
+              {
+                "@value": "B"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "multiple-types",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\"},\"@type\":[\"Thing\",\"Organization\"],\"name\":\"A\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "@type": [
+              "https://schema.org/Thing",
+              "https://schema.org/Organization"
+            ],
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "language-tag",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":{\"@value\":\"Bonjour\",\"@language\":\"fr\"}}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://schema.org/name": [
+              {
+                "@value": "Bonjour",
+                "@language": "fr"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "reverse-property",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"knownBy\":{\"@reverse\":\"https://schema.org/knows\"}},\"@id\":\"#a\",\"knownBy\":{\"@id\":\"#b\"}}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "@id": "https://example.test/page#a",
+            "@reverse": {
+              "https://schema.org/knows": [
+                {
+                  "@id": "https://example.test/page#b"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "ordered-list",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"steps\":{\"@id\":\"https://schema.org/itemListElement\",\"@container\":\"@list\"}},\"steps\":[\"B\",\"A\"]}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://schema.org/itemListElement": [
+              {
+                "@list": [
+                  {
+                    "@value": "B"
+                  },
+                  {
+                    "@value": "A"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "explicit-set",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":{\"@set\":[\"B\",\"A\"]}}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://schema.org/name": [
+              {
+                "@value": "B"
+              },
+              {
+                "@value": "A"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "json-literal",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"data\":{\"@id\":\"https://example.test/data\",\"@type\":\"@json\"}},\"data\":{\"a\":[1,true,null]}}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://example.test/data": [
+              {
+                "@value": {
+                  "a": [
+                    1,
+                    true,
+                    null
+                  ]
+                },
+                "@type": "@json"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "named-graph",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"#graph\",\"@graph\":[{\"@id\":\"#a\",\"name\":\"A\"}]}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "flattened": [
+          {
+            "@id": "https://example.test/page#graph",
+            "@graph": [
+              {
+                "@id": "https://example.test/page#a",
+                "https://schema.org/name": [
+                  {
+                    "@value": "A"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "blank-node-document-a",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"_:same\",\"name\":\"A\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "@id": "_:same",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "blank-node-document-b",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/other",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"_:same\",\"name\":\"B\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "@id": "_:same",
+            "https://schema.org/name": [
+              {
+                "@value": "B"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "unmapped-property-notice",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":\"A\",\"unknown\":\"retained in raw input\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          }
+        ],
+        "notice_codes": [
+          "invalid property"
+        ]
+      }
+    },
+    {
+      "id": "invalid-context",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":17,\"name\":\"A\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "processor-error"
+      }
+    },
+    {
+      "id": "invalid-node-id",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":17,\"name\":\"A\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "processor-error"
+      }
+    },
+    {
+      "id": "invalid-value-object",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\"},\"name\":{\"@value\":\"A\",\"name\":\"B\"}}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "processor-error"
+      }
+    },
+    {
+      "id": "raw-script-entity-remains-literal",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":\"A &amp; B\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://schema.org/name": [
+              {
+                "@value": "A &amp; B"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "unicode-and-escape",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":\"été 😀 \\n fin\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://schema.org/name": [
+              {
+                "@value": "été 😀 \n fin"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "absolute-id-not-fetched",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"@id\":\"https://not-contacted.example.test/entity\",\"name\":\"A\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "@id": "https://not-contacted.example.test/entity",
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "safe-integer",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"n\":\"https://example.test/n\"},\"n\":9007199254740991}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://example.test/n": [
+              {
+                "@value": 9007199254740991
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "unsafe-integer",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"n\":\"https://example.test/n\"},\"n\":9007199254740993}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "unsupported-input"
+      }
+    },
+    {
+      "id": "document-url-string-not-loaded",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "\"https://not-contacted.example.test/document\""
+      },
+      "contexts": [],
+      "expected": {
+        "status": "unsupported-input"
+      }
+    },
+    {
+      "id": "id-only-root-notice",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@id\":\"https://example.test/id\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [],
+        "notice_codes": [
+          "object with only @id"
+        ]
+      }
+    },
+    {
+      "id": "null-value-is-absent",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":null}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [],
+        "notice_codes": [
+          "empty object"
+        ]
+      }
+    },
+    {
+      "id": "cyclic-local-context",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/cycle\",\"name\":\"A\"}"
+      },
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/cycle",
+          "raw_json": "{\"@context\":\"https://contexts.example.test/cycle\"}",
+          "sha256": "ef182f9a1956257441e2aa43d01f320ab4f7134928c65c04ad32a8e363df1756"
+        }
+      ],
+      "expected": {
+        "status": "processor-error"
+      }
+    },
+    {
+      "id": "protected-term-redefinition",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":[{\"@protected\":true,\"name\":\"https://schema.org/name\"},{\"name\":\"https://schema.org/description\"}],\"name\":\"A\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "processor-error"
+      }
+    },
+    {
+      "id": "context-scoped-type",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\",\"Thing\":{\"@id\":\"https://schema.org/Thing\",\"@context\":{\"label\":\"https://schema.org/name\"}}},\"@type\":\"Thing\",\"label\":\"A\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "@type": [
+              "https://schema.org/Thing"
+            ],
+            "https://schema.org/name": [
+              {
+                "@value": "A"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "duplicate-json-key",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"},\"name\":\"A\",\"name\":\"B\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "json-error"
+      }
+    },
+    {
+      "id": "nested-duplicate-json-key",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\",\"name\":\"https://schema.org/description\"},\"name\":\"A\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "json-error"
+      }
+    },
+    {
+      "id": "invalid-json",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"name\":"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "json-error"
+      }
+    },
+    {
+      "id": "json-comments",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{/* invalid JSON */\"name\":\"A\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "json-error"
+      }
+    },
+    {
+      "id": "nonfinite-json",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"number\":NaN}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "json-error"
+      }
+    }
+  ]
+}

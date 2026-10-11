@@ -1,3 +1,8 @@
+## Optional JSON-LD processing 1 — 2026-10-11 — non-normative
+
+Pinned jsonld.js 9.0.0, explicit Node 24 subprocess, exact local contexts and per-document cache, expanded/flattened observations, warnings and exact replay. Forty initial and eight additional frozen authored cases; invalid Unicode-key failure retained and corrected. A captured official Schema.org context exposed an insufficient initial context-size limit; corrected bound, expected expansion and replay verified with authored data. Draft.27 and the normative corpus unchanged.
+FR : base préparatoire TS31–33, pas de conformité Schema.org/Google ni de faits visibles déduits ; [méthode et limites](docs/jsonld-processing.md). Aucun audit Edikka.
+
 ## Controlled delivery laboratory 1 — 2026-10-11 — non-normative
 
 Eight prefrozen TS39 scenarios, 38 actual local origin/cache HTTP exchanges, state and purge records, and offline replay. Distinguishes wrong cached content, mechanism-only failure, origin error and legitimate gzip/ETag variants. Draft.27 and the normative corpus unchanged.

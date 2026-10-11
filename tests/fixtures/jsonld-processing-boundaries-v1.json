@@ -1,0 +1,152 @@
+{
+  "kind": "authored-jsonld-processing-expectations",
+  "version": "boundaries-1",
+  "synthetic": true,
+  "normative_effect": "none",
+  "expected_origin": "Frozen after the first 40-case run, before boundary execution and the key-Unicode correction. Three consecutive documents deliberately reuse a context URL with changed or absent bytes.",
+  "cases": [
+    {
+      "id": "cache-first-document",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/reused\",\"name\":\"Example\"}"
+      },
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/reused",
+          "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"}}",
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        }
+      ],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://schema.org/name": [
+              {
+                "@value": "Example"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cache-changed-document",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/reused\",\"name\":\"Example\"}"
+      },
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/reused",
+          "raw_json": "{\"@context\":{\"name\":\"https://example.test/label\"}}",
+          "sha256": "c1b432123578802b5c098f5f441fcdc5e57c45109eb766409529f0ee4d0409ca"
+        }
+      ],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://example.test/label": [
+              {
+                "@value": "Example"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "cache-missing-document",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/reused\",\"name\":\"Example\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "unavailable"
+      }
+    },
+    {
+      "id": "unpaired-surrogate-property",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\"},\"\\ud800\":\"Example\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "unsupported-input"
+      }
+    },
+    {
+      "id": "empty-array",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "[]"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "observed",
+        "expanded": [],
+        "flattened": []
+      }
+    },
+    {
+      "id": "notice-bound",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"unmapped0\":\"x\",\"unmapped1\":\"x\",\"unmapped2\":\"x\",\"unmapped3\":\"x\",\"unmapped4\":\"x\",\"unmapped5\":\"x\",\"unmapped6\":\"x\",\"unmapped7\":\"x\",\"unmapped8\":\"x\",\"unmapped9\":\"x\",\"unmapped10\":\"x\",\"unmapped11\":\"x\",\"unmapped12\":\"x\",\"unmapped13\":\"x\",\"unmapped14\":\"x\",\"unmapped15\":\"x\",\"unmapped16\":\"x\",\"unmapped17\":\"x\",\"unmapped18\":\"x\",\"unmapped19\":\"x\",\"unmapped20\":\"x\",\"unmapped21\":\"x\",\"unmapped22\":\"x\",\"unmapped23\":\"x\",\"unmapped24\":\"x\",\"unmapped25\":\"x\",\"unmapped26\":\"x\",\"unmapped27\":\"x\",\"unmapped28\":\"x\",\"unmapped29\":\"x\",\"unmapped30\":\"x\",\"unmapped31\":\"x\",\"unmapped32\":\"x\",\"unmapped33\":\"x\",\"unmapped34\":\"x\",\"unmapped35\":\"x\",\"unmapped36\":\"x\",\"unmapped37\":\"x\",\"unmapped38\":\"x\",\"unmapped39\":\"x\",\"unmapped40\":\"x\",\"unmapped41\":\"x\",\"unmapped42\":\"x\",\"unmapped43\":\"x\",\"unmapped44\":\"x\",\"unmapped45\":\"x\",\"unmapped46\":\"x\",\"unmapped47\":\"x\",\"unmapped48\":\"x\",\"unmapped49\":\"x\",\"unmapped50\":\"x\",\"unmapped51\":\"x\",\"unmapped52\":\"x\",\"unmapped53\":\"x\",\"unmapped54\":\"x\",\"unmapped55\":\"x\",\"unmapped56\":\"x\",\"unmapped57\":\"x\",\"unmapped58\":\"x\",\"unmapped59\":\"x\",\"unmapped60\":\"x\",\"unmapped61\":\"x\",\"unmapped62\":\"x\",\"unmapped63\":\"x\",\"unmapped64\":\"x\",\"unmapped65\":\"x\",\"unmapped66\":\"x\",\"unmapped67\":\"x\",\"unmapped68\":\"x\",\"unmapped69\":\"x\",\"unmapped70\":\"x\",\"unmapped71\":\"x\",\"unmapped72\":\"x\",\"unmapped73\":\"x\",\"unmapped74\":\"x\",\"unmapped75\":\"x\",\"unmapped76\":\"x\",\"unmapped77\":\"x\",\"unmapped78\":\"x\",\"unmapped79\":\"x\",\"unmapped80\":\"x\",\"unmapped81\":\"x\",\"unmapped82\":\"x\",\"unmapped83\":\"x\",\"unmapped84\":\"x\",\"unmapped85\":\"x\",\"unmapped86\":\"x\",\"unmapped87\":\"x\",\"unmapped88\":\"x\",\"unmapped89\":\"x\",\"unmapped90\":\"x\",\"unmapped91\":\"x\",\"unmapped92\":\"x\",\"unmapped93\":\"x\",\"unmapped94\":\"x\",\"unmapped95\":\"x\",\"unmapped96\":\"x\",\"unmapped97\":\"x\",\"unmapped98\":\"x\",\"unmapped99\":\"x\",\"unmapped100\":\"x\",\"unmapped101\":\"x\",\"unmapped102\":\"x\",\"unmapped103\":\"x\",\"unmapped104\":\"x\",\"unmapped105\":\"x\",\"unmapped106\":\"x\",\"unmapped107\":\"x\",\"unmapped108\":\"x\",\"unmapped109\":\"x\",\"unmapped110\":\"x\",\"unmapped111\":\"x\",\"unmapped112\":\"x\",\"unmapped113\":\"x\",\"unmapped114\":\"x\",\"unmapped115\":\"x\",\"unmapped116\":\"x\",\"unmapped117\":\"x\",\"unmapped118\":\"x\",\"unmapped119\":\"x\",\"unmapped120\":\"x\",\"unmapped121\":\"x\",\"unmapped122\":\"x\",\"unmapped123\":\"x\",\"unmapped124\":\"x\",\"unmapped125\":\"x\",\"unmapped126\":\"x\",\"unmapped127\":\"x\",\"unmapped128\":\"x\",\"unmapped129\":\"x\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "processor-error"
+      }
+    },
+    {
+      "id": "local-context-import",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@import\":\"https://contexts.example.test/reused\"},\"name\":\"Example\"}"
+      },
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/reused",
+          "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"}}",
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        }
+      ],
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "https://schema.org/name": [
+              {
+                "@value": "Example"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "missing-context-import",
+      "document": {
+        "id": "document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@import\":\"https://contexts.example.test/reused\"},\"name\":\"Example\"}"
+      },
+      "contexts": [],
+      "expected": {
+        "status": "unavailable"
+      }
+    }
+  ]
+}

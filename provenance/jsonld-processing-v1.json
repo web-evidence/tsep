@@ -1,0 +1,234 @@
+{
+  "kind": "Non-normative JSON-LD processing foundation for TS31–33",
+  "version": "1",
+  "protocol_version": "0.1.0-draft.27",
+  "normative_rules_and_corpus_unchanged": true,
+  "scope": "Actual jsonld.js subprocess executions over authored document fixtures, no HTML extraction, visible facts, vocabulary/search-feature validity, whole-control outcome or Edikka assessment.",
+  "initial_freeze": {
+    "frozen_at": "2026-10-11T09:22:57.848115+00:00",
+    "base_commit": "ecc55a0d6b2b393d11ad9d6f573b7f7d75947039",
+    "cases": 40,
+    "sha256": "12e5cdd59524f12bc685d68825d914e8bda782a7f477039701b78b2b617892b6",
+    "supervisor_exists": false,
+    "worker_exists": false,
+    "expected_origin": "Authored before candidate supervisor/worker implementation; only a one-document package availability probe had run. W3C JSON-LD 1.1 syntax and pinned jsonld.js event names consulted."
+  },
+  "boundary_freeze": {
+    "frozen_at": "2026-10-11T09:32:59.016584+00:00",
+    "cases": 8,
+    "sha256": "feb96e2b70fdceedd965c59f3cfefae7792c78c93c0bf7d4cf5257a22bf1233c",
+    "scope": "Frozen after the first 40-case run, before boundary execution and the key-Unicode correction. Three consecutive documents deliberately reuse a context URL with changed or absent bytes."
+  },
+  "primary_sources": {
+    "observed_at": {
+      "current_time": "2026-10-11 09:11:52 UTC"
+    },
+    "urls": [
+      "https://www.w3.org/TR/json-ld11/",
+      "https://schema.org/docs/datamodel.html",
+      "https://developers.google.com/search/docs/appearance/structured-data/sd-policies"
+    ],
+    "scope": "Preparatory TS31–33 method reading: JSON-LD identifiers/context/objects; Schema.org domain/range and multiple values; Google quality/visibility versus technical validation and rich result limits",
+    "capture": "web-extracts-r1.json",
+    "sha256": "d8e7f2e8447aad39d49d8368f8bd5dade03bbe83ec472f32b4778c15c600d016",
+    "format": "Web tool excerpts, not raw HTTP",
+    "normative_change": false
+  },
+  "package_capture": {
+    "observed_at": "2026-10-11T09:19:10.421760+00:00",
+    "urls": [
+      "https://registry.npmjs.org/jsonld/latest",
+      "https://registry.npmjs.org/jsonld/-/jsonld-9.0.0.tgz"
+    ],
+    "files": {
+      "npm-jsonld-latest.json": "5daece3587c6e0dedcadef2d6a230f3dd0fec8eec18afeb333e847bbb0847321",
+      "jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+      "package.json": "055ed69d0e7ac0f5f813667c106cb90191dbeef0a91454b3c42b2b9cf3819d21",
+      "README.md": "065c72e4eb81b47b2fcf9449304c120ae0956d1340d4404b594ed0e5e6b0f99c"
+    },
+    "scope": "Official npm archive and metadata; integrity checked, no installation or script execution"
+  },
+  "method_discussion": {
+    "observed_at": "2026-10-11T09:14:28.269248+00:00",
+    "url": "https://claude.ai/chat/1c87d570-5d15-4448-8575-f5fff2bd61d3",
+    "scope": "Preparatory TS31–33 method discussion; no private files/code transmitted, no code audit or human validation",
+    "text_sha256": "54f1fee3216a2ee097ed901e2fbc0011ea984dbb099f200f29b8217421504e28",
+    "screenshot_sha256": "79cea70a24ac17cf214810ff93bb92f7c92f75c260fef3acc08dc42afc4a5943",
+    "retained_disagreements": [
+      "Other syntaxes outside an explicitly JSON-LD-only scope do not automatically invalidate that limited scope; no all-markup or wider-graph conclusion is allowed.",
+      "Literal &amp; in script text is not by itself an established defect; compare to attributed intended content without silently decoding HTML entities."
+    ],
+    "resolution": "Claude explicitly accepted both corrections. Zero validator errors without relevant coverage remains inconclusive.",
+    "browser": "IAB tab 26, prior tab25 no longer existed; same authorized conversation reopened",
+    "human_review": false
+  },
+  "retention": "Dated primary-source excerpts, metadata, method discussion and development attempts are retained in the local structured-data-2026-10-11 evidence directory. The official npm archive, complete file manifest/license, frozen input fixtures and r2 actual processor observations are distributed. Local method discussion contains no code review and is not independent human validation.",
+  "first_run": {
+    "comparison_sha256": "fa562da84c4748e7bf8445afd04099e3150ebe1fe734b7d7e32b0159b0334fad",
+    "observation_sha256": "ae28372273de68f9388abccb967de93742083f764ab105e7a8b88d05df8159eb",
+    "cases": 40,
+    "matched": 40
+  },
+  "retained_failure": {
+    "attempt": "boundaries-r1",
+    "comparison_sha256": "fb71927027b7eef4e6de511c20189f1e72e9aa6115ff8608a4248a57274062ba",
+    "observation": "An escaped unpaired Unicode surrogate in a JSON property name passed the initial preflight and caused whole-result UTF-8 serialization failure. No success was claimed.",
+    "correction": "Validate JSON property names as well as string values before processing. Refuse only that document as unsupported-input. Original expectations unchanged.",
+    "additional_numeric_boundary": "Reject integral exponent-form numbers beyond the exact JavaScript integer range, not just Python int tokens. Non-integral numbers retain documented floating-point limitations."
+  },
+  "qualification_runs": [
+    {
+      "attempt": "r2",
+      "observed_at": "2026-10-11T09:34:04.500451+00:00",
+      "cases": 48,
+      "matched": 48,
+      "exact_batch_replays": 2,
+      "runtime": {
+        "node": "v24.19.0",
+        "v8": "13.6.233.17-node.51"
+      },
+      "qualification_sha256": "acbc4241dbd7e99524e5448703589f1652990d6626e71a1818e867d5a0d54307",
+      "source_sha256": {
+        "experiments/jsonld_processing.py": "93055a05b9fbc05c67372507b1d7812b4a3c39509860d1118256eccb94de54ef",
+        "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+        "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+        "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+        "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+        "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a"
+      }
+    },
+    {
+      "attempt": "r3",
+      "observed_at": "2026-10-11T09:38:49.198079+00:00",
+      "cases": 48,
+      "matched": 48,
+      "exact_batch_replays": 2,
+      "runtime": {
+        "node": "v24.19.0",
+        "v8": "13.6.233.17-node.51"
+      },
+      "qualification_sha256": "666f236c239f839d74e2a8e53c5ea4033fe85c5392e60b1ac5dd5abc0a4b4bf8",
+      "source_sha256": {
+        "experiments/jsonld_processing.py": "95825ef2c0d414c7f557bb7ebf0e0d213e0be536051bff7c5cf083655b586dd2",
+        "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+        "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+        "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+        "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+        "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a"
+      }
+    },
+    {
+      "attempt": "r4",
+      "observed_at": "2026-10-11T09:50:18.987351+00:00",
+      "cases": 48,
+      "matched": 48,
+      "exact_batch_replays": 2,
+      "runtime": {
+        "node": "v24.19.0",
+        "v8": "13.6.233.17-node.51"
+      },
+      "qualification_sha256": "a6061f0bd929938fb01ee394d8700fe548a16d165d3320ba18e1df47bf69095b",
+      "source_sha256": {
+        "experiments/jsonld_processing.py": "e0f80ea10a82a646c02ff2d78247d3fc08b41f01b7bd05872eaabc87d28bf6cc",
+        "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+        "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+        "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+        "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+        "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a"
+      }
+    }
+  ],
+  "targeted_tests": {
+    "cases": 27,
+    "passed": 27,
+    "log_sha256": "786d91e6a90ee24631b94870fc423fe75d3633ac25a698056cad7db3d69da778",
+    "scope": "Python-only input, package integrity, attribution, refusal and mocked replay boundaries; stored actual processor fixtures are not newly executed Node tests."
+  },
+  "limitations": [
+    "48 authored finite cases, not full W3C conformance or independent review.",
+    "Processing success is not Schema.org or search-feature validity.",
+    "No implicit network loading, HTML extraction, browser rendering, visible-fact comparison or real-world entity identity.",
+    "API network guard is not OS network isolation.",
+    "Native observations are deterministic, but their hashes are not trusted authorship or collection signatures.",
+    "Full source/archive verifier results are recorded separately for the eventual delivered revision; no remote CI run inferred."
+  ],
+  "official_context_check": {
+    "capture": {
+      "requested_url": "https://schema.org/docs/jsonldcontext.jsonld",
+      "final_url": "https://schema.org/docs/jsonldcontext.jsonld",
+      "observed_at": "2026-10-11T09:45:45.541204+00:00",
+      "status": 200,
+      "headers": {
+        "access-control-allow-credentials": "true",
+        "access-control-allow-headers": "Accept",
+        "access-control-allow-methods": "GET",
+        "access-control-allow-origin": "*",
+        "x-cloud-trace-context": "275131ef697151d20fd68e55c873fb36",
+        "server": "Google Frontend",
+        "Content-Length": "210636",
+        "date": "Sun, 11 Oct 2026 09:45:45 GMT",
+        "expires": "Sun, 11 Oct 2026 09:55:45 GMT",
+        "Cache-Control": "public, max-age=600",
+        "ETag": "\"Z73IVw\"",
+        "Content-Type": "application/ld+json",
+        "Age": "0",
+        "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+        "Connection": "close"
+      },
+      "bytes": 210636,
+      "sha256": "65d0c5d17def9b171b7697bb0929eed17aa32f19af539e15302b6c20479b8930",
+      "scope": "Official supplied-context size/shape preflight; no normative adoption or context authenticity from fingerprint alone"
+    },
+    "initial_preflight": {
+      "error": "Context byte bound exceeded",
+      "reason": "Official context is larger than initial 128 KiB per-context limit; usability gap, not a bad context.",
+      "observed_at": "2026-10-11T09:46:10.954439+00:00",
+      "bytes": 210636,
+      "sha256": "65d0c5d17def9b171b7697bb0929eed17aa32f19af539e15302b6c20479b8930",
+      "vocab": "http://schema.org/",
+      "org": {
+        "@id": "schema:Organization"
+      },
+      "name": {
+        "@id": "schema:name"
+      }
+    },
+    "initial_result_sha256": "27c4f2cfdccf3db0b4edf1e9b5212129588488f5684ba80c1e5ac9f1bf935b6c",
+    "expectation": {
+      "frozen_at": "2026-10-11T09:47:04.576721+00:00",
+      "scope": "Expected processing of an authored document using actual captured official context, after known preflight refusal but before bound correction or processor execution. Not a site audit, no vocabulary validation.",
+      "context_sha256": "65d0c5d17def9b171b7697bb0929eed17aa32f19af539e15302b6c20479b8930",
+      "expected": {
+        "status": "observed",
+        "expanded": [
+          {
+            "@id": "https://example.test/about#organization",
+            "@type": [
+              "http://schema.org/Organization"
+            ],
+            "http://schema.org/name": [
+              {
+                "@value": "Example"
+              }
+            ]
+          }
+        ],
+        "notice_codes": []
+      }
+    },
+    "expectation_sha256": "5cfc7bde8a7f4f32e7f6fa33199c1cecc8b5ceb8f3056f06dc7f0c9b2a676c88",
+    "after_bound_correction": {
+      "matched": true,
+      "differences": [],
+      "replayed_exactly": true,
+      "context_bytes": 210636,
+      "scope": "Actual processing with captured official context and authored JSON-LD document; no site/Schema.org conformance claim"
+    },
+    "observation_sha256": "4f41f2c96968ba60e6923f75ea36e3a4af9749454def3e72730f9fe10cbaf90f",
+    "runtime": {
+      "node": "v24.19.0",
+      "v8": "13.6.233.17-node.51"
+    },
+    "retention": "Official context and all local inputs/outputs retained in the dated working evidence directory. They are not bundled as an implicitly trusted Schema.org vocabulary or fetched by the delivered reader. Reproduce by supplying these exact context bytes and input to the retained source version."
+  }
+}

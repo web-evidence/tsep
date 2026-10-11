@@ -1,0 +1,1130 @@
+{
+  "kind": "unapplied-jsonld-processing",
+  "version": "1",
+  "normative_effect": "none",
+  "request_sha256": "c21c0f89b7c09e64e445e6a7234164a4266105e50b024444774a07a7035eb578",
+  "processor": {
+    "name": "jsonld",
+    "version": "9.0.0",
+    "member": "dist/jsonld.esm.js"
+  },
+  "runtime": {
+    "node": "v24.19.0",
+    "v8": "13.6.233.17-node.51"
+  },
+  "network_guard": {
+    "guarded": [
+      "node:net.connect",
+      "node:net.createConnection",
+      "node:net.createServer",
+      "node:net.Socket.connect",
+      "node:tls.connect",
+      "node:tls.createServer",
+      "node:http.request",
+      "node:http.get",
+      "node:http.createServer",
+      "node:https.request",
+      "node:https.get",
+      "node:https.createServer",
+      "node:http2.connect",
+      "node:http2.createServer",
+      "node:http2.createSecureServer",
+      "node:dgram.createSocket",
+      "node:dgram.Socket.connect",
+      "node:dns.lookup",
+      "node:dns.resolve",
+      "node:dns.resolve4",
+      "node:dns.resolve6",
+      "node:dns.resolveAny"
+    ],
+    "scope": "Documented API guard, not OS network isolation; no source JavaScript execution."
+  },
+  "documents": [
+    {
+      "id": "cache-first-document",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "19515a7ae0037dcf70fb31a8defb59098f47be8c0ccc1a5f627fa051075dab8f",
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/reused",
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        }
+      ],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://schema.org/name": [
+            {
+              "@value": "Example"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://schema.org/name": [
+            {
+              "@value": "Example"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [
+        {
+          "phase": "expand",
+          "url": "https://contexts.example.test/reused",
+          "supplied": true,
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        },
+        {
+          "phase": "flatten",
+          "url": "https://contexts.example.test/reused",
+          "supplied": true,
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "cache-changed-document",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "19515a7ae0037dcf70fb31a8defb59098f47be8c0ccc1a5f627fa051075dab8f",
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/reused",
+          "sha256": "c1b432123578802b5c098f5f441fcdc5e57c45109eb766409529f0ee4d0409ca"
+        }
+      ],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://example.test/label": [
+            {
+              "@value": "Example"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://example.test/label": [
+            {
+              "@value": "Example"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [
+        {
+          "phase": "expand",
+          "url": "https://contexts.example.test/reused",
+          "supplied": true,
+          "sha256": "c1b432123578802b5c098f5f441fcdc5e57c45109eb766409529f0ee4d0409ca"
+        },
+        {
+          "phase": "flatten",
+          "url": "https://contexts.example.test/reused",
+          "supplied": true,
+          "sha256": "c1b432123578802b5c098f5f441fcdc5e57c45109eb766409529f0ee4d0409ca"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "cache-missing-document",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "19515a7ae0037dcf70fb31a8defb59098f47be8c0ccc1a5f627fa051075dab8f",
+      "contexts": [],
+      "status": "unavailable",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [
+        {
+          "phase": "expand",
+          "url": "https://contexts.example.test/reused",
+          "supplied": false,
+          "sha256": null
+        }
+      ],
+      "error": {
+        "name": "jsonld.InvalidUrl",
+        "code": "loading remote context failed",
+        "message": "Dereferencing a URL did not result in a valid JSON-LD object. Possible causes are an inaccessible URL perhaps due to a same-origin policy (ensure the server uses CORS if you are using client-side JavaScript), too many redirects, a non-JSON response, or more than one HTTP Link Header was provided for a remote context. URL: \"https://contexts.example.test/reused\".",
+        "phase": "expand"
+      }
+    },
+    {
+      "id": "unpaired-surrogate-property",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "27d095f1618bb4d5c383c8ca985a8420957682ebcee2fba06f3fdcf8b6305acb",
+      "contexts": [],
+      "status": "unsupported-input",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [],
+      "error": "'utf-8' codec can't encode character '\\ud800' in position 0: surrogates not allowed"
+    },
+    {
+      "id": "empty-array",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "contexts": [],
+      "status": "observed",
+      "expanded": [],
+      "flattened": [],
+      "notices": [],
+      "context_loads": [],
+      "error": null
+    },
+    {
+      "id": "notice-bound",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "69c6970249dd2373839cf57ffecbf2690e727712c14547e41b46b74908ff01f1",
+      "contexts": [],
+      "status": "processor-error",
+      "expanded": null,
+      "flattened": null,
+      "notices": [
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        },
+        {
+          "phase": "expand",
+          "code": "invalid property",
+          "level": "warning",
+          "message": "Dropping property that did not expand into an absolute IRI or keyword."
+        }
+      ],
+      "context_loads": [],
+      "error": {
+        "name": "Error",
+        "code": null,
+        "message": "Processor notice bound exceeded",
+        "phase": "expand"
+      }
+    },
+    {
+      "id": "local-context-import",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "57e7fcdfdae39fe775e08628b1be79ad1c92dbf18da01a315310d4b3190f8936",
+      "contexts": [
+        {
+          "url": "https://contexts.example.test/reused",
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        }
+      ],
+      "status": "observed",
+      "expanded": [
+        {
+          "https://schema.org/name": [
+            {
+              "@value": "Example"
+            }
+          ]
+        }
+      ],
+      "flattened": [
+        {
+          "@id": "_:b0",
+          "https://schema.org/name": [
+            {
+              "@value": "Example"
+            }
+          ]
+        }
+      ],
+      "notices": [],
+      "context_loads": [
+        {
+          "phase": "expand",
+          "url": "https://contexts.example.test/reused",
+          "supplied": true,
+          "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+        }
+      ],
+      "error": null
+    },
+    {
+      "id": "missing-context-import",
+      "base_iri": "https://example.test/page",
+      "raw_json_sha256": "57e7fcdfdae39fe775e08628b1be79ad1c92dbf18da01a315310d4b3190f8936",
+      "contexts": [],
+      "status": "unavailable",
+      "expanded": null,
+      "flattened": null,
+      "notices": [],
+      "context_loads": [
+        {
+          "phase": "expand",
+          "url": "https://contexts.example.test/reused",
+          "supplied": false,
+          "sha256": null
+        }
+      ],
+      "error": {
+        "name": "jsonld.InvalidUrl",
+        "code": "loading remote context failed",
+        "message": "Dereferencing a URL did not result in a valid JSON-LD object. Possible causes are an inaccessible URL perhaps due to a same-origin policy (ensure the server uses CORS if you are using client-side JavaScript), too many redirects, a non-JSON response, or more than one HTTP Link Header was provided for a remote context. URL: \"https://contexts.example.test/reused\".",
+        "phase": "expand"
+      }
+    }
+  ],
+  "input": {
+    "documents": [
+      {
+        "id": "cache-first-document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/reused\",\"name\":\"Example\"}",
+        "contexts": [
+          {
+            "url": "https://contexts.example.test/reused",
+            "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"}}",
+            "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+          }
+        ]
+      },
+      {
+        "id": "cache-changed-document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/reused\",\"name\":\"Example\"}",
+        "contexts": [
+          {
+            "url": "https://contexts.example.test/reused",
+            "raw_json": "{\"@context\":{\"name\":\"https://example.test/label\"}}",
+            "sha256": "c1b432123578802b5c098f5f441fcdc5e57c45109eb766409529f0ee4d0409ca"
+          }
+        ]
+      },
+      {
+        "id": "cache-missing-document",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":\"https://contexts.example.test/reused\",\"name\":\"Example\"}",
+        "contexts": []
+      },
+      {
+        "id": "unpaired-surrogate-property",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@vocab\":\"https://schema.org/\"},\"\\ud800\":\"Example\"}",
+        "contexts": []
+      },
+      {
+        "id": "empty-array",
+        "base_iri": "https://example.test/page",
+        "raw_json": "[]",
+        "contexts": []
+      },
+      {
+        "id": "notice-bound",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"unmapped0\":\"x\",\"unmapped1\":\"x\",\"unmapped2\":\"x\",\"unmapped3\":\"x\",\"unmapped4\":\"x\",\"unmapped5\":\"x\",\"unmapped6\":\"x\",\"unmapped7\":\"x\",\"unmapped8\":\"x\",\"unmapped9\":\"x\",\"unmapped10\":\"x\",\"unmapped11\":\"x\",\"unmapped12\":\"x\",\"unmapped13\":\"x\",\"unmapped14\":\"x\",\"unmapped15\":\"x\",\"unmapped16\":\"x\",\"unmapped17\":\"x\",\"unmapped18\":\"x\",\"unmapped19\":\"x\",\"unmapped20\":\"x\",\"unmapped21\":\"x\",\"unmapped22\":\"x\",\"unmapped23\":\"x\",\"unmapped24\":\"x\",\"unmapped25\":\"x\",\"unmapped26\":\"x\",\"unmapped27\":\"x\",\"unmapped28\":\"x\",\"unmapped29\":\"x\",\"unmapped30\":\"x\",\"unmapped31\":\"x\",\"unmapped32\":\"x\",\"unmapped33\":\"x\",\"unmapped34\":\"x\",\"unmapped35\":\"x\",\"unmapped36\":\"x\",\"unmapped37\":\"x\",\"unmapped38\":\"x\",\"unmapped39\":\"x\",\"unmapped40\":\"x\",\"unmapped41\":\"x\",\"unmapped42\":\"x\",\"unmapped43\":\"x\",\"unmapped44\":\"x\",\"unmapped45\":\"x\",\"unmapped46\":\"x\",\"unmapped47\":\"x\",\"unmapped48\":\"x\",\"unmapped49\":\"x\",\"unmapped50\":\"x\",\"unmapped51\":\"x\",\"unmapped52\":\"x\",\"unmapped53\":\"x\",\"unmapped54\":\"x\",\"unmapped55\":\"x\",\"unmapped56\":\"x\",\"unmapped57\":\"x\",\"unmapped58\":\"x\",\"unmapped59\":\"x\",\"unmapped60\":\"x\",\"unmapped61\":\"x\",\"unmapped62\":\"x\",\"unmapped63\":\"x\",\"unmapped64\":\"x\",\"unmapped65\":\"x\",\"unmapped66\":\"x\",\"unmapped67\":\"x\",\"unmapped68\":\"x\",\"unmapped69\":\"x\",\"unmapped70\":\"x\",\"unmapped71\":\"x\",\"unmapped72\":\"x\",\"unmapped73\":\"x\",\"unmapped74\":\"x\",\"unmapped75\":\"x\",\"unmapped76\":\"x\",\"unmapped77\":\"x\",\"unmapped78\":\"x\",\"unmapped79\":\"x\",\"unmapped80\":\"x\",\"unmapped81\":\"x\",\"unmapped82\":\"x\",\"unmapped83\":\"x\",\"unmapped84\":\"x\",\"unmapped85\":\"x\",\"unmapped86\":\"x\",\"unmapped87\":\"x\",\"unmapped88\":\"x\",\"unmapped89\":\"x\",\"unmapped90\":\"x\",\"unmapped91\":\"x\",\"unmapped92\":\"x\",\"unmapped93\":\"x\",\"unmapped94\":\"x\",\"unmapped95\":\"x\",\"unmapped96\":\"x\",\"unmapped97\":\"x\",\"unmapped98\":\"x\",\"unmapped99\":\"x\",\"unmapped100\":\"x\",\"unmapped101\":\"x\",\"unmapped102\":\"x\",\"unmapped103\":\"x\",\"unmapped104\":\"x\",\"unmapped105\":\"x\",\"unmapped106\":\"x\",\"unmapped107\":\"x\",\"unmapped108\":\"x\",\"unmapped109\":\"x\",\"unmapped110\":\"x\",\"unmapped111\":\"x\",\"unmapped112\":\"x\",\"unmapped113\":\"x\",\"unmapped114\":\"x\",\"unmapped115\":\"x\",\"unmapped116\":\"x\",\"unmapped117\":\"x\",\"unmapped118\":\"x\",\"unmapped119\":\"x\",\"unmapped120\":\"x\",\"unmapped121\":\"x\",\"unmapped122\":\"x\",\"unmapped123\":\"x\",\"unmapped124\":\"x\",\"unmapped125\":\"x\",\"unmapped126\":\"x\",\"unmapped127\":\"x\",\"unmapped128\":\"x\",\"unmapped129\":\"x\"}",
+        "contexts": []
+      },
+      {
+        "id": "local-context-import",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@import\":\"https://contexts.example.test/reused\"},\"name\":\"Example\"}",
+        "contexts": [
+          {
+            "url": "https://contexts.example.test/reused",
+            "raw_json": "{\"@context\":{\"name\":\"https://schema.org/name\"}}",
+            "sha256": "e7f54ba191b600117e8e7e11c1aef385ebebe9248ed857a727fa37d57688f04b"
+          }
+        ]
+      },
+      {
+        "id": "missing-context-import",
+        "base_iri": "https://example.test/page",
+        "raw_json": "{\"@context\":{\"@import\":\"https://contexts.example.test/reused\"},\"name\":\"Example\"}",
+        "contexts": []
+      }
+    ]
+  },
+  "source_sha256": {
+    "experiments/jsonld_processing.py": "93055a05b9fbc05c67372507b1d7812b4a3c39509860d1118256eccb94de54ef",
+    "experiments/jsonld_processing.mjs": "17486529e5c3a744cffbc926ceb0ca8bd586535ec454de047e866f4650185c06",
+    "experiments/source_tree_network_guard.mjs": "68f439f3dceeef85e11a84bc3f78c72df3897cca53aafb8918dec16727fbe0c7",
+    "third_party/jsonld/packages.json": "ec0b586921a31ef90751c1822d040f845360a8be48fe99f446159440cefb0ee1",
+    "third_party/jsonld/jsonld-9.0.0.tgz": "3628c8df4ceaf4da1f0b55dc7a006287dc4362ed78f6f7c85e83bd99b9328627",
+    "third_party/jsonld/LICENSE": "0707101bd4a2fc564788b1ba03c53615e35388dad33879663db263e724a6bd4a"
+  },
+  "supervisor": {
+    "python": "3.9.6",
+    "process_timeout_seconds": 30,
+    "node_old_space_mib": 128,
+    "input_byte_limit": 4194304,
+    "output_byte_limit": 16777216
+  },
+  "limitations": [
+    "Processing observations only; no Schema.org or search-feature validation, visible facts or TSEP outcome.",
+    "All local contexts are supplied evidence, not authenticated authoritative contexts.",
+    "Notices retain omitted or transformed information; observed is not a validity or conformance verdict.",
+    "Blank-node identifiers are document scoped; separate document results are not silently merged.",
+    "Numbers use the processor JavaScript representation; unsafe integers are refused, raw numeric text remains retained.",
+    "No HTML extraction, browser observation, rendering, indexing, ranking or content truth is established."
+  ]
+}

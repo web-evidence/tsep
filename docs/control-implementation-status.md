@@ -12,6 +12,7 @@ TS10**, avec TS01 comme socle. Il remplace la cible antérieure de dix contrôle
 Le 11 octobre, Bertrand a ajouté explicitement la performance : TS34 et TS35.
 Le même jour, il a demandé les agents IA après les performances : TS42, puis TS43 et TS44.
 Le même jour, il a autorisé TS41, TS39, TS36 et TS31–33. TS41 et TS39 sont intégrés ; TS36 et TS31–33 restent à développer.
+Une [base de traitement JSON-LD facultative](jsonld-processing.md) prépare TS31–33 : 48 cas figés, processeur hors ligne et rejeu. Elle ne compte pas comme trois contrôles supplémentaires ; extraction attribuée, contenu visible, identités et validateurs restent à qualifier.
 La source décrit **44 contrôles**. **Douze** disposent de règles atomiques
 exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS10 (4), TS34 (3), TS35 (2), TS39 (3), TS41 (3), TS42 (3), TS43 (3), TS44 (3),
 soit **33 règles**. Les quatre priorités SEO en représentent 11. Les 32 autres sont décrits,
