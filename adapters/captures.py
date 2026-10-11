@@ -21,13 +21,14 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '19'
+VERSION = '20'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
 
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
+    modules['conformance/http_canonical.py'] = importlib.import_module('conformance.http_canonical')
     for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'conformance.source_canonical', 'experiments.source_head', 'experiments.source_http', 'experiments.source_tree'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     result = loaded_sources(ROOT, modules)
@@ -46,6 +47,8 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented', 'fr':'TS10-A01/A02 : http-link-context-v1 préalable, premier rel, contexte anchor attribué et inconnues conservées ; destination comparée littéralement. Ancien lecteur inchangé ; aucun choix Google déduit.',
+     'en':'TS10-A01/A02: prior http-link-context-v1, first rel, attributed anchor context and retained unknowns; literal destination comparison. Historical reader unchanged; no inferred Google choice.'},
     {'state':'implemented','fr':'TS10-A04 : profils source préalables html-tree-links-v1/v2, liens HTML a/area attribués, base conditionnelle et URL sérialisées. Convergence dans une famille déclarée, pas présence ou suffisance du maillage ; v2 rend les href dépendants indéterminés sous première base non analysable ; rendu antérieur inchangé.',
      'en':'TS10-A04: prior html-tree-links-v1/v2 source profiles, attributed HTML a/area, conditional base and serialized URLs. Declared-family convergence, not link presence or sufficiency; v2 keeps dependent hrefs unknown under an unparseable first base; earlier rendered readers unchanged.'},
     {'state':'implemented','fr':'TS10-A01/A02 : lecteur source canonical préalable, positions et hypothèses attribuées ; rendu/revue toujours nécessaires.','en':'TS10-A01/A02: prior canonical source reader with attributed positions/hypotheses; rendering/reviews remain required.'},

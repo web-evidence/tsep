@@ -1,5 +1,16 @@
 # Change history / Historique
 
+## 0.1.0-draft.19 — 2026-10-11 — HTTP canonical context
+
+Add optional prior http-link-context-v1 for TS10-A01/A02: first rel, explicit anchor
+context, ordered raw parameters and unknowns, literal TSEP destination. Keep the
+historical reader and all 640 prior cases unchanged; add 61 authored cases.
+Interpreter19/adapter20, replay3. No inferred human review or engine outcome.
+
+FR : contexte HTTP et destination séparés, contradictions attribuables conservées,
+méthode bornée et migration explicite ; aucun résultat réel Edikka ajouté.
+[Contract / Contrat](docs/http-canonical-context.md), [migration](docs/migration-draft.19.md).
+
 ## 0.1.0-draft.18 — 2026-10-11 — invalid first-base uncertainty
 
 Optional prior html-tree-links-v2 keeps base-dependent source hrefs inconclusive

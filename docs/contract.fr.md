@@ -1,4 +1,13 @@
-# Contrat de rapport — TSEP 0.1.0-draft.18
+# Contrat de rapport — TSEP 0.1.0-draft.19
+
+### Contexte canonical HTTP — draft.19
+
+Le profil préalable facultatif `intent.canonical.http_reader: "http-link-context-v1"`
+étend TS10-A01/A02 selon le [contrat HTTP](http-canonical-context.md). Sans champ,
+le lecteur historique reste fixe. Premier rel, contexte anchor, destination littérale,
+preuves et inconnues sont conservés ; aucune revue humaine ou sélection Google
+n’est déduite. [Migration explicite](migration-draft.19.md).
+
 
 ## Périmètre déclaré
 

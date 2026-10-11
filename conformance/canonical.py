@@ -239,23 +239,47 @@ def signals(values, preferred, label):
     return ('fail' if bad else 'pass', label + ': ' + repr(values))
 
 
+def http_profile_surfaces(target, doc, plan, required, diagnostics):
+    """Keep independently attributable headers when the HTML/DOM reader refuses."""
+    final, status, headers, _ = response(target, doc)
+    need(status == 200, 'Representation unavailable for canonical/link extraction')
+    try:
+        return surfaces(target, doc, plan, source_profile=True, required=required, diagnostics=diagnostics)
+    except ERRORS as error:
+        return final, headers, [(None, str(error))], [(None, str(error))]
+
+
+def http_declaration(target, doc, final, headers, preferred, required, diagnostics):
+    from conformance.http_canonical import assess as assess_http
+    return assess_http(headers, final, preferred, required, target['intent']['canonical']['http_reader'],
+                       document_url=doc['url'], source_sha256=binding_digest(doc['http']),
+                       observed_at=doc['observed_at'], diagnostics=diagnostics)
+
+
 def declarations(target, member, preferred, diagnostics=None):
     doc = capture(target, target.get('documents'), member['url'])
     modern = 'source_reader' in target['intent']['canonical']
-    if not modern:
+    http_profile = 'http_reader' in target['intent']['canonical']
+    if not modern and not http_profile:
         final, headers, source, rendered = surfaces(target, doc, member['rendering'])
     required = member.get('required_methods')
     need(isinstance(required, list) and required and set(required) <= {'html', 'http', 'redirect', 'dom'}
          and len(required) == len(set(required)), 'Missing/unsupported required canonical methods')
-    if modern:
+    if http_profile:
+        final, headers, source, rendered = http_profile_surfaces(target, doc, member.get('rendering'),
+                                                                'html' in required, diagnostics)
+    elif modern:
         final, headers, source, rendered = surfaces(target, doc, member.get('rendering'), source_profile=True,
                                                     required='html' in required, diagnostics=diagnostics)
     findings = []
     try:
-        values = header_canonicals(headers)
-        findings.append(signals([(v, True) for v in values], preferred, 'HTTP Link'))
-        if 'http' in required and not values:
-            findings.append(('fail', 'Required HTTP canonical absent'))
+        if http_profile:
+            findings.append(http_declaration(target, doc, final, headers, preferred, 'http' in required, diagnostics))
+        else:
+            values = header_canonicals(headers)
+            findings.append(signals([(v, True) for v in values], preferred, 'HTTP Link'))
+            if 'http' in required and not values:
+                findings.append(('fail', 'Required HTTP canonical absent'))
     except ERRORS as error:
         findings.append(('inconclusive', str(error)))
     redirected = len(doc['http']) > 1
@@ -320,10 +344,17 @@ def destination(target, members, preferred, diagnostics=None):
     if status != 200:
         return 'fail', 'Preferred URL does not return direct 200: ' + str(status) + '; content not established'
     member = next(m for m in members if m['url'] == preferred)
-    final, headers, source, rendered = surfaces(target, doc, (member.get('rendering') if 'source_reader' in target['intent']['canonical'] else member['rendering']), source_profile=True, diagnostics=diagnostics)
+    http_profile = 'http_reader' in target['intent']['canonical']
+    if http_profile:
+        final, headers, source, rendered = http_profile_surfaces(target, doc, member.get('rendering'), False, diagnostics)
+    else:
+        final, headers, source, rendered = surfaces(target, doc, (member.get('rendering') if 'source_reader' in target['intent']['canonical'] else member['rendering']), source_profile=True, diagnostics=diagnostics)
     findings = []
     try:
-        findings.append(signals([(v, True) for v in header_canonicals(headers)], preferred, 'Preferred HTTP canonical'))
+        if http_profile:
+            findings.append(http_declaration(target, doc, final, headers, preferred, False, diagnostics))
+        else:
+            findings.append(signals([(v, True) for v in header_canonicals(headers)], preferred, 'Preferred HTTP canonical'))
     except ERRORS as error:
         findings.append(('inconclusive', str(error)))
     for parser, error in source + rendered:

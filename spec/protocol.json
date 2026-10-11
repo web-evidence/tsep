@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.18",
+  "version": "0.1.0-draft.19",
   "status": "draft",
   "date": "2026-10-11",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18",
+      "rule_version": "0.1.0-draft.19",
       "rules": [
         {
           "na_inputs": [],
@@ -385,7 +385,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS04",
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18",
+      "rule_version": "0.1.0-draft.19",
       "rules": [
         {
           "id": "TS04-A01",
@@ -599,7 +599,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS06",
@@ -658,7 +658,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS07",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS08",
@@ -924,7 +924,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS09",
@@ -982,7 +982,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS10",
@@ -1063,28 +1063,28 @@
             "en": "Each family member and its declared canonicalization strategy."
           },
           "procedure": {
-            "fr": "Lister membres, URL préférée et méthode attendue ; comparer URL finales, Link HTTP, rel=canonical HTML et états rendus nécessaires. Conserver les déclarations multiples, même identiques. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée. Le profil source facultatif intent.canonical.source_reader=html-tree-canonical-v1 est choisi avant capture ; il compare deux hypothèses statiques complètes, avec positions source/arbre attribuées aux octets. Le contrat source-canonical.md fixe ses frontières.",
-            "en": "List members, preferred URL and expected method; compare final URLs, HTTP Link, HTML rel=canonical and required rendered states. Retain multiple declarations, even identical ones. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.source_reader=html-tree-canonical-v1 compares two complete static source hypotheses with byte-attributed source/tree positions. The source-canonical.md contract defines its boundaries."
+            "fr": "Lister membres, URL préférée et méthode attendue ; comparer URL finales, Link HTTP, rel=canonical HTML et états rendus nécessaires. Conserver les déclarations multiples, même identiques. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée. Le profil source facultatif intent.canonical.source_reader=html-tree-canonical-v1 est choisi avant capture ; il compare deux hypothèses statiques complètes, avec positions source/arbre attribuées aux octets. Le contrat source-canonical.md fixe ses frontières. Le choix préalable facultatif intent.canonical.http_reader=http-link-context-v1 applique le contrat docs/http-canonical-context.md aux Link de la réponse finale GET 200 ; absence de champ conserve le lecteur historique.",
+            "en": "List members, preferred URL and expected method; compare final URLs, HTTP Link, HTML rel=canonical and required rendered states. Retain multiple declarations, even identical ones. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.source_reader=html-tree-canonical-v1 compares two complete static source hypotheses with byte-attributed source/tree positions. The source-canonical.md contract defines its boundaries. Optional prior intent.canonical.http_reader=http-link-context-v1 applies docs/http-canonical-context.md to final GET 200 Link fields; absent selection retains the historical reader."
           },
           "acceptance": {
-            "fr": "Les signaux présents et ceux exigés par la stratégie désignent la même URL HTTP(S) absolue, sans fragment. HTML dans head ou en-tête Link sont acceptés ; pas d’obligation universelle d’une balise HTML. Une canonical relative est fail pour cette règle TSEP, sans affirmer son invalidité pour Google. Les déclarations répétées identiques sont conservées et peuvent converger ; un conflit attribuable demeure fail malgré une autre capture manquante. Deux lectures source pass donnent pass, deux fail donnent fail ; sinon inconclusive. Une canonical ordinaire dans body reste une contradiction, même de valeur égale. Les valeurs relatives ne sont jamais résolues via base. Les contradictions HTTP Link, redirections ou DOM attribuables restent indépendantes des inconnues source.",
-            "en": "Present signals and those required by strategy identify the same absolute HTTP(S) URL without a fragment. HTML in head or HTTP Link are accepted; no universal HTML tag requirement. A relative canonical is fail for this TSEP rule without claiming Google cannot interpret it. Retain repeated identical declarations, which may agree; an attributable conflict remains fail despite another missing capture. Two source pass yield pass, two fail yield fail, otherwise inconclusive. Ordinary body canonical remains a contradiction even for the preferred URL; relative values are never resolved through base. Attributable HTTP Link, redirect and DOM contradictions remain independent of source unknowns."
+            "fr": "Les signaux présents et ceux exigés par la stratégie désignent la même URL HTTP(S) absolue, sans fragment. HTML dans head ou en-tête Link sont acceptés ; pas d’obligation universelle d’une balise HTML. Une canonical relative est fail pour cette règle TSEP, sans affirmer son invalidité pour Google. Les déclarations répétées identiques sont conservées et peuvent converger ; un conflit attribuable demeure fail malgré une autre capture manquante. Deux lectures source pass donnent pass, deux fail donnent fail ; sinon inconclusive. Une canonical ordinaire dans body reste une contradiction, même de valeur égale. Les valeurs relatives ne sont jamais résolues via base. Les contradictions HTTP Link, redirections ou DOM attribuables restent indépendantes des inconnues source. La nouvelle lecture distingue contexte et destination littérale, conserve le premier rel et les déclarations répétées ; aucune inconnue ne permet pass, une contradiction HTTP attribuable indépendante demeure fail.",
+            "en": "Present signals and those required by strategy identify the same absolute HTTP(S) URL without a fragment. HTML in head or HTTP Link are accepted; no universal HTML tag requirement. A relative canonical is fail for this TSEP rule without claiming Google cannot interpret it. Retain repeated identical declarations, which may agree; an attributable conflict remains fail despite another missing capture. Two source pass yield pass, two fail yield fail, otherwise inconclusive. Ordinary body canonical remains a contradiction even for the preferred URL; relative values are never resolved through base. Attributable HTTP Link, redirect and DOM contradictions remain independent of source unknowns. The new reader separates context from literal destination, retaining first rel and repeated declarations; unknowns prevent pass and independent attributable HTTP conflicts remain fail."
           },
           "evidence": {
-            "fr": "Inventaire de famille dans intent ; en-têtes et source (ou record html non applicable pour non-HTML) ; extraction avec emplacement et méthode, DOM requis joint si nécessaire. Relier chaque capture à la famille, au contexte et à la date. Déclarer les méthodes et les états DOM requis avant examen ; lier les DOM à la trace HTTP par empreinte. Une exemption de rendu exige une revue liée à la source et ses pièces, pas une simple affirmation « pas de JS ». Conserver aussi les observations du profil : document, corps, canonical/base, templates, tokens du préfixe, contexte, erreurs, décodage, sources/runtime et décisions séparées. Le rejeu les compare.",
-            "en": "Family inventory in intent; headers and source (or html non-applicability record for non-HTML); extraction with location and method, required DOM attached when needed. Bind each capture to the family, context and date. Declare required methods and DOM states before assessment; bind DOMs to the HTTP trace by fingerprint. A rendering exemption needs a source-bound review and supporting records, not a bare “no JS” claim. Also retain profile observations: document, body, canonical/base, templates, prefix tokens, context, errors, decoding, sources/runtime and separate decisions; replay compares these records."
+            "fr": "Inventaire de famille dans intent ; en-têtes et source (ou record html non applicable pour non-HTML) ; extraction avec emplacement et méthode, DOM requis joint si nécessaire. Relier chaque capture à la famille, au contexte et à la date. Déclarer les méthodes et les états DOM requis avant examen ; lier les DOM à la trace HTTP par empreinte. Une exemption de rendu exige une revue liée à la source et ses pièces, pas une simple affirmation « pas de JS ». Conserver aussi les observations du profil : document, corps, canonical/base, templates, tokens du préfixe, contexte, erreurs, décodage, sources/runtime et décisions séparées. Le rejeu les compare. Diagnostic HTTP ordonné, champs et paramètres bruts, contextes exclus/inconnus, URL finale/demandée, date et empreinte de la chaîne conservés.",
+            "en": "Family inventory in intent; headers and source (or html non-applicability record for non-HTML); extraction with location and method, required DOM attached when needed. Bind each capture to the family, context and date. Declare required methods and DOM states before assessment; bind DOMs to the HTTP trace by fingerprint. A rendering exemption needs a source-bound review and supporting records, not a bare “no JS” claim. Also retain profile observations: document, body, canonical/base, templates, prefix tokens, context, errors, decoding, sources/runtime and separate decisions; replay compares these records. Retain ordered HTTP diagnostics, raw fields/parameters, excluded/unknown contexts, requested/final URLs, timestamp and source-trace fingerprint."
           },
           "assumptions": {
             "fr": "La stratégie distingue canonical préférée et doublons ; aucune suppression implicite de paramètres, casse ou slash lors des comparaisons. Dans le DOM structuré, une différence entre href absolu brut et propriété résolue empêche la conclusion de cette surface, sans substituer l’une des valeurs ni affirmer un défaut SEO. La canonical relative ou hors head dans le DOM ordinaire reste une contradiction TSEP ; le shadow ouvert reste indéterminé. Champ absent : lecteur historique. Nul/inconnu ou Node 24 absent : pas de repli. Ce profil ne valide pas HTML et ne remplace ni rendu ni jugement humain.",
             "en": "Strategy distinguishes preferred canonical and duplicates; comparisons do not silently remove parameters or normalize case or slashes. In structured DOM, a difference between absolute raw href and the resolved property prevents a conclusion on that surface, without substituting either value or asserting an SEO defect. A relative or out-of-head canonical in ordinary DOM remains a TSEP contradiction; open shadow remains inconclusive. Absent field preserves legacy reading. Null/unknown or absent Node 24 never falls back. This profile neither validates HTML nor replaces rendering or supplied human judgment."
           },
           "inconclusive": {
-            "fr": "Famille/intention incomplète, Link ambigu, document tronqué ou état rendu requis absent : inconclusive. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation. Réinsertion après fermeture explicite du head, descendant indirect, contexte étranger, modificateur/attribut inconnu, shadow déclaré, lecture ou diagnostic borné incomplet empêchent une réussite selon le contrat ; une contradiction distincte qualifiée reste conservée.",
-            "en": "Incomplete family/intent, ambiguous Link, truncated document or missing required rendered state: inconclusive. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. After-head reinsertion, indirect head descendant, foreign context, unknown/modifying attributes, declared shadow, incomplete bounded reading/diagnostics prevent success as defined by the contract; retain any separately qualified contradiction."
+            "fr": "Famille/intention incomplète, Link ambigu, document tronqué ou état rendu requis absent : inconclusive. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation. Réinsertion après fermeture explicite du head, descendant indirect, contexte étranger, modificateur/attribut inconnu, shadow déclaré, lecture ou diagnostic borné incomplet empêchent une réussite selon le contrat ; une contradiction distincte qualifiée reste conservée. Sélection HTTP inconnue, contexte non qualifié/équivalence incertaine, extension ou syntaxe hors couverture : inconclusive sans repli favorable ; les bornes et leur portée sont fixées dans le contrat HTTP.",
+            "en": "Incomplete family/intent, ambiguous Link, truncated document or missing required rendered state: inconclusive. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. After-head reinsertion, indirect head descendant, foreign context, unknown/modifying attributes, declared shadow, incomplete bounded reading/diagnostics prevent success as defined by the contract; retain any separately qualified contradiction. Unknown HTTP selection, unqualified context/uncertain equivalence, extensions or unsupported syntax are inconclusive without favorable fallback; the HTTP contract fixes bounds and their scope."
           },
           "limitations": {
-            "fr": "Relatif, placement et convergence sont des critères TSEP ; la sélection canonique du moteur n’est pas observée ici. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md. Portée source uniquement ; A04 et les lecteurs DOM ne sont pas étendus. Les deux hypothèses ne sont pas deux états rendus observés. Aucun choix canonique Google n’est déduit.",
-            "en": "Relative URLs, placement and convergence are TSEP criteria; engine canonical selection is not observed here. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source scope only; A04 and DOM readers are not extended. The hypotheses are not coexisting observed rendered states. No Google canonical choice is inferred."
+            "fr": "Relatif, placement et convergence sont des critères TSEP ; la sélection canonique du moteur n’est pas observée ici. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md. Portée source uniquement ; A04 et les lecteurs DOM ne sont pas étendus. Les deux hypothèses ne sont pas deux états rendus observés. Aucun choix canonique Google n’est déduit. Aucune exécution du moteur ni normalisation de la destination ; un relatif valide RFC peut échouer au critère TSEP absolu. Migration draft.19 et ancien lecteur préservé.",
+            "en": "Relative URLs, placement and convergence are TSEP criteria; engine canonical selection is not observed here. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source scope only; A04 and DOM readers are not extended. The hypotheses are not coexisting observed rendered states. No Google canonical choice is inferred. No engine execution or destination normalization; an RFC-valid relative can fail TSEP’s absolute criterion. See draft.19 migration; historical reader preserved."
           },
           "na_inputs": [],
           "non_applicability": {
@@ -1109,28 +1109,28 @@
             "en": "Every preferred destination in declared families."
           },
           "procedure": {
-            "fr": "Tester la destination, conserver GET et contenu ; vérifier que son éventuelle canonical ne repart pas ailleurs. Comparer le contenu à la famille déclarée. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée. Le profil source facultatif intent.canonical.source_reader=html-tree-canonical-v1 est choisi avant capture ; il compare deux hypothèses statiques complètes, avec positions source/arbre attribuées aux octets. Le contrat source-canonical.md fixe ses frontières.",
-            "en": "Test the destination, retain GET and content; verify that any canonical there does not point elsewhere. Compare content with the declared family. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.source_reader=html-tree-canonical-v1 compares two complete static source hypotheses with byte-attributed source/tree positions. The source-canonical.md contract defines its boundaries."
+            "fr": "Tester la destination, conserver GET et contenu ; vérifier que son éventuelle canonical ne repart pas ailleurs. Comparer le contenu à la famille déclarée. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée. Le profil source facultatif intent.canonical.source_reader=html-tree-canonical-v1 est choisi avant capture ; il compare deux hypothèses statiques complètes, avec positions source/arbre attribuées aux octets. Le contrat source-canonical.md fixe ses frontières. Le choix préalable facultatif intent.canonical.http_reader=http-link-context-v1 applique le contrat docs/http-canonical-context.md aux Link de la réponse finale GET 200 ; absence de champ conserve le lecteur historique.",
+            "en": "Test the destination, retain GET and content; verify that any canonical there does not point elsewhere. Compare content with the declared family. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.source_reader=html-tree-canonical-v1 compares two complete static source hypotheses with byte-attributed source/tree positions. The source-canonical.md contract defines its boundaries. Optional prior intent.canonical.http_reader=http-link-context-v1 applies docs/http-canonical-context.md to final GET 200 Link fields; absent selection retains the historical reader."
           },
           "acceptance": {
-            "fr": "La destination attendue est accessible directement en 200, sans chaîne ni cycle canonique, avec contenu compatible. Un doublon peut rester en 200 et pointer vers la préférée ; l’URL finale de chaque doublon n’a pas à lui être identique. Deux lectures source pass donnent pass, deux fail donnent fail ; sinon inconclusive. Une canonical ordinaire dans body reste une contradiction, même de valeur égale. Les valeurs relatives ne sont jamais résolues via base. Les contradictions HTTP Link, redirections ou DOM attribuables restent indépendantes des inconnues source.",
-            "en": "The expected destination is directly accessible with 200, without canonical chains or cycles, and compatible content. A duplicate may remain 200 and point to the preferred URL; not every duplicate final URL must equal it. Two source pass yield pass, two fail yield fail, otherwise inconclusive. Ordinary body canonical remains a contradiction even for the preferred URL; relative values are never resolved through base. Attributable HTTP Link, redirect and DOM contradictions remain independent of source unknowns."
+            "fr": "La destination attendue est accessible directement en 200, sans chaîne ni cycle canonique, avec contenu compatible. Un doublon peut rester en 200 et pointer vers la préférée ; l’URL finale de chaque doublon n’a pas à lui être identique. Deux lectures source pass donnent pass, deux fail donnent fail ; sinon inconclusive. Une canonical ordinaire dans body reste une contradiction, même de valeur égale. Les valeurs relatives ne sont jamais résolues via base. Les contradictions HTTP Link, redirections ou DOM attribuables restent indépendantes des inconnues source. La nouvelle lecture distingue contexte et destination littérale, conserve le premier rel et les déclarations répétées ; aucune inconnue ne permet pass, une contradiction HTTP attribuable indépendante demeure fail.",
+            "en": "The expected destination is directly accessible with 200, without canonical chains or cycles, and compatible content. A duplicate may remain 200 and point to the preferred URL; not every duplicate final URL must equal it. Two source pass yield pass, two fail yield fail, otherwise inconclusive. Ordinary body canonical remains a contradiction even for the preferred URL; relative values are never resolved through base. Attributable HTTP Link, redirect and DOM contradictions remain independent of source unknowns. The new reader separates context from literal destination, retaining first rel and repeated declarations; unknowns prevent pass and independent attributable HTTP conflicts remain fail."
           },
           "evidence": {
-            "fr": "Trace et corps de la destination reliés à la famille ; graphe des déclarations et comparaison de contenu motivée. La revue humaine de compatibilité identifie son auteur, sa date, chaque membre comparé à la préférence, le jugement motivé et les captures exactes examinées, par empreinte. Une référence manquante, périmée ou une comparaison non établie empêche pass. Conserver aussi les observations du profil : document, corps, canonical/base, templates, tokens du préfixe, contexte, erreurs, décodage, sources/runtime et décisions séparées. Le rejeu les compare.",
-            "en": "Destination trace and body tied to the family; declaration graph and reasoned content comparison. The human compatibility review identifies its author, date, each member compared with the preferred representation, reasoned judgment and exact examined captures by fingerprint. A missing/stale reference or unestablished comparison prevents pass. Also retain profile observations: document, body, canonical/base, templates, prefix tokens, context, errors, decoding, sources/runtime and separate decisions; replay compares these records."
+            "fr": "Trace et corps de la destination reliés à la famille ; graphe des déclarations et comparaison de contenu motivée. La revue humaine de compatibilité identifie son auteur, sa date, chaque membre comparé à la préférence, le jugement motivé et les captures exactes examinées, par empreinte. Une référence manquante, périmée ou une comparaison non établie empêche pass. Conserver aussi les observations du profil : document, corps, canonical/base, templates, tokens du préfixe, contexte, erreurs, décodage, sources/runtime et décisions séparées. Le rejeu les compare. Diagnostic HTTP ordonné, champs et paramètres bruts, contextes exclus/inconnus, URL finale/demandée, date et empreinte de la chaîne conservés.",
+            "en": "Destination trace and body tied to the family; declaration graph and reasoned content comparison. The human compatibility review identifies its author, date, each member compared with the preferred representation, reasoned judgment and exact examined captures by fingerprint. A missing/stale reference or unestablished comparison prevents pass. Also retain profile observations: document, body, canonical/base, templates, prefix tokens, context, errors, decoding, sources/runtime and separate decisions; replay compares these records. Retain ordered HTTP diagnostics, raw fields/parameters, excluded/unknown contexts, requested/final URLs, timestamp and source-trace fingerprint."
           },
           "assumptions": {
             "fr": "La proximité du contenu est évaluée dans le contexte métier, sans seuil universel de similarité. Dans le DOM structuré, une différence entre href absolu brut et propriété résolue empêche la conclusion de cette surface, sans substituer l’une des valeurs ni affirmer un défaut SEO. La canonical relative ou hors head dans le DOM ordinaire reste une contradiction TSEP ; le shadow ouvert reste indéterminé. Champ absent : lecteur historique. Nul/inconnu ou Node 24 absent : pas de repli. Ce profil ne valide pas HTML et ne remplace ni rendu ni jugement humain.",
             "en": "Content similarity is assessed in business context without a universal similarity threshold. In structured DOM, a difference between absolute raw href and the resolved property prevents a conclusion on that surface, without substituting either value or asserting an SEO defect. A relative or out-of-head canonical in ordinary DOM remains a TSEP contradiction; open shadow remains inconclusive. Absent field preserves legacy reading. Null/unknown or absent Node 24 never falls back. This profile neither validates HTML nor replaces rendering or supplied human judgment."
           },
           "inconclusive": {
-            "fr": "Destination non collectée, délai ou contenu non comparable : inconclusive. Un 404/5xx, cycle ou saut observé est une contradiction. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation. Réinsertion après fermeture explicite du head, descendant indirect, contexte étranger, modificateur/attribut inconnu, shadow déclaré, lecture ou diagnostic borné incomplet empêchent une réussite selon le contrat ; une contradiction distincte qualifiée reste conservée.",
-            "en": "Uncollected destination, timeout or incomparable content: inconclusive. An observed 404/5xx, cycle or hop is a contradiction. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. After-head reinsertion, indirect head descendant, foreign context, unknown/modifying attributes, declared shadow, incomplete bounded reading/diagnostics prevent success as defined by the contract; retain any separately qualified contradiction."
+            "fr": "Destination non collectée, délai ou contenu non comparable : inconclusive. Un 404/5xx, cycle ou saut observé est une contradiction. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation. Réinsertion après fermeture explicite du head, descendant indirect, contexte étranger, modificateur/attribut inconnu, shadow déclaré, lecture ou diagnostic borné incomplet empêchent une réussite selon le contrat ; une contradiction distincte qualifiée reste conservée. Sélection HTTP inconnue, contexte non qualifié/équivalence incertaine, extension ou syntaxe hors couverture : inconclusive sans repli favorable ; les bornes et leur portée sont fixées dans le contrat HTTP.",
+            "en": "Uncollected destination, timeout or incomparable content: inconclusive. An observed 404/5xx, cycle or hop is a contradiction. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. After-head reinsertion, indirect head descendant, foreign context, unknown/modifying attributes, declared shadow, incomplete bounded reading/diagnostics prevent success as defined by the contract; retain any separately qualified contradiction. Unknown HTTP selection, unqualified context/uncertain equivalence, extensions or unsupported syntax are inconclusive without favorable fallback; the HTTP contract fixes bounds and their scope."
           },
           "limitations": {
-            "fr": "Un GET réussi ne prouve pas que Google retiendra cette URL ; aucune stabilité dans le temps déduite d’un instant. Un comparateur peut vérifier les liens et la couverture de la revue fournie ; il ne transforme pas ce jugement en comparaison automatique du contenu. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md. Portée source uniquement ; A04 et les lecteurs DOM ne sont pas étendus. Les deux hypothèses ne sont pas deux états rendus observés. Aucun choix canonique Google n’est déduit.",
-            "en": "A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant. A comparator can check the supplied review’s bindings and coverage; it does not turn that judgment into automatic content comparison. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source scope only; A04 and DOM readers are not extended. The hypotheses are not coexisting observed rendered states. No Google canonical choice is inferred."
+            "fr": "Un GET réussi ne prouve pas que Google retiendra cette URL ; aucune stabilité dans le temps déduite d’un instant. Un comparateur peut vérifier les liens et la couverture de la revue fournie ; il ne transforme pas ce jugement en comparaison automatique du contenu. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md. Portée source uniquement ; A04 et les lecteurs DOM ne sont pas étendus. Les deux hypothèses ne sont pas deux états rendus observés. Aucun choix canonique Google n’est déduit. Aucune exécution du moteur ni normalisation de la destination ; un relatif valide RFC peut échouer au critère TSEP absolu. Migration draft.19 et ancien lecteur préservé.",
+            "en": "A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant. A comparator can check the supplied review’s bindings and coverage; it does not turn that judgment into automatic content comparison. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source scope only; A04 and DOM readers are not extended. The hypotheses are not coexisting observed rendered states. No Google canonical choice is inferred. No engine execution or destination normalization; an RFC-valid relative can fail TSEP’s absolute criterion. See draft.19 migration; historical reader preserved."
           },
           "na_inputs": [],
           "non_applicability": {
@@ -1233,7 +1233,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS11",
@@ -1292,7 +1292,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS12",
@@ -1351,7 +1351,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS13",
@@ -1411,7 +1411,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS14",
@@ -1469,7 +1469,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS15",
@@ -1526,7 +1526,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS16",
@@ -1585,7 +1585,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS17",
@@ -1644,7 +1644,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS18",
@@ -1704,7 +1704,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS19",
@@ -1763,7 +1763,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS20",
@@ -1822,7 +1822,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS21",
@@ -1882,7 +1882,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS22",
@@ -1942,7 +1942,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS23",
@@ -2000,7 +2000,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS24",
@@ -2059,7 +2059,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS25",
@@ -2118,7 +2118,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS26",
@@ -2178,7 +2178,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS27",
@@ -2237,7 +2237,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS28",
@@ -2296,7 +2296,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS29",
@@ -2355,7 +2355,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS30",
@@ -2414,7 +2414,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS31",
@@ -2473,7 +2473,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS32",
@@ -2531,7 +2531,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS33",
@@ -2590,7 +2590,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS34",
@@ -2648,7 +2648,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS35",
@@ -2706,7 +2706,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS36",
@@ -2766,7 +2766,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS37",
@@ -2827,7 +2827,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS38",
@@ -2888,7 +2888,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS39",
@@ -2948,7 +2948,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS40",
@@ -3009,7 +3009,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS41",
@@ -3067,7 +3067,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS42",
@@ -3127,7 +3127,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS43",
@@ -3187,7 +3187,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     },
     {
       "id": "TS44",
@@ -3249,7 +3249,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.18"
+      "rule_version": "0.1.0-draft.19"
     }
   ],
   "profiles": [
@@ -3400,15 +3400,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "763f8e8b3d9e56f2acf4ceb3c265a2002d5299d1c142b5fdc67d48c687d40739"
+      "sha256": "0180823a53f9fcdb198097f3b7bcae06178c6030e2cedc9a0939e1614e69378f"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "519494db27f66816530690c8eb7668cabe9334f3af36726cdefa02852bf521ba"
+      "sha256": "2720e6b8100de1f395f6d4ac3fc8db9178b780eb28c3a86078c8ddd5df22d75a"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "ed5678a08d274e071586983ca478e15ac8b4c96a49e53ee86bad9205cd04681a"
+      "sha256": "19ca9566e55fd9fee0a09fb5b6c58d8bc8fb674221cb8bb0f57c690c6b7f24ef"
     },
     {
       "path": "docs/source-directives.md",
@@ -3425,6 +3425,10 @@
     {
       "path": "docs/source-link-policy-v2.md",
       "sha256": "6e7536cdb939c0f16620c7944d3af724c50390f6249d2ec9230fe8bc99879c4c"
+    },
+    {
+      "path": "docs/http-canonical-context.md",
+      "sha256": "85ae502c2dbc4f0f405292fe1ea966484cd2a75d9226cfafb2884b83903c470f"
     }
   ]
 }

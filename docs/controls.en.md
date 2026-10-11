@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.18 — Controls
+# TSEP 0.1.0-draft.19 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.18:TS01-A01`
+`TSEP@0.1.0-draft.19:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.18:TS01-A02`
+`TSEP@0.1.0-draft.19:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.18:TS02-A01`
+`TSEP@0.1.0-draft.19:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.18:TS02-A02`
+`TSEP@0.1.0-draft.19:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.18:TS04-A01`
+`TSEP@0.1.0-draft.19:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.18:TS04-A02`
+`TSEP@0.1.0-draft.19:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.18:TS07-A01`
+`TSEP@0.1.0-draft.19:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -344,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.18:TS07-A02`
+`TSEP@0.1.0-draft.19:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.18:TS07-A03`
+`TSEP@0.1.0-draft.19:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.18:TS10-A01`
+`TSEP@0.1.0-draft.19:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -474,23 +474,23 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Each family member and its declared canonicalization strategy.
 
-**Method.** List members, preferred URL and expected method; compare final URLs, HTTP Link, HTML rel=canonical and required rendered states. Retain multiple declarations, even identical ones. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.source_reader=html-tree-canonical-v1 compares two complete static source hypotheses with byte-attributed source/tree positions. The source-canonical.md contract defines its boundaries.
+**Method.** List members, preferred URL and expected method; compare final URLs, HTTP Link, HTML rel=canonical and required rendered states. Retain multiple declarations, even identical ones. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.source_reader=html-tree-canonical-v1 compares two complete static source hypotheses with byte-attributed source/tree positions. The source-canonical.md contract defines its boundaries. Optional prior intent.canonical.http_reader=http-link-context-v1 applies docs/http-canonical-context.md to final GET 200 Link fields; absent selection retains the historical reader.
 
-**Acceptance.** Present signals and those required by strategy identify the same absolute HTTP(S) URL without a fragment. HTML in head or HTTP Link are accepted; no universal HTML tag requirement. A relative canonical is fail for this TSEP rule without claiming Google cannot interpret it. Retain repeated identical declarations, which may agree; an attributable conflict remains fail despite another missing capture. Two source pass yield pass, two fail yield fail, otherwise inconclusive. Ordinary body canonical remains a contradiction even for the preferred URL; relative values are never resolved through base. Attributable HTTP Link, redirect and DOM contradictions remain independent of source unknowns.
+**Acceptance.** Present signals and those required by strategy identify the same absolute HTTP(S) URL without a fragment. HTML in head or HTTP Link are accepted; no universal HTML tag requirement. A relative canonical is fail for this TSEP rule without claiming Google cannot interpret it. Retain repeated identical declarations, which may agree; an attributable conflict remains fail despite another missing capture. Two source pass yield pass, two fail yield fail, otherwise inconclusive. Ordinary body canonical remains a contradiction even for the preferred URL; relative values are never resolved through base. Attributable HTTP Link, redirect and DOM contradictions remain independent of source unknowns. The new reader separates context from literal destination, retaining first rel and repeated declarations; unknowns prevent pass and independent attributable HTTP conflicts remain fail.
 
-**Evidence.** Family inventory in intent; headers and source (or html non-applicability record for non-HTML); extraction with location and method, required DOM attached when needed. Bind each capture to the family, context and date. Declare required methods and DOM states before assessment; bind DOMs to the HTTP trace by fingerprint. A rendering exemption needs a source-bound review and supporting records, not a bare “no JS” claim. Also retain profile observations: document, body, canonical/base, templates, prefix tokens, context, errors, decoding, sources/runtime and separate decisions; replay compares these records.
+**Evidence.** Family inventory in intent; headers and source (or html non-applicability record for non-HTML); extraction with location and method, required DOM attached when needed. Bind each capture to the family, context and date. Declare required methods and DOM states before assessment; bind DOMs to the HTTP trace by fingerprint. A rendering exemption needs a source-bound review and supporting records, not a bare “no JS” claim. Also retain profile observations: document, body, canonical/base, templates, prefix tokens, context, errors, decoding, sources/runtime and separate decisions; replay compares these records. Retain ordered HTTP diagnostics, raw fields/parameters, excluded/unknown contexts, requested/final URLs, timestamp and source-trace fingerprint.
 
 **Assumptions.** Strategy distinguishes preferred canonical and duplicates; comparisons do not silently remove parameters or normalize case or slashes. In structured DOM, a difference between absolute raw href and the resolved property prevents a conclusion on that surface, without substituting either value or asserting an SEO defect. A relative or out-of-head canonical in ordinary DOM remains a TSEP contradiction; open shadow remains inconclusive. Absent field preserves legacy reading. Null/unknown or absent Node 24 never falls back. This profile neither validates HTML nor replaces rendering or supplied human judgment.
 
-**Inconclusive.** Incomplete family/intent, ambiguous Link, truncated document or missing required rendered state: inconclusive. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. After-head reinsertion, indirect head descendant, foreign context, unknown/modifying attributes, declared shadow, incomplete bounded reading/diagnostics prevent success as defined by the contract; retain any separately qualified contradiction.
+**Inconclusive.** Incomplete family/intent, ambiguous Link, truncated document or missing required rendered state: inconclusive. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. After-head reinsertion, indirect head descendant, foreign context, unknown/modifying attributes, declared shadow, incomplete bounded reading/diagnostics prevent success as defined by the contract; retain any separately qualified contradiction. Unknown HTTP selection, unqualified context/uncertain equivalence, extensions or unsupported syntax are inconclusive without favorable fallback; the HTTP contract fixes bounds and their scope.
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** Relative URLs, placement and convergence are TSEP criteria; engine canonical selection is not observed here. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source scope only; A04 and DOM readers are not extended. The hypotheses are not coexisting observed rendered states. No Google canonical choice is inferred.
+**Limits.** Relative URLs, placement and convergence are TSEP criteria; engine canonical selection is not observed here. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source scope only; A04 and DOM readers are not extended. The hypotheses are not coexisting observed rendered states. No Google canonical choice is inferred. No engine execution or destination normalization; an RFC-valid relative can fail TSEP’s absolute criterion. See draft.19 migration; historical reader preserved.
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.18:TS10-A02`
+`TSEP@0.1.0-draft.19:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -498,23 +498,23 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Every preferred destination in declared families.
 
-**Method.** Test the destination, retain GET and content; verify that any canonical there does not point elsewhere. Compare content with the declared family. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.source_reader=html-tree-canonical-v1 compares two complete static source hypotheses with byte-attributed source/tree positions. The source-canonical.md contract defines its boundaries.
+**Method.** Test the destination, retain GET and content; verify that any canonical there does not point elsewhere. Compare content with the declared family. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. Optional prior intent.canonical.source_reader=html-tree-canonical-v1 compares two complete static source hypotheses with byte-attributed source/tree positions. The source-canonical.md contract defines its boundaries. Optional prior intent.canonical.http_reader=http-link-context-v1 applies docs/http-canonical-context.md to final GET 200 Link fields; absent selection retains the historical reader.
 
-**Acceptance.** The expected destination is directly accessible with 200, without canonical chains or cycles, and compatible content. A duplicate may remain 200 and point to the preferred URL; not every duplicate final URL must equal it. Two source pass yield pass, two fail yield fail, otherwise inconclusive. Ordinary body canonical remains a contradiction even for the preferred URL; relative values are never resolved through base. Attributable HTTP Link, redirect and DOM contradictions remain independent of source unknowns.
+**Acceptance.** The expected destination is directly accessible with 200, without canonical chains or cycles, and compatible content. A duplicate may remain 200 and point to the preferred URL; not every duplicate final URL must equal it. Two source pass yield pass, two fail yield fail, otherwise inconclusive. Ordinary body canonical remains a contradiction even for the preferred URL; relative values are never resolved through base. Attributable HTTP Link, redirect and DOM contradictions remain independent of source unknowns. The new reader separates context from literal destination, retaining first rel and repeated declarations; unknowns prevent pass and independent attributable HTTP conflicts remain fail.
 
-**Evidence.** Destination trace and body tied to the family; declaration graph and reasoned content comparison. The human compatibility review identifies its author, date, each member compared with the preferred representation, reasoned judgment and exact examined captures by fingerprint. A missing/stale reference or unestablished comparison prevents pass. Also retain profile observations: document, body, canonical/base, templates, prefix tokens, context, errors, decoding, sources/runtime and separate decisions; replay compares these records.
+**Evidence.** Destination trace and body tied to the family; declaration graph and reasoned content comparison. The human compatibility review identifies its author, date, each member compared with the preferred representation, reasoned judgment and exact examined captures by fingerprint. A missing/stale reference or unestablished comparison prevents pass. Also retain profile observations: document, body, canonical/base, templates, prefix tokens, context, errors, decoding, sources/runtime and separate decisions; replay compares these records. Retain ordered HTTP diagnostics, raw fields/parameters, excluded/unknown contexts, requested/final URLs, timestamp and source-trace fingerprint.
 
 **Assumptions.** Content similarity is assessed in business context without a universal similarity threshold. In structured DOM, a difference between absolute raw href and the resolved property prevents a conclusion on that surface, without substituting either value or asserting an SEO defect. A relative or out-of-head canonical in ordinary DOM remains a TSEP contradiction; open shadow remains inconclusive. Absent field preserves legacy reading. Null/unknown or absent Node 24 never falls back. This profile neither validates HTML nor replaces rendering or supplied human judgment.
 
-**Inconclusive.** Uncollected destination, timeout or incomparable content: inconclusive. An observed 404/5xx, cycle or hop is a contradiction. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. After-head reinsertion, indirect head descendant, foreign context, unknown/modifying attributes, declared shadow, incomplete bounded reading/diagnostics prevent success as defined by the contract; retain any separately qualified contradiction.
+**Inconclusive.** Uncollected destination, timeout or incomparable content: inconclusive. An observed 404/5xx, cycle or hop is a contradiction. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. After-head reinsertion, indirect head descendant, foreign context, unknown/modifying attributes, declared shadow, incomplete bounded reading/diagnostics prevent success as defined by the contract; retain any separately qualified contradiction. Unknown HTTP selection, unqualified context/uncertain equivalence, extensions or unsupported syntax are inconclusive without favorable fallback; the HTTP contract fixes bounds and their scope.
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant. A comparator can check the supplied review’s bindings and coverage; it does not turn that judgment into automatic content comparison. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source scope only; A04 and DOM readers are not extended. The hypotheses are not coexisting observed rendered states. No Google canonical choice is inferred.
+**Limits.** A successful GET does not prove Google will select this URL; no temporal stability is inferred from one instant. A comparator can check the supplied review’s bindings and coverage; it does not turn that judgment into automatic content comparison. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. Source scope only; A04 and DOM readers are not extended. The hypotheses are not coexisting observed rendered states. No Google canonical choice is inferred. No engine execution or destination normalization; an RFC-valid relative can fail TSEP’s absolute criterion. See draft.19 migration; historical reader preserved.
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.18:TS10-A03`
+`TSEP@0.1.0-draft.19:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -540,7 +540,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.18:TS10-A04`
+`TSEP@0.1.0-draft.19:TS10-A04`
 
 **Required inputs**: crawl, intent.
 

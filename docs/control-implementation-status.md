@@ -1,3 +1,8 @@
+Current extension / Extension actuelle — draft.19 : [HTTP canonical context](http-canonical-context.md),
+TS10-A01/A02, 61 cas synthétiques supplémentaires. Le lecteur historique et ses résultats restent inchangés ;
+la couverture de contrôles, les preuves réelles et les revues manquantes ne sont pas clôturées.
+Historical runtime counts below describe draft.18 / Les comptes ci-dessous décrivent draft.18.
+
 [Source links v2 / Liens source v2](source-link-policy-v2.md) : première base non analysable explicitement incertaine ; v1 et preuves historiques conservés.
 
 # Control implementation status / État de développement des contrôles

@@ -1,3 +1,8 @@
+Current integration: draft.19, interpreter 19 / adapter 20 / replay 3.
+Prior [HTTP canonical context](http-canonical-context.md) extends TS10-A01/A02 with retained raw parameters and context exclusions; [migration](migration-draft.19.md).
+FR : premier rel et contexte anchor explicites ; aucun ancien profil migré et aucune revue déduite.
+
+Earlier runtime measurement (draft.18) / Mesure antérieure selon le runtime :
 Current integration: draft.18, interpreter 18 / adapter 19 / replay 3.
 The [runtime coverage observation](conformance.md#current-runtime-coverage--couverture-selon-le-runtime--2026-10-11)
 distinguishes 109 reduced-coverage pairs without the optional source runtime from

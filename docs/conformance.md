@@ -1,4 +1,10 @@
-## Current runtime coverage / Couverture selon le runtime — 2026-10-11
+Current draft.19 adds optional prior [http-link-context-v1](http-canonical-context.md) for TS10-A01/A02.
+Sixty-one additional authored cases retain all 640 historical inputs/outcomes; [migration](migration-draft.19.md).
+FR : 61 nouveaux cas synthétiques, anciens lecteurs et leurs limites conservés ; aucune note SEO.
+
+<a id="current-runtime-coverage--couverture-selon-le-runtime--2026-10-11"></a>
+
+## Draft.18 runtime coverage / Couverture selon le runtime — 2026-10-11
 
 Draft.18, interpreter 18: the same **640 synthetic cases and 1,009 rule/target
 pairs** were executed in two configurations. Inputs, expected outcomes and prior

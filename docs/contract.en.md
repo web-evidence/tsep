@@ -1,4 +1,13 @@
-# Report contract — TSEP 0.1.0-draft.18
+# Report contract — TSEP 0.1.0-draft.19
+
+### HTTP canonical context — draft.19
+
+Optional prior `intent.canonical.http_reader: "http-link-context-v1"` extends
+TS10-A01/A02 under the [HTTP contract](http-canonical-context.md). Absent selection
+keeps the fixed historical reader. First rel, anchor context, literal destination,
+evidence and unknowns are retained; no human review or Google selection is inferred.
+See [explicit migration](migration-draft.19.md).
+
 
 ## Declared scope
 

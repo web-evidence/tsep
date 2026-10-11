@@ -1,0 +1,82 @@
+{
+  "observed_at": "2026-10-11T00:24:39.552881+00:00",
+  "base_commit": "27a5bf5f047505de41ed9726523121ab57da1d0b",
+  "kind": "Prior authored qualification cases and source reading; not independent review",
+  "fixture_sha256": "8926c67cb79b5dade9a5256d1c56e80754eb7667a7482941c31fc12e53d94b0d",
+  "synthetic": true,
+  "cases": 61,
+  "historical_baselines": [
+    {
+      "configuration": "core",
+      "cases": 640,
+      "sha256": "a4a805f53379728b666773264e3fc132e7c04a7e420386fc1de0bab10cd782a8",
+      "encoding": "JSON sorted keys, UTF-8, compact separators; id/input/results per case, exact reasons included"
+    },
+    {
+      "configuration": "node24",
+      "cases": 640,
+      "sha256": "69707a5d197c17485570f17895ac9c6cd024a999b4a66143669958ae9aa20d09",
+      "encoding": "JSON sorted keys, UTF-8, compact separators; id/input/results per case, exact reasons included"
+    }
+  ],
+  "references": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc8288.html",
+      "date": "2026-10-11",
+      "scope": "Header syntax, context, first rel and nonnormative parser appendix"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3986.html",
+      "date": "2026-10-11",
+      "scope": "Component resolution, empty versus absent components, dot segments"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc7231.html",
+      "date": "2026-10-11",
+      "scope": "Representation identity for final GET 200; Content-Location is not replacement"
+    },
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls",
+      "date": "2026-10-11",
+      "scope": "Canonical methods and modifier limits; no observed Google execution"
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.html#section-6.4.2",
+      "date": "2026-10-11",
+      "scope": "Current HTTP representation identity specification, superseding RFC7231. GET 200 identified by request target."
+    }
+  ],
+  "captures": [
+    {
+      "path": ".local/http-canonical-context-2026-10-11/sources-initial.txt",
+      "sha256": "bdebfc28fef6d04c5c98f658344ce9dd7964cdfa102e8aacc68fd67e9bd8d057",
+      "capture_kind": "Dated web-tool rendered response, not raw HTTP page bytes",
+      "distributed": false
+    },
+    {
+      "path": ".local/http-canonical-context-2026-10-11/sources-detail.txt",
+      "sha256": "fb3428937a8728fd58f65bd963505327f86c7f97e21577f9abe50e59a8a5e0cb",
+      "capture_kind": "Dated web-tool rendered response, not raw HTTP page bytes",
+      "distributed": false
+    },
+    {
+      "path": ".local/http-canonical-context-2026-10-11/sources-context.txt",
+      "sha256": "f94858c2d3eb1dee939f04cd4bc4b0025a43170f9367531e560308d78d3b4676",
+      "capture_kind": "Dated web-tool rendered response, not raw HTTP page bytes",
+      "distributed": false
+    },
+    {
+      "path": ".local/http-canonical-context-2026-10-11/sources-current-http.txt",
+      "sha256": "47d2fe313f7bedb4dc060d9e6b1310fc3f7437349096e0739e0859ac1d041715",
+      "capture_kind": "Dated rendered web-tool response",
+      "distributed": false
+    }
+  ],
+  "raw_capture_unavailable_reason": "Web reader exposes rendered text; retained dated tool responses with fingerprints locally. Raw original page bytes were not collected.",
+  "additional_review_regression": {
+    "scope": "After initial implementation, a complete conflicting first item followed by non-ASCII in the next item was incorrectly discarded by a field-wide guard. Fixed with incremental rejection; original 61-case freeze is unchanged.",
+    "test": "tests/test_http_canonical.py:test_completed_conflict_survives_nonascii_in_later_item",
+    "initial_observation_sha256": "63f2079bf368a94326dccc4348cad198bf4e09ad8c7fb776aa29a8113f6606f2",
+    "capture_distributed": false
+  }
+}
