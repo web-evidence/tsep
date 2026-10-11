@@ -1,0 +1,337 @@
+{
+  "kind": "controlled-delivery-laboratory-recipe",
+  "version": "1",
+  "synthetic": true,
+  "scope": "Actual numeric-loopback HTTP/cache operations; fictional page, policies, semantic and provenance reviews. No Edikka, CDN production, geography or real agent visit.",
+  "request_profile": {
+    "method": "GET",
+    "paths": [
+      "/page",
+      "/robots.txt"
+    ],
+    "user_agent": "TSEPDeliveryTest/1.0",
+    "accept_language": [
+      null,
+      "de"
+    ],
+    "accept_encoding": [
+      "identity",
+      "gzip"
+    ],
+    "connection": "close",
+    "extra_fields": "refused; original bytes retained",
+    "normalization": "No additional normalization; profile values exact, absent distinct from present."
+  },
+  "bounds": {
+    "seconds_per_request": 3,
+    "response_bytes": 32768,
+    "request_bytes": 4096,
+    "collection_window_seconds": 15,
+    "max_age_seconds": 300
+  },
+  "page": {
+    "prefix": "<!doctype html><html lang=\"{language}\"><head><title>SYNTHETIC cache exercise</title><link rel=\"canonical\" href=\"{canonical}\"></head><body><p>{marker}</p></body></html>",
+    "fr": "Produit fictif en francais.",
+    "de": "Fiktives Produkt auf Deutsch.",
+    "bilingual": "Produit fictif. Fiktives Produkt.",
+    "robots": "User-agent: *\nDisallow:\n",
+    "fallback_language": "fr",
+    "bilingual_language": "fr",
+    "canonical": "{edge}/page",
+    "wrong_canonical": "{edge}/wrong"
+  },
+  "configuration": "Each phase writes actual origin/cache JSON files before requests. Cache state reset between independent phases. Repair changes ignore-vary to honor with old entries retained, then explicitly purges them before a new capture at the identical URL.",
+  "events": "Actual cache entries carry immutable original received request and response, origin exchange, method/URI, selected Vary fields, insertion monotonic clock and computed initial age. Store/serve retain IDs, original request, served wire response, decoded body and entry link. No intermediate revalidation.",
+  "freshness": "Closed single-origin max-age=300 profile; Age includes apparent age, measured response delay and monotonic residence. No stale response, heuristic, authenticated, conditional, streaming or general RFC cache implementation.",
+  "reviews": "All plan, language/content/access, static-rendering exemption and source/cache qualification reviews are labelled synthetic-exercise. They do not represent a human review.",
+  "degradation": "linkage-withheld omits the cache record from its normative input; complete laboratory events remain separate and explicitly labelled as withheld evidence.",
+  "cases": [
+    {
+      "id": "vary-correct",
+      "mode": "honor",
+      "representation": "bilingual",
+      "steps": [
+        {
+          "id": "a",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "b",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "c",
+          "accept_language": "de",
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "d",
+          "accept_language": "de",
+          "accept_encoding": "identity"
+        }
+      ],
+      "reuses": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "expected_origin_requests": 2,
+      "expected_atomic_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "expected_control_status": "C"
+    },
+    {
+      "id": "identical-body-bad-reuse",
+      "mode": "ignore-vary",
+      "representation": "bilingual",
+      "steps": [
+        {
+          "id": "a",
+          "accept_language": "de",
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "b",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        }
+      ],
+      "reuses": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expected_origin_requests": 1,
+      "expected_atomic_outcomes": [
+        "pass",
+        "pass",
+        "fail"
+      ],
+      "expected_control_status": "NC"
+    },
+    {
+      "id": "wrong-language",
+      "mode": "ignore-vary",
+      "representation": "language",
+      "steps": [
+        {
+          "id": "a",
+          "accept_language": "de",
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "b",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        }
+      ],
+      "reuses": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expected_origin_requests": 1,
+      "expected_atomic_outcomes": [
+        "pass",
+        "fail",
+        "fail"
+      ],
+      "expected_control_status": "NC"
+    },
+    {
+      "id": "repair-purged",
+      "mode": "honor",
+      "representation": "language",
+      "steps": [
+        {
+          "id": "a",
+          "accept_language": "de",
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "b",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "c",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        }
+      ],
+      "reuses": [
+        [
+          "b",
+          "c"
+        ]
+      ],
+      "expected_origin_requests": 2,
+      "expected_atomic_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "expected_control_status": "C",
+      "repair_of": "wrong-language"
+    },
+    {
+      "id": "origin-canonical-error",
+      "mode": "bypass",
+      "representation": "bad-canonical",
+      "steps": [
+        {
+          "id": "a",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "b",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        }
+      ],
+      "reuses": [],
+      "expected_origin_requests": 2,
+      "expected_atomic_outcomes": [
+        "pass",
+        "fail",
+        "pass"
+      ],
+      "expected_control_status": "NC"
+    },
+    {
+      "id": "legitimate-validators",
+      "mode": "honor",
+      "representation": "language",
+      "steps": [
+        {
+          "id": "a",
+          "accept_language": "de",
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "b",
+          "accept_language": "de",
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "c",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "d",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        }
+      ],
+      "reuses": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "expected_origin_requests": 2,
+      "expected_atomic_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "expected_control_status": "C"
+    },
+    {
+      "id": "linkage-withheld",
+      "mode": "ignore-vary",
+      "representation": "bilingual",
+      "steps": [
+        {
+          "id": "a",
+          "accept_language": "de",
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "b",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        }
+      ],
+      "reuses": [
+        [
+          "a",
+          "b"
+        ]
+      ],
+      "expected_origin_requests": 1,
+      "expected_atomic_outcomes": [
+        "pass",
+        "pass",
+        "inconclusive"
+      ],
+      "expected_control_status": "NT",
+      "withhold_cache_evidence": true
+    },
+    {
+      "id": "encoding-variants",
+      "mode": "honor",
+      "representation": "encoding",
+      "steps": [
+        {
+          "id": "a",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "b",
+          "accept_language": null,
+          "accept_encoding": "identity"
+        },
+        {
+          "id": "c",
+          "accept_language": null,
+          "accept_encoding": "gzip"
+        },
+        {
+          "id": "d",
+          "accept_language": null,
+          "accept_encoding": "gzip"
+        }
+      ],
+      "reuses": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "c",
+          "d"
+        ]
+      ],
+      "expected_origin_requests": 2,
+      "expected_atomic_outcomes": [
+        "pass",
+        "pass",
+        "pass"
+      ],
+      "expected_control_status": "C"
+    }
+  ],
+  "expected_edge_requests": 24,
+  "expected_origin_requests": 14,
+  "expected_total_http_requests": 38
+}

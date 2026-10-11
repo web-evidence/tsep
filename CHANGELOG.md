@@ -1,3 +1,8 @@
+## Controlled delivery laboratory 1 — 2026-10-11 — non-normative
+
+Eight prefrozen TS39 scenarios, 38 actual local origin/cache HTTP exchanges, state and purge records, and offline replay. Distinguishes wrong cached content, mechanism-only failure, origin error and legitimate gzip/ETag variants. Draft.27 and the normative corpus unchanged.
+FR : preuves manquantes conservées en NT, revues fictives et échecs de développement documentés ; [méthode](docs/delivery-laboratory.md). Aucun audit Edikka.
+
 ## 0.1.0-draft.27 — 2026-10-11 — Delivery evidence
 
 Three TS39 rules connect prior reviewed configuration/matrix, native TS07/TS10 signals, semantic reviews and attributed context/cache evidence. 77 authored cases / 231 new pairs; all 1,104 earlier cases unchanged. No live CDN or Edikka assessment.

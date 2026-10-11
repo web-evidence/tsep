@@ -1,0 +1,113 @@
+{
+  "kind": "Non-normative controlled TS39 delivery laboratory",
+  "version": "1",
+  "protocol_version": "0.1.0-draft.27",
+  "normative_rules_and_corpus_unchanged": true,
+  "recipe_freeze": {
+    "frozen_at": "2026-10-11T08:48:20.866113+00:00",
+    "sha256": "566d00ae63234985d89c4d4f8217d15129c74666e3d7c4c6afa52fa7dfa62e44",
+    "bytes": 8598,
+    "cases": 8,
+    "expected_total_http_requests": 38,
+    "reader_present": false,
+    "base_commit": "96da5a274bca906b24350342767913de5b154455"
+  },
+  "scope": "Actual bounded numeric-loopback HTTP/cache operations; fictional page/policies/reviews. No Edikka or production CDN assessment.",
+  "development_runs": [
+    {
+      "run": "r1",
+      "registered_at": "2026-10-11T08:54:50.945876+00:00",
+      "results_sha256": "2dd49fdab9b8d69b506edde09b2f78fa4fe02ddc8ef3638bd10731ed828659e0",
+      "laboratory_manifest_sha256": "f95773541d1d090e65d5bcfb40a433002ceb561dd6be6a487b805375518cb744",
+      "matching_cases": 2,
+      "actual_http_requests": 38,
+      "source_files": {
+        "examples/delivery_laboratory.py": "5057d8047fc0aa6b865b26e9704039534dc37baf4fa1a761bdeb98a67d193c78",
+        "examples/delivery_cache_transport.py": "35089c8172e4de4163e438f95247df0002af22171ca4395a68e2ab97cc220115"
+      }
+    },
+    {
+      "run": "r2",
+      "registered_at": "2026-10-11T08:57:26.995987+00:00",
+      "results_sha256": "30ee4814284ce2f7a7769698d946163217b42fd844226ca87fbbe6bae51e678c",
+      "laboratory_manifest_sha256": "489beab449b6622edd040e7e5d472a687b855d60852df9deac4aa038e89a3f8e",
+      "matching_cases": 8,
+      "actual_http_requests": 38,
+      "source_files": {
+        "examples/delivery_laboratory.py": "453e54827107281678395e7b71a550876d6b4bd7d0cd2c4c91ccde37d8319cc0",
+        "examples/delivery_cache_transport.py": "35089c8172e4de4163e438f95247df0002af22171ca4395a68e2ab97cc220115"
+      }
+    },
+    {
+      "run": "r3",
+      "registered_at": "2026-10-11T09:04:38.227397+00:00",
+      "results_sha256": "839176fb3655d1660595d01f2b3be8b3241523e0c0aa348c7ef252a4b7534b37",
+      "laboratory_manifest_sha256": "96d2f782f1a9b3d1a79229382f013988242a9d596d1929a47828a452e63ef683",
+      "matching_cases": 8,
+      "actual_http_requests": 38,
+      "source_files": {
+        "examples/delivery_laboratory.py": "8b3e1e19d07961a594d39b2134dae2dcfd17d45c89da29d866d1cb5dd53d17d0",
+        "examples/delivery_cache_transport.py": "35089c8172e4de4163e438f95247df0002af22171ca4395a68e2ab97cc220115"
+      }
+    }
+  ],
+  "retained_failures": [
+    {
+      "stage": "run-r1",
+      "observation": "2/8 case expectations matched. Six cases retained unknown native TS07-A02 because the prior plan declared directive_crawler without its matching robots policy.",
+      "correction": "Added explicit google-documented-core-v1/product_token googlebot to prior native plan. Frozen expectations and normative code unchanged.",
+      "retained_original_implementation": "implementation-r1/"
+    },
+    {
+      "stage": "tests-r1",
+      "observation": "19/20 passed; changed robots client/edge response with rehashed bytes was not refused by the capture checker although origin response was unchanged.",
+      "correction": "Require exact robots forwarding response, request, first phase, empty cache and no cache event.",
+      "retained_original_implementation": "implementation-r2/",
+      "log_sha256": "93dc2162b808fb56740777928c30272d344e9518873ff8e5ed3fcdbdb4c1acb7"
+    }
+  ],
+  "targeted_verification": {
+    "tests": 20,
+    "passed": 20,
+    "log_sha256": "34142b363e1767f51af97bb6101e4cd71b3bdcf37b7f099efdfbfe5ef2a3db58",
+    "loopback": true,
+    "offline_replay_forbids_network_process_and_cache_mutation": true,
+    "limits": "Targeted checks, not full source/archive verification; final verification recorded separately."
+  },
+  "method_discussion": {
+    "reviewer": "Claude AI",
+    "human_review": false,
+    "scope": "Method only",
+    "initial_disagreement": "Claude initially treated invalid stored-Vary reuse with equal bodies as an editorial-policy choice.",
+    "resolution": "Corrected against RFC 9111 section 4.1; Claude agreed. Keep mechanism failure separate from content inconsistency.",
+    "no_independent_code_review_claim": true
+  },
+  "third_party_observations": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9111.html",
+      "observed_on": "2026-10-11",
+      "scope": "Sections 4.1 and 4.2.3; stored Vary matching and age calculation in closed profile",
+      "capture": "sources/rfc9111-web-extract.json",
+      "capture_format": "JSON-encoded web-tool text extract; not raw HTTP",
+      "sha256": "c3e19aa8867ba0b5fa3ea19c42cce107499a0f230c58bbfa824254607bfc7718",
+      "capture_retention": "Local dated campaign directory; not included in distributed tool sources"
+    },
+    {
+      "url": "https://claude.ai/chat/1c87d570-5d15-4448-8575-f5fff2bd61d3",
+      "observed_on": "2026-10-11",
+      "scope": "Method discussion only; no private source sent, no code audit or human approval",
+      "capture": "claude-method-review.txt",
+      "capture_format": "Accessibility text of existing conversation",
+      "sha256": "369a60a41153f5708a93d21c91d8d3047c246dd96160ae24afa171ed2c5b76ee",
+      "capture_retention": "Local dated campaign directory; not included in distributed tool sources"
+    }
+  ],
+  "local_retention": ".local/delivery-laboratory-2026-10-11/; historical campaigns need retained exact implementation plus base commit",
+  "limits": [
+    "Eight closed-profile scenarios; no general cache conformance",
+    "All semantic, context, access, rendering and provenance reviews are authored",
+    "Source hashes and replay do not authenticate journal authorship",
+    "Exact gzip reproduction qualified on retained runtime only",
+    "No visual QA, indexing, ranking, agent identity or geographic coverage claim"
+  ]
+}
