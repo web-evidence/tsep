@@ -176,7 +176,7 @@ def main():
         protocol = tsep.read_json(tsep.PROTOCOL_PATH)
         protocol['normative_documents'] = [{'path': name, 'sha256': tsep.digest(ROOT / name)}
             for name in ('schemas/report.schema.json', 'docs/contract.en.md', 'docs/contract.fr.md',
-                         'docs/source-directives.md', 'docs/source-canonical.md', 'docs/source-link-policy.md', 'docs/source-link-policy-v2.md', 'docs/http-canonical-context.md')]
+                         'docs/source-directives.md', 'docs/source-canonical.md', 'docs/source-link-policy.md', 'docs/source-link-policy-v2.md', 'docs/http-canonical-context.md', 'docs/preview-intent.md')]
         tsep.PROTOCOL_PATH.write_bytes((json.dumps(protocol, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
         for lang in ('fr', 'en'):
             (ROOT / ('docs/controls.' + lang + '.md')).write_bytes(rendered(protocol, lang).encode('utf-8'))

@@ -1,3 +1,8 @@
+## 0.1.0-draft.20 — 2026-10-11
+
+Optional prior preview-intent profile for TS07-A01/A03; minimum permission and maximum protection intervals, ordered raw directives, conservative image/video ambiguities and replayed diagnostics. Earlier readers and 701 raw cases unchanged. 74 prefrozen authored cases; no live Google observations.
+FR : objectifs de permission/protection préalables, inconnues conservées ; migration explicite, aucune revue humaine déduite.
+
 # Change history / Historique
 
 ## 0.1.0-draft.19 — 2026-10-11 — HTTP canonical context

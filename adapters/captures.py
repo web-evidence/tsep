@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '20'
+VERSION = '21'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -29,6 +29,7 @@ ACCESS = ('public', 'restricted', 'synthetic')
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
     modules['conformance/http_canonical.py'] = importlib.import_module('conformance.http_canonical')
+    modules['conformance/preview_intent.py'] = importlib.import_module('conformance.preview_intent')
     for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'conformance.source_canonical', 'experiments.source_head', 'experiments.source_http', 'experiments.source_tree'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     result = loaded_sources(ROOT, modules)
@@ -47,6 +48,8 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented', 'fr':'TS07-A01/A03 : profil préalable google-preview-intent-v1, intervalles de permission texte/image/vidéo, contradictions et inconnues conservées. Aucun affichage Google ou usage de contenu déduit.',
+     'en':'TS07-A01/A03: prior google-preview-intent-v1, text/image/video permission intervals, retained contradictions and unknowns. No inferred Google display or content usage.'},
     {'state':'implemented', 'fr':'TS10-A01/A02 : http-link-context-v1 préalable, premier rel, contexte anchor attribué et inconnues conservées ; destination comparée littéralement. Ancien lecteur inchangé ; aucun choix Google déduit.',
      'en':'TS10-A01/A02: prior http-link-context-v1, first rel, attributed anchor context and retained unknowns; literal destination comparison. Historical reader unchanged; no inferred Google choice.'},
     {'state':'implemented','fr':'TS10-A04 : profils source préalables html-tree-links-v1/v2, liens HTML a/area attribués, base conditionnelle et URL sérialisées. Convergence dans une famille déclarée, pas présence ou suffisance du maillage ; v2 rend les href dépendants indéterminés sous première base non analysable ; rendu antérieur inchangé.',
@@ -310,7 +313,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
             aid = 'source-observation-' + str(index)
             diagnostic_refs[observation['target']].append(artifact(aid, 'validator-output',
                 'observations/' + aid + '.json', observation, [observation['target']], issued_text,
-                'Computed static source metadata, byte locations, parser/runtime and alternative decisions; import time, not capture or engine observation.'))
+                'Computed interpretation diagnostics, attributed metadata/directives and alternative decisions; import time, not capture or engine observation.'))
         refs = {}
         for index, target in enumerate(data['targets'], 1):
             refs[target['url']] = list(shared) + diagnostic_refs[target['url']]

@@ -1,4 +1,8 @@
-# Contrat de rapport — TSEP 0.1.0-draft.19
+# Contrat de rapport — TSEP 0.1.0-draft.20
+
+### Preview intent / Intentions de présentation — draft.20
+
+Le profil préalable facultatif google-preview-intent-v1 étend TS07-A01/A03 avec des intervalles de permission texte/image/vidéo. [Contrat bilingue normatif](preview-intent.md) et [migration](migration-draft.20.md). Les anciennes entrées, extractions, revues et inconnues restent distinctes. Aucun affichage Google déduit.
 
 ### Contexte canonical HTTP — draft.19
 

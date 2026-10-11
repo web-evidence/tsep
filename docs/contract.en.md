@@ -1,4 +1,8 @@
-# Report contract — TSEP 0.1.0-draft.19
+# Report contract — TSEP 0.1.0-draft.20
+
+### Preview intent / Intentions de présentation — draft.20
+
+Optional prior google-preview-intent-v1 extends TS07-A01/A03 with text/image/video permission intervals. [Normative bilingual contract](preview-intent.md) and [migration](migration-draft.20.md). Earlier inputs, extraction, reviews and unknowns remain separate. No inferred Google display.
 
 ### HTTP canonical context — draft.19
 

@@ -14,7 +14,7 @@
           "const": "TSEP"
         },
         "version": {
-          "const": "0.1.0-draft.19"
+          "const": "0.1.0-draft.20"
         },
         "sha256": {
           "type": "string",

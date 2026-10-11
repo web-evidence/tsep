@@ -13,7 +13,7 @@ import tsep
 
 RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS04-A01', 'TS04-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04')
-VERSION = '19'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '20'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -173,17 +173,24 @@ def directive_result(headers, body, intent, *, source=False, diagnostics=None):
          'Only the Googlebot directive series is implemented')
     need(intent.get('indexing') in ('allow', 'exclude'), 'Missing indexing intent')
     need(intent.get('following', 'unspecified') in ('allow', 'disallow', 'unspecified'), 'Unknown link intent')
-    need('presentation' not in intent, 'Presentation restrictions require review')
+    need('presentation' not in intent or 'presentation_reader' in intent, 'Presentation restrictions require review')
     need(utf8_media(headers, ('text/html',)), 'Unsupported media type or encoding')
     need(bool(re.search(r'</html\s*>\s*$', body, re.I)), 'HTML end not captured')
     parser = Meta()
     parser.feed(body)
     parser.close()
     need(parser.roots == 1 and not parser.stack, 'Incomplete HTML structure')
-    return directive_values(headers, parser.directives, intent)
+    notes = [] if diagnostics is not None else None
+    result = directive_values(headers, parser.directives, intent, diagnostics=notes)
+    if notes:
+        diagnostics.extend(dict(n, surface='source' if source else 'serialized-dom') for n in notes)
+    return result
 
 
-def directive_values(headers, values, intent):
+def directive_values(headers, values, intent, *, diagnostics=None):
+    if 'presentation_reader' in intent:
+        from conformance.preview_intent import result
+        return result(headers, values, intent, diagnostics)
     need(intent.get('directive_crawler', intent.get('crawler')) == 'googlebot',
          'Only the Googlebot directive series is implemented')
     need(intent.get('indexing') in ('allow', 'exclude'), 'Missing indexing intent')
@@ -295,6 +302,7 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
     source_hash = binding_digest(target['http'])
     for expected in required:
         label = expected['id']
+        observation_start = len(diagnostics) if diagnostics is not None else 0
         try:
             matches = [s for s in states if s['id'] == label]
             need(len(matches) == 1, 'Missing or duplicate capture')
@@ -311,13 +319,18 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
             if reader(plan, state) == READER:
                 need(utf8_media(headers, ('text/html',)), 'Unsupported rendered source media')
                 surface = Surface(state, final_url, target['http'], intent['crawler'])
-                outcome, reason = directive_values(headers, surface.directives, intent)
+                outcome, reason = directive_values(headers, surface.directives, intent, diagnostics=diagnostics)
                 reason += '; ' + surface.detail
             else:
                 need(isinstance(state.get('dom'), str), 'Missing raw DOM')
-                outcome, reason = directive_result(headers, state['dom'], intent)
+                outcome, reason = directive_result(headers, state['dom'], intent, diagnostics=diagnostics)
         except (Unknown, tsep.Invalid, KeyError, TypeError, ValueError) as error:
             outcome, reason = 'inconclusive', str(error)
+        if diagnostics is not None:
+            for observation in diagnostics[observation_start:]:
+                if observation.get('reader') == 'google-preview-intent-v1':
+                    observation['rendered_state_id'] = label
+                    observation['source_http_sha256'] = source_hash
         results.append((outcome, label + ': ' + reason))
     try:
         source_outcome, source_reason = directive_result(headers, body, intent, source=True, diagnostics=diagnostics)

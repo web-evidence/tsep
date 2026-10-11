@@ -1,3 +1,6 @@
+Current edition / Édition courante : draft.20. [Preview intent / Présentation](preview-intent.md) extends TS07-A01/A03; no complete control or real-site qualification inferred.
+Les états nommés ci-dessous conservent leur version historique.
+
 [Source links v2 / Liens source v2](source-link-policy-v2.md) : première base non analysable explicitement incertaine ; v1 et preuves historiques conservés.
 
 # Programme prioritaire — quatre contrôles

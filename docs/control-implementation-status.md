@@ -1,3 +1,6 @@
+Current edition / Édition courante : draft.20. [Preview intent / Présentation](preview-intent.md) extends TS07-A01/A03; no complete control or real-site qualification inferred.
+Les états nommés ci-dessous conservent leur version historique.
+
 Current extension / Extension actuelle — draft.19 : [HTTP canonical context](http-canonical-context.md),
 TS10-A01/A02, 61 cas synthétiques supplémentaires. Le lecteur historique et ses résultats restent inchangés ;
 la couverture de contrôles, les preuves réelles et les revues manquantes ne sont pas clôturées.

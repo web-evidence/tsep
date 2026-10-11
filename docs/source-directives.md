@@ -1,3 +1,5 @@
+Draft.20 composition / Composition : [preview-intent](preview-intent.md) optionally extends combination through a separate prior profile; the draft.15 extraction and historical combination below stay unchanged without it.
+
 # Source directives / Directives source — html-tree-directives-v1
 
 ## Français

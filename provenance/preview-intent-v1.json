@@ -1,0 +1,33 @@
+{
+  "kind": "preview-intent-v1",
+  "synthetic_cases": 74,
+  "fixture": "tests/fixtures/preview-intent-v1.json",
+  "fixture_sha256": "43fab56e4cebc4c22acbfb45e6d39593ccdc8334dff63f4c117a05e44d977f46",
+  "frozen_before_implementation": true,
+  "sources": [
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+      "observed_at": "2026-10-11",
+      "scope": "Google preview directives, scope, combination, absent defaults and max-snippet:0 video tension",
+      "capture": ".local/presentation-intent-2026-10-11/google-robots-web-capture.json",
+      "capture_sha256": "12facc5537d8307addd6320798b8fc0c2a531b35a6fe850af0147d5ef2877fb1",
+      "capture_limit": "Exact rendered web-tool response retained locally; not original HTTP bytes, not distributed."
+    }
+  ],
+  "historical_baselines": [
+    {
+      "configuration": "core",
+      "cases": 701,
+      "sha256": "53d94114389db22278697617889fac42999f571e449d987f879c14ed19c9b2d2"
+    },
+    {
+      "configuration": "node24",
+      "cases": 701,
+      "sha256": "e511959cbbf5dc14c2d9d5b6fd880a46132492e2704646edda8f697eb242ee47"
+    }
+  ],
+  "interpretation": "Intervals and conservative uncertainty are TSEP policy; no engine display, licensed usage, human review or whole-control qualification.",
+  "qualification_fixture": "tests/fixtures/preview-intent-v2.json",
+  "qualification_fixture_sha256": "102c24fd79cd8d69997fef804217e70b4e6ae69a004fef65ddcb84d6425288ff",
+  "metadata_correction": "v2 adds only case-level reference_limit=true to the two optional-runtime pairs, required by corpus validation. Original frozen v1 and all inputs/outcomes unchanged. First full verification failure retained locally."
+}

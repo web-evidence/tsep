@@ -1,3 +1,8 @@
+Current integration: draft.20, interpreter 20 / adapter 21 / replay 3.
+Prior [preview intent](preview-intent.md) extends TS07-A01/A03 with permission intervals and retained unknowns.
+FR : intentions de présentation préalables ; aucun affichage ou résultat Google déduit. [Migration](migration-draft.20.md).
+
+Earlier milestones / Jalons antérieurs :
 Current integration: draft.19, interpreter 19 / adapter 20 / replay 3.
 Prior [HTTP canonical context](http-canonical-context.md) extends TS10-A01/A02 with retained raw parameters and context exclusions; [migration](migration-draft.19.md).
 FR : premier rel et contexte anchor explicites ; aucun ancien profil migré et aucune revue déduite.
