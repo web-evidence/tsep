@@ -76,6 +76,10 @@ def generate(output_root=ROOT):
     # Raw adapter demonstrations are controlled derivatives, with no expected verdicts.
     corpus = {case['id']: case['input'] for case in tsep.read_json(ROOT.parent/'conformance/cases.json')['cases']}
     capture_examples = {
+                        'ts36-complete': ('release-monitoring-v1-complete-cycle', ['TS36-A01','TS36-A02','TS36-A03']),
+                        'ts36-adverse': ('release-monitoring-v1-adverse-observed-documented', ['TS36-A01','TS36-A02','TS36-A03']),
+                        'ts36-pending': ('release-monitoring-v1-future-stages', ['TS36-A01','TS36-A02','TS36-A03']),
+                        'ts36-false-closure': ('release-monitoring-v1-false-early-closure', ['TS36-A01','TS36-A02','TS36-A03']),
                         'ts12-agreement': ('canonical-comparison-v1-qualified-agreement', ['TS12-A01','TS12-A02','TS12-A03']),
                         'ts12-divergence': ('canonical-comparison-v1-qualified-divergence', ['TS12-A01','TS12-A02','TS12-A03']),
                         'ts12-contradiction': ('canonical-comparison-v1-wrong-google-and-missing-render', ['TS12-A01','TS12-A02','TS12-A03']),

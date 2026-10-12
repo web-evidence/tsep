@@ -1,0 +1,239 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS36-A01",
+    "TS36-A02",
+    "TS36-A03"
+  ],
+  "targets": [
+    {
+      "url": "https://example.com/page",
+      "observed_at": "2026-08-03T03:00:00+00:00",
+      "inspection_synthetic": true,
+      "context": {
+        "network": "none; synthetic",
+        "bounds": "offline native JSON",
+        "tool": "authored-fixture",
+        "tool_version": "1"
+      },
+      "intent": {
+        "declared_at": "2026-08-01T00:00:00+00:00",
+        "inspection": {
+          "reader": "google-inspection-evidence-v1",
+          "site_url": "https://example.com/",
+          "selection_method": "Explicit finite list of the single fictional product page; no population inference",
+          "population": "One fictional page, no site extrapolation",
+          "prior_knowledge": "No earlier inspection in this authored scenario",
+          "max_retrieval_age_hours": 24,
+          "max_crawl_age_hours": 168,
+          "members": [
+            {
+              "url": "https://example.com/page",
+              "objective": "Document whether Google reports this product URL indexed",
+              "objective_source": "Fictional owner product brief, created independently of inspection",
+              "selection_reason": "Only product URL in this authored scope"
+            }
+          ]
+        },
+        "monitoring": {
+          "reader": "release-monitoring-v1",
+          "release_id": "release-1",
+          "environment": "authored-production",
+          "before_artifact_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "after_artifact_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "risk": "Authored changed index policy",
+          "schedule_reason": "Strict D1 D7 D30 follow-up",
+          "baseline_start": "2026-08-01T01:00:00+00:00",
+          "baseline_end": "2026-08-01T02:00:00+00:00",
+          "deployment_window_start": "2026-08-02T00:00:00+00:00",
+          "deployment_window_end": "2026-08-02T01:00:00+00:00",
+          "window_hours": 1,
+          "review_grace_hours": 24,
+          "log_layer": "edge",
+          "user_agents": [
+            "AuthoredCrawler/1"
+          ]
+        }
+      },
+      "monitoring_plan_review": {
+        "reviewer": "Fictional reviewer",
+        "assistance": "Authored exercise",
+        "provenance": "synthetic-exercise",
+        "reason": "Authored evidence qualification",
+        "complete": true,
+        "observed_at": "2026-08-01T00:30:00+00:00",
+        "selection": "supported",
+        "objectives": "supported",
+        "schedule": "supported",
+        "logging": "supported",
+        "binding_sha256": "91ebd081d1e850daf211303d197d21b1e3c96534676cc004d4f5d496933a7669"
+      },
+      "monitoring_deployment": {
+        "provenance": "synthetic-exercise",
+        "description": "Authored release receipt",
+        "observed_at": "2026-08-02T00:06:00+00:00",
+        "body": {
+          "raw_text": "{\"release_id\":\"release-1\",\"environment\":\"authored-production\",\"before_artifact_sha256\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"after_artifact_sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"deployed_at\":\"2026-08-02T00:00:00+00:00\",\"other_changes\":[]}",
+          "sha256": "c60f6a9000e73d6aaee4419cecb30852328b1b1011d44dd00db14f52456bec10"
+        }
+      },
+      "monitoring_checkpoints": [
+        {
+          "id": "baseline",
+          "observed_at": "2026-08-01T02:12:00+00:00",
+          "inspection_records": [
+            {
+              "url": "https://example.com/page",
+              "retrieved_at": "2026-08-01T01:30:00+00:00",
+              "provenance": "synthetic-exercise",
+              "description": "Authored native API response; no account access",
+              "http_status": 200,
+              "request": {
+                "raw_text": "{\"inspectionUrl\":\"https://example.com/page\",\"siteUrl\":\"https://example.com/\"}",
+                "sha256": "455c98aa6695af8cbe4edf5feba8fa3b0450d4e198d663faa038a5a48747bedd"
+              },
+              "response": {
+                "raw_text": "{\"inspectionResult\":{\"indexStatusResult\":{\"verdict\":\"PASS\",\"coverageState\":\"Indexed (authored label)\",\"robotsTxtState\":\"ALLOWED\",\"indexingState\":\"INDEXING_ALLOWED\",\"pageFetchState\":\"SUCCESSFUL\",\"lastCrawlTime\":\"2026-08-01T01:00:00+00:00\",\"googleCanonical\":\"https://example.com/page\",\"userCanonical\":\"https://example.com/page\",\"crawledAs\":\"MOBILE\"}}}",
+                "sha256": "984a53f517108f0760024df195f16fd26df4e52e822e5f267521b930a6f70c4d"
+              }
+            }
+          ],
+          "logs": {
+            "reader": "supplied-monitoring-log-v1",
+            "format": "normalized-jsonl",
+            "provenance": "synthetic-exercise",
+            "description": "Authored normalized export",
+            "normalization_source": "Authored rows, no actual provider",
+            "layer": "edge",
+            "window_start": "2026-08-01T01:00:00+00:00",
+            "window_end": "2026-08-01T02:00:00+00:00",
+            "observed_at": "2026-08-01T02:06:00+00:00",
+            "complete": true,
+            "raw_jsonl": "{\"id\":\"r1\",\"at\":\"2026-08-01T01:15:00+00:00\",\"url\":\"https://example.com/page\",\"method\":\"GET\",\"user_agent\":\"AuthoredCrawler/1\",\"status\":200}\n",
+            "sha256": "86a9c1ef4be19f99a79b7c2a0049f777d17a227a700c95080c766390f17da2bb"
+          }
+        },
+        {
+          "id": "d1",
+          "observed_at": "2026-08-03T01:12:00+00:00",
+          "inspection_records": [
+            {
+              "url": "https://example.com/page",
+              "retrieved_at": "2026-08-03T00:30:00+00:00",
+              "provenance": "synthetic-exercise",
+              "description": "Authored native API response; no account access",
+              "http_status": 200,
+              "request": {
+                "raw_text": "{\"inspectionUrl\":\"https://example.com/page\",\"siteUrl\":\"https://example.com/\"}",
+                "sha256": "455c98aa6695af8cbe4edf5feba8fa3b0450d4e198d663faa038a5a48747bedd"
+              },
+              "response": {
+                "raw_text": "{\"inspectionResult\":{\"indexStatusResult\":{\"verdict\":\"PASS\",\"coverageState\":\"Indexed (authored label)\",\"robotsTxtState\":\"ALLOWED\",\"indexingState\":\"INDEXING_ALLOWED\",\"pageFetchState\":\"SUCCESSFUL\",\"lastCrawlTime\":\"2026-08-03T00:00:00+00:00\",\"googleCanonical\":\"https://example.com/page\",\"userCanonical\":\"https://example.com/page\",\"crawledAs\":\"MOBILE\"}}}",
+                "sha256": "705041e46208f89ace9fc945e5fa1295ebfb9989590f4691c0bc8a5bb0e043c7"
+              }
+            }
+          ],
+          "logs": {
+            "reader": "supplied-monitoring-log-v1",
+            "format": "normalized-jsonl",
+            "provenance": "synthetic-exercise",
+            "description": "Authored normalized export",
+            "normalization_source": "Authored rows, no actual provider",
+            "layer": "edge",
+            "window_start": "2026-08-03T00:00:00+00:00",
+            "window_end": "2026-08-03T01:00:00+00:00",
+            "observed_at": "2026-08-03T01:06:00+00:00",
+            "complete": true,
+            "raw_jsonl": "{\"id\":\"r1\",\"at\":\"2026-08-03T00:15:00+00:00\",\"url\":\"https://example.com/page\",\"method\":\"GET\",\"user_agent\":\"AuthoredCrawler/1\",\"status\":200}\n",
+            "sha256": "8ee44686f9933de801373184073942b1b85c423d7d6abe68336bd87d6ac6eec0"
+          }
+        }
+      ],
+      "monitoring_reviews": [
+        {
+          "reviewer": "Fictional reviewer",
+          "assistance": "Authored exercise",
+          "provenance": "synthetic-exercise",
+          "reason": "Authored evidence qualification",
+          "complete": true,
+          "observed_at": "2026-08-01T02:30:00+00:00",
+          "id": "baseline",
+          "claims": {
+            "api": {
+              "https://example.com/page": "PASS"
+            },
+            "logs": {
+              "https://example.com/page": {
+                "requests": 1,
+                "server_errors": 0
+              }
+            }
+          },
+          "interpretation": "supported",
+          "anomalies": "supported",
+          "log_completeness": "supported",
+          "clock_scope": "supported",
+          "objective_relation": "aligned",
+          "temporal_scope": "reported-index-and-separate-log-windows",
+          "explanation": {
+            "kind": "observation",
+            "text": "Authored values, no cause established"
+          },
+          "decision": {
+            "kind": "accept",
+            "owner": "Fictional owner",
+            "reason": "Retain supplied findings"
+          },
+          "binding_sha256": "a311429a7f7d34118def7651b5fbc47085bfdf871aa4318e1f6099346123ff42"
+        },
+        {
+          "reviewer": "Fictional reviewer",
+          "assistance": "Authored exercise",
+          "provenance": "synthetic-exercise",
+          "reason": "Authored evidence qualification",
+          "complete": true,
+          "observed_at": "2026-08-03T01:30:00+00:00",
+          "id": "d1",
+          "claims": {
+            "api": {
+              "https://example.com/page": "PASS"
+            },
+            "logs": {
+              "https://example.com/page": {
+                "requests": 1,
+                "server_errors": 0
+              }
+            }
+          },
+          "interpretation": "supported",
+          "anomalies": "supported",
+          "log_completeness": "supported",
+          "clock_scope": "supported",
+          "objective_relation": "aligned",
+          "temporal_scope": "reported-index-and-separate-log-windows",
+          "explanation": {
+            "kind": "observation",
+            "text": "Authored values, no cause established"
+          },
+          "decision": {
+            "kind": "accept",
+            "owner": "Fictional owner",
+            "reason": "Retain supplied findings"
+          },
+          "binding_sha256": "f9ccdc9933ed10067804960762f55ccb9a824d116e98d7a767e820940a30c88c"
+        }
+      ],
+      "monitoring_closure_review": {
+        "reviewer": "Fictional reviewer",
+        "assistance": "Authored exercise",
+        "provenance": "synthetic-exercise",
+        "reason": "Authored evidence qualification",
+        "complete": true,
+        "observed_at": "2026-08-03T02:00:00+00:00",
+        "completed": true,
+        "causality": "not-established",
+        "binding_sha256": "7be6feec2c48ac7678cff40aa37717c7823ec4b60454ee2f6d93d71605f6640e"
+      }
+    }
+  ]
+}

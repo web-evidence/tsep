@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '30'
+VERSION = '31'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -34,6 +34,7 @@ def source_files():
     modules['conformance/agent_policy.py'] = importlib.import_module('conformance.agent_policy')
     modules['conformance/agent_access.py'] = importlib.import_module('conformance.agent_access')
     modules['conformance/critical_content.py'] = importlib.import_module('conformance.critical_content')
+    modules['conformance/release_monitoring.py'] = importlib.import_module('conformance.release_monitoring')
     modules['conformance/canonical_comparison.py'] = importlib.import_module('conformance.canonical_comparison')
     modules['conformance/inspection.py'] = importlib.import_module('conformance.inspection')
     modules['diagnostics/search_console.py'] = importlib.import_module('diagnostics.search_console')
@@ -63,6 +64,7 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS36 : suivi documentaire baseline/J+1/J+7/J+30, API et logs fournis ; échéances futures NT, causalité et identité Google non établies.','en':'TS36: supplied baseline/D+1/D+7/D+30 API/log follow-up; future stages inconclusive, causality and Google identity unestablished.'},
     {'state':'implemented','fr':'TS12 : comparaisons littérales API/HTTP/HTML/DOM prévus et revues fournies ; C documentaire, jamais canonical correcte, TS10 ou indexation. Rendu absent : NT sauf contradiction indépendante.', 'en':'TS12: literal API/HTTP/HTML/planned DOM comparisons and supplied reviews; documentary C, never correct canonical, TS10 or indexing. Missing rendering: NT unless independent contradiction.'},
     {'state':'implemented','fr':'TS08 : sélection et objectifs préalables, JSON API natifs et revues/décisions fournies ; dossier qualifié seulement, aucun état live ou verdict TS12.','en':'TS08: prior selection/objectives, native API JSON and supplied reviews/decisions; documentation only, no live state or TS12 verdict.'},
     {'state':'implemented', 'fr':'TS01-A02 : identity_reader html-tree-markers-v1 préalable, segments parsés attribués et deux hypothèses globales. CRLF/CR bruts deviennent LF ; critères littéraux inchangés. Ni visibilité ni navigateur observés. Ancien lecteur et priorités URL/empreinte/stabilité conservés ; Node 24 requis pour cette seule branche, sans repli.',
@@ -214,6 +216,13 @@ def pieces(target):
     if 'inspection' in target.get('intent', {}):
         result['intent'] = {k:target[k] for k in ('intent','context','inspection_plan_review','inspection_reviews','comparison_reviews') if k in target}
         if 'inspection_records' in target:result['search-console'] = target['inspection_records']
+    if 'monitoring' in target.get('intent', {}):
+        result['intent'] = {k:target[k] for k in ('intent','context','monitoring_plan_review','monitoring_reviews','monitoring_closure_review') if k in target}
+        if 'monitoring_deployment' in target:result['change-history']=target['monitoring_deployment']
+        checkpoints=target.get('monitoring_checkpoints')
+        if isinstance(checkpoints,list):
+            result['search-console']=[{k:c[k] for k in ('id','observed_at','inspection_records') if k in c} for c in checkpoints if isinstance(c,dict) and 'inspection_records' in c]
+            result['logs']=[{k:c[k] for k in ('id','observed_at','logs') if k in c} for c in checkpoints if isinstance(c,dict) and 'logs' in c]
     return result
 
 
@@ -444,6 +453,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += '\n'.join(a['rule_id'] + ' — ' + a['reason'] for a in rows)
                 if cid == 'TS42':
                     report['results'][i]['reason'] += ' Usages déclarés et pièces fournies seulement / Declared usages and supplied evidence only; no real agent visit, identity, operator compliance or citation established.'
+                if cid == 'TS36':
+                    report['results'][i]['reason'] += ' Suivi documentaire du changement / Documentary release follow-up; future stages remain inconclusive, no causal or authenticated Google visit claim.'
                 if cid == 'TS12':
                     report['results'][i]['reason'] += ' Comparaison documentaire des surfaces HTTP/HTML et états DOM prévus / Documentary comparison of HTTP/HTML and declared DOM states; literal strings, no semantic URL equivalence, TS10, current selection or indexing inferred.'
                 if cid == 'TS08':

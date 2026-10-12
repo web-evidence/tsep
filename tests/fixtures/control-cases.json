@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.30",
+  "protocol_version": "0.1.0-draft.31",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -5188,6 +5188,458 @@
             "http",
             "html",
             "render"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS36-complete",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Exercice TS36 complete",
+        "en": "TS36 authored complete"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: TS36 complete authored method fixture; no actual deployment, account, logs or human approval.",
+        "change-history": "SYNTHETIC: TS36 complete authored method fixture; no actual deployment, account, logs or human approval.",
+        "search-console": "SYNTHETIC: TS36 complete authored method fixture; no actual deployment, account, logs or human approval.",
+        "logs": "SYNTHETIC: TS36 complete authored method fixture; no actual deployment, account, logs or human approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif complete",
+            "en": "Authored judgment complete"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif complete",
+            "en": "Authored judgment complete"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif complete",
+            "en": "Authored judgment complete"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS36-adverse-documented",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Exercice TS36 adverse-documented",
+        "en": "TS36 authored adverse-documented"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: TS36 adverse-documented authored method fixture; no actual deployment, account, logs or human approval.",
+        "change-history": "SYNTHETIC: TS36 adverse-documented authored method fixture; no actual deployment, account, logs or human approval.",
+        "search-console": "SYNTHETIC: TS36 adverse-documented authored method fixture; no actual deployment, account, logs or human approval.",
+        "logs": "SYNTHETIC: TS36 adverse-documented authored method fixture; no actual deployment, account, logs or human approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif adverse-documented",
+            "en": "Authored judgment adverse-documented"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif adverse-documented",
+            "en": "Authored judgment adverse-documented"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif adverse-documented",
+            "en": "Authored judgment adverse-documented"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS36-future",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Exercice TS36 future",
+        "en": "TS36 authored future"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: TS36 future authored method fixture; no actual deployment, account, logs or human approval.",
+        "change-history": "SYNTHETIC: TS36 future authored method fixture; no actual deployment, account, logs or human approval.",
+        "search-console": "SYNTHETIC: TS36 future authored method fixture; no actual deployment, account, logs or human approval.",
+        "logs": "SYNTHETIC: TS36 future authored method fixture; no actual deployment, account, logs or human approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif future",
+            "en": "Authored judgment future"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement fictif future",
+            "en": "Authored judgment future"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement fictif future",
+            "en": "Authored judgment future"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS36-false-closure",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Exercice TS36 false-closure",
+        "en": "TS36 authored false-closure"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: TS36 false-closure authored method fixture; no actual deployment, account, logs or human approval.",
+        "change-history": "SYNTHETIC: TS36 false-closure authored method fixture; no actual deployment, account, logs or human approval.",
+        "search-console": "SYNTHETIC: TS36 false-closure authored method fixture; no actual deployment, account, logs or human approval.",
+        "logs": "SYNTHETIC: TS36 false-closure authored method fixture; no actual deployment, account, logs or human approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif false-closure",
+            "en": "Authored judgment false-closure"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement fictif false-closure",
+            "en": "Authored judgment false-closure"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Jugement fictif false-closure",
+            "en": "Authored judgment false-closure"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS36-partial",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Exercice TS36 partial",
+        "en": "TS36 authored partial"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: TS36 partial authored method fixture; no actual deployment, account, logs or human approval.",
+        "change-history": "SYNTHETIC: TS36 partial authored method fixture; no actual deployment, account, logs or human approval.",
+        "search-console": "SYNTHETIC: TS36 partial authored method fixture; no actual deployment, account, logs or human approval.",
+        "logs": "SYNTHETIC: TS36 partial authored method fixture; no actual deployment, account, logs or human approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif partial",
+            "en": "Authored judgment partial"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS36-rejected-schedule",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Plan de suivi explicitement rejeté",
+        "en": "Explicitly rejected follow-up plan"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Explicitly rejected follow-up plan. Authored method judgments; no actual account, deployment or review.",
+        "change-history": "SYNTHETIC: Explicitly rejected follow-up plan. Authored method judgments; no actual account, deployment or review.",
+        "search-console": "SYNTHETIC: Explicitly rejected follow-up plan. Authored method judgments; no actual account, deployment or review.",
+        "logs": "SYNTHETIC: Explicitly rejected follow-up plan. Authored method judgments; no actual account, deployment or review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Plan de suivi explicitement rejeté",
+            "en": "Explicitly rejected follow-up plan"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Plan de suivi explicitement rejeté",
+            "en": "Explicitly rejected follow-up plan"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Plan de suivi explicitement rejeté",
+            "en": "Explicitly rejected follow-up plan"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS36-wrong-request-url",
+      "control_id": "TS36",
+      "description": {
+        "fr": "API attribuée à une autre URL",
+        "en": "API attributed to another URL"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: API attributed to another URL. Authored method judgments; no actual account, deployment or review.",
+        "change-history": "SYNTHETIC: API attributed to another URL. Authored method judgments; no actual account, deployment or review.",
+        "search-console": "SYNTHETIC: API attributed to another URL. Authored method judgments; no actual account, deployment or review.",
+        "logs": "SYNTHETIC: API attributed to another URL. Authored method judgments; no actual account, deployment or review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "API attribuée à une autre URL",
+            "en": "API attributed to another URL"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "API attribuée à une autre URL",
+            "en": "API attributed to another URL"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "API attribuée à une autre URL",
+            "en": "API attributed to another URL"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS36-unknown-reader",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Lecteur de suivi inconnu",
+        "en": "Unknown monitoring reader"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Unknown monitoring reader. Authored method judgments; no actual account, deployment or review.",
+        "change-history": "SYNTHETIC: Unknown monitoring reader. Authored method judgments; no actual account, deployment or review.",
+        "search-console": "SYNTHETIC: Unknown monitoring reader. Authored method judgments; no actual account, deployment or review.",
+        "logs": "SYNTHETIC: Unknown monitoring reader. Authored method judgments; no actual account, deployment or review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Lecteur de suivi inconnu",
+            "en": "Unknown monitoring reader"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Lecteur de suivi inconnu",
+            "en": "Unknown monitoring reader"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Lecteur de suivi inconnu",
+            "en": "Unknown monitoring reader"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
           ]
         }
       ],

@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.30",
+  "version": "0.1.0-draft.31",
   "status": "draft",
   "date": "2026-10-12",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.30"
+      "rule_version": "0.1.0-draft.31"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.30",
+      "rule_version": "0.1.0-draft.31",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.30",
+      "rule_version": "0.1.0-draft.31",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.30"
+      "rule_version": "0.1.0-draft.31"
     },
     {
       "id": "TS08",
@@ -926,7 +926,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.30",
+      "rule_version": "0.1.0-draft.31",
       "rules": [
         {
           "automation": "semiAuto",
@@ -1372,7 +1372,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.30"
+      "rule_version": "0.1.0-draft.31"
     },
     {
       "id": "TS11",
@@ -1492,7 +1492,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.30",
+      "rule_version": "0.1.0-draft.31",
       "rules": [
         {
           "id": "TS12-A01",
@@ -2933,7 +2933,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.30",
+      "rule_version": "0.1.0-draft.31",
       "rules": [
         {
           "id": "TS34-A01",
@@ -3128,7 +3128,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.30",
+      "rule_version": "0.1.0-draft.31",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3280,7 +3280,148 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.31",
+      "rules": [
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Changement sélectionné dont le suivi daté est évalué.",
+            "en": "Selected release whose dated follow-up is assessed."
+          },
+          "evidence": {
+            "fr": "Plan et revues liés, reçu de déploiement, API natives et journaux normalisés fournis ; contrat release-monitoring-v1.",
+            "en": "Bound plan/reviews, deployment receipt, native API and supplied normalized logs; release-monitoring-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Périmètre, dates, couche et jugements fournis ; aucune authentification par empreinte seule.",
+            "en": "Supplied scope, dates, layer and judgments; hashes alone authenticate nothing."
+          },
+          "inconclusive": {
+            "fr": "Échéance future, pièce manquante, erreur, valeur inconnue, journal incomplet ou liaison invalide ; conserver les contradictions indépendantes.",
+            "en": "Future stage, missing evidence, errors, unknown values, incomplete logs or invalid bindings; preserve independent contradictions."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; aucun manque ou délai ne vaut NA.",
+            "en": "No atomic exemption; absence or delay never establishes NA."
+          },
+          "limitations": {
+            "fr": "C documentaire sur baseline/J+1/J+7/J+30 sélectionnés ; aucune causalité, visite Google authentifiée, indexation ou couverture globale.",
+            "en": "Documentary C for selected baseline/D+1/D+7/D+30; no causality, authenticated Google visit, indexing or global coverage."
+          },
+          "id": "TS36-A01",
+          "title": {
+            "fr": "Plan préalable et chronologie du changement.",
+            "en": "Prior plan and release chronology."
+          },
+          "required_inputs": [
+            "intent",
+            "change-history"
+          ],
+          "procedure": {
+            "fr": "Qualifier le plan lié avant baseline, les identités du reçu et l’ordre baseline/déploiement.",
+            "en": "Qualify the bound plan before baseline, receipt identities and baseline/deployment order."
+          },
+          "acceptance": {
+            "fr": "Plan supported, identité conforme et baseline enregistrée avant déploiement ; contradiction explicite fail, manque inconclusive.",
+            "en": "Supported plan, matching identity and baseline recorded before deployment; explicit contradiction fails, gaps remain inconclusive."
+          }
+        },
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Changement sélectionné dont le suivi daté est évalué.",
+            "en": "Selected release whose dated follow-up is assessed."
+          },
+          "evidence": {
+            "fr": "Plan et revues liés, reçu de déploiement, API natives et journaux normalisés fournis ; contrat release-monitoring-v1.",
+            "en": "Bound plan/reviews, deployment receipt, native API and supplied normalized logs; release-monitoring-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Périmètre, dates, couche et jugements fournis ; aucune authentification par empreinte seule.",
+            "en": "Supplied scope, dates, layer and judgments; hashes alone authenticate nothing."
+          },
+          "inconclusive": {
+            "fr": "Échéance future, pièce manquante, erreur, valeur inconnue, journal incomplet ou liaison invalide ; conserver les contradictions indépendantes.",
+            "en": "Future stage, missing evidence, errors, unknown values, incomplete logs or invalid bindings; preserve independent contradictions."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; aucun manque ou délai ne vaut NA.",
+            "en": "No atomic exemption; absence or delay never establishes NA."
+          },
+          "limitations": {
+            "fr": "C documentaire sur baseline/J+1/J+7/J+30 sélectionnés ; aucune causalité, visite Google authentifiée, indexation ou couverture globale.",
+            "en": "Documentary C for selected baseline/D+1/D+7/D+30; no causality, authenticated Google visit, indexing or global coverage."
+          },
+          "id": "TS36-A02",
+          "title": {
+            "fr": "Observations attribuées aux échéances du suivi.",
+            "en": "Observations attributed to follow-up stages."
+          },
+          "required_inputs": [
+            "intent",
+            "search-console",
+            "logs",
+            "change-history"
+          ],
+          "procedure": {
+            "fr": "Lire baseline/d1/d7/d30, qualifier API TS08-A02 et inventaires de journaux par fenêtre exacte.",
+            "en": "Read baseline/d1/d7/d30, qualify TS08-A02 API and exact-window log inventories."
+          },
+          "acceptance": {
+            "fr": "Quatre échéances atteintes, pièces attribuées complètes, limites respectées ; futur/absence/erreur reste inconclusive.",
+            "en": "All four stages reached, complete attributed evidence within bounds; future/absence/error remains inconclusive."
+          }
+        },
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Changement sélectionné dont le suivi daté est évalué.",
+            "en": "Selected release whose dated follow-up is assessed."
+          },
+          "evidence": {
+            "fr": "Plan et revues liés, reçu de déploiement, API natives et journaux normalisés fournis ; contrat release-monitoring-v1.",
+            "en": "Bound plan/reviews, deployment receipt, native API and supplied normalized logs; release-monitoring-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Périmètre, dates, couche et jugements fournis ; aucune authentification par empreinte seule.",
+            "en": "Supplied scope, dates, layer and judgments; hashes alone authenticate nothing."
+          },
+          "inconclusive": {
+            "fr": "Échéance future, pièce manquante, erreur, valeur inconnue, journal incomplet ou liaison invalide ; conserver les contradictions indépendantes.",
+            "en": "Future stage, missing evidence, errors, unknown values, incomplete logs or invalid bindings; preserve independent contradictions."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; aucun manque ou délai ne vaut NA.",
+            "en": "No atomic exemption; absence or delay never establishes NA."
+          },
+          "limitations": {
+            "fr": "C documentaire sur baseline/J+1/J+7/J+30 sélectionnés ; aucune causalité, visite Google authentifiée, indexation ou couverture globale.",
+            "en": "Documentary C for selected baseline/D+1/D+7/D+30; no causality, authenticated Google visit, indexing or global coverage."
+          },
+          "id": "TS36-A03",
+          "title": {
+            "fr": "Interprétation, décisions et clôture liées aux pièces.",
+            "en": "Interpretation, decisions and closure bound to evidence."
+          },
+          "required_inputs": [
+            "intent",
+            "search-console",
+            "logs",
+            "change-history"
+          ],
+          "procedure": {
+            "fr": "Comparer revendications et valeurs connues, conserver les changements sans causalité et qualifier les revues/décisions fournies.",
+            "en": "Compare claims to known values, retain changes without causality and qualify supplied reviews/decisions."
+          },
+          "acceptance": {
+            "fr": "Revendications fidèles, revues supported et cycle complet ; fausse revendication connue ou clôture avant échéance future fail ; autre manque inconclusive.",
+            "en": "Faithful claims, supported reviews and complete cycle; false known claim or closure before a future stage fails; other gaps inconclusive."
+          }
+        }
+      ]
     },
     {
       "id": "TS37",
@@ -3462,7 +3603,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.30",
+      "rule_version": "0.1.0-draft.31",
       "rules": [
         {
           "applicability": {
@@ -3721,7 +3862,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.30",
+      "rule_version": "0.1.0-draft.31",
       "rules": [
         {
           "applicability": {
@@ -3922,7 +4063,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.30",
+      "rule_version": "0.1.0-draft.31",
       "rules": [
         {
           "id": "TS42-A01",
@@ -4119,7 +4260,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.30",
+      "rule_version": "0.1.0-draft.31",
       "rules": [
         {
           "id": "TS43-A01",
@@ -4321,7 +4462,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.30",
+      "rule_version": "0.1.0-draft.31",
       "rules": [
         {
           "na_inputs": [],
@@ -4613,15 +4754,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "cb584052efea05c3f0d641be27916423db514954e998380c9ab50e595df8c2f4"
+      "sha256": "f0cec929bed0197903055d6055b5c74a51771bdf4baf4f96c5fd223804c77fc6"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "769490aabe710d5bfa9bd613027933c331d2001316c7c040314b88b8a056abe6"
+      "sha256": "bf6d1fd62712cbf567b1b9201171247eb4e75b23218920f6bcbd887c2926c1eb"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "2f6eb2ac04f761873d1977126da8afbb22140156a5b59db5bea4020b3c2d2f48"
+      "sha256": "9a227a01ed5e7a88ab8e44350498217aef571bb84161c1135f57a5a74d6b9b69"
     },
     {
       "path": "docs/source-directives.md",

@@ -1,4 +1,8 @@
-Current local work: draft.30, interpreter29 / adapter30 / HTML13 / replay3.
+Current local work: draft.31, interpreter30 / adapter31 / HTML14 / replay3.
+TS36 [contract](release-monitoring.md), [intake](release-monitoring-intake.md), [migration](migration-draft.31.md).
+FR/EN : 15 contrôles outillés / tooled controls, 42 règles / rules; strict four-stage supplied documentary cycle, no real future observation.
+
+Historical integration: draft.30, interpreter29 / adapter30 / HTML13 / replay3.
 TS12 [contract](canonical-comparison.md), [intake](canonical-comparison-intake.md), [migration](migration-draft.30.md).
 FR/EN: 14 contrôles outillés / tooled controls, 39 règles / rules; supplied rendered states required, no real account/browser trial inferred.
 

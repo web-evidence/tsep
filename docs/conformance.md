@@ -1,4 +1,7 @@
-Current addition / Ajout courant — draft.30: TS12-A01/A02/A03, 66 authored cases / 198 pairs. Corpus: 1,370 cases / 2,747 pairs, 39 rules.
+Draft.31 : TS36 ajoute 65 cas préfigés /195 paires synthétiques. Total : 1435 cas /2942 paires, 42 règles ; preuves API/logs/déploiement fournies, aucune exécution future.
+EN: TS36 adds65 prefrozen cases/195 authored pairs;1435 cases/2942 pairs and42 rules, no real future execution.
+
+Historical addition / Ajout historique — draft.30: TS12-A01/A02/A03, 66 authored cases / 198 pairs. Corpus: 1,370 cases / 2,747 pairs, 39 rules.
 FR/EN: 1,304 historical case objects unchanged; supplied API/DOM/reviews are synthetic. [Migration](migration-draft.30.md).
 
 Historical addition / Ajout historique — draft.29: TS08-A01/A02/A03, 47 authored cases / 141 pairs. Corpus: 1,304 cases / 2,549 pairs, 36 rules.

@@ -12,12 +12,15 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '13'
+VERSION = '14'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'monitoring_note':'TS36 : suivi documentaire baseline/J+1/J+7/J+30. Échéance future = indéterminé ; aucune causalité, visite Google authentifiée ou indexation déduite.',
+        'monitoring_pending':'Échéance future', 'monitoring_title':'Observations par échéance',
+        'monitoring_requests':'GET filtrés', 'monitoring_errors':'Réponses 5xx',
         'comparison_note': 'TS12 : dossier de comparaison HTTP/HTML et états DOM prévus. Égalité littérale ≠ équivalence d’URL ; ni canonical correcte, ni TS10, ni indexation déduits.',
         'comparison_values': 'Comparaisons attribuées et revue fournie',
         'comparison_surface': 'Surface', 'comparison_state': 'État de lecture',
@@ -108,6 +111,9 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'monitoring_note':'TS36: documentary baseline/D+1/D+7/D+30 follow-up. Future stage is inconclusive; no causality, authenticated Google visit or indexing inferred.',
+        'monitoring_pending':'Future stage', 'monitoring_title':'Observations by stage',
+        'monitoring_requests':'Filtered GETs', 'monitoring_errors':'5xx responses',
         'comparison_note': 'TS12: comparison dossier for HTTP/HTML and planned DOM states. Literal equality is not URL equivalence; no correct canonical, TS10 or indexing inferred.',
         'comparison_values': 'Attributed comparisons and supplied review',
         'comparison_surface': 'Surface', 'comparison_state': 'Reading state',
@@ -423,6 +429,33 @@ def release_values(atom, words):
     return out+'<details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(reason)+'</pre></details>'
 
 
+def monitoring_values(atom, words):
+    prefix='Release monitoring evidence / preuves de suivi: '
+    reason=atom.get('reason','')
+    if not reason.startswith(prefix):return ''
+    try:
+        note=json.loads(reason[len(prefix):])
+        if not isinstance(note,dict):return ''
+    except (ValueError,TypeError):return ''
+    out='<h5>'+esc(words['monitoring_title'])+'</h5>'
+    for stage in note.get('stages',[]):
+        out+='<h6>'+esc(stage.get('id',''))+'</h6>'
+        if stage.get('pending'):out+='<p class="notice">'+esc(words['monitoring_pending'])+'</p>'
+        if stage.get('window_utc'):out+='<p>'+esc(pretty(stage['window_utc']))+'</p>'
+        api=stage.get('api',{});logs=stage.get('logs',{});totals=logs.get('values',{})
+        out+='<div class="table-wrap"><table><thead><tr><th scope="col">URL</th><th scope="col">Google (API)</th><th scope="col">'+esc(words['monitoring_requests'])+'</th><th scope="col">'+esc(words['monitoring_errors'])+'</th></tr></thead><tbody>'
+        for url in sorted(set(api)|set(totals)):
+            row=api.get(url,{});count=totals.get(url,{})
+            out+='<tr><th scope="row">'+esc(url)+'</th><td>'+esc(row.get('value',words['unknown']))+'</td><td>'+esc(count.get('requests',words['unknown']))+'</td><td>'+esc(count.get('server_errors',words['unknown']))+'</td></tr>'
+        out+='</tbody></table></div>'
+        if logs.get('reason'):out+='<p>'+esc(logs['reason'])+'</p>'
+        out+='<details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(stage))+'</pre></details>'
+    if note.get('comparisons'):out+='<details><summary>'+esc(words['comparison'])+'</summary><pre>'+esc(pretty(note['comparisons']))+'</pre></details>'
+    out+='<div class="table-wrap"><table><thead><tr>'+''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('release_subject','result','reason'))+'</tr></thead><tbody>'
+    for row in note.get('rows',[]):out+='<tr><th scope="row">'+esc(row.get('subject',''))+'</th><td>'+esc(words.get(row.get('outcome'),words['unknown']))+'</td><td>'+esc(row.get('reason',''))+'</td></tr>'
+    return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
+
+
 def comparison_values(atom, words):
     prefix = 'Canonical comparison evidence / preuves de comparaison: '
     reason = atom.get('reason', '')
@@ -503,6 +536,8 @@ def results(bundle, controls, words, language):
         out += '<article class="card control"><div class="row"><div><span class="eyebrow">' + esc(cid) + '</span><h3 class="control-title">' + esc(control['title'][language]) + '</h3></div>' + badge(result['status'], words) + '</div>'
         if cid in ('TS34', 'TS35'):
             out += performance_values(result, words)
+        if cid == 'TS36':
+            out += '<div class="notice">' + esc(words['monitoring_note']) + '</div>'
         if cid == 'TS12':
             out += '<div class="notice">' + esc(words['comparison_note']) + '</div>'
         if cid == 'TS08':
@@ -524,7 +559,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

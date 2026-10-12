@@ -1,3 +1,9 @@
+## 0.1.0-draft.31 — 2026-10-12 — local candidate
+
+- FR : TS36 ajoute trois règles semiAuto,65 cas préfigés, suivi daté et décisions fournies ; futur indéterminé, zéro causalité ou identité Google inférée. Import/revues/clôture, HTML FR/EN et rejeu ;15 contrôles/42 règles. [Migration](docs/migration-draft.31.md).
+- EN: Three TS36 semiAuto rules,65 prefrozen authored cases, supplied chronology/decisions; future stages inconclusive, no inferred causality or Google identity. Intake/reviews/closure, bilingual HTML and replay;15 controls/42 rules.
+- FR/EN: Correct the report-contract heading previously omitting TS12; existing rule objects/results remain unchanged.
+
 ## 0.1.0-draft.30 — local candidate, 2026-10-12
 
 FR : TS12 ajoute plan, lectures natives API/HTTP/HTML/DOM et qualification/décision fournie. Rendu prévu requis, comparaisons littérales sans verdict TS10. 66 cas figés/198 couples ; 36 règles et 1 304 cas antérieurs préservés. Import hors ligne avec revues vides, preuves, FR/EN et rejeu ; aucune collecte réelle ni publication.

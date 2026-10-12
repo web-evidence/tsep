@@ -1,8 +1,10 @@
+Draft.31 ajoute TS36-A01/A02/A03 : chronologie, échéances et décisions fournies. [Contrat bilingue](release-monitoring.md), [import](release-monitoring-intake.md), [migration](migration-draft.31.md). Baseline/J+1/J+7/J+30 stricts ; futur NT, aucune causalité ni visite Google authentifiée.
+
 Draft.30 ajoute TS12-A01/A02/A03 : plan, comparaisons attribuées et revue/décision fournie. [Contrat bilingue](canonical-comparison.md), [migration](migration-draft.30.md). Rendu prévu requis ; C documentaire, pas TS10 ni indexation.
 
 Draft.29 ajoute trois règles TS08 : périmètre/objectifs, inspections natives et revues/décisions liées. [Contrat bilingue](inspection-evidence.md), [migration](migration-draft.29.md). C qualifie le dossier sélectionné, jamais une indexation garantie.
 
-# Contrat de rapport — TSEP 0.1.0-draft.30
+# Contrat de rapport — TSEP 0.1.0-draft.31
 
 ### Diffusion et variantes — draft.27
 
@@ -85,7 +87,7 @@ d’indexation documenté, pas une promesse d’indexation. TS34 établit une le
 correcte des mesures terrain ; C ne signifie pas que les performances mesurées
 sont bonnes. Conserver les mesures défavorables et leurs conséquences opérationnelles.
 
-## Règles atomiques TS01, TS02, TS04, TS07, TS08, TS10, TS34, TS35, TS39, TS41, TS42, TS43 et TS44
+## Règles atomiques TS01, TS02, TS04, TS07, TS08, TS10, TS12, TS34, TS35, TS36, TS39, TS41, TS42, TS43 et TS44
 
 Le format de rapport est `2`. Un **contrôle** garde son identifiant TSxx et son
 résultat C/NC/NA/NT sur le périmètre. Un **test atomique** répond à un attendu
@@ -93,7 +95,7 @@ identifié par `TSxx-Ayy` dans le JSON canonique. Une **observation** est une
 capture ou un constat daté dans un contexte donné ; son existence ne suffit pas
 à réussir le test. Chaque règle déclare `automation` : `automatic`, `semiAuto` ou `manual`.
 
-Pour ces treize contrôles, `atomic_results` relie chaque couple `rule_id`/`target`
+Pour ces quinze contrôles, `atomic_results` relie chaque couple `rule_id`/`target`
 à un `outcome` (`pass`, `fail`, `not-applicable`, `inconclusive`), un `reason` et
 des `evidence_ids`. Les preuves doivent aussi figurer dans le résultat du contrôle
 et couvrir la cible. Tous les types d’entrée de la règle sont exigés pour `pass`.
@@ -126,7 +128,7 @@ affecte les déclarations, même si le validateur ne peut pas déterminer ce bes
 La CLI vérifie les déclarations, références et couvertures, pas la justesse de la
 lecture HTTP/HTML, de l’intention ou des exemptions. Les cas de méthode historiques
 ont des verdicts rédigés. La [suite exécutable distincte](conformance.md) interprète
-les entrées brutes de trente-neuf règles dans des limites documentées ; elle
+les entrées brutes de quarante-deux règles dans des limites documentées ; elle
 n’implémente pas tous les contrôles. Aucun C ne
 s’étend aux contrôles non sélectionnés, à un site entier ou à l’indexation réelle.
 Voir [migration et cas](migration-draft.2.md).

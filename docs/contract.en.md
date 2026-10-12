@@ -1,8 +1,10 @@
+Draft.31 adds TS36-A01/A02/A03: chronology, stages and supplied decisions. [Bilingual contract](release-monitoring.md), [intake](release-monitoring-intake.md), [migration](migration-draft.31.md). Strict baseline/D+1/D+7/D+30; future stages inconclusive, no causality or authenticated Google visit.
+
 Draft.30 adds TS12-A01/A02/A03: plan, attributed comparisons and supplied review/decision. [Bilingual contract](canonical-comparison.md), [migration](migration-draft.30.md). Planned rendering required; documentary C, not TS10 or indexing.
 
 Draft.29 adds three TS08 rules: scope/objectives, native inspections and bound reviews/decisions. [Bilingual contract](inspection-evidence.md), [migration](migration-draft.29.md). C qualifies selected-set documentation, never guaranteed indexing.
 
-# Report contract — TSEP 0.1.0-draft.30
+# Report contract — TSEP 0.1.0-draft.31
 
 ### Delivery variants — draft.27
 
@@ -87,14 +89,14 @@ indexation. TS34 establishes correctly read field metrics; a C there does not
 mean the measured performance is good. Record unfavorable underlying measures
 and their operational consequences explicitly.
 
-## Atomic rules for TS01, TS02, TS04, TS07, TS08, TS10, TS34, TS35, TS39, TS41, TS42, TS43 and TS44
+## Atomic rules for TS01, TS02, TS04, TS07, TS08, TS10, TS12, TS34, TS35, TS36, TS39, TS41, TS42, TS43 and TS44
 
 Report format is `2`. A **control** retains its TSxx identifier and scoped
 C/NC/NA/NT outcome. An **atomic test** addresses an expectation identified by
 `TSxx-Ayy` in the canonical JSON. An **observation** is a dated capture or finding
 in a given context; its existence alone does not pass a test. Each rule declares `automation`: `automatic`, `semiAuto` or `manual`.
 
-For these thirteen controls, `atomic_results` links each `rule_id`/`target` pair to
+For these fifteen controls, `atomic_results` links each `rule_id`/`target` pair to
 an `outcome` (`pass`, `fail`, `not-applicable`, `inconclusive`), a `reason` and
 `evidence_ids`. Evidence must also be linked by the control result and cover the
 target. A `pass` requires every input kind of the rule. A `fail` contradiction
@@ -126,7 +128,7 @@ declarations, although the validator cannot determine that need.
 
 The CLI checks declarations, references and coverage, not the correctness of
 HTTP/HTML interpretation, intent or exemptions. The historical method fixtures have authored reference verdicts. The separate
-[executable conformance suite](conformance.md) interprets raw inputs for thirty-nine rules
+[executable conformance suite](conformance.md) interprets raw inputs for forty-two rules
 within documented bounds; it does not implement all controls. No C extends to unselected
 controls, an entire site or actual indexing. See [migration and cases](migration-draft.2.md).
 

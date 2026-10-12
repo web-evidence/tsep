@@ -283,6 +283,10 @@ def decision(report, controls=None):
              if a['rule_id'] == 'TS10-A04' and any(reader + ':' in a['reason']
                  for reader in ('html-tree-links-v1', 'html-tree-links-v2'))]
     if notes: summary['scope_notes'] = notes
+    if any(r['control_id']=='TS36' for r in report['results']):
+        summary['release_monitoring_interpretation'] = {
+            'fr':'TS36 : dossier du suivi déclaré, échéances futures indéterminées ; aucune causalité ni identité Google authentifiée.',
+            'en':'TS36: declared follow-up dossier, future stages inconclusive; no causality or authenticated Google identity.'}
     if any(r['control_id']=='TS12' for r in report['results']):
         summary['canonical_comparison_interpretation'] = {
             'fr':'TS12 qualifie le dossier des surfaces HTTP/HTML et états DOM prévus ; comparaisons littérales, pas équivalence d’URL, canonical correcte, TS10 ou indexation.',

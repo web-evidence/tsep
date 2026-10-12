@@ -45,6 +45,12 @@ class CaptureAdapter(unittest.TestCase):
                 with patch('adapters.captures.datetime') as clock:
                     # After every supplied fixture date; future-to-assessment remains unknown.
                     clock.now.return_value=datetime(2026,10,13,tzinfo=timezone.utc)
+                    if name == 'release-monitoring-v1-real-review-in-synthetic':
+                        # The raw reader returns unknown; bundling must refuse mixed provenance.
+                        with self.assertRaisesRegex(tsep.Invalid, 'review provenance differs'):
+                            self.emit(case['input'])
+                        self.assertFalse(self.output.exists())
+                        continue
                     summary=self.emit(case['input'])
                 report=tsep.read_json(self.output/'report.json')
                 self.assertEqual(summary,tsep.validate(report,self.output))
