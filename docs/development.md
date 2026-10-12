@@ -1,4 +1,9 @@
-Current integration: draft.28, interpreter 27 / adapter 28 / HTML 11 / replay 3.
+Current local integration: draft.29, interpreter28 / adapter29 / HTML12 / replay3.
+TS08 [inspection evidence](inspection-evidence.md), [intake](search-console-acquisition.md), [migration](migration-draft.29.md).
+FR : priorité du sprint du 12–14 octobre : TS08 puis TS12 ; qualification et gel mercredi. TS36 puis TS31–33 ensuite.
+EN:13 tooled controls /36 rules; supplied API/review qualification only, no actual account assessment or new remote CI.
+
+Historical integration: draft.28, interpreter 27 / adapter 28 / HTML 11 / replay 3.
 Guided collector 8 / preflight 3 / intent 4: [parsed preparation and exact replay](guided-parsed-markers.md).
 FR : préparation prospective avec refus des contradictions complètes par hypothèse ; sources/runtime liés, aucune application réelle déduite.
 Optional prior [parsed-source markers](source-markers.md) extend TS01-A02; [migration](migration-draft.28.md) preserves historical readers and URL/hash/stability precedence.
@@ -7,7 +12,7 @@ FR : 76 cas atomiques rédigés, huit scénarios de paquets synthétiques ; aucu
 Historical integration: draft.27, interpreter 26 / adapter 27 / HTML 10 / replay 3.
 Optional [source-marker readings 1](source-marker-readings.md) prepares TS01 with attributed parsed segments and two whole-document hypotheses; no normative promotion or historical migration.
 FR : 52 documents synthétiques, 104 attentes après deux corrections explicites ; diagnostic rétrospectif de trois corps Edikka sans critères ni verdict TS01.
-Current priority: consolidate the existing 12 controls before deciding the Edikka application; further TS31–33/TS36 layers are deferred after the in-flight rendered component.
+Historical October 11 priority: consolidate the existing 12 controls before deciding the Edikka application; further TS31–33/TS36 layers are deferred after the in-flight rendered component.
 FR : priorité donnée par Bertrand le 11 octobre à la finalisation des 12 contrôles ; ne pas attendre les 44 pour décider ensuite de l’application.
 Optional [supplied rendered JSON-LD observation 1](jsonld-rendered-observation.md) binds planned supplied DOM states to HTTP, retains snapshot bases and compares exact parsed-source/rendered texts. No browser execution or new control.
 Optional [HTML JSON-LD observation 1](jsonld-html-observation.md): original-byte script attribution, two static hypotheses and combined documents under an explicit supplied-base hypothesis; 126 frozen expected readings, 63 exact replays and 10 over-limit refusals.

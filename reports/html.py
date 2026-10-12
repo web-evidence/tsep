@@ -12,12 +12,14 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '11'
+VERSION = '12'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'inspection_note': 'TS08 : dossier de la sélection, pas un état live ni une garantie d’indexation. Verdict Google, observations et décisions TSEP restent distincts.',
+        'inspection_values': 'Lectures de l’API et qualification fournie',
         'delivery_note': 'TS39 compare les cellules déclarées à leur politique. Les variations légitimes restent distinctes des défauts. Revues et traces fournies ; aucune visite réelle Googlebot ou couverture de tous les POP déduite.',
         'delivery_values': 'Signaux et attribution par cellule',
         'delivery_native': 'Résultats des tests natifs conservés',
@@ -101,6 +103,8 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'inspection_note': 'TS08: selected-set documentation, not live state or guaranteed indexing. Google verdict, observations and TSEP decisions remain distinct.',
+        'inspection_values': 'API readings and supplied qualification',
         'delivery_note': 'TS39 compares declared cells against policy. Legitimate variation remains distinct from defects. Supplied reviews and traces; no actual Googlebot visit or whole-POP coverage inferred.',
         'delivery_values': 'Signals and attribution per cell',
         'delivery_native': 'Retained native test results',
@@ -409,6 +413,22 @@ def release_values(atom, words):
     return out+'<details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(reason)+'</pre></details>'
 
 
+def inspection_values(atom, words):
+    prefix = 'Inspection evidence / preuves d’inspection: '
+    reason = atom.get('reason', '')
+    try:
+        if not reason.startswith(prefix):raise ValueError('prefix')
+        note = json.loads(reason[len(prefix):])
+        if not isinstance(note['rows'], list):raise ValueError('rows')
+    except (ValueError, KeyError, TypeError):return '<p class="reason">'+esc(reason)+'</p>'
+    out = '<div class="table-wrap"><table><caption>'+esc(words['inspection_values'])+'</caption><thead><tr>'
+    out += ''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('release_subject','result','reason'))+'</tr></thead><tbody>'
+    for row in note['rows']:
+        out += '<tr><th scope="row">'+esc(row.get('subject',''))+'</th><td>'+esc(words.get(row.get('outcome'),words['unknown']))+'</td><td>'+esc(row.get('reason',''))+'</td></tr>'
+    out += '</tbody></table></div><details open><summary>'+esc(words['inspection_values'])+'</summary><pre>'+esc(pretty(note.get('engine_readings',[])))+'</pre></details>'
+    return out+'<details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
+
+
 def delivery_values(atom, words):
     """Display supplied TS39 diagnostics; never re-run the interpreter."""
     reason=atom.get('reason','');prefix='Delivery evidence / preuves de diffusion: '
@@ -441,6 +461,8 @@ def results(bundle, controls, words, language):
         out += '<article class="card control"><div class="row"><div><span class="eyebrow">' + esc(cid) + '</span><h3 class="control-title">' + esc(control['title'][language]) + '</h3></div>' + badge(result['status'], words) + '</div>'
         if cid in ('TS34', 'TS35'):
             out += performance_values(result, words)
+        if cid == 'TS08':
+            out += '<div class="notice">' + esc(words['inspection_note']) + '</div>'
         if cid == 'TS39':
             out += '<div class="notice"><strong>' + esc(words['delivery_note']) + '</strong></div>'
         if cid == 'TS41':
@@ -458,7 +480,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

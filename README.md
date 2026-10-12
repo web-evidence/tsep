@@ -1,8 +1,8 @@
-Development edition: **0.1.0-draft.28** — optional [TS01 parsed-source markers](docs/source-markers.md) and [explicit migration](docs/migration-draft.28.md). Two complete static HTML readings compare literal markers; historical readers and URL/hash/stability precedence remain unchanged. No browser visibility or Edikka conformity is inferred.
+Local development edition: **0.1.0-draft.29** — [TS08 supplied inspections and decisions](docs/inspection-evidence.md), [acquisition/intake](docs/search-console-acquisition.md), [migration](docs/migration-draft.29.md). Thirteen tooled controls /36 rules; no real Edikka assessment inferred.
 
-Optional TS31–33 preparation: [supplied rendered states and source/DOM comparison](docs/jsonld-rendered-observation.md), without browser collection or control outcomes. Current priority: consolidate the existing 12 controls before deciding the application.
+Optional TS31–33 preparation: [supplied rendered states and source/DOM comparison](docs/jsonld-rendered-observation.md), without browser collection or control outcomes. October12 priority: TS08 then TS12, qualification before the application; TS36 and TS31–33 follow.
 
-Preparing TS31–33: [offline JSON-LD processing](docs/jsonld-processing.md), then [attributed HTML extraction and combined scripts](docs/jsonld-html-observation.md). Frozen contradictory cases and exact replay; effective bases, visible facts and validators remain to qualify. The count stays at 12 executable controls / 33 rules.
+Preparing TS31–33: [offline JSON-LD processing](docs/jsonld-processing.md), then [attributed HTML extraction and combined scripts](docs/jsonld-html-observation.md). Frozen contradictory cases and exact replay; effective bases, visible facts and validators remain to qualify. These components add no TS31–33 rules.
 
 The [TS39 laboratory](docs/delivery-laboratory.md) adds eight prefrozen experiments, 38 actual local origin/cache HTTP exchanges, repair with purge and offline replay; pages and reviews remain fictional.
 
@@ -11,7 +11,7 @@ TS39 has [three delivery rules](docs/delivery-evidence.md): prior matrix, per-co
 
 # TSEP — evidence interchange format
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.28 · initiated by Edikka · [Français](README.fr.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.29 · initiated by Edikka · [Français](README.fr.md)**
 
 Share a technical SEO assessment that its recipient can inspect, replay and
 challenge: stable identifiers, explicit scope, evidence linked to findings and
@@ -38,7 +38,7 @@ atomic rules use pass, fail, not-applicable or inconclusive.
 
 **TS01–TS44 are the permanent identifiers inherited from grid 1.1.** TSEP has a
 separate version sequence; the original FR/EN sources and provenance remain intact.
-Thirty-three rules specify twelve controls: TS01, TS02, TS04, TS07, TS10, TS34, TS35, TS39, TS41, TS42, TS43 and TS44, with a bounded interpreter over raw inputs. TS10-A02 content comparison
+Thirty-six rules specify thirteen controls: TS01, TS02, TS04, TS07, TS08, TS10, TS34, TS35, TS39, TS41, TS42, TS43 and TS44, with a bounded interpreter over raw inputs. TS10-A02 content comparison
 remains a supplied human review bound to the captures.
 
 Performance imports keep field p75/classes (CrUX) separate from laboratory diagnostics
@@ -90,8 +90,8 @@ validation establishes consistency and file integrity.
    not satisfy a named profile. An isolated test cannot pass its parent control.
 3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
    `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 my_adapter.py'`
-   for that subset, or omit `--rules` for all thirty-three rules. State “passes TSEP
-   0.1.0-draft.28 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
+   for that subset, or omit `--rules` for all thirty-six rules. State “passes TSEP
+   0.1.0-draft.29 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
    [Input format and comparison](docs/conformance.md). Report exact agreements,
    disagreements and reduced coverage separately; accepted inconclusive results
    on marked reference limits are not successful assessments.
@@ -152,7 +152,7 @@ checks declarations and hashes, not authenticity, appropriate intent or every
 assessment judgment. A hash does not establish authorship or actual collection
 time. Bundled cases are synthetic.
 
-The interpreter covers thirty-three rules within a documented subset; unsupported inputs
+The interpreter covers thirty-six rules within a documented subset; unsupported inputs
 remain inconclusive. TS07-A03 compares supplied source/DOM captures without executing JavaScript;
 the plan and exemptions require review. TS10 compares declared family signals and checks the binding of the supplied
 human content review, without guaranteeing its correctness.
@@ -165,7 +165,7 @@ ranking or future engine behavior.
 [Governance](GOVERNANCE.md) · [Contribute](CONTRIBUTING.md) · [History](CHANGELOG.md) ·
 [Acceptance clause](docs/acceptance-clause.md) · [HTTP probe](probes/README.md).
 
-Cite `TSEP@0.1.0-draft.28:TS07` with scope, result, evidence and archive hash.
+Cite `TSEP@0.1.0-draft.29:TS07` with scope, result, evidence and archive hash.
 Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATION.cff).
 [Development, full verification and independent repository](docs/development.md).
 

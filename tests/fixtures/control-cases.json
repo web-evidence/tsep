@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.28",
+  "protocol_version": "0.1.0-draft.29",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -4607,6 +4607,266 @@
             "http",
             "content",
             "logs",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS08-authored-qualified-positive",
+      "control_id": "TS08",
+      "description": {
+        "fr": "Agrégation fictive TS08, cas qualified-positive ; aucun compte ou relecteur réel.",
+        "en": "Authored TS08 aggregation, case qualified-positive; no real account or reviewer."
+      },
+      "evidence": {
+        "search-console": "SYNTHETIC authored aggregation only; native counterexamples are separate.",
+        "intent": "SYNTHETIC declared scope and review references; not actual approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS08-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas qualified-positive ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case qualified-positive; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas qualified-positive ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case qualified-positive; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas qualified-positive ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case qualified-positive; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS08-authored-contradictory-selection",
+      "control_id": "TS08",
+      "description": {
+        "fr": "Agrégation fictive TS08, cas contradictory-selection ; aucun compte ou relecteur réel.",
+        "en": "Authored TS08 aggregation, case contradictory-selection; no real account or reviewer."
+      },
+      "evidence": {
+        "search-console": "SYNTHETIC authored aggregation only; native counterexamples are separate.",
+        "intent": "SYNTHETIC declared scope and review references; not actual approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS08-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas contradictory-selection ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case contradictory-selection; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas contradictory-selection ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case contradictory-selection; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas contradictory-selection ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case contradictory-selection; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS08-authored-wrong-inspected-url",
+      "control_id": "TS08",
+      "description": {
+        "fr": "Agrégation fictive TS08, cas wrong-inspected-url ; aucun compte ou relecteur réel.",
+        "en": "Authored TS08 aggregation, case wrong-inspected-url; no real account or reviewer."
+      },
+      "evidence": {
+        "search-console": "SYNTHETIC authored aggregation only; native counterexamples are separate.",
+        "intent": "SYNTHETIC declared scope and review references; not actual approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS08-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas wrong-inspected-url ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case wrong-inspected-url; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas wrong-inspected-url ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case wrong-inspected-url; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas wrong-inspected-url ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case wrong-inspected-url; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS08-authored-claimed-wrong-verdict",
+      "control_id": "TS08",
+      "description": {
+        "fr": "Agrégation fictive TS08, cas claimed-wrong-verdict ; aucun compte ou relecteur réel.",
+        "en": "Authored TS08 aggregation, case claimed-wrong-verdict; no real account or reviewer."
+      },
+      "evidence": {
+        "search-console": "SYNTHETIC authored aggregation only; native counterexamples are separate.",
+        "intent": "SYNTHETIC declared scope and review references; not actual approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS08-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas claimed-wrong-verdict ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case claimed-wrong-verdict; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas claimed-wrong-verdict ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case claimed-wrong-verdict; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas claimed-wrong-verdict ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case claimed-wrong-verdict; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS08-authored-missing-objective-source",
+      "control_id": "TS08",
+      "description": {
+        "fr": "Agrégation fictive TS08, cas missing-objective-source ; aucun compte ou relecteur réel.",
+        "en": "Authored TS08 aggregation, case missing-objective-source; no real account or reviewer."
+      },
+      "evidence": {
+        "search-console": "SYNTHETIC authored aggregation only; native counterexamples are separate.",
+        "intent": "SYNTHETIC declared scope and review references; not actual approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS08-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas missing-objective-source ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case missing-objective-source; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas missing-objective-source ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case missing-objective-source; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas missing-objective-source ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case missing-objective-source; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
             "intent"
           ]
         }

@@ -14,8 +14,8 @@ import tsep
 RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS04-A01', 'TS04-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04',
          'TS34-A01', 'TS34-A02', 'TS34-A03', 'TS35-A01', 'TS35-A02',
-         'TS42-A01', 'TS42-A02', 'TS42-A03', 'TS43-A01', 'TS43-A02', 'TS43-A03', 'TS44-A01', 'TS44-A02', 'TS44-A03', 'TS41-A01', 'TS41-A02', 'TS41-A03', 'TS39-A01', 'TS39-A02', 'TS39-A03')
-VERSION = '27'  # Interpreter coverage version; normative protocol version is separate.
+         'TS42-A01', 'TS42-A02', 'TS42-A03', 'TS43-A01', 'TS43-A02', 'TS43-A03', 'TS44-A01', 'TS44-A02', 'TS44-A03', 'TS41-A01', 'TS41-A02', 'TS41-A03', 'TS39-A01', 'TS39-A02', 'TS39-A03', 'TS08-A01', 'TS08-A02', 'TS08-A03')
+VERSION = '28'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -351,6 +351,9 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
 
 
 def evaluate_target(target, rule, *, diagnostics=None):
+    if rule.startswith('TS08-'):
+        from conformance.inspection import assess
+        return assess(target, rule, diagnostics=diagnostics)
     if rule.startswith('TS39-'):
         from conformance.delivery import assess
         return assess(target, rule, diagnostics=diagnostics)

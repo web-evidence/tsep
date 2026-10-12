@@ -75,7 +75,10 @@ def generate(output_root=ROOT):
         result.append({'case': case, 'status': status, 'decision': summary['decision']})
     # Raw adapter demonstrations are controlled derivatives, with no expected verdicts.
     corpus = {case['id']: case['input'] for case in tsep.read_json(ROOT.parent/'conformance/cases.json')['cases']}
-    capture_examples = {'ts39-qualified': ('delivery-evidence-qualified-cache', ['TS39-A01','TS39-A02','TS39-A03']),
+    capture_examples = {'ts08-qualified': ('inspection-v1-qualified-positive', ['TS08-A01','TS08-A02','TS08-A03']),
+                        'ts08-negative-documented': ('inspection-v1-negative-explained-without-cause', ['TS08-A01','TS08-A02','TS08-A03']),
+                        'ts08-review-missing': ('inspection-v1-missing-review', ['TS08-A01','TS08-A02','TS08-A03']),
+                        'ts39-qualified': ('delivery-evidence-qualified-cache', ['TS39-A01','TS39-A02','TS39-A03']),
                         'ts39-cache-mismatch': ('delivery-evidence-cache-vary-mismatch', ['TS39-A01','TS39-A02','TS39-A03']),
                         'ts39-missing-context': ('delivery-evidence-missing-cell', ['TS39-A01','TS39-A02','TS39-A03']),
                         'ts41-blocked': ('release-invariants-defect-detected-blocked', ['TS41-A01','TS41-A02','TS41-A03']),

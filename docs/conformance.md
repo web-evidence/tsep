@@ -1,4 +1,8 @@
-Current addition / Ajout courant — draft.28: optional TS01-A02 html-tree-markers-v1, 76 authored cases / 76 pairs. Corpus: 1257 cases / 2408 pairs, 33 rules. Historical TS01 inputs/results remain covered separately; no real-site assessment.
+Current addition / Ajout courant — draft.29: TS08-A01/A02/A03, 47 authored cases / 141 pairs. Corpus: 1,304 cases / 2,549 pairs, 36 rules.
+FR : les 1 257 cas historiques restent intacts ; 47 cas TS08 synthétiques, aucune application réelle déduite.
+EN: all 1,257 historical cases remain unchanged; 47 synthetic TS08 cases, no real account assessment inferred. [Migration](migration-draft.29.md).
+
+Historical addition / Ajout historique — draft.28: optional TS01-A02 html-tree-markers-v1, 76 authored cases / 76 pairs. Corpus: 1257 cases / 2408 pairs, 33 rules. Historical TS01 inputs/results remain covered separately; no real-site assessment.
 
 Historical addition / Ajout historique — draft.27 : TS39-A01/A02/A03, 77 authored cases / 231 pairs. Corpus total: 1181 cases / 2332 pairs, 33 rules. Historical results below retain their versions; current runtime verification is recorded separately.
 FR : corpus historique préservé, reformatté compact pour rester sous 8 Mio ; v1 de préparation avec dates incohérentes conservée hors corpus actif, v2 corrigée.

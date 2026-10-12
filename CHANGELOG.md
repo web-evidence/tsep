@@ -1,3 +1,9 @@
+# 0.1.0-draft.29 — local candidate
+
+TS08 : trois règles semiAuto, JSON API natifs, plan/revues liés, décisions typées, rapports FR/EN et rejeu. Google PASS ne devient pas C ; données anciennes, absences, erreurs et contradictions restent visibles. TS12 reste en attente.
+
+TS08: three semiAuto rules, native API JSON, bound plans/reviews, typed decisions, FR/EN reports and replay. Google PASS is not C; retain old data, gaps, errors and independent contradictions. TS12 remains pending. [Migration](docs/migration-draft.29.md). No publication or real-account assessment inferred.
+
 ## Supplied rendered JSON-LD observation 1 — 2026-10-11
 
 - Optional planned source/DOM workflow, supplied base attribution, exact payload comparison and offline replay; no normative version or control-count change.

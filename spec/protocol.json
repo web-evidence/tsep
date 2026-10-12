@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.28",
+  "version": "0.1.0-draft.29",
   "status": "draft",
   "date": "2026-10-11",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.28"
+      "rule_version": "0.1.0-draft.29"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.28",
+      "rule_version": "0.1.0-draft.29",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.28",
+      "rule_version": "0.1.0-draft.29",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.28"
+      "rule_version": "0.1.0-draft.29"
     },
     {
       "id": "TS08",
@@ -889,12 +889,12 @@
         "en": "URLs whose Google indexing state must be established."
       },
       "procedure": {
-        "fr": "Utiliser l’inspection d’URL sur un échantillon représentatif et conserver l’export ou la capture.",
-        "en": "Use URL Inspection on a representative sample and retain the export or screenshot."
+        "fr": "Déclarer sélection, objectifs, sources et connaissances antérieures avant acquisition ; conserver les JSON API, leurs limites et les revues fournies selon google-inspection-evidence-v1.",
+        "en": "Declare selection, objectives, sources and prior knowledge before acquisition; retain native API JSON, limitations and supplied reviews under google-inspection-evidence-v1."
       },
       "acceptance": {
-        "fr": "L’inspection est datée pour chaque URL retenue ; état réel, exploration et canonique sont consignés et rapprochés de l’objectif, écarts expliqués.",
-        "en": "Inspection is dated for each selected URL; actual state, crawl access and canonical are recorded against intent, with discrepancies explained."
+        "fr": "Les trois règles réussissent pour tout l’ensemble sélectionné. C qualifie le dossier du statut rapporté par Google, jamais une promesse d’indexation ni l’état actuel du site.",
+        "en": "All three rules pass for the entire selected set. C qualifies documentation of Google-reported status, never an indexing promise or current site state."
       },
       "non_applicability": {
         "fr": "Le moteur Google est explicitement hors périmètre ; absence d’accès seule ne suffit pas.",
@@ -905,16 +905,18 @@
         "en": "Known URL, crawling permission, indexing state and Google-selected canonical documented."
       },
       "limitations": {
-        "fr": "Un audit public ne peut pas établir ce statut sans accès à la propriété.",
-        "en": "A public audit cannot establish this status without property access."
+        "fr": "API non live, attribution et dates fournies non authentifiées ; champs manquants/réservés, fraîcheur insuffisante et revues absentes restent inconclusifs selon le profil borné. Aucune extrapolation au site.",
+        "en": "Non-live API, supplied unauthenticated attribution/dates; missing/reserved fields, insufficient freshness and absent reviews remain inconclusive under the bounded profile. No site extrapolation."
       },
-      "assessment": "manual-or-tool-assisted",
+      "assessment": "atomic-rules",
       "legacy_access": {
         "fr": "Search Console",
         "en": "Search Console"
       },
       "references": [
-        "https://support.google.com/webmasters/answer/9012289"
+        "https://support.google.com/webmasters/answer/9012289",
+        "https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect",
+        "https://developers.google.com/webmaster-tools/v1/urlInspection.index/UrlInspectionResult"
       ],
       "source_scope": {
         "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
@@ -924,7 +926,144 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.29",
+      "rules": [
+        {
+          "automation": "semiAuto",
+          "required_inputs": [
+            "intent",
+            "search-console"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Ensemble explicite d’URL dont l’état rapporté par Google doit être documenté.",
+            "en": "Explicit selected URL set whose Google-reported state must be documented."
+          },
+          "evidence": {
+            "fr": "Plan daté et sourcé, JSON requête/réponse natifs et empreintes, métadonnées réelles, revues fournies liées aux pièces ; contrat inspection-evidence-v1.",
+            "en": "Dated sourced plan, native request/response JSON and hashes, actual metadata, supplied evidence-bound reviews; inspection-evidence-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Dates, auteur, provenance, accès et attribution sont déclarés, jamais authentifiés par leurs seules empreintes.",
+            "en": "Dates, authorship, provenance, access and attribution are supplied, never authenticated by hashes alone."
+          },
+          "inconclusive": {
+            "fr": "Pièce, revue ou liaison manquante, invalide ou ambiguë ; limites, inconnues et erreurs API conservées.",
+            "en": "Missing, invalid or ambiguous evidence, review or binding; retain limitations, unknowns and API errors."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; absence d’accès ne vaut pas NA.",
+            "en": "No atomic exemption; lack of access is not NA."
+          },
+          "limitations": {
+            "fr": "Dossier de la sélection seulement ; API non live et dernier crawl distinct de la date des champs. Ni état actuel, ni causalité, ni TS12, ni résultats SEO déduits.",
+            "en": "Selected-set documentation only; non-live API and crawl time distinct from field timestamps. No current state, causality, TS12 or SEO outcome inferred."
+          },
+          "id": "TS08-A01",
+          "title": {
+            "fr": "Périmètre et objectifs préalables qualifiés.",
+            "en": "Qualified prior scope and objectives."
+          },
+          "procedure": {
+            "fr": "Déclarer les membres, leur objectif/source, motif de sélection, connaissances antérieures et politique de fraîcheur ; conserver la revue préalable liée au plan.",
+            "en": "Declare members, objectives/sources, selection reasons, prior knowledge and freshness policy; retain the bound prior plan review."
+          },
+          "acceptance": {
+            "fr": "Sélection et objectifs qualifiés supported, plan et revue avant acquisition, aucun membre omis. Une contradiction fournie ou une acquisition antérieure au plan donne fail ; absence seule reste indéterminée.",
+            "en": "Supported selection/objective review, plan and review before acquisition, no omitted member. Supplied contradiction or acquisition preceding the plan fails; absence alone is inconclusive."
+          }
+        },
+        {
+          "automation": "semiAuto",
+          "required_inputs": [
+            "search-console",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Ensemble explicite d’URL dont l’état rapporté par Google doit être documenté.",
+            "en": "Explicit selected URL set whose Google-reported state must be documented."
+          },
+          "evidence": {
+            "fr": "Plan daté et sourcé, JSON requête/réponse natifs et empreintes, métadonnées réelles, revues fournies liées aux pièces ; contrat inspection-evidence-v1.",
+            "en": "Dated sourced plan, native request/response JSON and hashes, actual metadata, supplied evidence-bound reviews; inspection-evidence-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Dates, auteur, provenance, accès et attribution sont déclarés, jamais authentifiés par leurs seules empreintes.",
+            "en": "Dates, authorship, provenance, access and attribution are supplied, never authenticated by hashes alone."
+          },
+          "inconclusive": {
+            "fr": "Pièce, revue ou liaison manquante, invalide ou ambiguë ; limites, inconnues et erreurs API conservées.",
+            "en": "Missing, invalid or ambiguous evidence, review or binding; retain limitations, unknowns and API errors."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; absence d’accès ne vaut pas NA.",
+            "en": "No atomic exemption; lack of access is not NA."
+          },
+          "limitations": {
+            "fr": "Dossier de la sélection seulement ; API non live et dernier crawl distinct de la date des champs. Ni état actuel, ni causalité, ni TS12, ni résultats SEO déduits.",
+            "en": "Selected-set documentation only; non-live API and crawl time distinct from field timestamps. No current state, causality, TS12 or SEO outcome inferred."
+          },
+          "id": "TS08-A02",
+          "title": {
+            "fr": "Inspections natives attribuées et lisibles.",
+            "en": "Attributed and readable native inspections."
+          },
+          "procedure": {
+            "fr": "Lire les octets natifs avec le diagnostic 1, comparer l’attribution URL/propriété, conserver les champs et contrôler les dates selon la politique préalable.",
+            "en": "Read native bytes using diagnostic1, compare URL/property attribution, retain fields and check dates against prior policy."
+          },
+          "acceptance": {
+            "fr": "Chaque membre possède une réponse exploitable avec champs requis connus et dates dans la politique. Les absences API expressément admises restent visibles ; erreur API et valeurs inconnues ne deviennent pas C.",
+            "en": "Every member has a usable response with known required fields and dates within policy. Explicitly allowed absent API fields stay visible; API errors and unknown values never become C."
+          }
+        },
+        {
+          "automation": "semiAuto",
+          "required_inputs": [
+            "search-console",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Ensemble explicite d’URL dont l’état rapporté par Google doit être documenté.",
+            "en": "Explicit selected URL set whose Google-reported state must be documented."
+          },
+          "evidence": {
+            "fr": "Plan daté et sourcé, JSON requête/réponse natifs et empreintes, métadonnées réelles, revues fournies liées aux pièces ; contrat inspection-evidence-v1.",
+            "en": "Dated sourced plan, native request/response JSON and hashes, actual metadata, supplied evidence-bound reviews; inspection-evidence-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Dates, auteur, provenance, accès et attribution sont déclarés, jamais authentifiés par leurs seules empreintes.",
+            "en": "Dates, authorship, provenance, access and attribution are supplied, never authenticated by hashes alone."
+          },
+          "inconclusive": {
+            "fr": "Pièce, revue ou liaison manquante, invalide ou ambiguë ; limites, inconnues et erreurs API conservées.",
+            "en": "Missing, invalid or ambiguous evidence, review or binding; retain limitations, unknowns and API errors."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; absence d’accès ne vaut pas NA.",
+            "en": "No atomic exemption; lack of access is not NA."
+          },
+          "limitations": {
+            "fr": "Dossier de la sélection seulement ; API non live et dernier crawl distinct de la date des champs. Ni état actuel, ni causalité, ni TS12, ni résultats SEO déduits.",
+            "en": "Selected-set documentation only; non-live API and crawl time distinct from field timestamps. No current state, causality, TS12 or SEO outcome inferred."
+          },
+          "id": "TS08-A03",
+          "title": {
+            "fr": "Interprétation et décision liées aux preuves.",
+            "en": "Evidence-bound interpretation and decision."
+          },
+          "procedure": {
+            "fr": "Lire la revue fournie : verdict API repris exactement, interprétation, relation à l’objectif préalable, portée temporelle, explication typée et décision opérationnelle.",
+            "en": "Read supplied review: exact API verdict claim, interpretation, relation to prior objective, temporal scope, typed explanation and operational decision."
+          },
+          "acceptance": {
+            "fr": "Toutes les facettes sont qualifiées ; un écart documenté peut passer. Contradiction explicite de verdict/portée ou qualification contradiction donne fail et survit aux inconnues indépendantes. Revue absente ou cause non étayée reste inconclusive.",
+            "en": "All facets are qualified; a documented discrepancy may pass. Explicit verdict/scope contradiction or contradiction judgment fails and survives independent unknowns. Missing review or unsupported cause remains inconclusive."
+          }
+        }
+      ]
     },
     {
       "id": "TS09",
@@ -1233,7 +1372,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.28"
+      "rule_version": "0.1.0-draft.29"
     },
     {
       "id": "TS11",
@@ -2648,7 +2787,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.28",
+      "rule_version": "0.1.0-draft.29",
       "rules": [
         {
           "id": "TS34-A01",
@@ -2843,7 +2982,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.28",
+      "rule_version": "0.1.0-draft.29",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3177,7 +3316,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.28",
+      "rule_version": "0.1.0-draft.29",
       "rules": [
         {
           "applicability": {
@@ -3436,7 +3575,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.28",
+      "rule_version": "0.1.0-draft.29",
       "rules": [
         {
           "applicability": {
@@ -3637,7 +3776,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.28",
+      "rule_version": "0.1.0-draft.29",
       "rules": [
         {
           "id": "TS42-A01",
@@ -3834,7 +3973,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.28",
+      "rule_version": "0.1.0-draft.29",
       "rules": [
         {
           "id": "TS43-A01",
@@ -4036,7 +4175,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.28",
+      "rule_version": "0.1.0-draft.29",
       "rules": [
         {
           "na_inputs": [],
@@ -4328,15 +4467,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "ab76c7fc29ce8c36fa283d5b163bda9fc97073060e8ce476f0506915a1b54fe7"
+      "sha256": "6c95481086dfc05ac33b9d7809e15ef413fa6dd5020a2520ea4172db933c3ad9"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "f4a23b2be25ee8be3eb043bd47ab46bbbf58a878b0ea6281bb3794763bd7e284"
+      "sha256": "c960db15f138140ccba0c4d78800815ac93e69a48d6a8f2e5f8fc94656248faf"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "1a2460f1fc190f1c79ab849fc338a501e0a2f144646cc81e15bbb5e2f649b74b"
+      "sha256": "fac9bf356143a0bf44aaa05f26a8a23da25debed25a9378b5cc6ba81716e6d90"
     },
     {
       "path": "docs/source-directives.md",
@@ -4389,6 +4528,10 @@
     {
       "path": "docs/source-markers.md",
       "sha256": "3dc6505b879eceffcf930b31246a54793bb8e06d00ba477c83a1ebe0380132fc"
+    },
+    {
+      "path": "docs/inspection-evidence.md",
+      "sha256": "08cf78758c31fedfde4df88f1abe8778e16ac7320f4b68f9947861e22407e952"
     }
   ]
 }

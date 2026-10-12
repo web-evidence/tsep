@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.28 — Contrôles
+# TSEP 0.1.0-draft.29 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.28:TS01-A01`
+`TSEP@0.1.0-draft.29:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.28:TS01-A02`
+`TSEP@0.1.0-draft.29:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.28:TS02-A01`
+`TSEP@0.1.0-draft.29:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.28:TS02-A02`
+`TSEP@0.1.0-draft.29:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -198,7 +198,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A01 — Politique par origine, robot et ressource
 
-`TSEP@0.1.0-draft.28:TS04-A01`
+`TSEP@0.1.0-draft.29:TS04-A01`
 
 **Entrées requises**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A02 — Accès aux ressources nécessaires
 
-`TSEP@0.1.0-draft.28:TS04-A02`
+`TSEP@0.1.0-draft.29:TS04-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.28:TS07-A01`
+`TSEP@0.1.0-draft.29:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -344,7 +344,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.28:TS07-A02`
+`TSEP@0.1.0-draft.29:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.28:TS07-A03`
+`TSEP@0.1.0-draft.29:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -400,21 +400,93 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** URL dont l’état dans Google doit être établi.
 
-**Méthode.** Utiliser l’inspection d’URL sur un échantillon représentatif et conserver l’export ou la capture.
+**Méthode.** Déclarer sélection, objectifs, sources et connaissances antérieures avant acquisition ; conserver les JSON API, leurs limites et les revues fournies selon google-inspection-evidence-v1.
 
-**Attendus.** L’inspection est datée pour chaque URL retenue ; état réel, exploration et canonique sont consignés et rapprochés de l’objectif, écarts expliqués.
+**Attendus.** Les trois règles réussissent pour tout l’ensemble sélectionné. C qualifie le dossier du statut rapporté par Google, jamais une promesse d’indexation ni l’état actuel du site.
 
 **Preuves.** URL connue, exploration autorisée, indexation et canonique Google documentées.
 
 **Conditions de NA.** Le moteur Google est explicitement hors périmètre ; absence d’accès seule ne suffit pas.
 
-**Limites.** Un audit public ne peut pas établir ce statut sans accès à la propriété.
+**Limites.** API non live, attribution et dates fournies non authentifiées ; champs manquants/réservés, fraîcheur insuffisante et revues absentes restent inconclusifs selon le profil borné. Aucune extrapolation au site.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
-**Références**: [https://support.google.com/webmasters/answer/9012289](https://support.google.com/webmasters/answer/9012289)
+**Références**: [https://support.google.com/webmasters/answer/9012289](https://support.google.com/webmasters/answer/9012289); [https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect](https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect); [https://developers.google.com/webmaster-tools/v1/urlInspection.index/UrlInspectionResult](https://developers.google.com/webmaster-tools/v1/urlInspection.index/UrlInspectionResult)
+
+### TS08-A01 — Périmètre et objectifs préalables qualifiés.
+
+`TSEP@0.1.0-draft.29:TS08-A01`
+
+**Entrées requises**: intent, search-console.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Ensemble explicite d’URL dont l’état rapporté par Google doit être documenté.
+
+**Méthode.** Déclarer les membres, leur objectif/source, motif de sélection, connaissances antérieures et politique de fraîcheur ; conserver la revue préalable liée au plan.
+
+**Attendus.** Sélection et objectifs qualifiés supported, plan et revue avant acquisition, aucun membre omis. Une contradiction fournie ou une acquisition antérieure au plan donne fail ; absence seule reste indéterminée.
+
+**Preuves.** Plan daté et sourcé, JSON requête/réponse natifs et empreintes, métadonnées réelles, revues fournies liées aux pièces ; contrat inspection-evidence-v1.
+
+**Hypothèses.** Dates, auteur, provenance, accès et attribution sont déclarés, jamais authentifiés par leurs seules empreintes.
+
+**Indéterminé.** Pièce, revue ou liaison manquante, invalide ou ambiguë ; limites, inconnues et erreurs API conservées.
+
+**Conditions de NA.** Aucune exemption atomique ; absence d’accès ne vaut pas NA.
+
+**Limites.** Dossier de la sélection seulement ; API non live et dernier crawl distinct de la date des champs. Ni état actuel, ni causalité, ni TS12, ni résultats SEO déduits.
+
+### TS08-A02 — Inspections natives attribuées et lisibles.
+
+`TSEP@0.1.0-draft.29:TS08-A02`
+
+**Entrées requises**: search-console, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Ensemble explicite d’URL dont l’état rapporté par Google doit être documenté.
+
+**Méthode.** Lire les octets natifs avec le diagnostic 1, comparer l’attribution URL/propriété, conserver les champs et contrôler les dates selon la politique préalable.
+
+**Attendus.** Chaque membre possède une réponse exploitable avec champs requis connus et dates dans la politique. Les absences API expressément admises restent visibles ; erreur API et valeurs inconnues ne deviennent pas C.
+
+**Preuves.** Plan daté et sourcé, JSON requête/réponse natifs et empreintes, métadonnées réelles, revues fournies liées aux pièces ; contrat inspection-evidence-v1.
+
+**Hypothèses.** Dates, auteur, provenance, accès et attribution sont déclarés, jamais authentifiés par leurs seules empreintes.
+
+**Indéterminé.** Pièce, revue ou liaison manquante, invalide ou ambiguë ; limites, inconnues et erreurs API conservées.
+
+**Conditions de NA.** Aucune exemption atomique ; absence d’accès ne vaut pas NA.
+
+**Limites.** Dossier de la sélection seulement ; API non live et dernier crawl distinct de la date des champs. Ni état actuel, ni causalité, ni TS12, ni résultats SEO déduits.
+
+### TS08-A03 — Interprétation et décision liées aux preuves.
+
+`TSEP@0.1.0-draft.29:TS08-A03`
+
+**Entrées requises**: search-console, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Ensemble explicite d’URL dont l’état rapporté par Google doit être documenté.
+
+**Méthode.** Lire la revue fournie : verdict API repris exactement, interprétation, relation à l’objectif préalable, portée temporelle, explication typée et décision opérationnelle.
+
+**Attendus.** Toutes les facettes sont qualifiées ; un écart documenté peut passer. Contradiction explicite de verdict/portée ou qualification contradiction donne fail et survit aux inconnues indépendantes. Revue absente ou cause non étayée reste inconclusive.
+
+**Preuves.** Plan daté et sourcé, JSON requête/réponse natifs et empreintes, métadonnées réelles, revues fournies liées aux pièces ; contrat inspection-evidence-v1.
+
+**Hypothèses.** Dates, auteur, provenance, accès et attribution sont déclarés, jamais authentifiés par leurs seules empreintes.
+
+**Indéterminé.** Pièce, revue ou liaison manquante, invalide ou ambiguë ; limites, inconnues et erreurs API conservées.
+
+**Conditions de NA.** Aucune exemption atomique ; absence d’accès ne vaut pas NA.
+
+**Limites.** Dossier de la sélection seulement ; API non live et dernier crawl distinct de la date des champs. Ni état actuel, ni causalité, ni TS12, ni résultats SEO déduits.
 
 ## TS09 — Les exclusions volontaires ont un propriétaire et une justification.
 
@@ -466,7 +538,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.28:TS10-A01`
+`TSEP@0.1.0-draft.29:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -490,7 +562,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.28:TS10-A02`
+`TSEP@0.1.0-draft.29:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -514,7 +586,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.28:TS10-A03`
+`TSEP@0.1.0-draft.29:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -540,7 +612,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.28:TS10-A04`
+`TSEP@0.1.0-draft.29:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 
@@ -1140,7 +1212,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A01 — Cohorte terrain attribuable
 
-`TSEP@0.1.0-draft.28:TS34-A01`
+`TSEP@0.1.0-draft.29:TS34-A01`
 
 **Entrées requises**: field-data, intent.
 
@@ -1164,7 +1236,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A02 — Mesures p75 et classes conservées
 
-`TSEP@0.1.0-draft.28:TS34-A02`
+`TSEP@0.1.0-draft.29:TS34-A02`
 
 **Entrées requises**: field-data, intent.
 
@@ -1188,7 +1260,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A03 — Décision motivée liée aux mesures
 
-`TSEP@0.1.0-draft.28:TS34-A03`
+`TSEP@0.1.0-draft.29:TS34-A03`
 
 **Entrées requises**: field-data, intent.
 
@@ -1236,7 +1308,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A01 — Contexte et mesures de laboratoire reproductibles
 
-`TSEP@0.1.0-draft.28:TS35-A01`
+`TSEP@0.1.0-draft.29:TS35-A01`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1260,7 +1332,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A02 — Hypothèse de diagnostic et prochaine vérification
 
-`TSEP@0.1.0-draft.28:TS35-A02`
+`TSEP@0.1.0-draft.29:TS35-A02`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1380,7 +1452,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS39-A01 — Matrice préalable et configuration revues
 
-`TSEP@0.1.0-draft.28:TS39-A01`
+`TSEP@0.1.0-draft.29:TS39-A01`
 
 **Entrées requises**: configuration, intent.
 
@@ -1404,7 +1476,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS39-A02 — Cohérence des signaux dans chaque contexte
 
-`TSEP@0.1.0-draft.28:TS39-A02`
+`TSEP@0.1.0-draft.29:TS39-A02`
 
 **Entrées requises**: http, content, intent.
 
@@ -1428,7 +1500,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS39-A03 — Attribution des contextes et du cache
 
-`TSEP@0.1.0-draft.28:TS39-A03`
+`TSEP@0.1.0-draft.29:TS39-A03`
 
 **Entrées requises**: configuration, http, logs, intent.
 
@@ -1500,7 +1572,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS41-A01 — Plan préalable et représentativité
 
-`TSEP@0.1.0-draft.28:TS41-A01`
+`TSEP@0.1.0-draft.29:TS41-A01`
 
 **Entrées requises**: configuration, intent.
 
@@ -1524,7 +1596,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS41-A02 — Couverture et fidélité des exécutions
 
-`TSEP@0.1.0-draft.28:TS41-A02`
+`TSEP@0.1.0-draft.29:TS41-A02`
 
 **Entrées requises**: configuration, ci-output, change-history, intent.
 
@@ -1548,7 +1620,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS41-A03 — Exercice négatif et réaction du dispositif
 
-`TSEP@0.1.0-draft.28:TS41-A03`
+`TSEP@0.1.0-draft.29:TS41-A03`
 
 **Entrées requises**: configuration, ci-output, change-history, intent.
 
@@ -1596,7 +1668,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A01 — Usages et mécanismes documentés
 
-`TSEP@0.1.0-draft.28:TS42-A01`
+`TSEP@0.1.0-draft.29:TS42-A01`
 
 **Entrées requises**: operator-docs, intent.
 
@@ -1620,7 +1692,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A02 — Décisions du responsable et arbitrages
 
-`TSEP@0.1.0-draft.28:TS42-A02`
+`TSEP@0.1.0-draft.29:TS42-A02`
 
 **Entrées requises**: intent.
 
@@ -1644,7 +1716,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A03 — Politique capturée et choix effectif
 
-`TSEP@0.1.0-draft.28:TS42-A03`
+`TSEP@0.1.0-draft.29:TS42-A03`
 
 **Entrées requises**: configuration, operator-docs, intent.
 
@@ -1692,7 +1764,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A01 — Client complet et traitement attendu
 
-`TSEP@0.1.0-draft.28:TS43-A01`
+`TSEP@0.1.0-draft.29:TS43-A01`
 
 **Entrées requises**: http, operator-docs, intent.
 
@@ -1716,7 +1788,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A02 — Chaîne rapprochée des journaux
 
-`TSEP@0.1.0-draft.28:TS43-A02`
+`TSEP@0.1.0-draft.29:TS43-A02`
 
 **Entrées requises**: http, logs, intent.
 
@@ -1740,7 +1812,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A03 — Origine du test et identité non inventée
 
-`TSEP@0.1.0-draft.28:TS43-A03`
+`TSEP@0.1.0-draft.29:TS43-A03`
 
 **Entrées requises**: http, intent.
 
@@ -1788,7 +1860,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS44-A01 — Périmètre critique préalable
 
-`TSEP@0.1.0-draft.28:TS44-A01`
+`TSEP@0.1.0-draft.29:TS44-A01`
 
 **Entrées requises**: content, intent.
 
@@ -1812,7 +1884,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS44-A02 — Chemin de livraison sans JavaScript
 
-`TSEP@0.1.0-draft.28:TS44-A02`
+`TSEP@0.1.0-draft.29:TS44-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -1836,7 +1908,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS44-A03 — Cohérence des valeurs et du contexte
 
-`TSEP@0.1.0-draft.28:TS44-A03`
+`TSEP@0.1.0-draft.29:TS44-A03`
 
 **Entrées requises**: http, html, render, content, intent.
 

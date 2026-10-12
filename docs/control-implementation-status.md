@@ -1,9 +1,12 @@
+Priorité du 12 octobre / October12 priority: TS08 puis/then TS12, gel/qualification le14 ; TS36 et TS31–33 ensuite.
+[Contrat TS08](inspection-evidence.md) :47 cas initiaux, 141 couples synthétiques ; les résultats du nouveau commit doivent être vérifiés séparément des campagnes historiques ci-dessous.
+
 # Control implementation status / État de développement des contrôles
 
-## Current snapshot / État actuel — 2026-10-11
+## Current snapshot / État actuel — 2026-10-12
 
-La version locale est **0.1.0-draft.28**. Les versions des outils sont distinctes :
-interpréteur **27**, adaptateur de captures **28**, rejeu **3**. Ces numéros ne
+La version locale est **0.1.0-draft.29**. Les versions des outils sont distinctes :
+interpréteur **28**, adaptateur de captures **29**, rejeu **3**. Ces numéros ne
 prouvent ni une publication distante ni une version stable 1.0. Chaque dossier
 historique reste lié à sa version et à ses empreintes ; il n'est jamais remplacé.
 
@@ -12,11 +15,11 @@ TS10**, avec TS01 comme socle. Il remplace la cible antérieure de dix contrôle
 Le 11 octobre, Bertrand a ajouté explicitement la performance : TS34 et TS35.
 Le même jour, il a demandé les agents IA après les performances : TS42, puis TS43 et TS44.
 Le même jour, il a autorisé TS41, TS39, TS36 et TS31–33. TS41 et TS39 sont intégrés ; TS36 et TS31–33 restent à développer.
-**Dernière priorité donnée le 11 octobre : consolider les 12 contrôles existants, puis aviser pour l’application Edikka.** Achever la vérification du composant rendu déjà engagé ; différer les couches suivantes de TS31–33/TS36. Cette priorité ne déclare pas les 12 usages réels achevés.
+**Priorité historique donnée le 11 octobre : consolider les 12 contrôles existants, puis aviser pour l’application Edikka.** Achever la vérification du composant rendu déjà engagé ; différer les couches suivantes de TS31–33/TS36. Cette priorité ne déclare pas les 12 usages réels achevés.
 Une [base de traitement JSON-LD facultative](jsonld-processing.md), puis une [extraction HTML attribuée avec combinaison des blocs](jsonld-html-observation.md), préparent TS31–33. Une [lecture des états rendus fournis](jsonld-rendered-observation.md) complète ces composants. Ils ne comptent pas comme trois contrôles supplémentaires ; vraie chaîne de capture rendue, base effective authentifiée, vocabulaire, contenu visible, identités et validateurs restent à qualifier.
-La source décrit **44 contrôles**. **Douze** disposent de règles atomiques
-exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS10 (4), TS34 (3), TS35 (2), TS39 (3), TS41 (3), TS42 (3), TS43 (3), TS44 (3),
-soit **33 règles**. Les quatre priorités SEO en représentent 11. Les 32 autres sont décrits,
+La source décrit **44 contrôles**. **Treize** disposent de règles atomiques
+exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS08 (3), TS10 (4), TS34 (3), TS35 (2), TS39 (3), TS41 (3), TS42 (3), TS43 (3), TS44 (3),
+soit **36 règles**. Les quatre priorités SEO en représentent 11. Les 31 autres sont décrits,
 sans le même niveau de règles et d'outillage exécutables.
 
 | Contrôle | Méthode exécutable disponible | Application réelle encore incomplète |
@@ -25,6 +28,7 @@ sans le même niveau de règles et d'outillage exécutables.
 | TS02 | Plan préalable, import d'une décision fournie, liaison aux captures, comparaison des chaînes | Décision réelle du responsable, collecte ultérieure et résultats dans le périmètre décidé |
 | TS04 | Lecteur robots partagé, profils explicites, matrice par origine, ressources requises, parcours de revue et rejeu | Seize chemins autorisés selon la matrice opérateur capturée ; revues motivées manquantes, contrôle entier non établi |
 | TS07 | Directives HTTP/source/rendu, hypothèses source distinctes, objectifs de permissions texte/image/vidéo préalables | Trois sources examinées ne remplacent pas les états rendus attribués et revues exigés ; aucune observation Google déduite |
+| TS08 | Sélection et objectifs préalables, réponses JSON natives, lectures API et décisions fournies ; rapport et rejeu | Aucun dossier réel Edikka évalué ; sélection, objectifs et nouvelles réponses restent à fournir |
 | TS10 | Canonical HTTP avec contexte, source, rendu, sitemaps et liens ; familles déclarées et rejeu | Les populations des campagnes sont distinctes ; qualification des familles, états rendus et revues de contenu encore nécessaires |
 | TS34 | Import CrUX hors ligne : cohorte, période, appareil, p75 et classes ; décision fournie liée aux sources | Aucun nouveau relevé terrain Edikka ; autres formats non qualifiés ; C documentaire ne signifie pas bonnes performances |
 | TS35 | Série Lighthouse : plan préalable, conditions exactes, mesures, dispersion et hypothèse fournie | Aucune nouvelle campagne réelle Edikka ; autres formats et comparaison avant/après non qualifiés |
@@ -45,7 +49,7 @@ explicites ; un ancien dossier ne sélectionne pas automatiquement un nouveau le
 ### Critères d'achèvement encore ouverts
 
 Les contrats bilingues, cas contradictoires, outils d'import, rapports et rejeux
-existent. Leur vérification logicielle ne suffit pas à déclarer les douze
+existent. Leur vérification logicielle ne suffit pas à déclarer les treize
 méthodes entièrement qualifiées dans un usage réel. La suite doit établir une
 voie de preuve praticable pour chaque type d'entrée requis, avec les inconnues
 expliquées. Obtenir C n'est pas une condition : un NC ou NT justifié est utile.
@@ -100,11 +104,11 @@ ni contrôles terminés, ni une revue humaine ou une exécution CI distante.
 
 ## English — current state
 
-The local edition is **0.1.0-draft.28**, with interpreter **27**, capture adapter
-**28** and replay **3**. These version numbers do not establish a public release
+The local edition is **0.1.0-draft.29**, with interpreter **28**, capture adapter
+**29** and replay **3**. These version numbers do not establish a public release
 or stable 1.0. Historical packages keep their exact tools and fingerprints.
 
-Latest October 11 instruction: consolidate the existing 12 controls before deciding the Edikka application; finish verification of the in-flight rendered component, then defer further TS31–33/TS36 layers. Real use remains incomplete.
+Historical October 11 instruction: consolidate the existing 12 controls before deciding the Edikka application; finish verification of the in-flight rendered component, then defer further TS31–33/TS36 layers. Real use remains incomplete.
 Optional [parsed-source marker policy](source-markers.md) is now available through prior profile selection. Three historical Edikka bodies were processed without marker criteria or a new TS01 outcome. Legacy NT reports and the historical lexical proposal remain unchanged; new prior intent and capture are still needed for actual use.
 
 The earlier human priority is four deeply developed controls, TS04/TS02/TS07/TS10,
@@ -113,8 +117,8 @@ controls are specified. On October 11 the user explicitly added TS34/TS35 perfor
 The user then added TS42–TS44 agents, in that order after performance.
 The user also authorized TS41, TS39, TS36 and TS31–33. TS41 and TS39 are integrated; TS36 and TS31–33 remain pending. The controlled TS41 laboratory now links sixteen actual loopback exchanges and child processes to local file actions across six authored scenarios. Scope/final reviews remain fictional; no production or Edikka deployment is established.
 The [controlled TS39 laboratory](delivery-laboratory.md) now retains eight prefrozen scenarios, 38 actual local origin/cache exchanges and repair with explicit purge. Policies and reviews remain authored; no production CDN or Edikka assessment.
-Twelve controls now have 33 executable atomic rules, including 11 for the four SEO
-priorities, five for performance, three for TS39, three for TS41 and nine for TS42/TS43/TS44. The other 32 lack equivalent executable coverage.
+Thirteen controls now have 36 executable atomic rules, including 11 for the four SEO
+priorities, three for TS08, five for performance, three for TS39, three for TS41 and nine for TS42/TS43/TS44. The other 31 lack equivalent executable coverage.
 Optional HTML JSON-LD extraction attributes scripts to source bytes; a supplied-rendered layer now binds planned states and retains their supplied bases, without browser execution. Frozen fixtures and historical Edikka source reanalysis do not complete TS31–33; rendered states, effective bases, vocabulary, visible facts, corpus identity and validators remain to qualify.
 TS42 binds source mappings, supplied owner decisions and tradeoffs to a bounded robots comparison. No real owner approval or agent visit is established. TS43 now supplies planned test-client treatment, reviewed native-log correlation and explicit attribution, with a controlled loopback experiment. Actual operator access/identity/visits remain unestablished. TS44 now has three bounded executable [critical-content rules](critical-content-evidence.md); a controlled laboratory retains six actual loopback exchanges with authored DOM/reviews, while real Edikka application remains pending.
 TS34 imports CrUX cohorts/p75 with exact classes and supplied decisions. TS35 imports
@@ -259,7 +263,7 @@ l’automatisation. Des sous-ensembles utiles existent déjà dans des composant
 | TS05 | Une directive Disallow n’est jamais présentée comme une garantie de désindexation. | Décrit ; règles atomiques à détailler | Formaliser la revue de cohérence exploration/indexation ; aucun Disallow ne vaut preuve de désindexation. |
 | TS06 | Les zones sensibles refusent réellement l’accès au serveur. | Décrit ; règles atomiques à détailler | Définir les tests autorisés sans session, les preuves de configuration et les limites de couverture du cache. |
 | TS07 | Les directives meta robots et X-Robots-Tag sont cohérentes avec l’objectif de la page. | Partiel : 3 règles atomiques | Traiter les limites du lecteur HTML et les revues du plan de rendu et de l’accès. |
-| TS08 | Le statut d’indexation réel est vérifié dans Search Console. | Décrit ; règles atomiques à détailler | Définir les entrées d’inspection datées, champs manquants et rattachement à la propriété ; données réelles ensuite. |
+| TS08 | Le statut d’indexation réel est vérifié dans Search Console. | Trois règles semiAuto, profil natif borné | Dossier de sélection et revues fournies ; essai de compte réel non effectué, aucun état live ou TS12 déduit. |
 | TS09 | Les exclusions volontaires ont un propriétaire et une justification. | Décrit ; règles atomiques à détailler | Structurer famille exclue, justification, propriétaire, échéance et revue réellement réalisée. |
 | TS10 | Chaque page canonique publie une URL absolue, stable et cohérente. | Partiel : 4 règles atomiques | Traiter les refus DOM ; qualifier séparément le candidat structuré et la revue humaine du contenu. |
 | TS11 | Les variantes réellement dupliquées convergent sans masquer des pages distinctes. | Décrit ; règles atomiques à détailler | Détailler les familles et la comparaison éditoriale ; ne pas confondre similarité et duplication. |

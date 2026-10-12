@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '28'
+VERSION = '29'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -34,6 +34,8 @@ def source_files():
     modules['conformance/agent_policy.py'] = importlib.import_module('conformance.agent_policy')
     modules['conformance/agent_access.py'] = importlib.import_module('conformance.agent_access')
     modules['conformance/critical_content.py'] = importlib.import_module('conformance.critical_content')
+    modules['conformance/inspection.py'] = importlib.import_module('conformance.inspection')
+    modules['diagnostics/search_console.py'] = importlib.import_module('diagnostics.search_console')
     modules['conformance/delivery.py'] = importlib.import_module('conformance.delivery')
     modules['experiments/delivery_variants.py'] = importlib.import_module('experiments.delivery_variants')
     modules['conformance/release_invariants.py'] = importlib.import_module('conformance.release_invariants')
@@ -60,6 +62,7 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS08 : sélection et objectifs préalables, JSON API natifs et revues/décisions fournies ; dossier qualifié seulement, aucun état live ou verdict TS12.','en':'TS08: prior selection/objectives, native API JSON and supplied reviews/decisions; documentation only, no live state or TS12 verdict.'},
     {'state':'implemented', 'fr':'TS01-A02 : identity_reader html-tree-markers-v1 préalable, segments parsés attribués et deux hypothèses globales. CRLF/CR bruts deviennent LF ; critères littéraux inchangés. Ni visibilité ni navigateur observés. Ancien lecteur et priorités URL/empreinte/stabilité conservés ; Node 24 requis pour cette seule branche, sans repli.',
      'en':'TS01-A02: prior html-tree-markers-v1 identity_reader, attributed parsed segments and two whole-document hypotheses. Raw CRLF/CR become LF; literal criteria unchanged. No visibility or browser observation. Historical reader and URL/hash/stability precedence retained; Node 24 required for this branch, without fallback.'},
     {'state':'implemented','fr':'TS39 : matrice/configuration revues, signaux natifs TS07/TS10 et revues sémantiques, contextes et cache liés aux preuves fournies. Aucune région, visite Googlebot ou production authentifiée.',
@@ -206,6 +209,9 @@ def pieces(target):
         if 'delivery_semantic_reviews' in target:result['content']={'delivery_semantic_reviews':target['delivery_semantic_reviews']}
         logs={k:target[k] for k in ('delivery_context_reviews','delivery_cache_records') if k in target}
         if logs:result['logs']=logs
+    if 'inspection' in target.get('intent', {}):
+        result['intent'] = {k:target[k] for k in ('intent','context','inspection_plan_review','inspection_reviews') if k in target}
+        if 'inspection_records' in target:result['search-console'] = target['inspection_records']
     return result
 
 
@@ -307,6 +313,11 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         if 'delivery' in target.get('intent',{}):
             tsep.require((target.get('delivery_synthetic') is True)==(access=='synthetic'),
                          'Delivery synthetic provenance differs from evidence access')
+            delivery_provenance(target)
+    for target in data['targets']:
+        if 'inspection' in target.get('intent',{}):
+            tsep.require((target.get('inspection_synthetic') is True)==(access=='synthetic'), 'Inspection provenance differs from access')
+            tsep.require(access in ('synthetic','restricted'), 'Account inspection data requires restricted access')
             delivery_provenance(target)
     synthetic_dom(evidence_targets)
     for target in evidence_targets:
@@ -431,6 +442,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += '\n'.join(a['rule_id'] + ' — ' + a['reason'] for a in rows)
                 if cid == 'TS42':
                     report['results'][i]['reason'] += ' Usages déclarés et pièces fournies seulement / Declared usages and supplied evidence only; no real agent visit, identity, operator compliance or citation established.'
+                if cid == 'TS08':
+                    report['results'][i]['reason'] += ' Dossier de la sélection / Selected-set documentation; Google API verdict is distinct, no live state, indexing promise or TS12 outcome.'
                 if cid == 'TS39':
                     report['results'][i]['reason'] += ' Matrice de diffusion déclarée et preuves fournies / Declared delivery matrix and supplied evidence; native tests are not whole-control assessments, no actual Googlebot visit, region or cache cause without qualified linked evidence.'
                 if cid == 'TS44':
