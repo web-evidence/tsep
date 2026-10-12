@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '29'
+VERSION = '30'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -34,6 +34,7 @@ def source_files():
     modules['conformance/agent_policy.py'] = importlib.import_module('conformance.agent_policy')
     modules['conformance/agent_access.py'] = importlib.import_module('conformance.agent_access')
     modules['conformance/critical_content.py'] = importlib.import_module('conformance.critical_content')
+    modules['conformance/canonical_comparison.py'] = importlib.import_module('conformance.canonical_comparison')
     modules['conformance/inspection.py'] = importlib.import_module('conformance.inspection')
     modules['diagnostics/search_console.py'] = importlib.import_module('diagnostics.search_console')
     modules['conformance/delivery.py'] = importlib.import_module('conformance.delivery')
@@ -62,6 +63,7 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS12 : comparaisons littérales API/HTTP/HTML/DOM prévus et revues fournies ; C documentaire, jamais canonical correcte, TS10 ou indexation. Rendu absent : NT sauf contradiction indépendante.', 'en':'TS12: literal API/HTTP/HTML/planned DOM comparisons and supplied reviews; documentary C, never correct canonical, TS10 or indexing. Missing rendering: NT unless independent contradiction.'},
     {'state':'implemented','fr':'TS08 : sélection et objectifs préalables, JSON API natifs et revues/décisions fournies ; dossier qualifié seulement, aucun état live ou verdict TS12.','en':'TS08: prior selection/objectives, native API JSON and supplied reviews/decisions; documentation only, no live state or TS12 verdict.'},
     {'state':'implemented', 'fr':'TS01-A02 : identity_reader html-tree-markers-v1 préalable, segments parsés attribués et deux hypothèses globales. CRLF/CR bruts deviennent LF ; critères littéraux inchangés. Ni visibilité ni navigateur observés. Ancien lecteur et priorités URL/empreinte/stabilité conservés ; Node 24 requis pour cette seule branche, sans repli.',
      'en':'TS01-A02: prior html-tree-markers-v1 identity_reader, attributed parsed segments and two whole-document hypotheses. Raw CRLF/CR become LF; literal criteria unchanged. No visibility or browser observation. Historical reader and URL/hash/stability precedence retained; Node 24 required for this branch, without fallback.'},
@@ -210,7 +212,7 @@ def pieces(target):
         logs={k:target[k] for k in ('delivery_context_reviews','delivery_cache_records') if k in target}
         if logs:result['logs']=logs
     if 'inspection' in target.get('intent', {}):
-        result['intent'] = {k:target[k] for k in ('intent','context','inspection_plan_review','inspection_reviews') if k in target}
+        result['intent'] = {k:target[k] for k in ('intent','context','inspection_plan_review','inspection_reviews','comparison_reviews') if k in target}
         if 'inspection_records' in target:result['search-console'] = target['inspection_records']
     return result
 
@@ -442,6 +444,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += '\n'.join(a['rule_id'] + ' — ' + a['reason'] for a in rows)
                 if cid == 'TS42':
                     report['results'][i]['reason'] += ' Usages déclarés et pièces fournies seulement / Declared usages and supplied evidence only; no real agent visit, identity, operator compliance or citation established.'
+                if cid == 'TS12':
+                    report['results'][i]['reason'] += ' Comparaison documentaire des surfaces HTTP/HTML et états DOM prévus / Documentary comparison of HTTP/HTML and declared DOM states; literal strings, no semantic URL equivalence, TS10, current selection or indexing inferred.'
                 if cid == 'TS08':
                     report['results'][i]['reason'] += ' Dossier de la sélection / Selected-set documentation; Google API verdict is distinct, no live state, indexing promise or TS12 outcome.'
                 if cid == 'TS39':

@@ -1,9 +1,9 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.29",
+  "version": "0.1.0-draft.30",
   "status": "draft",
-  "date": "2026-10-11",
+  "date": "2026-10-12",
   "languages": [
     "en",
     "fr"
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.29"
+      "rule_version": "0.1.0-draft.30"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.29",
+      "rule_version": "0.1.0-draft.30",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.29",
+      "rule_version": "0.1.0-draft.30",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.29"
+      "rule_version": "0.1.0-draft.30"
     },
     {
       "id": "TS08",
@@ -926,7 +926,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.29",
+      "rule_version": "0.1.0-draft.30",
       "rules": [
         {
           "automation": "semiAuto",
@@ -1372,7 +1372,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.29"
+      "rule_version": "0.1.0-draft.30"
     },
     {
       "id": "TS11",
@@ -1447,7 +1447,9 @@
       "unit": "url-set",
       "required_inputs": [
         "search-console",
+        "http",
         "html",
+        "render",
         "intent"
       ],
       "applicability": {
@@ -1455,12 +1457,12 @@
         "en": "URLs whose Google canonical must be compared with the declared canonical."
       },
       "procedure": {
-        "fr": "Inspecter les URL prioritaires et consigner canonique utilisateur et canonique Google.",
-        "en": "Inspect priority URLs and record the user-declared and Google-selected canonicals."
+        "fr": "Déclarer préférence sourcée, lecteurs et états rendus ; attribuer JSON API et captures, comparer les chaînes et conserver revues/décisions selon google-canonical-comparison-v1.",
+        "en": "Declare sourced preference, readers and rendered states; attribute API JSON and captures, compare literal strings and retain supplied reviews/decisions under google-canonical-comparison-v1."
       },
       "acceptance": {
-        "fr": "Les deux valeurs sont datées et comparées ; chaque divergence dispose d’une qualification et d’une décision.",
-        "en": "Both values are timestamped and compared; each discrepancy has an assessment and a decision."
+        "fr": "Plan préalable et toutes les surfaces prévues qualifiés ; valeurs conservées avec dates séparées et décisions liées. C documentaire, jamais égalité canonique ; divergences documentées admises.",
+        "en": "Qualified prior plan and all planned surfaces; retained values, separate dates and bound decisions. Documentary C, never canonical equality; documented differences allowed."
       },
       "non_applicability": {
         "fr": "Google explicitement hors périmètre ; manque d’accès classé NT.",
@@ -1471,8 +1473,8 @@
         "en": "Agreement or a qualified, addressed divergence."
       },
       "limitations": {
-        "fr": "La canonique Google peut évoluer après une nouvelle exploration.",
-        "en": "Google’s selected canonical can change after recrawling."
+        "fr": "Rendu requis manquant ou canonical Google absente : indéterminé. Comparaison littérale sans équivalence d’URL, état live, causalité, TS10 ou indexation déduits.",
+        "en": "Missing required rendering or absent Google canonical: inconclusive. Literal comparison without inferred URL equivalence, live state, causality, TS10 or indexing."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -1490,7 +1492,151 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.30",
+      "rules": [
+        {
+          "id": "TS12-A01",
+          "title": {
+            "fr": "Plan de comparaison préalable qualifié.",
+            "en": "Qualified prior comparison plan."
+          },
+          "automation": "semiAuto",
+          "required_inputs": [
+            "intent",
+            "search-console",
+            "http"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Ensemble sélectionné dont les canonical rapportées et capturées doivent être comparées.",
+            "en": "Selected set whose reported and captured canonicals must be compared."
+          },
+          "procedure": {
+            "fr": "Déclarer sélection/objectifs, connaissances antérieures, préférence sourcée, lecteurs et états rendus ; qualifier le plan lié avant chaque acquisition.",
+            "en": "Declare selection/objectives, prior knowledge, sourced preference, readers and rendered states; qualify the bound plan before every acquisition."
+          },
+          "acceptance": {
+            "fr": "Jugements selection/objectives/preferences/surfaces/temporal_policy supported, ordre préalable et ensemble complet. Contradiction fournie ou acquisition avant plan : fail ; lacune : inconclusive.",
+            "en": "Supported selection/objectives/preferences/surfaces/temporal_policy judgments, prior chronology and complete set. Supplied contradiction or acquisition before plan fails; gaps are inconclusive."
+          },
+          "evidence": {
+            "fr": "Plan/revue préalables, JSON API natifs, traces HTTP, états DOM structurés fournis et revues liées aux pièces exactes ; contrat canonical-comparison-v1.",
+            "en": "Prior plan/review, native API JSON, HTTP traces, supplied structured DOM states and reviews bound to exact evidence; canonical-comparison-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Données, dates, provenance et jugements fournis ; empreintes sans authentification de personne, navigation ou histoire.",
+            "en": "Supplied data, dates, provenance and judgments; hashes do not authenticate people, navigation or history."
+          },
+          "inconclusive": {
+            "fr": "Pièce, état requis, valeur, politique, revue ou liaison absente/inconnue/invalide ; limites et erreurs conservées.",
+            "en": "Missing/unknown/invalid evidence, required state, value, policy, review or binding; retain limits and errors."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; manque d’accès ou de rendu ne vaut pas NA.",
+            "en": "No atomic exemption; lack of access or rendering is not NA."
+          },
+          "limitations": {
+            "fr": "Rendu requis manquant ou canonical Google absente : indéterminé. Comparaison littérale sans équivalence d’URL, état live, causalité, TS10 ou indexation déduits.",
+            "en": "Missing required rendering or absent Google canonical: inconclusive. Literal comparison without inferred URL equivalence, live state, causality, TS10 or indexing."
+          }
+        },
+        {
+          "id": "TS12-A02",
+          "title": {
+            "fr": "Lectures et comparaisons attribuées complètes.",
+            "en": "Complete attributed readings and comparisons."
+          },
+          "automation": "semiAuto",
+          "required_inputs": [
+            "search-console",
+            "http",
+            "html",
+            "render",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Ensemble sélectionné dont les canonical rapportées et capturées doivent être comparées.",
+            "en": "Selected set whose reported and captured canonicals must be compared."
+          },
+          "procedure": {
+            "fr": "Lire les pièces natives et les deux hypothèses HTML statiques ; conserver les candidats HTTP/HTML/DOM, les dates et les comparaisons littérales distinctes.",
+            "en": "Read native evidence and both static HTML hypotheses; retain separate HTTP/HTML/DOM candidates, dates and literal comparisons."
+          },
+          "acceptance": {
+            "fr": "API qualifiée, Google canonical présente, HTTP/HTML et tous les états DOM prévus lisibles ; seuils préalables respectés, aucun doublon fusionné. Différence de valeurs admise ; source seule/absence Google = inconclusive.",
+            "en": "Qualified API, present Google canonical, readable HTTP/HTML and every planned DOM state; prior thresholds satisfied, duplicates retained. Different values allowed; source-only/absent Google remains inconclusive."
+          },
+          "evidence": {
+            "fr": "Plan/revue préalables, JSON API natifs, traces HTTP, états DOM structurés fournis et revues liées aux pièces exactes ; contrat canonical-comparison-v1.",
+            "en": "Prior plan/review, native API JSON, HTTP traces, supplied structured DOM states and reviews bound to exact evidence; canonical-comparison-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Données, dates, provenance et jugements fournis ; empreintes sans authentification de personne, navigation ou histoire.",
+            "en": "Supplied data, dates, provenance and judgments; hashes do not authenticate people, navigation or history."
+          },
+          "inconclusive": {
+            "fr": "Pièce, état requis, valeur, politique, revue ou liaison absente/inconnue/invalide ; limites et erreurs conservées.",
+            "en": "Missing/unknown/invalid evidence, required state, value, policy, review or binding; retain limits and errors."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; manque d’accès ou de rendu ne vaut pas NA.",
+            "en": "No atomic exemption; lack of access or rendering is not NA."
+          },
+          "limitations": {
+            "fr": "Rendu requis manquant ou canonical Google absente : indéterminé. Comparaison littérale sans équivalence d’URL, état live, causalité, TS10 ou indexation déduits.",
+            "en": "Missing required rendering or absent Google canonical: inconclusive. Literal comparison without inferred URL equivalence, live state, causality, TS10 or indexing."
+          }
+        },
+        {
+          "id": "TS12-A03",
+          "title": {
+            "fr": "Qualification et décision liées aux comparaisons.",
+            "en": "Qualification and decision bound to comparisons."
+          },
+          "automation": "semiAuto",
+          "required_inputs": [
+            "search-console",
+            "http",
+            "html",
+            "render",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Ensemble sélectionné dont les canonical rapportées et capturées doivent être comparées.",
+            "en": "Selected set whose reported and captured canonicals must be compared."
+          },
+          "procedure": {
+            "fr": "Examiner les revendications de valeurs de chaque surface dans une revue fournie liée aux pièces, avec interprétation, temporalité, changements, objectif, explication et décision.",
+            "en": "Examine every surface value claim in a supplied evidence-bound review with interpretation, chronology, changes, objective, explanation and decision."
+          },
+          "acceptance": {
+            "fr": "Revendications fidèles aux listes connues, qualification supported, relation et décision motivées. Une revendication contredite conserve fail malgré une autre inconnue ; revue absente ou cause non établie hors profil : inconclusive.",
+            "en": "Claims match known lists, supported qualification, reasoned relation and decision. A contradicted claim retains fail despite another unknown; missing review or unsupported established-cause assertion is inconclusive."
+          },
+          "evidence": {
+            "fr": "Plan/revue préalables, JSON API natifs, traces HTTP, états DOM structurés fournis et revues liées aux pièces exactes ; contrat canonical-comparison-v1.",
+            "en": "Prior plan/review, native API JSON, HTTP traces, supplied structured DOM states and reviews bound to exact evidence; canonical-comparison-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Données, dates, provenance et jugements fournis ; empreintes sans authentification de personne, navigation ou histoire.",
+            "en": "Supplied data, dates, provenance and judgments; hashes do not authenticate people, navigation or history."
+          },
+          "inconclusive": {
+            "fr": "Pièce, état requis, valeur, politique, revue ou liaison absente/inconnue/invalide ; limites et erreurs conservées.",
+            "en": "Missing/unknown/invalid evidence, required state, value, policy, review or binding; retain limits and errors."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; manque d’accès ou de rendu ne vaut pas NA.",
+            "en": "No atomic exemption; lack of access or rendering is not NA."
+          },
+          "limitations": {
+            "fr": "Rendu requis manquant ou canonical Google absente : indéterminé. Comparaison littérale sans équivalence d’URL, état live, causalité, TS10 ou indexation déduits.",
+            "en": "Missing required rendering or absent Google canonical: inconclusive. Literal comparison without inferred URL equivalence, live state, causality, TS10 or indexing."
+          }
+        }
+      ]
     },
     {
       "id": "TS13",
@@ -2787,7 +2933,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.29",
+      "rule_version": "0.1.0-draft.30",
       "rules": [
         {
           "id": "TS34-A01",
@@ -2982,7 +3128,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.29",
+      "rule_version": "0.1.0-draft.30",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3316,7 +3462,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.29",
+      "rule_version": "0.1.0-draft.30",
       "rules": [
         {
           "applicability": {
@@ -3575,7 +3721,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.29",
+      "rule_version": "0.1.0-draft.30",
       "rules": [
         {
           "applicability": {
@@ -3776,7 +3922,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.29",
+      "rule_version": "0.1.0-draft.30",
       "rules": [
         {
           "id": "TS42-A01",
@@ -3973,7 +4119,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.29",
+      "rule_version": "0.1.0-draft.30",
       "rules": [
         {
           "id": "TS43-A01",
@@ -4175,7 +4321,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.29",
+      "rule_version": "0.1.0-draft.30",
       "rules": [
         {
           "na_inputs": [],
@@ -4467,15 +4613,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "6c95481086dfc05ac33b9d7809e15ef413fa6dd5020a2520ea4172db933c3ad9"
+      "sha256": "cb584052efea05c3f0d641be27916423db514954e998380c9ab50e595df8c2f4"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "c960db15f138140ccba0c4d78800815ac93e69a48d6a8f2e5f8fc94656248faf"
+      "sha256": "769490aabe710d5bfa9bd613027933c331d2001316c7c040314b88b8a056abe6"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "fac9bf356143a0bf44aaa05f26a8a23da25debed25a9378b5cc6ba81716e6d90"
+      "sha256": "2f6eb2ac04f761873d1977126da8afbb22140156a5b59db5bea4020b3c2d2f48"
     },
     {
       "path": "docs/source-directives.md",

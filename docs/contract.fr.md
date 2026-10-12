@@ -1,6 +1,8 @@
+Draft.30 ajoute TS12-A01/A02/A03 : plan, comparaisons attribuées et revue/décision fournie. [Contrat bilingue](canonical-comparison.md), [migration](migration-draft.30.md). Rendu prévu requis ; C documentaire, pas TS10 ni indexation.
+
 Draft.29 ajoute trois règles TS08 : périmètre/objectifs, inspections natives et revues/décisions liées. [Contrat bilingue](inspection-evidence.md), [migration](migration-draft.29.md). C qualifie le dossier sélectionné, jamais une indexation garantie.
 
-# Contrat de rapport — TSEP 0.1.0-draft.29
+# Contrat de rapport — TSEP 0.1.0-draft.30
 
 ### Diffusion et variantes — draft.27
 
@@ -124,7 +126,7 @@ affecte les déclarations, même si le validateur ne peut pas déterminer ce bes
 La CLI vérifie les déclarations, références et couvertures, pas la justesse de la
 lecture HTTP/HTML, de l’intention ou des exemptions. Les cas de méthode historiques
 ont des verdicts rédigés. La [suite exécutable distincte](conformance.md) interprète
-les entrées brutes de trente-six règles dans des limites documentées ; elle
+les entrées brutes de trente-neuf règles dans des limites documentées ; elle
 n’implémente pas tous les contrôles. Aucun C ne
 s’étend aux contrôles non sélectionnés, à un site entier ou à l’indexation réelle.
 Voir [migration et cas](migration-draft.2.md).

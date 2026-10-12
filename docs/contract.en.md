@@ -1,6 +1,8 @@
+Draft.30 adds TS12-A01/A02/A03: plan, attributed comparisons and supplied review/decision. [Bilingual contract](canonical-comparison.md), [migration](migration-draft.30.md). Planned rendering required; documentary C, not TS10 or indexing.
+
 Draft.29 adds three TS08 rules: scope/objectives, native inspections and bound reviews/decisions. [Bilingual contract](inspection-evidence.md), [migration](migration-draft.29.md). C qualifies selected-set documentation, never guaranteed indexing.
 
-# Report contract — TSEP 0.1.0-draft.29
+# Report contract — TSEP 0.1.0-draft.30
 
 ### Delivery variants — draft.27
 
@@ -124,7 +126,7 @@ declarations, although the validator cannot determine that need.
 
 The CLI checks declarations, references and coverage, not the correctness of
 HTTP/HTML interpretation, intent or exemptions. The historical method fixtures have authored reference verdicts. The separate
-[executable conformance suite](conformance.md) interprets raw inputs for thirty-six rules
+[executable conformance suite](conformance.md) interprets raw inputs for thirty-nine rules
 within documented bounds; it does not implement all controls. No C extends to unselected
 controls, an entire site or actual indexing. See [migration and cases](migration-draft.2.md).
 

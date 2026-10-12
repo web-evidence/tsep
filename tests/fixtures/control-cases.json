@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.29",
+  "protocol_version": "0.1.0-draft.30",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -4868,6 +4868,326 @@
           "evidence_ids": [
             "search-console",
             "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS12-authored-qualified-agreement",
+      "control_id": "TS12",
+      "description": {
+        "fr": "Agrégation fictive TS12 : qualified-agreement ; aucun compte, navigateur ou relecteur réel.",
+        "en": "Authored TS12 aggregation: qualified-agreement; no actual account, browser or reviewer."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "search-console": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "http": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "html": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "render": "SYNTHETIC authored aggregation; native counterexamples retained separately."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS12-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : qualified-agreement ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: qualified-agreement; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : qualified-agreement ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: qualified-agreement; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : qualified-agreement ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: qualified-agreement; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS12-authored-contradicted-plan-preference",
+      "control_id": "TS12",
+      "description": {
+        "fr": "Agrégation fictive TS12 : contradicted-plan-preference ; aucun compte, navigateur ou relecteur réel.",
+        "en": "Authored TS12 aggregation: contradicted-plan-preference; no actual account, browser or reviewer."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "search-console": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "http": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "html": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "render": "SYNTHETIC authored aggregation; native counterexamples retained separately."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS12-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : contradicted-plan-preference ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: contradicted-plan-preference; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : contradicted-plan-preference ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: contradicted-plan-preference; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : contradicted-plan-preference ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: contradicted-plan-preference; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS12-authored-wrong-request-url",
+      "control_id": "TS12",
+      "description": {
+        "fr": "Agrégation fictive TS12 : wrong-request-url ; aucun compte, navigateur ou relecteur réel.",
+        "en": "Authored TS12 aggregation: wrong-request-url; no actual account, browser or reviewer."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "search-console": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "http": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "html": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "render": "SYNTHETIC authored aggregation; native counterexamples retained separately."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS12-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : wrong-request-url ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: wrong-request-url; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : wrong-request-url ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: wrong-request-url; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : wrong-request-url ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: wrong-request-url; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS12-authored-wrong-google-claim",
+      "control_id": "TS12",
+      "description": {
+        "fr": "Agrégation fictive TS12 : wrong-google-claim ; aucun compte, navigateur ou relecteur réel.",
+        "en": "Authored TS12 aggregation: wrong-google-claim; no actual account, browser or reviewer."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "search-console": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "http": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "html": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "render": "SYNTHETIC authored aggregation; native counterexamples retained separately."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS12-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : wrong-google-claim ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: wrong-google-claim; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : wrong-google-claim ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: wrong-google-claim; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : wrong-google-claim ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: wrong-google-claim; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS12-authored-missing-member",
+      "control_id": "TS12",
+      "description": {
+        "fr": "Agrégation fictive TS12 : missing-member ; aucun compte, navigateur ou relecteur réel.",
+        "en": "Authored TS12 aggregation: missing-member; no actual account, browser or reviewer."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "search-console": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "http": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "html": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "render": "SYNTHETIC authored aggregation; native counterexamples retained separately."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS12-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : missing-member ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: missing-member; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : missing-member ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: missing-member; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : missing-member ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: missing-member; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
           ]
         }
       ],

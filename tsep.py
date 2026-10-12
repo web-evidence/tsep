@@ -283,6 +283,10 @@ def decision(report, controls=None):
              if a['rule_id'] == 'TS10-A04' and any(reader + ':' in a['reason']
                  for reader in ('html-tree-links-v1', 'html-tree-links-v2'))]
     if notes: summary['scope_notes'] = notes
+    if any(r['control_id']=='TS12' for r in report['results']):
+        summary['canonical_comparison_interpretation'] = {
+            'fr':'TS12 qualifie le dossier des surfaces HTTP/HTML et états DOM prévus ; comparaisons littérales, pas équivalence d’URL, canonical correcte, TS10 ou indexation.',
+            'en':'TS12 qualifies documentation of HTTP/HTML and planned DOM states; literal comparison, not URL equivalence, correct canonical, TS10 or indexing.'}
     performance = [{'control_id': r['control_id'], 'status': r['status'], 'reason': r['reason']}
                    for r in report['results'] if r['control_id'] in ('TS34', 'TS35')]
     if performance:

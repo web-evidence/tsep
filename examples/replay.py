@@ -75,7 +75,12 @@ def generate(output_root=ROOT):
         result.append({'case': case, 'status': status, 'decision': summary['decision']})
     # Raw adapter demonstrations are controlled derivatives, with no expected verdicts.
     corpus = {case['id']: case['input'] for case in tsep.read_json(ROOT.parent/'conformance/cases.json')['cases']}
-    capture_examples = {'ts08-qualified': ('inspection-v1-qualified-positive', ['TS08-A01','TS08-A02','TS08-A03']),
+    capture_examples = {
+                        'ts12-agreement': ('canonical-comparison-v1-qualified-agreement', ['TS12-A01','TS12-A02','TS12-A03']),
+                        'ts12-divergence': ('canonical-comparison-v1-qualified-divergence', ['TS12-A01','TS12-A02','TS12-A03']),
+                        'ts12-contradiction': ('canonical-comparison-v1-wrong-google-and-missing-render', ['TS12-A01','TS12-A02','TS12-A03']),
+                        'ts12-source-only': ('canonical-comparison-v1-source-only', ['TS12-A01','TS12-A02','TS12-A03']),
+                        'ts08-qualified': ('inspection-v1-qualified-positive', ['TS08-A01','TS08-A02','TS08-A03']),
                         'ts08-negative-documented': ('inspection-v1-negative-explained-without-cause', ['TS08-A01','TS08-A02','TS08-A03']),
                         'ts08-review-missing': ('inspection-v1-missing-review', ['TS08-A01','TS08-A02','TS08-A03']),
                         'ts39-qualified': ('delivery-evidence-qualified-cache', ['TS39-A01','TS39-A02','TS39-A03']),

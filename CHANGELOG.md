@@ -1,3 +1,9 @@
+## 0.1.0-draft.30 — local candidate, 2026-10-12
+
+FR : TS12 ajoute plan, lectures natives API/HTTP/HTML/DOM et qualification/décision fournie. Rendu prévu requis, comparaisons littérales sans verdict TS10. 66 cas figés/198 couples ; 36 règles et 1 304 cas antérieurs préservés. Import hors ligne avec revues vides, preuves, FR/EN et rejeu ; aucune collecte réelle ni publication.
+
+EN: TS12 adds prior plan, native API/HTTP/HTML/DOM comparisons and supplied qualification/decision. Planned rendering required; literal comparisons are not TS10 outcomes. 66 frozen cases/198 pairs, unchanged36 older rules/1,304 cases. Offline intake with blank reviews, evidence, FR/EN and replay; no actual collection or publication. [Migration](docs/migration-draft.30.md).
+
 # 0.1.0-draft.29 — local candidate
 
 TS08 : trois règles semiAuto, JSON API natifs, plan/revues liés, décisions typées, rapports FR/EN et rejeu. Google PASS ne devient pas C ; données anciennes, absences, erreurs et contradictions restent visibles. TS12 reste en attente.

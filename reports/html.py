@@ -12,12 +12,17 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '12'
+VERSION = '13'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'comparison_note': 'TS12 : dossier de comparaison HTTP/HTML et états DOM prévus. Égalité littérale ≠ équivalence d’URL ; ni canonical correcte, ni TS10, ni indexation déduits.',
+        'comparison_values': 'Comparaisons attribuées et revue fournie',
+        'comparison_surface': 'Surface', 'comparison_state': 'État de lecture',
+        'comparison_present': 'Valeur(s) présente(s)', 'comparison_absent': 'Absence qualifiée',
+        'comparison_dates': 'Dates distinctes : acquisition API / capture technique',
         'inspection_note': 'TS08 : dossier de la sélection, pas un état live ni une garantie d’indexation. Verdict Google, observations et décisions TSEP restent distincts.',
         'inspection_values': 'Lectures de l’API et qualification fournie',
         'delivery_note': 'TS39 compare les cellules déclarées à leur politique. Les variations légitimes restent distinctes des défauts. Revues et traces fournies ; aucune visite réelle Googlebot ou couverture de tous les POP déduite.',
@@ -103,6 +108,11 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'comparison_note': 'TS12: comparison dossier for HTTP/HTML and planned DOM states. Literal equality is not URL equivalence; no correct canonical, TS10 or indexing inferred.',
+        'comparison_values': 'Attributed comparisons and supplied review',
+        'comparison_surface': 'Surface', 'comparison_state': 'Reading state',
+        'comparison_present': 'Present value(s)', 'comparison_absent': 'Qualified absence',
+        'comparison_dates': 'Separate dates: API retrieval / technical capture',
         'inspection_note': 'TS08: selected-set documentation, not live state or guaranteed indexing. Google verdict, observations and TSEP decisions remain distinct.',
         'inspection_values': 'API readings and supplied qualification',
         'delivery_note': 'TS39 compares declared cells against policy. Legitimate variation remains distinct from defects. Supplied reviews and traces; no actual Googlebot visit or whole-POP coverage inferred.',
@@ -413,6 +423,38 @@ def release_values(atom, words):
     return out+'<details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(reason)+'</pre></details>'
 
 
+def comparison_values(atom, words):
+    prefix = 'Canonical comparison evidence / preuves de comparaison: '
+    reason = atom.get('reason', '')
+    if not reason.startswith(prefix): return ''
+    try:
+        note = json.loads(reason[len(prefix):])
+        if not isinstance(note, dict): return ''
+    except (ValueError, TypeError): return ''
+    out = ''
+    for member in note.get('members', []):
+        out += '<p><strong>'+esc(member.get('url',''))+'</strong></p><p>'+esc(words['comparison_dates'])+': '
+        out += esc(member.get('retrieved_at', words['not_supplied']))+' / '+esc(member.get('observed_at',words['not_supplied']))+'</p>'
+        out += '<div class="table-wrap"><table><caption>'+esc(words['comparison_values'])+'</caption><thead><tr>'
+        out += ''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('comparison_surface','comparison_state','metric_value'))+'</tr></thead><tbody>'
+        for name, fact in member.get('facts',{}).items():
+            state = fact.get('state','unknown')
+            label = words.get('comparison_'+state, words['unknown'])
+            out += '<tr><th scope="row">'+esc(name)+'</th><td>'+esc(label)+'</td><td>'+esc(pretty(fact.get('values',[])))
+            if fact.get('reason'): out += '<p>'+esc(fact['reason'])+'</p>'
+            out += '</td></tr>'
+        out += '</tbody></table></div>'
+        if member.get('comparisons'):
+            out += '<details><summary>'+esc(words['comparison'])+'</summary><pre>'+esc(pretty(member['comparisons']))+'</pre></details>'
+        if member.get('supplied_review'):
+            out += '<details><summary>'+esc(words['comparison_values'])+'</summary><pre>'+esc(pretty(member['supplied_review']))+'</pre></details>'
+    out += '<div class="table-wrap"><table><thead><tr>'
+    out += ''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('release_subject','result','reason'))+'</tr></thead><tbody>'
+    for row in note.get('rows',[]):
+        out += '<tr><th scope="row">'+esc(row.get('subject',''))+'</th><td>'+esc(words.get(row.get('outcome'),words['unknown']))+'</td><td>'+esc(row.get('reason',''))+'</td></tr>'
+    return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
+
+
 def inspection_values(atom, words):
     prefix = 'Inspection evidence / preuves d’inspection: '
     reason = atom.get('reason', '')
@@ -461,6 +503,8 @@ def results(bundle, controls, words, language):
         out += '<article class="card control"><div class="row"><div><span class="eyebrow">' + esc(cid) + '</span><h3 class="control-title">' + esc(control['title'][language]) + '</h3></div>' + badge(result['status'], words) + '</div>'
         if cid in ('TS34', 'TS35'):
             out += performance_values(result, words)
+        if cid == 'TS12':
+            out += '<div class="notice">' + esc(words['comparison_note']) + '</div>'
         if cid == 'TS08':
             out += '<div class="notice">' + esc(words['inspection_note']) + '</div>'
         if cid == 'TS39':
@@ -480,7 +524,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

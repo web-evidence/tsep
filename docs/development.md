@@ -1,4 +1,8 @@
-Current local integration: draft.29, interpreter28 / adapter29 / HTML12 / replay3.
+Current local work: draft.30, interpreter29 / adapter30 / HTML13 / replay3.
+TS12 [contract](canonical-comparison.md), [intake](canonical-comparison-intake.md), [migration](migration-draft.30.md).
+FR/EN: 14 contrôles outillés / tooled controls, 39 règles / rules; supplied rendered states required, no real account/browser trial inferred.
+
+Historical integration: draft.29, interpreter28 / adapter29 / HTML12 / replay3.
 TS08 [inspection evidence](inspection-evidence.md), [intake](search-console-acquisition.md), [migration](migration-draft.29.md).
 FR : priorité du sprint du 12–14 octobre : TS08 puis TS12 ; qualification et gel mercredi. TS36 puis TS31–33 ensuite.
 EN:13 tooled controls /36 rules; supplied API/review qualification only, no actual account assessment or new remote CI.

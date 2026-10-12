@@ -1,4 +1,7 @@
-Current addition / Ajout courant — draft.29: TS08-A01/A02/A03, 47 authored cases / 141 pairs. Corpus: 1,304 cases / 2,549 pairs, 36 rules.
+Current addition / Ajout courant — draft.30: TS12-A01/A02/A03, 66 authored cases / 198 pairs. Corpus: 1,370 cases / 2,747 pairs, 39 rules.
+FR/EN: 1,304 historical case objects unchanged; supplied API/DOM/reviews are synthetic. [Migration](migration-draft.30.md).
+
+Historical addition / Ajout historique — draft.29: TS08-A01/A02/A03, 47 authored cases / 141 pairs. Corpus: 1,304 cases / 2,549 pairs, 36 rules.
 FR : les 1 257 cas historiques restent intacts ; 47 cas TS08 synthétiques, aucune application réelle déduite.
 EN: all 1,257 historical cases remain unchanged; 47 synthetic TS08 cases, no real account assessment inferred. [Migration](migration-draft.29.md).
 

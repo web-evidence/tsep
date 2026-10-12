@@ -1,4 +1,6 @@
-Local development edition: **0.1.0-draft.29** — [TS08 supplied inspections and decisions](docs/inspection-evidence.md), [acquisition/intake](docs/search-console-acquisition.md), [migration](docs/migration-draft.29.md). Thirteen tooled controls /36 rules; no real Edikka assessment inferred.
+Local development edition: **0.1.0-draft.30** — [TS12 comparisons](docs/canonical-comparison.md), [intake](docs/canonical-comparison-intake.md), [migration](docs/migration-draft.30.md). Fourteen tooled controls /39 rules. Supplied rendered states required; no actual Edikka assessment.
+
+TS08 [native inspections](docs/inspection-evidence.md) and [acquisition](docs/search-console-acquisition.md) remain available.
 
 Optional TS31–33 preparation: [supplied rendered states and source/DOM comparison](docs/jsonld-rendered-observation.md), without browser collection or control outcomes. October12 priority: TS08 then TS12, qualification before the application; TS36 and TS31–33 follow.
 
@@ -11,7 +13,7 @@ TS39 has [three delivery rules](docs/delivery-evidence.md): prior matrix, per-co
 
 # TSEP — evidence interchange format
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.29 · initiated by Edikka · [Français](README.fr.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.30 · initiated by Edikka · [Français](README.fr.md)**
 
 Share a technical SEO assessment that its recipient can inspect, replay and
 challenge: stable identifiers, explicit scope, evidence linked to findings and
@@ -90,8 +92,8 @@ validation establishes consistency and file integrity.
    not satisfy a named profile. An isolated test cannot pass its parent control.
 3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
    `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 my_adapter.py'`
-   for that subset, or omit `--rules` for all thirty-six rules. State “passes TSEP
-   0.1.0-draft.29 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
+   for that subset, or omit `--rules` for all thirty-nine rules. State “passes TSEP
+   0.1.0-draft.30 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
    [Input format and comparison](docs/conformance.md). Report exact agreements,
    disagreements and reduced coverage separately; accepted inconclusive results
    on marked reference limits are not successful assessments.
@@ -152,7 +154,7 @@ checks declarations and hashes, not authenticity, appropriate intent or every
 assessment judgment. A hash does not establish authorship or actual collection
 time. Bundled cases are synthetic.
 
-The interpreter covers thirty-six rules within a documented subset; unsupported inputs
+The interpreter covers thirty-nine rules within a documented subset; unsupported inputs
 remain inconclusive. TS07-A03 compares supplied source/DOM captures without executing JavaScript;
 the plan and exemptions require review. TS10 compares declared family signals and checks the binding of the supplied
 human content review, without guaranteeing its correctness.
@@ -165,7 +167,7 @@ ranking or future engine behavior.
 [Governance](GOVERNANCE.md) · [Contribute](CONTRIBUTING.md) · [History](CHANGELOG.md) ·
 [Acceptance clause](docs/acceptance-clause.md) · [HTTP probe](probes/README.md).
 
-Cite `TSEP@0.1.0-draft.29:TS07` with scope, result, evidence and archive hash.
+Cite `TSEP@0.1.0-draft.30:TS07` with scope, result, evidence and archive hash.
 Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATION.cff).
 [Development, full verification and independent repository](docs/development.md).
 

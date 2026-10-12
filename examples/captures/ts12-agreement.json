@@ -1,0 +1,351 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS12-A01",
+    "TS12-A02",
+    "TS12-A03"
+  ],
+  "targets": [
+    {
+      "url": "https://example.com/page",
+      "observed_at": "2026-10-10T12:00:00Z",
+      "inspection_synthetic": true,
+      "context": {
+        "id": "synthetic-desktop",
+        "network": "offline fixture",
+        "bounds": "Declared family and source only",
+        "tool": "SyntheticFixture",
+        "tool_version": "1"
+      },
+      "intent": {
+        "declared_at": "2026-10-10T09:00:00Z",
+        "inspection": {
+          "reader": "google-inspection-evidence-v1",
+          "site_url": "https://example.com/",
+          "selection_method": "Explicit finite list of the single fictional product page; no population inference",
+          "population": "One fictional page, no site extrapolation",
+          "prior_knowledge": "No earlier inspection in this authored scenario",
+          "max_retrieval_age_hours": 24,
+          "max_crawl_age_hours": 168,
+          "members": [
+            {
+              "url": "https://example.com/page",
+              "objective": "Document whether Google reports this product URL indexed",
+              "objective_source": "Fictional owner product brief, created independently of inspection",
+              "selection_reason": "Only product URL in this authored scope"
+            }
+          ]
+        },
+        "crawler": "googlebot",
+        "canonical_comparison": {
+          "reader": "google-canonical-comparison-v1",
+          "source_reader": "html-tree-canonical-v1",
+          "http_reader": "http-link-context-v1",
+          "max_capture_age_hours": 24,
+          "max_capture_offset_hours": 24,
+          "members": [
+            {
+              "url": "https://example.com/page",
+              "preferred_url": "https://example.com/page",
+              "preference_source": "Authored independent product URL policy before inspection",
+              "rendering": {
+                "mode": "required",
+                "dom_reader": "structured-inventory-v2",
+                "required_states": [
+                  {
+                    "id": "loaded",
+                    "interactions": [],
+                    "wait": "declared fixture state"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "inspection_records": [
+        {
+          "url": "https://example.com/page",
+          "retrieved_at": "2026-10-10T10:00:00Z",
+          "provenance": "synthetic-exercise",
+          "description": "Authored native API response; no account access",
+          "http_status": 200,
+          "request": {
+            "raw_text": "{\n  \"inspectionUrl\": \"https://example.com/page\",\n  \"siteUrl\": \"https://example.com/\"\n}\n",
+            "sha256": "6b5c6bf2c97a18908a7ebd2771cc361eb10c23c0b8aef75a8b4cbd8ccc5c77a0"
+          },
+          "response": {
+            "raw_text": "{\n  \"inspectionResult\": {\n    \"indexStatusResult\": {\n      \"verdict\": \"PASS\",\n      \"coverageState\": \"Indexed (authored label)\",\n      \"robotsTxtState\": \"ALLOWED\",\n      \"indexingState\": \"INDEXING_ALLOWED\",\n      \"pageFetchState\": \"SUCCESSFUL\",\n      \"lastCrawlTime\": \"2026-10-10T08:00:00Z\",\n      \"googleCanonical\": \"https://example.com/page\",\n      \"userCanonical\": \"https://example.com/page\",\n      \"crawledAs\": \"MOBILE\"\n    }\n  }\n}\n",
+            "sha256": "519ae1aa1970adce4c7144c2fdd9c74d478f98e07bbb54620ae8e9e0f74b9915"
+          }
+        }
+      ],
+      "inspection_plan_review": {
+        "reviewer": "Fictional reviewer",
+        "assistance": "Authored fixture, not human review",
+        "provenance": "synthetic-exercise",
+        "observed_at": "2026-10-10T09:30:00Z",
+        "reason": "Authored qualification of the exact supplied evidence",
+        "complete": true,
+        "selection": "supported",
+        "objectives": "supported",
+        "binding_sha256": "b10981aea140e5440971f80efbf4027dd93a61e8e847936a182405ab9037ed69",
+        "preferences": "supported",
+        "surfaces": "supported",
+        "temporal_policy": "supported"
+      },
+      "documents": [
+        {
+          "url": "https://example.com/page",
+          "observed_at": "2026-10-10T10:00:00Z",
+          "context_id": "synthetic-desktop",
+          "http": [
+            {
+              "url": "https://example.com/page",
+              "complete": true,
+              "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+              "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Synthetic product</title><link rel=\"canonical\" href=\"https://example.com/page\"></head><body><p>SYNTHETIC product content</p></body></html>"
+            }
+          ],
+          "render": {
+            "browser": {
+              "name": "SYNTHETIC authored browser",
+              "version": "1"
+            },
+            "states": [
+              {
+                "id": "loaded",
+                "interactions": [],
+                "wait": "declared fixture state",
+                "url": "https://example.com/page",
+                "context_id": "synthetic-desktop",
+                "source_http_sha256": "b1dd42746c5cacc3de060c81bb36f912c2413cf2d322e665c9523a5a80f5a14b",
+                "observed_at": "2026-10-10T10:00:02Z",
+                "complete": true,
+                "javascript_enabled": true,
+                "errors": [],
+                "structured_dom": {
+                  "snapshot": {
+                    "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+                    "tree": {
+                      "format": "rendered-metadata-tree",
+                      "version": "2",
+                      "limits": {
+                        "nodes": 1024,
+                        "depth": 64,
+                        "tree_utf8_bytes": 524288,
+                        "serialization_utf8_bytes": 262144,
+                        "cooperative_ms": 2000,
+                        "invocation_timeout_ms": 5000
+                      },
+                      "document_url": "https://example.com/page",
+                      "base_uri": "https://example.com/page",
+                      "ready_state": "complete",
+                      "execution_context": "not-attested",
+                      "scripting": "enabled-by-laboratory-plan",
+                      "closed_shadow_coverage": "unknown",
+                      "frame_documents": "not-collected",
+                      "template_fragments": "not-collected",
+                      "origin_attribution": "unknown",
+                      "serialization": {
+                        "available": true,
+                        "html": "AUTHORED FIXTURE, NOT A BROWSER"
+                      },
+                      "nodes": [
+                        {
+                          "id": 0,
+                          "parent": null,
+                          "edge": "root",
+                          "index": 0,
+                          "type": 9,
+                          "name": "#document",
+                          "namespace": null,
+                          "attributes": [],
+                          "data": null,
+                          "child_count": 1,
+                          "shadow": "not-element",
+                          "resolved_href": null
+                        },
+                        {
+                          "id": 1,
+                          "parent": 0,
+                          "edge": "child",
+                          "index": 0,
+                          "type": 1,
+                          "name": "html",
+                          "namespace": "http://www.w3.org/1999/xhtml",
+                          "attributes": [],
+                          "data": null,
+                          "child_count": 2,
+                          "shadow": "unexposed-or-absent",
+                          "resolved_href": null
+                        },
+                        {
+                          "id": 2,
+                          "parent": 1,
+                          "edge": "child",
+                          "index": 0,
+                          "type": 1,
+                          "name": "head",
+                          "namespace": "http://www.w3.org/1999/xhtml",
+                          "attributes": [],
+                          "data": null,
+                          "child_count": 1,
+                          "shadow": "unexposed-or-absent",
+                          "resolved_href": null
+                        },
+                        {
+                          "id": 3,
+                          "parent": 2,
+                          "edge": "child",
+                          "index": 0,
+                          "type": 1,
+                          "name": "link",
+                          "namespace": "http://www.w3.org/1999/xhtml",
+                          "attributes": [
+                            {
+                              "name": "rel",
+                              "local_name": "rel",
+                              "namespace": null,
+                              "value": "canonical"
+                            },
+                            {
+                              "name": "href",
+                              "local_name": "href",
+                              "namespace": null,
+                              "value": "https://example.com/page"
+                            }
+                          ],
+                          "data": null,
+                          "child_count": 0,
+                          "shadow": "unexposed-or-absent",
+                          "resolved_href": "https://example.com/page"
+                        },
+                        {
+                          "id": 4,
+                          "parent": 1,
+                          "edge": "child",
+                          "index": 1,
+                          "type": 1,
+                          "name": "body",
+                          "namespace": "http://www.w3.org/1999/xhtml",
+                          "attributes": [],
+                          "data": null,
+                          "child_count": 1,
+                          "shadow": "unexposed-or-absent",
+                          "resolved_href": null
+                        },
+                        {
+                          "id": 5,
+                          "parent": 4,
+                          "edge": "child",
+                          "index": 0,
+                          "type": 1,
+                          "name": "x-unrelated",
+                          "namespace": "http://www.w3.org/1999/xhtml",
+                          "attributes": [
+                            {
+                              "name": "data-origin",
+                              "local_name": "data-origin",
+                              "namespace": null,
+                              "value": "unknown"
+                            }
+                          ],
+                          "data": null,
+                          "child_count": 0,
+                          "shadow": "unexposed-or-absent",
+                          "resolved_href": null
+                        }
+                      ],
+                      "reported_node_count": 6,
+                      "traversal_complete": true,
+                      "stop_reason": null,
+                      "api_errors": [],
+                      "elapsed_ms": 0
+                    }
+                  },
+                  "snapshot_sha256": "4fc89bbedaee45bd91cb9c3b2b615b7ee80180ac0c06779847e6d867b22e9fe3",
+                  "known_integrity_issues": [],
+                  "acquisition": {
+                    "kind": "authored-synthetic",
+                    "navigation_id": "synthetic-navigation",
+                    "user_agent": "googlebot",
+                    "http_sha256": "b1dd42746c5cacc3de060c81bb36f912c2413cf2d322e665c9523a5a80f5a14b",
+                    "support": [
+                      {
+                        "name": "SYNTHETIC receipt",
+                        "content": "SYNTHETIC authored acquisition, not an observed browser navigation.",
+                        "sha256": "86dc0965aa238a74d8f6f0b3ea004fb7db0ef601b09d9352866561ad8c491427"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "comparison_reviews": [
+        {
+          "reviewer": "Fictional reviewer",
+          "assistance": "Authored fixture, not human review",
+          "provenance": "synthetic-exercise",
+          "observed_at": "2026-10-10T11:00:00Z",
+          "reason": "Authored qualification of the exact supplied evidence",
+          "complete": true,
+          "selection": "supported",
+          "objectives": "supported",
+          "binding_sha256": "2915d6bfa1d255ba594244fb1e73547f00db58fb439044c26dfb69db4e2590ff",
+          "preferences": "supported",
+          "surfaces": "supported",
+          "temporal_policy": "supported",
+          "url": "https://example.com/page",
+          "claims": {
+            "googleCanonical": {
+              "state": "present",
+              "values": [
+                "https://example.com/page"
+              ]
+            },
+            "userCanonical": {
+              "state": "present",
+              "values": [
+                "https://example.com/page"
+              ]
+            },
+            "http": {
+              "state": "absent",
+              "values": []
+            },
+            "html": {
+              "state": "present",
+              "values": [
+                "https://example.com/page"
+              ]
+            },
+            "dom:loaded": {
+              "state": "present",
+              "values": [
+                "https://example.com/page"
+              ]
+            }
+          },
+          "interpretation": "supported",
+          "temporal_interpretation": "supported",
+          "objective_relation": "aligned",
+          "temporal_scope": "reported-index-and-separate-captures",
+          "changes": [],
+          "explanation": {
+            "kind": "observation",
+            "text": "Authored literal agreements in separate retained representations, no current selection inferred"
+          },
+          "decision": {
+            "kind": "accept",
+            "owner": "Fictional owner",
+            "reason": "Complete documented comparisons, no site conformity inferred"
+          }
+        }
+      ]
+    }
+  ]
+}
