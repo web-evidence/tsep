@@ -7,7 +7,8 @@ import argparse
 from copy import deepcopy
 from datetime import datetime, timezone
 import hashlib
-from pathlib import Path
+from pathlib import Path, PurePosixPath
+import re
 import sys
 import tempfile
 
@@ -15,12 +16,12 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 import tsep
 from adapters import captures
-from adapters.package import json_bytes, regular, publish
+from adapters.package import MAX_PACKAGE_BYTES, json_bytes, regular, publish
 from conformance import inspection
 from conformance.agent_policy import digest
 from diagnostics import search_console
 
-VERSION = '1'
+VERSION = '2'
 RULES = ['TS08-A01','TS08-A02','TS08-A03']
 
 
@@ -69,17 +70,83 @@ def prepare(plan, directories, output):
     return {'prepared':str(output),'members':len(records),'review_created':False,'network_requests':0}
 
 
-def build(prepared, reviews, output, assessor):
-    root=Path(prepared);meta=tsep.read_json(root/'intake.json')
-    tsep.require(meta.get('kind')=='tsep-inspection-intake' and meta.get('version')==VERSION,'Unsupported intake version')
-    for name,want in meta['files'].items():
-        p=Path(name);tsep.require(not p.is_absolute() and '..' not in p.parts,'Unsafe intake file path')
-        tsep.require(hashlib.sha256(regular(root/name,tsep.MAX_JSON_BYTES)).hexdigest()==want,'Changed intake file: '+name)
+def checked_input(root):
+    """Check the complete intake and parse the same bounded bytes we hash."""
+    tsep.require(root.is_dir() and not root.is_symlink(), 'Expected a regular intake directory')
+    meta=tsep.parse_json(regular(root/'intake.json',tsep.MAX_JSON_BYTES))
+    tsep.require(isinstance(meta,dict) and meta.get('kind')=='tsep-inspection-intake'
+                 and meta.get('version')==VERSION,'Unsupported intake version; explicitly prepare a new v2 intake')
+    declared=meta.get('files')
+    required={'plan.json','input.json','review-request.json'}
+    tsep.require(isinstance(declared,dict) and required <= set(declared) and len(declared)<=67,
+                 'Incomplete or excessive intake inventory')
+    files={};total=0
+    for name,want in declared.items():
+        p=PurePosixPath(name)
+        tsep.require(p.as_posix()==name and not p.is_absolute() and '..' not in p.parts
+                     and '\\' not in name and (name in required or re.fullmatch(
+                         r'originals/(?:[1-9]|1[0-6])/(?:manifest\.json|request\.json|response\.json|change-evidence\.txt)',name)),
+                     'Unsafe or unsupported intake file path')
+        tsep.require(isinstance(want,str) and re.fullmatch('[a-f0-9]{64}',want), 'Invalid intake file digest')
+        files[name]=regular(tsep.evidence_path(root,name),tsep.MAX_JSON_BYTES)
+        total+=len(files[name])
+        tsep.require(total<=MAX_PACKAGE_BYTES,'Intake exceeds package byte bound')
+        tsep.require(hashlib.sha256(files[name]).hexdigest()==want,'Changed intake file: '+name)
+    found=set()
+    for index,path in enumerate(root.rglob('*')):
+        tsep.require(index<100 and not path.is_symlink(),'Unexpected intake entry or symlink')
+        if path.is_file():found.add(path.relative_to(root).as_posix())
+        else:tsep.require(path.is_dir(),'Unexpected intake entry')
+    tsep.require(found==set(files)|{'intake.json'},'Unlisted or missing intake files')
+    actual_hash=hashlib.sha256(files['input.json']).hexdigest()
+    tsep.require(meta.get('input_sha256')==actual_hash,'Intake binding differs from raw input bytes')
+    data=tsep.parse_json(files['input.json'])
+    tsep.require(isinstance(data,dict) and set(data)=={'input_version','rules','targets'}
+                 and data['input_version']=='2' and data['rules']==RULES
+                 and isinstance(data['targets'],list) and len(data['targets'])==1,'Unexpected intake input shape')
+    target=data['targets'][0];plan=tsep.parse_json(files['plan.json'])
+    tsep.require(isinstance(target,dict) and isinstance(plan,dict),'Missing intake target or plan')
+    projected={k:v for k,v in target.items() if k not in ('observed_at','inspection_records')}
+    tsep.require(projected=={k:v for k,v in plan.items() if k!='observed_at'},'Prepared input differs from original plan')
+    records=target.get('inspection_records')
+    tsep.require(isinstance(records,list) and 1<=len(records)<=16,'Missing bounded intake records')
+    expected=set(required)
+    for index,record in enumerate(records,1):
+        prefix='originals/'+str(index)+'/'
+        expected.update(prefix+name for name in ('manifest.json','request.json','response.json'))
+        tsep.require(expected <= set(files),'Missing original intake files')
+        native=tsep.parse_json(files[prefix+'manifest.json'])
+        tsep.require(isinstance(native,dict) and isinstance(record,dict) and record.get('supplied_manifest')==native,
+                     'Prepared record differs from original manifest')
+        for key in ('request','response'):
+            raw=files[prefix+key+'.json'];wanted={'raw_text':raw.decode('utf-8'),'sha256':hashlib.sha256(raw).hexdigest()}
+            tsep.require(record.get(key)==wanted and native.get(key+'_sha256')==wanted['sha256'],
+                         'Prepared record differs from original '+key+' bytes')
+        for key in ('retrieved_at','provenance','description','http_status'):
+            tsep.require(record.get(key)==native.get(key),'Prepared record differs from original '+key)
+        request=tsep.parse_json(files[prefix+'request.json'])
+        tsep.require(record.get('url')==search_console.check_request(request),'Prepared record URL differs from native request')
+        if native.get('change') is not None:
+            name=prefix+'change-evidence.txt';expected.add(name)
+            tsep.require(isinstance(native['change'],dict) and name in files
+                         and hashlib.sha256(files[name]).hexdigest()==native['change'].get('evidence_sha256'),
+                         'Missing or changed original change evidence')
+    tsep.require(set(files)==expected,'Unexpected original intake inventory')
+    blank_request=tsep.parse_json(files['review-request.json'])
+    tsep.require(isinstance(blank_request,dict) and blank_request.get('kind')=='tsep-inspection-review-request'
+                 and blank_request.get('version')==VERSION and blank_request.get('input_sha256')==actual_hash
+                 and blank_request.get('reviews')==[blank(target,r) for r in records],
+                 'Changed blank intake review request')
     actual=dict(captures.source_files(),**{'adapters/inspection_intake.py':tsep.digest(Path(__file__))})
     tsep.require(meta['source_files']==actual,'Use the exact intake tools or prepare a separate explicit reassessment')
-    data=tsep.read_json(root/'input.json');supplied=tsep.read_json(reviews)
-    tsep.require(supplied.get('kind')=='tsep-inspection-review-request' and supplied.get('version')==VERSION
-        and supplied.get('input_sha256')==meta['input_sha256'],'Reviews do not bind this intake input')
+    return data,actual_hash
+
+
+def build(prepared, reviews, output, assessor):
+    data,input_hash=checked_input(Path(prepared))
+    supplied=tsep.parse_json(regular(Path(reviews),tsep.MAX_JSON_BYTES))
+    tsep.require(isinstance(supplied,dict) and supplied.get('kind')=='tsep-inspection-review-request' and supplied.get('version')==VERSION
+        and supplied.get('input_sha256')==input_hash,'Reviews do not bind this intake input')
     target=data['targets'][0];target['inspection_reviews']=supplied['reviews']
     # Record the actual new assessment time; earlier dossiers are never rewritten.
     target['observed_at'] = datetime.now(timezone.utc).isoformat()

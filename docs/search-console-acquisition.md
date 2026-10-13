@@ -69,12 +69,14 @@ distributed exercises are synthetic.
 
 ## Parcours local / Local workflow
 
-`adapters/inspection_intake.py` version1 importe les dossiers du diagnostic1 et
+`adapters/inspection_intake.py` version2 importe les dossiers du diagnostic1 et
 produit des demandes de revue vides. Le plan est une cible captures sous le
 [contrat TS08](inspection-evidence.md), sans inspection_records/inspection_reviews.
 La date observed_at est renseignée à l’import puis lors de la nouvelle évaluation ;
 intent.declared_at et toutes les dates fournies restent intactes. La revue préalable
 inspection_plan_review doit réellement précéder l’acquisition. L’import ne la crée pas.
+La [migration version 2](inspection-intake-v2.md) impose un réimport explicite
+dans un dossier neuf ; aucun dossier version 1 n'est réécrit.
 
 ```sh
 python3 adapters/inspection_intake.py prepare /chemin/plan.json \
@@ -88,7 +90,8 @@ python3 tsep.py html /chemin/rapport-neuf/report.json --lang fr \
   --output /chemin/rapport-neuf-fr.html
 ```
 
-English: prepare imports exact diagnostic1 folders and blank evidence-bound review
+English: version 2 requires [explicit new preparation](inspection-intake-v2.md);
+version-1 intakes and their tools remain intact. Prepare imports exact diagnostic1 folders and blank evidence-bound review
 requests; it invents no plan review or decision. The input plan is a captures target
 under the TS08 contract without inspection_records/inspection_reviews. Assessment
 time is recorded at import/new build; supplied intent/acquisition/review dates are
