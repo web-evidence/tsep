@@ -13,17 +13,17 @@ import tempfile
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 import tsep
-from adapters import captures, inspection_intake
+from adapters import captures, inspection_intake, intake_integrity
 from adapters.package import regular, json_bytes, publish
 from conformance import canonical_comparison as comparison
 
-VERSION='1'
+VERSION='2'
 RULES=['TS12-A01','TS12-A02','TS12-A03']
 
 
 def sources():
     return dict(captures.source_files(),**{name:tsep.digest(ROOT/name) for name in
-                ('adapters/comparison_intake.py','adapters/inspection_intake.py')})
+                ('adapters/comparison_intake.py','adapters/inspection_intake.py','adapters/intake_integrity.py')})
 
 
 def blank(target,record):
@@ -65,15 +65,19 @@ def prepare(plan,inspections,documents,output):
 
 
 def build(prepared,reviews,output,assessor):
-    root=Path(prepared);meta=tsep.read_json(root/'intake.json')
-    tsep.require(meta.get('kind')=='tsep-comparison-intake' and meta.get('version')==VERSION,'Unsupported comparison intake')
-    for name,want in meta['files'].items():
-        p=Path(name);tsep.require(not p.is_absolute() and '..' not in p.parts,'Unsafe intake file path')
-        tsep.require(hashlib.sha256(regular(root/name,tsep.MAX_JSON_BYTES)).hexdigest()==want,'Changed intake file: '+name)
-    tsep.require(meta['source_files']==sources(),'Use exact intake tools or prepare a separate explicit reassessment')
-    data=tsep.read_json(root/'input.json');supplied=tsep.read_json(reviews)
-    tsep.require(supplied.get('kind')=='tsep-comparison-review-request' and supplied.get('version')==VERSION
-        and supplied.get('input_sha256')==meta['input_sha256'],'Reviews do not bind this intake input')
+    required={'plan.json','input.json','review-request.json','originals/technical.json'}
+    files,input_hash=intake_integrity.read(prepared,'tsep-comparison-intake',VERSION,sources(),required,inspections=True)
+    data,target=intake_integrity.target(files,RULES)
+    plan=tsep.parse_json(files['plan.json']);documents=tsep.parse_json(files['originals/technical.json'])
+    tsep.require(isinstance(plan,dict) and isinstance(documents,list),'Missing original plan or technical documents')
+    projected={k:v for k,v in target.items() if k not in ('observed_at','inspection_records','documents')}
+    tsep.require(projected=={k:v for k,v in plan.items() if k!='observed_at'} and target.get('documents')==documents,
+                 'Prepared input differs from original plan or technical documents')
+    records=target.get('inspection_records');native=intake_integrity.native_inspections(files,records)
+    tsep.require(set(files)==required|native,'Unexpected original intake inventory')
+    original=intake_integrity.request(files['review-request.json'],'tsep-comparison-review-request',VERSION,input_hash)
+    tsep.require(original.get('reviews')==[blank(target,r) for r in records],'Changed blank intake review request')
+    supplied=intake_integrity.supplied(reviews,'tsep-comparison-review-request',VERSION,input_hash)
     target=data['targets'][0];target['comparison_reviews']=supplied['reviews'];target['observed_at']=datetime.now(timezone.utc).isoformat()
     with tempfile.TemporaryDirectory(prefix='tsep-comparison-build-') as tmp:
         path=Path(tmp)/'input.json';path.write_bytes(json_bytes(data))

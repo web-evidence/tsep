@@ -10,15 +10,15 @@ import tempfile
 
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 import tsep
-from adapters import captures
+from adapters import captures,intake_integrity
 from adapters.package import regular,publish,json_bytes
 from conformance import release_monitoring as monitoring
 
-VERSION='1'
+VERSION='2'
 RULES=['TS36-A01','TS36-A02','TS36-A03']
 
 def metadata():return {'reviewer':None,'assistance':None,'provenance':None,'observed_at':None,'reason':None,'complete':False}
-def tools():return dict(captures.source_files(),**{'adapters/monitoring_intake.py':tsep.digest(Path(__file__))})
+def tools():return dict(captures.source_files(),**{name:tsep.digest(ROOT/name) for name in ('adapters/monitoring_intake.py','adapters/intake_integrity.py')})
 def blank(target,name):
     rows=[c for c in target.get('monitoring_checkpoints',[]) if isinstance(c,dict) and c.get('id')==name]
     cp=rows[0] if len(rows)==1 else None
@@ -43,15 +43,19 @@ def prepare(plan,evidence,output):
     write_new(files,output);return {'prepared':str(output),'review_created':False,'network_requests':0}
 
 def load(prepared,reviews):
-    root=Path(prepared);meta=tsep.read_json(root/'intake.json')
-    tsep.require(meta.get('kind')=='tsep-monitoring-intake' and meta.get('version')==VERSION,'Unsupported intake')
-    for name,want in meta['files'].items():
-        p=Path(name);tsep.require(not p.is_absolute() and '..' not in p.parts,'Unsafe intake path')
-        tsep.require(hashlib.sha256(regular(root/name,tsep.MAX_JSON_BYTES)).hexdigest()==want,'Changed intake file: '+name)
-    tsep.require(meta['source_files']==tools(),'Use exact intake tools or perform separate explicit reassessment')
-    data=tsep.read_json(root/'input.json');q=tsep.read_json(reviews)
-    tsep.require(q.get('kind')=='tsep-monitoring-stage-reviews' and q.get('version')==VERSION and q.get('input_sha256')==meta['input_sha256'],'Stage reviews do not bind intake')
-    data['targets'][0]['monitoring_reviews']=q['reviews'];return data,meta
+    required={'originals/plan.json','originals/evidence.json','input.json','review-request.json'}
+    files,input_hash=intake_integrity.read(prepared,'tsep-monitoring-intake',VERSION,tools(),required)
+    data,target=intake_integrity.target(files,RULES)
+    plan=tsep.parse_json(files['originals/plan.json']);evidence=tsep.parse_json(files['originals/evidence.json'])
+    tsep.require(isinstance(plan,dict) and isinstance(evidence,dict)
+                 and set(evidence)<={'monitoring_deployment','monitoring_checkpoints'},'Unexpected original plan or evidence')
+    expected=dict(plan,**evidence)
+    tsep.require({k:v for k,v in target.items() if k!='observed_at'}=={k:v for k,v in expected.items() if k!='observed_at'},
+                 'Prepared input differs from original plan or evidence')
+    original=intake_integrity.request(files['review-request.json'],'tsep-monitoring-stage-reviews',VERSION,input_hash)
+    tsep.require(original.get('reviews')==[blank(target,n) for n in monitoring.STAGES],'Changed blank stage review request')
+    q=intake_integrity.supplied(reviews,'tsep-monitoring-stage-reviews',VERSION,input_hash)
+    target['monitoring_reviews']=q['reviews'];return data,{'input_sha256':input_hash}
 
 def closure_request(prepared,reviews,output):
     data,meta=load(prepared,reviews);t=data['targets'][0]
@@ -62,8 +66,7 @@ def closure_request(prepared,reviews,output):
 def build(prepared,reviews,output,assessor,closure=None):
     data,meta=load(prepared,reviews);t=data['targets'][0]
     if closure:
-        q=tsep.read_json(closure)
-        tsep.require(q.get('kind')=='tsep-monitoring-closure-review' and q.get('version')==VERSION and q.get('input_sha256')==meta['input_sha256'],'Closure does not bind intake')
+        q=intake_integrity.supplied(closure,'tsep-monitoring-closure-review',VERSION,meta['input_sha256'])
         t['monitoring_closure_review']=q['review']
     t['observed_at']=datetime.now(timezone.utc).isoformat()
     with tempfile.TemporaryDirectory(prefix='tsep-monitoring-build-') as tmp:

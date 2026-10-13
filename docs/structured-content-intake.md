@@ -1,4 +1,6 @@
-# TS31 intake v1 / import TS31 v1
+Version 2 — [integrity and explicit migration / intégrité et migration explicite](intake-integrity-v2.md). Preserve version-1 tools and dossiers; conserver les outils et dossiers version1.
+
+# TS31 intake v2 / import TS31 v2
 
 Offline helper for the [TS31 contract](structured-content-evidence.md). No browser,
 Google connection, native capture generation or automatic semantic judgment.

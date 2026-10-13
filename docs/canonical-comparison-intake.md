@@ -1,3 +1,5 @@
+Version 2 — [integrity and explicit migration / intégrité et migration explicite](intake-integrity-v2.md). Preserve version-1 tools and dossiers; conserver les outils et dossiers version1.
+
 # TS12 supplied intake / Import fourni
 
 ## Français

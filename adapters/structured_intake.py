@@ -9,15 +9,15 @@ import tempfile
 
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 import tsep
-from adapters import captures
+from adapters import captures, intake_integrity
 from adapters.package import regular, json_bytes, publish
 from conformance import structured_content as control
 
-VERSION='1'
+VERSION='2'
 
 
 def sources():
-    return dict(captures.source_files(),**{'adapters/structured_intake.py':tsep.digest(ROOT/'adapters/structured_intake.py')})
+    return dict(captures.source_files(),**{name:tsep.digest(ROOT/name) for name in ('adapters/structured_intake.py','adapters/intake_integrity.py')})
 
 
 def blank(binding, **extra):
@@ -63,7 +63,8 @@ def prepare(input_path, output, plan_review=None):
     tsep.require(type(records) is list and all(type(r) is dict and set(r)=={'surface_id','content'} for r in records),
                  'Supply content-only structured_reviews; later judgments belong in the separate review file')
     if plan_review is not None:
-        p=tsep.parse_json(regular(Path(plan_review),tsep.MAX_JSON_BYTES))
+        raw_plan_review=regular(Path(plan_review),tsep.MAX_JSON_BYTES)
+        p=tsep.parse_json(raw_plan_review)
         tsep.require(p.get('kind')=='tsep-structured-plan-review-request' and p.get('version')==VERSION,'Unsupported plan review file')
         tsep.require('structured_plan_review' not in t,'Prior review already supplied in target')
         t['structured_plan_review']=p['review']
@@ -73,7 +74,7 @@ def prepare(input_path, output, plan_review=None):
         'review-request.json':json_bytes(dict(kind='tsep-structured-review-request',version=VERSION,
             input_sha256=hashlib.sha256(input_bytes).hexdigest(),reviews=reviews,unavailable_surfaces=unavailable,
             instructions='Blank supplied-review request only. Keep content unchanged. Missing content requires a new intake. Supply all node judgments and reasons; no factual judgment is inferred.'))}
-    if plan_review is not None:files['originals/plan-review.json']=regular(Path(plan_review),tsep.MAX_JSON_BYTES)
+    if plan_review is not None:files['originals/plan-review.json']=raw_plan_review
     tsep.require(sources()==source,'Intake sources changed during preparation')
     files['intake.json']=json_bytes(dict(kind='tsep-structured-intake',version=VERSION,source_files=source,
         input_sha256=hashlib.sha256(input_bytes).hexdigest(),files={k:hashlib.sha256(v).hexdigest() for k,v in files.items()},network_requests=0))
@@ -86,16 +87,22 @@ def prepare(input_path, output, plan_review=None):
 
 
 def build(prepared, reviews, output, assessor):
-    root=Path(prepared);meta=tsep.read_json(root/'intake.json')
-    tsep.require(meta.get('kind')=='tsep-structured-intake' and meta.get('version')==VERSION,'Unsupported structured intake')
     mandatory={'originals/target.json','input.json','review-request.json'}
-    tsep.require(mandatory<=set(meta['files'])<=mandatory|{'originals/plan-review.json'},'Unexpected intake inventory')
-    for name,want in meta['files'].items():
-        tsep.require(hashlib.sha256(regular(root/name,tsep.MAX_JSON_BYTES)).hexdigest()==want,'Changed intake file: '+name)
-    tsep.require(meta['source_files']==sources(),'Use exact intake tools or prepare an explicit new assessment')
-    data=tsep.read_json(root/'input.json');supplied=tsep.read_json(reviews);original=tsep.read_json(root/'review-request.json')
-    tsep.require(supplied.get('kind')=='tsep-structured-review-request' and supplied.get('version')==VERSION
-        and supplied.get('input_sha256')==meta['input_sha256'],'Review file does not bind intake input')
+    files,input_hash=intake_integrity.read(prepared,'tsep-structured-intake',VERSION,sources(),mandatory,{'originals/plan-review.json'})
+    data,t=intake_integrity.target(files,control.RULES)
+    original_target=tsep.parse_json(files['originals/target.json'])
+    tsep.require(isinstance(original_target,dict),'Missing original target')
+    if 'originals/plan-review.json' in files:
+        prior=tsep.parse_json(files['originals/plan-review.json'])
+        tsep.require(isinstance(prior,dict) and prior.get('kind')=='tsep-structured-plan-review-request'
+                     and prior.get('version')==VERSION and 'structured_plan_review' not in original_target,'Unsupported original plan review')
+        original_target['structured_plan_review']=prior.get('review')
+    tsep.require(t==original_target,'Prepared input differs from original target or prior review')
+    original=intake_integrity.request(files['review-request.json'],'tsep-structured-review-request',VERSION,input_hash)
+    expected_reviews,unavailable,_=requests(t)
+    tsep.require(original.get('reviews')==expected_reviews and original.get('unavailable_surfaces')==unavailable,
+                 'Changed blank review request or preparation availability; explicitly prepare a new intake')
+    supplied=intake_integrity.supplied(reviews,'tsep-structured-review-request',VERSION,input_hash)
     t=data['targets'][0];given=supplied['reviews'];expected=original['reviews']
     control.population(given,'surface_id',[r['surface_id'] for r in expected])
     for r in given:
