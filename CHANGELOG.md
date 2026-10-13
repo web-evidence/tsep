@@ -1,3 +1,8 @@
+## TS08 application rehearsal 1 — 2026-10-13 — non-normative
+
+- FR : kit CLI import/rapport FR+EN/rejeu, treize exemples fictifs dont une sélection de deux URL, quatre refus attendus et test de rejeu avec horloge future simulée ; guide d'intégration applicative. Aucune nouvelle règle, donnée Google réelle ou qualification OAuth. Les résultats observés sont consignés dans le rapport du kit.
+- EN: CLI intake/FR+EN report/replay rehearsal, thirteen authored scenarios including a two-URL selection, four expected refusals and replay test with a simulated future clock; application integration guide. No new rule, real Google acquisition or OAuth qualification. Actual results are retained in the rehearsal report.
+
 ## 0.1.0-draft.31 — 2026-10-12 — local candidate
 
 - FR : TS36 ajoute trois règles semiAuto,65 cas préfigés, suivi daté et décisions fournies ; futur indéterminé, zéro causalité ou identité Google inférée. Import/revues/clôture, HTML FR/EN et rejeu ;15 contrôles/42 règles. [Migration](docs/migration-draft.31.md).
