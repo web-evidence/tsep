@@ -4,6 +4,12 @@ TS31 [contract / contrat](structured-content-evidence.md), [intake / import](str
 FR/EN : 17 contrôles outillés / tooled controls, 48 règles / rules. TS31:59 authored cases /177 pairs; TS32:62 cases /186 pairs; actual verification recorded separately. Supplied reviews, no authenticated visibility or real Edikka assessment.
 
 Application integration preparation / Préparation applicative — 2026-10-13 :
+[TS02 prospective collection](redirect-collection.md), non-normative version 1:
+prior supplied approval, bounded native HTTP hops, durable failures and offline
+assessment/replay. FR : approbation fournie, traces natives conservées, aucun audit
+réel Edikka ; protocole draft.33 et règles inchangés. Eleven prefrozen synthetic
+scenarios; observed verification belongs in the retained delivery report.
+
 [TS08 CLI rehearsal](inspection-app-integration.md), non-normative version 1.
 Thirteen synthetic end-to-end scenarios (including two selected URLs), four refusal
 cases and a simulated-future-clock replay test; actual execution results

@@ -1,0 +1,10 @@
+{
+  "origins": ["http://127.0.0.1:8878"],
+  "accept_encoding": "identity",
+  "timeout": 5,
+  "max_bytes": 65536,
+  "max_redirects": 3,
+  "max_total_bytes": 1048576,
+  "max_seconds": 30,
+  "allow_loopback": true
+}

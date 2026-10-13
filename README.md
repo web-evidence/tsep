@@ -26,6 +26,8 @@ unknowns retained. The report distinguishes established findings from remaining 
 
 For TS02, the [prior owner-plan workflow](docs/redirect-plan-workflow.md) prepares
 a readable plan and binds a supplied decision to subsequent captures.
+The optional [prospective collector](docs/redirect-collection.md) retains bounded
+native HTTP hops after supplied approval, then builds the existing replayable report.
 The [Search Console preview](docs/search-console-observations.md) compares supplied
 API evidence with replayed technical records, without automatic TS08/TS12 verdicts.
 The [delivery variants observer](docs/delivery-variants-observation.md) prepares

@@ -1,3 +1,9 @@
+## TS02 prospective collector 1 — 2026-10-13 — non-normative
+
+- FR : préparation liée aux outils et bornes, revue préalable fournie, collecte native HTTP bornée, tentatives conservées et évaluation/rejeu hors réseau via le moteur existant. Onze scénarios synthétiques figés ; aucune collecte Edikka ni approbation humaine créée.
+- EN: Tool/bounds-bound preparation, supplied prior review, bounded native HTTP collection, retained attempts and offline engine assessment/replay. Eleven prefrozen synthetic scenarios; no Edikka collection or invented human approval.
+- Draft.33, interpreter32 / adapter33 / HTML16 / replay3 and all 48 atomic rules remain unchanged. App migration requires an explicit whole-engine import; observed checks are recorded separately.
+
 ## 0.1.0-draft.33 — local candidate, 2026-10-13
 
 - FR : trois règles TS32 sur le corpus JSON-LD déclaré, registre préalable, références et revues liées ; 62 cas figés,17 contrôles/48 règles. Aucune stabilité temporelle, identité réelle ou collecte de pages inférée.

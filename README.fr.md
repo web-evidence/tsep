@@ -7,6 +7,10 @@ TS36 : [suivi après changement](docs/release-monitoring.md), [import et clôtur
 
 TS08 : [inspections natives](docs/inspection-evidence.md) et [acquisition](docs/search-console-acquisition.md) restent disponibles.
 
+TS02 : le [collecteur prospectif](docs/redirect-collection.md) conserve chaque saut
+HTTP dans les bornes approuvées, puis produit le rapport existant et son rejeu.
+Workflow facultatif non normatif ; aucune évaluation réelle Edikka déduite.
+
 Préparation TS31–33 : [états rendus fournis et comparaison source/DOM](docs/jsonld-rendered-observation.md), sans nouvelle collecte ni verdict. Priorité du 12 octobre : TS08 puis TS12, qualification avant l’application ; TS36 est maintenant disponible ; TS31–33 ensuite.
 
 Préparation TS31–33 : [traitement JSON-LD hors ligne](docs/jsonld-processing.md), puis [extraction HTML attribuée et combinaison des blocs](docs/jsonld-html-observation.md). Cas contradictoires figés et rejeu exact ; base effective, faits visibles et validateurs restent à qualifier. Ces composants n’ajoutent pas de règles TS31–33.
