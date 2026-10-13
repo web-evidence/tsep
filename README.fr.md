@@ -1,6 +1,9 @@
+TS32 : [corpus d’identités JSON-LD déclaré](docs/structured-identity-evidence.md), [migration draft.33](docs/migration-draft.33.md). Cohérence du corpus fourni et revues liées ; aucune stabilité temporelle établie.
+TS31 : [preuves JSON-LD/contenu](docs/structured-content-evidence.md), [migration draft.32](docs/migration-draft.32.md). Revues liées aux graphes fournis ; aucune visibilité authentifiée ni résultat enrichi garanti.
+
 TS36 : [suivi après changement](docs/release-monitoring.md), [import et clôture](docs/release-monitoring-intake.md), [migration draft.31](docs/migration-draft.31.md). Cas rédigés uniquement ; aucune échéance réelle future accomplie.
 
-Édition locale : **0.1.0-draft.31** — [TS12 : comparaisons](docs/canonical-comparison.md), [import](docs/canonical-comparison-intake.md), [migration](docs/migration-draft.30.md). Quinze contrôles outillés /42 règles. Rendu fourni requis ; aucune qualification réelle Edikka.
+Édition locale : **0.1.0-draft.33** — [TS12 : comparaisons](docs/canonical-comparison.md), [import](docs/canonical-comparison-intake.md), [migration](docs/migration-draft.30.md). Dix-sept contrôles outillés /48 règles. Rendu fourni requis ; aucune qualification réelle Edikka.
 
 TS08 : [inspections natives](docs/inspection-evidence.md) et [acquisition](docs/search-console-acquisition.md) restent disponibles.
 
@@ -14,7 +17,7 @@ TS39 dispose de [trois règles de diffusion](docs/delivery-evidence.md) : matric
 
 # TSEP — format d’échange de preuves
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.31 · initié par Edikka · [English](README.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.33 · initié par Edikka · [English](README.md)**
 
 Transmettre un audit SEO technique que son destinataire peut examiner, rejouer et
 contester : mêmes identifiants, périmètre explicite, preuves liées aux constats et
@@ -93,8 +96,8 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
    TS01/TS07 ne satisfait pas un profil nommé. Aucun test isolé ne valide son parent.
 3. **Passer la suite de conformance** : fournir un adaptateur JSON sur entrée/sortie
    standard, puis exécuter `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 mon_adaptateur.py'`
-   pour ce sous-ensemble, ou omettre `--rules` pour les quarante-deux règles. Déclarer
-   « passes TSEP 0.1.0-draft.31 conformance for TS01-A01, TS01-A02 » avec les bornes
+   pour ce sous-ensemble, ou omettre `--rules` pour les quarante-huit règles. Déclarer
+   « passes TSEP 0.1.0-draft.33 conformance for TS01-A01, TS01-A02 » avec les bornes
    réellement prises en charge. [Format d’entrée et comparaison](docs/conformance.md). Publier séparément
    accords, désaccords et couverture réduite : les indéterminés acceptés sur des
    limites de référence signalées ne sont pas des évaluations réussies.
@@ -156,7 +159,7 @@ Le validateur vérifie les déclarations et les empreintes, pas leur authenticit
 la pertinence de l’intention ni l’exactitude de tous les jugements. Une empreinte
 ne prouve ni l’auteur ni la date réelle de collecte. Les cas fournis sont synthétiques.
 
-L’interpréteur couvre quarante-deux règles dans un sous-ensemble documenté ; les entrées
+L’interpréteur couvre quarante-huit règles dans un sous-ensemble documenté ; les entrées
 non prises en charge restent indéterminées. TS07-A03 compare des captures source/DOM fournies, sans exécuter JavaScript ;
 le plan et les exemptions nécessitent une revue. TS10 compare les signaux d’une famille déclarée et vérifie le rattachement de la revue
 humaine de contenu, sans en garantir la justesse. Un contrôle partiel ne produit jamais de conformité globale.
@@ -168,7 +171,7 @@ Aucun résultat ne garantit indexation, classement ou comportement futur d’un 
 [Gouvernance](GOVERNANCE.md) · [Contribuer](CONTRIBUTING.md) · [Historique](CHANGELOG.md) ·
 [Clause de recette](docs/acceptance-clause.md) · [Sonde HTTP](probes/README.md).
 
-Citer `TSEP@0.1.0-draft.31:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
+Citer `TSEP@0.1.0-draft.33:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
 Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](CITATION.cff).
 [Développement, vérification complète et dépôt autonome](docs/development.md).
 

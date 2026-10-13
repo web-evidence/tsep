@@ -12,12 +12,16 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '14'
+VERSION = '16'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'identity_note':'TS32 : identifiants, références et doublons qualifiés sur les exports fournis. Aucune stabilité temporelle, source ou identité authentifiée.',
+        'identity_values':'Identifiants et références du corpus déclaré',
+        'structured_note':'TS31 : JSON-LD recalculé et revues liées au contenu fourni. Aucune visibilité ou vérité authentifiée, validation Schema.org ou garantie de résultat enrichi.',
+        'structured_values':'Lectures JSON-LD et qualifications du contenu',
         'monitoring_note':'TS36 : suivi documentaire baseline/J+1/J+7/J+30. Échéance future = indéterminé ; aucune causalité, visite Google authentifiée ou indexation déduite.',
         'monitoring_pending':'Échéance future', 'monitoring_title':'Observations par échéance',
         'monitoring_requests':'GET filtrés', 'monitoring_errors':'Réponses 5xx',
@@ -111,6 +115,10 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'identity_note':'TS32: IDs, references and duplicates qualified in supplied exports. No temporal stability, authenticated source or identity.',
+        'identity_values':'Identifiers and references in the declared corpus',
+        'structured_note':'TS31: recomputed JSON-LD and reviews bound to supplied content. No authenticated visibility or truth, Schema.org validation or rich-result guarantee.',
+        'structured_values':'JSON-LD readings and content qualifications',
         'monitoring_note':'TS36: documentary baseline/D+1/D+7/D+30 follow-up. Future stage is inconclusive; no causality, authenticated Google visit or indexing inferred.',
         'monitoring_pending':'Future stage', 'monitoring_title':'Observations by stage',
         'monitoring_requests':'Filtered GETs', 'monitoring_errors':'5xx responses',
@@ -488,6 +496,26 @@ def comparison_values(atom, words):
     return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
 
 
+def identity_values(atom, words):
+    return structured_values(atom,dict(words,structured_values=words['identity_values']),
+        prefix='Structured identity evidence / preuves des identités JSON-LD: ')
+
+
+def structured_values(atom, words, prefix='Structured content evidence / preuves JSON-LD-contenu: '):
+    """Display retained TS31 rows; never execute JSON-LD or review code."""
+    reason = atom.get('reason','')
+    try:
+        if not reason.startswith(prefix): raise ValueError('prefix')
+        note = json.loads(reason[len(prefix):])
+        if not isinstance(note['rows'],list): raise ValueError('rows')
+    except (ValueError,KeyError,TypeError): return '<p class="reason">'+esc(reason)+'</p>'
+    out = '<div class="table-wrap"><table><caption>'+esc(words['structured_values'])+'</caption><thead><tr>'
+    out += ''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('release_subject','result','reason'))+'</tr></thead><tbody>'
+    for row in note['rows']:
+        out += '<tr><th scope="row">'+esc(row.get('subject',''))+'</th><td>'+esc(words.get(row.get('outcome'),words['unknown']))+'</td><td>'+esc(row.get('reason',''))+'</td></tr>'
+    return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
+
+
 def inspection_values(atom, words):
     prefix = 'Inspection evidence / preuves d’inspection: '
     reason = atom.get('reason', '')
@@ -538,6 +566,10 @@ def results(bundle, controls, words, language):
             out += performance_values(result, words)
         if cid == 'TS36':
             out += '<div class="notice">' + esc(words['monitoring_note']) + '</div>'
+        if cid == 'TS32':
+            out += '<div class="notice">' + esc(words['identity_note']) + '</div>'
+        if cid == 'TS31':
+            out += '<div class="notice">' + esc(words['structured_note']) + '</div>'
         if cid == 'TS12':
             out += '<div class="notice">' + esc(words['comparison_note']) + '</div>'
         if cid == 'TS08':
@@ -559,7 +591,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

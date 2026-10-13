@@ -287,6 +287,14 @@ def decision(report, controls=None):
         summary['release_monitoring_interpretation'] = {
             'fr':'TS36 : dossier du suivi déclaré, échéances futures indéterminées ; aucune causalité ni identité Google authentifiée.',
             'en':'TS36: declared follow-up dossier, future stages inconclusive; no causality or authenticated Google identity.'}
+    if any(r['control_id']=='TS32' for r in report['results']):
+        summary['structured_identity_interpretation'] = {
+            'fr':'TS32 : cohérence des identifiants du corpus fourni et revues liées ; aucune stabilité temporelle ou identité authentifiée.',
+            'en':'TS32: supplied corpus identifier coherence and bound reviews; no temporal stability or authenticated identity.'}
+    if any(r['control_id']=='TS31' for r in report['results']):
+        summary['structured_content_interpretation'] = {
+            'fr':'TS31 : JSON-LD recalculé et revues de contenu fournies ; ni visibilité ni faits authentifiés, aucun résultat enrichi garanti.',
+            'en':'TS31: recomputed JSON-LD and supplied content reviews; no authenticated visibility or facts, no rich-result guarantee.'}
     if any(r['control_id']=='TS12' for r in report['results']):
         summary['canonical_comparison_interpretation'] = {
             'fr':'TS12 qualifie le dossier des surfaces HTTP/HTML et états DOM prévus ; comparaisons littérales, pas équivalence d’URL, canonical correcte, TS10 ou indexation.',

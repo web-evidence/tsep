@@ -1,3 +1,17 @@
+## 0.1.0-draft.33 — local candidate, 2026-10-13
+
+- FR : trois règles TS32 sur le corpus JSON-LD déclaré, registre préalable, références et revues liées ; 62 cas figés,17 contrôles/48 règles. Aucune stabilité temporelle, identité réelle ou collecte de pages inférée.
+- EN: three TS32 declared-corpus rules, prior registry, references and bound reviews;62 frozen cases,17 controls/48 rules. No temporal stability, real identity or page collection inferred.
+- Explicit bounded/fingerprinted conformance extensions preserve all1494 earlier cases; general input limits unchanged. Interpreter32 / adapter33 / HTML16 / replay3.
+- Draft.32 general verification failures exposed missing method fixtures, provenance-refusal expectations and historical-corpus boundaries. Corrections retain previous expected hashes and frozen rule outcomes. Final verification is recorded separately.
+
+## 0.1.0-draft.32 — local candidate, 2026-10-13
+
+- TS31: prior scope, recomputed source/rendered JSON-LD and entity-bound supplied content reviews; 49 prefrozen synthetic cases.
+- FR : trois règles TS31, revues fournies et inconnues conservées ; aucune visibilité authentifiée, validation Schema.org ni résultat enrichi garanti.
+- Interpreter31 / adapter32 / HTML15 / replay3; prior artifacts and TS08 application kit unchanged.
+- Validation results are recorded after execution; no remote CI or actual Edikka review inferred.
+
 ## TS08 application rehearsal 1 — 2026-10-13 — non-normative
 
 - FR : kit CLI import/rapport FR+EN/rejeu, treize exemples fictifs dont une sélection de deux URL, quatre refus attendus et test de rejeu avec horloge future simulée ; guide d'intégration applicative. Aucune nouvelle règle, donnée Google réelle ou qualification OAuth. Les résultats observés sont consignés dans le rapport du kit.

@@ -1,10 +1,13 @@
+Draft.33 adds TS32-A01/A02/A03: prior registry, native IDs/references and bound reviews. [Contract](structured-identity-evidence.md), [migration](migration-draft.33.md). Supplied corpus coherence, no authenticated temporal stability.
+Draft.32 adds TS31-A01/A02/A03: prior scope, native JSON-LD reading and entity-bound content reviews. [Bilingual contract](structured-content-evidence.md), [migration](migration-draft.32.md). Supplied evidence, no authenticated visibility/truth or rich-result guarantee.
+
 Draft.31 adds TS36-A01/A02/A03: chronology, stages and supplied decisions. [Bilingual contract](release-monitoring.md), [intake](release-monitoring-intake.md), [migration](migration-draft.31.md). Strict baseline/D+1/D+7/D+30; future stages inconclusive, no causality or authenticated Google visit.
 
 Draft.30 adds TS12-A01/A02/A03: plan, attributed comparisons and supplied review/decision. [Bilingual contract](canonical-comparison.md), [migration](migration-draft.30.md). Planned rendering required; documentary C, not TS10 or indexing.
 
 Draft.29 adds three TS08 rules: scope/objectives, native inspections and bound reviews/decisions. [Bilingual contract](inspection-evidence.md), [migration](migration-draft.29.md). C qualifies selected-set documentation, never guaranteed indexing.
 
-# Report contract — TSEP 0.1.0-draft.31
+# Report contract — TSEP 0.1.0-draft.33
 
 ### Delivery variants — draft.27
 

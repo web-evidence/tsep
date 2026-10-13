@@ -1,3 +1,6 @@
+TS32 / draft.33:62 frozen authored cases /186 pairs. Expanded total:1556 cases /3305 pairs,48 rules. `conformance.corpus.expand` loads only the two declared fingerprinted extensions. Les résultats effectifs restent consignés séparément ; aucun audit réel déduit.
+TS31 / draft.32: 49 initial and 10 boundary authored cases /177 pairs added; total 1494 cases /3119 pairs and45 rules. Cas fictifs uniquement ; les résultats effectifs de vérification sont conservés séparément.
+
 Draft.31 : TS36 ajoute 65 cas préfigés /195 paires synthétiques. Total : 1435 cas /2942 paires, 42 règles ; preuves API/logs/déploiement fournies, aucune exécution future.
 EN: TS36 adds65 prefrozen cases/195 authored pairs;1435 cases/2942 pairs and42 rules, no real future execution.
 

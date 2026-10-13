@@ -1,3 +1,8 @@
+TS32: [contract / contrat](structured-identity-evidence.md), [migration](migration-draft.33.md). Two explicit fingerprinted fixture extensions keep the core JSON file below its existing 8MiB bound; no recursive discovery or expected-verdict generation.
+Current local work / Travail local — 2026-10-13 : draft.33, interpreter32 / adapter33 / HTML16 / replay3.
+TS31 [contract / contrat](structured-content-evidence.md), [intake / import](structured-content-intake.md), [migration](migration-draft.32.md).
+FR/EN : 17 contrôles outillés / tooled controls, 48 règles / rules. TS31:59 authored cases /177 pairs; TS32:62 cases /186 pairs; actual verification recorded separately. Supplied reviews, no authenticated visibility or real Edikka assessment.
+
 Application integration preparation / Préparation applicative — 2026-10-13 :
 [TS08 CLI rehearsal](inspection-app-integration.md), non-normative version 1.
 Thirteen synthetic end-to-end scenarios (including two selected URLs), four refusal
@@ -5,7 +10,7 @@ cases and a simulated-future-clock replay test; actual execution results
 must be read in the retained rehearsal report. No OAuth/account qualification,
 no additional control or normative version change.
 
-Current local work: draft.31, interpreter30 / adapter31 / HTML14 / replay3.
+Historical local work: draft.31, interpreter30 / adapter31 / HTML14 / replay3.
 TS36 [contract](release-monitoring.md), [intake](release-monitoring-intake.md), [migration](migration-draft.31.md).
 FR/EN : 15 contrôles outillés / tooled controls, 42 règles / rules; strict four-stage supplied documentary cycle, no real future observation.
 

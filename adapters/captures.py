@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '31'
+VERSION = '33'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -35,6 +35,8 @@ def source_files():
     modules['conformance/agent_access.py'] = importlib.import_module('conformance.agent_access')
     modules['conformance/critical_content.py'] = importlib.import_module('conformance.critical_content')
     modules['conformance/release_monitoring.py'] = importlib.import_module('conformance.release_monitoring')
+    modules['conformance/structured_identity.py'] = importlib.import_module('conformance.structured_identity')
+    modules['conformance/structured_content.py'] = importlib.import_module('conformance.structured_content')
     modules['conformance/canonical_comparison.py'] = importlib.import_module('conformance.canonical_comparison')
     modules['conformance/inspection.py'] = importlib.import_module('conformance.inspection')
     modules['diagnostics/search_console.py'] = importlib.import_module('diagnostics.search_console')
@@ -54,6 +56,8 @@ def source_files():
     result.update(source_head.identity())
     from experiments import source_content
     result.update(source_content.identity())
+    from experiments import jsonld_rendered
+    result.update(jsonld_rendered.identity())
     from conformance import source_link_policy
     from experiments import link_elements, url_resolution
     result.update(loaded_sources(ROOT, {'conformance/source_link_policy.py': source_link_policy,
@@ -64,6 +68,8 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS32 : identifiants et références des exports JSON-LD fournis, registre préalable et revues liées ; cohérence du corpus, sans stabilité temporelle ni identité authentifiée.','en':'TS32: IDs/references from supplied JSON-LD exports, prior registry and bound reviews; corpus coherence, no temporal stability or authenticated identity.'},
+    {'state':'implemented','fr':'TS31 : source et DOM JSON-LD fournis recalculés, périmètre et contenu revus avec liaison aux graphes ; visibilité, faits et résultats enrichis non authentifiés.','en':'TS31: recomputed supplied source/DOM JSON-LD, graph-bound scope/content reviews; visibility, facts and rich results are not authenticated.'},
     {'state':'implemented','fr':'TS36 : suivi documentaire baseline/J+1/J+7/J+30, API et logs fournis ; échéances futures NT, causalité et identité Google non établies.','en':'TS36: supplied baseline/D+1/D+7/D+30 API/log follow-up; future stages inconclusive, causality and Google identity unestablished.'},
     {'state':'implemented','fr':'TS12 : comparaisons littérales API/HTTP/HTML/DOM prévus et revues fournies ; C documentaire, jamais canonical correcte, TS10 ou indexation. Rendu absent : NT sauf contradiction indépendante.', 'en':'TS12: literal API/HTTP/HTML/planned DOM comparisons and supplied reviews; documentary C, never correct canonical, TS10 or indexing. Missing rendering: NT unless independent contradiction.'},
     {'state':'implemented','fr':'TS08 : sélection et objectifs préalables, JSON API natifs et revues/décisions fournies ; dossier qualifié seulement, aucun état live ou verdict TS12.','en':'TS08: prior selection/objectives, native API JSON and supplied reviews/decisions; documentation only, no live state or TS12 verdict.'},
@@ -152,9 +158,17 @@ def dated(value, fallback, issued_text):
 def pieces(target):
     """Extract only supplied fields. Never create a DOM, review or absence proof."""
     result = {}
+    if 'jsonld' in target:
+        result['structured-data'] = target['jsonld']
+    if 'identity_documents' in target:
+        result['structured-data'] = {'identity_documents': target['identity_documents']}
+        if 'jsonld' in target:
+            result['structured-data']['jsonld'] = target['jsonld']
+    if 'structured_reviews' in target:
+        result['content'] = target['structured_reviews']
     if 'intent' in target:
         result['intent'] = {k: target[k] for k in
-                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review', 'agent_decision', 'execution', 'attribution', 'log_review', 'release_plan_review', 'release_review', 'delivery_plan_review') if k in target}
+                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review', 'agent_decision', 'execution', 'attribution', 'log_review', 'release_plan_review', 'release_review', 'delivery_plan_review', 'structured_plan_review', 'identity_plan_review', 'identity_reviews') if k in target}
     if 'release' in target.get('intent', {}):
         result['configuration'] = {'release':target['intent']['release'],
                                    'basis':'Supplied release plan; command identities are never executed'}
@@ -326,6 +340,12 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                          'Delivery synthetic provenance differs from evidence access')
             delivery_provenance(target)
     for target in data['targets']:
+        if 'structured_identity' in target.get('intent',{}):
+            tsep.require(type(target.get('identity_synthetic')) is bool and target['identity_synthetic']==(access=='synthetic'), 'Structured identity provenance differs from access')
+            delivery_provenance(target)
+        if 'structured_content' in target.get('intent',{}):
+            tsep.require(type(target.get('structured_synthetic')) is bool and target['structured_synthetic']==(access=='synthetic'), 'Structured-data provenance differs from access')
+            delivery_provenance(target)
         if 'inspection' in target.get('intent',{}):
             tsep.require((target.get('inspection_synthetic') is True)==(access=='synthetic'), 'Inspection provenance differs from access')
             tsep.require(access in ('synthetic','restricted'), 'Account inspection data requires restricted access')
@@ -455,6 +475,10 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += ' Usages déclarés et pièces fournies seulement / Declared usages and supplied evidence only; no real agent visit, identity, operator compliance or citation established.'
                 if cid == 'TS36':
                     report['results'][i]['reason'] += ' Suivi documentaire du changement / Documentary release follow-up; future stages remain inconclusive, no causal or authenticated Google visit claim.'
+                if cid == 'TS32':
+                    report['results'][i]['reason'] += ' Corpus JSON-LD et revues fournis / Supplied JSON-LD corpus and reviews; no authenticated sources, semantic identity or temporal stability.'
+                if cid == 'TS31':
+                    report['results'][i]['reason'] += ' JSON-LD et revues de contenu fournis / Supplied JSON-LD and content reviews; no authenticated visibility or facts, vocabulary validity or rich-result guarantee.'
                 if cid == 'TS12':
                     report['results'][i]['reason'] += ' Comparaison documentaire des surfaces HTTP/HTML et états DOM prévus / Documentary comparison of HTTP/HTML and declared DOM states; literal strings, no semantic URL equivalence, TS10, current selection or indexing inferred.'
                 if cid == 'TS08':

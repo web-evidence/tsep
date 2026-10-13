@@ -8,6 +8,7 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import tsep
+from conformance.corpus import expand
 
 ROOT = Path(__file__).resolve().parent
 TARGET = 'https://example.com/page'
@@ -74,8 +75,14 @@ def generate(output_root=ROOT):
             (folder / name).write_bytes((json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
         result.append({'case': case, 'status': status, 'decision': summary['decision']})
     # Raw adapter demonstrations are controlled derivatives, with no expected verdicts.
-    corpus = {case['id']: case['input'] for case in tsep.read_json(ROOT.parent/'conformance/cases.json')['cases']}
+    corpus = {case['id']: case['input'] for case in expand(tsep.read_json(ROOT.parent/'conformance/cases.json'))['cases']}
     capture_examples = {
+                        'ts32-complete': ('structured-identity-v1-complete', ['TS32-A01','TS32-A02','TS32-A03']),
+                        'ts32-contradiction': ('structured-identity-v1-required-identifier-changed', ['TS32-A01','TS32-A02','TS32-A03']),
+                        'ts32-review-missing': ('structured-identity-v1-missing-review', ['TS32-A01','TS32-A02','TS32-A03']),
+                        'ts31-complete': ('structured-content-v1-complete', ['TS31-A01','TS31-A02','TS31-A03']),
+                        'ts31-contradiction': ('structured-content-v1-known-fabrication-missing-state', ['TS31-A01','TS31-A02','TS31-A03']),
+                        'ts31-review-missing': ('structured-content-v1-missing-surface-review', ['TS31-A01','TS31-A02','TS31-A03']),
                         'ts36-complete': ('release-monitoring-v1-complete-cycle', ['TS36-A01','TS36-A02','TS36-A03']),
                         'ts36-adverse': ('release-monitoring-v1-adverse-observed-documented', ['TS36-A01','TS36-A02','TS36-A03']),
                         'ts36-pending': ('release-monitoring-v1-future-stages', ['TS36-A01','TS36-A02','TS36-A03']),

@@ -1,0 +1,11 @@
+{
+  "authored_at": "2026-10-13T09:57:23.177633+00:00",
+  "original_fixtures_sha256": {
+    "structured-content-v1.json": "f7abbe706ab165e55a514ae6fa07ddadf992a302fa442e62c6d8cde774afa97a",
+    "structured-content-boundaries-v1.json": "7f2115d8ba8edee2c414b65954b7fc13bb83f1e4e9790a64b3733bb00f8e111a"
+  },
+  "applies_to": "TS31 expected rows with reference_limit=true",
+  "basis": "Explicit Node 24 is required for native JSON-LD processing and graph-bound review; missing runtime stays inconclusive without fallback.",
+  "outcomes_changed": false,
+  "reason": "Original prefrozen fixtures omitted the mandatory explanatory basis for their declared runtime limit. Their bytes and expected outcomes are retained; this additive metadata correction is applied to the executable corpus."
+}

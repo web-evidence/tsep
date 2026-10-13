@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
 from conformance.evaluate import RULES, evaluate
+from conformance.corpus import expand
 
 
 def outcomes(rows):
@@ -45,6 +46,7 @@ def compare(expected_rows, actual_rows):
 
 
 def run(corpus, command=None, rules=None):
+    corpus = expand(corpus)
     tsep.require(corpus['protocol_version'] == tsep.read_json(tsep.PROTOCOL_PATH)['version'], 'Stale conformance version')
     requested = list(RULES) if rules is None else rules
     tsep.require(isinstance(requested, (list, tuple)) and requested

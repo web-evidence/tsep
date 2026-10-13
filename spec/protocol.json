@@ -1,9 +1,9 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.31",
+  "version": "0.1.0-draft.33",
   "status": "draft",
-  "date": "2026-10-12",
+  "date": "2026-10-13",
   "languages": [
     "en",
     "fr"
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.31"
+      "rule_version": "0.1.0-draft.33"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.31",
+      "rule_version": "0.1.0-draft.33",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.31",
+      "rule_version": "0.1.0-draft.33",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.31"
+      "rule_version": "0.1.0-draft.33"
     },
     {
       "id": "TS08",
@@ -926,7 +926,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.31",
+      "rule_version": "0.1.0-draft.33",
       "rules": [
         {
           "automation": "semiAuto",
@@ -1372,7 +1372,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.31"
+      "rule_version": "0.1.0-draft.33"
     },
     {
       "id": "TS11",
@@ -1492,7 +1492,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.31",
+      "rule_version": "0.1.0-draft.33",
       "rules": [
         {
           "id": "TS12-A01",
@@ -2758,7 +2758,147 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.33",
+      "rules": [
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "required_inputs": [
+            "structured-data",
+            "content",
+            "intent"
+          ],
+          "applicability": {
+            "fr": "Page sélectionnée avec JSON-LD ; profil source et états DOM prévus.",
+            "en": "Selected page with JSON-LD; planned source and DOM profile."
+          },
+          "evidence": {
+            "fr": "HTTP natif, arbres attribués, contextes et références fournis, graphes recalculés et revues liées ; contrat jsonld-visible-content-v1.",
+            "en": "Native HTTP, attributed trees, supplied contexts/guidance, recomputed graphs and bound reviews; jsonld-visible-content-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Périmètre, bases, dates, contenu visible et jugements fournis ; empreintes sans authentification.",
+            "en": "Supplied scope, bases, dates, visible content and judgments; hashes do not authenticate."
+          },
+          "inconclusive": {
+            "fr": "Manque, limite, contexte/runtime absent, lecture ambiguë, graphe vide, notice ou revue inconnue ; contradictions indépendantes conservées.",
+            "en": "Gaps, bounds, missing context/runtime, ambiguous reading, empty graph, notice or unknown review; independent contradictions preserved."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; absence dans un profil limité ne vaut pas NA.",
+            "en": "No atomic exemption; absence in a bounded profile does not establish NA."
+          },
+          "limitations": {
+            "fr": "JSON-LD et revue documentaire de la page sélectionnée ; ni vocabulaire Schema.org, vérité/visibilité authentifiée, résultat enrichi, indexation ou classement.",
+            "en": "JSON-LD and documentary review of the selected page; no Schema.org vocabulary validation, authenticated truth/visibility, rich result, indexing or ranking."
+          },
+          "id": "TS31-A01",
+          "title": {
+            "fr": "Périmètre et hypothèses préalables revus.",
+            "en": "Reviewed prior scope and hypotheses."
+          },
+          "procedure": {
+            "fr": "Qualifier le plan, ses références datées et la revue préalable liée du périmètre, de la base source et des recommandations.",
+            "en": "Qualify the plan, dated guidance and bound prior scope/source-base/guidance review."
+          },
+          "acceptance": {
+            "fr": "Trois jugements supported ; contradiction liée fail, revue manquante ou inconnue inconclusive.",
+            "en": "Three supported judgments; bound contradiction fails, missing or unknown review is inconclusive."
+          }
+        },
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "required_inputs": [
+            "structured-data",
+            "content",
+            "intent"
+          ],
+          "applicability": {
+            "fr": "Page sélectionnée avec JSON-LD ; profil source et états DOM prévus.",
+            "en": "Selected page with JSON-LD; planned source and DOM profile."
+          },
+          "evidence": {
+            "fr": "HTTP natif, arbres attribués, contextes et références fournis, graphes recalculés et revues liées ; contrat jsonld-visible-content-v1.",
+            "en": "Native HTTP, attributed trees, supplied contexts/guidance, recomputed graphs and bound reviews; jsonld-visible-content-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Périmètre, bases, dates, contenu visible et jugements fournis ; empreintes sans authentification.",
+            "en": "Supplied scope, bases, dates, visible content and judgments; hashes do not authenticate."
+          },
+          "inconclusive": {
+            "fr": "Manque, limite, contexte/runtime absent, lecture ambiguë, graphe vide, notice ou revue inconnue ; contradictions indépendantes conservées.",
+            "en": "Gaps, bounds, missing context/runtime, ambiguous reading, empty graph, notice or unknown review; independent contradictions preserved."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; absence dans un profil limité ne vaut pas NA.",
+            "en": "No atomic exemption; absence in a bounded profile does not establish NA."
+          },
+          "limitations": {
+            "fr": "JSON-LD et revue documentaire de la page sélectionnée ; ni vocabulaire Schema.org, vérité/visibilité authentifiée, résultat enrichi, indexation ou classement.",
+            "en": "JSON-LD and documentary review of the selected page; no Schema.org vocabulary validation, authenticated truth/visibility, rich result, indexing or ranking."
+          },
+          "id": "TS31-A02",
+          "title": {
+            "fr": "Lecture attribuée du JSON-LD source et rendu.",
+            "en": "Attributed source and rendered JSON-LD reading."
+          },
+          "procedure": {
+            "fr": "Recalculer les scripts exacts sous les deux hypothèses source et tous les états DOM prévus, avec contextes fournis.",
+            "en": "Recompute exact scripts under both source hypotheses and all planned DOM states using supplied contexts."
+          },
+          "acceptance": {
+            "fr": "Lectures complètes et au moins un graphe non vide sans notice ; JSON invalide attribué fail, autres limites inconclusive.",
+            "en": "Complete readings and at least one nonempty graph without notices; attributed invalid JSON fails, other limits are inconclusive."
+          }
+        },
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "required_inputs": [
+            "structured-data",
+            "content",
+            "intent"
+          ],
+          "applicability": {
+            "fr": "Page sélectionnée avec JSON-LD ; profil source et états DOM prévus.",
+            "en": "Selected page with JSON-LD; planned source and DOM profile."
+          },
+          "evidence": {
+            "fr": "HTTP natif, arbres attribués, contextes et références fournis, graphes recalculés et revues liées ; contrat jsonld-visible-content-v1.",
+            "en": "Native HTTP, attributed trees, supplied contexts/guidance, recomputed graphs and bound reviews; jsonld-visible-content-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Périmètre, bases, dates, contenu visible et jugements fournis ; empreintes sans authentification.",
+            "en": "Supplied scope, bases, dates, visible content and judgments; hashes do not authenticate."
+          },
+          "inconclusive": {
+            "fr": "Manque, limite, contexte/runtime absent, lecture ambiguë, graphe vide, notice ou revue inconnue ; contradictions indépendantes conservées.",
+            "en": "Gaps, bounds, missing context/runtime, ambiguous reading, empty graph, notice or unknown review; independent contradictions preserved."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; absence dans un profil limité ne vaut pas NA.",
+            "en": "No atomic exemption; absence in a bounded profile does not establish NA."
+          },
+          "limitations": {
+            "fr": "JSON-LD et revue documentaire de la page sélectionnée ; ni vocabulaire Schema.org, vérité/visibilité authentifiée, résultat enrichi, indexation ou classement.",
+            "en": "JSON-LD and documentary review of the selected page; no Schema.org vocabulary validation, authenticated truth/visibility, rich result, indexing or ranking."
+          },
+          "id": "TS31-A03",
+          "title": {
+            "fr": "Cohérence du contenu et des types revue par entité.",
+            "en": "Content and type consistency reviewed per entity."
+          },
+          "procedure": {
+            "fr": "Lier le contenu fourni et chaque nœud aplati aux revues complètes couvrant visibilité, type, toutes les propriétés et absence de fabrication.",
+            "en": "Bind supplied content and every flattened node to complete reviews covering visibility, type, all properties and absence of fabrication."
+          },
+          "acceptance": {
+            "fr": "Population exacte et qualifications supported ; contradiction fournie liée fail, manque ou inconnue inconclusive.",
+            "en": "Exact population and supported qualifications; bound supplied contradiction fails, gaps or unknowns are inconclusive."
+          }
+        }
+      ]
     },
     {
       "id": "TS32",
@@ -2816,7 +2956,144 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.33",
+      "rules": [
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "required_inputs": [
+            "structured-data",
+            "intent"
+          ],
+          "applicability": {
+            "fr": "Corpus déclaré de 2–16 exports JSON-LD utilisant des identifiants.",
+            "en": "Declared corpus of 2–16 JSON-LD exports using identifiers."
+          },
+          "evidence": {
+            "fr": "Registre préalable, exports natifs, contextes locaux, graphes recalculés et revues liées ; contrat jsonld-identity-corpus-v1.",
+            "en": "Prior registry, native exports, local contexts, recomputed graphs and bound reviews; jsonld-identity-corpus-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Origine, complétude, bases, dates et correspondances déclarées puis revues ; non authentifiées.",
+            "en": "Declared/reviewed origin, completeness, bases, dates and mappings; not authenticated."
+          },
+          "inconclusive": {
+            "fr": "Pièce, revue, runtime ou contexte manquant ; graphe vide/nommé, notice, référence ou identifiant non qualifiés. Contradictions indépendantes conservées.",
+            "en": "Missing evidence, review, runtime or context; empty/named graph, notice or unqualified reference/ID. Independent contradictions preserved."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA dans ce profil borné.",
+            "en": "No NA in this bounded profile."
+          },
+          "limitations": {
+            "fr": "Cohérence du corpus fourni, sans stabilité temporelle, identité réelle, collecte de pages, fusion inter-documents ni garantie Google.",
+            "en": "Supplied corpus coherence, no temporal stability, real identity, page collection, cross-document merging or Google guarantee."
+          },
+          "id": "TS32-A01",
+          "title": {
+            "fr": "Registre et corpus préalables qualifiés.",
+            "en": "Qualified prior registry and corpus."
+          },
+          "procedure": {
+            "fr": "Vérifier les entités distinctes, le plan et la revue préalable liée des populations/correspondances/références.",
+            "en": "Check distinct entities, plan and bound prior population/mapping/reference review."
+          },
+          "acceptance": {
+            "fr": "Registre sans collision et trois qualifications supported ; collision distincte fail même si revue absente.",
+            "en": "Collision-free registry and three supported judgments; distinct-entity collision fails even with absent review."
+          }
+        },
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "required_inputs": [
+            "structured-data",
+            "intent"
+          ],
+          "applicability": {
+            "fr": "Corpus déclaré de 2–16 exports JSON-LD utilisant des identifiants.",
+            "en": "Declared corpus of 2–16 JSON-LD exports using identifiers."
+          },
+          "evidence": {
+            "fr": "Registre préalable, exports natifs, contextes locaux, graphes recalculés et revues liées ; contrat jsonld-identity-corpus-v1.",
+            "en": "Prior registry, native exports, local contexts, recomputed graphs and bound reviews; jsonld-identity-corpus-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Origine, complétude, bases, dates et correspondances déclarées puis revues ; non authentifiées.",
+            "en": "Declared/reviewed origin, completeness, bases, dates and mappings; not authenticated."
+          },
+          "inconclusive": {
+            "fr": "Pièce, revue, runtime ou contexte manquant ; graphe vide/nommé, notice, référence ou identifiant non qualifiés. Contradictions indépendantes conservées.",
+            "en": "Missing evidence, review, runtime or context; empty/named graph, notice or unqualified reference/ID. Independent contradictions preserved."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA dans ce profil borné.",
+            "en": "No NA in this bounded profile."
+          },
+          "limitations": {
+            "fr": "Cohérence du corpus fourni, sans stabilité temporelle, identité réelle, collecte de pages, fusion inter-documents ni garantie Google.",
+            "en": "Supplied corpus coherence, no temporal stability, real identity, page collection, cross-document merging or Google guarantee."
+          },
+          "id": "TS32-A02",
+          "title": {
+            "fr": "Identifiants requis et références du corpus.",
+            "en": "Required identifiers and corpus references."
+          },
+          "procedure": {
+            "fr": "Recalculer indépendamment les exports natifs et comparer les IRI définies au registre ; inventorier les références et leur portée.",
+            "en": "Recompute native exports independently and compare defined IRIs with the registry; inventory references and scope."
+          },
+          "acceptance": {
+            "fr": "IRI requises définies et périmètre/références qualifiés ; absence requise dans graphe complet non vide fail, manque ou ambiguïté inconclusive.",
+            "en": "Required IRIs defined and scope/references qualified; required absence from a complete nonempty graph fails, gaps or ambiguity are inconclusive."
+          }
+        },
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "required_inputs": [
+            "structured-data",
+            "intent"
+          ],
+          "applicability": {
+            "fr": "Corpus déclaré de 2–16 exports JSON-LD utilisant des identifiants.",
+            "en": "Declared corpus of 2–16 JSON-LD exports using identifiers."
+          },
+          "evidence": {
+            "fr": "Registre préalable, exports natifs, contextes locaux, graphes recalculés et revues liées ; contrat jsonld-identity-corpus-v1.",
+            "en": "Prior registry, native exports, local contexts, recomputed graphs and bound reviews; jsonld-identity-corpus-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Origine, complétude, bases, dates et correspondances déclarées puis revues ; non authentifiées.",
+            "en": "Declared/reviewed origin, completeness, bases, dates and mappings; not authenticated."
+          },
+          "inconclusive": {
+            "fr": "Pièce, revue, runtime ou contexte manquant ; graphe vide/nommé, notice, référence ou identifiant non qualifiés. Contradictions indépendantes conservées.",
+            "en": "Missing evidence, review, runtime or context; empty/named graph, notice or unqualified reference/ID. Independent contradictions preserved."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA dans ce profil borné.",
+            "en": "No NA in this bounded profile."
+          },
+          "limitations": {
+            "fr": "Cohérence du corpus fourni, sans stabilité temporelle, identité réelle, collecte de pages, fusion inter-documents ni garantie Google.",
+            "en": "Supplied corpus coherence, no temporal stability, real identity, page collection, cross-document merging or Google guarantee."
+          },
+          "id": "TS32-A03",
+          "title": {
+            "fr": "Correspondances et doublons revus sur pièces.",
+            "en": "Evidence-bound mapping and duplicate review."
+          },
+          "procedure": {
+            "fr": "Lier chaque export et nœud recalculé aux revues des correspondances, répétitions/doublons et sens des références.",
+            "en": "Bind each export and recomputed node to mapping, repetition/duplicate and reference-meaning reviews."
+          },
+          "acceptance": {
+            "fr": "Couverture exacte et qualifications supported ; contradiction liée fail, revue incomplète ou inconnue inconclusive.",
+            "en": "Exact coverage and supported judgments; bound contradiction fails, incomplete/unknown review is inconclusive."
+          }
+        }
+      ]
     },
     {
       "id": "TS33",
@@ -2933,7 +3210,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.31",
+      "rule_version": "0.1.0-draft.33",
       "rules": [
         {
           "id": "TS34-A01",
@@ -3128,7 +3405,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.31",
+      "rule_version": "0.1.0-draft.33",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3280,7 +3557,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.31",
+      "rule_version": "0.1.0-draft.33",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3603,7 +3880,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.31",
+      "rule_version": "0.1.0-draft.33",
       "rules": [
         {
           "applicability": {
@@ -3862,7 +4139,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.31",
+      "rule_version": "0.1.0-draft.33",
       "rules": [
         {
           "applicability": {
@@ -4063,7 +4340,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.31",
+      "rule_version": "0.1.0-draft.33",
       "rules": [
         {
           "id": "TS42-A01",
@@ -4260,7 +4537,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.31",
+      "rule_version": "0.1.0-draft.33",
       "rules": [
         {
           "id": "TS43-A01",
@@ -4462,7 +4739,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.31",
+      "rule_version": "0.1.0-draft.33",
       "rules": [
         {
           "na_inputs": [],
@@ -4754,15 +5031,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "f0cec929bed0197903055d6055b5c74a51771bdf4baf4f96c5fd223804c77fc6"
+      "sha256": "0268fc622f283bd6620110ac3aceff12f9333b932dde5fb5c5bbe41028781734"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "bf6d1fd62712cbf567b1b9201171247eb4e75b23218920f6bcbd887c2926c1eb"
+      "sha256": "8d0254b486fe43c2abd626fa3a158ff391a617e9025cf4c628d344fe45c9558f"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "9a227a01ed5e7a88ab8e44350498217aef571bb84161c1135f57a5a74d6b9b69"
+      "sha256": "605fce0448db8050662f34e4c410c844e387c30492f38464fae325fb36a51ddf"
     },
     {
       "path": "docs/source-directives.md",
@@ -4819,6 +5096,14 @@
     {
       "path": "docs/inspection-evidence.md",
       "sha256": "08cf78758c31fedfde4df88f1abe8778e16ac7320f4b68f9947861e22407e952"
+    },
+    {
+      "path": "docs/structured-content-evidence.md",
+      "sha256": "b1c46b6586b193fc34869add94bb15ffc23408bb2a46d230909df7d5029bfac7"
+    },
+    {
+      "path": "docs/structured-identity-evidence.md",
+      "sha256": "51be08815255ab88aa796bf115f4e4c8df34d0774cfe4c3f59331d5e1821c969"
     }
   ]
 }

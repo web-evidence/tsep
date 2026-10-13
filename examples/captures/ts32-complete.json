@@ -1,0 +1,122 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS32-A01",
+    "TS32-A02",
+    "TS32-A03"
+  ],
+  "targets": [
+    {
+      "url": "https://example.test/a",
+      "observed_at": "2026-10-12T10:10:00Z",
+      "identity_synthetic": true,
+      "context": {
+        "network": "none; synthetic",
+        "bounds": "two authored JSON-LD exports",
+        "tool": "authored-fixture",
+        "tool_version": "1"
+      },
+      "intent": {
+        "declared_at": "2026-10-12T09:00:00Z",
+        "structured_identity": {
+          "reader": "jsonld-identity-corpus-v1",
+          "selection_reason": "Two authored representations",
+          "population": "This supplied pair only",
+          "window_start": "2026-10-12T10:00:00Z",
+          "window_end": "2026-10-12T10:05:00Z",
+          "entities": [
+            {
+              "key": "org",
+              "iri": "https://example.test/#org",
+              "reason": "Fictional same organization declared before observation"
+            }
+          ],
+          "documents": [
+            {
+              "id": "a",
+              "base_iri": "https://example.test/a",
+              "source": "Authored complete JSON-LD export; no actual page capture",
+              "entities": [
+                "org"
+              ],
+              "auxiliary_ids": [],
+              "external_refs": []
+            },
+            {
+              "id": "b",
+              "base_iri": "https://example.test/b",
+              "source": "Authored complete JSON-LD export; no actual page capture",
+              "entities": [
+                "org"
+              ],
+              "auxiliary_ids": [],
+              "external_refs": []
+            }
+          ]
+        }
+      },
+      "identity_documents": [
+        {
+          "id": "a",
+          "observed_at": "2026-10-12T10:01:00Z",
+          "raw_json": "{\"@id\":\"https://example.test/#org\",\"@type\":\"https://schema.org/Organization\",\"https://schema.org/name\":\"Fictional org\"}",
+          "sha256": "2b25ebb6c92b951d718228e6b92241944d20dd8c139931189c05c0465c0ebf15",
+          "contexts": []
+        },
+        {
+          "id": "b",
+          "observed_at": "2026-10-12T10:01:00Z",
+          "raw_json": "{\"@id\":\"https://example.test/#org\",\"@type\":\"https://schema.org/Organization\",\"https://schema.org/name\":\"Fictional org\"}",
+          "sha256": "2b25ebb6c92b951d718228e6b92241944d20dd8c139931189c05c0465c0ebf15",
+          "contexts": []
+        }
+      ],
+      "identity_plan_review": {
+        "binding_sha256": "f31a4c2b04f010ed9931c8d9297fbe9aff0ac908e67d06f0fa1c763832b4bf9c",
+        "observed_at": "2026-10-12T09:30:00Z",
+        "reviewer": "Fictional reviewer",
+        "assistance": "Authored exercise, not an observed human review",
+        "reason": "Authored registry and corpus qualification",
+        "provenance": "synthetic-exercise",
+        "complete": true,
+        "population": "supported",
+        "mapping": "supported",
+        "references": "supported"
+      },
+      "identity_reviews": [
+        {
+          "document_id": "a",
+          "covered_nodes": [
+            "a1f83467355de4fb70b27d460c6a1b66bbbc6a731602ae148f54e3eca13e95e5"
+          ],
+          "binding_sha256": "f164c37aea19a245be6adbb2a024eea98b660b11d67ff26d794f7c11798ffa73",
+          "observed_at": "2026-10-12T10:06:00Z",
+          "reviewer": "Fictional reviewer",
+          "assistance": "Authored exercise, not an observed human review",
+          "reason": "Authored registry and corpus qualification",
+          "provenance": "synthetic-exercise",
+          "complete": true,
+          "mapping": "supported",
+          "duplicate_qualification": "supported",
+          "reference_meaning": "supported"
+        },
+        {
+          "document_id": "b",
+          "covered_nodes": [
+            "a1f83467355de4fb70b27d460c6a1b66bbbc6a731602ae148f54e3eca13e95e5"
+          ],
+          "binding_sha256": "182dc621c990ecbdeaab57793a527e8d34de95ac517810c4a866602a72b25c1e",
+          "observed_at": "2026-10-12T10:06:00Z",
+          "reviewer": "Fictional reviewer",
+          "assistance": "Authored exercise, not an observed human review",
+          "reason": "Authored registry and corpus qualification",
+          "provenance": "synthetic-exercise",
+          "complete": true,
+          "mapping": "supported",
+          "duplicate_qualification": "supported",
+          "reference_meaning": "supported"
+        }
+      ]
+    }
+  ]
+}

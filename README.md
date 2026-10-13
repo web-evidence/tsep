@@ -1,6 +1,9 @@
+TS32: [declared JSON-LD identity corpus](docs/structured-identity-evidence.md), [draft.33 migration](docs/migration-draft.33.md). Supplied corpus coherence and bound reviews; no temporal stability claim.
+TS31: [JSON-LD/content evidence](docs/structured-content-evidence.md), [draft.32 migration](docs/migration-draft.32.md). Supplied graph-bound reviews; no authenticated visibility or rich-result guarantee.
+
 TS36: [release follow-up](docs/release-monitoring.md), [intake and closure](docs/release-monitoring-intake.md), [draft.31 migration](docs/migration-draft.31.md). Authored cases only; no real future stage completed.
 
-Local development edition: **0.1.0-draft.31** — [TS12 comparisons](docs/canonical-comparison.md), [intake](docs/canonical-comparison-intake.md), [migration](docs/migration-draft.30.md). Fifteen tooled controls /42 rules. Supplied rendered states required; no actual Edikka assessment.
+Local development edition: **0.1.0-draft.33** — [TS12 comparisons](docs/canonical-comparison.md), [intake](docs/canonical-comparison-intake.md), [migration](docs/migration-draft.30.md). Seventeen tooled controls /48 rules. Supplied rendered states required; no actual Edikka assessment.
 
 TS08 [native inspections](docs/inspection-evidence.md) and [acquisition](docs/search-console-acquisition.md) remain available.
 
@@ -15,7 +18,7 @@ TS39 has [three delivery rules](docs/delivery-evidence.md): prior matrix, per-co
 
 # TSEP — evidence interchange format
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.31 · initiated by Edikka · [Français](README.fr.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.33 · initiated by Edikka · [Français](README.fr.md)**
 
 Share a technical SEO assessment that its recipient can inspect, replay and
 challenge: stable identifiers, explicit scope, evidence linked to findings and
@@ -94,8 +97,8 @@ validation establishes consistency and file integrity.
    not satisfy a named profile. An isolated test cannot pass its parent control.
 3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
    `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 my_adapter.py'`
-   for that subset, or omit `--rules` for all forty-two rules. State “passes TSEP
-   0.1.0-draft.31 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
+   for that subset, or omit `--rules` for all forty-eight rules. State “passes TSEP
+   0.1.0-draft.33 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
    [Input format and comparison](docs/conformance.md). Report exact agreements,
    disagreements and reduced coverage separately; accepted inconclusive results
    on marked reference limits are not successful assessments.
@@ -156,7 +159,7 @@ checks declarations and hashes, not authenticity, appropriate intent or every
 assessment judgment. A hash does not establish authorship or actual collection
 time. Bundled cases are synthetic.
 
-The interpreter covers forty-two rules within a documented subset; unsupported inputs
+The interpreter covers forty-eight rules within a documented subset; unsupported inputs
 remain inconclusive. TS07-A03 compares supplied source/DOM captures without executing JavaScript;
 the plan and exemptions require review. TS10 compares declared family signals and checks the binding of the supplied
 human content review, without guaranteeing its correctness.
@@ -169,7 +172,7 @@ ranking or future engine behavior.
 [Governance](GOVERNANCE.md) · [Contribute](CONTRIBUTING.md) · [History](CHANGELOG.md) ·
 [Acceptance clause](docs/acceptance-clause.md) · [HTTP probe](probes/README.md).
 
-Cite `TSEP@0.1.0-draft.31:TS07` with scope, result, evidence and archive hash.
+Cite `TSEP@0.1.0-draft.33:TS07` with scope, result, evidence and archive hash.
 Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATION.cff).
 [Development, full verification and independent repository](docs/development.md).
 

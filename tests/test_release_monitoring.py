@@ -19,7 +19,7 @@ def cases():
 def data(name='complete-cycle'):return copy.deepcopy(next(c['input'] for c in cases() if c['id']=='release-monitoring-v1-'+name))
 class ReleaseMonitoring(unittest.TestCase):
  def test_prefrozen_cases_no_collection(self):
-  rows=cases();self.assertEqual(len(rows),65);self.assertEqual(tsep.read_json(ROOT/'conformance/cases.json')['cases'][1370:],rows)
+  rows=cases();self.assertEqual(len(rows),65);self.assertEqual(tsep.read_json(ROOT/'conformance/cases.json')['cases'][1370:1435],rows)
   with patch.object(socket,'socket',side_effect=AssertionError('No network')),patch.object(subprocess,'Popen',side_effect=AssertionError('No processes')):
    for c in rows:
     with self.subTest(case=c['id']):self.assertEqual([(x['rule_id'],x['target'],x['outcome']) for x in evaluate(c['input'])],[(x['rule_id'],x['target'],x['outcome']) for x in c['expected']])

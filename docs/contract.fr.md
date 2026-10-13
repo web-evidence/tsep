@@ -1,10 +1,13 @@
+Draft.33 ajoute TS32-A01/A02/A03 : registre préalable, identifiants/références natifs et revues liées. [Contrat](structured-identity-evidence.md), [migration](migration-draft.33.md). Cohérence du corpus fourni, sans stabilité temporelle authentifiée.
+Draft.32 ajoute TS31-A01/A02/A03 : périmètre préalable, lecture JSON-LD native et revues de contenu liées par entité. [Contrat bilingue](structured-content-evidence.md), [migration](migration-draft.32.md). Preuves fournies, aucune visibilité ou vérité authentifiée ni résultat enrichi garanti.
+
 Draft.31 ajoute TS36-A01/A02/A03 : chronologie, échéances et décisions fournies. [Contrat bilingue](release-monitoring.md), [import](release-monitoring-intake.md), [migration](migration-draft.31.md). Baseline/J+1/J+7/J+30 stricts ; futur NT, aucune causalité ni visite Google authentifiée.
 
 Draft.30 ajoute TS12-A01/A02/A03 : plan, comparaisons attribuées et revue/décision fournie. [Contrat bilingue](canonical-comparison.md), [migration](migration-draft.30.md). Rendu prévu requis ; C documentaire, pas TS10 ni indexation.
 
 Draft.29 ajoute trois règles TS08 : périmètre/objectifs, inspections natives et revues/décisions liées. [Contrat bilingue](inspection-evidence.md), [migration](migration-draft.29.md). C qualifie le dossier sélectionné, jamais une indexation garantie.
 
-# Contrat de rapport — TSEP 0.1.0-draft.31
+# Contrat de rapport — TSEP 0.1.0-draft.33
 
 ### Diffusion et variantes — draft.27
 

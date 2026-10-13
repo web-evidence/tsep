@@ -12,16 +12,23 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
+from conformance.corpus import expand
 from adapters.captures import build
 from conformance.evaluate import RULES, evaluate, identity_text
 from conformance.run import compare, run
 
-CORPUS = tsep.read_json(ROOT/'conformance/cases.json')
+CORPUS = expand(tsep.read_json(ROOT/'conformance/cases.json'))
 CASES = {c['id']:c for c in CORPUS['cases']}
 SELECTED = ['TS01-A01', 'TS01-A02']
 # CLI transport/selection regressions need contradictory examples, not hundreds
 # of interpreter startups. verify.py still runs the complete conformance corpus.
 EXTERNAL_CASE_IDS = (
+    'structured-content-v1-complete', 'structured-content-v1-plan-scope-contradiction',
+    'structured-content-v1-source-invalid-json', 'structured-content-v1-no_fabrication-contradiction',
+    'structured-content-v1-missing-plan-review', 'structured-content-v1-missing-rendered-state',
+    'structured-identity-v1-complete', 'structured-identity-v1-plan-mapping-contradiction',
+    'structured-identity-v1-required-identifier-changed', 'structured-identity-v1-same-id-reviewed-collision',
+    'structured-identity-v1-missing-prior-review', 'structured-identity-v1-missing-document',
     'release-monitoring-v1-complete-cycle', 'release-monitoring-v1-wrong-release-id',
     'release-monitoring-v1-wrong-request-url', 'release-monitoring-v1-wrong-api-claim',
     'release-monitoring-v1-missing-deployment',

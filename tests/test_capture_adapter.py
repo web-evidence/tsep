@@ -13,10 +13,11 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
+from conformance.corpus import expand
 from adapters.captures import build, NAME, VERSION
 from conformance.evaluate import evaluate
 
-CASES = {c['id']:c for c in tsep.read_json(ROOT/'conformance/cases.json')['cases']}
+CASES = {c['id']:c for c in expand(tsep.read_json(ROOT/'conformance/cases.json'))['cases']}
 
 
 class CaptureAdapter(unittest.TestCase):
@@ -45,9 +46,9 @@ class CaptureAdapter(unittest.TestCase):
                 with patch('adapters.captures.datetime') as clock:
                     # After every supplied fixture date; future-to-assessment remains unknown.
                     clock.now.return_value=datetime(2026,10,13,tzinfo=timezone.utc)
-                    if name == 'release-monitoring-v1-real-review-in-synthetic':
+                    if name in ('release-monitoring-v1-real-review-in-synthetic','structured-content-v1-false-human-review','structured-content-boundary-authored-dom-not-real','structured-identity-v1-false-human-review'):
                         # The raw reader returns unknown; bundling must refuse mixed provenance.
-                        with self.assertRaisesRegex(tsep.Invalid, 'review provenance differs'):
+                        with self.assertRaisesRegex(tsep.Invalid, 'Structured-data provenance differs|review provenance differs'):
                             self.emit(case['input'])
                         self.assertFalse(self.output.exists())
                         continue

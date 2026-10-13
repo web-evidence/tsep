@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.31",
+  "protocol_version": "0.1.0-draft.33",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -5640,6 +5640,330 @@
             "change-history",
             "search-console",
             "logs"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS31-method-pass",
+      "control_id": "TS31",
+      "description": {
+        "fr": "Exercice synthétique : jugements pass fournis pour TS31.",
+        "en": "Synthetic exercise: supplied pass judgments for TS31."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "content": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS31-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS31.",
+            "en": "Synthetic exercise: supplied pass judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS31-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS31.",
+            "en": "Synthetic exercise: supplied pass judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS31-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS31.",
+            "en": "Synthetic exercise: supplied pass judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS31-method-fail",
+      "control_id": "TS31",
+      "description": {
+        "fr": "Exercice synthétique : jugements fail fournis pour TS31.",
+        "en": "Synthetic exercise: supplied fail judgments for TS31."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "content": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS31-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS31.",
+            "en": "Synthetic exercise: supplied fail judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS31-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS31.",
+            "en": "Synthetic exercise: supplied fail judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS31-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS31.",
+            "en": "Synthetic exercise: supplied fail judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS31-method-inconclusive",
+      "control_id": "TS31",
+      "description": {
+        "fr": "Exercice synthétique : jugements inconclusive fournis pour TS31.",
+        "en": "Synthetic exercise: supplied inconclusive judgments for TS31."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "content": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS31-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS31.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS31-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS31.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS31-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS31.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS32-method-pass",
+      "control_id": "TS32",
+      "description": {
+        "fr": "Exercice synthétique : jugements pass fournis pour TS32.",
+        "en": "Synthetic exercise: supplied pass judgments for TS32."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS32-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS32.",
+            "en": "Synthetic exercise: supplied pass judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS32-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS32.",
+            "en": "Synthetic exercise: supplied pass judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS32-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS32.",
+            "en": "Synthetic exercise: supplied pass judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS32-method-fail",
+      "control_id": "TS32",
+      "description": {
+        "fr": "Exercice synthétique : jugements fail fournis pour TS32.",
+        "en": "Synthetic exercise: supplied fail judgments for TS32."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS32-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS32.",
+            "en": "Synthetic exercise: supplied fail judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS32-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS32.",
+            "en": "Synthetic exercise: supplied fail judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS32-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS32.",
+            "en": "Synthetic exercise: supplied fail judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS32-method-inconclusive",
+      "control_id": "TS32",
+      "description": {
+        "fr": "Exercice synthétique : jugements inconclusive fournis pour TS32.",
+        "en": "Synthetic exercise: supplied inconclusive judgments for TS32."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS32-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS32.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS32-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS32.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS32-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS32.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
           ]
         }
       ],
