@@ -1,3 +1,4 @@
+Closed historical runtime distribution 1: [contract and explicit migration / contrat et migration explicite](runtime-distribution-v1.md). Separate transport identity; historical engine bytes and native reports unchanged.
 TS12/TS31/TS36 CLI intake 2: [raw-byte integrity and explicit migration / intégrité et migration](intake-integrity-v2.md). Normative draft.33 and application engine imports unchanged.
 TS08 CLI intake 2: [integrity and explicit migration / intégrité et migration explicite](inspection-intake-v2.md). Complete intake inventory and raw-input bindings; normative draft.33 unchanged. Existing application engine imports are separate and unchanged by this source update.
 TS32: [contract / contrat](structured-identity-evidence.md), [migration](migration-draft.33.md). Two explicit fingerprinted fixture extensions keep the core JSON file below its existing 8MiB bound; no recursive discovery or expected-verdict generation.
