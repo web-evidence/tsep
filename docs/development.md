@@ -1,3 +1,5 @@
+Current transport / Transport courant: adapter37 adds [TS17 DOM self-integrity intake1](essential-links-intake-v1.md); draft.36/interpreter35/HTML20/replay3 and native rules unchanged. Distinct qualified archive/import required; previous adapter36 artifacts retained.
+
 Current build consistency / Cohérence de construction courante:
 `maintain.py check` and `build` reject a stale version or fingerprint in the three
 current generated reports (`examples/pass`, `fail`, `partial`) before the full
@@ -7,7 +9,7 @@ FR : les trois rapports courants doivent porter la version et l’empreinte exac
 du protocole. Une incohérence bloque la construction ; régénérer séparément,
 examiner le diff et conserver les archives historiques intactes.
 
-Current candidate / Candidat actuel — draft.36 : interpreter35 /adapter36 /HTML20 /replay3 ;20 contrôles /56 règles. [TS17](essential-links-evidence.md), [migration](migration-draft.36.md). Explicit Node24 and documented timeout1800 required; no full qualification implied by this description.
+Current candidate / Candidat actuel — draft.36 : interpreter35 /adapter37 /HTML20 /replay3 ;20 contrôles /56 règles. [TS17](essential-links-evidence.md), [migration](migration-draft.36.md). Explicit Node24 and documented timeout1800 required; no full qualification implied by this description.
 
 Previous candidate / Candidat précédent — draft.35 : interpreter34 /adapter35 /HTML19 /replay3 ;19 contrôles /54 règles. [TS15](sitemap-files-evidence.md), [migration](migration-draft.35.md). TS15 uses standard Python; full suite still requires explicit Node24 and timeout1800 as documented below.
 

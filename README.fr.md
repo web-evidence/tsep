@@ -106,7 +106,7 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
    TS01/TS07 ne satisfait pas un profil nommé. Aucun test isolé ne valide son parent.
 3. **Passer la suite de conformance** : fournir un adaptateur JSON sur entrée/sortie
    standard, puis exécuter `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 mon_adaptateur.py'`
-   pour ce sous-ensemble, ou omettre `--rules` pour les quarante-huit règles. Déclarer
+   pour ce sous-ensemble, ou omettre `--rules` pour les cinquante-six règles. Déclarer
    « passes TSEP 0.1.0-draft.36 conformance for TS01-A01, TS01-A02 » avec les bornes
    réellement prises en charge. [Format d’entrée et comparaison](docs/conformance.md). Publier séparément
    accords, désaccords et couverture réduite : les indéterminés acceptés sur des
@@ -169,7 +169,7 @@ Le validateur vérifie les déclarations et les empreintes, pas leur authenticit
 la pertinence de l’intention ni l’exactitude de tous les jugements. Une empreinte
 ne prouve ni l’auteur ni la date réelle de collecte. Les cas fournis sont synthétiques.
 
-L’interpréteur couvre quarante-huit règles dans un sous-ensemble documenté ; les entrées
+L’interpréteur couvre cinquante-six règles dans un sous-ensemble documenté ; les entrées
 non prises en charge restent indéterminées. TS07-A03 compare des captures source/DOM fournies, sans exécuter JavaScript ;
 le plan et les exemptions nécessitent une revue. TS10 compare les signaux d’une famille déclarée et vérifie le rattachement de la revue
 humaine de contenu, sans en garantir la justesse. Un contrôle partiel ne produit jamais de conformité globale.

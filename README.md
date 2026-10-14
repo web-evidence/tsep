@@ -105,7 +105,7 @@ validation establishes consistency and file integrity.
    not satisfy a named profile. An isolated test cannot pass its parent control.
 3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
    `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 my_adapter.py'`
-   for that subset, or omit `--rules` for all forty-eight rules. State “passes TSEP
+   for that subset, or omit `--rules` for all fifty-six rules. State “passes TSEP
    0.1.0-draft.36 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
    [Input format and comparison](docs/conformance.md). Report exact agreements,
    disagreements and reduced coverage separately; accepted inconclusive results
@@ -167,7 +167,7 @@ checks declarations and hashes, not authenticity, appropriate intent or every
 assessment judgment. A hash does not establish authorship or actual collection
 time. Bundled cases are synthetic.
 
-The interpreter covers forty-eight rules within a documented subset; unsupported inputs
+The interpreter covers fifty-six rules within a documented subset; unsupported inputs
 remain inconclusive. TS07-A03 compares supplied source/DOM captures without executing JavaScript;
 the plan and exemptions require review. TS10 compares declared family signals and checks the binding of the supplied
 human content review, without guaranteeing its correctness.

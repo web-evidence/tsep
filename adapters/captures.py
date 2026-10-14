@@ -18,12 +18,52 @@ import tempfile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
-from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
+from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts, binding_digest
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '36'
+VERSION = '37'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
+
+
+def verify_ts17_self_digests(target):
+    """Transport self-integrity only; missing evidence/associations stay unknown.
+
+    Inspect every supplied state before interpretation, including unplanned states
+    and missing plans. Never repair a digest or infer acquisition authenticity.
+    Historical readers and other controls keep their existing behavior.
+    """
+    render = target.get('render')
+    states = render.get('states') if isinstance(render, dict) else None
+    if not isinstance(states, list):
+        return
+    for state in states:
+        structured = state.get('structured_dom') if isinstance(state, dict) else None
+        if not isinstance(structured, dict):
+            continue
+        snapshot, declared = structured.get('snapshot'), structured.get('snapshot_sha256')
+        if snapshot is not None and declared is not None:
+            try:
+                actual = binding_digest(snapshot)
+            except (TypeError, ValueError, UnicodeError) as error:
+                raise tsep.Invalid('TS17 DOM integrity: unhashable supplied snapshot') from error
+            tsep.require(isinstance(declared, str) and declared == actual,
+                         'TS17 DOM integrity: supplied snapshot self-fingerprint mismatch')
+        acquisition = structured.get('acquisition')
+        support = acquisition.get('support') if isinstance(acquisition, dict) else None
+        if not isinstance(support, list):
+            continue
+        for item in support:
+            if not isinstance(item, dict):
+                continue
+            content, declared = item.get('content'), item.get('sha256')
+            if isinstance(content, str) and declared is not None:
+                try:
+                    actual = hashlib.sha256(content.encode('utf-8')).hexdigest()
+                except UnicodeError as error:
+                    raise tsep.Invalid('TS17 DOM integrity: unhashable supplied support content') from error
+                tsep.require(isinstance(declared, str) and declared == actual,
+                             'TS17 DOM integrity: supplied support self-fingerprint mismatch')
 
 
 def source_files():
@@ -315,6 +355,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
             tsep.require(supplied_http is None or (type(supplied_http) is list
                          and all(type(hop) is dict for hop in supplied_http)),
                          'TS17 HTTP structure: expected a list of exchange objects, or absent/null evidence')
+            verify_ts17_self_digests(target)
     tsep.require(access in ACCESS, 'Explicit evidence access is required')
     # Native release inputs are retained as strings. Inspect their supplied
     # provenance as well: wrapping synthetic evidence cannot make it public.
