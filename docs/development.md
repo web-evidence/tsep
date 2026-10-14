@@ -2,7 +2,8 @@ Closed historical runtime distribution 1: [contract and explicit migration / con
 TS12/TS31/TS36 CLI intake 2: [raw-byte integrity and explicit migration / intégrité et migration](intake-integrity-v2.md). Normative draft.33 and application engine imports unchanged.
 TS08 CLI intake 2: [integrity and explicit migration / intégrité et migration explicite](inspection-intake-v2.md). Complete intake inventory and raw-input bindings; normative draft.33 unchanged. Existing application engine imports are separate and unchanged by this source update.
 TS32: [contract / contrat](structured-identity-evidence.md), [migration](migration-draft.33.md). Two explicit fingerprinted fixture extensions keep the core JSON file below its existing 8MiB bound; no recursive discovery or expected-verdict generation.
-Current local work / Travail local — 2026-10-13 : draft.33, interpreter32 / adapter33 / HTML16 / replay3.
+Current local work / Travail local — 2026-10-14 : draft.33, interpreter32 / adapter33 / HTML17 / replay3.
+[HTML17 narrow metric grid / synthèse sur écran étroit](html-report.md#version-17--narrow-metric-grid--synthèse-sur-écran-étroit) is presentation-only; no historical report or application engine import is rewritten.
 TS31 [contract / contrat](structured-content-evidence.md), [intake / import](structured-content-intake.md), [migration](migration-draft.32.md).
 FR/EN : 17 contrôles outillés / tooled controls, 48 règles / rules. TS31:59 authored cases /177 pairs; TS32:62 cases /186 pairs; actual verification recorded separately. Supplied reviews, no authenticated visibility or real Edikka assessment.
 

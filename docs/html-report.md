@@ -2,7 +2,7 @@
 
 ## Français
 
-Le moteur de présentation version 4 transforme un rapport TSEP valide et ses
+Le moteur de présentation version 17 transforme un rapport TSEP valide et ses
 preuves en un fichier HTML autonome en français ou en anglais. Python 3.9+ suffit.
 Il présente les résultats enregistrés, leurs règles, cibles, motifs, limites et
 preuves. Il ne réévalue pas les captures et ne collecte aucune URL.
@@ -64,7 +64,7 @@ présentées. Aucun verdict supplémentaire n’est calculé.
 
 ## English
 
-Presentation engine version 4 turns a valid TSEP report and its evidence into one
+Presentation engine version 17 turns a valid TSEP report and its evidence into one
 self-contained French or English HTML file using Python 3.9+. It presents recorded
 outcomes, rules, targets, reasons, limitations and evidence without reassessing
 captures or fetching URLs. Use the commands above with `--lang en`.
@@ -127,3 +127,35 @@ extraction or new decision occurs at presentation time. An unavailable reference
 check remains visible even if an equal digest later resolves identity. Media
 changes are observations to inspect, never extra draft.7 failures. Old reports
 remain readable without inventing missing preparation checks.
+
+## Version 17 — narrow metric grid / Synthèse sur écran étroit
+
+FR : jusqu’à 380 pixels CSS de largeur, les trois cartes de synthèse sont
+présentées sur une seule colonne. La largeur minimale des libellés français
+ne force ainsi plus deux colonnes au-delà de leur conteneur. Les mots restent
+lisibles, sans coupe forcée, masquage ou troncature. Au-dessus de ce seuil,
+la disposition existante est conservée. Aucune règle, donnée JSON, pièce
+embarquée ou décision ne change ; le pied de page identifie HTML17 et
+l’empreinte CSP suit les nouveaux styles.
+
+Migration : générer un nouveau fichier HTML avec cette version, conserver
+les fichiers antérieurs et leurs empreintes. Les rejeux historiques gardent
+leurs outils exacts. Cette correction source ne met pas à jour implicitement
+les moteurs draft.31/draft.33 importés dans une application ni la copie de
+démonstration gelée ; toute importation reste distincte et vérifiée. Les mesures
+sur les cas synthétiques FR/EN sont consignées dans la livraison ; elles ne
+démontrent pas une conformité WCAG ou tous les navigateurs.
+
+EN: At viewport widths up to 380 CSS pixels, the three overview metric cards
+use a single column. French labels’ minimum widths therefore no longer force
+two columns beyond their container. Words remain readable, without forced
+breaking, hiding or truncation. Above that threshold, the existing layout
+is retained. Rules, JSON data, embedded evidence and decisions are unchanged;
+the footer identifies HTML17 and the CSP hash follows the updated styles.
+
+Migration: generate a new HTML file with this renderer, retaining earlier
+files and fingerprints. Historical replay keeps its exact tools. This source
+fix does not implicitly update the draft.31/draft.33 engines imported in an
+application or the frozen demonstration copy; each import remains separate
+and verified. Measurements on synthetic FR/EN cases are recorded in the
+delivery; they do not establish WCAG conformance or coverage of all browsers.

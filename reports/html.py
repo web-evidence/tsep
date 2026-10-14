@@ -12,7 +12,7 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '16'
+VERSION = '17'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 

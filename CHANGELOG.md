@@ -1,3 +1,9 @@
+## HTML17 — narrow metric grid / Synthèse sur écran étroit — 2026-10-14
+
+- FR : les cartes de synthèse passent sur une seule colonne jusqu’à 380 pixels CSS ; les libellés restent entiers sans débordement, masquage ou troncature.
+- EN: Stack overview metric cards in one column up to 380 CSS pixels, keeping labels readable without overflow, hiding or truncation.
+- Presentation-only change: CSS, its derived CSP hash and renderer footer version. Draft.33, JSON reports, original evidence, historical replay and application engine pins remain unchanged. Generate a distinct HTML file; observed layout and source verification results belong to the separate delivery.
+
 ## TS02 prospective collector 1 — 2026-10-13 — non-normative
 
 - FR : préparation liée aux outils et bornes, revue préalable fournie, collecte native HTTP bornée, tentatives conservées et évaluation/rejeu hors réseau via le moteur existant. Onze scénarios synthétiques figés ; aucune collecte Edikka ni approbation humaine créée.
