@@ -1,3 +1,7 @@
+TS15-A03 accepts only pass/inconclusive, declared by the closed `allowed_outcomes` field; fail/NA rejected. See the sitemap-files contract and draft.35 migration.
+
+Draft.35 — TS15-A01/A02/A03 : [fichiers fournis / supplied files](sitemap-files-evidence.md), [migration](migration-draft.35.md). Population déclarée, aucun serveur observé / Declared population, no server observation.
+
 Draft.34 — TS33-A01/A02/A03 : [contrat / contract](structured-validation-evidence.md), [migration](migration-draft.34.md). Captures liées, messages natifs séparés / Bound captures, separate native messages. Erreur bloquante conservée / Blocking errors retained.
 
 Draft.33 adds TS32-A01/A02/A03: prior registry, native IDs/references and bound reviews. [Contract](structured-identity-evidence.md), [migration](migration-draft.33.md). Supplied corpus coherence, no authenticated temporal stability.
@@ -9,7 +13,7 @@ Draft.30 adds TS12-A01/A02/A03: plan, attributed comparisons and supplied review
 
 Draft.29 adds three TS08 rules: scope/objectives, native inspections and bound reviews/decisions. [Bilingual contract](inspection-evidence.md), [migration](migration-draft.29.md). C qualifies selected-set documentation, never guaranteed indexing.
 
-# Report contract — TSEP 0.1.0-draft.34
+# Report contract — TSEP 0.1.0-draft.35
 
 ### Delivery variants — draft.27
 
@@ -94,14 +98,14 @@ indexation. TS34 establishes correctly read field metrics; a C there does not
 mean the measured performance is good. Record unfavorable underlying measures
 and their operational consequences explicitly.
 
-## Atomic rules for TS01, TS02, TS04, TS07, TS08, TS10, TS12, TS34, TS35, TS36, TS39, TS41, TS42, TS43 and TS44
+## Atomic rules of declared controls
 
 Report format is `2`. A **control** retains its TSxx identifier and scoped
 C/NC/NA/NT outcome. An **atomic test** addresses an expectation identified by
 `TSxx-Ayy` in the canonical JSON. An **observation** is a dated capture or finding
 in a given context; its existence alone does not pass a test. Each rule declares `automation`: `automatic`, `semiAuto` or `manual`.
 
-For these fifteen controls, `atomic_results` links each `rule_id`/`target` pair to
+For controls declaring atomic rules in the canonical source, `atomic_results` links each `rule_id`/`target` pair to
 an `outcome` (`pass`, `fail`, `not-applicable`, `inconclusive`), a `reason` and
 `evidence_ids`. Evidence must also be linked by the control result and cover the
 target. A `pass` requires every input kind of the rule. A `fail` contradiction

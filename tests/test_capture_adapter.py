@@ -45,10 +45,16 @@ class CaptureAdapter(unittest.TestCase):
                 # Fixed import clock keeps future-to-assessment fixtures deterministic.
                 with patch('adapters.captures.datetime') as clock:
                     # After every supplied fixture date; future-to-assessment remains unknown.
-                    clock.now.return_value=datetime(2026,10,13,tzinfo=timezone.utc)
+                    clock.now.return_value=datetime(2026,10,16,tzinfo=timezone.utc)
                     if name in ('release-monitoring-v1-real-review-in-synthetic','structured-content-v1-false-human-review','structured-content-boundary-authored-dom-not-real','structured-identity-v1-false-human-review'):
                         # The raw reader returns unknown; bundling must refuse mixed provenance.
                         with self.assertRaisesRegex(tsep.Invalid, 'Structured-data provenance differs|review provenance differs'):
+                            self.emit(case['input'])
+                        self.assertFalse(self.output.exists())
+                        continue
+                    if name in ('sitemap-files-v1-raw-tamper','sitemap-files-v1-synthetic-falsely-supplied'):
+                        # Native unknown is distinct from the adapter's strict integrity/provenance refusal.
+                        with self.assertRaisesRegex(tsep.Invalid, 'Native sitemap intake refused|Native file provenance mismatch'):
                             self.emit(case['input'])
                         self.assertFalse(self.output.exists())
                         continue

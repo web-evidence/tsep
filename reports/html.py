@@ -12,12 +12,30 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '18'
+VERSION = '19'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'sitemap_files_note': 'TS15 : fichiers fournis dans une population déclarée ; racines non découvertes, aucun constat du serveur ni exhaustivité du site. Structure minimale seulement, pas validation XSD complète.',
+        'sitemap_files_values': 'Population de fichiers fournis',
+        'sitemap_roots_note': 'Racines déclarées ; leur découverte et l’exhaustivité du site ne sont pas établies.',
+        'sitemap_population_count': 'Fichiers dans la population déclarée',
+        'sitemap_roots': 'Racines déclarées',
+        'sitemap_bytes': 'Octets décompressés lus',
+        'sitemap_entries': 'Entrées comptées',
+        'sitemap_measurement': 'Précision du nombre d’octets',
+        'sitemap_exact': 'Exact',
+        'sitemap_lower_bound': 'Borne inférieure',
+        'sitemap_attribution': 'Attribution du format',
+        'sitemap_count_unknown': 'Non établi',
+        'sitemap_unattributed': 'Taille observée ; format sitemap non établi. Aucune violation de limite conclue.',
+        'sitemap_observed': 'Date déclarée du fichier',
+        'sitemap_complete': 'Lecture XML complète',
+        'sitemap_yes': 'Oui',
+        'sitemap_unknown': 'Non établie',
+
         'validation_note': 'TS33 : captures de page liées et instantané indexé séparé ; noms Schema.org seulement, erreurs conservées, aucune éligibilité actuelle ni apparition garantie.',
         'validation_values': 'Couches de validation retenues',
         'identity_note':'TS32 : identifiants, références et doublons qualifiés sur les exports fournis. Aucune stabilité temporelle, source ou identité authentifiée.',
@@ -117,6 +135,24 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'sitemap_files_note': 'TS15: supplied files in a declared population; undiscovered roots, no server observation or site completeness. Minimal structure only, not full XSD validation.',
+        'sitemap_files_values': 'Supplied file population',
+        'sitemap_roots_note': 'Declared roots; their discovery and site completeness are not established.',
+        'sitemap_population_count': 'Files in the declared population',
+        'sitemap_roots': 'Declared roots',
+        'sitemap_bytes': 'Decoded bytes read',
+        'sitemap_entries': 'Entries counted',
+        'sitemap_measurement': 'Byte measurement precision',
+        'sitemap_exact': 'Exact',
+        'sitemap_lower_bound': 'Lower bound',
+        'sitemap_attribution': 'Format attribution',
+        'sitemap_count_unknown': 'Not established',
+        'sitemap_unattributed': 'Observed size; sitemap format not established. No limit violation concluded.',
+        'sitemap_observed': 'Declared file date',
+        'sitemap_complete': 'Complete XML reading',
+        'sitemap_yes': 'Yes',
+        'sitemap_unknown': 'Not established',
+
         'validation_note': 'TS33: bound page captures and separate indexed snapshot; Schema.org names only, errors retained, no guaranteed current eligibility or display.',
         'validation_values': 'Retained validation layers',
         'identity_note':'TS32: IDs, references and duplicates qualified in supplied exports. No temporal stability, authenticated source or identity.',
@@ -500,6 +536,34 @@ def comparison_values(atom, words):
     return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
 
 
+def sitemap_files_values(atom, words):
+    prefix = 'Supplied sitemap files / fichiers sitemap fournis: '
+    rendered = structured_values(atom, dict(words, structured_values=words['sitemap_files_values']), prefix=prefix)
+    try:
+        note = json.loads(atom.get('reason', '')[len(prefix):])
+        summary = '<div class="notice"><strong>' + esc(words['sitemap_files_values']) + '</strong>'
+        summary += '<p>' + esc(words['sitemap_roots_note']) + '</p><dl>'
+        summary += '<dt>' + esc(words['sitemap_population_count']) + '</dt><dd>' + esc(note.get('declared_document_count', '—')) + '</dd>'
+        summary += '<dt>' + esc(words['sitemap_roots']) + '</dt><dd>' + '<br>'.join(esc(u) for u in note.get('declared_roots', [])) + '</dd></dl></div>'
+        for url, file in note.get('files', {}).items():
+            measurement = {'exact': words['sitemap_exact'], 'lower-bound': words['sitemap_lower_bound']}.get(file.get('byte_measurement'), words['sitemap_unknown'])
+            byte_value = file.get('decoded_bytes_read', '—')
+            if file.get('byte_measurement') == 'lower-bound':
+                byte_value = '≥ ' + str(byte_value)
+            values = [('sitemap_bytes', byte_value),
+                      ('sitemap_measurement', measurement), ('sitemap_entries', file.get('count') if file.get('count') is not None else words['sitemap_count_unknown']),
+                      ('sitemap_observed', file.get('declared_observed_at', '—')),
+                      ('sitemap_complete', words['sitemap_yes'] if file.get('xml_complete') is True else words['sitemap_unknown'])]
+            summary += '<div class="notice"><strong>' + esc(url) + '</strong><dl>'
+            if 'sitemaps-prefix-not-attributed' in file.get('reasons', []):
+                summary += '<dt>' + esc(words['sitemap_attribution']) + '</dt><dd>' + esc(words['sitemap_unattributed']) + '</dd>'
+            summary += ''.join('<dt>' + esc(words[label]) + '</dt><dd>' + esc(value) + '</dd>' for label, value in values)
+            summary += '</dl></div>'
+        rendered = summary + rendered
+    except (ValueError, TypeError, AttributeError):
+        pass
+    return '<div class="sitemap-files-values">' + rendered.replace('<div class="table-wrap">', '<div class="table-wrap validation-table" tabindex="0" role="region" aria-label="' + esc(words['sitemap_files_values']) + '">', 1) + '</div>'
+
 def validation_values(atom, words):
     rendered = structured_values(atom, dict(words, structured_values=words['validation_values']),
         prefix='Structured validation evidence / preuves des couches de validation: ')
@@ -591,6 +655,8 @@ def results(bundle, controls, words, language):
             out += performance_values(result, words)
         if cid == 'TS36':
             out += '<div class="notice">' + esc(words['monitoring_note']) + '</div>'
+        if cid == 'TS15':
+            out += '<div class="notice">' + esc(words['sitemap_files_note']) + '</div>'
         if cid == 'TS33':
             out += '<div class="notice">' + esc(words['validation_note']) + '</div>'
         if cid == 'TS32':
@@ -618,7 +684,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

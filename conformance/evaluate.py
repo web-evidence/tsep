@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded offline interpreter for fifty-one TSEP rules. Apache-2.0; no collection."""
+"""Bounded offline interpreter for fifty-four TSEP rules. Apache-2.0; no collection."""
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -17,7 +17,8 @@ RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS04-A01', 'TS04-A02',
          'TS42-A01', 'TS42-A02', 'TS42-A03', 'TS43-A01', 'TS43-A02', 'TS43-A03', 'TS44-A01', 'TS44-A02', 'TS44-A03', 'TS41-A01', 'TS41-A02', 'TS41-A03', 'TS39-A01', 'TS39-A02', 'TS39-A03', 'TS08-A01', 'TS08-A02', 'TS08-A03', 'TS12-A01', 'TS12-A02', 'TS12-A03', 'TS36-A01', 'TS36-A02', 'TS36-A03')
 RULES += ('TS31-A01', 'TS31-A02', 'TS31-A03', 'TS32-A01', 'TS32-A02', 'TS32-A03')
 RULES += ('TS33-A01', 'TS33-A02', 'TS33-A03')
-VERSION = '33'  # Interpreter coverage version; normative protocol version is separate.
+RULES += ('TS15-A01', 'TS15-A02', 'TS15-A03')
+VERSION = '34'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -353,6 +354,9 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
 
 
 def evaluate_target(target, rule, *, diagnostics=None):
+    if rule.startswith('TS15-'):
+        from conformance.sitemap_set import assess
+        return assess(target, rule, diagnostics=diagnostics)
     if rule.startswith('TS33-'):
         from conformance.structured_validation import assess
         return assess(target, rule, diagnostics=diagnostics)

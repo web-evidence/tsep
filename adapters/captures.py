@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '34'
+VERSION = '35'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -35,6 +35,8 @@ def source_files():
     modules['conformance/agent_access.py'] = importlib.import_module('conformance.agent_access')
     modules['conformance/critical_content.py'] = importlib.import_module('conformance.critical_content')
     modules['conformance/release_monitoring.py'] = importlib.import_module('conformance.release_monitoring')
+    modules['conformance/sitemap_files.py'] = importlib.import_module('conformance.sitemap_files')
+    modules['conformance/sitemap_set.py'] = importlib.import_module('conformance.sitemap_set')
     modules['conformance/structured_validation.py'] = importlib.import_module('conformance.structured_validation')
     modules['conformance/structured_identity.py'] = importlib.import_module('conformance.structured_identity')
     modules['conformance/structured_content.py'] = importlib.import_module('conformance.structured_content')
@@ -71,6 +73,7 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS15 : population déclarée de fichiers fournis, limites natives et structure minimale ; aucun constat du serveur ni exhaustivité du site.','en':'TS15: declared population of supplied files, native bounds and minimal structure; no server observation or site completeness.'},
     {'state':'implemented','fr':'TS33 : syntaxe et noms de vocabulaire sur les captures liées, messages API indexés séparés ; erreurs bloquantes conservées, aucune éligibilité actuelle garantie.','en':'TS33: syntax/vocabulary names on bound captures, separate indexed API messages; blocking errors retained, no current eligibility guarantee.'},
     {'state':'implemented','fr':'TS32 : identifiants et références des exports JSON-LD fournis, registre préalable et revues liées ; cohérence du corpus, sans stabilité temporelle ni identité authentifiée.','en':'TS32: IDs/references from supplied JSON-LD exports, prior registry and bound reviews; corpus coherence, no temporal stability or authenticated identity.'},
     {'state':'implemented','fr':'TS31 : source et DOM JSON-LD fournis recalculés, périmètre et contenu revus avec liaison aux graphes ; visibilité, faits et résultats enrichis non authentifiés.','en':'TS31: recomputed supplied source/DOM JSON-LD, graph-bound scope/content reviews; visibility, facts and rich results are not authenticated.'},
@@ -164,6 +167,8 @@ def pieces(target):
     result = {}
     if 'jsonld' in target:
         result['structured-data'] = target['jsonld']
+    if 'sitemap_files' in target:
+        result['sitemap'] = target['sitemap_files']
     if 'validation_record' in target:
         result['validator-output'] = target['validation_record']
     if 'identity_documents' in target:
@@ -341,7 +346,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         elif isinstance(value,list):
             for child in value:delivery_provenance(child)
     for target in evidence_targets:
-        for flag in ('delivery_synthetic', 'identity_synthetic', 'structured_synthetic', 'inspection_synthetic'):
+        for flag in ('delivery_synthetic', 'identity_synthetic', 'structured_synthetic', 'inspection_synthetic', 'sitemap_synthetic'):
             if flag in target:
                 tsep.require(type(target[flag]) is bool and target[flag] == (access == 'synthetic'),
                              {'structured_synthetic': 'Structured-data provenance differs from access',
@@ -353,6 +358,16 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                          'Delivery synthetic provenance differs from evidence access')
             delivery_provenance(target)
     for target in evidence_targets:
+        if ('sitemap_files' in target or
+                isinstance(target.get('intent'), dict) and 'sitemap_files' in target['intent']):
+            from conformance.sitemap_files import original_bytes
+            tsep.require(type(target.get('sitemap_synthetic')) is bool and target['sitemap_synthetic']==(access=='synthetic'), 'Native sitemap provenance differs from evidence access')
+            for native_file in target.get('sitemap_files',[]) if type(target.get('sitemap_files')) is list else []:
+                if type(native_file) is dict:
+                    tsep.require(native_file.get('provenance')==('synthetic-exercise' if access=='synthetic' else 'supplied-native-file'), 'Native file provenance mismatch')
+                    if 'native' in native_file:
+                        try: original_bytes(native_file['native'])
+                        except (ValueError,TypeError,KeyError) as error: raise tsep.Invalid('Native sitemap intake refused: '+str(error)) from error
         if (any(name in target for name in ('validation_record', 'validation_plan_review', 'validation_review')) or
                 isinstance(target.get('intent'), dict) and 'structured_validation' in target['intent']):
             tsep.require(access in ('synthetic','restricted'), 'Validation API evidence requires restricted access')
@@ -492,6 +507,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += ' Usages déclarés et pièces fournies seulement / Declared usages and supplied evidence only; no real agent visit, identity, operator compliance or citation established.'
                 if cid == 'TS36':
                     report['results'][i]['reason'] += ' Suivi documentaire du changement / Documentary release follow-up; future stages remain inconclusive, no causal or authenticated Google visit claim.'
+                if cid == 'TS15':
+                    report['results'][i]['reason'] += ' Population déclarée de fichiers fournis seulement / Declared population of supplied files only; no server observation, site completeness or full XSD validity.'
                 if cid == 'TS33':
                     report['results'][i]['reason'] += ' Couches séparées / Separate supplied page and indexed API layers; known vocabulary names only, no current eligibility or display guarantee.'
                 if cid == 'TS32':

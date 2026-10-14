@@ -77,6 +77,9 @@ def generate(output_root=ROOT):
     # Raw adapter demonstrations are controlled derivatives, with no expected verdicts.
     corpus = {case['id']: case['input'] for case in expand(tsep.read_json(ROOT.parent/'conformance/cases.json'))['cases']}
     capture_examples = {
+                        'ts15-complete': ('sitemap-files-v1-index-and-child', ['TS15-A01','TS15-A02','TS15-A03']),
+                        'ts15-contradiction': ('sitemap-files-v1-namespace-error', ['TS15-A01','TS15-A02','TS15-A03']),
+                        'ts15-missing-child': ('sitemap-files-v1-missing-child', ['TS15-A01','TS15-A02','TS15-A03']),
                         'ts33-complete': ('structured-validation-v1-complete', ['TS33-A01','TS33-A02','TS33-A03']),
                         'ts33-contradiction': ('structured-validation-v1-blocking-error', ['TS33-A01','TS33-A02','TS33-A03']),
                         'ts33-review-missing': ('structured-validation-v1-missing-review', ['TS33-A01','TS33-A02','TS33-A03']),

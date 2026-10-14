@@ -1,3 +1,5 @@
+[TS15 — fichiers sitemap fournis / supplied sitemap files](docs/sitemap-files-evidence.md), [draft.35 migration](docs/migration-draft.35.md).
+
 [TS33 — validation layers / couches de validation](docs/structured-validation-evidence.md), [draft.34 migration](docs/migration-draft.34.md).
 
 TS32 : [corpus d’identités JSON-LD déclaré](docs/structured-identity-evidence.md), [migration draft.33](docs/migration-draft.33.md). Cohérence du corpus fourni et revues liées ; aucune stabilité temporelle établie.
@@ -5,7 +7,7 @@ TS31 : [preuves JSON-LD/contenu](docs/structured-content-evidence.md), [migratio
 
 TS36 : [suivi après changement](docs/release-monitoring.md), [import et clôture](docs/release-monitoring-intake.md), [migration draft.31](docs/migration-draft.31.md). Cas rédigés uniquement ; aucune échéance réelle future accomplie.
 
-Édition locale : **0.1.0-draft.34** — [TS33 : couches de validation](docs/structured-validation-evidence.md), [migration](docs/migration-draft.34.md). Dix-huit contrôles outillés /51 règles ; aucune qualification réelle Edikka.
+Édition locale : **0.1.0-draft.35** — [TS33 : couches de validation](docs/structured-validation-evidence.md), [migration](docs/migration-draft.34.md). Dix-neuf contrôles outillés /54 règles ; aucune qualification réelle Edikka.
 
 TS08 : [inspections natives](docs/inspection-evidence.md) et [acquisition](docs/search-console-acquisition.md) restent disponibles.
 
@@ -23,7 +25,7 @@ TS39 dispose de [trois règles de diffusion](docs/delivery-evidence.md) : matric
 
 # TSEP — format d’échange de preuves
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.34 · initié par Edikka · [English](README.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.35 · initié par Edikka · [English](README.md)**
 
 Transmettre un audit SEO technique que son destinataire peut examiner, rejouer et
 contester : mêmes identifiants, périmètre explicite, preuves liées aux constats et
@@ -103,7 +105,7 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
 3. **Passer la suite de conformance** : fournir un adaptateur JSON sur entrée/sortie
    standard, puis exécuter `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 mon_adaptateur.py'`
    pour ce sous-ensemble, ou omettre `--rules` pour les quarante-huit règles. Déclarer
-   « passes TSEP 0.1.0-draft.34 conformance for TS01-A01, TS01-A02 » avec les bornes
+   « passes TSEP 0.1.0-draft.35 conformance for TS01-A01, TS01-A02 » avec les bornes
    réellement prises en charge. [Format d’entrée et comparaison](docs/conformance.md). Publier séparément
    accords, désaccords et couverture réduite : les indéterminés acceptés sur des
    limites de référence signalées ne sont pas des évaluations réussies.
@@ -177,7 +179,7 @@ Aucun résultat ne garantit indexation, classement ou comportement futur d’un 
 [Gouvernance](GOVERNANCE.md) · [Contribuer](CONTRIBUTING.md) · [Historique](CHANGELOG.md) ·
 [Clause de recette](docs/acceptance-clause.md) · [Sonde HTTP](probes/README.md).
 
-Citer `TSEP@0.1.0-draft.34:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
+Citer `TSEP@0.1.0-draft.35:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
 Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](CITATION.cff).
 [Développement, vérification complète et dépôt autonome](docs/development.md).
 

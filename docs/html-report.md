@@ -1,3 +1,5 @@
+HTML19 — TS15 displays declared file population/count, undiscovered roots, supplied dates and measured bounds with readable FR/EN labels. Raw hashes remain in the retained complete diagnostic. FR : population déclarée, racines non découvertes, dates fournies et mesures lisibles ; empreintes conservées dans le diagnostic complet. Static retained diagnostics only, no re-evaluation; no site-wide or server claim.
+
 ## Version18 — TS33 validation layers / Couches de validation TS33
 
 FR : couches, erreurs et limites TS33 conservées ; tableaux défilables au clavier sur écran étroit, sans masquer ni tronquer leurs textes. EN: retained TS33 layers, errors and limits; keyboard-scrollable tables on narrow screens without hidden or truncated text. Historical HTML files are unchanged.

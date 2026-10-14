@@ -1,0 +1,50 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS15-A01",
+    "TS15-A02",
+    "TS15-A03"
+  ],
+  "targets": [
+    {
+      "url": "https://example.test/sitemap.xml",
+      "observed_at": "2026-10-14T09:30:00Z",
+      "sitemap_synthetic": true,
+      "context": {
+        "network": "offline-supplied-files",
+        "bounds": "Native profile1",
+        "tool": "Authored generator",
+        "tool_version": "1"
+      },
+      "intent": {
+        "declared_at": "2026-10-14T09:00:00Z",
+        "sitemap_files": {
+          "reader": "native-sitemap-files-v1",
+          "selection_reason": "Authored finite set",
+          "window_start": "2026-10-14T09:05:00Z",
+          "window_end": "2026-10-14T09:20:00Z",
+          "roots": [
+            "https://example.test/sitemap.xml"
+          ],
+          "documents": [
+            "https://example.test/sitemap.xml"
+          ]
+        }
+      },
+      "sitemap_files": [
+        {
+          "url": "https://example.test/sitemap.xml",
+          "provenance": "synthetic-exercise",
+          "description": "Authored synthetic native file; no site observation.",
+          "observed_at": "2026-10-14T09:10:00Z",
+          "native": {
+            "raw_base64": "PHVybHNldCB4bWxucz0idXJuOndyb25nIj48dXJsPjxsb2M+aHR0cHM6Ly9leGFtcGxlLnRlc3QvYTwvbG9jPjwvdXJsPjwvdXJsc2V0Pg==",
+            "sha256": "8ee1a33dc7a80ef279094e5bdeeb54613779154bbc6d8480d0f80167b64d72fe",
+            "encoding": "identity",
+            "complete": true
+          }
+        }
+      ]
+    }
+  ]
+}

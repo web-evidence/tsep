@@ -1,3 +1,5 @@
 * text=auto eol=lf
 *.zip binary
 *.bundle binary
+# Retain dated third-party capture bytes, including original CRLF.
+research/sitemap-files-2026-10-14/* -text

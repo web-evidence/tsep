@@ -1,4 +1,6 @@
-Current candidate / Candidat actuel — draft.34 : interpreter33 / adapter34 / HTML18 / replay3 ;18 contrôles /51 règles. [TS33 contract](structured-validation-evidence.md), [migration](migration-draft.34.md). Node24/TSEP_SOURCE_NODE required for native page processing; default lightweight runs may be inconclusive. Previous entries below describe their own historical versions.
+Current candidate / Candidat actuel — draft.35 : interpreter34 /adapter35 /HTML19 /replay3 ;19 contrôles /54 règles. [TS15](sitemap-files-evidence.md), [migration](migration-draft.35.md). TS15 uses standard Python; full suite still requires explicit Node24 and timeout1800 as documented below.
+
+Previous candidate / Candidat précédent — draft.34 : interpreter33 / adapter34 / HTML18 / replay3 ;18 contrôles /51 règles. [TS33 contract](structured-validation-evidence.md), [migration](migration-draft.34.md). Node24/TSEP_SOURCE_NODE required for native page processing; default lightweight runs may be inconclusive. Previous entries below describe their own historical versions.
 
 Closed historical runtime distribution 1: [contract and explicit migration / contrat et migration explicite](runtime-distribution-v1.md). Separate transport identity; historical engine bytes and native reports unchanged.
 TS12/TS31/TS36 CLI intake 2: [raw-byte integrity and explicit migration / intégrité et migration](intake-integrity-v2.md). Normative draft.33 and application engine imports unchanged.

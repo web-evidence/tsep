@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.34",
+  "version": "0.1.0-draft.35",
   "status": "draft",
   "date": "2026-10-14",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.34"
+      "rule_version": "0.1.0-draft.35"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.34"
+      "rule_version": "0.1.0-draft.35"
     },
     {
       "id": "TS08",
@@ -926,7 +926,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "automation": "semiAuto",
@@ -1372,7 +1372,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.34"
+      "rule_version": "0.1.0-draft.35"
     },
     {
       "id": "TS11",
@@ -1492,7 +1492,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "id": "TS12-A01",
@@ -1769,31 +1769,32 @@
       "severity": "major",
       "unit": "sitemap-set",
       "required_inputs": [
-        "sitemap"
+        "sitemap",
+        "intent"
       ],
       "applicability": {
-        "fr": "Fichiers et index de sitemap déclarés.",
-        "en": "Declared sitemap files and indexes."
+        "fr": "Population déclarée de fichiers sitemap natifs fournis ; racines non découvertes automatiquement.",
+        "en": "Declared population of supplied native sitemap files; roots are not automatically discovered."
       },
       "procedure": {
-        "fr": "Contrôler taille décompressée, nombre d’URL, index de sitemaps et encodage.",
-        "en": "Check uncompressed size, URL count, sitemap indexes and encoding."
+        "fr": "Lire les octets originaux, la structure XML de base, la taille décompressée, les éléments directs et les enfants d’index du jeu déclaré.",
+        "en": "Read original bytes, base XML structure, decompressed size, direct entries and index children in the declared set."
       },
       "acceptance": {
-        "fr": "Encodage et syntaxe sont valides ; limites de taille décompressée et de nombre d’entrées sont respectées pour chaque type de fichier.",
-        "en": "Encoding and syntax are valid; uncompressed size and entry-count limits are met for each file type."
+        "fr": "Dans le profil borné : UTF-8 et structure minimale qualifiés, au plus52 428 800 octets et50 000 éléments directs par fichier, couverture du jeu déclaré.",
+        "en": "Within the bounded profile: qualified UTF-8 and minimal structure, at most52,428,800 bytes and50,000 direct entries per file, coverage of the declared set."
       },
       "non_applicability": {
         "fr": "Aucun sitemap utilisé dans le périmètre.",
         "en": "No sitemap used in scope."
       },
       "evidence": {
-        "fr": "Maximum 50 000 URL et 50 Mo non compressés par sitemap.",
-        "en": "No more than 50,000 URLs and 50 MB uncompressed per sitemap."
+        "fr": "Originaux base64/SHA-256, URL et dates déclarées, plan du jeu ; limites du profil native-sitemap-files-v1.",
+        "en": "Base64/SHA-256 originals, declared URLs/dates and set plan; native-sitemap-files-v1 bounds."
       },
       "limitations": {
-        "fr": "Un fichier valide peut contenir un mauvais périmètre éditorial.",
-        "en": "A valid file can still cover the wrong editorial scope."
+        "fr": "Fichiers fournis seulement, pas serveur observé ni exhaustivité du site. Ni validation XSD complète, ni valeurs lastmod/changefreq/priority, portée hôte/chemin/longueur URL, canonical ou indexation.",
+        "en": "Supplied files only, no observed server or site completeness. No full XSD, lastmod/changefreq/priority values, URL host/path/length, canonical or indexing validation."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -1811,7 +1812,148 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.35",
+      "rules": [
+        {
+          "automation": "automatic",
+          "required_inputs": [
+            "sitemap",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Population déclarée de fichiers sitemap natifs fournis ; racines non découvertes automatiquement.",
+            "en": "Declared population of supplied native sitemap files; roots are not automatically discovered."
+          },
+          "evidence": {
+            "fr": "Originaux base64/SHA-256, URL et dates déclarées, plan du jeu ; limites du profil native-sitemap-files-v1.",
+            "en": "Base64/SHA-256 originals, declared URLs/dates and set plan; native-sitemap-files-v1 bounds."
+          },
+          "assumptions": {
+            "fr": "URL, date, origine et complétude fournies, non authentifiées. Aucune observation du serveur.",
+            "en": "Supplied URL, date, origin and completeness, unauthenticated. No server observation."
+          },
+          "inconclusive": {
+            "fr": "Fichier absent/ambigu, flux incomplet, profil inconnu, borne interne, index imbriqué ou extension non qualifiée ; violation indépendante conservée.",
+            "en": "Missing/ambiguous file, incomplete stream, unknown profile, reader bound, nested index or unqualified extension; independent violation retained."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA dans ce profil.",
+            "en": "No NA in this profile."
+          },
+          "limitations": {
+            "fr": "Fichiers fournis seulement, pas serveur observé ni exhaustivité du site. Ni validation XSD complète, ni valeurs lastmod/changefreq/priority, portée hôte/chemin/longueur URL, canonical ou indexation.",
+            "en": "Supplied files only, no observed server or site completeness. No full XSD, lastmod/changefreq/priority values, URL host/path/length, canonical or indexing validation."
+          },
+          "id": "TS15-A01",
+          "title": {
+            "fr": "Encodage et structure minimale des fichiers fournis.",
+            "en": "Encoding and minimal structure of supplied files."
+          },
+          "procedure": {
+            "fr": "Vérifier UTF-8 strict, racine0.9, loc unique non vide et feuilles uniques ordonnées ; DTD/extension non qualifiée restent inconnus.",
+            "en": "Check strict UTF-8,0.9 root, unique nonempty loc and unique ordered leaves; DTD/unqualified extensions stay unknown."
+          },
+          "acceptance": {
+            "fr": "Tous les fichiers complets passent la structure bornée ; contradiction structurelle établie fail.",
+            "en": "Every complete file passes the bounded structure; established structural contradiction fails."
+          }
+        },
+        {
+          "automation": "automatic",
+          "required_inputs": [
+            "sitemap",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Population déclarée de fichiers sitemap natifs fournis ; racines non découvertes automatiquement.",
+            "en": "Declared population of supplied native sitemap files; roots are not automatically discovered."
+          },
+          "evidence": {
+            "fr": "Originaux base64/SHA-256, URL et dates déclarées, plan du jeu ; limites du profil native-sitemap-files-v1.",
+            "en": "Base64/SHA-256 originals, declared URLs/dates and set plan; native-sitemap-files-v1 bounds."
+          },
+          "assumptions": {
+            "fr": "URL, date, origine et complétude fournies, non authentifiées. Aucune observation du serveur.",
+            "en": "Supplied URL, date, origin and completeness, unauthenticated. No server observation."
+          },
+          "inconclusive": {
+            "fr": "Fichier absent/ambigu, flux incomplet, profil inconnu, borne interne, index imbriqué ou extension non qualifiée ; violation indépendante conservée.",
+            "en": "Missing/ambiguous file, incomplete stream, unknown profile, reader bound, nested index or unqualified extension; independent violation retained."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA dans ce profil.",
+            "en": "No NA in this profile."
+          },
+          "limitations": {
+            "fr": "Fichiers fournis seulement, pas serveur observé ni exhaustivité du site. Ni validation XSD complète, ni valeurs lastmod/changefreq/priority, portée hôte/chemin/longueur URL, canonical ou indexation.",
+            "en": "Supplied files only, no observed server or site completeness. No full XSD, lastmod/changefreq/priority values, URL host/path/length, canonical or indexing validation."
+          },
+          "id": "TS15-A02",
+          "title": {
+            "fr": "Limites réelles de taille et de population.",
+            "en": "Actual size and population limits."
+          },
+          "procedure": {
+            "fr": "Compter les octets réellement décompressés et les éléments url/sitemap directs, doublons et loc absents compris.",
+            "en": "Count actually decompressed bytes and direct url/sitemap elements, including duplicates and entries without loc."
+          },
+          "acceptance": {
+            "fr": "Chaque fichier reste à52 428 800 octets et50 000 éléments au plus ; dépassement lu fail, lecture partielle sans dépassement inconclusive.",
+            "en": "Each file is at most52,428,800 bytes and50,000 entries; observed excess fails, partial reading without excess is inconclusive."
+          }
+        },
+        {
+          "automation": "automatic",
+          "required_inputs": [
+            "sitemap",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Population déclarée de fichiers sitemap natifs fournis ; racines non découvertes automatiquement.",
+            "en": "Declared population of supplied native sitemap files; roots are not automatically discovered."
+          },
+          "evidence": {
+            "fr": "Originaux base64/SHA-256, URL et dates déclarées, plan du jeu ; limites du profil native-sitemap-files-v1.",
+            "en": "Base64/SHA-256 originals, declared URLs/dates and set plan; native-sitemap-files-v1 bounds."
+          },
+          "assumptions": {
+            "fr": "URL, date, origine et complétude fournies, non authentifiées. Aucune observation du serveur.",
+            "en": "Supplied URL, date, origin and completeness, unauthenticated. No server observation."
+          },
+          "inconclusive": {
+            "fr": "Fichier absent/ambigu, flux incomplet, profil inconnu, borne interne, index imbriqué ou extension non qualifiée ; violation indépendante conservée.",
+            "en": "Missing/ambiguous file, incomplete stream, unknown profile, reader bound, nested index or unqualified extension; independent violation retained."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA dans ce profil.",
+            "en": "No NA in this profile."
+          },
+          "limitations": {
+            "fr": "Fichiers fournis seulement, pas serveur observé ni exhaustivité du site. Ni validation XSD complète, ni valeurs lastmod/changefreq/priority, portée hôte/chemin/longueur URL, canonical ou indexation.",
+            "en": "Supplied files only, no observed server or site completeness. No full XSD, lastmod/changefreq/priority values, URL host/path/length, canonical or indexing validation."
+          },
+          "id": "TS15-A03",
+          "title": {
+            "fr": "Couverture de la population déclarée et enfants liés.",
+            "en": "Coverage of declared population and bound children."
+          },
+          "procedure": {
+            "fr": "Relier chaque document à une URL déclarée exacte et chaque enfant d’index à une feuille complète ; racines et périmètre restent déclarés.",
+            "en": "Bind each document to an exact declared URL and each index child to a complete leaf; roots and scope remain declared."
+          },
+          "acceptance": {
+            "fr": "Tous les documents déclarés et branches sont qualifiés ; absence/ambiguïté/hors profil inconclusive, jamais preuve négative de sitemap utilisé sur le site.",
+            "en": "All declared documents and branches are qualified; absence/ambiguity/outside-profile is inconclusive, never negative evidence about site sitemap use."
+          },
+          "allowed_outcomes": [
+            "pass",
+            "inconclusive"
+          ]
+        }
+      ]
     },
     {
       "id": "TS16",
@@ -2758,7 +2900,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "automation": "semiAuto",
@@ -2956,7 +3098,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3152,7 +3294,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3350,7 +3492,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "id": "TS34-A01",
@@ -3545,7 +3687,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3697,7 +3839,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "automation": "semiAuto",
@@ -4020,7 +4162,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "applicability": {
@@ -4279,7 +4421,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "applicability": {
@@ -4480,7 +4622,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "id": "TS42-A01",
@@ -4677,7 +4819,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "id": "TS43-A01",
@@ -4879,7 +5021,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.34",
+      "rule_version": "0.1.0-draft.35",
       "rules": [
         {
           "na_inputs": [],
@@ -5171,15 +5313,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "c994636d18627c0d5dce587a558db95a6dacd71b340809b5fbb4887c21a48dff"
+      "sha256": "f839e03a9f3d521e5f3b747fa948de59242e6df139c5c44299706d0d9a7abf4d"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "d4ace01fc061f881947e74cd503bb3c0ba7d67d6329f4683002780cd42a8679e"
+      "sha256": "ac4a2d99958bf981804dcb763ad603b562c9bf9a8073a5a8d1d76aeb85a38dd1"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "05167a85c2ae17303e9b7442226878e91c0db397e93cbbbcd37ed738fd27b068"
+      "sha256": "62fbf464e3cada4d82af071a72e5f2c2534e492332dcf30c02c003ed2b2184a0"
     },
     {
       "path": "docs/source-directives.md",
@@ -5248,6 +5390,10 @@
     {
       "path": "docs/structured-validation-evidence.md",
       "sha256": "67ca7946332fcecbb9d943d042963ad9fefe3057978639d15cfe58330903ed84"
+    },
+    {
+      "path": "docs/sitemap-files-evidence.md",
+      "sha256": "64cdc90a2de861aac8f6a7ed679517084a21a8006367da5aab9bfd5abc642cc6"
     }
   ]
 }

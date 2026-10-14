@@ -1,0 +1,63 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS15-A01",
+    "TS15-A02",
+    "TS15-A03"
+  ],
+  "targets": [
+    {
+      "url": "https://example.test/index.xml",
+      "observed_at": "2026-10-14T09:30:00Z",
+      "sitemap_synthetic": true,
+      "context": {
+        "network": "offline-supplied-files",
+        "bounds": "Native profile1",
+        "tool": "Authored generator",
+        "tool_version": "1"
+      },
+      "intent": {
+        "declared_at": "2026-10-14T09:00:00Z",
+        "sitemap_files": {
+          "reader": "native-sitemap-files-v1",
+          "selection_reason": "Authored finite set",
+          "window_start": "2026-10-14T09:05:00Z",
+          "window_end": "2026-10-14T09:20:00Z",
+          "roots": [
+            "https://example.test/index.xml"
+          ],
+          "documents": [
+            "https://example.test/index.xml",
+            "https://example.test/sitemap.xml"
+          ]
+        }
+      },
+      "sitemap_files": [
+        {
+          "url": "https://example.test/index.xml",
+          "provenance": "synthetic-exercise",
+          "description": "Authored synthetic native file; no site observation.",
+          "observed_at": "2026-10-14T09:10:00Z",
+          "native": {
+            "raw_base64": "PHNpdGVtYXBpbmRleCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+PHNpdGVtYXA+PGxvYz5odHRwczovL2V4YW1wbGUudGVzdC9zaXRlbWFwLnhtbDwvbG9jPjwvc2l0ZW1hcD48L3NpdGVtYXBpbmRleD4=",
+            "sha256": "5ff8e31f4e77c8fb60ebaafd2f994e1beb9f20be6a59a2459c88130cd5aa3b06",
+            "encoding": "identity",
+            "complete": true
+          }
+        },
+        {
+          "url": "https://example.test/sitemap.xml",
+          "provenance": "synthetic-exercise",
+          "description": "Authored synthetic native file; no site observation.",
+          "observed_at": "2026-10-14T09:10:00Z",
+          "native": {
+            "raw_base64": "PHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+PHVybD48bG9jPmh0dHBzOi8vZXhhbXBsZS50ZXN0L2E8L2xvYz48L3VybD48L3VybHNldD4=",
+            "sha256": "fa574e609a3e26843995050f8fcf1d11ac113e92f9290eec859167363fbaddd9",
+            "encoding": "identity",
+            "complete": true
+          }
+        }
+      ]
+    }
+  ]
+}

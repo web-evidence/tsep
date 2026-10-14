@@ -1,3 +1,7 @@
+TS15-A03 admet uniquement pass/inconclusive, déclaration fermée `allowed_outcomes` dans la source ; fail/NA rejetés. Voir le contrat des fichiers sitemap et la migration draft.35.
+
+Draft.35 — TS15-A01/A02/A03 : [fichiers fournis / supplied files](sitemap-files-evidence.md), [migration](migration-draft.35.md). Population déclarée, aucun serveur observé / Declared population, no server observation.
+
 Draft.34 — TS33-A01/A02/A03 : [contrat / contract](structured-validation-evidence.md), [migration](migration-draft.34.md). Captures liées, messages natifs séparés / Bound captures, separate native messages. Erreur bloquante conservée / Blocking errors retained.
 
 Draft.33 ajoute TS32-A01/A02/A03 : registre préalable, identifiants/références natifs et revues liées. [Contrat](structured-identity-evidence.md), [migration](migration-draft.33.md). Cohérence du corpus fourni, sans stabilité temporelle authentifiée.
@@ -9,7 +13,7 @@ Draft.30 ajoute TS12-A01/A02/A03 : plan, comparaisons attribuées et revue/déci
 
 Draft.29 ajoute trois règles TS08 : périmètre/objectifs, inspections natives et revues/décisions liées. [Contrat bilingue](inspection-evidence.md), [migration](migration-draft.29.md). C qualifie le dossier sélectionné, jamais une indexation garantie.
 
-# Contrat de rapport — TSEP 0.1.0-draft.34
+# Contrat de rapport — TSEP 0.1.0-draft.35
 
 ### Diffusion et variantes — draft.27
 
@@ -92,7 +96,7 @@ d’indexation documenté, pas une promesse d’indexation. TS34 établit une le
 correcte des mesures terrain ; C ne signifie pas que les performances mesurées
 sont bonnes. Conserver les mesures défavorables et leurs conséquences opérationnelles.
 
-## Règles atomiques TS01, TS02, TS04, TS07, TS08, TS10, TS12, TS34, TS35, TS36, TS39, TS41, TS42, TS43 et TS44
+## Règles atomiques des contrôles déclarés
 
 Le format de rapport est `2`. Un **contrôle** garde son identifiant TSxx et son
 résultat C/NC/NA/NT sur le périmètre. Un **test atomique** répond à un attendu
@@ -100,7 +104,7 @@ identifié par `TSxx-Ayy` dans le JSON canonique. Une **observation** est une
 capture ou un constat daté dans un contexte donné ; son existence ne suffit pas
 à réussir le test. Chaque règle déclare `automation` : `automatic`, `semiAuto` ou `manual`.
 
-Pour ces quinze contrôles, `atomic_results` relie chaque couple `rule_id`/`target`
+Pour les contrôles qui déclarent des règles atomiques dans la source, `atomic_results` relie chaque couple `rule_id`/`target`
 à un `outcome` (`pass`, `fail`, `not-applicable`, `inconclusive`), un `reason` et
 des `evidence_ids`. Les preuves doivent aussi figurer dans le résultat du contrôle
 et couvrir la cible. Tous les types d’entrée de la règle sont exigés pour `pass`.

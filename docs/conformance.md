@@ -1,3 +1,5 @@
+Draft.35 : TS15 adds31 authored synthetic set cases/93pairs in an explicit fingerprinted extension;1639total cases/3554pairs,54rules.44 native reader +4 review cases are exercised separately. A03 is coverage-only: missing evidence is inconclusive, no fail case is invented solely for a test matrix. FR : couverture absente reste indéterminée ; les cas figés ne prouvent pas une exécution.
+
 Draft.34 : TS33 adds52 synthetic cases/156pairs in one explicit fingerprinted extension;1608total cases/3461pairs,51rules. Full native profile requires Node24. Expected outcomes were frozen before the reader; observed executions are separate. FR : cas synthétiques figés avant le lecteur, exécution observée distincte.
 
 TS32 / draft.33:62 frozen authored cases /186 pairs. Expanded total:1556 cases /3305 pairs,48 rules. `conformance.corpus.expand` loads only the two declared fingerprinted extensions. Les résultats effectifs restent consignés séparément ; aucun audit réel déduit.
@@ -510,3 +512,24 @@ previous cases and 45 prefrozen additions, covering thirteen rules.
 TS04 ajoute matrice préalable et accès aux ressources avec revues fournies. Le
 lecteur est commun à TS07-A02. Les 299 cas comprennent les 254 cas antérieurs et
 45 ajouts figés ; aucune observation réelle du moteur n'est revendiquée.
+
+### Closed outcome domain / Issues fermées — TS15-A03
+
+FR : la règle TS15-A03 déclare dans spec/protocol.json
+`allowed_outcomes: ["pass", "inconclusive"]`. Aucun fail ni not-applicable n'est
+admis pour cette règle, y compris dans un rapport fourni. Le banc exige au moins
+un cas pour chacune de ces deux issues. Toutes les autres règles gardent leurs
+issues historiques et l'exigence pass/fail/inconclusive du banc. Supprimer une
+classe du corpus ne réduit jamais cette exigence. Le profil ne contient aucune
+affirmation déclarative de lien parent/enfant : un fichier déclaré orphelin donne
+inconclusive. Une future assertion de parent contradictoire exigerait une autre
+version ; elle ne doit pas être déduite de la déclaration de population.
+
+EN: TS15-A03 declares `allowed_outcomes: ["pass", "inconclusive"]` in the canonical
+protocol. Neither fail nor not-applicable is accepted for that rule, including
+in supplied reports. The corpus must contain each of its two declared outcomes.
+Every other rule retains its historical domain and required pass/fail/inconclusive
+coverage. Removing a class from the corpus never weakens this requirement.
+The profile has no declared parent/child assertion: an orphan declared file stays
+inconclusive. A future contradicted parent assertion would require another version;
+it must not be inferred from the population declaration.

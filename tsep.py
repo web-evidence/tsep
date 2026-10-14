@@ -129,6 +129,17 @@ def input_kinds(artifact):
     return kinds
 
 
+def atomic_outcomes(rule):
+    """Versioned closed exception; historical rules keep their outcome domain."""
+    if rule['id'] == 'TS15-A03':
+        require(rule.get('allowed_outcomes') == ['pass', 'inconclusive'],
+                'TS15-A03 requires its closed outcome declaration')
+        return ('pass', 'inconclusive')
+    require('allowed_outcomes' not in rule,
+            'Undeclared outcome restriction: ' + rule['id'])
+    return ('pass', 'fail', 'not-applicable', 'inconclusive')
+
+
 def validate_atomic_results(result, control, targets, artifacts):
     """Check declared rule evidence/coverage; never infer SEO truth from a capture."""
     rules = {r['id']: r for r in control.get('rules', [])}
@@ -146,6 +157,7 @@ def validate_atomic_results(result, control, targets, artifacts):
         require(all(target in artifacts[ref]['targets'] for ref in refs),
                 'Atomic evidence does not cover its target')
         outcome = atom['outcome']
+        require(outcome in atomic_outcomes(rules[rid]), 'Outcome outside declared rule domain: ' + rid)
         if outcome != 'inconclusive':
             require(refs, 'Conclusive atomic outcome requires evidence')
         if outcome in ('pass', 'not-applicable'):
@@ -287,6 +299,8 @@ def decision(report, controls=None):
         summary['release_monitoring_interpretation'] = {
             'fr':'TS36 : dossier du suivi déclaré, échéances futures indéterminées ; aucune causalité ni identité Google authentifiée.',
             'en':'TS36: declared follow-up dossier, future stages inconclusive; no causality or authenticated Google identity.'}
+    if any(r['control_id']=='TS15' for r in report['results']):
+        summary['sitemap_files_interpretation'] = {'fr': 'TS15 : fichiers fournis dans une population déclarée ; racines non découvertes, aucun constat du serveur ni exhaustivité du site. Structure minimale seulement, pas validation XSD complète.', 'en': 'TS15: supplied files in a declared population; undiscovered roots, no server observation or site completeness. Minimal structure only, not full XSD validation.'}
     if any(r['control_id']=='TS33' for r in report['results']):
         summary['structured_validation_interpretation'] = {'fr': 'TS33 : captures de page liées et instantané indexé séparé ; noms Schema.org seulement, erreurs conservées, aucune éligibilité actuelle ni apparition garantie.', 'en': 'TS33: bound page captures and separate indexed snapshot; Schema.org names only, errors retained, no guaranteed current eligibility or display.'}
     if any(r['control_id']=='TS32' for r in report['results']):

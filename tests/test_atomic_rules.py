@@ -76,7 +76,9 @@ class AtomicRules(unittest.TestCase):
         self.assertEqual(set(outcomes), {r['id'] for r in rules})
         for rule in rules:
             with self.subTest(rule=rule['id']):
-                self.assertTrue({'pass','fail','inconclusive'} <= outcomes[rule['id']])
+                allowed = set(tsep.atomic_outcomes(rule))
+                self.assertTrue((allowed - {'not-applicable'}) <= outcomes[rule['id']])
+                self.assertTrue(outcomes[rule['id']] <= allowed)
                 if rule['na_inputs']:
                     self.assertIn('not-applicable',outcomes[rule['id']])
 

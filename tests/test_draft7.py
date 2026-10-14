@@ -15,7 +15,7 @@ import tsep
 from conformance.corpus import expand
 from adapters.captures import build
 from conformance.evaluate import RULES, evaluate, identity_text
-from conformance.run import compare, run
+from conformance.run import RULE_OUTCOMES, compare, run
 
 CORPUS = expand(tsep.read_json(ROOT/'conformance/cases.json'))
 CASES = {c['id']:c for c in CORPUS['cases']}
@@ -23,6 +23,8 @@ SELECTED = ['TS01-A01', 'TS01-A02']
 # CLI transport/selection regressions need contradictory examples, not hundreds
 # of interpreter startups. verify.py still runs the complete conformance corpus.
 EXTERNAL_CASE_IDS = (
+    'sitemap-files-v1-single-leaf', 'sitemap-files-v1-namespace-error',
+    'sitemap-files-v1-full-path-entries-50001', 'sitemap-files-v1-all-files-missing',
     'structured-validation-v1-complete', 'structured-validation-v1-unsupported-use',
     'structured-validation-v1-source-invalid-json', 'structured-validation-v1-blocking-error',
     'structured-validation-v1-missing-guidance',
@@ -152,7 +154,8 @@ class Draft7(unittest.TestCase):
         # Fail if a fixture edit removes representative coverage for any rule.
         for rule in RULES:
             seen = {r['outcome'] for c in sample['cases'] for r in c['expected'] if r['rule_id']==rule}
-            self.assertTrue({'pass','fail','inconclusive'} <= seen, rule)
+            required = set(RULE_OUTCOMES[rule]) - {'not-applicable'}
+            self.assertTrue(required <= seen, rule)
         with tempfile.TemporaryDirectory() as folder:
             corpus_path=Path(folder)/'sample.json'
             corpus_path.write_text(json.dumps(sample),encoding='utf-8')

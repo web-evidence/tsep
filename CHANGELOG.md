@@ -1,3 +1,9 @@
+## 0.1.0-draft.35 — local candidate, 2026-10-14
+
+- FR : TS15, trois règles sur les fichiers fournis ;44 cas lecteur,31 cas du jeu et4 contre-exemples de revue figés. Le texte descriptif TS15 est précisé : population déclarée et structure minimale, pas validité complète. Origine non authentifiée, aucune exhaustivité du site. Grille upstream1.1 inchangée ; divergence explicite.
+- EN: TS15, three supplied-file rules;44 reader cases,31 set cases and4 frozen review counterexamples. TS15 description narrowed to declared population/minimal structure, not full validity. Unauthenticated origin, no site completeness. Historical upstream1.1 unchanged; explicit editorial divergence.
+- Interpreter34 /adapter35 /HTML19 /replay3.19 tooled controls /54rules. Historical engines, public draft.28 and frozen demo unchanged. Actual qualification/app import recorded separately.
+
 - FR : changement de la description TS33 héritée : remplacer la promesse de test d’éligibilité par les trois qualifications bornées ; correspondance entre instantanés non établie. EN: changed the inherited TS33 description, replacing eligibility-testing language with three bounded qualifications; cross-snapshot correspondence remains unestablished. Upstream/grid1.1, public draft.28 and frozen demo unchanged.
 
 ## 0.1.0-draft.34 — local candidate, 2026-10-14
