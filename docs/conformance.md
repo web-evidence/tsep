@@ -1,3 +1,5 @@
+Draft.36 : TS17 adds34 authored synthetic cases/68pairs;1673cases/3622pairs total,56rules. Source52,DOM37,malformed36 cases run separately. FR : attentes rédigées avant changements, aucune observation réelle ni exécution déduite du décompte.
+
 Draft.35 : TS15 adds31 authored synthetic set cases/93pairs in an explicit fingerprinted extension;1639total cases/3554pairs,54rules.44 native reader +4 review cases are exercised separately. A03 is coverage-only: missing evidence is inconclusive, no fail case is invented solely for a test matrix. FR : couverture absente reste indéterminée ; les cas figés ne prouvent pas une exécution.
 
 Draft.34 : TS33 adds52 synthetic cases/156pairs in one explicit fingerprinted extension;1608total cases/3461pairs,51rules. Full native profile requires Node24. Expected outcomes were frozen before the reader; observed executions are separate. FR : cas synthétiques figés avant le lecteur, exécution observée distincte.

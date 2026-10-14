@@ -299,6 +299,8 @@ def decision(report, controls=None):
         summary['release_monitoring_interpretation'] = {
             'fr':'TS36 : dossier du suivi déclaré, échéances futures indéterminées ; aucune causalité ni identité Google authentifiée.',
             'en':'TS36: declared follow-up dossier, future stages inconclusive; no causality or authenticated Google identity.'}
+    if any(r['control_id']=='TS17' for r in report['results']):
+        summary['essential_links_interpretation'] = {'fr': 'TS17 : stratégie source et états déclarés par le fournisseur ; aucune interaction, acquisition réelle ou découverte Google authentifiée.', 'en': 'TS17: source strategy and provider-declared states; no authenticated interaction, actual acquisition or Google discovery.'}
     if any(r['control_id']=='TS15' for r in report['results']):
         summary['sitemap_files_interpretation'] = {'fr': 'TS15 : fichiers fournis dans une population déclarée ; racines non découvertes, aucun constat du serveur ni exhaustivité du site. Structure minimale seulement, pas validation XSD complète.', 'en': 'TS15: supplied files in a declared population; undiscovered roots, no server observation or site completeness. Minimal structure only, not full XSD validation.'}
     if any(r['control_id']=='TS33' for r in report['results']):

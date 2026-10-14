@@ -1,3 +1,6 @@
+Draft.36 — TS17-A01/A02 : [liens essentiels fournis / supplied essential links](essential-links-evidence.md), [migration](migration-draft.36.md). Source et états déclarés séparés / Separate source and provider-declared states.
+TS17 intake: invalid HTTP types are technically refused; missing evidence or partial objects retain NT with a reason. See the linked contract.
+
 TS15-A03 accepts only pass/inconclusive, declared by the closed `allowed_outcomes` field; fail/NA rejected. See the sitemap-files contract and draft.35 migration.
 
 Draft.35 — TS15-A01/A02/A03 : [fichiers fournis / supplied files](sitemap-files-evidence.md), [migration](migration-draft.35.md). Population déclarée, aucun serveur observé / Declared population, no server observation.
@@ -13,7 +16,7 @@ Draft.30 adds TS12-A01/A02/A03: plan, attributed comparisons and supplied review
 
 Draft.29 adds three TS08 rules: scope/objectives, native inspections and bound reviews/decisions. [Bilingual contract](inspection-evidence.md), [migration](migration-draft.29.md). C qualifies selected-set documentation, never guaranteed indexing.
 
-# Report contract — TSEP 0.1.0-draft.35
+# Report contract — TSEP 0.1.0-draft.36
 
 ### Delivery variants — draft.27
 

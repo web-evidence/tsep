@@ -1,0 +1,741 @@
+{
+  "kind": "prefrozen-ts17-source-expectations",
+  "version": "1",
+  "created_at": "2026-10-14T11:41:24.120464+00:00",
+  "synthetic": true,
+  "normative": false,
+  "scope": "Candidate source surface expectations only; no whole TS17 verdict, rendered evidence or actual browser claim.",
+  "implementation_exists": false,
+  "cases": [
+    {
+      "id": "absolute",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"https://example.test/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "Exact HTML a destination"
+    },
+    {
+      "id": "relative",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "WHATWG relative path against unchanged final URL"
+    },
+    {
+      "id": "scheme-relative",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"//example.test/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "Same HTTPS scheme selected by recorded final URL"
+    },
+    {
+      "id": "fragment-document",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/destination#section\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "Declared document comparison explicitly strips fragment"
+    },
+    {
+      "id": "query-exact",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/destination?q=1\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination?q=1"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "Query remains exact"
+    },
+    {
+      "id": "query-different",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/destination?q=2\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination?q=1"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Different query is not the declared document"
+    },
+    {
+      "id": "dot-segment",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/folder/../destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "WHATWG dot segment serialization, not editorial equivalence"
+    },
+    {
+      "id": "default-port",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"https://example.test:443/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "WHATWG removes default HTTPS port"
+    },
+    {
+      "id": "host-case",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"https://EXAMPLE.TEST/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "WHATWG host case serialization"
+    },
+    {
+      "id": "path-case",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/DESTINATION\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Path remains case sensitive exact comparison"
+    },
+    {
+      "id": "percent-case",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/caf%c3%a9\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/caf%C3%A9"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Percent sequence case is not silently normalized"
+    },
+    {
+      "id": "encoded-path",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/caf%C3%A9\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/caf%C3%A9"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "Exact percent sequence"
+    },
+    {
+      "id": "different-scheme",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"http://example.test/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "No HTTP to HTTPS equivalence"
+    },
+    {
+      "id": "different-host",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"https://www.example.test/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "No host equivalence"
+    },
+    {
+      "id": "non-default-port",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"https://example.test:444/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Distinct port"
+    },
+    {
+      "id": "missing-all",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Qualified complete source contains no destination anchor"
+    },
+    {
+      "id": "missing-href",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a>destination</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "No href attribute"
+    },
+    {
+      "id": "empty-href",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"\">destination</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Resolves to current document, not essential other document"
+    },
+    {
+      "id": "fragment-only",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"#main\">destination</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Self-document fragment does not reach other document"
+    },
+    {
+      "id": "onclick",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><button onclick=\"location.href='/destination'\">x</button></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Script navigation does not substitute HTML a/href"
+    },
+    {
+      "id": "area-only",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><map name=\"x\"><area href=\"/destination\" alt=\"x\"></map></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Profile explicitly requires a, not area"
+    },
+    {
+      "id": "link-only",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><link rel=\"next\" href=\"/destination\"></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "link metadata does not substitute a"
+    },
+    {
+      "id": "template-only",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><template><a href=\"/destination\">x</a></template></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Template contents inert and not main-document anchor"
+    },
+    {
+      "id": "template-and-active",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><template><a href=\"/wrong\">x</a></template><a href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "Inert template does not mask ordinary anchor"
+    },
+    {
+      "id": "noscript-only",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><noscript><a href=\"/destination\">x</a></noscript></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Static scripting hypotheses disagree"
+    },
+    {
+      "id": "noscript-and-active",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><noscript><a href=\"/other\">x</a></noscript><a href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "Both hypotheses independently retain required anchor"
+    },
+    {
+      "id": "script-text",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><script>const a=\"<a href='/destination'>x</a>\";</script></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Script text is not an anchor node"
+    },
+    {
+      "id": "comment-text",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><!-- <a href=\"/destination\">x</a> --></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Comment text is not an anchor node"
+    },
+    {
+      "id": "hidden",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a hidden style=\"display:none\" href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "Only structural presence; no visibility claim"
+    },
+    {
+      "id": "inert",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><div inert><a href=\"/destination\">x</a></div></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "Only structural presence; no activation claim"
+    },
+    {
+      "id": "nofollow",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a rel=\"nofollow\" href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "Only structural presence; no operator-following claim"
+    },
+    {
+      "id": "foreign-only",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><svg><a href=\"/destination\">x</a></svg></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Foreign href remains outside qualified main HTML context"
+    },
+    {
+      "id": "foreign-html",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><svg><foreignObject><a href=\"/destination\">x</a></foreignObject></svg></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "HTML anchor in foreign ancestry remains unqualified"
+    },
+    {
+      "id": "duplicate-href",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/wrong\" href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Duplicate attribute recovery not an absence claim"
+    },
+    {
+      "id": "malformed-href",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"http://[bad\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "URL outside qualified resolution; no invented destination"
+    },
+    {
+      "id": "javascript-href",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"javascript:location.href='/destination'\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "Non HTTP(S) href does not reach declared document"
+    },
+    {
+      "id": "two-destinations",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/destination\">x</a><a href=\"/second\">y</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination",
+        "https://example.test/second"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "All declared destinations present"
+    },
+    {
+      "id": "one-missing",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination",
+        "https://example.test/second"
+      ],
+      "complete": true,
+      "expected": "fail",
+      "rationale": "One known missing destination in complete source"
+    },
+    {
+      "id": "incomplete-source",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": false,
+      "expected": "inconclusive",
+      "rationale": "No complete surface claim even with retained prefix"
+    },
+    {
+      "id": "truncated-absence",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": false,
+      "expected": "inconclusive",
+      "rationale": "Missing link beyond captured prefix cannot establish absence",
+      "uncollected_suffix": "<a href=\"/destination\">x</a>"
+    },
+    {
+      "id": "wrong-media",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/plain"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "No HTML attribution for plain text"
+    },
+    {
+      "id": "unsupported-encoding",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=iso-8859-1"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Unsupported encoding remains unknown"
+    },
+    {
+      "id": "self-destination",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"#main\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/page"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Prior destination set outside other-document profile"
+    },
+    {
+      "id": "empty-destination-set",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Missing applicability evidence is not pass or NA"
+    },
+    {
+      "id": "fragment-destination",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/destination#main\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination#main"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Declared targets must be document URLs"
+    },
+    {
+      "id": "unserialized-destination",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://EXAMPLE.TEST/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Target must equal exact WHATWG serialization"
+    },
+    {
+      "id": "credential-destination",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"https://u:p@example.test/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://u:p@example.test/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Credentials outside scope"
+    },
+    {
+      "id": "duplicate-destination",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination",
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Duplicate plan targets are ambiguous"
+    },
+    {
+      "id": "active-base-relative",
+      "source": "<!doctype html><html><head><base href=\"https://example.test/\"></head><body><a href=\"destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Base element outside first closed profile"
+    },
+    {
+      "id": "active-base-absolute",
+      "source": "<!doctype html><html><head><base href=\"https://other.test/\"></head><body><a href=\"https://example.test/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Positive absolute witness cannot silently broaden closed profile"
+    },
+    {
+      "id": "inert-base",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><template><base href=\"https://other.test/\"></template><a href=\"/destination\">x</a></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "pass",
+      "rationale": "Inert template base does not change document base"
+    },
+    {
+      "id": "declarative-shadow",
+      "source": "<!doctype html><html><head><title>Synthetic</title></head><body><div><template shadowrootmode=\"open\"><a href=\"/destination\">x</a></template></div></body></html>",
+      "content_types": [
+        "text/html; charset=utf-8"
+      ],
+      "document_url": "https://example.test/page",
+      "destinations": [
+        "https://example.test/destination"
+      ],
+      "complete": true,
+      "expected": "inconclusive",
+      "rationale": "Shadow attachment not established by static profile"
+    }
+  ]
+}

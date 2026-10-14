@@ -1,4 +1,6 @@
-Current candidate / Candidat actuel — draft.35 :19 contrôles /19 tooled controls,54 règles /rules. [TS15](sitemap-files-evidence.md):31 synthetic set cases/93pairs;48 reader/review cases separately. Corpus1639cases/3554pairs. Counts are authored cases, not real-site assessments; actual delivery recorded separately.
+Current candidate / Candidat actuel — draft.36 :20 contrôles /tooled controls,56 règles /rules. TS17 adds34 authored synthetic cases/68pairs;1673cases/3622pairs total. Separate source52/DOM37/malformed36 boundary cases are not real site observations. Actual delivery recorded separately.
+
+Previous candidate / Candidat précédent — draft.35 :19 contrôles /19 tooled controls,54 règles /rules. [TS15](sitemap-files-evidence.md):31 synthetic set cases/93pairs;48 reader/review cases separately. Corpus1639cases/3554pairs. Counts are authored cases, not real-site assessments; actual delivery recorded separately.
 
 Previous candidate / Candidat précédent — draft.34 :18 contrôles outillés /18 tooled controls,51 règles /rules. [TS33](structured-validation-evidence.md) adds52 prefrozen cases/156pairs; then corpus1608cases/3461pairs. Explicit historical sections below retain their original counts. TS33 covers linked page syntax/term names and separate indexed messages, never current Google eligibility. Actual test/import delivery recorded separately.
 
@@ -31,9 +33,9 @@ Le même jour, il a demandé les agents IA après les performances : TS42, puis 
 Le même jour, il a autorisé TS41, TS39, TS36 et TS31–33. TS41, TS39, TS36, TS31 et TS32 sont intégrés ; TS33 possède désormais un candidat borné dont la qualification et l’import applicatif sont consignés séparément.
 **Priorité historique donnée le 11 octobre : consolider les 12 contrôles existants, puis aviser pour l’application Edikka.** Achever la vérification du composant rendu déjà engagé ; différer les couches suivantes de TS31–33/TS36. Cette priorité ne déclare pas les 12 usages réels achevés.
 Une [base de traitement JSON-LD facultative](jsonld-processing.md), puis une [extraction HTML attribuée avec combinaison des blocs](jsonld-html-observation.md), préparent TS31–33. Une [lecture des états rendus fournis](jsonld-rendered-observation.md) complète ces composants. Ils ne comptent pas comme trois contrôles supplémentaires ; vraie chaîne de capture rendue, base effective authentifiée, vocabulaire, contenu visible, identités et validateurs restent à qualifier.
-La source décrit **44 contrôles**. **Dix-neuf** disposent de règles atomiques
-exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS08 (3), TS10 (4), TS12 (3), TS15 (3), TS31 (3), TS32 (3), TS33 (3), TS34 (3), TS35 (2), TS36 (3), TS39 (3), TS41 (3), TS42 (3), TS43 (3), TS44 (3),
-soit **54 règles**. Les quatre priorités SEO en représentent 11. Les 25 autres sont décrits,
+La source décrit **44 contrôles**. **Vingt** disposent de règles atomiques
+exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS08 (3), TS10 (4), TS12 (3), TS15 (3), TS17 (2), TS31 (3), TS32 (3), TS33 (3), TS34 (3), TS35 (2), TS36 (3), TS39 (3), TS41 (3), TS42 (3), TS43 (3), TS44 (3),
+soit **56 règles**. Les quatre priorités SEO en représentent 11. Les 24 autres sont décrits,
 sans le même niveau de règles et d'outillage exécutables.
 
 | Contrôle | Méthode exécutable disponible | Application réelle encore incomplète |
@@ -136,8 +138,8 @@ controls are specified. On October 11 the user explicitly added TS34/TS35 perfor
 The user then added TS42–TS44 agents, in that order after performance.
 The user also authorized TS41, TS39, TS36 and TS31–33. TS41, TS39, TS36, TS31 and TS32 are integrated; TS33 has a bounded candidate whose qualification and app import are recorded separately. The controlled TS41 laboratory now links sixteen actual loopback exchanges and child processes to local file actions across six authored scenarios. Scope/final reviews remain fictional; no production or Edikka deployment is established.
 The [controlled TS39 laboratory](delivery-laboratory.md) now retains eight prefrozen scenarios, 38 actual local origin/cache exchanges and repair with explicit purge. Policies and reviews remain authored; no production CDN or Edikka assessment.
-Nineteen controls now have 54 executable atomic rules, including 11 for the four SEO
-priorities, three each for TS08/TS12/TS15/TS31/TS32/TS33/TS36, five for performance, three for TS39, three for TS41 and nine for TS42/TS43/TS44. The other 25 lack equivalent executable coverage.
+Twenty controls now have 56 executable atomic rules, including 11 for the four SEO
+priorities, three each for TS08/TS12/TS15/TS31/TS32/TS33/TS36, two for TS17, five for performance, three for TS39, three for TS41 and nine for TS42/TS43/TS44. The other 24 lack equivalent executable coverage.
 Optional HTML JSON-LD extraction attributes scripts to source bytes; a supplied-rendered layer now binds planned states and retains their supplied bases, without browser execution. Frozen fixtures and historical Edikka source reanalysis do not complete TS31–33; rendered states, effective bases, vocabulary, visible facts, corpus identity and validators remain to qualify.
 TS42 binds source mappings, supplied owner decisions and tradeoffs to a bounded robots comparison. No real owner approval or agent visit is established. TS43 now supplies planned test-client treatment, reviewed native-log correlation and explicit attribution, with a controlled loopback experiment. Actual operator access/identity/visits remain unestablished. TS44 now has three bounded executable [critical-content rules](critical-content-evidence.md); a controlled laboratory retains six actual loopback exchanges with authored DOM/reviews, while real Edikka application remains pending.
 TS34 imports CrUX cohorts/p75 with exact classes and supplied decisions. TS35 imports
@@ -291,7 +293,7 @@ l’automatisation. Des sous-ensembles utiles existent déjà dans des composant
 | TS14 | lastmod reflète une modification significative de la page. | Décrit ; règles atomiques à détailler | Lier lastmod à une modification significative prouvée et à son historique ; prévoir jugement éditorial. |
 | TS15 | Population déclarée de fichiers fournis. | [Trois règles natives bornées](sitemap-files-evidence.md) | Pas de serveur observé ni d’exhaustivité du site ; intégration applicative/qualification consignées séparément. |
 | TS16 | Chaque page importante reçoit au moins un lien interne crawlable. | Décrit ; règles atomiques à détailler | Définir population cible, points d’entrée et couverture du crawl avant de conclure à une absence de lien. |
-| TS17 | Les liens essentiels utilisent un élément a avec href résoluble. | Décrit ; règles atomiques à détailler | Définir inventaire source/DOM des liens essentiels et résolution ; boutons et onclick restent distincts. |
+| TS17 | Liens essentiels source et états déclarés. | [Deux règles bornées](essential-links-evidence.md) | Définir inventaire source/DOM des liens essentiels et résolution ; boutons et onclick restent distincts. |
 | TS18 | La profondeur et les pages orphelines sont mesurées sur un périmètre explicite. | Décrit ; règles atomiques à détailler | Relier inventaires CMS, sitemap et crawl ; distinguer page orpheline et inventaire incomplet. |
 | TS19 | Les paramètres, filtres et calendriers ne créent pas un espace infini. | Décrit ; règles atomiques à détailler | Définir motifs, paramètres, bornes et hypothèses de piège de crawl ; pas d’infinité déduite d’un échantillon. |
 | TS20 | La structure d’URL est lisible, stable et encodée correctement. | Décrit ; règles atomiques à détailler | Fixer la politique d’URL avant comparaison : casse, encodage et paramètres ne sont pas équivalents par défaut. |

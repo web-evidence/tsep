@@ -8,5 +8,8 @@
 /* TS33: preserve complete table content in a keyboard-scrollable region. */
 .validation-table{max-width:100%;overflow-x:auto}.validation-table:focus-visible{outline:3px solid #c66f00;outline-offset:3px}
 
+/* TS17 supplied URL witnesses must remain inside their bounded cards. */
+.essential-links-values { overflow-wrap: anywhere; }
+
 /* TS15 supplied file URLs stay inside their bounded cards. */
 .sitemap-files-values { overflow-wrap: anywhere; }

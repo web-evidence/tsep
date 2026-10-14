@@ -1,5 +1,5 @@
 {
-  "protocol_version": "0.1.0-draft.35",
+  "protocol_version": "0.1.0-draft.36",
   "synthetic": true,
   "expected_origin": "Authored normative expectations for this protocol version, independent of implementation coverage. Reference limits are explicitly marked per pair; synthetic inputs and supplied reviews are not live observations or independent validation.",
   "additional_case_files": [
@@ -18,6 +18,10 @@
   {
     "path": "tests/fixtures/sitemap-files-v1.json",
     "sha256": "bade6ff8185ea3fabb6aaa9422055d105b4deda85e4644fe75f7e99bee0376bc"
+  },
+  {
+    "path": "tests/fixtures/essential-links-v1.json",
+    "sha256": "d3aabc0591ba4dfe684a42c87d95f80453c9b6411224344b86cf06412f7e98ec"
   }
 ],
   "cases": [

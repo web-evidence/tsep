@@ -1,0 +1,41 @@
+{
+  "sources": [
+    {
+      "url": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable",
+      "at": "2026-10-14T11:21:07.217998+00:00",
+      "scope": "Preparation of declared essential HTML a/href links; no Googlebot or site claim.",
+      "status": 200,
+      "final_url": "https://developers.google.com/search/docs/crawling-indexing/links-crawlable",
+      "content_type": "text/html; charset=utf-8",
+      "content_encoding": null,
+      "path": "google-links.html",
+      "sha256": "61e2dcf91d5a03356e0286dc07d57624abd58b855ed47b8b06cb33f6e0bb41ed",
+      "bytes": 184565
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/links.html",
+      "at": "2026-10-14T11:21:07.799271+00:00",
+      "scope": "Preparation of declared essential HTML a/href links; no Googlebot or site claim.",
+      "status": 200,
+      "final_url": "https://html.spec.whatwg.org/multipage/links.html",
+      "content_type": "text/html; charset=utf-8",
+      "content_encoding": null,
+      "path": "html-links.html",
+      "sha256": "46c05b48250111c6d60b753a4fc708ff6df2b6162ca05c483e421eeb201b7705",
+      "bytes": 381019
+    },
+    {
+      "url": "https://html.spec.whatwg.org/multipage/semantics.html",
+      "at": "2026-10-14T11:21:08.871721+00:00",
+      "scope": "Preparation of declared essential HTML a/href links; no Googlebot or site claim.",
+      "status": 200,
+      "final_url": "https://html.spec.whatwg.org/multipage/semantics.html",
+      "content_type": "text/html; charset=utf-8",
+      "content_encoding": null,
+      "path": "html-base.html",
+      "sha256": "1f86b6ca292e1eea22bafc6136aeba7421f0249483d026427798b3833020064e",
+      "bytes": 333092
+    }
+  ],
+  "normative_effect": "none; preliminary method references"
+}

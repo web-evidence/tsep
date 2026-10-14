@@ -12,12 +12,26 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '19'
+VERSION = '20'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'essential_state_identity': 'États et scénarios déclarés par le fournisseur ; interactions non authentifiées.',
+        'essential_binding': 'Portée : association aux octets HTTP fournis ; acquisition réelle non authentifiée.',
+        'essential_repeated': 'Snapshots identiques pour plusieurs états déclarés',
+        'essential_scripts_enabled': 'Hypothèse scripts activés',
+        'essential_scripts_disabled': 'Hypothèse scripts désactivés',
+        'essential_source': 'Source fournie',
+        'essential_rendered': 'États rendus déclarés',
+        'essential_found': 'Destinations présentes',
+        'essential_missing': 'Destinations non relevées',
+        'essential_state': 'Stade ou état',
+        'essential_empty': 'Aucune',
+        'essential_details': 'Diagnostic complet conservé',
+        'essential_links_note': 'TS17 : stratégie source et états déclarés par le fournisseur ; aucune interaction, acquisition réelle ou découverte Google authentifiée.',
+        'essential_links_values': 'Liens essentiels — stades séparés',
         'sitemap_files_note': 'TS15 : fichiers fournis dans une population déclarée ; racines non découvertes, aucun constat du serveur ni exhaustivité du site. Structure minimale seulement, pas validation XSD complète.',
         'sitemap_files_values': 'Population de fichiers fournis',
         'sitemap_roots_note': 'Racines déclarées ; leur découverte et l’exhaustivité du site ne sont pas établies.',
@@ -135,6 +149,20 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'essential_state_identity': 'Provider-declared states and scenarios; interactions are unauthenticated.',
+        'essential_binding': 'Scope: supplied HTTP-byte association; actual acquisition is unauthenticated.',
+        'essential_repeated': 'Identical snapshots across declared states',
+        'essential_scripts_enabled': 'Scripting-enabled hypothesis',
+        'essential_scripts_disabled': 'Scripting-disabled hypothesis',
+        'essential_source': 'Supplied source',
+        'essential_rendered': 'Declared rendered states',
+        'essential_found': 'Destinations present',
+        'essential_missing': 'Destinations not found in this reading',
+        'essential_state': 'Stage or state',
+        'essential_empty': 'None',
+        'essential_details': 'Retained full diagnostic',
+        'essential_links_note': 'TS17: source strategy and provider-declared states; no authenticated interaction, actual acquisition or Google discovery.',
+        'essential_links_values': 'Essential links — separate stages',
         'sitemap_files_note': 'TS15: supplied files in a declared population; undiscovered roots, no server observation or site completeness. Minimal structure only, not full XSD validation.',
         'sitemap_files_values': 'Supplied file population',
         'sitemap_roots_note': 'Declared roots; their discovery and site completeness are not established.',
@@ -536,6 +564,28 @@ def comparison_values(atom, words):
     return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
 
 
+def essential_links_values(atom, words):
+    prefix='Supplied essential links / liens essentiels fournis: '
+    reason=atom.get('reason','')
+    if not reason.startswith(prefix):return ''
+    try:
+        note=json.loads(reason[len(prefix):]);stage=note['rule_stage'];value=note[stage]
+        rows=[dict(id=key,**v) for key,v in value.get('hypotheses',{}).items()] if stage=='source' else value.get('rows',[])
+        out='<div class="notice"><strong>'+esc(words['essential_source' if stage=='source' else 'essential_rendered'])+'</strong><p>'+esc(words['essential_state_identity'])+'</p><p>'+esc(words['essential_binding'])+'</p>'
+        if value.get('reason'):out+='<p>'+esc(value['reason'])+'</p>'
+        out+='</div>'
+        for row in rows:
+            out+='<div class="notice"><strong>'+esc(words['essential_state'])+' · '+esc(words.get('essential_scripts_'+str(row.get('id')),row.get('id','')) if stage=='source' else row.get('id',''))+'</strong><p>'+esc(words.get(row.get('outcome'),words['unknown']))+'</p>'
+            if row.get('reason'):out+='<p>'+esc(row['reason'])+'</p>'
+            for key,label in [('found','essential_found'),('missing','essential_missing')]:
+                if key in row:out+='<p><strong>'+esc(words[label])+'</strong><br>'+('<br>'.join(esc(x) for x in row[key]) or esc(words['essential_empty']))+'</p>'
+            for message in row.get('unknowns',[]):out+='<p>'+esc(message)+'</p>'
+            out+='</div>'
+        for group in note.get('repeated_snapshots',[]):out+='<div class="notice"><strong>'+esc(words['essential_repeated'])+'</strong><p>'+esc(', '.join(str(x) for x in group['state_ids']))+'</p><code>'+esc(group['snapshot_sha256'])+'</code></div>'
+        return '<div class="essential-links-values">'+out+'<details><summary>'+esc(words['essential_details'])+'</summary><pre>'+esc(pretty(note))+'</pre></details></div>'
+    except (ValueError,KeyError,TypeError,AttributeError):return ''
+
+
 def sitemap_files_values(atom, words):
     prefix = 'Supplied sitemap files / fichiers sitemap fournis: '
     rendered = structured_values(atom, dict(words, structured_values=words['sitemap_files_values']), prefix=prefix)
@@ -655,6 +705,8 @@ def results(bundle, controls, words, language):
             out += performance_values(result, words)
         if cid == 'TS36':
             out += '<div class="notice">' + esc(words['monitoring_note']) + '</div>'
+        if cid == 'TS17':
+            out += '<div class="notice">' + esc(words['essential_links_note']) + '</div>'
         if cid == 'TS15':
             out += '<div class="notice">' + esc(words['sitemap_files_note']) + '</div>'
         if cid == 'TS33':
@@ -684,7 +736,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (essential_links_values(atom, words) if cid == 'TS17' else sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '35'
+VERSION = '36'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -35,6 +35,8 @@ def source_files():
     modules['conformance/agent_access.py'] = importlib.import_module('conformance.agent_access')
     modules['conformance/critical_content.py'] = importlib.import_module('conformance.critical_content')
     modules['conformance/release_monitoring.py'] = importlib.import_module('conformance.release_monitoring')
+    for name in ('essential_links','essential_links_source','essential_links_dom'):
+        modules['conformance/'+name+'.py'] = importlib.import_module('conformance.'+name)
     modules['conformance/sitemap_files.py'] = importlib.import_module('conformance.sitemap_files')
     modules['conformance/sitemap_set.py'] = importlib.import_module('conformance.sitemap_set')
     modules['conformance/structured_validation.py'] = importlib.import_module('conformance.structured_validation')
@@ -73,6 +75,7 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS17 : liens essentiels a/href dans les source et états fournis ; stratégie préalable, scénarios et association HTTP/DOM déclarés, aucune interaction ou acquisition authentifiée.','en':'TS17: essential a/href links in supplied source/states; prior strategy, declared scenarios and HTTP/DOM association, no authenticated interaction/acquisition.'},
     {'state':'implemented','fr':'TS15 : population déclarée de fichiers fournis, limites natives et structure minimale ; aucun constat du serveur ni exhaustivité du site.','en':'TS15: declared population of supplied files, native bounds and minimal structure; no server observation or site completeness.'},
     {'state':'implemented','fr':'TS33 : syntaxe et noms de vocabulaire sur les captures liées, messages API indexés séparés ; erreurs bloquantes conservées, aucune éligibilité actuelle garantie.','en':'TS33: syntax/vocabulary names on bound captures, separate indexed API messages; blocking errors retained, no current eligibility guarantee.'},
     {'state':'implemented','fr':'TS32 : identifiants et références des exports JSON-LD fournis, registre préalable et revues liées ; cohérence du corpus, sans stabilité temporelle ni identité authentifiée.','en':'TS32: IDs/references from supplied JSON-LD exports, prior registry and bound reviews; corpus coherence, no temporal stability or authenticated identity.'},
@@ -306,6 +309,12 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         dated(target, target.get('observed_at'), issued_text)
     targets = [t['url'] for t in data['targets']]
     tsep.unique(targets, 'capture target')
+    if any(rule in ('TS17-A01', 'TS17-A02') for rule in data['rules']):
+        for target in data['targets']:
+            supplied_http = target.get('http')
+            tsep.require(supplied_http is None or (type(supplied_http) is list
+                         and all(type(hop) is dict for hop in supplied_http)),
+                         'TS17 HTTP structure: expected a list of exchange objects, or absent/null evidence')
     tsep.require(access in ACCESS, 'Explicit evidence access is required')
     # Native release inputs are retained as strings. Inspect their supplied
     # provenance as well: wrapping synthetic evidence cannot make it public.
@@ -346,7 +355,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         elif isinstance(value,list):
             for child in value:delivery_provenance(child)
     for target in evidence_targets:
-        for flag in ('delivery_synthetic', 'identity_synthetic', 'structured_synthetic', 'inspection_synthetic', 'sitemap_synthetic'):
+        for flag in ('delivery_synthetic', 'identity_synthetic', 'structured_synthetic', 'inspection_synthetic', 'sitemap_synthetic', 'link_synthetic'):
             if flag in target:
                 tsep.require(type(target[flag]) is bool and target[flag] == (access == 'synthetic'),
                              {'structured_synthetic': 'Structured-data provenance differs from access',
@@ -507,6 +516,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += ' Usages déclarés et pièces fournies seulement / Declared usages and supplied evidence only; no real agent visit, identity, operator compliance or citation established.'
                 if cid == 'TS36':
                     report['results'][i]['reason'] += ' Suivi documentaire du changement / Documentary release follow-up; future stages remain inconclusive, no causal or authenticated Google visit claim.'
+                if cid == 'TS17':
+                    report['results'][i]['reason'] += ' Source et états déclarés seulement / Supplied source and declared states only; no authenticated interaction, acquisition or Google discovery.'
                 if cid == 'TS15':
                     report['results'][i]['reason'] += ' Population déclarée de fichiers fournis seulement / Declared population of supplied files only; no server observation, site completeness or full XSD validity.'
                 if cid == 'TS33':

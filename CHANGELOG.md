@@ -1,3 +1,9 @@
+## 0.1.0-draft.36 — local candidate, 2026-10-14
+
+- FR : TS17 source/rendu séparés, stratégie préalable et états déclarés ; snapshots répétés visibles, absence qualifiée distincte d’une preuve manquante. Deux règles natives, aucun constat d’interaction ou d’acquisition authentifiée. Le descriptif TS17 est précisé ; upstream1.1 intact.
+- EN: TS17 separate source/render stages, prior strategy and declared states; repeated snapshots disclosed, qualified absence distinct from missing evidence. Two native rules, no authenticated interaction/acquisition. TS17 description narrowed; upstream1.1 retained.
+- Interpreter35 /adapter36 /HTML20 /replay3.20 tooled controls /56 rules. Qualification/app reception recorded separately; historical engines, public draft.28 and frozen demo unchanged.
+
 ## 0.1.0-draft.35 — local candidate, 2026-10-14
 
 - FR : TS15, trois règles sur les fichiers fournis ;44 cas lecteur,31 cas du jeu et4 contre-exemples de revue figés. Le texte descriptif TS15 est précisé : population déclarée et structure minimale, pas validité complète. Origine non authentifiée, aucune exhaustivité du site. Grille upstream1.1 inchangée ; divergence explicite.

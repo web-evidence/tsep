@@ -1,4 +1,15 @@
-Current candidate / Candidat actuel — draft.35 : interpreter34 /adapter35 /HTML19 /replay3 ;19 contrôles /54 règles. [TS15](sitemap-files-evidence.md), [migration](migration-draft.35.md). TS15 uses standard Python; full suite still requires explicit Node24 and timeout1800 as documented below.
+Current build consistency / Cohérence de construction courante:
+`maintain.py check` and `build` reject a stale version or fingerprint in the three
+current generated reports (`examples/pass`, `fail`, `partial`) before the full
+suite. Regenerate into a separate directory and inspect the diff before copying
+current derivatives. Never rewrite historical archives to make them pass.
+FR : les trois rapports courants doivent porter la version et l’empreinte exactes
+du protocole. Une incohérence bloque la construction ; régénérer séparément,
+examiner le diff et conserver les archives historiques intactes.
+
+Current candidate / Candidat actuel — draft.36 : interpreter35 /adapter36 /HTML20 /replay3 ;20 contrôles /56 règles. [TS17](essential-links-evidence.md), [migration](migration-draft.36.md). Explicit Node24 and documented timeout1800 required; no full qualification implied by this description.
+
+Previous candidate / Candidat précédent — draft.35 : interpreter34 /adapter35 /HTML19 /replay3 ;19 contrôles /54 règles. [TS15](sitemap-files-evidence.md), [migration](migration-draft.35.md). TS15 uses standard Python; full suite still requires explicit Node24 and timeout1800 as documented below.
 
 Previous candidate / Candidat précédent — draft.34 : interpreter33 / adapter34 / HTML18 / replay3 ;18 contrôles /51 règles. [TS33 contract](structured-validation-evidence.md), [migration](migration-draft.34.md). Node24/TSEP_SOURCE_NODE required for native page processing; default lightweight runs may be inconclusive. Previous entries below describe their own historical versions.
 

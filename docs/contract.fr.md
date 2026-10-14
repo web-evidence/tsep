@@ -1,3 +1,6 @@
+Draft.36 — TS17-A01/A02 : [liens essentiels fournis / supplied essential links](essential-links-evidence.md), [migration](migration-draft.36.md). Source et états déclarés séparés / Separate source and provider-declared states.
+Import TS17 : types HTTP invalides refusés techniquement ; preuves absentes ou objets partiels conservés avec NT et motif. Voir le contrat lié.
+
 TS15-A03 admet uniquement pass/inconclusive, déclaration fermée `allowed_outcomes` dans la source ; fail/NA rejetés. Voir le contrat des fichiers sitemap et la migration draft.35.
 
 Draft.35 — TS15-A01/A02/A03 : [fichiers fournis / supplied files](sitemap-files-evidence.md), [migration](migration-draft.35.md). Population déclarée, aucun serveur observé / Declared population, no server observation.
@@ -13,7 +16,7 @@ Draft.30 ajoute TS12-A01/A02/A03 : plan, comparaisons attribuées et revue/déci
 
 Draft.29 ajoute trois règles TS08 : périmètre/objectifs, inspections natives et revues/décisions liées. [Contrat bilingue](inspection-evidence.md), [migration](migration-draft.29.md). C qualifie le dossier sélectionné, jamais une indexation garantie.
 
-# Contrat de rapport — TSEP 0.1.0-draft.35
+# Contrat de rapport — TSEP 0.1.0-draft.36
 
 ### Diffusion et variantes — draft.27
 

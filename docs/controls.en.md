@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.35 — Controls
+# TSEP 0.1.0-draft.36 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.35:TS01-A01`
+`TSEP@0.1.0-draft.36:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.35:TS01-A02`
+`TSEP@0.1.0-draft.36:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.35:TS02-A01`
+`TSEP@0.1.0-draft.36:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.35:TS02-A02`
+`TSEP@0.1.0-draft.36:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -198,7 +198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.35:TS04-A01`
+`TSEP@0.1.0-draft.36:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.35:TS04-A02`
+`TSEP@0.1.0-draft.36:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -320,7 +320,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.35:TS07-A01`
+`TSEP@0.1.0-draft.36:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -344,7 +344,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.35:TS07-A02`
+`TSEP@0.1.0-draft.36:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +368,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.35:TS07-A03`
+`TSEP@0.1.0-draft.36:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -418,7 +418,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS08-A01 — Qualified prior scope and objectives.
 
-`TSEP@0.1.0-draft.35:TS08-A01`
+`TSEP@0.1.0-draft.36:TS08-A01`
 
 **Required inputs**: intent, search-console.
 
@@ -442,7 +442,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS08-A02 — Attributed and readable native inspections.
 
-`TSEP@0.1.0-draft.35:TS08-A02`
+`TSEP@0.1.0-draft.36:TS08-A02`
 
 **Required inputs**: search-console, intent.
 
@@ -466,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS08-A03 — Evidence-bound interpretation and decision.
 
-`TSEP@0.1.0-draft.35:TS08-A03`
+`TSEP@0.1.0-draft.36:TS08-A03`
 
 **Required inputs**: search-console, intent.
 
@@ -538,7 +538,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.35:TS10-A01`
+`TSEP@0.1.0-draft.36:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -562,7 +562,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.35:TS10-A02`
+`TSEP@0.1.0-draft.36:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -586,7 +586,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.35:TS10-A03`
+`TSEP@0.1.0-draft.36:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -612,7 +612,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.35:TS10-A04`
+`TSEP@0.1.0-draft.36:TS10-A04`
 
 **Required inputs**: crawl, intent.
 
@@ -684,7 +684,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS12-A01 — Qualified prior comparison plan.
 
-`TSEP@0.1.0-draft.35:TS12-A01`
+`TSEP@0.1.0-draft.36:TS12-A01`
 
 **Required inputs**: intent, search-console, http.
 
@@ -708,7 +708,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS12-A02 — Complete attributed readings and comparisons.
 
-`TSEP@0.1.0-draft.35:TS12-A02`
+`TSEP@0.1.0-draft.36:TS12-A02`
 
 **Required inputs**: search-console, http, html, render, intent.
 
@@ -732,7 +732,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS12-A03 — Qualification and decision bound to comparisons.
 
-`TSEP@0.1.0-draft.35:TS12-A03`
+`TSEP@0.1.0-draft.36:TS12-A03`
 
 **Required inputs**: search-console, http, html, render, intent.
 
@@ -828,7 +828,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS15-A01 — Encoding and minimal structure of supplied files.
 
-`TSEP@0.1.0-draft.35:TS15-A01`
+`TSEP@0.1.0-draft.36:TS15-A01`
 
 **Required inputs**: sitemap, intent.
 
@@ -852,7 +852,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS15-A02 — Actual size and population limits.
 
-`TSEP@0.1.0-draft.35:TS15-A02`
+`TSEP@0.1.0-draft.36:TS15-A02`
 
 **Required inputs**: sitemap, intent.
 
@@ -876,7 +876,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS15-A03 — Coverage of declared population and bound children.
 
-`TSEP@0.1.0-draft.35:TS15-A03`
+`TSEP@0.1.0-draft.36:TS15-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -928,25 +928,73 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Severity**: major. **Unit**: page.
 
-**Required inputs**: html, render, intent.
+**Required inputs**: http, html, render, intent.
 
-**Applicability.** Navigation destinations declared essential.
+**Applicability.** Declared essential destinations under the prior source-and-rendered strategy, on supplied captures.
 
-**Method.** Compare source and rendered DOM; identify buttons, onclick handlers and anchors without href.
+**Method.** Compare HTML a/href links in source and every declared DOM state; separate stages and exact document URLs.
 
-**Acceptance.** Every tested essential destination has an a link with a resolvable href at the observed stage; source and rendered stages are distinguished.
+**Acceptance.** Each declared destination has a resolvable a/href in both required stages within essential-document-links-v1.
 
-**Evidence.** A crawlable HTML link to every essential destination.
+**Evidence.** Original HTTP bytes, bound DOM v2 tree, prior plan and separate source/render diagnostics; provider-declared states.
 
 **When NA is allowed.** No relevant navigation, with a justified scope.
 
-**Limits.** Crawlability guarantees neither indexing nor rankings.
+**Limits.** C only within the declared strategy. No established visibility, interaction, editorial importance, authenticity, Google visit, indexing or ranking. Source presence is not a universal Google requirement.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/links-crawlable](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)
+
+### TS17-A01 — Essential links present in supplied source.
+
+`TSEP@0.1.0-draft.36:TS17-A01`
+
+**Required inputs**: http, html, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Declared essential destinations under the prior source-and-rendered strategy, on supplied captures.
+
+**Method.** Read native source under both static scripting hypotheses; require their agreement.
+
+**Acceptance.** Every destination in the qualified stage: pass; established absence in complete inventory: fail; otherwise inconclusive.
+
+**Evidence.** Original HTTP bytes, bound DOM v2 tree, prior plan and separate source/render diagnostics; provider-declared states.
+
+**Assumptions.** Prior plan, population, scenarios and completeness supplied; checked HTTP/DOM association but unauthenticated acquisition.
+
+**Inconclusive.** Missing/incomplete/out-of-profile plan or stage, active base, ambiguous reading or missing runtime. Independent contradictions remain.
+
+**When NA is allowed.** No automatic NA in this profile.
+
+**Limits.** C only within the declared strategy. No established visibility, interaction, editorial importance, authenticity, Google visit, indexing or ranking. Source presence is not a universal Google requirement.
+
+### TS17-A02 — Essential links present in declared rendered states.
+
+`TSEP@0.1.0-draft.36:TS17-A02`
+
+**Required inputs**: http, render, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Declared essential destinations under the prior source-and-rendered strategy, on supplied captures.
+
+**Method.** Check each complete HTTP-bound tree and disclose repeated snapshots; scenarios are unauthenticated.
+
+**Acceptance.** Every destination in the qualified stage: pass; established absence in complete inventory: fail; otherwise inconclusive.
+
+**Evidence.** Original HTTP bytes, bound DOM v2 tree, prior plan and separate source/render diagnostics; provider-declared states.
+
+**Assumptions.** Prior plan, population, scenarios and completeness supplied; checked HTTP/DOM association but unauthenticated acquisition.
+
+**Inconclusive.** Missing/incomplete/out-of-profile plan or stage, active base, ambiguous reading or missing runtime. Independent contradictions remain.
+
+**When NA is allowed.** No automatic NA in this profile.
+
+**Limits.** C only within the declared strategy. No established visibility, interaction, editorial importance, authenticity, Google visit, indexing or ranking. Source presence is not a universal Google requirement.
 
 ## TS18 — Depth and orphan pages are measured within an explicit scope.
 
@@ -1286,7 +1334,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS31-A01 — Reviewed prior scope and hypotheses.
 
-`TSEP@0.1.0-draft.35:TS31-A01`
+`TSEP@0.1.0-draft.36:TS31-A01`
 
 **Required inputs**: structured-data, content, intent.
 
@@ -1310,7 +1358,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS31-A02 — Attributed source and rendered JSON-LD reading.
 
-`TSEP@0.1.0-draft.35:TS31-A02`
+`TSEP@0.1.0-draft.36:TS31-A02`
 
 **Required inputs**: structured-data, content, intent.
 
@@ -1334,7 +1382,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS31-A03 — Content and type consistency reviewed per entity.
 
-`TSEP@0.1.0-draft.35:TS31-A03`
+`TSEP@0.1.0-draft.36:TS31-A03`
 
 **Required inputs**: structured-data, content, intent.
 
@@ -1382,7 +1430,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS32-A01 — Qualified prior registry and corpus.
 
-`TSEP@0.1.0-draft.35:TS32-A01`
+`TSEP@0.1.0-draft.36:TS32-A01`
 
 **Required inputs**: structured-data, intent.
 
@@ -1406,7 +1454,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS32-A02 — Required identifiers and corpus references.
 
-`TSEP@0.1.0-draft.35:TS32-A02`
+`TSEP@0.1.0-draft.36:TS32-A02`
 
 **Required inputs**: structured-data, intent.
 
@@ -1430,7 +1478,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS32-A03 — Evidence-bound mapping and duplicate review.
 
-`TSEP@0.1.0-draft.35:TS32-A03`
+`TSEP@0.1.0-draft.36:TS32-A03`
 
 **Required inputs**: structured-data, intent.
 
@@ -1478,7 +1526,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS33-A01 — Qualified prior scope, features and layers.
 
-`TSEP@0.1.0-draft.35:TS33-A01`
+`TSEP@0.1.0-draft.36:TS33-A01`
 
 **Required inputs**: structured-data, validator-output, intent.
 
@@ -1502,7 +1550,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS33-A02 — Syntax and vocabulary names on bound captures.
 
-`TSEP@0.1.0-draft.35:TS33-A02`
+`TSEP@0.1.0-draft.36:TS33-A02`
 
 **Required inputs**: structured-data, validator-output, intent.
 
@@ -1526,7 +1574,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS33-A03 — Native Google messages and decisions retained without downgrade.
 
-`TSEP@0.1.0-draft.35:TS33-A03`
+`TSEP@0.1.0-draft.36:TS33-A03`
 
 **Required inputs**: structured-data, validator-output, intent.
 
@@ -1574,7 +1622,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A01 — Attributable field cohort
 
-`TSEP@0.1.0-draft.35:TS34-A01`
+`TSEP@0.1.0-draft.36:TS34-A01`
 
 **Required inputs**: field-data, intent.
 
@@ -1598,7 +1646,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A02 — Retained p75 measurements and classes
 
-`TSEP@0.1.0-draft.35:TS34-A02`
+`TSEP@0.1.0-draft.36:TS34-A02`
 
 **Required inputs**: field-data, intent.
 
@@ -1622,7 +1670,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A03 — Reasoned decision bound to measurements
 
-`TSEP@0.1.0-draft.35:TS34-A03`
+`TSEP@0.1.0-draft.36:TS34-A03`
 
 **Required inputs**: field-data, intent.
 
@@ -1670,7 +1718,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A01 — Repeatable laboratory context and measurements
 
-`TSEP@0.1.0-draft.35:TS35-A01`
+`TSEP@0.1.0-draft.36:TS35-A01`
 
 **Required inputs**: lab-data, intent.
 
@@ -1694,7 +1742,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A02 — Diagnostic hypothesis and next verification
 
-`TSEP@0.1.0-draft.35:TS35-A02`
+`TSEP@0.1.0-draft.36:TS35-A02`
 
 **Required inputs**: lab-data, intent.
 
@@ -1742,7 +1790,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS36-A01 — Prior plan and release chronology.
 
-`TSEP@0.1.0-draft.35:TS36-A01`
+`TSEP@0.1.0-draft.36:TS36-A01`
 
 **Required inputs**: intent, change-history.
 
@@ -1766,7 +1814,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS36-A02 — Observations attributed to follow-up stages.
 
-`TSEP@0.1.0-draft.35:TS36-A02`
+`TSEP@0.1.0-draft.36:TS36-A02`
 
 **Required inputs**: intent, search-console, logs, change-history.
 
@@ -1790,7 +1838,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS36-A03 — Interpretation, decisions and closure bound to evidence.
 
-`TSEP@0.1.0-draft.35:TS36-A03`
+`TSEP@0.1.0-draft.36:TS36-A03`
 
 **Required inputs**: intent, search-console, logs, change-history.
 
@@ -1886,7 +1934,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS39-A01 — Reviewed prior matrix and configuration
 
-`TSEP@0.1.0-draft.35:TS39-A01`
+`TSEP@0.1.0-draft.36:TS39-A01`
 
 **Required inputs**: configuration, intent.
 
@@ -1910,7 +1958,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS39-A02 — Signal consistency in each context
 
-`TSEP@0.1.0-draft.35:TS39-A02`
+`TSEP@0.1.0-draft.36:TS39-A02`
 
 **Required inputs**: http, content, intent.
 
@@ -1934,7 +1982,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS39-A03 — Context and cache attribution
 
-`TSEP@0.1.0-draft.35:TS39-A03`
+`TSEP@0.1.0-draft.36:TS39-A03`
 
 **Required inputs**: configuration, http, logs, intent.
 
@@ -2006,7 +2054,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS41-A01 — Prior plan and representativeness
 
-`TSEP@0.1.0-draft.35:TS41-A01`
+`TSEP@0.1.0-draft.36:TS41-A01`
 
 **Required inputs**: configuration, intent.
 
@@ -2030,7 +2078,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS41-A02 — Execution coverage and output fidelity
 
-`TSEP@0.1.0-draft.35:TS41-A02`
+`TSEP@0.1.0-draft.36:TS41-A02`
 
 **Required inputs**: configuration, ci-output, change-history, intent.
 
@@ -2054,7 +2102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS41-A03 — Negative rehearsal and process response
 
-`TSEP@0.1.0-draft.35:TS41-A03`
+`TSEP@0.1.0-draft.36:TS41-A03`
 
 **Required inputs**: configuration, ci-output, change-history, intent.
 
@@ -2102,7 +2150,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A01 — Documented purposes and mechanisms
 
-`TSEP@0.1.0-draft.35:TS42-A01`
+`TSEP@0.1.0-draft.36:TS42-A01`
 
 **Required inputs**: operator-docs, intent.
 
@@ -2126,7 +2174,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A02 — Owner decisions and tradeoffs
 
-`TSEP@0.1.0-draft.35:TS42-A02`
+`TSEP@0.1.0-draft.36:TS42-A02`
 
 **Required inputs**: intent.
 
@@ -2150,7 +2198,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A03 — Captured policy and effective choice
 
-`TSEP@0.1.0-draft.35:TS42-A03`
+`TSEP@0.1.0-draft.36:TS42-A03`
 
 **Required inputs**: configuration, operator-docs, intent.
 
@@ -2198,7 +2246,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A01 — Full client and expected treatment
 
-`TSEP@0.1.0-draft.35:TS43-A01`
+`TSEP@0.1.0-draft.36:TS43-A01`
 
 **Required inputs**: http, operator-docs, intent.
 
@@ -2222,7 +2270,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A02 — Chain reconciled with logs
 
-`TSEP@0.1.0-draft.35:TS43-A02`
+`TSEP@0.1.0-draft.36:TS43-A02`
 
 **Required inputs**: http, logs, intent.
 
@@ -2246,7 +2294,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A03 — Test origin without invented identity
 
-`TSEP@0.1.0-draft.35:TS43-A03`
+`TSEP@0.1.0-draft.36:TS43-A03`
 
 **Required inputs**: http, intent.
 
@@ -2294,7 +2342,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS44-A01 — Prior critical scope
 
-`TSEP@0.1.0-draft.35:TS44-A01`
+`TSEP@0.1.0-draft.36:TS44-A01`
 
 **Required inputs**: content, intent.
 
@@ -2318,7 +2366,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS44-A02 — Delivery path without JavaScript
 
-`TSEP@0.1.0-draft.35:TS44-A02`
+`TSEP@0.1.0-draft.36:TS44-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -2342,7 +2390,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS44-A03 — Value and context coherence
 
-`TSEP@0.1.0-draft.35:TS44-A03`
+`TSEP@0.1.0-draft.36:TS44-A03`
 
 **Required inputs**: http, html, render, content, intent.
 

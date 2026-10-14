@@ -1,3 +1,5 @@
+HTML20 — TS17: distinct source and declared rendered stages, exact found/missing destinations, provider-declared scenarios and supplied HTTP/DOM association; no authenticated interaction/acquisition. FR : stades distincts, destinations présentes/absentes exactes, scénarios déclarés et acquisition non authentifiée ; aucun recalcul dans le HTML.
+
 HTML19 — TS15 displays declared file population/count, undiscovered roots, supplied dates and measured bounds with readable FR/EN labels. Raw hashes remain in the retained complete diagnostic. FR : population déclarée, racines non découvertes, dates fournies et mesures lisibles ; empreintes conservées dans le diagnostic complet. Static retained diagnostics only, no re-evaluation; no site-wide or server claim.
 
 ## Version18 — TS33 validation layers / Couches de validation TS33
