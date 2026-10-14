@@ -1,3 +1,5 @@
+Draft.34 — TS33-A01/A02/A03 : [contrat / contract](structured-validation-evidence.md), [migration](migration-draft.34.md). Captures liées, messages natifs séparés / Bound captures, separate native messages. Erreur bloquante conservée / Blocking errors retained.
+
 Draft.33 ajoute TS32-A01/A02/A03 : registre préalable, identifiants/références natifs et revues liées. [Contrat](structured-identity-evidence.md), [migration](migration-draft.33.md). Cohérence du corpus fourni, sans stabilité temporelle authentifiée.
 Draft.32 ajoute TS31-A01/A02/A03 : périmètre préalable, lecture JSON-LD native et revues de contenu liées par entité. [Contrat bilingue](structured-content-evidence.md), [migration](migration-draft.32.md). Preuves fournies, aucune visibilité ou vérité authentifiée ni résultat enrichi garanti.
 
@@ -7,7 +9,7 @@ Draft.30 ajoute TS12-A01/A02/A03 : plan, comparaisons attribuées et revue/déci
 
 Draft.29 ajoute trois règles TS08 : périmètre/objectifs, inspections natives et revues/décisions liées. [Contrat bilingue](inspection-evidence.md), [migration](migration-draft.29.md). C qualifie le dossier sélectionné, jamais une indexation garantie.
 
-# Contrat de rapport — TSEP 0.1.0-draft.33
+# Contrat de rapport — TSEP 0.1.0-draft.34
 
 ### Diffusion et variantes — draft.27
 

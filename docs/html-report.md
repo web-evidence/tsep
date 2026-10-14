@@ -1,3 +1,7 @@
+## Version18 — TS33 validation layers / Couches de validation TS33
+
+FR : couches, erreurs et limites TS33 conservées ; tableaux défilables au clavier sur écran étroit, sans masquer ni tronquer leurs textes. EN: retained TS33 layers, errors and limits; keyboard-scrollable tables on narrow screens without hidden or truncated text. Historical HTML files are unchanged.
+
 # Standalone HTML evidence report / Rapport HTML autonome
 
 ## Français

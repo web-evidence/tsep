@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.33",
+  "protocol_version": "0.1.0-draft.34",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -5964,6 +5964,174 @@
           "evidence_ids": [
             "structured-data",
             "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS33-method-pass",
+      "control_id": "TS33",
+      "description": {
+        "fr": "Exercice synthétique : jugements pass fournis pour TS33.",
+        "en": "Synthetic exercise: supplied pass judgments for TS33."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "validator-output": "SYNTHETIC: authored native-message method judgments, not a Google observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS33-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS33.",
+            "en": "Synthetic exercise: supplied pass judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        },
+        {
+          "rule_id": "TS33-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS33.",
+            "en": "Synthetic exercise: supplied pass judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        },
+        {
+          "rule_id": "TS33-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS33.",
+            "en": "Synthetic exercise: supplied pass judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS33-method-fail",
+      "control_id": "TS33",
+      "description": {
+        "fr": "Exercice synthétique : jugements fail fournis pour TS33.",
+        "en": "Synthetic exercise: supplied fail judgments for TS33."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "validator-output": "SYNTHETIC: authored native-message method judgments, not a Google observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS33-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS33.",
+            "en": "Synthetic exercise: supplied fail judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        },
+        {
+          "rule_id": "TS33-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS33.",
+            "en": "Synthetic exercise: supplied fail judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        },
+        {
+          "rule_id": "TS33-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS33.",
+            "en": "Synthetic exercise: supplied fail judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS33-method-inconclusive",
+      "control_id": "TS33",
+      "description": {
+        "fr": "Exercice synthétique : jugements inconclusive fournis pour TS33.",
+        "en": "Synthetic exercise: supplied inconclusive judgments for TS33."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "validator-output": "SYNTHETIC: authored native-message method judgments, not a Google observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS33-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS33.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        },
+        {
+          "rule_id": "TS33-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS33.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        },
+        {
+          "rule_id": "TS33-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS33.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
           ]
         }
       ],

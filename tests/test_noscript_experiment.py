@@ -172,12 +172,13 @@ class NoscriptExperiment(unittest.TestCase):
                 noscript.validate_criteria(criteria)
 
     def test_active_extractor_still_refuses_nonempty_noscript(self):
+        protocol_before = (ROOT/'spec/protocol.json').read_bytes()
         source = '<html><head></head><body>Expected<noscript><img src="x"></noscript></body></html>'
         with self.assertRaises(Unknown):
             extract(source)
         result = noscript.experiment(source, {'required_markers':['Expected'], 'forbidden_markers':[]})
         self.assertEqual(result['candidate_consensus'], 'pass')
-        self.assertEqual(json.loads((ROOT/'spec/protocol.json').read_text())['version'], '0.1.0-draft.33')
+        self.assertEqual((ROOT/'spec/protocol.json').read_bytes(), protocol_before)
 
     def test_isolated_cli_needs_no_evaluator_collector_or_private_files(self):
         with tempfile.TemporaryDirectory() as folder:

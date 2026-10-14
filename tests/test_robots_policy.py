@@ -135,13 +135,14 @@ class RobotsPolicy(unittest.TestCase):
         self.assertEqual(robots.inspect_capture(data)['decision'], 'unknown')
 
     def test_independent_of_network_and_active_protocol(self):
+        protocol_before = (ROOT/'spec/protocol.json').read_bytes()
         with patch.object(socket, 'socket', side_effect=AssertionError('Network forbidden')):
             result = robots.inspect_capture(capture())
         self.assertEqual(result['decision'], 'disallow')
         self.assertEqual(result['network_requests'], 0)
         self.assertIn('TS04-A01', robots.evaluate.RULES)
         self.assertNotIn('status', result)
-        self.assertEqual(json.loads((ROOT/'spec/protocol.json').read_text())['version'], '0.1.0-draft.33')
+        self.assertEqual((ROOT/'spec/protocol.json').read_bytes(), protocol_before)
 
     def test_cli_preserves_input_hash_and_refuses_overwrite(self):
         with tempfile.TemporaryDirectory() as folder:

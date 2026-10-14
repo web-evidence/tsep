@@ -287,6 +287,8 @@ def decision(report, controls=None):
         summary['release_monitoring_interpretation'] = {
             'fr':'TS36 : dossier du suivi déclaré, échéances futures indéterminées ; aucune causalité ni identité Google authentifiée.',
             'en':'TS36: declared follow-up dossier, future stages inconclusive; no causality or authenticated Google identity.'}
+    if any(r['control_id']=='TS33' for r in report['results']):
+        summary['structured_validation_interpretation'] = {'fr': 'TS33 : captures de page liées et instantané indexé séparé ; noms Schema.org seulement, erreurs conservées, aucune éligibilité actuelle ni apparition garantie.', 'en': 'TS33: bound page captures and separate indexed snapshot; Schema.org names only, errors retained, no guaranteed current eligibility or display.'}
     if any(r['control_id']=='TS32' for r in report['results']):
         summary['structured_identity_interpretation'] = {
             'fr':'TS32 : cohérence des identifiants du corpus fourni et revues liées ; aucune stabilité temporelle ou identité authentifiée.',

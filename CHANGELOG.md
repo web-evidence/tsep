@@ -1,3 +1,11 @@
+- FR : changement de la description TS33 héritée : remplacer la promesse de test d’éligibilité par les trois qualifications bornées ; correspondance entre instantanés non établie. EN: changed the inherited TS33 description, replacing eligibility-testing language with three bounded qualifications; cross-snapshot correspondence remains unestablished. Upstream/grid1.1, public draft.28 and frozen demo unchanged.
+
+## 0.1.0-draft.34 — local candidate, 2026-10-14
+
+- FR : TS33, trois règles,52 cas synthétiques figés/156 paires ; captures liées TS31, noms Schema.org30.1 épinglés, messages natifs APIv1 et revues liées. Erreurs bloquantes conservées ; aucune éligibilité actuelle ni affichage déduits.
+- EN: TS33, three rules,52 frozen synthetic cases/156 pairs; TS31-bound captures, pinned Schema.org30.1 names, native APIv1 messages and bound reviews. Blocking errors retained; no current eligibility/display inference.
+- Interpreter33 / adapter34 / HTML18 / replay3.18 tooled controls /51rules. Historical engines, archives, public draft.28 and frozen demo remain separate. Qualification and app import evidence recorded separately.
+
 ## HTML17 — narrow metric grid / Synthèse sur écran étroit — 2026-10-14
 
 - FR : les cartes de synthèse passent sur une seule colonne jusqu’à 380 pixels CSS ; les libellés restent entiers sans débordement, masquage ou troncature.

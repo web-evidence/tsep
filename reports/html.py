@@ -12,12 +12,14 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '17'
+VERSION = '18'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'validation_note': 'TS33 : captures de page liées et instantané indexé séparé ; noms Schema.org seulement, erreurs conservées, aucune éligibilité actuelle ni apparition garantie.',
+        'validation_values': 'Couches de validation retenues',
         'identity_note':'TS32 : identifiants, références et doublons qualifiés sur les exports fournis. Aucune stabilité temporelle, source ou identité authentifiée.',
         'identity_values':'Identifiants et références du corpus déclaré',
         'structured_note':'TS31 : JSON-LD recalculé et revues liées au contenu fourni. Aucune visibilité ou vérité authentifiée, validation Schema.org ou garantie de résultat enrichi.',
@@ -115,6 +117,8 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'validation_note': 'TS33: bound page captures and separate indexed snapshot; Schema.org names only, errors retained, no guaranteed current eligibility or display.',
+        'validation_values': 'Retained validation layers',
         'identity_note':'TS32: IDs, references and duplicates qualified in supplied exports. No temporal stability, authenticated source or identity.',
         'identity_values':'Identifiers and references in the declared corpus',
         'structured_note':'TS31: recomputed JSON-LD and reviews bound to supplied content. No authenticated visibility or truth, Schema.org validation or rich-result guarantee.',
@@ -496,6 +500,27 @@ def comparison_values(atom, words):
     return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
 
 
+def validation_values(atom, words):
+    rendered = structured_values(atom, dict(words, structured_values=words['validation_values']),
+        prefix='Structured validation evidence / preuves des couches de validation: ')
+    try:
+        reason = atom.get('reason', '')
+        note = json.loads(reason[len('Structured validation evidence / preuves des couches de validation: '):])
+        snapshot = note.get('indexed_snapshot')
+        if isinstance(snapshot, dict):
+            dates = {
+                'HTTP capture / capture HTTP': snapshot.get('page_http_received_at'),
+                'Supplied DOM / DOM fourni': snapshot.get('page_dom_observed_at'),
+                'Indexed last crawl / exploration indexée': snapshot.get('last_crawl_time'),
+                'API retrieval / réception API': snapshot.get('retrieved_at'),
+                'Cross-snapshot correspondence / correspondance entre instantanés': snapshot.get('correspondence'),
+            }
+            rendered = '<div class="notice"><strong>Separate snapshots / instantanés séparés</strong><pre>' + esc(pretty(dates)) + '</pre></div>' + rendered
+    except (ValueError, TypeError, KeyError):
+        pass
+    return rendered.replace('<div class="table-wrap">', '<div class="table-wrap validation-table" tabindex="0" role="region" aria-label="' + esc(words['validation_values']) + '">', 1)
+
+
 def identity_values(atom, words):
     return structured_values(atom,dict(words,structured_values=words['identity_values']),
         prefix='Structured identity evidence / preuves des identités JSON-LD: ')
@@ -566,6 +591,8 @@ def results(bundle, controls, words, language):
             out += performance_values(result, words)
         if cid == 'TS36':
             out += '<div class="notice">' + esc(words['monitoring_note']) + '</div>'
+        if cid == 'TS33':
+            out += '<div class="notice">' + esc(words['validation_note']) + '</div>'
         if cid == 'TS32':
             out += '<div class="notice">' + esc(words['identity_note']) + '</div>'
         if cid == 'TS31':
@@ -591,7 +618,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

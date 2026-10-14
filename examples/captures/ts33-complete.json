@@ -1,0 +1,299 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS33-A01",
+    "TS33-A02",
+    "TS33-A03"
+  ],
+  "targets": [
+    {
+      "url": "https://example.test/page",
+      "observed_at": "2026-10-11T10:00:12Z",
+      "structured_synthetic": true,
+      "context": {
+        "network": "none; synthetic",
+        "bounds": "one authored page and state",
+        "tool": "authored-fixture",
+        "tool_version": "1"
+      },
+      "intent": {
+        "declared_at": "2026-10-11T09:59:00Z",
+        "structured_content": {
+          "reader": "jsonld-visible-content-v1",
+          "selection_reason": "Only fictional page",
+          "population": "Single authored page, no site inference",
+          "important_properties": "all-supplied",
+          "guidance": [
+            {
+              "url": "https://example.test/guidance",
+              "observed_at": "2026-10-11T09:00:00Z",
+              "raw_text": "Synthetic guidance: a Thing called A, visible on this fictional page; all properties reviewed.",
+              "sha256": "4238e9848ecf60d966483fc8faae1144ba69629939cb39a2c3f8b5e4ff5a8bd8"
+            }
+          ]
+        },
+        "structured_validation": {
+          "reader": "jsonld-validation-layers-v1",
+          "vocabulary": "schemaorg-all-30.1",
+          "source": "ts31-bound-surfaces",
+          "engine": "google-url-inspection-v1",
+          "relationship": "separate-indexed-snapshot",
+          "site_url": "https://example.test/",
+          "features": [
+            "Product snippets"
+          ],
+          "guidance": [
+            {
+              "feature": "Product snippets",
+              "url": "https://example.test/fictional-product-guidance",
+              "observed_at": "2026-10-11T09:00:00Z",
+              "raw_text": "Synthetic guidance only: the fictional planned Product snippets use is supported in this exercise.",
+              "sha256": "aeb2e356a0967075906420836f4e1a6d79c59f7c89613b3fa2205e3fafd747ee"
+            }
+          ]
+        }
+      },
+      "jsonld": {
+        "plan": {
+          "format": "jsonld-rendered-plan",
+          "version": "1",
+          "declared_at": "2026-10-11T09:59:00Z",
+          "window_start": "2026-10-11T10:00:00Z",
+          "window_end": "2026-10-11T10:00:10Z",
+          "start_url": "https://example.test/page",
+          "final_url": "https://example.test/page",
+          "crawler": "Authored-TSEP-Client/1",
+          "source_base_iri": "https://example.test/page",
+          "states": [
+            {
+              "id": "ready",
+              "browser": "Authored browser model",
+              "browser_version": "synthetic-1",
+              "scenario": "ready-no-interaction"
+            }
+          ]
+        },
+        "http": [
+          {
+            "url": "https://example.test/page",
+            "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: Authored-TSEP-Client/1\r\n\r\n",
+            "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><script type=\"application/ld+json\">{\"@id\":\"#entity\",\"@type\":\"https://schema.org/Thing\",\"https://schema.org/name\":\"A\"}</script></head><body>A</body></html>",
+            "complete": true
+          }
+        ],
+        "http_received_at": "2026-10-11T10:00:00Z",
+        "contexts": [],
+        "states": [
+          {
+            "id": "ready",
+            "observed_at": "2026-10-11T10:00:01Z",
+            "complete": true,
+            "errors": [],
+            "javascript_enabled": true,
+            "browser": "Authored browser model",
+            "browser_version": "synthetic-1",
+            "structured_dom": {
+              "snapshot": {
+                "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+                "tree": {
+                  "format": "rendered-metadata-tree",
+                  "version": "2",
+                  "limits": {
+                    "nodes": 1024,
+                    "depth": 64,
+                    "tree_utf8_bytes": 524288,
+                    "serialization_utf8_bytes": 262144,
+                    "cooperative_ms": 2000,
+                    "invocation_timeout_ms": 5000
+                  },
+                  "document_url": "https://example.test/page",
+                  "base_uri": "https://example.test/page",
+                  "ready_state": "complete",
+                  "execution_context": "not-attested",
+                  "scripting": "enabled-by-laboratory-plan",
+                  "closed_shadow_coverage": "unknown",
+                  "frame_documents": "not-collected",
+                  "template_fragments": "not-collected",
+                  "origin_attribution": "unknown",
+                  "serialization": {
+                    "available": true,
+                    "html": "<html><head></head><body>A — authored companion, not a browser capture</body></html>"
+                  },
+                  "nodes": [
+                    {
+                      "id": 0,
+                      "parent": null,
+                      "edge": "root",
+                      "index": 0,
+                      "type": 9,
+                      "name": "#document",
+                      "namespace": null,
+                      "attributes": [],
+                      "data": null,
+                      "child_count": 1,
+                      "shadow": "not-element",
+                      "resolved_href": null
+                    },
+                    {
+                      "id": 1,
+                      "parent": 0,
+                      "edge": "child",
+                      "index": 0,
+                      "type": 1,
+                      "name": "html",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "attributes": [],
+                      "data": null,
+                      "child_count": 2,
+                      "shadow": "unexposed-or-absent",
+                      "resolved_href": null
+                    },
+                    {
+                      "id": 2,
+                      "parent": 1,
+                      "edge": "child",
+                      "index": 0,
+                      "type": 1,
+                      "name": "head",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "attributes": [],
+                      "data": null,
+                      "child_count": 1,
+                      "shadow": "unexposed-or-absent",
+                      "resolved_href": null
+                    },
+                    {
+                      "id": 3,
+                      "parent": 2,
+                      "edge": "child",
+                      "index": 0,
+                      "type": 1,
+                      "name": "script",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "attributes": [
+                        {
+                          "name": "type",
+                          "local_name": "type",
+                          "namespace": null,
+                          "value": "application/ld+json"
+                        }
+                      ],
+                      "data": null,
+                      "child_count": 1,
+                      "shadow": "unexposed-or-absent",
+                      "resolved_href": null
+                    },
+                    {
+                      "id": 4,
+                      "parent": 3,
+                      "edge": "child",
+                      "index": 0,
+                      "type": 3,
+                      "name": "#text",
+                      "namespace": null,
+                      "attributes": [],
+                      "data": "{\"@id\":\"#entity\",\"@type\":\"https://schema.org/Thing\",\"https://schema.org/name\":\"A\"}",
+                      "child_count": 0,
+                      "shadow": "not-element",
+                      "resolved_href": null
+                    },
+                    {
+                      "id": 5,
+                      "parent": 1,
+                      "edge": "child",
+                      "index": 1,
+                      "type": 1,
+                      "name": "body",
+                      "namespace": "http://www.w3.org/1999/xhtml",
+                      "attributes": [],
+                      "data": null,
+                      "child_count": 1,
+                      "shadow": "unexposed-or-absent",
+                      "resolved_href": null
+                    },
+                    {
+                      "id": 6,
+                      "parent": 5,
+                      "edge": "child",
+                      "index": 0,
+                      "type": 3,
+                      "name": "#text",
+                      "namespace": null,
+                      "attributes": [],
+                      "data": "A",
+                      "child_count": 0,
+                      "shadow": "not-element",
+                      "resolved_href": null
+                    }
+                  ],
+                  "reported_node_count": 7,
+                  "traversal_complete": true,
+                  "stop_reason": null,
+                  "api_errors": [],
+                  "elapsed_ms": 0
+                }
+              },
+              "snapshot_sha256": "d5db34cc7e356f25a2247b2fce83d1b061c31a6d5b683f0bf30652346572856c",
+              "known_integrity_issues": [],
+              "acquisition": {
+                "kind": "authored-synthetic",
+                "navigation_id": "authored-navigation-ordinary-head-script",
+                "http_sha256": "90eec41a784e3674dc9928e61d734e8e8323c9014db2f78967168a76b28337fc",
+                "user_agent": "Authored-TSEP-Client/1",
+                "support": [
+                  {
+                    "name": "authorship",
+                    "content": "Authored fixture only; no browser or remote navigation.",
+                    "sha256": "9a6504c0a59cf3cfdbb66f2cc8cf367b32a43ccc79cd7510d4446db2b46e3b37"
+                  }
+                ]
+              }
+            },
+            "scenario": "ready-no-interaction"
+          }
+        ]
+      },
+      "validation_plan_review": {
+        "complete": true,
+        "reviewer": "Fictional reviewer",
+        "assistance": "Authored exercise; no actual human review",
+        "reason": "Authored qualification of exact supplied layers",
+        "provenance": "synthetic-exercise",
+        "observed_at": "2026-10-11T09:59:30Z",
+        "scope": "supported",
+        "support": "supported",
+        "separation": "supported",
+        "binding_sha256": "b4452ac97de320e49c655df7b26099ceed031725cf92c0aeb589c62b2f91d415"
+      },
+      "validation_record": {
+        "provenance": "synthetic-exercise",
+        "description": "Authored URL Inspection API v1 response; no Google request",
+        "tool": "google-url-inspection",
+        "api_version": "v1",
+        "backend_version": "not-exposed",
+        "complete": true,
+        "http_status": 200,
+        "retrieved_at": "2026-10-11T10:00:09Z",
+        "request": {
+          "raw_text": "{\"inspectionUrl\":\"https://example.test/page\",\"siteUrl\":\"https://example.test/\",\"languageCode\":\"en-US\"}",
+          "sha256": "e727835fd95bfc6fb9f5943de687be692ab775bf30f17654c0a11384f85f6175"
+        },
+        "response": {
+          "raw_text": "{\"inspectionResult\":{\"indexStatusResult\":{\"lastCrawlTime\":\"2026-10-10T09:00:00Z\"},\"richResultsResult\":{\"verdict\":\"PASS\",\"detectedItems\":[{\"richResultType\":\"Product snippets\",\"items\":[{\"name\":\"A\",\"issues\":[]}]}]}}}",
+          "sha256": "bcf6028823c040da4cd3ad443a35dbbfd6686cf0e81886040e6c32f24a2ff41d"
+        }
+      },
+      "validation_review": {
+        "complete": true,
+        "reviewer": "Fictional reviewer",
+        "assistance": "Authored exercise; no actual human review",
+        "reason": "Authored qualification of exact supplied layers",
+        "provenance": "synthetic-exercise",
+        "observed_at": "2026-10-11T10:00:11Z",
+        "interpretation": "supported",
+        "messages": [],
+        "binding_sha256": "aa33b112c3a3b24d194867a4477d2b6a0b52755f380246314e4767c717d674c6"
+      }
+    }
+  ]
+}

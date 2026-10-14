@@ -1,5 +1,5 @@
 {
-  "protocol_version": "0.1.0-draft.33",
+  "protocol_version": "0.1.0-draft.34",
   "synthetic": true,
   "expected_origin": "Authored normative expectations for this protocol version, independent of implementation coverage. Reference limits are explicitly marked per pair; synthetic inputs and supplied reviews are not live observations or independent validation.",
   "additional_case_files": [
@@ -10,6 +10,10 @@
     {
       "path": "tests/fixtures/structured-identity-boundaries-v1.json",
       "sha256": "5836410891c28c0a8230eaca7804248ab379a673612bbccc8d13ef7367e7e96a"
+    },
+    {
+      "path": "tests/fixtures/structured-validation-v1.json",
+      "sha256": "8679acd7176851b4f2a0dc495e78bf77591422d2cdbe3b287808d6b34ca732cf"
     }
   ],
   "cases": [

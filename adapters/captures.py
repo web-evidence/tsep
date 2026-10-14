@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '33'
+VERSION = '34'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -35,6 +35,7 @@ def source_files():
     modules['conformance/agent_access.py'] = importlib.import_module('conformance.agent_access')
     modules['conformance/critical_content.py'] = importlib.import_module('conformance.critical_content')
     modules['conformance/release_monitoring.py'] = importlib.import_module('conformance.release_monitoring')
+    modules['conformance/structured_validation.py'] = importlib.import_module('conformance.structured_validation')
     modules['conformance/structured_identity.py'] = importlib.import_module('conformance.structured_identity')
     modules['conformance/structured_content.py'] = importlib.import_module('conformance.structured_content')
     modules['conformance/canonical_comparison.py'] = importlib.import_module('conformance.canonical_comparison')
@@ -49,6 +50,8 @@ def source_files():
     for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'conformance.source_canonical', 'experiments.source_head', 'experiments.source_http', 'experiments.source_tree'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     result = loaded_sources(ROOT, modules)
+    from conformance.structured_validation import VOCABULARY
+    result[VOCABULARY] = tsep.digest(ROOT/VOCABULARY)
     result['collectors/rendered_metadata.js'] = tsep.digest(ROOT/'collectors/rendered_metadata.js')
     from experiments import source_http
     result.update(source_http.identity())
@@ -68,6 +71,7 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS33 : syntaxe et noms de vocabulaire sur les captures liées, messages API indexés séparés ; erreurs bloquantes conservées, aucune éligibilité actuelle garantie.','en':'TS33: syntax/vocabulary names on bound captures, separate indexed API messages; blocking errors retained, no current eligibility guarantee.'},
     {'state':'implemented','fr':'TS32 : identifiants et références des exports JSON-LD fournis, registre préalable et revues liées ; cohérence du corpus, sans stabilité temporelle ni identité authentifiée.','en':'TS32: IDs/references from supplied JSON-LD exports, prior registry and bound reviews; corpus coherence, no temporal stability or authenticated identity.'},
     {'state':'implemented','fr':'TS31 : source et DOM JSON-LD fournis recalculés, périmètre et contenu revus avec liaison aux graphes ; visibilité, faits et résultats enrichis non authentifiés.','en':'TS31: recomputed supplied source/DOM JSON-LD, graph-bound scope/content reviews; visibility, facts and rich results are not authenticated.'},
     {'state':'implemented','fr':'TS36 : suivi documentaire baseline/J+1/J+7/J+30, API et logs fournis ; échéances futures NT, causalité et identité Google non établies.','en':'TS36: supplied baseline/D+1/D+7/D+30 API/log follow-up; future stages inconclusive, causality and Google identity unestablished.'},
@@ -160,6 +164,8 @@ def pieces(target):
     result = {}
     if 'jsonld' in target:
         result['structured-data'] = target['jsonld']
+    if 'validation_record' in target:
+        result['validator-output'] = target['validation_record']
     if 'identity_documents' in target:
         result['structured-data'] = {'identity_documents': target['identity_documents']}
         if 'jsonld' in target:
@@ -168,7 +174,7 @@ def pieces(target):
         result['content'] = target['structured_reviews']
     if 'intent' in target:
         result['intent'] = {k: target[k] for k in
-                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review', 'agent_decision', 'execution', 'attribution', 'log_review', 'release_plan_review', 'release_review', 'delivery_plan_review', 'structured_plan_review', 'identity_plan_review', 'identity_reviews') if k in target}
+                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review', 'agent_decision', 'execution', 'attribution', 'log_review', 'release_plan_review', 'release_review', 'delivery_plan_review', 'structured_plan_review', 'identity_plan_review', 'identity_reviews', 'validation_plan_review', 'validation_review') if k in target}
     if 'release' in target.get('intent', {}):
         result['configuration'] = {'release':target['intent']['release'],
                                    'basis':'Supplied release plan; command identities are never executed'}
@@ -335,11 +341,22 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         elif isinstance(value,list):
             for child in value:delivery_provenance(child)
     for target in evidence_targets:
+        for flag in ('delivery_synthetic', 'identity_synthetic', 'structured_synthetic', 'inspection_synthetic'):
+            if flag in target:
+                tsep.require(type(target[flag]) is bool and target[flag] == (access == 'synthetic'),
+                             {'structured_synthetic': 'Structured-data provenance differs from access',
+                              'delivery_synthetic': 'Delivery synthetic provenance differs from evidence access',
+                              'identity_synthetic': 'Structured identity provenance differs from access',
+                              'inspection_synthetic': 'Inspection provenance differs from access'}.get(flag, 'Explicit provenance differs from evidence access: ' + flag))
         if 'delivery' in target.get('intent',{}):
             tsep.require((target.get('delivery_synthetic') is True)==(access=='synthetic'),
                          'Delivery synthetic provenance differs from evidence access')
             delivery_provenance(target)
-    for target in data['targets']:
+    for target in evidence_targets:
+        if (any(name in target for name in ('validation_record', 'validation_plan_review', 'validation_review')) or
+                isinstance(target.get('intent'), dict) and 'structured_validation' in target['intent']):
+            tsep.require(access in ('synthetic','restricted'), 'Validation API evidence requires restricted access')
+            delivery_provenance(target)
         if 'structured_identity' in target.get('intent',{}):
             tsep.require(type(target.get('identity_synthetic')) is bool and target['identity_synthetic']==(access=='synthetic'), 'Structured identity provenance differs from access')
             delivery_provenance(target)
@@ -475,6 +492,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += ' Usages déclarés et pièces fournies seulement / Declared usages and supplied evidence only; no real agent visit, identity, operator compliance or citation established.'
                 if cid == 'TS36':
                     report['results'][i]['reason'] += ' Suivi documentaire du changement / Documentary release follow-up; future stages remain inconclusive, no causal or authenticated Google visit claim.'
+                if cid == 'TS33':
+                    report['results'][i]['reason'] += ' Couches séparées / Separate supplied page and indexed API layers; known vocabulary names only, no current eligibility or display guarantee.'
                 if cid == 'TS32':
                     report['results'][i]['reason'] += ' Corpus JSON-LD et revues fournis / Supplied JSON-LD corpus and reviews; no authenticated sources, semantic identity or temporal stability.'
                 if cid == 'TS31':

@@ -1,9 +1,9 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.33",
+  "version": "0.1.0-draft.34",
   "status": "draft",
-  "date": "2026-10-13",
+  "date": "2026-10-14",
   "languages": [
     "en",
     "fr"
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.33"
+      "rule_version": "0.1.0-draft.34"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.33"
+      "rule_version": "0.1.0-draft.34"
     },
     {
       "id": "TS08",
@@ -926,7 +926,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "automation": "semiAuto",
@@ -1372,7 +1372,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.33"
+      "rule_version": "0.1.0-draft.34"
     },
     {
       "id": "TS11",
@@ -1492,7 +1492,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "id": "TS12-A01",
@@ -2758,7 +2758,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "automation": "semiAuto",
@@ -2956,7 +2956,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3113,28 +3113,28 @@
         "intent"
       ],
       "applicability": {
-        "fr": "Balisages dont la validité et l’éligibilité sont évaluées.",
-        "en": "Markup whose validity and eligibility are assessed."
+        "fr": "Page sélectionnée avec captures JSON-LD HTTP/DOM liées et résultat natif Google indexé séparé.",
+        "en": "Selected page with bound HTTP/DOM JSON-LD captures and a separate native Google indexed result."
       },
       "procedure": {
-        "fr": "Tester syntaxe Schema.org et éligibilité Google séparément ; consigner les résultats.",
-        "en": "Test Schema.org syntax and Google eligibility separately; record both results."
+        "fr": "Qualifier le plan ; recalculer syntaxe et noms Schema.org des captures ; classer séparément les messages natifs de la version indexée et leurs décisions.",
+        "en": "Qualify the plan; recompute capture syntax and Schema.org names; separately classify native indexed-version messages and their decisions."
       },
       "acceptance": {
-        "fr": "Erreurs de syntaxe, vocabulaire, critères du moteur et avertissements sont séparés ; chaque résultat a outil, version/date et décision.",
-        "en": "Syntax, vocabulary, engine eligibility and warnings are separated; each result has a tool, version/date and decision."
+        "fr": "Les trois règles passent sur le périmètre déclaré : plan qualifié, syntaxe et noms attribués, messages indexés sans erreur bloquante avec revue exacte. La correspondance entre instantanés reste non établie.",
+        "en": "All three rules pass within the declared scope: qualified plan, attributed syntax and names, indexed messages without blocking errors and with an exact review. Correspondence between snapshots remains unestablished."
       },
       "non_applicability": {
-        "fr": "Aucun balisage structuré dans le périmètre.",
-        "en": "No structured markup in scope."
+        "fr": "Pas de NA dans ce profil ; absence de balisage ou de preuve reste NT.",
+        "en": "No NA in this profile; missing markup or evidence remains NT."
       },
       "evidence": {
         "fr": "Rapport sans erreur bloquante et avertissements qualifiés.",
         "en": "Report with no blocking error and qualified warnings."
       },
       "limitations": {
-        "fr": "Le test de résultats enrichis ne valide pas tout le vocabulaire Schema.org.",
-        "en": "Rich Results Test does not validate the whole Schema.org vocabulary."
+        "fr": "Noms et rôles de vocabulaire seulement ; pas de validité sémantique complète, correspondance entre instantanés, éligibilité actuelle ni affichage déduit. Origines et dates fournies, non authentifiées.",
+        "en": "Vocabulary names and roles only; no inferred complete semantic validity, cross-snapshot correspondence, current eligibility or display. Supplied origins and dates are not authenticated."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -3152,7 +3152,147 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.34",
+      "rules": [
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "required_inputs": [
+            "structured-data",
+            "validator-output",
+            "intent"
+          ],
+          "applicability": {
+            "fr": "Page sélectionnée, captures HTTP/DOM JSON-LD liées et instantané indexé APIv1 séparé.",
+            "en": "Selected page, bound HTTP/DOM JSON-LD captures and separate indexed APIv1 snapshot."
+          },
+          "evidence": {
+            "fr": "Plan, captures natives, vocabulaire30.1 épinglé, sorties API originales et revues liées ; contrat jsonld-validation-layers-v1.",
+            "en": "Plan, native captures, pinned vocabulary30.1, original API outputs and bound reviews; jsonld-validation-layers-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Origine, dates et complétude fournies/revues, non authentifiées ; version serveur Google non exposée.",
+            "en": "Supplied/reviewed origin, dates and completeness, not authenticated; Google backend version unexposed."
+          },
+          "inconclusive": {
+            "fr": "Preuve/revue/runtime absent, couche non attribuée, format/criticité inconnu ou fonction non détectée ; erreurs indépendantes conservées.",
+            "en": "Missing evidence/review/runtime, unattributed layer, unknown format/severity or undetected feature; independent errors retained."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA dans ce profil.",
+            "en": "No NA in this profile."
+          },
+          "limitations": {
+            "fr": "Noms Schema.org seulement ; instantanés distincts, aucun test live, éligibilité actuelle, affichage ou indexation déduits.",
+            "en": "Schema.org names only; separate snapshots, no inferred live test, current eligibility, display or indexing."
+          },
+          "id": "TS33-A01",
+          "title": {
+            "fr": "Périmètre, fonctions et couches préalables qualifiés.",
+            "en": "Qualified prior scope, features and layers."
+          },
+          "procedure": {
+            "fr": "Vérifier le plan préalable, les documents datés des fonctions et la revue liée scope/support/separation.",
+            "en": "Check prior plan, dated feature guidance and bound scope/support/separation review."
+          },
+          "acceptance": {
+            "fr": "Trois qualifications supported ; contradiction motivée fail, absence ou inconnue inconclusive.",
+            "en": "Three supported qualifications; reasoned contradiction fails, absence/unknown is inconclusive."
+          }
+        },
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "required_inputs": [
+            "structured-data",
+            "validator-output",
+            "intent"
+          ],
+          "applicability": {
+            "fr": "Page sélectionnée, captures HTTP/DOM JSON-LD liées et instantané indexé APIv1 séparé.",
+            "en": "Selected page, bound HTTP/DOM JSON-LD captures and separate indexed APIv1 snapshot."
+          },
+          "evidence": {
+            "fr": "Plan, captures natives, vocabulaire30.1 épinglé, sorties API originales et revues liées ; contrat jsonld-validation-layers-v1.",
+            "en": "Plan, native captures, pinned vocabulary30.1, original API outputs and bound reviews; jsonld-validation-layers-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Origine, dates et complétude fournies/revues, non authentifiées ; version serveur Google non exposée.",
+            "en": "Supplied/reviewed origin, dates and completeness, not authenticated; Google backend version unexposed."
+          },
+          "inconclusive": {
+            "fr": "Preuve/revue/runtime absent, couche non attribuée, format/criticité inconnu ou fonction non détectée ; erreurs indépendantes conservées.",
+            "en": "Missing evidence/review/runtime, unattributed layer, unknown format/severity or undetected feature; independent errors retained."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA dans ce profil.",
+            "en": "No NA in this profile."
+          },
+          "limitations": {
+            "fr": "Noms Schema.org seulement ; instantanés distincts, aucun test live, éligibilité actuelle, affichage ou indexation déduits.",
+            "en": "Schema.org names only; separate snapshots, no inferred live test, current eligibility, display or indexing."
+          },
+          "id": "TS33-A02",
+          "title": {
+            "fr": "Syntaxe et noms de vocabulaire sur les captures liées.",
+            "en": "Syntax and vocabulary names on bound captures."
+          },
+          "procedure": {
+            "fr": "Recalculer source/DOM avec les lecteurs TS31 ; comparer classes/propriétés à Schema.org30.1 complet, espaces HTTP/HTTPS équivalents.",
+            "en": "Reprocess source/DOM with TS31 readers; compare classes/properties with complete Schema.org30.1, equivalent HTTP/HTTPS namespaces."
+          },
+          "acceptance": {
+            "fr": "Graphes typés attribués sans erreur de syntaxe ni terme absent/rôle contradictoire ; inconnues restent distinctes.",
+            "en": "Attributed typed graphs without syntax error, missing term or contradictory role; unknowns remain distinct."
+          }
+        },
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "required_inputs": [
+            "structured-data",
+            "validator-output",
+            "intent"
+          ],
+          "applicability": {
+            "fr": "Page sélectionnée, captures HTTP/DOM JSON-LD liées et instantané indexé APIv1 séparé.",
+            "en": "Selected page, bound HTTP/DOM JSON-LD captures and separate indexed APIv1 snapshot."
+          },
+          "evidence": {
+            "fr": "Plan, captures natives, vocabulaire30.1 épinglé, sorties API originales et revues liées ; contrat jsonld-validation-layers-v1.",
+            "en": "Plan, native captures, pinned vocabulary30.1, original API outputs and bound reviews; jsonld-validation-layers-v1 contract."
+          },
+          "assumptions": {
+            "fr": "Origine, dates et complétude fournies/revues, non authentifiées ; version serveur Google non exposée.",
+            "en": "Supplied/reviewed origin, dates and completeness, not authenticated; Google backend version unexposed."
+          },
+          "inconclusive": {
+            "fr": "Preuve/revue/runtime absent, couche non attribuée, format/criticité inconnu ou fonction non détectée ; erreurs indépendantes conservées.",
+            "en": "Missing evidence/review/runtime, unattributed layer, unknown format/severity or undetected feature; independent errors retained."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA dans ce profil.",
+            "en": "No NA in this profile."
+          },
+          "limitations": {
+            "fr": "Noms Schema.org seulement ; instantanés distincts, aucun test live, éligibilité actuelle, affichage ou indexation déduits.",
+            "en": "Schema.org names only; separate snapshots, no inferred live test, current eligibility, display or indexing."
+          },
+          "id": "TS33-A03",
+          "title": {
+            "fr": "Messages natifs Google et décisions conservés sans rétrogradation.",
+            "en": "Native Google messages and decisions retained without downgrade."
+          },
+          "procedure": {
+            "fr": "Lire tous les messages APIv1, sévérités et fonctions ; lier une revue exacte à la réponse indexée, séparée des captures actuelles.",
+            "en": "Read all APIv1 messages, severities and features; bind an exact review to the indexed response, separate from current captures."
+          },
+          "acceptance": {
+            "fr": "Aucun ERROR/FAIL ; couverture et qualifications exactes. Erreur, omission ou rétrogradation fail même documentée ; panne technique inconclusive.",
+            "en": "No ERROR/FAIL; exact coverage and qualifications. Error, omission or downgrade fails even when documented; technical failure is inconclusive."
+          }
+        }
+      ]
     },
     {
       "id": "TS34",
@@ -3210,7 +3350,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "id": "TS34-A01",
@@ -3405,7 +3545,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3557,7 +3697,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3880,7 +4020,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "applicability": {
@@ -4139,7 +4279,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "applicability": {
@@ -4340,7 +4480,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "id": "TS42-A01",
@@ -4537,7 +4677,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "id": "TS43-A01",
@@ -4739,7 +4879,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.33",
+      "rule_version": "0.1.0-draft.34",
       "rules": [
         {
           "na_inputs": [],
@@ -5031,15 +5171,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "0268fc622f283bd6620110ac3aceff12f9333b932dde5fb5c5bbe41028781734"
+      "sha256": "c994636d18627c0d5dce587a558db95a6dacd71b340809b5fbb4887c21a48dff"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "8d0254b486fe43c2abd626fa3a158ff391a617e9025cf4c628d344fe45c9558f"
+      "sha256": "d4ace01fc061f881947e74cd503bb3c0ba7d67d6329f4683002780cd42a8679e"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "605fce0448db8050662f34e4c410c844e387c30492f38464fae325fb36a51ddf"
+      "sha256": "05167a85c2ae17303e9b7442226878e91c0db397e93cbbbcd37ed738fd27b068"
     },
     {
       "path": "docs/source-directives.md",
@@ -5104,6 +5244,10 @@
     {
       "path": "docs/structured-identity-evidence.md",
       "sha256": "51be08815255ab88aa796bf115f4e4c8df34d0774cfe4c3f59331d5e1821c969"
+    },
+    {
+      "path": "docs/structured-validation-evidence.md",
+      "sha256": "67ca7946332fcecbb9d943d042963ad9fefe3057978639d15cfe58330903ed84"
     }
   ]
 }

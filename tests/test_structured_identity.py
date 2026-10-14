@@ -22,7 +22,7 @@ def data(name='complete'):return copy.deepcopy(next(c['input'] for c in cases() 
 class StructuredIdentity(unittest.TestCase):
  def test_prefrozen_oracles_are_distributed_unchanged(self):
   rows=cases();self.assertEqual(len(rows),62)
-  corpus=expand(tsep.read_json(ROOT/'conformance/cases.json'));self.assertEqual(corpus['cases'][1494:],rows);self.assertEqual(len(corpus['cases']),1556)
+  corpus=expand(tsep.read_json(ROOT/'conformance/cases.json'));self.assertEqual(corpus['cases'][1494:1556],rows);self.assertGreaterEqual(len(corpus['cases']),1556)
  @unittest.skipUnless(NODE,'Explicit Node 24 for full native TS32 observations')
  def test_all_prefrozen_cases_offline(self):
   with patch.object(socket,'socket',side_effect=AssertionError('No network collection')):

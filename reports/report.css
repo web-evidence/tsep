@@ -4,3 +4,6 @@
 @media(max-width:380px){.metrics{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{body{background:white;font-size:10pt}.wrap{max-width:none;padding:0}.top{background:white;color:var(--ink)}.top .muted,.hero .eyebrow{color:var(--muted)}.masthead{padding:0 0 12px}.hero{padding:22px 0}.nav,.skip,.download{display:none}.card{break-inside:avoid}.metrics{grid-template-columns:2fr 1fr 1fr}a{color:inherit}pre{max-height:none}.table-scroll{overflow:visible}.footer{margin-top:20px}h1{font-size:25pt}h2{font-size:17pt}}
+
+/* TS33: preserve complete table content in a keyboard-scrollable region. */
+.validation-table{max-width:100%;overflow-x:auto}.validation-table:focus-visible{outline:3px solid #c66f00;outline-offset:3px}

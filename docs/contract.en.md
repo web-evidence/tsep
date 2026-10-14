@@ -1,3 +1,5 @@
+Draft.34 — TS33-A01/A02/A03 : [contrat / contract](structured-validation-evidence.md), [migration](migration-draft.34.md). Captures liées, messages natifs séparés / Bound captures, separate native messages. Erreur bloquante conservée / Blocking errors retained.
+
 Draft.33 adds TS32-A01/A02/A03: prior registry, native IDs/references and bound reviews. [Contract](structured-identity-evidence.md), [migration](migration-draft.33.md). Supplied corpus coherence, no authenticated temporal stability.
 Draft.32 adds TS31-A01/A02/A03: prior scope, native JSON-LD reading and entity-bound content reviews. [Bilingual contract](structured-content-evidence.md), [migration](migration-draft.32.md). Supplied evidence, no authenticated visibility/truth or rich-result guarantee.
 
@@ -7,7 +9,7 @@ Draft.30 adds TS12-A01/A02/A03: plan, attributed comparisons and supplied review
 
 Draft.29 adds three TS08 rules: scope/objectives, native inspections and bound reviews/decisions. [Bilingual contract](inspection-evidence.md), [migration](migration-draft.29.md). C qualifies selected-set documentation, never guaranteed indexing.
 
-# Report contract — TSEP 0.1.0-draft.33
+# Report contract — TSEP 0.1.0-draft.34
 
 ### Delivery variants — draft.27
 

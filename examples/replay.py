@@ -77,6 +77,10 @@ def generate(output_root=ROOT):
     # Raw adapter demonstrations are controlled derivatives, with no expected verdicts.
     corpus = {case['id']: case['input'] for case in expand(tsep.read_json(ROOT.parent/'conformance/cases.json'))['cases']}
     capture_examples = {
+                        'ts33-complete': ('structured-validation-v1-complete', ['TS33-A01','TS33-A02','TS33-A03']),
+                        'ts33-contradiction': ('structured-validation-v1-blocking-error', ['TS33-A01','TS33-A02','TS33-A03']),
+                        'ts33-review-missing': ('structured-validation-v1-missing-review', ['TS33-A01','TS33-A02','TS33-A03']),
+                        'ts33-technical-failure': ('structured-validation-v1-api403', ['TS33-A01','TS33-A02','TS33-A03']),
                         'ts32-complete': ('structured-identity-v1-complete', ['TS32-A01','TS32-A02','TS32-A03']),
                         'ts32-contradiction': ('structured-identity-v1-required-identifier-changed', ['TS32-A01','TS32-A02','TS32-A03']),
                         'ts32-review-missing': ('structured-identity-v1-missing-review', ['TS32-A01','TS32-A02','TS32-A03']),
