@@ -1,3 +1,5 @@
+[TS16 — liens entrants fournis / supplied incoming links](docs/incoming-links-evidence.md), [draft.37 migration](docs/migration-draft.37.md).
+
 [TS17 — liens essentiels fournis / supplied essential links](docs/essential-links-evidence.md), [draft.36 migration](docs/migration-draft.36.md).
 
 [TS15 — fichiers sitemap fournis / supplied sitemap files](docs/sitemap-files-evidence.md), [draft.35 migration](docs/migration-draft.35.md).
@@ -9,7 +11,7 @@ TS31 : [preuves JSON-LD/contenu](docs/structured-content-evidence.md), [migratio
 
 TS36 : [suivi après changement](docs/release-monitoring.md), [import et clôture](docs/release-monitoring-intake.md), [migration draft.31](docs/migration-draft.31.md). Cas rédigés uniquement ; aucune échéance réelle future accomplie.
 
-Édition locale : **0.1.0-draft.36** — [TS33 : couches de validation](docs/structured-validation-evidence.md), [migration](docs/migration-draft.34.md). Vingt contrôles outillés /56 règles ; aucune qualification réelle Edikka.
+Édition locale : **0.1.0-draft.37** — [TS33 : couches de validation](docs/structured-validation-evidence.md), [migration](docs/migration-draft.34.md). Vingt et un contrôles outillés /57 règles ; aucune qualification réelle Edikka.
 
 TS08 : [inspections natives](docs/inspection-evidence.md) et [acquisition](docs/search-console-acquisition.md) restent disponibles.
 
@@ -27,7 +29,7 @@ TS39 dispose de [trois règles de diffusion](docs/delivery-evidence.md) : matric
 
 # TSEP — format d’échange de preuves
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.36 · initié par Edikka · [English](README.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.37 · initié par Edikka · [English](README.md)**
 
 Transmettre un audit SEO technique que son destinataire peut examiner, rejouer et
 contester : mêmes identifiants, périmètre explicite, preuves liées aux constats et
@@ -54,7 +56,7 @@ NC, NA ou NT ; les règles atomiques portent pass, fail, not-applicable ou incon
 
 **TS01–TS44 sont les identifiants permanents hérités de la grille 1.1.** La séquence
 de versions TSEP est distincte ; les sources FR/EN et leur provenance restent intactes.
-Trente-six règles précisent treize contrôles : TS01, TS02, TS04, TS07, TS08, TS10, TS34, TS35, TS39, TS41, TS42, TS43 et TS44. Elles disposent d’un interpréteur borné sur entrées brutes. La comparaison
+Cinquante-sept règles atomiques précisent vingt et un contrôles : TS01, TS02, TS04, TS07, TS08, TS10, TS12, TS15, TS16, TS17, TS31, TS32, TS33, TS34, TS35, TS36, TS39, TS41, TS42, TS43 et TS44. Leurs interpréteurs restent bornés aux preuves fournies. La comparaison
 de contenu TS10-A02 reste une revue humaine fournie et liée aux captures.
 
 Les imports de performance séparent les p75/classes terrain (CrUX) des diagnostics
@@ -107,7 +109,7 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
 3. **Passer la suite de conformance** : fournir un adaptateur JSON sur entrée/sortie
    standard, puis exécuter `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 mon_adaptateur.py'`
    pour ce sous-ensemble, ou omettre `--rules` pour les cinquante-six règles. Déclarer
-   « passes TSEP 0.1.0-draft.36 conformance for TS01-A01, TS01-A02 » avec les bornes
+   « passes TSEP 0.1.0-draft.37 conformance for TS01-A01, TS01-A02 » avec les bornes
    réellement prises en charge. [Format d’entrée et comparaison](docs/conformance.md). Publier séparément
    accords, désaccords et couverture réduite : les indéterminés acceptés sur des
    limites de référence signalées ne sont pas des évaluations réussies.
@@ -181,7 +183,7 @@ Aucun résultat ne garantit indexation, classement ou comportement futur d’un 
 [Gouvernance](GOVERNANCE.md) · [Contribuer](CONTRIBUTING.md) · [Historique](CHANGELOG.md) ·
 [Clause de recette](docs/acceptance-clause.md) · [Sonde HTTP](probes/README.md).
 
-Citer `TSEP@0.1.0-draft.36:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
+Citer `TSEP@0.1.0-draft.37:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
 Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](CITATION.cff).
 [Développement, vérification complète et dépôt autonome](docs/development.md).
 

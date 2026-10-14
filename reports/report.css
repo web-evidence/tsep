@@ -10,6 +10,7 @@
 
 /* TS17 supplied URL witnesses must remain inside their bounded cards. */
 .essential-links-values { overflow-wrap: anywhere; }
+.incoming-links-values { overflow-wrap: anywhere; }
 
 /* TS15 supplied file URLs stay inside their bounded cards. */
 .sitemap-files-values { overflow-wrap: anywhere; }

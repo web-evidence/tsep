@@ -1,3 +1,5 @@
+[TS16 — liens entrants fournis / supplied incoming links](docs/incoming-links-evidence.md), [draft.37 migration](docs/migration-draft.37.md).
+
 [TS17 — liens essentiels fournis / supplied essential links](docs/essential-links-evidence.md), [draft.36 migration](docs/migration-draft.36.md).
 
 [TS15 — fichiers sitemap fournis / supplied sitemap files](docs/sitemap-files-evidence.md), [draft.35 migration](docs/migration-draft.35.md).
@@ -9,7 +11,7 @@ TS31: [JSON-LD/content evidence](docs/structured-content-evidence.md), [draft.32
 
 TS36: [release follow-up](docs/release-monitoring.md), [intake and closure](docs/release-monitoring-intake.md), [draft.31 migration](docs/migration-draft.31.md). Authored cases only; no real future stage completed.
 
-Local development edition: **0.1.0-draft.36** — [TS33 validation layers](docs/structured-validation-evidence.md), [migration](docs/migration-draft.34.md). Twenty tooled controls /56 rules; no actual Edikka assessment.
+Local development edition: **0.1.0-draft.37** — [TS33 validation layers](docs/structured-validation-evidence.md), [migration](docs/migration-draft.34.md). Twenty-one tooled controls /57 rules; no actual Edikka assessment.
 
 TS08 [native inspections](docs/inspection-evidence.md) and [acquisition](docs/search-console-acquisition.md) remain available.
 
@@ -24,7 +26,7 @@ TS39 has [three delivery rules](docs/delivery-evidence.md): prior matrix, per-co
 
 # TSEP — evidence interchange format
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.36 · initiated by Edikka · [Français](README.fr.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.37 · initiated by Edikka · [Français](README.fr.md)**
 
 Share a technical SEO assessment that its recipient can inspect, replay and
 challenge: stable identifiers, explicit scope, evidence linked to findings and
@@ -53,7 +55,7 @@ atomic rules use pass, fail, not-applicable or inconclusive.
 
 **TS01–TS44 are the permanent identifiers inherited from grid 1.1.** TSEP has a
 separate version sequence; the original FR/EN sources and provenance remain intact.
-Thirty-six rules specify thirteen controls: TS01, TS02, TS04, TS07, TS08, TS10, TS34, TS35, TS39, TS41, TS42, TS43 and TS44, with a bounded interpreter over raw inputs. TS10-A02 content comparison
+Fifty-seven atomic rules specify twenty-one controls: TS01, TS02, TS04, TS07, TS08, TS10, TS12, TS15, TS16, TS17, TS31, TS32, TS33, TS34, TS35, TS36, TS39, TS41, TS42, TS43 and TS44, with bounded interpreters over supplied evidence. TS10-A02 content comparison
 remains a supplied human review bound to the captures.
 
 Performance imports keep field p75/classes (CrUX) separate from laboratory diagnostics
@@ -106,7 +108,7 @@ validation establishes consistency and file integrity.
 3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
    `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 my_adapter.py'`
    for that subset, or omit `--rules` for all fifty-six rules. State “passes TSEP
-   0.1.0-draft.36 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
+   0.1.0-draft.37 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
    [Input format and comparison](docs/conformance.md). Report exact agreements,
    disagreements and reduced coverage separately; accepted inconclusive results
    on marked reference limits are not successful assessments.
@@ -180,7 +182,7 @@ ranking or future engine behavior.
 [Governance](GOVERNANCE.md) · [Contribute](CONTRIBUTING.md) · [History](CHANGELOG.md) ·
 [Acceptance clause](docs/acceptance-clause.md) · [HTTP probe](probes/README.md).
 
-Cite `TSEP@0.1.0-draft.36:TS07` with scope, result, evidence and archive hash.
+Cite `TSEP@0.1.0-draft.37:TS07` with scope, result, evidence and archive hash.
 Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATION.cff).
 [Development, full verification and independent repository](docs/development.md).
 

@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.36",
+  "protocol_version": "0.1.0-draft.37",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -6483,6 +6483,102 @@
       ],
       "expected_status": "NC",
       "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS16-method-pass",
+      "control_id": "TS16",
+      "description": {
+        "fr": "Exercice synthétique de jugement pass sur les liens entrants dans la population préalable.",
+        "en": "Synthetic authored pass judgment on incoming links within the prior population."
+      },
+      "evidence": {
+        "http": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "html": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "inventory": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "intent": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS16-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique de jugement pass sur les liens entrants dans la population préalable.",
+            "en": "Synthetic authored pass judgment on incoming links within the prior population."
+          },
+          "evidence_ids": [
+            "http",
+            "html",
+            "inventory",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS16-method-fail",
+      "control_id": "TS16",
+      "description": {
+        "fr": "Exercice synthétique de jugement fail sur les liens entrants dans la population préalable.",
+        "en": "Synthetic authored fail judgment on incoming links within the prior population."
+      },
+      "evidence": {
+        "http": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "html": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "inventory": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "intent": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS16-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique de jugement fail sur les liens entrants dans la population préalable.",
+            "en": "Synthetic authored fail judgment on incoming links within the prior population."
+          },
+          "evidence_ids": [
+            "http",
+            "html",
+            "inventory",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS16-method-inconclusive",
+      "control_id": "TS16",
+      "description": {
+        "fr": "Exercice synthétique de jugement inconclusive sur les liens entrants dans la population préalable.",
+        "en": "Synthetic authored inconclusive judgment on incoming links within the prior population."
+      },
+      "evidence": {
+        "http": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "html": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "inventory": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "intent": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS16-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique de jugement inconclusive sur les liens entrants dans la population préalable.",
+            "en": "Synthetic authored inconclusive judgment on incoming links within the prior population."
+          },
+          "evidence_ids": [
+            "http",
+            "html",
+            "inventory",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
     }
   ]
 }

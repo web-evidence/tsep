@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.36",
+  "version": "0.1.0-draft.37",
   "status": "draft",
   "date": "2026-10-14",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.36"
+      "rule_version": "0.1.0-draft.37"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.36"
+      "rule_version": "0.1.0-draft.37"
     },
     {
       "id": "TS08",
@@ -926,7 +926,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "automation": "semiAuto",
@@ -1372,7 +1372,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.36"
+      "rule_version": "0.1.0-draft.37"
     },
     {
       "id": "TS11",
@@ -1492,7 +1492,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "id": "TS12-A01",
@@ -1812,7 +1812,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "automation": "automatic",
@@ -1968,33 +1968,34 @@
       "severity": "major",
       "unit": "url-set",
       "required_inputs": [
-        "crawl",
+        "http",
+        "html",
         "inventory",
         "intent"
       ],
       "applicability": {
-        "fr": "Pages identifiées comme importantes dans un inventaire.",
-        "en": "Pages identified as important in an inventory."
+        "fr": "Population importante et sources internes choisies avant les captures, avec inventaire original daté et plan lié ; profil incoming-document-links-v1.",
+        "en": "Important destinations and internal sources selected before captures, with dated original inventory and bound prior plan; incoming-document-links-v1."
       },
       "procedure": {
-        "fr": "Crawler le site depuis les entrées publiques et lister les pages sans lien entrant HTML.",
-        "en": "Crawl from public entry points and list pages with no incoming HTML link."
+        "fr": "Pour chaque destination, chercher un témoin a/href depuis un autre document interne qualifié : source HTML sous deux hypothèses statiques ou DOM déclaré sans interaction. Qualifier séparément chaque source, destination et surface.",
+        "en": "For each destination, seek an a/href witness from a distinct qualified internal document: source HTML under two static hypotheses or provider-declared no-interaction DOM. Qualify each source, destination and surface separately."
       },
       "acceptance": {
-        "fr": "Chaque page retenue possède au moins un lien entrant HTML résoluble depuis une page interne ; source et destination archivées.",
-        "en": "Every selected page has at least one resolvable incoming HTML link from an internal page; source and destination are archived."
+        "fr": "Chaque destination déclarée possède un témoin entrant qualifié et son original HTTP. Une absence n’est établie que sur toutes les surfaces éligibles qualifiées de l’inventaire préalable ; elle reste limitée à cette population.",
+        "en": "Each declared destination has a qualified incoming witness and its original HTTP evidence. Absence is established only across every qualified eligible surface of the prior inventory and remains bounded to that population."
       },
       "non_applicability": {
-        "fr": "Aucune page importante concernée, justification et inventaire fournis.",
-        "en": "No relevant important page, with justification and inventory provided."
+        "fr": "Aucune page importante concernée seulement avec justification et inventaire ; aucune NA automatique dans le lecteur borné.",
+        "en": "No relevant important page only with justification and inventory; no automatic NA in the bounded reader."
       },
       "evidence": {
-        "fr": "Source du lien, destination, ancre et statut de la page.",
-        "en": "Link source, destination, anchor and destination status."
+        "fr": "Inventaire original, plan, originaux HTTP/DOM, URL demandées/finales, dates, statut de destination, href brut, référence d’ancre et diagnostics par destination. Les DOM sont requis pour les surfaces qui en dépendent ; un témoin source indépendant suffit sans DOM, sans en inventer un.",
+        "en": "Original inventory, prior plan, HTTP/DOM originals, requested/final URLs, dates, destination status, raw href, anchor reference and per-destination diagnostics. DOM is required for surfaces that depend on it; an independent source witness suffices without DOM, without inventing one."
       },
       "limitations": {
-        "fr": "Un lien présent ne prouve pas sa valeur éditoriale.",
-        "en": "The presence of a link does not prove its editorial value."
+        "fr": "Population et importance déclarées, non authentifiées. Aucune exhaustivité du site, acquisition ou interaction observée, valeur éditoriale, visite Google, indexation ou classement. Une absence bornée ne prouve pas une page orpheline du site. Le contenu attendu de la source et les soft404 ne sont pas évalués.",
+        "en": "Population and importance are supplied, not authenticated. No site completeness, observed acquisition or interaction, editorial value, Google visit, indexing or ranking. Bounded absence does not establish a site-wide orphan. Expected source content and soft404s are not assessed."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -2012,7 +2013,56 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.37",
+      "rules": [
+        {
+          "id": "TS16-A01",
+          "title": {
+            "fr": "Témoin entrant dans la population interne préalable.",
+            "en": "Incoming witness in the prior internal population."
+          },
+          "automation": "automatic",
+          "required_inputs": [
+            "http",
+            "html",
+            "inventory",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Population importante et sources internes choisies avant les captures, avec inventaire original daté et plan lié ; profil incoming-document-links-v1.",
+            "en": "Important destinations and internal sources selected before captures, with dated original inventory and bound prior plan; incoming-document-links-v1."
+          },
+          "procedure": {
+            "fr": "Pour chaque destination, chercher un témoin a/href depuis un autre document interne qualifié : source HTML sous deux hypothèses statiques ou DOM déclaré sans interaction. Qualifier séparément chaque source, destination et surface.",
+            "en": "For each destination, seek an a/href witness from a distinct qualified internal document: source HTML under two static hypotheses or provider-declared no-interaction DOM. Qualify each source, destination and surface separately."
+          },
+          "acceptance": {
+            "fr": "Pass si toutes les destinations possèdent un témoin indépendant qualifié et un original de destination. Fail si une destination n’a aucun témoin dans toute la population éligible qualifiée. Sinon inconclusive ; un fail indépendant survit aux autres inconnues.",
+            "en": "Pass when every destination has an independently qualified witness and a destination original. Fail when a destination has no witness across the complete qualified eligible population. Otherwise inconclusive; an independent fail survives other unknowns."
+          },
+          "non_applicability": {
+            "fr": "Aucune NA automatique dans ce profil.",
+            "en": "No automatic NA in this profile."
+          },
+          "evidence": {
+            "fr": "Inventaire original, plan, originaux HTTP/DOM, URL demandées/finales, dates, statut de destination, href brut, référence d’ancre et diagnostics par destination. Les DOM sont requis pour les surfaces qui en dépendent ; un témoin source indépendant suffit sans DOM, sans en inventer un.",
+            "en": "Original inventory, prior plan, HTTP/DOM originals, requested/final URLs, dates, destination status, raw href, anchor reference and per-destination diagnostics. DOM is required for surfaces that depend on it; an independent source witness suffices without DOM, without inventing one."
+          },
+          "assumptions": {
+            "fr": "Inventaire observé avant le plan qui lie son empreinte, captures dans la fenêtre préalable ; origines exactes et états sans interaction déclarés. L’intégrité ne prouve pas l’authenticité ni la simultanéité.",
+            "en": "Inventory observed before the plan binding its digest, captures within the prior window; exact origins and no-interaction states supplied. Integrity does not authenticate evidence or simultaneity."
+          },
+          "inconclusive": {
+            "fr": "Plan/inventaire ou original insuffisant, population ambiguë, surface non qualifiée, dates incohérentes ou runtime absent. Une paire dont la destination retourne par redirection à la source reste indéterminée ; un autre témoin peut suffire.",
+            "en": "Insufficient plan/inventory/original, ambiguous population, unqualified surface, incoherent dates or absent runtime. A pair whose destination redirects back to its source remains inconclusive; another witness may suffice."
+          },
+          "limitations": {
+            "fr": "Population et importance déclarées, non authentifiées. Aucune exhaustivité du site, acquisition ou interaction observée, valeur éditoriale, visite Google, indexation ou classement. Une absence bornée ne prouve pas une page orpheline du site. Le contenu attendu de la source et les soft404 ne sont pas évalués.",
+            "en": "Population and importance are supplied, not authenticated. No site completeness, observed acquisition or interaction, editorial value, Google visit, indexing or ranking. Bounded absence does not establish a site-wide orphan. Expected source content and soft404s are not assessed."
+          }
+        }
+      ]
     },
     {
       "id": "TS17",
@@ -2072,7 +2122,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "automation": "automatic",
@@ -2995,7 +3045,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3193,7 +3243,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3389,7 +3439,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3587,7 +3637,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "id": "TS34-A01",
@@ -3782,7 +3832,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3934,7 +3984,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "automation": "semiAuto",
@@ -4257,7 +4307,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "applicability": {
@@ -4516,7 +4566,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "applicability": {
@@ -4717,7 +4767,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "id": "TS42-A01",
@@ -4914,7 +4964,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "id": "TS43-A01",
@@ -5116,7 +5166,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.36",
+      "rule_version": "0.1.0-draft.37",
       "rules": [
         {
           "na_inputs": [],
@@ -5408,15 +5458,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "d08ff70df5b229b7482e619ba52e39a35a26b6a5ec3fda0a4e83b0f78ed69394"
+      "sha256": "e1a5645cc9b1e4b4705f38a3162414eead8c9e6b3f2347c692cdfd119468614b"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "1f773cf504572477aac7d6c2920c4d191d5842326737358c60fa20cd7721409d"
+      "sha256": "3b709f0afebbcfa5e6fb080d34be46ed191b2bc579007fc3e56732954a89fda0"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "f58a24d9f0dbf74bce60c6d70531f971998648a78f45c8173f2da0bc024e392c"
+      "sha256": "d715f8468454844d8bf756825bbb4bd09fbebbe97292e7907b849cd3e63fdd60"
     },
     {
       "path": "docs/source-directives.md",
@@ -5493,6 +5543,10 @@
     {
       "path": "docs/essential-links-evidence.md",
       "sha256": "d31461e5aa5fa1305107f8da702aeeb8453531d79504ce1658113df1761a659f"
+    },
+    {
+      "path": "docs/incoming-links-evidence.md",
+      "sha256": "8d9734d135cae8bb84b75b9f894088cd667b20537ca934f5b98f23ca30dfeb73"
     }
   ]
 }

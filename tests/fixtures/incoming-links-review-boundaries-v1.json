@@ -1,0 +1,627 @@
+{
+  "synthetic": true,
+  "at": "2026-10-14T20:16:52.183648+00:00",
+  "basis": "Claude478 proposals critically reviewed; expected results before executing this suite. No source-change made for these cases.",
+  "cases": [
+    {
+      "id": "source-404-with-navigation",
+      "expected": "inconclusive",
+      "rationale": "Only source final200 qualifies; an error source cannot supply a witness or establish bounded absence.",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS16-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.test/scope",
+            "observed_at": "2026-10-14T08:11:00Z",
+            "incoming_links_synthetic": true,
+            "context": {
+              "network": "Synthetic supplied records; no external collection",
+              "bounds": "Declared destinations only",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-14T07:59:00Z",
+              "crawler": "synthetic-client",
+              "incoming_links": {
+                "reader": "incoming-document-links-v1",
+                "origin": "https://example.test",
+                "selection_reason": "Synthetic bounded important page population; not human approval",
+                "window_start": "2026-10-14T08:00:00Z",
+                "window_end": "2026-10-14T08:10:00Z",
+                "max_duration_ms": 10000,
+                "sources": [
+                  {
+                    "url": "https://example.test/page",
+                    "final_url": "https://example.test/page",
+                    "states": [
+                      {
+                        "id": "loaded",
+                        "browser": "Synthetic browser",
+                        "browser_version": "1",
+                        "scenario": "Authored load state; no observed browser",
+                        "interaction": "none"
+                      }
+                    ]
+                  }
+                ],
+                "destinations": [
+                  {
+                    "url": "https://example.test/destination",
+                    "reason": "Authored important destination for test only"
+                  }
+                ],
+                "inventory_sha256": "582407201b9d0c84bde7ff02b6c283c0138b8b3a1fb31158248c6bd7e4fe48f9"
+              }
+            },
+            "incoming_links": {
+              "documents": [
+                {
+                  "url": "https://example.test/page",
+                  "http": [
+                    {
+                      "url": "https://example.test/page",
+                      "complete": true,
+                      "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"https://example.test/destination\">x</a></body></html>",
+                      "sent_at": "2026-10-14T08:00:00Z",
+                      "received_at": "2026-10-14T08:00:01Z"
+                    }
+                  ],
+                  "render": {
+                    "states": []
+                  }
+                },
+                {
+                  "url": "https://example.test/destination",
+                  "http": [
+                    {
+                      "url": "https://example.test/destination",
+                      "complete": true,
+                      "request": "GET /destination HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Destination</title></head><body>Authored synthetic destination</body></html>",
+                      "sent_at": "2026-10-14T08:01:00Z",
+                      "received_at": "2026-10-14T08:01:01Z"
+                    }
+                  ]
+                }
+              ],
+              "inventory": {
+                "label": "Authored bounded source inventory; not a site crawl",
+                "observed_at": "2026-10-14T07:58:00Z",
+                "base64": "aHR0cHM6Ly9leGFtcGxlLnRlc3QvcGFnZQo=",
+                "sha256": "582407201b9d0c84bde7ff02b6c283c0138b8b3a1fb31158248c6bd7e4fe48f9"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "source-500-with-navigation",
+      "expected": "inconclusive",
+      "rationale": "Only source final200 qualifies; an error source cannot supply a witness or establish bounded absence.",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS16-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.test/scope",
+            "observed_at": "2026-10-14T08:11:00Z",
+            "incoming_links_synthetic": true,
+            "context": {
+              "network": "Synthetic supplied records; no external collection",
+              "bounds": "Declared destinations only",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-14T07:59:00Z",
+              "crawler": "synthetic-client",
+              "incoming_links": {
+                "reader": "incoming-document-links-v1",
+                "origin": "https://example.test",
+                "selection_reason": "Synthetic bounded important page population; not human approval",
+                "window_start": "2026-10-14T08:00:00Z",
+                "window_end": "2026-10-14T08:10:00Z",
+                "max_duration_ms": 10000,
+                "sources": [
+                  {
+                    "url": "https://example.test/page",
+                    "final_url": "https://example.test/page",
+                    "states": [
+                      {
+                        "id": "loaded",
+                        "browser": "Synthetic browser",
+                        "browser_version": "1",
+                        "scenario": "Authored load state; no observed browser",
+                        "interaction": "none"
+                      }
+                    ]
+                  }
+                ],
+                "destinations": [
+                  {
+                    "url": "https://example.test/destination",
+                    "reason": "Authored important destination for test only"
+                  }
+                ],
+                "inventory_sha256": "582407201b9d0c84bde7ff02b6c283c0138b8b3a1fb31158248c6bd7e4fe48f9"
+              }
+            },
+            "incoming_links": {
+              "documents": [
+                {
+                  "url": "https://example.test/page",
+                  "http": [
+                    {
+                      "url": "https://example.test/page",
+                      "complete": true,
+                      "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 500 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"https://example.test/destination\">x</a></body></html>",
+                      "sent_at": "2026-10-14T08:00:00Z",
+                      "received_at": "2026-10-14T08:00:01Z"
+                    }
+                  ],
+                  "render": {
+                    "states": []
+                  }
+                },
+                {
+                  "url": "https://example.test/destination",
+                  "http": [
+                    {
+                      "url": "https://example.test/destination",
+                      "complete": true,
+                      "request": "GET /destination HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Destination</title></head><body>Authored synthetic destination</body></html>",
+                      "sent_at": "2026-10-14T08:01:00Z",
+                      "received_at": "2026-10-14T08:01:01Z"
+                    }
+                  ]
+                }
+              ],
+              "inventory": {
+                "label": "Authored bounded source inventory; not a site crawl",
+                "observed_at": "2026-10-14T07:58:00Z",
+                "base64": "aHR0cHM6Ly9leGFtcGxlLnRlc3QvcGFnZQo=",
+                "sha256": "582407201b9d0c84bde7ff02b6c283c0138b8b3a1fb31158248c6bd7e4fe48f9"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "source-redirect-unplanned-final",
+      "expected": "inconclusive",
+      "rationale": "Captured final document differs from prior expected final URL or origin; no retrospective source eligibility.",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS16-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.test/scope",
+            "observed_at": "2026-10-14T08:11:00Z",
+            "incoming_links_synthetic": true,
+            "context": {
+              "network": "Synthetic supplied records; no external collection",
+              "bounds": "Declared destinations only",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-14T07:59:00Z",
+              "crawler": "synthetic-client",
+              "incoming_links": {
+                "reader": "incoming-document-links-v1",
+                "origin": "https://example.test",
+                "selection_reason": "Synthetic bounded important page population; not human approval",
+                "window_start": "2026-10-14T08:00:00Z",
+                "window_end": "2026-10-14T08:10:00Z",
+                "max_duration_ms": 10000,
+                "sources": [
+                  {
+                    "url": "https://example.test/page",
+                    "final_url": "https://example.test/page",
+                    "states": [
+                      {
+                        "id": "loaded",
+                        "browser": "Synthetic browser",
+                        "browser_version": "1",
+                        "scenario": "Authored load state; no observed browser",
+                        "interaction": "none"
+                      }
+                    ]
+                  }
+                ],
+                "destinations": [
+                  {
+                    "url": "https://example.test/destination",
+                    "reason": "Authored important destination for test only"
+                  }
+                ],
+                "inventory_sha256": "582407201b9d0c84bde7ff02b6c283c0138b8b3a1fb31158248c6bd7e4fe48f9"
+              }
+            },
+            "incoming_links": {
+              "documents": [
+                {
+                  "url": "https://example.test/page",
+                  "http": [
+                    {
+                      "url": "https://example.test/page",
+                      "complete": true,
+                      "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 301 Synthetic\r\nLocation: https://example.test/unplanned-final\r\nContent-Type: text/html; charset=utf-8\r\n\r\nRedirect",
+                      "sent_at": "2026-10-14T08:00:00Z",
+                      "received_at": "2026-10-14T08:00:01Z"
+                    },
+                    {
+                      "url": "https://example.test/unplanned-final",
+                      "complete": true,
+                      "request": "GET /unplanned-final HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"https://example.test/destination\">x</a></body></html>",
+                      "sent_at": "2026-10-14T08:01:02Z",
+                      "received_at": "2026-10-14T08:01:03Z"
+                    }
+                  ],
+                  "render": {
+                    "states": []
+                  }
+                },
+                {
+                  "url": "https://example.test/destination",
+                  "http": [
+                    {
+                      "url": "https://example.test/destination",
+                      "complete": true,
+                      "request": "GET /destination HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Destination</title></head><body>Authored synthetic destination</body></html>",
+                      "sent_at": "2026-10-14T08:01:00Z",
+                      "received_at": "2026-10-14T08:01:01Z"
+                    }
+                  ]
+                }
+              ],
+              "inventory": {
+                "label": "Authored bounded source inventory; not a site crawl",
+                "observed_at": "2026-10-14T07:58:00Z",
+                "base64": "aHR0cHM6Ly9leGFtcGxlLnRlc3QvcGFnZQo=",
+                "sha256": "582407201b9d0c84bde7ff02b6c283c0138b8b3a1fb31158248c6bd7e4fe48f9"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "source-redirect-external-final",
+      "expected": "inconclusive",
+      "rationale": "Captured final document differs from prior expected final URL or origin; no retrospective source eligibility.",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS16-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.test/scope",
+            "observed_at": "2026-10-14T08:11:00Z",
+            "incoming_links_synthetic": true,
+            "context": {
+              "network": "Synthetic supplied records; no external collection",
+              "bounds": "Declared destinations only",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-14T07:59:00Z",
+              "crawler": "synthetic-client",
+              "incoming_links": {
+                "reader": "incoming-document-links-v1",
+                "origin": "https://example.test",
+                "selection_reason": "Synthetic bounded important page population; not human approval",
+                "window_start": "2026-10-14T08:00:00Z",
+                "window_end": "2026-10-14T08:10:00Z",
+                "max_duration_ms": 10000,
+                "sources": [
+                  {
+                    "url": "https://example.test/page",
+                    "final_url": "https://example.test/page",
+                    "states": [
+                      {
+                        "id": "loaded",
+                        "browser": "Synthetic browser",
+                        "browser_version": "1",
+                        "scenario": "Authored load state; no observed browser",
+                        "interaction": "none"
+                      }
+                    ]
+                  }
+                ],
+                "destinations": [
+                  {
+                    "url": "https://example.test/destination",
+                    "reason": "Authored important destination for test only"
+                  }
+                ],
+                "inventory_sha256": "582407201b9d0c84bde7ff02b6c283c0138b8b3a1fb31158248c6bd7e4fe48f9"
+              }
+            },
+            "incoming_links": {
+              "documents": [
+                {
+                  "url": "https://example.test/page",
+                  "http": [
+                    {
+                      "url": "https://example.test/page",
+                      "complete": true,
+                      "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 301 Synthetic\r\nLocation: https://external.test/page\r\nContent-Type: text/html; charset=utf-8\r\n\r\nRedirect",
+                      "sent_at": "2026-10-14T08:00:00Z",
+                      "received_at": "2026-10-14T08:00:01Z"
+                    },
+                    {
+                      "url": "https://external.test/page",
+                      "complete": true,
+                      "request": "GET /page HTTP/1.1\r\nHost: external.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"https://example.test/destination\">x</a></body></html>",
+                      "sent_at": "2026-10-14T08:01:02Z",
+                      "received_at": "2026-10-14T08:01:03Z"
+                    }
+                  ],
+                  "render": {
+                    "states": []
+                  }
+                },
+                {
+                  "url": "https://example.test/destination",
+                  "http": [
+                    {
+                      "url": "https://example.test/destination",
+                      "complete": true,
+                      "request": "GET /destination HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Destination</title></head><body>Authored synthetic destination</body></html>",
+                      "sent_at": "2026-10-14T08:01:00Z",
+                      "received_at": "2026-10-14T08:01:01Z"
+                    }
+                  ]
+                }
+              ],
+              "inventory": {
+                "label": "Authored bounded source inventory; not a site crawl",
+                "observed_at": "2026-10-14T07:58:00Z",
+                "base64": "aHR0cHM6Ly9leGFtcGxlLnRlc3QvcGFnZQo=",
+                "sha256": "582407201b9d0c84bde7ff02b6c283c0138b8b3a1fb31158248c6bd7e4fe48f9"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "only-trailing-slash-neighbour",
+      "expected": "fail",
+      "rationale": "Exact document identity only; complete eligible DOM and source contain no declared destination, nearby URL not equivalent.",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS16-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.test/scope",
+            "observed_at": "2026-10-14T08:11:00Z",
+            "incoming_links_synthetic": true,
+            "context": {
+              "network": "Synthetic supplied records; no external collection",
+              "bounds": "Declared destinations only",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-14T07:59:00Z",
+              "crawler": "synthetic-client",
+              "incoming_links": {
+                "reader": "incoming-document-links-v1",
+                "origin": "https://example.test",
+                "selection_reason": "Synthetic bounded important page population; not human approval",
+                "window_start": "2026-10-14T08:00:00Z",
+                "window_end": "2026-10-14T08:10:00Z",
+                "max_duration_ms": 10000,
+                "sources": [
+                  {
+                    "url": "https://example.test/page",
+                    "final_url": "https://example.test/page",
+                    "states": [
+                      {
+                        "id": "loaded",
+                        "browser": "Synthetic browser",
+                        "browser_version": "1",
+                        "scenario": "Authored load state; no observed browser",
+                        "interaction": "none"
+                      }
+                    ]
+                  }
+                ],
+                "destinations": [
+                  {
+                    "url": "https://example.test/destination",
+                    "reason": "Authored important destination for test only"
+                  }
+                ],
+                "inventory_sha256": "582407201b9d0c84bde7ff02b6c283c0138b8b3a1fb31158248c6bd7e4fe48f9"
+              }
+            },
+            "incoming_links": {
+              "documents": [
+                {
+                  "url": "https://example.test/page",
+                  "http": [
+                    {
+                      "url": "https://example.test/page",
+                      "complete": true,
+                      "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"https://example.test/destination/\">Near but different</a></body></html>",
+                      "sent_at": "2026-10-14T08:00:00Z",
+                      "received_at": "2026-10-14T08:00:01Z"
+                    }
+                  ],
+                  "render": {
+                    "states": [
+                      {
+                        "id": "loaded",
+                        "observed_at": "2026-10-14T08:05:00Z",
+                        "browser": "Synthetic browser",
+                        "browser_version": "1",
+                        "complete": true,
+                        "errors": [],
+                        "javascript_enabled": true,
+                        "structured_dom": {
+                          "snapshot": {
+                            "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+                            "tree": {
+                              "format": "rendered-metadata-tree",
+                              "version": "2",
+                              "limits": {
+                                "nodes": 1024,
+                                "depth": 64,
+                                "tree_utf8_bytes": 524288,
+                                "serialization_utf8_bytes": 262144,
+                                "cooperative_ms": 2000,
+                                "invocation_timeout_ms": 5000
+                              },
+                              "document_url": "https://example.test/page",
+                              "base_uri": "https://example.test/page",
+                              "ready_state": "complete",
+                              "execution_context": "not-attested",
+                              "scripting": "enabled-by-laboratory-plan",
+                              "closed_shadow_coverage": "unknown",
+                              "frame_documents": "not-collected",
+                              "template_fragments": "not-collected",
+                              "origin_attribution": "unknown",
+                              "serialization": {
+                                "available": true,
+                                "html": "AUTHORED SYNTHETIC FIXTURE, NOT A BROWSER"
+                              },
+                              "nodes": [
+                                {
+                                  "id": 0,
+                                  "parent": null,
+                                  "edge": "root",
+                                  "index": 0,
+                                  "type": 9,
+                                  "name": "#document",
+                                  "namespace": null,
+                                  "attributes": [],
+                                  "data": null,
+                                  "child_count": 1,
+                                  "shadow": "not-element",
+                                  "resolved_href": null
+                                },
+                                {
+                                  "id": 1,
+                                  "parent": 0,
+                                  "edge": "child",
+                                  "index": 0,
+                                  "type": 1,
+                                  "name": "html",
+                                  "namespace": "http://www.w3.org/1999/xhtml",
+                                  "attributes": [],
+                                  "data": null,
+                                  "child_count": 2,
+                                  "shadow": "unexposed-or-absent",
+                                  "resolved_href": null
+                                },
+                                {
+                                  "id": 2,
+                                  "parent": 1,
+                                  "edge": "child",
+                                  "index": 0,
+                                  "type": 1,
+                                  "name": "head",
+                                  "namespace": "http://www.w3.org/1999/xhtml",
+                                  "attributes": [],
+                                  "data": null,
+                                  "child_count": 0,
+                                  "shadow": "unexposed-or-absent",
+                                  "resolved_href": null
+                                },
+                                {
+                                  "id": 3,
+                                  "parent": 1,
+                                  "edge": "child",
+                                  "index": 1,
+                                  "type": 1,
+                                  "name": "body",
+                                  "namespace": "http://www.w3.org/1999/xhtml",
+                                  "attributes": [],
+                                  "data": null,
+                                  "child_count": 0,
+                                  "shadow": "unexposed-or-absent",
+                                  "resolved_href": null
+                                }
+                              ],
+                              "reported_node_count": 4,
+                              "traversal_complete": true,
+                              "stop_reason": null,
+                              "api_errors": [],
+                              "elapsed_ms": 0
+                            }
+                          },
+                          "snapshot_sha256": "1ce4a33f48b4dc5552da530e0530ec6ecb496513bcba9dd376ee64e8ab7f1fc3",
+                          "known_integrity_issues": [],
+                          "acquisition": {
+                            "kind": "authored-synthetic",
+                            "navigation_id": "synthetic-nav",
+                            "http_sha256": "a06a978d9d0fe27c60a05a86ea4d67cd68d07c3674696b759c32dbf09e8410f5",
+                            "user_agent": "synthetic-client",
+                            "support": [
+                              {
+                                "name": "Synthetic receipt",
+                                "content": "SYNTHETIC authored acquisition, not an observed browser navigation.",
+                                "sha256": "86dc0965aa238a74d8f6f0b3ea004fb7db0ef601b09d9352866561ad8c491427"
+                              }
+                            ]
+                          }
+                        },
+                        "interaction": "none"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "url": "https://example.test/destination",
+                  "http": [
+                    {
+                      "url": "https://example.test/destination",
+                      "complete": true,
+                      "request": "GET /destination HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Destination</title></head><body>Authored synthetic destination</body></html>",
+                      "sent_at": "2026-10-14T08:01:00Z",
+                      "received_at": "2026-10-14T08:01:01Z"
+                    }
+                  ]
+                }
+              ],
+              "inventory": {
+                "label": "Authored bounded source inventory; not a site crawl",
+                "observed_at": "2026-10-14T07:58:00Z",
+                "base64": "aHR0cHM6Ly9leGFtcGxlLnRlc3QvcGFnZQo=",
+                "sha256": "582407201b9d0c84bde7ff02b6c283c0138b8b3a1fb31158248c6bd7e4fe48f9"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

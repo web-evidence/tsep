@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded offline interpreter for fifty-six TSEP rules. Apache-2.0; no collection."""
+"""Bounded offline interpreter for fifty-seven TSEP rules. Apache-2.0; no collection."""
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -19,7 +19,8 @@ RULES += ('TS31-A01', 'TS31-A02', 'TS31-A03', 'TS32-A01', 'TS32-A02', 'TS32-A03'
 RULES += ('TS33-A01', 'TS33-A02', 'TS33-A03')
 RULES += ('TS15-A01', 'TS15-A02', 'TS15-A03')
 RULES += ('TS17-A01', 'TS17-A02')
-VERSION = '35'  # Interpreter coverage version; normative protocol version is separate.
+RULES += ('TS16-A01',)
+VERSION = '36'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -355,6 +356,9 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
 
 
 def evaluate_target(target, rule, *, diagnostics=None):
+    if rule.startswith('TS16-'):
+        from conformance.incoming_links import assess
+        return assess(target, rule, diagnostics=diagnostics)
     if rule.startswith('TS17-'):
         from conformance.essential_links import assess
         return assess(target, rule, diagnostics=diagnostics)

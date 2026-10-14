@@ -12,12 +12,26 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '20'
+VERSION = '21'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'incoming_note': 'TS16 : population préalable fournie seulement ; aucune exhaustivité du site, importance authentifiée, interaction observée ni indexation. Une absence bornée ne prouve pas une page orpheline du site. Le contenu attendu de la source n’est pas vérifié : une page d’erreur répondant HTTP200 peut fournir un témoin de navigation ; les soft404 ne sont pas détectées.',
+        'incoming_title': 'Liens entrants — résultats par destination',
+        'incoming_original': 'Original de destination',
+        'incoming_missing_original': 'Original ou identité de destination non qualifiés ; vérifier aussi le plan.',
+        'incoming_status': 'Statut HTTP terminal conservé',
+        'incoming_final': 'URL finale archivée',
+        'incoming_witnesses': 'Témoins qualifiés dans la population déclarée',
+        'incoming_source': 'Document source',
+        'incoming_surface': 'Surface fournie',
+        'incoming_href': 'href brut',
+        'incoming_anchor': 'Référence native de l’ancre',
+        'incoming_absence': 'Absence dans toutes les surfaces éligibles qualifiées de la population préalable uniquement.',
+        'incoming_details': 'Population, hypothèses et diagnostics conservés',
+        'incoming_read': 'Sources examinées',
         'essential_state_identity': 'États et scénarios déclarés par le fournisseur ; interactions non authentifiées.',
         'essential_binding': 'Portée : association aux octets HTTP fournis ; acquisition réelle non authentifiée.',
         'essential_repeated': 'Snapshots identiques pour plusieurs états déclarés',
@@ -149,6 +163,20 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'incoming_note': 'TS16: prior supplied population only; no site completeness, authenticated importance, observed interaction or indexing. Bounded absence does not establish a site-wide orphan. Expected source content is not verified: an HTTP200 error template may supply a navigation witness; soft404s are not detected.',
+        'incoming_title': 'Incoming links — per-destination results',
+        'incoming_original': 'Destination original',
+        'incoming_missing_original': 'Destination original or identity unqualified; also check the plan.',
+        'incoming_status': 'Retained terminal HTTP status',
+        'incoming_final': 'Archived final URL',
+        'incoming_witnesses': 'Qualified witnesses within the declared population',
+        'incoming_source': 'Source document',
+        'incoming_surface': 'Supplied surface',
+        'incoming_href': 'Raw href',
+        'incoming_anchor': 'Native anchor reference',
+        'incoming_absence': 'Absence across every qualified eligible surface of the prior population only.',
+        'incoming_details': 'Retained population, hypotheses and diagnostics',
+        'incoming_read': 'Examined sources',
         'essential_state_identity': 'Provider-declared states and scenarios; interactions are unauthenticated.',
         'essential_binding': 'Scope: supplied HTTP-byte association; actual acquisition is unauthenticated.',
         'essential_repeated': 'Identical snapshots across declared states',
@@ -564,6 +592,41 @@ def comparison_values(atom, words):
     return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
 
 
+def incoming_links_values(atom, words):
+    """Present retained native diagnostics; never reinterpret supplied captures."""
+    prefix = 'Supplied incoming links / liens entrants fournis: '
+    reason = atom.get('reason', '')
+    if not reason.startswith(prefix): return ''
+    try:
+        note = json.loads(reason[len(prefix):])
+        rows, sources = note.get('destinations', []), note.get('sources', [])
+        if not isinstance(rows, list) or not isinstance(sources, list): raise ValueError('rows')
+        out = '<div class="incoming-links-values"><h5>'+esc(words['incoming_title'])+'</h5>'
+        out += '<p>'+esc(words['incoming_read'])+' · '+str(len(sources))+'</p>'
+        if note.get('reason'): out += '<p class="reason">'+esc(note['reason'])+'</p>'
+        for row in rows:
+            if not isinstance(row, dict): raise ValueError('destination')
+            original = row.get('original', {})
+            if not isinstance(original, dict): raise ValueError('original')
+            out += '<div class="notice"><strong>'+esc(row.get('url', ''))+'</strong><p>'+esc(words.get(row.get('outcome'), words['unknown']))+'</p>'
+            if row.get('bounded_absence'): out += '<p>'+esc(words['incoming_absence'])+'</p>'
+            if original.get('qualified') is True:
+                out += '<dl>'+item(words['incoming_status'], original.get('status'))+item(words['incoming_final'], original.get('final_url'))+'</dl>'
+            else:
+                out += '<p><strong>'+esc(words['incoming_missing_original'])+'</strong></p>'
+                if original.get('reason'): out += '<p class="reason">'+esc(original['reason'])+'</p>'
+            witnesses = row.get('witnesses', [])
+            if not isinstance(witnesses, list): raise ValueError('witnesses')
+            if witnesses: out += '<p><strong>'+esc(words['incoming_witnesses'])+'</strong></p>'
+            for witness in witnesses:
+                if not isinstance(witness, dict): raise ValueError('witness')
+                out += '<dl>'+item(words['incoming_source'], witness.get('source_final_url', witness.get('source_url')))+item(words['incoming_surface'], witness.get('surface'))+item(words['incoming_href'], witness.get('raw_href'))+item(words['incoming_anchor'], pretty(witness.get('anchor_reference')))+'</dl>'
+            out += '</div>'
+        return out+'<details><summary>'+esc(words['incoming_details'])+'</summary><pre>'+esc(pretty(note))+'</pre></details></div>'
+    except (ValueError, KeyError, TypeError, AttributeError):
+        return '<p class="reason">'+esc(reason)+'</p>'
+
+
 def essential_links_values(atom, words):
     prefix='Supplied essential links / liens essentiels fournis: '
     reason=atom.get('reason','')
@@ -705,6 +768,8 @@ def results(bundle, controls, words, language):
             out += performance_values(result, words)
         if cid == 'TS36':
             out += '<div class="notice">' + esc(words['monitoring_note']) + '</div>'
+        if cid == 'TS16':
+            out += '<div class="notice">' + esc(words['incoming_note']) + '</div>'
         if cid == 'TS17':
             out += '<div class="notice">' + esc(words['essential_links_note']) + '</div>'
         if cid == 'TS15':
@@ -736,7 +801,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (essential_links_values(atom, words) if cid == 'TS17' else sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (incoming_links_values(atom, words) if cid == 'TS16' else essential_links_values(atom, words) if cid == 'TS17' else sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

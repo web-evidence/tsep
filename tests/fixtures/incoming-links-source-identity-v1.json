@@ -1,0 +1,100 @@
+{
+  "synthetic": true,
+  "authored_before_diagnostic_change": "2026-10-14T20:29:58.008784+00:00",
+  "cases": [
+    {
+      "id": "http200-error-template-with-incoming-witness",
+      "expected": "pass",
+      "rationale": "TS16 verifies the supplied link, not source content identity. A declared HTTP200 error-template with a valid navigation witness remains pass; report must explicitly disclose that semantic source error templates are not detected.",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS16-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.test/scope",
+            "observed_at": "2026-10-14T08:11:00Z",
+            "incoming_links_synthetic": true,
+            "context": {
+              "network": "Synthetic supplied records; no external collection",
+              "bounds": "Declared destinations only",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-14T07:59:00Z",
+              "crawler": "synthetic-client",
+              "incoming_links": {
+                "reader": "incoming-document-links-v1",
+                "origin": "https://example.test",
+                "selection_reason": "Synthetic bounded important page population; not human approval",
+                "window_start": "2026-10-14T08:00:00Z",
+                "window_end": "2026-10-14T08:10:00Z",
+                "max_duration_ms": 10000,
+                "sources": [
+                  {
+                    "url": "https://example.test/page",
+                    "final_url": "https://example.test/page",
+                    "states": [
+                      {
+                        "id": "loaded",
+                        "browser": "Synthetic browser",
+                        "browser_version": "1",
+                        "scenario": "Authored load state; no observed browser",
+                        "interaction": "none"
+                      }
+                    ]
+                  }
+                ],
+                "destinations": [
+                  {
+                    "url": "https://example.test/destination",
+                    "reason": "Authored important destination for test only"
+                  }
+                ],
+                "inventory_sha256": "582407201b9d0c84bde7ff02b6c283c0138b8b3a1fb31158248c6bd7e4fe48f9"
+              }
+            },
+            "incoming_links": {
+              "documents": [
+                {
+                  "url": "https://example.test/page",
+                  "http": [
+                    {
+                      "url": "https://example.test/page",
+                      "complete": true,
+                      "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Synthetic</title></head><body><h1>Authored synthetic error page: requested content not found</h1><a href=\"https://example.test/destination\">x</a></body></html>",
+                      "sent_at": "2026-10-14T08:00:00Z",
+                      "received_at": "2026-10-14T08:00:01Z"
+                    }
+                  ]
+                },
+                {
+                  "url": "https://example.test/destination",
+                  "http": [
+                    {
+                      "url": "https://example.test/destination",
+                      "complete": true,
+                      "request": "GET /destination HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Destination</title></head><body>Authored synthetic destination</body></html>",
+                      "sent_at": "2026-10-14T08:01:00Z",
+                      "received_at": "2026-10-14T08:01:01Z"
+                    }
+                  ]
+                }
+              ],
+              "inventory": {
+                "label": "Authored bounded source inventory; not a site crawl",
+                "observed_at": "2026-10-14T07:58:00Z",
+                "base64": "aHR0cHM6Ly9leGFtcGxlLnRlc3QvcGFnZQo=",
+                "sha256": "582407201b9d0c84bde7ff02b6c283c0138b8b3a1fb31158248c6bd7e4fe48f9"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

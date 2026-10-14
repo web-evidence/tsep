@@ -23,6 +23,9 @@ SELECTED = ['TS01-A01', 'TS01-A02']
 # CLI transport/selection regressions need contradictory examples, not hundreds
 # of interpreter startups. verify.py still runs the complete conformance corpus.
 EXTERNAL_CASE_IDS = (
+    'incoming-links-v1-source-witness',
+    'incoming-links-v1-bounded-complete-absence',
+    'incoming-links-v1-missing-plan',
     'essential-links-v1-complete', 'essential-links-v1-both-absent', 'essential-links-v1-missing-plan',
     'sitemap-files-v1-single-leaf', 'sitemap-files-v1-namespace-error',
     'sitemap-files-v1-full-path-entries-50001', 'sitemap-files-v1-all-files-missing',
