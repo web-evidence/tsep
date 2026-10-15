@@ -23,6 +23,11 @@ SELECTED = ['TS01-A01', 'TS01-A02']
 # CLI transport/selection regressions need contradictory examples, not hundreds
 # of interpreter startups. verify.py still runs the complete conformance corpus.
 EXTERNAL_CASE_IDS = (
+    'critical-presence-v1-scope-contradiction',
+    'critical-presence-v1-five-roles-no-body-review',
+    'critical-presence-v1-five-roles-complete',
+    'critical-presence-v1-five-roles-mixed-failure-unknown',
+    'critical-presence-v1-five-roles-no-plan-review',
     'xdefault-role-v1-complete-default-variant',
     'xdefault-role-v1-destination-status-404',
     'xdefault-role-v1-no-review',

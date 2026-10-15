@@ -1,3 +1,13 @@
+Current candidate draft.44 / interpreter43 / presence reader3 / adapter43 / HTML25 / replay3 : TS25 UTF8 review admission and combined diagnostic bounds. 25 controls /64 rules. Explicit Node24 + TSEP_VERIFY_STEP_TIMEOUT=3600, all checks enabled. Qualification and app reception pending separately. [Migration](migration-draft.44.md).
+FR : candidat TS25, bornes UTF8 des revues et diagnostics cumulés ; qualification et réception applicative distinctes.
+
+Previous candidate / candidat précédent :
+Current TS25 draft.43 / interpreter42 / reader2 : independent source failures survive malformed documentary render containers;183 preauthored cases,25controls/64rules. Adapter42/HTML25/replay3 retained. [Migration](migration-draft.43.md). Qualification and app acceptance separate.
+FR : les absences source indépendantes restent en échec malgré un conteneur documentaire rendu mal formé ;183contre-cas, qualification et recette applicative distinctes.
+
+Previous TS25 candidate / candidat précédent :
+TS25 candidate draft.42/interpreter41/adapter42/HTML25/replay3: [presence](critical-presence-evidence.md), [migration](migration-draft.42.md). 25 contrôles outillés / tooled controls,64 règles / rules. Full qualification uses explicit Node24 and TSEP_VERIFY_STEP_TIMEOUT=3600; app import/reception separate.
+
 TS24 revised candidate draft.41/interpreter40/adapter41/HTML24/replay3: [method](xdefault-role-evidence.md), [migration](migration-draft.41.md). 24 controls /62 rules. Prior draft.40 attempts preserved, not qualified. Full local profile: explicit Node24, TSEP_VERIFY_STEP_TIMEOUT=3600; all checks enabled. App acceptance separate.
 
 Previous unqualified TS24 candidate draft.40/interpreter39/adapter41/HTML24/replay3: [x-default](xdefault-role-evidence.md), [migration](migration-draft.40.md). 24 contrôles outillés / tooled controls,62 règles / rules. Full qualification uses explicit Node24 and TSEP_VERIFY_STEP_TIMEOUT=3600; app import/reception separate.

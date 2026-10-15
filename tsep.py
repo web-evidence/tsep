@@ -299,6 +299,8 @@ def decision(report, controls=None):
         summary['release_monitoring_interpretation'] = {
             'fr':'TS36 : dossier du suivi déclaré, échéances futures indéterminées ; aucune causalité ni identité Google authentifiée.',
             'en':'TS36: declared follow-up dossier, future stages inconclusive; no causality or authenticated Google identity.'}
+    if any(r['control_id']=='TS25' for r in report['results']):
+        summary['critical_presence_interpretation']={'fr':'TS25 : présence dans le périmètre préalable déclaré, exclusions et inconnues conservées ; revues fournies non authentifiées.', 'en':'TS25: presence within prior declared scope, exclusions and unknowns retained; unauthenticated supplied reviews.'}
     if any(r['control_id']=='TS24' for r in report['results']):
         summary['xdefault_interpretation']={'fr':'TS24 : contexte fourni motivé, jugement documentaire non authentifié ; aucune validité sémantique ni public représentatif inférés.', 'en':'TS24: motivated supplied context, unauthenticated documentary judgment; no inferred semantic validity or representative audience.'}
     if any(r['control_id']=='TS23' for r in report['results']):

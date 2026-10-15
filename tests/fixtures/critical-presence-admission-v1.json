@@ -1,0 +1,2840 @@
+{
+  "format_version": 1,
+  "synthetic": true,
+  "scope": "Explicit TS25 public admission expectations; separate from native atomic outcomes. Not an additional normative case or rule.",
+  "authorship": "Transport classifications recorded during initial TS25 targeted qualification before the failed full1 run; this manifest was extracted after that failure and before correction of the transverse test. Native fixture expectations unchanged.",
+  "prior_classification_sha256": "829d81dc229b90a13e6b47a1072012ccda272166a8b1fa39b94f125dbddd88aa",
+  "counts": {
+    "report": 181,
+    "technical-refusal": 2
+  },
+  "cases": [
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-or-render-present-present",
+      "input_sha256": "623cdedce576e938709893db25e4cba011ca5eadb0044daec783c05c0224e14d",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-or-render-present-absent",
+      "input_sha256": "09129066310aae3a3c2974657e1df12096de7ef4589b9efd502b8e254e27ffd9",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-or-render-present-unknown",
+      "input_sha256": "b64dbf27b12e00428ef681c31e03fb7ed3cf2f00f0e4e85f37c47528594de7fe",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-or-render-absent-present",
+      "input_sha256": "587f406d65ef7f6e41eaacc37f1dbc6a187b177c940026b5a4cf6e066a9794c1",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-or-render-absent-absent",
+      "input_sha256": "a31bbee8ece7550e0248f06f8e552fe60267f9c69bf729e9d3c038a031b2318a",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-or-render-absent-unknown",
+      "input_sha256": "e569a20b88771c3066c30396c2e75fab02fa59c1acc359450afa2b11f81926d2",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-or-render-unknown-present",
+      "input_sha256": "83386d5c7942105ebe3ab326be166904205a0a55435b37a35e7d93e6dedcd227",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-or-render-unknown-absent",
+      "input_sha256": "c37fc6c3f129ecfa9a3e9af04e90bc56e092ab5cb833b9af8d407168370b6b28",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-or-render-unknown-unknown",
+      "input_sha256": "af081c27dee5c26f7a25da2afc4e5a352cee63e8330cc2f607e50ca8bafcefc8",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-and-render-present-present",
+      "input_sha256": "fe21ac16ae352870a3d630b3f8da14403a3b997fa7e6de53ad1c88bdb451ea79",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-and-render-present-absent",
+      "input_sha256": "488ab9f2fe3c282c1219448e44f5a09a6c455e7da5ca110d0cd3e2b25ed67fc7",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-and-render-present-unknown",
+      "input_sha256": "1eb71e67719b939ce42a972e4e487cec5f3404b65fd085c1278a03c8016ec8a7",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-and-render-absent-present",
+      "input_sha256": "109fa4b013ac483f9703bd8a72ba8feaadaad2cacaf6600ae4108d2ac9d56976",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-and-render-absent-absent",
+      "input_sha256": "90ea564da93bce165a70dc9676d0a5bcc9e4977df84f58c12653caf4ab9ebd81",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-and-render-absent-unknown",
+      "input_sha256": "d4e185df8c5d05adc262f99a098af272066d16dbd5dfd03d2978fcdd28e21c3f",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-and-render-unknown-present",
+      "input_sha256": "a710cb25db1301e6b0b20f9547a3f0818e760d603259a2310ed1f54308075e67",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-and-render-unknown-absent",
+      "input_sha256": "9816e31bb6dfacbe1ad6262cb779e83c70e26b4faab2dba211ea1abc8a160181",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-and-render-unknown-unknown",
+      "input_sha256": "22f67059365bbb044bcbc06a5f0f4a2ae2d3edc30e28688df60d9ab4c255f6a6",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-only-present",
+      "input_sha256": "a82be1213b8bc59d57259afb2d3e810c58468b9a1fa1c1668cace15280a12de6",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-only-absent",
+      "input_sha256": "51dea05b8b80cdd61b0f68fed7544225267ad6c2be0912e2db27b91fdc593c10",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-only-unknown",
+      "input_sha256": "04553d6b5f992908a07ee7ba62279b8bed3148a24bf9448a4336248e4a090c69",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-render-only-present",
+      "input_sha256": "ea447af5401cf8e5ceb9409466caf657e5ccd2acad6d6ef21289660c0776d229",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-render-only-absent",
+      "input_sha256": "d41117259820ea24e2419227f658c24594cfa4b11753b17e1360737f71bb4328",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-render-only-unknown",
+      "input_sha256": "09d05f44410ef13344e65039c55799815990db9c9d238a76dd642125f05455f0",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-selector-renamed",
+      "input_sha256": "e6a9e76028e82b4c3c80adb81c5cef00641ce24d96797d00b82c47e7a92b8d52",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-duplicate-selector",
+      "input_sha256": "8589faaeded79ac35c5e829ae7d47032b1967121ccff2bc3a4bbdfdcdb594f82",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-hidden-selector",
+      "input_sha256": "2029da292c5f1d5cc67423fa00b5055d00711f23deda3185328594bd9172ff4f",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-class-structural-only",
+      "input_sha256": "914684e86c16c638b2fdbc9c75ba760e78df259a9dc5f206c1b5e47b5ce133de",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-nbsp-preserved",
+      "input_sha256": "82dcbb1068c4e9cb14c96b5879ec77ca9d8acac27bbefbccf7c892b30f04ab47",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-ascii-collapse",
+      "input_sha256": "88b724d7070cc0ac5d03796c3c737e2086ffc02581850b6206835629ed7df078",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-title-head",
+      "input_sha256": "3c2e06e04cc228ac80ce105d6c31b872f9468571c14dd30f820d29b4a7d6c800",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-title-wrong-element",
+      "input_sha256": "fac7edfe75c6a491a4f74fa601e2cfc3ecee6e9cc9ba97008c87d3dd0364861c",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-script-text-excluded",
+      "input_sha256": "39a464b52bcd861f3ce4bb9909aa33d72250c6cf43c48cc19d9c8e5d7ee65ef5",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-source-noscript-hypothesis-disagreement",
+      "input_sha256": "d459d93408d0721152aad0dd0924a4ed93e355bf810767155cc0a835402adec9",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-render-version-missing",
+      "input_sha256": "00864a24a5b21f39fbe1fe8bde5c19809105fc27567ae789f7a5cb62463706a1",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-render-snapshot-corrupt",
+      "input_sha256": "1c0a16ced1c400070ed1386dd77d3958e59b35029f166ee780c473954b655bf2",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "technical-refusal",
+      "report_status": null,
+      "refusal_message": "TS25 transport self-integrity: TS17 DOM integrity: supplied snapshot self-fingerprint mismatch"
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-render-same-snapshot-separate-states",
+      "input_sha256": "206d1ba6b8c955bca594200aade3c125f0a067b69d9862f46893d2ea1b78407c",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-render-independent-absence-and-missing",
+      "input_sha256": "84bbb9f09a6fc41196a7b308ccd885b1bd4f4b9362edfa7c4875217e94ed373d",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r1-unsupported-canonical-role",
+      "input_sha256": "511fe91ef354a2620509de73b186fb8934374be9fb2d27ecc3a488be9590329c",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-link-absolute",
+      "input_sha256": "7dc2da08c5abc91b3dede1c73dbf9df30410cbe48551822f69b76508bb572328",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-link-absolute",
+      "input_sha256": "5c609ef3559615687e83425f9ceb4d6f93c0057814228f30b7bd398c2d3fdbb2",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-link-relative",
+      "input_sha256": "0de7c5a2bdbc353c8574ee8cc0ed25eb30486a3ee22d5c28fcf23af00bd1f830",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-link-relative",
+      "input_sha256": "dd8587abbae03ba3bc36c414f8c9938cf000c45feaf51c68ef9971eaaf211ae0",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-link-wrong",
+      "input_sha256": "b66a36d0b82388ca9895949cef09492025a294d1450aeea0f6469c5ad3f538b0",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-link-wrong",
+      "input_sha256": "b678686ba3da1dcf9c3158ce03ff860359fc9395746d34714a51c6d8299eb606",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-link-missing-href",
+      "input_sha256": "3d4899f0b19e7290ecbb13b5eb32d6975de1e63363cefab9edc25a7cd37687d0",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-link-missing-href",
+      "input_sha256": "b257991d17cce461887a17f0b6020e06721e568d87386ff694b125e6f298b29e",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-link-button-only",
+      "input_sha256": "d2b3f6bd26b7dc444c1a41401c59cfce84b18f010f26cefd0a81bc74cd0ab380",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-link-button-only",
+      "input_sha256": "fd29a1dada1079320452dba3e044ec729c059e514f6604da1e988ae585607671",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-link-area-unsupported",
+      "input_sha256": "dd5245bb192d7839854fa933f0558a4e89a24eeeef5e29402c49f62001953716",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-link-area-unsupported",
+      "input_sha256": "22a6d4fb7beb3a9395b1eda1c25c3e06f83da18f87afa39fd3e840f39e1c8a35",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-link-explicit-base",
+      "input_sha256": "5d080ba892b0f1ad9fa135fe87528f9ad6656f97c1275e12c5a3c48ac0ae32af",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-link-explicit-base",
+      "input_sha256": "4d2fdd861c1cc0c01cd7004640552d5f2c6b08b0fde32039dfd7cc11e314827d",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-canonical-head",
+      "input_sha256": "5bc289ff0f5932091acfcd78ddfed95505d7d480b578df61e5dec9413bab62f6",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-canonical-head",
+      "input_sha256": "e0cba3a5e5de453a3ad5bb3571aa41940d6b0fc00e6594d3c2870b12c28f68d0",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-canonical-relative",
+      "input_sha256": "fd33cfe50725d904739f9c351a854563c46d10edf8f81a0488e3e46c536d6700",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-canonical-relative",
+      "input_sha256": "32aee7fed379fb4947608c38ae11860fa061279d8236026d4472e8c60745c3cd",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-canonical-body",
+      "input_sha256": "07997daf93cdcf9655c68e295c262ee90b82a347a2f9446eab0fb95ac701e514",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-canonical-body",
+      "input_sha256": "6f7f900ab15469a3213f78d5135518610cfab1507d3cf663b5830369839ee84f",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-canonical-alternate",
+      "input_sha256": "e95add4c778bdc80732b9c68c557a44f41b9936c7ee13cf55130210e375eeabc",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-canonical-alternate",
+      "input_sha256": "340f2880a48262a10a8f6578f0529768e8325d571f35da242710cd152265df57",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-canonical-wrong",
+      "input_sha256": "2a792aede50e70a246b8f45934d5d95ac53e7c98fb2d2446d05f835cc6ed0b12",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-canonical-wrong",
+      "input_sha256": "025686acff9f8dd1836d759598091c7726a6c6a7d30ef96f03afdcdf0b0c280f",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-jsonld-object",
+      "input_sha256": "2ee0234eac6d77a23bb4bddcb750a9a5c5479993ff1e4ed1abd0433535eda447",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-jsonld-object",
+      "input_sha256": "d3e73c1a61bb2b4411d9f00946c123e2dea1eb8c652c9c6b33f8ee595b54d750",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-jsonld-body",
+      "input_sha256": "e0beb4698fecbc20c8cefb3653ad05658886cb57b0d14b671587859e90595254",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-jsonld-body",
+      "input_sha256": "92e68be40ad796b5e86d6942b507d5750a8e616486e4de38784307c71fc84261",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-jsonld-array",
+      "input_sha256": "9115047469d92f7aab3d5b434a21b2f1fff8f645af9f6d35948c7e79438865eb",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-jsonld-array",
+      "input_sha256": "8ddfa2f6a66f02095dd701fa1381f9a89cfe22df035a03df4d69a6de3a4228b1",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-jsonld-relative-id",
+      "input_sha256": "4a6c806f8342cc7c1beb2b8fa0a12dee223b849a9b0d0c808e902efa135bef20",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-jsonld-relative-id",
+      "input_sha256": "ae5bbe0c7bc8843edff61b3291f7d59da6c86e5eb0fc10c32c73348d12167008",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-jsonld-entities",
+      "input_sha256": "0f7833982097a98fdfcbdfd6b56039c91744c18868f8791fd5c253283f714c9b",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-jsonld-entities",
+      "input_sha256": "580f510b46d70e50b949ba7e98b1393a8b2a3843127ca82abee784a1bfed0f21",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-jsonld-duplicate-key",
+      "input_sha256": "b31c7f043d644b0717ee2354e47deeebc2685a010fe7b960e3296f9d750a98a4",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-jsonld-duplicate-key",
+      "input_sha256": "3987a1c5cb54e1d96e369e6cdc6e91c8335a1702573506413fe4b98a39b13e09",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-jsonld-parameters",
+      "input_sha256": "afecd0f808dc31473304151549cf93dac7f8519ba59794fe49df39b4918cc8a2",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-jsonld-parameters",
+      "input_sha256": "33784389923ff9c4e011700d1fdf111a901453e7dd5394bfe17292270c6255ab",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-jsonld-empty-object",
+      "input_sha256": "9ab13ff85489f966293139e35c2af31ccd039b542a445faba7d13166b999f34f",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-jsonld-empty-object",
+      "input_sha256": "475fd1102983741fd446c1a26c38d4be7b2502af5d07805b25babcca724abf5b",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-jsonld-scalar",
+      "input_sha256": "3289f2f4c86ad888d648e1ae2279e629b517c2489ba2d166ef80f08fbc632980",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-jsonld-scalar",
+      "input_sha256": "0c75760759794ff39b23fb91636fa56492a820996133c33187044dd845321e3d",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-jsonld-nonfinite",
+      "input_sha256": "fe456d346c573b72b847f198298ed66b80a0646595d836fa0a99fb33b6076a66",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-jsonld-nonfinite",
+      "input_sha256": "d0d89e910b36ee2bedd68f07c9f54c7df4091c6a7b1d7e7429d58bc2582d9af9",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-jsonld-empty",
+      "input_sha256": "305b414bcf2f22a3a81bdbc996e35fda9c9f146cb8e7dc04b692e5a36c103bd7",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-jsonld-empty",
+      "input_sha256": "d01e1e43781e7397101dad1caf8dc35d19ae7acb4a46d5f6d303b9bba161211b",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-title-body",
+      "input_sha256": "d17e7e51fb8ff1f936d1072a67bf39592d2d51488e37b1f222999377d561090f",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-title-body",
+      "input_sha256": "9c244d050ae182818ffb089fa1c1747852ce46ea15e6b3bf0324f3b154eb39fb",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-title-foreign",
+      "input_sha256": "a28be24ceb0a37aed1229283c8562d1e27232da3d753a7290a29c0d6abd9eb5f",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-title-foreign",
+      "input_sha256": "e0bfdcfbd87e2ef231dc80bb1a87d2eda1134ca954e62176c4be00edf7ea63b7",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-source-jsonld-object-literal-spaces",
+      "input_sha256": "fa50fd30af7d063c77d6a850afb37ea2096e0c1c7d14054813509d14a6bc74a8",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-ts25-preparation-r2-render-jsonld-object-literal-spaces",
+      "input_sha256": "d902a144f07712d19fb22dff6c5398b2f025b5d57bad89ef1d3bdfef5a0bac22",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-native-render-presence",
+      "input_sha256": "5c609ef3559615687e83425f9ceb4d6f93c0057814228f30b7bd398c2d3fdbb2",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-scope-supported",
+      "input_sha256": "df1d4ae742b82aae121379e10f68ee1faac7af55eafc50af1517c3c98a0b8b38",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-scope-no-review",
+      "input_sha256": "31ca0e1de672f0df8b8a60193ecd670a123ba491a8b58b20b4f8db64ca16a545",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-scope-contradiction",
+      "input_sha256": "2454ebc2ca862e10ce3cbbfc90dc3bcc6f2041f12ab58728410dccbe5501044d",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-scope-unknown",
+      "input_sha256": "9160a9080c8fcdfbf23f61daba0f371186dd6633d0e715ed501e7559d2557fa2",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-scope-unbound",
+      "input_sha256": "e79f94459768093045989c4e6ee7dee6818420fb9add6fa3d73d19e12005b596",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-scope-late",
+      "input_sha256": "4fa7c861dc859d8e0f36cbef3eac14529df8ece4c4fa6138df768dba5e802c9f",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-scope-role-omitted",
+      "input_sha256": "626eaf7cb31853950b4d2471d890d6378210fe6849fe094cb765a1c62dada2a0",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-scope-role-duplicated",
+      "input_sha256": "12318ce9a9ee4b38f55b97fe791f2064fd6436679d88db09d80180e40c2ecd23",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-scope-outside-with-item",
+      "input_sha256": "98d4ca7ba40dc60791b358446f064cad305e643b579927d2babb3ebb411bdec7",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-scope-outside-no-reason",
+      "input_sha256": "70f79b38ebca6eb19d3603223bf2038a1f2a530bb8b18e98ca1e3508b37ee375",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-scope-no-population",
+      "input_sha256": "275842830d817d88799ba7a2f853224d8b02e8a800f911055eedb7ddf5f73b75",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-no-context-review",
+      "input_sha256": "a54dcb9817c901b71f7c47a9d93da8f75b38f60e16309ab6a1693dba3fae8f21",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-context-contradiction",
+      "input_sha256": "a684b82638726b64332dea4f448189e644e4b39858e06a1cc0ac5aea4d16d8da",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-context-unknown",
+      "input_sha256": "5116af52db1655f4491894374dd625905863866f5a8f45aa42c5bbabecddd9ae",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-context-unbound",
+      "input_sha256": "b733e68cae499439f271a086aba34e0b7f3fd92819df9f865b733fa7e7e47eae",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-context-early",
+      "input_sha256": "c9410450d8decca6f058611b0e0547b80bd8e374000521dc35618accdbdf00e3",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-context-future",
+      "input_sha256": "c49682af4acdc67e2ebf1523148b9697ac89627c5a7c41626f0f0204a8b1d30e",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-context-contested",
+      "input_sha256": "80e585dc229584d96e18f1680d30e2bd776417c235fe896b84fdeb1f6adf9e80",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-context-duplicate",
+      "input_sha256": "1e619f3d1501b96b07a4168dc976c5363b20ca8a38c6c3a27e7224da11ab0ad8",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-missing-state",
+      "input_sha256": "c04b7ce1db049d41d2ab56a0375e950adf130be495623fa92770960869b5fbc6",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-duplicate-state",
+      "input_sha256": "ebf9b2fda36a8472ec1957b3fb4758df78fda4be0589f72a9ba359da9de030e9",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-unplanned-state",
+      "input_sha256": "470a46d5d8e1f2deb03c5645e7c1b33d1d55d60c2139febba1fae63af3dba88f",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-condition-mismatch",
+      "input_sha256": "e34d44d8c5d99eb77e84300b24170652a7af8dbf8cfc6564efbcc1861ad8a01f",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-browser-mismatch",
+      "input_sha256": "da43eae74d52343d759a29439cff3dab2e1064eb342cbf13e2e55b33fab62a69",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-source-only-without-review",
+      "input_sha256": "d6ef95da327f26a079bff09dd84cad7a22f6f7e488dc37bbfb9fedd738384920",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-or-missing-state-source-positive",
+      "input_sha256": "51a41f8a99c2355135bee4e4cdc0c23fc23f5926a6ece3783fd0307f215097dd",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-and-missing-state-source-positive",
+      "input_sha256": "5979d10af982cddc8d0df2af2c7966035f90cfd147e9f3b4c21b8b22085ae364",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-invalid-policy",
+      "input_sha256": "fa08f0e41fb4e8f482ff303f62e8588d6e9f29c3f77a89a20bc89fc2b05ec00b",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-duplicate-item-id",
+      "input_sha256": "8f800e7373ee84b95789478fde4a4c6c060c1e9fdc472a9ccd38da5bac954989",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-maxitems-overflow",
+      "input_sha256": "08dcccd854657d21a632b17d36cb2960319427c3fe27f92c2d595bd3d1cac5ca",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-excess-window",
+      "input_sha256": "d058b87df84d9f28f92e25403f78c129555ba79e0713fa501aea0d4bbd99c80b",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-late-plan",
+      "input_sha256": "55cd36a5cd93d531a17e9274665c79eeadd030bfbd4254cee4767a00194b055e",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-corrupt-dom",
+      "input_sha256": "f7cf933628a37657a91849c576308123b91bd4bd1eca7e271057bd19a035487d",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "technical-refusal",
+      "report_status": null,
+      "refusal_message": "TS25 transport self-integrity: TS17 DOM integrity: supplied snapshot self-fingerprint mismatch"
+    },
+    {
+      "id": "critical-presence-v1-presence-native-failure-missing-review",
+      "input_sha256": "cef59f827f04c7bd96b06a330ce92ea1c12ce62e78fe3fa9ea99163279b9a3c6",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-native-failure-unplanned-state",
+      "input_sha256": "8a590162408b0bae3d7e7cd0e9be8cfccd191320bb597cc1d8f814e86b8ec9e2",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-independent-failure-unknown",
+      "input_sha256": "90372d63b49a85fa9f88e913fbb5ebf50a11051a4eafe145b5fdf689d61dc4ec",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-presence-positive-unknown",
+      "input_sha256": "b36fd21dd723dc872ee2eea764507cbcb83ff58fe70d66fc933377f45273c535",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-maximum-32-items-16-states",
+      "input_sha256": "a6994d567fffb0eed916a59b6ab5f93ca4f0f8db283874343141943cc4934791",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-complete",
+      "input_sha256": "8562a770588a57c9a5212cac93dbea0211219820da281794dbd6a71e17a31e9b",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "C",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-no-plan-review",
+      "input_sha256": "789bedfb87939626df8b043e00e56835e716f5e31c941751186a30095ac6430b",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-no-body-review",
+      "input_sha256": "ffc27c95e1d9caf3ac6997d281443aaaf27f2b65ab52abb1c34916652c21429d",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-mixed-failure-unknown",
+      "input_sha256": "6f7ca9ddd9af1942895f1bcf95bafca9690ed395f5169ee1f448ee7b6f91e281",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-declared-role-missing",
+      "input_sha256": "1de5ff14de272e7f06176440b7eba86dee97d6539c9458eedc28099b9e47a7d5",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-contested-body",
+      "input_sha256": "9db5e8617f56f52742dfcd2f0f86aa1e1fa0d66d2ead57a7578f93ca1f1a1b6b",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-unrelated-context-not-borrowed",
+      "input_sha256": "72bb41ce58567a619afe21f3b6b25396319de73dd25fa72f037ebdc67ef416a6",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-false-scope-native-failure",
+      "input_sha256": "d8f887c650da5f285ba76a70ac77622832ca85680171e8adf6dcb84ffd36104d",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-source-or-render-not-branch-conjunction",
+      "input_sha256": "699d6570822539cad00d8131a2c5c7b90debca544b94e5c998269388ad7b147a",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "C",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-unplanned-native-failure",
+      "input_sha256": "5df3d69695349f315eba609de635536afc31239f1d7f5b94b7fd13f83e8335f0",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-unplanned-coverage",
+      "input_sha256": "2ac0fcf964e4f74d6f588cd5602c13b8373a5b2a9a7b282b9515b8466645ce16",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-literal-html-escaped",
+      "input_sha256": "6bfb14094520231796ecd0cd30cd27404ba673d0b9dc445c069bbf390af239f4",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-review-scope-item-id-omission",
+      "input_sha256": "212079c176b01c89ef3e6009aa3146763a7a1713da816441ec6dd75a456eeff3",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-review-scope-extra-item-id",
+      "input_sha256": "890f9dc0dba9fe53e919615f93f61597dcc6cdf1819ba2474734b02ffdae7cbe",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-review-role-exclusion-inconsistent",
+      "input_sha256": "633c26cad2cf877892eef635a50afeee341a2be4a4e327ee2bee6c772a780b3b",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-review-text-only-attribute",
+      "input_sha256": "860abf5279001c3b2ebe184aa507b6bee9eb9ba70303b5131688322033a6dcba",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-review-text-only-jsonld",
+      "input_sha256": "37f051a8f72719f7f8508a1e7c988a2b897a448309984ece1fa359084fb897dd",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-review-text-only-title",
+      "input_sha256": "627c97d2105d07c897ca1127c6b8a1421a40e21930a0ba7cce5ea5b20c885007",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-review-canonical-only-http-link",
+      "input_sha256": "73489ed349c2cb67574257ef23e51ec1aefa83392249ac578abb1aa158db53a9",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-review-identical-dom-state-not-interchangeable",
+      "input_sha256": "5f39b85713f7da2d36ac877eb190004897a8db308a111645fc1be83c9f1d93fc",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-review-native-failure-supplied-positive",
+      "input_sha256": "efd0acb178baad95bb43c9a33228a114a68b6f78870cb3f4cbb8f3cb2ae28d84",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-review-native-failure-contested-elsewhere",
+      "input_sha256": "1ac3024c3f0f995b0b0007e75c00898025689c6568113e5ec0953aa5c41d6811",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v1-five-roles-source-only-without-dom",
+      "input_sha256": "46f40fd4a1755d462bc05b58445936427a678b665947060684b722c800a133e8",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        }
+      ],
+      "admission": "report",
+      "report_status": "C",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-null-source-only-present",
+      "input_sha256": "d6241e36a746f5379e2954dc584e0a3737063d0c579f96fd4670bea6db56960f",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-null-source-only-absent",
+      "input_sha256": "9cb334abbb28aeb517aa2ead732eaea2481c3ed880fdf05ea5ad347ce6b2dece",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-null-render-only-absent",
+      "input_sha256": "1c32eff963f13368ea116d36bd3c964b3649b81a8ef38329a42e8b4519060cea",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-null-source-and-render-absent",
+      "input_sha256": "7be36b381e58c36c39782977fe7297b8f223318800299f1423c7a55b61a8a81e",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-null-source-or-render-absent",
+      "input_sha256": "46510f1aaebb537847390e181c761e2b23fd9d3a4219fccc808132474001472c",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-null-source-or-render-present",
+      "input_sha256": "3459528ee2d8d32475e9af89b37d1d18d1664a75c44e5ee789b2ac356db47d9e",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-list-source-only-present",
+      "input_sha256": "f3dcdbe2a58b71f691597a85f42a023a27fcea4f7b4e79730048fcd7d12f4ed4",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-list-source-only-absent",
+      "input_sha256": "b0159905cd462da016fd36e6825eb6aa58ac71301df19bd5cf568ff2c67eb572",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-list-render-only-absent",
+      "input_sha256": "acbfc80dc98aa9700a876a822291ea3e97e215cdc6a69f2c0f5017648225b515",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-list-source-and-render-absent",
+      "input_sha256": "10d1f1ce6f11eda54ab46a76ab35e9b3b155bf2f1d30a88399f7869e30171369",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-list-source-or-render-absent",
+      "input_sha256": "a66d51703ea66a022b7d25e42afbe9f2b850fe948956798a4c64416952933635",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-list-source-or-render-present",
+      "input_sha256": "6cc16af1a6185410a53fe9e9832a0e9871dd64bf9fea404137d986b74f750e60",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-scalar-source-only-present",
+      "input_sha256": "415ffb0a1d0baf15f2b4ba25aa089c2e6173262d910167b482dc212d5ae82fed",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-scalar-source-only-absent",
+      "input_sha256": "ce676673dbb655cd7e7b8ceb30ba99bece3eb25978fb717ec5cd537f425cb89c",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-scalar-render-only-absent",
+      "input_sha256": "4d43405284c5ebb116228859ed05bd2b7408cfa2633569738156ea8bcb6f508d",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-scalar-source-and-render-absent",
+      "input_sha256": "6db12a553b1b07ef92608c9bceaffece99f9cb52452ac3d5408753f42686240f",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-scalar-source-or-render-absent",
+      "input_sha256": "a3b149ee2ef5888651ee0a88e2d711eb01062670668bcf102836fbc96e28ccb4",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-scalar-source-or-render-present",
+      "input_sha256": "b48bef1848eadb3fb0e01405d5912a08ce8da84fa928bd789838a048f7bb8f7e",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-states-null-source-only-present",
+      "input_sha256": "dbda9cc0ae527b26962a7b17bd98bfe116a1219517b4c66e2391b676c7880c87",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-states-null-source-only-absent",
+      "input_sha256": "f2ddabc41ea58c49ed9f819c5cc7f4704f18ed9c7ef3e83ec24e84cdd923b457",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-states-null-render-only-absent",
+      "input_sha256": "a28de635e20cc09d7b2d60fe175a7008adac0b3c92dd5b260c7414270509b6ea",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-states-null-source-and-render-absent",
+      "input_sha256": "92d487a889c887e665af2b2fc82aae3d81e50bf478358181098675fb66094200",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-states-null-source-or-render-absent",
+      "input_sha256": "cf7d7f2ba2caae535afe4e225414ac9660e94474e8d5db516197bc710178a40c",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-states-null-source-or-render-present",
+      "input_sha256": "3e52e7539c0cf18789c8745a2d12b13fe3c3954b729e234bd8fffd8350f66c50",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-states-scalar-source-only-present",
+      "input_sha256": "aa065319d25891fb8b577bc995b48b46a036d84cb9932a11f7fee7d84be3b393",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-states-scalar-source-only-absent",
+      "input_sha256": "eab5fa6aca06f26404e1986f40bf9a252817cd83d54d5b27862cffc4c9754623",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-states-scalar-render-only-absent",
+      "input_sha256": "b1918c13c3cbf72908382b89ae0bb8b5b5c63e9aa570158111af4c7b591989d9",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-states-scalar-source-and-render-absent",
+      "input_sha256": "6c6ca91b79aa19e06f61a6d6f112157850edf6ef30627c0fe166af3ef37c1d46",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "fail"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NC",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-states-scalar-source-or-render-absent",
+      "input_sha256": "7f3bfeef76ed1ccc7f6410350e0409e38da8f160a1a9d1406847d97cc73f7894",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    },
+    {
+      "id": "critical-presence-v2-malformed-render-states-scalar-source-or-render-present",
+      "input_sha256": "f646dd842cd1343fb07e7be5708b67a3479000c1eb143fe427039ec15edb89f5",
+      "native_expected": [
+        {
+          "rule_id": "TS25-A01",
+          "target": "https://example.test/article",
+          "outcome": "pass"
+        },
+        {
+          "rule_id": "TS25-A02",
+          "target": "https://example.test/article",
+          "outcome": "inconclusive"
+        }
+      ],
+      "admission": "report",
+      "report_status": "NT",
+      "refusal_message": null
+    }
+  ]
+}

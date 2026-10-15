@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.41",
+  "version": "0.1.0-draft.44",
   "status": "draft",
   "date": "2026-10-15",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.41"
+      "rule_version": "0.1.0-draft.44"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.41"
+      "rule_version": "0.1.0-draft.44"
     },
     {
       "id": "TS08",
@@ -926,7 +926,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "automation": "semiAuto",
@@ -1372,7 +1372,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.41"
+      "rule_version": "0.1.0-draft.44"
     },
     {
       "id": "TS11",
@@ -1492,7 +1492,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "id": "TS12-A01",
@@ -1812,7 +1812,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "automation": "automatic",
@@ -2013,7 +2013,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "id": "TS16-A01",
@@ -2122,7 +2122,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "automation": "automatic",
@@ -2278,7 +2278,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "automation": "automatic",
@@ -2722,7 +2722,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "id": "TS23-A01",
@@ -2829,7 +2829,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "id": "TS24-A01",
@@ -2892,33 +2892,32 @@
       "severity": "blocking",
       "unit": "page",
       "required_inputs": [
-        "html",
-        "render",
+        "http",
         "intent"
       ],
       "applicability": {
-        "fr": "Gabarits dont les éléments critiques sont listés.",
-        "en": "Templates whose critical elements are listed."
+        "fr": "Éléments critiques et politiques de stade déclarés avant les captures, profil critical-stage-presence-v1.",
+        "en": "Critical items and stage policies declared before capture, profile critical-stage-presence-v1."
       },
       "procedure": {
-        "fr": "Lister les éléments critiques puis comparer HTML source et DOM rendu dans les conditions déclarées. Une inspection Google facultative est une observation supplémentaire distincte.",
-        "en": "List critical elements, then compare source HTML and rendered DOM under declared conditions. Optional Google inspection is a separate additional observation."
+        "fr": "Vérifier les cinq décisions de rôle puis les éléments dans les hypothèses source et états rendus prévus ; conserver originaux, exclusions et revues fournies liées.",
+        "en": "Check five role dispositions, then items in static source hypotheses and planned rendered states; retain originals, exclusions and bound supplied reviews."
       },
       "acceptance": {
-        "fr": "Chaque élément critique est observé au stade source ou rendu déclaré ; moteur, version et conditions sont conservés ; aucune équivalence avec Google n’est inférée.",
-        "en": "Every critical element is observed at the declared source or rendered stage; engine, version and conditions are retained; no equivalence with Google is inferred."
+        "fr": "Deux règles pass dans le périmètre fourni : couverture motivée et présence selon les politiques préalables. Tout défaut indépendant qualifié donne NC ; sinon les inconnues donnent NT.",
+        "en": "Two passing rules within supplied scope: motivated coverage and presence under prior policies. Any qualified independent failure yields NC; otherwise unknowns yield NT."
       },
       "non_applicability": {
-        "fr": "Aucun document HTML concerné dans le périmètre.",
-        "en": "No relevant HTML document in scope."
+        "fr": "Aucune NA native ; rôle hors périmètre motivé conservé, jamais équivalent à un contrôle NA.",
+        "en": "No native NA; motivated out-of-scope roles retained, never equivalent to control NA."
       },
       "evidence": {
-        "fr": "Titre, contenu, liens, canonical et données structurées présents au bon stade.",
-        "en": "Title, content, links, canonical and structured data present at the right stage."
+        "fr": "Plan antérieur, originaux HTTP/DOM, empreintes, conditions, valeurs par élément/stade, revues réellement fournies et dates.",
+        "en": "Prior plan, HTTP/DOM originals, fingerprints, conditions, per-item/stage values, actually supplied reviews and dates."
       },
       "limitations": {
-        "fr": "Un navigateur local ne reproduit pas exactement le rendu Google.",
-        "en": "A local browser does not reproduce Google’s rendering exactly."
+        "fr": "Périmètre déclaré uniquement, hypothèses statiques sans exécution ; revues et attribution non authentifiées. Ni rendu Google, visibilité CSS déduite, vérité, validité structurée, indexation ou conformité globale.",
+        "en": "Declared scope only, static hypotheses without execution; unauthenticated reviews and attribution. No inferred Google rendering, CSS visibility, truth, structured validity, indexing or global conformity."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -2936,7 +2935,98 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.44",
+      "rules": [
+        {
+          "id": "TS25-A01",
+          "title": {
+            "fr": "Périmètre critique préalable et décisions des cinq rôles.",
+            "en": "Prior critical scope and five role dispositions."
+          },
+          "automation": "semiAuto",
+          "required_inputs": [
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Éléments critiques et politiques de stade déclarés avant les captures, profil critical-stage-presence-v1.",
+            "en": "Critical items and stage policies declared before capture, profile critical-stage-presence-v1."
+          },
+          "procedure": {
+            "fr": "Vérifier les cinq décisions de rôle puis les éléments dans les hypothèses source et états rendus prévus ; conserver originaux, exclusions et revues fournies liées.",
+            "en": "Check five role dispositions, then items in static source hypotheses and planned rendered states; retain originals, exclusions and bound supplied reviews."
+          },
+          "non_applicability": {
+            "fr": "Aucune NA native ; rôle hors périmètre motivé conservé, jamais équivalent à un contrôle NA.",
+            "en": "No native NA; motivated out-of-scope roles retained, never equivalent to control NA."
+          },
+          "evidence": {
+            "fr": "Plan antérieur, originaux HTTP/DOM, empreintes, conditions, valeurs par élément/stade, revues réellement fournies et dates.",
+            "en": "Prior plan, HTTP/DOM originals, fingerprints, conditions, per-item/stage values, actually supplied reviews and dates."
+          },
+          "limitations": {
+            "fr": "Périmètre déclaré uniquement, hypothèses statiques sans exécution ; revues et attribution non authentifiées. Ni rendu Google, visibilité CSS déduite, vérité, validité structurée, indexation ou conformité globale.",
+            "en": "Declared scope only, static hypotheses without execution; unauthenticated reviews and attribution. No inferred Google rendering, CSS visibility, truth, structured validity, indexing or global conformity."
+          },
+          "acceptance": {
+            "fr": "Pass exige population motivée, cinq décisions exactes et revue supported liée antérieure. Revue contradiction liée : fail. Revue absente, non liée ou inconnue : inconclusive.",
+            "en": "Pass requires motivated population, five exact decisions and a prior bound supported review. Bound contradiction review: fail. Missing, unbound or unknown review: inconclusive."
+          },
+          "assumptions": {
+            "fr": "1–32 éléments,0–16 états préalables, fenêtre<=24h, HTTP<=30s ; cinq rôles explicites. Deux hypothèses HTML doivent concorder ; états requis combinés avec priorité au défaut qualifié. Revue fournie, aucune authentification.",
+            "en": "1–32 items,0–16 prior states, window<=24h, HTTP<=30s; five explicit roles. Two HTML hypotheses must agree; required states combine with qualified-failure precedence. Supplied review, no authentication."
+          },
+          "inconclusive": {
+            "fr": "Plan/capture/revue absent ou invalide, rôle non pris en charge, lectures contradictoires, contexte rendu non qualifié, états supplémentaires/doublons, limites dépassées. Un défaut indépendant reste fail. Draft.44 / reader3 : les champs reviewer, assistance et reason des revues TS25 fournies sont limités à8192octets UTF8 bruts chacun, avant strip ou normalisation ; chaque objet revue, champs supplémentaires inclus, à32768octets de JSON compact UTF8. Toute revue fournie est vérifiée à l’admission, même inutilisée. Un dépassement donne un refus technique avant publication, jamais C ou NT public ; les originaux sont conservés sans réécriture. Le diagnostic natif de chaque règle est borné à4MiB de JSON compact UTF8 trié, y compris A01 et les sorties d’erreur. Au dépassement, un diagnostic compact explicitement incomplet conserve un fail indépendant établi, sinon inconclusive ; aucun pass. Le transport refuse ce marqueur et borne aussi à4MiB par cible la somme des artefacts TS25 réellement sérialisés (JSON UTF8 indent2, saut de ligne final), pour les règles demandées. Les maxima individuels ne garantissent pas que toutes leurs combinaisons respectent les bornes cumulées. Aucun changement des autres contrôles ni du validateur partagé.",
+            "en": "Missing or invalid plan/capture/review, unsupported role, conflicting readings, unqualified rendered context, extra/duplicate states, exceeded bounds. An independent failure remains fail. Draft.44 / reader3: supplied TS25 review fields reviewer, assistance and reason are each limited to8192 raw UTF8 bytes before strip or normalization; each entire review object, including additional fields, to32768 compact UTF8 JSON bytes. Admission checks every supplied review, including unused ones. An overrun is technical refusal before publication, never public C or NT; exact originals are not rewritten. Each native rule diagnostic is bounded to4MiB of sorted compact UTF8 JSON, including A01 and error returns. Overflow produces an explicitly incomplete compact diagnostic retaining an independently established fail, otherwise inconclusive; never pass. Transport refuses that marker and also caps the sum of actual serialized TS25 observation artifacts per target at4MiB (UTF8 JSON indent2, trailing newline), for requested rules. Individual maxima do not guarantee that every combination satisfies aggregate bounds. Other controls and the shared validator are unchanged."
+          }
+        },
+        {
+          "id": "TS25-A02",
+          "title": {
+            "fr": "Présence critique selon la politique source/rendu de chaque élément.",
+            "en": "Critical presence under each item’s source/render policy."
+          },
+          "automation": "semiAuto",
+          "required_inputs": [
+            "http",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Éléments critiques et politiques de stade déclarés avant les captures, profil critical-stage-presence-v1.",
+            "en": "Critical items and stage policies declared before capture, profile critical-stage-presence-v1."
+          },
+          "procedure": {
+            "fr": "Vérifier les cinq décisions de rôle puis les éléments dans les hypothèses source et états rendus prévus ; conserver originaux, exclusions et revues fournies liées.",
+            "en": "Check five role dispositions, then items in static source hypotheses and planned rendered states; retain originals, exclusions and bound supplied reviews."
+          },
+          "non_applicability": {
+            "fr": "Aucune NA native ; rôle hors périmètre motivé conservé, jamais équivalent à un contrôle NA.",
+            "en": "No native NA; motivated out-of-scope roles retained, never equivalent to control NA."
+          },
+          "evidence": {
+            "fr": "Plan antérieur, originaux HTTP/DOM, empreintes, conditions, valeurs par élément/stade, revues réellement fournies et dates.",
+            "en": "Prior plan, HTTP/DOM originals, fingerprints, conditions, per-item/stage values, actually supplied reviews and dates."
+          },
+          "limitations": {
+            "fr": "Périmètre déclaré uniquement, hypothèses statiques sans exécution ; revues et attribution non authentifiées. Ni rendu Google, visibilité CSS déduite, vérité, validité structurée, indexation ou conformité globale.",
+            "en": "Declared scope only, static hypotheses without execution; unauthenticated reviews and attribution. No inferred Google rendering, CSS visibility, truth, structured validity, indexing or global conformity."
+          },
+          "acceptance": {
+            "fr": "Pass exige tous les éléments présents selon leur politique et couverture des états qualifiée. Absence indépendante qualifiée : fail malgré une autre inconnue. Sinon inconclusive.",
+            "en": "Pass requires all items present under their policy and qualified state coverage. Independently qualified absence: fail despite another unknown. Otherwise inconclusive."
+          },
+          "assumptions": {
+            "fr": "1–32 éléments,0–16 états préalables, fenêtre<=24h, HTTP<=30s ; cinq rôles explicites. Deux hypothèses HTML doivent concorder ; états requis combinés avec priorité au défaut qualifié. Revue fournie, aucune authentification.",
+            "en": "1–32 items,0–16 prior states, window<=24h, HTTP<=30s; five explicit roles. Two HTML hypotheses must agree; required states combine with qualified-failure precedence. Supplied review, no authentication."
+          },
+          "inconclusive": {
+            "fr": "Plan/capture/revue absent ou invalide, rôle non pris en charge, lectures contradictoires, contexte rendu non qualifié, états supplémentaires/doublons, limites dépassées. Un défaut indépendant reste fail. Un conteneur render non objet reste inconnu ; il ne supprime pas une absence source indépendante requise. Draft.44 / reader3 : les champs reviewer, assistance et reason des revues TS25 fournies sont limités à8192octets UTF8 bruts chacun, avant strip ou normalisation ; chaque objet revue, champs supplémentaires inclus, à32768octets de JSON compact UTF8. Toute revue fournie est vérifiée à l’admission, même inutilisée. Un dépassement donne un refus technique avant publication, jamais C ou NT public ; les originaux sont conservés sans réécriture. Le diagnostic natif de chaque règle est borné à4MiB de JSON compact UTF8 trié, y compris A01 et les sorties d’erreur. Au dépassement, un diagnostic compact explicitement incomplet conserve un fail indépendant établi, sinon inconclusive ; aucun pass. Le transport refuse ce marqueur et borne aussi à4MiB par cible la somme des artefacts TS25 réellement sérialisés (JSON UTF8 indent2, saut de ligne final), pour les règles demandées. Les maxima individuels ne garantissent pas que toutes leurs combinaisons respectent les bornes cumulées. Aucun changement des autres contrôles ni du validateur partagé.",
+            "en": "Missing or invalid plan/capture/review, unsupported role, conflicting readings, unqualified rendered context, extra/duplicate states, exceeded bounds. An independent failure remains fail. A non-object render container remains unknown; it does not erase an independently required qualified source absence. Draft.44 / reader3: supplied TS25 review fields reviewer, assistance and reason are each limited to8192 raw UTF8 bytes before strip or normalization; each entire review object, including additional fields, to32768 compact UTF8 JSON bytes. Admission checks every supplied review, including unused ones. An overrun is technical refusal before publication, never public C or NT; exact originals are not rewritten. Each native rule diagnostic is bounded to4MiB of sorted compact UTF8 JSON, including A01 and error returns. Overflow produces an explicitly incomplete compact diagnostic retaining an independently established fail, otherwise inconclusive; never pass. Transport refuses that marker and also caps the sum of actual serialized TS25 observation artifacts per target at4MiB (UTF8 JSON indent2, trailing newline), for requested rules. Individual maxima do not guarantee that every combination satisfies aggregate bounds. Other controls and the shared validator are unchanged."
+          }
+        }
+      ]
     },
     {
       "id": "TS26",
@@ -3291,7 +3381,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3489,7 +3579,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3685,7 +3775,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3883,7 +3973,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "id": "TS34-A01",
@@ -4078,7 +4168,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "id": "TS35-A01",
@@ -4230,7 +4320,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "automation": "semiAuto",
@@ -4553,7 +4643,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "applicability": {
@@ -4812,7 +4902,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "applicability": {
@@ -5013,7 +5103,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "id": "TS42-A01",
@@ -5210,7 +5300,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "id": "TS43-A01",
@@ -5412,7 +5502,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.41",
+      "rule_version": "0.1.0-draft.44",
       "rules": [
         {
           "na_inputs": [],
@@ -5704,15 +5794,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "a3c95bcaaeec877dd638f501e862349c2a633300e1d21a86c9802e759b0e74f2"
+      "sha256": "9dbefaf8594df385b29f8f03ee9191f06c682be0c0cd1af4fddb33d348ebd6b5"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "96d6ac6bf205c5a7e7ef058ce5218c159944c3d882cab9136a0807d3ee9515f6"
+      "sha256": "9423de7c6371cbf014574451a22b26388e87857b75d0564eaef84a51b3bcb802"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "21a077e42c20cf33c5983423b6803e3d15456b725bc881c9db679e0a3d43c462"
+      "sha256": "e304f48afb146b5a01db186157e6dd35b1abb74e599892b410a1f5100965e580"
     },
     {
       "path": "docs/source-directives.md",
@@ -5805,6 +5895,10 @@
     {
       "path": "docs/xdefault-role-evidence.md",
       "sha256": "83ac30626ccffe7f676dceed4cc6eae248553f5d8f89934e77caff640ed35c2e"
+    },
+    {
+      "path": "docs/critical-presence-evidence.md",
+      "sha256": "425a98159d821447e380ae9a71ae24f6e7a33727a6e276e20b098b74077f737a"
     }
   ]
 }

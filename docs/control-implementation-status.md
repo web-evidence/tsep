@@ -1,4 +1,14 @@
-Current candidate / Candidat actuel — draft.38:22 contrôles /tooled controls,60 règles /rules. [TS18](graph-reconciliation-evidence.md):32 authored native cases/96pairs; expected corpus1769cases/3782pairs. Separate component populations and technical refusals are not additional controls. Full qualification and app reception remain separate; supplied reviews are not authenticated approval.
+Current candidate draft.44 / interpreter43 / presence reader3 / adapter43 / HTML25 / replay3 : TS25 UTF8 review admission and combined diagnostic bounds. 25 controls /64 rules. Explicit Node24 + TSEP_VERIFY_STEP_TIMEOUT=3600, all checks enabled. Qualification and app reception pending separately. [Migration](migration-draft.44.md).
+FR : candidat TS25, bornes UTF8 des revues et diagnostics cumulés ; qualification et réception applicative distinctes.
+
+Previous candidate / candidat précédent :
+Current TS25 draft.43 / interpreter42 / reader2 : independent source failures survive malformed documentary render containers;183 preauthored cases,25controls/64rules. Adapter42/HTML25/replay3 retained. [Migration](migration-draft.43.md). Qualification and app acceptance separate.
+FR : les absences source indépendantes restent en échec malgré un conteneur documentaire rendu mal formé ;183contre-cas, qualification et recette applicative distinctes.
+
+Previous TS25 candidate / candidat précédent :
+Current candidate / Candidat actuel — draft.42:25 contrôles outillés /tooled controls,64 règles /rules; TS01–TS44 preserved. [TS25](critical-presence-evidence.md):153 authored cases, including two-rule mixed-role cases, explicit source/render policies and bound supplied reviews. These describe candidate coverage; complete engine qualification and application acceptance require their separate observed receipts. TS16–18 and TS31–33 now have executable rules; historical tables below describe earlier editions. No real-site assessment or authenticated human approval inferred.
+
+Previous candidate / Candidat précédent — draft.38:22 contrôles /tooled controls,60 règles /rules. [TS18](graph-reconciliation-evidence.md):32 authored native cases/96pairs; expected corpus1769cases/3782pairs. Separate component populations and technical refusals are not additional controls. Full qualification and app reception remain separate; supplied reviews are not authenticated approval.
 
 Previous candidate / Candidat précédent — draft.37: 21 contrôles /tooled controls,57 règles /rules. [TS16](incoming-links-evidence.md) adds64 authored native cases/64pairs; expected corpus1737cases/3686pairs. Technical intake refusals are separate from native outcomes. Full qualification and app acceptance are recorded separately; these counts do not establish real-site assessments.
 

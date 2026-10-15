@@ -1,3 +1,10 @@
+Draft.44 / reader3: supplied TS25 review fields reviewer, assistance and reason are each limited to8192 raw UTF8 bytes before strip or normalization; each entire review object, including additional fields, to32768 compact UTF8 JSON bytes. Admission checks every supplied review, including unused ones. An overrun is technical refusal before publication, never public C or NT; exact originals are not rewritten. Each native rule diagnostic is bounded to4MiB of sorted compact UTF8 JSON, including A01 and error returns. Overflow produces an explicitly incomplete compact diagnostic retaining an independently established fail, otherwise inconclusive; never pass. Transport refuses that marker and also caps the sum of actual serialized TS25 observation artifacts per target at4MiB (UTF8 JSON indent2, trailing newline), for requested rules. Individual maxima do not guarantee that every combination satisfies aggregate bounds. Other controls and the shared validator are unchanged.
+[Migration](migration-draft.44.md).
+
+Draft.43 — TS25 non-object render boundary / frontière render non objet : [presence](critical-presence-evidence.md), [migration](migration-draft.43.md). Independent source failure retained / absence source indépendante conservée.
+
+Draft.42 — TS25-A01/A02 : [présence critique source/rendu / source-render critical presence](critical-presence-evidence.md), [migration](migration-draft.42.md).
+
 Draft.41 — TS24 : contradiction de destination unique même parmi plusieurs cibles / unique-destination contradiction including multiple targets. [Migration](migration-draft.41.md).
 
 Draft.40 — TS24-A01 : [rôle x-default fourni / supplied x-default role](xdefault-role-evidence.md), [migration](migration-draft.40.md).

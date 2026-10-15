@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts, binding_digest
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '41'
+VERSION = '43'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -79,7 +79,7 @@ def source_files():
         modules['conformance/'+name+'.py'] = importlib.import_module('conformance.'+name)
     for name in ('graph_bounds','graph_inventories','graph_documents','graph_reviews','graph_reconciliation'):
         modules['conformance/'+name+'.py'] = importlib.import_module('conformance.'+name)
-    for name in ('hreflang_native','hreflang_reciprocity','xdefault_role'):
+    for name in ('hreflang_native','hreflang_reciprocity','xdefault_role','critical_presence'):
         modules['conformance/'+name+'.py'] = importlib.import_module('conformance.'+name)
     modules['adapters/hreflang_intake.py'] = importlib.import_module('adapters.hreflang_intake')
     modules['adapters/graph_intake.py'] = importlib.import_module('adapters.graph_intake')
@@ -123,6 +123,7 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS25 : cinq rôles déclarés, présence source/rendu et revues fournies ; aucune exécution ou visibilité authentifiée.','en':'TS25: five declared roles, source/render presence and supplied reviews; no authenticated execution or visibility.'},
     {'state':'implemented','fr':'TS24 : politique x-default, contexte motivé et revue de rôle fournis ; aucune neutralité ni approbation humaine inférée.','en':'TS24: supplied x-default policy, motivated context and role review; no inferred neutrality or human approval.'},
     {'state':'implemented','fr':'TS23 : réciprocité et auto-référence natives dans le groupe préalable ; aucune validité linguistique, indexabilité ou sélection Google déduite.', 'en':'TS23: native reciprocal/self annotations in the prior cluster; no inferred language validity, indexability or Google selection.'},
     {'state':'implemented','fr':'TS18 : inventaires, graphe borné et revues fournis ; aucune exhaustivité, identité de relecteur ou collecte authentifiée.', 'en':'TS18: supplied inventories, bounded graph and reviews; no completeness, authenticated reviewer or acquisition.'},
@@ -336,6 +337,8 @@ def pieces(target):
         if rendered:retain('render','graph_documents',rendered)
     if 'graph_reviews' in target:retain('intent','graph_reviews',target['graph_reviews'])
     if 'xdefault_reviews' in target:retain('intent','xdefault_reviews',target['xdefault_reviews'])
+    for name in ('presence_plan_review','presence_context_reviews'):
+        if name in target: retain('intent',name,target[name])
     hreflang=target.get('hreflang_documents')
     if isinstance(hreflang,list):
         retain('http','hreflang_documents',hreflang)
@@ -405,6 +408,14 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
     if any(rule.startswith('TS18-') for rule in data['rules']):
         from adapters.graph_intake import verify_target
         for target in data['targets']: verify_target(target,data['input_version'])
+    if set(data['rules']) & {'TS25-A01','TS25-A02'}:
+        for target in data['targets']:
+            try: verify_ts17_self_digests(target)
+            except tsep.Invalid as error: raise tsep.Invalid('TS25 transport self-integrity: '+str(error)) from error
+        from conformance.critical_presence import verify_review_budgets
+        for target in data['targets']:
+            try: verify_review_budgets(target)
+            except (ValueError,TypeError,UnicodeError) as error: raise tsep.Invalid('TS25 review budget: '+str(error)) from error
     if 'TS16-A01' in data['rules']:
         from adapters.incoming_links_intake import verify_target
         for target in data['targets']:
@@ -456,13 +467,16 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         elif isinstance(value,list):
             for child in value:delivery_provenance(child)
     for target in evidence_targets:
-        for flag in ('delivery_synthetic', 'identity_synthetic', 'structured_synthetic', 'inspection_synthetic', 'sitemap_synthetic', 'link_synthetic', 'incoming_links_synthetic','graph_synthetic','hreflang_synthetic','xdefault_synthetic'):
+        for flag in ('delivery_synthetic', 'identity_synthetic', 'structured_synthetic', 'inspection_synthetic', 'sitemap_synthetic', 'link_synthetic', 'incoming_links_synthetic','graph_synthetic','hreflang_synthetic','xdefault_synthetic','presence_synthetic'):
             if flag in target:
                 tsep.require(type(target[flag]) is bool and target[flag] == (access == 'synthetic'),
                              {'structured_synthetic': 'Structured-data provenance differs from access',
                               'delivery_synthetic': 'Delivery synthetic provenance differs from evidence access',
                               'identity_synthetic': 'Structured identity provenance differs from access',
                               'inspection_synthetic': 'Inspection provenance differs from access'}.get(flag, 'Explicit provenance differs from evidence access: ' + flag))
+        if isinstance(target.get('intent'),dict) and 'critical_presence' in target['intent'] or any(k in target for k in ('presence_plan_review','presence_context_reviews')):
+            tsep.require(type(target.get('presence_synthetic')) is bool and target['presence_synthetic']==(access=='synthetic'), 'Critical presence provenance differs from access')
+            delivery_provenance(target)
         if 'delivery' in target.get('intent',{}):
             tsep.require((target.get('delivery_synthetic') is True)==(access=='synthetic'),
                          'Delivery synthetic provenance differs from evidence access')
@@ -549,6 +563,10 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
     # Only the raw input reaches the interpreter, never the conformance corpus.
     source_observations = []
     calculated = evaluate(data, source_observations=source_observations)
+    if set(data['rules']) & {'TS25-A01','TS25-A02'}:
+        from conformance.critical_presence import verify_public_diagnostic_budget
+        try: verify_public_diagnostic_budget(source_observations)
+        except (ValueError,TypeError,UnicodeError) as error: raise tsep.Invalid(str(error)) from error
     tsep.require(source_files() == sources, 'Tool source files changed during interpretation')
     tsep.require(runtime_identity() == runtime, 'Selected runtime dependencies changed during interpretation')
     # Reject malformed metadata and incompatible modes before opening a destination.

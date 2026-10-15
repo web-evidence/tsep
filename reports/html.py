@@ -12,12 +12,20 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '24'
+VERSION = '25'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'presence_title': 'TS25 — présence critique par stade',
+        'presence_note': 'Périmètre préalable déclaré ; exclusions et inconnues conservées. Revues fournies, auteurs non authentifiés. Aucune exécution, visibilité CSS, validité sémantique ou indexation déduite.',
+        'presence_scope': 'Population et décisions des cinq rôles',
+        'presence_items': 'Éléments et politiques préalables',
+        'presence_source': 'Hypothèses source statiques',
+        'presence_render': 'États rendus fournis',
+        'presence_reviews': 'Revue originale et contexte fournis',
+        'presence_details': 'Diagnostics complets et limites',
         'xdefault_title': 'x-default — rôle documentaire fourni',
         'xdefault_note': 'TS24 : contexte fourni motivé et revue liée, auteur non authentifié. HTTP200 ne détecte pas une page d’erreur/soft404. Aucune neutralité, représentativité du public, visite Google ou indexation déduite.',
         'xdefault_policy': 'Politique de rôle préalable',
@@ -215,6 +223,14 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'presence_title': 'TS25 — critical presence by stage',
+        'presence_note': 'Prior declared scope; exclusions and unknowns retained. Supplied reviews, unauthenticated authors. No inferred execution, CSS visibility, semantic validity or indexing.',
+        'presence_scope': 'Population and five role dispositions',
+        'presence_items': 'Items and prior policies',
+        'presence_source': 'Static source hypotheses',
+        'presence_render': 'Supplied rendered states',
+        'presence_reviews': 'Original supplied review and context',
+        'presence_details': 'Complete diagnostics and limitations',
         'xdefault_title': 'x-default — supplied documentary role',
         'xdefault_note': 'TS24: motivated supplied context and bound review, unauthenticated author. HTTP200 does not detect error templates/soft404s. No inferred neutrality, representative audience, Google visit or indexing.',
         'xdefault_policy': 'Prior role policy',
@@ -696,6 +712,28 @@ def comparison_values(atom, words):
     return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
 
 
+def presence_values(atom, words):
+    prefix='Supplied critical presence / présence critique fournie: '
+    reason=atom.get('reason','')
+    if not reason.startswith(prefix): return ''
+    try:
+        note=json.loads(reason[len(prefix):])
+        def dump(value): return esc(json.dumps(value,ensure_ascii=False,indent=2))
+        out='<div class="presence-values"><h5>'+esc(words['presence_title'])+'</h5>'
+        out+='<p>'+esc(note.get('population','—'))+'</p><p>'+esc(note.get('scope_reason','—'))+'</p>'
+        out+='<details><summary>'+esc(words['presence_scope'])+'</summary><pre>'+dump(note.get('declared_roles'))+'</pre></details>'
+        if 'scope_review' in note:
+            out+='<details><summary>'+esc(words['presence_reviews'])+'</summary><pre>'+dump(note['scope_review'])+'</pre></details>'
+        out+='<h6>'+esc(words['presence_items'])+'</h6>'
+        for row in note.get('items',[]):
+            out+='<details class="presence-item"><summary>'+esc(str(row.get('item_id','—'))+' · '+str(row.get('role','—'))+' · '+str(row.get('policy','—'))+' · '+str(row.get('value','unknown')))+'</summary>'
+            out+='<p>'+esc(str(row.get('expected','—')))+'</p>'
+            out+='<details><summary>'+esc(words['presence_source'])+'</summary><pre>'+dump(row.get('source'))+'</pre></details>'
+            out+='<details><summary>'+esc(words['presence_render'])+'</summary><pre>'+dump(row.get('rendered'))+'</pre></details></details>'
+        return out+'<details><summary>'+esc(words['presence_details'])+'</summary><pre>'+dump(note)+'</pre></details></div>'
+    except (ValueError,TypeError,KeyError):return ''
+
+
 def xdefault_values(atom, words):
     """Display retained documentary judgments; never create or reevaluate reviews."""
     prefix='Supplied x-default / x-default fourni: '
@@ -993,6 +1031,8 @@ def results(bundle, controls, words, language):
             out += performance_values(result, words)
         if cid == 'TS36':
             out += '<div class="notice">' + esc(words['monitoring_note']) + '</div>'
+        if cid == 'TS25':
+            out += '<div class="notice">'+esc(words['presence_note'])+'</div>'
         if cid == 'TS24':
             out += '<div class="notice">'+esc(words['xdefault_note'])+'</div>'
         if cid == 'TS23':
@@ -1032,7 +1072,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (xdefault_values(atom, words) if cid == 'TS24' else hreflang_values(atom, words) if cid == 'TS23' else graph_values(atom, words) if cid == 'TS18' else incoming_links_values(atom, words) if cid == 'TS16' else essential_links_values(atom, words) if cid == 'TS17' else sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (presence_values(atom, words) if cid == 'TS25' else xdefault_values(atom, words) if cid == 'TS24' else hreflang_values(atom, words) if cid == 'TS23' else graph_values(atom, words) if cid == 'TS18' else incoming_links_values(atom, words) if cid == 'TS16' else essential_links_values(atom, words) if cid == 'TS17' else sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

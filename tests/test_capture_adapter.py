@@ -1,5 +1,6 @@
 """Offline capture-to-bundle workflow, truth preservation and delivery safety. Apache-2.0."""
 import copy
+import hashlib
 from datetime import datetime, timezone
 import json
 from pathlib import Path
@@ -18,6 +19,17 @@ from adapters.captures import build, NAME, VERSION
 from conformance.evaluate import evaluate
 
 CASES = {c['id']:c for c in expand(tsep.read_json(ROOT/'conformance/cases.json'))['cases']}
+
+
+def ts25_admission_cases():
+    path = ROOT/'tests/fixtures/critical-presence-admission-v1.json'
+    raw = path.read_bytes()
+    if hashlib.sha256(raw).hexdigest() != path.with_suffix('.sha256').read_text().strip():
+        raise ValueError('Changed authored TS25 admission classes')
+    return json.loads(raw)
+
+
+TS25_ADMISSION = {row['id']:row for row in ts25_admission_cases()['cases']}
 
 
 class CaptureAdapter(unittest.TestCase):
@@ -46,6 +58,20 @@ class CaptureAdapter(unittest.TestCase):
                 with patch('adapters.captures.datetime') as clock:
                     # After every supplied fixture date; future-to-assessment remains unknown.
                     clock.now.return_value=datetime(2026,10,16,tzinfo=timezone.utc)
+                    admission = TS25_ADMISSION.get(name)
+                    if admission and admission['admission'] == 'technical-refusal':
+                        # Native uncertainty does not authorize publishing corrupt evidence.
+                        native = evaluate(case['input'])
+                        self.assertEqual(
+                            [(a['rule_id'],a['target'],a['outcome']) for a in native],
+                            [(a['rule_id'],a['target'],a['outcome']) for a in admission['native_expected']])
+                        original = (json.dumps(case['input'],ensure_ascii=False,indent=3)+'\n').encode('utf-8')
+                        with self.assertRaises(tsep.Invalid) as refused:
+                            self.emit(case['input'])
+                        self.assertEqual(str(refused.exception), admission['refusal_message'])
+                        self.assertFalse(self.output.exists())
+                        self.assertEqual(self.input.read_bytes(), original)
+                        continue
                     if name in ('release-monitoring-v1-real-review-in-synthetic','structured-content-v1-false-human-review','structured-content-boundary-authored-dom-not-real','structured-identity-v1-false-human-review'):
                         # The raw reader returns unknown; bundling must refuse mixed provenance.
                         with self.assertRaisesRegex(tsep.Invalid, 'Structured-data provenance differs|review provenance differs'):
@@ -68,6 +94,9 @@ class CaptureAdapter(unittest.TestCase):
                         continue
                     summary=self.emit(case['input'])
                 report=tsep.read_json(self.output/'report.json')
+                if admission:
+                    self.assertEqual(admission['admission'], 'report')
+                    self.assertEqual([r['status'] for r in report['results']], [admission['report_status']])
                 self.assertEqual(summary,tsep.validate(report,self.output))
                 actual=[a for r in report['results'] for a in r.get('atomic_results',[])]
                 self.assertEqual(sorted((a['rule_id'],a['target'],a['outcome']) for a in actual),
@@ -76,6 +105,29 @@ class CaptureAdapter(unittest.TestCase):
                 self.assertTrue(summary['synthetic_evidence'])
                 self.assertLessEqual(summary['selected_controls'],3)
                 shutil.rmtree(self.output)
+
+    def test_ts25_admission_classes_are_complete_and_bound_to_native_cases(self):
+        manifest = ts25_admission_cases()
+        native = {name:case for name,case in CASES.items()
+                  if any(row['rule_id'].startswith('TS25-') for row in case['expected'])}
+        self.assertEqual(len(manifest['cases']), len(TS25_ADMISSION))
+        self.assertEqual(set(TS25_ADMISSION), set(native))
+        counts = {name:sum(row['admission'] == name for row in TS25_ADMISSION.values())
+                  for name in ('report','technical-refusal')}
+        self.assertEqual(counts, {'report':181,'technical-refusal':2})
+        self.assertEqual(counts, manifest['counts'])
+        for name,row in TS25_ADMISSION.items():
+            with self.subTest(case=name):
+                canonical = json.dumps(native[name]['input'],ensure_ascii=False,sort_keys=True,separators=(',',':')).encode('utf-8')
+                self.assertEqual(hashlib.sha256(canonical).hexdigest(), row['input_sha256'])
+                self.assertEqual(row['native_expected'], native[name]['expected'])
+                if row['admission'] == 'technical-refusal':
+                    self.assertEqual([r['outcome'] for r in row['native_expected']], ['inconclusive'])
+                    self.assertEqual(row['refusal_message'], 'TS25 transport self-integrity: TS17 DOM integrity: supplied snapshot self-fingerprint mismatch')
+                    self.assertIsNone(row['report_status'])
+                else:
+                    self.assertIn(row['report_status'], ('C','NC','NT'))
+                    self.assertIsNone(row['refusal_message'])
 
     def test_identity_unknown_failure_and_success_do_not_change_gate_policy(self):
         for name,status,gate in [('identity-timestamp-no-markers','NT','NO_GO'),

@@ -1,3 +1,5 @@
+[TS25 — présence critique fournie / supplied critical presence](docs/critical-presence-evidence.md), [draft.44 migration](docs/migration-draft.44.md).
+
 [TS24 — rôle x-default fourni / supplied x-default role](docs/xdefault-role-evidence.md), [draft.41 migration](docs/migration-draft.41.md).
 
 [TS23 — hreflang fourni / supplied hreflang](docs/hreflang-reciprocity-evidence.md), [draft.39 migration](docs/migration-draft.39.md).
@@ -17,7 +19,7 @@ TS31: [JSON-LD/content evidence](docs/structured-content-evidence.md), [draft.32
 
 TS36: [release follow-up](docs/release-monitoring.md), [intake and closure](docs/release-monitoring-intake.md), [draft.31 migration](docs/migration-draft.31.md). Authored cases only; no real future stage completed.
 
-Local development edition: **0.1.0-draft.41** — [TS24 supplied x-default role](docs/xdefault-role-evidence.md), [migration](docs/migration-draft.41.md). Twenty-four tooled controls /62 rules; no actual Edikka assessment.
+Local development edition: **0.1.0-draft.44** — [TS25 critical presence](docs/critical-presence-evidence.md), [migration](docs/migration-draft.42.md). Twenty-five tooled controls /64 rules; no actual Edikka assessment.
 
 TS08 [native inspections](docs/inspection-evidence.md) and [acquisition](docs/search-console-acquisition.md) remain available.
 
@@ -32,7 +34,7 @@ TS39 has [three delivery rules](docs/delivery-evidence.md): prior matrix, per-co
 
 # TSEP — evidence interchange format
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.41 · initiated by Edikka · [Français](README.fr.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.44 · initiated by Edikka · [Français](README.fr.md)**
 
 Share a technical SEO assessment that its recipient can inspect, replay and
 challenge: stable identifiers, explicit scope, evidence linked to findings and
@@ -114,7 +116,7 @@ validation establishes consistency and file integrity.
 3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
    `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 my_adapter.py'`
    for that subset, or omit `--rules` for all sixty-two rules. State “passes TSEP
-   0.1.0-draft.41 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
+   0.1.0-draft.44 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
    [Input format and comparison](docs/conformance.md). Report exact agreements,
    disagreements and reduced coverage separately; accepted inconclusive results
    on marked reference limits are not successful assessments.
@@ -188,7 +190,7 @@ ranking or future engine behavior.
 [Governance](GOVERNANCE.md) · [Contribute](CONTRIBUTING.md) · [History](CHANGELOG.md) ·
 [Acceptance clause](docs/acceptance-clause.md) · [HTTP probe](probes/README.md).
 
-Cite `TSEP@0.1.0-draft.41:TS07` with scope, result, evidence and archive hash.
+Cite `TSEP@0.1.0-draft.44:TS07` with scope, result, evidence and archive hash.
 Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATION.cff).
 [Development, full verification and independent repository](docs/development.md).
 
