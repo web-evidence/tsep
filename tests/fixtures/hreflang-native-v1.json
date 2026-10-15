@@ -1,0 +1,4827 @@
+{
+  "authored_at": "2026-10-14T21:47:00.564360+00:00",
+  "synthetic": true,
+  "expectations_frozen_before_implementation": true,
+  "profile": "hreflang-reciprocity-v1",
+  "cases": [
+    {
+      "id": "cross-domain-complete",
+      "expected": "C",
+      "reason": "Two distinct domains and all native self/return mappings",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "missing-self-fr",
+      "expected": "NC",
+      "reason": "Qualified primary complete inventory lacks its own FR mapping",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "b9ecd8a1c7bb6f9f4a29cf0f718a0b0e4b0713784285b9abb1945be649cc44d3",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "missing-return-en",
+      "expected": "NC",
+      "reason": "EN primary lacks FR return",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "b9ecd8a1c7bb6f9f4a29cf0f718a0b0e4b0713784285b9abb1945be649cc44d3",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "wrong-return-target",
+      "expected": "NC",
+      "reason": "Known FR code has a different absolute exact target",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page?v=2\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "c728c6ebd0cbc4a601c69700b6e51b7770d53e6f8a7c0aad6494ff212da3434d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "case-folded-language",
+      "expected": "C",
+      "reason": "ASCII case folding only",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"FR\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"EN\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "5a8e874016857ac4193a57df1b08d2bb05be90038b92bec2fcd7e47b12c47a58",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"FR\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"EN\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "5a8e874016857ac4193a57df1b08d2bb05be90038b92bec2fcd7e47b12c47a58",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "shared-url-en-en-US",
+      "expected": "C",
+      "reason": "Distinct codes can share one exact URL",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ],
+            [
+              "en-US",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"><link rel=\"alternate\" hreflang=\"en-US\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "ca5b4621cb863ebc41bd4f7be95580e0f345dea2f599ee3132b7cecdde237662",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"><link rel=\"alternate\" hreflang=\"en-US\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "ca5b4621cb863ebc41bd4f7be95580e0f345dea2f599ee3132b7cecdde237662",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "x-default-shared-fr",
+      "expected": "C",
+      "reason": "No independent role suitability claim",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ],
+            [
+              "x-default",
+              "https://fr.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"><link rel=\"alternate\" hreflang=\"x-default\" href=\"https://fr.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "6b400763f8a88fefd717c5a8bba695a73492d679288fc68997c708e78398220b",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"><link rel=\"alternate\" hreflang=\"x-default\" href=\"https://fr.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "6b400763f8a88fefd717c5a8bba695a73492d679288fc68997c708e78398220b",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "duplicate-identical-html",
+      "expected": "C",
+      "reason": "Exact repeated mapping is idempotent",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "a7adee7057397a7836ee255f9f6fb9a19c16f266c2fbfa35bfb520b0b742aae5",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "duplicate-conflicting-html",
+      "expected": "NC",
+      "reason": "One known code points to two different qualified targets",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"><link rel=\"alternate\" hreflang=\"fr\" href=\"https://de.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "1db882b7916ac3472799e6735d5eadce877708a8b2c7e685fb79b0f0d8428be3",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "unknown-extra-language",
+      "expected": "NT",
+      "reason": "Unplanned outside mapping cannot be silently ignored",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"><link rel=\"alternate\" hreflang=\"de\" href=\"https://de.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "8c3ba591ef56018d9c08979dcc4bd26a1212b5090d8892fdbb2d2b4fc54b462f",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "explicit-outside-boundary",
+      "expected": "C",
+      "reason": "Explicit prior exclusion visible outside scope",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": [
+            [
+              "de",
+              "https://de.example.test/page"
+            ]
+          ]
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"><link rel=\"alternate\" hreflang=\"de\" href=\"https://de.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "8c3ba591ef56018d9c08979dcc4bd26a1212b5090d8892fdbb2d2b4fc54b462f",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "outside-and-independent-missing",
+      "expected": "NC",
+      "reason": "Qualified missing self remains despite unknown extra mapping",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"><link rel=\"alternate\" hreflang=\"de\" href=\"https://de.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "8efd1931664c865d99924ad0b30d20da3063327e60f77905d9fa76e32477f4c2",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "complete-http-primary",
+      "expected": "C",
+      "reason": "Native HTTP Link primary on both pages",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "http-link"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "http-link"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "mixed-primary-pages",
+      "expected": "C",
+      "reason": "Per-page prior mode may differ, each complete",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "http-link"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "same-secondary-html-primary",
+      "expected": "C",
+      "reason": "Matching optional channel",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "secondary-conflict",
+      "expected": "NC",
+      "reason": "Qualified secondary contradiction is retained",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://de.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "db28f5d7215a21ce2ff4465947f08af36b9eb4fdc72bcb431b855c8f9d720293"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "secondary-does-not-repair",
+      "expected": "NC",
+      "reason": "Complete secondary explicitly reported, primary still missing self",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "b9ecd8a1c7bb6f9f4a29cf0f718a0b0e4b0713784285b9abb1945be649cc44d3",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "no-union-of-partial-channels",
+      "expected": "NC",
+      "reason": "Partial sets cannot be unioned to make primary complete",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "bbede26e51fd423b72ff6e02a5a29417e147d67755792044f5b87ee74aaea798",
+            "headers_sha256": "0c2e2f51422eb5a27dedffe049394d9446a526a14f884e60b1ad08a7e62ce6d2"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "empty-primary-complete-secondary",
+      "expected": "NC",
+      "reason": "Mode mismatch, not global absence of hreflang",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "missing-document",
+      "expected": "NT",
+      "reason": "Missing original cannot establish full cluster",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "missing-document-independent-NC",
+      "expected": "NC",
+      "reason": "Other qualified missing self survives",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "b9ecd8a1c7bb6f9f4a29cf0f718a0b0e4b0713784285b9abb1945be649cc44d3",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "incomplete-response",
+      "expected": "NT",
+      "reason": "Truncation cannot establish absence",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": false,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "request-final-redirect",
+      "expected": "NT",
+      "reason": "No redirect identity collapse",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page/",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "non-200-response",
+      "expected": "NT",
+      "reason": "Outside initial native transport profile",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 304,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "late-plan",
+      "expected": "NT",
+      "reason": "A retrospective plan is not prior",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:11:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "outside-window",
+      "expected": "NT",
+      "reason": "Capture after prior window",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:21:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "missing-plan",
+      "expected": "NT",
+      "reason": "No expected population",
+      "input": {
+        "synthetic": true,
+        "plan": null,
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "contradictory-plan-label",
+      "expected": "NT",
+      "reason": "Ambiguous plan is not evaluated",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ],
+            [
+              "FR",
+              "https://de.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "duplicate-page",
+      "expected": "NT",
+      "reason": "Prior unique page inventory required",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "unmapped-page",
+      "expected": "NT",
+      "reason": "All assessed pages must be identified by declared mapping",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://de.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "unsupported-mode",
+      "expected": "NT",
+      "reason": "No silent fallback to legacy/sitemap reader",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "sitemap"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "supplied-relevant-sitemap",
+      "expected": "NT",
+      "reason": "Unsupported active channel retained",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": [
+          {
+            "type": "sitemap",
+            "url": "https://fr.example.test/page/sitemap.xml"
+          }
+        ]
+      }
+    },
+    {
+      "id": "supplied-relevant-dom",
+      "expected": "NT",
+      "reason": "No rendered-state inference",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": [
+          {
+            "type": "dom",
+            "url": "https://fr.example.test/page"
+          }
+        ]
+      }
+    },
+    {
+      "id": "unsupported-with-independent-NC",
+      "expected": "NC",
+      "reason": "Known native missing self survives unsupported channel",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "b9ecd8a1c7bb6f9f4a29cf0f718a0b0e4b0713784285b9abb1945be649cc44d3",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": [
+          {
+            "type": "sitemap",
+            "url": "https://de.example.test/page"
+          }
+        ]
+      }
+    },
+    {
+      "id": "script-text-not-annotation",
+      "expected": "NC",
+      "reason": "Script bytes do not manufacture a native link element",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><script><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></script></head><body></body></html>",
+            "body_sha256": "cbdb09b1df6964fd8d277decfd8056cdef305f620aa5382084312f264e2f693f",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "comment-not-annotation",
+      "expected": "NC",
+      "reason": "Comment bytes are not active source annotations",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><!--<link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\">--></head><body></body></html>",
+            "body_sha256": "b2a4cbbb25d7535ff51f81db98960f26be78ea0c57d31c9c2bc87132c02d313c",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "ordinary-template-not-annotation",
+      "expected": "NC",
+      "reason": "Uninstantiated template excluded",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><template><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></template></head><body></body></html>",
+            "body_sha256": "e9427f9b57433ec8b558f483c0e09292b899adf1af2d8dc0c64ca2648b353f08",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "body-only-links",
+      "expected": "NC",
+      "reason": "Qualified active link outside required head is not primary admission",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head></head><body><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></body></html>",
+            "body_sha256": "b1289b1a909efae240e34dce07ec94185063e850bd5dea9ba7f9dc04b4a4b550",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "head-closed-reinserted-links",
+      "expected": "NT",
+      "reason": "Parser reinsertion after explicit head closure needs review",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head></head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"><body></body></html>",
+            "body_sha256": "10cf73fa9d569c982773aefa729f18bb834ce848add8bd02a9a1a329ab79553a",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "noscript-hypotheses-disagree",
+      "expected": "NT",
+      "reason": "No choice between static alternatives",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><noscript><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></noscript></head><body></body></html>",
+            "body_sha256": "a0d523130f2b297df7c4b1b7dcecc1c2045a341a7bb3d16ca6fbf4a790d378d2",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "duplicate-hreflang-attribute",
+      "expected": "NT",
+      "reason": "Parser attribute loss cannot qualify declaration",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" hreflang=\"de\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "e566693becd77c7789fc40de9c49457dfa972e2e019f2a16c238e4664ab061a0",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "relative-href",
+      "expected": "NT",
+      "reason": "No base resolution within closed absolute profile",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "4f85bc02dfe4cf745bec3b733e17e16a4186404b53c884efe6d3a64e9360d4f0",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "credential-href",
+      "expected": "NT",
+      "reason": "Unsupported credential-bearing annotation",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://a:b@fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "0e2f8c5108fa59decbade2843106b850fafe28ff8cf330e84386f2898ce939a4",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "fragment-href",
+      "expected": "NT",
+      "reason": "No fragment stripping to forge exact annotation",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page#section\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "abe83069c5e80b4461218f5011aabf2d0fc1600dc6b05e4b7ab427501c4b65ca",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "query-is-different",
+      "expected": "NC",
+      "reason": "No query equivalence",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page?q=1\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "c8af3b4ed752c6b8c91885ae44ac0504f1ae3e9456f670eb935d3665eb7e389f",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "slash-is-different",
+      "expected": "NC",
+      "reason": "No trailing slash equivalence",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page/\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "fae5fea80d087122eeab59e6d1b52a740016ec60a7feb70ca06c23812e23abaf",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "path-case-is-different",
+      "expected": "NC",
+      "reason": "No path-case equivalence",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/Page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "2c33e99926313adab37d47a67c57b7869d2c1f7240c52d7fa36cff293943572c",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "media-modifier",
+      "expected": "NT",
+      "reason": "Combined annotation purpose requires review",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" media=\"print\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "e0f00e9300a150af81b07f3e880b4e463b78fff41fb3df1d99c68cf4688a575b",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "missing-html-language",
+      "expected": "NT",
+      "reason": "Active alternate without hreflang is not treated as expected mapping",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "7544b9193511c636d79ee2c3fe00af332145a482ca15d3af2e1d0dfdb3a14c4a",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "empty-html-language",
+      "expected": "NT",
+      "reason": "Empty language key needs review",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "19b5dc3c20ec3c44de563aa5e16171342dc875e8b977c93d0779f0d95a96549f",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "unicode-language-case",
+      "expected": "NT",
+      "reason": "No Unicode fold or inferred language registry",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fℝ\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "8f2db3eaf2e28b7ed6191eed8deb09c4e807e19f5ed178cd0695d5d9e64a4ea1",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "no-content-type-charset",
+      "expected": "NT",
+      "reason": "No implicit UTF8 decoding",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "utf8-bom",
+      "expected": "C",
+      "reason": "One initial BOM consumed with exact attribution",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "﻿<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "7951a76bcb8f57f6349b527f2d8f3915ab553745044a7867c8011e67df77ae39",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "non-BMP-prefix",
+      "expected": "C",
+      "reason": "Byte spans preserve UTF16/non-BMP source relation",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><!--😀--><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "92d81bd1a59ff91cc48f92a44c4c918bf5d2d8bd580282597f9e6ebcd84917f3",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-primary-non-html",
+      "expected": "C",
+      "reason": "HTTP channel can be qualified without pretending PDF has HTML",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "http-link"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "http-link"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "application/pdf",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "%PDF synthetic bytes",
+            "body_sha256": "c3ff44babbd5d2a5e73fea79aa52193d4cd09a243f81fe9ccd2706f19677149b",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "application/pdf",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "%PDF synthetic bytes",
+            "body_sha256": "c3ff44babbd5d2a5e73fea79aa52193d4cd09a243f81fe9ccd2706f19677149b",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-two-fields",
+      "expected": "C",
+      "reason": "Duplicate field lines preserved",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "http-link"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "http-link"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\""
+              ],
+              [
+                "Link",
+                "<https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "b154000ae40c8ae3601c5fc87a50b1e3907b0bbfd199f5296d7d6d4854cd13cc"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-uppercase-tokens",
+      "expected": "C",
+      "reason": "ASCII relation/parameter/language case",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "http-link"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "http-link"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; REL=\"ALTERNATE\"; HREFLANG=\"fr\", <https://en.example.test/page>; REL=\"ALTERNATE\"; HREFLANG=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "986b2672294e669dc44a02d7e2459eb0ec463df9bb99349dafd409f8569ae238"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-duplicate-language-parameter",
+      "expected": "NT",
+      "reason": "Repeated hreflang parameter is not silently selected",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "http-link"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "http-link"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\"; hreflang=\"de\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "fb1f34c3c3ac455f3e4b1d5d9804d0597aefd639fc68f9d729358931e1f4ec06"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-duplicate-rel-parameter",
+      "expected": "NT",
+      "reason": "Ambiguous relation declaration outside closed profile",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "http-link"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "http-link"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\"; rel=\"canonical\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "744560ed0095ef043e5b0bd03f65e659340dbb4cd4e1e91c2fe2cd5bbf1765bd"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-anchor-other-context",
+      "expected": "NT",
+      "reason": "No context reassignment in initial profile",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "http-link"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "http-link"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\"; anchor=\"https://de.example.test/page\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "e71d87b4989d1ff75cde2928e6cbbd8cb04bb70d5925c951c49c0b734e348b84"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-anchor-current-context",
+      "expected": "NT",
+      "reason": "Even explicit current anchor is outside closed initial profile",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "http-link"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "http-link"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\"; anchor=\"https://fr.example.test/page\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "f31da0ae904e08bdb4faafb44993fb0af2baba7cc433f6f767feb860ca3a05e6"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-broken-quote",
+      "expected": "NT",
+      "reason": "Unterminated field cannot establish absence",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "http-link"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "http-link"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate; hreflang=\"fr"
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "c258be3fa42f754cab2cb883a336b33395bb13a2a618609175b132cb16d22e21"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-malformed-secondary",
+      "expected": "NT",
+      "reason": "Unknown supplied secondary cannot be ignored for C",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<broken"
+              ]
+            ],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "67646a6df49a721d91e3d489beeba9fe9e02196f353027bcc6a5f578eb777ba4"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-secondary-unknown-and-NC",
+      "expected": "NC",
+      "reason": "Primary missing self independently established",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<broken"
+              ]
+            ],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "b9ecd8a1c7bb6f9f4a29cf0f718a0b0e4b0713784285b9abb1945be649cc44d3",
+            "headers_sha256": "67646a6df49a721d91e3d489beeba9fe9e02196f353027bcc6a5f578eb777ba4"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-comma-inside-quoted-value",
+      "expected": "NT",
+      "reason": "Unrecognized purpose parameter retained as limitation",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "http-link"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "http-link"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\"; title=\"a,b\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "aeef66d209e43304adc0edce2025b0a0aeda811fdb942ddab39b32ae51673678"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-other-canonical-relation",
+      "expected": "C",
+      "reason": "Separate non-alternate relation does not create hreflang mappings",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"canonical\""
+              ]
+            ],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "39b6a998395023b7d5c21ffa226726090b272c244e989e3f1327b168c088d328"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "http-duplicate-conflicting-mapping",
+      "expected": "NC",
+      "reason": "Repeated known label with two exact targets",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "http-link"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "http-link"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\", <https://de.example.test/page>; rel=\"alternate\"; hreflang=\"fr\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "7e84628bf58f57db3603efa30ccc50f1f3ce734068811483b6c26e80775b2a0d"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [
+              [
+                "Link",
+                "<https://fr.example.test/page>; rel=\"alternate\"; hreflang=\"fr\", <https://en.example.test/page>; rel=\"alternate\"; hreflang=\"en\""
+              ]
+            ],
+            "body": "<!doctype html><html><head></head><body>synthetic</body></html>",
+            "body_sha256": "c7b2009c50d560ac0441dcea5829f073ff15a894137ab2b59cb2fdabba34c217",
+            "headers_sha256": "ee76d15abcf2a1e8d6e8b102f3cec14dc7f029e2d7605ccc50cfd7ba3a3d7979"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "non-html-with-html-primary",
+      "expected": "NT",
+      "reason": "Cannot treat a binary response as empty HTML",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "application/pdf",
+            "headers": [],
+            "body": "%PDF synthetic",
+            "body_sha256": "3d974447ea04e8957f93930a1d551c43042d0907d362f6a673a894d42dbd249b",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "unplanned-document-integrity-valid",
+      "expected": "C",
+      "reason": "Unselected original retained without expanding planned cluster",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://de.example.test/page",
+            "requested_url": "https://de.example.test/page",
+            "final_url": "https://de.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"de\" href=\"https://de.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "a6a5c25155cf208a4c4d738eb32bfe872d77c74e78b940c5b87c6c33f7bc4197",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "body-selfhash-corrupt",
+      "expected": "technical-refusal",
+      "reason": "Own digest mismatch precedes interpretation",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "headers-selfhash-corrupt",
+      "expected": "technical-refusal",
+      "reason": "Own digest mismatch precedes interpretation",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "unplanned-selfhash-corrupt",
+      "expected": "technical-refusal",
+      "reason": "Own digest mismatch precedes interpretation",
+      "input": {
+        "synthetic": true,
+        "plan": {
+          "version": "1",
+          "recorded_at": "2026-10-14T10:00:00Z",
+          "window_start": "2026-10-14T10:05:00Z",
+          "window_end": "2026-10-14T10:20:00Z",
+          "mappings": [
+            [
+              "fr",
+              "https://fr.example.test/page"
+            ],
+            [
+              "en",
+              "https://en.example.test/page"
+            ]
+          ],
+          "pages": [
+            {
+              "url": "https://fr.example.test/page",
+              "primary": "html"
+            },
+            {
+              "url": "https://en.example.test/page",
+              "primary": "html"
+            }
+          ],
+          "excluded_mappings": []
+        },
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://de.example.test/page",
+            "requested_url": "https://de.example.test/page",
+            "final_url": "https://de.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"de\" href=\"https://de.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    },
+    {
+      "id": "corrupt-before-missing-plan",
+      "expected": "technical-refusal",
+      "reason": "No missing-plan escape from integrity guard",
+      "input": {
+        "synthetic": true,
+        "plan": null,
+        "documents": [
+          {
+            "url": "https://fr.example.test/page",
+            "requested_url": "https://fr.example.test/page",
+            "final_url": "https://fr.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          {
+            "url": "https://en.example.test/page",
+            "requested_url": "https://en.example.test/page",
+            "final_url": "https://en.example.test/page",
+            "captured_at": "2026-10-14T10:10:00Z",
+            "complete": true,
+            "status": 200,
+            "content_type": "text/html; charset=utf-8",
+            "headers": [],
+            "body": "<!doctype html><html><head><link rel=\"alternate\" hreflang=\"fr\" href=\"https://fr.example.test/page\"><link rel=\"alternate\" hreflang=\"en\" href=\"https://en.example.test/page\"></head><body>synthetic</body></html>",
+            "body_sha256": "d3408ba089182e70e223580621c31841c1c32c868dfe1f65bf12bb2dc89f2c9d",
+            "headers_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          }
+        ],
+        "unsupported_channels": []
+      }
+    }
+  ]
+}

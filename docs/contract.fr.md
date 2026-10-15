@@ -1,3 +1,7 @@
+TS23 draft.39 : frontières typées et refus / typed boundaries and refusal are specified in [the TS23 profile](hreflang-reciprocity-evidence.md#typed-boundaries--frontières-typées), without changing historical controls.
+
+Draft.39 — TS23-A01 : [hreflang fourni / supplied hreflang](hreflang-reciprocity-evidence.md), [migration](migration-draft.39.md).
+
 Draft.38 — TS18-A01/A02/A03 : [graphe fourni / supplied graph](graph-reconciliation-evidence.md), [migration](migration-draft.38.md). Limites bornées, revues fournies / Bounded limits, supplied reviews.
 
 Draft.37 — TS16-A01 : [liens entrants fournis / supplied incoming links](incoming-links-evidence.md), [migration](migration-draft.37.md). Population préalable uniquement / Prior population only.

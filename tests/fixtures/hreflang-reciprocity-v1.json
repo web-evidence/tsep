@@ -1,0 +1,3251 @@
+{
+  "synthetic": true,
+  "expected_origin": "Preauthored native transport expectations; no outcome-derived expectation",
+  "cases": [
+    {
+      "id": "hreflang-reciprocity-v1-complete-native-http",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "pass"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-native-known-missing-return",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAxMzUNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "aabaa3c087c5c6e0b2453d955b1725ce78e27e686072b7198b7ed3464d4a7b70"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "fail"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-missing-plan",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z"
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-late-plan",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:11:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-missing-document-http",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page"
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-missing-response",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-null-response",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": null,
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-unqualified-completeness",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": false,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-missing-own-hash-request",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-missing-own-hash-response",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-wrong-host",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiB3cm9uZy5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "2fdfa6812a6f8faa327b0327fcd6743457e6cdba093d91956b604f8eeef634d1"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-wrong-request-path",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9vdGhlciBIVFRQLzEuMQ0KSG9zdDogZnIuZXhhbXBsZS50ZXN0DQpVc2VyLUFnZW50OiBzeW50aGV0aWMtY2xpZW50DQoNCg==",
+                      "sha256": "2787f8b8464e1d6b6ce20aaeb3bfaf724b5a88dcdc3bc43fd2670eb06655cdf7"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-wrong-user-agent",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IG90aGVyLWNsaWVudA0KDQo=",
+                      "sha256": "497e3617ebdcce777b701978b2e58c60c9f5ac8e8c990629cee6f9b070284644"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-head-method",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "SEVBRCAvcGFnZSBIVFRQLzEuMQ0KSG9zdDogZnIuZXhhbXBsZS50ZXN0DQpVc2VyLUFnZW50OiBzeW50aGV0aWMtY2xpZW50DQoNCg==",
+                      "sha256": "092d2fe595b7ce7cc41b62d335fdc1dfdc97a8e3792a79d3d76c36725fa77502"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-status-206",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjA2IFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "a149727696d81d499032eb3d420926445d30d9a5e8a86a075254296a72700909"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-status-304",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMzA0IFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "7f4f1e8453e07d69d3eced5c24286709b63a173c483b2a8d3c01584568d7033c"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-status-404",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgNDA0IFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "148e32e5450385dd34c9c3f9a018a6a0f26919c9b6050997804a8edf3b04936c"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-received-before-sent",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:09:59Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-duration-over-plan",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:11Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-capture-outside-window",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:20:01Z",
+                    "received_at": "2026-10-14T10:20:02Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-observed-before-window-end",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:19:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-boolean-duration",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": true
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-missing-synthetic-marker",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-missing-context",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-duplicate-content-type",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vcGRmDQpDb250ZW50LUxlbmd0aDogMjA3DQoNCjwhZG9jdHlwZSBodG1sPjxodG1sPjxoZWFkPjxsaW5rIHJlbD0iYWx0ZXJuYXRlIiBocmVmbGFuZz0iZnIiIGhyZWY9Imh0dHBzOi8vZnIuZXhhbXBsZS50ZXN0L3BhZ2UiPjxsaW5rIHJlbD0iYWx0ZXJuYXRlIiBocmVmbGFuZz0iZW4iIGhyZWY9Imh0dHBzOi8vZW4uZXhhbXBsZS50ZXN0L3BhZ2UiPjwvaGVhZD48Ym9keT5zeW50aGV0aWM8L2JvZHk+PC9odG1sPg==",
+                      "sha256": "5b5fc5ef4232dabca7e213599bf01b54cedf38004f0436e6fc40ff6b2b224327"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-invalid-content-length",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiA5MjA3DQoNCjwhZG9jdHlwZSBodG1sPjxodG1sPjxoZWFkPjxsaW5rIHJlbD0iYWx0ZXJuYXRlIiBocmVmbGFuZz0iZnIiIGhyZWY9Imh0dHBzOi8vZnIuZXhhbXBsZS50ZXN0L3BhZ2UiPjxsaW5rIHJlbD0iYWx0ZXJuYXRlIiBocmVmbGFuZz0iZW4iIGhyZWY9Imh0dHBzOi8vZW4uZXhhbXBsZS50ZXN0L3BhZ2UiPjwvaGVhZD48Ym9keT5zeW50aGV0aWM8L2JvZHk+PC9odG1sPg==",
+                      "sha256": "ce78a609f174286f1009e007bcca24b4da322c5bd7f36788a841d829ccdde61b"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-html-invalid-utf8",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRp/zwvYm9keT48L2h0bWw+",
+                      "sha256": "17e6a9f61568190bbb9266ba8cf29a8ee9cea8dc96220a670ec63da26ce5b119"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-gzip-native-body",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtRW5jb2Rpbmc6IGd6aXANCkNvbnRlbnQtTGVuZ3RoOiAxMzMNCg0KH4sIAAAAAAAC/4WOQQ7CIBBFr4IcoOwNcJexfErjdEpgFnJ7rXVlTNz85OUnL89f0j7rqDBFN47+s6AUPa9yNw0cLLGiCSmsKQ2ZSZZgczsp2KJa+9W53CY8aKuMSdHVVVpg/3og3x7IT487s257GrEP0QJdZ+/e/DqP8ifiOy3fzwAAAA==",
+                      "sha256": "def16d2fcab839160a082cb516ce4d135f55273bcd6b28c2a4ce77c9fd4b1ebb"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "pass"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-chunked-native-body",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNClRyYW5zZmVyLUVuY29kaW5nOiBjaHVua2VkDQoNCmNmDQo8IWRvY3R5cGUgaHRtbD48aHRtbD48aGVhZD48bGluayByZWw9ImFsdGVybmF0ZSIgaHJlZmxhbmc9ImZyIiBocmVmPSJodHRwczovL2ZyLmV4YW1wbGUudGVzdC9wYWdlIj48bGluayByZWw9ImFsdGVybmF0ZSIgaHJlZmxhbmc9ImVuIiBocmVmPSJodHRwczovL2VuLmV4YW1wbGUudGVzdC9wYWdlIj48L2hlYWQ+PGJvZHk+c3ludGhldGljPC9ib2R5PjwvaHRtbD4NCjANCg0K",
+                      "sha256": "f18c16ea0d24ac076410f2a5d1677f076a4d053697ceeaee40629f1b9f636182"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "pass"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-binary-pdf-http-primary",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "http-link"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "http-link"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9wZGYNCkNvbnRlbnQtTGVuZ3RoOiAyMQ0KTGluazogPGh0dHBzOi8vZnIuZXhhbXBsZS50ZXN0L3BhZ2U+OyByZWw9ImFsdGVybmF0ZSI7IGhyZWZsYW5nPSJmciIsIDxodHRwczovL2VuLmV4YW1wbGUudGVzdC9wYWdlPjsgcmVsPSJhbHRlcm5hdGUiOyBocmVmbGFuZz0iZW4iDQoNCiVQREYtMS43AP/+IHN5bnRoZXRpYw==",
+                      "sha256": "727e0d921bc24fa0364e99554dde4726c815fdcab48081bc865848c07e20fb8f"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9wZGYNCkNvbnRlbnQtTGVuZ3RoOiAyMQ0KTGluazogPGh0dHBzOi8vZnIuZXhhbXBsZS50ZXN0L3BhZ2U+OyByZWw9ImFsdGVybmF0ZSI7IGhyZWZsYW5nPSJmciIsIDxodHRwczovL2VuLmV4YW1wbGUudGVzdC9wYWdlPjsgcmVsPSJhbHRlcm5hdGUiOyBocmVmbGFuZz0iZW4iDQoNCiVQREYtMS43AP/+IHN5bnRoZXRpYw==",
+                      "sha256": "727e0d921bc24fa0364e99554dde4726c815fdcab48081bc865848c07e20fb8f"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "pass"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-extra-plan-field",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000,
+                "resolve_relative": true
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    },
+    {
+      "id": "hreflang-reciprocity-v1-unsupported-sitemap-original",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": [
+              {
+                "type": "sitemap",
+                "original": {
+                  "base64": "PHVybHNldC8+",
+                  "sha256": "f4a378ab0f1ded281a61db0a9de0934667cebf1f9301fdf52713467d7f3d7057"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS23-A01",
+          "target": "https://fr.example.test/page",
+          "outcome": "inconclusive"
+        }
+      ],
+      "reference_limit": false
+    }
+  ]
+}

@@ -299,6 +299,8 @@ def decision(report, controls=None):
         summary['release_monitoring_interpretation'] = {
             'fr':'TS36 : dossier du suivi déclaré, échéances futures indéterminées ; aucune causalité ni identité Google authentifiée.',
             'en':'TS36: declared follow-up dossier, future stages inconclusive; no causality or authenticated Google identity.'}
+    if any(r['control_id']=='TS23' for r in report['results']):
+        summary['hreflang_interpretation']={'fr':'TS23 : groupe préalable fourni ; canaux distincts, inconnues conservées, aucune conformité TS22/TS24 ou décision Google.', 'en':'TS23: supplied prior cluster; separate channels, retained unknowns, no TS22/TS24 conformity or Google decision.'}
     if any(r['control_id']=='TS18' for r in report['results']):
         summary['graph_interpretation']={'fr':'TS18 : périmètre borné et revues fournis ; inconnues conservées, aucune page orpheline globale ni approbation humaine créée.', 'en':'TS18: supplied bounded scope/reviews; retained unknowns, no global orphan or software-created human approval.'}
     if any(r['control_id']=='TS16' for r in report['results']):

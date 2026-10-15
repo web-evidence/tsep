@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.38",
+  "protocol_version": "0.1.0-draft.39",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -6778,6 +6778,96 @@
             "intent",
             "http",
             "html"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS23-method-pass",
+      "control_id": "TS23",
+      "description": {
+        "fr": "Exercice synthétique pass de la méthode TS23 ; cas natifs préalables conservés séparément.",
+        "en": "Synthetic pass TS23 method exercise; preauthored native cases retained separately."
+      },
+      "evidence": {
+        "http": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json.",
+        "hreflang": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS23-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique pass de la méthode TS23 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic pass TS23 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS23-method-fail",
+      "control_id": "TS23",
+      "description": {
+        "fr": "Exercice synthétique fail de la méthode TS23 ; cas natifs préalables conservés séparément.",
+        "en": "Synthetic fail TS23 method exercise; preauthored native cases retained separately."
+      },
+      "evidence": {
+        "http": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json.",
+        "hreflang": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS23-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique fail de la méthode TS23 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic fail TS23 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS23-method-inconclusive",
+      "control_id": "TS23",
+      "description": {
+        "fr": "Exercice synthétique inconclusive de la méthode TS23 ; cas natifs préalables conservés séparément.",
+        "en": "Synthetic inconclusive TS23 method exercise; preauthored native cases retained separately."
+      },
+      "evidence": {
+        "http": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json.",
+        "hreflang": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS23-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique inconclusive de la méthode TS23 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic inconclusive TS23 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "hreflang",
+            "intent"
           ]
         }
       ],

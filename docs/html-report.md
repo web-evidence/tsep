@@ -1,3 +1,17 @@
+## Version23 — supplied hreflang / hreflang fourni
+
+FR : affiche le groupe préalable TS23, le canal principal, les deux hypothèses
+HTML et le canal HTTP Link séparément, les associations manquantes, conflits,
+inconnues et liens aux octets originaux. Un secondaire complet ne répare pas le
+primaire. Les listes détaillées sont repliables au clavier ; aucune nouvelle
+évaluation n’est exécutée par le rendu. Les captures synthétiques restent signalées.
+
+EN: display the prior TS23 group, primary channel, separate HTML hypotheses and
+HTTP Link channel, missing mappings, conflicts, unknowns and original-byte
+bindings. A complete secondary does not repair the primary. Keyboard-operable
+native details retain every reading. Rendering never reevaluates captures or
+implies Google processing, language validity or authenticated evidence.
+
 HTML22 FR : les URL hors population restent toutes disponibles dans un détail dépliable au clavier ; leur nombre est visible même replié. EN: all outside-population URLs remain in a keyboard-expandable detail with a visible count; no truncation or new conclusion.
 
 HTML22: read-only bilingual TS18 inventory dates, graph distance/degree bounds and supplied review summaries. No re-evaluation or human approval. Unknowns and scoped limits remain visible.

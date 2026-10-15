@@ -12,12 +12,29 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '22'
+VERSION = '23'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'hreflang_mode_http': 'Écart au canal du plan : le jeu complet est présent dans les en-têtes HTTP Link secondaires. Ce résultat ne signifie pas une absence universelle de hreflang.',
+        'hreflang_mode_html': 'Écart au canal du plan : le jeu complet est présent dans les deux hypothèses HTML secondaires. Ce résultat ne signifie pas une absence universelle de hreflang.',
+        'hreflang_note': 'TS23 : réciprocité dans le groupe et les canaux prévus. Aucune validation des codes, traduction, indexabilité, canonical, rôle x-default ou sélection Google. Les preuves fournies ne sont pas authentifiées.',
+        'hreflang_title': 'Hreflang — groupe fourni',
+        'hreflang_primary': 'Canal principal prévu',
+        'hreflang_channel': 'Canal observé',
+        'hreflang_html': 'HTML source',
+        'hreflang_http': 'En-têtes HTTP Link',
+        'hreflang_complete': 'Jeu attendu complet dans ce canal',
+        'hreflang_incomplete': 'Jeu attendu non établi dans ce canal',
+        'hreflang_secondary': 'Un canal secondaire ne complète ni ne remplace le canal principal.',
+        'hreflang_missing': 'Associations attendues absentes',
+        'hreflang_failure': 'Contradictions avec le plan préalable',
+        'hreflang_unknown': 'Inconnues et limites',
+        'hreflang_details': 'Originaux liés et mesures détaillées',
+        'hreflang_hypotheses': 'Hypothèses statiques et annotations',
+        'hreflang_outside': 'Associations hors périmètre',
         'graph_note': 'TS18 : inventaires, graphe et revues fournis dans une population bornée. Aucune exhaustivité, page orpheline globale, profondeur SEO universelle, authenticité de relecteur ou collecte déduite. HTTP200 ne vérifie pas le contenu attendu ni les soft404.',
         'graph_title': 'Rapprochement du graphe fourni',
         'graph_inventory': 'Inventaires et dates fournis',
@@ -187,6 +204,23 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'hreflang_mode_http': 'Prior-channel mismatch: the complete set is present in the secondary HTTP Link headers. This is not universal absence of hreflang.',
+        'hreflang_mode_html': 'Prior-channel mismatch: the complete set is present in both secondary HTML hypotheses. This is not universal absence of hreflang.',
+        'hreflang_note': 'TS23: reciprocity within the prior group and channels. No language-code, translation, indexability, canonical, x-default role or Google selection judgment. Supplied evidence is unauthenticated.',
+        'hreflang_title': 'Hreflang — supplied group',
+        'hreflang_primary': 'Prior primary channel',
+        'hreflang_channel': 'Observed channel',
+        'hreflang_html': 'Source HTML',
+        'hreflang_http': 'HTTP Link headers',
+        'hreflang_complete': 'Complete expected set in this channel',
+        'hreflang_incomplete': 'Expected set not established in this channel',
+        'hreflang_secondary': 'A secondary channel neither completes nor replaces the primary channel.',
+        'hreflang_missing': 'Missing expected mappings',
+        'hreflang_failure': 'Contradictions with the prior plan',
+        'hreflang_unknown': 'Unknowns and limitations',
+        'hreflang_details': 'Bound originals and detailed measurements',
+        'hreflang_hypotheses': 'Static hypotheses and annotations',
+        'hreflang_outside': 'Outside-scope mappings',
         'graph_note': 'TS18: supplied inventories, graph and reviews within a bounded population. No inferred completeness, site-wide orphan, universal SEO depth, authenticated reviewer or acquisition. HTTP200 does not verify expected content or soft404s.',
         'graph_title': 'Supplied graph reconciliation',
         'graph_inventory': 'Supplied inventories and dates',
@@ -640,6 +674,53 @@ def comparison_values(atom, words):
     return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
 
 
+def hreflang_values(atom, words):
+    """Present retained interpretations without reevaluating native evidence."""
+    prefix = 'Supplied hreflang / hreflang fourni: '
+    reason = atom.get('reason', '')
+    if not reason.startswith(prefix):
+        return '<p class="reason">'+esc(reason)+'</p>'
+    try:
+        note = json.loads(reason[len(prefix):])
+        layer = note['measurement']
+        out = '<div class="hreflang-values"><h5>'+esc(words['hreflang_title'])+'</h5>'
+        out += '<p>'+esc(words['hreflang_secondary'])+'</p>'
+        if layer.get('reason'):
+            out += '<p class="reason">'+esc(layer['reason'])+'</p>'
+        if layer.get('unknowns'):
+            out += '<dl>'+item(words['hreflang_unknown'],pretty(layer['unknowns']))+'</dl>'
+        for row in layer.get('pages', []):
+            out += '<section class="notice"><strong>'+esc(row['url'])+'</strong> '+badge(row['outcome'],words)
+            primary = words['hreflang_html'] if row['primary']=='html' else words['hreflang_http']
+            out += '<dl>'+item(words['hreflang_primary'],primary)+'</dl>'
+            if row.get('reason'):out += '<p class="reason">'+esc(row['reason'])+'</p>'
+            channels=row.get('channels',{})
+            hd=[h.get('decision',{}).get('complete_expected_set') is True for h in channels.get('html',{}).get('hypotheses',{}).values()]
+            td=channels.get('http-link',{}).get('decision',{}).get('complete_expected_set') is True
+            if row['primary']=='html' and td and not (len(hd)==2 and all(hd)):
+                out += '<p class="notice">'+esc(words['hreflang_mode_http'])+'</p>'
+            if row['primary']=='http-link' and not td and len(hd)==2 and all(hd):
+                out += '<p class="notice">'+esc(words['hreflang_mode_html'])+'</p>'
+            for name, channel in channels.items():
+                title = words['hreflang_html'] if name=='html' else words['hreflang_http']
+                out += '<details class="hreflang-channel"><summary>'+esc(title)+'</summary>'
+                readings = channel.get('hypotheses',{}) if name=='html' else {'http':channel}
+                if channel.get('unknowns'):
+                    out += '<dl>'+item(words['hreflang_unknown'],pretty(channel['unknowns']))+'</dl>'
+                for mode, reading in readings.items():
+                    decision=reading.get('decision',{})
+                    out += '<h6>'+esc(mode)+'</h6><p>'+esc(words['hreflang_complete'] if decision.get('complete_expected_set') is True else words['hreflang_incomplete'])+'</p>'
+                    out += '<dl>'
+                    for key,label in [('missing','hreflang_missing'),('failures','hreflang_failure'),('unknowns','hreflang_unknown'),('outside','hreflang_outside')]:
+                        if decision.get(key):out += item(words[label],pretty(decision[key]))
+                    out += '</dl>'
+                out += '<details><summary>'+esc(words['hreflang_hypotheses'])+'</summary><pre>'+esc(pretty(channel))+'</pre></details></details>'
+            out += '</section>'
+        return out+'<details><summary>'+esc(words['hreflang_details'])+'</summary><pre>'+esc(pretty(note))+'</pre></details></div>'
+    except (ValueError,KeyError,TypeError,AttributeError):
+        return '<p class="reason">'+esc(reason)+'</p>'
+
+
 def graph_values(atom, words):
     reason=atom.get('reason','');prefix='Supplied graph / graphe fourni: '
     if not reason.startswith(prefix):return '<p class="reason">'+esc(reason)+'</p>'
@@ -857,6 +938,8 @@ def results(bundle, controls, words, language):
             out += performance_values(result, words)
         if cid == 'TS36':
             out += '<div class="notice">' + esc(words['monitoring_note']) + '</div>'
+        if cid == 'TS23':
+            out += '<div class="notice">'+esc(words['hreflang_note'])+'</div>'
         if cid == 'TS18':
             out += '<div class="notice">'+esc(words['graph_note'])+'</div>'
         if cid == 'TS16':
@@ -892,7 +975,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (graph_values(atom, words) if cid == 'TS18' else incoming_links_values(atom, words) if cid == 'TS16' else essential_links_values(atom, words) if cid == 'TS17' else sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (hreflang_values(atom, words) if cid == 'TS23' else graph_values(atom, words) if cid == 'TS18' else incoming_links_values(atom, words) if cid == 'TS16' else essential_links_values(atom, words) if cid == 'TS17' else sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

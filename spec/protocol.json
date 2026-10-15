@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.38",
+  "version": "0.1.0-draft.39",
   "status": "draft",
   "date": "2026-10-14",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.38"
+      "rule_version": "0.1.0-draft.39"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.38"
+      "rule_version": "0.1.0-draft.39"
     },
     {
       "id": "TS08",
@@ -926,7 +926,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "automation": "semiAuto",
@@ -1372,7 +1372,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.38"
+      "rule_version": "0.1.0-draft.39"
     },
     {
       "id": "TS11",
@@ -1492,7 +1492,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "id": "TS12-A01",
@@ -1812,7 +1812,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "automation": "automatic",
@@ -2013,7 +2013,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "id": "TS16-A01",
@@ -2122,7 +2122,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "automation": "automatic",
@@ -2278,7 +2278,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "automation": "automatic",
@@ -2678,32 +2678,33 @@
       "severity": "major",
       "unit": "locale-cluster",
       "required_inputs": [
+        "http",
         "hreflang",
         "intent"
       ],
       "applicability": {
-        "fr": "Groupes hreflang déclarés.",
-        "en": "Declared hreflang clusters."
+        "fr": "Groupe et canaux principaux déclarés avant les captures ; profil borné hreflang-reciprocity-v1.",
+        "en": "Cluster and primary channels declared before capture; bounded hreflang-reciprocity-v1 profile."
       },
       "procedure": {
-        "fr": "Construire les groupes de variantes et vérifier retour et auto-référence.",
-        "en": "Build variant clusters and verify return links and self-references."
+        "fr": "Lire les annotations natives HTML ou HTTP Link depuis les originaux, conserver deux hypothèses HTML et les canaux secondaires, comparer chaque code–URL au groupe préalable sans union de canaux.",
+        "en": "Read native HTML or HTTP Link annotations from originals, preserve two HTML hypotheses and secondary channels, compare every code–URL pair to the prior cluster without unioning channels."
       },
       "acceptance": {
-        "fr": "Toutes les paires du groupe déclaré sont réciproques et chaque variante s’inclut ; frontières du groupe conservées.",
-        "en": "All pairs in the declared cluster are reciprocal and every variant includes itself; cluster boundaries are retained."
+        "fr": "Chaque page du groupe conserve dans son canal principal tout le jeu attendu, auto-référence comprise ; aucune contradiction qualifiée entre cibles. Plusieurs codes peuvent partager une URL et les groupes entre domaines sont admis.",
+        "en": "Each cluster page includes the entire expected set in its primary channel, including self-reference; no qualified target contradiction. Several codes may share a URL and cross-domain clusters are allowed."
       },
       "non_applicability": {
         "fr": "Aucun groupe hreflang dans le périmètre.",
         "en": "No hreflang cluster in scope."
       },
       "evidence": {
-        "fr": "Groupe complet, réciproque et sans URL contradictoire.",
-        "en": "Complete reciprocal cluster with no conflicting URL."
+        "fr": "Plan et associations attendues, canaux choisis, requêtes/réponses HTTP originales et empreintes, dates, positions des éléments et fermetures du head, hypothèses, jeux principaux/secondaires, exclusions et inconnues.",
+        "en": "Prior plan/expected mappings, selected channels, original HTTP requests/responses and hashes, dates, element/head-closure positions, static hypotheses, primary/secondary sets, exclusions and unknowns."
       },
       "limitations": {
-        "fr": "Un groupe valide ne prouve pas que le moteur servira toujours la variante attendue.",
-        "en": "A valid cluster does not prove the engine will always serve the expected variant."
+        "fr": "Groupe fourni et mode principal déclarés : aucune authenticité de capture, exhaustivité du site, validité linguistique TS22, indexabilité/canonical, pertinence x-default TS24, traduction, rendu JavaScript ou traitement Google. Les sitemaps/DOM pertinents fournis restent hors profil.",
+        "en": "Supplied cluster and primary mode declarations: no capture authenticity, site completeness, TS22 language validity, indexability/canonical, TS24 x-default suitability, translation, executed JavaScript or Google processing. Relevant supplied sitemap/DOM channels remain outside this profile."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -2721,7 +2722,55 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.39",
+      "rules": [
+        {
+          "id": "TS23-A01",
+          "title": {
+            "fr": "Réciprocité et auto-référence natives dans le groupe préalable.",
+            "en": "Native reciprocal and self references within the prior cluster."
+          },
+          "automation": "automatic",
+          "required_inputs": [
+            "http",
+            "hreflang",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Groupe et canaux principaux déclarés avant les captures ; profil borné hreflang-reciprocity-v1.",
+            "en": "Cluster and primary channels declared before capture; bounded hreflang-reciprocity-v1 profile."
+          },
+          "procedure": {
+            "fr": "Lire les annotations natives HTML ou HTTP Link depuis les originaux, conserver deux hypothèses HTML et les canaux secondaires, comparer chaque code–URL au groupe préalable sans union de canaux.",
+            "en": "Read native HTML or HTTP Link annotations from originals, preserve two HTML hypotheses and secondary channels, compare every code–URL pair to the prior cluster without unioning channels."
+          },
+          "acceptance": {
+            "fr": "Pass si toutes les pages sont qualifiées et incluent tout le jeu attendu dans leur canal principal. Fail si un manque qualifié, placement invalide du primaire HTML ou conflit de cible est établi. Sinon inconclusive ; une contradiction indépendante survit aux inconnues.",
+            "en": "Pass if all pages are qualified and include the expected set in their primary channel. Fail for established qualified absence, invalid primary-HTML placement or target conflict. Otherwise inconclusive; independent contradictions survive unknowns."
+          },
+          "non_applicability": {
+            "fr": "Aucune NA automatique ; un plan vide n’établit pas la non-applicabilité.",
+            "en": "No automatic NA; an empty plan does not establish non-applicability."
+          },
+          "evidence": {
+            "fr": "Plan et associations attendues, canaux choisis, requêtes/réponses HTTP originales et empreintes, dates, positions des éléments et fermetures du head, hypothèses, jeux principaux/secondaires, exclusions et inconnues.",
+            "en": "Prior plan/expected mappings, selected channels, original HTTP requests/responses and hashes, dates, element/head-closure positions, static hypotheses, primary/secondary sets, exclusions and unknowns."
+          },
+          "assumptions": {
+            "fr": "Plan antérieur, fenêtre maximale24h, HTTP200 demandé=final sans redirection, URL absolues HTTP(S) exactes. Deux hypothèses HTML statiques, aucune exécution de scripts.",
+            "en": "Prior plan, at most24-hour window, HTTP200 requested=final without redirects, exact absolute HTTP(S) URLs. Two static HTML hypotheses, no script execution."
+          },
+          "inconclusive": {
+            "fr": "Plan/original absent ou ambigu, dates ou canal non qualifiés, source récupérée hors frontière admise, langue/URL hors admission fermée, annotation extérieure non prévue, runtime requis absent.",
+            "en": "Missing/ambiguous plan or original, unqualified chronology/channel, source recovery outside admitted boundary, language/URL outside closed admission, unplanned outside annotation or missing required runtime."
+          },
+          "limitations": {
+            "fr": "Groupe fourni et mode principal déclarés : aucune authenticité de capture, exhaustivité du site, validité linguistique TS22, indexabilité/canonical, pertinence x-default TS24, traduction, rendu JavaScript ou traitement Google. Les sitemaps/DOM pertinents fournis restent hors profil.",
+            "en": "Supplied cluster and primary mode declarations: no capture authenticity, site completeness, TS22 language validity, indexability/canonical, TS24 x-default suitability, translation, executed JavaScript or Google processing. Relevant supplied sitemap/DOM channels remain outside this profile."
+          }
+        }
+      ]
     },
     {
       "id": "TS24",
@@ -3194,7 +3243,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3392,7 +3441,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3588,7 +3637,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3786,7 +3835,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "id": "TS34-A01",
@@ -3981,7 +4030,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "id": "TS35-A01",
@@ -4133,7 +4182,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "automation": "semiAuto",
@@ -4456,7 +4505,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "applicability": {
@@ -4715,7 +4764,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "applicability": {
@@ -4916,7 +4965,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "id": "TS42-A01",
@@ -5113,7 +5162,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "id": "TS43-A01",
@@ -5315,7 +5364,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.38",
+      "rule_version": "0.1.0-draft.39",
       "rules": [
         {
           "na_inputs": [],
@@ -5607,15 +5656,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "1b675231dc7da8b8774fd9a4f2fe417bf44633d9d21ea57675f7b53ea0da53bb"
+      "sha256": "fe6f01ba976cda848fc1a647dee53fedeaed087092dea3e77c23d23302ec28b0"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "00aa12039f8b1339076618a96e5a0a7cf42bbca8ff987402a6d9112df102226a"
+      "sha256": "2457dc780a622bb5da3155b62593740763579435ab00a8daed93cf93a69dd396"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "2ef611ef86f50c01cf858101c1efb1447f5d29eaa1fa7698c64e6f0fc026792d"
+      "sha256": "d444700ac149e5a0ad4d4c6a4f30e9776ee116fc3aed3fd44c15c36d6ccf203e"
     },
     {
       "path": "docs/source-directives.md",
@@ -5700,6 +5749,10 @@
     {
       "path": "docs/graph-reconciliation-evidence.md",
       "sha256": "62769db5755a57e56f183be5f916ca13792a15e4cb95fab7ecd1797d95327bc0"
+    },
+    {
+      "path": "docs/hreflang-reciprocity-evidence.md",
+      "sha256": "8a697d388909ed7c9cdab6e134aabc498ad47c8c31515931c6ded8d7c3f76e83"
     }
   ]
 }

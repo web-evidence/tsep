@@ -1,10 +1,12 @@
-Local qualification profile / Profil local de qualification — TS18 draft.38
+TS23 candidate draft.39/interpreter38/adapter40/HTML23/replay3: [native hreflang](hreflang-reciprocity-evidence.md), [migration](migration-draft.39.md). 23 contrôles outillés / tooled controls,61 règles / rules; qualification and explicit app reception remain separate.
 
-The local expanded TS16/TS18 suite uses explicit Node24 and `TSEP_VERIFY_STEP_TIMEOUT=3600` with `python3 scripts/verify.py`. The earlier TS16 attempt reached the1800s boundary and retained three fixture-coverage failures, corrected separately before retry; extending the time limit alone is not a fix. Every check, archive reconstruction and source-immutability guard remains enabled. This is a bounded local profile, not evidence of remote CI execution.
+Local qualification profile / Profil local de qualification — TS23 draft.39
 
-FR : suite locale étendue TS16/TS18 avec Node24 explicite, délai maximal3600s par étape et toutes les vérifications inchangées. L’essai TS16 antérieur a atteint1800s avec trois échecs de couverture des fixtures ; ceux-ci sont corrigés séparément avant la reprise. Le délai accru ne corrige aucun échec et ne vaut pas exécution CI distante. Les limites historiques décrites ci-dessous restent propres à leurs versions.
+The local expanded TS16/TS18/TS23 suite uses explicit Node24 and `TSEP_VERIFY_STEP_TIMEOUT=3600` with `python3 scripts/verify.py`. The earlier TS16 attempt reached the1800s boundary and retained three fixture-coverage failures, corrected separately before retry; extending the time limit alone is not a fix. Every check, archive reconstruction and source-immutability guard remains enabled. This is a bounded local profile, not evidence of remote CI execution.
 
-Current candidate / Candidat actuel — draft.38:interpreter37 /adapter39 /HTML22 /replay3;22 contrôles /60 règles. [TS18](graph-reconciliation-evidence.md), [migration](migration-draft.38.md). Sources and supplied reviews remain bounded; full qualification and app reception are separate. Explicit Node24 and the 3600-second local profile above; historical CI limits below are separate.
+FR : suite locale étendue TS16/TS18/TS23 avec Node24 explicite, délai maximal3600s par étape et toutes les vérifications inchangées. L’essai TS16 antérieur a atteint1800s avec trois échecs de couverture des fixtures ; ceux-ci sont corrigés séparément avant la reprise. Le délai accru ne corrige aucun échec et ne vaut pas exécution CI distante. Les limites historiques décrites ci-dessous restent propres à leurs versions.
+
+Previous candidate / Candidat précédent — draft.38:interpreter37 /adapter39 /HTML22 /replay3;22 contrôles /60 règles. [TS18](graph-reconciliation-evidence.md), [migration](migration-draft.38.md). Sources and supplied reviews remain bounded; full qualification and app reception are separate. Explicit Node24 and the 3600-second local profile above; historical CI limits below are separate.
 
 Previous candidate / Candidat précédent — draft.37: interpreter36 / adapter38 / HTML21 / replay3; 21 contrôles /57 règles. [TS16](incoming-links-evidence.md), [migration](migration-draft.37.md). Qualification and application import are recorded separately. The qualified local TS16 run used the 3600-second profile above; the archived candidate heading still mentions its earlier 1800-second setting.
 

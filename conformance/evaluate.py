@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded offline interpreter for sixty TSEP rules. Apache-2.0; no collection."""
+"""Bounded offline interpreter for sixty-one TSEP rules. Apache-2.0; no collection."""
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -21,7 +21,8 @@ RULES += ('TS15-A01', 'TS15-A02', 'TS15-A03')
 RULES += ('TS17-A01', 'TS17-A02')
 RULES += ('TS16-A01',)
 RULES += ('TS18-A01','TS18-A02','TS18-A03')
-VERSION = '37'  # Interpreter coverage version; normative protocol version is separate.
+RULES += ('TS23-A01',)
+VERSION = '38'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -357,6 +358,9 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
 
 
 def evaluate_target(target, rule, *, diagnostics=None):
+    if rule.startswith('TS23-'):
+        from conformance.hreflang_reciprocity import assess
+        return assess(target,rule,diagnostics=diagnostics)
     if rule.startswith('TS18-'):
         from conformance.graph_reconciliation import assess
         return assess(target,rule,diagnostics=diagnostics)
@@ -439,10 +443,19 @@ def evaluate_target(target, rule, *, diagnostics=None):
 
 def evaluate(data, *, source_observations=None):
     tsep.require(data.get('input_version') in ('1', '2'), 'Unsupported conformance input version')
+    hreflang_http_scopes=set()
+    if 'TS23-A01' in data.get('rules',[]):
+        from adapters.hreflang_intake import verify_target
+        for target in data.get('targets',[]):
+            verify_target(target,data['input_version'])
+            docs=target.get('hreflang_documents') if isinstance(target,dict) else None
+            if isinstance(docs,list):hreflang_http_scopes.update(id(doc) for doc in docs if isinstance(doc,dict))
     def verify_wire(value):
         if isinstance(value, dict):
             for key, child in value.items():
-                if key == 'http' and isinstance(child, list):
+                # Only the directly guarded HTTP list admits missing own hashes.
+                # Recurse into every subtree, preserving all unrelated integrity guards.
+                if key == 'http' and isinstance(child, list) and id(value) not in hreflang_http_scopes:
                     for hop in child:
                         if isinstance(hop, dict):
                             for field in ('request', 'response'):

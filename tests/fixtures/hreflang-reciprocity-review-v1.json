@@ -1,0 +1,2122 @@
+{
+  "at": "2026-10-14T22:10:26.034844+00:00",
+  "synthetic": true,
+  "expectations_authored_before_reception": true,
+  "cases": [
+    {
+      "id": "ambiguous-html-http-correct-prior",
+      "expected": "NT",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMTkNCkxpbms6IDxodHRwczovL2ZyLmV4YW1wbGUudGVzdC9wYWdlPjsgcmVsPSJhbHRlcm5hdGUiOyBocmVmbGFuZz0iZnIiLCA8aHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZT47IHJlbD0iYWx0ZXJuYXRlIjsgaHJlZmxhbmc9ImVuIg0KDQo8IWRvY3R5cGUgaHRtbD48aHRtbD48aGVhZD48bm9zY3JpcHQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9ub3NjcmlwdD48L2hlYWQ+PGJvZHk+PC9ib2R5PjwvaHRtbD4=",
+                      "sha256": "c3accfb274bd320a45c9782d1737db62a1462e52b51583788f1d895cb45a2d88"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "reason": "HTTP compared directly to prior mapping; divergent HTML never repaired by secondary"
+    },
+    {
+      "id": "ambiguous-html-http-contradicts-prior",
+      "expected": "NC",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMTkNCkxpbms6IDxodHRwczovL3dyb25nLmV4YW1wbGUudGVzdC9wYWdlPjsgcmVsPSJhbHRlcm5hdGUiOyBocmVmbGFuZz0iZnIiLCA8aHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZT47IHJlbD0iYWx0ZXJuYXRlIjsgaHJlZmxhbmc9ImVuIg0KDQo8IWRvY3R5cGUgaHRtbD48aHRtbD48aGVhZD48bm9zY3JpcHQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9ub3NjcmlwdD48L2hlYWQ+PGJvZHk+PC9ib2R5PjwvaHRtbD4=",
+                      "sha256": "364fb5be9478e6801d4ac6bb2d9c957efd9f4c67d5840ba600ae26e035d9c307"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "reason": "HTTP compared directly to prior mapping; divergent HTML never repaired by secondary"
+    },
+    {
+      "id": "ambiguous-html-http-internal-conflict",
+      "expected": "NC",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMTkNCkxpbms6IDxodHRwczovL2ZyLmV4YW1wbGUudGVzdC9wYWdlPjsgcmVsPSJhbHRlcm5hdGUiOyBocmVmbGFuZz0iZnIiLCA8aHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZT47IHJlbD0iYWx0ZXJuYXRlIjsgaHJlZmxhbmc9ImVuIiwgPGh0dHBzOi8vd3JvbmcuZXhhbXBsZS50ZXN0L3BhZ2U+OyByZWw9ImFsdGVybmF0ZSI7IGhyZWZsYW5nPSJmciINCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PG5vc2NyaXB0PjxsaW5rIHJlbD0iYWx0ZXJuYXRlIiBocmVmbGFuZz0iZnIiIGhyZWY9Imh0dHBzOi8vZnIuZXhhbXBsZS50ZXN0L3BhZ2UiPjxsaW5rIHJlbD0iYWx0ZXJuYXRlIiBocmVmbGFuZz0iZW4iIGhyZWY9Imh0dHBzOi8vZW4uZXhhbXBsZS50ZXN0L3BhZ2UiPjwvbm9zY3JpcHQ+PC9oZWFkPjxib2R5PjwvYm9keT48L2h0bWw+",
+                      "sha256": "ca4cb35690c3f55b11dae40609f9e5282a6593a931b4d6881acd96f335fbd421"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": []
+          }
+        ]
+      },
+      "reason": "HTTP compared directly to prior mapping; divergent HTML never repaired by secondary"
+    },
+    {
+      "id": "mutated-original-0",
+      "expected": "technical-refusal",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0L",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ],
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": [
+              {
+                "type": "sitemap",
+                "original": {
+                  "base64": "PHVybHNldC8+",
+                  "sha256": "f4a378ab0f1ded281a61db0a9de0934667cebf1f9301fdf52713467d7f3d7057"
+                },
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "http": [
+              {
+                "url": "https://fr.example.test/page",
+                "complete": true,
+                "request": {
+                  "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                  "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                },
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                  "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                },
+                "sent_at": "2026-10-14T10:10:00Z",
+                "received_at": "2026-10-14T10:10:01Z"
+              }
+            ]
+          }
+        ]
+      },
+      "mutated_path": [
+        "targets",
+        0,
+        "hreflang_documents",
+        0,
+        "http",
+        0,
+        "request"
+      ],
+      "reason": "One actual byte changed while supplied self-digest retained"
+    },
+    {
+      "id": "mutated-original-1",
+      "expected": "technical-refusal",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw/",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ],
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": [
+              {
+                "type": "sitemap",
+                "original": {
+                  "base64": "PHVybHNldC8+",
+                  "sha256": "f4a378ab0f1ded281a61db0a9de0934667cebf1f9301fdf52713467d7f3d7057"
+                },
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "http": [
+              {
+                "url": "https://fr.example.test/page",
+                "complete": true,
+                "request": {
+                  "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                  "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                },
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                  "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                },
+                "sent_at": "2026-10-14T10:10:00Z",
+                "received_at": "2026-10-14T10:10:01Z"
+              }
+            ]
+          }
+        ]
+      },
+      "mutated_path": [
+        "targets",
+        0,
+        "hreflang_documents",
+        0,
+        "http",
+        0,
+        "response"
+      ],
+      "reason": "One actual byte changed while supplied self-digest retained"
+    },
+    {
+      "id": "mutated-original-2",
+      "expected": "technical-refusal",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ],
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0L",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": [
+              {
+                "type": "sitemap",
+                "original": {
+                  "base64": "PHVybHNldC8+",
+                  "sha256": "f4a378ab0f1ded281a61db0a9de0934667cebf1f9301fdf52713467d7f3d7057"
+                },
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "http": [
+              {
+                "url": "https://fr.example.test/page",
+                "complete": true,
+                "request": {
+                  "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                  "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                },
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                  "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                },
+                "sent_at": "2026-10-14T10:10:00Z",
+                "received_at": "2026-10-14T10:10:01Z"
+              }
+            ]
+          }
+        ]
+      },
+      "mutated_path": [
+        "targets",
+        0,
+        "hreflang_documents",
+        0,
+        "annex",
+        "http",
+        0,
+        "request"
+      ],
+      "reason": "One actual byte changed while supplied self-digest retained"
+    },
+    {
+      "id": "mutated-original-3",
+      "expected": "technical-refusal",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ],
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw/",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": [
+              {
+                "type": "sitemap",
+                "original": {
+                  "base64": "PHVybHNldC8+",
+                  "sha256": "f4a378ab0f1ded281a61db0a9de0934667cebf1f9301fdf52713467d7f3d7057"
+                },
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "http": [
+              {
+                "url": "https://fr.example.test/page",
+                "complete": true,
+                "request": {
+                  "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                  "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                },
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                  "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                },
+                "sent_at": "2026-10-14T10:10:00Z",
+                "received_at": "2026-10-14T10:10:01Z"
+              }
+            ]
+          }
+        ]
+      },
+      "mutated_path": [
+        "targets",
+        0,
+        "hreflang_documents",
+        0,
+        "annex",
+        "http",
+        0,
+        "response"
+      ],
+      "reason": "One actual byte changed while supplied self-digest retained"
+    },
+    {
+      "id": "mutated-original-4",
+      "expected": "technical-refusal",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ],
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0L",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": [
+              {
+                "type": "sitemap",
+                "original": {
+                  "base64": "PHVybHNldC8+",
+                  "sha256": "f4a378ab0f1ded281a61db0a9de0934667cebf1f9301fdf52713467d7f3d7057"
+                },
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "http": [
+              {
+                "url": "https://fr.example.test/page",
+                "complete": true,
+                "request": {
+                  "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                  "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                },
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                  "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                },
+                "sent_at": "2026-10-14T10:10:00Z",
+                "received_at": "2026-10-14T10:10:01Z"
+              }
+            ]
+          }
+        ]
+      },
+      "mutated_path": [
+        "targets",
+        0,
+        "hreflang_documents",
+        1,
+        "http",
+        0,
+        "request"
+      ],
+      "reason": "One actual byte changed while supplied self-digest retained"
+    },
+    {
+      "id": "mutated-original-5",
+      "expected": "technical-refusal",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ],
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw/",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": [
+              {
+                "type": "sitemap",
+                "original": {
+                  "base64": "PHVybHNldC8+",
+                  "sha256": "f4a378ab0f1ded281a61db0a9de0934667cebf1f9301fdf52713467d7f3d7057"
+                },
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "http": [
+              {
+                "url": "https://fr.example.test/page",
+                "complete": true,
+                "request": {
+                  "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                  "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                },
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                  "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                },
+                "sent_at": "2026-10-14T10:10:00Z",
+                "received_at": "2026-10-14T10:10:01Z"
+              }
+            ]
+          }
+        ]
+      },
+      "mutated_path": [
+        "targets",
+        0,
+        "hreflang_documents",
+        1,
+        "http",
+        0,
+        "response"
+      ],
+      "reason": "One actual byte changed while supplied self-digest retained"
+    },
+    {
+      "id": "mutated-original-6",
+      "expected": "technical-refusal",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ],
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": [
+              {
+                "type": "sitemap",
+                "original": {
+                  "base64": "PHVybHNldC8/",
+                  "sha256": "f4a378ab0f1ded281a61db0a9de0934667cebf1f9301fdf52713467d7f3d7057"
+                },
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "http": [
+              {
+                "url": "https://fr.example.test/page",
+                "complete": true,
+                "request": {
+                  "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                  "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                },
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                  "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                },
+                "sent_at": "2026-10-14T10:10:00Z",
+                "received_at": "2026-10-14T10:10:01Z"
+              }
+            ]
+          }
+        ]
+      },
+      "mutated_path": [
+        "targets",
+        0,
+        "hreflang_unsupported_channels",
+        0,
+        "original"
+      ],
+      "reason": "One actual byte changed while supplied self-digest retained"
+    },
+    {
+      "id": "mutated-original-7",
+      "expected": "technical-refusal",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ],
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": [
+              {
+                "type": "sitemap",
+                "original": {
+                  "base64": "PHVybHNldC8+",
+                  "sha256": "f4a378ab0f1ded281a61db0a9de0934667cebf1f9301fdf52713467d7f3d7057"
+                },
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0L",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "http": [
+              {
+                "url": "https://fr.example.test/page",
+                "complete": true,
+                "request": {
+                  "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                  "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                },
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                  "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                },
+                "sent_at": "2026-10-14T10:10:00Z",
+                "received_at": "2026-10-14T10:10:01Z"
+              }
+            ]
+          }
+        ]
+      },
+      "mutated_path": [
+        "targets",
+        0,
+        "hreflang_unsupported_channels",
+        0,
+        "annex",
+        "http",
+        0,
+        "request"
+      ],
+      "reason": "One actual byte changed while supplied self-digest retained"
+    },
+    {
+      "id": "mutated-original-8",
+      "expected": "technical-refusal",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ],
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": [
+              {
+                "type": "sitemap",
+                "original": {
+                  "base64": "PHVybHNldC8+",
+                  "sha256": "f4a378ab0f1ded281a61db0a9de0934667cebf1f9301fdf52713467d7f3d7057"
+                },
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw/",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "http": [
+              {
+                "url": "https://fr.example.test/page",
+                "complete": true,
+                "request": {
+                  "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                  "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                },
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                  "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                },
+                "sent_at": "2026-10-14T10:10:00Z",
+                "received_at": "2026-10-14T10:10:01Z"
+              }
+            ]
+          }
+        ]
+      },
+      "mutated_path": [
+        "targets",
+        0,
+        "hreflang_unsupported_channels",
+        0,
+        "annex",
+        "http",
+        0,
+        "response"
+      ],
+      "reason": "One actual byte changed while supplied self-digest retained"
+    },
+    {
+      "id": "mutated-original-9",
+      "expected": "technical-refusal",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ],
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": [
+              {
+                "type": "sitemap",
+                "original": {
+                  "base64": "PHVybHNldC8+",
+                  "sha256": "f4a378ab0f1ded281a61db0a9de0934667cebf1f9301fdf52713467d7f3d7057"
+                },
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "http": [
+              {
+                "url": "https://fr.example.test/page",
+                "complete": true,
+                "request": {
+                  "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0L",
+                  "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                },
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                  "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                },
+                "sent_at": "2026-10-14T10:10:00Z",
+                "received_at": "2026-10-14T10:10:01Z"
+              }
+            ]
+          }
+        ]
+      },
+      "mutated_path": [
+        "targets",
+        0,
+        "http",
+        0,
+        "request"
+      ],
+      "reason": "One actual byte changed while supplied self-digest retained"
+    },
+    {
+      "id": "mutated-original-10",
+      "expected": "technical-refusal",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS23-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fr.example.test/page",
+            "observed_at": "2026-10-14T10:21:00Z",
+            "hreflang_synthetic": true,
+            "context": {
+              "network": "No network, synthetic supplied originals",
+              "bounds": "Two page cluster",
+              "tool": "Authored fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "crawler": "synthetic-client",
+              "declared_at": "2026-10-14T10:00:00Z",
+              "hreflang": {
+                "window_start": "2026-10-14T10:05:00Z",
+                "window_end": "2026-10-14T10:20:00Z",
+                "mappings": [
+                  [
+                    "fr",
+                    "https://fr.example.test/page"
+                  ],
+                  [
+                    "en",
+                    "https://en.example.test/page"
+                  ]
+                ],
+                "pages": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "primary": "html"
+                  },
+                  {
+                    "url": "https://en.example.test/page",
+                    "primary": "html"
+                  }
+                ],
+                "excluded_mappings": [],
+                "reader": "hreflang-reciprocity-v1",
+                "selection_reason": "Authored synthetic language group",
+                "max_duration_ms": 10000
+              }
+            },
+            "hreflang_documents": [
+              {
+                "url": "https://fr.example.test/page",
+                "http": [
+                  {
+                    "url": "https://fr.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ],
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              },
+              {
+                "url": "https://en.example.test/page",
+                "http": [
+                  {
+                    "url": "https://en.example.test/page",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBlbi5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                      "sha256": "74af39eac362540a9ee290da10905bd591d2b756ecc8734305ab876a2af3ed88"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                      "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                    },
+                    "sent_at": "2026-10-14T10:10:00Z",
+                    "received_at": "2026-10-14T10:10:01Z"
+                  }
+                ]
+              }
+            ],
+            "hreflang_unsupported_channels": [
+              {
+                "type": "sitemap",
+                "original": {
+                  "base64": "PHVybHNldC8+",
+                  "sha256": "f4a378ab0f1ded281a61db0a9de0934667cebf1f9301fdf52713467d7f3d7057"
+                },
+                "annex": {
+                  "http": [
+                    {
+                      "url": "https://fr.example.test/page",
+                      "complete": true,
+                      "request": {
+                        "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                        "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                      },
+                      "response": {
+                        "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw+",
+                        "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                      },
+                      "sent_at": "2026-10-14T10:10:00Z",
+                      "received_at": "2026-10-14T10:10:01Z"
+                    }
+                  ]
+                }
+              }
+            ],
+            "http": [
+              {
+                "url": "https://fr.example.test/page",
+                "complete": true,
+                "request": {
+                  "base64": "R0VUIC9wYWdlIEhUVFAvMS4xDQpIb3N0OiBmci5leGFtcGxlLnRlc3QNClVzZXItQWdlbnQ6IHN5bnRoZXRpYy1jbGllbnQNCg0K",
+                  "sha256": "73c3fb16a55ec9ca6912e782253ca0336af6e29e10c27ce3b833e2250d9d5d4f"
+                },
+                "response": {
+                  "base64": "SFRUUC8xLjEgMjAwIFN5bnRoZXRpYw0KQ29udGVudC1UeXBlOiB0ZXh0L2h0bWw7IGNoYXJzZXQ9dXRmLTgNCkNvbnRlbnQtTGVuZ3RoOiAyMDcNCg0KPCFkb2N0eXBlIGh0bWw+PGh0bWw+PGhlYWQ+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmciIgaHJlZj0iaHR0cHM6Ly9mci5leGFtcGxlLnRlc3QvcGFnZSI+PGxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJlbiIgaHJlZj0iaHR0cHM6Ly9lbi5leGFtcGxlLnRlc3QvcGFnZSI+PC9oZWFkPjxib2R5PnN5bnRoZXRpYzwvYm9keT48L2h0bWw/",
+                  "sha256": "015565c9785855214568a5820c06033a1634cb288a9a2d505a629310267695fe"
+                },
+                "sent_at": "2026-10-14T10:10:00Z",
+                "received_at": "2026-10-14T10:10:01Z"
+              }
+            ]
+          }
+        ]
+      },
+      "mutated_path": [
+        "targets",
+        0,
+        "http",
+        0,
+        "response"
+      ],
+      "reason": "One actual byte changed while supplied self-digest retained"
+    }
+  ]
+}
