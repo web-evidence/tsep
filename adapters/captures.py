@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts, binding_digest
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '40'
+VERSION = '41'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -79,7 +79,7 @@ def source_files():
         modules['conformance/'+name+'.py'] = importlib.import_module('conformance.'+name)
     for name in ('graph_bounds','graph_inventories','graph_documents','graph_reviews','graph_reconciliation'):
         modules['conformance/'+name+'.py'] = importlib.import_module('conformance.'+name)
-    for name in ('hreflang_native','hreflang_reciprocity'):
+    for name in ('hreflang_native','hreflang_reciprocity','xdefault_role'):
         modules['conformance/'+name+'.py'] = importlib.import_module('conformance.'+name)
     modules['adapters/hreflang_intake.py'] = importlib.import_module('adapters.hreflang_intake')
     modules['adapters/graph_intake.py'] = importlib.import_module('adapters.graph_intake')
@@ -123,6 +123,7 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS24 : politique x-default, contexte motivé et revue de rôle fournis ; aucune neutralité ni approbation humaine inférée.','en':'TS24: supplied x-default policy, motivated context and role review; no inferred neutrality or human approval.'},
     {'state':'implemented','fr':'TS23 : réciprocité et auto-référence natives dans le groupe préalable ; aucune validité linguistique, indexabilité ou sélection Google déduite.', 'en':'TS23: native reciprocal/self annotations in the prior cluster; no inferred language validity, indexability or Google selection.'},
     {'state':'implemented','fr':'TS18 : inventaires, graphe borné et revues fournis ; aucune exhaustivité, identité de relecteur ou collecte authentifiée.', 'en':'TS18: supplied inventories, bounded graph and reviews; no completeness, authenticated reviewer or acquisition.'},
     {'state':'implemented','fr':'TS16 : liens entrants dans la population préalable fournie ; aucune exhaustivité du site ni importance authentifiée.', 'en':'TS16: incoming links within a prior supplied population; no site completeness or authenticated importance.'},
@@ -334,6 +335,7 @@ def pieces(target):
         rendered=[{k:d[k] for k in ('url','render') if k in d} for d in graph if isinstance(d,dict) and 'render' in d]
         if rendered:retain('render','graph_documents',rendered)
     if 'graph_reviews' in target:retain('intent','graph_reviews',target['graph_reviews'])
+    if 'xdefault_reviews' in target:retain('intent','xdefault_reviews',target['xdefault_reviews'])
     hreflang=target.get('hreflang_documents')
     if isinstance(hreflang,list):
         retain('http','hreflang_documents',hreflang)
@@ -397,7 +399,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         dated(target, target.get('observed_at'), issued_text)
     targets = [t['url'] for t in data['targets']]
     tsep.unique(targets, 'capture target')
-    if 'TS23-A01' in data['rules']:
+    if set(data['rules']) & {'TS23-A01','TS24-A01'}:
         from adapters.hreflang_intake import verify_target
         for target in data['targets']:verify_target(target,data['input_version'])
     if any(rule.startswith('TS18-') for rule in data['rules']):
@@ -454,7 +456,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         elif isinstance(value,list):
             for child in value:delivery_provenance(child)
     for target in evidence_targets:
-        for flag in ('delivery_synthetic', 'identity_synthetic', 'structured_synthetic', 'inspection_synthetic', 'sitemap_synthetic', 'link_synthetic', 'incoming_links_synthetic','graph_synthetic','hreflang_synthetic'):
+        for flag in ('delivery_synthetic', 'identity_synthetic', 'structured_synthetic', 'inspection_synthetic', 'sitemap_synthetic', 'link_synthetic', 'incoming_links_synthetic','graph_synthetic','hreflang_synthetic','xdefault_synthetic'):
             if flag in target:
                 tsep.require(type(target[flag]) is bool and target[flag] == (access == 'synthetic'),
                              {'structured_synthetic': 'Structured-data provenance differs from access',
@@ -615,6 +617,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += ' Usages déclarés et pièces fournies seulement / Declared usages and supplied evidence only; no real agent visit, identity, operator compliance or citation established.'
                 if cid == 'TS36':
                     report['results'][i]['reason'] += ' Suivi documentaire du changement / Documentary release follow-up; future stages remain inconclusive, no causal or authenticated Google visit claim.'
+                if cid == 'TS24':
+                    report['results'][i]['reason'] += ' Rôle x-default documentaire fourni / Supplied documentary x-default role; no authenticated reviewer, representative audience or soft404 detection.'
                 if cid == 'TS23':
                     report['results'][i]['reason'] += ' Groupe et canaux déclarés / Supplied prior cluster and channels; no language validity, translation, indexing, canonical, x-default role or Google processing claim.'
                 if cid == 'TS18':

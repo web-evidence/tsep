@@ -1,3 +1,11 @@
+## Draft.41 — TS24 unique destination policy / politique de destination unique
+
+A qualified foreign target remains NC when the expected target is also present. Une cible qualifiée contraire reste NC même avec la bonne cible. Earlier draft.40 attempts retained; raw observation/report-intake boundaries explicit. No new control or extra atomic rule.
+
+## Draft.40 — TS24 supplied x-default role / rôle fourni
+
+Prior motivated context, native annotations and bound supplied review; no fabricated approval, native NA or soft404 heuristic. Migration and qualification receipts are separate.
+
 ## 0.1.0-draft.36 — local candidate, 2026-10-14
 
 - FR : TS17 source/rendu séparés, stratégie préalable et états déclarés ; snapshots répétés visibles, absence qualifiée distincte d’une preuve manquante. Deux règles natives, aucun constat d’interaction ou d’acquisition authentifiée. Le descriptif TS17 est précisé ; upstream1.1 intact.

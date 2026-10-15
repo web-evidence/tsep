@@ -1,3 +1,7 @@
+Draft.41 — TS24 : contradiction de destination unique même parmi plusieurs cibles / unique-destination contradiction including multiple targets. [Migration](migration-draft.41.md).
+
+Draft.40 — TS24-A01 : [rôle x-default fourni / supplied x-default role](xdefault-role-evidence.md), [migration](migration-draft.40.md).
+
 TS23 draft.39 : frontières typées et refus / typed boundaries and refusal are specified in [the TS23 profile](hreflang-reciprocity-evidence.md#typed-boundaries--frontières-typées), without changing historical controls.
 
 Draft.39 — TS23-A01 : [hreflang fourni / supplied hreflang](hreflang-reciprocity-evidence.md), [migration](migration-draft.39.md).

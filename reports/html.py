@@ -12,12 +12,23 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '23'
+VERSION = '24'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'xdefault_title': 'x-default — rôle documentaire fourni',
+        'xdefault_note': 'TS24 : contexte fourni motivé et revue liée, auteur non authentifié. HTTP200 ne détecte pas une page d’erreur/soft404. Aucune neutralité, représentativité du public, visite Google ou indexation déduite.',
+        'xdefault_policy': 'Politique de rôle préalable',
+        'xdefault_context': 'Justification du contexte de requête',
+        'xdefault_destination': 'Destination et réponse capturée',
+        'xdefault_pages': 'Annotations dans le groupe fourni',
+        'xdefault_reviews': 'Revues originales fournies — jugement non authentifié',
+        'xdefault_contested': 'Revues contestées sans remplacement : aucune préférence pour la plus récente ; défaut fourni conservé ci-dessous.',
+        'xdefault_native': 'Observations TS23 conservées séparément, sans reprise de leur verdict comme jugement de rôle',
+        'xdefault_details': 'Pièces, contexte et limites complets',
+
         'hreflang_mode_http': 'Écart au canal du plan : le jeu complet est présent dans les en-têtes HTTP Link secondaires. Ce résultat ne signifie pas une absence universelle de hreflang.',
         'hreflang_mode_html': 'Écart au canal du plan : le jeu complet est présent dans les deux hypothèses HTML secondaires. Ce résultat ne signifie pas une absence universelle de hreflang.',
         'hreflang_note': 'TS23 : réciprocité dans le groupe et les canaux prévus. Aucune validation des codes, traduction, indexabilité, canonical, rôle x-default ou sélection Google. Les preuves fournies ne sont pas authentifiées.',
@@ -204,6 +215,17 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'xdefault_title': 'x-default — supplied documentary role',
+        'xdefault_note': 'TS24: motivated supplied context and bound review, unauthenticated author. HTTP200 does not detect error templates/soft404s. No inferred neutrality, representative audience, Google visit or indexing.',
+        'xdefault_policy': 'Prior role policy',
+        'xdefault_context': 'Request-context rationale',
+        'xdefault_destination': 'Destination and captured response',
+        'xdefault_pages': 'Annotations in the supplied group',
+        'xdefault_reviews': 'Original supplied reviews — unauthenticated judgment',
+        'xdefault_contested': 'Reviews contested without replacement: most-recent does not win; supplied defect remains below.',
+        'xdefault_native': 'TS23 observations retained separately, without importing their verdict as a role judgment',
+        'xdefault_details': 'Complete evidence, context and limitations',
+
         'hreflang_mode_http': 'Prior-channel mismatch: the complete set is present in the secondary HTTP Link headers. This is not universal absence of hreflang.',
         'hreflang_mode_html': 'Prior-channel mismatch: the complete set is present in both secondary HTML hypotheses. This is not universal absence of hreflang.',
         'hreflang_note': 'TS23: reciprocity within the prior group and channels. No language-code, translation, indexability, canonical, x-default role or Google selection judgment. Supplied evidence is unauthenticated.',
@@ -674,6 +696,39 @@ def comparison_values(atom, words):
     return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
 
 
+def xdefault_values(atom, words):
+    """Display retained documentary judgments; never create or reevaluate reviews."""
+    prefix='Supplied x-default / x-default fourni: '
+    reason=atom.get('reason','')
+    if not reason.startswith(prefix):return '<p class="reason">'+esc(reason)+'</p>'
+    try:
+        note=json.loads(reason[len(prefix):]);layer=note['measurement']
+        out='<div class="xdefault-values"><h5>'+esc(words['xdefault_title'])+'</h5>'
+        policy=layer.get('policy',{})
+        out+='<dl>'+item(words['xdefault_context'],policy.get('context_reason','—'))+'</dl>'
+        for key,label in [('failures','hreflang_failure'),('unknowns','hreflang_unknown')]:
+            if layer.get(key):out+='<dl>'+item(words[label],pretty(layer[key]))+'</dl>'
+        if layer.get('reason'):out+='<p class="reason">'+esc(layer['reason'])+'</p>'
+        out+='<details><summary>'+esc(words['xdefault_policy'])+'</summary><pre>'+esc(pretty(policy))+'</pre></details>'
+        out+='<details><summary>'+esc(words['xdefault_destination'])+'</summary><pre>'+esc(pretty(layer.get('destination',{})))+'</pre></details>'
+        out+='<h6>'+esc(words['xdefault_pages'])+'</h6>'
+        for row in layer.get('pages',[]):
+            out+='<details><summary>'+esc(row.get('url','—'))+'</summary><dl>'
+            primary=words['hreflang_html'] if row.get('primary')=='html' else words['hreflang_http']
+            out+=item(words['hreflang_primary'],primary)
+            for key,label in [('xdefault_targets','xdefault_destination'),('failures','hreflang_failure'),('unknowns','hreflang_unknown')]:
+                if row.get(key):out+=item(words[label],pretty(row[key]))
+            out+='</dl><pre>'+esc(pretty(row))+'</pre></details>'
+        review=layer.get('review',{});supplied=review.get('supplied')
+        out+='<h6>'+esc(words['xdefault_reviews'])+'</h6>'
+        if isinstance(supplied,list) and len(supplied)>1:out+='<p class="notice">'+esc(words['xdefault_contested'])+'</p>'
+        if review.get('reason'):out+='<p class="reason">'+esc(review['reason'])+'</p>'
+        out+='<details><summary>'+esc(words['xdefault_reviews'])+'</summary><pre>'+esc(pretty(supplied))+'</pre></details>'
+        out+='<details><summary>'+esc(words['xdefault_native'])+'</summary><pre>'+esc(pretty(layer.get('native_hreflang',{})))+'</pre></details>'
+        return out+'<details><summary>'+esc(words['xdefault_details'])+'</summary><pre>'+esc(pretty(note))+'</pre></details></div>'
+    except (ValueError,KeyError,TypeError,AttributeError):return '<p class="reason">'+esc(reason)+'</p>'
+
+
 def hreflang_values(atom, words):
     """Present retained interpretations without reevaluating native evidence."""
     prefix = 'Supplied hreflang / hreflang fourni: '
@@ -938,6 +993,8 @@ def results(bundle, controls, words, language):
             out += performance_values(result, words)
         if cid == 'TS36':
             out += '<div class="notice">' + esc(words['monitoring_note']) + '</div>'
+        if cid == 'TS24':
+            out += '<div class="notice">'+esc(words['xdefault_note'])+'</div>'
         if cid == 'TS23':
             out += '<div class="notice">'+esc(words['hreflang_note'])+'</div>'
         if cid == 'TS18':
@@ -975,7 +1032,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (hreflang_values(atom, words) if cid == 'TS23' else graph_values(atom, words) if cid == 'TS18' else incoming_links_values(atom, words) if cid == 'TS16' else essential_links_values(atom, words) if cid == 'TS17' else sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (xdefault_values(atom, words) if cid == 'TS24' else hreflang_values(atom, words) if cid == 'TS23' else graph_values(atom, words) if cid == 'TS18' else incoming_links_values(atom, words) if cid == 'TS16' else essential_links_values(atom, words) if cid == 'TS17' else sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

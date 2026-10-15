@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded offline interpreter for sixty-one TSEP rules. Apache-2.0; no collection."""
+"""Bounded offline interpreter for sixty-two TSEP rules. Apache-2.0; no collection."""
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -22,7 +22,8 @@ RULES += ('TS17-A01', 'TS17-A02')
 RULES += ('TS16-A01',)
 RULES += ('TS18-A01','TS18-A02','TS18-A03')
 RULES += ('TS23-A01',)
-VERSION = '38'  # Interpreter coverage version; normative protocol version is separate.
+RULES += ('TS24-A01',)
+VERSION = '40'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -358,6 +359,9 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
 
 
 def evaluate_target(target, rule, *, diagnostics=None):
+    if rule.startswith('TS24-'):
+        from conformance.xdefault_role import assess
+        return assess(target,rule,diagnostics=diagnostics)
     if rule.startswith('TS23-'):
         from conformance.hreflang_reciprocity import assess
         return assess(target,rule,diagnostics=diagnostics)
@@ -444,7 +448,7 @@ def evaluate_target(target, rule, *, diagnostics=None):
 def evaluate(data, *, source_observations=None):
     tsep.require(data.get('input_version') in ('1', '2'), 'Unsupported conformance input version')
     hreflang_http_scopes=set()
-    if 'TS23-A01' in data.get('rules',[]):
+    if set(data.get('rules',[])) & {'TS23-A01','TS24-A01'}:
         from adapters.hreflang_intake import verify_target
         for target in data.get('targets',[]):
             verify_target(target,data['input_version'])

@@ -1,3 +1,5 @@
+[TS24 — rôle x-default fourni / supplied x-default role](docs/xdefault-role-evidence.md), [draft.41 migration](docs/migration-draft.41.md).
+
 [TS23 — hreflang fourni / supplied hreflang](docs/hreflang-reciprocity-evidence.md), [draft.39 migration](docs/migration-draft.39.md).
 
 [TS18 — graphe et inventaires fournis / supplied graph and inventories](docs/graph-reconciliation-evidence.md), [draft.38 migration](docs/migration-draft.38.md).
@@ -15,7 +17,7 @@ TS31: [JSON-LD/content evidence](docs/structured-content-evidence.md), [draft.32
 
 TS36: [release follow-up](docs/release-monitoring.md), [intake and closure](docs/release-monitoring-intake.md), [draft.31 migration](docs/migration-draft.31.md). Authored cases only; no real future stage completed.
 
-Local development edition: **0.1.0-draft.39** — [TS33 validation layers](docs/structured-validation-evidence.md), [migration](docs/migration-draft.34.md). Twenty-three tooled controls /61 rules; no actual Edikka assessment.
+Local development edition: **0.1.0-draft.41** — [TS24 supplied x-default role](docs/xdefault-role-evidence.md), [migration](docs/migration-draft.41.md). Twenty-four tooled controls /62 rules; no actual Edikka assessment.
 
 TS08 [native inspections](docs/inspection-evidence.md) and [acquisition](docs/search-console-acquisition.md) remain available.
 
@@ -30,7 +32,7 @@ TS39 has [three delivery rules](docs/delivery-evidence.md): prior matrix, per-co
 
 # TSEP — evidence interchange format
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.39 · initiated by Edikka · [Français](README.fr.md)**
+**Technical SEO Evidence Protocol · 0.1.0-draft.41 · initiated by Edikka · [Français](README.fr.md)**
 
 Share a technical SEO assessment that its recipient can inspect, replay and
 challenge: stable identifiers, explicit scope, evidence linked to findings and
@@ -59,7 +61,7 @@ atomic rules use pass, fail, not-applicable or inconclusive.
 
 **TS01–TS44 are the permanent identifiers inherited from grid 1.1.** TSEP has a
 separate version sequence; the original FR/EN sources and provenance remain intact.
-Sixty atomic rules specify twenty-two controls: TS01, TS02, TS04, TS07, TS08, TS10, TS12, TS15, TS16, TS17, TS18, TS31, TS32, TS33, TS34, TS35, TS36, TS39, TS41, TS42, TS43 and TS44, with bounded interpreters over supplied evidence. TS10-A02 content comparison
+Sixty-two atomic rules specify twenty-four controls: TS01, TS02, TS04, TS07, TS08, TS10, TS12, TS15, TS16, TS17, TS18, TS23, TS24, TS31, TS32, TS33, TS34, TS35, TS36, TS39, TS41, TS42, TS43 and TS44, with bounded interpreters over supplied evidence. TS10-A02 content comparison
 remains a supplied human review bound to the captures.
 
 Performance imports keep field p75/classes (CrUX) separate from laboratory diagnostics
@@ -111,8 +113,8 @@ validation establishes consistency and file integrity.
    not satisfy a named profile. An isolated test cannot pass its parent control.
 3. **Pass the conformance suite**: supply a JSON stdin/stdout adapter, then run
    `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 my_adapter.py'`
-   for that subset, or omit `--rules` for all sixty-one rules. State “passes TSEP
-   0.1.0-draft.39 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
+   for that subset, or omit `--rules` for all sixty-two rules. State “passes TSEP
+   0.1.0-draft.41 conformance for TS01-A01, TS01-A02” with the bounds actually supported.
    [Input format and comparison](docs/conformance.md). Report exact agreements,
    disagreements and reduced coverage separately; accepted inconclusive results
    on marked reference limits are not successful assessments.
@@ -173,7 +175,7 @@ checks declarations and hashes, not authenticity, appropriate intent or every
 assessment judgment. A hash does not establish authorship or actual collection
 time. Bundled cases are synthetic.
 
-The interpreter covers sixty-one rules within a documented subset; unsupported inputs
+The interpreter covers sixty-two rules within a documented subset; unsupported inputs
 remain inconclusive. TS07-A03 compares supplied source/DOM captures without executing JavaScript;
 the plan and exemptions require review. TS10 compares declared family signals and checks the binding of the supplied
 human content review, without guaranteeing its correctness.
@@ -186,7 +188,7 @@ ranking or future engine behavior.
 [Governance](GOVERNANCE.md) · [Contribute](CONTRIBUTING.md) · [History](CHANGELOG.md) ·
 [Acceptance clause](docs/acceptance-clause.md) · [HTTP probe](probes/README.md).
 
-Cite `TSEP@0.1.0-draft.39:TS07` with scope, result, evidence and archive hash.
+Cite `TSEP@0.1.0-draft.41:TS07` with scope, result, evidence and archive hash.
 Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATION.cff).
 [Development, full verification and independent repository](docs/development.md).
 

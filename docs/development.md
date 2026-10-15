@@ -1,3 +1,7 @@
+TS24 revised candidate draft.41/interpreter40/adapter41/HTML24/replay3: [method](xdefault-role-evidence.md), [migration](migration-draft.41.md). 24 controls /62 rules. Prior draft.40 attempts preserved, not qualified. Full local profile: explicit Node24, TSEP_VERIFY_STEP_TIMEOUT=3600; all checks enabled. App acceptance separate.
+
+Previous unqualified TS24 candidate draft.40/interpreter39/adapter41/HTML24/replay3: [x-default](xdefault-role-evidence.md), [migration](migration-draft.40.md). 24 contrôles outillés / tooled controls,62 règles / rules. Full qualification uses explicit Node24 and TSEP_VERIFY_STEP_TIMEOUT=3600; app import/reception separate.
+
 TS23 candidate draft.39/interpreter38/adapter40/HTML23/replay3: [native hreflang](hreflang-reciprocity-evidence.md), [migration](migration-draft.39.md). 23 contrôles outillés / tooled controls,61 règles / rules; qualification and explicit app reception remain separate.
 
 Local qualification profile / Profil local de qualification — TS23 draft.39

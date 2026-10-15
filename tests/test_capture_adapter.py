@@ -58,6 +58,14 @@ class CaptureAdapter(unittest.TestCase):
                             self.emit(case['input'])
                         self.assertFalse(self.output.exists())
                         continue
+                    if name == 'xdefault-role-v1-synthetic-provenance-mismatch':
+                        # Native NT cannot authorize publication under contradictory access provenance.
+                        self.assertEqual(evaluate(case['input'])[0]['outcome'], 'inconclusive')
+                        with self.assertRaisesRegex(tsep.Invalid, 'Explicit provenance differs from evidence access: xdefault_synthetic'):
+                            self.emit(case['input'])
+                        self.assertFalse(self.output.exists())
+                        self.assertEqual(tsep.read_json(self.input), case['input'])
+                        continue
                     summary=self.emit(case['input'])
                 report=tsep.read_json(self.output/'report.json')
                 self.assertEqual(summary,tsep.validate(report,self.output))
