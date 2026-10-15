@@ -1,3 +1,5 @@
+Draft.38 candidate:32 authored native TS18 cases/96pairs; expected1769cases/3782pairs. Existing cases unchanged; actual qualification is recorded separately.
+
 Draft.36 : TS17 adds34 authored synthetic cases/68pairs;1673cases/3622pairs total,56rules. Source52,DOM37,malformed36 cases run separately. FR : attentes rédigées avant changements, aucune observation réelle ni exécution déduite du décompte.
 
 Draft.35 : TS15 adds31 authored synthetic set cases/93pairs in an explicit fingerprinted extension;1639total cases/3554pairs,54rules.44 native reader +4 review cases are exercised separately. A03 is coverage-only: missing evidence is inconclusive, no fail case is invented solely for a test matrix. FR : couverture absente reste indéterminée ; les cas figés ne prouvent pas une exécution.

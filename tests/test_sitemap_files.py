@@ -155,17 +155,23 @@ class SitemapFiles(unittest.TestCase):
                     with self.subTest(key=key,value=value,rule=rule):self.assertEqual(sitemap_set.assess(t,rule)[0],'inconclusive')
     def test_closed_outcomes_preserve_historical_requirements(self):
         rules={r['id']:r for c in tsep.read_json(tsep.PROTOCOL_PATH)['controls'] for r in c.get('rules',[])}
-        self.assertEqual(tsep.atomic_outcomes(rules['TS15-A03']),('pass','inconclusive'))
+        closed = ('TS15-A03', 'TS18-A01', 'TS18-A02')
+        for rid in closed:
+            with self.subTest(rule=rid):
+                self.assertEqual(tsep.atomic_outcomes(rules[rid]), ('pass', 'inconclusive'))
+            for value in (None, ['pass'], ['inconclusive'], ['pass','fail','inconclusive'],
+                          ['pass','not-applicable','inconclusive'], ['inconclusive','pass']):
+                changed=copy.deepcopy(rules[rid])
+                if value is None:changed.pop('allowed_outcomes')
+                else:changed['allowed_outcomes']=value
+                with self.subTest(rule=rid,value=value), self.assertRaises(tsep.Invalid):
+                    tsep.atomic_outcomes(changed)
         for rid,rule in rules.items():
-            if rid!='TS15-A03':
-                self.assertEqual(set(tsep.atomic_outcomes(rule)),{'pass','fail','not-applicable','inconclusive'})
+            if rid not in closed:
+                with self.subTest(rule=rid):
+                    self.assertEqual(set(tsep.atomic_outcomes(rule)),{'pass','fail','not-applicable','inconclusive'})
                 with self.subTest(rule=rid),self.assertRaises(tsep.Invalid):
                     tsep.atomic_outcomes(dict(rule,allowed_outcomes=['pass','inconclusive']))
-        for value in (None,['pass'],['inconclusive'],['pass','fail','inconclusive'],['inconclusive','pass']):
-            changed=copy.deepcopy(rules['TS15-A03'])
-            if value is None:changed.pop('allowed_outcomes')
-            else:changed['allowed_outcomes']=value
-            with self.subTest(value=value),self.assertRaises(tsep.Invalid):tsep.atomic_outcomes(changed)
     def test_missing_declared_outcome_coverage_is_rejected(self):
         from conformance.run import run
         full=expand(tsep.read_json(ROOT/'conformance/cases.json'))

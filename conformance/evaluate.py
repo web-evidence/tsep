@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded offline interpreter for fifty-seven TSEP rules. Apache-2.0; no collection."""
+"""Bounded offline interpreter for sixty TSEP rules. Apache-2.0; no collection."""
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -20,7 +20,8 @@ RULES += ('TS33-A01', 'TS33-A02', 'TS33-A03')
 RULES += ('TS15-A01', 'TS15-A02', 'TS15-A03')
 RULES += ('TS17-A01', 'TS17-A02')
 RULES += ('TS16-A01',)
-VERSION = '36'  # Interpreter coverage version; normative protocol version is separate.
+RULES += ('TS18-A01','TS18-A02','TS18-A03')
+VERSION = '37'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -356,6 +357,9 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
 
 
 def evaluate_target(target, rule, *, diagnostics=None):
+    if rule.startswith('TS18-'):
+        from conformance.graph_reconciliation import assess
+        return assess(target,rule,diagnostics=diagnostics)
     if rule.startswith('TS16-'):
         from conformance.incoming_links import assess
         return assess(target, rule, diagnostics=diagnostics)
@@ -459,9 +463,15 @@ def evaluate(data, *, source_observations=None):
     tsep.unique([t['url'] for t in targets], 'conformance target')
     results = []
     for target in targets:
+        graph_assessment = None
         for rule in rules:
             diagnostics = [] if source_observations is not None else None
-            outcome, reason = evaluate_target(target, rule, diagnostics=diagnostics)
+            if rule.startswith('TS18-'):
+                from conformance.graph_reconciliation import assess_target, assess
+                if graph_assessment is None: graph_assessment = assess_target(target)
+                outcome, reason = assess(target,rule,diagnostics=diagnostics,assessment=graph_assessment)
+            else:
+                outcome, reason = evaluate_target(target, rule, diagnostics=diagnostics)
             if diagnostics:
                 source_observations.append({'rule_id':rule, 'target':target['url'], 'observations':diagnostics})
             results.append({'rule_id': rule, 'target': target['url'], 'outcome': outcome, 'reason': reason})

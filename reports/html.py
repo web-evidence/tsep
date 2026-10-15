@@ -12,12 +12,36 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '21'
+VERSION = '22'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'graph_note': 'TS18 : inventaires, graphe et revues fournis dans une population bornée. Aucune exhaustivité, page orpheline globale, profondeur SEO universelle, authenticité de relecteur ou collecte déduite. HTTP200 ne vérifie pas le contenu attendu ni les soft404.',
+        'graph_title': 'Rapprochement du graphe fourni',
+        'graph_inventory': 'Inventaires et dates fournis',
+        'graph_dates': 'Date de l’original',
+        'graph_production': 'Production déclarée',
+        'graph_membership': 'Appartenance déclarée rapprochée',
+        'graph_outside': 'URL hors population, non évaluées',
+        'graph_depth': 'Distance depuis les racines',
+        'graph_incoming': 'Sources entrantes distinctes, sans auto-liens',
+        'graph_no_route': 'Aucun chemin établi ; des liens restent possibles',
+        'graph_unreachable': 'Inaccessible dans le seul graphe borné',
+        'graph_interval': 'Intervalle',
+        'graph_exact': 'Exacte dans le graphe fourni',
+        'graph_orphan': 'Candidat sans entrant dans la population ; pas un orphelin global',
+        'graph_root': 'Racine déclarée',
+        'graph_review': 'Qualification documentaire fournie',
+        'graph_reviewer': 'Auteur déclaré, non authentifié',
+        'graph_rationale': 'Motif fourni, non jugé par le lecteur',
+        'graph_binding': 'Empreinte de liaison attendue',
+        'graph_details': 'Mesures et limites détaillées',
+        'graph_qualified': 'Pièce qualifiée dans ce profil',
+        'graph_unknown': 'Inconnu ou non qualifié',
+        'graph_subject': 'Sujet de revue dérivé des mesures',
+        'graph_bound': 'Bornes minimale et maximale',
         'incoming_note': 'TS16 : population préalable fournie seulement ; aucune exhaustivité du site, importance authentifiée, interaction observée ni indexation. Une absence bornée ne prouve pas une page orpheline du site. Le contenu attendu de la source n’est pas vérifié : une page d’erreur répondant HTTP200 peut fournir un témoin de navigation ; les soft404 ne sont pas détectées.',
         'incoming_title': 'Liens entrants — résultats par destination',
         'incoming_original': 'Original de destination',
@@ -163,6 +187,30 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'graph_note': 'TS18: supplied inventories, graph and reviews within a bounded population. No inferred completeness, site-wide orphan, universal SEO depth, authenticated reviewer or acquisition. HTTP200 does not verify expected content or soft404s.',
+        'graph_title': 'Supplied graph reconciliation',
+        'graph_inventory': 'Supplied inventories and dates',
+        'graph_dates': 'Original date',
+        'graph_production': 'Declared production',
+        'graph_membership': 'Reconciled supplied membership',
+        'graph_outside': 'Outside population, unevaluated',
+        'graph_depth': 'Distance from roots',
+        'graph_incoming': 'Distinct incoming sources, excluding self-links',
+        'graph_no_route': 'No established path; links remain possible',
+        'graph_unreachable': 'Unreachable within the bounded graph only',
+        'graph_interval': 'Interval',
+        'graph_exact': 'Exact within supplied graph',
+        'graph_orphan': 'No-incoming candidate within population; not a site-wide orphan',
+        'graph_root': 'Declared root',
+        'graph_review': 'Supplied documentary qualification',
+        'graph_reviewer': 'Declared reviewer, unauthenticated',
+        'graph_rationale': 'Supplied rationale, not adjudicated by the reader',
+        'graph_binding': 'Expected binding fingerprint',
+        'graph_details': 'Detailed measurements and limits',
+        'graph_qualified': 'Qualified original within this profile',
+        'graph_unknown': 'Unknown or unqualified',
+        'graph_subject': 'Native-derived review subject',
+        'graph_bound': 'Lower and upper bounds',
         'incoming_note': 'TS16: prior supplied population only; no site completeness, authenticated importance, observed interaction or indexing. Bounded absence does not establish a site-wide orphan. Expected source content is not verified: an HTTP200 error template may supply a navigation witness; soft404s are not detected.',
         'incoming_title': 'Incoming links — per-destination results',
         'incoming_original': 'Destination original',
@@ -592,6 +640,47 @@ def comparison_values(atom, words):
     return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
 
 
+def graph_values(atom, words):
+    reason=atom.get('reason','');prefix='Supplied graph / graphe fourni: '
+    if not reason.startswith(prefix):return '<p class="reason">'+esc(reason)+'</p>'
+    try:
+        note=json.loads(reason[len(prefix):]);layer=note['measurement'];rule=note['rule']
+        out='<div class="graph-values"><h5>'+esc(words['graph_title'])+'</h5>'
+        if layer.get('reason'):out+='<p class="reason">'+esc(layer['reason'])+'</p>'
+        if rule=='TS18-A01':
+            out+='<h6>'+esc(words['graph_inventory'])+'</h6>'
+            for role,record in layer.get('inventories',{}).items():
+                out+='<div class="notice"><strong>'+esc(role)+'</strong><p>'+esc(words['graph_qualified'] if record.get('qualified') else words['graph_unknown'])+'</p><dl>'
+                out+=item(words['graph_dates'],record.get('observed_at'))+item(words['graph_production'],pretty(record.get('production')))+'</dl>'
+                outside=record.get('outside_population',[])
+                if not isinstance(outside,list):raise ValueError('Outside population list required')
+                if outside:
+                    out+='<details class="graph-outside"><summary>'+esc(words['graph_outside'])+' ('+str(len(outside))+')</summary><ul>'+''.join('<li>'+esc(u)+'</li>' for u in outside)+'</ul></details>'
+                else:out+='<p>'+esc(words['graph_outside'])+' · 0</p>'
+                out+='</div>'
+            for row in layer.get('rows',[]):out+='<div><strong>'+esc(row['url'])+'</strong><dl>'+item(words['graph_membership'],pretty(row['membership']))+'</dl></div>'
+        elif rule=='TS18-A02':
+            graph=layer.get('measurement',{}).get('graph',{})
+            for row in graph.get('nodes',[]):
+                out+='<div class="notice"><strong>'+esc(row['node'])+'</strong><dl>'
+                state=row['depth_state'];label={'exact':'graph_exact','interval':'graph_interval','no_proven_route':'graph_no_route','unreachable':'graph_unreachable'}[state]
+                out+=item(words['graph_depth'],words[label])
+                out+=item(words['graph_bound'],(str(row['lower']) if row['lower'] is not None else words['graph_unknown'])+' – '+(str(row['upper']) if row['upper'] is not None else words['graph_unknown']))
+                out+=item(words['graph_incoming'],str(row['incoming_lower'])+' – '+str(row['incoming_upper']))+'</dl>'
+                if row.get('root'):out+='<p>'+esc(words['graph_root'])+'</p>'
+                if row.get('bounded_orphan_candidate'):out+='<p>'+esc(words['graph_orphan'])+'</p>'
+                out+='</div>'
+        elif rule=='TS18-A03':
+            out+='<h6>'+esc(words['graph_review'])+'</h6>'
+            for row in layer.get('subjects',[]):
+                out+='<div class="notice"><strong>'+esc(row['subject'])+'</strong><p>'+esc(words.get(row.get('outcome'),words['graph_unknown']))+'</p><dl>'
+                out+=item(words['graph_reviewer'],row.get('reviewer'))+item(words['graph_rationale'],row.get('rationale'))+item(words['graph_binding'],row.get('expected_binding_sha256'))+'</dl>'
+                if row.get('reason'):out+='<p class="reason">'+esc(row['reason'])+'</p>'
+                out+='</div>'
+        return out+'<details><summary>'+esc(words['graph_details'])+'</summary><pre>'+esc(pretty(note))+'</pre></details></div>'
+    except (ValueError,KeyError,TypeError,AttributeError):return '<p class="reason">'+esc(reason)+'</p>'
+
+
 def incoming_links_values(atom, words):
     """Present retained native diagnostics; never reinterpret supplied captures."""
     prefix = 'Supplied incoming links / liens entrants fournis: '
@@ -768,6 +857,8 @@ def results(bundle, controls, words, language):
             out += performance_values(result, words)
         if cid == 'TS36':
             out += '<div class="notice">' + esc(words['monitoring_note']) + '</div>'
+        if cid == 'TS18':
+            out += '<div class="notice">'+esc(words['graph_note'])+'</div>'
         if cid == 'TS16':
             out += '<div class="notice">' + esc(words['incoming_note']) + '</div>'
         if cid == 'TS17':
@@ -801,7 +892,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (incoming_links_values(atom, words) if cid == 'TS16' else essential_links_values(atom, words) if cid == 'TS17' else sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (graph_values(atom, words) if cid == 'TS18' else incoming_links_values(atom, words) if cid == 'TS16' else essential_links_values(atom, words) if cid == 'TS17' else sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):

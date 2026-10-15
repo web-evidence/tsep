@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.37",
+  "version": "0.1.0-draft.38",
   "status": "draft",
   "date": "2026-10-14",
   "languages": [
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.37"
+      "rule_version": "0.1.0-draft.38"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "na_inputs": [],
@@ -445,7 +445,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "id": "TS04-A01",
@@ -866,7 +866,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.37"
+      "rule_version": "0.1.0-draft.38"
     },
     {
       "id": "TS08",
@@ -926,7 +926,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "automation": "semiAuto",
@@ -1372,7 +1372,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.37"
+      "rule_version": "0.1.0-draft.38"
     },
     {
       "id": "TS11",
@@ -1492,7 +1492,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "id": "TS12-A01",
@@ -1812,7 +1812,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "automation": "automatic",
@@ -2013,7 +2013,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "id": "TS16-A01",
@@ -2122,7 +2122,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "automation": "automatic",
@@ -2234,31 +2234,33 @@
         "crawl",
         "sitemap",
         "inventory",
-        "intent"
+        "intent",
+        "http",
+        "html"
       ],
       "applicability": {
-        "fr": "Inventaire de référence déclaré, avec frontières du crawl.",
-        "en": "Declared reference inventory with crawl boundaries."
+        "fr": "Population, racines, familles et frontières déclarées avant les captures ; profil borné supplied-graph-reconciliation-v1.",
+        "en": "Population, roots, families and boundaries declared before captures; bounded supplied-graph-reconciliation-v1 profile."
       },
       "procedure": {
-        "fr": "Comparer crawl, sitemap et export CMS ; qualifier chaque différence.",
-        "en": "Compare crawl, sitemap and CMS export; qualify every difference."
+        "fr": "Rapprocher les originaux de référence, crawl, CMS et sitemap ; calculer liens et distances du graphe natif borné ; vérifier les revues fournies et liées aux mesures par famille et différence.",
+        "en": "Reconcile original reference, crawl, CMS and sitemap inventories; compute native bounded graph links/distances; verify supplied reviews bound to family and difference measurements."
       },
       "acceptance": {
-        "fr": "Crawl et inventaire sont rapprochés ; profondeur observée et candidats orphelins sont qualifiés par famille ; aucune exhaustivité n’est inférée d’un seul crawl.",
-        "en": "Crawl and inventory are reconciled; observed depth and orphan candidates are assessed by family; a crawl alone never establishes completeness."
+        "fr": "Trois couches complètes dans le périmètre fourni : rapprochement qualifié, mesures natives qualifiées et revues documentaires liées. Une contradiction revue et étayée reste NC malgré une autre inconnue.",
+        "en": "Three complete layers within supplied scope: qualified reconciliation, qualified native measurements and bound documentary reviews. An evidenced reviewed defect remains NC despite another unknown."
       },
       "non_applicability": {
         "fr": "Aucun graphe de navigation concerné, justification fournie ; inventaire manquant signifie NT.",
         "en": "No relevant navigation graph, with a justification; a missing inventory means NT."
       },
       "evidence": {
-        "fr": "Inventaire de référence identifié et daté, frontières du crawl, liens entrants, profondeurs observées et différences qualifiées.",
-        "en": "Identified and dated reference inventory, crawl boundaries, incoming links, observed depths and assessed differences."
+        "fr": "Inventaires originaux datés et empreintés, production et dépendances déclarées, plan, HTTP/source/DOM originaux, paires et bornes, dates par inventaire et revues fournies liées aux dossiers exacts.",
+        "en": "Dated fingerprinted original inventories, declared production/dependencies, prior plan, original HTTP/source/DOM, pairs and bounds, per-inventory dates and supplied reviews bound to exact dossiers."
       },
       "limitations": {
-        "fr": "Il n’existe pas de profondeur universelle garantissant un classement.",
-        "en": "No universal depth guarantees rankings."
+        "fr": "Graphe déclaré uniquement : aucune exhaustivité, page orpheline globale, profondeur SEO universelle, authenticité des captures ou des revues, interaction observée, indexation ou classement. HTTP200 ne vérifie pas le contenu attendu ni les soft404. Le motif fourni n’est pas jugé par le lecteur.",
+        "en": "Declared graph only: no completeness, site-wide orphan, universal SEO depth, authenticated acquisition/reviews, observed interaction, indexing or ranking. HTTP200 does not verify expected content or soft404s. The reader does not adjudicate supplied rationale."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -2276,7 +2278,154 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.38",
+      "rules": [
+        {
+          "automation": "automatic",
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Population, racines, familles et frontières déclarées avant les captures ; profil borné supplied-graph-reconciliation-v1.",
+            "en": "Population, roots, families and boundaries declared before captures; bounded supplied-graph-reconciliation-v1 profile."
+          },
+          "non_applicability": {
+            "fr": "Aucune NA automatique ; absence de preuve signifie indéterminé.",
+            "en": "No automatic NA; missing proof is inconclusive."
+          },
+          "evidence": {
+            "fr": "Inventaires originaux datés et empreintés, production et dépendances déclarées, plan, HTTP/source/DOM originaux, paires et bornes, dates par inventaire et revues fournies liées aux dossiers exacts.",
+            "en": "Dated fingerprinted original inventories, declared production/dependencies, prior plan, original HTTP/source/DOM, pairs and bounds, per-inventory dates and supplied reviews bound to exact dossiers."
+          },
+          "assumptions": {
+            "fr": "Origines et documents exacts, plan antérieur, captures dans une fenêtre maximale de24h ; déclarations de production et états sans interaction non authentifiés.",
+            "en": "Exact origins/documents, prior plan, captures within at most24hours; unauthenticated production and no-interaction declarations."
+          },
+          "inconclusive": {
+            "fr": "Plan, original, surface ou revue absent, ambigu, hors profil, mal lié ou hors fenêtre ; runtime requis absent. Les inconnues restent explicites et un défaut indépendant ne disparaît pas.",
+            "en": "Missing, ambiguous, out-of-profile, misbound or out-of-window plan/original/surface/review; required runtime absent. Unknowns remain explicit and independent defects survive."
+          },
+          "limitations": {
+            "fr": "Graphe déclaré uniquement : aucune exhaustivité, page orpheline globale, profondeur SEO universelle, authenticité des captures ou des revues, interaction observée, indexation ou classement. HTTP200 ne vérifie pas le contenu attendu ni les soft404. Le motif fourni n’est pas jugé par le lecteur.",
+            "en": "Declared graph only: no completeness, site-wide orphan, universal SEO depth, authenticated acquisition/reviews, observed interaction, indexing or ranking. HTTP200 does not verify expected content or soft404s. The reader does not adjudicate supplied rationale."
+          },
+          "id": "TS18-A01",
+          "title": {
+            "fr": "Périmètre préalable et inventaires originaux rapprochés.",
+            "en": "Prior scope and reconciled original inventories."
+          },
+          "required_inputs": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent"
+          ],
+          "procedure": {
+            "fr": "Lire les formats et lignées explicitement déclarés ; référence ordonnée liée au plan, crawl suivant les liens depuis les seules racines, CMS natif et sitemap avec dépendance éventuelle explicite.",
+            "en": "Read explicitly declared formats and lineage; ordered reference bound to plan, crawl following links from roots only, native CMS and sitemap with explicit optional dependency."
+          },
+          "acceptance": {
+            "fr": "Pass si toutes les pièces, dates, familles et déclarations sont qualifiées ; sinon inconclusive. L’accord entre listes ne prouve pas leur exhaustivité. Amorçage mixte ou mode liste : inconclusive dans ce profil.",
+            "en": "Pass if all originals, dates, families and declarations are qualified; otherwise inconclusive. Matching lists do not establish completeness. Mixed or list seeding is inconclusive in this profile."
+          },
+          "allowed_outcomes": [
+            "pass",
+            "inconclusive"
+          ]
+        },
+        {
+          "automation": "automatic",
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Population, racines, familles et frontières déclarées avant les captures ; profil borné supplied-graph-reconciliation-v1.",
+            "en": "Population, roots, families and boundaries declared before captures; bounded supplied-graph-reconciliation-v1 profile."
+          },
+          "non_applicability": {
+            "fr": "Aucune NA automatique ; absence de preuve signifie indéterminé.",
+            "en": "No automatic NA; missing proof is inconclusive."
+          },
+          "evidence": {
+            "fr": "Inventaires originaux datés et empreintés, production et dépendances déclarées, plan, HTTP/source/DOM originaux, paires et bornes, dates par inventaire et revues fournies liées aux dossiers exacts.",
+            "en": "Dated fingerprinted original inventories, declared production/dependencies, prior plan, original HTTP/source/DOM, pairs and bounds, per-inventory dates and supplied reviews bound to exact dossiers."
+          },
+          "assumptions": {
+            "fr": "Origines et documents exacts, plan antérieur, captures dans une fenêtre maximale de24h ; déclarations de production et états sans interaction non authentifiés.",
+            "en": "Exact origins/documents, prior plan, captures within at most24hours; unauthenticated production and no-interaction declarations."
+          },
+          "inconclusive": {
+            "fr": "Plan, original, surface ou revue absent, ambigu, hors profil, mal lié ou hors fenêtre ; runtime requis absent. Les inconnues restent explicites et un défaut indépendant ne disparaît pas.",
+            "en": "Missing, ambiguous, out-of-profile, misbound or out-of-window plan/original/surface/review; required runtime absent. Unknowns remain explicit and independent defects survive."
+          },
+          "limitations": {
+            "fr": "Graphe déclaré uniquement : aucune exhaustivité, page orpheline globale, profondeur SEO universelle, authenticité des captures ou des revues, interaction observée, indexation ou classement. HTTP200 ne vérifie pas le contenu attendu ni les soft404. Le motif fourni n’est pas jugé par le lecteur.",
+            "en": "Declared graph only: no completeness, site-wide orphan, universal SEO depth, authenticated acquisition/reviews, observed interaction, indexing or ranking. HTTP200 does not verify expected content or soft404s. The reader does not adjudicate supplied rationale."
+          },
+          "id": "TS18-A02",
+          "title": {
+            "fr": "Profondeurs et degrés entrants dans le graphe borné.",
+            "en": "Depths and incoming degrees within the bounded graph."
+          },
+          "required_inputs": [
+            "http",
+            "html",
+            "intent"
+          ],
+          "procedure": {
+            "fr": "Lire chaque paire depuis la source sous deux hypothèses ou un DOM qualifié sans interaction ; calculer distances minimale/majorante et nombres minimal/maximal de sources distinctes, sans auto-liens.",
+            "en": "Read each pair from source under two hypotheses or qualified no-interaction DOM; compute lower/upper distances and counts of distinct incoming sources, excluding self-links."
+          },
+          "acceptance": {
+            "fr": "Pass si les racines et toutes les paires sont qualifiées ; sinon inconclusive, même si une profondeur particulière est exacte. Candidat sans lien entrant seulement si son maximum vaut0. Aucun seuil universel de profondeur.",
+            "en": "Pass if roots and every pair are qualified; otherwise inconclusive even if one depth is exact. A no-incoming candidate requires an upper degree of0. No universal depth threshold."
+          },
+          "allowed_outcomes": [
+            "pass",
+            "inconclusive"
+          ]
+        },
+        {
+          "automation": "semiAuto",
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Population, racines, familles et frontières déclarées avant les captures ; profil borné supplied-graph-reconciliation-v1.",
+            "en": "Population, roots, families and boundaries declared before captures; bounded supplied-graph-reconciliation-v1 profile."
+          },
+          "non_applicability": {
+            "fr": "Aucune NA automatique ; absence de preuve signifie indéterminé.",
+            "en": "No automatic NA; missing proof is inconclusive."
+          },
+          "evidence": {
+            "fr": "Inventaires originaux datés et empreintés, production et dépendances déclarées, plan, HTTP/source/DOM originaux, paires et bornes, dates par inventaire et revues fournies liées aux dossiers exacts.",
+            "en": "Dated fingerprinted original inventories, declared production/dependencies, prior plan, original HTTP/source/DOM, pairs and bounds, per-inventory dates and supplied reviews bound to exact dossiers."
+          },
+          "assumptions": {
+            "fr": "Origines et documents exacts, plan antérieur, captures dans une fenêtre maximale de24h ; déclarations de production et états sans interaction non authentifiés.",
+            "en": "Exact origins/documents, prior plan, captures within at most24hours; unauthenticated production and no-interaction declarations."
+          },
+          "inconclusive": {
+            "fr": "Plan, original, surface ou revue absent, ambigu, hors profil, mal lié ou hors fenêtre ; runtime requis absent. Les inconnues restent explicites et un défaut indépendant ne disparaît pas.",
+            "en": "Missing, ambiguous, out-of-profile, misbound or out-of-window plan/original/surface/review; required runtime absent. Unknowns remain explicit and independent defects survive."
+          },
+          "limitations": {
+            "fr": "Graphe déclaré uniquement : aucune exhaustivité, page orpheline globale, profondeur SEO universelle, authenticité des captures ou des revues, interaction observée, indexation ou classement. HTTP200 ne vérifie pas le contenu attendu ni les soft404. Le motif fourni n’est pas jugé par le lecteur.",
+            "en": "Declared graph only: no completeness, site-wide orphan, universal SEO depth, authenticated acquisition/reviews, observed interaction, indexing or ranking. HTTP200 does not verify expected content or soft404s. The reader does not adjudicate supplied rationale."
+          },
+          "id": "TS18-A03",
+          "title": {
+            "fr": "Qualification documentaire fournie des familles et différences.",
+            "en": "Supplied documentary qualification of families and differences."
+          },
+          "required_inputs": [
+            "intent"
+          ],
+          "procedure": {
+            "fr": "Déduire les sujets des seules mesures natives ; vérifier une revue pour chaque famille, différence connue, candidat sans entrant et document inaccessible, liée au plan, originaux, dates et mesures.",
+            "en": "Derive subjects only from native measurements; check one review for each family, known difference, no-incoming candidate and unreachable document, bound to plan, originals, dates and measurements."
+          },
+          "acceptance": {
+            "fr": "Pass si tous les sujets qualifiés ont une explication fournie correctement liée ; fail si un défaut fourni est lié à un sujet étayé ; sinon inconclusive. Une revue ne qualifie pas une mesure inconnue et ne devient jamais une approbation humaine créée par le logiciel.",
+            "en": "Pass if every qualified subject has a correctly bound supplied explanation; fail if a supplied defect binds an evidenced subject; otherwise inconclusive. Reviews cannot cure unknown measurements and are never software-created human approval."
+          }
+        }
+      ]
     },
     {
       "id": "TS19",
@@ -3045,7 +3194,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3243,7 +3392,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3439,7 +3588,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3637,7 +3786,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "id": "TS34-A01",
@@ -3832,7 +3981,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "id": "TS35-A01",
@@ -3984,7 +4133,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "automation": "semiAuto",
@@ -4307,7 +4456,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "applicability": {
@@ -4566,7 +4715,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "applicability": {
@@ -4767,7 +4916,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "id": "TS42-A01",
@@ -4964,7 +5113,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "id": "TS43-A01",
@@ -5166,7 +5315,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.37",
+      "rule_version": "0.1.0-draft.38",
       "rules": [
         {
           "na_inputs": [],
@@ -5458,15 +5607,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "e1a5645cc9b1e4b4705f38a3162414eead8c9e6b3f2347c692cdfd119468614b"
+      "sha256": "1b675231dc7da8b8774fd9a4f2fe417bf44633d9d21ea57675f7b53ea0da53bb"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "3b709f0afebbcfa5e6fb080d34be46ed191b2bc579007fc3e56732954a89fda0"
+      "sha256": "00aa12039f8b1339076618a96e5a0a7cf42bbca8ff987402a6d9112df102226a"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "d715f8468454844d8bf756825bbb4bd09fbebbe97292e7907b849cd3e63fdd60"
+      "sha256": "2ef611ef86f50c01cf858101c1efb1447f5d29eaa1fa7698c64e6f0fc026792d"
     },
     {
       "path": "docs/source-directives.md",
@@ -5547,6 +5696,10 @@
     {
       "path": "docs/incoming-links-evidence.md",
       "sha256": "8d9734d135cae8bb84b75b9f894088cd667b20537ca934f5b98f23ca30dfeb73"
+    },
+    {
+      "path": "docs/graph-reconciliation-evidence.md",
+      "sha256": "62769db5755a57e56f183be5f916ca13792a15e4cb95fab7ecd1797d95327bc0"
     }
   ]
 }

@@ -14,3 +14,5 @@
 
 /* TS15 supplied file URLs stay inside their bounded cards. */
 .sitemap-files-values { overflow-wrap: anywhere; }
+
+.graph-values{overflow-wrap:anywhere;min-width:0}.graph-values dl,.graph-values .notice{min-width:0;max-width:100%}

@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts, binding_digest
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '38'
+VERSION = '39'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -77,6 +77,9 @@ def source_files():
     modules['conformance/release_monitoring.py'] = importlib.import_module('conformance.release_monitoring')
     for name in ('essential_links','essential_links_source','essential_links_dom'):
         modules['conformance/'+name+'.py'] = importlib.import_module('conformance.'+name)
+    for name in ('graph_bounds','graph_inventories','graph_documents','graph_reviews','graph_reconciliation'):
+        modules['conformance/'+name+'.py'] = importlib.import_module('conformance.'+name)
+    modules['adapters/graph_intake.py'] = importlib.import_module('adapters.graph_intake')
     modules['conformance/incoming_links.py'] = importlib.import_module('conformance.incoming_links')
     modules['adapters/incoming_links_intake.py'] = importlib.import_module('adapters.incoming_links_intake')
     modules['conformance/sitemap_files.py'] = importlib.import_module('conformance.sitemap_files')
@@ -117,6 +120,7 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS18 : inventaires, graphe borné et revues fournis ; aucune exhaustivité, identité de relecteur ou collecte authentifiée.', 'en':'TS18: supplied inventories, bounded graph and reviews; no completeness, authenticated reviewer or acquisition.'},
     {'state':'implemented','fr':'TS16 : liens entrants dans la population préalable fournie ; aucune exhaustivité du site ni importance authentifiée.', 'en':'TS16: incoming links within a prior supplied population; no site completeness or authenticated importance.'},
     {'state':'implemented','fr':'TS17 : liens essentiels a/href dans les source et états fournis ; stratégie préalable, scénarios et association HTTP/DOM déclarés, aucune interaction ou acquisition authentifiée.','en':'TS17: essential a/href links in supplied source/states; prior strategy, declared scenarios and HTTP/DOM association, no authenticated interaction/acquisition.'},
     {'state':'implemented','fr':'TS15 : population déclarée de fichiers fournis, limites natives et structure minimale ; aucun constat du serveur ni exhaustivité du site.','en':'TS15: declared population of supplied files, native bounds and minimal structure; no server observation or site completeness.'},
@@ -309,6 +313,23 @@ def pieces(target):
             rendered = [{k:d[k] for k in ('url','render') if k in d} for d in documents if isinstance(d, dict) and 'render' in d]
             if rendered:
                 result['render'] = {'incoming_link_documents': rendered, 'other_supplied_evidence': other['render']} if 'render' in other else rendered
+    def retain(kind,key,value):
+        prior=result.get(kind)
+        result[kind]={key:value}
+        if prior is not None: result[kind]['other_supplied_evidence']=prior
+    inventories=target.get('graph_inventories')
+    if isinstance(inventories,dict):
+        retain('inventory','graph_inventories',inventories)
+        for role,kind in (('crawl','crawl'),('sitemap','sitemap')):
+            if role in inventories:retain(kind,'graph_'+role,inventories[role])
+    graph=target.get('graph_documents')
+    if isinstance(graph,list):
+        retain('http','graph_documents',graph)
+        responses=[{'url':d.get('url'),'http':d['http']} for d in graph if isinstance(d,dict) and 'http' in d]
+        if responses:retain('html','graph_source_responses',responses)
+        rendered=[{k:d[k] for k in ('url','render') if k in d} for d in graph if isinstance(d,dict) and 'render' in d]
+        if rendered:retain('render','graph_documents',rendered)
+    if 'graph_reviews' in target:retain('intent','graph_reviews',target['graph_reviews'])
     return result
 
 
@@ -367,6 +388,9 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         dated(target, target.get('observed_at'), issued_text)
     targets = [t['url'] for t in data['targets']]
     tsep.unique(targets, 'capture target')
+    if any(rule.startswith('TS18-') for rule in data['rules']):
+        from adapters.graph_intake import verify_target
+        for target in data['targets']: verify_target(target,data['input_version'])
     if 'TS16-A01' in data['rules']:
         from adapters.incoming_links_intake import verify_target
         for target in data['targets']:
@@ -418,7 +442,7 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         elif isinstance(value,list):
             for child in value:delivery_provenance(child)
     for target in evidence_targets:
-        for flag in ('delivery_synthetic', 'identity_synthetic', 'structured_synthetic', 'inspection_synthetic', 'sitemap_synthetic', 'link_synthetic', 'incoming_links_synthetic'):
+        for flag in ('delivery_synthetic', 'identity_synthetic', 'structured_synthetic', 'inspection_synthetic', 'sitemap_synthetic', 'link_synthetic', 'incoming_links_synthetic','graph_synthetic'):
             if flag in target:
                 tsep.require(type(target[flag]) is bool and target[flag] == (access == 'synthetic'),
                              {'structured_synthetic': 'Structured-data provenance differs from access',
@@ -579,6 +603,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += ' Usages déclarés et pièces fournies seulement / Declared usages and supplied evidence only; no real agent visit, identity, operator compliance or citation established.'
                 if cid == 'TS36':
                     report['results'][i]['reason'] += ' Suivi documentaire du changement / Documentary release follow-up; future stages remain inconclusive, no causal or authenticated Google visit claim.'
+                if cid == 'TS18':
+                    report['results'][i]['reason'] += ' Graphe et revues fournis / Supplied bounded graph and reviews; no site-wide orphan, complete crawl, authenticated reviewer or universal depth threshold.'
                 if cid == 'TS16':
                     report['results'][i]['reason'] += ' Population préalable fournie seulement / Prior supplied population only; bounded absence is not a site-wide orphan, authenticated importance, interaction or indexing claim.'
                 if cid == 'TS17':

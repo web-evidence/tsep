@@ -1,0 +1,1280 @@
+{
+  "at": "2026-10-14T20:51:13.981269+00:00",
+  "synthetic": true,
+  "authored_before_implementation": true,
+  "kind": "bounded-graph-component-expectations-v1",
+  "scope": "Component only, no TS18 control verdict. null distance is infinity/no route in that graph. Excluded edges require separately established eligibility; this component cannot authenticate supplied pair states.",
+  "cases": [
+    {
+      "id": "root_without_incoming",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "absent",
+            "C": "absent"
+          },
+          "B": {
+            "A": "absent",
+            "C": "absent"
+          },
+          "C": {
+            "A": "absent",
+            "B": "absent"
+          }
+        }
+      },
+      "node": "A",
+      "expected": {
+        "lower": 0,
+        "upper": 0,
+        "depth_state": "exact",
+        "incoming_lower": 0,
+        "incoming_upper": 0,
+        "bounded_orphan_candidate": false
+      }
+    },
+    {
+      "id": "known_two_unknown_shortcut",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "present",
+            "C": "unknown"
+          },
+          "B": {
+            "A": "absent",
+            "C": "present"
+          },
+          "C": {
+            "A": "absent",
+            "B": "absent"
+          }
+        }
+      },
+      "node": "C",
+      "expected": {
+        "lower": 1,
+        "upper": 2,
+        "depth_state": "interval",
+        "incoming_lower": 1,
+        "incoming_upper": 2,
+        "bounded_orphan_candidate": false
+      }
+    },
+    {
+      "id": "irrelevant_unknown",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "present",
+            "C": "absent"
+          },
+          "B": {
+            "A": "absent",
+            "C": "present"
+          },
+          "C": {
+            "A": "absent",
+            "B": "unknown"
+          }
+        }
+      },
+      "node": "C",
+      "expected": {
+        "lower": 2,
+        "upper": 2,
+        "depth_state": "exact",
+        "incoming_lower": 1,
+        "incoming_upper": 1,
+        "bounded_orphan_candidate": false
+      }
+    },
+    {
+      "id": "disconnected_cycle",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "absent",
+            "C": "absent"
+          },
+          "B": {
+            "A": "absent",
+            "C": "present"
+          },
+          "C": {
+            "A": "absent",
+            "B": "present"
+          }
+        }
+      },
+      "node": "C",
+      "expected": {
+        "lower": null,
+        "upper": null,
+        "depth_state": "unreachable",
+        "incoming_lower": 1,
+        "incoming_upper": 1,
+        "bounded_orphan_candidate": false
+      }
+    },
+    {
+      "id": "possible_route_only",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "unknown",
+            "C": "absent"
+          },
+          "B": {
+            "A": "absent",
+            "C": "present"
+          },
+          "C": {
+            "A": "absent",
+            "B": "absent"
+          }
+        }
+      },
+      "node": "C",
+      "expected": {
+        "lower": 2,
+        "upper": null,
+        "depth_state": "no_proven_route",
+        "incoming_lower": 1,
+        "incoming_upper": 1,
+        "bounded_orphan_candidate": false
+      }
+    },
+    {
+      "id": "known_route_outside_population",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "absent",
+            "C": "absent",
+            "X": "present"
+          },
+          "B": {
+            "A": "absent",
+            "C": "absent"
+          },
+          "C": {
+            "A": "absent",
+            "B": "absent"
+          },
+          "X": {
+            "C": "present"
+          }
+        }
+      },
+      "node": "C",
+      "expected": {
+        "lower": null,
+        "upper": null,
+        "depth_state": "unreachable",
+        "incoming_lower": 0,
+        "incoming_upper": 0,
+        "bounded_orphan_candidate": true,
+        "outside_edges": [
+          [
+            "A",
+            "X"
+          ],
+          [
+            "X",
+            "C"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "after_interaction_excluded_not_unknown",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "present",
+            "C": "excluded"
+          },
+          "B": {
+            "A": "absent",
+            "C": "absent"
+          },
+          "C": {
+            "A": "absent",
+            "B": "absent"
+          }
+        }
+      },
+      "node": "C",
+      "expected": {
+        "lower": null,
+        "upper": null,
+        "depth_state": "unreachable",
+        "incoming_lower": 0,
+        "incoming_upper": 0,
+        "bounded_orphan_candidate": true
+      }
+    },
+    {
+      "id": "unknown_source_does_not_erase_direct_witness",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "unknown",
+            "C": "present"
+          },
+          "B": {
+            "A": "absent",
+            "C": "unknown"
+          },
+          "C": {
+            "A": "absent",
+            "B": "absent"
+          }
+        }
+      },
+      "node": "C",
+      "expected": {
+        "lower": 1,
+        "upper": 1,
+        "depth_state": "exact",
+        "incoming_lower": 1,
+        "incoming_upper": 2,
+        "bounded_orphan_candidate": false
+      }
+    },
+    {
+      "id": "multiple_roots_different_lengths",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "roots": [
+          "A",
+          "B"
+        ],
+        "pairs": {
+          "A": {
+            "B": "absent",
+            "C": "present",
+            "D": "absent"
+          },
+          "B": {
+            "A": "absent",
+            "C": "absent",
+            "D": "present"
+          },
+          "C": {
+            "A": "absent",
+            "B": "absent",
+            "D": "present"
+          },
+          "D": {
+            "A": "absent",
+            "B": "absent",
+            "C": "absent"
+          }
+        }
+      },
+      "node": "D",
+      "expected": {
+        "lower": 1,
+        "upper": 1,
+        "depth_state": "exact",
+        "proven_shortest_roots": [
+          "B"
+        ],
+        "incoming_lower": 2,
+        "incoming_upper": 2,
+        "bounded_orphan_candidate": false
+      }
+    },
+    {
+      "id": "multiple_roots_tied",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "B",
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "absent",
+            "C": "present"
+          },
+          "B": {
+            "A": "absent",
+            "C": "present"
+          },
+          "C": {
+            "A": "absent",
+            "B": "absent"
+          }
+        }
+      },
+      "node": "C",
+      "expected": {
+        "lower": 1,
+        "upper": 1,
+        "depth_state": "exact",
+        "proven_shortest_roots": [
+          "A",
+          "B"
+        ],
+        "incoming_lower": 2,
+        "incoming_upper": 2,
+        "bounded_orphan_candidate": false
+      }
+    },
+    {
+      "id": "missing_pair_is_unknown",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "absent"
+          },
+          "B": {
+            "A": "absent",
+            "C": "absent"
+          },
+          "C": {
+            "A": "absent",
+            "B": "absent"
+          }
+        }
+      },
+      "node": "C",
+      "expected": {
+        "lower": 1,
+        "upper": null,
+        "depth_state": "no_proven_route",
+        "incoming_lower": 0,
+        "incoming_upper": 1,
+        "bounded_orphan_candidate": false
+      }
+    },
+    {
+      "id": "self_link_does_not_supply_incoming",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "absent",
+            "C": "absent"
+          },
+          "B": {
+            "A": "absent",
+            "C": "absent"
+          },
+          "C": {
+            "A": "absent",
+            "B": "absent",
+            "C": "present"
+          }
+        }
+      },
+      "node": "C",
+      "expected": {
+        "lower": null,
+        "upper": null,
+        "depth_state": "unreachable",
+        "incoming_lower": 0,
+        "incoming_upper": 0,
+        "bounded_orphan_candidate": true
+      }
+    },
+    {
+      "id": "missing_source_pairs_are_unknown",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "absent",
+            "C": "absent"
+          },
+          "C": {
+            "A": "absent",
+            "B": "absent"
+          }
+        }
+      },
+      "node": "C",
+      "expected": {
+        "lower": null,
+        "upper": null,
+        "depth_state": "unreachable",
+        "incoming_lower": 0,
+        "incoming_upper": 1,
+        "bounded_orphan_candidate": false
+      }
+    },
+    {
+      "id": "unsupported_pair_state_not_absence",
+      "graph": {
+        "nodes": [
+          "A",
+          "B",
+          "C"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "absent",
+            "C": "maybe"
+          },
+          "B": {
+            "A": "absent",
+            "C": "absent"
+          },
+          "C": {
+            "A": "absent",
+            "B": "absent"
+          }
+        }
+      },
+      "node": "C",
+      "expected": {
+        "error": "Unqualified graph input"
+      }
+    },
+    {
+      "id": "root_outside_population",
+      "graph": {
+        "nodes": [
+          "A",
+          "B"
+        ],
+        "roots": [
+          "X"
+        ],
+        "pairs": {
+          "A": {
+            "B": "absent"
+          },
+          "B": {
+            "A": "absent"
+          }
+        }
+      },
+      "node": "B",
+      "expected": {
+        "error": "Unqualified graph input"
+      }
+    },
+    {
+      "id": "duplicate_node",
+      "graph": {
+        "nodes": [
+          "A",
+          "A",
+          "B"
+        ],
+        "roots": [
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "absent"
+          },
+          "B": {
+            "A": "absent"
+          }
+        }
+      },
+      "node": "B",
+      "expected": {
+        "error": "Unqualified graph input"
+      }
+    },
+    {
+      "id": "empty_root_population",
+      "graph": {
+        "nodes": [
+          "A",
+          "B"
+        ],
+        "roots": [],
+        "pairs": {
+          "A": {
+            "B": "absent"
+          },
+          "B": {
+            "A": "absent"
+          }
+        }
+      },
+      "node": "B",
+      "expected": {
+        "error": "Unqualified graph input"
+      }
+    },
+    {
+      "id": "duplicate_root",
+      "graph": {
+        "nodes": [
+          "A",
+          "B"
+        ],
+        "roots": [
+          "A",
+          "A"
+        ],
+        "pairs": {
+          "A": {
+            "B": "absent"
+          },
+          "B": {
+            "A": "absent"
+          }
+        }
+      },
+      "node": "B",
+      "expected": {
+        "error": "Unqualified graph input"
+      }
+    },
+    {
+      "id": "maximum16_chain",
+      "graph": {
+        "nodes": [
+          "N0",
+          "N1",
+          "N2",
+          "N3",
+          "N4",
+          "N5",
+          "N6",
+          "N7",
+          "N8",
+          "N9",
+          "N10",
+          "N11",
+          "N12",
+          "N13",
+          "N14",
+          "N15"
+        ],
+        "roots": [
+          "N0"
+        ],
+        "pairs": {
+          "N0": {
+            "N1": "present",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N1": {
+            "N0": "absent",
+            "N2": "present",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N2": {
+            "N0": "absent",
+            "N1": "absent",
+            "N3": "present",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N3": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N4": "present",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N4": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N5": "present",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N5": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N6": "present",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N6": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N7": "present",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N7": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N8": "present",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N8": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N9": "present",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N9": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N10": "present",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N10": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N11": "present",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N11": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N12": "present",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N12": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N13": "present",
+            "N14": "absent",
+            "N15": "absent"
+          },
+          "N13": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N14": "present",
+            "N15": "absent"
+          },
+          "N14": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N15": "present"
+          },
+          "N15": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent"
+          }
+        }
+      },
+      "node": "N15",
+      "expected": {
+        "lower": 15,
+        "upper": 15,
+        "depth_state": "exact",
+        "incoming_lower": 1,
+        "incoming_upper": 1,
+        "bounded_orphan_candidate": false
+      }
+    },
+    {
+      "id": "seventeen_nodes_outside_profile",
+      "graph": {
+        "nodes": [
+          "N0",
+          "N1",
+          "N2",
+          "N3",
+          "N4",
+          "N5",
+          "N6",
+          "N7",
+          "N8",
+          "N9",
+          "N10",
+          "N11",
+          "N12",
+          "N13",
+          "N14",
+          "N15",
+          "N16"
+        ],
+        "roots": [
+          "N0"
+        ],
+        "pairs": {
+          "N0": {
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N1": {
+            "N0": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N2": {
+            "N0": "absent",
+            "N1": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N3": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N4": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N5": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N6": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N7": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N8": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N9": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N10": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N11": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N12": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N13": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N14": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N14": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N15": "absent",
+            "N16": "absent"
+          },
+          "N15": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N16": "absent"
+          },
+          "N16": {
+            "N0": "absent",
+            "N1": "absent",
+            "N2": "absent",
+            "N3": "absent",
+            "N4": "absent",
+            "N5": "absent",
+            "N6": "absent",
+            "N7": "absent",
+            "N8": "absent",
+            "N9": "absent",
+            "N10": "absent",
+            "N11": "absent",
+            "N12": "absent",
+            "N13": "absent",
+            "N14": "absent",
+            "N15": "absent"
+          }
+        }
+      },
+      "node": "N16",
+      "expected": {
+        "error": "Unqualified graph input"
+      }
+    }
+  ]
+}

@@ -131,9 +131,9 @@ def input_kinds(artifact):
 
 def atomic_outcomes(rule):
     """Versioned closed exception; historical rules keep their outcome domain."""
-    if rule['id'] == 'TS15-A03':
+    if rule['id'] in ('TS15-A03','TS18-A01','TS18-A02'):
         require(rule.get('allowed_outcomes') == ['pass', 'inconclusive'],
-                'TS15-A03 requires its closed outcome declaration')
+                rule['id']+' requires its closed outcome declaration')
         return ('pass', 'inconclusive')
     require('allowed_outcomes' not in rule,
             'Undeclared outcome restriction: ' + rule['id'])
@@ -299,6 +299,8 @@ def decision(report, controls=None):
         summary['release_monitoring_interpretation'] = {
             'fr':'TS36 : dossier du suivi déclaré, échéances futures indéterminées ; aucune causalité ni identité Google authentifiée.',
             'en':'TS36: declared follow-up dossier, future stages inconclusive; no causality or authenticated Google identity.'}
+    if any(r['control_id']=='TS18' for r in report['results']):
+        summary['graph_interpretation']={'fr':'TS18 : périmètre borné et revues fournis ; inconnues conservées, aucune page orpheline globale ni approbation humaine créée.', 'en':'TS18: supplied bounded scope/reviews; retained unknowns, no global orphan or software-created human approval.'}
     if any(r['control_id']=='TS16' for r in report['results']):
         summary['incoming_links_interpretation'] = {'fr':'TS16 : population préalable fournie ; absence bornée, aucune page orpheline du site ni importance ou interaction authentifiée.', 'en':'TS16: prior supplied population; bounded absence, no site-wide orphan or authenticated importance/interaction.'}
     if any(r['control_id']=='TS17' for r in report['results']):

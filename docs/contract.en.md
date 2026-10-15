@@ -1,3 +1,5 @@
+Draft.38 — TS18-A01/A02/A03 : [graphe fourni / supplied graph](graph-reconciliation-evidence.md), [migration](migration-draft.38.md). Limites bornées, revues fournies / Bounded limits, supplied reviews.
+
 Draft.37 — TS16-A01 : [liens entrants fournis / supplied incoming links](incoming-links-evidence.md), [migration](migration-draft.37.md). Population préalable uniquement / Prior population only.
 
 Draft.36 — TS17-A01/A02 : [liens essentiels fournis / supplied essential links](essential-links-evidence.md), [migration](migration-draft.36.md). Source et états déclarés séparés / Separate source and provider-declared states.

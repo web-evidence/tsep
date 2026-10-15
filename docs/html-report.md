@@ -1,3 +1,7 @@
+HTML22 FR : les URL hors population restent toutes disponibles dans un détail dépliable au clavier ; leur nombre est visible même replié. EN: all outside-population URLs remain in a keyboard-expandable detail with a visible count; no truncation or new conclusion.
+
+HTML22: read-only bilingual TS18 inventory dates, graph distance/degree bounds and supplied review summaries. No re-evaluation or human approval. Unknowns and scoped limits remain visible.
+
 HTML20 — TS17: distinct source and declared rendered stages, exact found/missing destinations, provider-declared scenarios and supplied HTTP/DOM association; no authenticated interaction/acquisition. FR : stades distincts, destinations présentes/absentes exactes, scénarios déclarés et acquisition non authentifiée ; aucun recalcul dans le HTML.
 
 HTML19 — TS15 displays declared file population/count, undiscovered roots, supplied dates and measured bounds with readable FR/EN labels. Raw hashes remain in the retained complete diagnostic. FR : population déclarée, racines non découvertes, dates fournies et mesures lisibles ; empreintes conservées dans le diagnostic complet. Static retained diagnostics only, no re-evaluation; no site-wide or server claim.

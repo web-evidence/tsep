@@ -1,0 +1,769 @@
+{
+  "at": "2026-10-14T20:55:17.158702+00:00",
+  "synthetic": true,
+  "authored_before_implementation": true,
+  "scope": "Original inventory parsing only; no URL semantics, acquisition authenticity, cross-inventory independence or TS18 control verdict. Native malformed XML does not automatically make TS18 NC.",
+  "cases": [
+    {
+      "id": "csv-comma-utf8",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMLFRpdGxlDQpodHRwczovL2V4YW1wbGUudGVzdC9hLEENCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2IsQg0K",
+        "sha256": "0fb0163533476ad0600c76b213d9c7bfc6f77ec88fba857f80cc4c2f3c4e5907",
+        "complete": true
+      },
+      "expected": "qualified",
+      "urls": [
+        "https://example.test/a",
+        "https://example.test/b"
+      ]
+    },
+    {
+      "id": "csv-explicit-semicolon",
+      "format": "csv",
+      "policy": {
+        "delimiter": ";",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMO1RpdGxlCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2E7QQo=",
+        "sha256": "513e241806bbaf470b0f20cca74abb111305ccd796ad8b31e2c8afa7c825f149",
+        "complete": true
+      },
+      "expected": "qualified",
+      "urls": [
+        "https://example.test/a"
+      ]
+    },
+    {
+      "id": "csv-quoted-newline-in-other-column",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMLFRpdGxlCiJodHRwczovL2V4YW1wbGUudGVzdC9hIiwiZmlyc3QKc2Vjb25kIgo=",
+        "sha256": "3ab0977e7a3c50b84349080d99ae2654e44a74dd714e43856d1395752867c930",
+        "complete": true
+      },
+      "expected": "qualified",
+      "urls": [
+        "https://example.test/a"
+      ]
+    },
+    {
+      "id": "csv-escaped-quote",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMLFRpdGxlCiJodHRwczovL2V4YW1wbGUudGVzdC9hIiwiYSIiYiIK",
+        "sha256": "25273220793b838a8991ff21734bce314ebf870417b2fa6722ac0acc0c413187",
+        "complete": true
+      },
+      "expected": "qualified",
+      "urls": [
+        "https://example.test/a"
+      ]
+    },
+    {
+      "id": "csv-bom-explicit",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8-sig",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "77u/VVJMLFRpdGxlCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2EsQQo=",
+        "sha256": "c67bc3db1953d2cfaf0f001108b93992b9185a133f850ffa74dc41f7ebb25b9a",
+        "complete": true
+      },
+      "expected": "qualified",
+      "urls": [
+        "https://example.test/a"
+      ]
+    },
+    {
+      "id": "csv-bom-undeclared",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "77u/VVJMLFRpdGxlCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2EsQQo=",
+        "sha256": "c67bc3db1953d2cfaf0f001108b93992b9185a133f850ffa74dc41f7ebb25b9a",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-cp1252-and-semicolon-misdeclared",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMO1RpdGxlCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2E7Y2Fm6Qo=",
+        "sha256": "b6b6430fa76434d7dd5b1f2c97aa6282c7cb1ebef6806d4b088f7680617b0412",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-unsupported-cp1252-policy",
+      "format": "csv",
+      "policy": {
+        "delimiter": ";",
+        "encoding": "windows-1252",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMO1RpdGxlCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2E7Y2Fm6Qo=",
+        "sha256": "b6b6430fa76434d7dd5b1f2c97aa6282c7cb1ebef6806d4b088f7680617b0412",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-delimiter-mismatch",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMO1RpdGxlCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2E7QQo=",
+        "sha256": "513e241806bbaf470b0f20cca74abb111305ccd796ad8b31e2c8afa7c825f149",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-missing-url-column",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "QWRkcmVzcyxUaXRsZQpodHRwczovL2V4YW1wbGUudGVzdC9hLEEK",
+        "sha256": "d04d0553b8282e6781d46f1e6e4114716891f4fd476ce7853d8f985d1a1dc66e",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-duplicate-header",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMLFVSTApodHRwczovL2V4YW1wbGUudGVzdC9hLGh0dHBzOi8vZXhhbXBsZS50ZXN0L2IK",
+        "sha256": "cae7c36bc16d2a92e31c66a50365e7d1bb03b021f779cc13934cff48b55040ee",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-short-row",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMLFRpdGxlCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2EK",
+        "sha256": "165f6c1ae073bafcbf03241854a67e8d071ac85dd70c8a11e662039076d257e9",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-long-row",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMLFRpdGxlCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2EsQSxCCg==",
+        "sha256": "e4a43f32164883f8e4c8bd015091ad24ea5083380f6beefa6aa249663fb38ae3",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-duplicate-url",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2EKaHR0cHM6Ly9leGFtcGxlLnRlc3QvYQo=",
+        "sha256": "7103f86859ddce5ed6cbab030f39b87301d57f383f9031a5134b586426d8363c",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-empty-url",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMLFRpdGxlCixBCg==",
+        "sha256": "9a3ebe48f848ee6ce3f781792b2bb684c8caf34085df83e03882d19e091c1d20",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-unclosed-quote",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMLFRpdGxlCiJodHRwczovL2V4YW1wbGUudGVzdC9hLEEK",
+        "sha256": "058d317fe2ce9b5125345f7cf2f49da37da280d862b3e883752e1c5d30f08d03",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-empty-inventory",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMLFRpdGxlCg==",
+        "sha256": "b19bca28231af6c7db700f63d090287e9900af1b3caaa7b9eb7dbf9be36cbd29",
+        "complete": true
+      },
+      "expected": "qualified",
+      "urls": []
+    },
+    {
+      "id": "csv-blank-row",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMLFRpdGxlCgpodHRwczovL2V4YW1wbGUudGVzdC9hLEEK",
+        "sha256": "7f20d49aaec9502877dfb27445f1d45392a9ffb3dbbf52f51b860cc48703e087",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-unsupported-header-offset",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 2,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2EK",
+        "sha256": "e4903af0050c0a2bba2f0d677967eefb8c647d1e69bde0e5ea9ffcd05e4b9b51",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-incomplete",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2EK",
+        "sha256": "e4903af0050c0a2bba2f0d677967eefb8c647d1e69bde0e5ea9ffcd05e4b9b51",
+        "complete": false
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-missing-hash",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2EK",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "csv-corrupt-hash",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMCmh0dHBzOi8vZXhhbXBsZS50ZXN0L2EK",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "complete": true
+      },
+      "expected": "technical-refusal",
+      "urls": null
+    },
+    {
+      "id": "csv-bad-base64",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "!",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "complete": true
+      },
+      "expected": "technical-refusal",
+      "urls": null
+    },
+    {
+      "id": "csv-noncanonical-base64",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "YR==",
+        "sha256": "ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb",
+        "complete": true
+      },
+      "expected": "technical-refusal",
+      "urls": null
+    },
+    {
+      "id": "csv-maximum128",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMCmh0dHBzOi8vZXhhbXBsZS50ZXN0LzAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMQpodHRwczovL2V4YW1wbGUudGVzdC8yCmh0dHBzOi8vZXhhbXBsZS50ZXN0LzMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNApodHRwczovL2V4YW1wbGUudGVzdC81Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNwpodHRwczovL2V4YW1wbGUudGVzdC84Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTAwCmh0dHBzOi8vZXhhbXBsZS50ZXN0LzEwMQpodHRwczovL2V4YW1wbGUudGVzdC8xMDIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTAzCmh0dHBzOi8vZXhhbXBsZS50ZXN0LzEwNApodHRwczovL2V4YW1wbGUudGVzdC8xMDUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTA2Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzEwNwpodHRwczovL2V4YW1wbGUudGVzdC8xMDgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTA5Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzExMApodHRwczovL2V4YW1wbGUudGVzdC8xMTEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTEyCmh0dHBzOi8vZXhhbXBsZS50ZXN0LzExMwpodHRwczovL2V4YW1wbGUudGVzdC8xMTQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTE1Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzExNgpodHRwczovL2V4YW1wbGUudGVzdC8xMTcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTE4Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzExOQpodHRwczovL2V4YW1wbGUudGVzdC8xMjAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTIxCmh0dHBzOi8vZXhhbXBsZS50ZXN0LzEyMgpodHRwczovL2V4YW1wbGUudGVzdC8xMjMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTI0Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzEyNQpodHRwczovL2V4YW1wbGUudGVzdC8xMjYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTI3Cg==",
+        "sha256": "e692a634f735a85e78efabfbe8f6fdc11d98bce39d64aef81c25a7b0d2041802",
+        "complete": true
+      },
+      "expected": "qualified",
+      "urls": [
+        "https://example.test/0",
+        "https://example.test/1",
+        "https://example.test/2",
+        "https://example.test/3",
+        "https://example.test/4",
+        "https://example.test/5",
+        "https://example.test/6",
+        "https://example.test/7",
+        "https://example.test/8",
+        "https://example.test/9",
+        "https://example.test/10",
+        "https://example.test/11",
+        "https://example.test/12",
+        "https://example.test/13",
+        "https://example.test/14",
+        "https://example.test/15",
+        "https://example.test/16",
+        "https://example.test/17",
+        "https://example.test/18",
+        "https://example.test/19",
+        "https://example.test/20",
+        "https://example.test/21",
+        "https://example.test/22",
+        "https://example.test/23",
+        "https://example.test/24",
+        "https://example.test/25",
+        "https://example.test/26",
+        "https://example.test/27",
+        "https://example.test/28",
+        "https://example.test/29",
+        "https://example.test/30",
+        "https://example.test/31",
+        "https://example.test/32",
+        "https://example.test/33",
+        "https://example.test/34",
+        "https://example.test/35",
+        "https://example.test/36",
+        "https://example.test/37",
+        "https://example.test/38",
+        "https://example.test/39",
+        "https://example.test/40",
+        "https://example.test/41",
+        "https://example.test/42",
+        "https://example.test/43",
+        "https://example.test/44",
+        "https://example.test/45",
+        "https://example.test/46",
+        "https://example.test/47",
+        "https://example.test/48",
+        "https://example.test/49",
+        "https://example.test/50",
+        "https://example.test/51",
+        "https://example.test/52",
+        "https://example.test/53",
+        "https://example.test/54",
+        "https://example.test/55",
+        "https://example.test/56",
+        "https://example.test/57",
+        "https://example.test/58",
+        "https://example.test/59",
+        "https://example.test/60",
+        "https://example.test/61",
+        "https://example.test/62",
+        "https://example.test/63",
+        "https://example.test/64",
+        "https://example.test/65",
+        "https://example.test/66",
+        "https://example.test/67",
+        "https://example.test/68",
+        "https://example.test/69",
+        "https://example.test/70",
+        "https://example.test/71",
+        "https://example.test/72",
+        "https://example.test/73",
+        "https://example.test/74",
+        "https://example.test/75",
+        "https://example.test/76",
+        "https://example.test/77",
+        "https://example.test/78",
+        "https://example.test/79",
+        "https://example.test/80",
+        "https://example.test/81",
+        "https://example.test/82",
+        "https://example.test/83",
+        "https://example.test/84",
+        "https://example.test/85",
+        "https://example.test/86",
+        "https://example.test/87",
+        "https://example.test/88",
+        "https://example.test/89",
+        "https://example.test/90",
+        "https://example.test/91",
+        "https://example.test/92",
+        "https://example.test/93",
+        "https://example.test/94",
+        "https://example.test/95",
+        "https://example.test/96",
+        "https://example.test/97",
+        "https://example.test/98",
+        "https://example.test/99",
+        "https://example.test/100",
+        "https://example.test/101",
+        "https://example.test/102",
+        "https://example.test/103",
+        "https://example.test/104",
+        "https://example.test/105",
+        "https://example.test/106",
+        "https://example.test/107",
+        "https://example.test/108",
+        "https://example.test/109",
+        "https://example.test/110",
+        "https://example.test/111",
+        "https://example.test/112",
+        "https://example.test/113",
+        "https://example.test/114",
+        "https://example.test/115",
+        "https://example.test/116",
+        "https://example.test/117",
+        "https://example.test/118",
+        "https://example.test/119",
+        "https://example.test/120",
+        "https://example.test/121",
+        "https://example.test/122",
+        "https://example.test/123",
+        "https://example.test/124",
+        "https://example.test/125",
+        "https://example.test/126",
+        "https://example.test/127"
+      ]
+    },
+    {
+      "id": "csv129-beyond-bound",
+      "format": "csv",
+      "policy": {
+        "delimiter": ",",
+        "encoding": "utf-8",
+        "quotechar": "\"",
+        "doublequote": true,
+        "header_row": 1,
+        "url_column": "URL"
+      },
+      "record": {
+        "base64": "VVJMCmh0dHBzOi8vZXhhbXBsZS50ZXN0LzAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMQpodHRwczovL2V4YW1wbGUudGVzdC8yCmh0dHBzOi8vZXhhbXBsZS50ZXN0LzMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNApodHRwczovL2V4YW1wbGUudGVzdC81Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNwpodHRwczovL2V4YW1wbGUudGVzdC84Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMjkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMzkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNDkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNTkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNjkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvNzkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvODkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvOTkKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTAwCmh0dHBzOi8vZXhhbXBsZS50ZXN0LzEwMQpodHRwczovL2V4YW1wbGUudGVzdC8xMDIKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTAzCmh0dHBzOi8vZXhhbXBsZS50ZXN0LzEwNApodHRwczovL2V4YW1wbGUudGVzdC8xMDUKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTA2Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzEwNwpodHRwczovL2V4YW1wbGUudGVzdC8xMDgKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTA5Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzExMApodHRwczovL2V4YW1wbGUudGVzdC8xMTEKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTEyCmh0dHBzOi8vZXhhbXBsZS50ZXN0LzExMwpodHRwczovL2V4YW1wbGUudGVzdC8xMTQKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTE1Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzExNgpodHRwczovL2V4YW1wbGUudGVzdC8xMTcKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTE4Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzExOQpodHRwczovL2V4YW1wbGUudGVzdC8xMjAKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTIxCmh0dHBzOi8vZXhhbXBsZS50ZXN0LzEyMgpodHRwczovL2V4YW1wbGUudGVzdC8xMjMKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTI0Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzEyNQpodHRwczovL2V4YW1wbGUudGVzdC8xMjYKaHR0cHM6Ly9leGFtcGxlLnRlc3QvMTI3Cmh0dHBzOi8vZXhhbXBsZS50ZXN0LzEyOAo=",
+        "sha256": "27c5ca58350998d8dfdc2fc0cfa70c845fb7c76bf5f94e814b953c1278b6fb97",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "xml-native-urlset",
+      "format": "sitemap",
+      "policy": {
+        "encoding": "identity"
+      },
+      "record": {
+        "base64": "PHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+PHVybD48bG9jPmh0dHBzOi8vZXhhbXBsZS50ZXN0L2E8L2xvYz48L3VybD48dXJsPjxsb2M+aHR0cHM6Ly9leGFtcGxlLnRlc3QvYjwvbG9jPjwvdXJsPjwvdXJsc2V0Pg==",
+        "sha256": "08a4cce540330baf4b6e4c15ce05e928b12db49931842257c34a9de8bfb86ab5",
+        "complete": true
+      },
+      "expected": "qualified",
+      "urls": [
+        "https://example.test/a",
+        "https://example.test/b"
+      ]
+    },
+    {
+      "id": "xml-undeclared-index",
+      "format": "sitemap",
+      "policy": {
+        "encoding": "identity"
+      },
+      "record": {
+        "base64": "PHNpdGVtYXBpbmRleCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+PHNpdGVtYXA+PGxvYz5odHRwczovL2V4YW1wbGUudGVzdC9hPC9sb2M+PC9zaXRlbWFwPjwvc2l0ZW1hcGluZGV4Pg==",
+        "sha256": "2abda95f2223632bcd362146e5d5841bb91bfd45585bba761a6def964955ce4b",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "xml-incomplete",
+      "format": "sitemap",
+      "policy": {
+        "encoding": "identity"
+      },
+      "record": {
+        "base64": "PHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+PHVybD48bG9jPmh0dHBzOi8vZXhhbXBsZS50ZXN0L2E8L2xvYz48L3VybD48dXJsPjxsb2M+aHR0cHM6Ly9leGFtcGxlLnRlc3QvYjwvbG9jPjwvdXJsPjwvdXJsc2V0Pg==",
+        "sha256": "08a4cce540330baf4b6e4c15ce05e928b12db49931842257c34a9de8bfb86ab5",
+        "complete": false
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "xml-wrong-namespace",
+      "format": "sitemap",
+      "policy": {
+        "encoding": "identity"
+      },
+      "record": {
+        "base64": "PHVybHNldCB4bWxucz0idXJuOm90aGVyIj48dXJsPjxsb2M+aHR0cHM6Ly9leGFtcGxlLnRlc3QvYTwvbG9jPjwvdXJsPjx1cmw+PGxvYz5odHRwczovL2V4YW1wbGUudGVzdC9iPC9sb2M+PC91cmw+PC91cmxzZXQ+",
+        "sha256": "7ccae4116c66fe635b1921f4e142dd4fee1ec115c28957c07d3d63593fdb6845",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "xml-malformed",
+      "format": "sitemap",
+      "policy": {
+        "encoding": "identity"
+      },
+      "record": {
+        "base64": "PHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+PHVybD48bG9jPmh0dHBzOi8vZXhhbXBsZS50ZXN0L2E8L2xvYz48L3VybD48dXJsPjxsb2M+aHR0cHM6Ly9leGFtcGxlLnRlc3QvYjwvbG9jPjwvdXJsPjwvdXJs",
+        "sha256": "32460333fc91384ec7d99404dffe123425cd7a0efe551965c132e170fd750d7e",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "xml-doctype",
+      "format": "sitemap",
+      "policy": {
+        "encoding": "identity"
+      },
+      "record": {
+        "base64": "PCFET0NUWVBFIHVybHNldCBbPCFFTlRJVFkgc2VjcmV0IFNZU1RFTSAiZmlsZTovLy9ub3QtcmVhZCI+XT48dXJsc2V0IHhtbG5zPSJodHRwOi8vd3d3LnNpdGVtYXBzLm9yZy9zY2hlbWFzL3NpdGVtYXAvMC45Ij48dXJsPjxsb2M+aHR0cHM6Ly9leGFtcGxlLnRlc3QvYTwvbG9jPjwvdXJsPjx1cmw+PGxvYz5odHRwczovL2V4YW1wbGUudGVzdC9iPC9sb2M+PC91cmw+PC91cmxzZXQ+",
+        "sha256": "3bf4d4a0bc4a57ba0ab4b91551c945b5a90f82a04bcf9b35c84b15c19be132e8",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "xml-duplicate-url",
+      "format": "sitemap",
+      "policy": {
+        "encoding": "identity"
+      },
+      "record": {
+        "base64": "PHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+PHVybD48bG9jPmh0dHBzOi8vZXhhbXBsZS50ZXN0L2E8L2xvYz48L3VybD48dXJsPjxsb2M+aHR0cHM6Ly9leGFtcGxlLnRlc3QvYTwvbG9jPjwvdXJsPjwvdXJsc2V0Pg==",
+        "sha256": "39f0935d62c073a49e2b98b54a2d32ac2c1328b1a29eadbd64bb61b1af88f60f",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "xml-missing-hash",
+      "format": "sitemap",
+      "policy": {
+        "encoding": "identity"
+      },
+      "record": {
+        "base64": "PHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+PHVybD48bG9jPmh0dHBzOi8vZXhhbXBsZS50ZXN0L2E8L2xvYz48L3VybD48dXJsPjxsb2M+aHR0cHM6Ly9leGFtcGxlLnRlc3QvYjwvbG9jPjwvdXJsPjwvdXJsc2V0Pg==",
+        "complete": true
+      },
+      "expected": "inconclusive",
+      "urls": null
+    },
+    {
+      "id": "xml-corrupt-hash",
+      "format": "sitemap",
+      "policy": {
+        "encoding": "identity"
+      },
+      "record": {
+        "base64": "PHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+PHVybD48bG9jPmh0dHBzOi8vZXhhbXBsZS50ZXN0L2E8L2xvYz48L3VybD48dXJsPjxsb2M+aHR0cHM6Ly9leGFtcGxlLnRlc3QvYjwvbG9jPjwvdXJsPjwvdXJsc2V0Pg==",
+        "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+        "complete": true
+      },
+      "expected": "technical-refusal",
+      "urls": null
+    }
+  ]
+}

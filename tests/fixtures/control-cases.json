@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.37",
+  "protocol_version": "0.1.0-draft.38",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -6574,6 +6574,210 @@
             "html",
             "inventory",
             "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS18-method-pass",
+      "control_id": "TS18",
+      "description": {
+        "fr": "Exercice documentaire synthétique pass pour le graphe borné ; aucune revue humaine réelle.",
+        "en": "Synthetic documentary pass exercise for bounded graph; no real human review."
+      },
+      "evidence": {
+        "crawl": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "sitemap": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "inventory": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "http": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "html": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS18-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice documentaire synthétique pass pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary pass exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        },
+        {
+          "rule_id": "TS18-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice documentaire synthétique pass pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary pass exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        },
+        {
+          "rule_id": "TS18-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice documentaire synthétique pass pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary pass exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS18-method-fail",
+      "control_id": "TS18",
+      "description": {
+        "fr": "Exercice documentaire synthétique fail pour le graphe borné ; aucune revue humaine réelle.",
+        "en": "Synthetic documentary fail exercise for bounded graph; no real human review."
+      },
+      "evidence": {
+        "crawl": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "sitemap": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "inventory": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "http": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "html": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS18-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice documentaire synthétique fail pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary fail exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        },
+        {
+          "rule_id": "TS18-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice documentaire synthétique fail pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary fail exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        },
+        {
+          "rule_id": "TS18-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice documentaire synthétique fail pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary fail exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS18-method-inconclusive",
+      "control_id": "TS18",
+      "description": {
+        "fr": "Exercice documentaire synthétique inconclusive pour le graphe borné ; aucune revue humaine réelle.",
+        "en": "Synthetic documentary inconclusive exercise for bounded graph; no real human review."
+      },
+      "evidence": {
+        "crawl": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "sitemap": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "inventory": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "http": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "html": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS18-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice documentaire synthétique inconclusive pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary inconclusive exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        },
+        {
+          "rule_id": "TS18-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice documentaire synthétique inconclusive pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary inconclusive exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        },
+        {
+          "rule_id": "TS18-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice documentaire synthétique inconclusive pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary inconclusive exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
           ]
         }
       ],
