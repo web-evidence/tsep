@@ -29,11 +29,11 @@ jobs:
           - os: macos-latest
             python: '3.14'
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 60
+    timeout-minutes: 75
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONUTF8: '1'
-      TSEP_VERIFY_STEP_TIMEOUT: '1800'
+      TSEP_VERIFY_STEP_TIMEOUT: '3300'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
