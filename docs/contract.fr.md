@@ -35,7 +35,11 @@ Draft.30 ajoute TS12-A01/A02/A03 : plan, comparaisons attribuées et revue/déci
 
 Draft.29 ajoute trois règles TS08 : périmètre/objectifs, inspections natives et revues/décisions liées. [Contrat bilingue](inspection-evidence.md), [migration](migration-draft.29.md). C qualifie le dossier sélectionné, jamais une indexation garantie.
 
-# Contrat de rapport — TSEP 0.1.0-draft.46
+# Contrat de rapport — TSEP 0.2.0-rc.1
+
+## Périmètre RC1 / Release-candidate scope
+
+RC1 conserve TS01–TS44 et le périmètre de règles existant : 28 contrôles, 67 règles atomiques exécutables. TS03-A01 évalue uniquement la matrice HTTP synthétique .invalid et les marqueurs littéraux fournis ; il ne collecte aucun site et ne classe pas les soft 404 de Google. Voir le [contrat TS03](ts03-response-evidence.md), la [migration](migration-0.2.0-rc.1.md) et l’[état des 44 contrôles](control-implementation-status.md). Cette préversion ne vérifie aucun usage réel de site.
 
 ### TS06-A01 — matrice d’accès synthétique bornée
 

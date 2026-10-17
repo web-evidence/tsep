@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "urn:tsep:report-schema:0.1.0-draft.47",
-  "title": "TSEP scoped assessment report (draft)",
+  "$id": "urn:tsep:report-schema:0.2.0-rc.1",
+  "title": "TSEP scoped assessment report (release candidate)",
   "type": "object",
   "properties": {
     "format_version": {
@@ -14,7 +14,7 @@
           "const": "TSEP"
         },
         "version": {
-          "const": "0.1.0-draft.47"
+          "const": "0.2.0-rc.1"
         },
         "sha256": {
           "type": "string",

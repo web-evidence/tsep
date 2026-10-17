@@ -1,8 +1,8 @@
 # TS03-A01 — Matrice synthétique des états HTTP / Synthetic HTTP state matrix
 
-Statut : candidat 0.1.0-draft.47. Cette règle compare des entrées rédigées à l’avance à des réponses HTTP fictives. Elle ne visite aucun site et ne constitue ni une certification ni une qualification réelle.
+Statut : candidat 0.2.0-rc.1 ; règle et portée reprises sans extension depuis 0.1.0-draft.47. Cette règle compare des entrées rédigées à l’avance à des réponses HTTP fictives. Elle ne visite aucun site et ne constitue ni une certification ni une qualification réelle.
 
-Status: candidate 0.1.0-draft.47. This rule compares predeclared inputs with fictional HTTP responses. It visits no site and is neither a certification nor a real-world qualification.
+Status: candidate 0.2.0-rc.1; rule and scope carried forward without extension from 0.1.0-draft.47. This rule compares predeclared inputs with fictional HTTP responses. It visits no site and is neither a certification nor a real-world qualification.
 
 ## Entrées et méthode / Inputs and method
 
@@ -29,3 +29,10 @@ La documentation officielle de Google décrit les effets des classes de statuts 
 Claude’s prior method comments were treated as proposals only; the cases and boundaries here were independently encoded and tested. No independent approval or actual third-party review is claimed.
 
 Les remarques méthodologiques antérieures de Claude ont été considérées comme des propositions ; les cas et limites ont été codés et testés séparément. Aucune approbation indépendante ni revue réelle d’un tiers n’est revendiquée.
+
+
+## Réception de préversion / Prerelease intake
+
+Le dossier applicatif r2 a reçu l’archive moteur 0.1.0-draft.47, son import/export et le rejeu hors application pour le périmètre synthétique TS03-A01. Il conserve 12 cas r1 déjà réussis sans les relancer et un résultat supplémentaire inconclusive, agrégé en TS03 NT. Le reçu central r2 est distinct. Tout reçu RC1 est conservé séparément, lié au SHA exact de l’archive importée ; son état figure dans le dossier de release, hors de l’archive elle-même. Aucun dossier de site réel n’est impliqué.
+
+The app r2 dossier received the 0.1.0-draft.47 engine archive, its import/export and offline replay for the synthetic TS03-A01 scope. It retains 12 previously successful r1 cases without rerunning them and one additional inconclusive result, aggregated as TS03 NT. The central r2 receipt is separate. Any RC1 receipt is stored separately and bound to the exact SHA of the imported archive; its status belongs in the release record, outside the archive itself. No real-site dossier is involved.

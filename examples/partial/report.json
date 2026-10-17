@@ -2,8 +2,8 @@
   "format_version": "2",
   "protocol": {
     "name": "TSEP",
-    "version": "0.1.0-draft.47",
-    "sha256": "258dc9873f9c5d0f52bbb3ca0eababfe2716ec9706a15ea53e4718e5d6a0ab38"
+    "version": "0.2.0-rc.1",
+    "sha256": "cae47b8c9846638c940578a3b1a3d9d2e42fef417fcc343533ed87fda83f9fe7"
   },
   "issued_at": "2026-10-09T10:00:00Z",
   "assessor": {

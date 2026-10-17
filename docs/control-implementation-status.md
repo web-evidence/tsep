@@ -1,422 +1,130 @@
-Current candidate draft.47 / interpreter46 / presence reader3 / adapter45 / HTML26 / replay3: TS03-A01 synthetic HTTP status/body matrix, 28 controls /67 rules. Thirteen authored .invalid cases; focused TS03/TS05/TS06 and CLI tests pass. Full verification and TS03 application import/export/replay receipt remain pending. [TS03 evidence](ts03-response-evidence.md), [migration](migration-draft.47.md). TS05/TS06 draft.46 changes are carried forward unchanged.
-
-Previous candidate snapshot / État précédent :
-Current candidate draft.44 / interpreter43 / presence reader3 / adapter43 / HTML26 / replay3 : TS25 UTF8 review admission and combined diagnostic bounds. 25 controls /64 rules. Explicit Node24 + TSEP_VERIFY_STEP_TIMEOUT=3600, all checks enabled. Qualification and app reception pending separately. [Migration](migration-draft.44.md).
-FR : candidat TS25, bornes UTF8 des revues et diagnostics cumulés ; qualification et réception applicative distinctes.
-
-Previous candidate / candidat précédent :
-Current TS25 draft.43 / interpreter42 / reader2 : independent source failures survive malformed documentary render containers;183 preauthored cases,25controls/64rules. Adapter42/HTML25/replay3 retained. [Migration](migration-draft.43.md). Qualification and app acceptance separate.
-FR : les absences source indépendantes restent en échec malgré un conteneur documentaire rendu mal formé ;183contre-cas, qualification et recette applicative distinctes.
-
-Previous TS25 candidate / candidat précédent :
-Current candidate / Candidat actuel — draft.42:25 contrôles outillés /tooled controls,64 règles /rules; TS01–TS44 preserved. [TS25](critical-presence-evidence.md):153 authored cases, including two-rule mixed-role cases, explicit source/render policies and bound supplied reviews. These describe candidate coverage; complete engine qualification and application acceptance require their separate observed receipts. TS16–18 and TS31–33 now have executable rules; historical tables below describe earlier editions. No real-site assessment or authenticated human approval inferred.
-
-Previous candidate / Candidat précédent — draft.38:22 contrôles /tooled controls,60 règles /rules. [TS18](graph-reconciliation-evidence.md):32 authored native cases/96pairs; expected corpus1769cases/3782pairs. Separate component populations and technical refusals are not additional controls. Full qualification and app reception remain separate; supplied reviews are not authenticated approval.
-
-Previous candidate / Candidat précédent — draft.37: 21 contrôles /tooled controls,57 règles /rules. [TS16](incoming-links-evidence.md) adds64 authored native cases/64pairs; expected corpus1737cases/3686pairs. Technical intake refusals are separate from native outcomes. Full qualification and app acceptance are recorded separately; these counts do not establish real-site assessments.
-
-Previous candidate / Candidat précédent — draft.36 :20 contrôles /tooled controls,56 règles /rules. TS17 adds34 authored synthetic cases/68pairs;1673cases/3622pairs total. Separate source52/DOM37/malformed36 boundary cases are not real site observations. Actual delivery recorded separately.
-
-Previous candidate / Candidat précédent — draft.35 :19 contrôles /19 tooled controls,54 règles /rules. [TS15](sitemap-files-evidence.md):31 synthetic set cases/93pairs;48 reader/review cases separately. Corpus1639cases/3554pairs. Counts are authored cases, not real-site assessments; actual delivery recorded separately.
-
-Previous candidate / Candidat précédent — draft.34 :18 contrôles outillés /18 tooled controls,51 règles /rules. [TS33](structured-validation-evidence.md) adds52 prefrozen cases/156pairs; then corpus1608cases/3461pairs. Explicit historical sections below retain their original counts. TS33 covers linked page syntax/term names and separate indexed messages, never current Google eligibility. Actual test/import delivery recorded separately.
-
-[TS32](structured-identity-evidence.md) :62 cas figés /186 paires fictives ; identifiants, références et revues du corpus fourni. EN:62 frozen authored cases/186 pairs; documentary corpus coherence, no temporal stability or real identity established.
-
-[TS31](structured-content-evidence.md) : 59 cas figés /177 paires fictives (49 initiaux et 10 limites) ; source et DOM recalculés, revues fournies liées au contenu. Aucun usage réel Edikka déduit.
-EN:59 frozen authored cases/177 pairs (49 initial,10 boundaries); no actual Edikka assessment inferred.
-
-[TS36](release-monitoring.md) :65 cas préfigés/195 paires fictives ; baseline/J+1/J+7/J+30, aucune échéance réelle future accomplie.
-EN:65 prefrozen authored cases/195 pairs; no real future observation.
-
-[TS12](canonical-comparison.md) : 66 cas figés avant lecteur / prefrozen cases, 198 couples / pairs; compte et rendu réels non fournis / actual account and browser evidence not supplied.
-
-Priorité du 12 octobre / October12 priority: TS08 puis/then TS12, gel/qualification le14 ; TS36 et TS31–33 ensuite.
-[Contrat TS08](inspection-evidence.md) :47 cas initiaux, 141 couples synthétiques ; les résultats du nouveau commit doivent être vérifiés séparément des campagnes historiques ci-dessous.
-
-# Control implementation status / État de développement des contrôles
-
-## Current snapshot / État actuel — 2026-10-14
-
-La version locale est **0.1.0-draft.38**. Les versions des outils sont distinctes :
-interpréteur **37**, adaptateur de captures **39**, HTML **22**, rejeu **3**. Ces numéros ne
-prouvent ni une publication distante ni une version stable 1.0. Chaque dossier
-historique reste lié à sa version et à ses empreintes ; il n'est jamais remplacé.
-
-La priorité initiale portait sur **quatre contrôles approfondis : TS04, TS02, TS07,
-TS10**, avec TS01 comme socle. Il remplace la cible antérieure de dix contrôles.
-Le 11 octobre, Bertrand a ajouté explicitement la performance : TS34 et TS35.
-Le même jour, il a demandé les agents IA après les performances : TS42, puis TS43 et TS44.
-Le même jour, il a autorisé TS41, TS39, TS36 et TS31–33. TS41, TS39, TS36, TS31 et TS32 sont intégrés ; TS33 possède désormais un candidat borné dont la qualification et l’import applicatif sont consignés séparément.
-**Priorité historique donnée le 11 octobre : consolider les 12 contrôles existants, puis aviser pour l’application Edikka.** Achever la vérification du composant rendu déjà engagé ; différer les couches suivantes de TS31–33/TS36. Cette priorité ne déclare pas les 12 usages réels achevés.
-Une [base de traitement JSON-LD facultative](jsonld-processing.md), puis une [extraction HTML attribuée avec combinaison des blocs](jsonld-html-observation.md), préparent TS31–33. Une [lecture des états rendus fournis](jsonld-rendered-observation.md) complète ces composants. Ils ne comptent pas comme trois contrôles supplémentaires ; vraie chaîne de capture rendue, base effective authentifiée, vocabulaire, contenu visible, identités et validateurs restent à qualifier.
-Le 14 octobre, Bertrand a demandé de poursuivre les contrôles supplémentaires avec tests, revue de méthode et réception applicative pour chacun, sans modifier la démonstration gelée.
-La source décrit **44 contrôles**. **Vingt-deux** disposent de règles atomiques
-exécutables : TS01 (2), TS02 (2), TS04 (2), TS07 (3), TS08 (3), TS10 (4), TS12 (3), TS15 (3), TS16 (1), TS17 (2), TS18 (3), TS31 (3), TS32 (3), TS33 (3), TS34 (3), TS35 (2), TS36 (3), TS39 (3), TS41 (3), TS42 (3), TS43 (3), TS44 (3),
-soit **60 règles**. Les quatre priorités SEO en représentent 11. Les 22 autres sont décrits,
-sans le même niveau de règles et d'outillage exécutables.
-
-| Contrôle | Méthode exécutable disponible | Application réelle encore incomplète |
-| --- | --- | --- |
-| TS01, socle | HTTP final, identité selon critères préalables, rapport et rejeu ; [profil préalable de marqueurs parsés](source-markers.md) | Les rapports Edikka historiques restent NT, notamment à cause de noscript non vide. Le nouveau diagnostic lit trois corps historiques sans critères ni verdict ; nouvelle intention et capture restent à établir. La proposition lexicale n'est pas qualifiée comme deux lectures navigateur. Ce refus ne démontre pas un défaut SEO. |
-| TS02 | Plan préalable, import d'une décision fournie, liaison aux captures, comparaison des chaînes | Décision réelle du responsable, collecte ultérieure et résultats dans le périmètre décidé |
-| TS04 | Lecteur robots partagé, profils explicites, matrice par origine, ressources requises, parcours de revue et rejeu | Seize chemins autorisés selon la matrice opérateur capturée ; revues motivées manquantes, contrôle entier non établi |
-| TS07 | Directives HTTP/source/rendu, hypothèses source distinctes, objectifs de permissions texte/image/vidéo préalables | Trois sources examinées ne remplacent pas les états rendus attribués et revues exigés ; aucune observation Google déduite |
-| TS08 | Sélection et objectifs préalables, réponses JSON natives, lectures API et décisions fournies ; rapport et rejeu | Aucun dossier réel Edikka évalué ; sélection, objectifs et nouvelles réponses restent à fournir |
-| TS10 | Canonical HTTP avec contexte, source, rendu, sitemaps et liens ; familles déclarées et rejeu | Les populations des campagnes sont distinctes ; qualification des familles, états rendus et revues de contenu encore nécessaires |
-| TS12 | Comparaisons API/HTTP/HTML/DOM prévus, revue et décision liées ; import et rejeu | 66 cas fictifs ; aucun dossier réel Edikka, rendu requis absent = NT |
-| TS15 | Lecture de fichiers sitemap fournis, population préalable et revues liées | Cas synthétiques et import qualifiés séparément ; aucun audit réel de site déduit |
-| TS18 | Rapprochement des inventaires, mesures natives du graphe borné et revues fournies liées | Aucun orphelin global, seuil universel, relecteur ou collecte authentifiés ; qualification/app séparées |
-| TS16 | Témoins entrants HTTP/source/DOM dans une population préalable, ou absence bornée | Sélection et états fournis ; aucune page orpheline globale, visite réelle ou indexation déduite. Qualification/import séparés |
-| TS17 | Liens essentiels source et DOM dans les états prévus, contrôles d’intégrité des originaux | États déclarés ; aucune acquisition authentifiée ni interaction réellement observée déduite. Qualification/import séparés |
-| TS31 | Source et états DOM JSON-LD recalculés, références et revues liées à chaque nœud | 59 cas rédigés ; aucun jugement réel Edikka, aucune visibilité ou vérité authentifiée |
-| TS33 | Captures liées TS31, noms Schema.org30.1, messages natifs indexés et revues liées | Profil borné ; qualification/import livrés séparément, aucun dossier réel Google ou résultat enrichi garanti |
-| TS32 | Registre préalable, exports JSON-LD recalculés, références et revues liées | 62 cas fictifs ; aucune identité réelle ni stabilité temporelle authentifiée, import spécialisé restant à construire |
-| TS34 | Import CrUX hors ligne : cohorte, période, appareil, p75 et classes ; décision fournie liée aux sources | Aucun nouveau relevé terrain Edikka ; autres formats non qualifiés ; C documentaire ne signifie pas bonnes performances |
-| TS35 | Série Lighthouse : plan préalable, conditions exactes, mesures, dispersion et hypothèse fournie | Aucune nouvelle campagne réelle Edikka ; autres formats et comparaison avant/après non qualifiés |
-| TS36 | Suivi déclaré baseline/J+1/J+7/J+30, API et logs, revues et clôture liées | Cas fictifs seulement ; aucune nouvelle campagne réelle ni échéance future atteinte |
-| TS39 | Matrice/configuration revues, signaux natifs TS07/TS10, revues sémantiques et attribution contexte/cache | 77 cas rédigés et laboratoire contrôlé de 38 HTTP réels disponible ; configuration Edikka et revues effectives encore à produire |
-| TS41 | Plan préalable, reçus natifs recalculés, couverture de la population et réaction aux échecs/inconnues | Laboratoire contrôlé disponible : seize HTTP/processus et actions locales ; revues fictives et application Edikka encore à produire. C ne garantit pas la santé SEO |
-| TS42 | Correspondances liées aux sources et revues, décisions du responsable, arbitrages et lecture robots bornée | Aucune décision réelle du responsable Edikka ni visite d’agent établie ; autres mécanismes non qualifiés |
-| TS44 | Inventaire préalable, chemin public sans JS, valeurs HTML/JSON et rendu attribué, revues liées | Laboratoire contrôlé disponible : six HTTP réels, DOM et revues rédigés ; application Edikka encore à produire |
-| TS43 | Traitement prévu du client de test, chaîne complète et journaux JSONL liés, attribution explicite | Expérience contrôlée loopback disponible ; aucun accès réel de l’opérateur, identité ou visite établis ; application TS44 distincte |
-
-TS44 dispose désormais de [trois règles exécutables](critical-content-evidence.md) : plan critique préalable, accès sans JS et cohérence des représentations avec revues liées. Le [laboratoire contrôlé](critical-content-laboratory.md) conserve six échanges HTTP réels sur quatre variantes fictives ; DOM et revues restent rédigés. L’application réelle à Edikka reste à réaliser.
-
-Les extensions récentes sont [les liens source v2](source-link-policy-v2.md),
-[le contexte HTTP canonical](http-canonical-context.md) et
-[les intentions de présentation](preview-intent.md), puis
-[les preuves de performance](performance-evidence.md). Leurs migrations sont
-explicites ; un ancien dossier ne sélectionne pas automatiquement un nouveau lecteur.
-
-### Critères d'achèvement encore ouverts
-
-Les contrats bilingues, cas contradictoires, outils d'import, rapports et rejeux
-existent. Leur vérification logicielle ne suffit pas à déclarer les méthodes
-entièrement qualifiées dans un usage réel. La suite doit établir une
-voie de preuve praticable pour chaque type d'entrée requis, avec les inconnues
-expliquées. Obtenir C n'est pas une condition : un NC ou NT justifié est utile.
-
-| Besoin | Preuve qui permettrait de le clôturer | Situation actuelle |
-| --- | --- | --- |
-| Décision TS02 | Plan daté du responsable et revue liée, puis captures postérieures | Parcours disponible ; décision réelle non fournie |
-| Accès et ressources TS04/TS07 | Revue motivée des ressources/captures dans le client et le périmètre déclarés | Fiches préparées ; réponses humaines non inventées |
-| Rendu TS07/TS10 | Plan préalable, captures des états nécessaires, HTTP et DOM liés à la même navigation, contexte et erreurs conservés | Outils et anciens exemples existent ; nouvelle campagne de douze phases bloquée dès le premier contrôle, zéro capture HTTP/DOM de contrôle |
-| Équivalence TS10 | Revue de contenu motivée, liée aux membres et aux preuves examinées | Parcours disponible ; revue humaine réelle absente |
-| Ébauche Search Console | Diagnostic hors ligne et exercices rejouables ; observation réelle séparée si fournie | Ébauche implémentée ; aucun export réel du compte Edikka fourni |
-| Insight | Texte FR/EN, preuves, liens et parcours d'intégration vérifiés ; recette de la page séparée | Préparation livrée ; intégration CMS, recette visuelle et publication non réalisées |
-
-Le blocage navigateur `ERR_BLOCKED_BY_CLIENT` est conservé. Il n'est pas contourné
-par un changement d'origine, de navigateur ou des protections. Les lectures locales
-et cas rédigés ne remplacent pas la campagne manquante. Les contextes temporels et
-indexifembedded de TS07 restent une extension à qualifier ; ils ne sont pas
-présentés comme le préalable qui manque à toutes les pages.
-
-### Ce que mesurent les tests
-
-TS39 ajoute **77 cas / 231 couples** dans draft.27, soit **1 181 cas / 2 332 couples** au total. Ils vérifient les décisions sur preuves rédigées, pas un CDN réel.
-
-TS44 ajoute **71 cas / 213 couples**, dont 68 figés avant interpréteur et trois cas de frontières figés avant corrections. Draft.24 contient **1 051 cas / 1 942 couples**. Ces exercices restent synthétiques.
-
-TS43 ajoute **71 cas figés / 213 couples**, tous synthétiques. Le corpus draft.23
-contient **980 cas / 1 729 couples**. Le [laboratoire contrôlé](agent-access-laboratory.md)
-fixe six scénarios et huit requêtes loopback ; il reste distinct d’un audit Edikka.
-
-Relevé historique TS42 : **52 cas figés / 156 couples**, tous synthétiques. Le corpus draft.22
-contient **909 cas / 1 516 couples** ; la vérification complète et ses limites
-sont conservées dans le journal local du lot. Aucun audit Edikka ne découle de ces cas.
-
-Relevé historique performance : le lot performance ajoute **82 cas synthétiques / 216 couples règle-cible** avec
-216 accords sur les attentes, y compris les inconnues prévues. Le corpus draft.21
-compte **857 cas / 1 360 couples** : 1 249 accords, zéro désaccord et 111 couvertures
-réduites sans Node optionnel. Les accords comprennent 536 attendus indéterminés.
-Le [relevé conservé](../provenance/performance-core-2026-10-11.json) décrit cette
-exécution ; ce n’est ni un audit Edikka ni une validation humaine.
-
-Relevé historique draft.20, avant la performance : sur **775 cas synthétiques / 1 144 couples règle-cible**, le relevé draft.20 trouve
-1 033 accords et 111 couvertures réduites sans Node optionnel ; avec Node 24.19.0
-explicitement fourni, 1 136 accords et huit couvertures réduites. Aucun désaccord
-interdit dans ces exécutions. Les accords comprennent **433 attendus indéterminés**.
-Les huit cas restants suivent leurs anciens profils : ce nombre ne recense pas
-toutes les limites des méthodes et ne doit pas devenir un objectif de « zéro NT ».
-Voir les [résultats, empreintes et limites](conformance.md#draft20-runtime-coverage).
-
-Les 628 tests de vérification exécutés dans la source puis dans l'archive du lot
-preview-intent vérifient des propriétés logicielles. Ils ne prouvent ni 628 audits,
-ni contrôles terminés, ni une revue humaine ou une exécution CI distante.
-
-## English — current state
-
-The local edition is **0.1.0-draft.38**, with interpreter **37**, capture adapter
-**39**, HTML **22** and replay **3**. These version numbers do not establish a public release
-or stable 1.0. Historical packages keep their exact tools and fingerprints.
-
-Historical October 11 instruction: consolidate the existing 12 controls before deciding the Edikka application; finish verification of the in-flight rendered component, then defer further TS31–33/TS36 layers. Real use remains incomplete.
-Optional [parsed-source marker policy](source-markers.md) is now available through prior profile selection. Three historical Edikka bodies were processed without marker criteria or a new TS01 outcome. Legacy NT reports and the historical lexical proposal remain unchanged; new prior intent and capture are still needed for actual use.
-
-The earlier human priority is four deeply developed controls, TS04/TS02/TS07/TS10,
-with TS01 as the foundation, superseding the older ten-control target. Forty-four
-controls are specified. On October 11 the user explicitly added TS34/TS35 performance.
-The user then added TS42–TS44 agents, in that order after performance.
-The user also authorized TS41, TS39, TS36 and TS31–33. TS41, TS39, TS36, TS31 and TS32 are integrated; TS33 has a bounded candidate whose qualification and app import are recorded separately. The controlled TS41 laboratory now links sixteen actual loopback exchanges and child processes to local file actions across six authored scenarios. Scope/final reviews remain fictional; no production or Edikka deployment is established.
-The [controlled TS39 laboratory](delivery-laboratory.md) now retains eight prefrozen scenarios, 38 actual local origin/cache exchanges and repair with explicit purge. Policies and reviews remain authored; no production CDN or Edikka assessment.
-On October14 the user requested additional controls with method review, tests and application acceptance for each, preserving the frozen demo.
-Twenty-two controls now have60 executable atomic rules, including 11 for the four SEO
-priorities, three each for TS08/TS12/TS15/TS18/TS31/TS32/TS33/TS36, one for TS16, two for TS17, five for performance, three for TS39, three for TS41 and nine for TS42/TS43/TS44. The other22 lack equivalent executable coverage.
-Optional HTML JSON-LD extraction attributes scripts to source bytes; a supplied-rendered layer now binds planned states and retains their supplied bases, without browser execution. Frozen fixtures and historical Edikka source reanalysis do not complete TS31–33; rendered states, effective bases, vocabulary, visible facts, corpus identity and validators remain to qualify.
-TS42 binds source mappings, supplied owner decisions and tradeoffs to a bounded robots comparison. No real owner approval or agent visit is established. TS43 now supplies planned test-client treatment, reviewed native-log correlation and explicit attribution, with a controlled loopback experiment. Actual operator access/identity/visits remain unestablished. TS44 now has three bounded executable [critical-content rules](critical-content-evidence.md); a controlled laboratory retains six actual loopback exchanges with authored DOM/reviews, while real Edikka application remains pending.
-TS34 imports CrUX cohorts/p75 with exact classes and supplied decisions. TS35 imports
-planned repeated Lighthouse reports with declared context, spread and supplied hypotheses.
-No new real Edikka performance campaign, other-source reader or before/after comparison
-is established. Conforming documentation can accompany poor performance.
-
-TS15 interprets supplied sitemap files; TS16 examines incoming witnesses or bounded absence in a prior source population; TS17 reads essential source/DOM links in declared states and preserves original integrity. Their engine qualification and application acceptance remain separate. None establishes real capture, global orphan status or indexing.
-
-Available methods include prior redirect decisions, shared robots policies,
-attributed source/rendered directives, preview permission objectives, canonical
-HTTP context, sitemaps and family links. Imports, reports, contradictory cases
-and offline replay exist. Real method qualification still needs a practical route
-for every required evidence type; a justified NC or NT is valid, with no obligation
-to obtain C. Owner decisions, required human reviews and complete attributed rendered
-paths are not supplied by authored tests. TS01's noscript proposal remains unpromoted.
-
-The twelve-phase browser campaign was blocked at its first control and obtained
-zero control HTTP/DOM captures. Keep the failed attempt and do not bypass the
-browser restriction. TS07's time/embedding semantics remain an extension to qualify,
-not the universal missing prerequisite for ordinary pages. Separate A01 declared
-permissions from A02 access and actual Google observations.
-
-The Search Console draft is an implemented offline diagnostic with synthetic
-exercises, not real Edikka account data or a TS08/TS12 assessment. The bilingual
-insight handoff is prepared; CMS integration, visual acceptance and publication
-remain separate and unperformed.
-
-TS43 adds 71 frozen synthetic cases / 213 pairs. Draft.23 contains 980 cases / 1,729 pairs.
-The [controlled laboratory](agent-access-laboratory.md) fixes six scenarios and eight loopback
-requests, with fictional sources/reviews; it is not an Edikka audit.
-
-The historical performance addition has 82 synthetic cases / 216 pairs, all matching authored
-expectations, including unknowns. Draft.21 has 857 cases / 1,360 pairs: 1,249
-agreements, zero disagreements and 111 reduced pairs without optional Node.
-Agreements include 536 inconclusive expectations. The [retained observation](../provenance/performance-core-2026-10-11.json)
-is software evidence, not a real Edikka assessment or human validation.
-
-The historical draft.20 775-case / 1,144-pair corpus gives 1,033 agreements and 111 reduced pairs
-without optional Node, or 1,136 agreements and eight reduced pairs with explicit
-Node 24.19.0, with no disallowed disagreement. Agreements include 433 normative
-inconclusive expectations. The eight legacy-profile limits are not a complete
-inventory of method boundaries. The preview-intent source/archive verification
-ran 628 software tests in each location, not 628 audits or human acceptance.
-See the [dated measurements](conformance.md#draft20-runtime-coverage).
-
-The inventory and dated development notes below are historical. Their old counts,
-priorities and next steps must not be read as the current state.
-
-## Français
-
-**Inventaire historique : 10 octobre 2026, protocole 0.1.0-draft.7, code 716899e.**
-Document de pilotage non normatif. Il décrit la couverture du développement,
-jamais la conformité d’Edikka ou d’un site. La priorité de travail est désormais
-la réalisation méthodique des **44 contrôles**, avec traitement des limites
-connues avant d’élargir les démonstrations. La galerie reste un point d’étape.
-
-### Avancement du 10 octobre après le point de référence
-
-Le commit `13cdd23` étend TS01 aux select/table explicitement structurés :
-[limites et migration de l’outil](source-text-v6.md). La réévaluation des mêmes
-entrées Edikka conserve TS01 NT, le refus suivant portant sur noscript. Le
-[parcours de revue et rejeu](review-and-replay.md) prépare des décisions humaines
-vides et permet le rejeu des trois types de paquets. Ni ce parcours ni les tests
-logiciels ne prouvent leur recette par Bertrand ou une revue effectivement réalisée.
-
-Bertrand a remplacé la cible de dix par [quatre contrôles prioritaires](four-control-program.md) :
-TS04, TS02, TS07 et TS10. L'ébauche Search Console et l'insight suivent les résultats
-établis. Les colonnes méthode, application réelle et recette utilisateur restent
-séparées. Les 44 lignes ci-dessous restent le **point de référence draft.7**.
-
-Draft.8 ajoute TS02-A01/A02 : onze règles sont désormais définies pour TS01, TS02,
-TS07 et TS10 (3 automatic, 6 semiAuto, 2 manual). Ce décompte inclut TS01, qui n'est
-pas l'un des quatre objectifs du jour. Le laboratoire TS02 avant/après a réalisé
-20 requêtes locales synthétiques ; le parcours pratique du plan humain reste ouvert.
-TS04 dispose maintenant d'un [lecteur candidat](robots-policy-experiment.md) et
-d'un laboratoire ; ses règles atomiques et l'intégration partagée avec TS07 restent
-à réaliser. Les limites rendues/humaines restent dans le suivi.
-Ces nombres ne déclarent ni quatre méthodes finalisées, ni quatre audits réalisés.
-
-Draft.9 ajoute TS04-A01/A02 et le lecteur partagé TS07 : treize règles dans cinq
-contrôles, dont TS01 hors des quatre priorités. A01/A02 TS04 sont semiAuto, avec
-revue des ressources fournie et liée aux preuves. Le parcours est implémenté ; la
-recette humaine et l'application réelle ne sont pas déduites des essais synthétiques.
-
-Draft.10 ajoute le lecteur DOM structuré ; draft.11 sépare l’agent HTTP réel des
-sémantiques TS07 et fournit un [laboratoire de navigation attribuée](same-navigation-laboratory.md).
-Les treize règles restent réparties dans cinq contrôles. Une exécution navigateur,
-une recette humaine et un audit du site exigent chacun leurs propres pièces.
-
-### Décompte historique vérifié à draft.7
-
-- **44 contrôles décrits** dans `spec/protocol.json`, avec procédure et attendus.
-- **3 contrôles possèdent des règles atomiques et un interpréteur borné** :
-  TS01 (2), TS07 (3), TS10 (4), soit **9 règles**.
-- Parmi ces règles : 2 automatic, 6 semiAuto et 1 manual. L’interpréteur des règles
-  semiAuto/manual ne remplace pas les revues exigées.
-- **41 contrôles n’ont pas encore de règles atomiques détaillées exécutables.**
-  Ils disposent déjà d’une description et peuvent être renseignés avec des preuves
-  selon le contrat ; cela ne signifie pas qu’ils disposent du même outillage.
-- Aucun de ces décomptes ne signifie « 3 contrôles achevés », « 44 audits faits »
-  ou « 392 tests = 392 critères ». Les tests logiciels vérifient aussi les refus
-  attendus et les résultats indéterminés.
-
-La définition normative reste dans la [source](../spec/protocol.json) et le
-[contrat](contract.fr.md). Les composants réutilisables et les expériences ne
-confèrent pas automatiquement une couverture à un autre contrôle.
-
-### Condition de clôture d’un lot de développement
-
-Pour chaque contrôle : préciser les unités et l’applicabilité ; détailler les
-règles et les entrées ; fixer les attentes avant les essais ; couvrir au minimum
-accord, contradiction, preuve absente, entrée ambiguë et limite de couverture ;
-implémenter ce qui est automatisable ; définir et tester le parcours des revues
-réellement nécessaires ; conserver un exemple rejouable et ses limites ; vérifier
-la distribution. L’absence de données ou de revue reste non établie.
-
-Un changement normatif exige une version distincte, les contrats français et
-anglais, la migration et les cas contradictoires. Une extension d’outil doit être
-identifiée, testée et comparée sur les mêmes preuves conservées. Une clôture doit
-citer son commit, les preuves et les limites acceptées ; ce tableau ne la déduit
-jamais d’un nombre de tests. Couvrir une méthode bornée ne veut pas dire supporter
-toutes les pages, tous les moteurs ou tous les environnements.
-
-**Deux jalons restent séparés :** développement de la méthode/outillage, puis
-application au périmètre réel avec les accès et revues requis. Search Console
-fait partie des entrées de TS08, TS12, TS21 et TS36 : on peut préparer leurs règles
-sans accès, mais pas déclarer leur application réelle achevée sans ces preuves.
-L’attente d’une entrée externe n’empêche pas le travail indépendant sur les autres
-méthodes ; elle demeure un point ouvert explicite.
-
-### Inventaire historique des 44 contrôles à draft.7
-
-Le tableau suit les identifiants permanents. La colonne suivante est un travail
-à réaliser, pas une nouvelle exigence normative ni une classification finale de
-l’automatisation. Des sous-ensembles utiles existent déjà dans des composants.
-
-| Contrôle | Attendu hérité | Développement actuel | Prochaine étape |
-| --- | --- | --- | --- |
-| TS01 | La page finale répond avec un code HTTP exploitable. | Partiel : 2 règles atomiques | Traiter les refus select/noscript de la lecture source ; préserver les critères et rapports antérieurs. |
-| TS02 | Les redirections sont intentionnelles, directes et sans boucle. | Décrit ; règles atomiques à détailler | Définir les tests des destinations attendues, sauts supplémentaires, boucles et traces incomplètes. |
-| TS03 | Les erreurs serveur et soft 404 ne remplacent pas une réponse explicite. | Décrit ; règles atomiques à détailler | Séparer statut HTTP, identité du contenu et hypothèse soft 404 ; prévoir revue et contre-exemples. |
-| TS04 | La politique robots effective correspond à l’intention déclarée. | Décrit ; règles atomiques à détailler | Détailler la politique par robot/origine et ses erreurs ; réutiliser TS07-A02 sans lui attribuer tout TS04. |
-| TS05 | Une directive Disallow n’est jamais présentée comme une garantie de désindexation. | Décrit ; règles atomiques à détailler | Formaliser la revue de cohérence exploration/indexation ; aucun Disallow ne vaut preuve de désindexation. |
-| TS06 | Les zones sensibles refusent réellement l’accès au serveur. | Une règle semi-auto TS06-A01 sur matrice HTTP `.invalid` synthétique ; 23 cas contradictoires rédigés | Qualification complète, réception import/export/rejeu dans l’application et toute capture réelle restent séparées ; aucune identité, aucun cache réel ni audit de site ne sont établis. |
-| TS07 | Les directives meta robots et X-Robots-Tag sont cohérentes avec l’objectif de la page. | Partiel : 3 règles atomiques | Traiter les limites du lecteur HTML et les revues du plan de rendu et de l’accès. |
-| TS08 | Le statut d’indexation réel est vérifié dans Search Console. | Trois règles semiAuto, profil natif borné | Dossier de sélection et revues fournies ; essai de compte réel non effectué, aucun état live ou TS12 déduit. |
-| TS09 | Les exclusions volontaires ont un propriétaire et une justification. | Décrit ; règles atomiques à détailler | Structurer famille exclue, justification, propriétaire, échéance et revue réellement réalisée. |
-| TS10 | Chaque page canonique publie une URL absolue, stable et cohérente. | Partiel : 4 règles atomiques | Traiter les refus DOM ; qualifier séparément le candidat structuré et la revue humaine du contenu. |
-| TS11 | Les variantes réellement dupliquées convergent sans masquer des pages distinctes. | Décrit ; règles atomiques à détailler | Détailler les familles et la comparaison éditoriale ; ne pas confondre similarité et duplication. |
-| TS12 | La canonique choisie par Google est comparée à celle déclarée. | Trois règles semiAuto disponibles | Profil documentaire API/HTTP/HTML/DOM disponible ; fournir pièces réelles et revues motivées. |
-| TS13 | Le sitemap contient uniquement des URL absolues et canoniques utiles. | Décrit ; règles atomiques à détailler | Définir les règles des entrées sitemap, leur état HTTP et leur cohérence ; réutiliser sans généraliser TS10-A03. |
-| TS14 | lastmod reflète une modification significative de la page. | Décrit ; règles atomiques à détailler | Lier lastmod à une modification significative prouvée et à son historique ; prévoir jugement éditorial. |
-| TS15 | Population déclarée de fichiers fournis. | [Trois règles natives bornées](sitemap-files-evidence.md) | Pas de serveur observé ni d’exhaustivité du site ; intégration applicative/qualification consignées séparément. |
-| TS16 | Chaque page importante reçoit au moins un lien interne crawlable. | Décrit ; règles atomiques à détailler | Définir population cible, points d’entrée et couverture du crawl avant de conclure à une absence de lien. |
-| TS17 | Liens essentiels source et états déclarés. | [Deux règles bornées](essential-links-evidence.md) | Définir inventaire source/DOM des liens essentiels et résolution ; boutons et onclick restent distincts. |
-| TS18 | La profondeur et les pages orphelines sont mesurées sur un périmètre explicite. | Décrit ; règles atomiques à détailler | Relier inventaires CMS, sitemap et crawl ; distinguer page orpheline et inventaire incomplet. |
-| TS19 | Les paramètres, filtres et calendriers ne créent pas un espace infini. | Décrit ; règles atomiques à détailler | Définir motifs, paramètres, bornes et hypothèses de piège de crawl ; pas d’infinité déduite d’un échantillon. |
-| TS20 | La structure d’URL est lisible, stable et encodée correctement. | Décrit ; règles atomiques à détailler | Fixer la politique d’URL avant comparaison : casse, encodage et paramètres ne sont pas équivalents par défaut. |
-| TS21 | Les URL découvertes mais non indexées sont investiguées par famille. | Décrit ; règles atomiques à détailler | Structurer investigation par famille, preuves Search Console/logs/sitemap et hypothèses testables. |
-| TS22 | Chaque variante hreflang pointe vers une URL indexable et canonique. | Décrit ; règles atomiques à détailler | Définir extraction des annotations et vérification des destinations dans un groupe explicite. |
-| TS23 | Les annotations hreflang sont réciproques et incluent la page elle-même. | Décrit ; règles atomiques à détailler | Définir réciprocité, auto-référence, doublons et groupes partiellement collectés. |
-| TS24 | x-default représente une destination neutre ou la variante par défaut assumée. | Décrit ; règles atomiques à détailler | Définir l’applicabilité et la revue de la destination x-default selon l’intention. |
-| TS25 | Le contenu critique existe dans le HTML source ou devient observable après rendu. | Décrit ; règles atomiques à détailler | Fixer les contenus critiques et états requis ; comparer source/rendu sans affirmer reproduire Google. |
-| TS26 | Les ressources nécessaires au rendu ne sont pas bloquées ni en erreur. | Décrit ; règles atomiques à détailler | Lier ressources requises, réseau, robots, CSP et erreurs à chaque état ; une console vide ne suffit pas. |
-| TS27 | Les états et routes SPA produisent des URL partageables et des réponses serveur cohérentes. | Décrit ; règles atomiques à détailler | Définir ouvertures directes, actualisation, historique et URL des routes SPA avec scénarios contradictoires. |
-| TS28 | Le document expose une structure HTML compréhensible sans dépendre de son apparence. | Décrit ; règles atomiques à détailler | Séparer constats structurels et jugement sur la compréhension du document. |
-| TS29 | Les contenus essentiels restent disponibles lorsque scripts ou styles échouent. | Décrit ; règles atomiques à détailler | Définir modes dégradés et critères de disponibilité des contenus ; ne pas les confondre avec un test fonctionnel complet. |
-| TS30 | Les métadonnées essentielles sont uniques, visibles et cohérentes avec la page. | Décrit ; règles atomiques à détailler | Définir unicité, présence et cohérence des métadonnées ; conserver la revue de pertinence. |
-| TS31 | Le JSON-LD décrit des entités visibles et appropriées au contenu. | Décrit ; règles atomiques à détailler | Lier chaque assertion structurée au contenu et aux exigences du type ; préserver les revues nécessaires. |
-| TS32 | Les identifiants @id relient les mêmes entités sans créer de doublons. | Décrit ; règles atomiques à détailler | Définir identité des nœuds, stabilité des @id et cas ambigus sans fusion automatique. |
-| TS33 | Les erreurs, avertissements et usages non pris en charge sont distingués. | Décrit ; règles atomiques à détailler | Séparer syntaxe, vocabulaire et éligibilité ; conserver sorties, versions et erreurs des validateurs. |
-| TS34 | Les Core Web Vitals terrain sont documentés et classés au 75e percentile. | Décrit ; règles atomiques à détailler | Définir source terrain, période, appareil, population, granularité et données manquantes. |
-| TS35 | Les tests de laboratoire servent au diagnostic, pas à simuler le terrain. | Décrit ; règles atomiques à détailler | Définir contexte et répétitions de laboratoire ; ne pas convertir un score en mesure terrain. |
-| TS36 | Le suivi relie Search Console, logs et déploiements à des dates de décision. | Décrit ; règles atomiques à détailler | Définir baseline, changement, observations et décisions ; ne pas fabriquer les observations futures. |
-| TS37 | HTTPS, HSTS et les ressources intégrées ne créent ni erreur de certificat ni contenu mixte. | Décrit ; règles atomiques à détailler | Détailler certificat, politique HSTS, variantes et sous-ressources ; le test TLS du collecteur ne couvre pas TS37. |
-| TS38 | Les variantes d’hôte, de casse et de slash convergent vers une règle unique. | Décrit ; règles atomiques à détailler | Définir les variantes pertinentes et les rapprochements redirection/canonical/sitemap/liens. |
-| TS39 | Le CDN, Vary et la géolocalisation ne servent pas des signaux SEO contradictoires. | Trois règles exécutables ; revue et attribution fournies | [Matrice, signaux et cache](delivery-evidence.md) ; laboratoire réel et application Edikka encore à produire. |
-| TS40 | Les méthodes hreflang utilisées sont complètes et cohérentes. | Décrit ; règles atomiques à détailler | Définir toutes les méthodes hreflang présentes et leurs contradictions sans mélanger les populations. |
-| TS41 | Les invariants SEO critiques sont rejoués automatiquement avant et après déploiement. | Trois règles exécutables ; entrées natives et journal fourni | Plan et revues préalables, couverture et réaction aux échecs/inconnues ; laboratoire contrôlé disponible, application Edikka encore à produire. |
-| TS42 | Chaque agent automatisé est gouverné selon son usage documenté. | Décrit ; règles atomiques à détailler | Structurer usages, sources opérateur datées, décision et responsable ; aucune identité déduite du jeton seul. |
-| TS43 | L’accès des crawlers autorisés est testé avec leur chaîne complète et rapproché des journaux. | Décrit ; règles atomiques à détailler | Définir requêtes avec agent complet, rapprochement logs et limites d’identité ; imitation ≠ visite réelle. |
-| TS44 | Le contenu critique et ses preuves restent accessibles sans dépendre d’une exécution JavaScript non documentée. | Décrit ; règles atomiques à détailler | Définir les faits/contenus critiques et leurs preuves accessibles ; aucune promesse de citation par un moteur. |
-
-### Premier lot : traiter le socle existant
-
-Le premier dossier à instruire est **TS01, lecture source**. Il faut séparer le
-refus de syntaxe `select` et la question de méthode `noscript` : copier le lecteur
-expérimental dans l’interpréteur actif ferait implicitement ce choix. La décision
-sur les hypothèses de lecture précède toute promotion. Les résultats rédigés ou
-les deux lectures concordantes ne valent pas preuve du comportement d’un moteur.
-
-| Sujet ouvert | État exact | Action et preuve de clôture attendue |
-| --- | --- | --- |
-| TS01 : `select`, tables et autres contextes refusés | L’interpréteur actif reste borné ; un candidat séparé traite davantage de constructions | Définir l’extension précise, garder les contre-exemples, réévaluer les preuves inchangées avec une version identifiée ; conserver tout refus restant |
-| TS01 : interprétation de `noscript` | Deux hypothèses existent seulement dans l’expérience | Formaliser la décision avant intégration, avec désaccords et entrées partielles ; toute nouvelle sémantique exige une migration normative |
-| TS10 : DOM refusés | Les deux campagnes conservent leurs attentes non atteintes | Définir le raccordement du relevé structuré aux preuves HTTP/source, puis tester les contradictions et captures manquantes ; ne pas nettoyer les anciens DOM |
-| TS07/TS10 : revues absentes | Un résultat technique ne remplace pas la revue du plan, de l’accès ou du contenu | Définir la saisie et la liaison des revues ; ne déclarer une revue réalisée qu’avec son auteur, sa portée et ses pièces |
-| Marqueurs présents, formulaire retiré | Angle mort observé sur une copie synthétique | Conserver ce contre-exemple ; traiter la présence du contenu critique dans les méthodes concernées, sans transformer TS01 en test fonctionnel général |
-| Environnements navigateur | Les environnements observés peuvent partager un moteur et des interventions auxiliaires | Déclarer leur portée ; tester séparément de nouveaux environnements si nécessaire, sans revendiquer une indépendance non prouvée |
-| TS02–TS44 sans règles détaillées, hors TS07/TS10 | 41 contrôles à développer | Ouvrir des lots successifs à partir du tableau, sans attribuer à tout un contrôle un test partiel existant |
-| Écart local/public | Outils récents non encore publiés au point de référence | Préparer une distribution identifiée après vérification ; la publication reste une action distincte, pas une condition pour écrire les prochains tests |
-
-Pour chaque sujet : conserver problème, reproduction, décision de méthode,
-correctif/version, résultat après correction et limites restantes. Une explication
-ou une galerie ne ferme pas à elle seule une limitation de l’outil. À l’inverse,
-une preuve réellement absente ne se « corrige » pas en changeant le verdict.
-
-Après le lot de consolidation : avancer par familles et dépendances, en commençant
-par redirections et erreurs HTTP (TS02/TS03), puis accès/robots, familles d’URL,
-sitemaps/liens, internationalisation, rendu/contenus, données structurées,
-mesures/suivi et agents. Chaque contrôle reste individuellement suivi. Les données
-Search Console sont recueillies lors de l’application des méthodes concernées ;
-aucune campagne GSC ou publication d’insight n’est déclenchée par ce document.
-
-## English
-
-**Development snapshot: 10 October 2026, protocol draft.7, code 716899e.** This is
-non-normative planning, not a site assessment. Priority is methodical coverage of
-all 44 controls, addressing known limitations before expanding demonstrations.
-The source describes 44 controls. Only TS01, TS07 and TS10 have detailed atomic
-rules and a bounded reference interpreter: 2, 3 and 4 rules respectively. Of the
-nine rules, two are automatic, six semi-automatic and one manual. Interpreting
-supplied evidence does not replace the reviews required by the latter categories.
-The remaining 41 controls have descriptions/procedures but no detailed executable
-atomic rules. Existing components may be reusable; experiments and test counts
-never establish whole-control completion or site conformity.
-
-The French table enumerates every permanent control and its next development
-step, not new normative requirements or a final automation classification. A lot
-closes only with explicit applicability, units, inputs, rules, predeclared test
-expectations, contradictory/missing/ambiguous/partial cases, implementation or
-review workflow, retained replayable examples, distribution verification and
-identified remaining limitations. A normative change needs a distinct version,
-French/English contracts, migration guidance and contradictory cases. Tool changes
-need their own identity and comparison on retained inputs. Closure cites evidence
-and a commit, never just a passing test count.
-
-Development completion and real application are separate milestones. Search
-Console is required for TS08/TS12/TS21/TS36: methods can be developed without account
-access, but their real assessments cannot be completed without the required data.
-Missing external evidence/reviews stay open without blocking unrelated development.
-
-The first consolidation lot covers the existing foundation: TS01 unsupported
-source contexts and the separate unresolved noscript reading policy; TS10 refused
-DOMs and the explicit future binding of structured evidence; missing TS07/TS10
-human reviews; the marker-versus-function blind spot; declared browser coverage;
-and the local/public distribution gap. A description alone does not fix a reader
-limitation, and missing evidence cannot be fixed by changing an outcome. Preserve
-original captures, historical reports and failed expectations. Do not clean DOMs
-or silently promote an experiment. Define the reading policy before any promotion.
-
-Subsequent lots address redirects/errors, access/robots, URL families, sitemaps
-and links, internationalization, rendering/content, structured data, measurements
-and agents according to their dependencies. Track each of the 44 controls
-individually. This planning document triggers no account access, site mutation,
-publication, new conformity outcome or claim of independent review.
+# État des 44 contrôles — TSEP 0.2.0-rc.1
+
+État arrêté au 17 octobre 2026. Cette préversion conserve les 44 identifiants et tout le travail déjà intégré au candidat précédent ; elle ne lance aucun contrôle supplémentaire. TSEP n’est ni une certification ni une norme reconnue.
+
+La source bilingue décrit 44 contrôles. Dans RC1, 28 contrôles ont 67 règles atomiques exécutables. Les 16 autres gardent leur description, leur procédure et leurs limites, sans règle atomique exécutable dans cette version.
+
+## Tableau français
+
+La colonne des cas compte uniquement les entrées agrégées de tests/fixtures/control-cases.json ; TS03 affiche aussi ses 13 cas synthétiques dédiés. Les corpus de règles et les laboratoires locaux spécialisés ne sont pas tous comptés dans cette colonne. Un compte nul signifie qu’aucun cas agrégé n’est déclaré ici, pas qu’il n’existe aucune documentation ou aucun composant préparatoire.
+
+« Aucun usage réel vérifié » signifie qu’aucun diagnostic d’un site réel n’est établi par cette préversion. Les fixtures, sources .invalid, tests localhost/loopback et dossiers d’application synthétiques qualifient des mécanismes bornés ; ils ne prouvent ni l’état d’un site, ni son crawl, son indexation, son ranking ou son adoption. Les reçus applicatifs antérieurs sont liés à leurs archives et versions propres ; ils ne valent pas réception de RC1. La version de l’application reste indépendante de la version du protocole.
+
+| Contrôle | Règles atomiques exécutables | Cas dans control-cases.json | Usage réel de site vérifié dans RC1 | Intégration applicative |
+| --- | --- | ---: | --- | --- |
+| TS01 — La page finale répond avec un code HTTP exploitable. | TS01-A01, TS01-A02 | 12 | Aucun usage réel vérifié | Parcours futur demandé ; non implémenté ni reçu dans RC1. |
+| TS02 — Les redirections sont intentionnelles, directes et sans boucle. | TS02-A01, TS02-A02 | 5 | Aucun usage réel vérifié | Pilote app antérieur documenté ; scénarios synthétiques, aucun site réel qualifié. |
+| TS03 — Les erreurs serveur et soft 404 ne remplacent pas une réponse explicite. | TS03-A01 | 3 + 13 TS03-specific synthetic response cases | Aucun usage réel vérifié | Reçu app r2 de draft.47 conservé ; tout reçu RC1 est distinct et lié au SHA exact de l’archive. |
+| TS04 — La politique robots effective correspond à l’intention déclarée. | TS04-A01, TS04-A02 | 4 | Aucun usage réel vérifié | Réception app antérieure, périmètre synthétique ; archive RC1 non reçue. |
+| TS05 — Une directive Disallow n’est jamais présentée comme une garantie de désindexation. | TS05-A01 | 4 | Aucun usage réel vérifié | Réception app antérieure, périmètre synthétique ; archive RC1 non reçue. |
+| TS06 — Les zones sensibles refusent réellement l’accès au serveur. | TS06-A01 | 5 | Aucun usage réel vérifié | Réception app antérieure, périmètre synthétique ; archive RC1 non reçue. |
+| TS07 — Les directives meta robots et X-Robots-Tag sont cohérentes avec l’objectif de la page. | TS07-A01, TS07-A02, TS07-A03 | 15 | Aucun usage réel vérifié | Parcours futur demandé ; non implémenté ni reçu dans RC1. |
+| TS08 — Le statut d’indexation réel est vérifié dans Search Console. | TS08-A01, TS08-A02, TS08-A03 | 5 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS09 — Les exclusions volontaires ont un propriétaire et une justification. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS10 — Chaque page canonique publie une URL absolue, stable et cohérente. | TS10-A01, TS10-A02, TS10-A03, TS10-A04 | 16 | Aucun usage réel vérifié | Parcours futur demandé ; non implémenté ni reçu dans RC1. |
+| TS11 — Les variantes réellement dupliquées convergent sans masquer des pages distinctes. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS12 — La canonique choisie par Google est comparée à celle déclarée. | TS12-A01, TS12-A02, TS12-A03 | 5 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS13 — Le sitemap contient uniquement des URL absolues et canoniques utiles. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS14 — lastmod reflète une modification significative de la page. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS15 — Les limites et découpages de sitemap sont respectés. | TS15-A01, TS15-A02, TS15-A03 | 4 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS16 — Chaque page importante reçoit au moins un lien interne crawlable. | TS16-A01 | 3 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS17 — Les liens essentiels utilisent un élément a avec href résoluble. | TS17-A01, TS17-A02 | 3 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS18 — La profondeur et les pages orphelines sont mesurées sur un périmètre explicite. | TS18-A01, TS18-A02, TS18-A03 | 3 | Aucun usage réel vérifié | Réception app antérieure, périmètre synthétique ; archive RC1 non reçue. |
+| TS19 — Les paramètres, filtres et calendriers ne créent pas un espace infini. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS20 — La structure d’URL est lisible, stable et encodée correctement. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS21 — Les URL découvertes mais non indexées sont investiguées par famille. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS22 — Chaque variante hreflang pointe vers une URL indexable et canonique. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS23 — Les annotations hreflang sont réciproques et incluent la page elle-même. | TS23-A01 | 3 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS24 — x-default représente une destination neutre ou la variante par défaut assumée. | TS24-A01 | 3 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS25 — Le contenu critique existe dans le HTML source ou devient observable après rendu. | TS25-A01, TS25-A02 | 3 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS26 — Les ressources nécessaires au rendu ne sont pas bloquées ni en erreur. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS27 — Les états et routes SPA produisent des URL partageables et des réponses serveur cohérentes. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS28 — Le document expose une structure HTML compréhensible sans dépendre de son apparence. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS29 — Les contenus essentiels restent disponibles lorsque scripts ou styles échouent. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS30 — Les métadonnées essentielles sont uniques, visibles et cohérentes avec la page. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS31 — Le JSON-LD décrit des entités visibles et appropriées au contenu. | TS31-A01, TS31-A02, TS31-A03 | 3 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS32 — Les identifiants @id relient les mêmes entités sans créer de doublons. | TS32-A01, TS32-A02, TS32-A03 | 3 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS33 — Les erreurs, avertissements et usages non pris en charge sont distingués. | TS33-A01, TS33-A02, TS33-A03 | 3 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS34 — Les Core Web Vitals terrain sont documentés et classés au 75e percentile. | TS34-A01, TS34-A02, TS34-A03 | 3 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS35 — Les tests de laboratoire servent au diagnostic, pas à simuler le terrain. | TS35-A01, TS35-A02 | 3 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS36 — Le suivi relie Search Console, logs et déploiements à des dates de décision. | TS36-A01, TS36-A02, TS36-A03 | 8 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS37 — HTTPS, HSTS et les ressources intégrées ne créent ni erreur de certificat ni contenu mixte. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS38 — Les variantes d’hôte, de casse et de slash convergent vers une règle unique. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS39 — Le CDN, Vary et la géolocalisation ne servent pas des signaux SEO contradictoires. | TS39-A01, TS39-A02, TS39-A03 | 5 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS40 — Les méthodes hreflang utilisées sont complètes et cohérentes. | Aucune règle atomique exécutable dans RC1 | 0 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS41 — Les invariants SEO critiques sont rejoués automatiquement avant et après déploiement. | TS41-A01, TS41-A02, TS41-A03 | 5 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+| TS42 — Chaque agent automatisé est gouverné selon son usage documenté. | TS42-A01, TS42-A02, TS42-A03 | 5 | Aucun usage réel vérifié | Réception app antérieure, périmètre synthétique ; archive RC1 non reçue. |
+| TS43 — L’accès des crawlers autorisés est testé avec leur chaîne complète et rapproché des journaux. | TS43-A01, TS43-A02, TS43-A03 | 5 | Aucun usage réel vérifié | Réception app antérieure, périmètre synthétique ; archive RC1 non reçue. |
+| TS44 — Le contenu critique et ses preuves restent accessibles sans dépendre d’une exécution JavaScript non documentée. | TS44-A01, TS44-A02, TS44-A03 | 5 | Aucun usage réel vérifié | Aucune réception applicative RC1 revendiquée. |
+
+## English status
+
+State frozen on 17 October 2026. This release candidate retains all 44 identifiers and work already integrated into the preceding candidate; it starts no additional control. TSEP is neither a certification nor a recognized standard.
+
+The bilingual source describes 44 controls. In RC1, 28 controls have 67 executable atomic rules. The other 16 retain their descriptions, procedures and limitations without an executable atomic rule in this edition.
+
+## English table
+
+The case column counts only aggregate entries in tests/fixtures/control-cases.json; TS03 also lists its 13 dedicated synthetic cases. Specialized rule corpora and local laboratories are not all counted in that column. Zero means no aggregate case is declared there, not that no documentation or preparatory component exists.
+
+“None verified” means this prerelease establishes no real-site diagnosis. Fixtures, .invalid sources, localhost/loopback tests and synthetic application dossiers qualify bounded mechanisms; they establish no site's condition, crawl, indexing, ranking or adoption. Prior application receipts remain bound to their own archives and versions; they are not RC1 receipts. The application keeps its own version.
+
+| Control | Executable atomic rules | Cases in control-cases.json | Real-site use verified in RC1 | Application integration |
+| --- | --- | ---: | --- | --- |
+| TS01 — The final page returns an actionable HTTP status code. | TS01-A01, TS01-A02 | 12 | None verified | Requested future flow; not implemented or received in RC1. |
+| TS02 — Redirects are intentional, direct and loop-free. | TS02-A01, TS02-A02 | 5 | None verified | Earlier app pilot documented; synthetic scenarios, no real site qualified. |
+| TS03 — Server errors and soft 404s do not replace an explicit response. | TS03-A01 | 3 + 13 TS03-specific synthetic response cases | None verified | Draft.47 app r2 receipt retained; any RC1 receipt is separate and bound to the exact archive SHA. |
+| TS04 — The effective robots policy matches declared intent. | TS04-A01, TS04-A02 | 4 | None verified | Prior app receipt, synthetic scope; RC1 archive not received. |
+| TS05 — A Disallow rule is never presented as a guarantee of deindexing. | TS05-A01 | 4 | None verified | Prior app receipt, synthetic scope; RC1 archive not received. |
+| TS06 — Sensitive areas genuinely deny access at server level. | TS06-A01 | 5 | None verified | Prior app receipt, synthetic scope; RC1 archive not received. |
+| TS07 — Robots meta directives and X-Robots-Tag match the page objective. | TS07-A01, TS07-A02, TS07-A03 | 15 | None verified | Requested future flow; not implemented or received in RC1. |
+| TS08 — The actual indexing status is checked in Search Console. | TS08-A01, TS08-A02, TS08-A03 | 5 | None verified | No RC1 application receipt claimed. |
+| TS09 — Intentional exclusions have an owner and a rationale. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS10 — Each canonical page publishes an absolute, stable and consistent URL. | TS10-A01, TS10-A02, TS10-A03, TS10-A04 | 16 | None verified | Requested future flow; not implemented or received in RC1. |
+| TS11 — Genuine duplicate variants converge without hiding distinct pages. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS12 — Google’s selected canonical is compared with the declared canonical. | TS12-A01, TS12-A02, TS12-A03 | 5 | None verified | No RC1 application receipt claimed. |
+| TS13 — The sitemap contains only useful absolute canonical URLs. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS14 — lastmod reflects a significant change to the page. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS15 — Sitemap size and segmentation limits are respected. | TS15-A01, TS15-A02, TS15-A03 | 4 | None verified | No RC1 application receipt claimed. |
+| TS16 — Every important page receives at least one crawlable internal link. | TS16-A01 | 3 | None verified | No RC1 application receipt claimed. |
+| TS17 — Essential links use an a element with a resolvable href. | TS17-A01, TS17-A02 | 3 | None verified | No RC1 application receipt claimed. |
+| TS18 — Depth and orphan pages are measured within an explicit scope. | TS18-A01, TS18-A02, TS18-A03 | 3 | None verified | Prior app receipt, synthetic scope; RC1 archive not received. |
+| TS19 — Parameters, filters and calendars do not create an infinite URL space. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS20 — The URL structure is readable, stable and correctly encoded. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS21 — Discovered but unindexed URLs are investigated by family. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS22 — Each hreflang variant points to an indexable canonical URL. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS23 — hreflang annotations are reciprocal and include the current page. | TS23-A01 | 3 | None verified | No RC1 application receipt claimed. |
+| TS24 — x-default represents a neutral destination or an explicit default variant. | TS24-A01 | 3 | None verified | No RC1 application receipt claimed. |
+| TS25 — Critical content exists in source HTML or becomes observable after rendering. | TS25-A01, TS25-A02 | 3 | None verified | No RC1 application receipt claimed. |
+| TS26 — Resources required for rendering are neither blocked nor failing. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS27 — SPA states and routes produce shareable URLs and consistent server responses. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS28 — The document exposes an understandable HTML structure independently of appearance. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS29 — Essential content remains available when scripts or styles fail. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS30 — Essential metadata is unique, visible and consistent with the page. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS31 — JSON-LD describes entities that are visible and appropriate to the content. | TS31-A01, TS31-A02, TS31-A03 | 3 | None verified | No RC1 application receipt claimed. |
+| TS32 — Stable @id values connect the same entities without creating duplicates. | TS32-A01, TS32-A02, TS32-A03 | 3 | None verified | No RC1 application receipt claimed. |
+| TS33 — Errors, warnings and unsupported uses are distinguished. | TS33-A01, TS33-A02, TS33-A03 | 3 | None verified | No RC1 application receipt claimed. |
+| TS34 — Field Core Web Vitals are documented and classified at the 75th percentile. | TS34-A01, TS34-A02, TS34-A03 | 3 | None verified | No RC1 application receipt claimed. |
+| TS35 — Laboratory tests support diagnosis rather than simulate field data. | TS35-A01, TS35-A02 | 3 | None verified | No RC1 application receipt claimed. |
+| TS36 — Monitoring connects Search Console, logs and deployments to decision dates. | TS36-A01, TS36-A02, TS36-A03 | 8 | None verified | No RC1 application receipt claimed. |
+| TS37 — HTTPS, HSTS and embedded resources create neither certificate errors nor mixed content. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS38 — Host, case and trailing-slash variants converge on one rule. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS39 — The CDN, Vary and geolocation do not serve contradictory SEO signals. | TS39-A01, TS39-A02, TS39-A03 | 5 | None verified | No RC1 application receipt claimed. |
+| TS40 — The hreflang methods in use are complete and consistent. | No executable atomic rule in RC1 | 0 | None verified | No RC1 application receipt claimed. |
+| TS41 — Critical SEO invariants are replayed automatically before and after deployment. | TS41-A01, TS41-A02, TS41-A03 | 5 | None verified | No RC1 application receipt claimed. |
+| TS42 — Each automated agent is governed according to its documented purpose. | TS42-A01, TS42-A02, TS42-A03 | 5 | None verified | Prior app receipt, synthetic scope; RC1 archive not received. |
+| TS43 — Access for authorized crawlers is tested with the full user-agent string and reconciled with logs. | TS43-A01, TS43-A02, TS43-A03 | 5 | None verified | Prior app receipt, synthetic scope; RC1 archive not received. |
+| TS44 — Critical content and evidence remain accessible without undocumented JavaScript execution. | TS44-A01, TS44-A02, TS44-A03 | 5 | None verified | No RC1 application receipt claimed. |
+
+## Faits de qualification / Qualification facts
+
+- TS03-A01 reste une seule règle semi-automatique : plan préalable lié par empreinte, états de routes existing/removed/nonexistent, captures HTTP fictives .invalid et marqueurs littéraux UTF-8.
+- Treize cas TS03 dédiés couvrent accord, contradictions, entrée absente/ambiguë, 206/304, date future, empreinte invalide et hôte non synthétique. La contradiction complète reste fail même si une autre entrée est manquante ; le contrôle complet n’est pass que si toute la matrice déclarée est couverte.
+- Le reçu applicatif 0.1.0-draft.47 r2 a gardé 12 résultats r1 sans les relancer et évalué un cas supplémentaire ; son résultat atomique inconclusive et son statut de contrôle NT sont distincts. Tout reçu d’intégration RC1 est conservé dans le dossier de release séparé, lié au SHA exact de l’archive importée.
+- Aucun usage de site réel n’est ajouté par cette version. Les vérifications déterministes du moteur sont rapportées séparément dans les notes de version et ne remplacent ni une observation réelle ni une revue humaine requise.
+- Le tableau conserve les autres contrôles déjà intégrés à la source et aux outils. La suite de l’intégration applicative demandée est priorisée TS01, TS04, puis TS07 et TS10, sans nouveau contrôle ni changement de version de l’application.
+- TS03-A01 remains a single semi-automated rule: fingerprint-bound prior plan, existing/removed/nonexistent route states, fictional .invalid HTTP captures and literal UTF-8 markers.
+- Thirteen dedicated TS03 cases cover agreement, contradictions, missing/ambiguous input, 206/304, future dates, invalid fingerprints and non-synthetic hosts. A complete contradiction remains a fail when another input is missing; the full control is pass only when its declared matrix is covered.
+- The 0.1.0-draft.47 r2 app receipt retained 12 r1 results without rerunning them and assessed one additional case; its inconclusive atomic result and NT control status remain distinct. Any RC1 intake receipt is kept in a separate release record bound to the exact imported archive SHA.
+- This edition adds no real-site use. Deterministic engine checks are reported separately in release notes and do not replace a real observation or required human review.
+- The table retains other work already integrated in the source and tools. The requested future app integration order is TS01, TS04, then TS07 and TS10, with no new control or application-version change.

@@ -35,7 +35,11 @@ Draft.30 adds TS12-A01/A02/A03: plan, attributed comparisons and supplied review
 
 Draft.29 adds three TS08 rules: scope/objectives, native inspections and bound reviews/decisions. [Bilingual contract](inspection-evidence.md), [migration](migration-draft.29.md). C qualifies selected-set documentation, never guaranteed indexing.
 
-# Report contract — TSEP 0.1.0-draft.46
+# Report contract — TSEP 0.2.0-rc.1
+
+## RC1 scope / Release-candidate scope
+
+RC1 preserves TS01–TS44 and the existing rule-bearing scope: 28 controls, 67 executable atomic rules. TS03-A01 evaluates only the supplied synthetic .invalid HTTP matrix and literal body markers; it performs no site acquisition and does not classify Google soft 404s. See the [TS03 evidence contract](ts03-response-evidence.md), [migration](migration-0.2.0-rc.1.md), and [44-control status](control-implementation-status.md). No real-site use is verified by this release.
 
 ### TS06-A01 — bounded synthetic access matrix
 
