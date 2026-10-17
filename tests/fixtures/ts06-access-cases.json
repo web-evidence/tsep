@@ -1,0 +1,3879 @@
+{
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "ts06-safe-synthetic-matrix",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "pass"
+        }
+      ],
+      "expected_gate": "pass",
+      "description": {
+        "fr": "Deux rôles synthétiques refusés sans canari et une paire cache synthétique seed/replay complète.",
+        "en": "Two synthetic roles are denied without a canary and a complete synthetic seed/replay pair is supplied."
+      }
+    },
+    {
+      "id": "ts06-canary-in-403",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 26\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271",
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 26\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271"
+                    }
+                  ],
+                  "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 26\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271",
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "fail"
+        }
+      ],
+      "expected_gate": "fail",
+      "description": {
+        "fr": "Le corps 403 expose le canari sensible déclaré : l’échec prévaut sur le statut.",
+        "en": "A 403 body exposes the declared sensitive canary; the leak takes precedence over status."
+      }
+    },
+    {
+      "id": "ts06-base64-canary-in-header",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 6\r\nContent-Type: text/plain; charset=utf-8\r\nX-Diagnostic: VFNFUC1UUzA2LVNFQ1JFVC1BTFBIQS0yNzE=\r\n\r\nDenied"
+                    }
+                  ],
+                  "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 6\r\nContent-Type: text/plain; charset=utf-8\r\nX-Diagnostic: VFNFUC1UUzA2LVNFQ1JFVC1BTFBIQS0yNzE=\r\n\r\nDenied",
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "fail"
+        }
+      ],
+      "expected_gate": "fail",
+      "description": {
+        "fr": "Un en-tête contient le canari encodé en base64 malgré le refus.",
+        "en": "A header contains the base64-encoded canary despite the denial."
+      }
+    },
+    {
+      "id": "ts06-successful-public-response",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 20\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nNo canary but public",
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 20\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nNo canary but public"
+                    }
+                  ],
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 20\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nNo canary but public",
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "fail"
+        }
+      ],
+      "expected_gate": "fail",
+      "description": {
+        "fr": "La route privée fournit une représentation 200 au rôle non autorisé, même sans canari.",
+        "en": "The private route returns a 200 representation to an unauthorized role, even without a canary."
+      }
+    },
+    {
+      "id": "ts06-missing-role-cell",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "Une cellule de rôle manque dans la matrice.",
+        "en": "One role cell is missing from the matrix."
+      }
+    },
+    {
+      "id": "ts06-partial-206",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "response": "HTTP/1.1 206 Synthetic\r\nContent-Length: 0\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Range: bytes 0-0/100\r\n\r\n",
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 206 Synthetic\r\nContent-Length: 0\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Range: bytes 0-0/100\r\n\r\n"
+                    }
+                  ],
+                  "response": "HTTP/1.1 206 Synthetic\r\nContent-Length: 0\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Range: bytes 0-0/100\r\n\r\n",
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "206 ne fournit pas une représentation complète.",
+        "en": "206 does not provide a complete representation."
+      }
+    },
+    {
+      "id": "ts06-conditional-304",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "response": "HTTP/1.1 304 Synthetic\r\nContent-Length: 0\r\nContent-Type: text/plain; charset=utf-8\r\nETag: W/\"synthetic\"\r\n\r\n",
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 304 Synthetic\r\nContent-Length: 0\r\nContent-Type: text/plain; charset=utf-8\r\nETag: W/\"synthetic\"\r\n\r\n"
+                    }
+                  ],
+                  "response": "HTTP/1.1 304 Synthetic\r\nContent-Length: 0\r\nContent-Type: text/plain; charset=utf-8\r\nETag: W/\"synthetic\"\r\n\r\n",
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "304 ne fournit pas la représentation stockée à inspecter.",
+        "en": "304 does not provide the stored representation to inspect."
+      }
+    },
+    {
+      "id": "ts06-missing-synthetic-role-attribution",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\n\r\n",
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "L’attribution du rôle synthétique manque dans une requête.",
+        "en": "Synthetic role attribution is missing from a request."
+      }
+    },
+    {
+      "id": "ts06-cache-replay-leak",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 26\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271",
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 26\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271"
+                    }
+                  ],
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 26\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271",
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "fail"
+        }
+      ],
+      "expected_gate": "fail",
+      "description": {
+        "fr": "Le rejeu anonyme expose le canari après le seed synthétique.",
+        "en": "The anonymous replay exposes the canary after the synthetic seed."
+      }
+    },
+    {
+      "id": "ts06-future-plan",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "96ee0c87c6ee535e64e4090ad865a56029907b768c87a389f13c7bc7ade6ee91"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-17T00:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "Le plan d’accès est daté après l’observation.",
+        "en": "The access plan is dated after the observation."
+      }
+    },
+    {
+      "id": "ts06-dated-positive-na",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "7f99781e3cc2753ef27389671344d5be4868cba5201e5ede532aa134a84f40e5"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "not-applicable",
+                "scope": "Synthetic inventory fixture only",
+                "inventory_review": {
+                  "complete": true,
+                  "outcome": "no-sensitive-routes",
+                  "review_type": "authored-synthetic",
+                  "rationale": "Authored complete inventory for this fixture contains no sensitive route.",
+                  "reviewed_at": "2026-10-16T22:00:00Z"
+                },
+                "cache_triplets": []
+              }
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "not-applicable"
+        }
+      ],
+      "expected_gate": "not-applicable",
+      "description": {
+        "fr": "Une revue d’inventaire synthétique complète et antérieure établit la non-applicabilité du seul fixture.",
+        "en": "A complete prior synthetic inventory review establishes non-applicability for this fixture only."
+      }
+    },
+    {
+      "id": "ts06-explicit-hidden-404",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "e0c521265b7d6379b0d301fea17dfb0b91f4293ece7733a885fad783c06cab88"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ],
+                    "denial_statuses": [
+                      404
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 404 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nNot found"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 404 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nNot found"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 404 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nNot found"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "pass"
+        }
+      ],
+      "expected_gate": "pass",
+      "description": {
+        "fr": "Une réponse 404 déclarée pour cette route masque le contenu dans ce seul fixture.",
+        "en": "A 404 declared for this route hides content in this fixture only."
+      }
+    },
+    {
+      "id": "ts06-undeclared-404-unknown",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 404 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nNot found"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 404 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nNot found"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 404 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nNot found"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "Un 404 non déclaré ne permet pas de conclure sur cette route.",
+        "en": "An undeclared 404 does not establish this route's access outcome."
+      }
+    },
+    {
+      "id": "ts06-base64url-canary-offset-in-header",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\nX-Synthetic-Cache-Note: zVFNFUC1UUzA2LVNFQ1JFVC1BTFBIQS0yNzE\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "fail"
+        }
+      ],
+      "expected_gate": "fail",
+      "description": {
+        "fr": "Un canari encodé en Base64 URL avec un préfixe décalé fuit dans un en-tête du rejeu anonyme.",
+        "en": "An offset URL-safe Base64 canary leaks in an anonymous replay response header."
+      }
+    },
+    {
+      "id": "ts06-duplicate-leaking-trace-preserves-fail",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 26\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:25:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "fail"
+        }
+      ],
+      "expected_gate": "fail",
+      "description": {
+        "fr": "Une trace supplémentaire dupliquée conserve l’échec si elle attribue une fuite à un rôle non autorisé.",
+        "en": "An extra duplicated trace preserves failure when it attributes a leak to an unauthorized role."
+      }
+    },
+    {
+      "id": "ts06-api-key-header-unknown",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\nX-Api-Key: fixture-only\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "Une clé API dans l’en-tête empêche de qualifier la requête comme anonyme.",
+        "en": "An API-key request header prevents classification as anonymous."
+      }
+    },
+    {
+      "id": "ts06-cross-origin-login-unknown",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 302 Synthetic\r\nContent-Length: 0\r\nContent-Type: text/plain; charset=utf-8\r\nLocation: https://idp.invalid/login\r\n\r\n"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "Une redirection vers une origine d’identité externe sort du périmètre borné.",
+        "en": "A redirect to an external identity origin is outside the bounded scope."
+      }
+    },
+    {
+      "id": "ts06-unsupported-br-unknown",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Encoding: br\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "Un corps Brotli non décodé ne peut pas établir l’absence du canari.",
+        "en": "An undecoded Brotli body cannot establish canary absence."
+      }
+    },
+    {
+      "id": "ts06-cache-triplet-order-unknown",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "Un ordre autre que froid, seed puis rejeu ne prouve pas le scénario déclaré.",
+        "en": "An order other than cold, seed, then replay cannot establish the declared scenario."
+      }
+    },
+    {
+      "id": "ts06-case-after-capture-window-unknown",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:31:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "Une observation après la fenêtre HTTP déclarée est rejetée comme preuve de cette fenêtre.",
+        "en": "An observation after the declared HTTP window is rejected as evidence for that window."
+      }
+    },
+    {
+      "id": "ts06-query-credential-url-unknown",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture?access_key=synthetic-placeholder",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture?access_key=synthetic-placeholder",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "Une URL avec query string sort du profil synthétique sans identifiants d’accès dans l’URL.",
+        "en": "A query-string URL is outside the synthetic profile that excludes URL credentials."
+      }
+    },
+    {
+      "id": "ts06-live-host-label-unknown",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/sensitive",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 401 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.com/sensitive",
+          "outcome": "inconclusive"
+        }
+      ],
+      "expected_gate": "inconclusive",
+      "description": {
+        "fr": "Une cible autre que le label synthétique .invalid est hors de ce récepteur sans collecte réseau.",
+        "en": "A target other than the synthetic .invalid label is outside this no-network receiver."
+      }
+    },
+    {
+      "id": "ts06-declared-login-redirect",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS06-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts06-fixture",
+            "observed_at": "2026-10-16T23:00:00Z",
+            "configuration": {
+              "ts06_access": {
+                "reader": "ts06-http-matrix-v1",
+                "plan_sha256": "19282bfbd93b9e086a8c3bc65adbb7b202431a22c71d6b7955f45fbf7bd73880"
+              }
+            },
+            "intent": {
+              "ts06_access": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T19:00:00Z",
+                "scope": "Synthetic fixture route only; not a site inventory",
+                "routes": [
+                  {
+                    "id": "private-record",
+                    "url": "https://example.invalid/private/record",
+                    "canaries": [
+                      "TSEP-TS06-SECRET-ALPHA-271"
+                    ],
+                    "login_paths": [
+                      "/login"
+                    ]
+                  }
+                ],
+                "roles": [
+                  {
+                    "id": "anonymous",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "reviewer",
+                    "authorization": "unauthorized-synthetic"
+                  },
+                  {
+                    "id": "member-seed",
+                    "authorization": "authorized-synthetic"
+                  }
+                ],
+                "tests": [
+                  {
+                    "id": "seed-member",
+                    "route_id": "private-record",
+                    "role_id": "member-seed"
+                  },
+                  {
+                    "id": "replay-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  },
+                  {
+                    "id": "reviewer-denied",
+                    "route_id": "private-record",
+                    "role_id": "reviewer"
+                  },
+                  {
+                    "id": "cold-anonymous",
+                    "route_id": "private-record",
+                    "role_id": "anonymous"
+                  }
+                ],
+                "cache_triplets": [
+                  {
+                    "id": "pair-private-1",
+                    "route_id": "private-record",
+                    "cache_id": "synthetic-cache-label-1",
+                    "cold_test_id": "cold-anonymous",
+                    "seed_test_id": "seed-member",
+                    "replay_test_id": "replay-anonymous"
+                  }
+                ]
+              }
+            },
+            "http": {
+              "reader": "ts06-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T22:30:00Z",
+              "cases": [
+                {
+                  "test_id": "cold-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "cold",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:00:00Z"
+                },
+                {
+                  "test_id": "seed-member",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "seed",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: member-seed\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 51\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nTSEP-TS06-SECRET-ALPHA-271 private synthetic record"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "member-seed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:10:00Z"
+                },
+                {
+                  "test_id": "replay-anonymous",
+                  "cache_id": "synthetic-cache-label-1",
+                  "cache_phase": "replay",
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: anonymous\r\n\r\n",
+                      "response": "HTTP/1.1 403 Synthetic\r\nContent-Length: 9\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nForbidden"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "anonymous",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:20:00Z"
+                },
+                {
+                  "test_id": "reviewer-denied",
+                  "cache_id": null,
+                  "cache_phase": null,
+                  "hops": [
+                    {
+                      "url": "https://example.invalid/private/record",
+                      "complete": true,
+                      "request": "GET /private/record HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 302 Synthetic\r\nContent-Length: 0\r\nLocation: /login\r\n\r\n"
+                    },
+                    {
+                      "url": "https://example.invalid/login",
+                      "complete": true,
+                      "request": "GET /login HTTP/1.1\r\nHost: example.invalid\r\nUser-Agent: TSEP-TS06-fixture/1\r\nX-TSEP-Synthetic-Role: reviewer\r\n\r\n",
+                      "response": "HTTP/1.1 200 Synthetic\r\nContent-Length: 16\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nSign in required"
+                    }
+                  ],
+                  "route_id": "private-record",
+                  "role_id": "reviewer",
+                  "complete": true,
+                  "observed_at": "2026-10-16T22:30:00Z"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A01",
+          "target": "https://example.invalid/ts06-fixture",
+          "outcome": "pass"
+        }
+      ],
+      "expected_gate": "pass",
+      "description": {
+        "fr": "Une redirection vers le chemin de connexion déclaré puis une page de connexion sans canari est refusée dans ce fixture.",
+        "en": "A redirect to the declared login path followed by a canary-free login page is denied in this fixture."
+      }
+    }
+  ]
+}

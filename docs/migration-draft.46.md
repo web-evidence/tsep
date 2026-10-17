@@ -1,0 +1,9 @@
+# Migration — 0.1.0-draft.46 / Migration — 0.1.0-draft.46
+
+Draft.46 adds one bilingual semi-automated atomic rule, `TS06-A01`, to the existing TS06 route-set control. It does not replace or reinterpret any earlier result or artifact. The protocol version, controlled rule versions, report schema constant, conformance corpus reference, current generated control pages, and current synthetic examples must be regenerated together. Capture adapter 44 adds a source-bound TS06 reader and promotes only an all-target positive synthetic inventory to whole-control NA; historic bundles remain untouched. Historical bundles remain bound to their original protocol/interpreter/tool identities and are not rewritten.
+
+The rule requires prior intent, configuration and supplied HTTP GET evidence bound to a synthetic `.invalid` route-role matrix. Pass is limited to that complete supplied matrix and its cold/authorized-seed/anonymous-replay triplets. A canary leak or unauthorized 2xx is fail; partial, ambiguous, unsupported or missing evidence is inconclusive; whole-control NA requires a positive complete dated synthetic inventory with no route cases. See [TS06-A01 evidence and limitations](ts06-access-evidence.md).
+
+No actual domain, site crawl, authentication, identity, shared cache, index state or whole-site privacy is assessed. The fixture evaluator performs no DNS lookup or network request. Real capture, application import/export/replay acceptance and any future live-domain workflow remain separate work and are not implied by this source candidate.
+
+FR : le brouillon.46 ajoute TS06-A01 et conserve tous les anciens résultats. Les cas .invalid sont synthétiques ; aucun accès live, crawl de site ou identité n’est établi. L’adaptateur 44 lie aussi le nouveau lecteur et ne produit NA au niveau contrôle que pour un inventaire synthétique positif sur toutes les cibles.

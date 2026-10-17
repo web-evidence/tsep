@@ -54,10 +54,16 @@ class CaptureAdapter(unittest.TestCase):
         # Expected verdicts are never supplied to this adapter.
         for name,case in CASES.items():
             with self.subTest(case=name):
+                # A failed assertion in the previous case must not contaminate
+                # the next case with the adapter's deliberate no-overwrite guard.
+                if self.output.is_symlink() or self.output.is_file():
+                    self.output.unlink()
+                elif self.output.exists():
+                    shutil.rmtree(self.output)
                 # Fixed import clock keeps future-to-assessment fixtures deterministic.
                 with patch('adapters.captures.datetime') as clock:
                     # After every supplied fixture date; future-to-assessment remains unknown.
-                    clock.now.return_value=datetime(2026,10,16,tzinfo=timezone.utc)
+                    clock.now.return_value=datetime(2026,10,17 if name.startswith(('ts03-','ts06-')) else 16,tzinfo=timezone.utc)
                     admission = TS25_ADMISSION.get(name)
                     if admission and admission['admission'] == 'technical-refusal':
                         # Native uncertainty does not authorize publishing corrupt evidence.
@@ -99,8 +105,14 @@ class CaptureAdapter(unittest.TestCase):
                     self.assertEqual([r['status'] for r in report['results']], [admission['report_status']])
                 self.assertEqual(summary,tsep.validate(report,self.output))
                 actual=[a for r in report['results'] for a in r.get('atomic_results',[])]
-                self.assertEqual(sorted((a['rule_id'],a['target'],a['outcome']) for a in actual),
-                                 sorted((a['rule_id'],a['target'],a['outcome']) for a in evaluate(case['input'])))
+                if name in ('ts05-policy-dated-not-applicable', 'ts06-dated-positive-na'):
+                    # Positive all-target inventory is represented as whole-control NA,
+                    # not as an unsupported atomic exemption.
+                    self.assertEqual(report['results'][0]['status'], 'NA')
+                    self.assertEqual(actual, [])
+                else:
+                    self.assertEqual(sorted((a['rule_id'],a['target'],a['outcome']) for a in actual),
+                                     sorted((a['rule_id'],a['target'],a['outcome']) for a in evaluate(case['input'])))
                 self.assertEqual((self.output/'input.json').read_bytes(),self.input.read_bytes())
                 self.assertTrue(summary['synthetic_evidence'])
                 self.assertLessEqual(summary['selected_controls'],3)

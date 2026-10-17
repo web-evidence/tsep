@@ -1,3 +1,9 @@
+## Version26 — keyboard-scrollable tables / tableaux défilables au clavier
+
+FR : chaque tableau est dans une région nommée et focalisable au clavier, avec défilement horizontal borné sur écran étroit. Le contenu et les décisions ne changent pas ; aucune conformité d’accessibilité n’est certifiée.
+
+EN: every table is placed in a named keyboard-focusable region with bounded horizontal scrolling on narrow screens. Content and decisions are unchanged; no accessibility conformance is certified.
+
 ## Version23 — supplied hreflang / hreflang fourni
 
 FR : affiche le groupe préalable TS23, le canal principal, les deux hypothèses
@@ -28,7 +34,7 @@ FR : couches, erreurs et limites TS33 conservées ; tableaux défilables au clav
 
 ## Français
 
-Le moteur de présentation version 17 transforme un rapport TSEP valide et ses
+Le moteur de présentation version 26 transforme un rapport TSEP valide et ses
 preuves en un fichier HTML autonome en français ou en anglais. Python 3.9+ suffit.
 Il présente les résultats enregistrés, leurs règles, cibles, motifs, limites et
 preuves. Il ne réévalue pas les captures et ne collecte aucune URL.
@@ -90,7 +96,7 @@ présentées. Aucun verdict supplémentaire n’est calculé.
 
 ## English
 
-Presentation engine version 17 turns a valid TSEP report and its evidence into one
+Presentation engine version 26 turns a valid TSEP report and its evidence into one
 self-contained French or English HTML file using Python 3.9+. It presents recorded
 outcomes, rules, targets, reasons, limitations and evidence without reassessing
 captures or fetching URLs. Use the commands above with `--lang en`.

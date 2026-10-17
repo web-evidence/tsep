@@ -87,6 +87,11 @@ EXTERNAL_CASE_IDS = (
     'agent-access-wrong-log-status', 'agent-access-claims-real-operator-visit', 'agent-access-missing-plan',
     'critical-content-server-html', 'critical-content-rejected-plan',
     'critical-content-script-only-fact', 'critical-content-changed-fact', 'critical-content-empty-critical-inventory',
+    'ts05-policy-separated-plan', 'ts05-policy-disallow-claim',
+    'ts05-policy-missing-plan', 'ts05-policy-dated-not-applicable',
+    'ts06-safe-synthetic-matrix', 'ts06-canary-in-403', 'ts06-missing-role-cell',
+    'ts03-complete-synthetic-matrix', 'ts03-removed-route-200',
+    'ts03-missing-route-observation',
 )
 
 

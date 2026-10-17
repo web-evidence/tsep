@@ -35,7 +35,12 @@ Draft.30 adds TS12-A01/A02/A03: plan, attributed comparisons and supplied review
 
 Draft.29 adds three TS08 rules: scope/objectives, native inspections and bound reviews/decisions. [Bilingual contract](inspection-evidence.md), [migration](migration-draft.29.md). C qualifies selected-set documentation, never guaranteed indexing.
 
-# Report contract — TSEP 0.1.0-draft.36
+# Report contract — TSEP 0.1.0-draft.46
+
+### TS06-A01 — bounded synthetic access matrix
+
+`TS06-A01` is a semi-automated comparison of supplied, prior-plan-bound synthetic HTTP GET traces for declared `.invalid` route/role cells and cold/seed/replay labels. Its result applies only to those authored fixture cases. It never establishes real identity, authentication, server-side protection, shared-cache behavior, or all-site coverage. A supplied leak or unauthorized successful representation is `fail`; missing/partial/ambiguous evidence is `inconclusive`. See [the TS06 evidence profile](ts06-access-evidence.md) and [draft.46 migration](migration-draft.46.md).
+
 
 ### Delivery variants — draft.27
 
@@ -159,7 +164,7 @@ declarations, although the validator cannot determine that need.
 
 The CLI checks declarations, references and coverage, not the correctness of
 HTTP/HTML interpretation, intent or exemptions. The historical method fixtures have authored reference verdicts. The separate
-[executable conformance suite](conformance.md) interprets raw inputs for forty-two rules
+[executable conformance suite](conformance.md) interprets raw inputs for sixty-five rules
 within documented bounds; it does not implement all controls. No C extends to unselected
 controls, an entire site or actual indexing. See [migration and cases](migration-draft.2.md).
 
@@ -422,3 +427,8 @@ TS10-A04 accepts prior html-tree-links-v1 under intent.canonical.links. The [nor
 ### Unparseable bases — draft.18
 
 TS10-A04 also accepts prior html-tree-links-v2. A first base whose href fails WHATWG parsing makes dependent hrefs inconclusive, while independent contradictions survive. Profile v1, A01/A02 and rendering remain unchanged. The [normative bilingual contract](source-link-policy-v2.md) and [migration](migration-draft.18.md) define evidence, hypotheses, observed zero and limits.
+
+
+### TS05 — policy map only / carte de politique uniquement
+
+Draft.45 adds TS05-A01: a semi-automated comparison of supplied prior intent and configuration. Pass means internal plan consistency only; it does not establish indexing or access control. See [TS05 evidence and limits](ts05-indexing-evidence.md), [dated source capture](source-captures/ts05-google-search-central-2026-10-16.md) and [migration](migration-draft.45.md).

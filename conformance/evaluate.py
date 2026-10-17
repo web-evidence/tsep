@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded offline interpreter for sixty-four TSEP rules. Apache-2.0; no collection."""
+"""Bounded offline interpreter for sixty-six TSEP rules. Apache-2.0; no collection."""
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -11,7 +11,7 @@ from urllib.parse import urljoin, urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import tsep
 
-RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS04-A01', 'TS04-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
+RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS03-A01', 'TS04-A01', 'TS04-A02', 'TS05-A01', 'TS06-A01', 'TS07-A01', 'TS07-A02', 'TS07-A03',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04',
          'TS34-A01', 'TS34-A02', 'TS34-A03', 'TS35-A01', 'TS35-A02',
          'TS42-A01', 'TS42-A02', 'TS42-A03', 'TS43-A01', 'TS43-A02', 'TS43-A03', 'TS44-A01', 'TS44-A02', 'TS44-A03', 'TS41-A01', 'TS41-A02', 'TS41-A03', 'TS39-A01', 'TS39-A02', 'TS39-A03', 'TS08-A01', 'TS08-A02', 'TS08-A03', 'TS12-A01', 'TS12-A02', 'TS12-A03', 'TS36-A01', 'TS36-A02', 'TS36-A03')
@@ -24,7 +24,7 @@ RULES += ('TS18-A01','TS18-A02','TS18-A03')
 RULES += ('TS23-A01',)
 RULES += ('TS24-A01',)
 RULES += ('TS25-A01','TS25-A02')
-VERSION = '43'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '46'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -417,6 +417,15 @@ def evaluate_target(target, rule, *, diagnostics=None):
     if rule.startswith(('TS34-', 'TS35-')):
         from conformance.performance import assess
         return assess(target, rule, diagnostics=diagnostics)
+    if rule.startswith('TS03-'):
+        from conformance.ts03_response import assess
+        return assess(target, rule)
+    if rule.startswith('TS05-'):
+        from conformance.ts05_indexing import assess
+        return assess(target, rule)
+    if rule.startswith('TS06-'):
+        from conformance.ts06_access import assess
+        return assess(target, rule)
     if rule.startswith('TS04-'):
         from conformance.robots_control import assess
         return assess(target, rule)

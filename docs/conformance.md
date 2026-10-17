@@ -1,3 +1,6 @@
+Draft.47 adds 13 authored synthetic TS03 cases /13 primary rule-target pairs: 1534 primary cases /3159 primary pairs; the fully expanded corpus has 2098 cases /4164 pairs across its fingerprinted extensions. The native interpreter supports 67 rules. Reference fixtures only; no site or Google soft-404 assessment. See TS03 method and limits (ts03-response-evidence.md) and migration (migration-draft.47.md).
+FR : 13 cas TS03 synthétiques ajoutés ; corpus principal 1534 cas /3159 paires et corpus étendu 2098 cas /4164 paires. Fixtures uniquement, aucune qualification d’un site ni classification soft 404.
+
 Draft.38 candidate:32 authored native TS18 cases/96pairs; expected1769cases/3782pairs. Existing cases unchanged; actual qualification is recorded separately.
 
 Draft.36 : TS17 adds34 authored synthetic cases/68pairs;1673cases/3622pairs total,56rules. Source52,DOM37,malformed36 cases run separately. FR : attentes rédigées avant changements, aucune observation réelle ni exécution déduite du décompte.

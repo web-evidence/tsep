@@ -19,7 +19,7 @@ TS31 : [preuves JSON-LD/contenu](docs/structured-content-evidence.md), [migratio
 
 TS36 : [suivi après changement](docs/release-monitoring.md), [import et clôture](docs/release-monitoring-intake.md), [migration draft.31](docs/migration-draft.31.md). Cas rédigés uniquement ; aucune échéance réelle future accomplie.
 
-Édition locale : **0.1.0-draft.44** — [TS25 : présence critique](docs/critical-presence-evidence.md), [migration](docs/migration-draft.42.md). Vingt-cinq contrôles outillés /64 règles ; aucune qualification réelle Edikka.
+Édition locale : **0.1.0-draft.46** — [TS06 : matrice d’accès synthétique](docs/ts06-access-evidence.md), [migration](docs/migration-draft.46.md). Vingt-sept contrôles outillés /66 règles ; fixtures uniquement, aucune qualification réelle Edikka ni aucun audit live.
 
 TS08 : [inspections natives](docs/inspection-evidence.md) et [acquisition](docs/search-console-acquisition.md) restent disponibles.
 
@@ -214,3 +214,5 @@ Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](
 [Draft.15 — Source directives / Directives source](docs/migration-draft.15.md)
 
 [TS43 controlled loopback laboratory / Laboratoire contrôlé TS43](docs/agent-access-laboratory.md) : six prefrozen scenarios, eight actual local requests, fictional sources/reviews; no provider visit.
+
+Référence TS05 : [méthode et limites](docs/ts05-indexing-evidence.md), [capture datée](docs/source-captures/ts05-google-search-central-2026-10-16.md).

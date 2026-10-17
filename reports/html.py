@@ -7,12 +7,13 @@ import base64
 import hashlib
 from html import escape
 import json
+import re
 from pathlib import Path
 
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '25'
+VERSION = '26'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
@@ -135,6 +136,7 @@ TEXT = {
         'monitoring_requests':'GET filtrés', 'monitoring_errors':'Réponses 5xx',
         'comparison_note': 'TS12 : dossier de comparaison HTTP/HTML et états DOM prévus. Égalité littérale ≠ équivalence d’URL ; ni canonical correcte, ni TS10, ni indexation déduits.',
         'comparison_values': 'Comparaisons attribuées et revue fournie',
+        'table_scroll': 'Tableau défilable horizontalement',
         'comparison_surface': 'Surface', 'comparison_state': 'État de lecture',
         'comparison_present': 'Valeur(s) présente(s)', 'comparison_absent': 'Absence qualifiée',
         'comparison_dates': 'Dates distinctes : acquisition API / capture technique',
@@ -340,6 +342,7 @@ TEXT = {
         'monitoring_requests':'Filtered GETs', 'monitoring_errors':'5xx responses',
         'comparison_note': 'TS12: comparison dossier for HTTP/HTML and planned DOM states. Literal equality is not URL equivalence; no correct canonical, TS10 or indexing inferred.',
         'comparison_values': 'Attributed comparisons and supplied review',
+        'table_scroll': 'Horizontally scrollable table',
         'comparison_surface': 'Surface', 'comparison_state': 'Reading state',
         'comparison_present': 'Present value(s)', 'comparison_absent': 'Qualified absence',
         'comparison_dates': 'Separate dates: API retrieval / technical capture',
@@ -1154,6 +1157,35 @@ def evidence_view(bundle, words, prefix):
     return out
 
 
+def table_scroll_regions(document, words):
+    """Make existing one-table wrappers keyboard-focusable without replacing table semantics."""
+    pattern = re.compile(r'<div class="(?P<class>table-wrap|table-scroll)">')
+    wrappers = list(pattern.finditer(document))
+    changes = []
+    for index, wrapper in enumerate(wrappers, 1):
+        boundary = wrappers[index].start() if index < len(wrappers) else len(document)
+        table_start = document.find('<table', wrapper.end(), boundary)
+        tsep.require(table_start >= 0, 'Scrollable table wrapper has no table')
+        table_end = document.find('</table>', table_start, boundary)
+        tsep.require(table_end >= 0, 'Scrollable table wrapper has an incomplete table')
+        caption_start = document.find('<caption>', table_start, table_end)
+        region_id = 'tsep-table-region-' + str(index)
+        labelledby = region_id
+        if caption_start >= 0:
+            caption_id = 'tsep-table-caption-' + str(index)
+            changes.append((caption_start, caption_start + len('<caption>'), '<caption id="' + caption_id + '">'))
+            labelledby += ' ' + caption_id
+        fallback = esc(words['table_scroll']) + ' ' + str(index)
+        attributes = ' role="region" tabindex="0" aria-labelledby="' + labelledby + '"'
+        opening = wrapper.group(0)[:-1] + attributes + '>'
+        changes.append((wrapper.start(), wrapper.end(), opening))
+        marker = '<span class="visually-hidden" id="' + region_id + '">' + fallback + '</span>'
+        changes.append((wrapper.end(), wrapper.end(), marker))
+    for start, end, replacement in sorted(changes, key=lambda item: (item[0], item[1]), reverse=True):
+        document = document[:start] + replacement + document[end:]
+    return document
+
+
 def render(report_path, *, evidence_root=None, language='en', compare=None, compare_root=None):
     tsep.require(language in TEXT, 'Unknown HTML language')
     words = TEXT[language]
@@ -1205,7 +1237,7 @@ def render(report_path, *, evidence_root=None, language='en', compare=None, comp
     out += '<div><h3>' + esc(words['assessor']) + '</h3><dl>' + item(words['assessor'], report['assessor']['name']) + item(words['mode'], report['assessor']['mode']) + item(words['controls'], ', '.join(report['controls'])) + '</dl></div>'
     out += '<div><h3>' + esc(words['identity']) + '</h3>' + report_identity(current, words, 'current') + '</div></div></section></main>'
     out += '<footer class="footer"><div class="wrap"><p>' + esc(words['footer']) + ' ' + VERSION + ' · ' + esc(words['read_only']) + '</p><p class="hash">' + esc(words['protocol']) + ' SHA-256 · ' + esc(report['protocol']['sha256']) + '</p></div></footer></body></html>\n'
-    return out
+    return table_scroll_regions(out, words)
 
 
 def write(report_path, output, **options):

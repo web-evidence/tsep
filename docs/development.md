@@ -1,4 +1,7 @@
-Current candidate draft.44 / interpreter43 / presence reader3 / adapter43 / HTML25 / replay3 : TS25 UTF8 review admission and combined diagnostic bounds. 25 controls /64 rules. Explicit Node24 + TSEP_VERIFY_STEP_TIMEOUT=3600, all checks enabled. Qualification and app reception pending separately. [Migration](migration-draft.44.md).
+Current candidate draft.47 / interpreter46 / presence reader3 / adapter45 / HTML26 / replay3: TS03-A01 synthetic HTTP status/body matrix, 28 controls /67 rules. Thirteen authored .invalid cases; focused TS03/TS05/TS06 and CLI tests pass. Full verification and TS03 application import/export/replay receipt remain pending. No live-site or soft-404 assessment. [TS03 evidence](ts03-response-evidence.md), [migration](migration-draft.47.md). TS05/TS06 draft.46 changes are carried forward unchanged.
+
+Previous candidate snapshot / État précédent :
+Current candidate draft.44 / interpreter43 / presence reader3 / adapter43 / HTML26 / replay3 : TS25 UTF8 review admission and combined diagnostic bounds. 25 controls /64 rules. Explicit Node24 + TSEP_VERIFY_STEP_TIMEOUT=3600, all checks enabled. Qualification and app reception pending separately. [Migration](migration-draft.44.md).
 FR : candidat TS25, bornes UTF8 des revues et diagnostics cumulés ; qualification et réception applicative distinctes.
 
 Previous candidate / candidat précédent :

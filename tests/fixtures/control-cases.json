@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.44",
+  "protocol_version": "0.1.0-draft.47",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -7092,6 +7092,331 @@
       ],
       "expected_status": "NT",
       "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS05-separated-plan",
+      "control_id": "TS05",
+      "description": {
+        "fr": "Cas de méthode TS05 synthétique : separated-plan ; aucun site réel.",
+        "en": "Synthetic TS05 method case: separated-plan; no live site."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC declared crawl/indexing/protection configuration: separated-plan",
+        "intent": "SYNTHETIC dated policy map and claim review: separated-plan"
+      },
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS",
+      "atomic_results": [
+        {
+          "rule_id": "TS05-A01",
+          "outcome": "pass",
+          "evidence_ids": [
+            "configuration",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Résultat de référence synthétique : separated-plan.",
+            "en": "Authored synthetic reference outcome: separated-plan."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS05-disallow-guarantee",
+      "control_id": "TS05",
+      "description": {
+        "fr": "Cas de méthode TS05 synthétique : disallow-guarantee ; aucun site réel.",
+        "en": "Synthetic TS05 method case: disallow-guarantee; no live site."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC declared crawl/indexing/protection configuration: disallow-guarantee",
+        "intent": "SYNTHETIC dated policy map and claim review: disallow-guarantee"
+      },
+      "expected_status": "NC",
+      "expected_gate": "NO_GO",
+      "atomic_results": [
+        {
+          "rule_id": "TS05-A01",
+          "outcome": "fail",
+          "evidence_ids": [
+            "configuration",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Résultat de référence synthétique : disallow-guarantee.",
+            "en": "Authored synthetic reference outcome: disallow-guarantee."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS05-missing-plan",
+      "control_id": "TS05",
+      "description": {
+        "fr": "Cas de méthode TS05 synthétique : missing-plan ; aucun site réel.",
+        "en": "Synthetic TS05 method case: missing-plan; no live site."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC declared crawl/indexing/protection configuration: missing-plan",
+        "intent": "SYNTHETIC dated policy map and claim review: missing-plan"
+      },
+      "expected_status": "NT",
+      "expected_gate": "NO_GO",
+      "atomic_results": [
+        {
+          "rule_id": "TS05-A01",
+          "outcome": "inconclusive",
+          "evidence_ids": [
+            "configuration",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Résultat de référence synthétique : missing-plan.",
+            "en": "Authored synthetic reference outcome: missing-plan."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS05-positive-not-applicable",
+      "control_id": "TS05",
+      "description": {
+        "fr": "Cas de méthode TS05 synthétique : positive-not-applicable ; aucun site réel.",
+        "en": "Synthetic TS05 method case: positive-not-applicable; no live site."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC declared crawl/indexing/protection configuration: positive-not-applicable",
+        "intent": "SYNTHETIC dated policy map and claim review: positive-not-applicable"
+      },
+      "expected_status": "NA",
+      "expected_gate": "INCOMPLETE",
+      "atomic_results": []
+    },
+    {
+      "id": "TS06-supplied-matrix-pass",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Cas de méthode TS06 synthétique ; aucun site réel. Les preuves sont uniquement synthétiques ; la matrice route-rôle et les triplets fournis sont complets et cohérents.",
+        "en": "Synthetic TS06 method case; no live site. Evidence is synthetic only; complete supplied route-role matrix and cache triplets agree."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC route policy and fingerprint-bound plan.",
+        "http": "SYNTHETIC raw GET responses; no network collection.",
+        "intent": "SYNTHETIC prior route-role matrix and canary plan."
+      },
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS",
+      "atomic_results": [
+        {
+          "rule_id": "TS06-A01",
+          "outcome": "pass",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Les preuves sont uniquement synthétiques ; la matrice route-rôle et les triplets fournis sont complets et cohérents.",
+            "en": "Evidence is synthetic only; complete supplied route-role matrix and cache triplets agree."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS06-unauthorized-canary-leak",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Cas de méthode TS06 synthétique ; aucun site réel. Une réponse fournie à un rôle fictif non autorisé expose le canari synthétique déclaré.",
+        "en": "Synthetic TS06 method case; no live site. A supplied unauthorized response exposes the declared synthetic canary."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC route policy and fingerprint-bound plan.",
+        "http": "SYNTHETIC raw GET responses; no network collection.",
+        "intent": "SYNTHETIC prior route-role matrix and canary plan."
+      },
+      "expected_status": "NC",
+      "expected_gate": "NO_GO",
+      "atomic_results": [
+        {
+          "rule_id": "TS06-A01",
+          "outcome": "fail",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Une réponse fournie à un rôle fictif non autorisé expose le canari synthétique déclaré.",
+            "en": "A supplied unauthorized response exposes the declared synthetic canary."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS06-missing-matrix-cell",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Cas de méthode TS06 synthétique ; aucun site réel. Une cellule route-rôle manquante empêche une conclusion complète et bornée.",
+        "en": "Synthetic TS06 method case; no live site. A missing route-role cell prevents a complete bounded conclusion."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC route policy and fingerprint-bound plan.",
+        "http": "SYNTHETIC raw GET responses; no network collection.",
+        "intent": "SYNTHETIC prior route-role matrix and canary plan."
+      },
+      "expected_status": "NT",
+      "expected_gate": "NO_GO",
+      "atomic_results": [
+        {
+          "rule_id": "TS06-A01",
+          "outcome": "inconclusive",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Une cellule route-rôle manquante empêche une conclusion complète et bornée.",
+            "en": "A missing route-role cell prevents a complete bounded conclusion."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS06-declared-no-sensitive-routes",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Inventaire complet fictif, daté et sans route sensible ; NA ne vaut pas un audit réel.",
+        "en": "Complete dated fictional inventory with no sensitive route; NA is not a live audit."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC complete positive inventory review for this declared fixture scope."
+      },
+      "expected_status": "NA",
+      "expected_gate": "INCOMPLETE",
+      "atomic_results": []
+    },
+    {
+      "id": "TS06-atomic-inventory-exemption",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Exemption atomique sur un sous-périmètre de matrice, liée à un inventaire synthétique positif ; ce cas de rapport reste NT car il ne couvre pas tout le contrôle.",
+        "en": "Atomic exemption for a matrix sub-scope bound to a positive synthetic inventory; this report case remains NT because it does not cover the whole control."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC complete, dated route inventory review linked to this target only."
+      },
+      "expected_status": "NT",
+      "expected_gate": "NO_GO",
+      "atomic_results": [
+        {
+          "rule_id": "TS06-A01",
+          "outcome": "not-applicable",
+          "evidence_ids": [
+            "intent"
+          ],
+          "reason": {
+            "fr": "Revue positive bornée à la cible, sans preuve d’exhaustivité globale.",
+            "en": "Positive review limited to this target, without proof of whole-control completeness."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS03-synthetic-matrix-complete",
+      "control_id": "TS03",
+      "description": {
+        "fr": "Réponses complètes et marqueurs conformes sur la matrice synthétique .invalid.",
+        "en": "Complete responses and markers match the synthetic .invalid matrix."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC: prior three-state route plan and bound fingerprint; no live scope.",
+        "http": "SYNTHETIC: complete GET response matrix for .invalid routes; no DNS or socket.",
+        "content": "SYNTHETIC: literal UTF-8 markers only; no semantic review.",
+        "intent": "SYNTHETIC: existing, removed and nonexistent route states are declared before capture."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS03-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "La matrice HTTP fictive complète respecte tous les statuts et marqueurs déclarés.",
+            "en": "The complete fictional HTTP matrix matches every declared status and marker."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS03-synthetic-removed-route-200",
+      "control_id": "TS03",
+      "description": {
+        "fr": "Une route supprimée reçoit un 200 complet en contradiction avec le plan synthétique.",
+        "en": "A removed route receives a complete 200 contrary to the synthetic plan."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC: prior three-state route plan and bound fingerprint; no live scope.",
+        "http": "SYNTHETIC: removed .invalid route returns a complete HTTP 200; no DNS or socket.",
+        "content": "SYNTHETIC: supplied literal UTF-8 marker expectations.",
+        "intent": "SYNTHETIC: the route is authored as removed; this classification is not authenticated."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS03-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "La réponse 200 complète contredit le statut déclaré pour une route supprimée.",
+            "en": "The complete 200 response contradicts the declared status for a removed route."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS03-synthetic-plan-after-observation",
+      "control_id": "TS03",
+      "description": {
+        "fr": "Le plan synthétique postérieur à l’observation laisse le cas indéterminé.",
+        "en": "The synthetic plan postdates the observation, leaving the case inconclusive."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC: supplied plan fingerprint does not establish temporal priority.",
+        "http": "SYNTHETIC: supplied .invalid response matrix; no DNS or socket.",
+        "content": "SYNTHETIC: literal UTF-8 expectations only.",
+        "intent": "SYNTHETIC: observation at 2026-10-16T14:00Z; plan declared at 15:00Z."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS03-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Le plan fourni après l’observation ne peut pas la qualifier rétroactivement.",
+            "en": "A plan supplied after observation cannot qualify it retroactively."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
     }
   ]
 }

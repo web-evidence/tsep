@@ -19,7 +19,7 @@ TS31: [JSON-LD/content evidence](docs/structured-content-evidence.md), [draft.32
 
 TS36: [release follow-up](docs/release-monitoring.md), [intake and closure](docs/release-monitoring-intake.md), [draft.31 migration](docs/migration-draft.31.md). Authored cases only; no real future stage completed.
 
-Local development edition: **0.1.0-draft.44** — [TS25 critical presence](docs/critical-presence-evidence.md), [migration](docs/migration-draft.42.md). Twenty-five tooled controls /64 rules; no actual Edikka assessment.
+Local development edition: **0.1.0-draft.46** — [TS06 synthetic access matrix](docs/ts06-access-evidence.md), [migration](docs/migration-draft.46.md). Twenty-seven tooled controls /66 rules; fixtures only, no actual Edikka or live-site assessment.
 
 TS08 [native inspections](docs/inspection-evidence.md) and [acquisition](docs/search-console-acquisition.md) remain available.
 
@@ -213,3 +213,5 @@ Text/data CC BY 4.0, code Apache-2.0: [licenses](LICENSE.md), [citation](CITATIO
 [Draft.15 — Source directives / Directives source](docs/migration-draft.15.md)
 
 [TS43 controlled loopback laboratory / Laboratoire contrôlé TS43](docs/agent-access-laboratory.md) : six prefrozen scenarios, eight actual local requests, fictional sources/reviews; no provider visit.
+
+TS05 reference: [method and limits](docs/ts05-indexing-evidence.md), [dated source capture](docs/source-captures/ts05-google-search-central-2026-10-16.md).

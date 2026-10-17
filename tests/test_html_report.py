@@ -76,6 +76,30 @@ class HTMLReport(unittest.TestCase):
         self.assertEqual(source, render(path, language='fr'))
         self.assertEqual(before, {p.relative_to(path.parent): p.read_bytes() for p in path.parent.rglob('*') if p.is_file()})
 
+    def test_all_tables_are_keyboard_scroll_regions_in_both_languages(self):
+        before = self.bundle('before')
+        current = self.bundle('current')
+        for language, label in (('fr', 'Tableau défilable horizontalement'), ('en', 'Horizontally scrollable table')):
+            source = render(current, compare=before, language=language)
+            page = Document(source)
+            tables = [attrs for tag, attrs in page.tags if tag == 'table']
+            regions = [attrs for tag, attrs in page.tags if tag == 'div' and attrs.get('role') == 'region']
+            self.assertGreater(len(tables), 0)
+            self.assertEqual(len(regions), len(tables))
+            region_ids = []
+            for attrs in regions:
+                self.assertEqual(attrs.get('tabindex'), '0')
+                references = attrs.get('aria-labelledby', '').split()
+                self.assertTrue(references)
+                self.assertTrue(all(reference in page.ids for reference in references))
+                region_ids.append(references[0])
+            self.assertEqual(len(region_ids), len(set(region_ids)))
+            self.assertIn('.table-wrap:focus-visible', source)
+            self.assertIn('.table-scroll:focus-visible', source)
+            self.assertIn('.table-wrap,.table-scroll{overflow:visible}', source)
+            self.assertIn('@media(forced-colors:active)', source)
+            self.assertIn(label + ' 1', source)
+
     def test_verdicts_and_missing_observations_are_not_recomputed(self):
         for case in ('pass', 'fail', 'partial'):
             path = ROOT/'examples'/case/'report.json'
@@ -146,6 +170,8 @@ class HTMLReport(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertEqual(json.loads(result.stdout)['sha256'], tsep.digest(output))
         self.assertIn('NO_GO', output.read_text())
+        receipt = json.loads(result.stdout)
+        self.assertEqual(receipt['renderer_version'], '26')
         before = output.read_bytes()
         self.assertEqual(subprocess.run(command, capture_output=True).returncode, 64)
         self.assertEqual(output.read_bytes(), before)

@@ -1,0 +1,1976 @@
+{
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "ts03-complete-synthetic-matrix",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T12:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T11:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://fixture.invalid/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "91134eabba7ecb08509174c50e00a2d70b939435809a49947121349c86778827"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>ARTICLE-ALPHA</body></html>"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 42\r\n\r\n<html><body>REMOVED-RESPONSE</body></html>"
+                },
+                {
+                  "route_id": "unknown",
+                  "url": "https://fixture.invalid/ts03/unknown",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/unknown HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 410 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>UNKNOWN-ROUTE</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "ts03-removed-route-200",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T12:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T11:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://fixture.invalid/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "91134eabba7ecb08509174c50e00a2d70b939435809a49947121349c86778827"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>ARTICLE-ALPHA</body></html>"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 52\r\n\r\n<html><body>REMOVED-RESPONSE NOT-FOUND</body></html>"
+                },
+                {
+                  "route_id": "unknown",
+                  "url": "https://fixture.invalid/ts03/unknown",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/unknown HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 410 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>UNKNOWN-ROUTE</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts03-nonexistent-route-503",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T12:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T11:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://fixture.invalid/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "91134eabba7ecb08509174c50e00a2d70b939435809a49947121349c86778827"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>ARTICLE-ALPHA</body></html>"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 42\r\n\r\n<html><body>REMOVED-RESPONSE</body></html>"
+                },
+                {
+                  "route_id": "unknown",
+                  "url": "https://fixture.invalid/ts03/unknown",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/unknown HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 503 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>UNKNOWN-ROUTE</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts03-existing-body-mismatch",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T12:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T11:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://fixture.invalid/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "91134eabba7ecb08509174c50e00a2d70b939435809a49947121349c86778827"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>WRONG-ARTICLE</body></html>"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 42\r\n\r\n<html><body>REMOVED-RESPONSE</body></html>"
+                },
+                {
+                  "route_id": "unknown",
+                  "url": "https://fixture.invalid/ts03/unknown",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/unknown HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 410 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>UNKNOWN-ROUTE</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts03-forbidden-body-marker",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T12:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T11:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://fixture.invalid/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "91134eabba7ecb08509174c50e00a2d70b939435809a49947121349c86778827"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>ARTICLE-ALPHA</body></html>"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 56\r\n\r\n<html><body>REMOVED-RESPONSE ARTICLE-ALPHA</body></html>"
+                },
+                {
+                  "route_id": "unknown",
+                  "url": "https://fixture.invalid/ts03/unknown",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/unknown HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 410 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>UNKNOWN-ROUTE</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts03-missing-route-observation",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T12:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T11:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://fixture.invalid/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "91134eabba7ecb08509174c50e00a2d70b939435809a49947121349c86778827"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>ARTICLE-ALPHA</body></html>"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 42\r\n\r\n<html><body>REMOVED-RESPONSE</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts03-duplicate-route-observation",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T12:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T11:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://fixture.invalid/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "91134eabba7ecb08509174c50e00a2d70b939435809a49947121349c86778827"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>ARTICLE-ALPHA</body></html>"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 42\r\n\r\n<html><body>REMOVED-RESPONSE</body></html>"
+                },
+                {
+                  "route_id": "unknown",
+                  "url": "https://fixture.invalid/ts03/unknown",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/unknown HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 410 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>UNKNOWN-ROUTE</body></html>"
+                },
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>ARTICLE-ALPHA</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts03-partial-206",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T12:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T11:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://fixture.invalid/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "91134eabba7ecb08509174c50e00a2d70b939435809a49947121349c86778827"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 206 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 13\r\n\r\nARTICLE-ALPHA"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 42\r\n\r\n<html><body>REMOVED-RESPONSE</body></html>"
+                },
+                {
+                  "route_id": "unknown",
+                  "url": "https://fixture.invalid/ts03/unknown",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/unknown HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 410 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>UNKNOWN-ROUTE</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts03-conditional-304",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T12:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T11:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://fixture.invalid/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "91134eabba7ecb08509174c50e00a2d70b939435809a49947121349c86778827"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\nIf-None-Match: synthetic-tag\r\n\r\n",
+                  "response": "HTTP/1.1 304 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 0\r\n\r\n"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 42\r\n\r\n<html><body>REMOVED-RESPONSE</body></html>"
+                },
+                {
+                  "route_id": "unknown",
+                  "url": "https://fixture.invalid/ts03/unknown",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/unknown HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 410 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>UNKNOWN-ROUTE</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts03-plan-after-observation",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T15:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T14:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://fixture.invalid/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "2393781aec70ce0ab096db4eee57f339dbf8c5cbd0f1176623e23c925579c82a"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>ARTICLE-ALPHA</body></html>"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 42\r\n\r\n<html><body>REMOVED-RESPONSE</body></html>"
+                },
+                {
+                  "route_id": "unknown",
+                  "url": "https://fixture.invalid/ts03/unknown",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/unknown HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 410 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>UNKNOWN-ROUTE</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts03-plan-fingerprint-mismatch",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T12:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T11:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://fixture.invalid/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>ARTICLE-ALPHA</body></html>"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 42\r\n\r\n<html><body>REMOVED-RESPONSE</body></html>"
+                },
+                {
+                  "route_id": "unknown",
+                  "url": "https://fixture.invalid/ts03/unknown",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/unknown HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 410 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>UNKNOWN-ROUTE</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts03-live-host-refused",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T12:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T11:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://example.com/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "a5388d5ce6c8b60d5366f297789a7404e5dabe29bc6e19b95319bb7b7f3081ee"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://example.com/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: example.com\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>ARTICLE-ALPHA</body></html>"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 42\r\n\r\n<html><body>REMOVED-RESPONSE</body></html>"
+                },
+                {
+                  "route_id": "unknown",
+                  "url": "https://fixture.invalid/ts03/unknown",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/unknown HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 410 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>UNKNOWN-ROUTE</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts03-status-fail-survives-duplicate",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS03-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://fixture.invalid/ts03-scope",
+            "observed_at": "2026-10-16T14:00:00Z",
+            "intent": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "applicability": "applicable",
+                "declared_at": "2026-10-16T12:00:00Z",
+                "scope": "Three authored fixture routes only; not a domain inventory",
+                "plan_review": {
+                  "complete": true,
+                  "provenance": "synthetic-exercise",
+                  "reviewed_at": "2026-10-16T11:45:00Z",
+                  "rationale": "Authored counterexample plan; no actual reviewer or live scope."
+                },
+                "routes": [
+                  {
+                    "id": "article",
+                    "url": "https://fixture.invalid/ts03/article",
+                    "state": "existing",
+                    "expected_statuses": [
+                      200
+                    ],
+                    "required_markers": [
+                      "ARTICLE-ALPHA"
+                    ],
+                    "forbidden_markers": [
+                      "NOT-FOUND"
+                    ]
+                  },
+                  {
+                    "id": "removed",
+                    "url": "https://fixture.invalid/ts03/removed",
+                    "state": "removed",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "REMOVED-RESPONSE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  },
+                  {
+                    "id": "unknown",
+                    "url": "https://fixture.invalid/ts03/unknown",
+                    "state": "nonexistent",
+                    "expected_statuses": [
+                      404,
+                      410
+                    ],
+                    "required_markers": [
+                      "UNKNOWN-ROUTE"
+                    ],
+                    "forbidden_markers": [
+                      "ARTICLE-ALPHA"
+                    ]
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "ts03_response": {
+                "reader": "ts03-http-matrix-v1",
+                "plan_sha256": "91134eabba7ecb08509174c50e00a2d70b939435809a49947121349c86778827"
+              }
+            },
+            "content": {
+              "reader": "ts03-content-expectations-v1",
+              "routes": [
+                {
+                  "route_id": "article",
+                  "required_markers": [
+                    "ARTICLE-ALPHA"
+                  ],
+                  "forbidden_markers": [
+                    "NOT-FOUND"
+                  ]
+                },
+                {
+                  "route_id": "removed",
+                  "required_markers": [
+                    "REMOVED-RESPONSE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                },
+                {
+                  "route_id": "unknown",
+                  "required_markers": [
+                    "UNKNOWN-ROUTE"
+                  ],
+                  "forbidden_markers": [
+                    "ARTICLE-ALPHA"
+                  ]
+                }
+              ]
+            },
+            "http": {
+              "reader": "ts03-http-matrix-v1",
+              "complete": true,
+              "observed_at": "2026-10-16T13:30:00Z",
+              "cases": [
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>ARTICLE-ALPHA</body></html>"
+                },
+                {
+                  "route_id": "removed",
+                  "url": "https://fixture.invalid/ts03/removed",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/removed HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 404 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 42\r\n\r\n<html><body>REMOVED-RESPONSE</body></html>"
+                },
+                {
+                  "route_id": "unknown",
+                  "url": "https://fixture.invalid/ts03/unknown",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/unknown HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>UNKNOWN-ROUTE</body></html>"
+                },
+                {
+                  "route_id": "article",
+                  "url": "https://fixture.invalid/ts03/article",
+                  "complete": true,
+                  "observed_at": "2026-10-16T13:30:00Z",
+                  "request": "GET /ts03/article HTTP/1.1\r\nHost: fixture.invalid\r\nUser-Agent: TSEP-TS03-fixture/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 39\r\n\r\n<html><body>ARTICLE-ALPHA</body></html>"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A01",
+          "target": "https://fixture.invalid/ts03-scope",
+          "outcome": "fail"
+        }
+      ]
+    }
+  ]
+}

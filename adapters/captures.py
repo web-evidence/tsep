@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts, binding_digest
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '43'
+VERSION = '45'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -99,7 +99,7 @@ def source_files():
     modules['experiments/source_content.py'] = importlib.import_module('experiments.source_content')
     modules['conformance/source_markers.py'] = importlib.import_module('conformance.source_markers')
     modules['experiments/source_markers.py'] = importlib.import_module('experiments.source_markers')
-    for name in ('conformance.evaluate', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'conformance.source_canonical', 'experiments.source_head', 'experiments.source_http', 'experiments.source_tree'):
+    for name in ('conformance.evaluate', 'conformance.ts06_access', 'conformance.http', 'conformance.canonical', 'conformance.sitemap_locations', 'conformance.canonical_attributes', 'conformance.source_text', 'conformance.redirects', 'conformance.robots', 'conformance.robots_control', 'conformance.structured_dom', 'experiments.rendered_metadata', 'experiments.rendered_canonical', 'provenance.runtime', 'conformance.source_directives', 'conformance.source_canonical', 'experiments.source_head', 'experiments.source_http', 'experiments.source_tree'):
         modules[name.replace('.', '/')+'.py'] = importlib.import_module(name)
     result = loaded_sources(ROOT, modules)
     from conformance.structured_validation import VOCABULARY
@@ -123,6 +123,7 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state':'implemented','fr':'TS06-A01 : matrice fournie de routes `.invalid`, rôles synthétiques, canaris et triplets étiquetés ; aucune identité, aucun cache réel ni domaine live.','en':'TS06-A01: supplied `.invalid` route matrix, synthetic roles, canaries and labelled triplets; no real identity, real cache or live domain.'},
     {'state':'implemented','fr':'TS25 : cinq rôles déclarés, présence source/rendu et revues fournies ; aucune exécution ou visibilité authentifiée.','en':'TS25: five declared roles, source/render presence and supplied reviews; no authenticated execution or visibility.'},
     {'state':'implemented','fr':'TS24 : politique x-default, contexte motivé et revue de rôle fournis ; aucune neutralité ni approbation humaine inférée.','en':'TS24: supplied x-default policy, motivated context and role review; no inferred neutrality or human approval.'},
     {'state':'implemented','fr':'TS23 : réciprocité et auto-référence natives dans le groupe préalable ; aucune validité linguistique, indexabilité ou sélection Google déduite.', 'en':'TS23: native reciprocal/self annotations in the prior cluster; no inferred language validity, indexability or Google selection.'},
@@ -235,7 +236,25 @@ def pieces(target):
         result['content'] = target['structured_reviews']
     if 'intent' in target:
         result['intent'] = {k: target[k] for k in
-                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review', 'agent_decision', 'execution', 'attribution', 'log_review', 'release_plan_review', 'release_review', 'delivery_plan_review', 'structured_plan_review', 'identity_plan_review', 'identity_reviews', 'validation_plan_review', 'validation_review') if k in target}
+                            ('intent', 'context', 'reference', 'access_review', 'exemption_review', 'content_review', 'field_review', 'lab_review', 'agent_decision', 'execution', 'attribution', 'log_review', 'release_plan_review', 'release_review', 'delivery_plan_review', 'structured_plan_review', 'identity_plan_review', 'identity_reviews', 'validation_plan_review', 'validation_review', 'ts05_policy', 'ts06_access') if k in target}
+    if 'ts03_response' in target.get('intent', {}):
+        result['configuration'] = {
+            'ts03_response': target.get('configuration', {}).get('ts03_response'),
+            'basis': 'Bound synthetic TS03 route/status plan; no live server state'
+        }
+        if 'content' in target:
+            result['content'] = {'ts03_expectations': target['content']}
+    if 'ts05_policy' in target.get('intent', {}):
+        result['configuration'] = {
+            'ts05_policy_map': target['intent']['ts05_policy'],
+            'configuration_record': target.get('configuration'),
+            'basis': 'Supplied synthetic decision map and configuration record; no server state or index observed',
+        }
+    if 'ts06_access' in target.get('intent', {}):
+        result['configuration'] = {
+            'ts06_access_record': target.get('configuration', {}).get('ts06_access'),
+            'basis': 'Supplied synthetic route-access plan/configuration; no live server state or network collection',
+        }
     if 'release' in target.get('intent', {}):
         result['configuration'] = {'release':target['intent']['release'],
                                    'basis':'Supplied release plan; command identities are never executed'}
@@ -613,6 +632,18 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
             diagnostic_refs[observation['target']].append(artifact(aid, 'validator-output',
                 'observations/' + aid + '.json', observation, [observation['target']], issued_text,
                 'Computed interpretation diagnostics, attributed metadata/directives and alternative decisions; import time, not capture or engine observation.'))
+        ts05_rules = {r['id'] for r in controls.get('TS05', {}).get('rules', [])}
+        ts05_rows = [row for row in calculated if row['rule_id'] in ts05_rules]
+        ts05_pairs = {(row['rule_id'], row['target']) for row in ts05_rows}
+        ts05_whole_na = bool(ts05_rules) and ts05_rules <= set(data['rules']) and \
+            ts05_pairs == {(rule, target) for rule in ts05_rules for target in targets} and \
+            all(row['outcome'] == 'not-applicable' for row in ts05_rows)
+        ts06_rules = {r['id'] for r in controls.get('TS06', {}).get('rules', [])}
+        ts06_rows = [row for row in calculated if row['rule_id'] in ts06_rules]
+        ts06_pairs = {(row['rule_id'], row['target']) for row in ts06_rows}
+        ts06_whole_na = bool(ts06_rules) and ts06_rules <= set(data['rules']) and \
+            ts06_pairs == {(rule, target) for rule in ts06_rules for target in targets} and \
+            all(row['outcome'] == 'not-applicable' for row in ts06_rows)
         refs = {}
         for index, target in enumerate(data['targets'], 1):
             refs[target['url']] = list(shared) + diagnostic_refs[target['url']]
@@ -622,9 +653,45 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                 refs[target['url']].append(artifact(aid, kind, 'evidence/' + aid + '.json',
                     {'target': target['url'], 'date_basis': basis, 'record': payload}, [target['url']], date,
                     'Derived supplied record; ' + basis + '. Original fields unchanged; no missing evidence inferred.'))
-        atoms = [dict(row, evidence_ids=refs[row['target']]) for row in calculated]
+        atoms = []
+        for row in calculated:
+            atom = dict(row, evidence_ids=refs[row['target']])
+            if (row['rule_id'] in ts05_rules and row['outcome'] == 'not-applicable'
+                    and not ts05_whole_na):
+                atom['outcome'] = 'inconclusive'
+                atom['reason'] += ('; target-level positive review does not create an atomic exemption; '
+                                   'whole-control NA requires all declared targets to be positively reviewed')
+            atoms.append(atom)
         for i, result in enumerate(report['results']):
             cid = result['control_id']
+            if cid == 'TS05' and ts05_whole_na:
+                intent_ids = sorted({a['id'] for a in report['artifacts']
+                                     if a['kind'] == 'intent' and set(targets) <= set(a['targets'])})
+                intent_ids.extend(sorted({a['id'] for a in report['artifacts']
+                                          if a['kind'] == 'intent' and set(a['targets']) & set(targets)
+                                          and a['id'] not in intent_ids}))
+                report['results'][i] = {
+                    'control_id': 'TS05', 'status': 'NA', 'evaluation_state': 'complete',
+                    'reason': ('A complete, positive, dated TS05 inventory review establishes '
+                               'non-applicability for every declared target; no site, server or index state inferred.'),
+                    'procedure': NAME + ' ' + VERSION + '; positive whole-control applicability review; no collection.',
+                    'evaluated_targets': list(targets), 'evidence_ids': intent_ids, 'atomic_results': [],
+                }
+                continue
+            if cid == 'TS06' and ts06_whole_na:
+                intent_ids = sorted({a['id'] for a in report['artifacts']
+                                     if a['kind'] == 'intent' and set(targets) <= set(a['targets'])})
+                intent_ids.extend(sorted({a['id'] for a in report['artifacts']
+                                          if a['kind'] == 'intent' and set(a['targets']) & set(targets)
+                                          and a['id'] not in intent_ids}))
+                report['results'][i] = {
+                    'control_id': 'TS06', 'status': 'NA', 'evaluation_state': 'complete',
+                    'reason': ('A complete, positive, dated synthetic TS06 inventory review establishes '
+                               'no sensitive routes for every declared target; no live site or server state inferred.'),
+                    'procedure': NAME + ' ' + VERSION + '; positive synthetic whole-control applicability review; no collection.',
+                    'evaluated_targets': list(targets), 'evidence_ids': intent_ids, 'atomic_results': [],
+                }
+                continue
             rows = [a for a in atoms if a['rule_id'].startswith(cid + '-')]
             if rows:
                 report['results'][i] = control_result(cid, rows, controls[cid], targets)

@@ -1,9 +1,9 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.1.0-draft.44",
+  "version": "0.1.0-draft.47",
   "status": "draft",
-  "date": "2026-10-15",
+  "date": "2026-10-17",
   "languages": [
     "en",
     "fr"
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.1.0-draft.44"
+      "rule_version": "0.1.0-draft.47"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "na_inputs": [],
@@ -341,33 +341,34 @@
       "severity": "major",
       "unit": "url-set",
       "required_inputs": [
+        "configuration",
         "http",
         "content",
         "intent"
       ],
       "applicability": {
-        "fr": "Routes existantes, supprimées et inexistantes du périmètre.",
-        "en": "Existing, removed and nonexistent routes in scope."
+        "fr": "Routes synthétiques explicitement classées existantes, supprimées et inexistantes dans un plan daté ; la portée réelle n’est pas authentifiée.",
+        "en": "Synthetic routes explicitly classified as existing, removed and nonexistent in a dated plan; real-world scope is not authenticated."
       },
       "procedure": {
-        "fr": "Tester une page existante, une URL supprimée et une URL inexistante ; comparer code et contenu.",
-        "en": "Test an existing page, a removed URL and a non-existent URL; compare status and content."
+        "fr": "Avant les captures, lier à configuration le plan d’intention des trois états de route et leurs critères de contenu. Comparer une matrice HTTP GET fournie, sans résolution DNS ni collecte réseau.",
+        "en": "Before captures, bind the intent plan for the three route states and their content criteria into configuration. Compare a supplied HTTP GET matrix without DNS resolution or network collection."
       },
       "acceptance": {
-        "fr": "Codes et contenus correspondent aux trois cas déclarés ; les erreurs testées ne livrent pas une page d’erreur en 200.",
-        "en": "Status and content match the three declared cases; tested error pages do not return 200."
+        "fr": "Pass qualifie seulement la matrice complète fournie : 200 et marqueurs attendus pour une route existante ; 404/410 et critères de corps déclarés pour les routes supprimées/inexistantes. Un 2xx pour ces dernières, un autre statut complet, ou une contradiction de marqueur est fail. La classification soft 404 reste hors mesure.",
+        "en": "Pass qualifies only the complete supplied matrix: 200 and expected markers for an existing route; 404/410 and declared body criteria for removed/nonexistent routes. A 2xx for the latter, another complete status, or a marker contradiction is fail. Soft-404 classification is not measured."
       },
       "non_applicability": {
         "fr": "Périmètre ne contenant aucun routage HTTP, justification fournie.",
         "en": "Scope contains no HTTP routing, with a justification."
       },
       "evidence": {
-        "fr": "Codes 4xx/5xx cohérents et modèle d’erreur qui ne renvoie pas 200 par défaut.",
-        "en": "Consistent 4xx/5xx responses and an error template that does not return 200 by default."
+        "fr": "Plan d’intention antérieur, empreinte de liaison, attentes de corps, URL/GET et réponses HTTP brutes complètes pour chaque état requis ; conserver les contre-cas même si d’autres pièces manquent.",
+        "en": "Prior intent plan, binding fingerprint, body expectations, URL/GET and complete raw HTTP responses for each required state; retain counterexamples even when other evidence is missing."
       },
       "limitations": {
-        "fr": "La classification soft 404 finale reste une décision du moteur.",
-        "en": "The final soft-404 classification remains a search-engine decision."
+        "fr": "La sonde n’utilise que des captures synthétiques .invalid et des marqueurs littéraux UTF-8. Elle ne confirme ni existence réelle, suppression, disponibilité durable, qualité sémantique, ni classification soft 404 par Google. Une réponse ponctuelle 5xx échoue au statut déclaré sans prouver une panne persistante. Aucun site ni moteur n’est interrogé.",
+        "en": "The probe uses only synthetic .invalid captures and literal UTF-8 markers. It confirms no real existence, removal, sustained availability, semantic quality, or Google soft-404 classification. A point-in-time 5xx fails the declared status without proving a persistent outage. No site or search engine is queried."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -378,14 +379,63 @@
         "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
       ],
       "source_scope": {
-        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
-        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+        "fr": "Google Search Central décrit les effets de classes de statuts sur ses systèmes ; cette source ne prescrit pas un standard TSEP. La règle compare des attentes fournies et ne reproduit pas la classification soft 404.",
+        "en": "Google Search Central describes status-class effects on its systems; it does not prescribe a TSEP standard. This rule compares supplied expectations and does not reproduce soft-404 classification."
       },
       "acceptance_note": {
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.47",
+      "rules": [
+        {
+          "id": "TS03-A01",
+          "title": {
+            "fr": "Réponses HTTP synthétiques comparées à un plan préalable",
+            "en": "Synthetic HTTP responses compared with a prior plan"
+          },
+          "required_inputs": [
+            "configuration",
+            "http",
+            "content",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Un plan de route contient au moins un état existant, supprimé et inexistant dans le périmètre synthétique.",
+            "en": "A route plan contains at least one existing, removed and nonexistent state in the synthetic scope."
+          },
+          "procedure": {
+            "fr": "Vérifier le plan antérieur et son empreinte ; comparer chaque GET/response attribuable, complète et liée à une route .invalid aux statuts permis et marqueurs littéraux UTF-8 fixés dans les attentes content.",
+            "en": "Verify the prior plan and its fingerprint; compare each attributable, complete GET/response for a .invalid route with the permitted statuses and literal UTF-8 markers fixed in the content expectations."
+          },
+          "acceptance": {
+            "fr": "Pass exige exactement une réponse complète par route et tous les états requis : 200 pour existante, 404/410 pour supprimée ou inexistante, marqueurs requis présents et interdits absents. Une contradiction complète reste fail malgré doublon, autre capture incomplète ou lacune. Les 206/304, données absentes, ambiguës ou mal attribuées restent inconclusives.",
+            "en": "Pass requires exactly one complete response per route and every required state: 200 for existing, 404/410 for removed or nonexistent, required markers present and forbidden markers absent. A complete contradiction remains fail despite a duplicate, another incomplete capture or a gap. 206/304, missing, ambiguous or unattributable data remain inconclusive."
+          },
+          "assumptions": {
+            "fr": "Le plan, les classifications et critères sont fournis et non authentifiés. La revue attachée est un exercice synthétique, pas une approbation indépendante.",
+            "en": "The plan, classifications and criteria are supplied and unauthenticated. Any attached review is a synthetic exercise, not independent approval."
+          },
+          "inconclusive": {
+            "fr": "Plan absent/futur/mal lié, état de route manquant, doublon, HTTP incomplet, URL/client non attribuable, statut 206/304, contenu non UTF-8, marqueurs contradictoires dans le plan ou matrice incomplète ; une contradiction attribuable reste fail.",
+            "en": "Missing/future/mismatched plan, missing route state, duplicate, incomplete HTTP, unattributable URL/client, 206/304, non-UTF-8 content, contradictory plan markers or incomplete matrix; an attributable contradiction remains fail."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique. NA du contrôle entier exige un inventaire positif, complet, motivé et daté prouvant qu’aucun routage HTTP n’entre dans le périmètre.",
+            "en": "No atomic exemption. Whole-control NA requires a positive, complete, reasoned and dated inventory establishing that no HTTP routing is in scope."
+          },
+          "limitations": {
+            "fr": "Une capture .invalid ne teste aucun serveur. Les marqueurs sont recherchés littéralement dans le corps décodé, sans DOM, rendu, jugement sémantique ou classification de moteur. C ne porte que sur la matrice déclarée, pas sur un site entier, une disponibilité dans le temps, une indexation ou un ranking.",
+            "en": "A .invalid capture tests no server. Markers are searched literally in the decoded body, without DOM, rendering, semantic judgment or engine classification. C covers only the declared matrix, not a whole site, availability over time, indexing or ranking."
+          },
+          "evidence": {
+            "fr": "Le plan et son empreinte, les attentes content, puis pour chaque route la requête GET, la réponse HTTP brute, le statut, la date et le corps complet. Conserver les observations contradictoires et les lacunes séparément.",
+            "en": "The plan and its fingerprint, content expectations, then for each route the GET request, raw HTTP response, status, time and complete body. Preserve contradictory observations and gaps separately."
+          }
+        }
+      ]
     },
     {
       "id": "TS04",
@@ -445,7 +495,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "id": "TS04-A01",
@@ -564,24 +614,24 @@
         "en": "Crawling or exclusion policies in scope."
       },
       "procedure": {
-        "fr": "Comparer la politique robots, les besoins d’indexation et les directives meta/X-Robots-Tag.",
-        "en": "Compare the robots policy, indexing requirements and meta/X-Robots-Tag directives."
+        "fr": "Comparer une carte de décision datée avant l’observation — exploration, objectif et méthode d’indexation, visibilité de noindex, protection et portée des affirmations — au record de configuration fourni.",
+        "en": "Compare a decision map dated before observation—crawl, indexing goal and method, noindex visibility, protection, and the scope of claims—with the supplied configuration record."
       },
       "acceptance": {
-        "fr": "Exploration, indexation et protection ont des mécanismes et objectifs distincts ; aucune garantie de désindexation ne repose seulement sur Disallow.",
-        "en": "Crawling, indexing and protection have distinct mechanisms and objectives; no deindexing guarantee relies only on Disallow."
+        "fr": "Un pass indique uniquement la cohérence interne du plan fourni. Exploration, indexation et protection sont séparées ; Disallow seul ne garantit ni désindexation ni confidentialité. Aucun état réel de l’index ou du serveur n’est établi.",
+        "en": "A pass indicates only internal consistency of the supplied plan. Crawling, indexing and protection are separate; Disallow alone guarantees neither deindexing nor confidentiality. No actual index or server state is established."
       },
       "non_applicability": {
         "fr": "Aucune politique concernée, périmètre et décision documentés.",
         "en": "No relevant policy, with scope and decision documented."
       },
       "evidence": {
-        "fr": "Décision distincte pour exploration, indexation et protection.",
-        "en": "Separate decisions for crawling, indexing and protection."
+        "fr": "Records configuration et intent liés à la cible, carte antérieure datée, portée, mécanismes et affirmations avec leurs bases ; revue positive et datée pour une non-applicabilité.",
+        "en": "Configuration and intent records linked to the target, a prior dated decision map, scope, mechanisms and claims with their bases; positive dated review for non-applicability."
       },
       "limitations": {
-        "fr": "Une URL bloquée peut rester connue et apparaître sans extrait.",
-        "en": "A blocked URL may remain known and appear without a snippet."
+        "fr": "Le lecteur compare un plan synthétique fourni ; il ne récupère aucun site, ne teste aucune authentification, ne vérifie pas l’exécution d’un retrait, ni l’état de l’index. Une URL bloquée peut rester connue et apparaître sans extrait. La qualification complète de TS05 et sa réception dans l’application sont distinctes.",
+        "en": "The reader compares a supplied synthetic plan; it does not fetch a site, test authentication, verify a removal request, or inspect index state. A blocked URL may remain known and appear without a snippet. Full TS05 qualification and application reception are separate."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -589,17 +639,66 @@
         "en": "Configuration"
       },
       "references": [
-        "https://developers.google.com/search/docs/crawling-indexing/robots/intro"
+        "https://developers.google.com/search/docs/crawling-indexing/robots/intro",
+        "https://developers.google.com/search/docs/crawling-indexing/block-indexing",
+        "https://developers.google.com/search/docs/crawling-indexing/control-what-you-share"
       ],
       "source_scope": {
-        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
-        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+        "fr": "Les pages Google Search Central ci-dessous appuient la distinction technique ; les attendus TSEP restent une règle éditoriale. Capture sélective datée et empreintée, pas un audit de site.",
+        "en": "The Google Search Central pages below support the technical distinction; TSEP expectations remain an editorial rule. A dated, fingerprinted selected capture, not a site audit."
       },
       "acceptance_note": {
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.47",
+      "rules": [
+        {
+          "id": "TS05-A01",
+          "title": {
+            "fr": "Carte fournie : exploration, indexation et protection sont distinctes.",
+            "en": "Supplied map: crawling, indexing and protection are distinct."
+          },
+          "required_inputs": [
+            "configuration",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Une politique d’exploration, un objectif d’indexation ou une déclaration de confidentialité existe dans le périmètre.",
+            "en": "A crawl policy, indexing objective or confidentiality claim exists in scope."
+          },
+          "procedure": {
+            "fr": "Lire intent.ts05_policy, datée avant observed_at, et le record configuration. Comparer les méthodes/effets d’exploration, l’objectif/méthode de l’indexation et la visibilité de noindex, puis la protection et les bases d’affirmations de désindexation/confidentialité.",
+            "en": "Read intent.ts05_policy, dated before observed_at, and the configuration record. Compare crawl methods/effects, indexing goal/method and noindex visibility, then protection and the bases for deindexing/confidentiality claims."
+          },
+          "acceptance": {
+            "fr": "Pass signifie seulement que la carte fournie est cohérente et distingue les trois axes. Une garantie de désindexation fondée seulement sur Disallow échoue ; une directive noindex inaccessible n’établit pas une exclusion. Aucun verdict positif ne prouve l’état de l’index, l’accès réel du robot ou la confidentialité serveur.",
+            "en": "Pass means only that the supplied map is internally consistent and separates the three axes. A deindexing guarantee based only on Disallow fails; an inaccessible noindex directive does not establish exclusion. No positive verdict proves index state, real crawler access or server confidentiality."
+          },
+          "evidence": {
+            "fr": "Configuration, carte d’intention préalable, dates, périmètre, méthodes/effets et affirmations avec bases ; les deux records couvrent la cible.",
+            "en": "Configuration, prior intent map, dates, scope, methods/effects and claims with bases; both records cover the target."
+          },
+          "assumptions": {
+            "fr": "Les records sont fournis et non authentifiés. L’interpréteur teste leur forme et cohérence déclarée, non leur vérité ni leur mise en œuvre.",
+            "en": "Records are supplied and unauthenticated. The interpreter tests their form and declared consistency, not their truth or implementation."
+          },
+          "inconclusive": {
+            "fr": "Plan absent, mal daté, incomplet ou futur ; méthode non prise en charge ; index inconnu ; noindex bloqué ou visibilité inconnue ; retrait non terminé ; bases de protection indéterminées.",
+            "en": "Missing, undated, incomplete or future plan; unsupported method; unknown index state; blocked or unknown noindex visibility; incomplete removal request; indeterminate protection basis."
+          },
+          "non_applicability": {
+            "fr": "Ce test atomique n’accepte pas d’exemption partielle. NA du contrôle entier exige une revue d’inventaire complète, motivée et datée avant observed_at, prouvant l’absence de politique concernée sur chaque cible.",
+            "en": "This atomic test does not accept a partial exemption. Whole-control NA requires a complete, reasoned inventory review dated before observed_at, establishing absence of relevant policy for every target."
+          },
+          "limitations": {
+            "fr": "Mécanisme semi-automatisé sur un modèle synthétique. N’interprète pas robots.txt, meta, X-Robots-Tag ou HTTP en direct ; ne mesure pas la visite, l’indexation, le retrait ou les contrôles d’accès. Pass qualifie uniquement la cohérence de la carte fournie.",
+            "en": "Semi-automated mechanism over a synthetic model. It does not parse live robots.txt, meta, X-Robots-Tag or HTTP; observe visits, indexing or removals; or test access controls. Pass qualifies only the consistency of the supplied map."
+          }
+        }
+      ]
     },
     {
       "id": "TS06",
@@ -619,28 +718,28 @@
         "intent"
       ],
       "applicability": {
-        "fr": "Routes déclarées privées ou sensibles.",
-        "en": "Routes declared private or sensitive."
+        "fr": "Routes privées ou sensibles explicitement inventoriées dans un périmètre déclaré ; cette règle candidate ne qualifie que les traces HTTP synthétiques fournies.",
+        "en": "Private or sensitive routes explicitly inventoried in a declared scope; this candidate rule qualifies only supplied synthetic HTTP traces."
       },
       "procedure": {
-        "fr": "Tester sans session les routes privées et vérifier authentification, autorisation et cache.",
-        "en": "Test private routes without a session and verify authentication, authorisation and caching."
+        "fr": "Avant les observations, fournir intent.ts06_access et son empreinte liée à configuration.ts06_access. Déclarer routes, marqueurs synthétiques, rôles fictifs, tests exacts par route/rôle et triplets froid anonyme → amorçage autorisé synthétique → rejeu anonyme, avec même étiquette de cache. Examiner les GET fournis sans résolution DNS ni requête réseau. Les redirections d’authentification doivent rester sur la même origine (schéma, hôte, port effectif) et suivre une liste de chemins explicitement déclarée. Une réponse 404 ne compte comme refus que si le plan la déclare pour cette route.",
+        "en": "Before observations, supply intent.ts06_access and bind its fingerprint in configuration.ts06_access. Declare routes, synthetic canaries, fictional roles, exact route/role tests, and cold anonymous → synthetic authorized seed → anonymous replay triplets with the same cache label. Inspect supplied GETs without DNS resolution or network requests. Authentication redirects must remain on the same origin (scheme, host, effective port) and follow an explicit path allowlist. A 404 counts as denial only when the plan declares it for that route."
       },
       "acceptance": {
-        "fr": "Sans session et avec les rôles non autorisés testés, aucun contenu sensible n’est livré, y compris par le cache ; contrôles et rôles couverts sont listés.",
-        "en": "No sensitive content is delivered to tested anonymous or unauthorized roles, including from cache; list covered routes and roles."
+        "fr": "Pass signifie seulement que toutes les cellules route/rôle non autorisées déclarées sont complètes, refusées sans marqueur sensible et que chaque triplet fourni suit l’ordre déclaré sans fuite au rejeu ; le contrôle ne mesure ni une identité réelle ni un cache réel. Toute réponse attribuable à un rôle non autorisé contenant un canari échoue, y compris un corps encodé détecté ou un en-tête de réponse. Une représentation 2xx livrée à un rôle non autorisé échoue aussi.",
+        "en": "Pass means only that all declared unauthorized route/role cells are complete, denied without a sensitive marker, and every supplied triplet follows the declared order without a replay leak; the control measures neither real identity nor a real cache. Any attributable response to an unauthorized role containing a canary fails, including detected encoded bodies or response headers. A 2xx representation delivered to an unauthorized role also fails."
       },
       "non_applicability": {
-        "fr": "Absence de routes privées attestée par un inventaire autorisé.",
-        "en": "An authorized inventory attests to the absence of private routes."
+        "fr": "Le contrôle entier peut être NA seulement avec une revue d’inventaire synthétique complète, datée et motivée qui déclare aucune route sensible dans le périmètre ; aucun test ni triplet contradictoire ne peut alors être présent.",
+        "en": "The whole control may be not applicable only with a complete, dated, reasoned synthetic inventory review declaring no sensitive route in scope; no contradictory test or triplet may then be present."
       },
       "evidence": {
-        "fr": "Réponse 401/403 ou redirection d’authentification sans contenu sensible livré.",
-        "en": "A 401/403 response or authentication redirect, with no sensitive content delivered."
+        "fr": "Records configuration, intent et HTTP fournis, empreinte exacte du plan, dates, identifiants route/rôle, chaque échange GET brut et ordre, liste complète des cellules non autorisées et chaque étiquette/phase de triplet. Conserver aussi les réponses contradictoires attribuables avant de signaler toute lacune de matrice.",
+        "en": "Supplied configuration, intent and HTTP records; exact plan fingerprint; timestamps; route/role identifiers; each raw GET exchange and its order; complete unauthorized-cell list; and every triplet phase/cache label. Preserve attributable contradictory responses before reporting any matrix gap."
       },
       "limitations": {
-        "fr": "L’absence dans l’index ne constitue pas une preuve de confidentialité.",
-        "en": "Absence from the index is not proof of confidentiality."
+        "fr": "Interpréteur de fixture borné aux URL-étiquettes .invalid, sans DNS, socket, crawl ni domaine réel. Un rôle HTTP est une étiquette synthétique, pas une authentification. Une étiquette de cache commune ne prouve aucun cache partagé ; Age/X-Cache seuls ne prouvent pas l’attribution. La règle n’exécute pas cookies, Authorization, JavaScript, TLS, variantes d’URL ou méthode HEAD. 206, 304 sans corps complet, codage non pris en charge, cellule manquante/ambiguë et état de cache incomplet donnent inconclusive. Le résultat ne qualifie pas toutes les pages d’un site.",
+        "en": "A fixture interpreter bounded to .invalid URL labels, with no DNS, socket, crawl or live domain. An HTTP role is a synthetic label, not authentication. A shared cache label proves no shared cache; Age/X-Cache alone do not establish attribution. The rule does not execute cookies, Authorization, JavaScript, TLS, URL aliases or HEAD. 206, 304 without a complete body, unsupported encoding, missing/ambiguous cell and incomplete cache state yield inconclusive. The result does not qualify every page of a site."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -648,17 +747,70 @@
         "en": "Configuration"
       },
       "references": [
-        "https://www.rfc-editor.org/rfc/rfc9110"
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc9111",
+        "https://www.rfc-editor.org/rfc/rfc6454",
+        "https://www.rfc-editor.org/rfc/rfc6761"
       ],
       "source_scope": {
-        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
-        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+        "fr": "Les RFC 9110, 9111, 6454 et 6761 appuient respectivement la sémantique HTTP, quelques conditions de cache, la notion d’origine et l’usage réservé de .invalid. Elles n’établissent pas une règle de certification TSEP ; l’attendu reste éditorial et les observations sont des fixtures synthétiques.",
+        "en": "RFCs 9110, 9111, 6454 and 6761 support HTTP semantics, selected cache conditions, the origin concept, and reserved .invalid use respectively. They establish no TSEP certification rule; acceptance remains editorial and observations are synthetic fixtures."
       },
       "acceptance_note": {
-        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
-        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+        "fr": "C exige les cellules et triplets complets du périmètre synthétique déclaré. Une fuite de canari ou une réponse 2xx non autorisée est une contradiction étayée ; les données partielles ou ambiguës restent NT. NA est uniquement une déclaration d’inventaire complète et positive.",
+        "en": "C requires the complete cells and triplets in the declared synthetic scope. A canary leak or unauthorized 2xx is an evidenced contradiction; partial or ambiguous data remain NT. NA requires only a complete positive inventory declaration."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.1.0-draft.47",
+      "rules": [
+        {
+          "id": "TS06-A01",
+          "title": {
+            "fr": "Accès refusé dans la matrice HTTP synthétique fournie",
+            "en": "Access denied in the supplied synthetic HTTP matrix"
+          },
+          "required_inputs": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "na_inputs": [
+            "intent"
+          ],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Au moins une route sensible est explicitement déclarée dans le périmètre synthétique.",
+            "en": "At least one sensitive route is explicitly declared in the synthetic scope."
+          },
+          "procedure": {
+            "fr": "Comparer le plan préalable lié à la configuration à une matrice complète de GET synthétiques par route et rôle. Détecter les marqueurs dans les en-têtes et corps, préserver les contradictions avant validation des doublons/lacunes, vérifier les redirections de même origine et les séquences froid/autorisé/rejeu.",
+            "en": "Compare the prior plan bound to configuration with a complete synthetic GET matrix by route and role. Detect markers in headers and bodies, preserve contradictions before validating duplicates/gaps, verify same-origin redirects and cold/authorized/replay sequences."
+          },
+          "acceptance": {
+            "fr": "Pass couvre uniquement la matrice synthétique complète fournie : aucune réponse non autorisée ne contient de canari, les refus sont établis selon le plan, et chaque triplet froid → amorçage autorisé → rejeu anonyme est complet et ordonné. Une fuite attribuable ou une représentation 2xx non autorisée donne fail.",
+            "en": "Pass covers only the complete supplied synthetic matrix: no unauthorized response contains a canary, denial is established under the plan, and every cold → authorized seed → anonymous replay triplet is complete and ordered. An attributable leak or unauthorized 2xx representation yields fail."
+          },
+          "evidence": {
+            "fr": "Records configuration/intent/http liés à la cible, empreinte du plan, routes/rôles/tests, échanges GET bruts avec horodatages, canaris et triplets de cache étiquetés.",
+            "en": "Configuration/intent/http records linked to the target, plan fingerprint, routes/roles/tests, raw GET exchanges with timestamps, canaries and labelled cache triplets."
+          },
+          "assumptions": {
+            "fr": "Les fixtures sont fournies, synthétiques et non authentifiées. L’étiquette de rôle et l’identifiant de cache ne prouvent ni identité ni cache partagé.",
+            "en": "Fixtures are supplied, synthetic and unauthenticated. Role and cache labels prove neither identity nor a shared cache."
+          },
+          "inconclusive": {
+            "fr": "Plan absent/futur/incohérent, cellule manquante ou dupliquée, en-tête d’identification absent/ambigu, redirection externe, 206, 304 sans représentation conservée, codage non pris en charge ou triplet/attribution incomplets.",
+            "en": "Missing/future/inconsistent plan, missing/duplicate cell, absent/ambiguous role header, cross-origin redirect, 206, 304 without retained representation, unsupported encoding, or incomplete triplet/attribution."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique. Le NA du contrôle entier exige une revue d’inventaire complète, datée et motivée ; elle doit être liée à intent.",
+            "en": "No atomic exemption. Whole-control NA requires a complete, dated, reasoned inventory review linked to intent."
+          },
+          "limitations": {
+            "fr": "Pas de DNS, socket, collecte live, identité réelle, authentification, cookie, cache réel, TLS, JavaScript, alias de chemin, HEAD ni évaluation de site entier. La détection de canaris couvre uniquement les codages implémentés ; le reste est inconclusif.",
+            "en": "No DNS, socket, live collection, real identity, authentication, cookies, real cache, TLS, JavaScript, path aliases, HEAD, or whole-site assessment. Canary detection covers only implemented encodings; other cases are inconclusive."
+          }
+        }
+      ]
     },
     {
       "id": "TS07",
@@ -866,7 +1018,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.44"
+      "rule_version": "0.1.0-draft.47"
     },
     {
       "id": "TS08",
@@ -926,7 +1078,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "automation": "semiAuto",
@@ -1372,7 +1524,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.1.0-draft.44"
+      "rule_version": "0.1.0-draft.47"
     },
     {
       "id": "TS11",
@@ -1492,7 +1644,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "id": "TS12-A01",
@@ -1812,7 +1964,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "automation": "automatic",
@@ -2013,7 +2165,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "id": "TS16-A01",
@@ -2122,7 +2274,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "automation": "automatic",
@@ -2278,7 +2430,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "automation": "automatic",
@@ -2722,7 +2874,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "id": "TS23-A01",
@@ -2829,7 +2981,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "id": "TS24-A01",
@@ -2935,7 +3087,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "id": "TS25-A01",
@@ -3381,7 +3533,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3579,7 +3731,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3775,7 +3927,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "automation": "semiAuto",
@@ -3973,7 +4125,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "id": "TS34-A01",
@@ -4168,7 +4320,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "id": "TS35-A01",
@@ -4320,7 +4472,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "automation": "semiAuto",
@@ -4643,7 +4795,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "applicability": {
@@ -4902,7 +5054,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "applicability": {
@@ -5103,7 +5255,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "id": "TS42-A01",
@@ -5300,7 +5452,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "id": "TS43-A01",
@@ -5502,7 +5654,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.44",
+      "rule_version": "0.1.0-draft.47",
       "rules": [
         {
           "na_inputs": [],
@@ -5794,15 +5946,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "9dbefaf8594df385b29f8f03ee9191f06c682be0c0cd1af4fddb33d348ebd6b5"
+      "sha256": "a14ed6d33509c76bacfee217b68ec1a3e6a5b85882bfde6047a1569c7b9452fa"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "9423de7c6371cbf014574451a22b26388e87857b75d0564eaef84a51b3bcb802"
+      "sha256": "bb2df95ca46c928ec7e9963e6efaa7dffe73b5ae2737be88489d6233857e4b7e"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "e304f48afb146b5a01db186157e6dd35b1abb74e599892b410a1f5100965e580"
+      "sha256": "ca9c96bed88bb3a4a6b5d1e66b97c21955077b04c35564ea7d8010abdb0209b1"
     },
     {
       "path": "docs/source-directives.md",
@@ -5899,6 +6051,18 @@
     {
       "path": "docs/critical-presence-evidence.md",
       "sha256": "425a98159d821447e380ae9a71ae24f6e7a33727a6e276e20b098b74077f737a"
+    },
+    {
+      "path": "docs/ts05-indexing-evidence.md",
+      "sha256": "82ae9f2cb91e571dc36c424b453e21279c5c397aa128353daae1a87e836408c6"
+    },
+    {
+      "path": "docs/ts06-access-evidence.md",
+      "sha256": "def81c6d663ef6eaa89bd33068ddf7813766d7dab1082968e1c8c2b54c66ca2a"
+    },
+    {
+      "path": "docs/ts03-response-evidence.md",
+      "sha256": "c2a8698cffe1578cc1d39363dfdcbc35d9ac616d2fb166effc9d1289b287ed3a"
     }
   ]
 }

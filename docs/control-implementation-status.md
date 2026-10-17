@@ -1,4 +1,7 @@
-Current candidate draft.44 / interpreter43 / presence reader3 / adapter43 / HTML25 / replay3 : TS25 UTF8 review admission and combined diagnostic bounds. 25 controls /64 rules. Explicit Node24 + TSEP_VERIFY_STEP_TIMEOUT=3600, all checks enabled. Qualification and app reception pending separately. [Migration](migration-draft.44.md).
+Current candidate draft.47 / interpreter46 / presence reader3 / adapter45 / HTML26 / replay3: TS03-A01 synthetic HTTP status/body matrix, 28 controls /67 rules. Thirteen authored .invalid cases; focused TS03/TS05/TS06 and CLI tests pass. Full verification and TS03 application import/export/replay receipt remain pending. [TS03 evidence](ts03-response-evidence.md), [migration](migration-draft.47.md). TS05/TS06 draft.46 changes are carried forward unchanged.
+
+Previous candidate snapshot / État précédent :
+Current candidate draft.44 / interpreter43 / presence reader3 / adapter43 / HTML26 / replay3 : TS25 UTF8 review admission and combined diagnostic bounds. 25 controls /64 rules. Explicit Node24 + TSEP_VERIFY_STEP_TIMEOUT=3600, all checks enabled. Qualification and app reception pending separately. [Migration](migration-draft.44.md).
 FR : candidat TS25, bornes UTF8 des revues et diagnostics cumulés ; qualification et réception applicative distinctes.
 
 Previous candidate / candidat précédent :
@@ -304,7 +307,7 @@ l’automatisation. Des sous-ensembles utiles existent déjà dans des composant
 | TS03 | Les erreurs serveur et soft 404 ne remplacent pas une réponse explicite. | Décrit ; règles atomiques à détailler | Séparer statut HTTP, identité du contenu et hypothèse soft 404 ; prévoir revue et contre-exemples. |
 | TS04 | La politique robots effective correspond à l’intention déclarée. | Décrit ; règles atomiques à détailler | Détailler la politique par robot/origine et ses erreurs ; réutiliser TS07-A02 sans lui attribuer tout TS04. |
 | TS05 | Une directive Disallow n’est jamais présentée comme une garantie de désindexation. | Décrit ; règles atomiques à détailler | Formaliser la revue de cohérence exploration/indexation ; aucun Disallow ne vaut preuve de désindexation. |
-| TS06 | Les zones sensibles refusent réellement l’accès au serveur. | Décrit ; règles atomiques à détailler | Définir les tests autorisés sans session, les preuves de configuration et les limites de couverture du cache. |
+| TS06 | Les zones sensibles refusent réellement l’accès au serveur. | Une règle semi-auto TS06-A01 sur matrice HTTP `.invalid` synthétique ; 23 cas contradictoires rédigés | Qualification complète, réception import/export/rejeu dans l’application et toute capture réelle restent séparées ; aucune identité, aucun cache réel ni audit de site ne sont établis. |
 | TS07 | Les directives meta robots et X-Robots-Tag sont cohérentes avec l’objectif de la page. | Partiel : 3 règles atomiques | Traiter les limites du lecteur HTML et les revues du plan de rendu et de l’accès. |
 | TS08 | Le statut d’indexation réel est vérifié dans Search Console. | Trois règles semiAuto, profil natif borné | Dossier de sélection et revues fournies ; essai de compte réel non effectué, aucun état live ou TS12 déduit. |
 | TS09 | Les exclusions volontaires ont un propriétaire et une justification. | Décrit ; règles atomiques à détailler | Structurer famille exclue, justification, propriétaire, échéance et revue réellement réalisée. |

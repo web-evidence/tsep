@@ -35,7 +35,11 @@ Draft.30 ajoute TS12-A01/A02/A03 : plan, comparaisons attribuées et revue/déci
 
 Draft.29 ajoute trois règles TS08 : périmètre/objectifs, inspections natives et revues/décisions liées. [Contrat bilingue](inspection-evidence.md), [migration](migration-draft.29.md). C qualifie le dossier sélectionné, jamais une indexation garantie.
 
-# Contrat de rapport — TSEP 0.1.0-draft.36
+# Contrat de rapport — TSEP 0.1.0-draft.46
+
+### TS06-A01 — matrice d’accès synthétique bornée
+
+`TS06-A01` compare de manière semi-automatique des traces GET HTTP synthétiques fournies, liées à un plan préalable, pour des cellules route/rôle `.invalid` déclarées et des étiquettes froid/amorçage/rejeu. Le résultat ne couvre que ces fixtures rédigées. Il n’établit ni identité réelle, authentification, protection serveur, comportement de cache partagé, ni couverture du site entier. Une fuite fournie ou une représentation réussie non autorisée donne `fail` ; une preuve manquante, partielle ou ambiguë donne `inconclusive`. Voir le [profil de preuve TS06](ts06-access-evidence.md) et la [migration draft.46](migration-draft.46.md).
 
 ### Diffusion et variantes — draft.27
 
@@ -159,7 +163,7 @@ affecte les déclarations, même si le validateur ne peut pas déterminer ce bes
 La CLI vérifie les déclarations, références et couvertures, pas la justesse de la
 lecture HTTP/HTML, de l’intention ou des exemptions. Les cas de méthode historiques
 ont des verdicts rédigés. La [suite exécutable distincte](conformance.md) interprète
-les entrées brutes de quarante-deux règles dans des limites documentées ; elle
+les entrées brutes de soixante-cinq règles dans des limites documentées ; elle
 n’implémente pas tous les contrôles. Aucun C ne
 s’étend aux contrôles non sélectionnés, à un site entier ou à l’indexation réelle.
 Voir [migration et cas](migration-draft.2.md).
@@ -429,3 +433,8 @@ TS10-A04 accepte le profil préalable html-tree-links-v1 sous intent.canonical.l
 ### Bases non analysables — draft.18
 
 TS10-A04 accepte désormais aussi le profil préalable html-tree-links-v2. Une première base dont le href échoue à l’analyse WHATWG rend les href dépendants indéterminés, tout en conservant les contradictions indépendantes. Profil v1, A01/A02 et rendu inchangés. Le [contrat normatif bilingue](source-link-policy-v2.md) et la [migration](migration-draft.18.md) précisent les preuves, hypothèses, zéro observé et limites.
+
+
+### TS05 — policy map only / carte de politique uniquement
+
+Draft.45 ajoute TS05-A01 : comparaison semi-automatisée d’intention préalable et de configuration fournies. Pass signifie uniquement cohérence interne du plan ; aucune indexation ni protection d’accès n’est établie. Voir [preuves et limites TS05](ts05-indexing-evidence.md), [capture source datée](source-captures/ts05-google-search-central-2026-10-16.md) et [migration](migration-draft.45.md).
