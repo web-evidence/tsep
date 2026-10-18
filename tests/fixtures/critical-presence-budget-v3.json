@@ -224,11 +224,11 @@
         "pass"
       ],
       "expected_public": "C",
-      "padding": 2084099,
+      "padding": 2084097,
       "review_extra": 1,
       "expected_public_diagnostic_bytes": 4194304,
-      "input_sha256": "fa64d978d8f181bdb3cb76f25f20b9cc32b9ee6e4390d54a86d43f84346e47cb",
-      "input_bytes": 2103141
+      "input_sha256": "3e35e4f28beefd8b7a11f13dd640a9e5b99049f0371c4921a14f5780d2d5190a",
+      "input_bytes": 2103139
     },
     {
       "id": "public-diagnostics-4MiBplus1",
@@ -238,11 +238,11 @@
         "pass"
       ],
       "expected_public": "technical-refusal",
-      "padding": 2084099,
+      "padding": 2084097,
       "review_extra": 2,
       "expected_public_diagnostic_bytes": 4194305,
-      "input_sha256": "5a709edd5c2b4a5c9376acc3fb53c05c13312d4996c29a5b78521b0921f4c005",
-      "input_bytes": 2103142
+      "input_sha256": "2a8baaf8f27d1a5a92b9c00da519b1291c199fd69732709eb4593a36ac756001",
+      "input_bytes": 2103140
     },
     {
       "id": "independent-absence-with-oversize-review",
