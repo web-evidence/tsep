@@ -990,6 +990,12 @@
     "examples/captures/ts14-contradiction.json",
     "examples/captures/ts14-missing-history.json",
     "provenance/sitemap-quality-v1-correction.json",
-    "tests/fixtures/sitemap-quality-authored-initial.json"
+    "tests/fixtures/sitemap-quality-authored-initial.json",
+    "docs/ts25-runtime-test-portability.md",
+    "provenance/ts25-runtime-test-overlay-v1.json",
+    "tests/fixtures/critical-presence-runtime-boundaries-v1.json",
+    "tests/fixtures/critical-presence-runtime-boundaries-v1.sha256",
+    "tests/test_ts25_runtime_boundaries.py",
+    "tests/ts25_runtime_fixtures.py"
   ]
 }

@@ -37,6 +37,7 @@ import tsep
 from adapters import captures,replay
 from conformance.evaluate import evaluate
 from conformance import critical_presence as native
+from ts25_runtime_fixtures import historical_expectation
 ROOT=Path(__file__).resolve().parents[1]
 class CriticalPresenceBudgets(unittest.TestCase):
     def test_authored_byte_boundaries_and_public_refusals(self):
@@ -49,19 +50,20 @@ class CriticalPresenceBudgets(unittest.TestCase):
                 root=Path(td);data=materialize(row,fixtures);raw=(json.dumps(data,ensure_ascii=False,indent=2)+'\n').encode()
                 self.assertEqual(hashlib.sha256(raw).hexdigest(),row['input_sha256'])
                 path=root/'input.json';path.write_bytes(raw);out=root/'bundle'
-                values=evaluate(data);self.assertEqual([x['outcome'] for x in values],row['expected_native'])
+                notes=[];values=evaluate(data,source_observations=notes);self.assertEqual([x['outcome'] for x in values],row['expected_native'])
                 for value in values:
                     note=json.loads(value['reason'][len(native.PREFIX):]);self.assertLessEqual(len(compact(note)),4194304)
+                expected_public, expected_size=historical_expectation(row,notes)
                 args=dict(assessor='Authored synthetic exercise',label='Synthetic TS25 byte budget',selection_method='Prior finite five-role population',access='synthetic')
-                if row['expected_public']=='technical-refusal':
+                if expected_public=='technical-refusal':
                     with self.assertRaises(tsep.Invalid) as ctx:captures.build(path,out,**args)
                     self.assertIn('TS25',str(ctx.exception));self.assertFalse(out.exists())
                 else:
                     captures.build(path,out,**args);report=tsep.read_json(out/'report.json')
-                    self.assertEqual(report['results'][0]['status'],row['expected_public'])
+                    self.assertEqual(report['results'][0]['status'],expected_public)
                     self.assertEqual((out/'input.json').read_bytes(),raw)
                     size=sum(p.stat().st_size for p in (out/'observations').glob('*.json'));self.assertLessEqual(size,4194304)
-                    if 'expected_public_diagnostic_bytes' in row:self.assertEqual(size,row['expected_public_diagnostic_bytes'])
+                    if expected_size is not None:self.assertEqual(size,expected_size)
                     replayed=replay.replay(out,root/'replay');self.assertTrue(replayed['same_atomic_results']);self.assertTrue(replayed['same_gate'])
                 self.assertEqual(path.read_bytes(),raw)
 if __name__=='__main__':unittest.main()

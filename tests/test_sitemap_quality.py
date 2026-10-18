@@ -93,8 +93,19 @@ class SitemapQuality(unittest.TestCase):
                 self.assertEqual(reader.digest(control), frozen['control_sha256'][control['id']], control['id'])
             else:
                 self.assertEqual(control['rule_version'], protocol['version'])
+        overlays = tsep.read_json(ROOT/'provenance/ts25-runtime-test-overlay-v1.json')['updates']
         for name, sha in frozen['preserved_files'].items():
-            self.assertEqual(tsep.digest(ROOT/name), sha, name)
+            raw = (ROOT/name).read_bytes()
+            for update in overlays:
+                if update['path'] == name:
+                    self.assertEqual(hashlib.sha256(raw).hexdigest(), update['current_sha256'])
+                    text = raw.decode('utf-8')
+                    for change in reversed(update['replacements']):
+                        self.assertEqual(text.count(change['after']), 1)
+                        text = text.replace(change['after'], change['before'])
+                    raw = text.encode('utf-8')
+                    self.assertEqual(hashlib.sha256(raw).hexdigest(), update['base_sha256'])
+            self.assertEqual(hashlib.sha256(raw).hexdigest(), sha, name)
         for update in frozen['integration_test_updates']:
             current = (ROOT/update['path']).read_text()
             self.assertEqual(current.count(update['after']), 1)

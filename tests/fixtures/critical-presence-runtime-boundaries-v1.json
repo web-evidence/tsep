@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "synthetic": true,
+  "at": "2026-10-18",
+  "base_commit": "c969f772ca0c490dafce529bf686c75787347426",
+  "historical_fixture": "tests/fixtures/critical-presence-budget-v3.json",
+  "historical_sha256": "9d830819068e2e5cfc71ab4b3fa17d9722c038728ba34287fc31b511236b78c7",
+  "expected_origin": "Authored literal 4194304/4194305 boundaries; runtime-only structural normalization, never verdict-dependent search. Historical fixture bytes and native expectations retained.",
+  "historical": [
+    {
+      "id": "public-diagnostics-exact4MiB",
+      "normalized_observations_sha256": "6fcad4c792cd2410f88ab8f77a3ae04e222330c8be24906c384b1ebd91607c80",
+      "identity_locations": 2
+    },
+    {
+      "id": "public-diagnostics-4MiBplus1",
+      "normalized_observations_sha256": "2eb8e1e945ccaab8de32525f54a37851d59d682f51025ce82aae85ae14518a1d",
+      "identity_locations": 2
+    }
+  ],
+  "cases": [
+    {
+      "id": "actual-runtime-exact4MiB",
+      "bytes": 4194304,
+      "expected_native": [
+        "pass",
+        "pass"
+      ],
+      "expected_public": "C"
+    },
+    {
+      "id": "actual-runtime-4MiBplus1",
+      "bytes": 4194305,
+      "expected_native": [
+        "pass",
+        "pass"
+      ],
+      "expected_public": "technical-refusal"
+    }
+  ]
+}
