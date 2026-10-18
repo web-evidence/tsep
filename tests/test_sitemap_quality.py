@@ -104,6 +104,7 @@ class SitemapQuality(unittest.TestCase):
                 self.assertEqual(control['rule_version'], '0.3.0-draft.1')
         overlays = tsep.read_json(ROOT/'provenance/ts25-runtime-test-overlay-v1.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/v030-indexing-locale-integration-overlay.json')['updates']
+        overlays += tsep.read_json(ROOT/'provenance/v030-report-test-overlay-v1.json')['updates']
         for name, sha in frozen['preserved_files'].items():
             raw = (ROOT/name).read_bytes()
             for update in overlays:

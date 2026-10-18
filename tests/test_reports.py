@@ -218,7 +218,21 @@ class Reports(unittest.TestCase):
         self.report['controls'] = ['TS09']
         self.report['results'][0].update(control_id='TS09', status='NC')
         self.report['results'][0].pop('atomic_results')
-        result = self.check()
+        with self.assertRaisesRegex(tsep.Invalid, 'NC requires an evidenced atomic contradiction'):
+            self.check()
+        from adapters import captures
+        cases = tsep.read_json(ROOT/'tests/fixtures/url-policy-v1.json')['cases']
+        case = next(c for c in cases if c['id'] == 'url-policy-v1-TS09-wrong-mechanism')
+        source = self.root/'minor-failure-input.json'
+        source.write_text(json.dumps(case['input']), encoding='utf-8')
+        bundle = self.root/'minor-failure'
+        captures.build(source, bundle, assessor='Fictional reviewer', label='SYNTHETIC minor failure',
+                       selection_method='Frozen contradictory TS09 fixture only', access='synthetic')
+        report = tsep.read_json(bundle/'report.json')
+        self.assertEqual([(a['rule_id'], a['outcome']) for a in report['results'][0]['atomic_results']],
+                         [('TS09-A01', 'fail')])
+        self.assertTrue(all(a['access'] == 'synthetic' for a in report['artifacts']))
+        result = tsep.validate(report, bundle)
         self.assertEqual(result['decision'], 'GO_WITH_RESERVATIONS')
         self.assertEqual(result['counts']['NC'], 1)
 

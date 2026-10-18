@@ -1068,6 +1068,8 @@
     "provenance/v030-render-transport-integration-overlay.json",
     "tests/fixtures/render-transport-v1.json",
     "tests/fixtures/render-transport-v1.sha256",
-    "tests/test_render_transport.py"
+    "tests/test_render_transport.py",
+    "docs/report-test-integration-v1.md",
+    "provenance/v030-report-test-overlay-v1.json"
   ]
 }
