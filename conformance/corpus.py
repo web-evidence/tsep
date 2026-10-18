@@ -16,7 +16,7 @@ MAX_TOTAL_BYTES=32*1024*1024
 def expand(corpus, *, root=ROOT):
     """Read only declared, fingerprinted fixture extensions in the release inventory."""
     refs=corpus.get('additional_case_files',[])
-    tsep.require(type(refs) is list and len(refs)<=16,'Excessive/malformed corpus extensions')
+    tsep.require(type(refs) is list and len(refs)<=24,'Excessive/malformed corpus extensions')
     result=dict(corpus,cases=list(corpus['cases']))
     result.pop('additional_case_files',None)
     if not refs:return result

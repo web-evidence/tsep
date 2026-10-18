@@ -1,3 +1,5 @@
+0.3.0-draft.3 preparation:38 rule-bearing controls /85 rules, TS21/22/40 batch. Synthetic cases and supplied reviews; no actual indexing or causality inferred. [Contrat / contract](docs/indexing-locale-evidence.md), [migration](docs/migration-0.3.0-draft.3.md).
+
 0.3.0-draft.2 preparation:35 rule-bearing controls /79 atomic rules. TS09/11/19/20/38 supplied-source/review batch; [contract](docs/url-policy-evidence.md), [migration](docs/migration-0.3.0-draft.2.md). Synthetic examples, no publication or application change.
 
 [TS25 — présence critique fournie / supplied critical presence](docs/critical-presence-evidence.md), [draft.44 migration](docs/migration-draft.44.md).

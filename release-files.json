@@ -1021,6 +1021,26 @@
     "examples/captures/ts20-missing-review.json",
     "examples/captures/ts38-complete.json",
     "examples/captures/ts38-contradiction.json",
-    "examples/captures/ts38-missing-review.json"
+    "examples/captures/ts38-missing-review.json",
+    "conformance/data/locale-code-facts-v1.json",
+    "conformance/data/locale-code-facts-v1.sha256",
+    "conformance/indexing_locale.py",
+    "docs/indexing-locale-evidence.md",
+    "docs/migration-0.3.0-draft.3.md",
+    "docs/source-captures/indexing-locale-2026-10-18.md",
+    "examples/captures/ts21-complete.json",
+    "examples/captures/ts21-contradiction.json",
+    "examples/captures/ts21-missing-review.json",
+    "examples/captures/ts22-complete.json",
+    "examples/captures/ts22-contradiction.json",
+    "examples/captures/ts22-missing-review.json",
+    "examples/captures/ts40-complete.json",
+    "examples/captures/ts40-contradiction.json",
+    "examples/captures/ts40-missing-review.json",
+    "provenance/v030-draft2-rule-baseline.json",
+    "provenance/v030-indexing-locale-integration-overlay.json",
+    "tests/fixtures/indexing-locale-v1.json",
+    "tests/fixtures/indexing-locale-v1.sha256",
+    "tests/test_indexing_locale.py"
   ]
 }

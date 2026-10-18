@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.3.0-draft.2",
+  "version": "0.3.0-draft.3",
   "status": "draft",
   "date": "2026-10-18",
   "languages": [
@@ -3230,7 +3230,101 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.3",
+      "rules": [
+        {
+          "id": "TS21-A01",
+          "title": {
+            "fr": "Attribution des familles non indexées",
+            "en": "Attribution of nonindexed families"
+          },
+          "required_inputs": [
+            "search-console",
+            "logs",
+            "sitemap",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Familles ou groupes explicitement sélectionnés pour TS21 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.",
+            "en": "Explicitly selected TS21 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md."
+          },
+          "procedure": {
+            "fr": "Lire les requêtes/réponses Google URL Inspection fournies pour chaque URL retenue, comparer propriété, URL et libellé de famille ; rapprocher le urlset natif et l’export TSV de logs dans leur fenêtre. Exiger la revue de segmentation et d’attribution.",
+            "en": "Read supplied Google URL Inspection requests/responses for each selected URL, compare property, URL and family label; reconcile native urlset and TSV log export in their declared window. Require segmentation/attribution review."
+          },
+          "acceptance": {
+            "fr": "Les pièces natives sont disponibles et attribuées à la famille choisie ; l’appartenance sitemap concorde avec le plan. Un désaccord de requête, de famille ou de sitemap échoue. Les logs décrivent seulement leur fenêtre et leur client fourni.",
+            "en": "Native pieces are available and attributed to the selected family; sitemap membership agrees with the plan. Request, family-label or sitemap disagreement fails. Logs describe only their supplied window and client."
+          },
+          "evidence": {
+            "fr": "Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : search-console, logs, sitemap, intent. Preuves natives conditionnelles selon les méthodes déclarées.",
+            "en": "Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: search-console, logs, sitemap, intent. Conditional native evidence follows declared methods."
+          },
+          "assumptions": {
+            "fr": "Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.",
+            "en": "Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing."
+          },
+          "inconclusive": {
+            "fr": "Pièce manquante, résultat API absent/erroné, libellé non pris en charge, logs non interprétables ou revue absente : indéterminé.",
+            "en": "Missing evidence, absent/error API result, unsupported label, uninterpretable logs or absent review: inconclusive."
+          },
+          "non_applicability": {
+            "fr": "Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.",
+            "en": "No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.",
+            "en": "Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established."
+          }
+        },
+        {
+          "id": "TS21-A02",
+          "title": {
+            "fr": "Hypothèse testable et décision sans causalité inventée",
+            "en": "Testable hypothesis and decision without invented causality"
+          },
+          "required_inputs": [
+            "content",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "manual",
+          "applicability": {
+            "fr": "Familles ou groupes explicitement sélectionnés pour TS21 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.",
+            "en": "Explicitly selected TS21 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md."
+          },
+          "procedure": {
+            "fr": "Lire family-diagnosis-v1 : diagnostic, hypothèse, prédiction, réfutation, mesure, décision, propriétaire et échéance pour la même liste d’URL. Vérifier la distinction entre suivi prévu et résultat observé puis la revue liée.",
+            "en": "Read family-diagnosis-v1: diagnosis, hypothesis, prediction, falsification, measurement, decision, owner and due date for the same URL list. Check planned-versus-observed follow-up and bound review."
+          },
+          "acceptance": {
+            "fr": "Les axes de diagnostic sont renseignés et revus ; causality=unproven et follow_up=planned-not-observed. Une causalité proclamée à partir du libellé ou de la corrélation échoue dans ce profil.",
+            "en": "Diagnostic axes are supplied and reviewed; causality=unproven and follow_up=planned-not-observed. Declaring causality from a label or correlation fails this profile."
+          },
+          "evidence": {
+            "fr": "Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : content, intent. Preuves natives conditionnelles selon les méthodes déclarées.",
+            "en": "Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: content, intent. Conditional native evidence follows declared methods."
+          },
+          "assumptions": {
+            "fr": "Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.",
+            "en": "Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing."
+          },
+          "inconclusive": {
+            "fr": "Hypothèse sans critère de réfutation, famille mal attribuée, suivi prétendu observé hors méthode séparée, jugement manquant : indéterminé.",
+            "en": "Hypothesis without falsification, misattributed family, claimed observed follow-up outside a separate method or missing judgment: inconclusive."
+          },
+          "non_applicability": {
+            "fr": "Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.",
+            "en": "No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.",
+            "en": "Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established."
+          }
+        }
+      ]
     },
     {
       "id": "TS22",
@@ -3290,7 +3384,104 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.3",
+      "rules": [
+        {
+          "id": "TS22-A01",
+          "title": {
+            "fr": "Annotations natives et codes enregistrés",
+            "en": "Native annotations and registered codes"
+          },
+          "required_inputs": [
+            "hreflang",
+            "http",
+            "html",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Familles ou groupes explicitement sélectionnés pour TS22 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.",
+            "en": "Explicitly selected TS22 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md."
+          },
+          "procedure": {
+            "fr": "Lire séparément HTML, en-têtes Link et urlset XHTML déclarés ; conserver les accords des deux hypothèses HTML statiques. Vérifier chaque code observé dans le sous-ensemble figé du registre IANA et l’attribution à la destination prévue.",
+            "en": "Read declared HTML, Link headers and XHTML urlsets separately; retain agreement of both static HTML hypotheses. Check each observed code against the frozen IANA registry subset and attribution to its planned destination."
+          },
+          "acceptance": {
+            "fr": "Les codes observés appartiennent au profil langue/script/région documenté et les destinations concordent. Un code explicitement invalide ou une destination contraire échoue ; x-default qualifie seulement le jeton réservé.",
+            "en": "Observed codes belong to the documented language/script/region profile and destinations agree. An explicitly invalid code or conflicting destination fails; x-default qualifies only the reserved token."
+          },
+          "evidence": {
+            "fr": "Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : hreflang, http, html, intent. Preuves natives conditionnelles selon les méthodes déclarées.",
+            "en": "Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: hreflang, http, html, intent. Conditional native evidence follows declared methods."
+          },
+          "assumptions": {
+            "fr": "Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.",
+            "en": "Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing."
+          },
+          "inconclusive": {
+            "fr": "Code obsolète, région exceptionnelle hors sous-ensemble, méthode ou page manquante, contexte HTML ambigu, annotation relative ou revue manquante : indéterminé.",
+            "en": "Deprecated code, exceptional region outside the subset, missing method/page, ambiguous HTML, relative annotation or absent review: inconclusive."
+          },
+          "non_applicability": {
+            "fr": "Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.",
+            "en": "No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.",
+            "en": "Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established."
+          }
+        },
+        {
+          "id": "TS22-A02",
+          "title": {
+            "fr": "Destinations hreflang et signaux d’indexabilité",
+            "en": "Hreflang destinations and indexing-permission signals"
+          },
+          "required_inputs": [
+            "hreflang",
+            "http",
+            "html",
+            "robots",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Familles ou groupes explicitement sélectionnés pour TS22 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.",
+            "en": "Explicitly selected TS22 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md."
+          },
+          "procedure": {
+            "fr": "Pour chaque destination sélectionnée : comparer intention d’indexation, HTTP direct 200, directives HTTP/HTML, canonical explicite vers elle-même et robots.txt du même origin avec le profil Google préalable. Exiger la revue du périmètre source.",
+            "en": "For every selected destination compare indexing intent, direct HTTP200, HTTP/HTML directives, explicit self-canonical and same-origin robots.txt under the prior Google profile. Require source-scope review."
+          },
+          "acceptance": {
+            "fr": "Les signaux qualifiés autorisent la destination prévue et concordent avec elle. Une réponse contraire, un noindex, une canonical divergente ou un refus robots étayé échoue malgré d’autres inconnues.",
+            "en": "Qualified signals permit and agree with the planned destination. A conflicting response, noindex, divergent canonical or evidenced robots denial fails despite other unknowns."
+          },
+          "evidence": {
+            "fr": "Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : hreflang, http, html, robots, intent. Preuves natives conditionnelles selon les méthodes déclarées.",
+            "en": "Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: hreflang, http, html, robots, intent. Conditional native evidence follows declared methods."
+          },
+          "assumptions": {
+            "fr": "Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.",
+            "en": "Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing."
+          },
+          "inconclusive": {
+            "fr": "Robots absent/non qualifié, canonical absente, trace partielle, rendu nécessaire ou revue absente : indéterminé. Permission d’indexation n’est pas indexation.",
+            "en": "Missing/unqualified robots, absent canonical, partial trace, required rendering or absent review: inconclusive. Indexing permission is not indexing."
+          },
+          "non_applicability": {
+            "fr": "Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.",
+            "en": "No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.",
+            "en": "Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established."
+          }
+        }
+      ]
     },
     {
       "id": "TS23",
@@ -5523,9 +5714,6 @@
       "unit": "locale-cluster",
       "required_inputs": [
         "hreflang",
-        "sitemap",
-        "http",
-        "html",
         "intent"
       ],
       "applicability": {
@@ -5568,7 +5756,99 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.3",
+      "rules": [
+        {
+          "id": "TS40-A01",
+          "title": {
+            "fr": "Complétude indépendante des méthodes publiées",
+            "en": "Independent completeness of published methods"
+          },
+          "required_inputs": [
+            "hreflang",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Familles ou groupes explicitement sélectionnés pour TS40 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.",
+            "en": "Explicitly selected TS40 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md."
+          },
+          "procedure": {
+            "fr": "Inventorier les méthodes avant capture ; lire chaque méthode/page séparément et vérifier tout le groupe attendu, auto-référence comprise. Une méthode secondaire ne complète pas une primaire partielle.",
+            "en": "Inventory methods before capture; read every method/page independently and check the complete expected group including self-reference. A secondary method does not complete a partial primary one."
+          },
+          "acceptance": {
+            "fr": "Chaque méthode complète contient les associations prévues. Une omission démontrée dans une surface complète ou une destination contraire échoue ; un jeu unique de méthodes est autorisé.",
+            "en": "Each complete method contains the expected mappings. Demonstrated omission on a complete surface or a conflicting destination fails; one chosen method is allowed."
+          },
+          "evidence": {
+            "fr": "Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : hreflang, intent. Preuves natives conditionnelles selon les méthodes déclarées.",
+            "en": "Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: hreflang, intent. Conditional native evidence follows declared methods."
+          },
+          "assumptions": {
+            "fr": "Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.",
+            "en": "Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing."
+          },
+          "inconclusive": {
+            "fr": "Capture/méthode absente, XML tronqué/index, méthode publiée omise du plan, association hors groupe ou revue absente : indéterminé.",
+            "en": "Missing capture/method, truncated/index XML, published method omitted from plan, outside-group mapping or absent review: inconclusive."
+          },
+          "non_applicability": {
+            "fr": "Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.",
+            "en": "No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.",
+            "en": "Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established."
+          }
+        },
+        {
+          "id": "TS40-A02",
+          "title": {
+            "fr": "Cohérence des méthodes et des pages du groupe",
+            "en": "Consistency across methods and cluster pages"
+          },
+          "required_inputs": [
+            "hreflang",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Familles ou groupes explicitement sélectionnés pour TS40 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.",
+            "en": "Explicitly selected TS40 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md."
+          },
+          "procedure": {
+            "fr": "Comparer les associations qualifiées entre méthodes/pages sans fusionner leurs jeux. Conserver un conflit de destination indépendant même si une troisième méthode manque ; comparer l’égalité des jeux quand les deux sont complets.",
+            "en": "Compare qualified mappings across methods/pages without merging their sets. Retain independent destination conflicts even when a third method is missing; compare set equality when both are complete."
+          },
+          "acceptance": {
+            "fr": "Les méthodes complètes et les pages concordent. Une seule méthode complète est admise. Un conflit natif ou une différence de jeux complets échoue.",
+            "en": "Complete methods and pages agree. One complete method is allowed. A native conflict or differing complete sets fails."
+          },
+          "evidence": {
+            "fr": "Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : hreflang, intent. Preuves natives conditionnelles selon les méthodes déclarées.",
+            "en": "Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: hreflang, intent. Conditional native evidence follows declared methods."
+          },
+          "assumptions": {
+            "fr": "Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.",
+            "en": "Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing."
+          },
+          "inconclusive": {
+            "fr": "Comparaison sans surface qualifiée, capture partielle, méthode manquante ou revue absente : indéterminé, sauf contradiction indépendante établie.",
+            "en": "Comparison without a qualified surface, partial capture, missing method or absent review: inconclusive unless an independent contradiction is established."
+          },
+          "non_applicability": {
+            "fr": "Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.",
+            "en": "No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.",
+            "en": "Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established."
+          }
+        }
+      ]
     },
     {
       "id": "TS41",
@@ -6518,15 +6798,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "7c5d94ffb706017e3546280b3292e55959a374ce33d096b0814e0ca60b70d099"
+      "sha256": "ed9f5ac82ac48032937e10b7f151896ab35b84735d5257ccdfe1e7e19694d5dd"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "53133da7aee34bf17435294500cad65f55ae4e6db19685e0d75b492771f24e10"
+      "sha256": "7d882202779e6e434c912dea6ac19f9984fb9fbc0fcbdcf64d42d688bf1e091e"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "ed44a444c32a40f2314ca4b5f6b65417610ec53a1a115eebda71226bf95ffe96"
+      "sha256": "80e36038a1f8bac6914aca1e8eafc15e320d116c4d1f36f8d15fdc8d48c69949"
     },
     {
       "path": "docs/source-directives.md",
@@ -6647,6 +6927,10 @@
     {
       "path": "docs/url-policy-evidence.md",
       "sha256": "51e3d200aa8caeaa28313aa2dcb5b1fdfce2dea2bb0ec796c683cf0b265101a9"
+    },
+    {
+      "path": "docs/indexing-locale-evidence.md",
+      "sha256": "ee95c380bc173e5880cea1328897f3343bab892aa6fc37e3616092b3e4b0d5ac"
     }
   ]
 }

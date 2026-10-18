@@ -170,7 +170,7 @@ declarations, although the validator cannot determine that need.
 
 The CLI checks declarations, references and coverage, not the correctness of
 HTTP/HTML interpretation, intent or exemptions. The historical method fixtures have authored reference verdicts. The separate
-[executable conformance suite](conformance.md) interprets raw inputs for seventy-nine rules
+[executable conformance suite](conformance.md) interprets raw inputs for eighty-five rules
 within documented bounds; it does not implement all controls. No C extends to unselected
 controls, an entire site or actual indexing. See [migration and cases](migration-draft.2.md).
 

@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.2 — Contrôles
+# TSEP 0.3.0-draft.3 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -1508,6 +1508,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://support.google.com/webmasters/answer/7440203](https://support.google.com/webmasters/answer/7440203)
 
+### TS21-A01 — Attribution des familles non indexées
+
+`TSEP@0.3.0-draft.3:TS21-A01`
+
+**Entrées requises**: search-console, logs, sitemap, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Familles ou groupes explicitement sélectionnés pour TS21 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Méthode.** Lire les requêtes/réponses Google URL Inspection fournies pour chaque URL retenue, comparer propriété, URL et libellé de famille ; rapprocher le urlset natif et l’export TSV de logs dans leur fenêtre. Exiger la revue de segmentation et d’attribution.
+
+**Attendus.** Les pièces natives sont disponibles et attribuées à la famille choisie ; l’appartenance sitemap concorde avec le plan. Un désaccord de requête, de famille ou de sitemap échoue. Les logs décrivent seulement leur fenêtre et leur client fourni.
+
+**Preuves.** Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : search-console, logs, sitemap, intent. Preuves natives conditionnelles selon les méthodes déclarées.
+
+**Hypothèses.** Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.
+
+**Indéterminé.** Pièce manquante, résultat API absent/erroné, libellé non pris en charge, logs non interprétables ou revue absente : indéterminé.
+
+**Conditions de NA.** Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.
+
+**Limites.** Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.
+
+### TS21-A02 — Hypothèse testable et décision sans causalité inventée
+
+`TSEP@0.3.0-draft.3:TS21-A02`
+
+**Entrées requises**: content, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicabilité.** Familles ou groupes explicitement sélectionnés pour TS21 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Méthode.** Lire family-diagnosis-v1 : diagnostic, hypothèse, prédiction, réfutation, mesure, décision, propriétaire et échéance pour la même liste d’URL. Vérifier la distinction entre suivi prévu et résultat observé puis la revue liée.
+
+**Attendus.** Les axes de diagnostic sont renseignés et revus ; causality=unproven et follow_up=planned-not-observed. Une causalité proclamée à partir du libellé ou de la corrélation échoue dans ce profil.
+
+**Preuves.** Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : content, intent. Preuves natives conditionnelles selon les méthodes déclarées.
+
+**Hypothèses.** Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.
+
+**Indéterminé.** Hypothèse sans critère de réfutation, famille mal attribuée, suivi prétendu observé hors méthode séparée, jugement manquant : indéterminé.
+
+**Conditions de NA.** Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.
+
+**Limites.** Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.
+
 ## TS22 — Chaque variante hreflang pointe vers une URL indexable et canonique.
 
 **Sévérité**: major. **Unité**: locale-cluster.
@@ -1531,6 +1579,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/specialty/international/localized-versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
+
+### TS22-A01 — Annotations natives et codes enregistrés
+
+`TSEP@0.3.0-draft.3:TS22-A01`
+
+**Entrées requises**: hreflang, http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Familles ou groupes explicitement sélectionnés pour TS22 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Méthode.** Lire séparément HTML, en-têtes Link et urlset XHTML déclarés ; conserver les accords des deux hypothèses HTML statiques. Vérifier chaque code observé dans le sous-ensemble figé du registre IANA et l’attribution à la destination prévue.
+
+**Attendus.** Les codes observés appartiennent au profil langue/script/région documenté et les destinations concordent. Un code explicitement invalide ou une destination contraire échoue ; x-default qualifie seulement le jeton réservé.
+
+**Preuves.** Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : hreflang, http, html, intent. Preuves natives conditionnelles selon les méthodes déclarées.
+
+**Hypothèses.** Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.
+
+**Indéterminé.** Code obsolète, région exceptionnelle hors sous-ensemble, méthode ou page manquante, contexte HTML ambigu, annotation relative ou revue manquante : indéterminé.
+
+**Conditions de NA.** Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.
+
+**Limites.** Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.
+
+### TS22-A02 — Destinations hreflang et signaux d’indexabilité
+
+`TSEP@0.3.0-draft.3:TS22-A02`
+
+**Entrées requises**: hreflang, http, html, robots, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Familles ou groupes explicitement sélectionnés pour TS22 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Méthode.** Pour chaque destination sélectionnée : comparer intention d’indexation, HTTP direct 200, directives HTTP/HTML, canonical explicite vers elle-même et robots.txt du même origin avec le profil Google préalable. Exiger la revue du périmètre source.
+
+**Attendus.** Les signaux qualifiés autorisent la destination prévue et concordent avec elle. Une réponse contraire, un noindex, une canonical divergente ou un refus robots étayé échoue malgré d’autres inconnues.
+
+**Preuves.** Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : hreflang, http, html, robots, intent. Preuves natives conditionnelles selon les méthodes déclarées.
+
+**Hypothèses.** Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.
+
+**Indéterminé.** Robots absent/non qualifié, canonical absente, trace partielle, rendu nécessaire ou revue absente : indéterminé. Permission d’indexation n’est pas indexation.
+
+**Conditions de NA.** Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.
+
+**Limites.** Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.
 
 ## TS23 — Les annotations hreflang sont réciproques et incluent la page elle-même.
 
@@ -2568,7 +2664,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Sévérité**: major. **Unité**: locale-cluster.
 
-**Entrées requises**: hreflang, sitemap, http, html, intent.
+**Entrées requises**: hreflang, intent.
 
 **Applicabilité.** Groupes utilisant au moins une méthode hreflang.
 
@@ -2587,6 +2683,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/specialty/international/localized-versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
+
+### TS40-A01 — Complétude indépendante des méthodes publiées
+
+`TSEP@0.3.0-draft.3:TS40-A01`
+
+**Entrées requises**: hreflang, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Familles ou groupes explicitement sélectionnés pour TS40 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Méthode.** Inventorier les méthodes avant capture ; lire chaque méthode/page séparément et vérifier tout le groupe attendu, auto-référence comprise. Une méthode secondaire ne complète pas une primaire partielle.
+
+**Attendus.** Chaque méthode complète contient les associations prévues. Une omission démontrée dans une surface complète ou une destination contraire échoue ; un jeu unique de méthodes est autorisé.
+
+**Preuves.** Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : hreflang, intent. Preuves natives conditionnelles selon les méthodes déclarées.
+
+**Hypothèses.** Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.
+
+**Indéterminé.** Capture/méthode absente, XML tronqué/index, méthode publiée omise du plan, association hors groupe ou revue absente : indéterminé.
+
+**Conditions de NA.** Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.
+
+**Limites.** Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.
+
+### TS40-A02 — Cohérence des méthodes et des pages du groupe
+
+`TSEP@0.3.0-draft.3:TS40-A02`
+
+**Entrées requises**: hreflang, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Familles ou groupes explicitement sélectionnés pour TS40 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Méthode.** Comparer les associations qualifiées entre méthodes/pages sans fusionner leurs jeux. Conserver un conflit de destination indépendant même si une troisième méthode manque ; comparer l’égalité des jeux quand les deux sont complets.
+
+**Attendus.** Les méthodes complètes et les pages concordent. Une seule méthode complète est admise. Un conflit natif ou une différence de jeux complets échoue.
+
+**Preuves.** Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : hreflang, intent. Preuves natives conditionnelles selon les méthodes déclarées.
+
+**Hypothèses.** Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.
+
+**Indéterminé.** Comparaison sans surface qualifiée, capture partielle, méthode manquante ou revue absente : indéterminé, sauf contradiction indépendante établie.
+
+**Conditions de NA.** Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.
+
+**Limites.** Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.
 
 ## TS41 — Les invariants SEO critiques sont rejoués automatiquement avant et après déploiement.
 

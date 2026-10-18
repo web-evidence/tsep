@@ -1,3 +1,5 @@
+Préparation0.3.0-draft.3 : 38 contrôles à règles /85 règles, lot TS21/22/40. Cas synthétiques et revues fournies ; aucune indexation réelle ou causalité déduite. [Contrat / contract](docs/indexing-locale-evidence.md), [migration](docs/migration-0.3.0-draft.3.md).
+
 Préparation 0.3.0-draft.2 : 35 contrôles avec règles /79 règles atomiques. Lot TS09/11/19/20/38, source et revues fournies ; [contrat](docs/url-policy-evidence.md), [migration](docs/migration-0.3.0-draft.2.md). Exemples synthétiques, aucune publication ni modification applicative.
 
 [TS25 — présence critique fournie / supplied critical presence](docs/critical-presence-evidence.md), [draft.44 migration](docs/migration-draft.44.md).

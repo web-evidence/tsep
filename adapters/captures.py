@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts, binding_digest
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '47'
+VERSION = '48'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -86,7 +86,7 @@ def source_files():
     modules['conformance/incoming_links.py'] = importlib.import_module('conformance.incoming_links')
     modules['adapters/incoming_links_intake.py'] = importlib.import_module('adapters.incoming_links_intake')
     modules['conformance/sitemap_files.py'] = importlib.import_module('conformance.sitemap_files')
-    for name in ('evidence_dossier', 'url_policy'):
+    for name in ('evidence_dossier', 'url_policy', 'indexing_locale'):
         modules['conformance/'+name+'.py'] = importlib.import_module('conformance.'+name)
     modules['conformance/sitemap_quality.py'] = importlib.import_module('conformance.sitemap_quality')
     modules['conformance/sitemap_set.py'] = importlib.import_module('conformance.sitemap_set')
@@ -107,6 +107,8 @@ def source_files():
     result = loaded_sources(ROOT, modules)
     from conformance.structured_validation import VOCABULARY
     result[VOCABULARY] = tsep.digest(ROOT/VOCABULARY)
+    for name in ('conformance/data/locale-code-facts-v1.json', 'conformance/data/locale-code-facts-v1.sha256'):
+        result[name] = tsep.digest(ROOT/name)
     result['collectors/rendered_metadata.js'] = tsep.digest(ROOT/'collectors/rendered_metadata.js')
     from experiments import source_http
     result.update(source_http.identity())
@@ -126,6 +128,8 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state': 'implemented', 'fr': 'TS09/11/19/20/38 : politiques, contenus et variantes sur pièces sources bornées et revues liées ; aucune qualification globale.', 'en': 'TS09/11/19/20/38: policy, content and variants on bounded source evidence and bound reviews; no global qualification.'},
+    {'state': 'implemented', 'fr': 'TS21/22/40 : diagnostics de familles, codes/destinations et méthodes hreflang fournis ; aucune causalité, indexation réelle ou localisation authentifiée.', 'en': 'TS21/22/40: supplied family investigations, locale codes/destinations and hreflang methods; no causal, actual-indexing or authenticated-localization claim.'},
     {'state':'implemented','fr':'TS06-A01 : matrice fournie de routes `.invalid`, rôles synthétiques, canaris et triplets étiquetés ; aucune identité, aucun cache réel ni domaine live.','en':'TS06-A01: supplied `.invalid` route matrix, synthetic roles, canaries and labelled triplets; no real identity, real cache or live domain.'},
     {'state':'implemented','fr':'TS25 : cinq rôles déclarés, présence source/rendu et revues fournies ; aucune exécution ou visibilité authentifiée.','en':'TS25: five declared roles, source/render presence and supplied reviews; no authenticated execution or visibility.'},
     {'state':'implemented','fr':'TS24 : politique x-default, contexte motivé et revue de rôle fournis ; aucune neutralité ni approbation humaine inférée.','en':'TS24: supplied x-default policy, motivated context and role review; no inferred neutrality or human approval.'},
@@ -728,6 +732,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += ' Population préalable fournie seulement / Prior supplied population only; bounded absence is not a site-wide orphan, authenticated importance, interaction or indexing claim.'
                 if cid == 'TS17':
                     report['results'][i]['reason'] += ' Source et états déclarés seulement / Supplied source and declared states only; no authenticated interaction, acquisition or Google discovery.'
+                if cid in ('TS21','TS22','TS40'):
+                    report['results'][i]['reason'] += ' Dossiers fournis et revus seulement / Supplied reviewed dossiers only; no live Google state, causal proof, actual browser or authenticated translation. TS40 native inputs are conditional on declared methods.'
                 if cid in ('TS09','TS11','TS19','TS20','TS38'):
                     report['results'][i]['reason'] += ' Population finie et revues fournies seulement / Supplied finite population and reviews only; source-only reviewed scope, no real-site audit, authenticated acquisition, indexing or ranking.'
                 if cid in ('TS13', 'TS14'):

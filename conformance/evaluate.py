@@ -27,7 +27,9 @@ RULES += ('TS25-A01','TS25-A02')
 RULES += ('TS13-A01', 'TS13-A02', 'TS14-A01')
 from conformance.url_policy import RULES as URL_POLICY_RULES
 RULES += URL_POLICY_RULES
-VERSION = '48'  # Interpreter coverage version; normative protocol version is separate.
+from conformance.indexing_locale import RULES as INDEXING_LOCALE_RULES
+RULES += INDEXING_LOCALE_RULES
+VERSION = '49'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -363,6 +365,9 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
 
 
 def evaluate_target(target, rule, *, diagnostics=None):
+    if rule in INDEXING_LOCALE_RULES:
+        from conformance.indexing_locale import assess
+        return assess(target, rule, diagnostics=diagnostics)
     if rule in URL_POLICY_RULES:
         from conformance.url_policy import assess
         return assess(target, rule, diagnostics=diagnostics)
@@ -475,7 +480,7 @@ def evaluate(data, *, source_observations=None):
             try: verify_target(target)
             except (ValueError, TypeError, KeyError) as error:
                 raise tsep.Invalid('Sitemap quality integrity: ' + str(error)) from error
-    if set(data.get('rules', [])) & set(URL_POLICY_RULES):
+    if set(data.get('rules', [])) & set(URL_POLICY_RULES + INDEXING_LOCALE_RULES):
         from conformance.evidence_dossier import verify
         for target in data.get('targets', []):
             try: verify(target)

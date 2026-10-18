@@ -40,8 +40,10 @@ def verify(target, access=None):
     """A malformed present original is a refusal; absent evidence stays NT."""
     dossiers=target.get('evidence_checks')
     if not isinstance(dossiers,dict):return
-    for dossier in dossiers.values():
+    for control,dossier in dossiers.items():
         if not isinstance(dossier,dict):continue
+        if access is not None and control=='TS21':
+            tsep.require(access in ('synthetic','restricted'),'TS21 account evidence requires restricted or synthetic access')
         if access is not None and 'synthetic' in dossier:
             tsep.require(type(dossier['synthetic']) is bool and dossier['synthetic']==(access=='synthetic'), 'Dossier provenance differs from evidence access')
         records=dossier.get('records')
@@ -160,6 +162,13 @@ def pieces(target):
         if isinstance(docs,list) and docs:
             for kind in ('http','html'):
                 result.setdefault(kind,[]).append({'control':control,'supplied_documents':docs})
+            if control in ('TS22','TS40'):
+                result.setdefault('hreflang',[]).append({'control':control,'supplied_native_documents':docs,'supplied_records':dossier.get('records')})
+            if control=='TS22':
+                plan=target.get('intent',{}).get('evidence_checks',{}).get(control,{})
+                urls={v.get('robots_url') for i in plan.get('items',[]) if isinstance(i,dict) for v in i.get('destinations',[]) if isinstance(v,dict)}
+                robots=[v for v in docs if isinstance(v,dict) and v.get('url') in urls]
+                if robots:result.setdefault('robots',[]).append({'supplied_robots_documents':robots})
             if control in ('TS11','TS38'):
                 result.setdefault('content',[]).append({'control':control,'supplied_source_content':docs,'reviews':dossier.get('reviews')})
             if control=='TS38':

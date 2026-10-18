@@ -121,6 +121,21 @@ EXTERNAL_CASE_IDS += (
     'url-policy-v1-TS38-review-contradiction-A02',
 )
 
+EXTERNAL_CASE_IDS += (
+    'indexing-locale-v1-TS21-complete',
+    'indexing-locale-v1-TS21-missing-plan',
+    'indexing-locale-v1-TS21-review-contradiction-A01',
+    'indexing-locale-v1-TS21-review-contradiction-A02',
+    'indexing-locale-v1-TS22-complete',
+    'indexing-locale-v1-TS22-missing-plan',
+    'indexing-locale-v1-TS22-review-contradiction-A01',
+    'indexing-locale-v1-TS22-review-contradiction-A02',
+    'indexing-locale-v1-TS40-complete',
+    'indexing-locale-v1-TS40-missing-plan',
+    'indexing-locale-v1-TS40-review-contradiction-A01',
+    'indexing-locale-v1-TS40-review-contradiction-A02',
+)
+
 
 class Draft7(unittest.TestCase):
     def test_soft404_and_inert_markers_cannot_pass_adapter_gate(self):

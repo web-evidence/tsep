@@ -169,7 +169,7 @@ affecte les déclarations, même si le validateur ne peut pas déterminer ce bes
 La CLI vérifie les déclarations, références et couvertures, pas la justesse de la
 lecture HTTP/HTML, de l’intention ou des exemptions. Les cas de méthode historiques
 ont des verdicts rédigés. La [suite exécutable distincte](conformance.md) interprète
-les entrées brutes de soixante-dix-neuf règles dans des limites documentées ; elle
+les entrées brutes de quatre-vingt-cinq règles dans des limites documentées ; elle
 n’implémente pas tous les contrôles. Aucun C ne
 s’étend aux contrôles non sélectionnés, à un site entier ou à l’indexation réelle.
 Voir [migration et cas](migration-draft.2.md).

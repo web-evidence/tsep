@@ -1,3 +1,8 @@
+# 0.3.0-draft.3 — 2026-10-18
+
+- FR : six règles TS21/22/40,38 contrôles à règles /85 règles ;53 cas synthétiques et neuf cas de méthode, registre de codes figé, preuves conditionnelles TS40 explicites. Les79 règles précédentes conservent leurs objets/versions.
+- EN: six TS21/22/40 rules,38 rule-bearing controls /85 rules;53 synthetic cases and nine method cases, frozen code registry, explicit TS40 conditional evidence. All79 prior rule objects/versions retained. No site/app change or publication.
+
 # 0.3.0-draft.2 — 2026-10-18
 
 - FR : neuf règles TS09/11/19/20/38 ; 35 contrôles à règles /79 règles. Dossiers sources bornés, revues liées, NT sur preuves insuffisantes ; 64 contre-cas synthétiques, migration bilingue, règles antérieures conservées.

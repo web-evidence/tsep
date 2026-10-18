@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "scope": "Explicit corpus reference cap24, unchanged8MiB per-file/32MiB total/path/hash guards;12 new external CLI cases.",
+  "updates": [
+    {
+      "path": "conformance/corpus.py",
+      "base_sha256": "4c5c15ed688c14522e8f62d745be1797c29f2a0c414ce185e461eb517e41c9c8",
+      "current_sha256": "a3ec8b2894f2c6d75f24230a6f4cc898dd4245790ff46dbe210b7393e8e9132c",
+      "replacements": [
+        {
+          "before": "len(refs)<=16",
+          "after": "len(refs)<=24"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_draft7.py",
+      "base_sha256": "cb817ef4b09b23b9d39e2fd1927ff0ee074380cc54f69c17a297564e25da94b6",
+      "current_sha256": "564a5a7f8ea0a0cdb915dd62609d0cd59e2ba2142a74f81fe4f580aba54d623d",
+      "replacements": [
+        {
+          "before": "\n\nclass Draft7(unittest.TestCase):",
+          "after": "\nEXTERNAL_CASE_IDS += (\n    'indexing-locale-v1-TS21-complete',\n    'indexing-locale-v1-TS21-missing-plan',\n    'indexing-locale-v1-TS21-review-contradiction-A01',\n    'indexing-locale-v1-TS21-review-contradiction-A02',\n    'indexing-locale-v1-TS22-complete',\n    'indexing-locale-v1-TS22-missing-plan',\n    'indexing-locale-v1-TS22-review-contradiction-A01',\n    'indexing-locale-v1-TS22-review-contradiction-A02',\n    'indexing-locale-v1-TS40-complete',\n    'indexing-locale-v1-TS40-missing-plan',\n    'indexing-locale-v1-TS40-review-contradiction-A01',\n    'indexing-locale-v1-TS40-review-contradiction-A02',\n)\n\n\nclass Draft7(unittest.TestCase):"
+        }
+      ]
+    }
+  ]
+}

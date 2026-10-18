@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.3.0-draft.2",
+  "protocol_version": "0.3.0-draft.3",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -8352,6 +8352,420 @@
             "http",
             "intent",
             "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS21-indexing-locale-pass",
+      "control_id": "TS21",
+      "description": {
+        "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+        "en": "Authored fictional case: pass. No real result."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer.",
+        "logs": "SYNTHETIC / SYNTHÉTIQUE — authored logs reference only, no Google account, browser or reviewer.",
+        "search-console": "SYNTHETIC / SYNTHÉTIQUE — authored search-console reference only, no Google account, browser or reviewer.",
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS21-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+            "en": "Authored fictional case: pass. No real result."
+          },
+          "evidence_ids": [
+            "content",
+            "intent",
+            "logs",
+            "search-console",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS21-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+            "en": "Authored fictional case: pass. No real result."
+          },
+          "evidence_ids": [
+            "content",
+            "intent",
+            "logs",
+            "search-console",
+            "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS21-indexing-locale-fail",
+      "control_id": "TS21",
+      "description": {
+        "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+        "en": "Authored fictional case: fail. No real result."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer.",
+        "logs": "SYNTHETIC / SYNTHÉTIQUE — authored logs reference only, no Google account, browser or reviewer.",
+        "search-console": "SYNTHETIC / SYNTHÉTIQUE — authored search-console reference only, no Google account, browser or reviewer.",
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS21-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+            "en": "Authored fictional case: fail. No real result."
+          },
+          "evidence_ids": [
+            "content",
+            "intent",
+            "logs",
+            "search-console",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS21-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+            "en": "Authored fictional case: fail. No real result."
+          },
+          "evidence_ids": [
+            "content",
+            "intent",
+            "logs",
+            "search-console",
+            "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS21-indexing-locale-inconclusive",
+      "control_id": "TS21",
+      "description": {
+        "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+        "en": "Authored fictional case: inconclusive. No real result."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer.",
+        "logs": "SYNTHETIC / SYNTHÉTIQUE — authored logs reference only, no Google account, browser or reviewer.",
+        "search-console": "SYNTHETIC / SYNTHÉTIQUE — authored search-console reference only, no Google account, browser or reviewer.",
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS21-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+            "en": "Authored fictional case: inconclusive. No real result."
+          },
+          "evidence_ids": [
+            "content",
+            "intent",
+            "logs",
+            "search-console",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS21-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+            "en": "Authored fictional case: inconclusive. No real result."
+          },
+          "evidence_ids": [
+            "content",
+            "intent",
+            "logs",
+            "search-console",
+            "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS22-indexing-locale-pass",
+      "control_id": "TS22",
+      "description": {
+        "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+        "en": "Authored fictional case: pass. No real result."
+      },
+      "evidence": {
+        "hreflang": "SYNTHETIC / SYNTHÉTIQUE — authored hreflang reference only, no Google account, browser or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference only, no Google account, browser or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer.",
+        "robots": "SYNTHETIC / SYNTHÉTIQUE — authored robots reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS22-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+            "en": "Authored fictional case: pass. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "html",
+            "http",
+            "intent",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS22-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+            "en": "Authored fictional case: pass. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "html",
+            "http",
+            "intent",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS22-indexing-locale-fail",
+      "control_id": "TS22",
+      "description": {
+        "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+        "en": "Authored fictional case: fail. No real result."
+      },
+      "evidence": {
+        "hreflang": "SYNTHETIC / SYNTHÉTIQUE — authored hreflang reference only, no Google account, browser or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference only, no Google account, browser or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer.",
+        "robots": "SYNTHETIC / SYNTHÉTIQUE — authored robots reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS22-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+            "en": "Authored fictional case: fail. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "html",
+            "http",
+            "intent",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS22-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+            "en": "Authored fictional case: fail. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "html",
+            "http",
+            "intent",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS22-indexing-locale-inconclusive",
+      "control_id": "TS22",
+      "description": {
+        "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+        "en": "Authored fictional case: inconclusive. No real result."
+      },
+      "evidence": {
+        "hreflang": "SYNTHETIC / SYNTHÉTIQUE — authored hreflang reference only, no Google account, browser or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference only, no Google account, browser or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer.",
+        "robots": "SYNTHETIC / SYNTHÉTIQUE — authored robots reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS22-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+            "en": "Authored fictional case: inconclusive. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "html",
+            "http",
+            "intent",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS22-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+            "en": "Authored fictional case: inconclusive. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "html",
+            "http",
+            "intent",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS40-indexing-locale-pass",
+      "control_id": "TS40",
+      "description": {
+        "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+        "en": "Authored fictional case: pass. No real result."
+      },
+      "evidence": {
+        "hreflang": "SYNTHETIC / SYNTHÉTIQUE — authored hreflang reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS40-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+            "en": "Authored fictional case: pass. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS40-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+            "en": "Authored fictional case: pass. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS40-indexing-locale-fail",
+      "control_id": "TS40",
+      "description": {
+        "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+        "en": "Authored fictional case: fail. No real result."
+      },
+      "evidence": {
+        "hreflang": "SYNTHETIC / SYNTHÉTIQUE — authored hreflang reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS40-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+            "en": "Authored fictional case: fail. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS40-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+            "en": "Authored fictional case: fail. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS40-indexing-locale-inconclusive",
+      "control_id": "TS40",
+      "description": {
+        "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+        "en": "Authored fictional case: inconclusive. No real result."
+      },
+      "evidence": {
+        "hreflang": "SYNTHETIC / SYNTHÉTIQUE — authored hreflang reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS40-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+            "en": "Authored fictional case: inconclusive. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS40-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+            "en": "Authored fictional case: inconclusive. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "intent"
           ]
         }
       ],

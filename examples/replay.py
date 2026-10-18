@@ -77,6 +77,15 @@ def generate(output_root=ROOT):
     # Raw adapter demonstrations are controlled derivatives, with no expected verdicts.
     corpus = {case['id']: case['input'] for case in expand(tsep.read_json(ROOT.parent/'conformance/cases.json'))['cases']}
     capture_examples = {
+                        'ts21-complete': ('indexing-locale-v1-TS21-complete', ['TS21-A01', 'TS21-A02']),
+                        'ts21-contradiction': ('indexing-locale-v1-TS21-review-contradiction-A01', ['TS21-A01', 'TS21-A02']),
+                        'ts21-missing-review': ('indexing-locale-v1-TS21-missing-reviews', ['TS21-A01', 'TS21-A02']),
+                        'ts22-complete': ('indexing-locale-v1-TS22-complete', ['TS22-A01', 'TS22-A02']),
+                        'ts22-contradiction': ('indexing-locale-v1-TS22-review-contradiction-A01', ['TS22-A01', 'TS22-A02']),
+                        'ts22-missing-review': ('indexing-locale-v1-TS22-missing-reviews', ['TS22-A01', 'TS22-A02']),
+                        'ts40-complete': ('indexing-locale-v1-TS40-complete', ['TS40-A01', 'TS40-A02']),
+                        'ts40-contradiction': ('indexing-locale-v1-TS40-review-contradiction-A01', ['TS40-A01', 'TS40-A02']),
+                        'ts40-missing-review': ('indexing-locale-v1-TS40-missing-reviews', ['TS40-A01', 'TS40-A02']),
                         'ts09-complete': ('url-policy-v1-TS09-complete', ['TS09-A01']),
                         'ts09-contradiction': ('url-policy-v1-TS09-review-contradiction-A01', ['TS09-A01']),
                         'ts09-missing-review': ('url-policy-v1-TS09-missing-reviews', ['TS09-A01']),

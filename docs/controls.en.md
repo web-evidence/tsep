@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.2 — Controls
+# TSEP 0.3.0-draft.3 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -1508,6 +1508,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://support.google.com/webmasters/answer/7440203](https://support.google.com/webmasters/answer/7440203)
 
+### TS21-A01 — Attribution of nonindexed families
+
+`TSEP@0.3.0-draft.3:TS21-A01`
+
+**Required inputs**: search-console, logs, sitemap, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS21 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Method.** Read supplied Google URL Inspection requests/responses for each selected URL, compare property, URL and family label; reconcile native urlset and TSV log export in their declared window. Require segmentation/attribution review.
+
+**Acceptance.** Native pieces are available and attributed to the selected family; sitemap membership agrees with the plan. Request, family-label or sitemap disagreement fails. Logs describe only their supplied window and client.
+
+**Evidence.** Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: search-console, logs, sitemap, intent. Conditional native evidence follows declared methods.
+
+**Assumptions.** Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing.
+
+**Inconclusive.** Missing evidence, absent/error API result, unsupported label, uninterpretable logs or absent review: inconclusive.
+
+**When NA is allowed.** No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile.
+
+**Limits.** Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established.
+
+### TS21-A02 — Testable hypothesis and decision without invented causality
+
+`TSEP@0.3.0-draft.3:TS21-A02`
+
+**Required inputs**: content, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicability.** Explicitly selected TS21 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Method.** Read family-diagnosis-v1: diagnosis, hypothesis, prediction, falsification, measurement, decision, owner and due date for the same URL list. Check planned-versus-observed follow-up and bound review.
+
+**Acceptance.** Diagnostic axes are supplied and reviewed; causality=unproven and follow_up=planned-not-observed. Declaring causality from a label or correlation fails this profile.
+
+**Evidence.** Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: content, intent. Conditional native evidence follows declared methods.
+
+**Assumptions.** Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing.
+
+**Inconclusive.** Hypothesis without falsification, misattributed family, claimed observed follow-up outside a separate method or missing judgment: inconclusive.
+
+**When NA is allowed.** No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile.
+
+**Limits.** Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established.
+
 ## TS22 — Each hreflang variant points to an indexable canonical URL.
 
 **Severity**: major. **Unit**: locale-cluster.
@@ -1531,6 +1579,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/specialty/international/localized-versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
+
+### TS22-A01 — Native annotations and registered codes
+
+`TSEP@0.3.0-draft.3:TS22-A01`
+
+**Required inputs**: hreflang, http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS22 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Method.** Read declared HTML, Link headers and XHTML urlsets separately; retain agreement of both static HTML hypotheses. Check each observed code against the frozen IANA registry subset and attribution to its planned destination.
+
+**Acceptance.** Observed codes belong to the documented language/script/region profile and destinations agree. An explicitly invalid code or conflicting destination fails; x-default qualifies only the reserved token.
+
+**Evidence.** Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: hreflang, http, html, intent. Conditional native evidence follows declared methods.
+
+**Assumptions.** Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing.
+
+**Inconclusive.** Deprecated code, exceptional region outside the subset, missing method/page, ambiguous HTML, relative annotation or absent review: inconclusive.
+
+**When NA is allowed.** No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile.
+
+**Limits.** Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established.
+
+### TS22-A02 — Hreflang destinations and indexing-permission signals
+
+`TSEP@0.3.0-draft.3:TS22-A02`
+
+**Required inputs**: hreflang, http, html, robots, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS22 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Method.** For every selected destination compare indexing intent, direct HTTP200, HTTP/HTML directives, explicit self-canonical and same-origin robots.txt under the prior Google profile. Require source-scope review.
+
+**Acceptance.** Qualified signals permit and agree with the planned destination. A conflicting response, noindex, divergent canonical or evidenced robots denial fails despite other unknowns.
+
+**Evidence.** Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: hreflang, http, html, robots, intent. Conditional native evidence follows declared methods.
+
+**Assumptions.** Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing.
+
+**Inconclusive.** Missing/unqualified robots, absent canonical, partial trace, required rendering or absent review: inconclusive. Indexing permission is not indexing.
+
+**When NA is allowed.** No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile.
+
+**Limits.** Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established.
 
 ## TS23 — hreflang annotations are reciprocal and include the current page.
 
@@ -2568,7 +2664,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Severity**: major. **Unit**: locale-cluster.
 
-**Required inputs**: hreflang, sitemap, http, html, intent.
+**Required inputs**: hreflang, intent.
 
 **Applicability.** Clusters using at least one hreflang method.
 
@@ -2587,6 +2683,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/specialty/international/localized-versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
+
+### TS40-A01 — Independent completeness of published methods
+
+`TSEP@0.3.0-draft.3:TS40-A01`
+
+**Required inputs**: hreflang, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS40 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Method.** Inventory methods before capture; read every method/page independently and check the complete expected group including self-reference. A secondary method does not complete a partial primary one.
+
+**Acceptance.** Each complete method contains the expected mappings. Demonstrated omission on a complete surface or a conflicting destination fails; one chosen method is allowed.
+
+**Evidence.** Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: hreflang, intent. Conditional native evidence follows declared methods.
+
+**Assumptions.** Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing.
+
+**Inconclusive.** Missing capture/method, truncated/index XML, published method omitted from plan, outside-group mapping or absent review: inconclusive.
+
+**When NA is allowed.** No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile.
+
+**Limits.** Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established.
+
+### TS40-A02 — Consistency across methods and cluster pages
+
+`TSEP@0.3.0-draft.3:TS40-A02`
+
+**Required inputs**: hreflang, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS40 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Method.** Compare qualified mappings across methods/pages without merging their sets. Retain independent destination conflicts even when a third method is missing; compare set equality when both are complete.
+
+**Acceptance.** Complete methods and pages agree. One complete method is allowed. A native conflict or differing complete sets fails.
+
+**Evidence.** Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: hreflang, intent. Conditional native evidence follows declared methods.
+
+**Assumptions.** Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing.
+
+**Inconclusive.** Comparison without a qualified surface, partial capture, missing method or absent review: inconclusive unless an independent contradiction is established.
+
+**When NA is allowed.** No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile.
+
+**Limits.** Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established.
 
 ## TS41 — Critical SEO invariants are replayed automatically before and after deployment.
 
