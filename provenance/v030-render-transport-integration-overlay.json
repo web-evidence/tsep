@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "scope": "25 new external CLI cases appended; all earlier expectations unchanged.",
+  "updates": [
+    {
+      "path": "tests/test_draft7.py",
+      "base_sha256": "564a5a7f8ea0a0cdb915dd62609d0cd59e2ba2142a74f81fe4f580aba54d623d",
+      "current_sha256": "4a13549c35e5d553dbc7e2c39edec2f7eccec383e8b851b03fe7a5ef18167fe1",
+      "replacements": [
+        {
+          "before": "\n\nclass Draft7(unittest.TestCase):",
+          "after": "\nEXTERNAL_CASE_IDS += (\n    'render-transport-v1-TS26-complete',\n    'render-transport-v1-TS26-missing-plan',\n    'render-transport-v1-TS26-review-contradiction-A01',\n    'render-transport-v1-TS26-review-contradiction-A02',\n    'render-transport-v1-TS27-complete',\n    'render-transport-v1-TS27-missing-plan',\n    'render-transport-v1-TS27-review-contradiction-A01',\n    'render-transport-v1-TS27-review-contradiction-A02',\n    'render-transport-v1-TS28-complete',\n    'render-transport-v1-TS28-missing-plan',\n    'render-transport-v1-TS28-review-contradiction-A01',\n    'render-transport-v1-TS28-review-contradiction-A02',\n    'render-transport-v1-TS29-complete',\n    'render-transport-v1-TS29-missing-plan',\n    'render-transport-v1-TS29-review-contradiction-A01',\n    'render-transport-v1-TS29-review-contradiction-A02',\n    'render-transport-v1-TS30-complete',\n    'render-transport-v1-TS30-missing-plan',\n    'render-transport-v1-TS30-review-contradiction-A01',\n    'render-transport-v1-TS30-review-contradiction-A02',\n    'render-transport-v1-TS37-complete',\n    'render-transport-v1-TS37-missing-plan',\n    'render-transport-v1-TS37-review-contradiction-A01',\n    'render-transport-v1-TS37-review-contradiction-A02',\n    'render-transport-v1-TS37-review-contradiction-A03',\n)\n\n\nclass Draft7(unittest.TestCase):"
+        }
+      ]
+    }
+  ]
+}

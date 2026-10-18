@@ -169,6 +169,13 @@ def pieces(target):
                 urls={v.get('robots_url') for i in plan.get('items',[]) if isinstance(i,dict) for v in i.get('destinations',[]) if isinstance(v,dict)}
                 robots=[v for v in docs if isinstance(v,dict) and v.get('url') in urls]
                 if robots:result.setdefault('robots',[]).append({'supplied_robots_documents':robots})
+            if control=='TS26':
+                plan=target.get('intent',{}).get('evidence_checks',{}).get(control,{})
+                urls={v.get('robots_url') for i in plan.get('items',[]) if isinstance(i,dict) for v in i.get('resources',[]) if isinstance(v,dict)}
+                robots=[v for v in docs if isinstance(v,dict) and v.get('url') in urls]
+                if robots:result.setdefault('robots',[]).append({'supplied_robots_documents':robots})
+            if control=='TS30':
+                result.setdefault('content',[]).append({'supplied_source_content':docs,'reviews':dossier.get('reviews')})
             if control in ('TS11','TS38'):
                 result.setdefault('content',[]).append({'control':control,'supplied_source_content':docs,'reviews':dossier.get('reviews')})
             if control=='TS38':

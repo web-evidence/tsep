@@ -1,3 +1,5 @@
+Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](docs/render-transport-evidence.md), [migration](docs/migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
+
 # 0.3.0-draft.3 — 2026-10-18
 
 - FR : six règles TS21/22/40,38 contrôles à règles /85 règles ;53 cas synthétiques et neuf cas de méthode, registre de codes figé, preuves conditionnelles TS40 explicites. Les79 règles précédentes conservent leurs objets/versions.

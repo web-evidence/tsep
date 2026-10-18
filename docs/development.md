@@ -1,3 +1,7 @@
+Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](render-transport-evidence.md), [migration](migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
+
+Profil local complet44 / Full44 local profile: explicit Node24 and Python3.12.14, `TSEP_VERIFY_STEP_TIMEOUT=7200` (finite two-hour bound per step), all verifier steps and source-immutability guards retained. This accommodates the expanded suite and concurrent baseline qualification; a longer ceiling is not a successful run. FR : plafond fini de deux heures par étape pour la suite étendue et la qualification de base concurrente ; aucune vérification supprimée, aucun succès déduit du seul plafond. Observed results belong in dated delivery receipts.
+
 0.3.0-draft.3 preparation:38 rule-bearing controls /85 rules, TS21/22/40 batch. Synthetic cases and supplied reviews; no actual indexing or causality inferred. [Contrat / contract](indexing-locale-evidence.md), [migration](migration-0.3.0-draft.3.md).
 
 Current / courant : 0.3.0-draft.2, TS09/11/19/20/38, 35 controls /79 rules. Prior70 rules and versions retained. [Contract / contrat](url-policy-evidence.md), [migration](migration-0.3.0-draft.2.md). Full verification results belong to dated receipts, not this preparation heading.

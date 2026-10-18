@@ -1,3 +1,5 @@
+Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](docs/render-transport-evidence.md), [migration](docs/migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
+
 0.3.0-draft.3 preparation:38 rule-bearing controls /85 rules, TS21/22/40 batch. Synthetic cases and supplied reviews; no actual indexing or causality inferred. [Contrat / contract](docs/indexing-locale-evidence.md), [migration](docs/migration-0.3.0-draft.3.md).
 
 0.3.0-draft.2 preparation:35 rule-bearing controls /79 atomic rules. TS09/11/19/20/38 supplied-source/review batch; [contract](docs/url-policy-evidence.md), [migration](docs/migration-0.3.0-draft.2.md). Synthetic examples, no publication or application change.

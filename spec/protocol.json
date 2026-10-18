@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.3.0-draft.3",
+  "version": "0.3.0-draft.4",
   "status": "draft",
   "date": "2026-10-18",
   "languages": [
@@ -3904,7 +3904,102 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.4",
+      "rules": [
+        {
+          "id": "TS26-A01",
+          "title": {
+            "fr": "Accès des ressources et politiques natives",
+            "en": "Resource access and native policies"
+          },
+          "required_inputs": [
+            "http",
+            "robots",
+            "html",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Population finie préalable de TS26, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS26 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Sur chaque ressource critique sélectionnée, comparer HTTP direct200, robots du même origin et intersection des CSP HTTP du document HTTPS. Relever la source complète pour exclure une CSP meta non qualifiée.",
+            "en": "For each selected critical resource compare direct HTTP200, same-origin robots and intersection of HTTP CSP policies from the HTTPS document. Retain complete source to exclude unqualified meta CSP."
+          },
+          "acceptance": {
+            "fr": "Une erreur HTTP, un refus robots ou un refus CSP qualifié échoue indépendamment des autres lacunes.",
+            "en": "A qualified HTTP error, robots denial or CSP denial fails independently of other gaps."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, robots, html, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, robots, html, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "Inventaire absent, robots non fourni, directive CSP non prise en charge, nonce, meta CSP, source ambiguë ou revue absente : NT.",
+            "en": "Absent inventory, missing robots, unsupported CSP directive, nonce, meta CSP, ambiguous source or absent review: NT."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        },
+        {
+          "id": "TS26-A02",
+          "title": {
+            "fr": "Trafic et console attribués au rendu",
+            "en": "Traffic and console attributed to rendering"
+          },
+          "required_inputs": [
+            "render",
+            "http",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Population finie préalable de TS26, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS26 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Lire un export HAR borné fourni, relier la réponse du document aux octets HTTP, puis vérifier chaque ressource critique. Conserver la console datée liée au HAR et la revue de criticité.",
+            "en": "Read a supplied bounded HAR export, bind its document response to native HTTP bytes, then check every critical resource. Retain dated HAR-bound console and criticality review."
+          },
+          "acceptance": {
+            "fr": "Les ressources sélectionnées ont une réponse2xx sans erreur réseau fournie. Une erreur console sans classification qualifiée reste NT ; un échec réseau natif reste NC.",
+            "en": "Selected resources have2xx responses without supplied network error. Unclassified console errors remain NT; native network failure remains NC."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : render, http, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: render, http, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "HAR incomplet, corps absent, contexte/session non attribué, console absente ou erreur non qualifiée : NT.",
+            "en": "Incomplete HAR, omitted body, unattributed context/session, missing console or unqualified error: NT."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        }
+      ]
     },
     {
       "id": "TS27",
@@ -3963,7 +4058,101 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.4",
+      "rules": [
+        {
+          "id": "TS27-A01",
+          "title": {
+            "fr": "Routes et historique attribués",
+            "en": "Attributed routes and history"
+          },
+          "required_inputs": [
+            "http",
+            "render",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Population finie préalable de TS27, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS27 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Vérifier quatre états fournis dans l’ordre direct, actualisation, retour, avance : session, séquence, date, URL, liaison à la réponse serveur et statut.",
+            "en": "Check four supplied states in direct, refresh, back, forward order: session, sequence, time, URL, server-response binding and status."
+          },
+          "acceptance": {
+            "fr": "Chaque état conserve l’URL de route et sa source200 prévue. Une URL ou un statut contraire qualifié échoue.",
+            "en": "Every state retains its route URL and intended200 source. A qualified conflicting URL or status fails."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, render, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, render, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "État, action, liaison, session ou ordre absent/ambigu ; surface frame/shadow non collectée : NT.",
+            "en": "Missing/ambiguous state, action, binding, session or order; uncollected frame/shadow surface: NT."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        },
+        {
+          "id": "TS27-A02",
+          "title": {
+            "fr": "Contenu et canonical par état SPA",
+            "en": "Content and canonical in each SPA state"
+          },
+          "required_inputs": [
+            "http",
+            "render",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Population finie préalable de TS27, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS27 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Dans les mêmes états qualifiés, comparer les identifiants littéraux, textes essentiels et destinations de liens au plan, puis une canonical explicite dans head. Exiger la revue de fonctionnement.",
+            "en": "Within the same qualified states compare literal IDs, essential text and link destinations with the plan, then one explicit head canonical. Require operation review."
+          },
+          "acceptance": {
+            "fr": "Les états conservent contenus et signaux propres. Absence sur surface complète, contenu divergent ou canonical contraire échoue.",
+            "en": "States retain their intended content and signals. Absence on a complete surface, differing content or conflicting canonical fails."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, render, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, render, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "État partiel, contexte masqué, ID ambigu, hypothèses HTML divergentes ou revue absente : NT.",
+            "en": "Partial state, hidden context, ambiguous ID, differing HTML hypotheses or absent review: NT."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        }
+      ]
     },
     {
       "id": "TS28",
@@ -4022,7 +4211,101 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.4",
+      "rules": [
+        {
+          "id": "TS28-A01",
+          "title": {
+            "fr": "Structure native et structure DOM fournie",
+            "en": "Native source and supplied DOM structure"
+          },
+          "required_inputs": [
+            "html",
+            "render",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Population finie préalable de TS28, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS28 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Comparer dans la source et la sérialisation fournie : titre, langue, main déclaré, liste ordonnée des titres, liens et libellés. Le nombre de H1 est celui du plan.",
+            "en": "Compare source and supplied serialization: title, language, declared main landmark, ordered headings, links and labels. H1 count follows the plan."
+          },
+          "acceptance": {
+            "fr": "Les structures correspondent au plan préalable ; divergences structurelles qualifiées échouent.",
+            "en": "Structures agree with the prior plan; qualified structural conflicts fail."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, render, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, render, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "Source/DOM absent, langue non déclarée, arbre ambigu ou contexte visuel non qualifié : NT.",
+            "en": "Absent source/DOM, undeclared language, ambiguous tree or unqualified visual context: NT."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        },
+        {
+          "id": "TS28-A02",
+          "title": {
+            "fr": "Revue du sens et de la navigation",
+            "en": "Meaning and navigation review"
+          },
+          "required_inputs": [
+            "html",
+            "render",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "manual",
+          "applicability": {
+            "fr": "Population finie préalable de TS28, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS28 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Reprendre les faits structurels attribués et exiger une revue distincte liée : adéquation du titre et de la langue, hiérarchie, sujet principal, navigation et libellés dans l’usage déclaré.",
+            "en": "Reuse attributed structural facts and require a distinct bound review of title/language adequacy, hierarchy, main subject, navigation and labels in declared use."
+          },
+          "acceptance": {
+            "fr": "Les faits sont qualifiés et le jugement motivé soutient le sens et l’usage ; contradiction étayée échoue.",
+            "en": "Facts are qualified and a reasoned judgment supports meaning and use; evidenced contradiction fails."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, render, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, render, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "Le parseur seul, une revue sans liaison ou des originaux insuffisants ne suffisent pas : NT.",
+            "en": "Parser output alone, an unbound review or insufficient originals are not enough: NT."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        }
+      ]
     },
     {
       "id": "TS29",
@@ -4081,7 +4364,101 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.4",
+      "rules": [
+        {
+          "id": "TS29-A01",
+          "title": {
+            "fr": "Scénario scripts bloqués et repli testé",
+            "en": "Blocked-script scenario and tested fallback"
+          },
+          "required_inputs": [
+            "html",
+            "render",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Population finie préalable de TS29, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS29 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Lire la source et un état fourni explicitement scripts-blocked ; comparer chaque contenu/lien essentiel, ou le repli prédéclaré dans ce même état. Exiger la revue des actions et du fonctionnement.",
+            "en": "Read source and a supplied state explicitly marked scripts-blocked; compare every essential content/link or the prior fallback within that same state. Require action and operation review."
+          },
+          "acceptance": {
+            "fr": "Tous les attendus principaux ou tous ceux du repli testé sont étayés. Un échec principal et du repli qualifiés échoue ; aucune fonction n’est déduite du texte seul.",
+            "en": "All main expectations or all tested fallback expectations are supported. Qualified failures of both main and fallback fail; text alone does not establish function."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, render, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, render, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "Condition normale, capture partielle, repli seulement décrit, contexte masqué ou revue manquante : NT.",
+            "en": "Normal condition, partial capture, merely described fallback, hidden context or missing review: NT."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        },
+        {
+          "id": "TS29-A02",
+          "title": {
+            "fr": "Scénario styles dégradés et repli testé",
+            "en": "Degraded-style scenario and tested fallback"
+          },
+          "required_inputs": [
+            "html",
+            "render",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Population finie préalable de TS29, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS29 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Appliquer le même examen dans un état explicitement styles-degraded, avec observations d’actions et revue liée. Ne pas assimiler la désactivation des scripts à ce scénario.",
+            "en": "Apply the same examination in an explicitly styles-degraded state with action observations and a bound review. Script disabling does not qualify this scenario."
+          },
+          "acceptance": {
+            "fr": "Les fonctions essentielles ou le repli testé restent étayés dans ce scénario distinct.",
+            "en": "Essential functions or tested fallback remain supported in this distinct scenario."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, render, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, render, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "Absence de scénario styles dégradés, preuve de repli ou jugement attribué : NT.",
+            "en": "Missing degraded-style scenario, fallback evidence or attributed judgment: NT."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        }
+      ]
     },
     {
       "id": "TS30",
@@ -4140,7 +4517,101 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.4",
+      "rules": [
+        {
+          "id": "TS30-A01",
+          "title": {
+            "fr": "Métadonnées et doublons du corpus déclaré",
+            "en": "Metadata and duplicates in the declared corpus"
+          },
+          "required_inputs": [
+            "html",
+            "content",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Lire title, description, H1, og:title, og:description natifs par page. Comparer aux valeurs prévues puis les doublons entre pages sélectionnées ; exiger une décision préalable pour chaque doublon intentionnel.",
+            "en": "Read native title, description, H1, og:title, og:description for each page. Compare prior values and duplicates among selected pages; require a prior decision for each intentional duplicate."
+          },
+          "acceptance": {
+            "fr": "Valeurs et multiplicité concordent ; chaque doublon observé possède une décision motivée unique. Le corpus ne dépasse pas les pages fournies.",
+            "en": "Values and multiplicity agree; each observed duplicate has one reasoned decision. The corpus is limited to supplied pages."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, content, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, content, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "Source absente, politique de champ omise, parse ambigu ou revue manquante : NT. null autorise seulement un champ facultatif explicitement absent.",
+            "en": "Missing source, omitted field policy, ambiguous parse or missing review: NT. null permits only an explicitly absent optional field."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        },
+        {
+          "id": "TS30-A02",
+          "title": {
+            "fr": "Cohérence éditoriale et contenu principal",
+            "en": "Editorial coherence and main content"
+          },
+          "required_inputs": [
+            "html",
+            "content",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "manual",
+          "applicability": {
+            "fr": "Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Rapprocher les métadonnées natives et le contenu principal identifié ; exiger une revue distincte de la promesse, du sens et de la visibilité pertinente.",
+            "en": "Reconcile native metadata and identified main content; require a distinct review of promise, meaning and relevant visibility."
+          },
+          "acceptance": {
+            "fr": "Les faits concordent avec le plan et la revue éditoriale liée les soutient ; une contradiction native ou humaine qualifiée échoue.",
+            "en": "Facts agree with the plan and the bound editorial review supports them; qualified native or human contradiction fails."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, content, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, content, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "Source/rendu nécessaire non qualifié, contenu masqué, sens sans revue ou jugement non lié : NT.",
+            "en": "Unqualified required source/rendering, hidden content, meaning without review or unbound judgment: NT."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        }
+      ]
     },
     {
       "id": "TS31",
@@ -5340,7 +5811,146 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.4",
+      "rules": [
+        {
+          "id": "TS37-A01",
+          "title": {
+            "fr": "Certificats, hôte, date et confiance fournie",
+            "en": "Certificates, host, time and supplied trust"
+          },
+          "required_inputs": [
+            "tls",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Relire les PEM publics fournis avec OpenSSL3 hors réseau : chaîne, usage serveur, hôte DNS, heure fournie et racines explicitement fournies. Désactiver magasins implicites ; conserver version et diagnostic.",
+            "en": "Recheck supplied public PEMs with offline OpenSSL3: chain, server purpose, DNS host, supplied time and explicit supplied roots. Disable implicit stores; retain version and diagnostic."
+          },
+          "acceptance": {
+            "fr": "La vérification du profil réussit sous les racines fournies. Une erreur X509 prise en charge, dont expiration ou mauvais hôte, échoue.",
+            "en": "Profile verification succeeds under supplied roots. A supported X509 error, including expiry or wrong host, fails."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : tls, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: tls, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "OpenSSL3 absent, PEM inutilisable, capture mal attribuée, racines absentes ou code d’erreur non qualifié : NT.",
+            "en": "Missing OpenSSL3, unusable PEM, misattributed capture, absent roots or unqualified error code: NT."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        },
+        {
+          "id": "TS37-A02",
+          "title": {
+            "fr": "Redirections HTTPS et décision HSTS",
+            "en": "HTTPS redirects and HSTS decision"
+          },
+          "required_inputs": [
+            "http",
+            "configuration",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Suivre la chaîne HTTP fournie vers HTTPS sans rétrogradation, vérifier la réponse directe200, comparer configuration HSTS et en-tête au plan : activation, max-age, sous-domaines, portée, propriétaire, motif.",
+            "en": "Follow the supplied HTTP chain to HTTPS without downgrade, check direct200 response, compare HSTS configuration and header with planned enablement, max-age, subdomains, scope, owner and rationale."
+          },
+          "acceptance": {
+            "fr": "Chaînes et décision HSTS concordent ; HSTS peut être désactivé explicitement. Aucun preload imposé.",
+            "en": "Chains and HSTS decision agree; HSTS may be explicitly disabled. No preload requirement."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, configuration, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, configuration, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "Chaîne/configuration manquante, en-tête ambigu, portée ou décision absente : NT.",
+            "en": "Missing chain/configuration, ambiguous header, absent scope or decision: NT."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        },
+        {
+          "id": "TS37-A03",
+          "title": {
+            "fr": "Sous-ressources et trafic mixte du périmètre",
+            "en": "Embedded resources and mixed traffic in scope"
+          },
+          "required_inputs": [
+            "http",
+            "render",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
+            "en": "Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md."
+          },
+          "procedure": {
+            "fr": "Relier HAR et console au document HTTPS ; examiner les requêtes observées et les URL intégrées de la source. Le profil strict exige HTTPS pour ces ressources, même si un navigateur peut les mettre à niveau.",
+            "en": "Bind HAR and console to the HTTPS document; inspect observed requests and source embedded URLs. The strict profile requires HTTPS for these resources even when a browser might upgrade them."
+          },
+          "acceptance": {
+            "fr": "Aucune URL HTTP observée sur ces surfaces ; revue de la couverture dynamique consignée. Un HTTP natif observé échoue malgré une autre lacune.",
+            "en": "No HTTP URL observed on these surfaces; dynamic-coverage review retained. An observed native HTTP URL fails despite another gap."
+          },
+          "evidence": {
+            "fr": "Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, render, intent.",
+            "en": "Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, render, intent."
+          },
+          "assumptions": {
+            "fr": "Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.",
+            "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
+          },
+          "inconclusive": {
+            "fr": "HAR tronqué, corps absent, CSS/srcset non qualifiés, contexte incomplet ou revue absente : NT.",
+            "en": "Truncated HAR, missing body, unqualified CSS/srcset, incomplete context or absent review: NT."
+          },
+          "non_applicability": {
+            "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
+            "en": "No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile."
+          },
+          "limitations": {
+            "fr": "Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.",
+            "en": "No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states."
+          }
+        }
+      ]
     },
     {
       "id": "TS38",
@@ -6798,15 +7408,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "ed9f5ac82ac48032937e10b7f151896ab35b84735d5257ccdfe1e7e19694d5dd"
+      "sha256": "4e2a85548c6279edf737f4839cef97147bac7cb551b9beefd24c457908969db9"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "7d882202779e6e434c912dea6ac19f9984fb9fbc0fcbdcf64d42d688bf1e091e"
+      "sha256": "33369b6f9f0dfe58a5ae4dbd4499637a555972926bea768e36d86d68e64b6bb1"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "80e36038a1f8bac6914aca1e8eafc15e320d116c4d1f36f8d15fdc8d48c69949"
+      "sha256": "e458dfd0117b545015550bf6fa79d09a4a2317fd79b1c31aa5d690c875adc688"
     },
     {
       "path": "docs/source-directives.md",
@@ -6931,6 +7541,10 @@
     {
       "path": "docs/indexing-locale-evidence.md",
       "sha256": "ee95c380bc173e5880cea1328897f3343bab892aa6fc37e3616092b3e4b0d5ac"
+    },
+    {
+      "path": "docs/render-transport-evidence.md",
+      "sha256": "30b16adc2a09dfeb7687790518e834b2d30508951a187cff40704fe914d783b1"
     }
   ]
 }

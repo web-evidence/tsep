@@ -1,3 +1,5 @@
+Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](render-transport-evidence.md), [migration](migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
+
 0.3.0-draft.3 preparation:38 rule-bearing controls /85 rules, TS21/22/40 batch. Synthetic cases and supplied reviews; no actual indexing or causality inferred. [Contrat / contract](indexing-locale-evidence.md), [migration](migration-0.3.0-draft.3.md).
 
 0.3.0-draft.2:64 authored synthetic URL-policy cases, nine new rules,35 rule-bearing controls /79 rules. Prior inputs and expectations preserved. FR : 64 cas synthétiques rédigés avant exécution ; aucun audit réel ni qualification complète déduite de ce décompte.

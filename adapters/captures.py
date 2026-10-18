@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts, binding_digest
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '48'
+VERSION = '49'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -86,7 +86,7 @@ def source_files():
     modules['conformance/incoming_links.py'] = importlib.import_module('conformance.incoming_links')
     modules['adapters/incoming_links_intake.py'] = importlib.import_module('adapters.incoming_links_intake')
     modules['conformance/sitemap_files.py'] = importlib.import_module('conformance.sitemap_files')
-    for name in ('evidence_dossier', 'url_policy', 'indexing_locale'):
+    for name in ('evidence_dossier', 'url_policy', 'indexing_locale', 'render_transport'):
         modules['conformance/'+name+'.py'] = importlib.import_module('conformance.'+name)
     modules['conformance/sitemap_quality.py'] = importlib.import_module('conformance.sitemap_quality')
     modules['conformance/sitemap_set.py'] = importlib.import_module('conformance.sitemap_set')
@@ -128,6 +128,7 @@ def source_files():
 
 
 COVERAGE_INVENTORY = [
+    {'state': 'implemented', 'fr': 'TS26–30/37 : sources, états et revues fournis, TLS hors ligne sur racines déclarées ; 44 contrôles possèdent des règles bornées, aucun audit global implicite.', 'en': 'TS26–30/37: supplied sources, states and reviews, offline TLS with declared roots;44 controls have bounded rules, no implicit global audit.'},
     {'state': 'implemented', 'fr': 'TS09/11/19/20/38 : politiques, contenus et variantes sur pièces sources bornées et revues liées ; aucune qualification globale.', 'en': 'TS09/11/19/20/38: policy, content and variants on bounded source evidence and bound reviews; no global qualification.'},
     {'state': 'implemented', 'fr': 'TS21/22/40 : diagnostics de familles, codes/destinations et méthodes hreflang fournis ; aucune causalité, indexation réelle ou localisation authentifiée.', 'en': 'TS21/22/40: supplied family investigations, locale codes/destinations and hreflang methods; no causal, actual-indexing or authenticated-localization claim.'},
     {'state':'implemented','fr':'TS06-A01 : matrice fournie de routes `.invalid`, rôles synthétiques, canaris et triplets étiquetés ; aucune identité, aucun cache réel ni domaine live.','en':'TS06-A01: supplied `.invalid` route matrix, synthetic roles, canaries and labelled triplets; no real identity, real cache or live domain.'},

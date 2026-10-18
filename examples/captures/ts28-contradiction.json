@@ -1,0 +1,110 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS28-A01",
+    "TS28-A02"
+  ],
+  "targets": [
+    {
+      "url": "https://synthetic.invalid/scope/TS28",
+      "observed_at": "2026-10-14T12:00:00Z",
+      "context": {
+        "id": "synthetic",
+        "tool": "Authored fixture",
+        "tool_version": "1",
+        "bounds": "Supplied fictional population only"
+      },
+      "intent": {
+        "declared_at": "2026-10-14T09:00:00Z",
+        "crawler": "Authored-TSEP/1",
+        "evidence_checks": {
+          "TS28": {
+            "reader": "render-transport-v1",
+            "scope_reason": "SYNTHETIC finite selected population, no site audit",
+            "items": [
+              {
+                "id": "page",
+                "page": "https://synthetic.invalid/page",
+                "state": "normal",
+                "structure": {
+                  "title": "Fictional page",
+                  "lang": "fr",
+                  "main_id": "main",
+                  "headings": [
+                    {
+                      "id": "heading",
+                      "tag": "h1",
+                      "text": "Fictional page"
+                    }
+                  ],
+                  "links": [
+                    {
+                      "id": "next",
+                      "text": "Next",
+                      "href": "https://synthetic.invalid/next"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      },
+      "evidence_checks": {
+        "TS28": {
+          "synthetic": true,
+          "records": [
+            {
+              "id": "normal",
+              "kind": "render",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJhY3Rpb24iOiJkaXJlY3QiLCJicm93c2VyIjp7Im5hbWUiOiJGaWN0aW9uYWwgYnJvd3NlciIsInZlcnNpb24iOiIxIn0sImNhcHR1cmVkX2F0IjoiMjAyNi0xMC0xNFQxMDowMDowMFoiLCJjb21wbGV0ZSI6dHJ1ZSwiY29uZGl0aW9uIjoibm9ybWFsIiwiZmFpbHVyZXMiOltdLCJmb3JtYXQiOiJicm93c2VyLXN0YXRlLXYxIiwiZnJhbWVzIjowLCJodG1sIjoiPCFkb2N0eXBlIGh0bWw+PGh0bWwgbGFuZz1cImZyXCI+PGhlYWQ+PHRpdGxlPkZpY3Rpb25hbCBwYWdlPC90aXRsZT48bWV0YSBuYW1lPVwiZGVzY3JpcHRpb25cIiBjb250ZW50PVwiRmljdGlvbmFsIGRlc2NyaXB0aW9uXCI+PG1ldGEgcHJvcGVydHk9XCJvZzp0aXRsZVwiIGNvbnRlbnQ9XCJGaWN0aW9uYWwgcGFnZVwiPjxtZXRhIHByb3BlcnR5PVwib2c6ZGVzY3JpcHRpb25cIiBjb250ZW50PVwiRmljdGlvbmFsIGRlc2NyaXB0aW9uXCI+PGxpbmsgcmVsPVwiY2Fub25pY2FsXCIgaHJlZj1cImh0dHBzOi8vc3ludGhldGljLmludmFsaWQvcGFnZVwiPjwvaGVhZD48Ym9keT48bWFpbiBpZD1cIm1haW5cIj48aDEgaWQ9XCJoZWFkaW5nXCI+RmljdGlvbmFsIHBhZ2U8L2gxPjxwIGlkPVwiY29udGVudFwiPkZpY3Rpb25hbCBlc3NlbnRpYWwgY29udGVudDwvcD48YSBpZD1cIm5leHRcIiBocmVmPVwiaHR0cHM6Ly9zeW50aGV0aWMuaW52YWxpZC9uZXh0XCI+TmV4dDwvYT48L21haW4+PC9ib2R5PjwvaHRtbD4iLCJwYWdlX3VybCI6Imh0dHBzOi8vc3ludGhldGljLmludmFsaWQvcGFnZSIsInNlcXVlbmNlIjowLCJzZXNzaW9uIjoiZmljdGlvbmFsLXNlc3Npb24iLCJzaGFkb3dfcm9vdHMiOjAsInNvdXJjZV9kb2N1bWVudCI6InNvdXJjZSIsInNvdXJjZV9odHRwX3NoYTI1NiI6IjcwN2VkN2UxN2UzOGE3NWI2MjcwYjhhMGNlYWM1YjZhNzk1MDRmNmY2NzMwN2JhMDBiODdhYjQ2MTcwZTNiMGUiLCJzdGVwcyI6WyJGaWN0aW9uYWwgZGlyZWN0IGFuZCBzdXBwbGllZCBzZXJpYWxpemF0aW9uIl19",
+                "sha256": "71e56d1be0d474789d3da31eae93e1ea017349ae383ee0b8fca2f1e8e755a53f",
+                "complete": true,
+                "encoding": "identity"
+              }
+            }
+          ],
+          "documents": [
+            {
+              "url": "https://synthetic.invalid/page",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "http": [
+                {
+                  "url": "https://synthetic.invalid/page",
+                  "request": "GET /page HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 490\r\nContent-Security-Policy: default-src 'self'\r\nStrict-Transport-Security: max-age=3600; includeSubDomains\r\n\r\n<!doctype html><html lang=\"fr\"><head><title>Fictional page</title><meta name=\"description\" content=\"Fictional description\"><meta property=\"og:title\" content=\"Fictional page\"><meta property=\"og:description\" content=\"Fictional description\"><link rel=\"canonical\" href=\"https://synthetic.invalid/page\"></head><body><main id=\"main\"><h1 id=\"heading\">Fictional page</h1><p id=\"content\">Fictional essential content</p><a id=\"next\" href=\"https://synthetic.invalid/next\">Next</a></main></body></html>",
+                  "complete": true
+                }
+              ],
+              "id": "source"
+            }
+          ],
+          "reviews": [
+            {
+              "subject": "TS28-A01:page",
+              "reviewer": "Fictional reviewer",
+              "reason": "Authored review of supplied records, complete bounded scope and editorial intent; not a real judgment.",
+              "judgment": "contradicted",
+              "reviewed_at": "2026-10-14T11:00:00Z",
+              "provenance": "synthetic-exercise",
+              "binding_sha256": "e3d386b426087018748bedd51fdc088ea43f8b1414fcd23ad5511ab5c82a1c73"
+            },
+            {
+              "subject": "TS28-A02:page",
+              "reviewer": "Fictional reviewer",
+              "reason": "Authored review of supplied records, complete bounded scope and editorial intent; not a real judgment.",
+              "judgment": "supported",
+              "reviewed_at": "2026-10-14T11:00:00Z",
+              "provenance": "synthetic-exercise",
+              "binding_sha256": "e3d386b426087018748bedd51fdc088ea43f8b1414fcd23ad5511ab5c82a1c73"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

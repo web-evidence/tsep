@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.3 — Controls
+# TSEP 0.3.0-draft.4 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -1820,6 +1820,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
 
+### TS26-A01 — Resource access and native policies
+
+`TSEP@0.3.0-draft.4:TS26-A01`
+
+**Required inputs**: http, robots, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS26 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** For each selected critical resource compare direct HTTP200, same-origin robots and intersection of HTTP CSP policies from the HTTPS document. Retain complete source to exclude unqualified meta CSP.
+
+**Acceptance.** A qualified HTTP error, robots denial or CSP denial fails independently of other gaps.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, robots, html, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Absent inventory, missing robots, unsupported CSP directive, nonce, meta CSP, ambiguous source or absent review: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS26-A02 — Traffic and console attributed to rendering
+
+`TSEP@0.3.0-draft.4:TS26-A02`
+
+**Required inputs**: render, http, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS26 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Read a supplied bounded HAR export, bind its document response to native HTTP bytes, then check every critical resource. Retain dated HAR-bound console and criticality review.
+
+**Acceptance.** Selected resources have2xx responses without supplied network error. Unclassified console errors remain NT; native network failure remains NC.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: render, http, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Incomplete HAR, omitted body, unattributed context/session, missing console or unqualified error: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
 ## TS27 — SPA states and routes produce shareable URLs and consistent server responses.
 
 **Severity**: major. **Unit**: route-set.
@@ -1843,6 +1891,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript](https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript)
+
+### TS27-A01 — Attributed routes and history
+
+`TSEP@0.3.0-draft.4:TS27-A01`
+
+**Required inputs**: http, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS27 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Check four supplied states in direct, refresh, back, forward order: session, sequence, time, URL, server-response binding and status.
+
+**Acceptance.** Every state retains its route URL and intended200 source. A qualified conflicting URL or status fails.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Missing/ambiguous state, action, binding, session or order; uncollected frame/shadow surface: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS27-A02 — Content and canonical in each SPA state
+
+`TSEP@0.3.0-draft.4:TS27-A02`
+
+**Required inputs**: http, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS27 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Within the same qualified states compare literal IDs, essential text and link destinations with the plan, then one explicit head canonical. Require operation review.
+
+**Acceptance.** States retain their intended content and signals. Absence on a complete surface, differing content or conflicting canonical fails.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Partial state, hidden context, ambiguous ID, differing HTML hypotheses or absent review: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
 
 ## TS28 — The document exposes an understandable HTML structure independently of appearance.
 
@@ -1868,6 +1964,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://html.spec.whatwg.org/](https://html.spec.whatwg.org/)
 
+### TS28-A01 — Native source and supplied DOM structure
+
+`TSEP@0.3.0-draft.4:TS28-A01`
+
+**Required inputs**: html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS28 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Compare source and supplied serialization: title, language, declared main landmark, ordered headings, links and labels. H1 count follows the plan.
+
+**Acceptance.** Structures agree with the prior plan; qualified structural conflicts fail.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Absent source/DOM, undeclared language, ambiguous tree or unqualified visual context: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS28-A02 — Meaning and navigation review
+
+`TSEP@0.3.0-draft.4:TS28-A02`
+
+**Required inputs**: html, render, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicability.** Prior finite TS28 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Reuse attributed structural facts and require a distinct bound review of title/language adequacy, hierarchy, main subject, navigation and labels in declared use.
+
+**Acceptance.** Facts are qualified and a reasoned judgment supports meaning and use; evidenced contradiction fails.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Parser output alone, an unbound review or insufficient originals are not enough: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
 ## TS29 — Essential content remains available when scripts or styles fail.
 
 **Severity**: major. **Unit**: page.
@@ -1892,6 +2036,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
 
+### TS29-A01 — Blocked-script scenario and tested fallback
+
+`TSEP@0.3.0-draft.4:TS29-A01`
+
+**Required inputs**: html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS29 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Read source and a supplied state explicitly marked scripts-blocked; compare every essential content/link or the prior fallback within that same state. Require action and operation review.
+
+**Acceptance.** All main expectations or all tested fallback expectations are supported. Qualified failures of both main and fallback fail; text alone does not establish function.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Normal condition, partial capture, merely described fallback, hidden context or missing review: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS29-A02 — Degraded-style scenario and tested fallback
+
+`TSEP@0.3.0-draft.4:TS29-A02`
+
+**Required inputs**: html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS29 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Apply the same examination in an explicitly styles-degraded state with action observations and a bound review. Script disabling does not qualify this scenario.
+
+**Acceptance.** Essential functions or tested fallback remain supported in this distinct scenario.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Missing degraded-style scenario, fallback evidence or attributed judgment: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
 ## TS30 — Essential metadata is unique, visible and consistent with the page.
 
 **Severity**: major. **Unit**: page.
@@ -1915,6 +2107,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/appearance/title-link](https://developers.google.com/search/docs/appearance/title-link)
+
+### TS30-A01 — Metadata and duplicates in the declared corpus
+
+`TSEP@0.3.0-draft.4:TS30-A01`
+
+**Required inputs**: html, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Read native title, description, H1, og:title, og:description for each page. Compare prior values and duplicates among selected pages; require a prior decision for each intentional duplicate.
+
+**Acceptance.** Values and multiplicity agree; each observed duplicate has one reasoned decision. The corpus is limited to supplied pages.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, content, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Missing source, omitted field policy, ambiguous parse or missing review: NT. null permits only an explicitly absent optional field.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS30-A02 — Editorial coherence and main content
+
+`TSEP@0.3.0-draft.4:TS30-A02`
+
+**Required inputs**: html, content, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicability.** Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Reconcile native metadata and identified main content; require a distinct review of promise, meaning and relevant visibility.
+
+**Acceptance.** Facts agree with the plan and the bound editorial review supports them; qualified native or human contradiction fails.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, content, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Unqualified required source/rendering, hidden content, meaning without review or unbound judgment: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
 
 ## TS31 — JSON-LD describes entities that are visible and appropriate to the content.
 
@@ -2491,6 +2731,78 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://www.rfc-editor.org/rfc/rfc6797](https://www.rfc-editor.org/rfc/rfc6797)
+
+### TS37-A01 — Certificates, host, time and supplied trust
+
+`TSEP@0.3.0-draft.4:TS37-A01`
+
+**Required inputs**: tls, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Recheck supplied public PEMs with offline OpenSSL3: chain, server purpose, DNS host, supplied time and explicit supplied roots. Disable implicit stores; retain version and diagnostic.
+
+**Acceptance.** Profile verification succeeds under supplied roots. A supported X509 error, including expiry or wrong host, fails.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: tls, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Missing OpenSSL3, unusable PEM, misattributed capture, absent roots or unqualified error code: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS37-A02 — HTTPS redirects and HSTS decision
+
+`TSEP@0.3.0-draft.4:TS37-A02`
+
+**Required inputs**: http, configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Follow the supplied HTTP chain to HTTPS without downgrade, check direct200 response, compare HSTS configuration and header with planned enablement, max-age, subdomains, scope, owner and rationale.
+
+**Acceptance.** Chains and HSTS decision agree; HSTS may be explicitly disabled. No preload requirement.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, configuration, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Missing chain/configuration, ambiguous header, absent scope or decision: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS37-A03 — Embedded resources and mixed traffic in scope
+
+`TSEP@0.3.0-draft.4:TS37-A03`
+
+**Required inputs**: http, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Bind HAR and console to the HTTPS document; inspect observed requests and source embedded URLs. The strict profile requires HTTPS for these resources even when a browser might upgrade them.
+
+**Acceptance.** No HTTP URL observed on these surfaces; dynamic-coverage review retained. An observed native HTTP URL fails despite another gap.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Truncated HAR, missing body, unqualified CSS/srcset, incomplete context or absent review: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
 
 ## TS38 — Host, case and trailing-slash variants converge on one rule.
 

@@ -1,0 +1,157 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS37-A01",
+    "TS37-A02",
+    "TS37-A03"
+  ],
+  "targets": [
+    {
+      "url": "https://synthetic.invalid/scope/TS37",
+      "observed_at": "2026-10-14T12:00:00Z",
+      "context": {
+        "id": "synthetic",
+        "tool": "Authored fixture",
+        "tool_version": "1",
+        "bounds": "Supplied fictional population only"
+      },
+      "intent": {
+        "declared_at": "2026-10-14T09:00:00Z",
+        "crawler": "Authored-TSEP/1",
+        "evidence_checks": {
+          "TS37": {
+            "reader": "render-transport-v1",
+            "scope_reason": "SYNTHETIC finite selected population, no site audit",
+            "items": [
+              {
+                "id": "host",
+                "host": "synthetic.invalid",
+                "page": "https://synthetic.invalid/page",
+                "http_variant": "http://synthetic.invalid/page",
+                "certificates": "certificates",
+                "configuration": "config",
+                "hsts": {
+                  "enabled": true,
+                  "max_age": 3600,
+                  "include_subdomains": true,
+                  "scope": "synthetic.invalid and declared subdomains",
+                  "reason": "Synthetic transport policy",
+                  "owner": "Fictional owner"
+                },
+                "har": "network",
+                "console": "console",
+                "page_ref": "p",
+                "complete_capture": true,
+                "capture_reason": "Fictional single page/session; bounded full exported traffic and console"
+              }
+            ]
+          }
+        }
+      },
+      "evidence_checks": {
+        "TS37": {
+          "synthetic": true,
+          "records": [
+            {
+              "id": "certificates",
+              "kind": "tls",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJjYXB0dXJlZF9hdCI6IjIwMjYtMTAtMTRUMTA6MDA6MDBaIiwiZm9ybWF0IjoidGxzLWNlcnRpZmljYXRlcy12MSIsImhvc3QiOiJzeW50aGV0aWMuaW52YWxpZCIsImludGVybWVkaWF0ZXNfcGVtIjpbXSwibGVhZl9wZW0iOiItLS0tLUJFR0lOIENFUlRJRklDQVRFLS0tLS1cbk1JSUREVENDQWZXZ0F3SUJBZ0lEQ3lPU01BMEdDU3FHU0liM0RRRUJDd1VBTURFeEx6QXRCZ05WQkFNTUpsTlpcblRsUklSVlJKUXlCVVUwVlFJRlJGVTFRZ1VrOVBWQ0F0SUU1UFZDQlVVbFZUVkVWRU1CNFhEVEkyTURFd01UQXdcbk1EQXdNRm9YRFRJM01ERXdNVEF3TURBd01Gb3dIREVhTUJnR0ExVUVBd3dSYzNsdWRHaGxkR2xqTG1sdWRtRnNcbmFXUXdnZ0VpTUEwR0NTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDZVI1dnNmZkdCV25vL0lSL1dcbmpaMjBBblVjUU15a0VRNCt6ODNGUWZmNVU4RnFCT01aMFFmK2VZVHE3WXZHZ1ZYVUNDVTJFNHhBSmlWSFoydE9cbnNvK2NIeU04T1lGTkREeFBOa0xCMjRsMVMrOTZpakVZV1ozVXNMWndaOWxlS3dzL1RvZjlzMGJRdHozeTVobGpcblptbFZLalZQNjRJRW5HR3lpd084Qjl6VVk2bzdtT3lUa25VWGNuWDZWRmx3SFdleU16SVhtWmd5WlowN1R3TTlcbnBrK21BdVdCS1AxWkJOLzk0dHdMT3ZqNExvUmdrWVNjdHNvdmhCeFFFeVhBRlZ1Rng5U3FacVF2bTJHazV4NGxcbm4zTkRjTmxDR0M0d01rYUFuRFhDQVZXSGJFdXFYZ01pYk81R2srdzRwL3p6eEx1U0xhVU95REJERzFLNGdMTDFcbmFXQVZBZ01CQUFHalF6QkJNQXdHQTFVZEV3RUIvd1FDTUFBd0hBWURWUjBSQkJVd0U0SVJjM2x1ZEdobGRHbGpcbkxtbHVkbUZzYVdRd0V3WURWUjBsQkF3d0NnWUlLd1lCQlFVSEF3RXdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJcbkFKVU94amo5K2cxU2wzZVBINFllK1g4dXFCNjRNSlM4V2o3N1pNdkpxWk5CWXFpSGd1SEhPa3lxOGFYWWhnZEZcbnVDWThDWW1UTTBEaW1KcWVnR1prRWlFcWxPY0MxZFFUVVQyNVZuZHlWUTU1RjNqdFFiZWV0aC8rQVluUndObEtcbm5OSVJ3SGVaNUk5SksxZ2U4aTdPS0YzdHFRZ09tcEhqK0hTdjhlcG1kdUdGUEVzQTZuditFOVhIbE5XUTV1TnlcbnFvRnhDUXVKcFRZTkN2RzBqYWoydDljdUltcjBESzhuWWdJUVZIVzBPQTRLbWNOTVlVOTJaaUQxM2NWZWxJUUxcbmNwLy8rZjF3WVhjQTRwdnNxWnM5ei9ja25sb0NzdTBKMmx2M0RSRVl0NlJmSGdsYVk0c04xMFJ5U24vcFVvZW5cbmM0NENQcW5obDVCSE54Q2c5c2VsNjgwPVxuLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLVxuIiwidHJ1c3Rfc2NvcGUiOiJTdXBwbGllZCBmaWN0aW9uYWwgcm9vdCBvbmx5OyBub3QgYSBicm93c2VyIHRydXN0IHN0b3JlIiwidHJ1c3Rfc3RvcmUiOiJyb290cyJ9",
+                "sha256": "f4651ff698d58f15ec573608648f71be97a30e6e46605fabaad11cb5f803a1c3",
+                "complete": true,
+                "encoding": "identity"
+              }
+            },
+            {
+              "id": "roots",
+              "kind": "tls",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCVENDQWUyZ0F3SUJBZ0lEQ3lPUk1BMEdDU3FHU0liM0RRRUJDd1VBTURFeEx6QXRCZ05WQkFNTUpsTloKVGxSSVJWUkpReUJVVTBWUUlGUkZVMVFnVWs5UFZDQXRJRTVQVkNCVVVsVlRWRVZFTUI0WERUSTJNREV3TVRBdwpNREF3TUZvWERUSTNNREV3TVRBd01EQXdNRm93TVRFdk1DMEdBMVVFQXd3bVUxbE9WRWhGVkVsRElGUlRSVkFnClZFVlRWQ0JTVDA5VUlDMGdUazlVSUZSU1ZWTlVSVVF3Z2dFaU1BMEdDU3FHU0liM0RRRUJBUVVBQTRJQkR3QXcKZ2dFS0FvSUJBUUMzVTVNSjdEOFRBclFuNkZKak5EMngrR0xENDhXaTc2RlJmV2RIMVMwdEZoRStIQ2FsQXBpUwpmbXVKN0JnbFlPQTdKYmlJY3VwSFZHT0kzeCthVElSekVOUVRieWxpRklRS1RYejZUSmt2RldKV1ZKeGRkeFVwCnJMaGhLanZjak9OejZrOEdrZklVQ2hFMWtUaUxLS1J5M0FnYktFdDcyWEpYNlhLNVF2STBCdGlmQzJYWkx5ejAKZUNmRS9zSlpsYUpnbjZqd1JqRG9rWGhXTEhva1k4aUdTbkxCMVhGM2p4d0FncnJGMERlN040dGlUZGdYQkF0KwpVdWhUNkkvQjd0aWlJMFAydUpCa3RXR0pWbGN5ZW1VaXljc01TWk9aQzlNOE9xM1F1UVZTSGZmaW9yUnlsMUJQCkRTSVFWZk5jQlk4eUVKaHZLWCt0QXpTS1JMVEkzTUpqQWdNQkFBR2pKakFrTUJJR0ExVWRFd0VCL3dRSU1BWUIKQWY4Q0FRQXdEZ1lEVlIwUEFRSC9CQVFEQWdFR01BMEdDU3FHU0liM0RRRUJDd1VBQTRJQkFRQlA2UEpxUjlWdgo4UUdDV0RnaVEvaExYZ2lZUDBheWp5ZDJWZDQ3dlNNV1o2VGprMTVXUkh5UmR2TW9zY0tOdzVtODdNa3ZNcHo2CkgzK25CNTg2ZmhNQVBpZ0ZIZFNMVVN3cmp6aWYwa0NOcmg4N0NJaVVBaG13VkwyVzBxN2duazIrcVNQMnlycmEKOVNkWGpyakovZGp1VlNXSVhRQW5qNmFKMTlKSHlJbzRPZTRSRVlXRlhQL0syT2VYcEIvMk1zRTQvT0lCdFpJUQptajdzUHRlcFYzcnpyaWdNdTgxdU9sR3BSYjZRb1dmVTU4R05nS2hyVnhoMnQrSDg2YnBub0YxSHcwWXkzVFJOCnFRNjhBMUFIODZhdTFCUVEwVHVZbGZUcURwRko3anZpT010RTJ4d2FPWnQxQmlTSkg0RkJSeS9QelhWQTJFNk4KTUptM3Z4Qkp4WEk5Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K",
+                "sha256": "4e2f46d5a457d77990de96661a3b3e379c78fe6b6230fb76f59851d0ff96a964",
+                "complete": true,
+                "encoding": "identity"
+              }
+            },
+            {
+              "id": "config",
+              "kind": "configuration",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJmb3JtYXQiOiJ0cmFuc3BvcnQtcG9saWN5LXYxIiwiaG9zdCI6InN5bnRoZXRpYy5pbnZhbGlkIiwiaHN0cyI6eyJlbmFibGVkIjp0cnVlLCJpbmNsdWRlX3N1YmRvbWFpbnMiOnRydWUsIm1heF9hZ2UiOjM2MDAsIm93bmVyIjoiRmljdGlvbmFsIG93bmVyIiwicmVhc29uIjoiU3ludGhldGljIHRyYW5zcG9ydCBwb2xpY3kiLCJzY29wZSI6InN5bnRoZXRpYy5pbnZhbGlkIGFuZCBkZWNsYXJlZCBzdWJkb21haW5zIn19",
+                "sha256": "e508e424c80d5abba36d3fa9432f998b3f3e74fc41016727b1228a7b9f1d6c27",
+                "complete": true,
+                "encoding": "identity"
+              }
+            },
+            {
+              "id": "network",
+              "kind": "render",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJsb2ciOnsiYnJvd3NlciI6eyJuYW1lIjoiRmljdGlvbmFsIGJyb3dzZXIiLCJ2ZXJzaW9uIjoiMSJ9LCJjcmVhdG9yIjp7Im5hbWUiOiJGaWN0aW9uYWwgZXhwb3J0ZXIiLCJ2ZXJzaW9uIjoiMSJ9LCJlbnRyaWVzIjpbeyJjYWNoZSI6e30sInBhZ2VyZWYiOiJwIiwicmVxdWVzdCI6eyJtZXRob2QiOiJHRVQiLCJ1cmwiOiJodHRwczovL3N5bnRoZXRpYy5pbnZhbGlkL3BhZ2UifSwicmVzcG9uc2UiOnsiY29udGVudCI6eyJtaW1lVHlwZSI6InRleHQvaHRtbCIsInRleHQiOiI8IWRvY3R5cGUgaHRtbD48aHRtbCBsYW5nPVwiZnJcIj48aGVhZD48dGl0bGU+RmljdGlvbmFsIHBhZ2U8L3RpdGxlPjxtZXRhIG5hbWU9XCJkZXNjcmlwdGlvblwiIGNvbnRlbnQ9XCJGaWN0aW9uYWwgZGVzY3JpcHRpb25cIj48bWV0YSBwcm9wZXJ0eT1cIm9nOnRpdGxlXCIgY29udGVudD1cIkZpY3Rpb25hbCBwYWdlXCI+PG1ldGEgcHJvcGVydHk9XCJvZzpkZXNjcmlwdGlvblwiIGNvbnRlbnQ9XCJGaWN0aW9uYWwgZGVzY3JpcHRpb25cIj48bGluayByZWw9XCJjYW5vbmljYWxcIiBocmVmPVwiaHR0cHM6Ly9zeW50aGV0aWMuaW52YWxpZC9wYWdlXCI+PC9oZWFkPjxib2R5PjxtYWluIGlkPVwibWFpblwiPjxoMSBpZD1cImhlYWRpbmdcIj5GaWN0aW9uYWwgcGFnZTwvaDE+PHAgaWQ9XCJjb250ZW50XCI+RmljdGlvbmFsIGVzc2VudGlhbCBjb250ZW50PC9wPjxhIGlkPVwibmV4dFwiIGhyZWY9XCJodHRwczovL3N5bnRoZXRpYy5pbnZhbGlkL25leHRcIj5OZXh0PC9hPjwvbWFpbj48L2JvZHk+PC9odG1sPiJ9LCJzdGF0dXMiOjIwMH0sInN0YXJ0ZWREYXRlVGltZSI6IjIwMjYtMTAtMTRUMTA6MDA6MDBaIiwidGltZSI6MSwidGltaW5ncyI6e319LHsiY2FjaGUiOnt9LCJwYWdlcmVmIjoicCIsInJlcXVlc3QiOnsibWV0aG9kIjoiR0VUIiwidXJsIjoiaHR0cHM6Ly9zeW50aGV0aWMuaW52YWxpZC9hcHAuanMifSwicmVzcG9uc2UiOnsiY29udGVudCI6eyJtaW1lVHlwZSI6InRleHQvamF2YXNjcmlwdCIsInRleHQiOiIvKiBGaWN0aW9uYWwgc2NyaXB0ICovIn0sInN0YXR1cyI6MjAwfSwic3RhcnRlZERhdGVUaW1lIjoiMjAyNi0xMC0xNFQxMDowMDowMFoiLCJ0aW1lIjoxLCJ0aW1pbmdzIjp7fX1dLCJwYWdlcyI6W3siaWQiOiJwIiwicGFnZVRpbWluZ3MiOnt9LCJzdGFydGVkRGF0ZVRpbWUiOiIyMDI2LTEwLTE0VDEwOjAwOjAwWiIsInRpdGxlIjoiRmljdGlvbmFsIHBhZ2UifV0sInZlcnNpb24iOiIxLjIifX0=",
+                "sha256": "98857724f01929e9e37916e82cce8f123be28f54dd6e24876b6a7b3f5e2c9a54",
+                "complete": true,
+                "encoding": "identity"
+              }
+            },
+            {
+              "id": "console",
+              "kind": "render",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJjb21wbGV0ZSI6dHJ1ZSwiZXZlbnRzIjpbXSwiZm9ybWF0IjoiYnJvd3Nlci1jb25zb2xlLXYxIiwiaGFyX3NoYTI1NiI6Ijk4ODU3NzI0ZjAxOTI5ZTllMzc5MTZlODJjY2U4ZjEyM2JlMjhmNTRkZDZlMjQ4NzZiNmE3YjNmNWUyYzlhNTQiLCJwYWdlX3VybCI6Imh0dHBzOi8vc3ludGhldGljLmludmFsaWQvcGFnZSJ9",
+                "sha256": "77f493090f07f39c908d5048a8246932c9899f22195c48a90e6be0bbe80aeb33",
+                "complete": true,
+                "encoding": "identity"
+              }
+            }
+          ],
+          "documents": [
+            {
+              "url": "https://synthetic.invalid/page",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "http": [
+                {
+                  "url": "https://synthetic.invalid/page",
+                  "request": "GET /page HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 490\r\nContent-Security-Policy: default-src 'self'\r\nStrict-Transport-Security: max-age=3600; includeSubDomains\r\n\r\n<!doctype html><html lang=\"fr\"><head><title>Fictional page</title><meta name=\"description\" content=\"Fictional description\"><meta property=\"og:title\" content=\"Fictional page\"><meta property=\"og:description\" content=\"Fictional description\"><link rel=\"canonical\" href=\"https://synthetic.invalid/page\"></head><body><main id=\"main\"><h1 id=\"heading\">Fictional page</h1><p id=\"content\">Fictional essential content</p><a id=\"next\" href=\"https://synthetic.invalid/next\">Next</a></main></body></html>",
+                  "complete": true
+                }
+              ],
+              "id": "source"
+            },
+            {
+              "url": "http://synthetic.invalid/page",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "http": [
+                {
+                  "url": "http://synthetic.invalid/page",
+                  "request": "GET /page HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 301 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 490\r\nLocation: https://synthetic.invalid/page\r\n\r\n<!doctype html><html lang=\"fr\"><head><title>Fictional page</title><meta name=\"description\" content=\"Fictional description\"><meta property=\"og:title\" content=\"Fictional page\"><meta property=\"og:description\" content=\"Fictional description\"><link rel=\"canonical\" href=\"https://synthetic.invalid/page\"></head><body><main id=\"main\"><h1 id=\"heading\">Fictional page</h1><p id=\"content\">Fictional essential content</p><a id=\"next\" href=\"https://synthetic.invalid/next\">Next</a></main></body></html>",
+                  "complete": true
+                },
+                {
+                  "url": "https://synthetic.invalid/page",
+                  "request": "GET /page HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 490\r\nContent-Security-Policy: default-src 'self'\r\nStrict-Transport-Security: max-age=3600; includeSubDomains\r\n\r\n<!doctype html><html lang=\"fr\"><head><title>Fictional page</title><meta name=\"description\" content=\"Fictional description\"><meta property=\"og:title\" content=\"Fictional page\"><meta property=\"og:description\" content=\"Fictional description\"><link rel=\"canonical\" href=\"https://synthetic.invalid/page\"></head><body><main id=\"main\"><h1 id=\"heading\">Fictional page</h1><p id=\"content\">Fictional essential content</p><a id=\"next\" href=\"https://synthetic.invalid/next\">Next</a></main></body></html>",
+                  "complete": true
+                }
+              ],
+              "id": "http://synthetic.invalid/page"
+            }
+          ],
+          "reviews": []
+        }
+      }
+    }
+  ]
+}

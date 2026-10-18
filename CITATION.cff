@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "Cite this software with its draft version and exact Git commit; retain the archive checksum when using a distribution."
 title: "Technical SEO Evidence Protocol (TSEP)"
-version: "0.3.0-draft.3"
+version: "0.3.0-draft.4"
 type: software
 repository-code: "https://github.com/web-evidence/tsep"
 authors:

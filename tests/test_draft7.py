@@ -136,6 +136,34 @@ EXTERNAL_CASE_IDS += (
     'indexing-locale-v1-TS40-review-contradiction-A02',
 )
 
+EXTERNAL_CASE_IDS += (
+    'render-transport-v1-TS26-complete',
+    'render-transport-v1-TS26-missing-plan',
+    'render-transport-v1-TS26-review-contradiction-A01',
+    'render-transport-v1-TS26-review-contradiction-A02',
+    'render-transport-v1-TS27-complete',
+    'render-transport-v1-TS27-missing-plan',
+    'render-transport-v1-TS27-review-contradiction-A01',
+    'render-transport-v1-TS27-review-contradiction-A02',
+    'render-transport-v1-TS28-complete',
+    'render-transport-v1-TS28-missing-plan',
+    'render-transport-v1-TS28-review-contradiction-A01',
+    'render-transport-v1-TS28-review-contradiction-A02',
+    'render-transport-v1-TS29-complete',
+    'render-transport-v1-TS29-missing-plan',
+    'render-transport-v1-TS29-review-contradiction-A01',
+    'render-transport-v1-TS29-review-contradiction-A02',
+    'render-transport-v1-TS30-complete',
+    'render-transport-v1-TS30-missing-plan',
+    'render-transport-v1-TS30-review-contradiction-A01',
+    'render-transport-v1-TS30-review-contradiction-A02',
+    'render-transport-v1-TS37-complete',
+    'render-transport-v1-TS37-missing-plan',
+    'render-transport-v1-TS37-review-contradiction-A01',
+    'render-transport-v1-TS37-review-contradiction-A02',
+    'render-transport-v1-TS37-review-contradiction-A03',
+)
+
 
 class Draft7(unittest.TestCase):
     def test_soft404_and_inert_markers_cannot_pass_adapter_gate(self):

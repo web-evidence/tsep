@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.3 — Contrôles
+# TSEP 0.3.0-draft.4 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -1820,6 +1820,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
 
+### TS26-A01 — Accès des ressources et politiques natives
+
+`TSEP@0.3.0-draft.4:TS26-A01`
+
+**Entrées requises**: http, robots, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS26, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Sur chaque ressource critique sélectionnée, comparer HTTP direct200, robots du même origin et intersection des CSP HTTP du document HTTPS. Relever la source complète pour exclure une CSP meta non qualifiée.
+
+**Attendus.** Une erreur HTTP, un refus robots ou un refus CSP qualifié échoue indépendamment des autres lacunes.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, robots, html, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Inventaire absent, robots non fourni, directive CSP non prise en charge, nonce, meta CSP, source ambiguë ou revue absente : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS26-A02 — Trafic et console attribués au rendu
+
+`TSEP@0.3.0-draft.4:TS26-A02`
+
+**Entrées requises**: render, http, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS26, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Lire un export HAR borné fourni, relier la réponse du document aux octets HTTP, puis vérifier chaque ressource critique. Conserver la console datée liée au HAR et la revue de criticité.
+
+**Attendus.** Les ressources sélectionnées ont une réponse2xx sans erreur réseau fournie. Une erreur console sans classification qualifiée reste NT ; un échec réseau natif reste NC.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : render, http, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** HAR incomplet, corps absent, contexte/session non attribué, console absente ou erreur non qualifiée : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
 ## TS27 — Les états et routes SPA produisent des URL partageables et des réponses serveur cohérentes.
 
 **Sévérité**: major. **Unité**: route-set.
@@ -1843,6 +1891,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript](https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript)
+
+### TS27-A01 — Routes et historique attribués
+
+`TSEP@0.3.0-draft.4:TS27-A01`
+
+**Entrées requises**: http, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS27, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Vérifier quatre états fournis dans l’ordre direct, actualisation, retour, avance : session, séquence, date, URL, liaison à la réponse serveur et statut.
+
+**Attendus.** Chaque état conserve l’URL de route et sa source200 prévue. Une URL ou un statut contraire qualifié échoue.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** État, action, liaison, session ou ordre absent/ambigu ; surface frame/shadow non collectée : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS27-A02 — Contenu et canonical par état SPA
+
+`TSEP@0.3.0-draft.4:TS27-A02`
+
+**Entrées requises**: http, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS27, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Dans les mêmes états qualifiés, comparer les identifiants littéraux, textes essentiels et destinations de liens au plan, puis une canonical explicite dans head. Exiger la revue de fonctionnement.
+
+**Attendus.** Les états conservent contenus et signaux propres. Absence sur surface complète, contenu divergent ou canonical contraire échoue.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** État partiel, contexte masqué, ID ambigu, hypothèses HTML divergentes ou revue absente : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
 
 ## TS28 — Le document expose une structure HTML compréhensible sans dépendre de son apparence.
 
@@ -1868,6 +1964,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://html.spec.whatwg.org/](https://html.spec.whatwg.org/)
 
+### TS28-A01 — Structure native et structure DOM fournie
+
+`TSEP@0.3.0-draft.4:TS28-A01`
+
+**Entrées requises**: html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS28, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Comparer dans la source et la sérialisation fournie : titre, langue, main déclaré, liste ordonnée des titres, liens et libellés. Le nombre de H1 est celui du plan.
+
+**Attendus.** Les structures correspondent au plan préalable ; divergences structurelles qualifiées échouent.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Source/DOM absent, langue non déclarée, arbre ambigu ou contexte visuel non qualifié : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS28-A02 — Revue du sens et de la navigation
+
+`TSEP@0.3.0-draft.4:TS28-A02`
+
+**Entrées requises**: html, render, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicabilité.** Population finie préalable de TS28, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Reprendre les faits structurels attribués et exiger une revue distincte liée : adéquation du titre et de la langue, hiérarchie, sujet principal, navigation et libellés dans l’usage déclaré.
+
+**Attendus.** Les faits sont qualifiés et le jugement motivé soutient le sens et l’usage ; contradiction étayée échoue.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Le parseur seul, une revue sans liaison ou des originaux insuffisants ne suffisent pas : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
 ## TS29 — Les contenus essentiels restent disponibles lorsque scripts ou styles échouent.
 
 **Sévérité**: major. **Unité**: page.
@@ -1892,6 +2036,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
 
+### TS29-A01 — Scénario scripts bloqués et repli testé
+
+`TSEP@0.3.0-draft.4:TS29-A01`
+
+**Entrées requises**: html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS29, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Lire la source et un état fourni explicitement scripts-blocked ; comparer chaque contenu/lien essentiel, ou le repli prédéclaré dans ce même état. Exiger la revue des actions et du fonctionnement.
+
+**Attendus.** Tous les attendus principaux ou tous ceux du repli testé sont étayés. Un échec principal et du repli qualifiés échoue ; aucune fonction n’est déduite du texte seul.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Condition normale, capture partielle, repli seulement décrit, contexte masqué ou revue manquante : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS29-A02 — Scénario styles dégradés et repli testé
+
+`TSEP@0.3.0-draft.4:TS29-A02`
+
+**Entrées requises**: html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS29, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Appliquer le même examen dans un état explicitement styles-degraded, avec observations d’actions et revue liée. Ne pas assimiler la désactivation des scripts à ce scénario.
+
+**Attendus.** Les fonctions essentielles ou le repli testé restent étayés dans ce scénario distinct.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Absence de scénario styles dégradés, preuve de repli ou jugement attribué : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
 ## TS30 — Les métadonnées essentielles sont uniques, visibles et cohérentes avec la page.
 
 **Sévérité**: major. **Unité**: page.
@@ -1915,6 +2107,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/appearance/title-link](https://developers.google.com/search/docs/appearance/title-link)
+
+### TS30-A01 — Métadonnées et doublons du corpus déclaré
+
+`TSEP@0.3.0-draft.4:TS30-A01`
+
+**Entrées requises**: html, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Lire title, description, H1, og:title, og:description natifs par page. Comparer aux valeurs prévues puis les doublons entre pages sélectionnées ; exiger une décision préalable pour chaque doublon intentionnel.
+
+**Attendus.** Valeurs et multiplicité concordent ; chaque doublon observé possède une décision motivée unique. Le corpus ne dépasse pas les pages fournies.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, content, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Source absente, politique de champ omise, parse ambigu ou revue manquante : NT. null autorise seulement un champ facultatif explicitement absent.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS30-A02 — Cohérence éditoriale et contenu principal
+
+`TSEP@0.3.0-draft.4:TS30-A02`
+
+**Entrées requises**: html, content, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicabilité.** Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Rapprocher les métadonnées natives et le contenu principal identifié ; exiger une revue distincte de la promesse, du sens et de la visibilité pertinente.
+
+**Attendus.** Les faits concordent avec le plan et la revue éditoriale liée les soutient ; une contradiction native ou humaine qualifiée échoue.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, content, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Source/rendu nécessaire non qualifié, contenu masqué, sens sans revue ou jugement non lié : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
 
 ## TS31 — Le JSON-LD décrit des entités visibles et appropriées au contenu.
 
@@ -2491,6 +2731,78 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://www.rfc-editor.org/rfc/rfc6797](https://www.rfc-editor.org/rfc/rfc6797)
+
+### TS37-A01 — Certificats, hôte, date et confiance fournie
+
+`TSEP@0.3.0-draft.4:TS37-A01`
+
+**Entrées requises**: tls, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Relire les PEM publics fournis avec OpenSSL3 hors réseau : chaîne, usage serveur, hôte DNS, heure fournie et racines explicitement fournies. Désactiver magasins implicites ; conserver version et diagnostic.
+
+**Attendus.** La vérification du profil réussit sous les racines fournies. Une erreur X509 prise en charge, dont expiration ou mauvais hôte, échoue.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : tls, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** OpenSSL3 absent, PEM inutilisable, capture mal attribuée, racines absentes ou code d’erreur non qualifié : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS37-A02 — Redirections HTTPS et décision HSTS
+
+`TSEP@0.3.0-draft.4:TS37-A02`
+
+**Entrées requises**: http, configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Suivre la chaîne HTTP fournie vers HTTPS sans rétrogradation, vérifier la réponse directe200, comparer configuration HSTS et en-tête au plan : activation, max-age, sous-domaines, portée, propriétaire, motif.
+
+**Attendus.** Chaînes et décision HSTS concordent ; HSTS peut être désactivé explicitement. Aucun preload imposé.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, configuration, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Chaîne/configuration manquante, en-tête ambigu, portée ou décision absente : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS37-A03 — Sous-ressources et trafic mixte du périmètre
+
+`TSEP@0.3.0-draft.4:TS37-A03`
+
+**Entrées requises**: http, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Relier HAR et console au document HTTPS ; examiner les requêtes observées et les URL intégrées de la source. Le profil strict exige HTTPS pour ces ressources, même si un navigateur peut les mettre à niveau.
+
+**Attendus.** Aucune URL HTTP observée sur ces surfaces ; revue de la couverture dynamique consignée. Un HTTP natif observé échoue malgré une autre lacune.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** HAR tronqué, corps absent, CSS/srcset non qualifiés, contexte incomplet ou revue absente : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
 
 ## TS38 — Les variantes d’hôte, de casse et de slash convergent vers une règle unique.
 
