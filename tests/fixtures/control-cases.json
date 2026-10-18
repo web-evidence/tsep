@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.2.0-rc.1",
+  "protocol_version": "0.3.0-draft.1",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -7411,6 +7411,310 @@
             "configuration",
             "http",
             "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS13-qualified",
+      "control_id": "TS13",
+      "description": {
+        "fr": "Population et pages fictives qualifiées, revues fournies.",
+        "en": "Qualified fictional population and pages, supplied reviews."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS13-qualified; no actual capture, reviewer or page change.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference for TS13-qualified; no actual capture, reviewer or page change.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference for TS13-qualified; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS13-qualified; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS13-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Population et pages fictives qualifiées, revues fournies.",
+            "en": "Qualified fictional population and pages, supplied reviews."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS13-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Population et pages fictives qualifiées, revues fournies.",
+            "en": "Qualified fictional population and pages, supplied reviews."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS13-relative-location",
+      "control_id": "TS13",
+      "description": {
+        "fr": "Un loc natif relatif contredit A01 ; qualification des pages incomplète.",
+        "en": "A native relative loc contradicts A01; page qualification is incomplete."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS13-relative-location; no actual capture, reviewer or page change.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference for TS13-relative-location; no actual capture, reviewer or page change.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference for TS13-relative-location; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS13-relative-location; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS13-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Un loc natif relatif contredit A01 ; qualification des pages incomplète.",
+            "en": "A native relative loc contradicts A01; page qualification is incomplete."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS13-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Un loc natif relatif contredit A01 ; qualification des pages incomplète.",
+            "en": "A native relative loc contradicts A01; page qualification is incomplete."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS13-page-contradiction",
+      "control_id": "TS13",
+      "description": {
+        "fr": "Population native qualifiée mais page noindex ou canonical divergente.",
+        "en": "Qualified native population but noindex page or different canonical."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS13-page-contradiction; no actual capture, reviewer or page change.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference for TS13-page-contradiction; no actual capture, reviewer or page change.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference for TS13-page-contradiction; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS13-page-contradiction; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS13-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Population native qualifiée mais page noindex ou canonical divergente.",
+            "en": "Qualified native population but noindex page or different canonical."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS13-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Population native qualifiée mais page noindex ou canonical divergente.",
+            "en": "Qualified native population but noindex page or different canonical."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS13-missing-files",
+      "control_id": "TS13",
+      "description": {
+        "fr": "Fichier ou enfant manquant ; aucune conformité déduite.",
+        "en": "Missing file or child; no inferred conformity."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS13-missing-files; no actual capture, reviewer or page change.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference for TS13-missing-files; no actual capture, reviewer or page change.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference for TS13-missing-files; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS13-missing-files; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS13-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Fichier ou enfant manquant ; aucune conformité déduite.",
+            "en": "Missing file or child; no inferred conformity."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS13-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Fichier ou enfant manquant ; aucune conformité déduite.",
+            "en": "Missing file or child; no inferred conformity."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS14-traceable-significance",
+      "control_id": "TS14",
+      "description": {
+        "fr": "Date concordante et revue significative fournies dans le cas fictif.",
+        "en": "Matching date and supplied significant-change review in the fictional case."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS14-traceable-significance; no actual capture, reviewer or page change.",
+        "change-history": "SYNTHETIC / SYNTHÉTIQUE — authored change-history reference for TS14-traceable-significance; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS14-traceable-significance; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS14-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Date concordante et revue significative fournies dans le cas fictif.",
+            "en": "Matching date and supplied significant-change review in the fictional case."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "change-history",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS14-file-generation-only",
+      "control_id": "TS14",
+      "description": {
+        "fr": "La génération fictive du fichier ne suffit pas comme changement significatif.",
+        "en": "Fictional file generation is insufficient as a significant page change."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS14-file-generation-only; no actual capture, reviewer or page change.",
+        "change-history": "SYNTHETIC / SYNTHÉTIQUE — authored change-history reference for TS14-file-generation-only; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS14-file-generation-only; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS14-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "La génération fictive du fichier ne suffit pas comme changement significatif.",
+            "en": "Fictional file generation is insufficient as a significant page change."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "change-history",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS14-history-missing",
+      "control_id": "TS14",
+      "description": {
+        "fr": "Historique ou revue manquant : date non établie.",
+        "en": "Missing history or review: date not established."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS14-history-missing; no actual capture, reviewer or page change.",
+        "change-history": "SYNTHETIC / SYNTHÉTIQUE — authored change-history reference for TS14-history-missing; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS14-history-missing; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS14-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Historique ou revue manquant : date non établie.",
+            "en": "Missing history or review: date not established."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "change-history",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS14-native-lastmod-absent",
+      "control_id": "TS14",
+      "description": {
+        "fr": "Absence native complète ; exemption atomique, sans C ni NA automatique du contrôle.",
+        "en": "Complete native absence; atomic exemption, without C or automatic whole-control NA."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS14-native-lastmod-absent; no actual capture, reviewer or page change.",
+        "change-history": "SYNTHETIC / SYNTHÉTIQUE — authored change-history reference for TS14-native-lastmod-absent; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS14-native-lastmod-absent; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS14-A01",
+          "outcome": "not-applicable",
+          "reason": {
+            "fr": "Absence native complète ; exemption atomique, sans C ni NA automatique du contrôle.",
+            "en": "Complete native absence; atomic exemption, without C or automatic whole-control NA."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "change-history",
             "intent"
           ]
         }

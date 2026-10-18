@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts, binding_digest
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '45'
+VERSION = '46'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -86,6 +86,7 @@ def source_files():
     modules['conformance/incoming_links.py'] = importlib.import_module('conformance.incoming_links')
     modules['adapters/incoming_links_intake.py'] = importlib.import_module('adapters.incoming_links_intake')
     modules['conformance/sitemap_files.py'] = importlib.import_module('conformance.sitemap_files')
+    modules['conformance/sitemap_quality.py'] = importlib.import_module('conformance.sitemap_quality')
     modules['conformance/sitemap_set.py'] = importlib.import_module('conformance.sitemap_set')
     modules['conformance/structured_validation.py'] = importlib.import_module('conformance.structured_validation')
     modules['conformance/structured_identity.py'] = importlib.import_module('conformance.structured_identity')
@@ -338,6 +339,10 @@ def pieces(target):
             rendered = [{k:d[k] for k in ('url','render') if k in d} for d in documents if isinstance(d, dict) and 'render' in d]
             if rendered:
                 result['render'] = {'incoming_link_documents': rendered, 'other_supplied_evidence': other['render']} if 'render' in other else rendered
+    if 'change_history' in target:
+        result['change-history'] = target['change_history']
+    if 'sitemap_quality' in target.get('intent', {}):
+        result['intent']['sitemap_quality_reviews'] = [d.get('quality_review') for d in target.get('documents', []) if isinstance(d, dict)] if isinstance(target.get('documents'), list) else []
     def retain(kind,key,value):
         prior=result.get(kind)
         result[kind]={key:value}
@@ -524,6 +529,9 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         if 'inspection' in target.get('intent',{}):
             tsep.require((target.get('inspection_synthetic') is True)==(access=='synthetic'), 'Inspection provenance differs from access')
             tsep.require(access in ('synthetic','restricted'), 'Account inspection data requires restricted access')
+            delivery_provenance(target)
+    if set(data['rules']) & {'TS13-A01', 'TS13-A02', 'TS14-A01'}:
+        for target in data['targets']:
             delivery_provenance(target)
     synthetic_dom(evidence_targets)
     for target in evidence_targets:
@@ -712,6 +720,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += ' Population préalable fournie seulement / Prior supplied population only; bounded absence is not a site-wide orphan, authenticated importance, interaction or indexing claim.'
                 if cid == 'TS17':
                     report['results'][i]['reason'] += ' Source et états déclarés seulement / Supplied source and declared states only; no authenticated interaction, acquisition or Google discovery.'
+                if cid in ('TS13', 'TS14'):
+                    report['results'][i]['reason'] += ' Fichiers/pages/historique et revues fournis seulement / Supplied files/pages/history and reviews only; no real-site audit, authenticated significance, indexing or ranking.'
                 if cid == 'TS15':
                     report['results'][i]['reason'] += ' Population déclarée de fichiers fournis seulement / Declared population of supplied files only; no server observation, site completeness or full XSD validity.'
                 if cid == 'TS33':

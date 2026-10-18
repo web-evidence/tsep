@@ -92,6 +92,11 @@ EXTERNAL_CASE_IDS = (
     'ts06-safe-synthetic-matrix', 'ts06-canary-in-403', 'ts06-missing-role-cell',
     'ts03-complete-synthetic-matrix', 'ts03-removed-route-200',
     'ts03-missing-route-observation',
+    'sitemap-quality-v1-complete',
+    'sitemap-quality-v1-relative-location',
+    'sitemap-quality-v1-noindex',
+    'sitemap-quality-v1-missing-file',
+    'sitemap-quality-v1-file-generation-only',
 )
 
 

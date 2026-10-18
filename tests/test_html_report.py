@@ -171,7 +171,7 @@ class HTMLReport(unittest.TestCase):
         self.assertEqual(json.loads(result.stdout)['sha256'], tsep.digest(output))
         self.assertIn('NO_GO', output.read_text())
         receipt = json.loads(result.stdout)
-        self.assertEqual(receipt['renderer_version'], '26')
+        self.assertEqual(receipt['renderer_version'], '27')
         before = output.read_bytes()
         self.assertEqual(subprocess.run(command, capture_output=True).returncode, 64)
         self.assertEqual(output.read_bytes(), before)

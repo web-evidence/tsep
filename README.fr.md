@@ -19,6 +19,10 @@ TS31 : [preuves JSON-LD/contenu](docs/structured-content-evidence.md), [migratio
 
 TS36 : [suivi après changement](docs/release-monitoring.md), [import et clôture](docs/release-monitoring-intake.md), [migration draft.31](docs/migration-draft.31.md). Cas rédigés uniquement ; aucune échéance réelle future accomplie.
 
+**Préparation 0.3.0-draft.1** — TS13/TS14 uniquement ; règles RC1 conservées, 30 contrôles /70 règles. [Contrat](docs/sitemap-quality-evidence.md), [migration](docs/migration-0.3.0-draft.1.md). Exercices synthétiques, aucune publication ni modification applicative.
+
+Base historique :
+
 **Préversion RC1 : 0.2.0-rc.1** — les 44 contrôles TS01–TS44 sont conservés ; 28 contrôles /67 règles atomiques exécutables. TS03 utilise uniquement des captures synthétiques .invalid. [Tableau actualisé des 44 contrôles](docs/control-implementation-status.md), [preuves TS03](docs/ts03-response-evidence.md), [migration](docs/migration-0.2.0-rc.1.md), [dossier d’intégration app](docs/app-integration-roadmap.fr.md). Cette préversion ne vérifie aucun usage réel de site.
 
 TS08 : [inspections natives](docs/inspection-evidence.md) et [acquisition](docs/search-console-acquisition.md) restent disponibles.

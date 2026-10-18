@@ -311,6 +311,8 @@ def decision(report, controls=None):
         summary['incoming_links_interpretation'] = {'fr':'TS16 : population préalable fournie ; absence bornée, aucune page orpheline du site ni importance ou interaction authentifiée.', 'en':'TS16: prior supplied population; bounded absence, no site-wide orphan or authenticated importance/interaction.'}
     if any(r['control_id']=='TS17' for r in report['results']):
         summary['essential_links_interpretation'] = {'fr': 'TS17 : stratégie source et états déclarés par le fournisseur ; aucune interaction, acquisition réelle ou découverte Google authentifiée.', 'en': 'TS17: source strategy and provider-declared states; no authenticated interaction, actual acquisition or Google discovery.'}
+    if any(r['control_id'] in ('TS13', 'TS14') for r in report['results']):
+        summary['sitemap_quality_interpretation'] = {'fr': 'Population déclarée et revues fournies ; aucun audit réel ni historique authentifié, indexation ou classement.', 'en': 'Declared population and supplied reviews; no real audit, authenticated history, indexing or ranking.'}
     if any(r['control_id']=='TS15' for r in report['results']):
         summary['sitemap_files_interpretation'] = {'fr': 'TS15 : fichiers fournis dans une population déclarée ; racines non découvertes, aucun constat du serveur ni exhaustivité du site. Structure minimale seulement, pas validation XSD complète.', 'en': 'TS15: supplied files in a declared population; undiscovered roots, no server observation or site completeness. Minimal structure only, not full XSD validation.'}
     if any(r['control_id']=='TS33' for r in report['results']):

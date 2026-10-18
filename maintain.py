@@ -115,9 +115,10 @@ def check():
                          'Missing bilingual text: ' + control['id'] + '.' + field)
         tsep.require(control['required_inputs'] and control['unit'], 'Missing contract inputs')
         if 'rules' in control:
-            tsep.require(control['id'] in ('TS01', 'TS02', 'TS03', 'TS04', 'TS05', 'TS06', 'TS07', 'TS10', 'TS34', 'TS35', 'TS42', 'TS43', 'TS44', 'TS41', 'TS39', 'TS08', 'TS12', 'TS36', 'TS31', 'TS32', 'TS33', 'TS15', 'TS17', 'TS16', 'TS18', 'TS23', 'TS24', 'TS25') and control['rules'],
+            tsep.require(control['id'] in ('TS01', 'TS02', 'TS03', 'TS04', 'TS05', 'TS06', 'TS07', 'TS10', 'TS34', 'TS35', 'TS42', 'TS43', 'TS44', 'TS41', 'TS39', 'TS08', 'TS12', 'TS36', 'TS31', 'TS32', 'TS33', 'TS15', 'TS17', 'TS16', 'TS18', 'TS23', 'TS24', 'TS25', 'TS13', 'TS14') and control['rules'],
                          'Unexpected atomic rule scope')
-            tsep.require(control['rule_version'] == protocol['version'], 'Stale atomic rule version')
+            expected_version = protocol['version'] if control['id'] in ('TS13', 'TS14') else '0.2.0-rc.1'
+            tsep.require(control['rule_version'] == expected_version, 'Changed preserved atomic rule version')
             tsep.unique([r['id'] for r in control['rules']], 'atomic rule')
             for n, rule in enumerate(control['rules'], 1):
                 tsep.require(rule['id'] == control['id'] + '-A%02d' % n, 'Unstable atomic ID')
@@ -132,7 +133,7 @@ def check():
                 tsep.require(rule['required_inputs'] and
                              set(rule['required_inputs'] + rule['na_inputs']) <= set(known_inputs),
                              'Invalid atomic input kind')
-    tsep.require({c['id'] for c in controls if 'rules' in c} == {'TS01', 'TS02', 'TS03', 'TS04', 'TS05', 'TS06', 'TS07', 'TS10', 'TS34', 'TS35', 'TS42', 'TS43', 'TS44', 'TS41', 'TS39', 'TS08', 'TS12', 'TS36', 'TS31', 'TS32', 'TS33', 'TS15', 'TS17', 'TS16', 'TS18', 'TS23', 'TS24', 'TS25'},
+    tsep.require({c['id'] for c in controls if 'rules' in c} == {'TS01', 'TS02', 'TS03', 'TS04', 'TS05', 'TS06', 'TS07', 'TS10', 'TS34', 'TS35', 'TS42', 'TS43', 'TS44', 'TS41', 'TS39', 'TS08', 'TS12', 'TS36', 'TS31', 'TS32', 'TS33', 'TS15', 'TS17', 'TS16', 'TS18', 'TS23', 'TS24', 'TS25', 'TS13', 'TS14'},
                  'Missing atomic control')
     for upstream in protocol['upstream']:
         tsep.require(tsep.digest(ROOT / upstream['path']) == upstream['sha256'],
@@ -188,7 +189,7 @@ def main():
         protocol = tsep.read_json(tsep.PROTOCOL_PATH)
         protocol['normative_documents'] = [{'path': name, 'sha256': tsep.digest(ROOT / name)}
             for name in ('schemas/report.schema.json', 'docs/contract.en.md', 'docs/contract.fr.md',
-                         'docs/source-directives.md', 'docs/source-canonical.md', 'docs/source-link-policy.md', 'docs/source-link-policy-v2.md', 'docs/http-canonical-context.md', 'docs/preview-intent.md', 'docs/performance-evidence.md', 'docs/agent-usage-policy.md', 'docs/agent-access-evidence.md', 'docs/critical-content-evidence.md', 'docs/release-invariants.md', 'docs/delivery-evidence.md', 'docs/source-markers.md', 'docs/inspection-evidence.md', 'docs/structured-content-evidence.md', 'docs/structured-identity-evidence.md', 'docs/structured-validation-evidence.md', 'docs/sitemap-files-evidence.md', 'docs/essential-links-evidence.md', 'docs/incoming-links-evidence.md', 'docs/graph-reconciliation-evidence.md', 'docs/hreflang-reciprocity-evidence.md', 'docs/xdefault-role-evidence.md', 'docs/critical-presence-evidence.md', 'docs/ts05-indexing-evidence.md', 'docs/ts06-access-evidence.md', 'docs/ts03-response-evidence.md')]
+                         'docs/source-directives.md', 'docs/source-canonical.md', 'docs/source-link-policy.md', 'docs/source-link-policy-v2.md', 'docs/http-canonical-context.md', 'docs/preview-intent.md', 'docs/performance-evidence.md', 'docs/agent-usage-policy.md', 'docs/agent-access-evidence.md', 'docs/critical-content-evidence.md', 'docs/release-invariants.md', 'docs/delivery-evidence.md', 'docs/source-markers.md', 'docs/inspection-evidence.md', 'docs/structured-content-evidence.md', 'docs/structured-identity-evidence.md', 'docs/structured-validation-evidence.md', 'docs/sitemap-files-evidence.md', 'docs/essential-links-evidence.md', 'docs/incoming-links-evidence.md', 'docs/graph-reconciliation-evidence.md', 'docs/hreflang-reciprocity-evidence.md', 'docs/xdefault-role-evidence.md', 'docs/critical-presence-evidence.md', 'docs/ts05-indexing-evidence.md', 'docs/ts06-access-evidence.md', 'docs/ts03-response-evidence.md', 'docs/sitemap-quality-evidence.md')]
         tsep.PROTOCOL_PATH.write_bytes((json.dumps(protocol, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
         for lang in ('fr', 'en'):
             (ROOT / ('docs/controls.' + lang + '.md')).write_bytes(rendered(protocol, lang).encode('utf-8'))

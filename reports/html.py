@@ -13,7 +13,7 @@ from pathlib import Path
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '26'
+VERSION = '27'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
@@ -1046,6 +1046,8 @@ def results(bundle, controls, words, language):
             out += '<div class="notice">' + esc(words['incoming_note']) + '</div>'
         if cid == 'TS17':
             out += '<div class="notice">' + esc(words['essential_links_note']) + '</div>'
+        if cid in ('TS13', 'TS14'):
+            out += '<div class="notice">' + esc('Fichiers/pages/historique fournis ; aucune modification réelle ni indexation authentifiée.' if language == 'fr' else 'Supplied files/pages/history; no authenticated actual change or indexing.') + '</div>'
         if cid == 'TS15':
             out += '<div class="notice">' + esc(words['sitemap_files_note']) + '</div>'
         if cid == 'TS33':

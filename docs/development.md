@@ -1,3 +1,7 @@
+Current preparation / Préparation courante : **0.3.0-draft.1**, branch feat/v030-ts12-18 from RC1 7b60c20. TS13-A01/A02 and TS14-A01 only; all earlier rules/versions retained. [Contract / contrat](sitemap-quality-evidence.md), [migration](migration-0.3.0-draft.1.md). Full local profile: explicit Node24, TSEP_VERIFY_STEP_TIMEOUT=3600; all checks enabled. No application/site update or publication; RC1 finalization independent.
+
+Historical baseline / Base historique :
+
 RC1 candidate / Candidat RC1: TSEP 0.2.0-rc.1; all TS01–TS44 work retained, 28 rule-bearing controls / 67 executable atomic rules. TS03-A01 remains a bounded synthetic .invalid HTTP matrix; 13 dedicated contradictory cases. Draft.47 app r2 import/export/replay receipt is preserved; any RC1 exact-archive receipt is tracked separately against the archive SHA. No real-site or soft-404 classification.
 FR : préversion distincte ; TS03 reste une qualification de mécanisme synthétique. Aucun diagnostic de site réel n’est revendiqué. Voir le tableau des 44 contrôles, la migration RC1 et le dossier d’intégration applicative.
 

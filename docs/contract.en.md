@@ -1,3 +1,5 @@
+0.3.0-draft.1 adds only TS13-A01/A02 and TS14-A01; 30 rule-bearing controls /70 rules. RC1 rules and their versions are retained. [Bilingual contract](sitemap-quality-evidence.md), [migration from RC1](migration-0.3.0-draft.1.md). Insufficient evidence remains NT; synthetic examples, no real audit. The RC1 scope below is historical.
+
 Draft.44 / reader3: supplied TS25 review fields reviewer, assistance and reason are each limited to8192 raw UTF8 bytes before strip or normalization; each entire review object, including additional fields, to32768 compact UTF8 JSON bytes. Admission checks every supplied review, including unused ones. An overrun is technical refusal before publication, never public C or NT; exact originals are not rewritten. Each native rule diagnostic is bounded to4MiB of sorted compact UTF8 JSON, including A01 and error returns. Overflow produces an explicitly incomplete compact diagnostic retaining an independently established fail, otherwise inconclusive; never pass. Transport refuses that marker and also caps the sum of actual serialized TS25 observation artifacts per target at4MiB (UTF8 JSON indent2, trailing newline), for requested rules. Individual maxima do not guarantee that every combination satisfies aggregate bounds. Other controls and the shared validator are unchanged.
 [Migration](migration-draft.44.md).
 
@@ -35,7 +37,7 @@ Draft.30 adds TS12-A01/A02/A03: plan, attributed comparisons and supplied review
 
 Draft.29 adds three TS08 rules: scope/objectives, native inspections and bound reviews/decisions. [Bilingual contract](inspection-evidence.md), [migration](migration-draft.29.md). C qualifies selected-set documentation, never guaranteed indexing.
 
-# Report contract — TSEP 0.2.0-rc.1
+# Report contract — TSEP 0.3.0-draft.1
 
 ## RC1 scope / Release-candidate scope
 
@@ -168,7 +170,7 @@ declarations, although the validator cannot determine that need.
 
 The CLI checks declarations, references and coverage, not the correctness of
 HTTP/HTML interpretation, intent or exemptions. The historical method fixtures have authored reference verdicts. The separate
-[executable conformance suite](conformance.md) interprets raw inputs for sixty-five rules
+[executable conformance suite](conformance.md) interprets raw inputs for seventy rules
 within documented bounds; it does not implement all controls. No C extends to unselected
 controls, an entire site or actual indexing. See [migration and cases](migration-draft.2.md).
 

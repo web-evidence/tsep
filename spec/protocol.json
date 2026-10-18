@@ -1,9 +1,9 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.2.0-rc.1",
+  "version": "0.3.0-draft.1",
   "status": "draft",
-  "date": "2026-10-17",
+  "date": "2026-10-18",
   "languages": [
     "en",
     "fr"
@@ -1813,8 +1813,8 @@
         "en": "Sitemaps used for the URLs in scope."
       },
       "procedure": {
-        "fr": "Parser chaque sitemap, compter les URL et comparer statut, canonique et indexabilité.",
-        "en": "Parse every sitemap, count URLs and compare status, canonical and indexability."
+        "fr": "Appliquer TS13-A01/A02 aux originaux déclarés et aux pages fournies selon le contrat sitemap-quality-v1.",
+        "en": "Apply TS13-A01/A02 to declared originals and supplied pages under sitemap-quality-v1."
       },
       "acceptance": {
         "fr": "Chaque entrée du périmètre est résolue, canonique selon la stratégie et destinée à l’indexation ; exclusions et limites de l’échantillon sont explicites.",
@@ -1829,8 +1829,8 @@
         "en": "Inventory without redirects, 4xx responses, noindex pages or duplicate canonicals."
       },
       "limitations": {
-        "fr": "La présence dans un sitemap ne garantit pas l’indexation.",
-        "en": "Sitemap inclusion does not guarantee indexing."
+        "fr": "Population déclarée de fichiers et pages fournis ; sources HTML bornées et revues non authentifiées. Aucun audit réel, exhaustivité du site, TS15 global, canonical choisie par Google, indexation ou classement déduit.",
+        "en": "Declared supplied file/page population; bounded HTML sources and unauthenticated supplied reviews. No inferred real audit, site completeness, whole TS15 result, Google-selected canonical, indexing or ranking."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -1848,7 +1848,101 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.1",
+      "rules": [
+        {
+          "id": "TS13-A01",
+          "title": {
+            "fr": "Population native et URL absolues qualifiées.",
+            "en": "Qualified native population and absolute URLs."
+          },
+          "automation": "automatic",
+          "required_inputs": [
+            "sitemap",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Entrées de pages dans les fichiers sitemap déclarés au préalable, profil borné supplied-sitemap-quality-v1.",
+            "en": "Page entries in prior declared sitemap files, bounded supplied-sitemap-quality-v1 profile."
+          },
+          "procedure": {
+            "fr": "Rapprocher les racines et enfants déclarés avec les originaux complets ; lire chaque loc de page, conserver occurrences et vérifier son caractère absolu HTTP(S).",
+            "en": "Reconcile declared roots/children with complete originals; read each page loc, retain occurrences and check absolute HTTP(S) syntax."
+          },
+          "acceptance": {
+            "fr": "Pass exige la couverture de tous les fichiers déclarés et tous les loc qualifiés. Un loc relatif, avec fragment, identifiants ou port invalide donne fail ; couverture manquante : inconclusive.",
+            "en": "Pass requires all declared files and qualified locations. A relative loc, fragment, credentials or invalid port fails; missing coverage is inconclusive."
+          },
+          "evidence": {
+            "fr": "Plan, originaux XML/gzip datés et SHA-256, index/position/loc de chaque entrée. Les répétitions littérales restent visibles sans défaut automatique.",
+            "en": "Plan, dated XML/gzip originals and SHA-256, index/position/loc of each entry. Literal repetitions remain visible without automatic failure."
+          },
+          "assumptions": {
+            "fr": "Plan antérieur, URL littérales, fenêtre fournie de24h maximum et intégrité des originaux. Dates, contexte et jugements déclarés, sans authentification.",
+            "en": "Prior plan, literal URLs, supplied window of at most24hours and original integrity. Declared dates, context and judgments, without authentication."
+          },
+          "inconclusive": {
+            "fr": "Plan, document, enfant, liaison, capture ou revue absent, ambigu ou hors profil ; borne dépassée. Conserver tout fail indépendant et les autres inconnues.",
+            "en": "Missing, ambiguous or out-of-profile plan, document, child, binding, capture or review; exceeded bound. Retain every independent fail and other unknowns."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; manque de preuve ne vaut pas NA.",
+            "en": "No atomic exemption; missing evidence is not NA."
+          },
+          "limitations": {
+            "fr": "Population déclarée de fichiers et pages fournis ; sources HTML bornées et revues non authentifiées. Aucun audit réel, exhaustivité du site, TS15 global, canonical choisie par Google, indexation ou classement déduit.",
+            "en": "Declared supplied file/page population; bounded HTML sources and unauthenticated supplied reviews. No inferred real audit, site completeness, whole TS15 result, Google-selected canonical, indexing or ranking."
+          }
+        },
+        {
+          "id": "TS13-A02",
+          "title": {
+            "fr": "Pages référencées cohérentes avec la stratégie fournie.",
+            "en": "Referenced pages consistent with the supplied strategy."
+          },
+          "automation": "semiAuto",
+          "required_inputs": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ],
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Entrées de pages dans les fichiers sitemap déclarés au préalable, profil borné supplied-sitemap-quality-v1.",
+            "en": "Page entries in prior declared sitemap files, bounded supplied-sitemap-quality-v1 profile."
+          },
+          "procedure": {
+            "fr": "Pour chaque URL native distincte, vérifier GET direct200, directives Googlebot HTTP/HTML et canonical littérale ; rapprocher stratégie préalable et revue liée à la page et aux fichiers.",
+            "en": "For each distinct native URL, check direct GET200, HTTP/HTML Googlebot directives and literal canonical; reconcile prior strategy and review bound to page and files."
+          },
+          "acceptance": {
+            "fr": "Pass exige source qualifiée, canonical explicite identique, intention utile/indexable/self-canonical et revue supported, rendering source-only. Redirection, statut complet hors200, noindex, canonical divergente ou jugement contradicted donne fail. Rendu requis, absence de canonical/revue ou format hors profil : inconclusive.",
+            "en": "Pass requires qualified source, identical explicit canonical, useful/indexable/self-canonical intent and supported review, rendering source-only. Redirect, complete non200 status, noindex, different canonical or contradicted judgment fails. Required rendering, absent canonical/review or unsupported format is inconclusive."
+          },
+          "evidence": {
+            "fr": "Originaux des fichiers et requêtes/réponses HTTP, contexte/date par page, plan et revue avec SHA-256 de l’ensemble examiné. Aucune revue manquante produite par l’outil.",
+            "en": "File and HTTP request/response originals, per-page context/date, plan and review with SHA-256 of the examined evidence. No missing review generated by the tool."
+          },
+          "assumptions": {
+            "fr": "Plan antérieur, URL littérales, fenêtre fournie de24h maximum et intégrité des originaux. Dates, contexte et jugements déclarés, sans authentification.",
+            "en": "Prior plan, literal URLs, supplied window of at most24hours and original integrity. Declared dates, context and judgments, without authentication."
+          },
+          "inconclusive": {
+            "fr": "Plan, document, enfant, liaison, capture ou revue absent, ambigu ou hors profil ; borne dépassée. Conserver tout fail indépendant et les autres inconnues.",
+            "en": "Missing, ambiguous or out-of-profile plan, document, child, binding, capture or review; exceeded bound. Retain every independent fail and other unknowns."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique ; manque de preuve ne vaut pas NA.",
+            "en": "No atomic exemption; missing evidence is not NA."
+          },
+          "limitations": {
+            "fr": "Population déclarée de fichiers et pages fournis ; sources HTML bornées et revues non authentifiées. Aucun audit réel, exhaustivité du site, TS15 global, canonical choisie par Google, indexation ou classement déduit.",
+            "en": "Declared supplied file/page population; bounded HTML sources and unauthenticated supplied reviews. No inferred real audit, site completeness, whole TS15 result, Google-selected canonical, indexing or ranking."
+          }
+        }
+      ]
     },
     {
       "id": "TS14",
@@ -1864,15 +1958,16 @@
       "unit": "sitemap-set",
       "required_inputs": [
         "sitemap",
-        "change-history"
+        "change-history",
+        "intent"
       ],
       "applicability": {
         "fr": "Sitemaps comportant lastmod.",
         "en": "Sitemaps containing lastmod."
       },
       "procedure": {
-        "fr": "Comparer lastmod à l’historique éditorial ou au déploiement de contenu significatif.",
-        "en": "Compare lastmod with editorial history or a significant content deployment."
+        "fr": "Lire le lastmod natif de chaque entrée de page ; comparer sa date UTC ou son instant zoné à un événement JSON original attribué, puis vérifier la revue de signification liée.",
+        "en": "Read each native page lastmod; compare its UTC date or zoned instant with an attributed original JSON event, then check the bound significance review."
       },
       "acceptance": {
         "fr": "Chaque date testée correspond à une modification significative traçable ; la génération du fichier ne suffit pas.",
@@ -1887,8 +1982,8 @@
         "en": "ISO 8601 timestamp tied to an actual change, not file generation."
       },
       "limitations": {
-        "fr": "Le moteur peut ignorer un lastmod jugé peu fiable.",
-        "en": "The engine may ignore a lastmod it considers unreliable."
+        "fr": "Une date égale et une revue fournie ne prouvent pas une modification réelle ni sa signification. Précision au jour UTC ou à l’instant zoné ; aucun historique CMS complet, fraîcheur idéale ou traitement moteur déduit.",
+        "en": "Matching date and supplied review do not prove an actual change or its significance. UTC-day or zoned-instant precision; no complete CMS history, ideal freshness or engine processing inferred."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -1906,7 +2001,58 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.1",
+      "rules": [
+        {
+          "id": "TS14-A01",
+          "title": {
+            "fr": "lastmod relié à une modification significative documentée.",
+            "en": "lastmod linked to a documented significant change."
+          },
+          "automation": "semiAuto",
+          "required_inputs": [
+            "sitemap",
+            "change-history",
+            "intent"
+          ],
+          "na_inputs": [
+            "sitemap",
+            "intent"
+          ],
+          "applicability": {
+            "fr": "Entrées de pages portant lastmod dans la population préalable ; profil supplied-sitemap-lastmod-v1. lastmod des index hors périmètre.",
+            "en": "Page entries carrying lastmod in the prior population; supplied-sitemap-lastmod-v1 profile. Index lastmod is outside scope."
+          },
+          "procedure": {
+            "fr": "Lire le lastmod natif de chaque entrée de page ; comparer sa date UTC ou son instant zoné à un événement JSON original attribué, puis vérifier la revue de signification liée.",
+            "en": "Read each native page lastmod; compare its UTC date or zoned instant with an attributed original JSON event, then check the bound significance review."
+          },
+          "acceptance": {
+            "fr": "Pass exige dates concordantes non futures, événement content attribué et revue supported. Date invalide/future, écart traçable, génération du fichier seule ou revue contradicted : fail. Historique/revue insuffisant : inconclusive. Absence native complète de lastmod : exemption atomique, jamais défaut.",
+            "en": "Pass requires matching nonfuture dates, attributed content event and supported review. Invalid/future date, traceable mismatch, file generation alone or contradicted review fails. Insufficient history/review is inconclusive. Complete native absence of lastmod is an atomic exemption, never a defect."
+          },
+          "evidence": {
+            "fr": "XML original daté/empreinté, URL du fichier et position de l’entrée, événement JSON UTF8 original avec SHA-256, change_id, URL, changed_at, kind et description ; revue attribuée et liée.",
+            "en": "Dated/fingerprinted XML original, file URL and entry position, original UTF8 JSON event with SHA-256, change_id, URL, changed_at, kind and description; attributed bound review."
+          },
+          "assumptions": {
+            "fr": "Plan antérieur, URL littérales, fenêtre fournie de24h maximum et intégrité des originaux. Dates, contexte et jugements déclarés, sans authentification.",
+            "en": "Prior plan, literal URLs, supplied window of at most24hours and original integrity. Declared dates, context and judgments, without authentication."
+          },
+          "inconclusive": {
+            "fr": "Plan, document, enfant, liaison, capture ou revue absent, ambigu ou hors profil ; borne dépassée. Conserver tout fail indépendant et les autres inconnues. Fuseau absent ou précision de lastmod hors profil : inconclusive, jamais défaut inventé.",
+            "en": "Missing, ambiguous or out-of-profile plan, document, child, binding, capture or review; exceeded bound. Retain every independent fail and other unknowns. Missing timezone or out-of-profile lastmod precision is inconclusive, never a fabricated defect."
+          },
+          "non_applicability": {
+            "fr": "not-applicable atomique uniquement si absence lue dans une entrée native complète. Toutes les entrées exemptées ne produisent pas un C ni un NA de contrôle automatique.",
+            "en": "Atomic not-applicable only for absence read from a complete native entry. All-exempt entries produce neither C nor automatic whole-control NA."
+          },
+          "limitations": {
+            "fr": "Une date égale et une revue fournie ne prouvent pas une modification réelle ni sa signification. Précision au jour UTC ou à l’instant zoné ; aucun historique CMS complet, fraîcheur idéale ou traitement moteur déduit.",
+            "en": "Matching date and supplied review do not prove an actual change or its significance. UTC-day or zoned-instant precision; no complete CMS history, ideal freshness or engine processing inferred."
+          }
+        }
+      ]
     },
     {
       "id": "TS15",
@@ -5946,15 +6092,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "b995e7817327e0910fa71b561c3b69cafef8e71ceb82c5c5c1cb9f0f10d43270"
+      "sha256": "c0e9583cb739a04f88ebc7e2d51555c1244487409bae72e65e4c0c430b98c1cd"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "0a31843684e84a96957cb4f954b815a293858cfa0fe8bfe2abca0049239b4ee2"
+      "sha256": "50886f9af59ac72223903bd401f143971b576b384d967a6fc99e55764823dc54"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "5741184320c00b22d87f0f3b1564897f86c9d96130a035aabb07c57583d4e6c7"
+      "sha256": "f49d3f5375617af3d566403affdfb3d73ed3d6451811773c7f78944d08603159"
     },
     {
       "path": "docs/source-directives.md",
@@ -6063,6 +6209,10 @@
     {
       "path": "docs/ts03-response-evidence.md",
       "sha256": "753d7bbc53aefea9cfc3186315a94fb03e71dba9b40c377c64f0ff83efead867"
+    },
+    {
+      "path": "docs/sitemap-quality-evidence.md",
+      "sha256": "50b1a2ac7f0fdaeb39b434a3082b2f5510b290d439460ed87df42fbf6c447b70"
     }
   ]
 }

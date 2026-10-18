@@ -1,4 +1,4 @@
-# TSEP 0.2.0-rc.1 — Contrôles
+# TSEP 0.3.0-draft.1 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -836,7 +836,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Sitemaps utilisés pour les URL du périmètre.
 
-**Méthode.** Parser chaque sitemap, compter les URL et comparer statut, canonique et indexabilité.
+**Méthode.** Appliquer TS13-A01/A02 aux originaux déclarés et aux pages fournies selon le contrat sitemap-quality-v1.
 
 **Attendus.** Chaque entrée du périmètre est résolue, canonique selon la stratégie et destinée à l’indexation ; exclusions et limites de l’échantillon sont explicites.
 
@@ -844,7 +844,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Conditions de NA.** Aucun sitemap utilisé, inventaire et décision fournis.
 
-**Limites.** La présence dans un sitemap ne garantit pas l’indexation.
+**Limites.** Population déclarée de fichiers et pages fournis ; sources HTML bornées et revues non authentifiées. Aucun audit réel, exhaustivité du site, TS15 global, canonical choisie par Google, indexation ou classement déduit.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
@@ -852,15 +852,63 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
 
+### TS13-A01 — Population native et URL absolues qualifiées.
+
+`TSEP@0.3.0-draft.1:TS13-A01`
+
+**Entrées requises**: sitemap, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicabilité.** Entrées de pages dans les fichiers sitemap déclarés au préalable, profil borné supplied-sitemap-quality-v1.
+
+**Méthode.** Rapprocher les racines et enfants déclarés avec les originaux complets ; lire chaque loc de page, conserver occurrences et vérifier son caractère absolu HTTP(S).
+
+**Attendus.** Pass exige la couverture de tous les fichiers déclarés et tous les loc qualifiés. Un loc relatif, avec fragment, identifiants ou port invalide donne fail ; couverture manquante : inconclusive.
+
+**Preuves.** Plan, originaux XML/gzip datés et SHA-256, index/position/loc de chaque entrée. Les répétitions littérales restent visibles sans défaut automatique.
+
+**Hypothèses.** Plan antérieur, URL littérales, fenêtre fournie de24h maximum et intégrité des originaux. Dates, contexte et jugements déclarés, sans authentification.
+
+**Indéterminé.** Plan, document, enfant, liaison, capture ou revue absent, ambigu ou hors profil ; borne dépassée. Conserver tout fail indépendant et les autres inconnues.
+
+**Conditions de NA.** Aucune exemption atomique ; manque de preuve ne vaut pas NA.
+
+**Limites.** Population déclarée de fichiers et pages fournis ; sources HTML bornées et revues non authentifiées. Aucun audit réel, exhaustivité du site, TS15 global, canonical choisie par Google, indexation ou classement déduit.
+
+### TS13-A02 — Pages référencées cohérentes avec la stratégie fournie.
+
+`TSEP@0.3.0-draft.1:TS13-A02`
+
+**Entrées requises**: sitemap, http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Entrées de pages dans les fichiers sitemap déclarés au préalable, profil borné supplied-sitemap-quality-v1.
+
+**Méthode.** Pour chaque URL native distincte, vérifier GET direct200, directives Googlebot HTTP/HTML et canonical littérale ; rapprocher stratégie préalable et revue liée à la page et aux fichiers.
+
+**Attendus.** Pass exige source qualifiée, canonical explicite identique, intention utile/indexable/self-canonical et revue supported, rendering source-only. Redirection, statut complet hors200, noindex, canonical divergente ou jugement contradicted donne fail. Rendu requis, absence de canonical/revue ou format hors profil : inconclusive.
+
+**Preuves.** Originaux des fichiers et requêtes/réponses HTTP, contexte/date par page, plan et revue avec SHA-256 de l’ensemble examiné. Aucune revue manquante produite par l’outil.
+
+**Hypothèses.** Plan antérieur, URL littérales, fenêtre fournie de24h maximum et intégrité des originaux. Dates, contexte et jugements déclarés, sans authentification.
+
+**Indéterminé.** Plan, document, enfant, liaison, capture ou revue absent, ambigu ou hors profil ; borne dépassée. Conserver tout fail indépendant et les autres inconnues.
+
+**Conditions de NA.** Aucune exemption atomique ; manque de preuve ne vaut pas NA.
+
+**Limites.** Population déclarée de fichiers et pages fournis ; sources HTML bornées et revues non authentifiées. Aucun audit réel, exhaustivité du site, TS15 global, canonical choisie par Google, indexation ou classement déduit.
+
 ## TS14 — lastmod reflète une modification significative de la page.
 
 **Sévérité**: minor. **Unité**: sitemap-set.
 
-**Entrées requises**: sitemap, change-history.
+**Entrées requises**: sitemap, change-history, intent.
 
 **Applicabilité.** Sitemaps comportant lastmod.
 
-**Méthode.** Comparer lastmod à l’historique éditorial ou au déploiement de contenu significatif.
+**Méthode.** Lire le lastmod natif de chaque entrée de page ; comparer sa date UTC ou son instant zoné à un événement JSON original attribué, puis vérifier la revue de signification liée.
 
 **Attendus.** Chaque date testée correspond à une modification significative traçable ; la génération du fichier ne suffit pas.
 
@@ -868,13 +916,39 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Conditions de NA.** Aucun lastmod déclaré ; son absence n’est pas un défaut en soi.
 
-**Limites.** Le moteur peut ignorer un lastmod jugé peu fiable.
+**Limites.** Une date égale et une revue fournie ne prouvent pas une modification réelle ni sa signification. Précision au jour UTC ou à l’instant zoné ; aucun historique CMS complet, fraîcheur idéale ou traitement moteur déduit.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping](https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping)
+
+### TS14-A01 — lastmod relié à une modification significative documentée.
+
+`TSEP@0.3.0-draft.1:TS14-A01`
+
+**Entrées requises**: sitemap, change-history, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Entrées pour exemption atomique**: sitemap, intent.
+
+**Applicabilité.** Entrées de pages portant lastmod dans la population préalable ; profil supplied-sitemap-lastmod-v1. lastmod des index hors périmètre.
+
+**Méthode.** Lire le lastmod natif de chaque entrée de page ; comparer sa date UTC ou son instant zoné à un événement JSON original attribué, puis vérifier la revue de signification liée.
+
+**Attendus.** Pass exige dates concordantes non futures, événement content attribué et revue supported. Date invalide/future, écart traçable, génération du fichier seule ou revue contradicted : fail. Historique/revue insuffisant : inconclusive. Absence native complète de lastmod : exemption atomique, jamais défaut.
+
+**Preuves.** XML original daté/empreinté, URL du fichier et position de l’entrée, événement JSON UTF8 original avec SHA-256, change_id, URL, changed_at, kind et description ; revue attribuée et liée.
+
+**Hypothèses.** Plan antérieur, URL littérales, fenêtre fournie de24h maximum et intégrité des originaux. Dates, contexte et jugements déclarés, sans authentification.
+
+**Indéterminé.** Plan, document, enfant, liaison, capture ou revue absent, ambigu ou hors profil ; borne dépassée. Conserver tout fail indépendant et les autres inconnues. Fuseau absent ou précision de lastmod hors profil : inconclusive, jamais défaut inventé.
+
+**Conditions de NA.** not-applicable atomique uniquement si absence lue dans une entrée native complète. Toutes les entrées exemptées ne produisent pas un C ni un NA de contrôle automatique.
+
+**Limites.** Une date égale et une revue fournie ne prouvent pas une modification réelle ni sa signification. Précision au jour UTC ou à l’instant zoné ; aucun historique CMS complet, fraîcheur idéale ou traitement moteur déduit.
 
 ## TS15 — Les limites et découpages de sitemap sont respectés.
 

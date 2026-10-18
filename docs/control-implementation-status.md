@@ -1,3 +1,18 @@
+# 0.3.0-draft.1 — delta depuis RC1 / delta from RC1
+
+| Contrôle / Control | Règles nouvelles / New rules | Portée / Scope |
+| --- | --- | --- |
+| TS13 | TS13-A01, TS13-A02 | Population native, pages et stratégie fournies / Supplied native population, pages and strategy |
+| TS14 | TS14-A01 | Date et modification significative documentée / Documented date and significant change |
+
+30 contrôles portent 70 règles ; 14 restent sans règle exécutable. Les 67 règles RC1
+et leurs versions sont conservées ; aucun usage réel ni réception applicative de
+cette édition vérifiés. Contrats, limitations et NT : [TS13/TS14](sitemap-quality-evidence.md).
+30 rule-bearing controls /70 rules; 14 without executable rules. The 67 RC1 rules
+and versions are retained. No verified real use or application receipt for this
+edition. The complete matrix below describes **RC1**, retained as the baseline.
+Le tableau complet ci-dessous décrit **RC1**, conservé comme référence historique.
+
 # État des 44 contrôles — TSEP 0.2.0-rc.1
 
 État arrêté au 17 octobre 2026. Cette préversion conserve les 44 identifiants et tout le travail déjà intégré au candidat précédent ; elle ne lance aucun contrôle supplémentaire. TSEP n’est ni une certification ni une norme reconnue.

@@ -1,3 +1,5 @@
+0.3.0-draft.1 : ajoute uniquement TS13-A01/A02 et TS14-A01 ; 30 contrôles à règles /70 règles. Les règles RC1 et leurs versions sont conservées. [Contrat bilingue](sitemap-quality-evidence.md), [migration depuis RC1](migration-0.3.0-draft.1.md). Preuves insuffisantes : NT ; exemples synthétiques, aucun audit réel. Le périmètre RC1 ci-dessous est historique.
+
 Draft.44 / reader3 : les champs reviewer, assistance et reason des revues TS25 fournies sont limités à8192octets UTF8 bruts chacun, avant strip ou normalisation ; chaque objet revue, champs supplémentaires inclus, à32768octets de JSON compact UTF8. Toute revue fournie est vérifiée à l’admission, même inutilisée. Un dépassement donne un refus technique avant publication, jamais C ou NT public ; les originaux sont conservés sans réécriture. Le diagnostic natif de chaque règle est borné à4MiB de JSON compact UTF8 trié, y compris A01 et les sorties d’erreur. Au dépassement, un diagnostic compact explicitement incomplet conserve un fail indépendant établi, sinon inconclusive ; aucun pass. Le transport refuse ce marqueur et borne aussi à4MiB par cible la somme des artefacts TS25 réellement sérialisés (JSON UTF8 indent2, saut de ligne final), pour les règles demandées. Les maxima individuels ne garantissent pas que toutes leurs combinaisons respectent les bornes cumulées. Aucun changement des autres contrôles ni du validateur partagé.
 [Migration](migration-draft.44.md).
 
@@ -35,7 +37,7 @@ Draft.30 ajoute TS12-A01/A02/A03 : plan, comparaisons attribuées et revue/déci
 
 Draft.29 ajoute trois règles TS08 : périmètre/objectifs, inspections natives et revues/décisions liées. [Contrat bilingue](inspection-evidence.md), [migration](migration-draft.29.md). C qualifie le dossier sélectionné, jamais une indexation garantie.
 
-# Contrat de rapport — TSEP 0.2.0-rc.1
+# Contrat de rapport — TSEP 0.3.0-draft.1
 
 ## Périmètre RC1 / Release-candidate scope
 
@@ -167,7 +169,7 @@ affecte les déclarations, même si le validateur ne peut pas déterminer ce bes
 La CLI vérifie les déclarations, références et couvertures, pas la justesse de la
 lecture HTTP/HTML, de l’intention ou des exemptions. Les cas de méthode historiques
 ont des verdicts rédigés. La [suite exécutable distincte](conformance.md) interprète
-les entrées brutes de soixante-cinq règles dans des limites documentées ; elle
+les entrées brutes de soixante-dix règles dans des limites documentées ; elle
 n’implémente pas tous les contrôles. Aucun C ne
 s’étend aux contrôles non sélectionnés, à un site entier ou à l’indexation réelle.
 Voir [migration et cas](migration-draft.2.md).

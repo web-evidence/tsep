@@ -1,3 +1,10 @@
+# 0.3.0-draft.1 — 2026-10-18
+
+- FR : ajoute TS13-A01/A02 et TS14-A01 uniquement depuis RC1 ; 30 contrôles à règles /70 règles, règles antérieures et versions préservées. Contrat bilingue, migration et cas synthétiques ; aucune application/site/publication.
+- EN: adds only TS13-A01/A02 and TS14-A01 from RC1; 30 rule-bearing controls /70 rules, earlier rules and versions preserved. Bilingual contract, migration and synthetic cases; no application/site/publication.
+
+Historical baseline / Base historique :
+
 ## 0.2.0-rc.1 — 2026-10-17 — prerelease / préversion
 
 - EN: Freeze the complete TS01–TS44 scope inherited from v0.1.0-draft.47; no new control. 28 controls carry 67 executable atomic rules. TS03-A01 remains limited to supplied synthetic .invalid HTTP matrices and literal body markers. Adds RC1 migration, an explicit 44-control status matrix, and a separate app integration dossier for future TS01/TS04 then TS07/TS10 flows. Application version remains independent.

@@ -975,6 +975,21 @@
     "third_party/source-tree/parse5-8.0.1.tgz",
     "tsep.py",
     "upstream/grid-v1.1.en.json",
-    "upstream/grid-v1.1.fr.json"
+    "upstream/grid-v1.1.fr.json",
+    "conformance/sitemap_quality.py",
+    "provenance/v030-rc1-preservation.json",
+    "tests/fixtures/sitemap-quality-v1.json",
+    "tests/fixtures/sitemap-quality-v1.sha256",
+    "tests/test_sitemap_quality.py",
+    "docs/sitemap-quality-evidence.md",
+    "docs/migration-0.3.0-draft.1.md",
+    "examples/captures/ts13-complete.json",
+    "examples/captures/ts13-contradiction.json",
+    "examples/captures/ts13-missing-page.json",
+    "examples/captures/ts14-complete.json",
+    "examples/captures/ts14-contradiction.json",
+    "examples/captures/ts14-missing-history.json",
+    "provenance/sitemap-quality-v1-correction.json",
+    "tests/fixtures/sitemap-quality-authored-initial.json"
   ]
 }

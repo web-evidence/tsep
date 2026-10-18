@@ -1,3 +1,7 @@
+0.3.0-draft.1 adds 55 authored synthetic TS13/TS14 cases (165 pairs), with documented binding/fictional-clock corrections and one explicit fail→inconclusive amendment for unzoned lastmod; all other expectations unchanged. 70 executable rules. The report-method corpus retains its 144 RC1 cases and appends eight TS13/TS14 authored cases; all earlier expectations are unchanged. Existing TS12/TS15/TS16/TS17/TS18 fixtures/readers remain byte-identical to RC1; exact runtime comparison is recorded separately. FR : cas synthétiques, aucun audit réel ; tests préparés ≠ exécution observée.
+
+Historical baseline / Base historique :
+
 Draft.47 adds 13 authored synthetic TS03 cases /13 primary rule-target pairs: 1534 primary cases /3159 primary pairs; the fully expanded corpus has 2098 cases /4164 pairs across its fingerprinted extensions. The native interpreter supports 67 rules. Reference fixtures only; no site or Google soft-404 assessment. See TS03 method and limits (ts03-response-evidence.md) and migration (migration-draft.47.md).
 FR : 13 cas TS03 synthétiques ajoutés ; corpus principal 1534 cas /3159 paires et corpus étendu 2098 cas /4164 paires. Fixtures uniquement, aucune qualification d’un site ni classification soft 404.
 

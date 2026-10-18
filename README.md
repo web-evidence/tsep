@@ -19,6 +19,10 @@ TS31: [JSON-LD/content evidence](docs/structured-content-evidence.md), [draft.32
 
 TS36: [release follow-up](docs/release-monitoring.md), [intake and closure](docs/release-monitoring-intake.md), [draft.31 migration](docs/migration-draft.31.md). Authored cases only; no real future stage completed.
 
+**0.3.0-draft.1 preparation** — TS13/TS14 only; RC1 rules retained, 30 controls /70 rules. [Contract](docs/sitemap-quality-evidence.md), [migration](docs/migration-0.3.0-draft.1.md). Synthetic exercises, no publication or application change.
+
+Historical base:
+
 **RC1: 0.2.0-rc.1** — all TS01–TS44 retained; 28 controls /67 executable atomic rules. TS03 uses synthetic .invalid captures only. [Current 44-control matrix](docs/control-implementation-status.md), [TS03 evidence](docs/ts03-response-evidence.md), [migration](docs/migration-0.2.0-rc.1.md), [application integration dossier](docs/app-integration-roadmap.en.md). No real-site use is verified by this prerelease.
 
 TS08 [native inspections](docs/inspection-evidence.md) and [acquisition](docs/search-console-acquisition.md) remain available.

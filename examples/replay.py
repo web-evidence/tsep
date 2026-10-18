@@ -77,6 +77,12 @@ def generate(output_root=ROOT):
     # Raw adapter demonstrations are controlled derivatives, with no expected verdicts.
     corpus = {case['id']: case['input'] for case in expand(tsep.read_json(ROOT.parent/'conformance/cases.json'))['cases']}
     capture_examples = {
+                        'ts13-complete': ('sitemap-quality-v1-complete', ['TS13-A01','TS13-A02']),
+                        'ts13-contradiction': ('sitemap-quality-v1-noindex', ['TS13-A01','TS13-A02']),
+                        'ts13-missing-page': ('sitemap-quality-v1-missing-page', ['TS13-A01','TS13-A02']),
+                        'ts14-complete': ('sitemap-quality-v1-complete', ['TS14-A01']),
+                        'ts14-contradiction': ('sitemap-quality-v1-file-generation-only', ['TS14-A01']),
+                        'ts14-missing-history': ('sitemap-quality-v1-missing-history', ['TS14-A01']),
                         'ts16-complete': ('incoming-links-v1-load-dom-witness', ['TS16-A01']),
                         'ts16-bounded-absence': ('incoming-links-v1-bounded-absence-destination-original-missing', ['TS16-A01']),
                         'ts16-missing-source': ('incoming-links-v1-missing-source-without-witness', ['TS16-A01']),
