@@ -77,6 +77,21 @@ def generate(output_root=ROOT):
     # Raw adapter demonstrations are controlled derivatives, with no expected verdicts.
     corpus = {case['id']: case['input'] for case in expand(tsep.read_json(ROOT.parent/'conformance/cases.json'))['cases']}
     capture_examples = {
+                        'ts09-complete': ('url-policy-v1-TS09-complete', ['TS09-A01']),
+                        'ts09-contradiction': ('url-policy-v1-TS09-review-contradiction-A01', ['TS09-A01']),
+                        'ts09-missing-review': ('url-policy-v1-TS09-missing-reviews', ['TS09-A01']),
+                        'ts11-complete': ('url-policy-v1-TS11-complete', ['TS11-A01', 'TS11-A02']),
+                        'ts11-contradiction': ('url-policy-v1-TS11-review-contradiction-A01', ['TS11-A01', 'TS11-A02']),
+                        'ts11-missing-review': ('url-policy-v1-TS11-missing-reviews', ['TS11-A01', 'TS11-A02']),
+                        'ts19-complete': ('url-policy-v1-TS19-complete', ['TS19-A01', 'TS19-A02']),
+                        'ts19-contradiction': ('url-policy-v1-TS19-review-contradiction-A01', ['TS19-A01', 'TS19-A02']),
+                        'ts19-missing-review': ('url-policy-v1-TS19-missing-reviews', ['TS19-A01', 'TS19-A02']),
+                        'ts20-complete': ('url-policy-v1-TS20-complete', ['TS20-A01', 'TS20-A02']),
+                        'ts20-contradiction': ('url-policy-v1-TS20-review-contradiction-A01', ['TS20-A01', 'TS20-A02']),
+                        'ts20-missing-review': ('url-policy-v1-TS20-missing-reviews', ['TS20-A01', 'TS20-A02']),
+                        'ts38-complete': ('url-policy-v1-TS38-complete', ['TS38-A01', 'TS38-A02']),
+                        'ts38-contradiction': ('url-policy-v1-TS38-review-contradiction-A01', ['TS38-A01', 'TS38-A02']),
+                        'ts38-missing-review': ('url-policy-v1-TS38-missing-reviews', ['TS38-A01', 'TS38-A02']),
                         'ts13-complete': ('sitemap-quality-v1-complete', ['TS13-A01','TS13-A02']),
                         'ts13-contradiction': ('sitemap-quality-v1-noindex', ['TS13-A01','TS13-A02']),
                         'ts13-missing-page': ('sitemap-quality-v1-missing-page', ['TS13-A01','TS13-A02']),

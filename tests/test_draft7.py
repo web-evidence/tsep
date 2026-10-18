@@ -99,6 +99,28 @@ EXTERNAL_CASE_IDS = (
     'sitemap-quality-v1-file-generation-only',
 )
 
+EXTERNAL_CASE_IDS += (
+    'url-policy-v1-TS09-complete',
+    'url-policy-v1-TS09-missing-plan',
+    'url-policy-v1-TS09-review-contradiction-A01',
+    'url-policy-v1-TS11-complete',
+    'url-policy-v1-TS11-missing-plan',
+    'url-policy-v1-TS11-review-contradiction-A01',
+    'url-policy-v1-TS11-review-contradiction-A02',
+    'url-policy-v1-TS19-complete',
+    'url-policy-v1-TS19-missing-plan',
+    'url-policy-v1-TS19-review-contradiction-A01',
+    'url-policy-v1-TS19-review-contradiction-A02',
+    'url-policy-v1-TS20-complete',
+    'url-policy-v1-TS20-missing-plan',
+    'url-policy-v1-TS20-review-contradiction-A01',
+    'url-policy-v1-TS20-review-contradiction-A02',
+    'url-policy-v1-TS38-complete',
+    'url-policy-v1-TS38-missing-plan',
+    'url-policy-v1-TS38-review-contradiction-A01',
+    'url-policy-v1-TS38-review-contradiction-A02',
+)
+
 
 class Draft7(unittest.TestCase):
     def test_soft404_and_inert_markers_cannot_pass_adapter_gate(self):

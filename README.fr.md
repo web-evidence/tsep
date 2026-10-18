@@ -1,3 +1,5 @@
+Préparation 0.3.0-draft.2 : 35 contrôles avec règles /79 règles atomiques. Lot TS09/11/19/20/38, source et revues fournies ; [contrat](docs/url-policy-evidence.md), [migration](docs/migration-0.3.0-draft.2.md). Exemples synthétiques, aucune publication ni modification applicative.
+
 [TS25 — présence critique fournie / supplied critical presence](docs/critical-presence-evidence.md), [draft.44 migration](docs/migration-draft.44.md).
 
 [TS24 — rôle x-default fourni / supplied x-default role](docs/xdefault-role-evidence.md), [draft.41 migration](docs/migration-draft.41.md).

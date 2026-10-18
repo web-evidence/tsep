@@ -1,3 +1,5 @@
+0.3.0-draft.2:64 authored synthetic URL-policy cases, nine new rules,35 rule-bearing controls /79 rules. Prior inputs and expectations preserved. FR : 64 cas synthétiques rédigés avant exécution ; aucun audit réel ni qualification complète déduite de ce décompte.
+
 0.3.0-draft.1 adds 55 authored synthetic TS13/TS14 cases (165 pairs), with documented binding/fictional-clock corrections and one explicit fail→inconclusive amendment for unzoned lastmod; all other expectations unchanged. 70 executable rules. The report-method corpus retains its 144 RC1 cases and appends eight TS13/TS14 authored cases; all earlier expectations are unchanged. Existing TS12/TS15/TS16/TS17/TS18 fixtures/readers remain byte-identical to RC1; exact runtime comparison is recorded separately. FR : cas synthétiques, aucun audit réel ; tests préparés ≠ exécution observée.
 
 Historical baseline / Base historique :

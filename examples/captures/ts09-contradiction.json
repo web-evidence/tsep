@@ -1,0 +1,66 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS09-A01"
+  ],
+  "targets": [
+    {
+      "url": "https://synthetic.invalid/scope/TS09",
+      "observed_at": "2026-10-14T12:00:00Z",
+      "context": {
+        "id": "synthetic",
+        "tool": "Authored fixture",
+        "tool_version": "1",
+        "bounds": "Supplied fictional population only"
+      },
+      "intent": {
+        "declared_at": "2026-10-14T09:00:00Z",
+        "crawler": "Authored-TSEP/1",
+        "evidence_checks": {
+          "TS09": {
+            "reader": "url-policy-v1",
+            "scope_reason": "SYNTHETIC finite selected population, no site audit",
+            "items": [
+              {
+                "id": "search",
+                "record": "registry",
+                "mechanism": "meta-noindex"
+              }
+            ]
+          }
+        }
+      },
+      "evidence_checks": {
+        "TS09": {
+          "synthetic": true,
+          "records": [
+            {
+              "id": "registry",
+              "kind": "configuration",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJmYW1pbGllcyI6W3siaWQiOiJzZWFyY2giLCJtZWNoYW5pc20iOiJtZXRhLW5vaW5kZXgiLCJvd25lciI6IkZpY3Rpb25hbCBvd25lciIsInJlYXNvbiI6IlN5bnRoZXRpYyBpbnRlcm5hbCBzZWFyY2ggcG9saWN5IiwicmV2aWV3X2RhdGUiOiIyMDI2LTEwLTE1In1dLCJmb3JtYXQiOiJleGNsdXNpb24tcmVnaXN0ZXItdjEifQ==",
+                "sha256": "2280eb5dcd4c0e599720d28ed95d8c4a05098f99322586b75537a27db5b59d36",
+                "complete": true,
+                "encoding": "identity"
+              }
+            }
+          ],
+          "documents": [],
+          "reviews": [
+            {
+              "subject": "TS09-A01:search",
+              "reviewer": "Fictional reviewer",
+              "reason": "Authored review of supplied records, complete bounded scope and editorial intent; not a real judgment.",
+              "judgment": "contradicted",
+              "reviewed_at": "2026-10-14T11:00:00Z",
+              "provenance": "synthetic-exercise",
+              "binding_sha256": "f59f1f025e2e17923ecba55166eddb35dffbdc09274d02c9d21088a7a20c84b1"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+Current / courant : 0.3.0-draft.2, TS09/11/19/20/38, 35 controls /79 rules. Prior70 rules and versions retained. [Contract / contrat](url-policy-evidence.md), [migration](migration-0.3.0-draft.2.md). Full verification results belong to dated receipts, not this preparation heading.
+
 Current preparation / Préparation courante : **0.3.0-draft.1**, branch feat/v030-ts12-18 from RC1 7b60c20. TS13-A01/A02 and TS14-A01 only; all earlier rules/versions retained. [Contract / contrat](sitemap-quality-evidence.md), [migration](migration-0.3.0-draft.1.md). Full local profile: explicit Node24, TSEP_VERIFY_STEP_TIMEOUT=3600; all checks enabled. No application/site update or publication; RC1 finalization independent.
 
 Historical baseline / Base historique :

@@ -1,3 +1,9 @@
+# 0.3.0-draft.2 — 2026-10-18
+
+- FR : neuf règles TS09/11/19/20/38 ; 35 contrôles à règles /79 règles. Dossiers sources bornés, revues liées, NT sur preuves insuffisantes ; 64 contre-cas synthétiques, migration bilingue, règles antérieures conservées.
+- EN: nine TS09/11/19/20/38 rules;35 rule-bearing controls /79 rules. Bounded source dossiers, bound supplied reviews, NT for insufficient evidence;64 synthetic counterexamples, bilingual migration, prior rules preserved.
+- Correctif de test préalable / prior test-only TS25 runtime portability correction:19 historical recipes retained, two actual-runtime boundaries added; no engine or threshold change. No publication or application/site change.
+
 # 0.3.0-draft.1 — 2026-10-18
 
 - FR : ajoute TS13-A01/A02 et TS14-A01 uniquement depuis RC1 ; 30 contrôles à règles /70 règles, règles antérieures et versions préservées. Contrat bilingue, migration et cas synthétiques ; aucune application/site/publication.

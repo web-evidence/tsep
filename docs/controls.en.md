@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.1 — Controls
+# TSEP 0.3.0-draft.2 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -586,6 +586,30 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/block-indexing](https://developers.google.com/search/docs/crawling-indexing/block-indexing)
 
+### TS09-A01 — Exclusion register and ownership
+
+`TSEP@0.3.0-draft.2:TS09-A01`
+
+**Required inputs**: configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS09 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Read the native exclusion-register-v1 JSON register; compare each selected family with its prior mechanism, then require owner, rationale and review date. Require an evidence-bound review.
+
+**Acceptance.** Mechanisms agree and every family has governance information; supplied review supports the scope. A mechanism mismatch fails.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: configuration, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** Missing or ambiguous fields, missing register or unbound review are inconclusive. Review date is a declared calendar date, not evidence that review occurred.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
+
 ## TS10 — Each canonical page publishes an absolute, stable and consistent URL.
 
 **Severity**: major. **Unit**: url-set.
@@ -731,6 +755,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+
+### TS11-A01 — Editorial comparison of variants
+
+`TSEP@0.3.0-draft.2:TS11-A01`
+
+**Required inputs**: http, html, content, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicability.** Explicitly selected TS11 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** For each declared duplicate or distinct pair, read both complete UTF-8 HTML responses and retain fingerprints. Require a bound comparative review including source-scope sufficiency.
+
+**Acceptance.** Both contents are available and the supplied editorial review supports the declared relation. Contradictory review fails; text equality or similarity never supplies that review.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: http, html, content, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** Missing content, unsupported HTML, render-dependent comparison or missing judgment: inconclusive.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
+
+### TS11-A02 — Convergence without absorbing distinct pages
+
+`TSEP@0.3.0-draft.2:TS11-A02`
+
+**Required inputs**: http, html, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS11 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Read HTTP and HTML canonicals separately for both members. A duplicate points to the preference; a distinct page points to itself. Require review of the decision and source scope.
+
+**Acceptance.** Every qualified declaration agrees with the prior editorial relation; a conflicting declaration fails even if another surface is unavailable.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: http, html, content, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** No explicit canonical, uninterpretable source or required rendering unavailable: inconclusive, without inferring engine selection.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
 
 ## TS12 — Google’s selected canonical is compared with the declared canonical.
 
@@ -1292,6 +1364,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/url-structure](https://developers.google.com/search/docs/crawling-indexing/url-structure)
 
+### TS19-A01 — Bounded combinatorial-pattern policy
+
+`TSEP@0.3.0-draft.2:TS19-A01`
+
+**Required inputs**: configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS19 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Compare max_combinations, navigation and indexing in native url-pattern-config-v1 with each prior pattern; require review of the chosen bounds.
+
+**Acceptance.** Every supplied axis matches the selected finite plan. A conflicting value, including zero against a positive planned limit, fails.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: configuration, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** Missing axis/configuration, non-integer bound outside1–128 or absent review: inconclusive.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
+
+### TS19-A02 — Observed population and trap decision
+
+`TSEP@0.3.0-draft.2:TS19-A02`
+
+**Required inputs**: crawl, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS19 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Read url-crawl-v1, count distinct URLs and compare with the finite list and bound; retain the reasoned trap/cycle decision and its review.
+
+**Acceptance.** Observed URLs belong to the planned population, their count respects the bound and traps are explained. An outside URL or exceeded bound fails.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: crawl, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** Incomplete supplied crawl, ambiguous identities, absent list or decision: inconclusive. A finite sample never proves whole-site finiteness.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
+
 ## TS20 — The URL structure is readable, stable and correctly encoded.
 
 **Severity**: minor. **Unit**: url-set.
@@ -1315,6 +1435,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/url-structure](https://developers.google.com/search/docs/crawling-indexing/url-structure)
+
+### TS20-A01 — URL shape under supplied policy
+
+`TSEP@0.3.0-draft.2:TS20-A01`
+
+**Required inputs**: crawl, configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS20 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Read the later capture and url-shape-config-v1. Check spaces/controls, backslashes, percent escapes, fragments and path case against prior choices; require human readability review.
+
+**Acceptance.** Configuration matches the plan and every URL satisfies its lexical axes. A qualified mismatch fails. No implicit case change or decoding.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: crawl, configuration, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** Unsupported URL/authority, unknown policy, missing capture or review: inconclusive.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
+
+### TS20-A02 — Temporal stability and variation decisions
+
+`TSEP@0.3.0-draft.2:TS20-A02`
+
+**Required inputs**: crawl, configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS20 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Compare two ordered url-crawl-v1 captures with matching identities; every changed URL requires one reasoned before/after decision in the reviewed plan.
+
+**Acceptance.** URLs match at the two dates or their variation is explicitly decided and reviewed. An observed change without a decision fails.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: crawl, configuration, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** One date, reversed/equal dates, missing identity or review: inconclusive. Future stability remains unknown.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
 
 ## TS21 — Discovered but unindexed URLs are investigated by family.
 
@@ -2251,6 +2419,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+
+### TS38-A01 — Trajectories and canonicals of equivalent variants
+
+`TSEP@0.3.0-draft.2:TS38-A01`
+
+**Required inputs**: http, html, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS38 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Require reviewed equivalence and read every native trajectory: one hop from each variant, direct200 preferred response, HTTP/HTML canonical pointing to it.
+
+**Acceptance.** Every variant converges in one hop and every qualified canonical agrees. Declared merging of distinct resources or native disagreement fails.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: http, html, content, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** Missing trace/canonical, undecided equivalence or necessary rendering: inconclusive.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
+
+### TS38-A02 — Internal signals for variants
+
+`TSEP@0.3.0-draft.2:TS38-A02`
+
+**Required inputs**: sitemap, html, crawl, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS38 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Read the selected complete native urlset and every planned link source. Require the preference in that sitemap, no nonpreferred variant in sitemap/links, and equivalence/scope review.
+
+**Acceptance.** Sitemap and scoped links agree with the preference; disagreement or merging distinct pages fails. Zero links remains an observation of the complete supplied corpus.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: sitemap, html, crawl, content, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** XML index, truncated file, missing link source, ambiguous population/review: inconclusive; no global absence inferred.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
 
 ## TS39 — The CDN, Vary and geolocation do not serve contradictory SEO signals.
 

@@ -1,0 +1,77 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS19-A01",
+    "TS19-A02"
+  ],
+  "targets": [
+    {
+      "url": "https://synthetic.invalid/scope/TS19",
+      "observed_at": "2026-10-14T12:00:00Z",
+      "context": {
+        "id": "synthetic",
+        "tool": "Authored fixture",
+        "tool_version": "1",
+        "bounds": "Supplied fictional population only"
+      },
+      "intent": {
+        "declared_at": "2026-10-14T09:00:00Z",
+        "crawler": "Authored-TSEP/1",
+        "evidence_checks": {
+          "TS19": {
+            "reader": "url-policy-v1",
+            "scope_reason": "SYNTHETIC finite selected population, no site audit",
+            "items": [
+              {
+                "id": "filter",
+                "configuration": "config",
+                "crawl": "crawl",
+                "urls": [
+                  "https://synthetic.invalid/a?color=red",
+                  "https://synthetic.invalid/a?color=blue"
+                ],
+                "max_combinations": 2,
+                "navigation": "finite-listed",
+                "indexing": "selected-only",
+                "trap_decision": "finite supplied two-color list; cycles bounded by visited URL"
+              }
+            ]
+          }
+        }
+      },
+      "evidence_checks": {
+        "TS19": {
+          "synthetic": true,
+          "records": [
+            {
+              "id": "config",
+              "kind": "configuration",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJmb3JtYXQiOiJ1cmwtcGF0dGVybi1jb25maWctdjEiLCJwYXR0ZXJucyI6W3siaWQiOiJmaWx0ZXIiLCJpbmRleGluZyI6InNlbGVjdGVkLW9ubHkiLCJtYXhfY29tYmluYXRpb25zIjoyLCJuYXZpZ2F0aW9uIjoiZmluaXRlLWxpc3RlZCJ9XX0=",
+                "sha256": "786665257be729bbb8b9b7f0565ae020f0d5884f323de7b9b418acf3760d7a0b",
+                "complete": true,
+                "encoding": "identity"
+              }
+            },
+            {
+              "id": "crawl",
+              "kind": "crawl",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJmb3JtYXQiOiJ1cmwtY3Jhd2wtdjEiLCJyb3dzIjpbeyJrZXkiOiJhIiwidXJsIjoiaHR0cHM6Ly9zeW50aGV0aWMuaW52YWxpZC9hP2NvbG9yPXJlZCJ9LHsia2V5IjoiYiIsInVybCI6Imh0dHBzOi8vc3ludGhldGljLmludmFsaWQvYT9jb2xvcj1ibHVlIn1dfQ==",
+                "sha256": "7429a98254de6180c4e70fd69507c2e9b19e8a7e1c599ef5e311bb7b08ba1549",
+                "complete": true,
+                "encoding": "identity"
+              }
+            }
+          ],
+          "documents": [],
+          "reviews": []
+        }
+      }
+    }
+  ]
+}

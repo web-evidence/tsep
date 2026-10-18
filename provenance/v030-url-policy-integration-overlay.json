@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "scope": "Explicit generic integration-test extension for nine new rules; historical cases/assertions unchanged.",
+  "updates": [
+    {
+      "path": "tests/test_draft7.py",
+      "base_sha256": "4dfae02bdf85cd2123e12bb5d0b9b651bf42457fa23a3062d9579fe9fb192697",
+      "current_sha256": "cb817ef4b09b23b9d39e2fd1927ff0ee074380cc54f69c17a297564e25da94b6",
+      "replacements": [
+        {
+          "before": "\n\nclass Draft7(unittest.TestCase):",
+          "after": "\nEXTERNAL_CASE_IDS += (\n    'url-policy-v1-TS09-complete',\n    'url-policy-v1-TS09-missing-plan',\n    'url-policy-v1-TS09-review-contradiction-A01',\n    'url-policy-v1-TS11-complete',\n    'url-policy-v1-TS11-missing-plan',\n    'url-policy-v1-TS11-review-contradiction-A01',\n    'url-policy-v1-TS11-review-contradiction-A02',\n    'url-policy-v1-TS19-complete',\n    'url-policy-v1-TS19-missing-plan',\n    'url-policy-v1-TS19-review-contradiction-A01',\n    'url-policy-v1-TS19-review-contradiction-A02',\n    'url-policy-v1-TS20-complete',\n    'url-policy-v1-TS20-missing-plan',\n    'url-policy-v1-TS20-review-contradiction-A01',\n    'url-policy-v1-TS20-review-contradiction-A02',\n    'url-policy-v1-TS38-complete',\n    'url-policy-v1-TS38-missing-plan',\n    'url-policy-v1-TS38-review-contradiction-A01',\n    'url-policy-v1-TS38-review-contradiction-A02',\n)\n\n\nclass Draft7(unittest.TestCase):"
+        }
+      ]
+    }
+  ]
+}

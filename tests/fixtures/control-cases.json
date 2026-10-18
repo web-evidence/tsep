@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.3.0-draft.1",
+  "protocol_version": "0.3.0-draft.2",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -7716,6 +7716,642 @@
             "sitemap",
             "change-history",
             "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS09-url-policy-pass",
+      "control_id": "TS09",
+      "description": {
+        "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+        "en": "Authored synthetic case: pass. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS09 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS09 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS09-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS09-url-policy-fail",
+      "control_id": "TS09",
+      "description": {
+        "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+        "en": "Authored synthetic case: fail. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS09 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS09 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS09-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS09-url-policy-inconclusive",
+      "control_id": "TS09",
+      "description": {
+        "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+        "en": "Authored synthetic case: inconclusive. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS09 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS09 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS09-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS11-url-policy-pass",
+      "control_id": "TS11",
+      "description": {
+        "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+        "en": "Authored synthetic case: pass. No real observation."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content for bounded TS11 method case; no actual capture or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html for bounded TS11 method case; no actual capture or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http for bounded TS11 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS11 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS11-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "http",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS11-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "http",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS11-url-policy-fail",
+      "control_id": "TS11",
+      "description": {
+        "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+        "en": "Authored synthetic case: fail. No real observation."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content for bounded TS11 method case; no actual capture or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html for bounded TS11 method case; no actual capture or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http for bounded TS11 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS11 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS11-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "http",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS11-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "http",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS11-url-policy-inconclusive",
+      "control_id": "TS11",
+      "description": {
+        "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+        "en": "Authored synthetic case: inconclusive. No real observation."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content for bounded TS11 method case; no actual capture or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html for bounded TS11 method case; no actual capture or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http for bounded TS11 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS11 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS11-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "http",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS11-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "http",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS19-url-policy-pass",
+      "control_id": "TS19",
+      "description": {
+        "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+        "en": "Authored synthetic case: pass. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS19 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS19 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS19 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS19-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS19-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS19-url-policy-fail",
+      "control_id": "TS19",
+      "description": {
+        "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+        "en": "Authored synthetic case: fail. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS19 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS19 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS19 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS19-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS19-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS19-url-policy-inconclusive",
+      "control_id": "TS19",
+      "description": {
+        "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+        "en": "Authored synthetic case: inconclusive. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS19 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS19 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS19 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS19-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS19-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS20-url-policy-pass",
+      "control_id": "TS20",
+      "description": {
+        "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+        "en": "Authored synthetic case: pass. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS20 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS20 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS20 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS20-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS20-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS20-url-policy-fail",
+      "control_id": "TS20",
+      "description": {
+        "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+        "en": "Authored synthetic case: fail. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS20 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS20 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS20 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS20-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS20-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS20-url-policy-inconclusive",
+      "control_id": "TS20",
+      "description": {
+        "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+        "en": "Authored synthetic case: inconclusive. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS20 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS20 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS20 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS20-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS20-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS38-url-policy-pass",
+      "control_id": "TS38",
+      "description": {
+        "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+        "en": "Authored synthetic case: pass. No real observation."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content for bounded TS38 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS38 method case; no actual capture or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html for bounded TS38 method case; no actual capture or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http for bounded TS38 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS38 method case; no actual capture or reviewer.",
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap for bounded TS38 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS38-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "crawl",
+            "html",
+            "http",
+            "intent",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS38-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "crawl",
+            "html",
+            "http",
+            "intent",
+            "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS38-url-policy-fail",
+      "control_id": "TS38",
+      "description": {
+        "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+        "en": "Authored synthetic case: fail. No real observation."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content for bounded TS38 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS38 method case; no actual capture or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html for bounded TS38 method case; no actual capture or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http for bounded TS38 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS38 method case; no actual capture or reviewer.",
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap for bounded TS38 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS38-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "crawl",
+            "html",
+            "http",
+            "intent",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS38-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "crawl",
+            "html",
+            "http",
+            "intent",
+            "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS38-url-policy-inconclusive",
+      "control_id": "TS38",
+      "description": {
+        "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+        "en": "Authored synthetic case: inconclusive. No real observation."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content for bounded TS38 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS38 method case; no actual capture or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html for bounded TS38 method case; no actual capture or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http for bounded TS38 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS38 method case; no actual capture or reviewer.",
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap for bounded TS38 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS38-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "crawl",
+            "html",
+            "http",
+            "intent",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS38-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "crawl",
+            "html",
+            "http",
+            "intent",
+            "sitemap"
           ]
         }
       ],

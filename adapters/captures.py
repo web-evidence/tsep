@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts, binding_digest
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '46'
+VERSION = '47'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -86,6 +86,8 @@ def source_files():
     modules['conformance/incoming_links.py'] = importlib.import_module('conformance.incoming_links')
     modules['adapters/incoming_links_intake.py'] = importlib.import_module('adapters.incoming_links_intake')
     modules['conformance/sitemap_files.py'] = importlib.import_module('conformance.sitemap_files')
+    for name in ('evidence_dossier', 'url_policy'):
+        modules['conformance/'+name+'.py'] = importlib.import_module('conformance.'+name)
     modules['conformance/sitemap_quality.py'] = importlib.import_module('conformance.sitemap_quality')
     modules['conformance/sitemap_set.py'] = importlib.import_module('conformance.sitemap_set')
     modules['conformance/structured_validation.py'] = importlib.import_module('conformance.structured_validation')
@@ -368,6 +370,9 @@ def pieces(target):
         retain('http','hreflang_documents',hreflang)
         retain('hreflang','native_hreflang_sources',hreflang)
     if 'hreflang_unsupported_channels' in target:retain('hreflang','unsupported_supplied_channels',target['hreflang_unsupported_channels'])
+    from conformance.evidence_dossier import pieces as dossier_pieces
+    for kind, value in dossier_pieces(target).items():
+        retain(kind, 'control_dossiers', value)
     return result
 
 
@@ -533,6 +538,9 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
     if set(data['rules']) & {'TS13-A01', 'TS13-A02', 'TS14-A01'}:
         for target in data['targets']:
             delivery_provenance(target)
+    from conformance.evidence_dossier import verify as verify_dossier
+    for target in data['targets']:
+        verify_dossier(target, access)
     synthetic_dom(evidence_targets)
     for target in evidence_targets:
         agent_reviews = target.get('agent_reviews')
@@ -720,6 +728,8 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
                     report['results'][i]['reason'] += ' Population préalable fournie seulement / Prior supplied population only; bounded absence is not a site-wide orphan, authenticated importance, interaction or indexing claim.'
                 if cid == 'TS17':
                     report['results'][i]['reason'] += ' Source et états déclarés seulement / Supplied source and declared states only; no authenticated interaction, acquisition or Google discovery.'
+                if cid in ('TS09','TS11','TS19','TS20','TS38'):
+                    report['results'][i]['reason'] += ' Population finie et revues fournies seulement / Supplied finite population and reviews only; source-only reviewed scope, no real-site audit, authenticated acquisition, indexing or ranking.'
                 if cid in ('TS13', 'TS14'):
                     report['results'][i]['reason'] += ' Fichiers/pages/historique et revues fournis seulement / Supplied files/pages/history and reviews only; no real-site audit, authenticated significance, indexing or ranking.'
                 if cid == 'TS15':

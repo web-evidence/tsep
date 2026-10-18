@@ -81,18 +81,23 @@ class SitemapQuality(unittest.TestCase):
         intermediate = (json.dumps(old, ensure_ascii=False, indent=2)+'\n').encode()
         self.assertEqual(hashlib.sha256(intermediate).hexdigest(), correction['corrected_fixture_sha256'])
         corpus = expand(tsep.read_json(ROOT/'conformance/cases.json'))
-        self.assertEqual(corpus['cases'][-55:], cases())
+        self.assertEqual([c for c in corpus['cases'] if c['id'].startswith('sitemap-quality-v1-')], cases())
 
     def test_rc1_controls_readers_tests_and_fixtures_preserved(self):
         frozen = tsep.read_json(ROOT/'provenance/v030-rc1-preservation.json')
         protocol = tsep.read_json(tsep.PROTOCOL_PATH)
         self.assertEqual(frozen['base_commit'], '7b60c20e7ac572574f756ad92531e0c46f7b83e7')
-        self.assertEqual(protocol['version'], '0.3.0-draft.1')
+        self.assertEqual(protocol['version'], '0.3.0-draft.2')
+        previous = tsep.read_json(ROOT/'provenance/v030-draft1-rule-baseline.json')['new_control_previous_versions']
         for control in protocol['controls']:
             if control['id'] not in ('TS13', 'TS14'):
-                self.assertEqual(reader.digest(control), frozen['control_sha256'][control['id']], control['id'])
+                restored = copy.deepcopy(control)
+                if control['id'] in previous:
+                    restored.pop('rules')
+                    restored['rule_version'] = previous[control['id']]
+                self.assertEqual(reader.digest(restored), frozen['control_sha256'][control['id']], control['id'])
             else:
-                self.assertEqual(control['rule_version'], protocol['version'])
+                self.assertEqual(control['rule_version'], '0.3.0-draft.1')
         overlays = tsep.read_json(ROOT/'provenance/ts25-runtime-test-overlay-v1.json')['updates']
         for name, sha in frozen['preserved_files'].items():
             raw = (ROOT/name).read_bytes()
@@ -106,8 +111,16 @@ class SitemapQuality(unittest.TestCase):
                     raw = text.encode('utf-8')
                     self.assertEqual(hashlib.sha256(raw).hexdigest(), update['base_sha256'])
             self.assertEqual(hashlib.sha256(raw).hexdigest(), sha, name)
+        extension = tsep.read_json(ROOT/'provenance/v030-url-policy-integration-overlay.json')['updates']
         for update in frozen['integration_test_updates']:
             current = (ROOT/update['path']).read_text()
+            for addition in extension:
+                if addition['path'] == update['path']:
+                    self.assertEqual(hashlib.sha256(current.encode()).hexdigest(), addition['current_sha256'])
+                    for change in reversed(addition['replacements']):
+                        self.assertEqual(current.count(change['after']), 1)
+                        current = current.replace(change['after'], change['before'])
+                    self.assertEqual(hashlib.sha256(current.encode()).hexdigest(), addition['base_sha256'])
             self.assertEqual(current.count(update['after']), 1)
             restored = current.replace(update['after'], update['before']).encode('utf-8')
             self.assertEqual(hashlib.sha256(restored).hexdigest(), update['base_sha256'])
@@ -117,7 +130,7 @@ class SitemapQuality(unittest.TestCase):
         self.assertEqual(corpus['additional_case_files'][:len(refs)], refs)
         methods = tsep.read_json(ROOT/'tests/fixtures/control-cases.json')
         self.assertEqual(reader.digest(methods['cases'][:frozen['method_cases_count']]), frozen['method_cases_sha256'])
-        self.assertEqual(sum(len(c.get('rules', [])) for c in protocol['controls']), 70)
+        self.assertEqual(sum(len(c.get('rules', [])) for c in protocol['controls']), 79)
 
     def test_export_replay_c_nc_nt_and_partial_rules(self):
         scenarios = [('complete', 'C', 'C'), ('noindex', 'NC', 'C'),

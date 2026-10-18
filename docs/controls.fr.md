@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.1 — Contrôles
+# TSEP 0.3.0-draft.2 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -586,6 +586,30 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/block-indexing](https://developers.google.com/search/docs/crawling-indexing/block-indexing)
 
+### TS09-A01 — Registre des exclusions et responsabilités
+
+`TSEP@0.3.0-draft.2:TS09-A01`
+
+**Entrées requises**: configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS09 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Lire le registre natif JSON exclusion-register-v1 ; rapprocher chaque famille sélectionnée du mécanisme préalable, puis vérifier propriétaire, motif et date de revue. Exiger une revue liée au dossier.
+
+**Attendus.** Les mécanismes concordent et chaque famille a ses informations de gouvernance ; la revue fournie confirme le périmètre. Une divergence de mécanisme échoue.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : configuration, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Un champ absent ou ambigu, un registre manquant ou une revue non liée donne indéterminé. La date de revue est une date de calendrier déclarée, pas une preuve de réalisation.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
+
 ## TS10 — Chaque page canonique publie une URL absolue, stable et cohérente.
 
 **Sévérité**: major. **Unité**: url-set.
@@ -731,6 +755,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+
+### TS11-A01 — Comparaison éditoriale des variantes
+
+`TSEP@0.3.0-draft.2:TS11-A01`
+
+**Entrées requises**: http, html, content, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS11 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Pour chaque paire déclarée duplicate ou distinct, lire les deux réponses HTML UTF-8 complètes et conserver leurs empreintes. Exiger la revue comparative liée, y compris la suffisance du périmètre source.
+
+**Attendus.** Les deux contenus sont disponibles et la revue éditoriale étaye la relation déclarée. Une revue contradictoire échoue ; égalité ou similarité textuelle ne crée pas cette revue.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : http, html, content, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Contenu absent, format HTML non pris en charge, comparaison dépendante du rendu ou jugement manquant : indéterminé.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
+
+### TS11-A02 — Convergence sans absorption de pages distinctes
+
+`TSEP@0.3.0-draft.2:TS11-A02`
+
+**Entrées requises**: http, html, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS11 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Lire séparément canonical HTTP et HTML des deux membres. Un doublon désigne la préférence ; une page distincte se désigne elle-même. Exiger la revue de la décision et du périmètre source.
+
+**Attendus.** Toutes les déclarations qualifiées concordent avec la relation éditoriale préalable ; une déclaration contraire échoue, même si une autre surface manque.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : http, html, content, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Aucune canonical explicite, source non interprétable ou rendu nécessaire non fourni : indéterminé, sans choix du moteur inféré.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
 
 ## TS12 — La canonique choisie par Google est comparée à celle déclarée.
 
@@ -1292,6 +1364,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/url-structure](https://developers.google.com/search/docs/crawling-indexing/url-structure)
 
+### TS19-A01 — Politique bornée par motif combinatoire
+
+`TSEP@0.3.0-draft.2:TS19-A01`
+
+**Entrées requises**: configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS19 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Comparer les axes max_combinations, navigation et indexing du fichier natif url-pattern-config-v1 à chaque motif préalable ; exiger la revue du choix de bornes.
+
+**Attendus.** Chaque axe fourni correspond au plan fini sélectionné. Une valeur contradictoire, notamment une limite nulle contraire au plan positif, échoue.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : configuration, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Axe ou configuration manquant, borne non entière ou hors 1–128, revue absente : indéterminé.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
+
+### TS19-A02 — Population observée et décision sur les pièges
+
+`TSEP@0.3.0-draft.2:TS19-A02`
+
+**Entrées requises**: crawl, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS19 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Lire url-crawl-v1, compter les URL distinctes et les comparer à la liste finie et à sa borne ; conserver la décision motivée sur les pièges/cycles et sa revue.
+
+**Attendus.** Les URL observées appartiennent à la population prévue, leur nombre respecte la borne et les pièges sont expliqués. Une URL extérieure ou un dépassement échoue.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : crawl, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Crawl fourni incomplet, identités ambiguës, liste ou décision absente : indéterminé. Un échantillon fini ne prouve jamais la finitude de tout le site.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
+
 ## TS20 — La structure d’URL est lisible, stable et encodée correctement.
 
 **Sévérité**: minor. **Unité**: url-set.
@@ -1315,6 +1435,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/url-structure](https://developers.google.com/search/docs/crawling-indexing/url-structure)
+
+### TS20-A01 — Forme des URL selon la politique fournie
+
+`TSEP@0.3.0-draft.2:TS20-A01`
+
+**Entrées requises**: crawl, configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS20 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Lire la capture après et url-shape-config-v1. Vérifier espaces/contrôles, antislash, échappements percent, fragments et casse de chemin selon les choix préalables ; revue humaine de lisibilité.
+
+**Attendus.** La configuration correspond au plan et chaque URL respecte ses axes lexicaux. Une divergence qualifiée échoue. Aucun changement implicite de casse ou de décodage.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : crawl, configuration, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** URL/autorité non prise en charge, politique inconnue, capture ou revue manquante : indéterminé.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
+
+### TS20-A02 — Stabilité temporelle et décisions de variation
+
+`TSEP@0.3.0-draft.2:TS20-A02`
+
+**Entrées requises**: crawl, configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS20 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Comparer deux captures ordonnées url-crawl-v1 ayant les mêmes identités ; toute URL changée doit avoir une décision unique avant/après avec motif, dans le plan lié à la revue.
+
+**Attendus.** Les URL sont égales aux deux dates, ou leur variation est explicitement décidée et revue. Un changement observé sans décision échoue.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : crawl, configuration, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Une seule date, dates inversées/égales, identité manquante ou revue absente : indéterminé. La stabilité future reste inconnue.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
 
 ## TS21 — Les URL découvertes mais non indexées sont investiguées par famille.
 
@@ -2251,6 +2419,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+
+### TS38-A01 — Trajectoires et canonical des variantes équivalentes
+
+`TSEP@0.3.0-draft.2:TS38-A01`
+
+**Entrées requises**: http, html, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS38 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Exiger l’équivalence revue puis lire chaque trajectoire native : un seul saut depuis chaque variante, réponse directe 200 pour la préférence, canonical HTTP/HTML vers elle.
+
+**Attendus.** Chaque variante converge en un saut et chaque canonical qualifiée concorde. La fusion déclarée de ressources distinctes ou une divergence native échoue.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : http, html, content, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Trace manquante, canonical absente, équivalence non décidée ou rendu nécessaire : indéterminé.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
+
+### TS38-A02 — Signaux internes des variantes
+
+`TSEP@0.3.0-draft.2:TS38-A02`
+
+**Entrées requises**: sitemap, html, crawl, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS38 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Lire le urlset natif complet sélectionné et toutes les sources de liens prévues. Exiger la présence de la préférence dans ce sitemap, aucune variante non préférée dans sitemap/liens et la revue d’équivalence/périmètre.
+
+**Attendus.** Sitemap et liens du périmètre concordent avec la préférence ; une divergence ou fusion de pages distinctes échoue. Zéro lien reste une observation du corpus complet fourni.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : sitemap, html, crawl, content, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Index XML, fichier tronqué, source de liens manquante, population ou revue ambiguë : indéterminé ; aucune absence globale inférée.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
 
 ## TS39 — Le CDN, Vary et la géolocalisation ne servent pas des signaux SEO contradictoires.
 

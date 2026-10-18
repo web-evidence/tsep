@@ -1,3 +1,5 @@
+0.3.0-draft.2 preparation:35 rule-bearing controls /79 atomic rules. TS09/11/19/20/38 supplied-source/review batch; [contract](docs/url-policy-evidence.md), [migration](docs/migration-0.3.0-draft.2.md). Synthetic examples, no publication or application change.
+
 [TS25 — présence critique fournie / supplied critical presence](docs/critical-presence-evidence.md), [draft.44 migration](docs/migration-draft.44.md).
 
 [TS24 — rôle x-default fourni / supplied x-default role](docs/xdefault-role-evidence.md), [draft.41 migration](docs/migration-draft.41.md).

@@ -1,7 +1,7 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.3.0-draft.1",
+  "version": "0.3.0-draft.2",
   "status": "draft",
   "date": "2026-10-18",
   "languages": [
@@ -1273,7 +1273,54 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.2",
+      "rules": [
+        {
+          "id": "TS09-A01",
+          "title": {
+            "fr": "Registre des exclusions et responsabilités",
+            "en": "Exclusion register and ownership"
+          },
+          "required_inputs": [
+            "configuration",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Éléments explicitement sélectionnés du contrôle TS09 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.",
+            "en": "Explicitly selected TS09 items; url-policy-v1 profile defined in docs/url-policy-evidence.md."
+          },
+          "procedure": {
+            "fr": "Lire le registre natif JSON exclusion-register-v1 ; rapprocher chaque famille sélectionnée du mécanisme préalable, puis vérifier propriétaire, motif et date de revue. Exiger une revue liée au dossier.",
+            "en": "Read the native exclusion-register-v1 JSON register; compare each selected family with its prior mechanism, then require owner, rationale and review date. Require an evidence-bound review."
+          },
+          "acceptance": {
+            "fr": "Les mécanismes concordent et chaque famille a ses informations de gouvernance ; la revue fournie confirme le périmètre. Une divergence de mécanisme échoue.",
+            "en": "Mechanisms agree and every family has governance information; supplied review supports the scope. A mechanism mismatch fails."
+          },
+          "evidence": {
+            "fr": "Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : configuration, intent.",
+            "en": "Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: configuration, intent."
+          },
+          "assumptions": {
+            "fr": "Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.",
+            "en": "Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity."
+          },
+          "inconclusive": {
+            "fr": "Un champ absent ou ambigu, un registre manquant ou une revue non liée donne indéterminé. La date de revue est une date de calendrier déclarée, pas une preuve de réalisation.",
+            "en": "Missing or ambiguous fields, missing register or unbound review are inconclusive. Review date is a declared calendar date, not evidence that review occurred."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.",
+            "en": "No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.",
+            "en": "Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred."
+          }
+        }
+      ]
     },
     {
       "id": "TS10",
@@ -1583,7 +1630,103 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.2",
+      "rules": [
+        {
+          "id": "TS11-A01",
+          "title": {
+            "fr": "Comparaison éditoriale des variantes",
+            "en": "Editorial comparison of variants"
+          },
+          "required_inputs": [
+            "http",
+            "html",
+            "content",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "manual",
+          "applicability": {
+            "fr": "Éléments explicitement sélectionnés du contrôle TS11 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.",
+            "en": "Explicitly selected TS11 items; url-policy-v1 profile defined in docs/url-policy-evidence.md."
+          },
+          "procedure": {
+            "fr": "Pour chaque paire déclarée duplicate ou distinct, lire les deux réponses HTML UTF-8 complètes et conserver leurs empreintes. Exiger la revue comparative liée, y compris la suffisance du périmètre source.",
+            "en": "For each declared duplicate or distinct pair, read both complete UTF-8 HTML responses and retain fingerprints. Require a bound comparative review including source-scope sufficiency."
+          },
+          "acceptance": {
+            "fr": "Les deux contenus sont disponibles et la revue éditoriale étaye la relation déclarée. Une revue contradictoire échoue ; égalité ou similarité textuelle ne crée pas cette revue.",
+            "en": "Both contents are available and the supplied editorial review supports the declared relation. Contradictory review fails; text equality or similarity never supplies that review."
+          },
+          "evidence": {
+            "fr": "Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : http, html, content, intent.",
+            "en": "Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: http, html, content, intent."
+          },
+          "assumptions": {
+            "fr": "Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.",
+            "en": "Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity."
+          },
+          "inconclusive": {
+            "fr": "Contenu absent, format HTML non pris en charge, comparaison dépendante du rendu ou jugement manquant : indéterminé.",
+            "en": "Missing content, unsupported HTML, render-dependent comparison or missing judgment: inconclusive."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.",
+            "en": "No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.",
+            "en": "Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred."
+          }
+        },
+        {
+          "id": "TS11-A02",
+          "title": {
+            "fr": "Convergence sans absorption de pages distinctes",
+            "en": "Convergence without absorbing distinct pages"
+          },
+          "required_inputs": [
+            "http",
+            "html",
+            "content",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Éléments explicitement sélectionnés du contrôle TS11 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.",
+            "en": "Explicitly selected TS11 items; url-policy-v1 profile defined in docs/url-policy-evidence.md."
+          },
+          "procedure": {
+            "fr": "Lire séparément canonical HTTP et HTML des deux membres. Un doublon désigne la préférence ; une page distincte se désigne elle-même. Exiger la revue de la décision et du périmètre source.",
+            "en": "Read HTTP and HTML canonicals separately for both members. A duplicate points to the preference; a distinct page points to itself. Require review of the decision and source scope."
+          },
+          "acceptance": {
+            "fr": "Toutes les déclarations qualifiées concordent avec la relation éditoriale préalable ; une déclaration contraire échoue, même si une autre surface manque.",
+            "en": "Every qualified declaration agrees with the prior editorial relation; a conflicting declaration fails even if another surface is unavailable."
+          },
+          "evidence": {
+            "fr": "Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : http, html, content, intent.",
+            "en": "Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: http, html, content, intent."
+          },
+          "assumptions": {
+            "fr": "Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.",
+            "en": "Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity."
+          },
+          "inconclusive": {
+            "fr": "Aucune canonical explicite, source non interprétable ou rendu nécessaire non fourni : indéterminé, sans choix du moteur inféré.",
+            "en": "No explicit canonical, uninterpretable source or required rendering unavailable: inconclusive, without inferring engine selection."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.",
+            "en": "No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.",
+            "en": "Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred."
+          }
+        }
+      ]
     },
     {
       "id": "TS12",
@@ -2782,7 +2925,99 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.2",
+      "rules": [
+        {
+          "id": "TS19-A01",
+          "title": {
+            "fr": "Politique bornée par motif combinatoire",
+            "en": "Bounded combinatorial-pattern policy"
+          },
+          "required_inputs": [
+            "configuration",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Éléments explicitement sélectionnés du contrôle TS19 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.",
+            "en": "Explicitly selected TS19 items; url-policy-v1 profile defined in docs/url-policy-evidence.md."
+          },
+          "procedure": {
+            "fr": "Comparer les axes max_combinations, navigation et indexing du fichier natif url-pattern-config-v1 à chaque motif préalable ; exiger la revue du choix de bornes.",
+            "en": "Compare max_combinations, navigation and indexing in native url-pattern-config-v1 with each prior pattern; require review of the chosen bounds."
+          },
+          "acceptance": {
+            "fr": "Chaque axe fourni correspond au plan fini sélectionné. Une valeur contradictoire, notamment une limite nulle contraire au plan positif, échoue.",
+            "en": "Every supplied axis matches the selected finite plan. A conflicting value, including zero against a positive planned limit, fails."
+          },
+          "evidence": {
+            "fr": "Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : configuration, intent.",
+            "en": "Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: configuration, intent."
+          },
+          "assumptions": {
+            "fr": "Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.",
+            "en": "Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity."
+          },
+          "inconclusive": {
+            "fr": "Axe ou configuration manquant, borne non entière ou hors 1–128, revue absente : indéterminé.",
+            "en": "Missing axis/configuration, non-integer bound outside1–128 or absent review: inconclusive."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.",
+            "en": "No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.",
+            "en": "Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred."
+          }
+        },
+        {
+          "id": "TS19-A02",
+          "title": {
+            "fr": "Population observée et décision sur les pièges",
+            "en": "Observed population and trap decision"
+          },
+          "required_inputs": [
+            "crawl",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Éléments explicitement sélectionnés du contrôle TS19 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.",
+            "en": "Explicitly selected TS19 items; url-policy-v1 profile defined in docs/url-policy-evidence.md."
+          },
+          "procedure": {
+            "fr": "Lire url-crawl-v1, compter les URL distinctes et les comparer à la liste finie et à sa borne ; conserver la décision motivée sur les pièges/cycles et sa revue.",
+            "en": "Read url-crawl-v1, count distinct URLs and compare with the finite list and bound; retain the reasoned trap/cycle decision and its review."
+          },
+          "acceptance": {
+            "fr": "Les URL observées appartiennent à la population prévue, leur nombre respecte la borne et les pièges sont expliqués. Une URL extérieure ou un dépassement échoue.",
+            "en": "Observed URLs belong to the planned population, their count respects the bound and traps are explained. An outside URL or exceeded bound fails."
+          },
+          "evidence": {
+            "fr": "Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : crawl, intent.",
+            "en": "Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: crawl, intent."
+          },
+          "assumptions": {
+            "fr": "Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.",
+            "en": "Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity."
+          },
+          "inconclusive": {
+            "fr": "Crawl fourni incomplet, identités ambiguës, liste ou décision absente : indéterminé. Un échantillon fini ne prouve jamais la finitude de tout le site.",
+            "en": "Incomplete supplied crawl, ambiguous identities, absent list or decision: inconclusive. A finite sample never proves whole-site finiteness."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.",
+            "en": "No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.",
+            "en": "Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred."
+          }
+        }
+      ]
     },
     {
       "id": "TS20",
@@ -2841,7 +3076,101 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.2",
+      "rules": [
+        {
+          "id": "TS20-A01",
+          "title": {
+            "fr": "Forme des URL selon la politique fournie",
+            "en": "URL shape under supplied policy"
+          },
+          "required_inputs": [
+            "crawl",
+            "configuration",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Éléments explicitement sélectionnés du contrôle TS20 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.",
+            "en": "Explicitly selected TS20 items; url-policy-v1 profile defined in docs/url-policy-evidence.md."
+          },
+          "procedure": {
+            "fr": "Lire la capture après et url-shape-config-v1. Vérifier espaces/contrôles, antislash, échappements percent, fragments et casse de chemin selon les choix préalables ; revue humaine de lisibilité.",
+            "en": "Read the later capture and url-shape-config-v1. Check spaces/controls, backslashes, percent escapes, fragments and path case against prior choices; require human readability review."
+          },
+          "acceptance": {
+            "fr": "La configuration correspond au plan et chaque URL respecte ses axes lexicaux. Une divergence qualifiée échoue. Aucun changement implicite de casse ou de décodage.",
+            "en": "Configuration matches the plan and every URL satisfies its lexical axes. A qualified mismatch fails. No implicit case change or decoding."
+          },
+          "evidence": {
+            "fr": "Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : crawl, configuration, intent.",
+            "en": "Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: crawl, configuration, intent."
+          },
+          "assumptions": {
+            "fr": "Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.",
+            "en": "Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity."
+          },
+          "inconclusive": {
+            "fr": "URL/autorité non prise en charge, politique inconnue, capture ou revue manquante : indéterminé.",
+            "en": "Unsupported URL/authority, unknown policy, missing capture or review: inconclusive."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.",
+            "en": "No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.",
+            "en": "Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred."
+          }
+        },
+        {
+          "id": "TS20-A02",
+          "title": {
+            "fr": "Stabilité temporelle et décisions de variation",
+            "en": "Temporal stability and variation decisions"
+          },
+          "required_inputs": [
+            "crawl",
+            "configuration",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Éléments explicitement sélectionnés du contrôle TS20 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.",
+            "en": "Explicitly selected TS20 items; url-policy-v1 profile defined in docs/url-policy-evidence.md."
+          },
+          "procedure": {
+            "fr": "Comparer deux captures ordonnées url-crawl-v1 ayant les mêmes identités ; toute URL changée doit avoir une décision unique avant/après avec motif, dans le plan lié à la revue.",
+            "en": "Compare two ordered url-crawl-v1 captures with matching identities; every changed URL requires one reasoned before/after decision in the reviewed plan."
+          },
+          "acceptance": {
+            "fr": "Les URL sont égales aux deux dates, ou leur variation est explicitement décidée et revue. Un changement observé sans décision échoue.",
+            "en": "URLs match at the two dates or their variation is explicitly decided and reviewed. An observed change without a decision fails."
+          },
+          "evidence": {
+            "fr": "Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : crawl, configuration, intent.",
+            "en": "Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: crawl, configuration, intent."
+          },
+          "assumptions": {
+            "fr": "Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.",
+            "en": "Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity."
+          },
+          "inconclusive": {
+            "fr": "Une seule date, dates inversées/égales, identité manquante ou revue absente : indéterminé. La stabilité future reste inconnue.",
+            "en": "One date, reversed/equal dates, missing identity or review: inconclusive. Future stability remains unknown."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.",
+            "en": "No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.",
+            "en": "Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred."
+          }
+        }
+      ]
     },
     {
       "id": "TS21",
@@ -4881,7 +5210,104 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.1.0-draft.19"
+      "rule_version": "0.3.0-draft.2",
+      "rules": [
+        {
+          "id": "TS38-A01",
+          "title": {
+            "fr": "Trajectoires et canonical des variantes équivalentes",
+            "en": "Trajectories and canonicals of equivalent variants"
+          },
+          "required_inputs": [
+            "http",
+            "html",
+            "content",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Éléments explicitement sélectionnés du contrôle TS38 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.",
+            "en": "Explicitly selected TS38 items; url-policy-v1 profile defined in docs/url-policy-evidence.md."
+          },
+          "procedure": {
+            "fr": "Exiger l’équivalence revue puis lire chaque trajectoire native : un seul saut depuis chaque variante, réponse directe 200 pour la préférence, canonical HTTP/HTML vers elle.",
+            "en": "Require reviewed equivalence and read every native trajectory: one hop from each variant, direct200 preferred response, HTTP/HTML canonical pointing to it."
+          },
+          "acceptance": {
+            "fr": "Chaque variante converge en un saut et chaque canonical qualifiée concorde. La fusion déclarée de ressources distinctes ou une divergence native échoue.",
+            "en": "Every variant converges in one hop and every qualified canonical agrees. Declared merging of distinct resources or native disagreement fails."
+          },
+          "evidence": {
+            "fr": "Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : http, html, content, intent.",
+            "en": "Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: http, html, content, intent."
+          },
+          "assumptions": {
+            "fr": "Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.",
+            "en": "Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity."
+          },
+          "inconclusive": {
+            "fr": "Trace manquante, canonical absente, équivalence non décidée ou rendu nécessaire : indéterminé.",
+            "en": "Missing trace/canonical, undecided equivalence or necessary rendering: inconclusive."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.",
+            "en": "No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.",
+            "en": "Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred."
+          }
+        },
+        {
+          "id": "TS38-A02",
+          "title": {
+            "fr": "Signaux internes des variantes",
+            "en": "Internal signals for variants"
+          },
+          "required_inputs": [
+            "sitemap",
+            "html",
+            "crawl",
+            "content",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Éléments explicitement sélectionnés du contrôle TS38 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.",
+            "en": "Explicitly selected TS38 items; url-policy-v1 profile defined in docs/url-policy-evidence.md."
+          },
+          "procedure": {
+            "fr": "Lire le urlset natif complet sélectionné et toutes les sources de liens prévues. Exiger la présence de la préférence dans ce sitemap, aucune variante non préférée dans sitemap/liens et la revue d’équivalence/périmètre.",
+            "en": "Read the selected complete native urlset and every planned link source. Require the preference in that sitemap, no nonpreferred variant in sitemap/links, and equivalence/scope review."
+          },
+          "acceptance": {
+            "fr": "Sitemap et liens du périmètre concordent avec la préférence ; une divergence ou fusion de pages distinctes échoue. Zéro lien reste une observation du corpus complet fourni.",
+            "en": "Sitemap and scoped links agree with the preference; disagreement or merging distinct pages fails. Zero links remains an observation of the complete supplied corpus."
+          },
+          "evidence": {
+            "fr": "Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : sitemap, html, crawl, content, intent.",
+            "en": "Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: sitemap, html, crawl, content, intent."
+          },
+          "assumptions": {
+            "fr": "Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.",
+            "en": "Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity."
+          },
+          "inconclusive": {
+            "fr": "Index XML, fichier tronqué, source de liens manquante, population ou revue ambiguë : indéterminé ; aucune absence globale inférée.",
+            "en": "XML index, truncated file, missing link source, ambiguous population/review: inconclusive; no global absence inferred."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.",
+            "en": "No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA."
+          },
+          "limitations": {
+            "fr": "Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.",
+            "en": "Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred."
+          }
+        }
+      ]
     },
     {
       "id": "TS39",
@@ -6092,15 +6518,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "c0e9583cb739a04f88ebc7e2d51555c1244487409bae72e65e4c0c430b98c1cd"
+      "sha256": "7c5d94ffb706017e3546280b3292e55959a374ce33d096b0814e0ca60b70d099"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "50886f9af59ac72223903bd401f143971b576b384d967a6fc99e55764823dc54"
+      "sha256": "53133da7aee34bf17435294500cad65f55ae4e6db19685e0d75b492771f24e10"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "f49d3f5375617af3d566403affdfb3d73ed3d6451811773c7f78944d08603159"
+      "sha256": "ed44a444c32a40f2314ca4b5f6b65417610ec53a1a115eebda71226bf95ffe96"
     },
     {
       "path": "docs/source-directives.md",
@@ -6213,6 +6639,14 @@
     {
       "path": "docs/sitemap-quality-evidence.md",
       "sha256": "50b1a2ac7f0fdaeb39b434a3082b2f5510b290d439460ed87df42fbf6c447b70"
+    },
+    {
+      "path": "docs/evidence-dossier-v1.md",
+      "sha256": "84fa917cce927d5991b510aa84b53ed09b2aabce47b2f3b8a61119aa6db07836"
+    },
+    {
+      "path": "docs/url-policy-evidence.md",
+      "sha256": "51e3d200aa8caeaa28313aa2dcb5b1fdfce2dea2bb0ec796c683cf0b265101a9"
     }
   ]
 }

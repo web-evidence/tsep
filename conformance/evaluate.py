@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded offline interpreter for seventy TSEP rules. Apache-2.0; no collection."""
+"""Bounded offline interpreter for versioned TSEP atomic rules. Apache-2.0; no collection."""
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -25,7 +25,9 @@ RULES += ('TS23-A01',)
 RULES += ('TS24-A01',)
 RULES += ('TS25-A01','TS25-A02')
 RULES += ('TS13-A01', 'TS13-A02', 'TS14-A01')
-VERSION = '47'  # Interpreter coverage version; normative protocol version is separate.
+from conformance.url_policy import RULES as URL_POLICY_RULES
+RULES += URL_POLICY_RULES
+VERSION = '48'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -361,6 +363,9 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
 
 
 def evaluate_target(target, rule, *, diagnostics=None):
+    if rule in URL_POLICY_RULES:
+        from conformance.url_policy import assess
+        return assess(target, rule, diagnostics=diagnostics)
     if rule.startswith(('TS13-', 'TS14-')):
         from conformance.sitemap_quality import assess
         return assess(target, rule, diagnostics=diagnostics)
@@ -470,6 +475,11 @@ def evaluate(data, *, source_observations=None):
             try: verify_target(target)
             except (ValueError, TypeError, KeyError) as error:
                 raise tsep.Invalid('Sitemap quality integrity: ' + str(error)) from error
+    if set(data.get('rules', [])) & set(URL_POLICY_RULES):
+        from conformance.evidence_dossier import verify
+        for target in data.get('targets', []):
+            try: verify(target)
+            except (ValueError, TypeError, KeyError) as error: raise tsep.Invalid('Evidence dossier integrity: '+str(error)) from error
     hreflang_http_scopes=set()
     if set(data.get('rules',[])) & {'TS23-A01','TS24-A01'}:
         from adapters.hreflang_intake import verify_target

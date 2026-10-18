@@ -1,0 +1,104 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS20-A01",
+    "TS20-A02"
+  ],
+  "targets": [
+    {
+      "url": "https://synthetic.invalid/scope/TS20",
+      "observed_at": "2026-10-14T12:00:00Z",
+      "context": {
+        "id": "synthetic",
+        "tool": "Authored fixture",
+        "tool_version": "1",
+        "bounds": "Supplied fictional population only"
+      },
+      "intent": {
+        "declared_at": "2026-10-14T09:00:00Z",
+        "crawler": "Authored-TSEP/1",
+        "evidence_checks": {
+          "TS20": {
+            "reader": "url-policy-v1",
+            "scope_reason": "SYNTHETIC finite selected population, no site audit",
+            "items": [
+              {
+                "id": "stable",
+                "before": "before",
+                "after": "after",
+                "case": "lower-path",
+                "allow_fragment": false,
+                "stability": "stable",
+                "decisions": []
+              }
+            ]
+          }
+        }
+      },
+      "evidence_checks": {
+        "TS20": {
+          "synthetic": true,
+          "records": [
+            {
+              "id": "before",
+              "kind": "crawl",
+              "observed_at": "2026-10-14T09:30:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJmb3JtYXQiOiJ1cmwtY3Jhd2wtdjEiLCJyb3dzIjpbeyJrZXkiOiJhIiwidXJsIjoiaHR0cHM6Ly9zeW50aGV0aWMuaW52YWxpZC9hIn1dfQ==",
+                "sha256": "9a58d540b9c352c3c7429244f4acc0fff7bb4f810ab592eeded42e41c84bf460",
+                "complete": true,
+                "encoding": "identity"
+              }
+            },
+            {
+              "id": "after",
+              "kind": "crawl",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJmb3JtYXQiOiJ1cmwtY3Jhd2wtdjEiLCJyb3dzIjpbeyJrZXkiOiJhIiwidXJsIjoiaHR0cHM6Ly9zeW50aGV0aWMuaW52YWxpZC9hIn1dfQ==",
+                "sha256": "9a58d540b9c352c3c7429244f4acc0fff7bb4f810ab592eeded42e41c84bf460",
+                "complete": true,
+                "encoding": "identity"
+              }
+            },
+            {
+              "id": "policy",
+              "kind": "configuration",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJmb3JtYXQiOiJ1cmwtc2hhcGUtY29uZmlnLXYxIiwiaXRlbXMiOlt7ImFmdGVyIjoiYWZ0ZXIiLCJhbGxvd19mcmFnbWVudCI6ZmFsc2UsImJlZm9yZSI6ImJlZm9yZSIsImNhc2UiOiJsb3dlci1wYXRoIiwiZGVjaXNpb25zIjpbXSwiaWQiOiJzdGFibGUiLCJzdGFiaWxpdHkiOiJzdGFibGUifV19",
+                "sha256": "2a1127f3031044d18380dbd013a45c68093def972a093c5edd5d169efb7d3699",
+                "complete": true,
+                "encoding": "identity"
+              }
+            }
+          ],
+          "documents": [],
+          "reviews": [
+            {
+              "subject": "TS20-A01:stable",
+              "reviewer": "Fictional reviewer",
+              "reason": "Authored review of supplied records, complete bounded scope and editorial intent; not a real judgment.",
+              "judgment": "supported",
+              "reviewed_at": "2026-10-14T11:00:00Z",
+              "provenance": "synthetic-exercise",
+              "binding_sha256": "21146e9f4df1b76f5a1470cc7a35d108c75e75bbdab857ccf18af5a2e1bfa889"
+            },
+            {
+              "subject": "TS20-A02:stable",
+              "reviewer": "Fictional reviewer",
+              "reason": "Authored review of supplied records, complete bounded scope and editorial intent; not a real judgment.",
+              "judgment": "supported",
+              "reviewed_at": "2026-10-14T11:00:00Z",
+              "provenance": "synthetic-exercise",
+              "binding_sha256": "21146e9f4df1b76f5a1470cc7a35d108c75e75bbdab857ccf18af5a2e1bfa889"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
