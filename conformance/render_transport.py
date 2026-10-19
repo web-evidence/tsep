@@ -5,7 +5,7 @@ from urllib.parse import urljoin,urlsplit
 import tsep
 from conformance.evidence_dossier import Dossier,Findings,ERRORS,address,digest,text
 from conformance.http import need
-VERSION='1'
+VERSION='2'
 COUNTS={'TS26':2,'TS27':2,'TS28':2,'TS29':2,'TS30':2,'TS37':3}
 RULES=tuple(c+'-A%02d'%n for c,num in COUNTS.items() for n in range(1,num+1))
 LIMITATION='Supplied bounded originals and unauthenticated reviews only. No actual browser execution, Googlebot, indexing, accessibility certification, universal trust store or site-wide security assessment.'
@@ -252,9 +252,16 @@ def editorial(d,item,rule,f):
         def inspect():
             rows,_,_=source(d,page['url']);actual=metadata(rows);expected=page['metadata'];need(set(expected)==set(FIELDS),'Explicit five-field policy required, null for intentionally absent optional fields')
             for key in FIELDS:
-                want=expected[key];need(text(want) or (want is None and key not in ('title','h1')),'Unqualified metadata expectation')
-                f.compare(page['url']+':'+key,actual[key]==([] if want is None else [want]),'Native metadata versus prior literal expectation; adequacy needs semantic review')
-                if len(actual[key])==1 and text(actual[key][0]):seen[key].setdefault(actual[key][0],[]).append(page['url'])
+                def field(key=key):
+                    want=expected[key];need(text(want) or (want is None and key not in ('title','h1')),'Unqualified metadata expectation')
+                    if key=='h1':
+                        for row in rows:
+                            if row['tag']=='h1' and 'body' in row['flags']:
+                                need(not (set(row['flags'])|set(row['text_flags']))-{'body'},'Flagged H1 or descendant text requires a separately qualified visibility method')
+                    f.compare(page['url']+':'+key,actual[key]==([] if want is None else [want]),'Native metadata versus prior literal expectation; adequacy needs semantic review')
+                    if len(actual[key])==1 and text(actual[key][0]):seen[key].setdefault(actual[key][0],[]).append(page['url'])
+                # An unknown H1 must not erase an independent title/metadata conflict.
+                f.check(page['url']+':'+key,field)
             if rule.endswith('A02'):content(rows,page['content'],f,page['url']+':main-content')
         f.check(page.get('url','unknown'),inspect)
     if rule.endswith('A01'):
@@ -319,16 +326,23 @@ def mixed(d,item,f):
     f.check('mixed traffic',traffic)
     def html():
         rows,_,_=source(d,item['page'])
+        has_base=any(r['tag']=='base' and 'href' in r['attrs'] and not set(r['flags'])&{'template','foreign'} for r in rows)
         for r in rows:
             attrs=r['attrs']
-            need('srcset' not in attrs and 'style' not in attrs and r['tag']!='style','CSS/srcset mixed-resource surfaces need separately qualified inventory')
+            if 'srcset' in attrs or 'style' in attrs or r['tag']=='style':
+                f.add('CSS/srcset','inconclusive','CSS/srcset mixed-resource surfaces need separately qualified inventory')
             values=[]
             if r['tag'] in ('script','img','iframe','audio','video','source','track','embed','input') and 'src' in attrs:values.append(attrs['src'])
             if r['tag']=='link' and set(attrs.get('rel','').lower().split())&{'stylesheet','preload','modulepreload','icon'}:values.append(attrs.get('href',''))
             if r['tag']=='object':values.append(attrs.get('data',''))
             if 'poster' in attrs:values.append(attrs['poster'])
             for value in values:
-                absolute=urljoin(item['page'],value);address(absolute);f.compare('embedded:'+value,urlsplit(absolute).scheme=='https','Native selected embedded URL uses HTTPS in strict profile')
+                def embedded(value=value):
+                    # This profile does not resolve a document base. Absolute URL
+                    # contradictions remain independent of that missing method.
+                    need(not has_base or urlsplit(value).scheme in ('http','https'),'Relative embedded URL with base href requires a separately qualified resolution method')
+                    absolute=urljoin(item['page'],value);address(absolute);f.compare('embedded:'+value,urlsplit(absolute).scheme=='https','Native selected embedded URL uses HTTPS in strict profile')
+                f.check('embedded:'+value,embedded)
     f.check('mixed source',html)
     f.check('console retained',lambda: ('pass','Bound console retained for mixed-content review') if console(d,item) is not None else None)
 

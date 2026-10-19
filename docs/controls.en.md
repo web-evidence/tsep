@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.4 — Controls
+# TSEP 0.3.0-draft.5 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -2110,15 +2110,15 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS30-A01 — Metadata and duplicates in the declared corpus
 
-`TSEP@0.3.0-draft.4:TS30-A01`
+`TSEP@0.3.0-draft.5:TS30-A01`
 
 **Required inputs**: html, content, intent.
 
 **Automation / Automatisation**: `semiAuto`.
 
-**Applicability.** Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md.
+**Applicability.** Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md. Amendment: docs/render-transport-prerequisites-v2.md.
 
-**Method.** Read native title, description, H1, og:title, og:description for each page. Compare prior values and duplicates among selected pages; require a prior decision for each intentional duplicate.
+**Method.** Read native title, description, H1, og:title, og:description for each page. Compare prior values and duplicates among selected pages; require a prior decision for each intentional duplicate. Separately qualify H1 and descendant-text flags; preserve native contradictions in other fields.
 
 **Acceptance.** Values and multiplicity agree; each observed duplicate has one reasoned decision. The corpus is limited to supplied pages.
 
@@ -2126,7 +2126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
 
-**Inconclusive.** Missing source, omitted field policy, ambiguous parse or missing review: NT. null permits only an explicitly absent optional field.
+**Inconclusive.** Missing source, omitted field policy, ambiguous parse or missing review: NT. null permits only an explicitly absent optional field. Hidden/unqualified H1 or descendant text: NT, without manufacturing absence.
 
 **When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
 
@@ -2134,15 +2134,15 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS30-A02 — Editorial coherence and main content
 
-`TSEP@0.3.0-draft.4:TS30-A02`
+`TSEP@0.3.0-draft.5:TS30-A02`
 
 **Required inputs**: html, content, intent.
 
 **Automation / Automatisation**: `manual`.
 
-**Applicability.** Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md.
+**Applicability.** Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md. Amendment: docs/render-transport-prerequisites-v2.md.
 
-**Method.** Reconcile native metadata and identified main content; require a distinct review of promise, meaning and relevant visibility.
+**Method.** Reconcile native metadata and identified main content; require a distinct review of promise, meaning and relevant visibility. Separately qualify H1 and descendant-text flags; preserve native contradictions in other fields.
 
 **Acceptance.** Facts agree with the plan and the bound editorial review supports them; qualified native or human contradiction fails.
 
@@ -2150,7 +2150,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
 
-**Inconclusive.** Unqualified required source/rendering, hidden content, meaning without review or unbound judgment: NT.
+**Inconclusive.** Unqualified required source/rendering, hidden content, meaning without review or unbound judgment: NT. Hidden/unqualified H1 or descendant text: NT, without manufacturing absence.
 
 **When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
 
@@ -2734,7 +2734,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS37-A01 — Certificates, host, time and supplied trust
 
-`TSEP@0.3.0-draft.4:TS37-A01`
+`TSEP@0.3.0-draft.5:TS37-A01`
 
 **Required inputs**: tls, intent.
 
@@ -2758,7 +2758,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS37-A02 — HTTPS redirects and HSTS decision
 
-`TSEP@0.3.0-draft.4:TS37-A02`
+`TSEP@0.3.0-draft.5:TS37-A02`
 
 **Required inputs**: http, configuration, intent.
 
@@ -2782,15 +2782,15 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS37-A03 — Embedded resources and mixed traffic in scope
 
-`TSEP@0.3.0-draft.4:TS37-A03`
+`TSEP@0.3.0-draft.5:TS37-A03`
 
 **Required inputs**: http, render, intent.
 
 **Automation / Automatisation**: `semiAuto`.
 
-**Applicability.** Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md.
+**Applicability.** Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md. Amendment: docs/render-transport-prerequisites-v2.md.
 
-**Method.** Bind HAR and console to the HTTPS document; inspect observed requests and source embedded URLs. The strict profile requires HTTPS for these resources even when a browser might upgrade them.
+**Method.** Bind HAR and console to the HTTPS document; inspect observed requests and source embedded URLs. The strict profile requires HTTPS for these resources even when a browser might upgrade them. With unqualified base href, a relative URL stays NT; examine absolute URLs independently despite CSS/srcset or another unknown scheme.
 
 **Acceptance.** No HTTP URL observed on these surfaces; dynamic-coverage review retained. An observed native HTTP URL fails despite another gap.
 
@@ -2798,7 +2798,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
 
-**Inconclusive.** Truncated HAR, missing body, unqualified CSS/srcset, incomplete context or absent review: NT.
+**Inconclusive.** Truncated HAR, missing body, unqualified CSS/srcset, incomplete context or absent review: NT. Unqualified relative resolution with base href: NT; an independent HTTP contradiction stays NC.
 
 **When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
 

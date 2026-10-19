@@ -1,3 +1,5 @@
+Préparation / preparation **0.3.0-draft.5** : corrections bornées des préalables TS30/TS37, 44 contrôles/98 règles ; 95 définitions atomiques inchangées, toutes les règles RC1 conservées. [Migration](docs/migration-0.3.0-draft.5.md), [contrat / contract](docs/render-transport-prerequisites-v2.md). Nouvelle qualification distincte requise ; aucune publication ni audit réel.
+
 Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](docs/render-transport-evidence.md), [migration](docs/migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
 
 0.3.0-draft.3 preparation:38 rule-bearing controls /85 rules, TS21/22/40 batch. Synthetic cases and supplied reviews; no actual indexing or causality inferred. [Contrat / contract](docs/indexing-locale-evidence.md), [migration](docs/migration-0.3.0-draft.3.md).

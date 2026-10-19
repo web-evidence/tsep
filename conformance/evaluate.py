@@ -31,7 +31,7 @@ from conformance.indexing_locale import RULES as INDEXING_LOCALE_RULES
 RULES += INDEXING_LOCALE_RULES
 from conformance.render_transport import RULES as RENDER_TRANSPORT_RULES
 RULES += RENDER_TRANSPORT_RULES
-VERSION = '50'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '51'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes

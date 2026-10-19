@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.4 — Contrôles
+# TSEP 0.3.0-draft.5 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -2110,15 +2110,15 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS30-A01 — Métadonnées et doublons du corpus déclaré
 
-`TSEP@0.3.0-draft.4:TS30-A01`
+`TSEP@0.3.0-draft.5:TS30-A01`
 
 **Entrées requises**: html, content, intent.
 
 **Automation / Automatisation**: `semiAuto`.
 
-**Applicabilité.** Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+**Applicabilité.** Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md. Amendement: docs/render-transport-prerequisites-v2.md.
 
-**Méthode.** Lire title, description, H1, og:title, og:description natifs par page. Comparer aux valeurs prévues puis les doublons entre pages sélectionnées ; exiger une décision préalable pour chaque doublon intentionnel.
+**Méthode.** Lire title, description, H1, og:title, og:description natifs par page. Comparer aux valeurs prévues puis les doublons entre pages sélectionnées ; exiger une décision préalable pour chaque doublon intentionnel. Qualifier séparément les drapeaux du H1 et de ses textes descendants ; préserver les contradictions natives des autres champs.
 
 **Attendus.** Valeurs et multiplicité concordent ; chaque doublon observé possède une décision motivée unique. Le corpus ne dépasse pas les pages fournies.
 
@@ -2126,7 +2126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
 
-**Indéterminé.** Source absente, politique de champ omise, parse ambigu ou revue manquante : NT. null autorise seulement un champ facultatif explicitement absent.
+**Indéterminé.** Source absente, politique de champ omise, parse ambigu ou revue manquante : NT. null autorise seulement un champ facultatif explicitement absent. H1 ou texte descendant masqué/non qualifié : NT, sans fabriquer une absence.
 
 **Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
 
@@ -2134,15 +2134,15 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS30-A02 — Cohérence éditoriale et contenu principal
 
-`TSEP@0.3.0-draft.4:TS30-A02`
+`TSEP@0.3.0-draft.5:TS30-A02`
 
 **Entrées requises**: html, content, intent.
 
 **Automation / Automatisation**: `manual`.
 
-**Applicabilité.** Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+**Applicabilité.** Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md. Amendement: docs/render-transport-prerequisites-v2.md.
 
-**Méthode.** Rapprocher les métadonnées natives et le contenu principal identifié ; exiger une revue distincte de la promesse, du sens et de la visibilité pertinente.
+**Méthode.** Rapprocher les métadonnées natives et le contenu principal identifié ; exiger une revue distincte de la promesse, du sens et de la visibilité pertinente. Qualifier séparément les drapeaux du H1 et de ses textes descendants ; préserver les contradictions natives des autres champs.
 
 **Attendus.** Les faits concordent avec le plan et la revue éditoriale liée les soutient ; une contradiction native ou humaine qualifiée échoue.
 
@@ -2150,7 +2150,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
 
-**Indéterminé.** Source/rendu nécessaire non qualifié, contenu masqué, sens sans revue ou jugement non lié : NT.
+**Indéterminé.** Source/rendu nécessaire non qualifié, contenu masqué, sens sans revue ou jugement non lié : NT. H1 ou texte descendant masqué/non qualifié : NT, sans fabriquer une absence.
 
 **Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
 
@@ -2734,7 +2734,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS37-A01 — Certificats, hôte, date et confiance fournie
 
-`TSEP@0.3.0-draft.4:TS37-A01`
+`TSEP@0.3.0-draft.5:TS37-A01`
 
 **Entrées requises**: tls, intent.
 
@@ -2758,7 +2758,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS37-A02 — Redirections HTTPS et décision HSTS
 
-`TSEP@0.3.0-draft.4:TS37-A02`
+`TSEP@0.3.0-draft.5:TS37-A02`
 
 **Entrées requises**: http, configuration, intent.
 
@@ -2782,15 +2782,15 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS37-A03 — Sous-ressources et trafic mixte du périmètre
 
-`TSEP@0.3.0-draft.4:TS37-A03`
+`TSEP@0.3.0-draft.5:TS37-A03`
 
 **Entrées requises**: http, render, intent.
 
 **Automation / Automatisation**: `semiAuto`.
 
-**Applicabilité.** Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+**Applicabilité.** Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md. Amendement: docs/render-transport-prerequisites-v2.md.
 
-**Méthode.** Relier HAR et console au document HTTPS ; examiner les requêtes observées et les URL intégrées de la source. Le profil strict exige HTTPS pour ces ressources, même si un navigateur peut les mettre à niveau.
+**Méthode.** Relier HAR et console au document HTTPS ; examiner les requêtes observées et les URL intégrées de la source. Le profil strict exige HTTPS pour ces ressources, même si un navigateur peut les mettre à niveau. Avec base href non qualifiée, une URL relative reste NT ; examiner indépendamment les URL absolues malgré CSS/srcset ou un autre schéma inconnu.
 
 **Attendus.** Aucune URL HTTP observée sur ces surfaces ; revue de la couverture dynamique consignée. Un HTTP natif observé échoue malgré une autre lacune.
 
@@ -2798,7 +2798,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
 
-**Indéterminé.** HAR tronqué, corps absent, CSS/srcset non qualifiés, contexte incomplet ou revue absente : NT.
+**Indéterminé.** HAR tronqué, corps absent, CSS/srcset non qualifiés, contexte incomplet ou revue absente : NT. Résolution relative avec base href non qualifiée : NT ; une contradiction HTTP indépendante reste NC.
 
 **Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
 

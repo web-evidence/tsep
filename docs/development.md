@@ -1,3 +1,5 @@
+Current preparation / Préparation courante **0.3.0-draft.5** : prerequisite corrections only, TS30-A01/A02 and TS37-A03; interpreter51/reader2, 44 controls/98 rules. [Migration](migration-0.3.0-draft.5.md). Previous qualified draft.4 archive retained. Full verification still required; no observed success implied. Profil complet Node24/Python3.12, plafond7200s, toutes les étapes conservées.
+
 Non-normative distribution correction / Correction de distribution non normative : [minor report-test integration v1](report-test-integration-v1.md). The first full draft.4 attempt observed one generic test error; protocol and rules unchanged. Nouvelle qualification complète requise / New full qualification required.
 
 Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](render-transport-evidence.md), [migration](migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.

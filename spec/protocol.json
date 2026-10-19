@@ -1,9 +1,9 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.3.0-draft.4",
+  "version": "0.3.0-draft.5",
   "status": "draft",
-  "date": "2026-10-18",
+  "date": "2026-10-19",
   "languages": [
     "en",
     "fr"
@@ -4517,7 +4517,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.3.0-draft.4",
+      "rule_version": "0.3.0-draft.5",
       "rules": [
         {
           "id": "TS30-A01",
@@ -4533,12 +4533,12 @@
           "na_inputs": [],
           "automation": "semiAuto",
           "applicability": {
-            "fr": "Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
-            "en": "Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md."
+            "fr": "Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md. Amendement: docs/render-transport-prerequisites-v2.md.",
+            "en": "Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md. Amendment: docs/render-transport-prerequisites-v2.md."
           },
           "procedure": {
-            "fr": "Lire title, description, H1, og:title, og:description natifs par page. Comparer aux valeurs prévues puis les doublons entre pages sélectionnées ; exiger une décision préalable pour chaque doublon intentionnel.",
-            "en": "Read native title, description, H1, og:title, og:description for each page. Compare prior values and duplicates among selected pages; require a prior decision for each intentional duplicate."
+            "fr": "Lire title, description, H1, og:title, og:description natifs par page. Comparer aux valeurs prévues puis les doublons entre pages sélectionnées ; exiger une décision préalable pour chaque doublon intentionnel. Qualifier séparément les drapeaux du H1 et de ses textes descendants ; préserver les contradictions natives des autres champs.",
+            "en": "Read native title, description, H1, og:title, og:description for each page. Compare prior values and duplicates among selected pages; require a prior decision for each intentional duplicate. Separately qualify H1 and descendant-text flags; preserve native contradictions in other fields."
           },
           "acceptance": {
             "fr": "Valeurs et multiplicité concordent ; chaque doublon observé possède une décision motivée unique. Le corpus ne dépasse pas les pages fournies.",
@@ -4553,8 +4553,8 @@
             "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
           },
           "inconclusive": {
-            "fr": "Source absente, politique de champ omise, parse ambigu ou revue manquante : NT. null autorise seulement un champ facultatif explicitement absent.",
-            "en": "Missing source, omitted field policy, ambiguous parse or missing review: NT. null permits only an explicitly absent optional field."
+            "fr": "Source absente, politique de champ omise, parse ambigu ou revue manquante : NT. null autorise seulement un champ facultatif explicitement absent. H1 ou texte descendant masqué/non qualifié : NT, sans fabriquer une absence.",
+            "en": "Missing source, omitted field policy, ambiguous parse or missing review: NT. null permits only an explicitly absent optional field. Hidden/unqualified H1 or descendant text: NT, without manufacturing absence."
           },
           "non_applicability": {
             "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
@@ -4579,12 +4579,12 @@
           "na_inputs": [],
           "automation": "manual",
           "applicability": {
-            "fr": "Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
-            "en": "Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md."
+            "fr": "Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md. Amendement: docs/render-transport-prerequisites-v2.md.",
+            "en": "Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md. Amendment: docs/render-transport-prerequisites-v2.md."
           },
           "procedure": {
-            "fr": "Rapprocher les métadonnées natives et le contenu principal identifié ; exiger une revue distincte de la promesse, du sens et de la visibilité pertinente.",
-            "en": "Reconcile native metadata and identified main content; require a distinct review of promise, meaning and relevant visibility."
+            "fr": "Rapprocher les métadonnées natives et le contenu principal identifié ; exiger une revue distincte de la promesse, du sens et de la visibilité pertinente. Qualifier séparément les drapeaux du H1 et de ses textes descendants ; préserver les contradictions natives des autres champs.",
+            "en": "Reconcile native metadata and identified main content; require a distinct review of promise, meaning and relevant visibility. Separately qualify H1 and descendant-text flags; preserve native contradictions in other fields."
           },
           "acceptance": {
             "fr": "Les faits concordent avec le plan et la revue éditoriale liée les soutient ; une contradiction native ou humaine qualifiée échoue.",
@@ -4599,8 +4599,8 @@
             "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
           },
           "inconclusive": {
-            "fr": "Source/rendu nécessaire non qualifié, contenu masqué, sens sans revue ou jugement non lié : NT.",
-            "en": "Unqualified required source/rendering, hidden content, meaning without review or unbound judgment: NT."
+            "fr": "Source/rendu nécessaire non qualifié, contenu masqué, sens sans revue ou jugement non lié : NT. H1 ou texte descendant masqué/non qualifié : NT, sans fabriquer une absence.",
+            "en": "Unqualified required source/rendering, hidden content, meaning without review or unbound judgment: NT. Hidden/unqualified H1 or descendant text: NT, without manufacturing absence."
           },
           "non_applicability": {
             "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
@@ -5811,7 +5811,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.3.0-draft.4",
+      "rule_version": "0.3.0-draft.5",
       "rules": [
         {
           "id": "TS37-A01",
@@ -5918,12 +5918,12 @@
           "na_inputs": [],
           "automation": "semiAuto",
           "applicability": {
-            "fr": "Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md.",
-            "en": "Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md."
+            "fr": "Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md. Amendement: docs/render-transport-prerequisites-v2.md.",
+            "en": "Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md. Amendment: docs/render-transport-prerequisites-v2.md."
           },
           "procedure": {
-            "fr": "Relier HAR et console au document HTTPS ; examiner les requêtes observées et les URL intégrées de la source. Le profil strict exige HTTPS pour ces ressources, même si un navigateur peut les mettre à niveau.",
-            "en": "Bind HAR and console to the HTTPS document; inspect observed requests and source embedded URLs. The strict profile requires HTTPS for these resources even when a browser might upgrade them."
+            "fr": "Relier HAR et console au document HTTPS ; examiner les requêtes observées et les URL intégrées de la source. Le profil strict exige HTTPS pour ces ressources, même si un navigateur peut les mettre à niveau. Avec base href non qualifiée, une URL relative reste NT ; examiner indépendamment les URL absolues malgré CSS/srcset ou un autre schéma inconnu.",
+            "en": "Bind HAR and console to the HTTPS document; inspect observed requests and source embedded URLs. The strict profile requires HTTPS for these resources even when a browser might upgrade them. With unqualified base href, a relative URL stays NT; examine absolute URLs independently despite CSS/srcset or another unknown scheme."
           },
           "acceptance": {
             "fr": "Aucune URL HTTP observée sur ces surfaces ; revue de la couverture dynamique consignée. Un HTTP natif observé échoue malgré une autre lacune.",
@@ -5938,8 +5938,8 @@
             "en": "Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots."
           },
           "inconclusive": {
-            "fr": "HAR tronqué, corps absent, CSS/srcset non qualifiés, contexte incomplet ou revue absente : NT.",
-            "en": "Truncated HAR, missing body, unqualified CSS/srcset, incomplete context or absent review: NT."
+            "fr": "HAR tronqué, corps absent, CSS/srcset non qualifiés, contexte incomplet ou revue absente : NT. Résolution relative avec base href non qualifiée : NT ; une contradiction HTTP indépendante reste NC.",
+            "en": "Truncated HAR, missing body, unqualified CSS/srcset, incomplete context or absent review: NT. Unqualified relative resolution with base href: NT; an independent HTTP contradiction stays NC."
           },
           "non_applicability": {
             "fr": "Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.",
@@ -7408,15 +7408,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "4e2a85548c6279edf737f4839cef97147bac7cb551b9beefd24c457908969db9"
+      "sha256": "3df13ad06f49508d3251d9ab97af0758b5a163e324bb667624818f187aa53f75"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "33369b6f9f0dfe58a5ae4dbd4499637a555972926bea768e36d86d68e64b6bb1"
+      "sha256": "c23b2f842e4e224e00e6ce627d216e39f1b6cdfeedfd9676ed32fd7071896509"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "e458dfd0117b545015550bf6fa79d09a4a2317fd79b1c31aa5d690c875adc688"
+      "sha256": "124f84a7d16254856dfcb3463cd3c79c1ec0e8453a278b0e473b2fdc49a9d9fe"
     },
     {
       "path": "docs/source-directives.md",
@@ -7545,6 +7545,10 @@
     {
       "path": "docs/render-transport-evidence.md",
       "sha256": "30b16adc2a09dfeb7687790518e834b2d30508951a187cff40704fe914d783b1"
+    },
+    {
+      "path": "docs/render-transport-prerequisites-v2.md",
+      "sha256": "1b4db800064cfd5f91db533a38f0c947c487ba3fba87669efc6606b53d973977"
     }
   ]
 }

@@ -1070,6 +1070,14 @@
     "tests/fixtures/render-transport-v1.sha256",
     "tests/test_render_transport.py",
     "docs/report-test-integration-v1.md",
-    "provenance/v030-report-test-overlay-v1.json"
+    "provenance/v030-report-test-overlay-v1.json",
+    "docs/render-transport-prerequisites-v2.md",
+    "docs/migration-0.3.0-draft.5.md",
+    "docs/source-captures/document-base-2026-10-19.md",
+    "docs/source-captures/document-base-2026-10-19.sha256",
+    "tests/test_render_prerequisites.py",
+    "tests/fixtures/render-prerequisites-v2.json",
+    "tests/fixtures/render-prerequisites-v2.sha256",
+    "provenance/v030-draft4-rule-baseline.json"
   ]
 }
