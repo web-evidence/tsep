@@ -40,6 +40,7 @@ def snapshot():
 def run(command, directory, environment, label, checks):
     timeout = step_timeout(environment)
     start = time.monotonic()
+    print('[verify] start: ' + label, file=sys.stderr, flush=True)
     try:
         result = subprocess.run(command, cwd=directory, env=environment, text=True,
                                 encoding='utf-8', capture_output=True, timeout=timeout)
@@ -49,10 +50,13 @@ def run(command, directory, environment, label, checks):
         checks.append({'name': label, 'exit': None, 'timed_out': True, 'timeout_seconds': timeout,
                        'seconds': round(time.monotonic()-start, 3),
                        'stdout': captured(error.stdout), 'stderr': captured(error.stderr)})
+        print('[verify] timeout: ' + label, file=sys.stderr, flush=True)
         raise tsep.Invalid(label + ' timed out after ' + str(timeout) + ' seconds; see check output') from error
     checks.append({'name': label, 'exit': result.returncode,
                    'seconds': round(time.monotonic()-start, 3),
                    'stdout': result.stdout, 'stderr': result.stderr})
+    print('[verify] end: ' + label + '; exit=' + str(result.returncode)
+          + '; seconds=' + str(checks[-1]['seconds']), file=sys.stderr, flush=True)
     tsep.require(result.returncode == 0, label + ' failed; see check output')
 
 
