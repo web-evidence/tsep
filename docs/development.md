@@ -1,3 +1,5 @@
+Correction non normative / Non-normative correction **method-corpus-v1** : métadonnée de version du corpus de méthode, cas et attentes conservés / method-corpus version metadata, cases and expectations retained. [Échec observé et migration FR/EN / Observed failure and migration](method-corpus-metadata-v1.md). Archive distincte et nouvelle qualification complète requises / Distinct archive and new complete qualification required.
+
 Current preparation / Préparation courante **0.3.0-draft.5** : prerequisite corrections only, TS30-A01/A02 and TS37-A03; interpreter51/reader2, 44 controls/98 rules. [Migration](migration-0.3.0-draft.5.md). Previous qualified draft.4 archive retained. Full verification still required; no observed success implied. Profil complet Node24/Python3.12, plafond7200s, toutes les étapes conservées.
 
 Non-normative distribution correction / Correction de distribution non normative : [minor report-test integration v1](report-test-integration-v1.md). The first full draft.4 attempt observed one generic test error; protocol and rules unchanged. Nouvelle qualification complète requise / New full qualification required.
