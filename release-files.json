@@ -1079,6 +1079,7 @@
     "tests/fixtures/render-prerequisites-v2.json",
     "tests/fixtures/render-prerequisites-v2.sha256",
     "provenance/v030-draft4-rule-baseline.json",
-    "docs/method-corpus-metadata-v1.md"
+    "docs/method-corpus-metadata-v1.md",
+    "docs/publication-profile-v1.md"
   ]
 }

@@ -1,3 +1,5 @@
+Profil de publication / Publication profile **draft.5 publication-v1** : citation alignée, CI7200s par étape/240min par job ; sept combinaisons et toutes les étapes conservées / aligned citation, CI7200s per step/240min per job; all seven combinations and every step retained. [Migration FR/EN](publication-profile-v1.md). Qualification et CI du commit exact requises avant publication / Qualification and exact-commit CI required before publication.
+
 Correction non normative / Non-normative correction **method-corpus-v1** : métadonnée de version du corpus de méthode, cas et attentes conservés / method-corpus version metadata, cases and expectations retained. [Échec observé et migration FR/EN / Observed failure and migration](method-corpus-metadata-v1.md). Archive distincte et nouvelle qualification complète requises / Distinct archive and new complete qualification required.
 
 Current preparation / Préparation courante **0.3.0-draft.5** : prerequisite corrections only, TS30-A01/A02 and TS37-A03; interpreter51/reader2, 44 controls/98 rules. [Migration](migration-0.3.0-draft.5.md). Previous qualified draft.4 archive retained. Full verification still required; no observed success implied. Profil complet Node24/Python3.12, plafond7200s, toutes les étapes conservées.
@@ -167,7 +169,7 @@ versions are retained and are not silently upgraded.
 FR : une édition locale ne prouve pas une publication ; les numéros des outils
 évoluent séparément et les anciens dossiers se rejouent avec leurs outils exacts.
 
-### Draft.28 publication checks / Vérification de publication draft.28
+### Historical draft.28 publication checks / Vérification historique de publication draft.28
 
 The CI workflow now explicitly selects Node 24.19.0 through `TSEP_SOURCE_NODE`
 on its seven Python/OS combinations, so optional parsed-source tests are exercised.
