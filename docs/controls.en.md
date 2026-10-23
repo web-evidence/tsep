@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.6 — Controls
+# TSEP 0.3.0-draft.7 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.3.0-draft.6:TS01-A01`
+`TSEP@0.3.0-draft.7:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.3.0-draft.6:TS01-A02`
+`TSEP@0.3.0-draft.7:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -62,7 +62,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Each final response whose content can be compared to intent.
 
-**Method.** First compare final URL with expected_final_url, then complete-body SHA-256 with expected_body_sha256. Fix references, any stable policy and markers before measurement. The changed non-stable body branch uses the historical reader unless prior identity_reader: html-tree-markers-v1 selects two whole-document static hypotheses, byte-attributed parsed segments and literal criteria. Hashing still covers the unchanged complete body. Draft.6 excludes attributable structural ASCII whitespace under html or across only body/html end tags, retaining original intervals and bytes; see migration-0.3.0-draft.6. The distinct html-tree-markers-v2 profile excludes noscript segments from all marker matching, including rechecks. The v1 profile retains its historical semantics. An intent must explicitly name the selected profile before the new capture.
+**Method.** First compare final URL with expected_final_url, then complete-body SHA-256 with expected_body_sha256. Fix references, any stable policy and markers before measurement. The changed non-stable body branch uses the historical reader unless prior identity_reader: html-tree-markers-v1 selects two whole-document static hypotheses, byte-attributed parsed segments and literal criteria. Hashing still covers the unchanged complete body. Draft.6 excludes attributable structural ASCII whitespace under html or across only body/html end tags, retaining original intervals and bytes; see migration-0.3.0-draft.6. The distinct html-tree-markers-v2 profile excludes noscript segments from all marker matching, including rechecks. The v1 profile retains its historical semantics. An intent must explicitly name the selected profile before the new capture. The distinct html-tree-markers-v3 profile covers main-document HTML text: attributed noscript/iframe/foreign-subtree exclusions; an excluded forbidden marker prevents pass; only duplicate-attribute parse5 errors are admitted, with no directive interpretation. ASCII whitespace across ignored end tags requires exact reconstruction. See migration-0.3.0-draft.7 for limits and explicit migration.
 
 **Acceptance.** Different final URL: fail. At the same URL, identical digest: pass. Otherwise, representation: stable requires fail. Otherwise, under the historical reader, valid markers yield fail if any required marker is missing or any forbidden marker is present. Pass requires at least one required marker, all required markers present and all forbidden markers absent. Forbidden-only markers all absent: inconclusive. Without markers or declared stability: inconclusive. HTTP status does not replace this comparison. Under html-tree-markers-v1, each complete reading compares all markers; both pass gives pass, both fail gives fail, every other pair is inconclusive. URL, hash and stability precedence remains unchanged.
 

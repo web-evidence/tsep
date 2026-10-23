@@ -158,6 +158,7 @@
     "docs/migration-0.3.0-draft.4.md",
     "docs/migration-0.3.0-draft.5.md",
     "docs/migration-0.3.0-draft.6.md",
+    "docs/migration-0.3.0-draft.7.md",
     "docs/migration-draft.10.md",
     "docs/migration-draft.11.md",
     "docs/migration-draft.12.md",
@@ -511,7 +512,9 @@
     "provenance/v030-draft2-rule-baseline.json",
     "provenance/v030-draft3-rule-baseline.json",
     "provenance/v030-draft4-rule-baseline.json",
+    "provenance/v030-draft6-rule-baseline.json",
     "provenance/v030-indexing-locale-integration-overlay.json",
+    "provenance/v030-lot1-source-overlay.json",
     "provenance/v030-rc1-preservation.json",
     "provenance/v030-render-transport-integration-overlay.json",
     "provenance/v030-report-test-overlay-v1.json",
@@ -955,6 +958,7 @@
     "tests/fixtures/xdefault-role-v2.json",
     "tests/fixtures/xdefault-role-v2.sha256",
     "tests/legacy_http_cases.py",
+    "tests/lot1_history.py",
     "tests/test_agent_access.py",
     "tests/test_agent_access_laboratory.py",
     "tests/test_agent_policy.py",
@@ -1008,6 +1012,7 @@
     "tests/test_jsonld_processing.py",
     "tests/test_jsonld_rendered.py",
     "tests/test_link_elements.py",
+    "tests/test_lot1_preservation.py",
     "tests/test_lot1_readers.py",
     "tests/test_lot1_runtime.py",
     "tests/test_noscript_experiment.py",
@@ -1058,6 +1063,7 @@
     "tests/test_source_link_policy.py",
     "tests/test_source_links.py",
     "tests/test_source_markers.py",
+    "tests/test_source_markers_v3.py",
     "tests/test_source_text.py",
     "tests/test_source_tree.py",
     "tests/test_structured_content.py",
@@ -1085,10 +1091,6 @@
     "third_party/source-tree/parse5-8.0.1.tgz",
     "tsep.py",
     "upstream/grid-v1.1.en.json",
-    "upstream/grid-v1.1.fr.json",
-    "tests/lot1_history.py",
-    "tests/test_lot1_preservation.py",
-    "provenance/v030-draft6-rule-baseline.json",
-    "provenance/v030-lot1-source-overlay.json"
+    "upstream/grid-v1.1.fr.json"
   ]
 }

@@ -38,8 +38,9 @@ class URLPolicy(unittest.TestCase):
 
     def test_seventy_prior_rule_objects_and_versions_preserved(self):
         baseline=tsep.read_json(ROOT/'provenance/v030-draft1-rule-baseline.json')['rules'];self.assertEqual(len(baseline),70)
-        protocol=tsep.read_json(tsep.PROTOCOL_PATH);seen={}
-        for c in protocol['controls']:
+        from tests.lot1_history import controls_before_lot1
+        seen={}
+        for c in controls_before_lot1():
             for r in c.get('rules',[]):
                 if r['id'] in baseline:seen[r['id']]={'sha256':native.digest(r),'version':c['rule_version']}
         self.assertEqual(seen,baseline)

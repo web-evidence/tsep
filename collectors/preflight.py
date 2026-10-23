@@ -7,7 +7,7 @@ from conformance.http import Unknown, body_digest
 from conformance import source_markers
 from experiments import source_http
 
-VERSION = '4'
+VERSION = '5'
 
 
 def marker_reader(options, policy):

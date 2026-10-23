@@ -1,3 +1,5 @@
+Édition draft.7 / Draft.7: [texte HTML principal v3, limites et migration / main-document text v3, limits and migration](migration-0.3.0-draft.7.md).
+
 # TS01 parsed-source markers / Marqueurs source parsés TS01
 
 Édition normative draft.6 / Normative edition draft.6 : exclusions ASCII structurelles attribuées, sans modification des octets / attributable structural ASCII exclusions, original bytes unchanged. [Contrat FR/EN](migration-0.3.0-draft.6.md).

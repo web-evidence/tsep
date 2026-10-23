@@ -1,3 +1,5 @@
+Édition draft.7 / Draft.7: [texte HTML principal v3, limites et migration / main-document text v3, limits and migration](migration-0.3.0-draft.7.md).
+
 Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](render-transport-evidence.md), [migration](migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
 
 Amendement normatif candidat **0.3.0-draft.6** : lecture des blancs structurels TS01 et trajectoire TS02 sur en-têtes complets avec arrêt de collecte attribué. [Règles et migration](migration-0.3.0-draft.6.md). Aucun ancien dossier ne migre implicitement.

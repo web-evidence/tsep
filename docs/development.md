@@ -1,3 +1,5 @@
+Édition draft.7 / Draft.7: [texte HTML principal v3, limites et migration / main-document text v3, limits and migration](migration-0.3.0-draft.7.md).
+
 Candidat local **0.3.0-draft.6** : [lot 1 FR/EN](migration-0.3.0-draft.6.md). `python3 scripts/verify.py --quick` = régressions ciblées uniquement / targeted regressions only. `python3 scripts/verify.py` = qualification complète / full qualification ; Node24 pré-vérifié, plafond fini7200s par étape. Aucun succès ni publication implicite.
 
 Profil courant / Current profile **draft.5 publication-v2** : plafond total CI de 360 minutes et progression des étapes sur stderr après arrêt macOS à 240 minutes / 360-minute CI job ceiling and step progress on stderr after macOS reached 240 minutes. Toutes les étapes et les sept combinaisons conservées / Every step and all seven combinations retained. [Migration et échec observé FR/EN / Migration and observed failure](publication-profile-v2.md).

@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.6 — Contrôles
+# TSEP 0.3.0-draft.7 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.3.0-draft.6:TS01-A01`
+`TSEP@0.3.0-draft.7:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.3.0-draft.6:TS01-A02`
+`TSEP@0.3.0-draft.7:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -62,7 +62,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Chaque réponse finale dont le contenu peut être comparé à l’intention.
 
-**Méthode.** Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer références, éventuelle stabilité et marqueurs avant la mesure. La branche de variation sans stabilité utilise le lecteur historique, sauf identity_reader: html-tree-markers-v1 déclaré au préalable : deux hypothèses statiques globales, segments parsés attribués aux octets et critères littéraux. L’empreinte porte toujours sur le corps complet inchangé. Édition draft.6 : les espaces ASCII structurels sous html ou traversant uniquement les fermetures body/html sont exclus avec leurs positions et octets conservés ; voir migration-0.3.0-draft.6. Le profil distinct html-tree-markers-v2 exclut les segments sous noscript de toute comparaison de marqueurs, y compris aux recontrôles. Le profil v1 garde sa sémantique historique. Une intention doit nommer explicitement le profil retenu avant la nouvelle capture.
+**Méthode.** Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer références, éventuelle stabilité et marqueurs avant la mesure. La branche de variation sans stabilité utilise le lecteur historique, sauf identity_reader: html-tree-markers-v1 déclaré au préalable : deux hypothèses statiques globales, segments parsés attribués aux octets et critères littéraux. L’empreinte porte toujours sur le corps complet inchangé. Édition draft.6 : les espaces ASCII structurels sous html ou traversant uniquement les fermetures body/html sont exclus avec leurs positions et octets conservés ; voir migration-0.3.0-draft.6. Le profil distinct html-tree-markers-v2 exclut les segments sous noscript de toute comparaison de marqueurs, y compris aux recontrôles. Le profil v1 garde sa sémantique historique. Une intention doit nommer explicitement le profil retenu avant la nouvelle capture. Le profil distinct html-tree-markers-v3 porte sur le texte HTML principal : exclusions attribuées noscript/iframe/sous-arbres étrangers ; un interdit dans ces exclusions empêche pass ; seuls les doublons d’attributs sont admis parmi les erreurs parse5, sans interprétation de directives. Espaces ASCII traversant des fermetures ignorées admis seulement avec reconstruction exacte. Voir migration-0.3.0-draft.7 pour les limites et la migration explicite.
 
 **Attendus.** URL finale différente : fail. À URL identique, empreinte identique : pass. Sinon, representation: stable impose fail. Sinon, sous le lecteur historique, des marqueurs valides donnent fail si un requis manque ou si un interdit apparaît. Pass exige au moins un marqueur requis, tous les requis présents et tous les interdits absents. Interdits seuls absents : inconclusive. Sans marqueurs ni stabilité déclarée : inconclusive. Le statut HTTP ne remplace pas cette comparaison. Sous html-tree-markers-v1, chaque lecture complète compare tous les marqueurs ; deux pass donnent pass, deux fail donnent fail, tout autre couple donne inconclusive. Les priorités URL, empreinte et stabilité restent inchangées.
 
