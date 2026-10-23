@@ -7,8 +7,33 @@ from conformance.http import Unknown, need
 from experiments import source_markers as reader
 
 READER = 'html-tree-markers-v1'
+CONTENT_READER = 'html-tree-markers-v2'
+READERS = (READER, CONTENT_READER)
 VERSION = '2'
 MAX_DIAGNOSTIC_BYTES = 4 * 1024 * 1024
+
+
+def observe(raw, *, content_types, objective=None, node=None, selected=READER):
+    """V2 excludes noscript from marker matching, including later rechecks."""
+    need(selected in READERS, 'Unsupported identity_reader; no historical fallback')
+    observed = reader.observe(raw, content_types=content_types, objective=objective, node=node)
+    if selected == CONTENT_READER:
+        for row in observed['readings'].values():
+            if not row['complete']:
+                continue
+            kept = []
+            for segment in row['segments']:
+                if any(a['name'] == 'noscript' for a in segment['ancestors']):
+                    row['excluded'].append(dict(segment, reason='V2: noscript excluded from content markers'))
+                else:
+                    kept.append(segment)
+            row['segments'] = kept
+            if objective is not None:
+                row.update(reader.compare(kept, objective))
+        outcomes = [observed['readings'][m]['candidate_outcome'] for m in reader.MODES]
+        observed['candidate_consensus'] = (None if objective is None else outcomes[0]
+            if outcomes[0] == outcomes[1] and outcomes[0] in ('pass', 'fail') else 'inconclusive')
+    return observed
 
 
 def compact(observed):
@@ -87,20 +112,20 @@ def assess(headers, body, intent, *, diagnostics=None):
     """Preserve URL/hash/stability precedence; bound criteria before comparison."""
     selected = intent.get('identity_reader')
     record = {'kind': 'ts01-source-marker-assessment',
-              'reader': READER if selected == READER else '[unsupported; see supplied intent]',
+              'reader': selected if selected in READERS else '[unsupported; see supplied intent]',
               'policy_version': VERSION,
               'scope': 'Whole-document static alternatives; literal parsed segments, not visibility, '
                        'semantic sufficiency, actual DOM, browser or search-engine behavior.'}
     try:
-        need(selected == READER, 'Unsupported identity_reader; no historical fallback')
+        need(selected in READERS, 'Unsupported identity_reader; no historical fallback')
         objective = {k: intent.get(k, []) for k in ('required_markers', 'forbidden_markers')}
         reader.criteria(objective)
         need(objective['required_markers'] or objective['forbidden_markers'],
              'Body digest changed without stable policy or identity markers')
         raw = body if type(body) is bytes else body.encode('utf-8')
         record['body_sha256'] = hashlib.sha256(raw).hexdigest()
-        observed = reader.observe(raw, content_types=headers.get('content-type', []),
-                                  objective=objective, node=os.environ.get('TSEP_SOURCE_NODE'))
+        observed = observe(raw, content_types=headers.get('content-type', []),
+                           objective=objective, node=os.environ.get('TSEP_SOURCE_NODE'), selected=selected)
         packed = compact(observed)
         verify_projection(observed, packed)
         record.update(packed)
@@ -114,7 +139,7 @@ def assess(headers, body, intent, *, diagnostics=None):
                                              'present_forbidden': reading['present_forbidden']},
                                             ensure_ascii=False)
             reasons.append(mode + '=' + reading['candidate_outcome'] + ' (' + detail + ')')
-        reason = READER + ': ' + '; '.join(reasons)
+        reason = selected + ': ' + '; '.join(reasons)
         reason += '; agreement of complete static alternatives only; source text is not rendered visibility'
     except (Unknown, KeyError, TypeError, ValueError, OSError) as error:
         outcome, reason = 'inconclusive', str(error)

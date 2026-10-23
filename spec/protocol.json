@@ -146,8 +146,8 @@
             "en": "Each final response whose content can be compared to intent."
           },
           "procedure": {
-            "fr": "Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer références, éventuelle stabilité et marqueurs avant la mesure. La branche de variation sans stabilité utilise le lecteur historique, sauf identity_reader: html-tree-markers-v1 déclaré au préalable : deux hypothèses statiques globales, segments parsés attribués aux octets et critères littéraux. L’empreinte porte toujours sur le corps complet inchangé. Édition draft.6 : les espaces ASCII structurels sous html ou traversant uniquement les fermetures body/html sont exclus avec leurs positions et octets conservés ; voir migration-0.3.0-draft.6.",
-            "en": "First compare final URL with expected_final_url, then complete-body SHA-256 with expected_body_sha256. Fix references, any stable policy and markers before measurement. The changed non-stable body branch uses the historical reader unless prior identity_reader: html-tree-markers-v1 selects two whole-document static hypotheses, byte-attributed parsed segments and literal criteria. Hashing still covers the unchanged complete body. Draft.6 excludes attributable structural ASCII whitespace under html or across only body/html end tags, retaining original intervals and bytes; see migration-0.3.0-draft.6."
+            "fr": "Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer références, éventuelle stabilité et marqueurs avant la mesure. La branche de variation sans stabilité utilise le lecteur historique, sauf identity_reader: html-tree-markers-v1 déclaré au préalable : deux hypothèses statiques globales, segments parsés attribués aux octets et critères littéraux. L’empreinte porte toujours sur le corps complet inchangé. Édition draft.6 : les espaces ASCII structurels sous html ou traversant uniquement les fermetures body/html sont exclus avec leurs positions et octets conservés ; voir migration-0.3.0-draft.6. Le profil distinct html-tree-markers-v2 exclut les segments sous noscript de toute comparaison de marqueurs, y compris aux recontrôles. Le profil v1 garde sa sémantique historique. Une intention doit nommer explicitement le profil retenu avant la nouvelle capture.",
+            "en": "First compare final URL with expected_final_url, then complete-body SHA-256 with expected_body_sha256. Fix references, any stable policy and markers before measurement. The changed non-stable body branch uses the historical reader unless prior identity_reader: html-tree-markers-v1 selects two whole-document static hypotheses, byte-attributed parsed segments and literal criteria. Hashing still covers the unchanged complete body. Draft.6 excludes attributable structural ASCII whitespace under html or across only body/html end tags, retaining original intervals and bytes; see migration-0.3.0-draft.6. The distinct html-tree-markers-v2 profile excludes noscript segments from all marker matching, including rechecks. The v1 profile retains its historical semantics. An intent must explicitly name the selected profile before the new capture."
           },
           "acceptance": {
             "fr": "URL finale différente : fail. À URL identique, empreinte identique : pass. Sinon, representation: stable impose fail. Sinon, sous le lecteur historique, des marqueurs valides donnent fail si un requis manque ou si un interdit apparaît. Pass exige au moins un marqueur requis, tous les requis présents et tous les interdits absents. Interdits seuls absents : inconclusive. Sans marqueurs ni stabilité déclarée : inconclusive. Le statut HTTP ne remplace pas cette comparaison. Sous html-tree-markers-v1, chaque lecture complète compare tous les marqueurs ; deux pass donnent pass, deux fail donnent fail, tout autre couple donne inconclusive. Les priorités URL, empreinte et stabilité restent inchangées.",
@@ -7412,11 +7412,11 @@
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "06bd1bd4ad5c6ec86e7d21c00815879b6028073ad318999909c279392f1a6c1e"
+      "sha256": "b883b34e83908378f2357799b372d46b6c0f2e13bee2140481d418227c006e2d"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "3aa4813ade839cc764abe620de9f91996571efedbfdd04e6934ab34a9c42a686"
+      "sha256": "8d1f28326705154840fe31edf6187325ef8df4520503d3f5d8bf21f1455b3a38"
     },
     {
       "path": "docs/source-directives.md",
@@ -7552,7 +7552,7 @@
     },
     {
       "path": "docs/migration-0.3.0-draft.6.md",
-      "sha256": "5e0f42c43e6aed79427e1fd8a3648ea785f30611ef48723048c3fbe70fea34a7"
+      "sha256": "ed34c4b7f03fc2bde92665ebd8344de4b12614e654290c2d113882d00cada737"
     }
   ]
 }

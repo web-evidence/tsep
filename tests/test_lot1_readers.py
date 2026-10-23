@@ -53,6 +53,37 @@ class StructuralWhitespace(unittest.TestCase):
                     a,b=s['body_span_bytes'];self.assertEqual(raw.encode()[a:b].decode(),s['raw_source'])
                 self.assertFalse(any('cache' in s['data'] for s in row['segments']))
 
+    def test_optional_closing_tags_and_forged_tail_bounds(self):
+        for inner in ('<p>Expected', '<ul><li>Expected', '<table><tbody><tr><td>Expected'):
+            raw='<!doctype html><html><head></head><body>'+inner+'</body>\n</html>\n'
+            result=self.parse(raw)
+            # Invalid table/list closure may be explicitly rejected by parse5;
+            # a supported paragraph must remain readable with exact spans.
+            if inner.startswith('<p>'):self.assertEqual(result['candidate_consensus'],'pass',result['readings'])
+            for row in result['readings'].values():
+                for s in (row['segments'] or [])+(row['excluded'] or []):
+                    a,b=s['body_span_bytes'];self.assertEqual(raw.encode()[a:b].decode(),s['raw_source'])
+        raw='<!doctype html><html><head></head><body>Expected</body>\n</html>\n'
+        row=next(s for s in self.parse(raw)['readings']['enabled']['segments'] if s.get('part_of_merged_node'))
+        row['body_span_bytes'][1]+=1
+        with self.assertRaisesRegex(ValueError,'interval length'):reader.terminal_parts(row)
+
+    def test_content_reader_recheck_never_matches_only_noscript(self):
+        from conformance import source_markers as policy
+        from collectors.preflight import reference_check
+        headers={'content-type':['text/html; charset=utf-8']}
+        wrap=lambda inner:('<!doctype html><html><head></head><body>'+inner+'</body></html>').encode()
+        intent={'identity_reader':policy.CONTENT_READER,'required_markers':['Expected'],'forbidden_markers':['Forbidden']}
+        initial=wrap('<p>Expected</p>')
+        self.assertEqual(reference_check(headers,initial,'markers',['Expected'],[],identity_reader=policy.CONTENT_READER)['state'],'matches')
+        changed=wrap('<p>Login</p><noscript><b>Expected</b></noscript>')
+        self.assertEqual(policy.assess(headers,changed,intent)[0],'fail')
+        self.assertEqual(policy.assess(headers,changed,dict(intent,identity_reader=policy.READER))[0],'pass')
+        forbidden=wrap('<p>Expected</p><noscript><b>Forbidden</b></noscript>')
+        self.assertEqual(policy.assess(headers,forbidden,intent)[0],'pass')
+        self.assertEqual(policy.assess(headers,forbidden,dict(intent,identity_reader=policy.READER))[0],'fail')
+        self.assertEqual(policy.assess(headers,wrap('<p>Expected Forbidden</p>'),intent)[0],'fail')
+
 
 class HeaderTrajectories(unittest.TestCase):
     def target(self,head=None,body=None):

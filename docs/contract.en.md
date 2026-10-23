@@ -444,3 +444,5 @@ TS10-A04 also accepts prior html-tree-links-v2. A first base whose href fails WH
 ### TS05 — policy map only / carte de politique uniquement
 
 Draft.45 adds TS05-A01: a semi-automated comparison of supplied prior intent and configuration. Pass means internal plan consistency only; it does not establish indexing or access control. See [TS05 evidence and limits](ts05-indexing-evidence.md), [dated source capture](source-captures/ts05-google-search-central-2026-10-16.md) and [migration](migration-draft.45.md).
+
+The new `html-tree-markers-v2` intent excludes `noscript` segments from marker matching at reference, assessment and recheck. `html-tree-markers-v1` keeps its marker semantics; old dossiers retain their exact engine. A marker present only in `noscript` cannot satisfy the v2 profile.

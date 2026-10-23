@@ -7,15 +7,15 @@ from conformance.http import Unknown, body_digest
 from conformance import source_markers
 from experiments import source_http
 
-VERSION = '3'
+VERSION = '4'
 
 
 def marker_reader(options, policy):
     """Absence selects legacy; explicit null/unknown is a configuration error."""
     if 'identity_reader' not in options:
         return None
-    if policy != 'markers' or options['identity_reader'] != source_markers.READER:
-        raise ValueError('identity_reader requires markers policy and html-tree-markers-v1')
+    if policy != 'markers' or options['identity_reader'] not in source_markers.READERS:
+        raise ValueError('identity_reader requires markers policy and a supported html-tree-markers reader')
     return options['identity_reader']
 
 

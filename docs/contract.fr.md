@@ -450,3 +450,5 @@ TS10-A04 accepte désormais aussi le profil préalable html-tree-links-v2. Une p
 ### TS05 — policy map only / carte de politique uniquement
 
 Draft.45 ajoute TS05-A01 : comparaison semi-automatisée d’intention préalable et de configuration fournies. Pass signifie uniquement cohérence interne du plan ; aucune indexation ni protection d’accès n’est établie. Voir [preuves et limites TS05](ts05-indexing-evidence.md), [capture source datée](source-captures/ts05-google-search-central-2026-10-16.md) et [migration](migration-draft.45.md).
+
+La nouvelle intention `html-tree-markers-v2` exclut les segments sous `noscript` des comparaisons, à la référence, au test et au recontrôle. `html-tree-markers-v1` garde sa sémantique de marqueurs ; les anciens dossiers restent liés à leur moteur exact. Aucun repère ne peut devenir conforme grâce à sa seule présence dans `noscript` sous le profil v2.

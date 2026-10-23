@@ -7,7 +7,7 @@ Version distincte, non publiée. TS01 et TS02 passent à la version de règle
 règles sont conservés. Aucun succès de qualification n'est déduit de ce document.
 
 TS01 : le lecteur parsé exclut, avec leurs octets et positions originaux, les
-espaces ASCII directement sous html. Il découpe aussi les nœuds fusionnés directement sous body aux fermetures
+espaces ASCII directement sous html. Il découpe aussi les nœuds fusionnés sous body, y compris sous une balise de fin optionnelle aux fermetures
 body/html et aux commentaires explicitement reconnus. Chaque morceau conserve
 son intervalle original ; les morceaux de texte sont comparés séparément et
 ne sont jamais joints pour trouver un marqueur. La reconstruction de tout le
@@ -54,7 +54,7 @@ the other 42 rule versions and all 44 controls/98 rules remain. This document
 does not claim successful qualification.
 
 The parsed TS01 reader excludes attributable ASCII whitespace directly under
-html and exactly reconstructible merged body-tail text. The latter is split at explicit
+html and exactly reconstructible merged body-tail text, including optional closing tags. The latter is split at explicit
 body/html end tags and comments, retaining each original interval; text pieces
 are compared separately, never joined across markup. Reconstructing all parsed
 text pieces must equal the original parsed node. Only markup/comments and
@@ -85,3 +85,9 @@ propagates that exact executable and records its path/version/digest. Invalid
 explicit settings never fall back. The finite step limit becomes 7200 seconds;
 timeouts fail. `--quick` checks targeted regressions only. The default verifier
 retains full suites, examples, archive reconstruction and source immutability.
+
+## Complément de revue / Review amendment
+
+`html-tree-markers-v2` exclut noscript dans le moteur lui-même à chaque test et recontrôle ; le v1 et les 52 fixtures restent préservés. Adoption uniquement par nouvelle intention. Les intervalles UTF-8 et UTF-16 sont vérifiés ; le texte significatif après les fermetures reste refusé.
+
+`html-tree-markers-v2` excludes noscript inside the engine on every assessment and recheck; v1 and the 52 fixtures remain preserved. Adoption requires a new intent. UTF-8/UTF-16 interval lengths are checked; significant text after end markup remains unsupported.

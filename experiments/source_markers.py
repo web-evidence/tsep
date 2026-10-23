@@ -49,6 +49,9 @@ def normalize_input(value):
 def terminal_parts(record):
     """Split merged body-tail text at end tags/comments, retaining every byte."""
     raw=record['raw_source']
+    need(record['body_span_bytes'][1]-record['body_span_bytes'][0]==len(raw.encode('utf-8')) and
+         record['source_span_utf16'][1]-record['source_span_utf16'][0]==len(raw.encode('utf-16-le'))//2,
+         'Body-tail interval length differs from original UTF-8/UTF-16 source')
     pattern=re.compile(r'</(?:body|html)[\t\n\f\r ]*>|<!--(?:[^-]|-(?!->))*-->',re.I)
     matches=list(pattern.finditer(raw))
     need(matches,'Unsupported markup-spanning body text')
@@ -62,6 +65,8 @@ def terminal_parts(record):
         text=raw[a:b]
         need(markup or '<' not in text,'Unsupported markup in body-tail text')
         data='' if markup else characters(normalize_input(text));parsed+=data
+        need(a < matches[0].start() or markup or all(c in '\t\n\f\r ' for c in data),
+             'Nonblank text after body-tail markup is outside this projection')
         row=dict(record,raw_source=text,data=data,part_of_merged_node=True,
                  body_span_bytes=[record['body_span_bytes'][0]+len(raw[:i].encode('utf-8')) for i in (a,b)],
                  source_span_utf16=[record['source_span_utf16'][0]+len(raw[:i].encode('utf-16-le'))//2 for i in (a,b)])
@@ -115,7 +120,7 @@ def project(reading,mode):
         span=node.get('body_span_bytes'); raw=node['raw_source']
         need(type(span) is list and len(span)==2 and span[0]<span[1] and type(raw) is str,
              'Text run lacks an attributable source interval')
-        if tags==['html','body'] and len(elements)==2 and '<' in raw:
+        if tags[:2]==['html','body'] and elements[-1]['name'] not in ('noscript','title','textarea') and re.search(r'</(?:body|html)[\t\n\f\r ]*>',raw,re.I):
             parts,omitted=terminal_parts(record)
             segments.extend(parts);excluded.extend(omitted)
             need(len(segments)<=MAX_SEGMENTS,'Text segment bound exceeded')
