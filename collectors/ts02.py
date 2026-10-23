@@ -26,7 +26,7 @@ from conformance import http, redirects
 from provenance.runtime import loaded_sources
 from reports import html as renderer
 
-VERSION = '1'
+VERSION = '2'
 NAME = 'TSEP prospective TS02 collector'
 MAX_TOTAL = 2 * 1024 * 1024
 
@@ -96,6 +96,7 @@ def prepare(plan_file, settings_file, output):
     bound = {'version': VERSION, 'settings': settings, 'source_files': sources()}
     plan = copy.deepcopy(plan)
     for row in plan['targets']:
+        row['intent']['redirect_reader'] = 'http-trajectory-headers-v1'
         row['context'].update(tool=NAME, tool_version=VERSION, bounds=bounds_label(settings),
                               collection=copy.deepcopy(bound))
     with tempfile.TemporaryDirectory(prefix='tsep-ts02-plan-') as folder:
@@ -162,8 +163,10 @@ def worker(url, agent, settings, directory, byte_budget, seconds):
             tsep.require(type(metadata) is dict and type(metadata.get('complete')) is bool, 'Invalid worker metadata')
         except (ValueError, OSError, TypeError):
             metadata = {'complete': False, 'error': 'Worker metadata unavailable'}
+    if metadata.get('stop_reason')=='response-byte-limit' and config['max_bytes']<settings['max_bytes']:
+        metadata['stop_reason']='phase-byte-limit'
     if failure:
-        metadata.update(complete=False, error=failure)
+        metadata.update(complete=False, error=failure, stop_reason='supervisor-error')
     for name in ('request.bin', 'response.bin'):
         if not (directory/name).exists():
             (directory/name).write_bytes(b'')

@@ -1,9 +1,9 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.3.0-draft.5",
+  "version": "0.3.0-draft.6",
   "status": "draft",
-  "date": "2026-10-19",
+  "date": "2026-10-23",
   "languages": [
     "en",
     "fr"
@@ -146,8 +146,8 @@
             "en": "Each final response whose content can be compared to intent."
           },
           "procedure": {
-            "fr": "Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer références, éventuelle stabilité et marqueurs avant la mesure. La branche de variation sans stabilité utilise le lecteur historique, sauf identity_reader: html-tree-markers-v1 déclaré au préalable : deux hypothèses statiques globales, segments parsés attribués aux octets et critères littéraux. L’empreinte porte toujours sur le corps complet inchangé.",
-            "en": "First compare final URL with expected_final_url, then complete-body SHA-256 with expected_body_sha256. Fix references, any stable policy and markers before measurement. The changed non-stable body branch uses the historical reader unless prior identity_reader: html-tree-markers-v1 selects two whole-document static hypotheses, byte-attributed parsed segments and literal criteria. Hashing still covers the unchanged complete body."
+            "fr": "Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer références, éventuelle stabilité et marqueurs avant la mesure. La branche de variation sans stabilité utilise le lecteur historique, sauf identity_reader: html-tree-markers-v1 déclaré au préalable : deux hypothèses statiques globales, segments parsés attribués aux octets et critères littéraux. L’empreinte porte toujours sur le corps complet inchangé. Édition draft.6 : les espaces ASCII structurels sous html ou traversant uniquement les fermetures body/html sont exclus avec leurs positions et octets conservés ; voir migration-0.3.0-draft.6.",
+            "en": "First compare final URL with expected_final_url, then complete-body SHA-256 with expected_body_sha256. Fix references, any stable policy and markers before measurement. The changed non-stable body branch uses the historical reader unless prior identity_reader: html-tree-markers-v1 selects two whole-document static hypotheses, byte-attributed parsed segments and literal criteria. Hashing still covers the unchanged complete body. Draft.6 excludes attributable structural ASCII whitespace under html or across only body/html end tags, retaining original intervals and bytes; see migration-0.3.0-draft.6."
           },
           "acceptance": {
             "fr": "URL finale différente : fail. À URL identique, empreinte identique : pass. Sinon, representation: stable impose fail. Sinon, sous le lecteur historique, des marqueurs valides donnent fail si un requis manque ou si un interdit apparaît. Pass exige au moins un marqueur requis, tous les requis présents et tous les interdits absents. Interdits seuls absents : inconclusive. Sans marqueurs ni stabilité déclarée : inconclusive. Le statut HTTP ne remplace pas cette comparaison. Sous html-tree-markers-v1, chaque lecture complète compare tous les marqueurs ; deux pass donnent pass, deux fail donnent fail, tout autre couple donne inconclusive. Les priorités URL, empreinte et stabilité restent inchangées.",
@@ -177,7 +177,7 @@
           "automation": "automatic"
         }
       ],
-      "rule_version": "0.2.0-rc.1"
+      "rule_version": "0.3.0-draft.6"
     },
     {
       "id": "TS02",
@@ -235,7 +235,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.2.0-rc.1",
+      "rule_version": "0.3.0-draft.6",
       "rules": [
         {
           "na_inputs": [],
@@ -310,8 +310,8 @@
             "en": "HTTP trajectory matches the plan"
           },
           "procedure": {
-            "fr": "Lire chaque échange GET attribuable dans l’ordre, résoudre Location, conserver codes et URL, compter les redirections et vérifier destination/statut terminaux. Comparer au plan fixé avant la capture, sans reconstruire les réponses manquantes.",
-            "en": "Read each attributable GET exchange in order, resolve Location, retain codes and URLs, count redirects and check terminal destination/status. Compare with the pre-capture plan without reconstructing missing responses."
+            "fr": "Lire chaque échange GET attribuable dans l’ordre, résoudre Location, conserver codes et URL, compter les redirections et vérifier destination/statut terminaux. Comparer au plan fixé avant la capture, sans reconstruire les réponses manquantes. Le profil préalable http-trajectory-headers-v1 peut conclure sur les en-têtes complets après un arrêt attribué à la borne d’octets du collecteur 2 ; le corps reste incomplet et non évalué.",
+            "en": "Read each attributable GET exchange in order, resolve Location, retain codes and URLs, count redirects and check terminal destination/status. Compare with the pre-capture plan without reconstructing missing responses. Prior profile http-trajectory-headers-v1 may conclude from complete headers after an attributable collector-2 byte-limit stop; the body remains incomplete and unevaluated."
           },
           "acceptance": {
             "fr": "La chaîne complète respecte destination, statuts et bornes déclarés, sans boucle. Un type interdit, une borne maximale dépassée, une redirection sans Location ou un retour vers une URL déjà parcourue sont fail dès le préfixe complet qui les prouve. Une destination/statut terminal ou un nombre minimal contradictoires sont fail après réponse terminale attribuable.",
@@ -322,8 +322,8 @@
             "en": "Original HTTP requests/responses per hop, URL, completeness, client and context; prior plan. Proven contradictions survive later gaps and absent A01 approval."
           },
           "inconclusive": {
-            "fr": "Chaîne inachevée sans contradiction, limite de collecte atteinte, Location ambiguë, fragment ou syntaxe hors portée, requête conditionnelle/authentifiée, capture incomplète ou mal attribuée. Atteindre une borne de collecte ne prouve pas une boucle ; dépasser une borne d’intention est distinct.",
-            "en": "Unfinished chain without contradiction, collection limit, ambiguous Location, unsupported fragment/syntax, conditional/authenticated request, incomplete or unattributable capture. A collection limit does not prove a loop; exceeding an intended maximum is distinct."
+            "fr": "Chaîne inachevée sans contradiction, limite de collecte atteinte, Location ambiguë, fragment ou syntaxe hors portée, requête conditionnelle/authentifiée, capture incomplète ou mal attribuée. Atteindre une borne de collecte ne prouve pas une boucle ; dépasser une borne d’intention est distinct. Exception bornée : préfixe à la limite exactement attestée avec un octet excédentaire, sans ambiguïté d’en-têtes ou contradiction de framing, sous le nouveau profil explicite uniquement.",
+            "en": "Unfinished chain without contradiction, collection limit, ambiguous Location, unsupported fragment/syntax, conditional/authenticated request, incomplete or unattributable capture. A collection limit does not prove a loop; exceeding an intended maximum is distinct. Bounded exception: prefix at the exact attributed byte limit with one overflow byte, without ambiguous headers or contradictory framing, under the explicit new profile only."
           }
         }
       ]
@@ -7408,15 +7408,15 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "3df13ad06f49508d3251d9ab97af0758b5a163e324bb667624818f187aa53f75"
+      "sha256": "db9f19aa01815dc8cb4be35350b36493abee5451f4a420b1507d877f338c27c9"
     },
     {
       "path": "docs/contract.en.md",
-      "sha256": "c23b2f842e4e224e00e6ce627d216e39f1b6cdfeedfd9676ed32fd7071896509"
+      "sha256": "06bd1bd4ad5c6ec86e7d21c00815879b6028073ad318999909c279392f1a6c1e"
     },
     {
       "path": "docs/contract.fr.md",
-      "sha256": "124f84a7d16254856dfcb3463cd3c79c1ec0e8453a278b0e473b2fdc49a9d9fe"
+      "sha256": "3aa4813ade839cc764abe620de9f91996571efedbfdd04e6934ab34a9c42a686"
     },
     {
       "path": "docs/source-directives.md",
@@ -7468,7 +7468,7 @@
     },
     {
       "path": "docs/source-markers.md",
-      "sha256": "3dc6505b879eceffcf930b31246a54793bb8e06d00ba477c83a1ebe0380132fc"
+      "sha256": "380312bc74f3fe304334279c7dde9d116707bf9653441286a4ac02e3dc32935c"
     },
     {
       "path": "docs/inspection-evidence.md",
@@ -7549,6 +7549,10 @@
     {
       "path": "docs/render-transport-prerequisites-v2.md",
       "sha256": "1b4db800064cfd5f91db533a38f0c947c487ba3fba87669efc6606b53d973977"
+    },
+    {
+      "path": "docs/migration-0.3.0-draft.6.md",
+      "sha256": "5e0f42c43e6aed79427e1fd8a3648ea785f30611ef48723048c3fbe70fea34a7"
     }
   ]
 }

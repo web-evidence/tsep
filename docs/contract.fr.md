@@ -1,5 +1,7 @@
 Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](render-transport-evidence.md), [migration](migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
 
+Amendement normatif candidat **0.3.0-draft.6** : lecture des blancs structurels TS01 et trajectoire TS02 sur en-têtes complets avec arrêt de collecte attribué. [Règles et migration](migration-0.3.0-draft.6.md). Aucun ancien dossier ne migre implicitement.
+
 Amendement normatif **0.3.0-draft.5** : les préalables H1 de TS30 et la résolution/séparation des observations de TS37-A03 sont précisés dans [le contrat v2](render-transport-prerequisites-v2.md). Voir [migration](migration-0.3.0-draft.5.md). Les autres règles restent identiques.
 
 0.3.0-draft.1 : ajoute uniquement TS13-A01/A02 et TS14-A01 ; 30 contrôles à règles /70 règles. Les règles RC1 et leurs versions sont conservées. [Contrat bilingue](sitemap-quality-evidence.md), [migration depuis RC1](migration-0.3.0-draft.1.md). Preuves insuffisantes : NT ; exemples synthétiques, aucun audit réel. Le périmètre RC1 ci-dessous est historique.

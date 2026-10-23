@@ -1,3 +1,4 @@
+from tests.lot1_history import controls_before_lot1
 """Synthetic render/transport contradictions, offline replay and preservation."""
 import base64,copy,hashlib,json,os,socket,tempfile,unittest
 from pathlib import Path
@@ -25,7 +26,7 @@ class RenderTransport(unittest.TestCase):
 
     def test_prior_eighty_five_rules_and_versions_preserved(self):
         baseline=tsep.read_json(ROOT/'provenance/v030-draft3-rule-baseline.json')['rules'];self.assertEqual(len(baseline),85)
-        actual={r['id']:{'sha256':digest(r),'version':c['rule_version']} for c in tsep.read_json(tsep.PROTOCOL_PATH)['controls'] for r in c.get('rules',[]) if r['id'] in baseline};self.assertEqual(actual,baseline)
+        actual={r['id']:{'sha256':digest(r),'version':c['rule_version']} for c in controls_before_lot1() for r in c.get('rules',[]) if r['id'] in baseline};self.assertEqual(actual,baseline)
         p=tsep.read_json(tsep.PROTOCOL_PATH);self.assertEqual(len([c for c in p['controls'] if c.get('rules')]),44);self.assertEqual(sum(len(c['rules']) for c in p['controls']),98)
 
     def test_c_nc_nt_bundles_and_offline_replay(self):

@@ -1,5 +1,7 @@
 Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](render-transport-evidence.md), [migration](migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
 
+Candidate normative amendment **0.3.0-draft.6**: TS01 structural whitespace and TS02 complete-header trajectories with attributable collector limit stops. [Rules and migration](migration-0.3.0-draft.6.md). No historical dossier migrates implicitly.
+
 Normative **0.3.0-draft.5** amendment: TS30 H1 prerequisites and TS37-A03 resolution/independent observations are clarified in [v2 contract](render-transport-prerequisites-v2.md). See [migration](migration-0.3.0-draft.5.md). Other rules remain identical.
 
 0.3.0-draft.1 adds only TS13-A01/A02 and TS14-A01; 30 rule-bearing controls /70 rules. RC1 rules and their versions are retained. [Bilingual contract](sitemap-quality-evidence.md), [migration from RC1](migration-0.3.0-draft.1.md). Insufficient evidence remains NT; synthetic examples, no real audit. The RC1 scope below is historical.

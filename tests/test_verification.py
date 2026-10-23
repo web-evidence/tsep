@@ -15,7 +15,7 @@ import tsep
 
 class VerificationDeadline(unittest.TestCase):
     def test_default_override_and_invalid_timeout(self):
-        self.assertEqual(verify.step_timeout({}),120)
+        self.assertEqual(verify.step_timeout({}),7200)
         self.assertEqual(verify.step_timeout({verify.TIMEOUT_ENV:'300'}),300)
         self.assertEqual(verify.step_timeout({verify.TIMEOUT_ENV:'0.25'}),0.25)
         for value in ('','bad','0','-1','NaN','inf','-inf','86401','1e309'):

@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.5 — Controls
+# TSEP 0.3.0-draft.6 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.2.0-rc.1:TS01-A01`
+`TSEP@0.3.0-draft.6:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.2.0-rc.1:TS01-A02`
+`TSEP@0.3.0-draft.6:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -62,7 +62,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Each final response whose content can be compared to intent.
 
-**Method.** First compare final URL with expected_final_url, then complete-body SHA-256 with expected_body_sha256. Fix references, any stable policy and markers before measurement. The changed non-stable body branch uses the historical reader unless prior identity_reader: html-tree-markers-v1 selects two whole-document static hypotheses, byte-attributed parsed segments and literal criteria. Hashing still covers the unchanged complete body.
+**Method.** First compare final URL with expected_final_url, then complete-body SHA-256 with expected_body_sha256. Fix references, any stable policy and markers before measurement. The changed non-stable body branch uses the historical reader unless prior identity_reader: html-tree-markers-v1 selects two whole-document static hypotheses, byte-attributed parsed segments and literal criteria. Hashing still covers the unchanged complete body. Draft.6 excludes attributable structural ASCII whitespace under html or across only body/html end tags, retaining original intervals and bytes; see migration-0.3.0-draft.6.
 
 **Acceptance.** Different final URL: fail. At the same URL, identical digest: pass. Otherwise, representation: stable requires fail. Otherwise, under the historical reader, valid markers yield fail if any required marker is missing or any forbidden marker is present. Pass requires at least one required marker, all required markers present and all forbidden markers absent. Forbidden-only markers all absent: inconclusive. Without markers or declared stability: inconclusive. HTTP status does not replace this comparison. Under html-tree-markers-v1, each complete reading compares all markers; both pass gives pass, both fail gives fail, every other pair is inconclusive. URL, hash and stability precedence remains unchanged.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.2.0-rc.1:TS02-A01`
+`TSEP@0.3.0-draft.6:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.2.0-rc.1:TS02-A02`
+`TSEP@0.3.0-draft.6:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -134,7 +134,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Variants and legacy URLs with a declared expected behavior.
 
-**Method.** Read each attributable GET exchange in order, resolve Location, retain codes and URLs, count redirects and check terminal destination/status. Compare with the pre-capture plan without reconstructing missing responses.
+**Method.** Read each attributable GET exchange in order, resolve Location, retain codes and URLs, count redirects and check terminal destination/status. Compare with the pre-capture plan without reconstructing missing responses. Prior profile http-trajectory-headers-v1 may conclude from complete headers after an attributable collector-2 byte-limit stop; the body remains incomplete and unevaluated.
 
 **Acceptance.** The complete chain matches declared destination, statuses and bounds, without a loop. A forbidden type, exceeded maximum, redirect without Location or return to a visited URL is fail as soon as a complete prefix establishes it. Wrong terminal destination/status or insufficient count is fail after an attributable terminal response.
 
@@ -142,7 +142,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Assumptions.** The owner supplies criteria before capture; a laboratory author may supply an explicitly synthetic review. A digest binds records without authenticating a person.
 
-**Inconclusive.** Unfinished chain without contradiction, collection limit, ambiguous Location, unsupported fragment/syntax, conditional/authenticated request, incomplete or unattributable capture. A collection limit does not prove a loop; exceeding an intended maximum is distinct.
+**Inconclusive.** Unfinished chain without contradiction, collection limit, ambiguous Location, unsupported fragment/syntax, conditional/authenticated request, incomplete or unattributable capture. A collection limit does not prove a loop; exceeding an intended maximum is distinct. Bounded exception: prefix at the exact attributed byte limit with one overflow byte, without ambiguous headers or contradictory framing, under the explicit new profile only.
 
 **When NA is allowed.** No atomic exemption. Whole-control non-applicability needs a separate positive inventory; a missing capture does not establish it.
 

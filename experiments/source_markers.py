@@ -2,6 +2,7 @@
 """Unapplied static source-marker hypotheses; not a TS01 assessment. Apache-2.0."""
 import argparse
 import json
+import re
 from pathlib import Path
 import sys
 
@@ -10,7 +11,7 @@ sys.path.insert(0,str(ROOT))
 from experiments import source_content as content
 from conformance.source_text import characters
 
-VERSION='1'
+VERSION='2'
 need,sha=content.need,content.sha
 HTML=content.HTML
 SVG='http://www.w3.org/2000/svg'
@@ -45,6 +46,32 @@ def normalize_input(value):
     return value.replace('\r\n','\n').replace('\r','\n')
 
 
+def terminal_parts(record):
+    """Split merged body-tail text at end tags/comments, retaining every byte."""
+    raw=record['raw_source']
+    pattern=re.compile(r'</(?:body|html)[\t\n\f\r ]*>|<!--(?:[^-]|-(?!->))*-->',re.I)
+    matches=list(pattern.finditer(raw))
+    need(matches,'Unsupported markup-spanning body text')
+    spans=[];start=0
+    for m in matches:
+        if m.start()>start:spans.append((start,m.start(),False))
+        spans.append((m.start(),m.end(),True));start=m.end()
+    if start<len(raw):spans.append((start,len(raw),False))
+    segments=[];excluded=[];parsed=''
+    for a,b,markup in spans:
+        text=raw[a:b]
+        need(markup or '<' not in text,'Unsupported markup in body-tail text')
+        data='' if markup else characters(normalize_input(text));parsed+=data
+        row=dict(record,raw_source=text,data=data,part_of_merged_node=True,
+                 body_span_bytes=[record['body_span_bytes'][0]+len(raw[:i].encode('utf-8')) for i in (a,b)],
+                 source_span_utf16=[record['source_span_utf16'][0]+len(raw[:i].encode('utf-16-le'))//2 for i in (a,b)])
+        if markup or all(c in '\t\n\f\r ' for c in data):
+            excluded.append(dict(row,reason='Attributed body-tail markup or structural ASCII whitespace'))
+        else:segments.append(dict(row,decoding='references-after-input-preprocessing',initial_lf_omitted=False))
+    need(parsed==record['data'],'Ambiguous merged body-tail text')
+    return segments,excluded
+
+
 def project(reading,mode):
     """Keep source-contiguous text runs. Any unresolved run invalidates the whole reading."""
     need(mode in MODES,'Unknown scripting hypothesis')
@@ -73,10 +100,26 @@ def project(reading,mode):
         need(not foreign or not node['data'].strip(),'Nonblank foreign text outside source-marker projection')
         if foreign:
             excluded.append(dict(record,reason='Foreign whitespace, outside HTML text')); continue
+        # HTML permits ASCII whitespace between head and body (and after body).
+        # Keep the original interval as an exclusion; never broaden to Unicode
+        # strip(), which would silently discard NBSP or other significant text.
+        if (len(elements)==1 and tags==['html'] and node['data'] and
+                all(c in '\t\n\f\r ' for c in node['data'])):
+            span=node.get('body_span_bytes'); raw=node['raw_source']
+            need(type(span) is list and len(span)==2 and span[0]<span[1] and
+                 type(raw) is str and normalize_input(raw)==node['data'] and
+                 all(c in '\t\n\f\r ' for c in raw),
+                 'Unattributable structural HTML whitespace')
+            excluded.append(dict(record,reason='Structural ASCII whitespace directly under html')); continue
         need(elements and any(t in ('head','body') for t in tags),'Text outside attributed head/body')
         span=node.get('body_span_bytes'); raw=node['raw_source']
         need(type(span) is list and len(span)==2 and span[0]<span[1] and type(raw) is str,
              'Text run lacks an attributable source interval')
+        if tags==['html','body'] and len(elements)==2 and '<' in raw:
+            parts,omitted=terminal_parts(record)
+            segments.extend(parts);excluded.extend(omitted)
+            need(len(segments)<=MAX_SEGMENTS,'Text segment bound exceeded')
+            continue
         parent_name=elements[-1]['name']
         rawtext=parent_name=='noscript' and mode=='enabled'
         rcdata=parent_name in ('title','textarea')
@@ -94,7 +137,7 @@ def project(reading,mode):
         record['initial_lf_omitted']=value!=node['data']
         segments.append(record);intervals.append(span)
         need(len(segments)<=MAX_SEGMENTS,'Text segment bound exceeded')
-    ordered=sorted(intervals)
+    ordered=sorted(r['body_span_bytes'] for r in segments+excluded if r.get('body_span_bytes') is not None)
     need(all(a[1]<=b[0] for a,b in zip(ordered,ordered[1:])),'Overlapping source text intervals')
     return segments,excluded
 

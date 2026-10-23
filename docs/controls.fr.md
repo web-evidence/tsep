@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.5 — Contrôles
+# TSEP 0.3.0-draft.6 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.2.0-rc.1:TS01-A01`
+`TSEP@0.3.0-draft.6:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.2.0-rc.1:TS01-A02`
+`TSEP@0.3.0-draft.6:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -62,7 +62,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Chaque réponse finale dont le contenu peut être comparé à l’intention.
 
-**Méthode.** Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer références, éventuelle stabilité et marqueurs avant la mesure. La branche de variation sans stabilité utilise le lecteur historique, sauf identity_reader: html-tree-markers-v1 déclaré au préalable : deux hypothèses statiques globales, segments parsés attribués aux octets et critères littéraux. L’empreinte porte toujours sur le corps complet inchangé.
+**Méthode.** Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer références, éventuelle stabilité et marqueurs avant la mesure. La branche de variation sans stabilité utilise le lecteur historique, sauf identity_reader: html-tree-markers-v1 déclaré au préalable : deux hypothèses statiques globales, segments parsés attribués aux octets et critères littéraux. L’empreinte porte toujours sur le corps complet inchangé. Édition draft.6 : les espaces ASCII structurels sous html ou traversant uniquement les fermetures body/html sont exclus avec leurs positions et octets conservés ; voir migration-0.3.0-draft.6.
 
 **Attendus.** URL finale différente : fail. À URL identique, empreinte identique : pass. Sinon, representation: stable impose fail. Sinon, sous le lecteur historique, des marqueurs valides donnent fail si un requis manque ou si un interdit apparaît. Pass exige au moins un marqueur requis, tous les requis présents et tous les interdits absents. Interdits seuls absents : inconclusive. Sans marqueurs ni stabilité déclarée : inconclusive. Le statut HTTP ne remplace pas cette comparaison. Sous html-tree-markers-v1, chaque lecture complète compare tous les marqueurs ; deux pass donnent pass, deux fail donnent fail, tout autre couple donne inconclusive. Les priorités URL, empreinte et stabilité restent inchangées.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.2.0-rc.1:TS02-A01`
+`TSEP@0.3.0-draft.6:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.2.0-rc.1:TS02-A02`
+`TSEP@0.3.0-draft.6:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -134,7 +134,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Variantes et anciennes URL dont le comportement attendu est déclaré.
 
-**Méthode.** Lire chaque échange GET attribuable dans l’ordre, résoudre Location, conserver codes et URL, compter les redirections et vérifier destination/statut terminaux. Comparer au plan fixé avant la capture, sans reconstruire les réponses manquantes.
+**Méthode.** Lire chaque échange GET attribuable dans l’ordre, résoudre Location, conserver codes et URL, compter les redirections et vérifier destination/statut terminaux. Comparer au plan fixé avant la capture, sans reconstruire les réponses manquantes. Le profil préalable http-trajectory-headers-v1 peut conclure sur les en-têtes complets après un arrêt attribué à la borne d’octets du collecteur 2 ; le corps reste incomplet et non évalué.
 
 **Attendus.** La chaîne complète respecte destination, statuts et bornes déclarés, sans boucle. Un type interdit, une borne maximale dépassée, une redirection sans Location ou un retour vers une URL déjà parcourue sont fail dès le préfixe complet qui les prouve. Une destination/statut terminal ou un nombre minimal contradictoires sont fail après réponse terminale attribuable.
 
@@ -142,7 +142,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Hypothèses.** Le responsable fournit ses critères avant la capture ; un auteur de laboratoire peut fournir une revue synthétique explicitement identifiée. Une empreinte lie les pièces, sans authentifier une personne.
 
-**Indéterminé.** Chaîne inachevée sans contradiction, limite de collecte atteinte, Location ambiguë, fragment ou syntaxe hors portée, requête conditionnelle/authentifiée, capture incomplète ou mal attribuée. Atteindre une borne de collecte ne prouve pas une boucle ; dépasser une borne d’intention est distinct.
+**Indéterminé.** Chaîne inachevée sans contradiction, limite de collecte atteinte, Location ambiguë, fragment ou syntaxe hors portée, requête conditionnelle/authentifiée, capture incomplète ou mal attribuée. Atteindre une borne de collecte ne prouve pas une boucle ; dépasser une borne d’intention est distinct. Exception bornée : préfixe à la limite exactement attestée avec un octet excédentaire, sans ambiguïté d’en-têtes ou contradiction de framing, sous le nouveau profil explicite uniquement.
 
 **Conditions de NA.** Aucune exemption atomique. La non-applicabilité du contrôle exige un inventaire positif distinct ; elle ne découle pas d’une capture absente.
 

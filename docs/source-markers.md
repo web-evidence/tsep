@@ -1,5 +1,7 @@
 # TS01 parsed-source markers / Marqueurs source parsés TS01
 
+Édition normative draft.6 / Normative edition draft.6 : exclusions ASCII structurelles attribuées, sans modification des octets / attributable structural ASCII exclusions, original bytes unchanged. [Contrat FR/EN](migration-0.3.0-draft.6.md).
+
 ## Français
 
 Draft.28 ajoute le profil facultatif **`identity_reader: "html-tree-markers-v1"`**

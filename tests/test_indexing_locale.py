@@ -1,3 +1,4 @@
+from tests.lot1_history import controls_before_lot1
 """Bounded indexing/locale counterexamples, evidence boundaries and preservation."""
 import base64,copy,hashlib,json,os,socket,tempfile,unittest
 from pathlib import Path
@@ -25,7 +26,7 @@ class IndexingLocale(unittest.TestCase):
 
     def test_all_seventy_nine_prior_rules_and_versions_preserved(self):
         baseline=tsep.read_json(ROOT/'provenance/v030-draft2-rule-baseline.json')['rules'];self.assertEqual(len(baseline),79)
-        seen={r['id']:{'sha256':digest(r),'version':c['rule_version']} for c in tsep.read_json(tsep.PROTOCOL_PATH)['controls'] for r in c.get('rules',[]) if r['id'] in baseline};self.assertEqual(seen,baseline)
+        seen={r['id']:{'sha256':digest(r),'version':c['rule_version']} for c in controls_before_lot1() for r in c.get('rules',[]) if r['id'] in baseline};self.assertEqual(seen,baseline)
 
     def test_c_nc_nt_bundles_and_offline_replay(self):
         for cid in reader.COUNTS:

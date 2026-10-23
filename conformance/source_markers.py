@@ -7,7 +7,7 @@ from conformance.http import Unknown, need
 from experiments import source_markers as reader
 
 READER = 'html-tree-markers-v1'
-VERSION = '1'
+VERSION = '2'
 MAX_DIAGNOSTIC_BYTES = 4 * 1024 * 1024
 
 

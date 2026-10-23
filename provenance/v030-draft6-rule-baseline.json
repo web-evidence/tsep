@@ -1,0 +1,699 @@
+{
+  "base_commit": "10b7fab5887931ff7246aa259e21c3d0fb354929",
+  "scope": "Explicit lot1 TS01/TS02 amendment; historical definitions and bytes retained, no rewritten oracle.",
+  "controls": {
+    "TS01": {
+      "id": "TS01",
+      "title": {
+        "fr": "La page finale répond avec un code HTTP exploitable.",
+        "en": "The final page returns an actionable HTTP status code."
+      },
+      "domain": {
+        "fr": "HTTP et disponibilité",
+        "en": "HTTP and availability"
+      },
+      "severity": "blocking",
+      "unit": "page",
+      "required_inputs": [
+        "http",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Pages publiques désignées comme canoniques.",
+        "en": "Public pages designated as canonical."
+      },
+      "procedure": {
+        "fr": "Envoyer une requête GET, suivre les redirections et relever le code final.",
+        "en": "Send a GET request, follow redirects and record the final status code."
+      },
+      "acceptance": {
+        "fr": "Chaque GET atteint une réponse finale 200 pour la ressource attendue ; horodatage et chaîne conservés.",
+        "en": "Each GET reaches a final 200 response for the expected resource; retain timestamp and redirect chain."
+      },
+      "non_applicability": {
+        "fr": "Aucune page publique canonique dans le périmètre déclaré.",
+        "en": "No public canonical page in the declared scope."
+      },
+      "evidence": {
+        "fr": "Intention, trace GET complète et corps conservé ; justifications par règle A01–A02.",
+        "en": "Intent, complete GET trace and retained body; reasoned findings for A01–A02."
+      },
+      "limitations": {
+        "fr": "Un test depuis une IP ne prouve pas la réponse reçue par Googlebot.",
+        "en": "A test from one IP does not prove the response received by Googlebot."
+      },
+      "assessment": "automatic-with-declared-intent",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc9110"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité. Note TSEP : le critère est un 200 final ; le titre permanent hérité de la grille 1.1 est plus large.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability. TSEP note: the criterion is a final 200; the permanent title inherited from grid 1.1 is broader."
+      },
+      "rules": [
+        {
+          "id": "TS01-A01",
+          "required_inputs": [
+            "http",
+            "intent"
+          ],
+          "title": {
+            "fr": "GET final en 200",
+            "en": "Final GET returns 200"
+          },
+          "applicability": {
+            "fr": "Chaque page publique désignée canonique, dans le contexte de requête déclaré.",
+            "en": "Each public page designated canonical, in the declared request context."
+          },
+          "procedure": {
+            "fr": "Exécuter un GET sans cache conditionnel ; enregistrer chaque saut et la réponse finale. Déclarer agent, en-têtes, cookies/authentification, réseau, heure et bornes de temps, taille et redirections.",
+            "en": "Perform a GET without conditional caching; record every hop and final response. Declare agent, headers, cookies/authentication, network, time and time/size/redirect bounds."
+          },
+          "acceptance": {
+            "fr": "Une réponse finale complète est observée en 200. Un 204, 206, 4xx ou 5xx final observé contredit cet attendu ; HEAD seul ou 304 sans représentation ne suffit pas.",
+            "en": "A complete final 200 response is observed. An observed final 204, 206, 4xx or 5xx contradicts this expectation; HEAD alone or 304 without a representation is insufficient."
+          },
+          "evidence": {
+            "fr": "Intention par URL ; commande et version de l’outil ; trace GET datée, URL et codes de tous les sauts, en-têtes finaux et indicateurs de troncature.",
+            "en": "Intent per URL; command and tool version; dated GET trace, URLs and statuses of every hop, final headers and truncation indicators."
+          },
+          "assumptions": {
+            "fr": "La requête et ses bornes sont déclarées avant l’essai ; le 200 est une exigence TSEP pour cette population.",
+            "en": "Request context and bounds are declared before the test; 200 is a TSEP requirement for this population."
+          },
+          "inconclusive": {
+            "fr": "Délai, DNS/TLS, chaîne interrompue, borne atteinte, capture incomplète, requête HEAD seule ou 304 sans corps conservé : inconclusive, sans défaut SEO déduit.",
+            "en": "Timeout, DNS/TLS failure, interrupted chain, reached bound, incomplete capture, HEAD only or 304 without a retained body: inconclusive, without an inferred SEO fault."
+          },
+          "limitations": {
+            "fr": "Ni disponibilité permanente ni réponse réelle de Googlebot. Une chaîne observée ne valide pas TS02.",
+            "en": "Neither continuous availability nor an actual Googlebot response. An observed chain does not validate TS02."
+          },
+          "na_inputs": [],
+          "non_applicability": {
+            "fr": "Aucune exemption atomique quand le contrôle s’applique.",
+            "en": "No atomic exemption when the control applies."
+          },
+          "automation": "automatic"
+        },
+        {
+          "id": "TS01-A02",
+          "required_inputs": [
+            "http",
+            "intent"
+          ],
+          "title": {
+            "fr": "Ressource finale attendue",
+            "en": "Expected final resource"
+          },
+          "applicability": {
+            "fr": "Chaque réponse finale dont le contenu peut être comparé à l’intention.",
+            "en": "Each final response whose content can be compared to intent."
+          },
+          "procedure": {
+            "fr": "Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer références, éventuelle stabilité et marqueurs avant la mesure. La branche de variation sans stabilité utilise le lecteur historique, sauf identity_reader: html-tree-markers-v1 déclaré au préalable : deux hypothèses statiques globales, segments parsés attribués aux octets et critères littéraux. L’empreinte porte toujours sur le corps complet inchangé.",
+            "en": "First compare final URL with expected_final_url, then complete-body SHA-256 with expected_body_sha256. Fix references, any stable policy and markers before measurement. The changed non-stable body branch uses the historical reader unless prior identity_reader: html-tree-markers-v1 selects two whole-document static hypotheses, byte-attributed parsed segments and literal criteria. Hashing still covers the unchanged complete body."
+          },
+          "acceptance": {
+            "fr": "URL finale différente : fail. À URL identique, empreinte identique : pass. Sinon, representation: stable impose fail. Sinon, sous le lecteur historique, des marqueurs valides donnent fail si un requis manque ou si un interdit apparaît. Pass exige au moins un marqueur requis, tous les requis présents et tous les interdits absents. Interdits seuls absents : inconclusive. Sans marqueurs ni stabilité déclarée : inconclusive. Le statut HTTP ne remplace pas cette comparaison. Sous html-tree-markers-v1, chaque lecture complète compare tous les marqueurs ; deux pass donnent pass, deux fail donnent fail, tout autre couple donne inconclusive. Les priorités URL, empreinte et stabilité restent inchangées.",
+            "en": "Different final URL: fail. At the same URL, identical digest: pass. Otherwise, representation: stable requires fail. Otherwise, under the historical reader, valid markers yield fail if any required marker is missing or any forbidden marker is present. Pass requires at least one required marker, all required markers present and all forbidden markers absent. Forbidden-only markers all absent: inconclusive. Without markers or declared stability: inconclusive. HTTP status does not replace this comparison. Under html-tree-markers-v1, each complete reading compares all markers; both pass gives pass, both fail gives fail, every other pair is inconclusive. URL, hash and stability precedence remains unchanged."
+          },
+          "evidence": {
+            "fr": "Trace HTTP, corps complet et intention préalable datée avec URL, empreinte de référence et éventuels marqueurs/politique de stabilité ; extraction, valeurs calculées et outil/version. Empreinte après décodage de transfert et de contenu, avant toute transformation. Marqueurs littéraux sensibles à la casse dans chaque segment de texte source HTML décodé : entités résolues, commentaires, script/style, balises et attributs exclus, segments jamais concaténés à travers le balisage. Pour text/plain, corps décodé intégral. Ni normalisation des espaces ni expression régulière. Le profil parsé distinct normalise CRLF/CR source en LF avant expansion des références, sans modifier les critères ; conserve les deux projections, contextes, positions, erreurs rapportées, résultats et outils. Les contextes identiques sont référencés sans suppression de segments ; arbres reconstructibles à partir du corps et des outils exacts.",
+            "en": "HTTP trace, complete body and dated prior intent with URL, reference digest and any markers/stability policy; extraction, computed values and tool/version. Hash after transfer and content decoding, before any transformation. Literal case-sensitive markers within each decoded HTML source-text segment: character references resolved; comments, script/style, tags and attributes excluded; segments never concatenated across markup. For text/plain, the entire decoded body. No whitespace normalization or regular expressions. The distinct parsed profile normalizes source CRLF/CR to LF before reference expansion without changing criteria; retain both projections, contexts, positions, reported errors, results and tools. Identical contexts are referenced without removing segments; trees can be reconstructed from the body and exact tools."
+          },
+          "assumptions": {
+            "fr": "Le responsable fixe une représentation de référence avant la collecte ; sa pertinence métier reste sa responsabilité. La comparaison est automatique, la définition de l’intention ne l’est pas. Le profil éventuel et ses critères sont déclarés dans une nouvelle intention avant capture ; aucune sélection ou conversion silencieuse des anciennes intentions.",
+            "en": "The owner fixes a reference representation before collection; its business relevance remains their responsibility. Comparison is automatic; defining intent is not. Any selected profile and its criteria are declared in new intent before capture; no silent selection or conversion of historical intents."
+          },
+          "inconclusive": {
+            "fr": "Capture absente/tronquée, décodage inconnu, référence URL absente/invalide, intention postérieure : inconclusive. À URL identique, empreinte de référence absente/invalide : inconclusive. Si les empreintes diffèrent sans stabilité, marqueurs absents, vides, malformés ou contradictoires, extraction indéterminée, ou interdits seuls tous absents : inconclusive. Une URL différente reste fail même sans empreinte de référence. Pour le profil parsé : divergence des hypothèses, erreur rapportée par parse5, texte étranger non blanc hors exclusions, frames/contextes non qualifiés, intervalles non attribuables, runtime indisponible ou borne dépassée restent inconclusive, sans repli.",
+            "en": "Missing/truncated capture, unknown decoding, missing/invalid reference URL or subsequent intent: inconclusive. At an identical URL, missing/invalid reference digest: inconclusive. When digests differ without stability, absent, empty, malformed or contradictory markers, unresolved extraction, or forbidden-only markers all absent: inconclusive. A different URL remains fail even without a reference digest. For the parsed profile: divergent hypotheses, reported parse5 errors, nonblank foreign text outside exclusions, unsupported frames/contexts, unattributable spans, unavailable runtime or exceeded bound remain inconclusive without fallback."
+          },
+          "limitations": {
+            "fr": "Une variation d’empreinte seule ne prouve pas un contenu erroné. L’extraction du texte source ne mesure ni visibilité CSS/DOM, ni similarité sémantique ; titre et texte masqué par CSS peuvent compter. Des marqueurs pertinents et une référence correcte restent la responsabilité du propriétaire. Une mauvaise intention peut valider un mauvais contenu. Ni classification soft 404 du moteur, ni indexation, ni routes non déclarées. Le nouveau profil conserve title/textarea/options/textes masqués, exclut scripts/styles HTML/SVG et templates inactifs ; le contrat précise les refus. Aucun comportement navigateur, validité HTML complète ou nouvelle évaluation Edikka déduit.",
+            "en": "A changed digest alone does not prove wrong content. Source-text extraction measures neither CSS/DOM visibility nor semantic similarity; title and CSS-hidden text may count. Appropriate markers and a correct reference remain the owner’s responsibility. Wrong intent can validate wrong content. No engine soft-404 classification, indexing or undeclared routes. The new profile retains title/textarea/options/hidden text, excludes HTML/SVG scripts/styles and inactive templates; its contract specifies refusals. No browser behavior, complete HTML validity or new Edikka assessment follows."
+          },
+          "na_inputs": [],
+          "non_applicability": {
+            "fr": "Aucune exemption atomique quand le contrôle s’applique.",
+            "en": "No atomic exemption when the control applies."
+          },
+          "automation": "automatic"
+        }
+      ],
+      "rule_version": "0.2.0-rc.1"
+    },
+    "TS02": {
+      "id": "TS02",
+      "title": {
+        "fr": "Les redirections sont intentionnelles, directes et sans boucle.",
+        "en": "Redirects are intentional, direct and loop-free."
+      },
+      "domain": {
+        "fr": "HTTP et disponibilité",
+        "en": "HTTP and availability"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "http",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Variantes et anciennes URL dont le comportement attendu est déclaré.",
+        "en": "Variants and legacy URLs with a declared expected behavior."
+      },
+      "procedure": {
+        "fr": "Tester les variantes HTTP/HTTPS, hôte, slash et anciennes URL avec le nombre de redirections.",
+        "en": "Test HTTP/HTTPS, host, trailing-slash and legacy URL variants, including the redirect count."
+      },
+      "acceptance": {
+        "fr": "Chaque variante testée suit la destination et le nombre de sauts autorisés, sans boucle ; intention validée par le responsable.",
+        "en": "Each tested variant follows the approved destination and hop count without a loop; the owner confirms intent."
+      },
+      "non_applicability": {
+        "fr": "Aucune redirection ni variante attendue, inventaire à l’appui.",
+        "en": "No redirects or expected variants, supported by an inventory."
+      },
+      "evidence": {
+        "fr": "Destination finale unique, chaîne documentée, absence de boucle.",
+        "en": "One final destination, documented chain and no loop."
+      },
+      "limitations": {
+        "fr": "Une redirection valide ne prouve pas la pertinence sémantique de sa destination. La référence exécutable borne les trajectoires serveur HTTP ; les autres mécanismes restent non établis, sans exemption du contrôle.",
+        "en": "A valid redirect does not prove the semantic relevance of its destination. The executable reference covers bounded server-side HTTP trajectories; other mechanisms remain unestablished, without exempting the control."
+      },
+      "assessment": "atomic-rules",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/301-redirects"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      },
+      "rule_version": "0.2.0-rc.1",
+      "rules": [
+        {
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Variantes et anciennes URL dont le comportement attendu est déclaré.",
+            "en": "Variants and legacy URLs with a declared expected behavior."
+          },
+          "assumptions": {
+            "fr": "Le responsable fournit ses critères avant la capture ; un auteur de laboratoire peut fournir une revue synthétique explicitement identifiée. Une empreinte lie les pièces, sans authentifier une personne.",
+            "en": "The owner supplies criteria before capture; a laboratory author may supply an explicitly synthetic review. A digest binds records without authenticating a person."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique. La non-applicabilité du contrôle exige un inventaire positif distinct ; elle ne découle pas d’une capture absente.",
+            "en": "No atomic exemption. Whole-control non-applicability needs a separate positive inventory; a missing capture does not establish it."
+          },
+          "limitations": {
+            "fr": "Une redirection valide ne prouve pas la pertinence sémantique de sa destination. La référence exécutable borne les trajectoires serveur HTTP ; les autres mécanismes restent non établis, sans exemption du contrôle.",
+            "en": "A valid redirect does not prove the semantic relevance of its destination. The executable reference covers bounded server-side HTTP trajectories; other mechanisms remain unestablished, without exempting the control."
+          },
+          "id": "TS02-A01",
+          "automation": "manual",
+          "required_inputs": [
+            "intent"
+          ],
+          "title": {
+            "fr": "Plan de redirection approuvé au préalable",
+            "en": "Previously approved redirect plan"
+          },
+          "procedure": {
+            "fr": "Déclarer source, destination finale, statuts de redirection et terminaux admis, nombres minimal et maximal de redirections et contexte. Vérifier la revue fournie du responsable, motivée, datée entre déclaration et capture et liée par empreinte au plan/contexte.",
+            "en": "Declare source, final destination, allowed redirect and terminal statuses, minimum/maximum redirect count and context. Check the supplied owner review, reasoned, dated between declaration and capture and digest-bound to plan/context."
+          },
+          "acceptance": {
+            "fr": "Le plan applicable est explicitement approuvé par le responsable avant la capture. Un rejet explicite lié au même plan est fail ; une revue absente ou non attribuable reste inconclusive.",
+            "en": "The owner explicitly approves the applicable plan before capture. Explicit rejection bound to the same plan is fail; missing or unattributable review remains inconclusive."
+          },
+          "evidence": {
+            "fr": "Plan, contexte, identité déclarée et rôle du responsable, date, décision, motif, assistance et provenance de la revue ; empreinte exacte des critères examinés.",
+            "en": "Plan, context, declared owner identity and role, date, decision, reason, assistance and review provenance; exact digest of examined criteria."
+          },
+          "inconclusive": {
+            "fr": "Plan absent, invalide ou postérieur ; validation manquante, non liée ou hors période ; mécanisme non couvert. L’outil ne fournit aucune approbation humaine.",
+            "en": "Missing, invalid or late plan; absent, unbound or mistimed review; unsupported mechanism. The tool supplies no human approval."
+          }
+        },
+        {
+          "na_inputs": [],
+          "applicability": {
+            "fr": "Variantes et anciennes URL dont le comportement attendu est déclaré.",
+            "en": "Variants and legacy URLs with a declared expected behavior."
+          },
+          "assumptions": {
+            "fr": "Le responsable fournit ses critères avant la capture ; un auteur de laboratoire peut fournir une revue synthétique explicitement identifiée. Une empreinte lie les pièces, sans authentifier une personne.",
+            "en": "The owner supplies criteria before capture; a laboratory author may supply an explicitly synthetic review. A digest binds records without authenticating a person."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique. La non-applicabilité du contrôle exige un inventaire positif distinct ; elle ne découle pas d’une capture absente.",
+            "en": "No atomic exemption. Whole-control non-applicability needs a separate positive inventory; a missing capture does not establish it."
+          },
+          "limitations": {
+            "fr": "Une redirection valide ne prouve pas la pertinence sémantique de sa destination. La référence exécutable borne les trajectoires serveur HTTP ; les autres mécanismes restent non établis, sans exemption du contrôle.",
+            "en": "A valid redirect does not prove the semantic relevance of its destination. The executable reference covers bounded server-side HTTP trajectories; other mechanisms remain unestablished, without exempting the control."
+          },
+          "id": "TS02-A02",
+          "automation": "automatic",
+          "required_inputs": [
+            "http",
+            "intent"
+          ],
+          "title": {
+            "fr": "Trajectoire HTTP conforme au plan",
+            "en": "HTTP trajectory matches the plan"
+          },
+          "procedure": {
+            "fr": "Lire chaque échange GET attribuable dans l’ordre, résoudre Location, conserver codes et URL, compter les redirections et vérifier destination/statut terminaux. Comparer au plan fixé avant la capture, sans reconstruire les réponses manquantes.",
+            "en": "Read each attributable GET exchange in order, resolve Location, retain codes and URLs, count redirects and check terminal destination/status. Compare with the pre-capture plan without reconstructing missing responses."
+          },
+          "acceptance": {
+            "fr": "La chaîne complète respecte destination, statuts et bornes déclarés, sans boucle. Un type interdit, une borne maximale dépassée, une redirection sans Location ou un retour vers une URL déjà parcourue sont fail dès le préfixe complet qui les prouve. Une destination/statut terminal ou un nombre minimal contradictoires sont fail après réponse terminale attribuable.",
+            "en": "The complete chain matches declared destination, statuses and bounds, without a loop. A forbidden type, exceeded maximum, redirect without Location or return to a visited URL is fail as soon as a complete prefix establishes it. Wrong terminal destination/status or insufficient count is fail after an attributable terminal response."
+          },
+          "evidence": {
+            "fr": "Requêtes et réponses HTTP originales pour chaque saut, URL, complétude, client et contexte ; plan antérieur. Une contradiction prouvée survit aux lacunes ultérieures et à l’absence d’approbation A01.",
+            "en": "Original HTTP requests/responses per hop, URL, completeness, client and context; prior plan. Proven contradictions survive later gaps and absent A01 approval."
+          },
+          "inconclusive": {
+            "fr": "Chaîne inachevée sans contradiction, limite de collecte atteinte, Location ambiguë, fragment ou syntaxe hors portée, requête conditionnelle/authentifiée, capture incomplète ou mal attribuée. Atteindre une borne de collecte ne prouve pas une boucle ; dépasser une borne d’intention est distinct.",
+            "en": "Unfinished chain without contradiction, collection limit, ambiguous Location, unsupported fragment/syntax, conditional/authenticated request, incomplete or unattributable capture. A collection limit does not prove a loop; exceeding an intended maximum is distinct."
+          }
+        }
+      ]
+    }
+  },
+  "rules": {
+    "TS01-A01": {
+      "sha256": "03dd8fbf1a7c0b4e6cf65072913defd7e7613c064fae7b7ca2bfdea073e1ee6b",
+      "version": "0.2.0-rc.1"
+    },
+    "TS01-A02": {
+      "sha256": "4955b796ff82dbc60cace97f24d6913222accb9cd93887ace9558e98cb2ee5bc",
+      "version": "0.2.0-rc.1"
+    },
+    "TS02-A01": {
+      "sha256": "86d49e27e30ba4019a15a25c3ecd0cd374647e4122c730573f15fa32a68688db",
+      "version": "0.2.0-rc.1"
+    },
+    "TS02-A02": {
+      "sha256": "f53a9bbc8c52cf563b5c9ada0d15d1cb829fd1f251d09b4561a932e4f7e64ad3",
+      "version": "0.2.0-rc.1"
+    },
+    "TS03-A01": {
+      "sha256": "31b6522c50f3c856ae4948259be7bd4e489e6d547eff15c15cd396f1557b05c9",
+      "version": "0.2.0-rc.1"
+    },
+    "TS04-A01": {
+      "sha256": "b389e72a22e4779ba8a1cc892c60f69ba3b30d04f821108583fa8389aecbe321",
+      "version": "0.2.0-rc.1"
+    },
+    "TS04-A02": {
+      "sha256": "30df3aa697393666c0c0ab7ff6ca0160d540d844367ac41842b866b66e599ced",
+      "version": "0.2.0-rc.1"
+    },
+    "TS05-A01": {
+      "sha256": "8a8b3f4c3367e32c8d27a81400b96f9706eae595eca15326efed01e110734b0d",
+      "version": "0.2.0-rc.1"
+    },
+    "TS06-A01": {
+      "sha256": "709d9fe823d3e8b860cdba14f8fcff355528e83d5028a90c67091e7a510b6a54",
+      "version": "0.2.0-rc.1"
+    },
+    "TS07-A01": {
+      "sha256": "5985d9b93c6fb1c2d88fc77d1b1c68179d78db52ec4691581c6896d87a70e625",
+      "version": "0.2.0-rc.1"
+    },
+    "TS07-A02": {
+      "sha256": "29b4e2d518da5c20e0709a30420afa6a9c66a9f42aa7c322f671c9cd3d1bcea2",
+      "version": "0.2.0-rc.1"
+    },
+    "TS07-A03": {
+      "sha256": "0d8fb2de85265a19ca80cb712982033f43dc0955deab26d9006452e93185fce3",
+      "version": "0.2.0-rc.1"
+    },
+    "TS08-A01": {
+      "sha256": "e26807145641553750319fbf3bdbd1a1bd76871d65df2444b5319042b2c748a6",
+      "version": "0.2.0-rc.1"
+    },
+    "TS08-A02": {
+      "sha256": "db1161e8073b358102347d50653ff332f03705e88a7da3b4733911a90da0efae",
+      "version": "0.2.0-rc.1"
+    },
+    "TS08-A03": {
+      "sha256": "6ecd605aabce6ebbe76b0f1d4cd4dd9615ca11f35e7b41b46fc1535d058c45c0",
+      "version": "0.2.0-rc.1"
+    },
+    "TS09-A01": {
+      "sha256": "dc84d9cfce9e39ae9fee66f205a59965d66134c1801cd2aa53ae9486d267be07",
+      "version": "0.3.0-draft.2"
+    },
+    "TS10-A01": {
+      "sha256": "0f431af7333c90f4215b38cbd9690680108fc3d958e361197395f464b7c52c46",
+      "version": "0.2.0-rc.1"
+    },
+    "TS10-A02": {
+      "sha256": "68a1f99770332de18e2259c1d65653fcc692eae983a4a2dc336ebec68120133a",
+      "version": "0.2.0-rc.1"
+    },
+    "TS10-A03": {
+      "sha256": "3c7bd367c8f83e594e820d00986abc03f6ff900b39f3c5bf0268965f9455d347",
+      "version": "0.2.0-rc.1"
+    },
+    "TS10-A04": {
+      "sha256": "d4e6f36f511b2cf3bb589c378b316fffaeaa41ec4b814b90a293f4ec06a54bb6",
+      "version": "0.2.0-rc.1"
+    },
+    "TS11-A01": {
+      "sha256": "3b2b8b33dd0c57e9b6a03ec10180bc0fdc2a5c42cfb25d67cfb1a717907f6edc",
+      "version": "0.3.0-draft.2"
+    },
+    "TS11-A02": {
+      "sha256": "fe1b457324a8ce9b21e32fe36b8d4a8b327d176ddbeaccb0facecc671ee133da",
+      "version": "0.3.0-draft.2"
+    },
+    "TS12-A01": {
+      "sha256": "72b34741a6beb0e53055b156a8ad1543a9509630d55d86c75953c46703b6acc1",
+      "version": "0.2.0-rc.1"
+    },
+    "TS12-A02": {
+      "sha256": "46c29f6a2d54dc31344120d26fcbf9d2db3f27da80b4ddc20eb9af023ec2f403",
+      "version": "0.2.0-rc.1"
+    },
+    "TS12-A03": {
+      "sha256": "bdd9c3f62478a593239a1a34fe060e63dd108336f7935f8ae74d9b45d5ef4cdb",
+      "version": "0.2.0-rc.1"
+    },
+    "TS13-A01": {
+      "sha256": "c8c4911215a4a65250f8e63188d2513f0732ee5660035671e61f697aa93b12bb",
+      "version": "0.3.0-draft.1"
+    },
+    "TS13-A02": {
+      "sha256": "05eb961e599c892c38cced9bd57dd4111dc3c024f90d213b6049ba302be2154a",
+      "version": "0.3.0-draft.1"
+    },
+    "TS14-A01": {
+      "sha256": "f8d006d365d1484425d8097910f5a5e84a0ff48c910ecc098c1f9e1f7e7a817e",
+      "version": "0.3.0-draft.1"
+    },
+    "TS15-A01": {
+      "sha256": "48ac2aa4071f5c04bb01fc028279857de077a20427ae93686e85d564ab707504",
+      "version": "0.2.0-rc.1"
+    },
+    "TS15-A02": {
+      "sha256": "7f2b9a4e5b6ccc50e6ea0bec4d0ccf49cb181bcdc2407ff4c19ef2a12bac1650",
+      "version": "0.2.0-rc.1"
+    },
+    "TS15-A03": {
+      "sha256": "8642afbde801d4ad7fef6fcca6275324064216bcd97c1415642542f8e291d23d",
+      "version": "0.2.0-rc.1"
+    },
+    "TS16-A01": {
+      "sha256": "eaa456862fa31de60e9b87934ebaf5fd4f3232ccdba6563cf6e3d6693f63db9c",
+      "version": "0.2.0-rc.1"
+    },
+    "TS17-A01": {
+      "sha256": "b582f17184f69155d16baa453b86de8bc5624f9e93f4f56735de3f1107aef68d",
+      "version": "0.2.0-rc.1"
+    },
+    "TS17-A02": {
+      "sha256": "d923ca8ec43755451a121df9fa78bb995549a7815cffce18e66b826c6341e16f",
+      "version": "0.2.0-rc.1"
+    },
+    "TS18-A01": {
+      "sha256": "03de1f4db27f347e8816ac473b4c214cd17b626b366cde7362ed2e463505ea10",
+      "version": "0.2.0-rc.1"
+    },
+    "TS18-A02": {
+      "sha256": "5e945f79dc798850cfe1e969eab1536d85fb0dad33ee5f612ab270ebfa7576f6",
+      "version": "0.2.0-rc.1"
+    },
+    "TS18-A03": {
+      "sha256": "9678d32d78d756e0948be9c7fcac0ff19b5df3825480c356abe77a32c6df0b61",
+      "version": "0.2.0-rc.1"
+    },
+    "TS19-A01": {
+      "sha256": "3a3547036d63d810a9a58ace135b9da88931c81d880f8ca4532c5384c99e4af5",
+      "version": "0.3.0-draft.2"
+    },
+    "TS19-A02": {
+      "sha256": "fc33748ffd144ad3054cb750cfe37b04a69e693b15c72a7b45d36ba6cd90a64c",
+      "version": "0.3.0-draft.2"
+    },
+    "TS20-A01": {
+      "sha256": "6ae5b228a2edc3d9f24d7ea576b859b554c5c7f939ec099f10cc88354f9bd3d3",
+      "version": "0.3.0-draft.2"
+    },
+    "TS20-A02": {
+      "sha256": "cb83ff4085ec58c2d6a8b7b2c18314ee61e4cd9ee26c716d32d7875de3d5b906",
+      "version": "0.3.0-draft.2"
+    },
+    "TS21-A01": {
+      "sha256": "cec2ef2b6c86c7de703d5d1713fe6c0e7a2a201d8e580ca59a3240bf309e8a8d",
+      "version": "0.3.0-draft.3"
+    },
+    "TS21-A02": {
+      "sha256": "b8957712e585d89e764c6c2fdc54f71ac0170f51277848b0d3db45fd33438978",
+      "version": "0.3.0-draft.3"
+    },
+    "TS22-A01": {
+      "sha256": "f0c4d76f8bade72ed64a880015b2c7050270c4d610b5e088c1e3c365f8822dae",
+      "version": "0.3.0-draft.3"
+    },
+    "TS22-A02": {
+      "sha256": "c3c0d9d0c14a3bab91fac5c948c2796ce4dccaa5dd70a8aac8cbad5e607d2e01",
+      "version": "0.3.0-draft.3"
+    },
+    "TS23-A01": {
+      "sha256": "280a9d49ecf50b0bfd85f4ad35ab2d396e1217298323a76b55632f74aabdc3a3",
+      "version": "0.2.0-rc.1"
+    },
+    "TS24-A01": {
+      "sha256": "07103a239a2556030c1b086591d24d7433cf0aa9e4a32e095b1a9bb9514585a9",
+      "version": "0.2.0-rc.1"
+    },
+    "TS25-A01": {
+      "sha256": "bfe8436cef05bda6b0bcc34ab0dc30d3fd0070d13230ca3aa96e76597850004b",
+      "version": "0.2.0-rc.1"
+    },
+    "TS25-A02": {
+      "sha256": "0f87189e2c777aa79e74463c1547c4a885a4426fd946fa636a4b1162bb776530",
+      "version": "0.2.0-rc.1"
+    },
+    "TS26-A01": {
+      "sha256": "15ba8c9edb4d553d86343405b5acf798cbbff200aa326530574034ab2bec804a",
+      "version": "0.3.0-draft.4"
+    },
+    "TS26-A02": {
+      "sha256": "a5b1653161c6a13bab52009f3bf3e1ea562594e930370e239bc6d9827b79ed85",
+      "version": "0.3.0-draft.4"
+    },
+    "TS27-A01": {
+      "sha256": "709a4dee5c82d8375614773086c8cfa2ab1c24bd41bec69343b9fa2dd6bef14d",
+      "version": "0.3.0-draft.4"
+    },
+    "TS27-A02": {
+      "sha256": "23bc377d5e22b8f97c694c89c53fd1a0e260bfc26dfb6fccdffa7b6308865c05",
+      "version": "0.3.0-draft.4"
+    },
+    "TS28-A01": {
+      "sha256": "00de819de9d9d8cd9a09f5a9d04e9fdc41221ee4849d91dcbd8a551f0ef24aaa",
+      "version": "0.3.0-draft.4"
+    },
+    "TS28-A02": {
+      "sha256": "b21434606ef846f5f4a45301275bf4e9d124e0a5874ca38cb274e016f6ddc303",
+      "version": "0.3.0-draft.4"
+    },
+    "TS29-A01": {
+      "sha256": "3f508c6b26c41309e6e14c2aecd731db295c9effc882705a2c9bd17a744291ce",
+      "version": "0.3.0-draft.4"
+    },
+    "TS29-A02": {
+      "sha256": "4313afa9314dbb989353c22c264dde9af93edbc86da2b436dbf78ef6e585d1c8",
+      "version": "0.3.0-draft.4"
+    },
+    "TS30-A01": {
+      "sha256": "5daa2b6d6521202b8b3388e2c56145a74da08222c29d01fdb9187b3b51a8dd68",
+      "version": "0.3.0-draft.5"
+    },
+    "TS30-A02": {
+      "sha256": "e0a28236da659ae71e96da8e4f18bbc08e9166b6c74712385d24cd930720c8a8",
+      "version": "0.3.0-draft.5"
+    },
+    "TS31-A01": {
+      "sha256": "528fd8df847eebfd85ee03f445661cbd23120cdb7b81a5aa3c3feeaaedab6133",
+      "version": "0.2.0-rc.1"
+    },
+    "TS31-A02": {
+      "sha256": "4522b116dca752fb1ef4e1bc67dff0e384a80a2aca124c6703e7447a1f5cabc5",
+      "version": "0.2.0-rc.1"
+    },
+    "TS31-A03": {
+      "sha256": "82d940852542e4d82eb225343cd4c72a5b1f5992f6f1a4ee6d72e7d4b46d8978",
+      "version": "0.2.0-rc.1"
+    },
+    "TS32-A01": {
+      "sha256": "2a116dca479c0ead1659848f445a4b6330242df6830040b102c820d237ecf456",
+      "version": "0.2.0-rc.1"
+    },
+    "TS32-A02": {
+      "sha256": "c73b6dfe3190352915aa2dd6600362ccd7e33c98931d614be5bd2d75550d13fb",
+      "version": "0.2.0-rc.1"
+    },
+    "TS32-A03": {
+      "sha256": "5efe9e528fa00756ffe33730f29bf3315fd0f89a8885ee1a552f06f2cd0f70ec",
+      "version": "0.2.0-rc.1"
+    },
+    "TS33-A01": {
+      "sha256": "ebecdfd153007aa34ddc7bf06408778aa0ec637c4719f1ef3aefdb9dfad576af",
+      "version": "0.2.0-rc.1"
+    },
+    "TS33-A02": {
+      "sha256": "a3a51bc920faf0fb6a73fa384cafdd75720421e98e84e0a79cb97b08fb142f74",
+      "version": "0.2.0-rc.1"
+    },
+    "TS33-A03": {
+      "sha256": "80c21af5d27b3076bab92da21ebc7a9e8efd1e2bf71ecc9eb50b584ed731cc34",
+      "version": "0.2.0-rc.1"
+    },
+    "TS34-A01": {
+      "sha256": "3179cc12790f4e4e7d2c3171aae147bb80dd3dac6d989eb932d01eabee3dea6a",
+      "version": "0.2.0-rc.1"
+    },
+    "TS34-A02": {
+      "sha256": "3f39934104e80696405668867bb4b8b4065152a2a13f2785bc8392783be32a1e",
+      "version": "0.2.0-rc.1"
+    },
+    "TS34-A03": {
+      "sha256": "dc90e6e96e14128442e096eb7b2749fb9cb50565616da547b3fe6c6642ad2522",
+      "version": "0.2.0-rc.1"
+    },
+    "TS35-A01": {
+      "sha256": "933f757ab8de8e7f333a25b15602118bd43bc9567f4e58fcd4eb7ab5ab2485df",
+      "version": "0.2.0-rc.1"
+    },
+    "TS35-A02": {
+      "sha256": "c65c794d6207b2cecc4c6cbf9af3e60821c8e910474178131a12533cf81b77c2",
+      "version": "0.2.0-rc.1"
+    },
+    "TS36-A01": {
+      "sha256": "22be7e9f1e772f5b0837bd1d7aebf7f8a0830a1bfd61199ccd70974f9bc23171",
+      "version": "0.2.0-rc.1"
+    },
+    "TS36-A02": {
+      "sha256": "1b0a822d22e529bf791723b1be29b974c2968e1b462157b912a22f940243d4b1",
+      "version": "0.2.0-rc.1"
+    },
+    "TS36-A03": {
+      "sha256": "d0097c5c4c033c6b2bb50a84f7bf6a3af97a2d06af6ae93181ed5c30b6771456",
+      "version": "0.2.0-rc.1"
+    },
+    "TS37-A01": {
+      "sha256": "e77b5544d923cb23706191d5d81040f7486871995b9569215c9419a0b9d75857",
+      "version": "0.3.0-draft.5"
+    },
+    "TS37-A02": {
+      "sha256": "2360370738c7904d81fc71314f8e993720dbbe099788d1b3f06984f46b952180",
+      "version": "0.3.0-draft.5"
+    },
+    "TS37-A03": {
+      "sha256": "be8062301a5e3f059c8c61a3e67031bad12214f246d735b5f9cb664b1aea7b10",
+      "version": "0.3.0-draft.5"
+    },
+    "TS38-A01": {
+      "sha256": "5c7e816b82981edcc9901116e5ad46b2fb4ffe8218d918d3ab8dc8e0748c9519",
+      "version": "0.3.0-draft.2"
+    },
+    "TS38-A02": {
+      "sha256": "ffbc0bbd0cca38f15cf96cb7ceebd4b9bbe8fc37c381b689582319e9503ef4d9",
+      "version": "0.3.0-draft.2"
+    },
+    "TS39-A01": {
+      "sha256": "4d403381c70d0f7483a5a0226c4af761f43ca72e483df806125e26e3f2645aaf",
+      "version": "0.2.0-rc.1"
+    },
+    "TS39-A02": {
+      "sha256": "416951899aded5dd1b64fb9ff60770a5e2abbee41de99094ec1161780d317283",
+      "version": "0.2.0-rc.1"
+    },
+    "TS39-A03": {
+      "sha256": "9ca468e7b9d84a7f52de6ead1bce8c7b0e804c21b2a34600e65d98c18bad2b78",
+      "version": "0.2.0-rc.1"
+    },
+    "TS40-A01": {
+      "sha256": "4b07e0cb111ea248b9934ceff5de0448aec7640ce1d7537a3e980783749c6578",
+      "version": "0.3.0-draft.3"
+    },
+    "TS40-A02": {
+      "sha256": "d283771878dfd7b7f09ec751bc8e10eaa6abb192306a3566b47464bacc907051",
+      "version": "0.3.0-draft.3"
+    },
+    "TS41-A01": {
+      "sha256": "e20c7a675374cb9d31a163bab0327679ac31ff09f5a7bbacec0d3676bcddc693",
+      "version": "0.2.0-rc.1"
+    },
+    "TS41-A02": {
+      "sha256": "9a08afc9385b3f48cf023c16e7e0eb58097c2f6e3bb2b89d5116797b70ff8831",
+      "version": "0.2.0-rc.1"
+    },
+    "TS41-A03": {
+      "sha256": "49c7fe0b8dd0794b6e6dcd317f3b3ff3eed0bfc0a48a0dea764c68b228cb2db9",
+      "version": "0.2.0-rc.1"
+    },
+    "TS42-A01": {
+      "sha256": "8d3566f9ca78a3cf41158e5b3de4bf56285890dcf6f3a0f05a7f93d4d0d2a1b3",
+      "version": "0.2.0-rc.1"
+    },
+    "TS42-A02": {
+      "sha256": "7df69125ebdc8bd31383e36972165ee90b19544441c6bcf670a50f81e6ca5aca",
+      "version": "0.2.0-rc.1"
+    },
+    "TS42-A03": {
+      "sha256": "5a03c22a3465b3910fa767ed844dc1160bc9e1b2b0e940945df68b1cde113d95",
+      "version": "0.2.0-rc.1"
+    },
+    "TS43-A01": {
+      "sha256": "0463b7f256fd2b4b6bae27964347ecaabbc95fc4fcf23dd4c8a892f9f9b093a1",
+      "version": "0.2.0-rc.1"
+    },
+    "TS43-A02": {
+      "sha256": "e8f0a7664ee00cba0cea5b7dc475affdd5d183c422158119286febb3d29ab2bf",
+      "version": "0.2.0-rc.1"
+    },
+    "TS43-A03": {
+      "sha256": "2d54e7e4d544e9d711e2ac5c2349065bf2436cccbbdf841065d74764c14e0ea3",
+      "version": "0.2.0-rc.1"
+    },
+    "TS44-A01": {
+      "sha256": "b7abcbe0d4decd6d164f335ee4dc07c893699ca7c6dd3416f44d6e6da1374c23",
+      "version": "0.2.0-rc.1"
+    },
+    "TS44-A02": {
+      "sha256": "2b2b001882ae85a3a822bcd3c33664b940150047f9cc03a7415490587fd48007",
+      "version": "0.2.0-rc.1"
+    },
+    "TS44-A03": {
+      "sha256": "764d599b29d3285afdd29c3deb614aeafdd6e7d3a8ca5e3032380ad37d913eab",
+      "version": "0.2.0-rc.1"
+    }
+  }
+}

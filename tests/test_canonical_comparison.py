@@ -14,6 +14,9 @@ from conformance.evaluate import evaluate
 from conformance.run import compare
 from adapters import captures,replay,comparison_intake,inspection_intake
 from reports import html
+from scripts.runtime import source_runtime_available
+import os
+SOURCE_RUNTIME_AVAILABLE=source_runtime_available(os.environ)
 
 ROOT=Path(__file__).resolve().parents[1]
 FROZEN='d8113fa7dbd0a0388a206afcbc16088a7301c10a445dde1906caa1082ee8181c'
@@ -35,7 +38,7 @@ class CanonicalComparison(unittest.TestCase):
     with self.subTest(case=case['id']):
      agrees,diffs,reduced=compare(case['expected'],evaluate(case['input']))
      self.assertEqual(diffs,[])
-     if __import__('os').environ.get('TSEP_SOURCE_NODE'):self.assertEqual(reduced,[])
+     if SOURCE_RUNTIME_AVAILABLE:self.assertEqual(reduced,[])
  def test_literal_comparison_retains_case_and_duplicates(self):
   t=data('normalization-difference-literal')['targets'][0];note=[];c.assess(t,'TS12-A02',diagnostics=note)
   m=note[0]['members'][0]
@@ -64,7 +67,7 @@ class CanonicalComparison(unittest.TestCase):
     root=Path(tmp);p=root/'input.json';p.write_text(json.dumps(data(name)))
     captures.build(p,root/'bundle',assessor='Fictional author',label='Authored TS12',selection_method='Fixed fictional singleton',access='synthetic',mode='semiAuto')
     report=tsep.read_json(root/'bundle/report.json')
-    if want=='C' and not __import__('os').environ.get('TSEP_SOURCE_NODE'):want='NT'
+    if want=='C' and not SOURCE_RUNTIME_AVAILABLE:want='NT'
     self.assertEqual(report['results'][0]['status'],want)
     self.assertTrue({'intent','search-console','http','html'}<={x['kind'] for x in report['artifacts']})
     result=replay.replay(root/'bundle',root/'replay');self.assertTrue(result['replayed']);self.assertTrue(result['same_source_observations'])
@@ -94,7 +97,7 @@ class CanonicalComparison(unittest.TestCase):
    q['binding_sha256']=blank['binding_sha256'];request['reviews']=[q]
    supplied=root/'reviews.json';supplied.write_text(json.dumps(request))
    comparison_intake.build(root/'prepared',supplied,root/'supplied','Fictional')
-   expected='C' if __import__('os').environ.get('TSEP_SOURCE_NODE') else 'NT'
+   expected='C' if SOURCE_RUNTIME_AVAILABLE else 'NT'
    self.assertEqual(tsep.read_json(root/'supplied/report.json')['results'][0]['status'],expected)
    self.assertTrue(replay.replay(root/'supplied',root/'replay')['replayed'])
    (root/'prepared/originals/technical.json').write_text('[]')

@@ -1,3 +1,4 @@
+from tests.lot1_history import controls_before_lot1
 """Frozen synthetic countercases; no real browser, site or human audit."""
 import copy
 import hashlib
@@ -34,7 +35,7 @@ class RenderPrerequisites(unittest.TestCase):
     def test_other_ninety_five_rule_definitions_preserved(self):
         baseline = tsep.read_json(ROOT/'provenance/v030-draft4-rule-baseline.json')['rules']
         changed = {'TS30-A01','TS30-A02','TS37-A03'}
-        protocol = tsep.read_json(tsep.PROTOCOL_PATH)
+        protocol = dict(tsep.read_json(tsep.PROTOCOL_PATH),controls=controls_before_lot1())
         actual = {r['id']:digest(r) for c in protocol['controls'] for r in c['rules']}
         self.assertEqual(len(actual), 98)
         self.assertEqual({key for key in actual if actual[key] != baseline[key]['sha256']}, changed)

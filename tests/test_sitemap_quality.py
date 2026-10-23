@@ -1,3 +1,4 @@
+from tests.lot1_history import controls_before_lot1
 """TS13/TS14 authored contradictions, evidence boundaries and RC1 preservation."""
 import base64
 import copy
@@ -87,7 +88,8 @@ class SitemapQuality(unittest.TestCase):
         frozen = tsep.read_json(ROOT/'provenance/v030-rc1-preservation.json')
         protocol = tsep.read_json(tsep.PROTOCOL_PATH)
         self.assertEqual(frozen['base_commit'], '7b60c20e7ac572574f756ad92531e0c46f7b83e7')
-        self.assertEqual(protocol['version'], '0.3.0-draft.5')
+        self.assertEqual(protocol['version'], '0.3.0-draft.6')
+        protocol['controls']=controls_before_lot1()
         previous = tsep.read_json(ROOT/'provenance/v030-draft1-rule-baseline.json')['new_control_previous_versions']
         next_baseline = tsep.read_json(ROOT/'provenance/v030-draft2-rule-baseline.json')
         previous.update(next_baseline['new_control_previous_versions'])
@@ -102,7 +104,8 @@ class SitemapQuality(unittest.TestCase):
                 self.assertEqual(reader.digest(restored), frozen['control_sha256'][control['id']], control['id'])
             else:
                 self.assertEqual(control['rule_version'], '0.3.0-draft.1')
-        overlays = tsep.read_json(ROOT/'provenance/ts25-runtime-test-overlay-v1.json')['updates']
+        overlays = tsep.read_json(ROOT/'provenance/v030-lot1-source-overlay.json')['updates']
+        overlays += tsep.read_json(ROOT/'provenance/ts25-runtime-test-overlay-v1.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/v030-indexing-locale-integration-overlay.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/v030-report-test-overlay-v1.json')['updates']
         for name, sha in frozen['preserved_files'].items():

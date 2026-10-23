@@ -31,7 +31,7 @@ from conformance.indexing_locale import RULES as INDEXING_LOCALE_RULES
 RULES += INDEXING_LOCALE_RULES
 from conformance.render_transport import RULES as RENDER_TRANSPORT_RULES
 RULES += RENDER_TRANSPORT_RULES
-VERSION = '51'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '52'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -105,6 +105,13 @@ def url_parts(url):
 def exchange(hop, expected, crawler):
     """Validate one attributable exchange, including an unfinished redirect."""
     need(hop.get('complete') is True, 'Incomplete HTTP capture')
+    request_attribution(hop, expected, crawler)
+    status, headers, body = message(hop.get('response'), True)
+    return status, headers, body
+
+
+def request_attribution(hop, expected, crawler):
+    """Shared request attribution; does not establish response completeness."""
     need(hop.get('url') == expected, 'Missing or mismatched redirect hop')
     parts = url_parts(expected)
     first, request_headers, _ = message(hop.get('request'))
@@ -114,8 +121,6 @@ def exchange(hop, expected, crawler):
     need(request_headers.get('user-agent') == [crawler], 'Request crawler differs from intent')
     need(not any(k in request_headers for k in ('if-none-match', 'if-modified-since', 'range',
                                                  'authorization', 'cookie')), 'Unsupported conditional/authenticated request')
-    status, headers, body = message(hop.get('response'), True)
-    return status, headers, body
 
 
 def trace(hops, start, crawler):

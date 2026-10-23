@@ -83,6 +83,8 @@ def fetch(config):
                 output.flush()
                 info['bytes_received'] += len(keep)
                 if len(keep) != len(chunk):
+                    info.update(stop_reason='response-byte-limit', response_limit=config['max_bytes'],
+                                overflow_bytes=len(chunk)-len(keep))
                     raise ValueError('Response byte bound reached')
         except (OSError, ValueError) as error:
             info['error'] = type(error).__name__+': '+str(error)
