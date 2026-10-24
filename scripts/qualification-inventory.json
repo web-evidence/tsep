@@ -1,7 +1,7 @@
 {
   "format_version": 1,
-  "tests": 1299,
-  "test_ids_sha256": "cc6b7b751bcbc9314922a28692639f710dbbbd6fafa3c64634b9508452701b4b",
+  "tests": 1306,
+  "test_ids_sha256": "71d713eedf5d1dc60763bd10766a2aec19c7315b00a18561bf68c254de9b44b7",
   "http_cases": 48,
   "conformance": {
     "cases": 2362,

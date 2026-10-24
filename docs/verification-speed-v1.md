@@ -87,3 +87,44 @@ that escapes its group; this is not a container. A surviving process group after
 a normal exit is killed and fails the phase. Per-test CPU is attributed when
 children are waited for; setup/teardown outside individual tests belongs to the
 suite total. Concurrent durations include resource contention.
+
+## Correction observée en CI / Observed CI correction
+
+Le premier passage de la PR n°2 (run `40084632057`, Linux/Python 3.14) a échoué :
+un client du laboratoire synthétique lisait `requests.jsonl` pendant l'ajout
+d'une ligne par son handler. La suite archive a réussi ; cela ne qualifie pas
+ce candidat. Le défaut a été reproduit par une écriture volontairement coupée.
+
+Le laboratoire `same_navigation_lab`, partagé par cinq familles de tests, publie
+désormais un instantané complet par remplacement d'un fichier temporaire du même
+dossier, après fermeture et conservation du mode du journal. Chaque serveur crée
+exclusivement son dossier ; ses handlers restent sérialisés par leur verrou
+commun. Les octets précédents et les lignes JSON sont conservés exactement.
+Les lecteurs peuvent voir l'ancien instantané complet, jamais une nouvelle ligne
+partielle. Le scellement lit les lignes publiées ; l'export complet attend l'arrêt
+des handlers. Une corruption reste refusée, un échec conserve l'ancien journal
+et nettoie le temporaire. Aucune durabilité après crash n'est promise.
+
+Sept cas ajoutent la lecture pendant écriture, les échecs d'écriture/remplacement,
+la corruption, les écrivains sérialisés, le scellement pendant publication et le
+refus de clôture après un échec de rétention dans un vrai handler ;
+1 306 tests par arbre, aucun ancien test retiré ou réécrit. Aucun délai, règle,
+lecteur du moteur, format de rapport ou corpus n'est modifié. La réécriture du
+petit journal a un coût proportionnel à sa taille par ajout ; les mesures des
+modules concernés et la nouvelle qualification restent requises.
+
+The first PR #2 run (`40084632057`, Linux/Python 3.14) failed because a synthetic
+laboratory client read a JSONL record while its handler was still appending it.
+The passing archive suite does not qualify that candidate. A deliberately split
+write reproduced the failure. The shared laboratory now publishes complete
+snapshots with a same-directory replacement after closing the temporary file and
+preserving the journal mode. One server exclusively creates each output folder;
+its writer threads retain their common lock. Previous bytes and record encoding
+are unchanged. Readers see a complete old or new snapshot. Sealing uses published
+records; full export waits for handlers to close. Failed writes/replacements keep
+the previous log and clean the temporary file; corruption is never ignored. This
+is atomic visibility, not crash durability. An unhandled retention failure also prevents server closure and the creation
+of closed evidence; a real-handler test checks this refusal. Seven additional cases
+bring the total to 1,306 per tree without changing existing tests, engine readers/rules, reports,
+corpora or deadlines. Snapshot rewriting costs O(journal size) per append; measure
+the affected modules and qualify the exact corrected candidate before merging.
