@@ -79,6 +79,8 @@ jobs:
               assert values[name]['result']=='success', name
           assert values['accepted_fallback']['result']=='skipped'
           assert values['failure']['result']=='failure'
-          assert values['timeout']['result']=='failure'
+          # GitHub reports the timed-out job as cancelled, while the run itself
+          # is not explicitly cancelled: !cancelled() still allows fallback.
+          assert values['timeout']['result']=='cancelled'
           print('All platform assertions passed. Upstream failures were deliberately injected.')
           PY
