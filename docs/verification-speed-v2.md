@@ -43,6 +43,15 @@ l'archive reproductible et les sept environnements restent requis. Cette
 préparation ne constitue pas une qualification réussie ; les preuves doivent
 porter sur le candidat exact.
 
+La garde d'intégrité RC1 conserve ses empreintes historiques. L'overlay
+`provenance/verification-speed-test-overlay-v1.json` décrit uniquement les
+changements de `test_draft3.py` et `test_draft7.py` : empreintes avant/après et
+remplacements inversibles. Le test de préservation vérifie les octets courants,
+inverse ces changements, puis applique les contrôles historiques inchangés.
+Une modification supplémentaire ou un remplacement ambigu reste un échec.
+Exécuter cette garde ciblée avant la qualification longue permet de détecter
+immédiatement un oubli de déclaration ; cela ne remplace pas la suite complète.
+
 Mesurer le test réellement modifié en trois paires alternées, même machine et
 mêmes versions : durée, CPU et nombre d'appels réels à l'interpréteur. Le coût
 d'instrumentation et la charge de la machine font partie des limites. Ne pas
@@ -86,3 +95,11 @@ Disclose instrumentation and host load; do not equate a single-test gain with a
 full verification gain. Measure full verification separately, without running
 unchanged expensive suites three times merely to reread their evidence. Quick
 profiles remain explicitly partial.
+
+The RC1 integrity guard retains its historical hashes. The verification-speed
+test overlay records only the two changed test files, with exact before/after
+hashes and reversible replacements. The preservation test verifies current
+bytes, reverses these declared changes, then applies unchanged historical
+checks. Any additional edit or ambiguous replacement still fails. Run this
+targeted guard before the long qualification to catch missing declarations
+early; it does not replace full verification.

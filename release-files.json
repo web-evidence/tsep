@@ -521,6 +521,7 @@
     "provenance/v030-render-transport-integration-overlay.json",
     "provenance/v030-report-test-overlay-v1.json",
     "provenance/v030-url-policy-integration-overlay.json",
+    "provenance/verification-speed-test-overlay-v1.json",
     "release-files.json",
     "reports/html.py",
     "reports/report.css",
