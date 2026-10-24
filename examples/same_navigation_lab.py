@@ -4,12 +4,15 @@ import argparse
 import hashlib
 import html
 import json
+import os
 from pathlib import Path
 import re
 import secrets
 import shutil
 import socketserver
+import stat
 import sys
+import tempfile
 import threading
 from datetime import datetime, timezone
 from urllib.parse import urlsplit
@@ -101,10 +104,39 @@ def logs(folder):
     return [json.loads(line) for line in (Path(folder)/'requests.jsonl').read_text().splitlines()]
 
 
+def append_log(folder, row):
+    """Publish a complete snapshot; callers hold the existing writer lock.
+
+    Each server exclusively creates a new folder; only its handler threads write
+    this journal, under their common lock. Readers in another process cannot
+    share that lock. A same-directory replace
+    keeps partial writes invisible to them; it is not a crash-durability claim.
+    """
+    path = Path(folder)/'requests.jsonl'
+    mode = stat.S_IMODE(path.stat().st_mode)
+    content = path.read_bytes() + (json.dumps(row)+'\n').encode('utf-8')
+    pending = None
+    try:
+        with tempfile.NamedTemporaryFile(mode='wb', dir=folder,
+                                         prefix='.requests-', suffix='.tmp', delete=False) as stream:
+            pending = Path(stream.name)
+            stream.write(content)
+        pending.chmod(mode)
+        os.replace(pending, path)
+    finally:
+        if pending is not None:
+            pending.unlink(missing_ok=True)
+
+
 class Server(socketserver.ThreadingTCPServer):
     daemon_threads = False
     block_on_close = True
     allow_reuse_address = False
+
+    def server_close(self):
+        super().server_close()
+        if getattr(self, 'retention_failed', False):
+            raise OSError('Laboratory evidence retention failed; campaign cannot be closed')
 
 
 class Handler(socketserver.StreamRequestHandler):
@@ -154,10 +186,15 @@ class Handler(socketserver.StreamRequestHandler):
             row['request_sha256'] = hashlib.sha256(raw).hexdigest()
             row['response_sha256'] = hashlib.sha256(response).hexdigest()
             with self.server.lock:
-                (self.server.folder/(name+'-request.bin')).write_bytes(raw)
-                (self.server.folder/(name+'-response.bin')).write_bytes(response)
-                with (self.server.folder/'requests.jsonl').open('a') as stream:
-                    stream.write(json.dumps(row)+'\n')
+                try:
+                    (self.server.folder/(name+'-request.bin')).write_bytes(raw)
+                    (self.server.folder/(name+'-response.bin')).write_bytes(response)
+                    append_log(self.server.folder, row)
+                except Exception:
+                    # HTTP may already have been sent. The normal handler
+                    # error path prints the traceback; closure must also fail.
+                    self.server.retention_failed = True
+                    raise
 
     def dispatch(self, method, url, agent, body):
         server = self.server.record; folder = self.server.folder
