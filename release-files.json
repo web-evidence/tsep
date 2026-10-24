@@ -290,6 +290,7 @@
     "docs/ts25-runtime-test-portability.md",
     "docs/url-policy-evidence.md",
     "docs/verification-speed-v1.md",
+    "docs/verification-speed-v2.md",
     "docs/xdefault-role-evidence.md",
     "examples/agent_access_laboratory.py",
     "examples/base_uri_diagnostic.py",
