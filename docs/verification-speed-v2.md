@@ -13,15 +13,29 @@ quand certaines règles ne sont pas interprétées.
 
 Les interprétations intégrales de `Draft6`, l'intégration de tous les cas dans
 `CaptureAdapter` et les deux conformités CLI (sources et archive) sont conservées.
-Le test de l'adaptateur externe garde un négatif en mode complet : un échec pour
-chaque cas, aucun cas omis et aucune revendication. Il ne doit pas être réduit à
-une sélection sans conserver ailleurs une vérification négative du mode complet.
+Deux négatifs complets distincts sont conservés :
+
+- `Draft3.test_external_adapter_receives_inputs_only_and_cannot_omit_results`
+  refuse les résultats absents : un échec par cas, aucun cas omis, aucune revendication.
+- `Draft7.test_ts01_external_adapter_passes_only_declared_subset_and_wrong_results_fail`
+  utilise le vrai CLI et refuse les valeurs présentes mais contradictoires en mode
+  complet, avec les variantes `(False, '', 1)` et `(False, '--wrong', 1)`.
+
+Ne réduire aucun de ces deux tests à une sélection sans conserver un négatif
+complet équivalent. La réduction retire deux interprétations natives complètes
+par suite, soit quatre par qualification. L'adaptateur de Draft3 conserve ses
+2 362 sous-processus par suite pour le corpus actuel.
 
 Les gardes existantes de `Draft7` et `SitemapFiles` contrôlent les matrices et la
 couverture contradictoire des règles non sélectionnées, les résultats réels en
 trop, manquants ou étrangers, et les dénominateurs du résultat partiel. Le refus
 d'une limite de référence non booléenne sur un cas non sélectionné est renforcé.
-Ce sont des tests du mécanisme de conformité, distincts de l'intégration native.
+Ce sont des tests du mécanisme de conformité, distincts de l'intégration native :
+`Draft7.test_selection_does_not_hide_corrupt_corpus`,
+`Draft7.test_scoped_reference_reports_exact_denominators_and_omissions`,
+`Draft7.test_extra_missing_and_foreign_pairs_are_not_filtered_from_actual` et
+`SitemapFiles.test_missing_declared_outcome_coverage_is_rejected`. Le dernier retire
+notamment un résultat requis de TS01-A01 alors que seule TS15-A03 est sélectionnée.
 
 Les 1 306 identifiants de tests, les corpus, attentes, règles et lecteurs sont
 inchangés. Aucune préparation ni verdict n'est mis en cache. Les onze étapes,
@@ -47,9 +61,13 @@ The runner still validates the entire corpus before accepting a scoped result.
 
 Full native interpretation in `Draft6`, full corpus bundle integration in
 `CaptureAdapter`, and both source/archive CLI conformance passes remain. The
-external-adapter test retains a full-mode negative, requiring one failure per
-case, no omitted cases and no claim. Do not narrow that test without retaining
-another explicit full-mode negative.
+Draft3 external-adapter test retains a full-mode missing-result negative,
+requiring one failure per case, no omitted cases and no claim. The Draft7 external
+adapter/CLI test cited above retains full-mode present-but-contradictory values,
+through both unscoped variants. Do not narrow either test without retaining an
+equivalent full-mode negative. Two full native interpretations are removed per
+suite, four per qualification; Draft3's external adapter still launches 2,362
+subprocesses per suite with the current corpus.
 
 Existing `Draft7` and `SitemapFiles` guards check malformed unselected cases,
 missing contradictory coverage for unselected rules, extra/missing/foreign
