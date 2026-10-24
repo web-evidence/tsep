@@ -1,3 +1,5 @@
+Contrôle après fusion / Post-merge check : [réutilisation conditionnelle / conditional qualification reuse](verification-postmerge.md). Les sept environnements PR restent complets ; seuls des fichiers et preuves exactement identiques permettent le chemin court après fusion. / Seven full PR environments remain; only exactly matching files and evidence permit the short post-merge path.
+
 Optimisation non normative / Non-normative optimization : [répétitions de conformité v2 / repeated conformance work v2](verification-speed-v2.md). Une attente contradictoire ciblée, intégration complète conservée ; mesures et qualification du candidat exact requises. / Scoped contradictory expectation with full integration retained; exact-candidate measurements and qualification required.
 
 Optimisation non normative / Non-normative optimization : [qualification isolée v1 / isolated qualification v1](verification-speed-v1.md). Deux phases indépendantes en parallèle, suites complètes et sérielles conservées ; mesures dans les reçus du commit testé. / Two independent phases at a time, complete serial suites retained; measurements belong to exact-commit receipts.
