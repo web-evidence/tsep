@@ -1,0 +1,84 @@
+name: Postmerge condition experiment (expected failures)
+on:
+  push:
+    branches: [chore/postmerge-condition-smoke]
+permissions:
+  contents: read
+jobs:
+  timeout:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    outputs:
+      reuse: ${{ steps.identity.outputs.reuse }}
+    steps:
+      - id: identity
+        run: |
+          echo 'reuse=true' >> "$GITHUB_OUTPUT"
+          sleep 120
+  failure:
+    runs-on: ubuntu-latest
+    outputs:
+      reuse: ${{ steps.identity.outputs.reuse }}
+    steps:
+      - id: identity
+        run: |
+          echo 'reuse=true' >> "$GITHUB_OUTPUT"
+          exit 1
+  accepted:
+    runs-on: ubuntu-latest
+    outputs:
+      reuse: ${{ steps.identity.outputs.reuse }}
+    steps:
+      - id: identity
+        run: echo 'reuse=true' >> "$GITHUB_OUTPUT"
+  refused:
+    runs-on: ubuntu-latest
+    outputs:
+      reuse: ${{ steps.identity.outputs.reuse }}
+    steps:
+      - id: identity
+        run: echo 'reuse=false' >> "$GITHUB_OUTPUT"
+  timeout_fallback:
+    needs: timeout
+    if: ${{ !cancelled() && (github.event_name != 'push' || needs.timeout.result != 'success' || needs.timeout.outputs.reuse != 'true') }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'The full-matrix condition ran after a real one-minute job timeout.'
+  failure_fallback:
+    needs: failure
+    if: ${{ !cancelled() && (github.event_name != 'push' || needs.failure.result != 'success' || needs.failure.outputs.reuse != 'true') }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'The full-matrix condition ran after a real step failure despite true output.'
+  accepted_fallback:
+    needs: accepted
+    if: ${{ !cancelled() && (github.event_name != 'push' || needs.accepted.result != 'success' || needs.accepted.outputs.reuse != 'true') }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: exit 1
+  refused_fallback:
+    needs: refused
+    if: ${{ !cancelled() && (github.event_name != 'push' || needs.refused.result != 'success' || needs.refused.outputs.reuse != 'true') }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'The full-matrix condition ran after an explicit refusal.'
+  experiment_assertions:
+    needs: [timeout, failure, accepted, refused, timeout_fallback, failure_fallback, accepted_fallback, refused_fallback]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    env:
+      RESULTS: ${{ toJSON(needs) }}
+    steps:
+      - name: Assert platform decisions (not a full engine qualification)
+        run: |
+          python - <<'PY'
+          import json, os
+          values=json.loads(os.environ['RESULTS'])
+          print(json.dumps(values, indent=2))
+          for name in ('timeout_fallback', 'failure_fallback', 'refused_fallback'):
+              assert values[name]['result']=='success', name
+          assert values['accepted_fallback']['result']=='skipped'
+          assert values['failure']['result']=='failure'
+          assert values['timeout']['result']=='failure'
+          print('All platform assertions passed. Upstream failures were deliberately injected.')
+          PY
