@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
 from conformance.evaluate import evaluate
+from conformance.corpus import expand
 from conformance.run import run
 from test_atomic_rules import CASES, materialize
 
@@ -190,20 +191,46 @@ class Draft3(unittest.TestCase):
 
     def test_raw_conformance_and_contradictory_expected_outcome(self):
         corpus = tsep.read_json(ROOT/'conformance/cases.json')
-        self.assertTrue(run(corpus)['success'])
-        corpus['cases'][0]['expected'][0]['outcome']='fail'
-        result = run(corpus)
+        case = next(row for row in corpus['cases'] if row['id'] == 'complete-reference')
+        changed = case['expected'][0]
+        self.assertEqual(changed['outcome'], 'pass')
+        selected = [changed['rule_id']]
+        expanded = expand(corpus)['cases']
+        selected_cases = sum(changed['rule_id'] in row['input']['rules'] for row in expanded)
+        # Full native coverage remains in Draft6, CaptureAdapter and both CLI
+        # checks. The external-adapter test below retains a full-mode negative.
+        positive = run(corpus, rules=selected)
+        self.assertTrue(positive['success'])
+        self.assertEqual(positive['rules'], selected)
+        self.assertEqual(positive['cases'], selected_cases)
+        self.assertEqual(positive['total_cases'], len(expanded))
+        self.assertEqual(positive['skipped_cases'], len(expanded) - selected_cases)
+        self.assertTrue(positive['omitted_rules'])
+        self.assertEqual(positive['claim'], 'passes TSEP ' + corpus['protocol_version']
+                         + ' conformance for ' + changed['rule_id'])
+        changed['outcome'] = 'fail'
+        result = run(corpus, rules=selected)
         self.assertFalse(result['success'])
-        self.assertEqual(result['failures'][0]['case'], 'complete-reference')
+        self.assertIsNone(result['claim'])
+        self.assertEqual(result['rules'], selected)
+        self.assertEqual(result['omitted_rules'], positive['omitted_rules'])
+        self.assertEqual(result['cases'], selected_cases)
+        self.assertEqual(result['total_cases'], len(expanded))
+        self.assertEqual(result['failures'], [{'case': case['id'], 'differences': [{
+            'rule_id': changed['rule_id'], 'target': changed['target'],
+            'expected': 'fail', 'actual': 'pass'}]}])
 
     def test_external_adapter_receives_inputs_only_and_cannot_omit_results(self):
         script = self.root/'adapter.py'
         script.write_text('import json,sys\ndata=json.load(sys.stdin)\nassert "expected" not in data\nprint("[]")\n')
         import shlex
-        result = run(tsep.read_json(ROOT/'conformance/cases.json'),
-                     shlex.join([sys.executable,str(script)]))
+        corpus = tsep.read_json(ROOT/'conformance/cases.json')
+        result = run(corpus, shlex.join([sys.executable,str(script)]))
         self.assertFalse(result['success'])
         self.assertEqual(len(result['failures']), result['cases'])
+        self.assertEqual(result['cases'], len(expand(corpus)['cases']))
+        self.assertEqual(result['skipped_cases'], 0)
+        self.assertIsNone(result['claim'])
 
     def test_raw_interpretation_changes_when_body_changes_not_expected(self):
         data = tsep.read_json(ROOT/'conformance/cases.json')['cases'][0]['input']

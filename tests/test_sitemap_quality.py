@@ -104,7 +104,8 @@ class SitemapQuality(unittest.TestCase):
                 self.assertEqual(reader.digest(restored), frozen['control_sha256'][control['id']], control['id'])
             else:
                 self.assertEqual(control['rule_version'], '0.3.0-draft.1')
-        overlays = tsep.read_json(ROOT/'provenance/v030-lot1-source-overlay.json')['updates']
+        verification = tsep.read_json(ROOT/'provenance/verification-speed-test-overlay-v1.json')['updates']
+        overlays = verification + tsep.read_json(ROOT/'provenance/v030-lot1-source-overlay.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/ts25-runtime-test-overlay-v1.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/v030-indexing-locale-integration-overlay.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/v030-report-test-overlay-v1.json')['updates']
@@ -123,6 +124,7 @@ class SitemapQuality(unittest.TestCase):
         extension = tsep.read_json(ROOT/'provenance/v030-url-policy-integration-overlay.json')['updates']
         extension += tsep.read_json(ROOT/'provenance/v030-indexing-locale-integration-overlay.json')['updates']
         extension += tsep.read_json(ROOT/'provenance/v030-render-transport-integration-overlay.json')['updates']
+        extension += verification
         for update in frozen['integration_test_updates']:
             current = (ROOT/update['path']).read_text()
             for addition in reversed(extension):

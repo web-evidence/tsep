@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "scope": "Non-normative verification optimization only. Exact inverse restores pre-optimization test bytes; RC1 fingerprints, engine rules, corpus and fixtures remain unchanged.",
+  "base_commit": "0988b24d9ca7fdcd60578fb19254d10cbd4267af",
+  "updates": [
+    {
+      "path": "tests/test_draft3.py",
+      "base_sha256": "ae32aa6eb34d728f11c6ce0668fd05060df1a14609c0c74dbb931ed2b7f9fd50",
+      "current_sha256": "9c01e5220bbf5e8074e1330b7155f74749bea60cb8e6ec366499931a9e6d3c7d",
+      "replacements": [
+        {
+          "before": "from conformance.evaluate import evaluate\nfrom conformance.run import run",
+          "after": "from conformance.evaluate import evaluate\nfrom conformance.corpus import expand\nfrom conformance.run import run"
+        },
+        {
+          "before": "    def test_raw_conformance_and_contradictory_expected_outcome(self):\n        corpus = tsep.read_json(ROOT/'conformance/cases.json')\n        self.assertTrue(run(corpus)['success'])\n        corpus['cases'][0]['expected'][0]['outcome']='fail'\n        result = run(corpus)\n        self.assertFalse(result['success'])\n        self.assertEqual(result['failures'][0]['case'], 'complete-reference')\n",
+          "after": "    def test_raw_conformance_and_contradictory_expected_outcome(self):\n        corpus = tsep.read_json(ROOT/'conformance/cases.json')\n        case = next(row for row in corpus['cases'] if row['id'] == 'complete-reference')\n        changed = case['expected'][0]\n        self.assertEqual(changed['outcome'], 'pass')\n        selected = [changed['rule_id']]\n        expanded = expand(corpus)['cases']\n        selected_cases = sum(changed['rule_id'] in row['input']['rules'] for row in expanded)\n        # Full native coverage remains in Draft6, CaptureAdapter and both CLI\n        # checks. The external-adapter test below retains a full-mode negative.\n        positive = run(corpus, rules=selected)\n        self.assertTrue(positive['success'])\n        self.assertEqual(positive['rules'], selected)\n        self.assertEqual(positive['cases'], selected_cases)\n        self.assertEqual(positive['total_cases'], len(expanded))\n        self.assertEqual(positive['skipped_cases'], len(expanded) - selected_cases)\n        self.assertTrue(positive['omitted_rules'])\n        self.assertEqual(positive['claim'], 'passes TSEP ' + corpus['protocol_version']\n                         + ' conformance for ' + changed['rule_id'])\n        changed['outcome'] = 'fail'\n        result = run(corpus, rules=selected)\n        self.assertFalse(result['success'])\n        self.assertIsNone(result['claim'])\n        self.assertEqual(result['rules'], selected)\n        self.assertEqual(result['omitted_rules'], positive['omitted_rules'])\n        self.assertEqual(result['cases'], selected_cases)\n        self.assertEqual(result['total_cases'], len(expanded))\n        self.assertEqual(result['failures'], [{'case': case['id'], 'differences': [{\n            'rule_id': changed['rule_id'], 'target': changed['target'],\n            'expected': 'fail', 'actual': 'pass'}]}])\n"
+        },
+        {
+          "before": "    def test_external_adapter_receives_inputs_only_and_cannot_omit_results(self):\n        script = self.root/'adapter.py'\n        script.write_text('import json,sys\\ndata=json.load(sys.stdin)\\nassert \"expected\" not in data\\nprint(\"[]\")\\n')\n        import shlex\n        result = run(tsep.read_json(ROOT/'conformance/cases.json'),\n                     shlex.join([sys.executable,str(script)]))\n        self.assertFalse(result['success'])\n        self.assertEqual(len(result['failures']), result['cases'])\n",
+          "after": "    def test_external_adapter_receives_inputs_only_and_cannot_omit_results(self):\n        script = self.root/'adapter.py'\n        script.write_text('import json,sys\\ndata=json.load(sys.stdin)\\nassert \"expected\" not in data\\nprint(\"[]\")\\n')\n        import shlex\n        corpus = tsep.read_json(ROOT/'conformance/cases.json')\n        result = run(corpus, shlex.join([sys.executable,str(script)]))\n        self.assertFalse(result['success'])\n        self.assertEqual(len(result['failures']), result['cases'])\n        self.assertEqual(result['cases'], len(expand(corpus)['cases']))\n        self.assertEqual(result['skipped_cases'], 0)\n        self.assertIsNone(result['claim'])\n"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_draft7.py",
+      "base_sha256": "4a13549c35e5d553dbc7e2c39edec2f7eccec383e8b851b03fe7a5ef18167fe1",
+      "current_sha256": "030f0edd0f58f90111aa165ef0d3587624f06819a23e687d21e718814f482198",
+      "replacements": [
+        {
+          "before": "    def test_selection_does_not_hide_corrupt_corpus(self):\n        for mutation in ('empty','invalid','duplicate'):\n            rules={'empty':[],'invalid':['TS99-A01'],'duplicate':['TS01-A01','TS01-A01']}[mutation]\n            with self.subTest(mutation=mutation),self.assertRaises(tsep.Invalid):run(CORPUS,rules=rules)\n        corrupt=copy.deepcopy(CORPUS)\n        case=next(c for c in corrupt['cases'] if c['input']['rules']==['TS07-A03'])\n        case['expected']=[]\n        with self.assertRaises(tsep.Invalid):run(corrupt,rules=SELECTED)\n",
+          "after": "    def test_selection_does_not_hide_corrupt_corpus(self):\n        for mutation in ('empty','invalid','duplicate'):\n            rules={'empty':[],'invalid':['TS99-A01'],'duplicate':['TS01-A01','TS01-A01']}[mutation]\n            with self.subTest(mutation=mutation),self.assertRaises(tsep.Invalid):run(CORPUS,rules=rules)\n        for mutation, message in [('missing-pair', 'Incomplete expected matrix'),\n                                  ('bad-reference-limit', 'Invalid reference_limit')]:\n            corrupt=copy.deepcopy(CORPUS)\n            case=next(c for c in corrupt['cases'] if c['input']['rules']==['TS07-A03'])\n            if mutation == 'missing-pair':\n                case['expected']=[]\n            else:\n                # A false-valued non-boolean isolates pair-type validation from\n                # the earlier case/pair limit-consistency guard.\n                case['expected'][0]['reference_limit']=0\n            with self.subTest(mutation=mutation), self.assertRaisesRegex(tsep.Invalid,message):\n                run(corrupt,rules=SELECTED)\n"
+        }
+      ]
+    }
+  ]
+}

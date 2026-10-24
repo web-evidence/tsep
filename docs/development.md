@@ -1,3 +1,5 @@
+Optimisation non normative / Non-normative optimization : [répétitions de conformité v2 / repeated conformance work v2](verification-speed-v2.md). Une attente contradictoire ciblée, intégration complète conservée ; mesures et qualification du candidat exact requises. / Scoped contradictory expectation with full integration retained; exact-candidate measurements and qualification required.
+
 Optimisation non normative / Non-normative optimization : [qualification isolée v1 / isolated qualification v1](verification-speed-v1.md). Deux phases indépendantes en parallèle, suites complètes et sérielles conservées ; mesures dans les reçus du commit testé. / Two independent phases at a time, complete serial suites retained; measurements belong to exact-commit receipts.
 
 Édition draft.7 / Draft.7: [texte HTML principal v3, limites et migration / main-document text v3, limits and migration](migration-0.3.0-draft.7.md).

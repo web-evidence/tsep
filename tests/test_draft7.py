@@ -219,10 +219,18 @@ class Draft7(unittest.TestCase):
         for mutation in ('empty','invalid','duplicate'):
             rules={'empty':[],'invalid':['TS99-A01'],'duplicate':['TS01-A01','TS01-A01']}[mutation]
             with self.subTest(mutation=mutation),self.assertRaises(tsep.Invalid):run(CORPUS,rules=rules)
-        corrupt=copy.deepcopy(CORPUS)
-        case=next(c for c in corrupt['cases'] if c['input']['rules']==['TS07-A03'])
-        case['expected']=[]
-        with self.assertRaises(tsep.Invalid):run(corrupt,rules=SELECTED)
+        for mutation, message in [('missing-pair', 'Incomplete expected matrix'),
+                                  ('bad-reference-limit', 'Invalid reference_limit')]:
+            corrupt=copy.deepcopy(CORPUS)
+            case=next(c for c in corrupt['cases'] if c['input']['rules']==['TS07-A03'])
+            if mutation == 'missing-pair':
+                case['expected']=[]
+            else:
+                # A false-valued non-boolean isolates pair-type validation from
+                # the earlier case/pair limit-consistency guard.
+                case['expected'][0]['reference_limit']=0
+            with self.subTest(mutation=mutation), self.assertRaisesRegex(tsep.Invalid,message):
+                run(corrupt,rules=SELECTED)
 
     def test_extra_missing_and_foreign_pairs_are_not_filtered_from_actual(self):
         def wrong(data):
