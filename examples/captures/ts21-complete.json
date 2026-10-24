@@ -1,0 +1,143 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS21-A01",
+    "TS21-A02"
+  ],
+  "targets": [
+    {
+      "url": "https://synthetic.invalid/scope/TS21",
+      "observed_at": "2026-10-14T12:00:00Z",
+      "context": {
+        "id": "synthetic",
+        "tool": "Authored fixture",
+        "tool_version": "1",
+        "bounds": "Supplied fictional population only"
+      },
+      "intent": {
+        "declared_at": "2026-10-14T09:00:00Z",
+        "crawler": "Authored-TSEP/1",
+        "evidence_checks": {
+          "TS21": {
+            "reader": "indexing-locale-v1",
+            "scope_reason": "SYNTHETIC finite selected population, no site audit",
+            "items": [
+              {
+                "id": "family",
+                "urls": [
+                  "https://synthetic.invalid/a"
+                ],
+                "site_url": "https://synthetic.invalid/",
+                "reported_state": "Crawled - currently not indexed",
+                "inspections": [
+                  {
+                    "url": "https://synthetic.invalid/a",
+                    "request": "request",
+                    "response": "response",
+                    "http_status": 200
+                  }
+                ],
+                "sitemap": "sitemap",
+                "sitemap_members": [
+                  "https://synthetic.invalid/a"
+                ],
+                "logs": "logs",
+                "log_start": "2026-10-14T09:00:00Z",
+                "log_end": "2026-10-14T10:00:00Z",
+                "diagnosis": "diagnosis"
+              }
+            ]
+          }
+        }
+      },
+      "evidence_checks": {
+        "TS21": {
+          "synthetic": true,
+          "records": [
+            {
+              "id": "request",
+              "kind": "search-console",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJpbnNwZWN0aW9uVXJsIjoiaHR0cHM6Ly9zeW50aGV0aWMuaW52YWxpZC9hIiwibGFuZ3VhZ2VDb2RlIjoiZW4tVVMiLCJzaXRlVXJsIjoiaHR0cHM6Ly9zeW50aGV0aWMuaW52YWxpZC8ifQ==",
+                "sha256": "1dfd32f5d7cf830211f735fba4e733d1f72c8dd3fb0762ae16a9341e3cb08b83",
+                "complete": true,
+                "encoding": "identity"
+              }
+            },
+            {
+              "id": "response",
+              "kind": "search-console",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJpbnNwZWN0aW9uUmVzdWx0Ijp7ImluZGV4U3RhdHVzUmVzdWx0Ijp7ImNvdmVyYWdlU3RhdGUiOiJDcmF3bGVkIC0gY3VycmVudGx5IG5vdCBpbmRleGVkIiwibGFzdENyYXdsVGltZSI6IjIwMjYtMTAtMTRUMDk6NDU6MDBaIiwidmVyZGljdCI6Ik5FVVRSQUwifX19",
+                "sha256": "f73366f24ee67b5fea99a7ff6fc5fae5d3b5ab24c893ab9a4315500d325f78d0",
+                "complete": true,
+                "encoding": "identity"
+              }
+            },
+            {
+              "id": "logs",
+              "kind": "logs",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "dGltZXN0YW1wCXVybAlzdGF0dXMJdXNlcl9hZ2VudAoyMDI2LTEwLTE0VDA5OjQ1OjAwWglodHRwczovL3N5bnRoZXRpYy5pbnZhbGlkL2EJMjAwCUZpY3Rpb25hbENsaWVudAo=",
+                "sha256": "7ed8a44cb5d6a25076e3785f8825c6551191319d9aba971b9011b12d849d93da",
+                "complete": true,
+                "encoding": "identity"
+              }
+            },
+            {
+              "id": "sitemap",
+              "kind": "sitemap",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "PHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+PHVybD48bG9jPmh0dHBzOi8vc3ludGhldGljLmludmFsaWQvYTwvbG9jPjwvdXJsPjwvdXJsc2V0Pg==",
+                "sha256": "cdc5e1b3b14d6106fb50d02551af8b7f8490ddcecbd913d36338489f668505bd",
+                "complete": true,
+                "encoding": "identity"
+              }
+            },
+            {
+              "id": "diagnosis",
+              "kind": "content",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "eyJjYXVzYWxpdHkiOiJ1bnByb3ZlbiIsImRlY2lzaW9uIjoiUmV2aWV3IGludGVybmFsIGxpbmtzOyBubyBhY3R1YWwgY29ycmVjdGlvbiBwZXJmb3JtZWQiLCJkaWFnbm9zaXMiOiJTeW50aGV0aWMgdW5pbmRleGVkIGZhbWlseSwgbm8gY2F1c2UgZXN0YWJsaXNoZWQiLCJkdWVfZGF0ZSI6IjIwMjYtMTAtMTUiLCJmYWxzaWZpY2F0aW9uIjoiTm8gY2hhbmdlIG92ZXIgdGhlIGRlY2xhcmVkIGZvbGxvdy11cCB3aW5kb3cgd2Vha2VucyB0aGUgaHlwb3RoZXNpcyIsImZhbWlseV9pZCI6ImZhbWlseSIsImZvbGxvd191cCI6InBsYW5uZWQtbm90LW9ic2VydmVkIiwiZm9ybWF0IjoiZmFtaWx5LWRpYWdub3Npcy12MSIsImh5cG90aGVzaXMiOiJJbnRlcm5hbCBkaXNjb3ZlcnkgZGVsYXlzIG1heSBhZmZlY3QgdGhpcyBmaWN0aW9uYWwgZmFtaWx5IiwibWVhc3VyZW1lbnQiOiJDb21wYXJlIGRhdGVkIHNlbGVjdGVkIFVSTCBpbnNwZWN0aW9uIHJlY29yZHM7IHJldGFpbiBjb25mb3VuZGVycyIsIm93bmVyIjoiRmljdGlvbmFsIG93bmVyIiwicHJlZGljdGlvbiI6IkEgbGF0ZXIgc2VsZWN0ZWQgaW5zcGVjdGlvbiBjb3VsZCBkaWZmZXIgYWZ0ZXIgcmV2aWV3ZWQgaW50ZXJ2ZW50aW9uIiwidXJscyI6WyJodHRwczovL3N5bnRoZXRpYy5pbnZhbGlkL2EiXX0=",
+                "sha256": "a810e2b7bf926378971be05b5110098384fc150ff420f12e7ea0e653a3203f40",
+                "complete": true,
+                "encoding": "identity"
+              }
+            }
+          ],
+          "documents": [],
+          "reviews": [
+            {
+              "subject": "TS21-A01:family",
+              "reviewer": "Fictional reviewer",
+              "reason": "Authored review of supplied records, complete bounded scope and editorial intent; not a real judgment.",
+              "judgment": "supported",
+              "reviewed_at": "2026-10-14T11:00:00Z",
+              "provenance": "synthetic-exercise",
+              "binding_sha256": "1393230555ba66bfadcc155517af904db50aee59c307492a0db2477fcad0cfed"
+            },
+            {
+              "subject": "TS21-A02:family",
+              "reviewer": "Fictional reviewer",
+              "reason": "Authored review of supplied records, complete bounded scope and editorial intent; not a real judgment.",
+              "judgment": "supported",
+              "reviewed_at": "2026-10-14T11:00:00Z",
+              "provenance": "synthetic-exercise",
+              "binding_sha256": "1393230555ba66bfadcc155517af904db50aee59c307492a0db2477fcad0cfed"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

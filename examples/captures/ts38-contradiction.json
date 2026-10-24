@@ -1,0 +1,150 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS38-A01",
+    "TS38-A02"
+  ],
+  "targets": [
+    {
+      "url": "https://synthetic.invalid/scope/TS38",
+      "observed_at": "2026-10-14T12:00:00Z",
+      "context": {
+        "id": "synthetic",
+        "tool": "Authored fixture",
+        "tool_version": "1",
+        "bounds": "Supplied fictional population only"
+      },
+      "intent": {
+        "declared_at": "2026-10-14T09:00:00Z",
+        "crawler": "Authored-TSEP/1",
+        "evidence_checks": {
+          "TS38": {
+            "reader": "url-policy-v1",
+            "scope_reason": "SYNTHETIC finite selected population, no site audit",
+            "items": [
+              {
+                "id": "variant",
+                "variants": [
+                  "https://synthetic.invalid/A",
+                  "https://synthetic.invalid/a/"
+                ],
+                "preferred": "https://synthetic.invalid/a",
+                "equivalence": "equivalent",
+                "rendering": "source-only-reviewed",
+                "sitemap": "sitemap",
+                "link_sources": [
+                  "https://synthetic.invalid/home"
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "evidence_checks": {
+        "TS38": {
+          "synthetic": true,
+          "records": [
+            {
+              "id": "sitemap",
+              "kind": "sitemap",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "PHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+PHVybD48bG9jPmh0dHBzOi8vc3ludGhldGljLmludmFsaWQvYTwvbG9jPjwvdXJsPjwvdXJsc2V0Pg==",
+                "sha256": "cdc5e1b3b14d6106fb50d02551af8b7f8490ddcecbd913d36338489f668505bd",
+                "complete": true,
+                "encoding": "identity"
+              }
+            }
+          ],
+          "documents": [
+            {
+              "url": "https://synthetic.invalid/A",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "http": [
+                {
+                  "url": "https://synthetic.invalid/A",
+                  "request": "GET /A HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 301 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 91\r\nLocation: https://synthetic.invalid/a\r\n\r\n<html><head><title>Fictional page</title></head><body><h1>Fictional page</h1></body></html>",
+                  "complete": true
+                },
+                {
+                  "url": "https://synthetic.invalid/a",
+                  "request": "GET /a HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 148\r\n\r\n<html><head><title>Fictional page</title><link rel=\"canonical\" href=\"https://synthetic.invalid/a\"></head><body><h1>Fictional page</h1></body></html>",
+                  "complete": true
+                }
+              ]
+            },
+            {
+              "url": "https://synthetic.invalid/a/",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "http": [
+                {
+                  "url": "https://synthetic.invalid/a/",
+                  "request": "GET /a/ HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 301 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 91\r\nLocation: https://synthetic.invalid/a\r\n\r\n<html><head><title>Fictional page</title></head><body><h1>Fictional page</h1></body></html>",
+                  "complete": true
+                },
+                {
+                  "url": "https://synthetic.invalid/a",
+                  "request": "GET /a HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 148\r\n\r\n<html><head><title>Fictional page</title><link rel=\"canonical\" href=\"https://synthetic.invalid/a\"></head><body><h1>Fictional page</h1></body></html>",
+                  "complete": true
+                }
+              ]
+            },
+            {
+              "url": "https://synthetic.invalid/a",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "http": [
+                {
+                  "url": "https://synthetic.invalid/a",
+                  "request": "GET /a HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 148\r\n\r\n<html><head><title>Fictional page</title><link rel=\"canonical\" href=\"https://synthetic.invalid/a\"></head><body><h1>Fictional page</h1></body></html>",
+                  "complete": true
+                }
+              ]
+            },
+            {
+              "url": "https://synthetic.invalid/home",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "http": [
+                {
+                  "url": "https://synthetic.invalid/home",
+                  "request": "GET /home HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 207\r\n\r\n<html><head><title>Fictional page</title><link rel=\"canonical\" href=\"https://synthetic.invalid/home\"></head><body><h1>Fictional page</h1><a href=\"https://synthetic.invalid/a\">Fictional link</a></body></html>",
+                  "complete": true
+                }
+              ]
+            }
+          ],
+          "reviews": [
+            {
+              "subject": "TS38-A01:variant",
+              "reviewer": "Fictional reviewer",
+              "reason": "Authored review of supplied records, complete bounded scope and editorial intent; not a real judgment.",
+              "judgment": "contradicted",
+              "reviewed_at": "2026-10-14T11:00:00Z",
+              "provenance": "synthetic-exercise",
+              "binding_sha256": "b1cc39ab5afc207f3832b8dc24a0549d78fd1a17992f5c98378605b6b1fdc0c5"
+            },
+            {
+              "subject": "TS38-A02:variant",
+              "reviewer": "Fictional reviewer",
+              "reason": "Authored review of supplied records, complete bounded scope and editorial intent; not a real judgment.",
+              "judgment": "supported",
+              "reviewed_at": "2026-10-14T11:00:00Z",
+              "provenance": "synthetic-exercise",
+              "binding_sha256": "b1cc39ab5afc207f3832b8dc24a0549d78fd1a17992f5c98378605b6b1fdc0c5"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

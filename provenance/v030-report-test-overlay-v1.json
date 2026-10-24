@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "scope": "Non-normative generic TS09 report test only; evidenced NC required, original expected gate preserved. Inverse restores RC1 bytes.",
+  "updates": [
+    {
+      "path": "tests/test_reports.py",
+      "base_sha256": "283bee4ca293114bd1b2ccb01f2df7fc9f57ce668588bf6d9625968352e77beb",
+      "current_sha256": "4e61f8a8ffb915aa921538b2144db009335f9e66faf6eff73592098c94f6d66c",
+      "replacements": [
+        {
+          "before": "    def test_minor_failure_preserved_in_go_reservations(self):\n        self.report['controls'] = ['TS09']\n        self.report['results'][0].update(control_id='TS09', status='NC')\n        self.report['results'][0].pop('atomic_results')\n        result = self.check()\n        self.assertEqual(result['decision'], 'GO_WITH_RESERVATIONS')\n        self.assertEqual(result['counts']['NC'], 1)\n\n",
+          "after": "    def test_minor_failure_preserved_in_go_reservations(self):\n        self.report['controls'] = ['TS09']\n        self.report['results'][0].update(control_id='TS09', status='NC')\n        self.report['results'][0].pop('atomic_results')\n        with self.assertRaisesRegex(tsep.Invalid, 'NC requires an evidenced atomic contradiction'):\n            self.check()\n        from adapters import captures\n        cases = tsep.read_json(ROOT/'tests/fixtures/url-policy-v1.json')['cases']\n        case = next(c for c in cases if c['id'] == 'url-policy-v1-TS09-wrong-mechanism')\n        source = self.root/'minor-failure-input.json'\n        source.write_text(json.dumps(case['input']), encoding='utf-8')\n        bundle = self.root/'minor-failure'\n        captures.build(source, bundle, assessor='Fictional reviewer', label='SYNTHETIC minor failure',\n                       selection_method='Frozen contradictory TS09 fixture only', access='synthetic')\n        report = tsep.read_json(bundle/'report.json')\n        self.assertEqual([(a['rule_id'], a['outcome']) for a in report['results'][0]['atomic_results']],\n                         [('TS09-A01', 'fail')])\n        self.assertTrue(all(a['access'] == 'synthetic' for a in report['artifacts']))\n        result = tsep.validate(report, bundle)\n        self.assertEqual(result['decision'], 'GO_WITH_RESERVATIONS')\n        self.assertEqual(result['counts']['NC'], 1)\n\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,263 @@
+{
+  "at": "2026-10-15T04:50:53.660134+00:00",
+  "synthetic": true,
+  "expected_origin": "Manual method expectations fixed before correction and before these cases execute. Input hashes bind deterministic recipes. Exact-output padding derives only from prechange baseline serialized sizes, not predicted outcomes.",
+  "baseline_serialized_observation_bytes": 26105,
+  "cases": [
+    {
+      "id": "review-ascii-8192",
+      "mutation": "review-text",
+      "expected_native": [
+        "pass",
+        "pass"
+      ],
+      "expected_public": "C",
+      "character": "S",
+      "repeat": 8192,
+      "input_sha256": "c747b4fb736a6b6bdd245a6d2c5f0f47d1f17a4c8d73bc28c81364958d12a80a",
+      "input_bytes": 27243
+    },
+    {
+      "id": "review-ascii-8193",
+      "mutation": "review-text",
+      "expected_native": [
+        "inconclusive",
+        "pass"
+      ],
+      "expected_public": "technical-refusal",
+      "character": "S",
+      "repeat": 8192,
+      "suffix": "S",
+      "input_sha256": "16a180ff40b7e515a2559767bd90e2e2bb1801cd8fb7433e13dc5fa47d1537d8",
+      "input_bytes": 27244
+    },
+    {
+      "id": "review-four-byte-8192",
+      "mutation": "review-text",
+      "expected_native": [
+        "pass",
+        "pass"
+      ],
+      "expected_public": "C",
+      "character": "😀",
+      "repeat": 2048,
+      "input_sha256": "a4b6b8d927f18cba71eb8c387a99e8b8a8a20ec124a52a155815586d7af76748",
+      "input_bytes": 27243
+    },
+    {
+      "id": "review-four-byte-8193",
+      "mutation": "review-text",
+      "expected_native": [
+        "inconclusive",
+        "pass"
+      ],
+      "expected_public": "technical-refusal",
+      "character": "😀",
+      "repeat": 2048,
+      "suffix": "S",
+      "input_sha256": "60f9d84c2907a08e800013278b063aa30e9cd92d4974a553ace5b77c02be6205",
+      "input_bytes": 27244
+    },
+    {
+      "id": "review-ascii-padding-8192",
+      "mutation": "review-text",
+      "expected_native": [
+        "pass",
+        "pass"
+      ],
+      "expected_public": "C",
+      "prefix": "S",
+      "character": " ",
+      "repeat": 8191,
+      "input_sha256": "b82e1c078e5849d0e59b5798e5a170033cbd47994e033a125e91abb862badfd2",
+      "input_bytes": 27243
+    },
+    {
+      "id": "review-ascii-padding-8193",
+      "mutation": "review-text",
+      "expected_native": [
+        "inconclusive",
+        "pass"
+      ],
+      "expected_public": "technical-refusal",
+      "prefix": "S",
+      "character": " ",
+      "repeat": 8191,
+      "suffix": "S",
+      "input_sha256": "38f127bab75e0585660c2c39260b51a65016ff17a59eba6af75a00c32bc3c1c3",
+      "input_bytes": 27244
+    },
+    {
+      "id": "review-nbsp-padding-8192",
+      "mutation": "review-text",
+      "expected_native": [
+        "pass",
+        "pass"
+      ],
+      "expected_public": "C",
+      "prefix": "S",
+      "character": " ",
+      "repeat": 4095,
+      "suffix": " ",
+      "input_sha256": "240389f4b5991da3a2c250fed274b23582c8705994f25551a201688eeb780ff2",
+      "input_bytes": 27243
+    },
+    {
+      "id": "review-nbsp-padding-8193",
+      "mutation": "review-text",
+      "expected_native": [
+        "inconclusive",
+        "pass"
+      ],
+      "expected_public": "technical-refusal",
+      "prefix": "S",
+      "character": " ",
+      "repeat": 4095,
+      "suffix": " S",
+      "input_sha256": "fddb82eab27deac57228b704d5ed829f1cd864664b0b5bae35961694d2660c6a",
+      "input_bytes": 27244
+    },
+    {
+      "id": "review-object-32768",
+      "mutation": "review-object",
+      "expected_native": [
+        "pass",
+        "pass"
+      ],
+      "expected_public": "C",
+      "object_bytes": 32768,
+      "input_sha256": "c9c3140c38e3d0e4de8ee7ea378cb832bc567253bd2c2f992b47c8feaa1e654e",
+      "input_bytes": 51519
+    },
+    {
+      "id": "review-object-32769",
+      "mutation": "review-object",
+      "expected_native": [
+        "inconclusive",
+        "pass"
+      ],
+      "expected_public": "technical-refusal",
+      "object_bytes": 32769,
+      "input_sha256": "c355bd5d7523c498e4f0b9a14590d1d34dc0f9e6f783068d013281fbee06776d",
+      "input_bytes": 51520
+    },
+    {
+      "id": "context-8192",
+      "mutation": "review-text",
+      "expected_native": [
+        "pass",
+        "pass"
+      ],
+      "expected_public": "C",
+      "review": "context",
+      "repeat": 8192,
+      "input_sha256": "280366187c5251de90a247f08cc2b43dc952dc1ef9a6a016f522cea37c6ca678",
+      "input_bytes": 27243
+    },
+    {
+      "id": "context-8193",
+      "mutation": "review-text",
+      "expected_native": [
+        "pass",
+        "inconclusive"
+      ],
+      "expected_public": "technical-refusal",
+      "review": "context",
+      "repeat": 8193,
+      "input_sha256": "be550efe093fac4a509450429e8adf1776145c80edbbbca9ee46039c6afe7be7",
+      "input_bytes": 27244
+    },
+    {
+      "id": "scope-whitespace-5MiB",
+      "mutation": "scope-padding",
+      "expected_native": [
+        "inconclusive",
+        "inconclusive"
+      ],
+      "expected_public": "technical-refusal",
+      "padding": 5242880,
+      "input_sha256": "44be78f839ea76e4adbe8a8f93ec786c14a2862e9624036b933e46ae6f4d0187",
+      "input_bytes": 5261921
+    },
+    {
+      "id": "scope-whitespace-contradiction-5MiB",
+      "mutation": "scope-padding",
+      "expected_native": [
+        "fail",
+        "inconclusive"
+      ],
+      "expected_public": "technical-refusal",
+      "padding": 5242880,
+      "contradiction": true,
+      "input_sha256": "36c811a1ebc6c70509ffbdea344d33be71ca389a1e051635a089f4263d80fdec",
+      "input_bytes": 5261925
+    },
+    {
+      "id": "unused-context-oversize",
+      "mutation": "unused-review",
+      "expected_native": [
+        "pass",
+        "pass"
+      ],
+      "expected_public": "technical-refusal",
+      "repeat": 8192,
+      "input_sha256": "8ba18f544279c7d5033dd8ade5be235246010601abcd6a9e0410c3ae85ffbda5",
+      "input_bytes": 27765
+    },
+    {
+      "id": "maximum-review-amplification",
+      "mutation": "review-amplification",
+      "expected_native": [
+        "inconclusive"
+      ],
+      "expected_public": "technical-refusal",
+      "base": "maximum-32-items-16-states",
+      "repeat": 8192,
+      "input_sha256": "5e2243ab1f8f5dde4b0e5cc50d1d760cbec3ecfe8e37d06319ecf7dce0e1a616",
+      "input_bytes": 4580490
+    },
+    {
+      "id": "public-diagnostics-exact4MiB",
+      "mutation": "scope-padding",
+      "expected_native": [
+        "pass",
+        "pass"
+      ],
+      "expected_public": "C",
+      "padding": 2084099,
+      "review_extra": 1,
+      "expected_public_diagnostic_bytes": 4194304,
+      "input_sha256": "fa64d978d8f181bdb3cb76f25f20b9cc32b9ee6e4390d54a86d43f84346e47cb",
+      "input_bytes": 2103141
+    },
+    {
+      "id": "public-diagnostics-4MiBplus1",
+      "mutation": "scope-padding",
+      "expected_native": [
+        "pass",
+        "pass"
+      ],
+      "expected_public": "technical-refusal",
+      "padding": 2084099,
+      "review_extra": 2,
+      "expected_public_diagnostic_bytes": 4194305,
+      "input_sha256": "5a709edd5c2b4a5c9376acc3fb53c05c13312d4996c29a5b78521b0921f4c005",
+      "input_bytes": 2103142
+    },
+    {
+      "id": "independent-absence-with-oversize-review",
+      "mutation": "review-text",
+      "expected_native": [
+        "inconclusive",
+        "fail"
+      ],
+      "expected_public": "technical-refusal",
+      "base": "five-roles-mixed-failure-unknown",
+      "prefix": "S",
+      "character": " ",
+      "repeat": 8192,
+      "input_sha256": "f308c03fd3751a33cc2a85a67e9ed26624d37fc5aff3df8a7edcab25fbd22218",
+      "input_bytes": 26690
+    }
+  ]
+}

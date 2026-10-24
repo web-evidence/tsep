@@ -1,0 +1,40 @@
+[
+  {
+    "url": "https://www.sitemaps.org/protocol.html",
+    "retrieved_at": "2026-10-14T10:35:46.917479+00:00",
+    "scope": "TS15 size/count/encoding and index structure; not site observations",
+    "original": "sitemaps-protocol.raw",
+    "sha256": "5e7570590fcb92d473d7015c88940a830383b6a61bc6c16be4df51e97f471654",
+    "decoded": "sitemaps-protocol.html",
+    "decoded_sha256": "5e7570590fcb92d473d7015c88940a830383b6a61bc6c16be4df51e97f471654",
+    "content_type": "text/html",
+    "gzip_detected": false
+  },
+  {
+    "url": "https://developers.google.com/search/docs/crawling-indexing/sitemaps/large-sitemaps",
+    "retrieved_at": "2026-10-14T10:35:47.789525+00:00",
+    "scope": "TS15 size/count/encoding and index structure; not site observations",
+    "original": "google-large-sitemaps.raw",
+    "sha256": "aaca7fe62d8577c065e40279b9b499c38fe669587b7c7584dd9da0debfc13f39",
+    "decoded": "google-large-sitemaps.html",
+    "decoded_sha256": "aaca7fe62d8577c065e40279b9b499c38fe669587b7c7584dd9da0debfc13f39",
+    "content_type": "text/html; charset=utf-8",
+    "gzip_detected": false
+  },
+  {
+    "url": "https://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd",
+    "retrieved_at": "2026-10-14T10:38:03.747069+00:00",
+    "scope": "TS15 optional base XML structural constraints; not implemented or tested",
+    "original": "sitemap.xsd",
+    "sha256": "fbec77e84467050d5667394a57cc5cdfe1239d80aca1d61e9e0827173c3d9df9",
+    "note": "Web viewer rejected text/xml; official bytes retained via HTTP reader"
+  },
+  {
+    "url": "https://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd",
+    "retrieved_at": "2026-10-14T10:38:04.284900+00:00",
+    "scope": "TS15 optional base XML structural constraints; not implemented or tested",
+    "original": "siteindex.xsd",
+    "sha256": "68d166ae92a07d5e8dbb0290d28c74aba24d896b721c0d3b1cee78c6aee9781e",
+    "note": "Web viewer rejected text/xml; official bytes retained via HTTP reader"
+  }
+]

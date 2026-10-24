@@ -129,6 +129,17 @@ def input_kinds(artifact):
     return kinds
 
 
+def atomic_outcomes(rule):
+    """Versioned closed exception; historical rules keep their outcome domain."""
+    if rule['id'] in ('TS15-A03','TS18-A01','TS18-A02'):
+        require(rule.get('allowed_outcomes') == ['pass', 'inconclusive'],
+                rule['id']+' requires its closed outcome declaration')
+        return ('pass', 'inconclusive')
+    require('allowed_outcomes' not in rule,
+            'Undeclared outcome restriction: ' + rule['id'])
+    return ('pass', 'fail', 'not-applicable', 'inconclusive')
+
+
 def validate_atomic_results(result, control, targets, artifacts):
     """Check declared rule evidence/coverage; never infer SEO truth from a capture."""
     rules = {r['id']: r for r in control.get('rules', [])}
@@ -146,6 +157,7 @@ def validate_atomic_results(result, control, targets, artifacts):
         require(all(target in artifacts[ref]['targets'] for ref in refs),
                 'Atomic evidence does not cover its target')
         outcome = atom['outcome']
+        require(outcome in atomic_outcomes(rules[rid]), 'Outcome outside declared rule domain: ' + rid)
         if outcome != 'inconclusive':
             require(refs, 'Conclusive atomic outcome requires evidence')
         if outcome in ('pass', 'not-applicable'):
@@ -283,6 +295,40 @@ def decision(report, controls=None):
              if a['rule_id'] == 'TS10-A04' and any(reader + ':' in a['reason']
                  for reader in ('html-tree-links-v1', 'html-tree-links-v2'))]
     if notes: summary['scope_notes'] = notes
+    if any(r['control_id']=='TS36' for r in report['results']):
+        summary['release_monitoring_interpretation'] = {
+            'fr':'TS36 : dossier du suivi déclaré, échéances futures indéterminées ; aucune causalité ni identité Google authentifiée.',
+            'en':'TS36: declared follow-up dossier, future stages inconclusive; no causality or authenticated Google identity.'}
+    if any(r['control_id']=='TS25' for r in report['results']):
+        summary['critical_presence_interpretation']={'fr':'TS25 : présence dans le périmètre préalable déclaré, exclusions et inconnues conservées ; revues fournies non authentifiées.', 'en':'TS25: presence within prior declared scope, exclusions and unknowns retained; unauthenticated supplied reviews.'}
+    if any(r['control_id']=='TS24' for r in report['results']):
+        summary['xdefault_interpretation']={'fr':'TS24 : contexte fourni motivé, jugement documentaire non authentifié ; aucune validité sémantique ni public représentatif inférés.', 'en':'TS24: motivated supplied context, unauthenticated documentary judgment; no inferred semantic validity or representative audience.'}
+    if any(r['control_id']=='TS23' for r in report['results']):
+        summary['hreflang_interpretation']={'fr':'TS23 : groupe préalable fourni ; canaux distincts, inconnues conservées, aucune conformité TS22/TS24 ou décision Google.', 'en':'TS23: supplied prior cluster; separate channels, retained unknowns, no TS22/TS24 conformity or Google decision.'}
+    if any(r['control_id']=='TS18' for r in report['results']):
+        summary['graph_interpretation']={'fr':'TS18 : périmètre borné et revues fournis ; inconnues conservées, aucune page orpheline globale ni approbation humaine créée.', 'en':'TS18: supplied bounded scope/reviews; retained unknowns, no global orphan or software-created human approval.'}
+    if any(r['control_id']=='TS16' for r in report['results']):
+        summary['incoming_links_interpretation'] = {'fr':'TS16 : population préalable fournie ; absence bornée, aucune page orpheline du site ni importance ou interaction authentifiée.', 'en':'TS16: prior supplied population; bounded absence, no site-wide orphan or authenticated importance/interaction.'}
+    if any(r['control_id']=='TS17' for r in report['results']):
+        summary['essential_links_interpretation'] = {'fr': 'TS17 : stratégie source et états déclarés par le fournisseur ; aucune interaction, acquisition réelle ou découverte Google authentifiée.', 'en': 'TS17: source strategy and provider-declared states; no authenticated interaction, actual acquisition or Google discovery.'}
+    if any(r['control_id'] in ('TS13', 'TS14') for r in report['results']):
+        summary['sitemap_quality_interpretation'] = {'fr': 'Population déclarée et revues fournies ; aucun audit réel ni historique authentifié, indexation ou classement.', 'en': 'Declared population and supplied reviews; no real audit, authenticated history, indexing or ranking.'}
+    if any(r['control_id']=='TS15' for r in report['results']):
+        summary['sitemap_files_interpretation'] = {'fr': 'TS15 : fichiers fournis dans une population déclarée ; racines non découvertes, aucun constat du serveur ni exhaustivité du site. Structure minimale seulement, pas validation XSD complète.', 'en': 'TS15: supplied files in a declared population; undiscovered roots, no server observation or site completeness. Minimal structure only, not full XSD validation.'}
+    if any(r['control_id']=='TS33' for r in report['results']):
+        summary['structured_validation_interpretation'] = {'fr': 'TS33 : captures de page liées et instantané indexé séparé ; noms Schema.org seulement, erreurs conservées, aucune éligibilité actuelle ni apparition garantie.', 'en': 'TS33: bound page captures and separate indexed snapshot; Schema.org names only, errors retained, no guaranteed current eligibility or display.'}
+    if any(r['control_id']=='TS32' for r in report['results']):
+        summary['structured_identity_interpretation'] = {
+            'fr':'TS32 : cohérence des identifiants du corpus fourni et revues liées ; aucune stabilité temporelle ou identité authentifiée.',
+            'en':'TS32: supplied corpus identifier coherence and bound reviews; no temporal stability or authenticated identity.'}
+    if any(r['control_id']=='TS31' for r in report['results']):
+        summary['structured_content_interpretation'] = {
+            'fr':'TS31 : JSON-LD recalculé et revues de contenu fournies ; ni visibilité ni faits authentifiés, aucun résultat enrichi garanti.',
+            'en':'TS31: recomputed JSON-LD and supplied content reviews; no authenticated visibility or facts, no rich-result guarantee.'}
+    if any(r['control_id']=='TS12' for r in report['results']):
+        summary['canonical_comparison_interpretation'] = {
+            'fr':'TS12 qualifie le dossier des surfaces HTTP/HTML et états DOM prévus ; comparaisons littérales, pas équivalence d’URL, canonical correcte, TS10 ou indexation.',
+            'en':'TS12 qualifies documentation of HTTP/HTML and planned DOM states; literal comparison, not URL equivalence, correct canonical, TS10 or indexing.'}
     performance = [{'control_id': r['control_id'], 'status': r['status'], 'reason': r['reason']}
                    for r in report['results'] if r['control_id'] in ('TS34', 'TS35')]
     if performance:

@@ -1,0 +1,113 @@
+{
+  "scope": "Authored TS36 qualification, no real deployment/account/logging campaign",
+  "preimplementation_freeze": {
+    "frozen_at": "2026-10-12T10:00:30.998300+00:00",
+    "cases": 64,
+    "pairs": 192,
+    "files": {
+      "tests/fixtures/release-monitoring-v1.json": "c993be1553c4e30683c4c863c5bb3fadd238582f84adea71d24d469b2dc50497",
+      "tests/fixtures/release-monitoring-v1.sha256": "369b73a41dfe7642c8d10822c612893cb27e5afb34bdd2b7b585b567373b4a0a",
+      "docs/release-monitoring.md": "e2450c6a978eb2e0e0d907a37c328e830870c41c6b827280c7569b8ddf49eaa6"
+    },
+    "reader_exists": false,
+    "expected_origin": "Authored before TS36 implementation; not computed from a reader"
+  },
+  "first_reader": {
+    "pairs": 192,
+    "disagreements": 0,
+    "receipt_sha256": "0a7d2320fa132458d56887b399fdd81c906ad31a4c3017819e9f056c723c5a31"
+  },
+  "technical_references": {
+    "captured_at": "2026-10-12 09:54:59 UTC",
+    "capture_sha256": "a9e85338f5094e4d54e75203738b323746c3be1f2302aa3d52405260b58126d3",
+    "scope": "Official references on indexed inspection, crawler verification and crawl budget; TSEP timing is editorial",
+    "urls": [
+      "https://developers.google.com/crawling/docs/crawl-budget",
+      "https://support.google.com/webmasters/answer/9012289?hl=en",
+      "https://developers.google.com/crawling/docs/crawlers-fetchers/verify-google-requests"
+    ],
+    "capture_availability": "Local tool-text capture; not redistributed with package, not original network bytes"
+  },
+  "verification": "Full verification on final source required separately; not claimed by this pre-verification receipt",
+  "limits": [
+    "Fictional APIs, deployments, logs and reviews",
+    "No new browser trial or barrier bypass",
+    "No actual future stage, causal finding or authenticated Google identity"
+  ],
+  "boundary_before_correction": {
+    "frozen_at": "2026-10-12T10:11:36.683543+00:00",
+    "cases": 1,
+    "pairs": 3,
+    "files": {
+      "tests/fixtures/release-monitoring-boundaries-v1.json": "d2258ac4892653511ea8d86b154892f9f0dba68716059285965853ee9355daa3",
+      "tests/fixtures/release-monitoring-boundaries-v1.sha256": "2f3b3fa61aae79103ebf937c85bb792a5f3e72ab03f5029113931264e395a138",
+      "docs/release-monitoring.md": "8737f1c772b1a79d6c85ac3a58583d767073df4952f25465a5566ca3f68649c3"
+    },
+    "implementation_before_correction_sha256": "cd7dda12a200ab8b376bc60107c25099ea7ad0d5b9cacbc35cd6bded0dda5911"
+  },
+  "boundary_failure": {
+    "rule": "TS36-A03",
+    "expected": "fail",
+    "observed": "inconclusive",
+    "cause": "Closure compared to later assessment time instead of its own supplied date",
+    "expectations_changed": false,
+    "receipt_sha256": "bbea574c679f2e58712fdb4e43d4ede1faadead4428b246e363fdd929a595411"
+  },
+  "targeted_integration": {
+    "final_run": "targeted-r4.txt",
+    "tests": 34,
+    "success": true,
+    "receipt_sha256": "b4a46126f74809008545cfc888b30e1171e43856761de879aceae8cad3bb5eb2",
+    "earlier_failures": [
+      {
+        "run": "targeted-r2.txt",
+        "failures": 5,
+        "receipt_sha256": "49d29b29a01d983d3cecac0c5ebcdf8876182e57f3b9b9051c2676b8b5a0b56e"
+      },
+      {
+        "run": "targeted-r3.txt",
+        "failures": 1,
+        "receipt_sha256": "2814a2c88def830963f64e028671bae33da71e9146b802ae1a958e089e319d80"
+      }
+    ],
+    "resolution": "Corrected new authored method gate expectations to existing major-control decision contract, and added three reference coverage scenarios. Frozen native expectations and historical method cases unchanged."
+  },
+  "cli_workflow": {
+    "receipt_sha256": "bdb2b8e27c27dc2ed64249dc45f24d25d3497d408255d05c36b41823059dff0c",
+    "commands": 28,
+    "outcomes": [
+      "C",
+      "C",
+      "NT",
+      "NC"
+    ],
+    "blank_review_statuses": [
+      "NT",
+      "NT",
+      "NT",
+      "NT"
+    ],
+    "exact_replays": 4,
+    "html_languages": [
+      "fr",
+      "en"
+    ],
+    "scope": "Local executions on wholly authored synthetic inputs; pending and false-closure private exercises shifted 70 days. D7/D30 explicitly future. Public frozen fixtures unchanged."
+  },
+  "first_full_verification": {
+    "tests": 965,
+    "errors": 1,
+    "source_changes": [],
+    "receipt_sha256": "2c6a335d0e50f1a0915ae3f270d6c35d5b4c66b031238f015483671af994f20d",
+    "case": "release-monitoring-v1-real-review-in-synthetic",
+    "cause": "Generic all-cases adapter test expected import, while unchanged adapter correctly refused a review/evidence provenance mismatch",
+    "resolution": "Assert explicit provenance refusal and no output bundle in the generic adapter test. Frozen native expectations and adapter implementation unchanged. Final full rerun required.",
+    "targeted_correction_check": {
+      "tests": 2,
+      "success": true,
+      "seconds": 245.531,
+      "scope": "All raw corpus cases through adapter, then 65 TS36 frozen cases without collection",
+      "receipt_sha256": "0231d47179dadde4253515332463737149e6adae5dceea21e42c94d3072a2034"
+    }
+  }
+}

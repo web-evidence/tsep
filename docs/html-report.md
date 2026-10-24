@@ -1,8 +1,40 @@
+## Version26 — keyboard-scrollable tables / tableaux défilables au clavier
+
+FR : chaque tableau est dans une région nommée et focalisable au clavier, avec défilement horizontal borné sur écran étroit. Le contenu et les décisions ne changent pas ; aucune conformité d’accessibilité n’est certifiée.
+
+EN: every table is placed in a named keyboard-focusable region with bounded horizontal scrolling on narrow screens. Content and decisions are unchanged; no accessibility conformance is certified.
+
+## Version23 — supplied hreflang / hreflang fourni
+
+FR : affiche le groupe préalable TS23, le canal principal, les deux hypothèses
+HTML et le canal HTTP Link séparément, les associations manquantes, conflits,
+inconnues et liens aux octets originaux. Un secondaire complet ne répare pas le
+primaire. Les listes détaillées sont repliables au clavier ; aucune nouvelle
+évaluation n’est exécutée par le rendu. Les captures synthétiques restent signalées.
+
+EN: display the prior TS23 group, primary channel, separate HTML hypotheses and
+HTTP Link channel, missing mappings, conflicts, unknowns and original-byte
+bindings. A complete secondary does not repair the primary. Keyboard-operable
+native details retain every reading. Rendering never reevaluates captures or
+implies Google processing, language validity or authenticated evidence.
+
+HTML22 FR : les URL hors population restent toutes disponibles dans un détail dépliable au clavier ; leur nombre est visible même replié. EN: all outside-population URLs remain in a keyboard-expandable detail with a visible count; no truncation or new conclusion.
+
+HTML22: read-only bilingual TS18 inventory dates, graph distance/degree bounds and supplied review summaries. No re-evaluation or human approval. Unknowns and scoped limits remain visible.
+
+HTML20 — TS17: distinct source and declared rendered stages, exact found/missing destinations, provider-declared scenarios and supplied HTTP/DOM association; no authenticated interaction/acquisition. FR : stades distincts, destinations présentes/absentes exactes, scénarios déclarés et acquisition non authentifiée ; aucun recalcul dans le HTML.
+
+HTML19 — TS15 displays declared file population/count, undiscovered roots, supplied dates and measured bounds with readable FR/EN labels. Raw hashes remain in the retained complete diagnostic. FR : population déclarée, racines non découvertes, dates fournies et mesures lisibles ; empreintes conservées dans le diagnostic complet. Static retained diagnostics only, no re-evaluation; no site-wide or server claim.
+
+## Version18 — TS33 validation layers / Couches de validation TS33
+
+FR : couches, erreurs et limites TS33 conservées ; tableaux défilables au clavier sur écran étroit, sans masquer ni tronquer leurs textes. EN: retained TS33 layers, errors and limits; keyboard-scrollable tables on narrow screens without hidden or truncated text. Historical HTML files are unchanged.
+
 # Standalone HTML evidence report / Rapport HTML autonome
 
 ## Français
 
-Le moteur de présentation version 4 transforme un rapport TSEP valide et ses
+Le moteur de présentation version 26 transforme un rapport TSEP valide et ses
 preuves en un fichier HTML autonome en français ou en anglais. Python 3.9+ suffit.
 Il présente les résultats enregistrés, leurs règles, cibles, motifs, limites et
 preuves. Il ne réévalue pas les captures et ne collecte aucune URL.
@@ -64,7 +96,7 @@ présentées. Aucun verdict supplémentaire n’est calculé.
 
 ## English
 
-Presentation engine version 4 turns a valid TSEP report and its evidence into one
+Presentation engine version 26 turns a valid TSEP report and its evidence into one
 self-contained French or English HTML file using Python 3.9+. It presents recorded
 outcomes, rules, targets, reasons, limitations and evidence without reassessing
 captures or fetching URLs. Use the commands above with `--lang en`.
@@ -127,3 +159,35 @@ extraction or new decision occurs at presentation time. An unavailable reference
 check remains visible even if an equal digest later resolves identity. Media
 changes are observations to inspect, never extra draft.7 failures. Old reports
 remain readable without inventing missing preparation checks.
+
+## Version 17 — narrow metric grid / Synthèse sur écran étroit
+
+FR : jusqu’à 380 pixels CSS de largeur, les trois cartes de synthèse sont
+présentées sur une seule colonne. La largeur minimale des libellés français
+ne force ainsi plus deux colonnes au-delà de leur conteneur. Les mots restent
+lisibles, sans coupe forcée, masquage ou troncature. Au-dessus de ce seuil,
+la disposition existante est conservée. Aucune règle, donnée JSON, pièce
+embarquée ou décision ne change ; le pied de page identifie HTML17 et
+l’empreinte CSP suit les nouveaux styles.
+
+Migration : générer un nouveau fichier HTML avec cette version, conserver
+les fichiers antérieurs et leurs empreintes. Les rejeux historiques gardent
+leurs outils exacts. Cette correction source ne met pas à jour implicitement
+les moteurs draft.31/draft.33 importés dans une application ni la copie de
+démonstration gelée ; toute importation reste distincte et vérifiée. Les mesures
+sur les cas synthétiques FR/EN sont consignées dans la livraison ; elles ne
+démontrent pas une conformité WCAG ou tous les navigateurs.
+
+EN: At viewport widths up to 380 CSS pixels, the three overview metric cards
+use a single column. French labels’ minimum widths therefore no longer force
+two columns beyond their container. Words remain readable, without forced
+breaking, hiding or truncation. Above that threshold, the existing layout
+is retained. Rules, JSON data, embedded evidence and decisions are unchanged;
+the footer identifies HTML17 and the CSP hash follows the updated styles.
+
+Migration: generate a new HTML file with this renderer, retaining earlier
+files and fingerprints. Historical replay keeps its exact tools. This source
+fix does not implicitly update the draft.31/draft.33 engines imported in an
+application or the frozen demonstration copy; each import remains separate
+and verified. Measurements on synthetic FR/EN cases are recorded in the
+delivery; they do not establish WCAG conformance or coverage of all browsers.

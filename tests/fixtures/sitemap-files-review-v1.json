@@ -1,0 +1,67 @@
+{
+  "format": "ts15-review-prefreeze-1",
+  "at": "2026-10-14T10:57:21.979395+00:00",
+  "source": "Claude review3 proposals and byte-level counterexamples; no Claude test execution",
+  "cases": [
+    {
+      "id": "utf16-bom",
+      "body": {
+        "hex": "fffe3c00750072006c00730065007400200078006d006c006e0073003d00220068007400740070003a002f002f007700770077002e0073006900740065006d006100700073002e006f00720067002f0073006300680065006d00610073002f0073006900740065006d00610070002f0030002e00390022003e003c00750072006c003e003c006c006f0063003e00680074007400700073003a002f002f006500780061006d0070006c0065002e0074006500730074002f0061003c002f006c006f0063003e003c002f00750072006c003e003c002f00750072006c007300650074003e00"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      }
+    },
+    {
+      "id": "utf16le-no-bom",
+      "body": {
+        "hex": "3c00750072006c00730065007400200078006d006c006e0073003d00220068007400740070003a002f002f007700770077002e0073006900740065006d006100700073002e006f00720067002f0073006300680065006d00610073002f0073006900740065006d00610070002f0030002e00390022003e003c00750072006c003e003c006c006f0063003e00680074007400700073003a002f002f006500780061006d0070006c0065002e0074006500730074002f0061003c002f006c006f0063003e003c002f00750072006c003e003c002f00750072006c007300650074003e00"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      }
+    },
+    {
+      "id": "internal-dtd",
+      "body": {
+        "hex": "3c21444f43545950452075726c736574205b3c21454e544954592061202268747470733a2f2f6578616d706c652e746573742f61223e5d3e3c75726c73657420786d6c6e733d22687474703a2f2f7777772e736974656d6170732e6f72672f736368656d61732f736974656d61702f302e39223e3c75726c3e3c6c6f633e26613b3c2f6c6f633e3c2f75726c3e3c2f75726c7365743e"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      }
+    },
+    {
+      "id": "dtd-in-comment-only",
+      "body": {
+        "hex": "3c212d2d203c21444f4354595045206e6f742d612d6465636c61726174696f6e3e202d2d3e3c75726c73657420786d6c6e733d22687474703a2f2f7777772e736974656d6170732e6f72672f736368656d61732f736974656d61702f302e39223e3c75726c3e3c6c6f633e68747470733a2f2f6578616d706c652e746573742f613c2f6c6f633e3c2f75726c3e3c2f75726c7365743e"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    }
+  ],
+  "scope_expectations": [
+    "Positive result names exact declared document count and declared roots; root discovery is not established",
+    "Unobserved site index/other sitemaps remain outside this declared file population, no site-wide assertion"
+  ]
+}

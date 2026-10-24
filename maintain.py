@@ -72,6 +72,9 @@ def rendered(protocol, language):
                       '`TSEP@' + control['rule_version'] + ':' + rule['id'] + '`', '',
                       '**' + labels[7] + '**: ' + ', '.join(rule['required_inputs']) + '.', '',
                       '**Automation / Automatisation**: `' + rule['automation'] + '`.', '']
+            if 'allowed_outcomes' in rule:
+                label = 'Issues autorisées' if language == 'fr' else 'Allowed outcomes'
+                lines += ['**' + label + '**: ' + ', '.join(rule['allowed_outcomes']) + '.', '']
             if rule['na_inputs']:
                 label = 'Entrées pour exemption atomique' if language == 'fr' else 'Atomic exemption inputs'
                 lines += ['**' + label + '**: ' + ', '.join(rule['na_inputs']) + '.', '']
@@ -88,6 +91,14 @@ def rendered(protocol, language):
 def check():
     release_sources()
     protocol = tsep.read_json(tsep.PROTOCOL_PATH)
+    # These are current generated examples, never historical report archives.
+    expected_protocol = {'name': 'TSEP', 'version': protocol['version'],
+                         'sha256': tsep.digest(tsep.PROTOCOL_PATH)}
+    for case in ('pass', 'fail', 'partial'):
+        example = ROOT / 'examples' / case / 'report.json'
+        report = tsep.read_json(example)
+        tsep.require(isinstance(report, dict) and report.get('protocol') == expected_protocol,
+                     'Stale generated example protocol: examples/' + case + '/report.json')
     schema = tsep.read_json(ROOT/'schemas/report.schema.json')
     known_inputs = schema['properties']['artifacts']['items']['properties']['kind']['enum']
     tsep.require(schema['properties']['protocol']['properties']['version']['const'] == protocol['version'],
@@ -104,12 +115,14 @@ def check():
                          'Missing bilingual text: ' + control['id'] + '.' + field)
         tsep.require(control['required_inputs'] and control['unit'], 'Missing contract inputs')
         if 'rules' in control:
-            tsep.require(control['id'] in ('TS01', 'TS02', 'TS04', 'TS07', 'TS10', 'TS34', 'TS35', 'TS42', 'TS43', 'TS44', 'TS41', 'TS39') and control['rules'],
+            tsep.require(control['id'] in ('TS01', 'TS02', 'TS03', 'TS04', 'TS05', 'TS06', 'TS07', 'TS10', 'TS34', 'TS35', 'TS42', 'TS43', 'TS44', 'TS41', 'TS39', 'TS08', 'TS12', 'TS36', 'TS31', 'TS32', 'TS33', 'TS15', 'TS17', 'TS16', 'TS18', 'TS23', 'TS24', 'TS25', 'TS13', 'TS14', 'TS09', 'TS11', 'TS19', 'TS20', 'TS38', 'TS21', 'TS22', 'TS40', 'TS26', 'TS27', 'TS28', 'TS29', 'TS30', 'TS37') and control['rules'],
                          'Unexpected atomic rule scope')
-            tsep.require(control['rule_version'] == protocol['version'], 'Stale atomic rule version')
+            expected_version = ('0.3.0-draft.7' if control['id']=='TS01' else '0.3.0-draft.6' if control['id']=='TS02' else '0.3.0-draft.5' if control['id'] in ('TS30','TS37') else '0.3.0-draft.4' if control['id'] in ('TS26','TS27','TS28','TS29') else '0.3.0-draft.3' if control['id'] in ('TS21','TS22','TS40') else '0.3.0-draft.2' if control['id'] in ('TS09','TS11','TS19','TS20','TS38') else '0.3.0-draft.1' if control['id'] in ('TS13','TS14') else '0.2.0-rc.1')
+            tsep.require(control['rule_version'] == expected_version, 'Changed preserved atomic rule version')
             tsep.unique([r['id'] for r in control['rules']], 'atomic rule')
             for n, rule in enumerate(control['rules'], 1):
                 tsep.require(rule['id'] == control['id'] + '-A%02d' % n, 'Unstable atomic ID')
+                tsep.atomic_outcomes(rule)
                 tsep.require(rule.get('automation') in ('automatic', 'semiAuto', 'manual'),
                              'Missing or invalid atomic automation: ' + rule['id'])
                 for field in ('title', 'applicability', 'procedure', 'acceptance', 'evidence',
@@ -120,7 +133,7 @@ def check():
                 tsep.require(rule['required_inputs'] and
                              set(rule['required_inputs'] + rule['na_inputs']) <= set(known_inputs),
                              'Invalid atomic input kind')
-    tsep.require({c['id'] for c in controls if 'rules' in c} == {'TS01', 'TS02', 'TS04', 'TS07', 'TS10', 'TS34', 'TS35', 'TS42', 'TS43', 'TS44', 'TS41', 'TS39'},
+    tsep.require({c['id'] for c in controls if 'rules' in c} == {'TS01', 'TS02', 'TS03', 'TS04', 'TS05', 'TS06', 'TS07', 'TS10', 'TS34', 'TS35', 'TS42', 'TS43', 'TS44', 'TS41', 'TS39', 'TS08', 'TS12', 'TS36', 'TS31', 'TS32', 'TS33', 'TS15', 'TS17', 'TS16', 'TS18', 'TS23', 'TS24', 'TS25', 'TS13', 'TS14', 'TS09', 'TS11', 'TS19', 'TS20', 'TS38', 'TS21', 'TS22', 'TS40', 'TS26', 'TS27', 'TS28', 'TS29', 'TS30', 'TS37'},
                  'Missing atomic control')
     for upstream in protocol['upstream']:
         tsep.require(tsep.digest(ROOT / upstream['path']) == upstream['sha256'],
@@ -176,7 +189,7 @@ def main():
         protocol = tsep.read_json(tsep.PROTOCOL_PATH)
         protocol['normative_documents'] = [{'path': name, 'sha256': tsep.digest(ROOT / name)}
             for name in ('schemas/report.schema.json', 'docs/contract.en.md', 'docs/contract.fr.md',
-                         'docs/source-directives.md', 'docs/source-canonical.md', 'docs/source-link-policy.md', 'docs/source-link-policy-v2.md', 'docs/http-canonical-context.md', 'docs/preview-intent.md', 'docs/performance-evidence.md', 'docs/agent-usage-policy.md', 'docs/agent-access-evidence.md', 'docs/critical-content-evidence.md', 'docs/release-invariants.md', 'docs/delivery-evidence.md', 'docs/source-markers.md')]
+                         'docs/source-directives.md', 'docs/source-canonical.md', 'docs/source-link-policy.md', 'docs/source-link-policy-v2.md', 'docs/http-canonical-context.md', 'docs/preview-intent.md', 'docs/performance-evidence.md', 'docs/agent-usage-policy.md', 'docs/agent-access-evidence.md', 'docs/critical-content-evidence.md', 'docs/release-invariants.md', 'docs/delivery-evidence.md', 'docs/source-markers.md', 'docs/inspection-evidence.md', 'docs/structured-content-evidence.md', 'docs/structured-identity-evidence.md', 'docs/structured-validation-evidence.md', 'docs/sitemap-files-evidence.md', 'docs/essential-links-evidence.md', 'docs/incoming-links-evidence.md', 'docs/graph-reconciliation-evidence.md', 'docs/hreflang-reciprocity-evidence.md', 'docs/xdefault-role-evidence.md', 'docs/critical-presence-evidence.md', 'docs/ts05-indexing-evidence.md', 'docs/ts06-access-evidence.md', 'docs/ts03-response-evidence.md', 'docs/sitemap-quality-evidence.md', 'docs/evidence-dossier-v1.md', 'docs/url-policy-evidence.md', 'docs/indexing-locale-evidence.md', 'docs/render-transport-evidence.md', 'docs/render-transport-prerequisites-v2.md', 'docs/migration-0.3.0-draft.6.md', 'docs/migration-0.3.0-draft.7.md')]
         tsep.PROTOCOL_PATH.write_bytes((json.dumps(protocol, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
         for lang in ('fr', 'en'):
             (ROOT / ('docs/controls.' + lang + '.md')).write_bytes(rendered(protocol, lang).encode('utf-8'))

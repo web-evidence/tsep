@@ -7,17 +7,141 @@ import base64
 import hashlib
 from html import escape
 import json
+import re
 from pathlib import Path
 
 import tsep
 from conformance.http import raw_bytes
 
-VERSION = '11'
+VERSION = '27'
 MAX_EMBED_BYTES = 32 * 1024 * 1024  # Per report, including all evidence and JSON.
 ROOT = Path(__file__).resolve().parent
 
 TEXT = {
     'fr': {
+        'presence_title': 'TS25 — présence critique par stade',
+        'presence_note': 'Périmètre préalable déclaré ; exclusions et inconnues conservées. Revues fournies, auteurs non authentifiés. Aucune exécution, visibilité CSS, validité sémantique ou indexation déduite.',
+        'presence_scope': 'Population et décisions des cinq rôles',
+        'presence_items': 'Éléments et politiques préalables',
+        'presence_source': 'Hypothèses source statiques',
+        'presence_render': 'États rendus fournis',
+        'presence_reviews': 'Revue originale et contexte fournis',
+        'presence_details': 'Diagnostics complets et limites',
+        'xdefault_title': 'x-default — rôle documentaire fourni',
+        'xdefault_note': 'TS24 : contexte fourni motivé et revue liée, auteur non authentifié. HTTP200 ne détecte pas une page d’erreur/soft404. Aucune neutralité, représentativité du public, visite Google ou indexation déduite.',
+        'xdefault_policy': 'Politique de rôle préalable',
+        'xdefault_context': 'Justification du contexte de requête',
+        'xdefault_destination': 'Destination et réponse capturée',
+        'xdefault_pages': 'Annotations dans le groupe fourni',
+        'xdefault_reviews': 'Revues originales fournies — jugement non authentifié',
+        'xdefault_contested': 'Revues contestées sans remplacement : aucune préférence pour la plus récente ; défaut fourni conservé ci-dessous.',
+        'xdefault_native': 'Observations TS23 conservées séparément, sans reprise de leur verdict comme jugement de rôle',
+        'xdefault_details': 'Pièces, contexte et limites complets',
+
+        'hreflang_mode_http': 'Écart au canal du plan : le jeu complet est présent dans les en-têtes HTTP Link secondaires. Ce résultat ne signifie pas une absence universelle de hreflang.',
+        'hreflang_mode_html': 'Écart au canal du plan : le jeu complet est présent dans les deux hypothèses HTML secondaires. Ce résultat ne signifie pas une absence universelle de hreflang.',
+        'hreflang_note': 'TS23 : réciprocité dans le groupe et les canaux prévus. Aucune validation des codes, traduction, indexabilité, canonical, rôle x-default ou sélection Google. Les preuves fournies ne sont pas authentifiées.',
+        'hreflang_title': 'Hreflang — groupe fourni',
+        'hreflang_primary': 'Canal principal prévu',
+        'hreflang_channel': 'Canal observé',
+        'hreflang_html': 'HTML source',
+        'hreflang_http': 'En-têtes HTTP Link',
+        'hreflang_complete': 'Jeu attendu complet dans ce canal',
+        'hreflang_incomplete': 'Jeu attendu non établi dans ce canal',
+        'hreflang_secondary': 'Un canal secondaire ne complète ni ne remplace le canal principal.',
+        'hreflang_missing': 'Associations attendues absentes',
+        'hreflang_failure': 'Contradictions avec le plan préalable',
+        'hreflang_unknown': 'Inconnues et limites',
+        'hreflang_details': 'Originaux liés et mesures détaillées',
+        'hreflang_hypotheses': 'Hypothèses statiques et annotations',
+        'hreflang_outside': 'Associations hors périmètre',
+        'graph_note': 'TS18 : inventaires, graphe et revues fournis dans une population bornée. Aucune exhaustivité, page orpheline globale, profondeur SEO universelle, authenticité de relecteur ou collecte déduite. HTTP200 ne vérifie pas le contenu attendu ni les soft404.',
+        'graph_title': 'Rapprochement du graphe fourni',
+        'graph_inventory': 'Inventaires et dates fournis',
+        'graph_dates': 'Date de l’original',
+        'graph_production': 'Production déclarée',
+        'graph_membership': 'Appartenance déclarée rapprochée',
+        'graph_outside': 'URL hors population, non évaluées',
+        'graph_depth': 'Distance depuis les racines',
+        'graph_incoming': 'Sources entrantes distinctes, sans auto-liens',
+        'graph_no_route': 'Aucun chemin établi ; des liens restent possibles',
+        'graph_unreachable': 'Inaccessible dans le seul graphe borné',
+        'graph_interval': 'Intervalle',
+        'graph_exact': 'Exacte dans le graphe fourni',
+        'graph_orphan': 'Candidat sans entrant dans la population ; pas un orphelin global',
+        'graph_root': 'Racine déclarée',
+        'graph_review': 'Qualification documentaire fournie',
+        'graph_reviewer': 'Auteur déclaré, non authentifié',
+        'graph_rationale': 'Motif fourni, non jugé par le lecteur',
+        'graph_binding': 'Empreinte de liaison attendue',
+        'graph_details': 'Mesures et limites détaillées',
+        'graph_qualified': 'Pièce qualifiée dans ce profil',
+        'graph_unknown': 'Inconnu ou non qualifié',
+        'graph_subject': 'Sujet de revue dérivé des mesures',
+        'graph_bound': 'Bornes minimale et maximale',
+        'incoming_note': 'TS16 : population préalable fournie seulement ; aucune exhaustivité du site, importance authentifiée, interaction observée ni indexation. Une absence bornée ne prouve pas une page orpheline du site. Le contenu attendu de la source n’est pas vérifié : une page d’erreur répondant HTTP200 peut fournir un témoin de navigation ; les soft404 ne sont pas détectées.',
+        'incoming_title': 'Liens entrants — résultats par destination',
+        'incoming_original': 'Original de destination',
+        'incoming_missing_original': 'Original ou identité de destination non qualifiés ; vérifier aussi le plan.',
+        'incoming_status': 'Statut HTTP terminal conservé',
+        'incoming_final': 'URL finale archivée',
+        'incoming_witnesses': 'Témoins qualifiés dans la population déclarée',
+        'incoming_source': 'Document source',
+        'incoming_surface': 'Surface fournie',
+        'incoming_href': 'href brut',
+        'incoming_anchor': 'Référence native de l’ancre',
+        'incoming_absence': 'Absence dans toutes les surfaces éligibles qualifiées de la population préalable uniquement.',
+        'incoming_details': 'Population, hypothèses et diagnostics conservés',
+        'incoming_read': 'Sources examinées',
+        'essential_state_identity': 'États et scénarios déclarés par le fournisseur ; interactions non authentifiées.',
+        'essential_binding': 'Portée : association aux octets HTTP fournis ; acquisition réelle non authentifiée.',
+        'essential_repeated': 'Snapshots identiques pour plusieurs états déclarés',
+        'essential_scripts_enabled': 'Hypothèse scripts activés',
+        'essential_scripts_disabled': 'Hypothèse scripts désactivés',
+        'essential_source': 'Source fournie',
+        'essential_rendered': 'États rendus déclarés',
+        'essential_found': 'Destinations présentes',
+        'essential_missing': 'Destinations non relevées',
+        'essential_state': 'Stade ou état',
+        'essential_empty': 'Aucune',
+        'essential_details': 'Diagnostic complet conservé',
+        'essential_links_note': 'TS17 : stratégie source et états déclarés par le fournisseur ; aucune interaction, acquisition réelle ou découverte Google authentifiée.',
+        'essential_links_values': 'Liens essentiels — stades séparés',
+        'sitemap_files_note': 'TS15 : fichiers fournis dans une population déclarée ; racines non découvertes, aucun constat du serveur ni exhaustivité du site. Structure minimale seulement, pas validation XSD complète.',
+        'sitemap_files_values': 'Population de fichiers fournis',
+        'sitemap_roots_note': 'Racines déclarées ; leur découverte et l’exhaustivité du site ne sont pas établies.',
+        'sitemap_population_count': 'Fichiers dans la population déclarée',
+        'sitemap_roots': 'Racines déclarées',
+        'sitemap_bytes': 'Octets décompressés lus',
+        'sitemap_entries': 'Entrées comptées',
+        'sitemap_measurement': 'Précision du nombre d’octets',
+        'sitemap_exact': 'Exact',
+        'sitemap_lower_bound': 'Borne inférieure',
+        'sitemap_attribution': 'Attribution du format',
+        'sitemap_count_unknown': 'Non établi',
+        'sitemap_unattributed': 'Taille observée ; format sitemap non établi. Aucune violation de limite conclue.',
+        'sitemap_observed': 'Date déclarée du fichier',
+        'sitemap_complete': 'Lecture XML complète',
+        'sitemap_yes': 'Oui',
+        'sitemap_unknown': 'Non établie',
+
+        'validation_note': 'TS33 : captures de page liées et instantané indexé séparé ; noms Schema.org seulement, erreurs conservées, aucune éligibilité actuelle ni apparition garantie.',
+        'validation_values': 'Couches de validation retenues',
+        'identity_note':'TS32 : identifiants, références et doublons qualifiés sur les exports fournis. Aucune stabilité temporelle, source ou identité authentifiée.',
+        'identity_values':'Identifiants et références du corpus déclaré',
+        'structured_note':'TS31 : JSON-LD recalculé et revues liées au contenu fourni. Aucune visibilité ou vérité authentifiée, validation Schema.org ou garantie de résultat enrichi.',
+        'structured_values':'Lectures JSON-LD et qualifications du contenu',
+        'monitoring_note':'TS36 : suivi documentaire baseline/J+1/J+7/J+30. Échéance future = indéterminé ; aucune causalité, visite Google authentifiée ou indexation déduite.',
+        'monitoring_pending':'Échéance future', 'monitoring_title':'Observations par échéance',
+        'monitoring_requests':'GET filtrés', 'monitoring_errors':'Réponses 5xx',
+        'comparison_note': 'TS12 : dossier de comparaison HTTP/HTML et états DOM prévus. Égalité littérale ≠ équivalence d’URL ; ni canonical correcte, ni TS10, ni indexation déduits.',
+        'comparison_values': 'Comparaisons attribuées et revue fournie',
+        'table_scroll': 'Tableau défilable horizontalement',
+        'comparison_surface': 'Surface', 'comparison_state': 'État de lecture',
+        'comparison_present': 'Valeur(s) présente(s)', 'comparison_absent': 'Absence qualifiée',
+        'comparison_dates': 'Dates distinctes : acquisition API / capture technique',
+        'inspection_note': 'TS08 : dossier de la sélection, pas un état live ni une garantie d’indexation. Verdict Google, observations et décisions TSEP restent distincts.',
+        'inspection_values': 'Lectures de l’API et qualification fournie',
         'delivery_note': 'TS39 compare les cellules déclarées à leur politique. Les variations légitimes restent distinctes des défauts. Revues et traces fournies ; aucune visite réelle Googlebot ou couverture de tous les POP déduite.',
         'delivery_values': 'Signaux et attribution par cellule',
         'delivery_native': 'Résultats des tests natifs conservés',
@@ -101,6 +225,129 @@ TEXT = {
         'NO_GO': 'Une cause bloquante demeure', 'INCOMPLETE': 'Évaluation incomplète', 'REVIEW': 'Décision à examiner',
     },
     'en': {
+        'presence_title': 'TS25 — critical presence by stage',
+        'presence_note': 'Prior declared scope; exclusions and unknowns retained. Supplied reviews, unauthenticated authors. No inferred execution, CSS visibility, semantic validity or indexing.',
+        'presence_scope': 'Population and five role dispositions',
+        'presence_items': 'Items and prior policies',
+        'presence_source': 'Static source hypotheses',
+        'presence_render': 'Supplied rendered states',
+        'presence_reviews': 'Original supplied review and context',
+        'presence_details': 'Complete diagnostics and limitations',
+        'xdefault_title': 'x-default — supplied documentary role',
+        'xdefault_note': 'TS24: motivated supplied context and bound review, unauthenticated author. HTTP200 does not detect error templates/soft404s. No inferred neutrality, representative audience, Google visit or indexing.',
+        'xdefault_policy': 'Prior role policy',
+        'xdefault_context': 'Request-context rationale',
+        'xdefault_destination': 'Destination and captured response',
+        'xdefault_pages': 'Annotations in the supplied group',
+        'xdefault_reviews': 'Original supplied reviews — unauthenticated judgment',
+        'xdefault_contested': 'Reviews contested without replacement: most-recent does not win; supplied defect remains below.',
+        'xdefault_native': 'TS23 observations retained separately, without importing their verdict as a role judgment',
+        'xdefault_details': 'Complete evidence, context and limitations',
+
+        'hreflang_mode_http': 'Prior-channel mismatch: the complete set is present in the secondary HTTP Link headers. This is not universal absence of hreflang.',
+        'hreflang_mode_html': 'Prior-channel mismatch: the complete set is present in both secondary HTML hypotheses. This is not universal absence of hreflang.',
+        'hreflang_note': 'TS23: reciprocity within the prior group and channels. No language-code, translation, indexability, canonical, x-default role or Google selection judgment. Supplied evidence is unauthenticated.',
+        'hreflang_title': 'Hreflang — supplied group',
+        'hreflang_primary': 'Prior primary channel',
+        'hreflang_channel': 'Observed channel',
+        'hreflang_html': 'Source HTML',
+        'hreflang_http': 'HTTP Link headers',
+        'hreflang_complete': 'Complete expected set in this channel',
+        'hreflang_incomplete': 'Expected set not established in this channel',
+        'hreflang_secondary': 'A secondary channel neither completes nor replaces the primary channel.',
+        'hreflang_missing': 'Missing expected mappings',
+        'hreflang_failure': 'Contradictions with the prior plan',
+        'hreflang_unknown': 'Unknowns and limitations',
+        'hreflang_details': 'Bound originals and detailed measurements',
+        'hreflang_hypotheses': 'Static hypotheses and annotations',
+        'hreflang_outside': 'Outside-scope mappings',
+        'graph_note': 'TS18: supplied inventories, graph and reviews within a bounded population. No inferred completeness, site-wide orphan, universal SEO depth, authenticated reviewer or acquisition. HTTP200 does not verify expected content or soft404s.',
+        'graph_title': 'Supplied graph reconciliation',
+        'graph_inventory': 'Supplied inventories and dates',
+        'graph_dates': 'Original date',
+        'graph_production': 'Declared production',
+        'graph_membership': 'Reconciled supplied membership',
+        'graph_outside': 'Outside population, unevaluated',
+        'graph_depth': 'Distance from roots',
+        'graph_incoming': 'Distinct incoming sources, excluding self-links',
+        'graph_no_route': 'No established path; links remain possible',
+        'graph_unreachable': 'Unreachable within the bounded graph only',
+        'graph_interval': 'Interval',
+        'graph_exact': 'Exact within supplied graph',
+        'graph_orphan': 'No-incoming candidate within population; not a site-wide orphan',
+        'graph_root': 'Declared root',
+        'graph_review': 'Supplied documentary qualification',
+        'graph_reviewer': 'Declared reviewer, unauthenticated',
+        'graph_rationale': 'Supplied rationale, not adjudicated by the reader',
+        'graph_binding': 'Expected binding fingerprint',
+        'graph_details': 'Detailed measurements and limits',
+        'graph_qualified': 'Qualified original within this profile',
+        'graph_unknown': 'Unknown or unqualified',
+        'graph_subject': 'Native-derived review subject',
+        'graph_bound': 'Lower and upper bounds',
+        'incoming_note': 'TS16: prior supplied population only; no site completeness, authenticated importance, observed interaction or indexing. Bounded absence does not establish a site-wide orphan. Expected source content is not verified: an HTTP200 error template may supply a navigation witness; soft404s are not detected.',
+        'incoming_title': 'Incoming links — per-destination results',
+        'incoming_original': 'Destination original',
+        'incoming_missing_original': 'Destination original or identity unqualified; also check the plan.',
+        'incoming_status': 'Retained terminal HTTP status',
+        'incoming_final': 'Archived final URL',
+        'incoming_witnesses': 'Qualified witnesses within the declared population',
+        'incoming_source': 'Source document',
+        'incoming_surface': 'Supplied surface',
+        'incoming_href': 'Raw href',
+        'incoming_anchor': 'Native anchor reference',
+        'incoming_absence': 'Absence across every qualified eligible surface of the prior population only.',
+        'incoming_details': 'Retained population, hypotheses and diagnostics',
+        'incoming_read': 'Examined sources',
+        'essential_state_identity': 'Provider-declared states and scenarios; interactions are unauthenticated.',
+        'essential_binding': 'Scope: supplied HTTP-byte association; actual acquisition is unauthenticated.',
+        'essential_repeated': 'Identical snapshots across declared states',
+        'essential_scripts_enabled': 'Scripting-enabled hypothesis',
+        'essential_scripts_disabled': 'Scripting-disabled hypothesis',
+        'essential_source': 'Supplied source',
+        'essential_rendered': 'Declared rendered states',
+        'essential_found': 'Destinations present',
+        'essential_missing': 'Destinations not found in this reading',
+        'essential_state': 'Stage or state',
+        'essential_empty': 'None',
+        'essential_details': 'Retained full diagnostic',
+        'essential_links_note': 'TS17: source strategy and provider-declared states; no authenticated interaction, actual acquisition or Google discovery.',
+        'essential_links_values': 'Essential links — separate stages',
+        'sitemap_files_note': 'TS15: supplied files in a declared population; undiscovered roots, no server observation or site completeness. Minimal structure only, not full XSD validation.',
+        'sitemap_files_values': 'Supplied file population',
+        'sitemap_roots_note': 'Declared roots; their discovery and site completeness are not established.',
+        'sitemap_population_count': 'Files in the declared population',
+        'sitemap_roots': 'Declared roots',
+        'sitemap_bytes': 'Decoded bytes read',
+        'sitemap_entries': 'Entries counted',
+        'sitemap_measurement': 'Byte measurement precision',
+        'sitemap_exact': 'Exact',
+        'sitemap_lower_bound': 'Lower bound',
+        'sitemap_attribution': 'Format attribution',
+        'sitemap_count_unknown': 'Not established',
+        'sitemap_unattributed': 'Observed size; sitemap format not established. No limit violation concluded.',
+        'sitemap_observed': 'Declared file date',
+        'sitemap_complete': 'Complete XML reading',
+        'sitemap_yes': 'Yes',
+        'sitemap_unknown': 'Not established',
+
+        'validation_note': 'TS33: bound page captures and separate indexed snapshot; Schema.org names only, errors retained, no guaranteed current eligibility or display.',
+        'validation_values': 'Retained validation layers',
+        'identity_note':'TS32: IDs, references and duplicates qualified in supplied exports. No temporal stability, authenticated source or identity.',
+        'identity_values':'Identifiers and references in the declared corpus',
+        'structured_note':'TS31: recomputed JSON-LD and reviews bound to supplied content. No authenticated visibility or truth, Schema.org validation or rich-result guarantee.',
+        'structured_values':'JSON-LD readings and content qualifications',
+        'monitoring_note':'TS36: documentary baseline/D+1/D+7/D+30 follow-up. Future stage is inconclusive; no causality, authenticated Google visit or indexing inferred.',
+        'monitoring_pending':'Future stage', 'monitoring_title':'Observations by stage',
+        'monitoring_requests':'Filtered GETs', 'monitoring_errors':'5xx responses',
+        'comparison_note': 'TS12: comparison dossier for HTTP/HTML and planned DOM states. Literal equality is not URL equivalence; no correct canonical, TS10 or indexing inferred.',
+        'comparison_values': 'Attributed comparisons and supplied review',
+        'table_scroll': 'Horizontally scrollable table',
+        'comparison_surface': 'Surface', 'comparison_state': 'Reading state',
+        'comparison_present': 'Present value(s)', 'comparison_absent': 'Qualified absence',
+        'comparison_dates': 'Separate dates: API retrieval / technical capture',
+        'inspection_note': 'TS08: selected-set documentation, not live state or guaranteed indexing. Google verdict, observations and TSEP decisions remain distinct.',
+        'inspection_values': 'API readings and supplied qualification',
         'delivery_note': 'TS39 compares declared cells against policy. Legitimate variation remains distinct from defects. Supplied reviews and traces; no actual Googlebot visit or whole-POP coverage inferred.',
         'delivery_values': 'Signals and attribution per cell',
         'delivery_native': 'Retained native test results',
@@ -409,6 +656,350 @@ def release_values(atom, words):
     return out+'<details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(reason)+'</pre></details>'
 
 
+def monitoring_values(atom, words):
+    prefix='Release monitoring evidence / preuves de suivi: '
+    reason=atom.get('reason','')
+    if not reason.startswith(prefix):return ''
+    try:
+        note=json.loads(reason[len(prefix):])
+        if not isinstance(note,dict):return ''
+    except (ValueError,TypeError):return ''
+    out='<h5>'+esc(words['monitoring_title'])+'</h5>'
+    for stage in note.get('stages',[]):
+        out+='<h6>'+esc(stage.get('id',''))+'</h6>'
+        if stage.get('pending'):out+='<p class="notice">'+esc(words['monitoring_pending'])+'</p>'
+        if stage.get('window_utc'):out+='<p>'+esc(pretty(stage['window_utc']))+'</p>'
+        api=stage.get('api',{});logs=stage.get('logs',{});totals=logs.get('values',{})
+        out+='<div class="table-wrap"><table><thead><tr><th scope="col">URL</th><th scope="col">Google (API)</th><th scope="col">'+esc(words['monitoring_requests'])+'</th><th scope="col">'+esc(words['monitoring_errors'])+'</th></tr></thead><tbody>'
+        for url in sorted(set(api)|set(totals)):
+            row=api.get(url,{});count=totals.get(url,{})
+            out+='<tr><th scope="row">'+esc(url)+'</th><td>'+esc(row.get('value',words['unknown']))+'</td><td>'+esc(count.get('requests',words['unknown']))+'</td><td>'+esc(count.get('server_errors',words['unknown']))+'</td></tr>'
+        out+='</tbody></table></div>'
+        if logs.get('reason'):out+='<p>'+esc(logs['reason'])+'</p>'
+        out+='<details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(stage))+'</pre></details>'
+    if note.get('comparisons'):out+='<details><summary>'+esc(words['comparison'])+'</summary><pre>'+esc(pretty(note['comparisons']))+'</pre></details>'
+    out+='<div class="table-wrap"><table><thead><tr>'+''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('release_subject','result','reason'))+'</tr></thead><tbody>'
+    for row in note.get('rows',[]):out+='<tr><th scope="row">'+esc(row.get('subject',''))+'</th><td>'+esc(words.get(row.get('outcome'),words['unknown']))+'</td><td>'+esc(row.get('reason',''))+'</td></tr>'
+    return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
+
+
+def comparison_values(atom, words):
+    prefix = 'Canonical comparison evidence / preuves de comparaison: '
+    reason = atom.get('reason', '')
+    if not reason.startswith(prefix): return ''
+    try:
+        note = json.loads(reason[len(prefix):])
+        if not isinstance(note, dict): return ''
+    except (ValueError, TypeError): return ''
+    out = ''
+    for member in note.get('members', []):
+        out += '<p><strong>'+esc(member.get('url',''))+'</strong></p><p>'+esc(words['comparison_dates'])+': '
+        out += esc(member.get('retrieved_at', words['not_supplied']))+' / '+esc(member.get('observed_at',words['not_supplied']))+'</p>'
+        out += '<div class="table-wrap"><table><caption>'+esc(words['comparison_values'])+'</caption><thead><tr>'
+        out += ''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('comparison_surface','comparison_state','metric_value'))+'</tr></thead><tbody>'
+        for name, fact in member.get('facts',{}).items():
+            state = fact.get('state','unknown')
+            label = words.get('comparison_'+state, words['unknown'])
+            out += '<tr><th scope="row">'+esc(name)+'</th><td>'+esc(label)+'</td><td>'+esc(pretty(fact.get('values',[])))
+            if fact.get('reason'): out += '<p>'+esc(fact['reason'])+'</p>'
+            out += '</td></tr>'
+        out += '</tbody></table></div>'
+        if member.get('comparisons'):
+            out += '<details><summary>'+esc(words['comparison'])+'</summary><pre>'+esc(pretty(member['comparisons']))+'</pre></details>'
+        if member.get('supplied_review'):
+            out += '<details><summary>'+esc(words['comparison_values'])+'</summary><pre>'+esc(pretty(member['supplied_review']))+'</pre></details>'
+    out += '<div class="table-wrap"><table><thead><tr>'
+    out += ''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('release_subject','result','reason'))+'</tr></thead><tbody>'
+    for row in note.get('rows',[]):
+        out += '<tr><th scope="row">'+esc(row.get('subject',''))+'</th><td>'+esc(words.get(row.get('outcome'),words['unknown']))+'</td><td>'+esc(row.get('reason',''))+'</td></tr>'
+    return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
+
+
+def presence_values(atom, words):
+    prefix='Supplied critical presence / présence critique fournie: '
+    reason=atom.get('reason','')
+    if not reason.startswith(prefix): return ''
+    try:
+        note=json.loads(reason[len(prefix):])
+        def dump(value): return esc(json.dumps(value,ensure_ascii=False,indent=2))
+        out='<div class="presence-values"><h5>'+esc(words['presence_title'])+'</h5>'
+        out+='<p>'+esc(note.get('population','—'))+'</p><p>'+esc(note.get('scope_reason','—'))+'</p>'
+        out+='<details><summary>'+esc(words['presence_scope'])+'</summary><pre>'+dump(note.get('declared_roles'))+'</pre></details>'
+        if 'scope_review' in note:
+            out+='<details><summary>'+esc(words['presence_reviews'])+'</summary><pre>'+dump(note['scope_review'])+'</pre></details>'
+        out+='<h6>'+esc(words['presence_items'])+'</h6>'
+        for row in note.get('items',[]):
+            out+='<details class="presence-item"><summary>'+esc(str(row.get('item_id','—'))+' · '+str(row.get('role','—'))+' · '+str(row.get('policy','—'))+' · '+str(row.get('value','unknown')))+'</summary>'
+            out+='<p>'+esc(str(row.get('expected','—')))+'</p>'
+            out+='<details><summary>'+esc(words['presence_source'])+'</summary><pre>'+dump(row.get('source'))+'</pre></details>'
+            out+='<details><summary>'+esc(words['presence_render'])+'</summary><pre>'+dump(row.get('rendered'))+'</pre></details></details>'
+        return out+'<details><summary>'+esc(words['presence_details'])+'</summary><pre>'+dump(note)+'</pre></details></div>'
+    except (ValueError,TypeError,KeyError):return ''
+
+
+def xdefault_values(atom, words):
+    """Display retained documentary judgments; never create or reevaluate reviews."""
+    prefix='Supplied x-default / x-default fourni: '
+    reason=atom.get('reason','')
+    if not reason.startswith(prefix):return '<p class="reason">'+esc(reason)+'</p>'
+    try:
+        note=json.loads(reason[len(prefix):]);layer=note['measurement']
+        out='<div class="xdefault-values"><h5>'+esc(words['xdefault_title'])+'</h5>'
+        policy=layer.get('policy',{})
+        out+='<dl>'+item(words['xdefault_context'],policy.get('context_reason','—'))+'</dl>'
+        for key,label in [('failures','hreflang_failure'),('unknowns','hreflang_unknown')]:
+            if layer.get(key):out+='<dl>'+item(words[label],pretty(layer[key]))+'</dl>'
+        if layer.get('reason'):out+='<p class="reason">'+esc(layer['reason'])+'</p>'
+        out+='<details><summary>'+esc(words['xdefault_policy'])+'</summary><pre>'+esc(pretty(policy))+'</pre></details>'
+        out+='<details><summary>'+esc(words['xdefault_destination'])+'</summary><pre>'+esc(pretty(layer.get('destination',{})))+'</pre></details>'
+        out+='<h6>'+esc(words['xdefault_pages'])+'</h6>'
+        for row in layer.get('pages',[]):
+            out+='<details><summary>'+esc(row.get('url','—'))+'</summary><dl>'
+            primary=words['hreflang_html'] if row.get('primary')=='html' else words['hreflang_http']
+            out+=item(words['hreflang_primary'],primary)
+            for key,label in [('xdefault_targets','xdefault_destination'),('failures','hreflang_failure'),('unknowns','hreflang_unknown')]:
+                if row.get(key):out+=item(words[label],pretty(row[key]))
+            out+='</dl><pre>'+esc(pretty(row))+'</pre></details>'
+        review=layer.get('review',{});supplied=review.get('supplied')
+        out+='<h6>'+esc(words['xdefault_reviews'])+'</h6>'
+        if isinstance(supplied,list) and len(supplied)>1:out+='<p class="notice">'+esc(words['xdefault_contested'])+'</p>'
+        if review.get('reason'):out+='<p class="reason">'+esc(review['reason'])+'</p>'
+        out+='<details><summary>'+esc(words['xdefault_reviews'])+'</summary><pre>'+esc(pretty(supplied))+'</pre></details>'
+        out+='<details><summary>'+esc(words['xdefault_native'])+'</summary><pre>'+esc(pretty(layer.get('native_hreflang',{})))+'</pre></details>'
+        return out+'<details><summary>'+esc(words['xdefault_details'])+'</summary><pre>'+esc(pretty(note))+'</pre></details></div>'
+    except (ValueError,KeyError,TypeError,AttributeError):return '<p class="reason">'+esc(reason)+'</p>'
+
+
+def hreflang_values(atom, words):
+    """Present retained interpretations without reevaluating native evidence."""
+    prefix = 'Supplied hreflang / hreflang fourni: '
+    reason = atom.get('reason', '')
+    if not reason.startswith(prefix):
+        return '<p class="reason">'+esc(reason)+'</p>'
+    try:
+        note = json.loads(reason[len(prefix):])
+        layer = note['measurement']
+        out = '<div class="hreflang-values"><h5>'+esc(words['hreflang_title'])+'</h5>'
+        out += '<p>'+esc(words['hreflang_secondary'])+'</p>'
+        if layer.get('reason'):
+            out += '<p class="reason">'+esc(layer['reason'])+'</p>'
+        if layer.get('unknowns'):
+            out += '<dl>'+item(words['hreflang_unknown'],pretty(layer['unknowns']))+'</dl>'
+        for row in layer.get('pages', []):
+            out += '<section class="notice"><strong>'+esc(row['url'])+'</strong> '+badge(row['outcome'],words)
+            primary = words['hreflang_html'] if row['primary']=='html' else words['hreflang_http']
+            out += '<dl>'+item(words['hreflang_primary'],primary)+'</dl>'
+            if row.get('reason'):out += '<p class="reason">'+esc(row['reason'])+'</p>'
+            channels=row.get('channels',{})
+            hd=[h.get('decision',{}).get('complete_expected_set') is True for h in channels.get('html',{}).get('hypotheses',{}).values()]
+            td=channels.get('http-link',{}).get('decision',{}).get('complete_expected_set') is True
+            if row['primary']=='html' and td and not (len(hd)==2 and all(hd)):
+                out += '<p class="notice">'+esc(words['hreflang_mode_http'])+'</p>'
+            if row['primary']=='http-link' and not td and len(hd)==2 and all(hd):
+                out += '<p class="notice">'+esc(words['hreflang_mode_html'])+'</p>'
+            for name, channel in channels.items():
+                title = words['hreflang_html'] if name=='html' else words['hreflang_http']
+                out += '<details class="hreflang-channel"><summary>'+esc(title)+'</summary>'
+                readings = channel.get('hypotheses',{}) if name=='html' else {'http':channel}
+                if channel.get('unknowns'):
+                    out += '<dl>'+item(words['hreflang_unknown'],pretty(channel['unknowns']))+'</dl>'
+                for mode, reading in readings.items():
+                    decision=reading.get('decision',{})
+                    out += '<h6>'+esc(mode)+'</h6><p>'+esc(words['hreflang_complete'] if decision.get('complete_expected_set') is True else words['hreflang_incomplete'])+'</p>'
+                    out += '<dl>'
+                    for key,label in [('missing','hreflang_missing'),('failures','hreflang_failure'),('unknowns','hreflang_unknown'),('outside','hreflang_outside')]:
+                        if decision.get(key):out += item(words[label],pretty(decision[key]))
+                    out += '</dl>'
+                out += '<details><summary>'+esc(words['hreflang_hypotheses'])+'</summary><pre>'+esc(pretty(channel))+'</pre></details></details>'
+            out += '</section>'
+        return out+'<details><summary>'+esc(words['hreflang_details'])+'</summary><pre>'+esc(pretty(note))+'</pre></details></div>'
+    except (ValueError,KeyError,TypeError,AttributeError):
+        return '<p class="reason">'+esc(reason)+'</p>'
+
+
+def graph_values(atom, words):
+    reason=atom.get('reason','');prefix='Supplied graph / graphe fourni: '
+    if not reason.startswith(prefix):return '<p class="reason">'+esc(reason)+'</p>'
+    try:
+        note=json.loads(reason[len(prefix):]);layer=note['measurement'];rule=note['rule']
+        out='<div class="graph-values"><h5>'+esc(words['graph_title'])+'</h5>'
+        if layer.get('reason'):out+='<p class="reason">'+esc(layer['reason'])+'</p>'
+        if rule=='TS18-A01':
+            out+='<h6>'+esc(words['graph_inventory'])+'</h6>'
+            for role,record in layer.get('inventories',{}).items():
+                out+='<div class="notice"><strong>'+esc(role)+'</strong><p>'+esc(words['graph_qualified'] if record.get('qualified') else words['graph_unknown'])+'</p><dl>'
+                out+=item(words['graph_dates'],record.get('observed_at'))+item(words['graph_production'],pretty(record.get('production')))+'</dl>'
+                outside=record.get('outside_population',[])
+                if not isinstance(outside,list):raise ValueError('Outside population list required')
+                if outside:
+                    out+='<details class="graph-outside"><summary>'+esc(words['graph_outside'])+' ('+str(len(outside))+')</summary><ul>'+''.join('<li>'+esc(u)+'</li>' for u in outside)+'</ul></details>'
+                else:out+='<p>'+esc(words['graph_outside'])+' · 0</p>'
+                out+='</div>'
+            for row in layer.get('rows',[]):out+='<div><strong>'+esc(row['url'])+'</strong><dl>'+item(words['graph_membership'],pretty(row['membership']))+'</dl></div>'
+        elif rule=='TS18-A02':
+            graph=layer.get('measurement',{}).get('graph',{})
+            for row in graph.get('nodes',[]):
+                out+='<div class="notice"><strong>'+esc(row['node'])+'</strong><dl>'
+                state=row['depth_state'];label={'exact':'graph_exact','interval':'graph_interval','no_proven_route':'graph_no_route','unreachable':'graph_unreachable'}[state]
+                out+=item(words['graph_depth'],words[label])
+                out+=item(words['graph_bound'],(str(row['lower']) if row['lower'] is not None else words['graph_unknown'])+' – '+(str(row['upper']) if row['upper'] is not None else words['graph_unknown']))
+                out+=item(words['graph_incoming'],str(row['incoming_lower'])+' – '+str(row['incoming_upper']))+'</dl>'
+                if row.get('root'):out+='<p>'+esc(words['graph_root'])+'</p>'
+                if row.get('bounded_orphan_candidate'):out+='<p>'+esc(words['graph_orphan'])+'</p>'
+                out+='</div>'
+        elif rule=='TS18-A03':
+            out+='<h6>'+esc(words['graph_review'])+'</h6>'
+            for row in layer.get('subjects',[]):
+                out+='<div class="notice"><strong>'+esc(row['subject'])+'</strong><p>'+esc(words.get(row.get('outcome'),words['graph_unknown']))+'</p><dl>'
+                out+=item(words['graph_reviewer'],row.get('reviewer'))+item(words['graph_rationale'],row.get('rationale'))+item(words['graph_binding'],row.get('expected_binding_sha256'))+'</dl>'
+                if row.get('reason'):out+='<p class="reason">'+esc(row['reason'])+'</p>'
+                out+='</div>'
+        return out+'<details><summary>'+esc(words['graph_details'])+'</summary><pre>'+esc(pretty(note))+'</pre></details></div>'
+    except (ValueError,KeyError,TypeError,AttributeError):return '<p class="reason">'+esc(reason)+'</p>'
+
+
+def incoming_links_values(atom, words):
+    """Present retained native diagnostics; never reinterpret supplied captures."""
+    prefix = 'Supplied incoming links / liens entrants fournis: '
+    reason = atom.get('reason', '')
+    if not reason.startswith(prefix): return ''
+    try:
+        note = json.loads(reason[len(prefix):])
+        rows, sources = note.get('destinations', []), note.get('sources', [])
+        if not isinstance(rows, list) or not isinstance(sources, list): raise ValueError('rows')
+        out = '<div class="incoming-links-values"><h5>'+esc(words['incoming_title'])+'</h5>'
+        out += '<p>'+esc(words['incoming_read'])+' · '+str(len(sources))+'</p>'
+        if note.get('reason'): out += '<p class="reason">'+esc(note['reason'])+'</p>'
+        for row in rows:
+            if not isinstance(row, dict): raise ValueError('destination')
+            original = row.get('original', {})
+            if not isinstance(original, dict): raise ValueError('original')
+            out += '<div class="notice"><strong>'+esc(row.get('url', ''))+'</strong><p>'+esc(words.get(row.get('outcome'), words['unknown']))+'</p>'
+            if row.get('bounded_absence'): out += '<p>'+esc(words['incoming_absence'])+'</p>'
+            if original.get('qualified') is True:
+                out += '<dl>'+item(words['incoming_status'], original.get('status'))+item(words['incoming_final'], original.get('final_url'))+'</dl>'
+            else:
+                out += '<p><strong>'+esc(words['incoming_missing_original'])+'</strong></p>'
+                if original.get('reason'): out += '<p class="reason">'+esc(original['reason'])+'</p>'
+            witnesses = row.get('witnesses', [])
+            if not isinstance(witnesses, list): raise ValueError('witnesses')
+            if witnesses: out += '<p><strong>'+esc(words['incoming_witnesses'])+'</strong></p>'
+            for witness in witnesses:
+                if not isinstance(witness, dict): raise ValueError('witness')
+                out += '<dl>'+item(words['incoming_source'], witness.get('source_final_url', witness.get('source_url')))+item(words['incoming_surface'], witness.get('surface'))+item(words['incoming_href'], witness.get('raw_href'))+item(words['incoming_anchor'], pretty(witness.get('anchor_reference')))+'</dl>'
+            out += '</div>'
+        return out+'<details><summary>'+esc(words['incoming_details'])+'</summary><pre>'+esc(pretty(note))+'</pre></details></div>'
+    except (ValueError, KeyError, TypeError, AttributeError):
+        return '<p class="reason">'+esc(reason)+'</p>'
+
+
+def essential_links_values(atom, words):
+    prefix='Supplied essential links / liens essentiels fournis: '
+    reason=atom.get('reason','')
+    if not reason.startswith(prefix):return ''
+    try:
+        note=json.loads(reason[len(prefix):]);stage=note['rule_stage'];value=note[stage]
+        rows=[dict(id=key,**v) for key,v in value.get('hypotheses',{}).items()] if stage=='source' else value.get('rows',[])
+        out='<div class="notice"><strong>'+esc(words['essential_source' if stage=='source' else 'essential_rendered'])+'</strong><p>'+esc(words['essential_state_identity'])+'</p><p>'+esc(words['essential_binding'])+'</p>'
+        if value.get('reason'):out+='<p>'+esc(value['reason'])+'</p>'
+        out+='</div>'
+        for row in rows:
+            out+='<div class="notice"><strong>'+esc(words['essential_state'])+' · '+esc(words.get('essential_scripts_'+str(row.get('id')),row.get('id','')) if stage=='source' else row.get('id',''))+'</strong><p>'+esc(words.get(row.get('outcome'),words['unknown']))+'</p>'
+            if row.get('reason'):out+='<p>'+esc(row['reason'])+'</p>'
+            for key,label in [('found','essential_found'),('missing','essential_missing')]:
+                if key in row:out+='<p><strong>'+esc(words[label])+'</strong><br>'+('<br>'.join(esc(x) for x in row[key]) or esc(words['essential_empty']))+'</p>'
+            for message in row.get('unknowns',[]):out+='<p>'+esc(message)+'</p>'
+            out+='</div>'
+        for group in note.get('repeated_snapshots',[]):out+='<div class="notice"><strong>'+esc(words['essential_repeated'])+'</strong><p>'+esc(', '.join(str(x) for x in group['state_ids']))+'</p><code>'+esc(group['snapshot_sha256'])+'</code></div>'
+        return '<div class="essential-links-values">'+out+'<details><summary>'+esc(words['essential_details'])+'</summary><pre>'+esc(pretty(note))+'</pre></details></div>'
+    except (ValueError,KeyError,TypeError,AttributeError):return ''
+
+
+def sitemap_files_values(atom, words):
+    prefix = 'Supplied sitemap files / fichiers sitemap fournis: '
+    rendered = structured_values(atom, dict(words, structured_values=words['sitemap_files_values']), prefix=prefix)
+    try:
+        note = json.loads(atom.get('reason', '')[len(prefix):])
+        summary = '<div class="notice"><strong>' + esc(words['sitemap_files_values']) + '</strong>'
+        summary += '<p>' + esc(words['sitemap_roots_note']) + '</p><dl>'
+        summary += '<dt>' + esc(words['sitemap_population_count']) + '</dt><dd>' + esc(note.get('declared_document_count', '—')) + '</dd>'
+        summary += '<dt>' + esc(words['sitemap_roots']) + '</dt><dd>' + '<br>'.join(esc(u) for u in note.get('declared_roots', [])) + '</dd></dl></div>'
+        for url, file in note.get('files', {}).items():
+            measurement = {'exact': words['sitemap_exact'], 'lower-bound': words['sitemap_lower_bound']}.get(file.get('byte_measurement'), words['sitemap_unknown'])
+            byte_value = file.get('decoded_bytes_read', '—')
+            if file.get('byte_measurement') == 'lower-bound':
+                byte_value = '≥ ' + str(byte_value)
+            values = [('sitemap_bytes', byte_value),
+                      ('sitemap_measurement', measurement), ('sitemap_entries', file.get('count') if file.get('count') is not None else words['sitemap_count_unknown']),
+                      ('sitemap_observed', file.get('declared_observed_at', '—')),
+                      ('sitemap_complete', words['sitemap_yes'] if file.get('xml_complete') is True else words['sitemap_unknown'])]
+            summary += '<div class="notice"><strong>' + esc(url) + '</strong><dl>'
+            if 'sitemaps-prefix-not-attributed' in file.get('reasons', []):
+                summary += '<dt>' + esc(words['sitemap_attribution']) + '</dt><dd>' + esc(words['sitemap_unattributed']) + '</dd>'
+            summary += ''.join('<dt>' + esc(words[label]) + '</dt><dd>' + esc(value) + '</dd>' for label, value in values)
+            summary += '</dl></div>'
+        rendered = summary + rendered
+    except (ValueError, TypeError, AttributeError):
+        pass
+    return '<div class="sitemap-files-values">' + rendered.replace('<div class="table-wrap">', '<div class="table-wrap validation-table" tabindex="0" role="region" aria-label="' + esc(words['sitemap_files_values']) + '">', 1) + '</div>'
+
+def validation_values(atom, words):
+    rendered = structured_values(atom, dict(words, structured_values=words['validation_values']),
+        prefix='Structured validation evidence / preuves des couches de validation: ')
+    try:
+        reason = atom.get('reason', '')
+        note = json.loads(reason[len('Structured validation evidence / preuves des couches de validation: '):])
+        snapshot = note.get('indexed_snapshot')
+        if isinstance(snapshot, dict):
+            dates = {
+                'HTTP capture / capture HTTP': snapshot.get('page_http_received_at'),
+                'Supplied DOM / DOM fourni': snapshot.get('page_dom_observed_at'),
+                'Indexed last crawl / exploration indexée': snapshot.get('last_crawl_time'),
+                'API retrieval / réception API': snapshot.get('retrieved_at'),
+                'Cross-snapshot correspondence / correspondance entre instantanés': snapshot.get('correspondence'),
+            }
+            rendered = '<div class="notice"><strong>Separate snapshots / instantanés séparés</strong><pre>' + esc(pretty(dates)) + '</pre></div>' + rendered
+    except (ValueError, TypeError, KeyError):
+        pass
+    return rendered.replace('<div class="table-wrap">', '<div class="table-wrap validation-table" tabindex="0" role="region" aria-label="' + esc(words['validation_values']) + '">', 1)
+
+
+def identity_values(atom, words):
+    return structured_values(atom,dict(words,structured_values=words['identity_values']),
+        prefix='Structured identity evidence / preuves des identités JSON-LD: ')
+
+
+def structured_values(atom, words, prefix='Structured content evidence / preuves JSON-LD-contenu: '):
+    """Display retained TS31 rows; never execute JSON-LD or review code."""
+    reason = atom.get('reason','')
+    try:
+        if not reason.startswith(prefix): raise ValueError('prefix')
+        note = json.loads(reason[len(prefix):])
+        if not isinstance(note['rows'],list): raise ValueError('rows')
+    except (ValueError,KeyError,TypeError): return '<p class="reason">'+esc(reason)+'</p>'
+    out = '<div class="table-wrap"><table><caption>'+esc(words['structured_values'])+'</caption><thead><tr>'
+    out += ''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('release_subject','result','reason'))+'</tr></thead><tbody>'
+    for row in note['rows']:
+        out += '<tr><th scope="row">'+esc(row.get('subject',''))+'</th><td>'+esc(words.get(row.get('outcome'),words['unknown']))+'</td><td>'+esc(row.get('reason',''))+'</td></tr>'
+    return out+'</tbody></table></div><details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
+
+
+def inspection_values(atom, words):
+    prefix = 'Inspection evidence / preuves d’inspection: '
+    reason = atom.get('reason', '')
+    try:
+        if not reason.startswith(prefix):raise ValueError('prefix')
+        note = json.loads(reason[len(prefix):])
+        if not isinstance(note['rows'], list):raise ValueError('rows')
+    except (ValueError, KeyError, TypeError):return '<p class="reason">'+esc(reason)+'</p>'
+    out = '<div class="table-wrap"><table><caption>'+esc(words['inspection_values'])+'</caption><thead><tr>'
+    out += ''.join('<th scope="col">'+esc(words[k])+'</th>' for k in ('release_subject','result','reason'))+'</tr></thead><tbody>'
+    for row in note['rows']:
+        out += '<tr><th scope="row">'+esc(row.get('subject',''))+'</th><td>'+esc(words.get(row.get('outcome'),words['unknown']))+'</td><td>'+esc(row.get('reason',''))+'</td></tr>'
+    out += '</tbody></table></div><details open><summary>'+esc(words['inspection_values'])+'</summary><pre>'+esc(pretty(note.get('engine_readings',[])))+'</pre></details>'
+    return out+'<details><summary>'+esc(words['agent_raw'])+'</summary><pre>'+esc(pretty(note))+'</pre></details>'
+
+
 def delivery_values(atom, words):
     """Display supplied TS39 diagnostics; never re-run the interpreter."""
     reason=atom.get('reason','');prefix='Delivery evidence / preuves de diffusion: '
@@ -441,6 +1032,34 @@ def results(bundle, controls, words, language):
         out += '<article class="card control"><div class="row"><div><span class="eyebrow">' + esc(cid) + '</span><h3 class="control-title">' + esc(control['title'][language]) + '</h3></div>' + badge(result['status'], words) + '</div>'
         if cid in ('TS34', 'TS35'):
             out += performance_values(result, words)
+        if cid == 'TS36':
+            out += '<div class="notice">' + esc(words['monitoring_note']) + '</div>'
+        if cid == 'TS25':
+            out += '<div class="notice">'+esc(words['presence_note'])+'</div>'
+        if cid == 'TS24':
+            out += '<div class="notice">'+esc(words['xdefault_note'])+'</div>'
+        if cid == 'TS23':
+            out += '<div class="notice">'+esc(words['hreflang_note'])+'</div>'
+        if cid == 'TS18':
+            out += '<div class="notice">'+esc(words['graph_note'])+'</div>'
+        if cid == 'TS16':
+            out += '<div class="notice">' + esc(words['incoming_note']) + '</div>'
+        if cid == 'TS17':
+            out += '<div class="notice">' + esc(words['essential_links_note']) + '</div>'
+        if cid in ('TS13', 'TS14'):
+            out += '<div class="notice">' + esc('Fichiers/pages/historique fournis ; aucune modification réelle ni indexation authentifiée.' if language == 'fr' else 'Supplied files/pages/history; no authenticated actual change or indexing.') + '</div>'
+        if cid == 'TS15':
+            out += '<div class="notice">' + esc(words['sitemap_files_note']) + '</div>'
+        if cid == 'TS33':
+            out += '<div class="notice">' + esc(words['validation_note']) + '</div>'
+        if cid == 'TS32':
+            out += '<div class="notice">' + esc(words['identity_note']) + '</div>'
+        if cid == 'TS31':
+            out += '<div class="notice">' + esc(words['structured_note']) + '</div>'
+        if cid == 'TS12':
+            out += '<div class="notice">' + esc(words['comparison_note']) + '</div>'
+        if cid == 'TS08':
+            out += '<div class="notice">' + esc(words['inspection_note']) + '</div>'
         if cid == 'TS39':
             out += '<div class="notice"><strong>' + esc(words['delivery_note']) + '</strong></div>'
         if cid == 'TS41':
@@ -458,7 +1077,7 @@ def results(bundle, controls, words, language):
             seen.add((atom['rule_id'], atom['target']))
             out += '<div class="rule"><div class="row"><h4><code>' + esc(atom['rule_id']) + '</code> · ' + esc(rule['title'][language]) + '</h4>' + badge(atom['outcome'], words) + '</div>'
             out += '<p class="rule-target">' + esc(atom['target']) + '</p>'
-            out += (delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
+            out += (presence_values(atom, words) if cid == 'TS25' else xdefault_values(atom, words) if cid == 'TS24' else hreflang_values(atom, words) if cid == 'TS23' else graph_values(atom, words) if cid == 'TS18' else incoming_links_values(atom, words) if cid == 'TS16' else essential_links_values(atom, words) if cid == 'TS17' else sitemap_files_values(atom, words) if cid == 'TS15' else validation_values(atom, words) if cid == 'TS33' else identity_values(atom, words) if cid == 'TS32' else structured_values(atom, words) if cid == 'TS31' else monitoring_values(atom, words) if cid == 'TS36' else comparison_values(atom, words) if cid == 'TS12' else inspection_values(atom, words) if cid == 'TS08' else delivery_values(atom, words) if cid == 'TS39' else release_values(atom, words) if cid == 'TS41' else
                     agent_values(atom, words) if cid in ('TS42', 'TS43', 'TS44') else '<p class="reason">' + esc(atom['reason']) + '</p>')
             out += proof_links(atom['evidence_ids'], 'current')
             if atom['rule_id'].startswith('TS01-'):
@@ -540,6 +1159,35 @@ def evidence_view(bundle, words, prefix):
     return out
 
 
+def table_scroll_regions(document, words):
+    """Make existing one-table wrappers keyboard-focusable without replacing table semantics."""
+    pattern = re.compile(r'<div class="(?P<class>table-wrap|table-scroll)">')
+    wrappers = list(pattern.finditer(document))
+    changes = []
+    for index, wrapper in enumerate(wrappers, 1):
+        boundary = wrappers[index].start() if index < len(wrappers) else len(document)
+        table_start = document.find('<table', wrapper.end(), boundary)
+        tsep.require(table_start >= 0, 'Scrollable table wrapper has no table')
+        table_end = document.find('</table>', table_start, boundary)
+        tsep.require(table_end >= 0, 'Scrollable table wrapper has an incomplete table')
+        caption_start = document.find('<caption>', table_start, table_end)
+        region_id = 'tsep-table-region-' + str(index)
+        labelledby = region_id
+        if caption_start >= 0:
+            caption_id = 'tsep-table-caption-' + str(index)
+            changes.append((caption_start, caption_start + len('<caption>'), '<caption id="' + caption_id + '">'))
+            labelledby += ' ' + caption_id
+        fallback = esc(words['table_scroll']) + ' ' + str(index)
+        attributes = ' role="region" tabindex="0" aria-labelledby="' + labelledby + '"'
+        opening = wrapper.group(0)[:-1] + attributes + '>'
+        changes.append((wrapper.start(), wrapper.end(), opening))
+        marker = '<span class="visually-hidden" id="' + region_id + '">' + fallback + '</span>'
+        changes.append((wrapper.end(), wrapper.end(), marker))
+    for start, end, replacement in sorted(changes, key=lambda item: (item[0], item[1]), reverse=True):
+        document = document[:start] + replacement + document[end:]
+    return document
+
+
 def render(report_path, *, evidence_root=None, language='en', compare=None, compare_root=None):
     tsep.require(language in TEXT, 'Unknown HTML language')
     words = TEXT[language]
@@ -591,7 +1239,7 @@ def render(report_path, *, evidence_root=None, language='en', compare=None, comp
     out += '<div><h3>' + esc(words['assessor']) + '</h3><dl>' + item(words['assessor'], report['assessor']['name']) + item(words['mode'], report['assessor']['mode']) + item(words['controls'], ', '.join(report['controls'])) + '</dl></div>'
     out += '<div><h3>' + esc(words['identity']) + '</h3>' + report_identity(current, words, 'current') + '</div></div></section></main>'
     out += '<footer class="footer"><div class="wrap"><p>' + esc(words['footer']) + ' ' + VERSION + ' · ' + esc(words['read_only']) + '</p><p class="hash">' + esc(words['protocol']) + ' SHA-256 · ' + esc(report['protocol']['sha256']) + '</p></div></footer></body></html>\n'
-    return out
+    return table_scroll_regions(out, words)
 
 
 def write(report_path, output, **options):

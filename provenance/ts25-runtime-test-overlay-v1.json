@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "scope": "Non-normative test portability only; original fixtures and all production readers unchanged.",
+  "updates": [
+    {
+      "path": "tests/test_critical_presence_budgets.py",
+      "base_sha256": "4abc2ddafc4a3a7e79397d2f1cb52349489329a320368988969ebc9123c1a2d1",
+      "current_sha256": "115c15fbdc46fb30bdd66eb32443e0b34bfad10961b817191c76cdf9e210d69f",
+      "replacements": [
+        {
+          "before": "from conformance import critical_presence as native",
+          "after": "from conformance import critical_presence as native\nfrom ts25_runtime_fixtures import historical_expectation"
+        },
+        {
+          "before": "values=evaluate(data);self.assertEqual",
+          "after": "notes=[];values=evaluate(data,source_observations=notes);self.assertEqual"
+        },
+        {
+          "before": "                args=dict(assessor=",
+          "after": "                expected_public, expected_size=historical_expectation(row,notes)\n                args=dict(assessor="
+        },
+        {
+          "before": "if row['expected_public']=='technical-refusal':",
+          "after": "if expected_public=='technical-refusal':"
+        },
+        {
+          "before": "report['results'][0]['status'],row['expected_public']",
+          "after": "report['results'][0]['status'],expected_public"
+        },
+        {
+          "before": "if 'expected_public_diagnostic_bytes' in row:self.assertEqual(size,row['expected_public_diagnostic_bytes'])",
+          "after": "if expected_size is not None:self.assertEqual(size,expected_size)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS31-A01",
+    "TS31-A02",
+    "TS31-A03"
+  ],
+  "targets": [
+    {
+      "url": "https://example.test/page",
+      "observed_at": "2026-10-11T10:00:12Z",
+      "structured_synthetic": true,
+      "context": {
+        "network": "none; synthetic",
+        "bounds": "one authored page and state",
+        "tool": "authored-fixture",
+        "tool_version": "1"
+      },
+      "intent": {
+        "declared_at": "2026-10-11T09:59:00Z",
+        "structured_content": {
+          "reader": "jsonld-visible-content-v1",
+          "selection_reason": "Only fictional page",
+          "population": "Single authored page, no site inference",
+          "important_properties": "all-supplied",
+          "guidance": [
+            {
+              "url": "https://example.test/guidance",
+              "observed_at": "2026-10-11T09:00:00Z",
+              "raw_text": "Synthetic guidance: a Thing called A, visible on this fictional page; all properties reviewed.",
+              "sha256": "4238e9848ecf60d966483fc8faae1144ba69629939cb39a2c3f8b5e4ff5a8bd8"
+            }
+          ]
+        }
+      },
+      "jsonld": {
+        "plan": {
+          "format": "jsonld-rendered-plan",
+          "version": "1",
+          "declared_at": "2026-10-11T09:59:00Z",
+          "window_start": "2026-10-11T10:00:00Z",
+          "window_end": "2026-10-11T10:00:10Z",
+          "start_url": "https://example.test/page",
+          "final_url": "https://example.test/page",
+          "crawler": "Authored-TSEP-Client/1",
+          "source_base_iri": "https://example.test/page",
+          "states": [
+            {
+              "id": "ready",
+              "browser": "Authored browser model",
+              "browser_version": "synthetic-1",
+              "scenario": "ready-no-interaction"
+            }
+          ]
+        },
+        "http": [
+          {
+            "url": "https://example.test/page",
+            "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: Authored-TSEP-Client/1\r\n\r\n",
+            "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><script type=\"application/ld+json\">{\"@id\":\"#entity\",\"@type\":\"https://schema.org/Thing\",\"https://schema.org/name\":\"A\"}</script></head><body>A</body></html>",
+            "complete": true
+          }
+        ],
+        "http_received_at": "2026-10-11T10:00:00Z",
+        "contexts": [],
+        "states": []
+      },
+      "structured_plan_review": {
+        "complete": true,
+        "reviewer": "Fictional reviewer",
+        "assistance": "Authored exercise; no actual human review",
+        "reason": "Authored evidence qualification",
+        "provenance": "synthetic-exercise",
+        "observed_at": "2026-10-11T09:59:30Z",
+        "binding_sha256": "0cd2cb276c375c12dc5682df6cf5fc7939d02db2fedc10e0ae79d5ce26f47cd6",
+        "scope": "supported",
+        "source_base": "supported",
+        "guidance": "supported"
+      },
+      "structured_reviews": [
+        {
+          "surface_id": "source:enabled",
+          "content": {
+            "kind": "supplied-visible-content-transcript",
+            "raw_text": "A — fictional visible page content.",
+            "sha256": "e5540f3c9f90aa59b889ab393dd3ed91ee56a66751f60266aaddbb36a97901dc",
+            "observed_at": "2026-10-11T10:00:05Z",
+            "method": "Authored transcript, not a real visibility observation"
+          },
+          "review": {
+            "complete": true,
+            "reviewer": "Fictional reviewer",
+            "assistance": "Authored exercise; no actual human review",
+            "reason": "Authored evidence qualification",
+            "provenance": "synthetic-exercise",
+            "observed_at": "2026-10-11T10:00:11Z",
+            "binding_sha256": "36e2f3e0397926e7131bc78b5d1ad56767d6c292afad1b386fd8a44abb651bc0",
+            "coverage": "supported"
+          },
+          "entities": [
+            {
+              "index": 0,
+              "node_sha256": "90fd3ee46fe894617cacca56bccf71bb2497f2ab318be77c45537e9a943635bb",
+              "visible_consistency": {
+                "value": "supported",
+                "reason": "Authored whole-node judgment including every property"
+              },
+              "type_suitability": {
+                "value": "supported",
+                "reason": "Authored whole-node judgment including every property"
+              },
+              "no_fabrication": {
+                "value": "contradiction",
+                "reason": "Authored whole-node judgment including every property"
+              }
+            }
+          ]
+        },
+        {
+          "surface_id": "source:disabled",
+          "content": {
+            "kind": "supplied-visible-content-transcript",
+            "raw_text": "A — fictional visible page content.",
+            "sha256": "e5540f3c9f90aa59b889ab393dd3ed91ee56a66751f60266aaddbb36a97901dc",
+            "observed_at": "2026-10-11T10:00:05Z",
+            "method": "Authored transcript, not a real visibility observation"
+          },
+          "review": {
+            "complete": true,
+            "reviewer": "Fictional reviewer",
+            "assistance": "Authored exercise; no actual human review",
+            "reason": "Authored evidence qualification",
+            "provenance": "synthetic-exercise",
+            "observed_at": "2026-10-11T10:00:11Z",
+            "binding_sha256": "916cc9d330f64c616770c671f06de130cf17162d4a485530ab4439ef137ca498",
+            "coverage": "supported"
+          },
+          "entities": [
+            {
+              "index": 0,
+              "node_sha256": "90fd3ee46fe894617cacca56bccf71bb2497f2ab318be77c45537e9a943635bb",
+              "visible_consistency": {
+                "value": "supported",
+                "reason": "Authored whole-node judgment including every property"
+              },
+              "type_suitability": {
+                "value": "supported",
+                "reason": "Authored whole-node judgment including every property"
+              },
+              "no_fabrication": {
+                "value": "supported",
+                "reason": "Authored whole-node judgment including every property"
+              }
+            }
+          ]
+        },
+        {
+          "surface_id": "render:ready",
+          "content": {
+            "kind": "supplied-visible-content-transcript",
+            "raw_text": "A — fictional visible page content.",
+            "sha256": "e5540f3c9f90aa59b889ab393dd3ed91ee56a66751f60266aaddbb36a97901dc",
+            "observed_at": "2026-10-11T10:00:05Z",
+            "method": "Authored transcript, not a real visibility observation"
+          },
+          "review": {
+            "complete": true,
+            "reviewer": "Fictional reviewer",
+            "assistance": "Authored exercise; no actual human review",
+            "reason": "Authored evidence qualification",
+            "provenance": "synthetic-exercise",
+            "observed_at": "2026-10-11T10:00:11Z",
+            "binding_sha256": "89f25c203a379fd9443d3532016f92c66888436b78093f87779a717a83ba5a2c",
+            "coverage": "supported"
+          },
+          "entities": [
+            {
+              "index": 0,
+              "node_sha256": "90fd3ee46fe894617cacca56bccf71bb2497f2ab318be77c45537e9a943635bb",
+              "visible_consistency": {
+                "value": "supported",
+                "reason": "Authored whole-node judgment including every property"
+              },
+              "type_suitability": {
+                "value": "supported",
+                "reason": "Authored whole-node judgment including every property"
+              },
+              "no_fabrication": {
+                "value": "supported",
+                "reason": "Authored whole-node judgment including every property"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

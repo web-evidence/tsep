@@ -6,8 +6,60 @@ from urllib.parse import urljoin, urlsplit
 
 import tsep
 from conformance.http import Unknown, need
+from conformance import http
 
 REDIRECTS = (301, 302, 303, 307, 308)
+HEADER_READER = 'http-trajectory-headers-v1'
+
+
+def chunk_prefix(body):
+    """Reject contradictory chunk framing without claiming a complete body."""
+    offset=0
+    while True:
+        end=body.find(b'\r\n',offset)
+        if end<0:
+            need(re.fullmatch(b'[0-9a-fA-F]{0,16}\\r?',body[offset:]), 'Malformed chunk-size prefix')
+            return
+        line=body[offset:end]
+        need(re.fullmatch(b'[0-9a-fA-F]{1,16}',line), 'Unsupported chunk-size prefix')
+        size=int(line,16);offset=end+2
+        need(size>0, 'Complete chunk stream or unsupported trailers before collection limit')
+        if len(body)<offset+size:return
+        tail=body[offset+size:offset+size+2]
+        need(b'\r\n'.startswith(tail),'Malformed chunk-data prefix')
+        if len(tail)<2:return
+        offset+=size+2
+
+
+def header_exchange(hop, expected, target):
+    from conformance.evaluate import exchange, request_attribution
+    if hop.get('complete') is True:
+        return exchange(hop,expected,target['intent']['crawler'])
+    request_attribution(hop,expected,target['intent']['crawler'])
+    raw=http.raw_bytes(hop.get('response'))
+    collection=target['context'].get('collection',{})
+    maximum=collection.get('settings',{}).get('max_bytes')
+    limit=hop.get('response_limit')
+    need(collection.get('version')=='2' and type(maximum) is int and
+         type(limit) is int and 1024<=limit==maximum<=1024*1024 and
+         hop.get('complete') is False and hop.get('stop_reason')=='response-byte-limit' and
+         type(hop.get('overflow_bytes')) is int and hop['overflow_bytes']==1 and
+         type(hop.get('bytes_received')) is int and hop['bytes_received']==len(raw)==limit,
+         'No attributable collector byte-limit stop; incomplete response stays unknown')
+    first,headers,body=http.header_fields(hop['response'])
+    status=re.fullmatch(r'HTTP/1\.[01] ([1-5][0-9]{2})(?: [^\r\n]*)?',first)
+    need(status,'Unsupported HTTP status line')
+    if 'transfer-encoding' in headers:
+        need(first.startswith('HTTP/1.1 ') and 'content-length' not in headers and
+             len(headers['transfer-encoding'])==1 and headers['transfer-encoding'][0].lower()=='chunked',
+             'Ambiguous or unsupported partial transfer framing')
+        chunk_prefix(body)
+    if 'content-length' in headers:
+        values=headers['content-length']
+        need(len(values)==1 and re.fullmatch(r'[0-9]{1,16}',values[0]) and int(values[0])>len(body),
+             'Contradictory or ambiguous partial Content-Length')
+    need(int(status[1]) not in (204,304) and int(status[1])>=200,'Partial body on bodyless response')
+    return int(status[1]),headers,None
 
 
 def present(value):
@@ -77,9 +129,14 @@ def trajectory(target, expected):
     destination = target['url']
     visited = set()
     count = 0
+    reader=target['intent'].get('redirect_reader')
+    need(reader in (None,HEADER_READER),'Unknown redirect reader; no fallback')
+    partial=False
     for number, hop in enumerate(hops):
         url(destination)
-        status, headers, _ = exchange(hop, destination, target['intent']['crawler'])
+        status, headers, _ = (header_exchange(hop,destination,target) if reader==HEADER_READER
+                              else exchange(hop, destination, target['intent']['crawler']))
+        partial=partial or hop.get('complete') is not True
         visited.add(destination)
         if status in REDIRECTS:
             count += 1
@@ -108,7 +165,8 @@ def trajectory(target, expected):
                 return 'fail', 'Nombre de redirections inférieur au plan : '+str(count)
             need(number == len(hops)-1, 'Échange supplémentaire après la réponse terminale')
             need('refresh' not in headers, 'Refresh HTTP présent : navigation complémentaire non couverte')
-            return 'pass', str(count)+' redirection(s), destination et statut conformes au plan HTTP déclaré'
+            return 'pass', str(count)+' redirection(s), destination et statut conformes au plan HTTP déclaré'+(
+                ' ; en-têtes complets, corps arrêté à la borne de collecte et non évalué' if partial else '')
     raise Unknown('Aucune réponse terminale')
 
 

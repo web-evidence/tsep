@@ -12,16 +12,53 @@ from unittest.mock import patch
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
+from conformance.corpus import expand
 from adapters.captures import build
 from conformance.evaluate import RULES, evaluate, identity_text
-from conformance.run import compare, run
+from conformance.run import RULE_OUTCOMES, compare, run
 
-CORPUS = tsep.read_json(ROOT/'conformance/cases.json')
+CORPUS = expand(tsep.read_json(ROOT/'conformance/cases.json'))
 CASES = {c['id']:c for c in CORPUS['cases']}
 SELECTED = ['TS01-A01', 'TS01-A02']
 # CLI transport/selection regressions need contradictory examples, not hundreds
 # of interpreter startups. verify.py still runs the complete conformance corpus.
 EXTERNAL_CASE_IDS = (
+    'critical-presence-v1-scope-contradiction',
+    'critical-presence-v1-five-roles-no-body-review',
+    'critical-presence-v1-five-roles-complete',
+    'critical-presence-v1-five-roles-mixed-failure-unknown',
+    'critical-presence-v1-five-roles-no-plan-review',
+    'xdefault-role-v1-complete-default-variant',
+    'xdefault-role-v1-destination-status-404',
+    'xdefault-role-v1-no-review',
+    'hreflang-reciprocity-v1-complete-native-http',
+    'hreflang-reciprocity-v1-native-known-missing-return',
+    'hreflang-reciprocity-v1-missing-plan',
+    'graph-reconciliation-v1-complete_documented_chain',
+    'graph-reconciliation-v1-cms_difference_known_defect',
+    'graph-reconciliation-v1-late_entire_plan',
+    'incoming-links-v1-source-witness',
+    'incoming-links-v1-bounded-complete-absence',
+    'incoming-links-v1-missing-plan',
+    'essential-links-v1-complete', 'essential-links-v1-both-absent', 'essential-links-v1-missing-plan',
+    'sitemap-files-v1-single-leaf', 'sitemap-files-v1-namespace-error',
+    'sitemap-files-v1-full-path-entries-50001', 'sitemap-files-v1-all-files-missing',
+    'structured-validation-v1-complete', 'structured-validation-v1-unsupported-use',
+    'structured-validation-v1-source-invalid-json', 'structured-validation-v1-blocking-error',
+    'structured-validation-v1-missing-guidance',
+    'structured-content-v1-complete', 'structured-content-v1-plan-scope-contradiction',
+    'structured-content-v1-source-invalid-json', 'structured-content-v1-no_fabrication-contradiction',
+    'structured-content-v1-missing-plan-review', 'structured-content-v1-missing-rendered-state',
+    'structured-identity-v1-complete', 'structured-identity-v1-plan-mapping-contradiction',
+    'structured-identity-v1-required-identifier-changed', 'structured-identity-v1-same-id-reviewed-collision',
+    'structured-identity-v1-missing-prior-review', 'structured-identity-v1-missing-document',
+    'release-monitoring-v1-complete-cycle', 'release-monitoring-v1-wrong-release-id',
+    'release-monitoring-v1-wrong-request-url', 'release-monitoring-v1-wrong-api-claim',
+    'release-monitoring-v1-missing-deployment',
+    'canonical-comparison-v1-qualified-agreement', 'canonical-comparison-v1-contradicted-plan-preference',
+    'canonical-comparison-v1-wrong-request-url', 'canonical-comparison-v1-wrong-google-claim',
+    'canonical-comparison-v1-missing-document',
+    'inspection-v1-qualified-positive', 'inspection-v1-contradictory-selection', 'inspection-v1-wrong-inspected-url', 'inspection-v1-claimed-wrong-verdict', 'inspection-v1-missing-objective-source',
     'delivery-evidence-qualified-cache', 'delivery-evidence-rejected-plan',
     'delivery-evidence-canonical-contradiction', 'delivery-evidence-cache-vary-mismatch',
     'delivery-evidence-unknown-reader',
@@ -50,6 +87,81 @@ EXTERNAL_CASE_IDS = (
     'agent-access-wrong-log-status', 'agent-access-claims-real-operator-visit', 'agent-access-missing-plan',
     'critical-content-server-html', 'critical-content-rejected-plan',
     'critical-content-script-only-fact', 'critical-content-changed-fact', 'critical-content-empty-critical-inventory',
+    'ts05-policy-separated-plan', 'ts05-policy-disallow-claim',
+    'ts05-policy-missing-plan', 'ts05-policy-dated-not-applicable',
+    'ts06-safe-synthetic-matrix', 'ts06-canary-in-403', 'ts06-missing-role-cell',
+    'ts03-complete-synthetic-matrix', 'ts03-removed-route-200',
+    'ts03-missing-route-observation',
+    'sitemap-quality-v1-complete',
+    'sitemap-quality-v1-relative-location',
+    'sitemap-quality-v1-noindex',
+    'sitemap-quality-v1-missing-file',
+    'sitemap-quality-v1-file-generation-only',
+)
+
+EXTERNAL_CASE_IDS += (
+    'url-policy-v1-TS09-complete',
+    'url-policy-v1-TS09-missing-plan',
+    'url-policy-v1-TS09-review-contradiction-A01',
+    'url-policy-v1-TS11-complete',
+    'url-policy-v1-TS11-missing-plan',
+    'url-policy-v1-TS11-review-contradiction-A01',
+    'url-policy-v1-TS11-review-contradiction-A02',
+    'url-policy-v1-TS19-complete',
+    'url-policy-v1-TS19-missing-plan',
+    'url-policy-v1-TS19-review-contradiction-A01',
+    'url-policy-v1-TS19-review-contradiction-A02',
+    'url-policy-v1-TS20-complete',
+    'url-policy-v1-TS20-missing-plan',
+    'url-policy-v1-TS20-review-contradiction-A01',
+    'url-policy-v1-TS20-review-contradiction-A02',
+    'url-policy-v1-TS38-complete',
+    'url-policy-v1-TS38-missing-plan',
+    'url-policy-v1-TS38-review-contradiction-A01',
+    'url-policy-v1-TS38-review-contradiction-A02',
+)
+
+EXTERNAL_CASE_IDS += (
+    'indexing-locale-v1-TS21-complete',
+    'indexing-locale-v1-TS21-missing-plan',
+    'indexing-locale-v1-TS21-review-contradiction-A01',
+    'indexing-locale-v1-TS21-review-contradiction-A02',
+    'indexing-locale-v1-TS22-complete',
+    'indexing-locale-v1-TS22-missing-plan',
+    'indexing-locale-v1-TS22-review-contradiction-A01',
+    'indexing-locale-v1-TS22-review-contradiction-A02',
+    'indexing-locale-v1-TS40-complete',
+    'indexing-locale-v1-TS40-missing-plan',
+    'indexing-locale-v1-TS40-review-contradiction-A01',
+    'indexing-locale-v1-TS40-review-contradiction-A02',
+)
+
+EXTERNAL_CASE_IDS += (
+    'render-transport-v1-TS26-complete',
+    'render-transport-v1-TS26-missing-plan',
+    'render-transport-v1-TS26-review-contradiction-A01',
+    'render-transport-v1-TS26-review-contradiction-A02',
+    'render-transport-v1-TS27-complete',
+    'render-transport-v1-TS27-missing-plan',
+    'render-transport-v1-TS27-review-contradiction-A01',
+    'render-transport-v1-TS27-review-contradiction-A02',
+    'render-transport-v1-TS28-complete',
+    'render-transport-v1-TS28-missing-plan',
+    'render-transport-v1-TS28-review-contradiction-A01',
+    'render-transport-v1-TS28-review-contradiction-A02',
+    'render-transport-v1-TS29-complete',
+    'render-transport-v1-TS29-missing-plan',
+    'render-transport-v1-TS29-review-contradiction-A01',
+    'render-transport-v1-TS29-review-contradiction-A02',
+    'render-transport-v1-TS30-complete',
+    'render-transport-v1-TS30-missing-plan',
+    'render-transport-v1-TS30-review-contradiction-A01',
+    'render-transport-v1-TS30-review-contradiction-A02',
+    'render-transport-v1-TS37-complete',
+    'render-transport-v1-TS37-missing-plan',
+    'render-transport-v1-TS37-review-contradiction-A01',
+    'render-transport-v1-TS37-review-contradiction-A02',
+    'render-transport-v1-TS37-review-contradiction-A03',
 )
 
 
@@ -135,7 +247,8 @@ class Draft7(unittest.TestCase):
         # Fail if a fixture edit removes representative coverage for any rule.
         for rule in RULES:
             seen = {r['outcome'] for c in sample['cases'] for r in c['expected'] if r['rule_id']==rule}
-            self.assertTrue({'pass','fail','inconclusive'} <= seen, rule)
+            required = set(RULE_OUTCOMES[rule]) - {'not-applicable'}
+            self.assertTrue(required <= seen, rule)
         with tempfile.TemporaryDirectory() as folder:
             corpus_path=Path(folder)/'sample.json'
             corpus_path.write_text(json.dumps(sample),encoding='utf-8')

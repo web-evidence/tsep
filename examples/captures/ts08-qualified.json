@@ -1,0 +1,96 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS08-A01",
+    "TS08-A02",
+    "TS08-A03"
+  ],
+  "targets": [
+    {
+      "url": "https://example.com/page",
+      "observed_at": "2026-10-10T12:00:00Z",
+      "inspection_synthetic": true,
+      "context": {
+        "network": "none; synthetic",
+        "bounds": "offline native JSON",
+        "tool": "authored-fixture",
+        "tool_version": "1"
+      },
+      "intent": {
+        "declared_at": "2026-10-10T09:00:00Z",
+        "inspection": {
+          "reader": "google-inspection-evidence-v1",
+          "site_url": "https://example.com/",
+          "selection_method": "Explicit finite list of the single fictional product page; no population inference",
+          "population": "One fictional page, no site extrapolation",
+          "prior_knowledge": "No earlier inspection in this authored scenario",
+          "max_retrieval_age_hours": 24,
+          "max_crawl_age_hours": 168,
+          "members": [
+            {
+              "url": "https://example.com/page",
+              "objective": "Document whether Google reports this product URL indexed",
+              "objective_source": "Fictional owner product brief, created independently of inspection",
+              "selection_reason": "Only product URL in this authored scope"
+            }
+          ]
+        }
+      },
+      "inspection_records": [
+        {
+          "url": "https://example.com/page",
+          "retrieved_at": "2026-10-10T10:00:00Z",
+          "provenance": "synthetic-exercise",
+          "description": "Authored native API response; no account access",
+          "http_status": 200,
+          "request": {
+            "raw_text": "{\n  \"inspectionUrl\": \"https://example.com/page\",\n  \"siteUrl\": \"https://example.com/\"\n}\n",
+            "sha256": "6b5c6bf2c97a18908a7ebd2771cc361eb10c23c0b8aef75a8b4cbd8ccc5c77a0"
+          },
+          "response": {
+            "raw_text": "{\n  \"inspectionResult\": {\n    \"indexStatusResult\": {\n      \"verdict\": \"PASS\",\n      \"coverageState\": \"Indexed (authored label)\",\n      \"robotsTxtState\": \"ALLOWED\",\n      \"indexingState\": \"INDEXING_ALLOWED\",\n      \"pageFetchState\": \"SUCCESSFUL\",\n      \"lastCrawlTime\": \"2026-10-10T08:00:00Z\",\n      \"googleCanonical\": \"https://example.com/page\",\n      \"userCanonical\": \"https://example.com/page\",\n      \"crawledAs\": \"MOBILE\"\n    }\n  }\n}\n",
+            "sha256": "519ae1aa1970adce4c7144c2fdd9c74d478f98e07bbb54620ae8e9e0f74b9915"
+          }
+        }
+      ],
+      "inspection_plan_review": {
+        "reviewer": "Fictional reviewer",
+        "assistance": "Authored fixture, not human review",
+        "provenance": "synthetic-exercise",
+        "observed_at": "2026-10-10T09:30:00Z",
+        "reason": "Authored qualification of the exact supplied evidence",
+        "complete": true,
+        "selection": "supported",
+        "objectives": "supported",
+        "binding_sha256": "f705e808d26d1c22c33fa322309b284816f3331ab3313a0b4e497e6a6d44c082"
+      },
+      "inspection_reviews": [
+        {
+          "reviewer": "Fictional reviewer",
+          "assistance": "Authored fixture, not human review",
+          "provenance": "synthetic-exercise",
+          "observed_at": "2026-10-10T11:00:00Z",
+          "reason": "Authored qualification of the exact supplied evidence",
+          "complete": true,
+          "url": "https://example.com/page",
+          "claimed_verdict": "PASS",
+          "interpretation": "supported",
+          "objective_relation": "aligned",
+          "temporal_scope": "reported-index-version",
+          "explanation": {
+            "kind": "observation",
+            "text": "The supplied response reports PASS; no live-state or cause inferred."
+          },
+          "decision": {
+            "kind": "monitor",
+            "reason": "Retain the reported state and recheck on change",
+            "owner": "Fictional owner",
+            "criterion": "Repeat API inspection after a documented deployment",
+            "due_at": "2026-10-17T12:00:00Z"
+          },
+          "binding_sha256": "3b08ce344f33c8d70497f72804b7563e17b03fc51809b9295087a7be09b38083"
+        }
+      ]
+    }
+  ]
+}

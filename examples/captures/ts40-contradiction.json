@@ -1,0 +1,151 @@
+{
+  "input_version": "2",
+  "rules": [
+    "TS40-A01",
+    "TS40-A02"
+  ],
+  "targets": [
+    {
+      "url": "https://synthetic.invalid/scope/TS40",
+      "observed_at": "2026-10-14T12:00:00Z",
+      "context": {
+        "id": "synthetic",
+        "tool": "Authored fixture",
+        "tool_version": "1",
+        "bounds": "Supplied fictional population only"
+      },
+      "intent": {
+        "declared_at": "2026-10-14T09:00:00Z",
+        "crawler": "Authored-TSEP/1",
+        "evidence_checks": {
+          "TS40": {
+            "reader": "indexing-locale-v1",
+            "scope_reason": "SYNTHETIC finite selected population, no site audit",
+            "items": [
+              {
+                "id": "cluster",
+                "mappings": [
+                  [
+                    "fr-FR",
+                    "https://synthetic.invalid/fr"
+                  ],
+                  [
+                    "en-GB",
+                    "https://synthetic.invalid/en"
+                  ]
+                ],
+                "pages": [
+                  "https://synthetic.invalid/fr",
+                  "https://synthetic.invalid/en"
+                ],
+                "methods": [
+                  "html",
+                  "http-link",
+                  "sitemap"
+                ],
+                "sitemaps": [
+                  "sitemap"
+                ],
+                "rendering": "source-only-reviewed",
+                "destinations": [
+                  {
+                    "url": "https://synthetic.invalid/fr",
+                    "indexing": "allow",
+                    "robots_url": "https://synthetic.invalid/robots.txt",
+                    "robots_profile": "google-documented-core-v1"
+                  },
+                  {
+                    "url": "https://synthetic.invalid/en",
+                    "indexing": "allow",
+                    "robots_url": "https://synthetic.invalid/robots.txt",
+                    "robots_profile": "google-documented-core-v1"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "evidence_checks": {
+        "TS40": {
+          "synthetic": true,
+          "records": [
+            {
+              "id": "sitemap",
+              "kind": "sitemap",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "native": {
+                "raw_base64": "PHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSIgeG1sbnM6eGh0bWw9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGh0bWwiPjx1cmw+PGxvYz5odHRwczovL3N5bnRoZXRpYy5pbnZhbGlkL2ZyPC9sb2M+PHhodG1sOmxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmci1GUiIgaHJlZj0iaHR0cHM6Ly9zeW50aGV0aWMuaW52YWxpZC9mciIgLz48eGh0bWw6bGluayByZWw9ImFsdGVybmF0ZSIgaHJlZmxhbmc9ImVuLUdCIiBocmVmPSJodHRwczovL3N5bnRoZXRpYy5pbnZhbGlkL2VuIiAvPjwvdXJsPjx1cmw+PGxvYz5odHRwczovL3N5bnRoZXRpYy5pbnZhbGlkL2VuPC9sb2M+PHhodG1sOmxpbmsgcmVsPSJhbHRlcm5hdGUiIGhyZWZsYW5nPSJmci1GUiIgaHJlZj0iaHR0cHM6Ly9zeW50aGV0aWMuaW52YWxpZC9mciIgLz48eGh0bWw6bGluayByZWw9ImFsdGVybmF0ZSIgaHJlZmxhbmc9ImVuLUdCIiBocmVmPSJodHRwczovL3N5bnRoZXRpYy5pbnZhbGlkL2VuIiAvPjwvdXJsPjwvdXJsc2V0Pg==",
+                "sha256": "9205fbf412e357816199271fba03bbe9616721fd0bce57a71ecda11f79d61aa0",
+                "complete": true,
+                "encoding": "identity"
+              }
+            }
+          ],
+          "documents": [
+            {
+              "url": "https://synthetic.invalid/fr",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "http": [
+                {
+                  "url": "https://synthetic.invalid/fr",
+                  "request": "GET /fr HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 320\r\nLink: <https://synthetic.invalid/fr>; rel=\"alternate\"; hreflang=\"fr-FR\", <https://synthetic.invalid/en>; rel=\"alternate\"; hreflang=\"en-GB\"\r\n\r\n<!doctype html><html><head><title>Fictional</title><link rel=\"canonical\" href=\"https://synthetic.invalid/fr\"><link rel=\"alternate\" hreflang=\"fr-FR\" href=\"https://synthetic.invalid/fr\"><link rel=\"alternate\" hreflang=\"en-GB\" href=\"https://synthetic.invalid/en\"></head><body><p>Fictional localized content</p></body></html>",
+                  "complete": true
+                }
+              ]
+            },
+            {
+              "url": "https://synthetic.invalid/en",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "http": [
+                {
+                  "url": "https://synthetic.invalid/en",
+                  "request": "GET /en HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 320\r\nLink: <https://synthetic.invalid/fr>; rel=\"alternate\"; hreflang=\"fr-FR\", <https://synthetic.invalid/en>; rel=\"alternate\"; hreflang=\"en-GB\"\r\n\r\n<!doctype html><html><head><title>Fictional</title><link rel=\"canonical\" href=\"https://synthetic.invalid/en\"><link rel=\"alternate\" hreflang=\"fr-FR\" href=\"https://synthetic.invalid/fr\"><link rel=\"alternate\" hreflang=\"en-GB\" href=\"https://synthetic.invalid/en\"></head><body><p>Fictional localized content</p></body></html>",
+                  "complete": true
+                }
+              ]
+            },
+            {
+              "url": "https://synthetic.invalid/robots.txt",
+              "observed_at": "2026-10-14T10:00:00Z",
+              "context_id": "synthetic",
+              "http": [
+                {
+                  "url": "https://synthetic.invalid/robots.txt",
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: Authored-TSEP/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\nContent-Length: 23\r\n\r\nUser-agent: *\nAllow: /\n",
+                  "complete": true
+                }
+              ]
+            }
+          ],
+          "reviews": [
+            {
+              "subject": "TS40-A01:cluster",
+              "reviewer": "Fictional reviewer",
+              "reason": "Authored review of supplied records, complete bounded scope and editorial intent; not a real judgment.",
+              "judgment": "contradicted",
+              "reviewed_at": "2026-10-14T11:00:00Z",
+              "provenance": "synthetic-exercise",
+              "binding_sha256": "d090f6216e521854d851a4a9a8683b93fbad5c848bdc12044e60f92045d70a3c"
+            },
+            {
+              "subject": "TS40-A02:cluster",
+              "reviewer": "Fictional reviewer",
+              "reason": "Authored review of supplied records, complete bounded scope and editorial intent; not a real judgment.",
+              "judgment": "supported",
+              "reviewed_at": "2026-10-14T11:00:00Z",
+              "provenance": "synthetic-exercise",
+              "binding_sha256": "d090f6216e521854d851a4a9a8683b93fbad5c848bdc12044e60f92045d70a3c"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

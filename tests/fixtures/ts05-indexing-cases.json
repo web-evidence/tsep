@@ -1,0 +1,204 @@
+{
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "ts05-policy-separated-plan",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS05-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts05-policy",
+            "observed_at": "2026-10-15T15:00:00Z",
+            "configuration": {
+              "crawl_method": "robots-txt",
+              "crawl_effect": "allow",
+              "indexing_method": "x-robots-tag-noindex",
+              "protection_method": "authentication"
+            },
+            "intent": {
+              "ts05_policy": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-15T14:00:00Z",
+                "scope": "Synthetic policy model only",
+                "crawl": {
+                  "method": "robots-txt",
+                  "effect": "allow"
+                },
+                "indexing": {
+                  "goal": "exclude",
+                  "method": "x-robots-tag-noindex",
+                  "directive_visibility": "fetchable"
+                },
+                "protection": {
+                  "goal": "private",
+                  "method": "authentication"
+                },
+                "actual_index_state": "not-observed",
+                "claims": [
+                  {
+                    "kind": "deindex",
+                    "level": "statement",
+                    "basis": [
+                      "noindex-directive"
+                    ]
+                  },
+                  {
+                    "kind": "confidentiality",
+                    "level": "statement",
+                    "basis": [
+                      "authentication"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS05-A01",
+          "target": "https://example.invalid/ts05-policy",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "ts05-policy-disallow-claim",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS05-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts05-policy",
+            "observed_at": "2026-10-15T15:00:00Z",
+            "configuration": {
+              "crawl_method": "robots-txt",
+              "crawl_effect": "disallow",
+              "indexing_method": "meta-noindex",
+              "protection_method": "robots-only"
+            },
+            "intent": {
+              "ts05_policy": {
+                "applicability": "applicable",
+                "declared_at": "2026-10-15T14:00:00Z",
+                "scope": "Synthetic policy model only",
+                "crawl": {
+                  "method": "robots-txt",
+                  "effect": "disallow"
+                },
+                "indexing": {
+                  "goal": "exclude",
+                  "method": "meta-noindex",
+                  "directive_visibility": "blocked-by-robots"
+                },
+                "protection": {
+                  "goal": "private",
+                  "method": "robots-only"
+                },
+                "actual_index_state": "not-observed",
+                "claims": [
+                  {
+                    "kind": "deindex",
+                    "level": "guarantee",
+                    "basis": [
+                      "robots-disallow",
+                      "noindex-directive"
+                    ]
+                  },
+                  {
+                    "kind": "confidentiality",
+                    "level": "guarantee",
+                    "basis": [
+                      "robots-disallow"
+                    ]
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS05-A01",
+          "target": "https://example.invalid/ts05-policy",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts05-policy-missing-plan",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS05-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts05-policy",
+            "observed_at": "2026-10-15T15:00:00Z",
+            "configuration": {
+              "crawl_method": "robots-txt",
+              "crawl_effect": "allow",
+              "indexing_method": "x-robots-tag-noindex",
+              "protection_method": "authentication"
+            },
+            "intent": {}
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS05-A01",
+          "target": "https://example.invalid/ts05-policy",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts05-policy-dated-not-applicable",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS05-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://example.invalid/ts05-policy",
+            "observed_at": "2026-10-15T15:00:00Z",
+            "configuration": {
+              "crawl_method": "robots-txt",
+              "crawl_effect": "allow",
+              "indexing_method": "x-robots-tag-noindex",
+              "protection_method": "authentication"
+            },
+            "intent": {
+              "ts05_policy": {
+                "applicability": "not-applicable",
+                "non_applicability_review": {
+                  "complete": true,
+                  "outcome": "not-applicable",
+                  "rationale": "Synthetic inventory review: this bounded fixture has no relevant crawl, indexing or protection policy.",
+                  "reviewed_at": "2026-10-15T14:30:00Z"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS05-A01",
+          "target": "https://example.invalid/ts05-policy",
+          "outcome": "not-applicable"
+        }
+      ]
+    }
+  ]
+}

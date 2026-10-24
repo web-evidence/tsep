@@ -46,7 +46,13 @@ def validate_plan(data, created_at):
     for target in rows:
         tsep.require(set(target) == {'url', 'intent', 'context'},
                      'Plan contains captured data or unknown fields')
-        tsep.require(set(target['intent']) == {'declared_at', 'crawler', 'redirect_plan'},
+        fields = set(target['intent'])
+        expected = {'declared_at', 'crawler', 'redirect_plan'}
+        if 'redirect_reader' in fields:
+            tsep.require(target['intent']['redirect_reader'] == redirects.HEADER_READER,
+                         'Unsupported redirect reader in prior plan')
+            expected.add('redirect_reader')
+        tsep.require(fields == expected,
                      'Plan intent must be unreviewed and contain only TS02 expectations')
         # Reuse normative validation without storing a fictional capture timestamp.
         redirects.plan(dict(target, observed_at=created_at))

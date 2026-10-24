@@ -1,4 +1,112 @@
-Current integration: draft.28, interpreter 27 / adapter 28 / HTML 11 / replay 3.
+Édition draft.7 / Draft.7: [texte HTML principal v3, limites et migration / main-document text v3, limits and migration](migration-0.3.0-draft.7.md).
+
+Candidat local **0.3.0-draft.6** : [lot 1 FR/EN](migration-0.3.0-draft.6.md). `python3 scripts/verify.py --quick` = régressions ciblées uniquement / targeted regressions only. `python3 scripts/verify.py` = qualification complète / full qualification ; Node24 pré-vérifié, plafond fini7200s par étape. Aucun succès ni publication implicite.
+
+Profil courant / Current profile **draft.5 publication-v2** : plafond total CI de 360 minutes et progression des étapes sur stderr après arrêt macOS à 240 minutes / 360-minute CI job ceiling and step progress on stderr after macOS reached 240 minutes. Toutes les étapes et les sept combinaisons conservées / Every step and all seven combinations retained. [Migration et échec observé FR/EN / Migration and observed failure](publication-profile-v2.md).
+
+Profil historique / Historical profile — Profil de publication / Publication profile **draft.5 publication-v1** : citation alignée, CI7200s par étape/240min par job ; sept combinaisons et toutes les étapes conservées / aligned citation, CI7200s per step/240min per job; all seven combinations and every step retained. [Migration FR/EN](publication-profile-v1.md). Qualification et CI du commit exact requises avant publication / Qualification and exact-commit CI required before publication.
+
+Correction non normative / Non-normative correction **method-corpus-v1** : métadonnée de version du corpus de méthode, cas et attentes conservés / method-corpus version metadata, cases and expectations retained. [Échec observé et migration FR/EN / Observed failure and migration](method-corpus-metadata-v1.md). Archive distincte et nouvelle qualification complète requises / Distinct archive and new complete qualification required.
+
+Current preparation / Préparation courante **0.3.0-draft.5** : prerequisite corrections only, TS30-A01/A02 and TS37-A03; interpreter51/reader2, 44 controls/98 rules. [Migration](migration-0.3.0-draft.5.md). Previous qualified draft.4 archive retained. Full verification still required; no observed success implied. Profil complet Node24/Python3.12, plafond7200s, toutes les étapes conservées.
+
+Non-normative distribution correction / Correction de distribution non normative : [minor report-test integration v1](report-test-integration-v1.md). The first full draft.4 attempt observed one generic test error; protocol and rules unchanged. Nouvelle qualification complète requise / New full qualification required.
+
+Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](render-transport-evidence.md), [migration](migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
+
+Profil local complet44 / Full44 local profile: explicit Node24 and Python3.12.14, `TSEP_VERIFY_STEP_TIMEOUT=7200` (finite two-hour bound per step), all verifier steps and source-immutability guards retained. This accommodates the expanded suite and concurrent baseline qualification; a longer ceiling is not a successful run. FR : plafond fini de deux heures par étape pour la suite étendue et la qualification de base concurrente ; aucune vérification supprimée, aucun succès déduit du seul plafond. Observed results belong in dated delivery receipts.
+
+0.3.0-draft.3 preparation:38 rule-bearing controls /85 rules, TS21/22/40 batch. Synthetic cases and supplied reviews; no actual indexing or causality inferred. [Contrat / contract](indexing-locale-evidence.md), [migration](migration-0.3.0-draft.3.md).
+
+Current / courant : 0.3.0-draft.2, TS09/11/19/20/38, 35 controls /79 rules. Prior70 rules and versions retained. [Contract / contrat](url-policy-evidence.md), [migration](migration-0.3.0-draft.2.md). Full verification results belong to dated receipts, not this preparation heading.
+
+Current preparation / Préparation courante : **0.3.0-draft.1**, branch feat/v030-ts12-18 from RC1 7b60c20. TS13-A01/A02 and TS14-A01 only; all earlier rules/versions retained. [Contract / contrat](sitemap-quality-evidence.md), [migration](migration-0.3.0-draft.1.md). Full local profile: explicit Node24, TSEP_VERIFY_STEP_TIMEOUT=3600; all checks enabled. No application/site update or publication; RC1 finalization independent.
+
+Historical baseline / Base historique :
+
+RC1 candidate / Candidat RC1: TSEP 0.2.0-rc.1; all TS01–TS44 work retained, 28 rule-bearing controls / 67 executable atomic rules. TS03-A01 remains a bounded synthetic .invalid HTTP matrix; 13 dedicated contradictory cases. Draft.47 app r2 import/export/replay receipt is preserved; any RC1 exact-archive receipt is tracked separately against the archive SHA. No real-site or soft-404 classification.
+FR : préversion distincte ; TS03 reste une qualification de mécanisme synthétique. Aucun diagnostic de site réel n’est revendiqué. Voir le tableau des 44 contrôles, la migration RC1 et le dossier d’intégration applicative.
+
+Previous candidate snapshot / État précédent :
+Current candidate draft.44 / interpreter43 / presence reader3 / adapter43 / HTML26 / replay3 : TS25 UTF8 review admission and combined diagnostic bounds. 25 controls /64 rules. Explicit Node24 + TSEP_VERIFY_STEP_TIMEOUT=3600, all checks enabled. Qualification and app reception pending separately. [Migration](migration-draft.44.md).
+FR : candidat TS25, bornes UTF8 des revues et diagnostics cumulés ; qualification et réception applicative distinctes.
+
+Previous candidate / candidat précédent :
+Current TS25 draft.43 / interpreter42 / reader2 : independent source failures survive malformed documentary render containers;183 preauthored cases,25controls/64rules. Adapter42/HTML25/replay3 retained. [Migration](migration-draft.43.md). Qualification and app acceptance separate.
+FR : les absences source indépendantes restent en échec malgré un conteneur documentaire rendu mal formé ;183contre-cas, qualification et recette applicative distinctes.
+
+Previous TS25 candidate / candidat précédent :
+TS25 candidate draft.42/interpreter41/adapter42/HTML25/replay3: [presence](critical-presence-evidence.md), [migration](migration-draft.42.md). 25 contrôles outillés / tooled controls,64 règles / rules. Full qualification uses explicit Node24 and TSEP_VERIFY_STEP_TIMEOUT=3600; app import/reception separate.
+
+TS24 revised candidate draft.41/interpreter40/adapter41/HTML24/replay3: [method](xdefault-role-evidence.md), [migration](migration-draft.41.md). 24 controls /62 rules. Prior draft.40 attempts preserved, not qualified. Full local profile: explicit Node24, TSEP_VERIFY_STEP_TIMEOUT=3600; all checks enabled. App acceptance separate.
+
+Previous unqualified TS24 candidate draft.40/interpreter39/adapter41/HTML24/replay3: [x-default](xdefault-role-evidence.md), [migration](migration-draft.40.md). 24 contrôles outillés / tooled controls,62 règles / rules. Full qualification uses explicit Node24 and TSEP_VERIFY_STEP_TIMEOUT=3600; app import/reception separate.
+
+TS23 candidate draft.39/interpreter38/adapter40/HTML23/replay3: [native hreflang](hreflang-reciprocity-evidence.md), [migration](migration-draft.39.md). 23 contrôles outillés / tooled controls,61 règles / rules; qualification and explicit app reception remain separate.
+
+Local qualification profile / Profil local de qualification — TS23 draft.39
+
+The local expanded TS16/TS18/TS23 suite uses explicit Node24 and `TSEP_VERIFY_STEP_TIMEOUT=3600` with `python3 scripts/verify.py`. The earlier TS16 attempt reached the1800s boundary and retained three fixture-coverage failures, corrected separately before retry; extending the time limit alone is not a fix. Every check, archive reconstruction and source-immutability guard remains enabled. This is a bounded local profile, not evidence of remote CI execution.
+
+FR : suite locale étendue TS16/TS18/TS23 avec Node24 explicite, délai maximal3600s par étape et toutes les vérifications inchangées. L’essai TS16 antérieur a atteint1800s avec trois échecs de couverture des fixtures ; ceux-ci sont corrigés séparément avant la reprise. Le délai accru ne corrige aucun échec et ne vaut pas exécution CI distante. Les limites historiques décrites ci-dessous restent propres à leurs versions.
+
+Previous candidate / Candidat précédent — draft.38:interpreter37 /adapter39 /HTML22 /replay3;22 contrôles /60 règles. [TS18](graph-reconciliation-evidence.md), [migration](migration-draft.38.md). Sources and supplied reviews remain bounded; full qualification and app reception are separate. Explicit Node24 and the 3600-second local profile above; historical CI limits below are separate.
+
+Previous candidate / Candidat précédent — draft.37: interpreter36 / adapter38 / HTML21 / replay3; 21 contrôles /57 règles. [TS16](incoming-links-evidence.md), [migration](migration-draft.37.md). Qualification and application import are recorded separately. The qualified local TS16 run used the 3600-second profile above; the archived candidate heading still mentions its earlier 1800-second setting.
+
+Previous transport / Transport précédent: adapter37 adds [TS17 DOM self-integrity intake1](essential-links-intake-v1.md); draft.36/interpreter35/HTML20/replay3 and native rules unchanged. Distinct qualified archive/import required; previous adapter36 artifacts retained.
+
+Current build consistency / Cohérence de construction courante:
+`maintain.py check` and `build` reject a stale version or fingerprint in the three
+current generated reports (`examples/pass`, `fail`, `partial`) before the full
+suite. Regenerate into a separate directory and inspect the diff before copying
+current derivatives. Never rewrite historical archives to make them pass.
+FR : les trois rapports courants doivent porter la version et l’empreinte exactes
+du protocole. Une incohérence bloque la construction ; régénérer séparément,
+examiner le diff et conserver les archives historiques intactes.
+
+Previous candidate / Candidat précédent — draft.36 : interpreter35 /adapter37 /HTML20 /replay3 ;20 contrôles /56 règles. [TS17](essential-links-evidence.md), [migration](migration-draft.36.md). Explicit Node24 and documented timeout1800 required; no full qualification implied by this description.
+
+Previous candidate / Candidat précédent — draft.35 : interpreter34 /adapter35 /HTML19 /replay3 ;19 contrôles /54 règles. [TS15](sitemap-files-evidence.md), [migration](migration-draft.35.md). TS15 uses standard Python; full suite still requires explicit Node24 and timeout1800 as documented below.
+
+Previous candidate / Candidat précédent — draft.34 : interpreter33 / adapter34 / HTML18 / replay3 ;18 contrôles /51 règles. [TS33 contract](structured-validation-evidence.md), [migration](migration-draft.34.md). Node24/TSEP_SOURCE_NODE required for native page processing; default lightweight runs may be inconclusive. Previous entries below describe their own historical versions.
+
+Closed historical runtime distribution 1: [contract and explicit migration / contrat et migration explicite](runtime-distribution-v1.md). Separate transport identity; historical engine bytes and native reports unchanged.
+TS12/TS31/TS36 CLI intake 2: [raw-byte integrity and explicit migration / intégrité et migration](intake-integrity-v2.md). Normative draft.33 and application engine imports unchanged.
+TS08 CLI intake 2: [integrity and explicit migration / intégrité et migration explicite](inspection-intake-v2.md). Complete intake inventory and raw-input bindings; normative draft.33 unchanged. Existing application engine imports are separate and unchanged by this source update.
+TS32: [contract / contrat](structured-identity-evidence.md), [migration](migration-draft.33.md). Two explicit fingerprinted fixture extensions keep the core JSON file below its existing 8MiB bound; no recursive discovery or expected-verdict generation.
+Previous local work / Travail local précédent — 2026-10-14 : draft.33, interpreter32 / adapter33 / HTML17 / replay3.
+[HTML17 narrow metric grid / synthèse sur écran étroit](html-report.md#version-17--narrow-metric-grid--synthèse-sur-écran-étroit) is presentation-only; no historical report or application engine import is rewritten.
+TS31 [contract / contrat](structured-content-evidence.md), [intake / import](structured-content-intake.md), [migration](migration-draft.32.md).
+FR/EN : 17 contrôles outillés / tooled controls, 48 règles / rules. TS31:59 authored cases /177 pairs; TS32:62 cases /186 pairs; actual verification recorded separately. Supplied reviews, no authenticated visibility or real Edikka assessment.
+
+Application integration preparation / Préparation applicative — 2026-10-13 :
+[TS02 prospective collection](redirect-collection.md), non-normative version 1:
+prior supplied approval, bounded native HTTP hops, durable failures and offline
+assessment/replay. FR : approbation fournie, traces natives conservées, aucun audit
+réel Edikka ; protocole draft.33 et règles inchangés. Eleven prefrozen synthetic
+scenarios; observed verification belongs in the retained delivery report.
+
+[TS08 CLI rehearsal](inspection-app-integration.md), non-normative version 1.
+Thirteen synthetic end-to-end scenarios (including two selected URLs), four refusal
+cases and a simulated-future-clock replay test; actual execution results
+must be read in the retained rehearsal report. No OAuth/account qualification,
+no additional control or normative version change.
+
+Historical local work: draft.31, interpreter30 / adapter31 / HTML14 / replay3.
+TS36 [contract](release-monitoring.md), [intake](release-monitoring-intake.md), [migration](migration-draft.31.md).
+FR/EN : 15 contrôles outillés / tooled controls, 42 règles / rules; strict four-stage supplied documentary cycle, no real future observation.
+
+Historical integration: draft.30, interpreter29 / adapter30 / HTML13 / replay3.
+TS12 [contract](canonical-comparison.md), [intake](canonical-comparison-intake.md), [migration](migration-draft.30.md).
+FR/EN: 14 contrôles outillés / tooled controls, 39 règles / rules; supplied rendered states required, no real account/browser trial inferred.
+
+Historical integration: draft.29, interpreter28 / adapter29 / HTML12 / replay3.
+TS08 [inspection evidence](inspection-evidence.md), [intake](search-console-acquisition.md), [migration](migration-draft.29.md).
+FR : priorité du sprint du 12–14 octobre : TS08 puis TS12 ; qualification et gel mercredi. TS36 puis TS31–33 ensuite.
+EN:13 tooled controls /36 rules; supplied API/review qualification only, no actual account assessment or new remote CI.
+
+Historical integration: draft.28, interpreter 27 / adapter 28 / HTML 11 / replay 3.
 Guided collector 8 / preflight 3 / intent 4: [parsed preparation and exact replay](guided-parsed-markers.md).
 FR : préparation prospective avec refus des contradictions complètes par hypothèse ; sources/runtime liés, aucune application réelle déduite.
 Optional prior [parsed-source markers](source-markers.md) extend TS01-A02; [migration](migration-draft.28.md) preserves historical readers and URL/hash/stability precedence.
@@ -7,7 +115,7 @@ FR : 76 cas atomiques rédigés, huit scénarios de paquets synthétiques ; aucu
 Historical integration: draft.27, interpreter 26 / adapter 27 / HTML 10 / replay 3.
 Optional [source-marker readings 1](source-marker-readings.md) prepares TS01 with attributed parsed segments and two whole-document hypotheses; no normative promotion or historical migration.
 FR : 52 documents synthétiques, 104 attentes après deux corrections explicites ; diagnostic rétrospectif de trois corps Edikka sans critères ni verdict TS01.
-Current priority: consolidate the existing 12 controls before deciding the Edikka application; further TS31–33/TS36 layers are deferred after the in-flight rendered component.
+Historical October 11 priority: consolidate the existing 12 controls before deciding the Edikka application; further TS31–33/TS36 layers are deferred after the in-flight rendered component.
 FR : priorité donnée par Bertrand le 11 octobre à la finalisation des 12 contrôles ; ne pas attendre les 44 pour décider ensuite de l’application.
 Optional [supplied rendered JSON-LD observation 1](jsonld-rendered-observation.md) binds planned supplied DOM states to HTTP, retains snapshot bases and compares exact parsed-source/rendered texts. No browser execution or new control.
 Optional [HTML JSON-LD observation 1](jsonld-html-observation.md): original-byte script attribution, two static hypotheses and combined documents under an explicit supplied-base hypothesis; 126 frozen expected readings, 63 exact replays and 10 over-limit refusals.
@@ -67,7 +175,7 @@ versions are retained and are not silently upgraded.
 FR : une édition locale ne prouve pas une publication ; les numéros des outils
 évoluent séparément et les anciens dossiers se rejouent avec leurs outils exacts.
 
-### Draft.28 publication checks / Vérification de publication draft.28
+### Historical draft.28 publication checks / Vérification historique de publication draft.28
 
 The CI workflow now explicitly selects Node 24.19.0 through `TSEP_SOURCE_NODE`
 on its seven Python/OS combinations, so optional parsed-source tests are exercised.

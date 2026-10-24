@@ -1,0 +1,2760 @@
+{
+  "version": 1,
+  "registry_date": "2026-09-17",
+  "captured_at": "2026-10-18",
+  "url": "https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry",
+  "capture_sha256": "755fad43283be7b41ebe3c89ad054b6eaf928f404f9c0edb74799e0eab74beb1",
+  "derivation": "Only registered code tokens and deprecation/preferred metadata; no descriptions. Facts are not engine behavior.",
+  "codes": {
+    "language": {
+      "aa": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ab": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ae": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "af": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ak": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "am": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "an": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ar": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "as": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "av": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ay": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "az": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ba": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "be": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bh": {
+        "deprecated": "2026-06-14",
+        "preferred": "bih"
+      },
+      "bi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "br": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bs": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ca": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ce": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ch": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "co": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cs": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cy": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "da": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "de": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "dv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "dz": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ee": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "el": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "en": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "eo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "es": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "et": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "eu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fa": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ff": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fj": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fy": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ga": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ha": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "he": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ho": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ht": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hy": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hz": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ia": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "id": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ie": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ig": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ii": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ik": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "in": {
+        "deprecated": "1989-01-01",
+        "preferred": "id"
+      },
+      "io": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "is": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "it": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "iu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "iw": {
+        "deprecated": "1989-01-01",
+        "preferred": "he"
+      },
+      "ja": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ji": {
+        "deprecated": "1989-01-01",
+        "preferred": "yi"
+      },
+      "jv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "jw": {
+        "deprecated": "2001-08-13",
+        "preferred": "jv"
+      },
+      "ka": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ki": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kj": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "km": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ko": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ks": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ku": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ky": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "la": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "li": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ln": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ml": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mo": {
+        "deprecated": "2008-11-22",
+        "preferred": "ro"
+      },
+      "mr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ms": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "my": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "na": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ne": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ng": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "no": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ny": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "oc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "oj": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "om": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "or": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "os": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pa": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ps": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "qu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "rm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "rn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ro": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ru": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "rw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sa": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "se": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "si": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "so": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sq": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ss": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "st": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "su": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ta": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "te": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "th": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ti": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "to": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ts": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ty": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ug": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "uk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ur": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "uz": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ve": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "vi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "vo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "wa": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "wo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "xh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "yi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "yo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "za": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zu": {
+        "deprecated": null,
+        "preferred": null
+      }
+    },
+    "region": {
+      "aa": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ac": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ad": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ae": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "af": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ag": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ai": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "al": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "am": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "an": {
+        "deprecated": "2011-01-07",
+        "preferred": null
+      },
+      "ao": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "aq": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ar": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "as": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "at": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "au": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "aw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ax": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "az": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ba": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "be": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bf": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bj": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bq": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "br": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bs": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bu": {
+        "deprecated": "1989-12-05",
+        "preferred": "MM"
+      },
+      "bv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "by": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bz": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ca": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cf": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ch": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ci": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ck": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "co": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cp": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cq": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cs": {
+        "deprecated": "2006-10-05",
+        "preferred": null
+      },
+      "cu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cx": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cy": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cz": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "dd": {
+        "deprecated": "1990-10-30",
+        "preferred": "DE"
+      },
+      "de": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "dg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "dj": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "dk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "dm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "do": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "dz": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ea": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ec": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ee": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "eg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "eh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "er": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "es": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "et": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "eu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ez": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fj": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "fx": {
+        "deprecated": "1997-07-14",
+        "preferred": "FR"
+      },
+      "ga": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ge": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gf": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gp": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gq": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gs": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gy": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ht": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ic": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "id": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ie": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "il": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "im": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "in": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "io": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "iq": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ir": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "is": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "it": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "je": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "jm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "jo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "jp": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ke": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ki": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "km": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kp": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ky": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kz": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "la": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "li": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ls": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ly": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ma": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "md": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "me": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mf": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ml": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mp": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mq": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ms": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mx": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "my": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mz": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "na": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ne": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nf": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ng": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ni": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "no": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "np": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nt": {
+        "deprecated": "1993-07-12",
+        "preferred": null
+      },
+      "nu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nz": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "om": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pa": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pe": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pf": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ph": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ps": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "py": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "qa": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "re": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ro": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "rs": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ru": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "rw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sa": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "se": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "si": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sj": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "so": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ss": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "st": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "su": {
+        "deprecated": "1992-08-30",
+        "preferred": null
+      },
+      "sv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sx": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sy": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sz": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ta": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "td": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tf": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "th": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tj": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "to": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tp": {
+        "deprecated": "2002-05-20",
+        "preferred": "TL"
+      },
+      "tr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tz": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ua": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ug": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "um": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "un": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "us": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "uy": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "uz": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "va": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "vc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ve": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "vg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "vi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "vn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "vu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "wf": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ws": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "yd": {
+        "deprecated": "1990-08-14",
+        "preferred": "YE"
+      },
+      "ye": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "yt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "yu": {
+        "deprecated": "2003-07-23",
+        "preferred": null
+      },
+      "za": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zr": {
+        "deprecated": "1997-07-14",
+        "preferred": "CD"
+      },
+      "zw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zz": {
+        "deprecated": null,
+        "preferred": null
+      }
+    },
+    "script": {
+      "adlm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "afak": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "aghb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ahom": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "arab": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "aran": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "armi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "armn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "avst": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bali": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bamu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bass": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "batk": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "beng": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "berf": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bhks": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "blis": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bopo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "brah": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "brai": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "bugi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "buhd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cakm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cans": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cari": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cham": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cher": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "chis": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "chrs": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cirt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "copt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cpmn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cprt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cyrl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "cyrs": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "deva": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "diak": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "dogr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "dsrt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "dupl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "egyd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "egyh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "egyp": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "elba": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "elym": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ethi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gara": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "geok": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "geor": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "glag": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gong": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gonm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "goth": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gran": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "grek": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gujr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "gukh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "guru": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hanb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hang": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hani": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hano": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hans": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hant": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hatr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hebr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hira": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hluw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hmng": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hmnp": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hntl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hrkt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "hung": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "inds": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ital": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "jamo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "java": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "jpan": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "jurc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kali": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kana": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kawi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "khar": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "khmr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "khoj": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kitl": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kits": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "knda": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kore": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kpel": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "krai": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "kthi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lana": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "laoo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "latf": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "latg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "latn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "leke": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lepc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "limb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lina": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "linb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lisu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "loma": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lyci": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "lydi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mahj": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "maka": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mand": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mani": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "marc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "maya": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "medf": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mend": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "merc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mero": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mlym": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "modi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mong": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "moon": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mroo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mtei": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mult": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "mymr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nagm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nand": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "narb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nbat": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "newa": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nkdb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nkgb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nkoo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "nshu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ogam": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "olck": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "onao": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "orkh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "orya": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "osge": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "osma": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ougr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "palm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pauc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pcun": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "pelm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "perm": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "phag": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "phli": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "phlp": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "phlv": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "phnx": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "piqd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "plrd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "prti": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "psin": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ranj": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "rjng": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "rohg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "roro": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "runr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "samr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sara": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sarb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "saur": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "seal": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sgnw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "shaw": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "shrd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "shui": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sidd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sidt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sind": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sinh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sogd": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sogo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sora": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "soyo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sund": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sunu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "sylo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "syrc": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "syre": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "syrj": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "syrn": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tagb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "takr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tale": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "talu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "taml": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tang": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tavt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tayo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "telu": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "teng": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tfng": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tglg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "thaa": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "thai": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tibt": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tirh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tnsa": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "todr": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tols": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "toto": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "tutg": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "ugar": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "vaii": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "visp": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "vith": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "wara": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "wcho": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "wole": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "xpeo": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "xsux": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "yezi": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "yiii": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zanb": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zinh": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zmth": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zsye": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zsym": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zxxx": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zyyy": {
+        "deprecated": null,
+        "preferred": null
+      },
+      "zzzz": {
+        "deprecated": null,
+        "preferred": null
+      }
+    }
+  }
+}

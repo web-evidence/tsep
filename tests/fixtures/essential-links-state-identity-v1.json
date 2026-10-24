@@ -1,0 +1,744 @@
+{
+  "synthetic": true,
+  "expected_origin": "Authored after method review and before new identity diagnostics; separate-navigation support is outside closed v1.",
+  "cases": [
+    {
+      "id": "identical-snapshots-distinct-declared-states",
+      "input": {
+        "url": "https://example.test/page",
+        "observed_at": "2026-10-14T08:11:00Z",
+        "link_synthetic": true,
+        "context": {
+          "network": "Synthetic supplied records; no external collection",
+          "bounds": "Declared destinations only",
+          "tool": "Authored fixture",
+          "tool_version": "1"
+        },
+        "intent": {
+          "declared_at": "2026-10-14T07:59:00Z",
+          "crawler": "synthetic-client",
+          "essential_links": {
+            "reader": "essential-document-links-v1",
+            "strategy": "source-and-rendered",
+            "selection_reason": "Synthetic declared essential document destination",
+            "window_start": "2026-10-14T08:00:00Z",
+            "window_end": "2026-10-14T08:10:00Z",
+            "max_duration_ms": 10000,
+            "final_url": "https://example.test/page",
+            "destinations": [
+              {
+                "url": "https://example.test/destination",
+                "reason": "Synthetic test-only navigation target"
+              }
+            ],
+            "states": [
+              {
+                "id": "loaded",
+                "browser": "Synthetic browser",
+                "browser_version": "1",
+                "scenario": "Named authored post-load snapshot"
+              },
+              {
+                "id": "second",
+                "browser": "Synthetic browser",
+                "browser_version": "1",
+                "scenario": "Named authored post-load snapshot"
+              }
+            ]
+          }
+        },
+        "http": [
+          {
+            "url": "https://example.test/page",
+            "complete": true,
+            "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+            "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Synthetic</title></head><body><a href=\"https://example.test/destination\">x</a></body></html>",
+            "sent_at": "2026-10-14T08:00:00Z",
+            "received_at": "2026-10-14T08:00:01Z"
+          }
+        ],
+        "render": {
+          "states": [
+            {
+              "id": "loaded",
+              "observed_at": "2026-10-14T08:05:00Z",
+              "browser": "Synthetic browser",
+              "browser_version": "1",
+              "complete": true,
+              "errors": [],
+              "javascript_enabled": true,
+              "structured_dom": {
+                "snapshot": {
+                  "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+                  "tree": {
+                    "format": "rendered-metadata-tree",
+                    "version": "2",
+                    "limits": {
+                      "nodes": 1024,
+                      "depth": 64,
+                      "tree_utf8_bytes": 524288,
+                      "serialization_utf8_bytes": 262144,
+                      "cooperative_ms": 2000,
+                      "invocation_timeout_ms": 5000
+                    },
+                    "document_url": "https://example.test/page",
+                    "base_uri": "https://example.test/page",
+                    "ready_state": "complete",
+                    "execution_context": "not-attested",
+                    "scripting": "enabled-by-laboratory-plan",
+                    "closed_shadow_coverage": "unknown",
+                    "frame_documents": "not-collected",
+                    "template_fragments": "not-collected",
+                    "origin_attribution": "unknown",
+                    "serialization": {
+                      "available": true,
+                      "html": "AUTHORED SYNTHETIC FIXTURE, NOT A BROWSER"
+                    },
+                    "nodes": [
+                      {
+                        "id": 0,
+                        "parent": null,
+                        "edge": "root",
+                        "index": 0,
+                        "type": 9,
+                        "name": "#document",
+                        "namespace": null,
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 1,
+                        "shadow": "not-element",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 1,
+                        "parent": 0,
+                        "edge": "child",
+                        "index": 0,
+                        "type": 1,
+                        "name": "html",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 2,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 2,
+                        "parent": 1,
+                        "edge": "child",
+                        "index": 0,
+                        "type": 1,
+                        "name": "head",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 0,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 3,
+                        "parent": 1,
+                        "edge": "child",
+                        "index": 1,
+                        "type": 1,
+                        "name": "body",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 1,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 4,
+                        "parent": 3,
+                        "edge": "child",
+                        "index": 0,
+                        "type": 1,
+                        "name": "a",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [
+                          {
+                            "name": "href",
+                            "local_name": "href",
+                            "namespace": null,
+                            "value": "https://example.test/destination"
+                          }
+                        ],
+                        "data": null,
+                        "child_count": 0,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      }
+                    ],
+                    "reported_node_count": 5,
+                    "traversal_complete": true,
+                    "stop_reason": null,
+                    "api_errors": [],
+                    "elapsed_ms": 0
+                  }
+                },
+                "snapshot_sha256": "10a6f082060d286e7de44421ea0ff4418aefa2b7a2c089abfd20e6df2908095b",
+                "known_integrity_issues": [],
+                "acquisition": {
+                  "kind": "authored-synthetic",
+                  "navigation_id": "synthetic-nav",
+                  "http_sha256": "ecd919788388e1717665478f7ea9ee5713f965ad8e3b14f31837baf50cce0688",
+                  "user_agent": "synthetic-client",
+                  "support": [
+                    {
+                      "name": "Synthetic receipt",
+                      "content": "SYNTHETIC authored acquisition, not an observed browser navigation.",
+                      "sha256": "86dc0965aa238a74d8f6f0b3ea004fb7db0ef601b09d9352866561ad8c491427"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "second",
+              "observed_at": "2026-10-14T08:05:00Z",
+              "browser": "Synthetic browser",
+              "browser_version": "1",
+              "complete": true,
+              "errors": [],
+              "javascript_enabled": true,
+              "structured_dom": {
+                "snapshot": {
+                  "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+                  "tree": {
+                    "format": "rendered-metadata-tree",
+                    "version": "2",
+                    "limits": {
+                      "nodes": 1024,
+                      "depth": 64,
+                      "tree_utf8_bytes": 524288,
+                      "serialization_utf8_bytes": 262144,
+                      "cooperative_ms": 2000,
+                      "invocation_timeout_ms": 5000
+                    },
+                    "document_url": "https://example.test/page",
+                    "base_uri": "https://example.test/page",
+                    "ready_state": "complete",
+                    "execution_context": "not-attested",
+                    "scripting": "enabled-by-laboratory-plan",
+                    "closed_shadow_coverage": "unknown",
+                    "frame_documents": "not-collected",
+                    "template_fragments": "not-collected",
+                    "origin_attribution": "unknown",
+                    "serialization": {
+                      "available": true,
+                      "html": "AUTHORED SYNTHETIC FIXTURE, NOT A BROWSER"
+                    },
+                    "nodes": [
+                      {
+                        "id": 0,
+                        "parent": null,
+                        "edge": "root",
+                        "index": 0,
+                        "type": 9,
+                        "name": "#document",
+                        "namespace": null,
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 1,
+                        "shadow": "not-element",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 1,
+                        "parent": 0,
+                        "edge": "child",
+                        "index": 0,
+                        "type": 1,
+                        "name": "html",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 2,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 2,
+                        "parent": 1,
+                        "edge": "child",
+                        "index": 0,
+                        "type": 1,
+                        "name": "head",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 0,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 3,
+                        "parent": 1,
+                        "edge": "child",
+                        "index": 1,
+                        "type": 1,
+                        "name": "body",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 1,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 4,
+                        "parent": 3,
+                        "edge": "child",
+                        "index": 0,
+                        "type": 1,
+                        "name": "a",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [
+                          {
+                            "name": "href",
+                            "local_name": "href",
+                            "namespace": null,
+                            "value": "https://example.test/destination"
+                          }
+                        ],
+                        "data": null,
+                        "child_count": 0,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      }
+                    ],
+                    "reported_node_count": 5,
+                    "traversal_complete": true,
+                    "stop_reason": null,
+                    "api_errors": [],
+                    "elapsed_ms": 0
+                  }
+                },
+                "snapshot_sha256": "10a6f082060d286e7de44421ea0ff4418aefa2b7a2c089abfd20e6df2908095b",
+                "known_integrity_issues": [],
+                "acquisition": {
+                  "kind": "authored-synthetic",
+                  "navigation_id": "synthetic-nav",
+                  "http_sha256": "ecd919788388e1717665478f7ea9ee5713f965ad8e3b14f31837baf50cce0688",
+                  "user_agent": "synthetic-client",
+                  "support": [
+                    {
+                      "name": "Synthetic receipt",
+                      "content": "SYNTHETIC authored acquisition, not an observed browser navigation.",
+                      "sha256": "86dc0965aa238a74d8f6f0b3ea004fb7db0ef601b09d9352866561ad8c491427"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "expected": [
+        "pass",
+        "pass"
+      ],
+      "duplicate_group_minimum": 2
+    },
+    {
+      "id": "source-fail-distinct-render-agent",
+      "input": {
+        "url": "https://example.test/page",
+        "observed_at": "2026-10-14T08:11:00Z",
+        "link_synthetic": true,
+        "context": {
+          "network": "Synthetic supplied records; no external collection",
+          "bounds": "Declared destinations only",
+          "tool": "Authored fixture",
+          "tool_version": "1"
+        },
+        "intent": {
+          "declared_at": "2026-10-14T07:59:00Z",
+          "crawler": "synthetic-client",
+          "essential_links": {
+            "reader": "essential-document-links-v1",
+            "strategy": "source-and-rendered",
+            "selection_reason": "Synthetic declared essential document destination",
+            "window_start": "2026-10-14T08:00:00Z",
+            "window_end": "2026-10-14T08:10:00Z",
+            "max_duration_ms": 10000,
+            "final_url": "https://example.test/page",
+            "destinations": [
+              {
+                "url": "https://example.test/destination",
+                "reason": "Synthetic test-only navigation target"
+              }
+            ],
+            "states": [
+              {
+                "id": "loaded",
+                "browser": "Synthetic browser",
+                "browser_version": "1",
+                "scenario": "Named authored post-load snapshot"
+              }
+            ]
+          }
+        },
+        "http": [
+          {
+            "url": "https://example.test/page",
+            "complete": true,
+            "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+            "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Synthetic</title></head><body></body></html>",
+            "sent_at": "2026-10-14T08:00:00Z",
+            "received_at": "2026-10-14T08:00:01Z"
+          }
+        ],
+        "render": {
+          "states": [
+            {
+              "id": "loaded",
+              "observed_at": "2026-10-14T08:05:00Z",
+              "browser": "Synthetic browser",
+              "browser_version": "1",
+              "complete": true,
+              "errors": [],
+              "javascript_enabled": true,
+              "structured_dom": {
+                "snapshot": {
+                  "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+                  "tree": {
+                    "format": "rendered-metadata-tree",
+                    "version": "2",
+                    "limits": {
+                      "nodes": 1024,
+                      "depth": 64,
+                      "tree_utf8_bytes": 524288,
+                      "serialization_utf8_bytes": 262144,
+                      "cooperative_ms": 2000,
+                      "invocation_timeout_ms": 5000
+                    },
+                    "document_url": "https://example.test/page",
+                    "base_uri": "https://example.test/page",
+                    "ready_state": "complete",
+                    "execution_context": "not-attested",
+                    "scripting": "enabled-by-laboratory-plan",
+                    "closed_shadow_coverage": "unknown",
+                    "frame_documents": "not-collected",
+                    "template_fragments": "not-collected",
+                    "origin_attribution": "unknown",
+                    "serialization": {
+                      "available": true,
+                      "html": "AUTHORED SYNTHETIC FIXTURE, NOT A BROWSER"
+                    },
+                    "nodes": [
+                      {
+                        "id": 0,
+                        "parent": null,
+                        "edge": "root",
+                        "index": 0,
+                        "type": 9,
+                        "name": "#document",
+                        "namespace": null,
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 1,
+                        "shadow": "not-element",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 1,
+                        "parent": 0,
+                        "edge": "child",
+                        "index": 0,
+                        "type": 1,
+                        "name": "html",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 2,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 2,
+                        "parent": 1,
+                        "edge": "child",
+                        "index": 0,
+                        "type": 1,
+                        "name": "head",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 0,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 3,
+                        "parent": 1,
+                        "edge": "child",
+                        "index": 1,
+                        "type": 1,
+                        "name": "body",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 1,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 4,
+                        "parent": 3,
+                        "edge": "child",
+                        "index": 0,
+                        "type": 1,
+                        "name": "a",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [
+                          {
+                            "name": "href",
+                            "local_name": "href",
+                            "namespace": null,
+                            "value": "https://example.test/destination"
+                          }
+                        ],
+                        "data": null,
+                        "child_count": 0,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      }
+                    ],
+                    "reported_node_count": 5,
+                    "traversal_complete": true,
+                    "stop_reason": null,
+                    "api_errors": [],
+                    "elapsed_ms": 0
+                  }
+                },
+                "snapshot_sha256": "10a6f082060d286e7de44421ea0ff4418aefa2b7a2c089abfd20e6df2908095b",
+                "known_integrity_issues": [],
+                "acquisition": {
+                  "kind": "authored-synthetic",
+                  "navigation_id": "synthetic-nav",
+                  "http_sha256": "fcc315c51e06504907529bfc768c880502c73a1f90de6c90c13952ea36628305",
+                  "user_agent": "different-agent",
+                  "support": [
+                    {
+                      "name": "Synthetic receipt",
+                      "content": "SYNTHETIC authored acquisition, not an observed browser navigation.",
+                      "sha256": "86dc0965aa238a74d8f6f0b3ea004fb7db0ef601b09d9352866561ad8c491427"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "expected": [
+        "fail",
+        "inconclusive"
+      ],
+      "duplicate_group_minimum": 0
+    },
+    {
+      "id": "source-fail-distinct-render-http",
+      "input": {
+        "url": "https://example.test/page",
+        "observed_at": "2026-10-14T08:11:00Z",
+        "link_synthetic": true,
+        "context": {
+          "network": "Synthetic supplied records; no external collection",
+          "bounds": "Declared destinations only",
+          "tool": "Authored fixture",
+          "tool_version": "1"
+        },
+        "intent": {
+          "declared_at": "2026-10-14T07:59:00Z",
+          "crawler": "synthetic-client",
+          "essential_links": {
+            "reader": "essential-document-links-v1",
+            "strategy": "source-and-rendered",
+            "selection_reason": "Synthetic declared essential document destination",
+            "window_start": "2026-10-14T08:00:00Z",
+            "window_end": "2026-10-14T08:10:00Z",
+            "max_duration_ms": 10000,
+            "final_url": "https://example.test/page",
+            "destinations": [
+              {
+                "url": "https://example.test/destination",
+                "reason": "Synthetic test-only navigation target"
+              }
+            ],
+            "states": [
+              {
+                "id": "loaded",
+                "browser": "Synthetic browser",
+                "browser_version": "1",
+                "scenario": "Named authored post-load snapshot"
+              }
+            ]
+          }
+        },
+        "http": [
+          {
+            "url": "https://example.test/page",
+            "complete": true,
+            "request": "GET /page HTTP/1.1\r\nHost: example.test\r\nUser-Agent: synthetic-client\r\n\r\n",
+            "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Synthetic</title></head><body></body></html>",
+            "sent_at": "2026-10-14T08:00:00Z",
+            "received_at": "2026-10-14T08:00:01Z"
+          }
+        ],
+        "render": {
+          "states": [
+            {
+              "id": "loaded",
+              "observed_at": "2026-10-14T08:05:00Z",
+              "browser": "Synthetic browser",
+              "browser_version": "1",
+              "complete": true,
+              "errors": [],
+              "javascript_enabled": true,
+              "structured_dom": {
+                "snapshot": {
+                  "script_sha256": "a0cef846495ed630a89149aafc017ed817f1632b6902402564a24b74d18ba206",
+                  "tree": {
+                    "format": "rendered-metadata-tree",
+                    "version": "2",
+                    "limits": {
+                      "nodes": 1024,
+                      "depth": 64,
+                      "tree_utf8_bytes": 524288,
+                      "serialization_utf8_bytes": 262144,
+                      "cooperative_ms": 2000,
+                      "invocation_timeout_ms": 5000
+                    },
+                    "document_url": "https://example.test/page",
+                    "base_uri": "https://example.test/page",
+                    "ready_state": "complete",
+                    "execution_context": "not-attested",
+                    "scripting": "enabled-by-laboratory-plan",
+                    "closed_shadow_coverage": "unknown",
+                    "frame_documents": "not-collected",
+                    "template_fragments": "not-collected",
+                    "origin_attribution": "unknown",
+                    "serialization": {
+                      "available": true,
+                      "html": "AUTHORED SYNTHETIC FIXTURE, NOT A BROWSER"
+                    },
+                    "nodes": [
+                      {
+                        "id": 0,
+                        "parent": null,
+                        "edge": "root",
+                        "index": 0,
+                        "type": 9,
+                        "name": "#document",
+                        "namespace": null,
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 1,
+                        "shadow": "not-element",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 1,
+                        "parent": 0,
+                        "edge": "child",
+                        "index": 0,
+                        "type": 1,
+                        "name": "html",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 2,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 2,
+                        "parent": 1,
+                        "edge": "child",
+                        "index": 0,
+                        "type": 1,
+                        "name": "head",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 0,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 3,
+                        "parent": 1,
+                        "edge": "child",
+                        "index": 1,
+                        "type": 1,
+                        "name": "body",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [],
+                        "data": null,
+                        "child_count": 1,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      },
+                      {
+                        "id": 4,
+                        "parent": 3,
+                        "edge": "child",
+                        "index": 0,
+                        "type": 1,
+                        "name": "a",
+                        "namespace": "http://www.w3.org/1999/xhtml",
+                        "attributes": [
+                          {
+                            "name": "href",
+                            "local_name": "href",
+                            "namespace": null,
+                            "value": "https://example.test/destination"
+                          }
+                        ],
+                        "data": null,
+                        "child_count": 0,
+                        "shadow": "unexposed-or-absent",
+                        "resolved_href": null
+                      }
+                    ],
+                    "reported_node_count": 5,
+                    "traversal_complete": true,
+                    "stop_reason": null,
+                    "api_errors": [],
+                    "elapsed_ms": 0
+                  }
+                },
+                "snapshot_sha256": "10a6f082060d286e7de44421ea0ff4418aefa2b7a2c089abfd20e6df2908095b",
+                "known_integrity_issues": [],
+                "acquisition": {
+                  "kind": "authored-synthetic",
+                  "navigation_id": "synthetic-nav",
+                  "http_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+                  "user_agent": "synthetic-client",
+                  "support": [
+                    {
+                      "name": "Synthetic receipt",
+                      "content": "SYNTHETIC authored acquisition, not an observed browser navigation.",
+                      "sha256": "86dc0965aa238a74d8f6f0b3ea004fb7db0ef601b09d9352866561ad8c491427"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      },
+      "expected": [
+        "fail",
+        "inconclusive"
+      ],
+      "duplicate_group_minimum": 0
+    }
+  ]
+}

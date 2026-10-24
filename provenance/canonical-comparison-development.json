@@ -1,0 +1,58 @@
+{
+  "scope": "Synthetic method qualification and retained initial implementation/integration failures; not an account, browser or human assessment",
+  "preimplementation_freeze": {
+    "frozen_at": "2026-10-12T08:37:51.850879+00:00",
+    "cases": 66,
+    "pairs": 198,
+    "files": {
+      "tests/fixtures/canonical-comparison-v1.json": "d8113fa7dbd0a0388a206afcbc16088a7301c10a445dde1906caa1082ee8181c",
+      "tests/fixtures/canonical-comparison-v1.sha256": "23fd8c8209cd53224fec6c2300d32908cec536358cdad3148868f7c8264bbe6a",
+      "docs/canonical-comparison.md": "6a1505dd40565d9a42753074c92a14e6984f2525831c7dbb89a38b52bf27be34"
+    },
+    "reader_exists": false,
+    "expected_origin": "Independently authored, before implementation"
+  },
+  "initial_reader": {
+    "unexpected_inconclusive": 55,
+    "cause": "Used scripting-enabled/scripting-disabled instead of actual enabled/disabled inventory keys",
+    "expectations_changed": false,
+    "retained_local_receipt_sha256": "6d24a8145ae644a30a057ce375bc61e706cdb77c1c6072bc18e0bfc023afe293"
+  },
+  "corrected_reader": {
+    "pairs": 198,
+    "disagreements": 0,
+    "retained_local_receipt_sha256": "301d44c7a8a63c54937cd828b350a82a49f6c61222339789c1222588e02b821c"
+  },
+  "integration_failures": [
+    "Schema version still draft29; updated to draft30",
+    "Corpus expanded beyond 8 MiB; preserved original compact historical lines and appended cases",
+    "A01 incorrectly required rendered artifact before capture qualification; scoped A01 inputs to intent/API/HTTP",
+    "Authored intake test review omitted imported manifest binding; supplied review explicitly bound to imported input"
+  ],
+  "qualification_observed": {
+    "targeted_integration_tests": 33,
+    "targeted_integration_result": "OK",
+    "later_report_tests": 8,
+    "later_report_result": "OK"
+  },
+  "full_verification": "Required separately on final sources; not claimed here",
+  "limits": [
+    "No publication, remote CI or real Edikka assessment",
+    "Historical browser block unchanged",
+    "Old 36 rule objects and 1304 case objects preserved"
+  ],
+  "full_verification_initial_failure": {
+    "tests_run": 954,
+    "failures": 4,
+    "changed_source_files": [],
+    "cause": "Three frozen historical compatibility selections accidentally included 66 newly appended TS12 cases; the external adapter sample omitted TS12 outcome coverage.",
+    "repair": "Exclude only the new fixture from the three old selections, preserving all their historical counts and expected hashes. Add five pre-frozen TS12 examples to the transport sample, covering pass/fail/inconclusive for all three rules.",
+    "expected_outcomes_changed": false,
+    "receipt_sha256": "ac3293b62a1d8774ddd9aeec98c1a3f3db0787a75b69562cb0878e86c6ea8b9d",
+    "targeted_recheck": {
+      "tests": 4,
+      "result": "OK",
+      "historical_counts_and_hashes_unchanged": true
+    }
+  }
+}

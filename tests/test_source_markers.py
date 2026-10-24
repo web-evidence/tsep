@@ -105,7 +105,7 @@ class SourceMarkers(unittest.TestCase):
         with self.assertRaises(ValueError):reader.observe(b'\xff',content_types=['text/html; charset=utf-8'])
 
     def test_exact_replay_rejects_different_inputs_tools_or_result(self):
-        raw=b'synthetic';saved={'kind':'unapplied-source-marker-readings','experiment_version':'1','normative_effect':'none',
+        raw=b'synthetic';saved={'kind':'unapplied-source-marker-readings','experiment_version':reader.VERSION,'normative_effect':'none',
                              'body_sha256':reader.sha(raw),'source_sha256':reader.identity(),'content_types':['text/html; charset=utf-8'],'criteria':None}
         with self.assertRaisesRegex(ValueError,'body identity'):reader.replay(saved,b'changed',node='/unused')
         changed=dict(saved,source_sha256={})

@@ -1,8 +1,45 @@
-Édition de développement : **0.1.0-draft.28** — [marqueurs HTML parsés TS01](docs/source-markers.md) facultatifs et [migration explicite](docs/migration-draft.28.md). Deux lectures statiques complètes comparent les marqueurs littéraux ; le lecteur historique et les priorités URL/empreinte/stabilité sont conservés. Aucune visibilité navigateur ou conformité d’Edikka n’est déduite.
+Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](docs/render-transport-evidence.md), [migration](docs/migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
 
-Préparation TS31–33 : [états rendus fournis et comparaison source/DOM](docs/jsonld-rendered-observation.md), sans nouvelle collecte ni verdict. Priorité actuelle : consolider les 12 contrôles existants avant de décider l’application.
+Préparation0.3.0-draft.3 : 38 contrôles à règles /85 règles, lot TS21/22/40. Cas synthétiques et revues fournies ; aucune indexation réelle ou causalité déduite. [Contrat / contract](docs/indexing-locale-evidence.md), [migration](docs/migration-0.3.0-draft.3.md).
 
-Préparation TS31–33 : [traitement JSON-LD hors ligne](docs/jsonld-processing.md), puis [extraction HTML attribuée et combinaison des blocs](docs/jsonld-html-observation.md). Cas contradictoires figés et rejeu exact ; base effective, faits visibles et validateurs restent à qualifier. Le total reste 12 contrôles / 33 règles exécutables.
+Préparation 0.3.0-draft.2 : 35 contrôles avec règles /79 règles atomiques. Lot TS09/11/19/20/38, source et revues fournies ; [contrat](docs/url-policy-evidence.md), [migration](docs/migration-0.3.0-draft.2.md). Exemples synthétiques, aucune publication ni modification applicative.
+
+[TS25 — présence critique fournie / supplied critical presence](docs/critical-presence-evidence.md), [draft.44 migration](docs/migration-draft.44.md).
+
+[TS24 — rôle x-default fourni / supplied x-default role](docs/xdefault-role-evidence.md), [draft.41 migration](docs/migration-draft.41.md).
+
+[TS23 — hreflang fourni / supplied hreflang](docs/hreflang-reciprocity-evidence.md), [draft.39 migration](docs/migration-draft.39.md).
+
+[TS18 — graphe et inventaires fournis / supplied graph and inventories](docs/graph-reconciliation-evidence.md), [draft.38 migration](docs/migration-draft.38.md).
+
+[TS16 — liens entrants fournis / supplied incoming links](docs/incoming-links-evidence.md), [draft.37 migration](docs/migration-draft.37.md).
+
+[TS17 — liens essentiels fournis / supplied essential links](docs/essential-links-evidence.md), [draft.36 migration](docs/migration-draft.36.md).
+
+[TS15 — fichiers sitemap fournis / supplied sitemap files](docs/sitemap-files-evidence.md), [draft.35 migration](docs/migration-draft.35.md).
+
+[TS33 — validation layers / couches de validation](docs/structured-validation-evidence.md), [draft.34 migration](docs/migration-draft.34.md).
+
+TS32 : [corpus d’identités JSON-LD déclaré](docs/structured-identity-evidence.md), [migration draft.33](docs/migration-draft.33.md). Cohérence du corpus fourni et revues liées ; aucune stabilité temporelle établie.
+TS31 : [preuves JSON-LD/contenu](docs/structured-content-evidence.md), [migration draft.32](docs/migration-draft.32.md). Revues liées aux graphes fournis ; aucune visibilité authentifiée ni résultat enrichi garanti.
+
+TS36 : [suivi après changement](docs/release-monitoring.md), [import et clôture](docs/release-monitoring-intake.md), [migration draft.31](docs/migration-draft.31.md). Cas rédigés uniquement ; aucune échéance réelle future accomplie.
+
+**Préparation 0.3.0-draft.1** — TS13/TS14 uniquement ; règles RC1 conservées, 30 contrôles /70 règles. [Contrat](docs/sitemap-quality-evidence.md), [migration](docs/migration-0.3.0-draft.1.md). Exercices synthétiques, aucune publication ni modification applicative.
+
+Base historique :
+
+**Préversion RC1 : 0.2.0-rc.1** — les 44 contrôles TS01–TS44 sont conservés ; 28 contrôles /67 règles atomiques exécutables. TS03 utilise uniquement des captures synthétiques .invalid. [Tableau actualisé des 44 contrôles](docs/control-implementation-status.md), [preuves TS03](docs/ts03-response-evidence.md), [migration](docs/migration-0.2.0-rc.1.md), [dossier d’intégration app](docs/app-integration-roadmap.fr.md). Cette préversion ne vérifie aucun usage réel de site.
+
+TS08 : [inspections natives](docs/inspection-evidence.md) et [acquisition](docs/search-console-acquisition.md) restent disponibles.
+
+TS02 : le [collecteur prospectif](docs/redirect-collection.md) conserve chaque saut
+HTTP dans les bornes approuvées, puis produit le rapport existant et son rejeu.
+Workflow facultatif non normatif ; aucune évaluation réelle Edikka déduite.
+
+Préparation TS31–33 : [états rendus fournis et comparaison source/DOM](docs/jsonld-rendered-observation.md), sans nouvelle collecte ni verdict. Priorité du 12 octobre : TS08 puis TS12, qualification avant l’application ; TS36 est maintenant disponible ; TS31–33 ensuite.
+
+Préparation TS31–33 : [traitement JSON-LD hors ligne](docs/jsonld-processing.md), puis [extraction HTML attribuée et combinaison des blocs](docs/jsonld-html-observation.md). Cas contradictoires figés et rejeu exact ; base effective, faits visibles et validateurs restent à qualifier. Ces composants n’ajoutent pas de règles TS31–33.
 
 Le [laboratoire TS39](docs/delivery-laboratory.md) ajoute huit expériences figées, 38 échanges HTTP réels entre origine et cache locaux, une correction avec purge et un rejeu hors ligne ; pages et revues restent fictives.
 
@@ -10,7 +47,7 @@ TS39 dispose de [trois règles de diffusion](docs/delivery-evidence.md) : matric
 
 # TSEP — format d’échange de preuves
 
-**Technical SEO Evidence Protocol · 0.1.0-draft.28 · initié par Edikka · [English](README.md)**
+**Technical SEO Evidence Protocol · 0.2.0-rc.1 · initié par Edikka · [English](README.md)**
 
 Transmettre un audit SEO technique que son destinataire peut examiner, rejouer et
 contester : mêmes identifiants, périmètre explicite, preuves liées aux constats et
@@ -37,7 +74,7 @@ NC, NA ou NT ; les règles atomiques portent pass, fail, not-applicable ou incon
 
 **TS01–TS44 sont les identifiants permanents hérités de la grille 1.1.** La séquence
 de versions TSEP est distincte ; les sources FR/EN et leur provenance restent intactes.
-Trente-trois règles précisent douze contrôles : TS01, TS02, TS04, TS07, TS10, TS34, TS35, TS39, TS41, TS42, TS43 et TS44. Elles disposent d’un interpréteur borné sur entrées brutes. La comparaison
+Soixante-deux règles atomiques précisent vingt-quatre contrôles : TS01, TS02, TS04, TS07, TS08, TS10, TS12, TS15, TS16, TS17, TS18, TS23, TS24, TS31, TS32, TS33, TS34, TS35, TS36, TS39, TS41, TS42, TS43 et TS44. Leurs interpréteurs restent bornés aux preuves fournies. La comparaison
 de contenu TS10-A02 reste une revue humaine fournie et liée aux captures.
 
 Les imports de performance séparent les p75/classes terrain (CrUX) des diagnostics
@@ -89,8 +126,8 @@ validation du rapport établit sa cohérence et l’intégrité des fichiers.
    TS01/TS07 ne satisfait pas un profil nommé. Aucun test isolé ne valide son parent.
 3. **Passer la suite de conformance** : fournir un adaptateur JSON sur entrée/sortie
    standard, puis exécuter `python3 conformance/run.py --rules TS01-A01,TS01-A02 --command 'python3 mon_adaptateur.py'`
-   pour ce sous-ensemble, ou omettre `--rules` pour les trente-trois règles. Déclarer
-   « passes TSEP 0.1.0-draft.28 conformance for TS01-A01, TS01-A02 » avec les bornes
+   pour ce sous-ensemble, ou omettre `--rules` pour les soixante-sept règles. Déclarer
+   « passes TSEP 0.2.0-rc.1 conformance for TS01-A01, TS01-A02 » avec les bornes
    réellement prises en charge. [Format d’entrée et comparaison](docs/conformance.md). Publier séparément
    accords, désaccords et couverture réduite : les indéterminés acceptés sur des
    limites de référence signalées ne sont pas des évaluations réussies.
@@ -152,7 +189,7 @@ Le validateur vérifie les déclarations et les empreintes, pas leur authenticit
 la pertinence de l’intention ni l’exactitude de tous les jugements. Une empreinte
 ne prouve ni l’auteur ni la date réelle de collecte. Les cas fournis sont synthétiques.
 
-L’interpréteur couvre trente-trois règles dans un sous-ensemble documenté ; les entrées
+L’interpréteur couvre soixante-sept règles dans un sous-ensemble documenté ; les entrées
 non prises en charge restent indéterminées. TS07-A03 compare des captures source/DOM fournies, sans exécuter JavaScript ;
 le plan et les exemptions nécessitent une revue. TS10 compare les signaux d’une famille déclarée et vérifie le rattachement de la revue
 humaine de contenu, sans en garantir la justesse. Un contrôle partiel ne produit jamais de conformité globale.
@@ -164,7 +201,7 @@ Aucun résultat ne garantit indexation, classement ou comportement futur d’un 
 [Gouvernance](GOVERNANCE.md) · [Contribuer](CONTRIBUTING.md) · [Historique](CHANGELOG.md) ·
 [Clause de recette](docs/acceptance-clause.md) · [Sonde HTTP](probes/README.md).
 
-Citer `TSEP@0.1.0-draft.28:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
+Citer `TSEP@0.2.0-rc.1:TS07` avec périmètre, résultat, preuve et empreinte d’archive.
 Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](CITATION.cff).
 [Développement, vérification complète et dépôt autonome](docs/development.md).
 
@@ -187,3 +224,5 @@ Textes/données CC BY 4.0, code Apache-2.0 : [licences](LICENSE.md), [citation](
 [Draft.15 — Source directives / Directives source](docs/migration-draft.15.md)
 
 [TS43 controlled loopback laboratory / Laboratoire contrôlé TS43](docs/agent-access-laboratory.md) : six prefrozen scenarios, eight actual local requests, fictional sources/reviews; no provider visit.
+
+Référence TS05 : [méthode et limites](docs/ts05-indexing-evidence.md), [capture datée](docs/source-captures/ts05-google-search-central-2026-10-16.md).

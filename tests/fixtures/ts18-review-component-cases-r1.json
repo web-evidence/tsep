@@ -1,0 +1,1185 @@
+{
+  "at": "2026-10-14T21:02:01.275399+00:00",
+  "synthetic": true,
+  "authored_before_implementation": true,
+  "scope": "Documentary qualification only. pass is complete supplied review linkage, not authenticated correctness or human approval. Subjects must later be built from the native reader, not taken from user claims.",
+  "cases": [
+    {
+      "id": "complete_supplied_explanation",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "pass",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "supplied_defect",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "defect",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "fail",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "supplied_unresolved",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "unresolved",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "missing_review",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "duplicate_review",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          },
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "wrong_binding",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "missing_reviewer",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "blank_rationale",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": " ",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "future_review",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:12:00Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "pre_capture_review",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:00:00Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "unsupported_disposition",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "approved",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "wrong_synthetic_flag",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": false
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "nonboolean_synthetic",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": "true"
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "unqualified_evidence_not_cured_by_review",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": false,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "unqualified_evidence_not_promoted_by_defect_label",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": false,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "defect",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "one_required_review_missing",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          },
+          {
+            "id": "orphan:https://example.test/b",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "orphan:https://example.test/b",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {
+        "family:main": "pass",
+        "orphan:https://example.test/b": "inconclusive"
+      }
+    },
+    {
+      "id": "qualified_defect_survives_other_missing_review",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          },
+          {
+            "id": "orphan:https://example.test/b",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "orphan:https://example.test/b",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "defect",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "fail",
+      "subject_outcomes": {
+        "family:main": "fail",
+        "orphan:https://example.test/b": "inconclusive"
+      }
+    },
+    {
+      "id": "qualified_defect_survives_other_unknown_measurement",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          },
+          {
+            "id": "family:unknown",
+            "qualified": false,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:unknown",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "defect",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          },
+          {
+            "subject": "family:unknown",
+            "binding_sha256": "82e78514da888094b56ab7c41c47f0aba81995ab12ce61bf7fedb0be9c7dbc1e",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "fail",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "unplanned_defect_cannot_change_selected_subject",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          },
+          {
+            "subject": "not-requested",
+            "binding_sha256": "6e93f8dd730e08e0a48074f6c60b788b4f52fd5f837172751c8dda8288fc0476",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "defect",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "pass",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "empty_selection_never_C",
+      "input": {
+        "subjects": [],
+        "reviews": [],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "duplicate_subjects",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          },
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "changed_original_invalidates_review",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "changed_measurement_invalidates_review",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 1,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "null_binding",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": null,
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "name_not_authenticated",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Example named reviewer, supplied only",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "pass",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "unknown_review_shape",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true,
+            "extra": "unexpected"
+          }
+        ],
+        "observed_at": "2026-10-14T08:11:00Z",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    },
+    {
+      "id": "unqualified_observation_clock",
+      "input": {
+        "subjects": [
+          {
+            "id": "family:main",
+            "qualified": true,
+            "binding_material": {
+              "profile": "supplied-graph-reconciliation-v1",
+              "subject": "family:main",
+              "population": [
+                "https://example.test/a"
+              ],
+              "measurement": {
+                "lower": 0,
+                "upper": 0,
+                "incoming_lower": 0,
+                "incoming_upper": 0
+              },
+              "original_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            },
+            "earliest_review_at": "2026-10-14T08:10:00Z"
+          }
+        ],
+        "reviews": [
+          {
+            "subject": "family:main",
+            "binding_sha256": "3eda98bf97403ed3cadb167c1410cab55b07123d23f2cad8af5bc3345d45c065",
+            "reviewer": "Authored synthetic reviewer; no human approval",
+            "reviewed_at": "2026-10-14T08:10:30Z",
+            "disposition": "explained",
+            "rationale": "Authored synthetic explanation, not a real owner judgment.",
+            "synthetic": true
+          }
+        ],
+        "observed_at": "bad",
+        "synthetic": true
+      },
+      "expected": "inconclusive",
+      "subject_outcomes": {}
+    }
+  ]
+}

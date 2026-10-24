@@ -1,0 +1,19 @@
+{
+  "kind": "tsep-redirect-collection-exercises",
+  "version": "1",
+  "synthetic": true,
+  "frozen_before_implementation": "2026-10-13",
+  "cases": [
+    {"id":"direct","responses":{"/start":"HTTP/1.1 301 Moved\r\nLocation: /end\r\nContent-Length: 0\r\n\r\n","/end":"HTTP/1.1 200 OK\r\nContent-Length: 2\r\n\r\nok"},"expected":"C","hits":["/start","/end"]},
+    {"id":"chain","responses":{"/start":"HTTP/1.1 301 Moved\r\nLocation: /middle\r\nContent-Length: 0\r\n\r\n","/middle":"HTTP/1.1 308 Moved\r\nLocation: /end\r\nContent-Length: 0\r\n\r\n","/end":"HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n"},"max_redirects":2,"expected":"C","hits":["/start","/middle","/end"]},
+    {"id":"wrong-terminal","responses":{"/start":"HTTP/1.1 301 Moved\r\nLocation: /wrong\r\nContent-Length: 0\r\n\r\n","/wrong":"HTTP/1.1 200 OK\r\nContent-Length: 0\r\n\r\n"},"expected":"NC","hits":["/start","/wrong"]},
+    {"id":"loop","responses":{"/start":"HTTP/1.1 301 Moved\r\nLocation: /start\r\nContent-Length: 0\r\n\r\n"},"expected":"NC","hits":["/start"]},
+    {"id":"missing-location","responses":{"/start":"HTTP/1.1 301 Moved\r\nContent-Length: 0\r\n\r\n"},"expected":"NC","hits":["/start"]},
+    {"id":"ambiguous-location","responses":{"/start":"HTTP/1.1 301 Moved\r\nLocation: /end\r\nLocation: /wrong\r\nContent-Length: 0\r\n\r\n"},"expected":"NT","hits":["/start"]},
+    {"id":"incomplete","responses":{"/start":"HTTP/1.1 301 Moved\r\nLocation: /end\r\nContent-Length: 90\r\n\r\nshort"},"expected":"NT","hits":["/start"]},
+    {"id":"out-of-origin","responses":{"/start":"HTTP/1.1 301 Moved\r\nLocation: https://outside.invalid/end\r\nContent-Length: 0\r\n\r\n"},"expected":"NT","hits":["/start"]},
+    {"id":"collection-bound","responses":{"/start":"HTTP/1.1 301 Moved\r\nLocation: /end\r\nContent-Length: 0\r\n\r\n"},"collect_redirects":0,"expected":"NT","hits":["/start"]},
+    {"id":"proven-bound-contradiction","responses":{"/start":"HTTP/1.1 301 Moved\r\nLocation: /end\r\nContent-Length: 0\r\n\r\n"},"min_redirects":0,"max_redirects":0,"collect_redirects":0,"expected":"NC","hits":["/start"]},
+    {"id":"planned-gone","responses":{"/start":"HTTP/1.1 410 Gone\r\nContent-Length: 0\r\n\r\n"},"final_path":"/start","terminal_statuses":[410],"min_redirects":0,"max_redirects":0,"expected":"C","hits":["/start"]}
+  ]
+}

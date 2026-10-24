@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.28 — Contrôles
+# TSEP 0.3.0-draft.7 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A01 — GET final en 200
 
-`TSEP@0.1.0-draft.28:TS01-A01`
+`TSEP@0.3.0-draft.7:TS01-A01`
 
 **Entrées requises**: http, intent.
 
@@ -54,7 +54,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS01-A02 — Ressource finale attendue
 
-`TSEP@0.1.0-draft.28:TS01-A02`
+`TSEP@0.3.0-draft.7:TS01-A02`
 
 **Entrées requises**: http, intent.
 
@@ -62,7 +62,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Chaque réponse finale dont le contenu peut être comparé à l’intention.
 
-**Méthode.** Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer références, éventuelle stabilité et marqueurs avant la mesure. La branche de variation sans stabilité utilise le lecteur historique, sauf identity_reader: html-tree-markers-v1 déclaré au préalable : deux hypothèses statiques globales, segments parsés attribués aux octets et critères littéraux. L’empreinte porte toujours sur le corps complet inchangé.
+**Méthode.** Comparer d’abord l’URL finale à expected_final_url, puis le SHA-256 du corps complet à expected_body_sha256. Fixer références, éventuelle stabilité et marqueurs avant la mesure. La branche de variation sans stabilité utilise le lecteur historique, sauf identity_reader: html-tree-markers-v1 déclaré au préalable : deux hypothèses statiques globales, segments parsés attribués aux octets et critères littéraux. L’empreinte porte toujours sur le corps complet inchangé. Édition draft.6 : les espaces ASCII structurels sous html ou traversant uniquement les fermetures body/html sont exclus avec leurs positions et octets conservés ; voir migration-0.3.0-draft.6. Le profil distinct html-tree-markers-v2 exclut les segments sous noscript de toute comparaison de marqueurs, y compris aux recontrôles. Le profil v1 garde sa sémantique historique. Une intention doit nommer explicitement le profil retenu avant la nouvelle capture. Le profil distinct html-tree-markers-v3 porte sur le texte HTML principal : exclusions attribuées noscript/iframe/sous-arbres étrangers ; un interdit dans ces exclusions empêche pass ; seuls les doublons d’attributs sont admis parmi les erreurs parse5, sans interprétation de directives. Espaces ASCII traversant des fermetures ignorées admis seulement avec reconstruction exacte. Voir migration-0.3.0-draft.7 pour les limites et la migration explicite.
 
 **Attendus.** URL finale différente : fail. À URL identique, empreinte identique : pass. Sinon, representation: stable impose fail. Sinon, sous le lecteur historique, des marqueurs valides donnent fail si un requis manque ou si un interdit apparaît. Pass exige au moins un marqueur requis, tous les requis présents et tous les interdits absents. Interdits seuls absents : inconclusive. Sans marqueurs ni stabilité déclarée : inconclusive. Le statut HTTP ne remplace pas cette comparaison. Sous html-tree-markers-v1, chaque lecture complète compare tous les marqueurs ; deux pass donnent pass, deux fail donnent fail, tout autre couple donne inconclusive. Les priorités URL, empreinte et stabilité restent inchangées.
 
@@ -102,7 +102,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A01 — Plan de redirection approuvé au préalable
 
-`TSEP@0.1.0-draft.28:TS02-A01`
+`TSEP@0.3.0-draft.6:TS02-A01`
 
 **Entrées requises**: intent.
 
@@ -126,7 +126,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS02-A02 — Trajectoire HTTP conforme au plan
 
-`TSEP@0.1.0-draft.28:TS02-A02`
+`TSEP@0.3.0-draft.6:TS02-A02`
 
 **Entrées requises**: http, intent.
 
@@ -134,7 +134,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Variantes et anciennes URL dont le comportement attendu est déclaré.
 
-**Méthode.** Lire chaque échange GET attribuable dans l’ordre, résoudre Location, conserver codes et URL, compter les redirections et vérifier destination/statut terminaux. Comparer au plan fixé avant la capture, sans reconstruire les réponses manquantes.
+**Méthode.** Lire chaque échange GET attribuable dans l’ordre, résoudre Location, conserver codes et URL, compter les redirections et vérifier destination/statut terminaux. Comparer au plan fixé avant la capture, sans reconstruire les réponses manquantes. Le profil préalable http-trajectory-headers-v1 peut conclure sur les en-têtes complets après un arrêt attribué à la borne d’octets du collecteur 2 ; le corps reste incomplet et non évalué.
 
 **Attendus.** La chaîne complète respecte destination, statuts et bornes déclarés, sans boucle. Un type interdit, une borne maximale dépassée, une redirection sans Location ou un retour vers une URL déjà parcourue sont fail dès le préfixe complet qui les prouve. Une destination/statut terminal ou un nombre minimal contradictoires sont fail après réponse terminale attribuable.
 
@@ -142,7 +142,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Hypothèses.** Le responsable fournit ses critères avant la capture ; un auteur de laboratoire peut fournir une revue synthétique explicitement identifiée. Une empreinte lie les pièces, sans authentifier une personne.
 
-**Indéterminé.** Chaîne inachevée sans contradiction, limite de collecte atteinte, Location ambiguë, fragment ou syntaxe hors portée, requête conditionnelle/authentifiée, capture incomplète ou mal attribuée. Atteindre une borne de collecte ne prouve pas une boucle ; dépasser une borne d’intention est distinct.
+**Indéterminé.** Chaîne inachevée sans contradiction, limite de collecte atteinte, Location ambiguë, fragment ou syntaxe hors portée, requête conditionnelle/authentifiée, capture incomplète ou mal attribuée. Atteindre une borne de collecte ne prouve pas une boucle ; dépasser une borne d’intention est distinct. Exception bornée : préfixe à la limite exactement attestée avec un octet excédentaire, sans ambiguïté d’en-têtes ou contradiction de framing, sous le nouveau profil explicite uniquement.
 
 **Conditions de NA.** Aucune exemption atomique. La non-applicabilité du contrôle exige un inventaire positif distinct ; elle ne découle pas d’une capture absente.
 
@@ -152,25 +152,49 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Sévérité**: major. **Unité**: url-set.
 
-**Entrées requises**: http, content, intent.
+**Entrées requises**: configuration, http, content, intent.
 
-**Applicabilité.** Routes existantes, supprimées et inexistantes du périmètre.
+**Applicabilité.** Routes synthétiques explicitement classées existantes, supprimées et inexistantes dans un plan daté ; la portée réelle n’est pas authentifiée.
 
-**Méthode.** Tester une page existante, une URL supprimée et une URL inexistante ; comparer code et contenu.
+**Méthode.** Avant les captures, lier à configuration le plan d’intention des trois états de route et leurs critères de contenu. Comparer une matrice HTTP GET fournie, sans résolution DNS ni collecte réseau.
 
-**Attendus.** Codes et contenus correspondent aux trois cas déclarés ; les erreurs testées ne livrent pas une page d’erreur en 200.
+**Attendus.** Pass qualifie seulement la matrice complète fournie : 200 et marqueurs attendus pour une route existante ; 404/410 et critères de corps déclarés pour les routes supprimées/inexistantes. Un 2xx pour ces dernières, un autre statut complet, ou une contradiction de marqueur est fail. La classification soft 404 reste hors mesure.
 
-**Preuves.** Codes 4xx/5xx cohérents et modèle d’erreur qui ne renvoie pas 200 par défaut.
+**Preuves.** Plan d’intention antérieur, empreinte de liaison, attentes de corps, URL/GET et réponses HTTP brutes complètes pour chaque état requis ; conserver les contre-cas même si d’autres pièces manquent.
 
 **Conditions de NA.** Périmètre ne contenant aucun routage HTTP, justification fournie.
 
-**Limites.** La classification soft 404 finale reste une décision du moteur.
+**Limites.** La sonde n’utilise que des captures synthétiques .invalid et des marqueurs littéraux UTF-8. Elle ne confirme ni existence réelle, suppression, disponibilité durable, qualité sémantique, ni classification soft 404 par Google. Une réponse ponctuelle 5xx échoue au statut déclaré sans prouver une panne persistante. Aucun site ni moteur n’est interrogé.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
-**Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
+**Portée des sources.** Google Search Central décrit les effets de classes de statuts sur ses systèmes ; cette source ne prescrit pas un standard TSEP. La règle compare des attentes fournies et ne reproduit pas la classification soft 404.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/http-network-errors](https://developers.google.com/search/docs/crawling-indexing/http-network-errors)
+
+### TS03-A01 — Réponses HTTP synthétiques comparées à un plan préalable
+
+`TSEP@0.2.0-rc.1:TS03-A01`
+
+**Entrées requises**: configuration, http, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Un plan de route contient au moins un état existant, supprimé et inexistant dans le périmètre synthétique.
+
+**Méthode.** Vérifier le plan antérieur et son empreinte ; comparer chaque GET/response attribuable, complète et liée à une route .invalid aux statuts permis et marqueurs littéraux UTF-8 fixés dans les attentes content.
+
+**Attendus.** Pass exige exactement une réponse complète par route et tous les états requis : 200 pour existante, 404/410 pour supprimée ou inexistante, marqueurs requis présents et interdits absents. Une contradiction complète reste fail malgré doublon, autre capture incomplète ou lacune. Les 206/304, données absentes, ambiguës ou mal attribuées restent inconclusives.
+
+**Preuves.** Le plan et son empreinte, les attentes content, puis pour chaque route la requête GET, la réponse HTTP brute, le statut, la date et le corps complet. Conserver les observations contradictoires et les lacunes séparément.
+
+**Hypothèses.** Le plan, les classifications et critères sont fournis et non authentifiés. La revue attachée est un exercice synthétique, pas une approbation indépendante.
+
+**Indéterminé.** Plan absent/futur/mal lié, état de route manquant, doublon, HTTP incomplet, URL/client non attribuable, statut 206/304, contenu non UTF-8, marqueurs contradictoires dans le plan ou matrice incomplète ; une contradiction attribuable reste fail.
+
+**Conditions de NA.** Aucune exemption atomique. NA du contrôle entier exige un inventaire positif, complet, motivé et daté prouvant qu’aucun routage HTTP n’entre dans le périmètre.
+
+**Limites.** Une capture .invalid ne teste aucun serveur. Les marqueurs sont recherchés littéralement dans le corps décodé, sans DOM, rendu, jugement sémantique ou classification de moteur. C ne porte que sur la matrice déclarée, pas sur un site entier, une disponibilité dans le temps, une indexation ou un ranking.
 
 ## TS04 — La politique robots effective correspond à l’intention déclarée.
 
@@ -198,7 +222,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A01 — Politique par origine, robot et ressource
 
-`TSEP@0.1.0-draft.28:TS04-A01`
+`TSEP@0.2.0-rc.1:TS04-A01`
 
 **Entrées requises**: http, robots, intent.
 
@@ -222,7 +246,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS04-A02 — Accès aux ressources nécessaires
 
-`TSEP@0.1.0-draft.28:TS04-A02`
+`TSEP@0.2.0-rc.1:TS04-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -254,21 +278,45 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Politiques d’exploration ou d’exclusion du périmètre.
 
-**Méthode.** Comparer la politique robots, les besoins d’indexation et les directives meta/X-Robots-Tag.
+**Méthode.** Comparer une carte de décision datée avant l’observation — exploration, objectif et méthode d’indexation, visibilité de noindex, protection et portée des affirmations — au record de configuration fourni.
 
-**Attendus.** Exploration, indexation et protection ont des mécanismes et objectifs distincts ; aucune garantie de désindexation ne repose seulement sur Disallow.
+**Attendus.** Un pass indique uniquement la cohérence interne du plan fourni. Exploration, indexation et protection sont séparées ; Disallow seul ne garantit ni désindexation ni confidentialité. Aucun état réel de l’index ou du serveur n’est établi.
 
-**Preuves.** Décision distincte pour exploration, indexation et protection.
+**Preuves.** Records configuration et intent liés à la cible, carte antérieure datée, portée, mécanismes et affirmations avec leurs bases ; revue positive et datée pour une non-applicabilité.
 
 **Conditions de NA.** Aucune politique concernée, périmètre et décision documentés.
 
-**Limites.** Une URL bloquée peut rester connue et apparaître sans extrait.
+**Limites.** Le lecteur compare un plan synthétique fourni ; il ne récupère aucun site, ne teste aucune authentification, ne vérifie pas l’exécution d’un retrait, ni l’état de l’index. Une URL bloquée peut rester connue et apparaître sans extrait. La qualification complète de TS05 et sa réception dans l’application sont distinctes.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
-**Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
+**Portée des sources.** Les pages Google Search Central ci-dessous appuient la distinction technique ; les attendus TSEP restent une règle éditoriale. Capture sélective datée et empreintée, pas un audit de site.
 
-**Références**: [https://developers.google.com/search/docs/crawling-indexing/robots/intro](https://developers.google.com/search/docs/crawling-indexing/robots/intro)
+**Références**: [https://developers.google.com/search/docs/crawling-indexing/robots/intro](https://developers.google.com/search/docs/crawling-indexing/robots/intro); [https://developers.google.com/search/docs/crawling-indexing/block-indexing](https://developers.google.com/search/docs/crawling-indexing/block-indexing); [https://developers.google.com/search/docs/crawling-indexing/control-what-you-share](https://developers.google.com/search/docs/crawling-indexing/control-what-you-share)
+
+### TS05-A01 — Carte fournie : exploration, indexation et protection sont distinctes.
+
+`TSEP@0.2.0-rc.1:TS05-A01`
+
+**Entrées requises**: configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Une politique d’exploration, un objectif d’indexation ou une déclaration de confidentialité existe dans le périmètre.
+
+**Méthode.** Lire intent.ts05_policy, datée avant observed_at, et le record configuration. Comparer les méthodes/effets d’exploration, l’objectif/méthode de l’indexation et la visibilité de noindex, puis la protection et les bases d’affirmations de désindexation/confidentialité.
+
+**Attendus.** Pass signifie seulement que la carte fournie est cohérente et distingue les trois axes. Une garantie de désindexation fondée seulement sur Disallow échoue ; une directive noindex inaccessible n’établit pas une exclusion. Aucun verdict positif ne prouve l’état de l’index, l’accès réel du robot ou la confidentialité serveur.
+
+**Preuves.** Configuration, carte d’intention préalable, dates, périmètre, méthodes/effets et affirmations avec bases ; les deux records couvrent la cible.
+
+**Hypothèses.** Les records sont fournis et non authentifiés. L’interpréteur teste leur forme et cohérence déclarée, non leur vérité ni leur mise en œuvre.
+
+**Indéterminé.** Plan absent, mal daté, incomplet ou futur ; méthode non prise en charge ; index inconnu ; noindex bloqué ou visibilité inconnue ; retrait non terminé ; bases de protection indéterminées.
+
+**Conditions de NA.** Ce test atomique n’accepte pas d’exemption partielle. NA du contrôle entier exige une revue d’inventaire complète, motivée et datée avant observed_at, prouvant l’absence de politique concernée sur chaque cible.
+
+**Limites.** Mécanisme semi-automatisé sur un modèle synthétique. N’interprète pas robots.txt, meta, X-Robots-Tag ou HTTP en direct ; ne mesure pas la visite, l’indexation, le retrait ou les contrôles d’accès. Pass qualifie uniquement la cohérence de la carte fournie.
 
 ## TS06 — Les zones sensibles refusent réellement l’accès au serveur.
 
@@ -276,23 +324,49 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Entrées requises**: configuration, http, intent.
 
-**Applicabilité.** Routes déclarées privées ou sensibles.
+**Applicabilité.** Routes privées ou sensibles explicitement inventoriées dans un périmètre déclaré ; cette règle candidate ne qualifie que les traces HTTP synthétiques fournies.
 
-**Méthode.** Tester sans session les routes privées et vérifier authentification, autorisation et cache.
+**Méthode.** Avant les observations, fournir intent.ts06_access et son empreinte liée à configuration.ts06_access. Déclarer routes, marqueurs synthétiques, rôles fictifs, tests exacts par route/rôle et triplets froid anonyme → amorçage autorisé synthétique → rejeu anonyme, avec même étiquette de cache. Examiner les GET fournis sans résolution DNS ni requête réseau. Les redirections d’authentification doivent rester sur la même origine (schéma, hôte, port effectif) et suivre une liste de chemins explicitement déclarée. Une réponse 404 ne compte comme refus que si le plan la déclare pour cette route.
 
-**Attendus.** Sans session et avec les rôles non autorisés testés, aucun contenu sensible n’est livré, y compris par le cache ; contrôles et rôles couverts sont listés.
+**Attendus.** Pass signifie seulement que toutes les cellules route/rôle non autorisées déclarées sont complètes, refusées sans marqueur sensible et que chaque triplet fourni suit l’ordre déclaré sans fuite au rejeu ; le contrôle ne mesure ni une identité réelle ni un cache réel. Toute réponse attribuable à un rôle non autorisé contenant un canari échoue, y compris un corps encodé détecté ou un en-tête de réponse. Une représentation 2xx livrée à un rôle non autorisé échoue aussi.
 
-**Preuves.** Réponse 401/403 ou redirection d’authentification sans contenu sensible livré.
+**Preuves.** Records configuration, intent et HTTP fournis, empreinte exacte du plan, dates, identifiants route/rôle, chaque échange GET brut et ordre, liste complète des cellules non autorisées et chaque étiquette/phase de triplet. Conserver aussi les réponses contradictoires attribuables avant de signaler toute lacune de matrice.
 
-**Conditions de NA.** Absence de routes privées attestée par un inventaire autorisé.
+**Conditions de NA.** Le contrôle entier peut être NA seulement avec une revue d’inventaire synthétique complète, datée et motivée qui déclare aucune route sensible dans le périmètre ; aucun test ni triplet contradictoire ne peut alors être présent.
 
-**Limites.** L’absence dans l’index ne constitue pas une preuve de confidentialité.
+**Limites.** Interpréteur de fixture borné aux URL-étiquettes .invalid, sans DNS, socket, crawl ni domaine réel. Un rôle HTTP est une étiquette synthétique, pas une authentification. Une étiquette de cache commune ne prouve aucun cache partagé ; Age/X-Cache seuls ne prouvent pas l’attribution. La règle n’exécute pas cookies, Authorization, JavaScript, TLS, variantes d’URL ou méthode HEAD. 206, 304 sans corps complet, codage non pris en charge, cellule manquante/ambiguë et état de cache incomplet donnent inconclusive. Le résultat ne qualifie pas toutes les pages d’un site.
 
-C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
+C exige les cellules et triplets complets du périmètre synthétique déclaré. Une fuite de canari ou une réponse 2xx non autorisée est une contradiction étayée ; les données partielles ou ambiguës restent NT. NA est uniquement une déclaration d’inventaire complète et positive.
 
-**Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
+**Portée des sources.** Les RFC 9110, 9111, 6454 et 6761 appuient respectivement la sémantique HTTP, quelques conditions de cache, la notion d’origine et l’usage réservé de .invalid. Elles n’établissent pas une règle de certification TSEP ; l’attendu reste éditorial et les observations sont des fixtures synthétiques.
 
-**Références**: [https://www.rfc-editor.org/rfc/rfc9110](https://www.rfc-editor.org/rfc/rfc9110)
+**Références**: [https://www.rfc-editor.org/rfc/rfc9110](https://www.rfc-editor.org/rfc/rfc9110); [https://www.rfc-editor.org/rfc/rfc9111](https://www.rfc-editor.org/rfc/rfc9111); [https://www.rfc-editor.org/rfc/rfc6454](https://www.rfc-editor.org/rfc/rfc6454); [https://www.rfc-editor.org/rfc/rfc6761](https://www.rfc-editor.org/rfc/rfc6761)
+
+### TS06-A01 — Accès refusé dans la matrice HTTP synthétique fournie
+
+`TSEP@0.2.0-rc.1:TS06-A01`
+
+**Entrées requises**: configuration, http, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Entrées pour exemption atomique**: intent.
+
+**Applicabilité.** Au moins une route sensible est explicitement déclarée dans le périmètre synthétique.
+
+**Méthode.** Comparer le plan préalable lié à la configuration à une matrice complète de GET synthétiques par route et rôle. Détecter les marqueurs dans les en-têtes et corps, préserver les contradictions avant validation des doublons/lacunes, vérifier les redirections de même origine et les séquences froid/autorisé/rejeu.
+
+**Attendus.** Pass couvre uniquement la matrice synthétique complète fournie : aucune réponse non autorisée ne contient de canari, les refus sont établis selon le plan, et chaque triplet froid → amorçage autorisé → rejeu anonyme est complet et ordonné. Une fuite attribuable ou une représentation 2xx non autorisée donne fail.
+
+**Preuves.** Records configuration/intent/http liés à la cible, empreinte du plan, routes/rôles/tests, échanges GET bruts avec horodatages, canaris et triplets de cache étiquetés.
+
+**Hypothèses.** Les fixtures sont fournies, synthétiques et non authentifiées. L’étiquette de rôle et l’identifiant de cache ne prouvent ni identité ni cache partagé.
+
+**Indéterminé.** Plan absent/futur/incohérent, cellule manquante ou dupliquée, en-tête d’identification absent/ambigu, redirection externe, 206, 304 sans représentation conservée, codage non pris en charge ou triplet/attribution incomplets.
+
+**Conditions de NA.** Aucune exemption atomique. Le NA du contrôle entier exige une revue d’inventaire complète, datée et motivée ; elle doit être liée à intent.
+
+**Limites.** Pas de DNS, socket, collecte live, identité réelle, authentification, cookie, cache réel, TLS, JavaScript, alias de chemin, HEAD ni évaluation de site entier. La détection de canaris couvre uniquement les codages implémentés ; le reste est inconclusif.
 
 ## TS07 — Les directives meta robots et X-Robots-Tag sont cohérentes avec l’objectif de la page.
 
@@ -320,7 +394,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.1.0-draft.28:TS07-A01`
+`TSEP@0.2.0-rc.1:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -344,7 +418,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.1.0-draft.28:TS07-A02`
+`TSEP@0.2.0-rc.1:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -368,7 +442,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.1.0-draft.28:TS07-A03`
+`TSEP@0.2.0-rc.1:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -400,21 +474,93 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** URL dont l’état dans Google doit être établi.
 
-**Méthode.** Utiliser l’inspection d’URL sur un échantillon représentatif et conserver l’export ou la capture.
+**Méthode.** Déclarer sélection, objectifs, sources et connaissances antérieures avant acquisition ; conserver les JSON API, leurs limites et les revues fournies selon google-inspection-evidence-v1.
 
-**Attendus.** L’inspection est datée pour chaque URL retenue ; état réel, exploration et canonique sont consignés et rapprochés de l’objectif, écarts expliqués.
+**Attendus.** Les trois règles réussissent pour tout l’ensemble sélectionné. C qualifie le dossier du statut rapporté par Google, jamais une promesse d’indexation ni l’état actuel du site.
 
 **Preuves.** URL connue, exploration autorisée, indexation et canonique Google documentées.
 
 **Conditions de NA.** Le moteur Google est explicitement hors périmètre ; absence d’accès seule ne suffit pas.
 
-**Limites.** Un audit public ne peut pas établir ce statut sans accès à la propriété.
+**Limites.** API non live, attribution et dates fournies non authentifiées ; champs manquants/réservés, fraîcheur insuffisante et revues absentes restent inconclusifs selon le profil borné. Aucune extrapolation au site.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
-**Références**: [https://support.google.com/webmasters/answer/9012289](https://support.google.com/webmasters/answer/9012289)
+**Références**: [https://support.google.com/webmasters/answer/9012289](https://support.google.com/webmasters/answer/9012289); [https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect](https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect); [https://developers.google.com/webmaster-tools/v1/urlInspection.index/UrlInspectionResult](https://developers.google.com/webmaster-tools/v1/urlInspection.index/UrlInspectionResult)
+
+### TS08-A01 — Périmètre et objectifs préalables qualifiés.
+
+`TSEP@0.2.0-rc.1:TS08-A01`
+
+**Entrées requises**: intent, search-console.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Ensemble explicite d’URL dont l’état rapporté par Google doit être documenté.
+
+**Méthode.** Déclarer les membres, leur objectif/source, motif de sélection, connaissances antérieures et politique de fraîcheur ; conserver la revue préalable liée au plan.
+
+**Attendus.** Sélection et objectifs qualifiés supported, plan et revue avant acquisition, aucun membre omis. Une contradiction fournie ou une acquisition antérieure au plan donne fail ; absence seule reste indéterminée.
+
+**Preuves.** Plan daté et sourcé, JSON requête/réponse natifs et empreintes, métadonnées réelles, revues fournies liées aux pièces ; contrat inspection-evidence-v1.
+
+**Hypothèses.** Dates, auteur, provenance, accès et attribution sont déclarés, jamais authentifiés par leurs seules empreintes.
+
+**Indéterminé.** Pièce, revue ou liaison manquante, invalide ou ambiguë ; limites, inconnues et erreurs API conservées.
+
+**Conditions de NA.** Aucune exemption atomique ; absence d’accès ne vaut pas NA.
+
+**Limites.** Dossier de la sélection seulement ; API non live et dernier crawl distinct de la date des champs. Ni état actuel, ni causalité, ni TS12, ni résultats SEO déduits.
+
+### TS08-A02 — Inspections natives attribuées et lisibles.
+
+`TSEP@0.2.0-rc.1:TS08-A02`
+
+**Entrées requises**: search-console, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Ensemble explicite d’URL dont l’état rapporté par Google doit être documenté.
+
+**Méthode.** Lire les octets natifs avec le diagnostic 1, comparer l’attribution URL/propriété, conserver les champs et contrôler les dates selon la politique préalable.
+
+**Attendus.** Chaque membre possède une réponse exploitable avec champs requis connus et dates dans la politique. Les absences API expressément admises restent visibles ; erreur API et valeurs inconnues ne deviennent pas C.
+
+**Preuves.** Plan daté et sourcé, JSON requête/réponse natifs et empreintes, métadonnées réelles, revues fournies liées aux pièces ; contrat inspection-evidence-v1.
+
+**Hypothèses.** Dates, auteur, provenance, accès et attribution sont déclarés, jamais authentifiés par leurs seules empreintes.
+
+**Indéterminé.** Pièce, revue ou liaison manquante, invalide ou ambiguë ; limites, inconnues et erreurs API conservées.
+
+**Conditions de NA.** Aucune exemption atomique ; absence d’accès ne vaut pas NA.
+
+**Limites.** Dossier de la sélection seulement ; API non live et dernier crawl distinct de la date des champs. Ni état actuel, ni causalité, ni TS12, ni résultats SEO déduits.
+
+### TS08-A03 — Interprétation et décision liées aux preuves.
+
+`TSEP@0.2.0-rc.1:TS08-A03`
+
+**Entrées requises**: search-console, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Ensemble explicite d’URL dont l’état rapporté par Google doit être documenté.
+
+**Méthode.** Lire la revue fournie : verdict API repris exactement, interprétation, relation à l’objectif préalable, portée temporelle, explication typée et décision opérationnelle.
+
+**Attendus.** Toutes les facettes sont qualifiées ; un écart documenté peut passer. Contradiction explicite de verdict/portée ou qualification contradiction donne fail et survit aux inconnues indépendantes. Revue absente ou cause non étayée reste inconclusive.
+
+**Preuves.** Plan daté et sourcé, JSON requête/réponse natifs et empreintes, métadonnées réelles, revues fournies liées aux pièces ; contrat inspection-evidence-v1.
+
+**Hypothèses.** Dates, auteur, provenance, accès et attribution sont déclarés, jamais authentifiés par leurs seules empreintes.
+
+**Indéterminé.** Pièce, revue ou liaison manquante, invalide ou ambiguë ; limites, inconnues et erreurs API conservées.
+
+**Conditions de NA.** Aucune exemption atomique ; absence d’accès ne vaut pas NA.
+
+**Limites.** Dossier de la sélection seulement ; API non live et dernier crawl distinct de la date des champs. Ni état actuel, ni causalité, ni TS12, ni résultats SEO déduits.
 
 ## TS09 — Les exclusions volontaires ont un propriétaire et une justification.
 
@@ -439,6 +585,30 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/block-indexing](https://developers.google.com/search/docs/crawling-indexing/block-indexing)
+
+### TS09-A01 — Registre des exclusions et responsabilités
+
+`TSEP@0.3.0-draft.2:TS09-A01`
+
+**Entrées requises**: configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS09 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Lire le registre natif JSON exclusion-register-v1 ; rapprocher chaque famille sélectionnée du mécanisme préalable, puis vérifier propriétaire, motif et date de revue. Exiger une revue liée au dossier.
+
+**Attendus.** Les mécanismes concordent et chaque famille a ses informations de gouvernance ; la revue fournie confirme le périmètre. Une divergence de mécanisme échoue.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : configuration, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Un champ absent ou ambigu, un registre manquant ou une revue non liée donne indéterminé. La date de revue est une date de calendrier déclarée, pas une preuve de réalisation.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
 
 ## TS10 — Chaque page canonique publie une URL absolue, stable et cohérente.
 
@@ -466,7 +636,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A01 — Déclaration canonique
 
-`TSEP@0.1.0-draft.28:TS10-A01`
+`TSEP@0.2.0-rc.1:TS10-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -490,7 +660,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A02 — Destination canonique directe
 
-`TSEP@0.1.0-draft.28:TS10-A02`
+`TSEP@0.2.0-rc.1:TS10-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -514,7 +684,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A03 — Convergence du sitemap
 
-`TSEP@0.1.0-draft.28:TS10-A03`
+`TSEP@0.2.0-rc.1:TS10-A03`
 
 **Entrées requises**: sitemap, intent.
 
@@ -540,7 +710,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS10-A04 — Convergence des liens internes
 
-`TSEP@0.1.0-draft.28:TS10-A04`
+`TSEP@0.2.0-rc.1:TS10-A04`
 
 **Entrées requises**: crawl, intent.
 
@@ -586,29 +756,149 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
 
+### TS11-A01 — Comparaison éditoriale des variantes
+
+`TSEP@0.3.0-draft.2:TS11-A01`
+
+**Entrées requises**: http, html, content, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS11 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Pour chaque paire déclarée duplicate ou distinct, lire les deux réponses HTML UTF-8 complètes et conserver leurs empreintes. Exiger la revue comparative liée, y compris la suffisance du périmètre source.
+
+**Attendus.** Les deux contenus sont disponibles et la revue éditoriale étaye la relation déclarée. Une revue contradictoire échoue ; égalité ou similarité textuelle ne crée pas cette revue.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : http, html, content, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Contenu absent, format HTML non pris en charge, comparaison dépendante du rendu ou jugement manquant : indéterminé.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
+
+### TS11-A02 — Convergence sans absorption de pages distinctes
+
+`TSEP@0.3.0-draft.2:TS11-A02`
+
+**Entrées requises**: http, html, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS11 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Lire séparément canonical HTTP et HTML des deux membres. Un doublon désigne la préférence ; une page distincte se désigne elle-même. Exiger la revue de la décision et du périmètre source.
+
+**Attendus.** Toutes les déclarations qualifiées concordent avec la relation éditoriale préalable ; une déclaration contraire échoue, même si une autre surface manque.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : http, html, content, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Aucune canonical explicite, source non interprétable ou rendu nécessaire non fourni : indéterminé, sans choix du moteur inféré.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
+
 ## TS12 — La canonique choisie par Google est comparée à celle déclarée.
 
 **Sévérité**: major. **Unité**: url-set.
 
-**Entrées requises**: search-console, html, intent.
+**Entrées requises**: search-console, http, html, render, intent.
 
 **Applicabilité.** URL dont la canonique Google doit être comparée à la déclaration.
 
-**Méthode.** Inspecter les URL prioritaires et consigner canonique utilisateur et canonique Google.
+**Méthode.** Déclarer préférence sourcée, lecteurs et états rendus ; attribuer JSON API et captures, comparer les chaînes et conserver revues/décisions selon google-canonical-comparison-v1.
 
-**Attendus.** Les deux valeurs sont datées et comparées ; chaque divergence dispose d’une qualification et d’une décision.
+**Attendus.** Plan préalable et toutes les surfaces prévues qualifiés ; valeurs conservées avec dates séparées et décisions liées. C documentaire, jamais égalité canonique ; divergences documentées admises.
 
 **Preuves.** Accord ou divergence qualifiée et traitée.
 
 **Conditions de NA.** Google explicitement hors périmètre ; manque d’accès classé NT.
 
-**Limites.** La canonique Google peut évoluer après une nouvelle exploration.
+**Limites.** Rendu requis manquant ou canonical Google absente : indéterminé. Comparaison littérale sans équivalence d’URL, état live, causalité, TS10 ou indexation déduits.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://support.google.com/webmasters/answer/9012289](https://support.google.com/webmasters/answer/9012289)
+
+### TS12-A01 — Plan de comparaison préalable qualifié.
+
+`TSEP@0.2.0-rc.1:TS12-A01`
+
+**Entrées requises**: intent, search-console, http.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Ensemble sélectionné dont les canonical rapportées et capturées doivent être comparées.
+
+**Méthode.** Déclarer sélection/objectifs, connaissances antérieures, préférence sourcée, lecteurs et états rendus ; qualifier le plan lié avant chaque acquisition.
+
+**Attendus.** Jugements selection/objectives/preferences/surfaces/temporal_policy supported, ordre préalable et ensemble complet. Contradiction fournie ou acquisition avant plan : fail ; lacune : inconclusive.
+
+**Preuves.** Plan/revue préalables, JSON API natifs, traces HTTP, états DOM structurés fournis et revues liées aux pièces exactes ; contrat canonical-comparison-v1.
+
+**Hypothèses.** Données, dates, provenance et jugements fournis ; empreintes sans authentification de personne, navigation ou histoire.
+
+**Indéterminé.** Pièce, état requis, valeur, politique, revue ou liaison absente/inconnue/invalide ; limites et erreurs conservées.
+
+**Conditions de NA.** Aucune exemption atomique ; manque d’accès ou de rendu ne vaut pas NA.
+
+**Limites.** Rendu requis manquant ou canonical Google absente : indéterminé. Comparaison littérale sans équivalence d’URL, état live, causalité, TS10 ou indexation déduits.
+
+### TS12-A02 — Lectures et comparaisons attribuées complètes.
+
+`TSEP@0.2.0-rc.1:TS12-A02`
+
+**Entrées requises**: search-console, http, html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Ensemble sélectionné dont les canonical rapportées et capturées doivent être comparées.
+
+**Méthode.** Lire les pièces natives et les deux hypothèses HTML statiques ; conserver les candidats HTTP/HTML/DOM, les dates et les comparaisons littérales distinctes.
+
+**Attendus.** API qualifiée, Google canonical présente, HTTP/HTML et tous les états DOM prévus lisibles ; seuils préalables respectés, aucun doublon fusionné. Différence de valeurs admise ; source seule/absence Google = inconclusive.
+
+**Preuves.** Plan/revue préalables, JSON API natifs, traces HTTP, états DOM structurés fournis et revues liées aux pièces exactes ; contrat canonical-comparison-v1.
+
+**Hypothèses.** Données, dates, provenance et jugements fournis ; empreintes sans authentification de personne, navigation ou histoire.
+
+**Indéterminé.** Pièce, état requis, valeur, politique, revue ou liaison absente/inconnue/invalide ; limites et erreurs conservées.
+
+**Conditions de NA.** Aucune exemption atomique ; manque d’accès ou de rendu ne vaut pas NA.
+
+**Limites.** Rendu requis manquant ou canonical Google absente : indéterminé. Comparaison littérale sans équivalence d’URL, état live, causalité, TS10 ou indexation déduits.
+
+### TS12-A03 — Qualification et décision liées aux comparaisons.
+
+`TSEP@0.2.0-rc.1:TS12-A03`
+
+**Entrées requises**: search-console, http, html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Ensemble sélectionné dont les canonical rapportées et capturées doivent être comparées.
+
+**Méthode.** Examiner les revendications de valeurs de chaque surface dans une revue fournie liée aux pièces, avec interprétation, temporalité, changements, objectif, explication et décision.
+
+**Attendus.** Revendications fidèles aux listes connues, qualification supported, relation et décision motivées. Une revendication contredite conserve fail malgré une autre inconnue ; revue absente ou cause non établie hors profil : inconclusive.
+
+**Preuves.** Plan/revue préalables, JSON API natifs, traces HTTP, états DOM structurés fournis et revues liées aux pièces exactes ; contrat canonical-comparison-v1.
+
+**Hypothèses.** Données, dates, provenance et jugements fournis ; empreintes sans authentification de personne, navigation ou histoire.
+
+**Indéterminé.** Pièce, état requis, valeur, politique, revue ou liaison absente/inconnue/invalide ; limites et erreurs conservées.
+
+**Conditions de NA.** Aucune exemption atomique ; manque d’accès ou de rendu ne vaut pas NA.
+
+**Limites.** Rendu requis manquant ou canonical Google absente : indéterminé. Comparaison littérale sans équivalence d’URL, état live, causalité, TS10 ou indexation déduits.
 
 ## TS13 — Le sitemap contient uniquement des URL absolues et canoniques utiles.
 
@@ -618,7 +908,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Sitemaps utilisés pour les URL du périmètre.
 
-**Méthode.** Parser chaque sitemap, compter les URL et comparer statut, canonique et indexabilité.
+**Méthode.** Appliquer TS13-A01/A02 aux originaux déclarés et aux pages fournies selon le contrat sitemap-quality-v1.
 
 **Attendus.** Chaque entrée du périmètre est résolue, canonique selon la stratégie et destinée à l’indexation ; exclusions et limites de l’échantillon sont explicites.
 
@@ -626,7 +916,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Conditions de NA.** Aucun sitemap utilisé, inventaire et décision fournis.
 
-**Limites.** La présence dans un sitemap ne garantit pas l’indexation.
+**Limites.** Population déclarée de fichiers et pages fournis ; sources HTML bornées et revues non authentifiées. Aucun audit réel, exhaustivité du site, TS15 global, canonical choisie par Google, indexation ou classement déduit.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
@@ -634,15 +924,63 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
 
+### TS13-A01 — Population native et URL absolues qualifiées.
+
+`TSEP@0.3.0-draft.1:TS13-A01`
+
+**Entrées requises**: sitemap, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicabilité.** Entrées de pages dans les fichiers sitemap déclarés au préalable, profil borné supplied-sitemap-quality-v1.
+
+**Méthode.** Rapprocher les racines et enfants déclarés avec les originaux complets ; lire chaque loc de page, conserver occurrences et vérifier son caractère absolu HTTP(S).
+
+**Attendus.** Pass exige la couverture de tous les fichiers déclarés et tous les loc qualifiés. Un loc relatif, avec fragment, identifiants ou port invalide donne fail ; couverture manquante : inconclusive.
+
+**Preuves.** Plan, originaux XML/gzip datés et SHA-256, index/position/loc de chaque entrée. Les répétitions littérales restent visibles sans défaut automatique.
+
+**Hypothèses.** Plan antérieur, URL littérales, fenêtre fournie de24h maximum et intégrité des originaux. Dates, contexte et jugements déclarés, sans authentification.
+
+**Indéterminé.** Plan, document, enfant, liaison, capture ou revue absent, ambigu ou hors profil ; borne dépassée. Conserver tout fail indépendant et les autres inconnues.
+
+**Conditions de NA.** Aucune exemption atomique ; manque de preuve ne vaut pas NA.
+
+**Limites.** Population déclarée de fichiers et pages fournis ; sources HTML bornées et revues non authentifiées. Aucun audit réel, exhaustivité du site, TS15 global, canonical choisie par Google, indexation ou classement déduit.
+
+### TS13-A02 — Pages référencées cohérentes avec la stratégie fournie.
+
+`TSEP@0.3.0-draft.1:TS13-A02`
+
+**Entrées requises**: sitemap, http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Entrées de pages dans les fichiers sitemap déclarés au préalable, profil borné supplied-sitemap-quality-v1.
+
+**Méthode.** Pour chaque URL native distincte, vérifier GET direct200, directives Googlebot HTTP/HTML et canonical littérale ; rapprocher stratégie préalable et revue liée à la page et aux fichiers.
+
+**Attendus.** Pass exige source qualifiée, canonical explicite identique, intention utile/indexable/self-canonical et revue supported, rendering source-only. Redirection, statut complet hors200, noindex, canonical divergente ou jugement contradicted donne fail. Rendu requis, absence de canonical/revue ou format hors profil : inconclusive.
+
+**Preuves.** Originaux des fichiers et requêtes/réponses HTTP, contexte/date par page, plan et revue avec SHA-256 de l’ensemble examiné. Aucune revue manquante produite par l’outil.
+
+**Hypothèses.** Plan antérieur, URL littérales, fenêtre fournie de24h maximum et intégrité des originaux. Dates, contexte et jugements déclarés, sans authentification.
+
+**Indéterminé.** Plan, document, enfant, liaison, capture ou revue absent, ambigu ou hors profil ; borne dépassée. Conserver tout fail indépendant et les autres inconnues.
+
+**Conditions de NA.** Aucune exemption atomique ; manque de preuve ne vaut pas NA.
+
+**Limites.** Population déclarée de fichiers et pages fournis ; sources HTML bornées et revues non authentifiées. Aucun audit réel, exhaustivité du site, TS15 global, canonical choisie par Google, indexation ou classement déduit.
+
 ## TS14 — lastmod reflète une modification significative de la page.
 
 **Sévérité**: minor. **Unité**: sitemap-set.
 
-**Entrées requises**: sitemap, change-history.
+**Entrées requises**: sitemap, change-history, intent.
 
 **Applicabilité.** Sitemaps comportant lastmod.
 
-**Méthode.** Comparer lastmod à l’historique éditorial ou au déploiement de contenu significatif.
+**Méthode.** Lire le lastmod natif de chaque entrée de page ; comparer sa date UTC ou son instant zoné à un événement JSON original attribué, puis vérifier la revue de signification liée.
 
 **Attendus.** Chaque date testée correspond à une modification significative traçable ; la génération du fichier ne suffit pas.
 
@@ -650,7 +988,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Conditions de NA.** Aucun lastmod déclaré ; son absence n’est pas un défaut en soi.
 
-**Limites.** Le moteur peut ignorer un lastmod jugé peu fiable.
+**Limites.** Une date égale et une revue fournie ne prouvent pas une modification réelle ni sa signification. Précision au jour UTC ou à l’instant zoné ; aucun historique CMS complet, fraîcheur idéale ou traitement moteur déduit.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
@@ -658,23 +996,49 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping](https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping)
 
+### TS14-A01 — lastmod relié à une modification significative documentée.
+
+`TSEP@0.3.0-draft.1:TS14-A01`
+
+**Entrées requises**: sitemap, change-history, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Entrées pour exemption atomique**: sitemap, intent.
+
+**Applicabilité.** Entrées de pages portant lastmod dans la population préalable ; profil supplied-sitemap-lastmod-v1. lastmod des index hors périmètre.
+
+**Méthode.** Lire le lastmod natif de chaque entrée de page ; comparer sa date UTC ou son instant zoné à un événement JSON original attribué, puis vérifier la revue de signification liée.
+
+**Attendus.** Pass exige dates concordantes non futures, événement content attribué et revue supported. Date invalide/future, écart traçable, génération du fichier seule ou revue contradicted : fail. Historique/revue insuffisant : inconclusive. Absence native complète de lastmod : exemption atomique, jamais défaut.
+
+**Preuves.** XML original daté/empreinté, URL du fichier et position de l’entrée, événement JSON UTF8 original avec SHA-256, change_id, URL, changed_at, kind et description ; revue attribuée et liée.
+
+**Hypothèses.** Plan antérieur, URL littérales, fenêtre fournie de24h maximum et intégrité des originaux. Dates, contexte et jugements déclarés, sans authentification.
+
+**Indéterminé.** Plan, document, enfant, liaison, capture ou revue absent, ambigu ou hors profil ; borne dépassée. Conserver tout fail indépendant et les autres inconnues. Fuseau absent ou précision de lastmod hors profil : inconclusive, jamais défaut inventé.
+
+**Conditions de NA.** not-applicable atomique uniquement si absence lue dans une entrée native complète. Toutes les entrées exemptées ne produisent pas un C ni un NA de contrôle automatique.
+
+**Limites.** Une date égale et une revue fournie ne prouvent pas une modification réelle ni sa signification. Précision au jour UTC ou à l’instant zoné ; aucun historique CMS complet, fraîcheur idéale ou traitement moteur déduit.
+
 ## TS15 — Les limites et découpages de sitemap sont respectés.
 
 **Sévérité**: major. **Unité**: sitemap-set.
 
-**Entrées requises**: sitemap.
+**Entrées requises**: sitemap, intent.
 
-**Applicabilité.** Fichiers et index de sitemap déclarés.
+**Applicabilité.** Population déclarée de fichiers sitemap natifs fournis ; racines non découvertes automatiquement.
 
-**Méthode.** Contrôler taille décompressée, nombre d’URL, index de sitemaps et encodage.
+**Méthode.** Lire les octets originaux, la structure XML de base, la taille décompressée, les éléments directs et les enfants d’index du jeu déclaré.
 
-**Attendus.** Encodage et syntaxe sont valides ; limites de taille décompressée et de nombre d’entrées sont respectées pour chaque type de fichier.
+**Attendus.** Dans le profil borné : UTF-8 et structure minimale qualifiés, au plus52 428 800 octets et50 000 éléments directs par fichier, couverture du jeu déclaré.
 
-**Preuves.** Maximum 50 000 URL et 50 Mo non compressés par sitemap.
+**Preuves.** Originaux base64/SHA-256, URL et dates déclarées, plan du jeu ; limites du profil native-sitemap-files-v1.
 
 **Conditions de NA.** Aucun sitemap utilisé dans le périmètre.
 
-**Limites.** Un fichier valide peut contenir un mauvais périmètre éditorial.
+**Limites.** Fichiers fournis seulement, pas serveur observé ni exhaustivité du site. Ni validation XSD complète, ni valeurs lastmod/changefreq/priority, portée hôte/chemin/longueur URL, canonical ou indexation.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
@@ -682,77 +1046,299 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://www.sitemaps.org/protocol.html](https://www.sitemaps.org/protocol.html)
 
+### TS15-A01 — Encodage et structure minimale des fichiers fournis.
+
+`TSEP@0.2.0-rc.1:TS15-A01`
+
+**Entrées requises**: sitemap, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicabilité.** Population déclarée de fichiers sitemap natifs fournis ; racines non découvertes automatiquement.
+
+**Méthode.** Vérifier UTF-8 strict, racine0.9, loc unique non vide et feuilles uniques ordonnées ; DTD/extension non qualifiée restent inconnus.
+
+**Attendus.** Tous les fichiers complets passent la structure bornée ; contradiction structurelle établie fail.
+
+**Preuves.** Originaux base64/SHA-256, URL et dates déclarées, plan du jeu ; limites du profil native-sitemap-files-v1.
+
+**Hypothèses.** URL, date, origine et complétude fournies, non authentifiées. Aucune observation du serveur.
+
+**Indéterminé.** Fichier absent/ambigu, flux incomplet, profil inconnu, borne interne, index imbriqué ou extension non qualifiée ; violation indépendante conservée.
+
+**Conditions de NA.** Pas de NA dans ce profil.
+
+**Limites.** Fichiers fournis seulement, pas serveur observé ni exhaustivité du site. Ni validation XSD complète, ni valeurs lastmod/changefreq/priority, portée hôte/chemin/longueur URL, canonical ou indexation.
+
+### TS15-A02 — Limites réelles de taille et de population.
+
+`TSEP@0.2.0-rc.1:TS15-A02`
+
+**Entrées requises**: sitemap, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicabilité.** Population déclarée de fichiers sitemap natifs fournis ; racines non découvertes automatiquement.
+
+**Méthode.** Compter les octets réellement décompressés et les éléments url/sitemap directs, doublons et loc absents compris.
+
+**Attendus.** Chaque fichier reste à52 428 800 octets et50 000 éléments au plus ; dépassement lu fail, lecture partielle sans dépassement inconclusive.
+
+**Preuves.** Originaux base64/SHA-256, URL et dates déclarées, plan du jeu ; limites du profil native-sitemap-files-v1.
+
+**Hypothèses.** URL, date, origine et complétude fournies, non authentifiées. Aucune observation du serveur.
+
+**Indéterminé.** Fichier absent/ambigu, flux incomplet, profil inconnu, borne interne, index imbriqué ou extension non qualifiée ; violation indépendante conservée.
+
+**Conditions de NA.** Pas de NA dans ce profil.
+
+**Limites.** Fichiers fournis seulement, pas serveur observé ni exhaustivité du site. Ni validation XSD complète, ni valeurs lastmod/changefreq/priority, portée hôte/chemin/longueur URL, canonical ou indexation.
+
+### TS15-A03 — Couverture de la population déclarée et enfants liés.
+
+`TSEP@0.2.0-rc.1:TS15-A03`
+
+**Entrées requises**: sitemap, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Issues autorisées**: pass, inconclusive.
+
+**Applicabilité.** Population déclarée de fichiers sitemap natifs fournis ; racines non découvertes automatiquement.
+
+**Méthode.** Relier chaque document à une URL déclarée exacte et chaque enfant d’index à une feuille complète ; racines et périmètre restent déclarés.
+
+**Attendus.** Tous les documents déclarés et branches sont qualifiés ; absence/ambiguïté/hors profil inconclusive, jamais preuve négative de sitemap utilisé sur le site.
+
+**Preuves.** Originaux base64/SHA-256, URL et dates déclarées, plan du jeu ; limites du profil native-sitemap-files-v1.
+
+**Hypothèses.** URL, date, origine et complétude fournies, non authentifiées. Aucune observation du serveur.
+
+**Indéterminé.** Fichier absent/ambigu, flux incomplet, profil inconnu, borne interne, index imbriqué ou extension non qualifiée ; violation indépendante conservée.
+
+**Conditions de NA.** Pas de NA dans ce profil.
+
+**Limites.** Fichiers fournis seulement, pas serveur observé ni exhaustivité du site. Ni validation XSD complète, ni valeurs lastmod/changefreq/priority, portée hôte/chemin/longueur URL, canonical ou indexation.
+
 ## TS16 — Chaque page importante reçoit au moins un lien interne crawlable.
 
 **Sévérité**: major. **Unité**: url-set.
 
-**Entrées requises**: crawl, inventory, intent.
+**Entrées requises**: http, html, inventory, intent.
 
-**Applicabilité.** Pages identifiées comme importantes dans un inventaire.
+**Applicabilité.** Population importante et sources internes choisies avant les captures, avec inventaire original daté et plan lié ; profil incoming-document-links-v1.
 
-**Méthode.** Crawler le site depuis les entrées publiques et lister les pages sans lien entrant HTML.
+**Méthode.** Pour chaque destination, chercher un témoin a/href depuis un autre document interne qualifié : source HTML sous deux hypothèses statiques ou DOM déclaré sans interaction. Qualifier séparément chaque source, destination et surface.
 
-**Attendus.** Chaque page retenue possède au moins un lien entrant HTML résoluble depuis une page interne ; source et destination archivées.
+**Attendus.** Chaque destination déclarée possède un témoin entrant qualifié et son original HTTP. Une absence n’est établie que sur toutes les surfaces éligibles qualifiées de l’inventaire préalable ; elle reste limitée à cette population.
 
-**Preuves.** Source du lien, destination, ancre et statut de la page.
+**Preuves.** Inventaire original, plan, originaux HTTP/DOM, URL demandées/finales, dates, statut de destination, href brut, référence d’ancre et diagnostics par destination. Les DOM sont requis pour les surfaces qui en dépendent ; un témoin source indépendant suffit sans DOM, sans en inventer un.
 
-**Conditions de NA.** Aucune page importante concernée, justification et inventaire fournis.
+**Conditions de NA.** Aucune page importante concernée seulement avec justification et inventaire ; aucune NA automatique dans le lecteur borné.
 
-**Limites.** Un lien présent ne prouve pas sa valeur éditoriale.
+**Limites.** Population et importance déclarées, non authentifiées. Aucune exhaustivité du site, acquisition ou interaction observée, valeur éditoriale, visite Google, indexation ou classement. Une absence bornée ne prouve pas une page orpheline du site. Le contenu attendu de la source et les soft404 ne sont pas évalués.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/links-crawlable](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)
+
+### TS16-A01 — Témoin entrant dans la population interne préalable.
+
+`TSEP@0.2.0-rc.1:TS16-A01`
+
+**Entrées requises**: http, html, inventory, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicabilité.** Population importante et sources internes choisies avant les captures, avec inventaire original daté et plan lié ; profil incoming-document-links-v1.
+
+**Méthode.** Pour chaque destination, chercher un témoin a/href depuis un autre document interne qualifié : source HTML sous deux hypothèses statiques ou DOM déclaré sans interaction. Qualifier séparément chaque source, destination et surface.
+
+**Attendus.** Pass si toutes les destinations possèdent un témoin indépendant qualifié et un original de destination. Fail si une destination n’a aucun témoin dans toute la population éligible qualifiée. Sinon inconclusive ; un fail indépendant survit aux autres inconnues.
+
+**Preuves.** Inventaire original, plan, originaux HTTP/DOM, URL demandées/finales, dates, statut de destination, href brut, référence d’ancre et diagnostics par destination. Les DOM sont requis pour les surfaces qui en dépendent ; un témoin source indépendant suffit sans DOM, sans en inventer un.
+
+**Hypothèses.** Inventaire observé avant le plan qui lie son empreinte, captures dans la fenêtre préalable ; origines exactes et états sans interaction déclarés. L’intégrité ne prouve pas l’authenticité ni la simultanéité.
+
+**Indéterminé.** Plan/inventaire ou original insuffisant, population ambiguë, surface non qualifiée, dates incohérentes ou runtime absent. Une paire dont la destination retourne par redirection à la source reste indéterminée ; un autre témoin peut suffire.
+
+**Conditions de NA.** Aucune NA automatique dans ce profil.
+
+**Limites.** Population et importance déclarées, non authentifiées. Aucune exhaustivité du site, acquisition ou interaction observée, valeur éditoriale, visite Google, indexation ou classement. Une absence bornée ne prouve pas une page orpheline du site. Le contenu attendu de la source et les soft404 ne sont pas évalués.
 
 ## TS17 — Les liens essentiels utilisent un élément a avec href résoluble.
 
 **Sévérité**: major. **Unité**: page.
 
-**Entrées requises**: html, render, intent.
+**Entrées requises**: http, html, render, intent.
 
-**Applicabilité.** Destinations de navigation déclarées essentielles.
+**Applicabilité.** Destinations essentielles déclarées dans la stratégie préalable source-and-rendered, sur les captures fournies.
 
-**Méthode.** Comparer DOM source et rendu ; relever boutons, onclick et ancres sans href.
+**Méthode.** Comparer les liens HTML a/href de la source et de chaque état DOM déclaré ; deux stades distincts, URL de document exactes.
 
-**Attendus.** Chaque destination essentielle testée possède un lien a avec href résoluble au stade observé ; les stades source et rendu sont distingués.
+**Attendus.** Chaque destination déclarée possède un lien a/href résoluble dans les deux stades requis, dans le profil borné essential-document-links-v1.
 
-**Preuves.** Lien HTML crawlable vers chaque destination essentielle.
+**Preuves.** Octets HTTP originaux, arbre DOM v2 lié, plan et diagnostics source/rendu séparés ; états déclarés par le fournisseur.
 
 **Conditions de NA.** Aucune navigation concernée, périmètre justifié.
 
-**Limites.** La crawlabilité ne garantit ni indexation ni classement.
+**Limites.** C dans la stratégie déclarée seulement. Aucune visibilité, interaction, importance éditoriale, authenticité, visite Google, indexation ou classement établi. Pas d’exigence Google universelle de présence source.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/links-crawlable](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)
+
+### TS17-A01 — Liens essentiels présents dans la source fournie.
+
+`TSEP@0.2.0-rc.1:TS17-A01`
+
+**Entrées requises**: http, html, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicabilité.** Destinations essentielles déclarées dans la stratégie préalable source-and-rendered, sur les captures fournies.
+
+**Méthode.** Lire la source native sous les deux hypothèses statiques de scripts ; exiger leur accord.
+
+**Attendus.** Toutes les destinations au stade qualifié : pass ; absence établie sur inventaire complet : fail ; sinon inconclusive.
+
+**Preuves.** Octets HTTP originaux, arbre DOM v2 lié, plan et diagnostics source/rendu séparés ; états déclarés par le fournisseur.
+
+**Hypothèses.** Plan préalable, population, scénarios et complétude déclarés ; liaison HTTP/DOM vérifiée mais acquisition non authentifiée.
+
+**Indéterminé.** Plan/stade absent, incomplet, hors profil, base active, lecture ambiguë ou runtime absent. Une contradiction indépendante reste conservée.
+
+**Conditions de NA.** Aucune NA automatique dans ce profil.
+
+**Limites.** C dans la stratégie déclarée seulement. Aucune visibilité, interaction, importance éditoriale, authenticité, visite Google, indexation ou classement établi. Pas d’exigence Google universelle de présence source.
+
+### TS17-A02 — Liens essentiels présents dans les états rendus déclarés.
+
+`TSEP@0.2.0-rc.1:TS17-A02`
+
+**Entrées requises**: http, render, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicabilité.** Destinations essentielles déclarées dans la stratégie préalable source-and-rendered, sur les captures fournies.
+
+**Méthode.** Vérifier chaque arbre complet lié au HTTP et signaler les snapshots répétés ; scénarios non authentifiés.
+
+**Attendus.** Toutes les destinations au stade qualifié : pass ; absence établie sur inventaire complet : fail ; sinon inconclusive.
+
+**Preuves.** Octets HTTP originaux, arbre DOM v2 lié, plan et diagnostics source/rendu séparés ; états déclarés par le fournisseur.
+
+**Hypothèses.** Plan préalable, population, scénarios et complétude déclarés ; liaison HTTP/DOM vérifiée mais acquisition non authentifiée.
+
+**Indéterminé.** Plan/stade absent, incomplet, hors profil, base active, lecture ambiguë ou runtime absent. Une contradiction indépendante reste conservée.
+
+**Conditions de NA.** Aucune NA automatique dans ce profil.
+
+**Limites.** C dans la stratégie déclarée seulement. Aucune visibilité, interaction, importance éditoriale, authenticité, visite Google, indexation ou classement établi. Pas d’exigence Google universelle de présence source.
 
 ## TS18 — La profondeur et les pages orphelines sont mesurées sur un périmètre explicite.
 
 **Sévérité**: major. **Unité**: url-set.
 
-**Entrées requises**: crawl, sitemap, inventory, intent.
+**Entrées requises**: crawl, sitemap, inventory, intent, http, html.
 
-**Applicabilité.** Inventaire de référence déclaré, avec frontières du crawl.
+**Applicabilité.** Population, racines, familles et frontières déclarées avant les captures ; profil borné supplied-graph-reconciliation-v1.
 
-**Méthode.** Comparer crawl, sitemap et export CMS ; qualifier chaque différence.
+**Méthode.** Rapprocher les originaux de référence, crawl, CMS et sitemap ; calculer liens et distances du graphe natif borné ; vérifier les revues fournies et liées aux mesures par famille et différence.
 
-**Attendus.** Crawl et inventaire sont rapprochés ; profondeur observée et candidats orphelins sont qualifiés par famille ; aucune exhaustivité n’est inférée d’un seul crawl.
+**Attendus.** Trois couches complètes dans le périmètre fourni : rapprochement qualifié, mesures natives qualifiées et revues documentaires liées. Une contradiction revue et étayée reste NC malgré une autre inconnue.
 
-**Preuves.** Inventaire de référence identifié et daté, frontières du crawl, liens entrants, profondeurs observées et différences qualifiées.
+**Preuves.** Inventaires originaux datés et empreintés, production et dépendances déclarées, plan, HTTP/source/DOM originaux, paires et bornes, dates par inventaire et revues fournies liées aux dossiers exacts.
 
 **Conditions de NA.** Aucun graphe de navigation concerné, justification fournie ; inventaire manquant signifie NT.
 
-**Limites.** Il n’existe pas de profondeur universelle garantissant un classement.
+**Limites.** Graphe déclaré uniquement : aucune exhaustivité, page orpheline globale, profondeur SEO universelle, authenticité des captures ou des revues, interaction observée, indexation ou classement. HTTP200 ne vérifie pas le contenu attendu ni les soft404. Le motif fourni n’est pas jugé par le lecteur.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/links-crawlable](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)
+
+### TS18-A01 — Périmètre préalable et inventaires originaux rapprochés.
+
+`TSEP@0.2.0-rc.1:TS18-A01`
+
+**Entrées requises**: crawl, sitemap, inventory, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Issues autorisées**: pass, inconclusive.
+
+**Applicabilité.** Population, racines, familles et frontières déclarées avant les captures ; profil borné supplied-graph-reconciliation-v1.
+
+**Méthode.** Lire les formats et lignées explicitement déclarés ; référence ordonnée liée au plan, crawl suivant les liens depuis les seules racines, CMS natif et sitemap avec dépendance éventuelle explicite.
+
+**Attendus.** Pass si toutes les pièces, dates, familles et déclarations sont qualifiées ; sinon inconclusive. L’accord entre listes ne prouve pas leur exhaustivité. Amorçage mixte ou mode liste : inconclusive dans ce profil.
+
+**Preuves.** Inventaires originaux datés et empreintés, production et dépendances déclarées, plan, HTTP/source/DOM originaux, paires et bornes, dates par inventaire et revues fournies liées aux dossiers exacts.
+
+**Hypothèses.** Origines et documents exacts, plan antérieur, captures dans une fenêtre maximale de24h ; déclarations de production et états sans interaction non authentifiés.
+
+**Indéterminé.** Plan, original, surface ou revue absent, ambigu, hors profil, mal lié ou hors fenêtre ; runtime requis absent. Les inconnues restent explicites et un défaut indépendant ne disparaît pas.
+
+**Conditions de NA.** Aucune NA automatique ; absence de preuve signifie indéterminé.
+
+**Limites.** Graphe déclaré uniquement : aucune exhaustivité, page orpheline globale, profondeur SEO universelle, authenticité des captures ou des revues, interaction observée, indexation ou classement. HTTP200 ne vérifie pas le contenu attendu ni les soft404. Le motif fourni n’est pas jugé par le lecteur.
+
+### TS18-A02 — Profondeurs et degrés entrants dans le graphe borné.
+
+`TSEP@0.2.0-rc.1:TS18-A02`
+
+**Entrées requises**: http, html, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Issues autorisées**: pass, inconclusive.
+
+**Applicabilité.** Population, racines, familles et frontières déclarées avant les captures ; profil borné supplied-graph-reconciliation-v1.
+
+**Méthode.** Lire chaque paire depuis la source sous deux hypothèses ou un DOM qualifié sans interaction ; calculer distances minimale/majorante et nombres minimal/maximal de sources distinctes, sans auto-liens.
+
+**Attendus.** Pass si les racines et toutes les paires sont qualifiées ; sinon inconclusive, même si une profondeur particulière est exacte. Candidat sans lien entrant seulement si son maximum vaut0. Aucun seuil universel de profondeur.
+
+**Preuves.** Inventaires originaux datés et empreintés, production et dépendances déclarées, plan, HTTP/source/DOM originaux, paires et bornes, dates par inventaire et revues fournies liées aux dossiers exacts.
+
+**Hypothèses.** Origines et documents exacts, plan antérieur, captures dans une fenêtre maximale de24h ; déclarations de production et états sans interaction non authentifiés.
+
+**Indéterminé.** Plan, original, surface ou revue absent, ambigu, hors profil, mal lié ou hors fenêtre ; runtime requis absent. Les inconnues restent explicites et un défaut indépendant ne disparaît pas.
+
+**Conditions de NA.** Aucune NA automatique ; absence de preuve signifie indéterminé.
+
+**Limites.** Graphe déclaré uniquement : aucune exhaustivité, page orpheline globale, profondeur SEO universelle, authenticité des captures ou des revues, interaction observée, indexation ou classement. HTTP200 ne vérifie pas le contenu attendu ni les soft404. Le motif fourni n’est pas jugé par le lecteur.
+
+### TS18-A03 — Qualification documentaire fournie des familles et différences.
+
+`TSEP@0.2.0-rc.1:TS18-A03`
+
+**Entrées requises**: intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population, racines, familles et frontières déclarées avant les captures ; profil borné supplied-graph-reconciliation-v1.
+
+**Méthode.** Déduire les sujets des seules mesures natives ; vérifier une revue pour chaque famille, différence connue, candidat sans entrant et document inaccessible, liée au plan, originaux, dates et mesures.
+
+**Attendus.** Pass si tous les sujets qualifiés ont une explication fournie correctement liée ; fail si un défaut fourni est lié à un sujet étayé ; sinon inconclusive. Une revue ne qualifie pas une mesure inconnue et ne devient jamais une approbation humaine créée par le logiciel.
+
+**Preuves.** Inventaires originaux datés et empreintés, production et dépendances déclarées, plan, HTTP/source/DOM originaux, paires et bornes, dates par inventaire et revues fournies liées aux dossiers exacts.
+
+**Hypothèses.** Origines et documents exacts, plan antérieur, captures dans une fenêtre maximale de24h ; déclarations de production et états sans interaction non authentifiés.
+
+**Indéterminé.** Plan, original, surface ou revue absent, ambigu, hors profil, mal lié ou hors fenêtre ; runtime requis absent. Les inconnues restent explicites et un défaut indépendant ne disparaît pas.
+
+**Conditions de NA.** Aucune NA automatique ; absence de preuve signifie indéterminé.
+
+**Limites.** Graphe déclaré uniquement : aucune exhaustivité, page orpheline globale, profondeur SEO universelle, authenticité des captures ou des revues, interaction observée, indexation ou classement. HTTP200 ne vérifie pas le contenu attendu ni les soft404. Le motif fourni n’est pas jugé par le lecteur.
 
 ## TS19 — Les paramètres, filtres et calendriers ne créent pas un espace infini.
 
@@ -778,6 +1364,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/url-structure](https://developers.google.com/search/docs/crawling-indexing/url-structure)
 
+### TS19-A01 — Politique bornée par motif combinatoire
+
+`TSEP@0.3.0-draft.2:TS19-A01`
+
+**Entrées requises**: configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS19 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Comparer les axes max_combinations, navigation et indexing du fichier natif url-pattern-config-v1 à chaque motif préalable ; exiger la revue du choix de bornes.
+
+**Attendus.** Chaque axe fourni correspond au plan fini sélectionné. Une valeur contradictoire, notamment une limite nulle contraire au plan positif, échoue.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : configuration, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Axe ou configuration manquant, borne non entière ou hors 1–128, revue absente : indéterminé.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
+
+### TS19-A02 — Population observée et décision sur les pièges
+
+`TSEP@0.3.0-draft.2:TS19-A02`
+
+**Entrées requises**: crawl, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS19 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Lire url-crawl-v1, compter les URL distinctes et les comparer à la liste finie et à sa borne ; conserver la décision motivée sur les pièges/cycles et sa revue.
+
+**Attendus.** Les URL observées appartiennent à la population prévue, leur nombre respecte la borne et les pièges sont expliqués. Une URL extérieure ou un dépassement échoue.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : crawl, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Crawl fourni incomplet, identités ambiguës, liste ou décision absente : indéterminé. Un échantillon fini ne prouve jamais la finitude de tout le site.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
+
 ## TS20 — La structure d’URL est lisible, stable et encodée correctement.
 
 **Sévérité**: minor. **Unité**: url-set.
@@ -801,6 +1435,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/url-structure](https://developers.google.com/search/docs/crawling-indexing/url-structure)
+
+### TS20-A01 — Forme des URL selon la politique fournie
+
+`TSEP@0.3.0-draft.2:TS20-A01`
+
+**Entrées requises**: crawl, configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS20 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Lire la capture après et url-shape-config-v1. Vérifier espaces/contrôles, antislash, échappements percent, fragments et casse de chemin selon les choix préalables ; revue humaine de lisibilité.
+
+**Attendus.** La configuration correspond au plan et chaque URL respecte ses axes lexicaux. Une divergence qualifiée échoue. Aucun changement implicite de casse ou de décodage.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : crawl, configuration, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** URL/autorité non prise en charge, politique inconnue, capture ou revue manquante : indéterminé.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
+
+### TS20-A02 — Stabilité temporelle et décisions de variation
+
+`TSEP@0.3.0-draft.2:TS20-A02`
+
+**Entrées requises**: crawl, configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS20 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Comparer deux captures ordonnées url-crawl-v1 ayant les mêmes identités ; toute URL changée doit avoir une décision unique avant/après avec motif, dans le plan lié à la revue.
+
+**Attendus.** Les URL sont égales aux deux dates, ou leur variation est explicitement décidée et revue. Un changement observé sans décision échoue.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : crawl, configuration, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Une seule date, dates inversées/égales, identité manquante ou revue absente : indéterminé. La stabilité future reste inconnue.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
 
 ## TS21 — Les URL découvertes mais non indexées sont investiguées par famille.
 
@@ -826,6 +1508,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://support.google.com/webmasters/answer/7440203](https://support.google.com/webmasters/answer/7440203)
 
+### TS21-A01 — Attribution des familles non indexées
+
+`TSEP@0.3.0-draft.3:TS21-A01`
+
+**Entrées requises**: search-console, logs, sitemap, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Familles ou groupes explicitement sélectionnés pour TS21 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Méthode.** Lire les requêtes/réponses Google URL Inspection fournies pour chaque URL retenue, comparer propriété, URL et libellé de famille ; rapprocher le urlset natif et l’export TSV de logs dans leur fenêtre. Exiger la revue de segmentation et d’attribution.
+
+**Attendus.** Les pièces natives sont disponibles et attribuées à la famille choisie ; l’appartenance sitemap concorde avec le plan. Un désaccord de requête, de famille ou de sitemap échoue. Les logs décrivent seulement leur fenêtre et leur client fourni.
+
+**Preuves.** Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : search-console, logs, sitemap, intent. Preuves natives conditionnelles selon les méthodes déclarées.
+
+**Hypothèses.** Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.
+
+**Indéterminé.** Pièce manquante, résultat API absent/erroné, libellé non pris en charge, logs non interprétables ou revue absente : indéterminé.
+
+**Conditions de NA.** Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.
+
+**Limites.** Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.
+
+### TS21-A02 — Hypothèse testable et décision sans causalité inventée
+
+`TSEP@0.3.0-draft.3:TS21-A02`
+
+**Entrées requises**: content, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicabilité.** Familles ou groupes explicitement sélectionnés pour TS21 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Méthode.** Lire family-diagnosis-v1 : diagnostic, hypothèse, prédiction, réfutation, mesure, décision, propriétaire et échéance pour la même liste d’URL. Vérifier la distinction entre suivi prévu et résultat observé puis la revue liée.
+
+**Attendus.** Les axes de diagnostic sont renseignés et revus ; causality=unproven et follow_up=planned-not-observed. Une causalité proclamée à partir du libellé ou de la corrélation échoue dans ce profil.
+
+**Preuves.** Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : content, intent. Preuves natives conditionnelles selon les méthodes déclarées.
+
+**Hypothèses.** Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.
+
+**Indéterminé.** Hypothèse sans critère de réfutation, famille mal attribuée, suivi prétendu observé hors méthode séparée, jugement manquant : indéterminé.
+
+**Conditions de NA.** Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.
+
+**Limites.** Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.
+
 ## TS22 — Chaque variante hreflang pointe vers une URL indexable et canonique.
 
 **Sévérité**: major. **Unité**: locale-cluster.
@@ -850,47 +1580,119 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/docs/specialty/international/localized-versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
 
+### TS22-A01 — Annotations natives et codes enregistrés
+
+`TSEP@0.3.0-draft.3:TS22-A01`
+
+**Entrées requises**: hreflang, http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Familles ou groupes explicitement sélectionnés pour TS22 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Méthode.** Lire séparément HTML, en-têtes Link et urlset XHTML déclarés ; conserver les accords des deux hypothèses HTML statiques. Vérifier chaque code observé dans le sous-ensemble figé du registre IANA et l’attribution à la destination prévue.
+
+**Attendus.** Les codes observés appartiennent au profil langue/script/région documenté et les destinations concordent. Un code explicitement invalide ou une destination contraire échoue ; x-default qualifie seulement le jeton réservé.
+
+**Preuves.** Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : hreflang, http, html, intent. Preuves natives conditionnelles selon les méthodes déclarées.
+
+**Hypothèses.** Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.
+
+**Indéterminé.** Code obsolète, région exceptionnelle hors sous-ensemble, méthode ou page manquante, contexte HTML ambigu, annotation relative ou revue manquante : indéterminé.
+
+**Conditions de NA.** Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.
+
+**Limites.** Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.
+
+### TS22-A02 — Destinations hreflang et signaux d’indexabilité
+
+`TSEP@0.3.0-draft.3:TS22-A02`
+
+**Entrées requises**: hreflang, http, html, robots, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Familles ou groupes explicitement sélectionnés pour TS22 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Méthode.** Pour chaque destination sélectionnée : comparer intention d’indexation, HTTP direct 200, directives HTTP/HTML, canonical explicite vers elle-même et robots.txt du même origin avec le profil Google préalable. Exiger la revue du périmètre source.
+
+**Attendus.** Les signaux qualifiés autorisent la destination prévue et concordent avec elle. Une réponse contraire, un noindex, une canonical divergente ou un refus robots étayé échoue malgré d’autres inconnues.
+
+**Preuves.** Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : hreflang, http, html, robots, intent. Preuves natives conditionnelles selon les méthodes déclarées.
+
+**Hypothèses.** Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.
+
+**Indéterminé.** Robots absent/non qualifié, canonical absente, trace partielle, rendu nécessaire ou revue absente : indéterminé. Permission d’indexation n’est pas indexation.
+
+**Conditions de NA.** Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.
+
+**Limites.** Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.
+
 ## TS23 — Les annotations hreflang sont réciproques et incluent la page elle-même.
 
 **Sévérité**: major. **Unité**: locale-cluster.
 
-**Entrées requises**: hreflang, intent.
+**Entrées requises**: http, hreflang, intent.
 
-**Applicabilité.** Groupes hreflang déclarés.
+**Applicabilité.** Groupe et canaux principaux déclarés avant les captures ; profil borné hreflang-reciprocity-v1.
 
-**Méthode.** Construire les groupes de variantes et vérifier retour et auto-référence.
+**Méthode.** Lire les annotations natives HTML ou HTTP Link depuis les originaux, conserver deux hypothèses HTML et les canaux secondaires, comparer chaque code–URL au groupe préalable sans union de canaux.
 
-**Attendus.** Toutes les paires du groupe déclaré sont réciproques et chaque variante s’inclut ; frontières du groupe conservées.
+**Attendus.** Chaque page du groupe conserve dans son canal principal tout le jeu attendu, auto-référence comprise ; aucune contradiction qualifiée entre cibles. Plusieurs codes peuvent partager une URL et les groupes entre domaines sont admis.
 
-**Preuves.** Groupe complet, réciproque et sans URL contradictoire.
+**Preuves.** Plan et associations attendues, canaux choisis, requêtes/réponses HTTP originales et empreintes, dates, positions des éléments et fermetures du head, hypothèses, jeux principaux/secondaires, exclusions et inconnues.
 
 **Conditions de NA.** Aucun groupe hreflang dans le périmètre.
 
-**Limites.** Un groupe valide ne prouve pas que le moteur servira toujours la variante attendue.
+**Limites.** Groupe fourni et mode principal déclarés : aucune authenticité de capture, exhaustivité du site, validité linguistique TS22, indexabilité/canonical, pertinence x-default TS24, traduction, rendu JavaScript ou traitement Google. Les sitemaps/DOM pertinents fournis restent hors profil.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/specialty/international/localized-versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
+
+### TS23-A01 — Réciprocité et auto-référence natives dans le groupe préalable.
+
+`TSEP@0.2.0-rc.1:TS23-A01`
+
+**Entrées requises**: http, hreflang, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicabilité.** Groupe et canaux principaux déclarés avant les captures ; profil borné hreflang-reciprocity-v1.
+
+**Méthode.** Lire les annotations natives HTML ou HTTP Link depuis les originaux, conserver deux hypothèses HTML et les canaux secondaires, comparer chaque code–URL au groupe préalable sans union de canaux.
+
+**Attendus.** Pass si toutes les pages sont qualifiées et incluent tout le jeu attendu dans leur canal principal. Fail si un manque qualifié, placement invalide du primaire HTML ou conflit de cible est établi. Sinon inconclusive ; une contradiction indépendante survit aux inconnues.
+
+**Preuves.** Plan et associations attendues, canaux choisis, requêtes/réponses HTTP originales et empreintes, dates, positions des éléments et fermetures du head, hypothèses, jeux principaux/secondaires, exclusions et inconnues.
+
+**Hypothèses.** Plan antérieur, fenêtre maximale24h, HTTP200 demandé=final sans redirection, URL absolues HTTP(S) exactes. Deux hypothèses HTML statiques, aucune exécution de scripts.
+
+**Indéterminé.** Plan/original absent ou ambigu, dates ou canal non qualifiés, source récupérée hors frontière admise, langue/URL hors admission fermée, annotation extérieure non prévue, runtime requis absent.
+
+**Conditions de NA.** Aucune NA automatique ; un plan vide n’établit pas la non-applicabilité.
+
+**Limites.** Groupe fourni et mode principal déclarés : aucune authenticité de capture, exhaustivité du site, validité linguistique TS22, indexabilité/canonical, pertinence x-default TS24, traduction, rendu JavaScript ou traitement Google. Les sitemaps/DOM pertinents fournis restent hors profil.
 
 ## TS24 — x-default représente une destination neutre ou la variante par défaut assumée.
 
 **Sévérité**: minor. **Unité**: locale-cluster.
 
-**Entrées requises**: hreflang, http, intent.
+**Entrées requises**: http, hreflang, intent.
 
-**Applicabilité.** Groupes où x-default est déclaré ou requis par la politique.
+**Applicabilité.** Groupe et politique x-default fournis avant les captures ; profil borné xdefault-role-v1.
 
-**Méthode.** Vérifier sa présence et sa fonction dans chaque groupe multilingue pertinent.
+**Méthode.** Relire les observations natives HTML/HTTP Link, vérifier cible, contexte motivé, disponibilité capturée et revue de rôle fournie liée ; conserver inconnues et contestations.
 
-**Attendus.** La destination est accessible et correspond au parcours de sélection ou à la variante par défaut assumée.
+**Attendus.** Présence et contexte qualifiés, cible conforme à la politique, original200 et revue fournie cohérente. Un défaut indépendant documenté est NC ; aucune approbation ni validité sémantique inférée.
 
-**Preuves.** URL x-default documentée, accessible et cohérente avec le parcours.
+**Preuves.** Politique et contexte préalables, originaux HTTP et empreintes, observations principales/secondaires, revues originales liées, dates et inconnues.
 
-**Conditions de NA.** Aucun x-default requis ou déclaré ; justification de politique conservée.
+**Conditions de NA.** Aucune NA native ni override manuel ; dossiers manuels historiques séparés, absence optionnelle indéterminée.
 
-**Limites.** x-default n’est pas obligatoire dans tous les cas.
+**Limites.** Périmètre fourni, aucun public représentatif ou rôle sémantique authentifié ; HTTP200 ne détecte pas une page d’erreur/soft404. Pas de traduction, visite Google, indexation, exhaustivité ou conformité globale.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
@@ -898,29 +1700,101 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/docs/specialty/international/localized-versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
 
+### TS24-A01 — Rôle x-default documenté dans le contexte préalable.
+
+`TSEP@0.2.0-rc.1:TS24-A01`
+
+**Entrées requises**: http, hreflang, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Groupe et politique x-default fournis avant les captures ; profil borné xdefault-role-v1.
+
+**Méthode.** Relire les observations natives HTML/HTTP Link, vérifier cible, contexte motivé, disponibilité capturée et revue de rôle fournie liée ; conserver inconnues et contestations.
+
+**Attendus.** Pass exige toutes les surfaces qualifiées, une cible prévue non ambiguë, son original200 et une revue consistent liée. Fail pour absence primaire requise qualifiée, toute cible qualifiée contraire à la destination unique du plan, même parmi plusieurs déclarations,404/410 attribuable, distinction URL contredite ou revue defect unique liée. Sinon inconclusive.
+
+**Preuves.** Politique et contexte préalables, originaux HTTP et empreintes, observations principales/secondaires, revues originales liées, dates et inconnues.
+
+**Hypothèses.** Plan antérieur et contexte unique motivé ; un GET sans redirection par original, fenêtre<=24h, deux hypothèses HTML statiques. Revue fournie, auteur non authentifié.
+
+**Indéterminé.** Plan, contexte, original ou revue absent/non qualifié ; déclarations non qualifiées ou hypothèses divergentes sans contradiction indépendante, revues contestées, statut hors200/404/410, canal pertinent non examiné ou runtime requis absent.
+
+**Conditions de NA.** Aucune NA native ni override manuel ; dossiers manuels historiques séparés, absence optionnelle indéterminée.
+
+**Limites.** Périmètre fourni, aucun public représentatif ou rôle sémantique authentifié ; HTTP200 ne détecte pas une page d’erreur/soft404. Pas de traduction, visite Google, indexation, exhaustivité ou conformité globale.
+
 ## TS25 — Le contenu critique existe dans le HTML source ou devient observable après rendu.
 
 **Sévérité**: blocking. **Unité**: page.
 
-**Entrées requises**: html, render, intent.
+**Entrées requises**: http, intent.
 
-**Applicabilité.** Gabarits dont les éléments critiques sont listés.
+**Applicabilité.** Éléments critiques et politiques de stade déclarés avant les captures, profil critical-stage-presence-v1.
 
-**Méthode.** Lister les éléments critiques puis comparer HTML source et DOM rendu dans les conditions déclarées. Une inspection Google facultative est une observation supplémentaire distincte.
+**Méthode.** Vérifier les cinq décisions de rôle puis les éléments dans les hypothèses source et états rendus prévus ; conserver originaux, exclusions et revues fournies liées.
 
-**Attendus.** Chaque élément critique est observé au stade source ou rendu déclaré ; moteur, version et conditions sont conservés ; aucune équivalence avec Google n’est inférée.
+**Attendus.** Deux règles pass dans le périmètre fourni : couverture motivée et présence selon les politiques préalables. Tout défaut indépendant qualifié donne NC ; sinon les inconnues donnent NT.
 
-**Preuves.** Titre, contenu, liens, canonical et données structurées présents au bon stade.
+**Preuves.** Plan antérieur, originaux HTTP/DOM, empreintes, conditions, valeurs par élément/stade, revues réellement fournies et dates.
 
-**Conditions de NA.** Aucun document HTML concerné dans le périmètre.
+**Conditions de NA.** Aucune NA native ; rôle hors périmètre motivé conservé, jamais équivalent à un contrôle NA.
 
-**Limites.** Un navigateur local ne reproduit pas exactement le rendu Google.
+**Limites.** Périmètre déclaré uniquement, hypothèses statiques sans exécution ; revues et attribution non authentifiées. Ni rendu Google, visibilité CSS déduite, vérité, validité structurée, indexation ou conformité globale.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+
+### TS25-A01 — Périmètre critique préalable et décisions des cinq rôles.
+
+`TSEP@0.2.0-rc.1:TS25-A01`
+
+**Entrées requises**: intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments critiques et politiques de stade déclarés avant les captures, profil critical-stage-presence-v1.
+
+**Méthode.** Vérifier les cinq décisions de rôle puis les éléments dans les hypothèses source et états rendus prévus ; conserver originaux, exclusions et revues fournies liées.
+
+**Attendus.** Pass exige population motivée, cinq décisions exactes et revue supported liée antérieure. Revue contradiction liée : fail. Revue absente, non liée ou inconnue : inconclusive.
+
+**Preuves.** Plan antérieur, originaux HTTP/DOM, empreintes, conditions, valeurs par élément/stade, revues réellement fournies et dates.
+
+**Hypothèses.** 1–32 éléments,0–16 états préalables, fenêtre<=24h, HTTP<=30s ; cinq rôles explicites. Deux hypothèses HTML doivent concorder ; états requis combinés avec priorité au défaut qualifié. Revue fournie, aucune authentification.
+
+**Indéterminé.** Plan/capture/revue absent ou invalide, rôle non pris en charge, lectures contradictoires, contexte rendu non qualifié, états supplémentaires/doublons, limites dépassées. Un défaut indépendant reste fail. Draft.44 / reader3 : les champs reviewer, assistance et reason des revues TS25 fournies sont limités à8192octets UTF8 bruts chacun, avant strip ou normalisation ; chaque objet revue, champs supplémentaires inclus, à32768octets de JSON compact UTF8. Toute revue fournie est vérifiée à l’admission, même inutilisée. Un dépassement donne un refus technique avant publication, jamais C ou NT public ; les originaux sont conservés sans réécriture. Le diagnostic natif de chaque règle est borné à4MiB de JSON compact UTF8 trié, y compris A01 et les sorties d’erreur. Au dépassement, un diagnostic compact explicitement incomplet conserve un fail indépendant établi, sinon inconclusive ; aucun pass. Le transport refuse ce marqueur et borne aussi à4MiB par cible la somme des artefacts TS25 réellement sérialisés (JSON UTF8 indent2, saut de ligne final), pour les règles demandées. Les maxima individuels ne garantissent pas que toutes leurs combinaisons respectent les bornes cumulées. Aucun changement des autres contrôles ni du validateur partagé.
+
+**Conditions de NA.** Aucune NA native ; rôle hors périmètre motivé conservé, jamais équivalent à un contrôle NA.
+
+**Limites.** Périmètre déclaré uniquement, hypothèses statiques sans exécution ; revues et attribution non authentifiées. Ni rendu Google, visibilité CSS déduite, vérité, validité structurée, indexation ou conformité globale.
+
+### TS25-A02 — Présence critique selon la politique source/rendu de chaque élément.
+
+`TSEP@0.2.0-rc.1:TS25-A02`
+
+**Entrées requises**: http, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments critiques et politiques de stade déclarés avant les captures, profil critical-stage-presence-v1.
+
+**Méthode.** Vérifier les cinq décisions de rôle puis les éléments dans les hypothèses source et états rendus prévus ; conserver originaux, exclusions et revues fournies liées.
+
+**Attendus.** Pass exige tous les éléments présents selon leur politique et couverture des états qualifiée. Absence indépendante qualifiée : fail malgré une autre inconnue. Sinon inconclusive.
+
+**Preuves.** Plan antérieur, originaux HTTP/DOM, empreintes, conditions, valeurs par élément/stade, revues réellement fournies et dates.
+
+**Hypothèses.** 1–32 éléments,0–16 états préalables, fenêtre<=24h, HTTP<=30s ; cinq rôles explicites. Deux hypothèses HTML doivent concorder ; états requis combinés avec priorité au défaut qualifié. Revue fournie, aucune authentification.
+
+**Indéterminé.** Plan/capture/revue absent ou invalide, rôle non pris en charge, lectures contradictoires, contexte rendu non qualifié, états supplémentaires/doublons, limites dépassées. Un défaut indépendant reste fail. Un conteneur render non objet reste inconnu ; il ne supprime pas une absence source indépendante requise. Draft.44 / reader3 : les champs reviewer, assistance et reason des revues TS25 fournies sont limités à8192octets UTF8 bruts chacun, avant strip ou normalisation ; chaque objet revue, champs supplémentaires inclus, à32768octets de JSON compact UTF8. Toute revue fournie est vérifiée à l’admission, même inutilisée. Un dépassement donne un refus technique avant publication, jamais C ou NT public ; les originaux sont conservés sans réécriture. Le diagnostic natif de chaque règle est borné à4MiB de JSON compact UTF8 trié, y compris A01 et les sorties d’erreur. Au dépassement, un diagnostic compact explicitement incomplet conserve un fail indépendant établi, sinon inconclusive ; aucun pass. Le transport refuse ce marqueur et borne aussi à4MiB par cible la somme des artefacts TS25 réellement sérialisés (JSON UTF8 indent2, saut de ligne final), pour les règles demandées. Les maxima individuels ne garantissent pas que toutes leurs combinaisons respectent les bornes cumulées. Aucun changement des autres contrôles ni du validateur partagé.
+
+**Conditions de NA.** Aucune NA native ; rôle hors périmètre motivé conservé, jamais équivalent à un contrôle NA.
+
+**Limites.** Périmètre déclaré uniquement, hypothèses statiques sans exécution ; revues et attribution non authentifiées. Ni rendu Google, visibilité CSS déduite, vérité, validité structurée, indexation ou conformité globale.
 
 ## TS26 — Les ressources nécessaires au rendu ne sont pas bloquées ni en erreur.
 
@@ -946,6 +1820,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
 
+### TS26-A01 — Accès des ressources et politiques natives
+
+`TSEP@0.3.0-draft.4:TS26-A01`
+
+**Entrées requises**: http, robots, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS26, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Sur chaque ressource critique sélectionnée, comparer HTTP direct200, robots du même origin et intersection des CSP HTTP du document HTTPS. Relever la source complète pour exclure une CSP meta non qualifiée.
+
+**Attendus.** Une erreur HTTP, un refus robots ou un refus CSP qualifié échoue indépendamment des autres lacunes.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, robots, html, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Inventaire absent, robots non fourni, directive CSP non prise en charge, nonce, meta CSP, source ambiguë ou revue absente : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS26-A02 — Trafic et console attribués au rendu
+
+`TSEP@0.3.0-draft.4:TS26-A02`
+
+**Entrées requises**: render, http, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS26, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Lire un export HAR borné fourni, relier la réponse du document aux octets HTTP, puis vérifier chaque ressource critique. Conserver la console datée liée au HAR et la revue de criticité.
+
+**Attendus.** Les ressources sélectionnées ont une réponse2xx sans erreur réseau fournie. Une erreur console sans classification qualifiée reste NT ; un échec réseau natif reste NC.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : render, http, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** HAR incomplet, corps absent, contexte/session non attribué, console absente ou erreur non qualifiée : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
 ## TS27 — Les états et routes SPA produisent des URL partageables et des réponses serveur cohérentes.
 
 **Sévérité**: major. **Unité**: route-set.
@@ -969,6 +1891,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript](https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript)
+
+### TS27-A01 — Routes et historique attribués
+
+`TSEP@0.3.0-draft.4:TS27-A01`
+
+**Entrées requises**: http, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS27, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Vérifier quatre états fournis dans l’ordre direct, actualisation, retour, avance : session, séquence, date, URL, liaison à la réponse serveur et statut.
+
+**Attendus.** Chaque état conserve l’URL de route et sa source200 prévue. Une URL ou un statut contraire qualifié échoue.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** État, action, liaison, session ou ordre absent/ambigu ; surface frame/shadow non collectée : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS27-A02 — Contenu et canonical par état SPA
+
+`TSEP@0.3.0-draft.4:TS27-A02`
+
+**Entrées requises**: http, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS27, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Dans les mêmes états qualifiés, comparer les identifiants littéraux, textes essentiels et destinations de liens au plan, puis une canonical explicite dans head. Exiger la revue de fonctionnement.
+
+**Attendus.** Les états conservent contenus et signaux propres. Absence sur surface complète, contenu divergent ou canonical contraire échoue.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** État partiel, contexte masqué, ID ambigu, hypothèses HTML divergentes ou revue absente : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
 
 ## TS28 — Le document expose une structure HTML compréhensible sans dépendre de son apparence.
 
@@ -994,6 +1964,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://html.spec.whatwg.org/](https://html.spec.whatwg.org/)
 
+### TS28-A01 — Structure native et structure DOM fournie
+
+`TSEP@0.3.0-draft.4:TS28-A01`
+
+**Entrées requises**: html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS28, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Comparer dans la source et la sérialisation fournie : titre, langue, main déclaré, liste ordonnée des titres, liens et libellés. Le nombre de H1 est celui du plan.
+
+**Attendus.** Les structures correspondent au plan préalable ; divergences structurelles qualifiées échouent.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Source/DOM absent, langue non déclarée, arbre ambigu ou contexte visuel non qualifié : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS28-A02 — Revue du sens et de la navigation
+
+`TSEP@0.3.0-draft.4:TS28-A02`
+
+**Entrées requises**: html, render, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicabilité.** Population finie préalable de TS28, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Reprendre les faits structurels attribués et exiger une revue distincte liée : adéquation du titre et de la langue, hiérarchie, sujet principal, navigation et libellés dans l’usage déclaré.
+
+**Attendus.** Les faits sont qualifiés et le jugement motivé soutient le sens et l’usage ; contradiction étayée échoue.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Le parseur seul, une revue sans liaison ou des originaux insuffisants ne suffisent pas : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
 ## TS29 — Les contenus essentiels restent disponibles lorsque scripts ou styles échouent.
 
 **Sévérité**: major. **Unité**: page.
@@ -1017,6 +2035,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+
+### TS29-A01 — Scénario scripts bloqués et repli testé
+
+`TSEP@0.3.0-draft.4:TS29-A01`
+
+**Entrées requises**: html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS29, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Lire la source et un état fourni explicitement scripts-blocked ; comparer chaque contenu/lien essentiel, ou le repli prédéclaré dans ce même état. Exiger la revue des actions et du fonctionnement.
+
+**Attendus.** Tous les attendus principaux ou tous ceux du repli testé sont étayés. Un échec principal et du repli qualifiés échoue ; aucune fonction n’est déduite du texte seul.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Condition normale, capture partielle, repli seulement décrit, contexte masqué ou revue manquante : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS29-A02 — Scénario styles dégradés et repli testé
+
+`TSEP@0.3.0-draft.4:TS29-A02`
+
+**Entrées requises**: html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS29, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Appliquer le même examen dans un état explicitement styles-degraded, avec observations d’actions et revue liée. Ne pas assimiler la désactivation des scripts à ce scénario.
+
+**Attendus.** Les fonctions essentielles ou le repli testé restent étayés dans ce scénario distinct.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Absence de scénario styles dégradés, preuve de repli ou jugement attribué : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
 
 ## TS30 — Les métadonnées essentielles sont uniques, visibles et cohérentes avec la page.
 
@@ -1042,6 +2108,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/search/docs/appearance/title-link](https://developers.google.com/search/docs/appearance/title-link)
 
+### TS30-A01 — Métadonnées et doublons du corpus déclaré
+
+`TSEP@0.3.0-draft.5:TS30-A01`
+
+**Entrées requises**: html, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md. Amendement: docs/render-transport-prerequisites-v2.md.
+
+**Méthode.** Lire title, description, H1, og:title, og:description natifs par page. Comparer aux valeurs prévues puis les doublons entre pages sélectionnées ; exiger une décision préalable pour chaque doublon intentionnel. Qualifier séparément les drapeaux du H1 et de ses textes descendants ; préserver les contradictions natives des autres champs.
+
+**Attendus.** Valeurs et multiplicité concordent ; chaque doublon observé possède une décision motivée unique. Le corpus ne dépasse pas les pages fournies.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, content, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Source absente, politique de champ omise, parse ambigu ou revue manquante : NT. null autorise seulement un champ facultatif explicitement absent. H1 ou texte descendant masqué/non qualifié : NT, sans fabriquer une absence.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS30-A02 — Cohérence éditoriale et contenu principal
+
+`TSEP@0.3.0-draft.5:TS30-A02`
+
+**Entrées requises**: html, content, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicabilité.** Population finie préalable de TS30, profil render-transport-v1 ; voir docs/render-transport-evidence.md. Amendement: docs/render-transport-prerequisites-v2.md.
+
+**Méthode.** Rapprocher les métadonnées natives et le contenu principal identifié ; exiger une revue distincte de la promesse, du sens et de la visibilité pertinente. Qualifier séparément les drapeaux du H1 et de ses textes descendants ; préserver les contradictions natives des autres champs.
+
+**Attendus.** Les faits concordent avec le plan et la revue éditoriale liée les soutient ; une contradiction native ou humaine qualifiée échoue.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : html, content, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Source/rendu nécessaire non qualifié, contenu masqué, sens sans revue ou jugement non lié : NT. H1 ou texte descendant masqué/non qualifié : NT, sans fabriquer une absence.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
 ## TS31 — Le JSON-LD décrit des entités visibles et appropriées au contenu.
 
 **Sévérité**: major. **Unité**: page.
@@ -1065,6 +2179,78 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/appearance/structured-data/sd-policies](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)
+
+### TS31-A01 — Périmètre et hypothèses préalables revus.
+
+`TSEP@0.2.0-rc.1:TS31-A01`
+
+**Entrées requises**: structured-data, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Page sélectionnée avec JSON-LD ; profil source et états DOM prévus.
+
+**Méthode.** Qualifier le plan, ses références datées et la revue préalable liée du périmètre, de la base source et des recommandations.
+
+**Attendus.** Trois jugements supported ; contradiction liée fail, revue manquante ou inconnue inconclusive.
+
+**Preuves.** HTTP natif, arbres attribués, contextes et références fournis, graphes recalculés et revues liées ; contrat jsonld-visible-content-v1.
+
+**Hypothèses.** Périmètre, bases, dates, contenu visible et jugements fournis ; empreintes sans authentification.
+
+**Indéterminé.** Manque, limite, contexte/runtime absent, lecture ambiguë, graphe vide, notice ou revue inconnue ; contradictions indépendantes conservées.
+
+**Conditions de NA.** Aucune exemption atomique ; absence dans un profil limité ne vaut pas NA.
+
+**Limites.** JSON-LD et revue documentaire de la page sélectionnée ; ni vocabulaire Schema.org, vérité/visibilité authentifiée, résultat enrichi, indexation ou classement.
+
+### TS31-A02 — Lecture attribuée du JSON-LD source et rendu.
+
+`TSEP@0.2.0-rc.1:TS31-A02`
+
+**Entrées requises**: structured-data, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Page sélectionnée avec JSON-LD ; profil source et états DOM prévus.
+
+**Méthode.** Recalculer les scripts exacts sous les deux hypothèses source et tous les états DOM prévus, avec contextes fournis.
+
+**Attendus.** Lectures complètes et au moins un graphe non vide sans notice ; JSON invalide attribué fail, autres limites inconclusive.
+
+**Preuves.** HTTP natif, arbres attribués, contextes et références fournis, graphes recalculés et revues liées ; contrat jsonld-visible-content-v1.
+
+**Hypothèses.** Périmètre, bases, dates, contenu visible et jugements fournis ; empreintes sans authentification.
+
+**Indéterminé.** Manque, limite, contexte/runtime absent, lecture ambiguë, graphe vide, notice ou revue inconnue ; contradictions indépendantes conservées.
+
+**Conditions de NA.** Aucune exemption atomique ; absence dans un profil limité ne vaut pas NA.
+
+**Limites.** JSON-LD et revue documentaire de la page sélectionnée ; ni vocabulaire Schema.org, vérité/visibilité authentifiée, résultat enrichi, indexation ou classement.
+
+### TS31-A03 — Cohérence du contenu et des types revue par entité.
+
+`TSEP@0.2.0-rc.1:TS31-A03`
+
+**Entrées requises**: structured-data, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Page sélectionnée avec JSON-LD ; profil source et états DOM prévus.
+
+**Méthode.** Lier le contenu fourni et chaque nœud aplati aux revues complètes couvrant visibilité, type, toutes les propriétés et absence de fabrication.
+
+**Attendus.** Population exacte et qualifications supported ; contradiction fournie liée fail, manque ou inconnue inconclusive.
+
+**Preuves.** HTTP natif, arbres attribués, contextes et références fournis, graphes recalculés et revues liées ; contrat jsonld-visible-content-v1.
+
+**Hypothèses.** Périmètre, bases, dates, contenu visible et jugements fournis ; empreintes sans authentification.
+
+**Indéterminé.** Manque, limite, contexte/runtime absent, lecture ambiguë, graphe vide, notice ou revue inconnue ; contradictions indépendantes conservées.
+
+**Conditions de NA.** Aucune exemption atomique ; absence dans un profil limité ne vaut pas NA.
+
+**Limites.** JSON-LD et revue documentaire de la page sélectionnée ; ni vocabulaire Schema.org, vérité/visibilité authentifiée, résultat enrichi, indexation ou classement.
 
 ## TS32 — Les identifiants @id relient les mêmes entités sans créer de doublons.
 
@@ -1090,29 +2276,173 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://schema.org/docs/datamodel.html](https://schema.org/docs/datamodel.html)
 
+### TS32-A01 — Registre et corpus préalables qualifiés.
+
+`TSEP@0.2.0-rc.1:TS32-A01`
+
+**Entrées requises**: structured-data, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Corpus déclaré de 2–16 exports JSON-LD utilisant des identifiants.
+
+**Méthode.** Vérifier les entités distinctes, le plan et la revue préalable liée des populations/correspondances/références.
+
+**Attendus.** Registre sans collision et trois qualifications supported ; collision distincte fail même si revue absente.
+
+**Preuves.** Registre préalable, exports natifs, contextes locaux, graphes recalculés et revues liées ; contrat jsonld-identity-corpus-v1.
+
+**Hypothèses.** Origine, complétude, bases, dates et correspondances déclarées puis revues ; non authentifiées.
+
+**Indéterminé.** Pièce, revue, runtime ou contexte manquant ; graphe vide/nommé, notice, référence ou identifiant non qualifiés. Contradictions indépendantes conservées.
+
+**Conditions de NA.** Pas de NA dans ce profil borné.
+
+**Limites.** Cohérence du corpus fourni, sans stabilité temporelle, identité réelle, collecte de pages, fusion inter-documents ni garantie Google.
+
+### TS32-A02 — Identifiants requis et références du corpus.
+
+`TSEP@0.2.0-rc.1:TS32-A02`
+
+**Entrées requises**: structured-data, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Corpus déclaré de 2–16 exports JSON-LD utilisant des identifiants.
+
+**Méthode.** Recalculer indépendamment les exports natifs et comparer les IRI définies au registre ; inventorier les références et leur portée.
+
+**Attendus.** IRI requises définies et périmètre/références qualifiés ; absence requise dans graphe complet non vide fail, manque ou ambiguïté inconclusive.
+
+**Preuves.** Registre préalable, exports natifs, contextes locaux, graphes recalculés et revues liées ; contrat jsonld-identity-corpus-v1.
+
+**Hypothèses.** Origine, complétude, bases, dates et correspondances déclarées puis revues ; non authentifiées.
+
+**Indéterminé.** Pièce, revue, runtime ou contexte manquant ; graphe vide/nommé, notice, référence ou identifiant non qualifiés. Contradictions indépendantes conservées.
+
+**Conditions de NA.** Pas de NA dans ce profil borné.
+
+**Limites.** Cohérence du corpus fourni, sans stabilité temporelle, identité réelle, collecte de pages, fusion inter-documents ni garantie Google.
+
+### TS32-A03 — Correspondances et doublons revus sur pièces.
+
+`TSEP@0.2.0-rc.1:TS32-A03`
+
+**Entrées requises**: structured-data, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Corpus déclaré de 2–16 exports JSON-LD utilisant des identifiants.
+
+**Méthode.** Lier chaque export et nœud recalculé aux revues des correspondances, répétitions/doublons et sens des références.
+
+**Attendus.** Couverture exacte et qualifications supported ; contradiction liée fail, revue incomplète ou inconnue inconclusive.
+
+**Preuves.** Registre préalable, exports natifs, contextes locaux, graphes recalculés et revues liées ; contrat jsonld-identity-corpus-v1.
+
+**Hypothèses.** Origine, complétude, bases, dates et correspondances déclarées puis revues ; non authentifiées.
+
+**Indéterminé.** Pièce, revue, runtime ou contexte manquant ; graphe vide/nommé, notice, référence ou identifiant non qualifiés. Contradictions indépendantes conservées.
+
+**Conditions de NA.** Pas de NA dans ce profil borné.
+
+**Limites.** Cohérence du corpus fourni, sans stabilité temporelle, identité réelle, collecte de pages, fusion inter-documents ni garantie Google.
+
 ## TS33 — Les erreurs, avertissements et usages non pris en charge sont distingués.
 
 **Sévérité**: minor. **Unité**: page.
 
 **Entrées requises**: structured-data, validator-output, intent.
 
-**Applicabilité.** Balisages dont la validité et l’éligibilité sont évaluées.
+**Applicabilité.** Page sélectionnée avec captures JSON-LD HTTP/DOM liées et résultat natif Google indexé séparé.
 
-**Méthode.** Tester syntaxe Schema.org et éligibilité Google séparément ; consigner les résultats.
+**Méthode.** Qualifier le plan ; recalculer syntaxe et noms Schema.org des captures ; classer séparément les messages natifs de la version indexée et leurs décisions.
 
-**Attendus.** Erreurs de syntaxe, vocabulaire, critères du moteur et avertissements sont séparés ; chaque résultat a outil, version/date et décision.
+**Attendus.** Les trois règles passent sur le périmètre déclaré : plan qualifié, syntaxe et noms attribués, messages indexés sans erreur bloquante avec revue exacte. La correspondance entre instantanés reste non établie.
 
 **Preuves.** Rapport sans erreur bloquante et avertissements qualifiés.
 
-**Conditions de NA.** Aucun balisage structuré dans le périmètre.
+**Conditions de NA.** Pas de NA dans ce profil ; absence de balisage ou de preuve reste NT.
 
-**Limites.** Le test de résultats enrichis ne valide pas tout le vocabulaire Schema.org.
+**Limites.** Noms et rôles de vocabulaire seulement ; pas de validité sémantique complète, correspondance entre instantanés, éligibilité actuelle ni affichage déduit. Origines et dates fournies, non authentifiées.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)
+
+### TS33-A01 — Périmètre, fonctions et couches préalables qualifiés.
+
+`TSEP@0.2.0-rc.1:TS33-A01`
+
+**Entrées requises**: structured-data, validator-output, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Page sélectionnée, captures HTTP/DOM JSON-LD liées et instantané indexé APIv1 séparé.
+
+**Méthode.** Vérifier le plan préalable, les documents datés des fonctions et la revue liée scope/support/separation.
+
+**Attendus.** Trois qualifications supported ; contradiction motivée fail, absence ou inconnue inconclusive.
+
+**Preuves.** Plan, captures natives, vocabulaire30.1 épinglé, sorties API originales et revues liées ; contrat jsonld-validation-layers-v1.
+
+**Hypothèses.** Origine, dates et complétude fournies/revues, non authentifiées ; version serveur Google non exposée.
+
+**Indéterminé.** Preuve/revue/runtime absent, couche non attribuée, format/criticité inconnu ou fonction non détectée ; erreurs indépendantes conservées.
+
+**Conditions de NA.** Pas de NA dans ce profil.
+
+**Limites.** Noms Schema.org seulement ; instantanés distincts, aucun test live, éligibilité actuelle, affichage ou indexation déduits.
+
+### TS33-A02 — Syntaxe et noms de vocabulaire sur les captures liées.
+
+`TSEP@0.2.0-rc.1:TS33-A02`
+
+**Entrées requises**: structured-data, validator-output, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Page sélectionnée, captures HTTP/DOM JSON-LD liées et instantané indexé APIv1 séparé.
+
+**Méthode.** Recalculer source/DOM avec les lecteurs TS31 ; comparer classes/propriétés à Schema.org30.1 complet, espaces HTTP/HTTPS équivalents.
+
+**Attendus.** Graphes typés attribués sans erreur de syntaxe ni terme absent/rôle contradictoire ; inconnues restent distinctes.
+
+**Preuves.** Plan, captures natives, vocabulaire30.1 épinglé, sorties API originales et revues liées ; contrat jsonld-validation-layers-v1.
+
+**Hypothèses.** Origine, dates et complétude fournies/revues, non authentifiées ; version serveur Google non exposée.
+
+**Indéterminé.** Preuve/revue/runtime absent, couche non attribuée, format/criticité inconnu ou fonction non détectée ; erreurs indépendantes conservées.
+
+**Conditions de NA.** Pas de NA dans ce profil.
+
+**Limites.** Noms Schema.org seulement ; instantanés distincts, aucun test live, éligibilité actuelle, affichage ou indexation déduits.
+
+### TS33-A03 — Messages natifs Google et décisions conservés sans rétrogradation.
+
+`TSEP@0.2.0-rc.1:TS33-A03`
+
+**Entrées requises**: structured-data, validator-output, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Page sélectionnée, captures HTTP/DOM JSON-LD liées et instantané indexé APIv1 séparé.
+
+**Méthode.** Lire tous les messages APIv1, sévérités et fonctions ; lier une revue exacte à la réponse indexée, séparée des captures actuelles.
+
+**Attendus.** Aucun ERROR/FAIL ; couverture et qualifications exactes. Erreur, omission ou rétrogradation fail même documentée ; panne technique inconclusive.
+
+**Preuves.** Plan, captures natives, vocabulaire30.1 épinglé, sorties API originales et revues liées ; contrat jsonld-validation-layers-v1.
+
+**Hypothèses.** Origine, dates et complétude fournies/revues, non authentifiées ; version serveur Google non exposée.
+
+**Indéterminé.** Preuve/revue/runtime absent, couche non attribuée, format/criticité inconnu ou fonction non détectée ; erreurs indépendantes conservées.
+
+**Conditions de NA.** Pas de NA dans ce profil.
+
+**Limites.** Noms Schema.org seulement ; instantanés distincts, aucun test live, éligibilité actuelle, affichage ou indexation déduits.
 
 ## TS34 — Les Core Web Vitals terrain sont documentés et classés au 75e percentile.
 
@@ -1140,7 +2470,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A01 — Cohorte terrain attribuable
 
-`TSEP@0.1.0-draft.28:TS34-A01`
+`TSEP@0.2.0-rc.1:TS34-A01`
 
 **Entrées requises**: field-data, intent.
 
@@ -1164,7 +2494,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A02 — Mesures p75 et classes conservées
 
-`TSEP@0.1.0-draft.28:TS34-A02`
+`TSEP@0.2.0-rc.1:TS34-A02`
 
 **Entrées requises**: field-data, intent.
 
@@ -1188,7 +2518,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS34-A03 — Décision motivée liée aux mesures
 
-`TSEP@0.1.0-draft.28:TS34-A03`
+`TSEP@0.2.0-rc.1:TS34-A03`
 
 **Entrées requises**: field-data, intent.
 
@@ -1236,7 +2566,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A01 — Contexte et mesures de laboratoire reproductibles
 
-`TSEP@0.1.0-draft.28:TS35-A01`
+`TSEP@0.2.0-rc.1:TS35-A01`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1260,7 +2590,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS35-A02 — Hypothèse de diagnostic et prochaine vérification
 
-`TSEP@0.1.0-draft.28:TS35-A02`
+`TSEP@0.2.0-rc.1:TS35-A02`
 
 **Entrées requises**: lab-data, intent.
 
@@ -1306,6 +2636,78 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://developers.google.com/crawling/docs/crawl-budget](https://developers.google.com/crawling/docs/crawl-budget)
 
+### TS36-A01 — Plan préalable et chronologie du changement.
+
+`TSEP@0.2.0-rc.1:TS36-A01`
+
+**Entrées requises**: intent, change-history.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Changement sélectionné dont le suivi daté est évalué.
+
+**Méthode.** Qualifier le plan lié avant baseline, les identités du reçu et l’ordre baseline/déploiement.
+
+**Attendus.** Plan supported, identité conforme et baseline enregistrée avant déploiement ; contradiction explicite fail, manque inconclusive.
+
+**Preuves.** Plan et revues liés, reçu de déploiement, API natives et journaux normalisés fournis ; contrat release-monitoring-v1.
+
+**Hypothèses.** Périmètre, dates, couche et jugements fournis ; aucune authentification par empreinte seule.
+
+**Indéterminé.** Échéance future, pièce manquante, erreur, valeur inconnue, journal incomplet ou liaison invalide ; conserver les contradictions indépendantes.
+
+**Conditions de NA.** Aucune exemption atomique ; aucun manque ou délai ne vaut NA.
+
+**Limites.** C documentaire sur baseline/J+1/J+7/J+30 sélectionnés ; aucune causalité, visite Google authentifiée, indexation ou couverture globale.
+
+### TS36-A02 — Observations attribuées aux échéances du suivi.
+
+`TSEP@0.2.0-rc.1:TS36-A02`
+
+**Entrées requises**: intent, search-console, logs, change-history.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Changement sélectionné dont le suivi daté est évalué.
+
+**Méthode.** Lire baseline/d1/d7/d30, qualifier API TS08-A02 et inventaires de journaux par fenêtre exacte.
+
+**Attendus.** Quatre échéances atteintes, pièces attribuées complètes, limites respectées ; futur/absence/erreur reste inconclusive.
+
+**Preuves.** Plan et revues liés, reçu de déploiement, API natives et journaux normalisés fournis ; contrat release-monitoring-v1.
+
+**Hypothèses.** Périmètre, dates, couche et jugements fournis ; aucune authentification par empreinte seule.
+
+**Indéterminé.** Échéance future, pièce manquante, erreur, valeur inconnue, journal incomplet ou liaison invalide ; conserver les contradictions indépendantes.
+
+**Conditions de NA.** Aucune exemption atomique ; aucun manque ou délai ne vaut NA.
+
+**Limites.** C documentaire sur baseline/J+1/J+7/J+30 sélectionnés ; aucune causalité, visite Google authentifiée, indexation ou couverture globale.
+
+### TS36-A03 — Interprétation, décisions et clôture liées aux pièces.
+
+`TSEP@0.2.0-rc.1:TS36-A03`
+
+**Entrées requises**: intent, search-console, logs, change-history.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Changement sélectionné dont le suivi daté est évalué.
+
+**Méthode.** Comparer revendications et valeurs connues, conserver les changements sans causalité et qualifier les revues/décisions fournies.
+
+**Attendus.** Revendications fidèles, revues supported et cycle complet ; fausse revendication connue ou clôture avant échéance future fail ; autre manque inconclusive.
+
+**Preuves.** Plan et revues liés, reçu de déploiement, API natives et journaux normalisés fournis ; contrat release-monitoring-v1.
+
+**Hypothèses.** Périmètre, dates, couche et jugements fournis ; aucune authentification par empreinte seule.
+
+**Indéterminé.** Échéance future, pièce manquante, erreur, valeur inconnue, journal incomplet ou liaison invalide ; conserver les contradictions indépendantes.
+
+**Conditions de NA.** Aucune exemption atomique ; aucun manque ou délai ne vaut NA.
+
+**Limites.** C documentaire sur baseline/J+1/J+7/J+30 sélectionnés ; aucune causalité, visite Google authentifiée, indexation ou couverture globale.
+
 ## TS37 — HTTPS, HSTS et les ressources intégrées ne créent ni erreur de certificat ni contenu mixte.
 
 **Sévérité**: major. **Unité**: host.
@@ -1330,6 +2732,78 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Références**: [https://www.rfc-editor.org/rfc/rfc6797](https://www.rfc-editor.org/rfc/rfc6797)
 
+### TS37-A01 — Certificats, hôte, date et confiance fournie
+
+`TSEP@0.3.0-draft.5:TS37-A01`
+
+**Entrées requises**: tls, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Relire les PEM publics fournis avec OpenSSL3 hors réseau : chaîne, usage serveur, hôte DNS, heure fournie et racines explicitement fournies. Désactiver magasins implicites ; conserver version et diagnostic.
+
+**Attendus.** La vérification du profil réussit sous les racines fournies. Une erreur X509 prise en charge, dont expiration ou mauvais hôte, échoue.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : tls, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** OpenSSL3 absent, PEM inutilisable, capture mal attribuée, racines absentes ou code d’erreur non qualifié : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS37-A02 — Redirections HTTPS et décision HSTS
+
+`TSEP@0.3.0-draft.5:TS37-A02`
+
+**Entrées requises**: http, configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md.
+
+**Méthode.** Suivre la chaîne HTTP fournie vers HTTPS sans rétrogradation, vérifier la réponse directe200, comparer configuration HSTS et en-tête au plan : activation, max-age, sous-domaines, portée, propriétaire, motif.
+
+**Attendus.** Chaînes et décision HSTS concordent ; HSTS peut être désactivé explicitement. Aucun preload imposé.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, configuration, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** Chaîne/configuration manquante, en-tête ambigu, portée ou décision absente : NT.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
+### TS37-A03 — Sous-ressources et trafic mixte du périmètre
+
+`TSEP@0.3.0-draft.5:TS37-A03`
+
+**Entrées requises**: http, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Population finie préalable de TS37, profil render-transport-v1 ; voir docs/render-transport-evidence.md. Amendement: docs/render-transport-prerequisites-v2.md.
+
+**Méthode.** Relier HAR et console au document HTTPS ; examiner les requêtes observées et les URL intégrées de la source. Le profil strict exige HTTPS pour ces ressources, même si un navigateur peut les mettre à niveau. Avec base href non qualifiée, une URL relative reste NT ; examiner indépendamment les URL absolues malgré CSS/srcset ou un autre schéma inconnu.
+
+**Attendus.** Aucune URL HTTP observée sur ces surfaces ; revue de la couverture dynamique consignée. Un HTTP natif observé échoue malgré une autre lacune.
+
+**Preuves.** Originaux exacts, plan et dates/contexte, empreintes, diagnostics et revue motivée liée au dossier entier. Types : http, render, intent.
+
+**Hypothèses.** Provenance, inventaire, état navigateur, conditions et jugement fournis, non authentifiés ; deux lectures HTML statiques ne sont pas deux navigations. La confiance TLS dépend des racines fournies.
+
+**Indéterminé.** HAR tronqué, corps absent, CSS/srcset non qualifiés, contexte incomplet ou revue absente : NT. Résolution relative avec base href non qualifiée : NT ; une contradiction HTTP indépendante reste NC.
+
+**Conditions de NA.** Pas de NA atomique. Population vide ou domaine prétendu absent sans preuve reste NT dans ce profil.
+
+**Limites.** Aucun audit réel déduit des cas synthétiques. Ni indexation, classement, conformité globale, certification d’accessibilité, sécurité exhaustive ou confiance universelle des navigateurs. La revue peut être erronée ; les captures peuvent omettre des états.
+
 ## TS38 — Les variantes d’hôte, de casse et de slash convergent vers une règle unique.
 
 **Sévérité**: major. **Unité**: url-set.
@@ -1353,6 +2827,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+
+### TS38-A01 — Trajectoires et canonical des variantes équivalentes
+
+`TSEP@0.3.0-draft.2:TS38-A01`
+
+**Entrées requises**: http, html, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS38 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Exiger l’équivalence revue puis lire chaque trajectoire native : un seul saut depuis chaque variante, réponse directe 200 pour la préférence, canonical HTTP/HTML vers elle.
+
+**Attendus.** Chaque variante converge en un saut et chaque canonical qualifiée concorde. La fusion déclarée de ressources distinctes ou une divergence native échoue.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : http, html, content, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Trace manquante, canonical absente, équivalence non décidée ou rendu nécessaire : indéterminé.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
+
+### TS38-A02 — Signaux internes des variantes
+
+`TSEP@0.3.0-draft.2:TS38-A02`
+
+**Entrées requises**: sitemap, html, crawl, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Éléments explicitement sélectionnés du contrôle TS38 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
+
+**Méthode.** Lire le urlset natif complet sélectionné et toutes les sources de liens prévues. Exiger la présence de la préférence dans ce sitemap, aucune variante non préférée dans sitemap/liens et la revue d’équivalence/périmètre.
+
+**Attendus.** Sitemap et liens du périmètre concordent avec la préférence ; une divergence ou fusion de pages distinctes échoue. Zéro lien reste une observation du corpus complet fourni.
+
+**Preuves.** Plan préalable, octets originaux et SHA-256, dates/contexte, observations atomiques, revue humaine motivée liée à tout le dossier. Types : sitemap, html, crawl, content, intent.
+
+**Hypothèses.** Population et provenance fournies ; la revue assume la suffisance du périmètre et le jugement métier. Aucun contenu, verdict importé ou hash ne prouve l’authenticité.
+
+**Indéterminé.** Index XML, fichier tronqué, source de liens manquante, population ou revue ambiguë : indéterminé ; aucune absence globale inférée.
+
+**Conditions de NA.** Aucune exemption atomique dans ce profil. Population vide ou preuve absente : NT, jamais NA automatique.
+
+**Limites.** Lecture hors ligne bornée, sans collecte, navigateur exécuté, jugement humain produit ni audit réel. Périmètre source revu uniquement ; aucune complétude du site, indexation, classement ou causalité déduite.
 
 ## TS39 — Le CDN, Vary et la géolocalisation ne servent pas des signaux SEO contradictoires.
 
@@ -1380,7 +2902,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS39-A01 — Matrice préalable et configuration revues
 
-`TSEP@0.1.0-draft.28:TS39-A01`
+`TSEP@0.2.0-rc.1:TS39-A01`
 
 **Entrées requises**: configuration, intent.
 
@@ -1404,7 +2926,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS39-A02 — Cohérence des signaux dans chaque contexte
 
-`TSEP@0.1.0-draft.28:TS39-A02`
+`TSEP@0.2.0-rc.1:TS39-A02`
 
 **Entrées requises**: http, content, intent.
 
@@ -1428,7 +2950,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS39-A03 — Attribution des contextes et du cache
 
-`TSEP@0.1.0-draft.28:TS39-A03`
+`TSEP@0.2.0-rc.1:TS39-A03`
 
 **Entrées requises**: configuration, http, logs, intent.
 
@@ -1454,7 +2976,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Sévérité**: major. **Unité**: locale-cluster.
 
-**Entrées requises**: hreflang, sitemap, http, html, intent.
+**Entrées requises**: hreflang, intent.
 
 **Applicabilité.** Groupes utilisant au moins une méthode hreflang.
 
@@ -1473,6 +2995,54 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
 **Références**: [https://developers.google.com/search/docs/specialty/international/localized-versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
+
+### TS40-A01 — Complétude indépendante des méthodes publiées
+
+`TSEP@0.3.0-draft.3:TS40-A01`
+
+**Entrées requises**: hreflang, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Familles ou groupes explicitement sélectionnés pour TS40 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Méthode.** Inventorier les méthodes avant capture ; lire chaque méthode/page séparément et vérifier tout le groupe attendu, auto-référence comprise. Une méthode secondaire ne complète pas une primaire partielle.
+
+**Attendus.** Chaque méthode complète contient les associations prévues. Une omission démontrée dans une surface complète ou une destination contraire échoue ; un jeu unique de méthodes est autorisé.
+
+**Preuves.** Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : hreflang, intent. Preuves natives conditionnelles selon les méthodes déclarées.
+
+**Hypothèses.** Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.
+
+**Indéterminé.** Capture/méthode absente, XML tronqué/index, méthode publiée omise du plan, association hors groupe ou revue absente : indéterminé.
+
+**Conditions de NA.** Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.
+
+**Limites.** Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.
+
+### TS40-A02 — Cohérence des méthodes et des pages du groupe
+
+`TSEP@0.3.0-draft.3:TS40-A02`
+
+**Entrées requises**: hreflang, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicabilité.** Familles ou groupes explicitement sélectionnés pour TS40 ; profil indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Méthode.** Comparer les associations qualifiées entre méthodes/pages sans fusionner leurs jeux. Conserver un conflit de destination indépendant même si une troisième méthode manque ; comparer l’égalité des jeux quand les deux sont complets.
+
+**Attendus.** Les méthodes complètes et les pages concordent. Une seule méthode complète est admise. Un conflit natif ou une différence de jeux complets échoue.
+
+**Preuves.** Plan préalable, originaux exacts, empreintes, dates/contexte, observations et revue motivée liée à tout le dossier. Types minimaux : hreflang, intent. Preuves natives conditionnelles selon les méthodes déclarées.
+
+**Hypothèses.** Périmètre, provenance, segmentation et revues fournis, non authentifiés. Deux hypothèses HTML statiques ne sont pas deux navigations. Les codes figés ne prédisent pas le traitement du moteur.
+
+**Indéterminé.** Comparaison sans surface qualifiée, capture partielle, méthode manquante ou revue absente : indéterminé, sauf contradiction indépendante établie.
+
+**Conditions de NA.** Pas d’exemption atomique. Une population vide, Google non évalué ou un groupe non observé reste NT dans ce profil.
+
+**Limites.** Lecture hors ligne de pièces fournies ; ni origine Google, identité humaine ou visite de robot authentifiée, ni état actuel de l’index, causalité, qualité de traduction, ciblage ou conformité globale établis.
 
 ## TS41 — Les invariants SEO critiques sont rejoués automatiquement avant et après déploiement.
 
@@ -1500,7 +3070,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS41-A01 — Plan préalable et représentativité
 
-`TSEP@0.1.0-draft.28:TS41-A01`
+`TSEP@0.2.0-rc.1:TS41-A01`
 
 **Entrées requises**: configuration, intent.
 
@@ -1524,7 +3094,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS41-A02 — Couverture et fidélité des exécutions
 
-`TSEP@0.1.0-draft.28:TS41-A02`
+`TSEP@0.2.0-rc.1:TS41-A02`
 
 **Entrées requises**: configuration, ci-output, change-history, intent.
 
@@ -1548,7 +3118,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS41-A03 — Exercice négatif et réaction du dispositif
 
-`TSEP@0.1.0-draft.28:TS41-A03`
+`TSEP@0.2.0-rc.1:TS41-A03`
 
 **Entrées requises**: configuration, ci-output, change-history, intent.
 
@@ -1596,7 +3166,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A01 — Usages et mécanismes documentés
 
-`TSEP@0.1.0-draft.28:TS42-A01`
+`TSEP@0.2.0-rc.1:TS42-A01`
 
 **Entrées requises**: operator-docs, intent.
 
@@ -1620,7 +3190,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A02 — Décisions du responsable et arbitrages
 
-`TSEP@0.1.0-draft.28:TS42-A02`
+`TSEP@0.2.0-rc.1:TS42-A02`
 
 **Entrées requises**: intent.
 
@@ -1644,7 +3214,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS42-A03 — Politique capturée et choix effectif
 
-`TSEP@0.1.0-draft.28:TS42-A03`
+`TSEP@0.2.0-rc.1:TS42-A03`
 
 **Entrées requises**: configuration, operator-docs, intent.
 
@@ -1692,7 +3262,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A01 — Client complet et traitement attendu
 
-`TSEP@0.1.0-draft.28:TS43-A01`
+`TSEP@0.2.0-rc.1:TS43-A01`
 
 **Entrées requises**: http, operator-docs, intent.
 
@@ -1716,7 +3286,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A02 — Chaîne rapprochée des journaux
 
-`TSEP@0.1.0-draft.28:TS43-A02`
+`TSEP@0.2.0-rc.1:TS43-A02`
 
 **Entrées requises**: http, logs, intent.
 
@@ -1740,7 +3310,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS43-A03 — Origine du test et identité non inventée
 
-`TSEP@0.1.0-draft.28:TS43-A03`
+`TSEP@0.2.0-rc.1:TS43-A03`
 
 **Entrées requises**: http, intent.
 
@@ -1788,7 +3358,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS44-A01 — Périmètre critique préalable
 
-`TSEP@0.1.0-draft.28:TS44-A01`
+`TSEP@0.2.0-rc.1:TS44-A01`
 
 **Entrées requises**: content, intent.
 
@@ -1812,7 +3382,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS44-A02 — Chemin de livraison sans JavaScript
 
-`TSEP@0.1.0-draft.28:TS44-A02`
+`TSEP@0.2.0-rc.1:TS44-A02`
 
 **Entrées requises**: http, html, intent.
 
@@ -1836,7 +3406,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS44-A03 — Cohérence des valeurs et du contexte
 
-`TSEP@0.1.0-draft.28:TS44-A03`
+`TSEP@0.2.0-rc.1:TS44-A03`
 
 **Entrées requises**: http, html, render, content, intent.
 

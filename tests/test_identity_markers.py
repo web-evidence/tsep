@@ -50,7 +50,7 @@ class IdentityMarkers(unittest.TestCase):
     def test_frozen_cases_are_distributed_unchanged_in_conformance(self):
         expected = fixture()['cases']
         cases = json.loads((ROOT/'conformance/cases.json').read_text())['cases']
-        self.assertEqual(cases[-len(expected):], expected)
+        self.assertEqual(cases[1181:1257], expected)
         self.assertEqual(len(expected), 76)
         self.assertEqual(len(frozen('identity-markers-bundles-v1.json')['cases']), 8)
 

@@ -1,8 +1,10 @@
 """Distribution boundaries and portability; Apache-2.0."""
+import copy
 import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -23,6 +25,22 @@ class Distribution(unittest.TestCase):
 
     def save(self):
         (self.root/'release-files.json').write_text(json.dumps({'format_version': 1, 'files': self.names}))
+
+    def test_current_example_identity_blocks_maintenance_before_build(self):
+        original_read = tsep.read_json
+        for case in ('pass', 'fail', 'partial'):
+            example = maintain.ROOT / 'examples' / case / 'report.json'
+            for field, value in (('sha256', '0' * 64), ('version', 'stale-example-version')):
+                with self.subTest(case=case, field=field):
+                    report = original_read(example)
+                    report['protocol'][field] = value
+                    before = example.read_bytes()
+                    def supplied_read(path):
+                        return copy.deepcopy(report) if Path(path) == example else original_read(path)
+                    with patch.object(tsep, 'read_json', side_effect=supplied_read):
+                        with self.assertRaisesRegex(tsep.Invalid, 'Stale generated example protocol'):
+                            maintain.check()
+                    self.assertEqual(example.read_bytes(), before)
 
     def test_unlisted_private_files_cannot_enter_release(self):
         (self.root/'.env').write_text('SYNTHETIC_LOCAL_SETTING=example')

@@ -11,6 +11,11 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import tsep
 from conformance.evaluate import RULES, evaluate
+from conformance.corpus import expand
+
+RULE_OUTCOMES = {r['id']: tsep.atomic_outcomes(r)
+                 for c in tsep.read_json(tsep.PROTOCOL_PATH)['controls']
+                 for r in c.get('rules', [])}
 
 
 def outcomes(rows):
@@ -19,6 +24,9 @@ def outcomes(rows):
         key = (row['rule_id'], row['target'])
         tsep.require(key not in result, 'Duplicate result pair')
         tsep.require(row['outcome'] in ('pass', 'fail', 'inconclusive', 'not-applicable'), 'Unknown outcome')
+        if row['rule_id'] in RULE_OUTCOMES:
+            tsep.require(row['outcome'] in RULE_OUTCOMES[row['rule_id']],
+                         'Outcome outside declared rule domain: ' + row['rule_id'])
         result[key] = row['outcome']
     return result
 
@@ -45,6 +53,7 @@ def compare(expected_rows, actual_rows):
 
 
 def run(corpus, command=None, rules=None):
+    corpus = expand(corpus)
     tsep.require(corpus['protocol_version'] == tsep.read_json(tsep.PROTOCOL_PATH)['version'], 'Stale conformance version')
     requested = list(RULES) if rules is None else rules
     tsep.require(isinstance(requested, (list, tuple)) and requested
@@ -107,7 +116,9 @@ def run(corpus, command=None, rules=None):
             failures.append({'case': case['id'], 'differences': differences})
         if reduced:
             reduced_coverage.append({'case': case['id'], 'pairs': reduced})
-    tsep.require(all({'pass', 'fail', 'inconclusive'} <= values for values in seen.values()), 'Missing contradictory coverage per rule')
+    for rule, values in seen.items():
+        required = set(RULE_OUTCOMES[rule]) - {'not-applicable'}
+        tsep.require(required <= values, 'Missing contradictory coverage per rule: ' + rule)
     for values in by_rule.values():
         denominator = values['conclusive_expected']
         values['percent'] = round(100 * values['conclusive_agreements'] / denominator, 2) if denominator else None

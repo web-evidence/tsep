@@ -1,0 +1,660 @@
+{
+  "format": "ts15-native-reader-prefreeze-1",
+  "at": "2026-10-14T10:44:03.549127+00:00",
+  "not_implemented": true,
+  "input_raw_limit_bytes": 5242880,
+  "input_json_limit_bytes": 8388608,
+  "decompressed_limit_bytes": 52428800,
+  "entry_limit": 50000,
+  "no_server_or_google_claim": true,
+  "cases": [
+    {
+      "id": "simple",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "index",
+      "body": {
+        "text": "<sitemapindex xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><sitemap><loc>https://example.test/a.xml</loc></sitemap></sitemapindex>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "index",
+        "count": 1
+      }
+    },
+    {
+      "id": "prefix",
+      "body": {
+        "text": "<s:urlset xmlns:s=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><s:url><s:loc>https://example.test/a</s:loc></s:url></s:urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "bom",
+      "body": {
+        "text": "﻿<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "accent-entity",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/café?a=1&amp;b=2</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "empty",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"/>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 0
+      }
+    },
+    {
+      "id": "unknown-namespace",
+      "body": {
+        "text": "<urlset xmlns=\"https://example.test/not-sitemaps\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      }
+    },
+    {
+      "id": "missing-namespace",
+      "body": {
+        "text": "<urlset><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      }
+    },
+    {
+      "id": "rss-outside",
+      "body": {
+        "text": "<rss version=\"2.0\"><channel/></rss>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      }
+    },
+    {
+      "id": "broken-complete",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urls"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "inconclusive",
+        "kind": "urlset",
+        "count": null
+      }
+    },
+    {
+      "id": "broken-incomplete",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urls"
+      },
+      "encoding": "identity",
+      "complete": false,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      }
+    },
+    {
+      "id": "utf8-invalid",
+      "body": {
+        "hex": "3c75726c73657420786d6c6e733d22687474703a2f2f7777772e736974656d6170732e6f72672f736368656d61732f736974656d61702f302e39223e3c75726c3e3c6c6f633e68747470733a2f2f6578616d706c652e746573742f613c2f6c6f633e3c2f75726c3e3c2f75726c7365743eff"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      }
+    },
+    {
+      "id": "other-encoding",
+      "body": {
+        "text": "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      }
+    },
+    {
+      "id": "utf8-declaration",
+      "body": {
+        "text": "<?xml version=\"1.0\" encoding=\"utf-8\"?><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "doctype",
+      "body": {
+        "text": "<!DOCTYPE urlset><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      }
+    },
+    {
+      "id": "external-entity",
+      "body": {
+        "text": "<!DOCTYPE urlset [<!ENTITY ext SYSTEM \"https://example.test/never-fetch\">]><urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/&ext;</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      }
+    },
+    {
+      "id": "duplicate-loc",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc><loc>https://example.test/b</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "missing-loc",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "empty-loc",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc></loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "mixed-text",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url>unplanned<loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "wrong-base-child",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><urll><loc>https://example.test/a</loc></urll></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 0
+      }
+    },
+    {
+      "id": "unknown-attribute",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url unexpected=\"1\"><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "xml-base",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url xml:base=\"https://example.test/\"><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "foreign-extension-not-entry",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc><x:item xmlns:x=\"https://example.test/extension\"><x:loc>https://example.test/not-page</x:loc></x:item></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "optional-leaves",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc><lastmod>2026-10-01</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "duplicate-optional",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc><lastmod>2026-10-01</lastmod><lastmod>2026-10-02</lastmod></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "fail",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "schema-location-no-fetch",
+      "body": {
+        "text": "<urlset xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.sitemaps.org/schemas/sitemap/0.9 https://example.test/never-fetch.xsd\" xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "plain-name-gz-ignored",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      },
+      "filename": "misleading.xml.gz"
+    },
+    {
+      "id": "gzip",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "gzip-bom-accent",
+      "body": {
+        "text": "﻿<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/é</loc></url></urlset>"
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "gzip-truncated",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      },
+      "wire_mutation": "truncated"
+    },
+    {
+      "id": "gzip-bad-crc",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      },
+      "wire_mutation": "bad-crc"
+    },
+    {
+      "id": "gzip-second-member",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      },
+      "wire_mutation": "second-member"
+    },
+    {
+      "id": "gzip-trailing",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      },
+      "wire_mutation": "trailing"
+    },
+    {
+      "id": "urlset-count-49999",
+      "body": {
+        "recipe": "entries",
+        "kind": "urlset",
+        "count": 49999
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 49999
+      }
+    },
+    {
+      "id": "index-count-49999",
+      "body": {
+        "recipe": "entries",
+        "kind": "index",
+        "count": 49999
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "index",
+        "count": 49999
+      }
+    },
+    {
+      "id": "urlset-count-50000",
+      "body": {
+        "recipe": "entries",
+        "kind": "urlset",
+        "count": 50000
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 50000
+      }
+    },
+    {
+      "id": "index-count-50000",
+      "body": {
+        "recipe": "entries",
+        "kind": "index",
+        "count": 50000
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "index",
+        "count": 50000
+      }
+    },
+    {
+      "id": "urlset-count-50001",
+      "body": {
+        "recipe": "entries",
+        "kind": "urlset",
+        "count": 50001
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "fail",
+        "kind": "urlset",
+        "count": 50001
+      }
+    },
+    {
+      "id": "index-count-50001",
+      "body": {
+        "recipe": "entries",
+        "kind": "index",
+        "count": 50001
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "fail",
+        "kind": "index",
+        "count": 50001
+      }
+    },
+    {
+      "id": "decoded-bytes-52428799",
+      "body": {
+        "recipe": "bytes",
+        "bytes": 52428799,
+        "bom": true,
+        "accent": true
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "decoded-bytes-52428800",
+      "body": {
+        "recipe": "bytes",
+        "bytes": 52428800,
+        "bom": true,
+        "accent": true
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "pass",
+        "limits": "pass",
+        "kind": "urlset",
+        "count": 1
+      }
+    },
+    {
+      "id": "decoded-bytes-52428801",
+      "body": {
+        "recipe": "bytes",
+        "bytes": 52428801,
+        "bom": true,
+        "accent": true
+      },
+      "encoding": "gzip",
+      "complete": true,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "fail",
+        "kind": "urlset",
+        "count": null
+      }
+    },
+    {
+      "id": "small-incomplete",
+      "body": {
+        "text": "<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\"><url><loc>https://example.test/a</loc></url></urlset>"
+      },
+      "encoding": "identity",
+      "complete": false,
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null,
+        "count": null
+      }
+    }
+  ],
+  "additional_intake_expectations": [
+    "raw5MiB+1 refused before parsing even if well-formed; JSON8MiB+1 refused by unchanged shared reader",
+    "plain XML near50MiB refused as transport; equivalent supplied gzip tested end-to-end without silently recompressing original",
+    "Missing or conflicting file/URL binding remains NT; no complete set from missing child",
+    "Native provided-file assessment is not an observed HTTP response"
+  ]
+}

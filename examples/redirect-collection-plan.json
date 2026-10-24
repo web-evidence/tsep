@@ -1,0 +1,27 @@
+{
+  "kind": "tsep-redirect-plan",
+  "access": "synthetic",
+  "selection_reason": "Authored loopback example only; no actual website or owner approval. / Exemple local fictif, sans approbation humaine réelle.",
+  "targets": [{
+    "url": "http://127.0.0.1:8878/old",
+    "context": {
+      "network": "Synthetic local exercise requiring a separately started fixture server",
+      "tool": "Set by prepare before review",
+      "tool_version": "Set by prepare before review",
+      "bounds": "Set by prepare before review"
+    },
+    "intent": {
+      "declared_at": "2026-10-13T00:00:00Z",
+      "crawler": "TSEP-synthetic-TS02-example/1",
+      "redirect_plan": {
+        "mechanism": "http",
+        "source_url": "http://127.0.0.1:8878/old",
+        "expected_final_url": "http://127.0.0.1:8878/new",
+        "min_redirects": 1,
+        "max_redirects": 1,
+        "redirect_statuses": [301, 308],
+        "terminal_statuses": [200]
+      }
+    }
+  }]
+}

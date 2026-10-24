@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.1.0-draft.28",
+  "protocol_version": "0.3.0-draft.7",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -4608,6 +4608,5019 @@
             "content",
             "logs",
             "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS08-authored-qualified-positive",
+      "control_id": "TS08",
+      "description": {
+        "fr": "Agrégation fictive TS08, cas qualified-positive ; aucun compte ou relecteur réel.",
+        "en": "Authored TS08 aggregation, case qualified-positive; no real account or reviewer."
+      },
+      "evidence": {
+        "search-console": "SYNTHETIC authored aggregation only; native counterexamples are separate.",
+        "intent": "SYNTHETIC declared scope and review references; not actual approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS08-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas qualified-positive ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case qualified-positive; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas qualified-positive ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case qualified-positive; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas qualified-positive ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case qualified-positive; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS08-authored-contradictory-selection",
+      "control_id": "TS08",
+      "description": {
+        "fr": "Agrégation fictive TS08, cas contradictory-selection ; aucun compte ou relecteur réel.",
+        "en": "Authored TS08 aggregation, case contradictory-selection; no real account or reviewer."
+      },
+      "evidence": {
+        "search-console": "SYNTHETIC authored aggregation only; native counterexamples are separate.",
+        "intent": "SYNTHETIC declared scope and review references; not actual approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS08-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas contradictory-selection ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case contradictory-selection; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas contradictory-selection ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case contradictory-selection; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas contradictory-selection ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case contradictory-selection; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS08-authored-wrong-inspected-url",
+      "control_id": "TS08",
+      "description": {
+        "fr": "Agrégation fictive TS08, cas wrong-inspected-url ; aucun compte ou relecteur réel.",
+        "en": "Authored TS08 aggregation, case wrong-inspected-url; no real account or reviewer."
+      },
+      "evidence": {
+        "search-console": "SYNTHETIC authored aggregation only; native counterexamples are separate.",
+        "intent": "SYNTHETIC declared scope and review references; not actual approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS08-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas wrong-inspected-url ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case wrong-inspected-url; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas wrong-inspected-url ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case wrong-inspected-url; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas wrong-inspected-url ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case wrong-inspected-url; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS08-authored-claimed-wrong-verdict",
+      "control_id": "TS08",
+      "description": {
+        "fr": "Agrégation fictive TS08, cas claimed-wrong-verdict ; aucun compte ou relecteur réel.",
+        "en": "Authored TS08 aggregation, case claimed-wrong-verdict; no real account or reviewer."
+      },
+      "evidence": {
+        "search-console": "SYNTHETIC authored aggregation only; native counterexamples are separate.",
+        "intent": "SYNTHETIC declared scope and review references; not actual approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS08-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas claimed-wrong-verdict ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case claimed-wrong-verdict; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas claimed-wrong-verdict ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case claimed-wrong-verdict; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas claimed-wrong-verdict ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case claimed-wrong-verdict; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS08-authored-missing-objective-source",
+      "control_id": "TS08",
+      "description": {
+        "fr": "Agrégation fictive TS08, cas missing-objective-source ; aucun compte ou relecteur réel.",
+        "en": "Authored TS08 aggregation, case missing-objective-source; no real account or reviewer."
+      },
+      "evidence": {
+        "search-console": "SYNTHETIC authored aggregation only; native counterexamples are separate.",
+        "intent": "SYNTHETIC declared scope and review references; not actual approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS08-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas missing-objective-source ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case missing-objective-source; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas missing-objective-source ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case missing-objective-source; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS08-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS08, cas missing-objective-source ; aucun compte ou relecteur réel.",
+            "en": "Authored TS08 aggregation, case missing-objective-source; no real account or reviewer."
+          },
+          "evidence_ids": [
+            "search-console",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS12-authored-qualified-agreement",
+      "control_id": "TS12",
+      "description": {
+        "fr": "Agrégation fictive TS12 : qualified-agreement ; aucun compte, navigateur ou relecteur réel.",
+        "en": "Authored TS12 aggregation: qualified-agreement; no actual account, browser or reviewer."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "search-console": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "http": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "html": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "render": "SYNTHETIC authored aggregation; native counterexamples retained separately."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS12-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : qualified-agreement ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: qualified-agreement; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : qualified-agreement ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: qualified-agreement; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : qualified-agreement ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: qualified-agreement; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS12-authored-contradicted-plan-preference",
+      "control_id": "TS12",
+      "description": {
+        "fr": "Agrégation fictive TS12 : contradicted-plan-preference ; aucun compte, navigateur ou relecteur réel.",
+        "en": "Authored TS12 aggregation: contradicted-plan-preference; no actual account, browser or reviewer."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "search-console": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "http": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "html": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "render": "SYNTHETIC authored aggregation; native counterexamples retained separately."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS12-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : contradicted-plan-preference ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: contradicted-plan-preference; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : contradicted-plan-preference ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: contradicted-plan-preference; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : contradicted-plan-preference ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: contradicted-plan-preference; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS12-authored-wrong-request-url",
+      "control_id": "TS12",
+      "description": {
+        "fr": "Agrégation fictive TS12 : wrong-request-url ; aucun compte, navigateur ou relecteur réel.",
+        "en": "Authored TS12 aggregation: wrong-request-url; no actual account, browser or reviewer."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "search-console": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "http": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "html": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "render": "SYNTHETIC authored aggregation; native counterexamples retained separately."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS12-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : wrong-request-url ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: wrong-request-url; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : wrong-request-url ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: wrong-request-url; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : wrong-request-url ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: wrong-request-url; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS12-authored-wrong-google-claim",
+      "control_id": "TS12",
+      "description": {
+        "fr": "Agrégation fictive TS12 : wrong-google-claim ; aucun compte, navigateur ou relecteur réel.",
+        "en": "Authored TS12 aggregation: wrong-google-claim; no actual account, browser or reviewer."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "search-console": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "http": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "html": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "render": "SYNTHETIC authored aggregation; native counterexamples retained separately."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS12-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : wrong-google-claim ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: wrong-google-claim; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : wrong-google-claim ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: wrong-google-claim; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : wrong-google-claim ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: wrong-google-claim; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS12-authored-missing-member",
+      "control_id": "TS12",
+      "description": {
+        "fr": "Agrégation fictive TS12 : missing-member ; aucun compte, navigateur ou relecteur réel.",
+        "en": "Authored TS12 aggregation: missing-member; no actual account, browser or reviewer."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "search-console": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "http": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "html": "SYNTHETIC authored aggregation; native counterexamples retained separately.",
+        "render": "SYNTHETIC authored aggregation; native counterexamples retained separately."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS12-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : missing-member ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: missing-member; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : missing-member ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: missing-member; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS12-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Agrégation fictive TS12 : missing-member ; aucun compte, navigateur ou relecteur réel.",
+            "en": "Authored TS12 aggregation: missing-member; no actual account, browser or reviewer."
+          },
+          "evidence_ids": [
+            "intent",
+            "search-console",
+            "http",
+            "html",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS36-complete",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Exercice TS36 complete",
+        "en": "TS36 authored complete"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: TS36 complete authored method fixture; no actual deployment, account, logs or human approval.",
+        "change-history": "SYNTHETIC: TS36 complete authored method fixture; no actual deployment, account, logs or human approval.",
+        "search-console": "SYNTHETIC: TS36 complete authored method fixture; no actual deployment, account, logs or human approval.",
+        "logs": "SYNTHETIC: TS36 complete authored method fixture; no actual deployment, account, logs or human approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif complete",
+            "en": "Authored judgment complete"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif complete",
+            "en": "Authored judgment complete"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif complete",
+            "en": "Authored judgment complete"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS36-adverse-documented",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Exercice TS36 adverse-documented",
+        "en": "TS36 authored adverse-documented"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: TS36 adverse-documented authored method fixture; no actual deployment, account, logs or human approval.",
+        "change-history": "SYNTHETIC: TS36 adverse-documented authored method fixture; no actual deployment, account, logs or human approval.",
+        "search-console": "SYNTHETIC: TS36 adverse-documented authored method fixture; no actual deployment, account, logs or human approval.",
+        "logs": "SYNTHETIC: TS36 adverse-documented authored method fixture; no actual deployment, account, logs or human approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif adverse-documented",
+            "en": "Authored judgment adverse-documented"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif adverse-documented",
+            "en": "Authored judgment adverse-documented"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif adverse-documented",
+            "en": "Authored judgment adverse-documented"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS36-future",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Exercice TS36 future",
+        "en": "TS36 authored future"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: TS36 future authored method fixture; no actual deployment, account, logs or human approval.",
+        "change-history": "SYNTHETIC: TS36 future authored method fixture; no actual deployment, account, logs or human approval.",
+        "search-console": "SYNTHETIC: TS36 future authored method fixture; no actual deployment, account, logs or human approval.",
+        "logs": "SYNTHETIC: TS36 future authored method fixture; no actual deployment, account, logs or human approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif future",
+            "en": "Authored judgment future"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement fictif future",
+            "en": "Authored judgment future"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement fictif future",
+            "en": "Authored judgment future"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS36-false-closure",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Exercice TS36 false-closure",
+        "en": "TS36 authored false-closure"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: TS36 false-closure authored method fixture; no actual deployment, account, logs or human approval.",
+        "change-history": "SYNTHETIC: TS36 false-closure authored method fixture; no actual deployment, account, logs or human approval.",
+        "search-console": "SYNTHETIC: TS36 false-closure authored method fixture; no actual deployment, account, logs or human approval.",
+        "logs": "SYNTHETIC: TS36 false-closure authored method fixture; no actual deployment, account, logs or human approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif false-closure",
+            "en": "Authored judgment false-closure"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Jugement fictif false-closure",
+            "en": "Authored judgment false-closure"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Jugement fictif false-closure",
+            "en": "Authored judgment false-closure"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS36-partial",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Exercice TS36 partial",
+        "en": "TS36 authored partial"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: TS36 partial authored method fixture; no actual deployment, account, logs or human approval.",
+        "change-history": "SYNTHETIC: TS36 partial authored method fixture; no actual deployment, account, logs or human approval.",
+        "search-console": "SYNTHETIC: TS36 partial authored method fixture; no actual deployment, account, logs or human approval.",
+        "logs": "SYNTHETIC: TS36 partial authored method fixture; no actual deployment, account, logs or human approval."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Jugement fictif partial",
+            "en": "Authored judgment partial"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS36-rejected-schedule",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Plan de suivi explicitement rejeté",
+        "en": "Explicitly rejected follow-up plan"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Explicitly rejected follow-up plan. Authored method judgments; no actual account, deployment or review.",
+        "change-history": "SYNTHETIC: Explicitly rejected follow-up plan. Authored method judgments; no actual account, deployment or review.",
+        "search-console": "SYNTHETIC: Explicitly rejected follow-up plan. Authored method judgments; no actual account, deployment or review.",
+        "logs": "SYNTHETIC: Explicitly rejected follow-up plan. Authored method judgments; no actual account, deployment or review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Plan de suivi explicitement rejeté",
+            "en": "Explicitly rejected follow-up plan"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Plan de suivi explicitement rejeté",
+            "en": "Explicitly rejected follow-up plan"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Plan de suivi explicitement rejeté",
+            "en": "Explicitly rejected follow-up plan"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS36-wrong-request-url",
+      "control_id": "TS36",
+      "description": {
+        "fr": "API attribuée à une autre URL",
+        "en": "API attributed to another URL"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: API attributed to another URL. Authored method judgments; no actual account, deployment or review.",
+        "change-history": "SYNTHETIC: API attributed to another URL. Authored method judgments; no actual account, deployment or review.",
+        "search-console": "SYNTHETIC: API attributed to another URL. Authored method judgments; no actual account, deployment or review.",
+        "logs": "SYNTHETIC: API attributed to another URL. Authored method judgments; no actual account, deployment or review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "API attribuée à une autre URL",
+            "en": "API attributed to another URL"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "API attribuée à une autre URL",
+            "en": "API attributed to another URL"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "API attribuée à une autre URL",
+            "en": "API attributed to another URL"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS36-unknown-reader",
+      "control_id": "TS36",
+      "description": {
+        "fr": "Lecteur de suivi inconnu",
+        "en": "Unknown monitoring reader"
+      },
+      "evidence": {
+        "intent": "SYNTHETIC: Unknown monitoring reader. Authored method judgments; no actual account, deployment or review.",
+        "change-history": "SYNTHETIC: Unknown monitoring reader. Authored method judgments; no actual account, deployment or review.",
+        "search-console": "SYNTHETIC: Unknown monitoring reader. Authored method judgments; no actual account, deployment or review.",
+        "logs": "SYNTHETIC: Unknown monitoring reader. Authored method judgments; no actual account, deployment or review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS36-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Lecteur de suivi inconnu",
+            "en": "Unknown monitoring reader"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Lecteur de suivi inconnu",
+            "en": "Unknown monitoring reader"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        },
+        {
+          "rule_id": "TS36-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Lecteur de suivi inconnu",
+            "en": "Unknown monitoring reader"
+          },
+          "evidence_ids": [
+            "intent",
+            "change-history",
+            "search-console",
+            "logs"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS31-method-pass",
+      "control_id": "TS31",
+      "description": {
+        "fr": "Exercice synthétique : jugements pass fournis pour TS31.",
+        "en": "Synthetic exercise: supplied pass judgments for TS31."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "content": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS31-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS31.",
+            "en": "Synthetic exercise: supplied pass judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS31-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS31.",
+            "en": "Synthetic exercise: supplied pass judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS31-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS31.",
+            "en": "Synthetic exercise: supplied pass judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS31-method-fail",
+      "control_id": "TS31",
+      "description": {
+        "fr": "Exercice synthétique : jugements fail fournis pour TS31.",
+        "en": "Synthetic exercise: supplied fail judgments for TS31."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "content": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS31-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS31.",
+            "en": "Synthetic exercise: supplied fail judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS31-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS31.",
+            "en": "Synthetic exercise: supplied fail judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS31-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS31.",
+            "en": "Synthetic exercise: supplied fail judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS31-method-inconclusive",
+      "control_id": "TS31",
+      "description": {
+        "fr": "Exercice synthétique : jugements inconclusive fournis pour TS31.",
+        "en": "Synthetic exercise: supplied inconclusive judgments for TS31."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "content": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS31-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS31.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS31-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS31.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS31-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS31.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS31."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS32-method-pass",
+      "control_id": "TS32",
+      "description": {
+        "fr": "Exercice synthétique : jugements pass fournis pour TS32.",
+        "en": "Synthetic exercise: supplied pass judgments for TS32."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS32-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS32.",
+            "en": "Synthetic exercise: supplied pass judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS32-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS32.",
+            "en": "Synthetic exercise: supplied pass judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS32-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS32.",
+            "en": "Synthetic exercise: supplied pass judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS32-method-fail",
+      "control_id": "TS32",
+      "description": {
+        "fr": "Exercice synthétique : jugements fail fournis pour TS32.",
+        "en": "Synthetic exercise: supplied fail judgments for TS32."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS32-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS32.",
+            "en": "Synthetic exercise: supplied fail judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS32-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS32.",
+            "en": "Synthetic exercise: supplied fail judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS32-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS32.",
+            "en": "Synthetic exercise: supplied fail judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS32-method-inconclusive",
+      "control_id": "TS32",
+      "description": {
+        "fr": "Exercice synthétique : jugements inconclusive fournis pour TS32.",
+        "en": "Synthetic exercise: supplied inconclusive judgments for TS32."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS32-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS32.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS32-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS32.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS32-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS32.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS32."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS33-method-pass",
+      "control_id": "TS33",
+      "description": {
+        "fr": "Exercice synthétique : jugements pass fournis pour TS33.",
+        "en": "Synthetic exercise: supplied pass judgments for TS33."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "validator-output": "SYNTHETIC: authored native-message method judgments, not a Google observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS33-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS33.",
+            "en": "Synthetic exercise: supplied pass judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        },
+        {
+          "rule_id": "TS33-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS33.",
+            "en": "Synthetic exercise: supplied pass judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        },
+        {
+          "rule_id": "TS33-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass fournis pour TS33.",
+            "en": "Synthetic exercise: supplied pass judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS33-method-fail",
+      "control_id": "TS33",
+      "description": {
+        "fr": "Exercice synthétique : jugements fail fournis pour TS33.",
+        "en": "Synthetic exercise: supplied fail judgments for TS33."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "validator-output": "SYNTHETIC: authored native-message method judgments, not a Google observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS33-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS33.",
+            "en": "Synthetic exercise: supplied fail judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        },
+        {
+          "rule_id": "TS33-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS33.",
+            "en": "Synthetic exercise: supplied fail judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        },
+        {
+          "rule_id": "TS33-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail fournis pour TS33.",
+            "en": "Synthetic exercise: supplied fail judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS33-method-inconclusive",
+      "control_id": "TS33",
+      "description": {
+        "fr": "Exercice synthétique : jugements inconclusive fournis pour TS33.",
+        "en": "Synthetic exercise: supplied inconclusive judgments for TS33."
+      },
+      "evidence": {
+        "structured-data": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "intent": "SYNTHETIC: authored method judgments, not collected evidence or an actual review.",
+        "validator-output": "SYNTHETIC: authored native-message method judgments, not a Google observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS33-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS33.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        },
+        {
+          "rule_id": "TS33-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS33.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        },
+        {
+          "rule_id": "TS33-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive fournis pour TS33.",
+            "en": "Synthetic exercise: supplied inconclusive judgments for TS33."
+          },
+          "evidence_ids": [
+            "structured-data",
+            "intent",
+            "validator-output"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS15-method-pass",
+      "control_id": "TS15",
+      "description": {
+        "fr": "Exercice synthétique : jugements pass sur fichiers fournis.",
+        "en": "Synthetic exercise: supplied pass judgments on native files."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC authored method judgments; no actual server observation.",
+        "intent": "SYNTHETIC authored method judgments; no actual server observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS15-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass sur fichiers fournis.",
+            "en": "Synthetic exercise: supplied pass judgments on native files."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS15-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass sur fichiers fournis.",
+            "en": "Synthetic exercise: supplied pass judgments on native files."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS15-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements pass sur fichiers fournis.",
+            "en": "Synthetic exercise: supplied pass judgments on native files."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS15-method-fail",
+      "control_id": "TS15",
+      "description": {
+        "fr": "Exercice synthétique : jugements fail sur fichiers fournis.",
+        "en": "Synthetic exercise: supplied fail judgments on native files."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC authored method judgments; no actual server observation.",
+        "intent": "SYNTHETIC authored method judgments; no actual server observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS15-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail sur fichiers fournis.",
+            "en": "Synthetic exercise: supplied fail judgments on native files."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS15-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail sur fichiers fournis.",
+            "en": "Synthetic exercise: supplied fail judgments on native files."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS15-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements fail sur fichiers fournis.",
+            "en": "Synthetic exercise: supplied fail judgments on native files."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS15-method-inconclusive",
+      "control_id": "TS15",
+      "description": {
+        "fr": "Exercice synthétique : jugements inconclusive sur fichiers fournis.",
+        "en": "Synthetic exercise: supplied inconclusive judgments on native files."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC authored method judgments; no actual server observation.",
+        "intent": "SYNTHETIC authored method judgments; no actual server observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS15-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive sur fichiers fournis.",
+            "en": "Synthetic exercise: supplied inconclusive judgments on native files."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS15-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive sur fichiers fournis.",
+            "en": "Synthetic exercise: supplied inconclusive judgments on native files."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS15-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : jugements inconclusive sur fichiers fournis.",
+            "en": "Synthetic exercise: supplied inconclusive judgments on native files."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS17-method-pass",
+      "control_id": "TS17",
+      "description": {
+        "fr": "Exercice synthétique de jugement pass sur les liens essentiels.",
+        "en": "Synthetic authored pass judgment on essential links."
+      },
+      "evidence": {
+        "http": "SYNTHETIC method-only judgment, no real navigation.",
+        "html": "SYNTHETIC method-only judgment, no real navigation.",
+        "render": "SYNTHETIC method-only judgment, no real navigation.",
+        "intent": "SYNTHETIC method-only judgment, no real navigation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS17-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique de jugement pass sur les liens essentiels.",
+            "en": "Synthetic authored pass judgment on essential links."
+          },
+          "evidence_ids": [
+            "http",
+            "html",
+            "render",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS17-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique de jugement pass sur les liens essentiels.",
+            "en": "Synthetic authored pass judgment on essential links."
+          },
+          "evidence_ids": [
+            "http",
+            "html",
+            "render",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS17-method-fail",
+      "control_id": "TS17",
+      "description": {
+        "fr": "Exercice synthétique de jugement fail sur les liens essentiels.",
+        "en": "Synthetic authored fail judgment on essential links."
+      },
+      "evidence": {
+        "http": "SYNTHETIC method-only judgment, no real navigation.",
+        "html": "SYNTHETIC method-only judgment, no real navigation.",
+        "render": "SYNTHETIC method-only judgment, no real navigation.",
+        "intent": "SYNTHETIC method-only judgment, no real navigation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS17-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique de jugement fail sur les liens essentiels.",
+            "en": "Synthetic authored fail judgment on essential links."
+          },
+          "evidence_ids": [
+            "http",
+            "html",
+            "render",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS17-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique de jugement fail sur les liens essentiels.",
+            "en": "Synthetic authored fail judgment on essential links."
+          },
+          "evidence_ids": [
+            "http",
+            "html",
+            "render",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS17-method-inconclusive",
+      "control_id": "TS17",
+      "description": {
+        "fr": "Exercice synthétique de jugement inconclusive sur les liens essentiels.",
+        "en": "Synthetic authored inconclusive judgment on essential links."
+      },
+      "evidence": {
+        "http": "SYNTHETIC method-only judgment, no real navigation.",
+        "html": "SYNTHETIC method-only judgment, no real navigation.",
+        "render": "SYNTHETIC method-only judgment, no real navigation.",
+        "intent": "SYNTHETIC method-only judgment, no real navigation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS17-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique de jugement inconclusive sur les liens essentiels.",
+            "en": "Synthetic authored inconclusive judgment on essential links."
+          },
+          "evidence_ids": [
+            "http",
+            "html",
+            "render",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS17-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique de jugement inconclusive sur les liens essentiels.",
+            "en": "Synthetic authored inconclusive judgment on essential links."
+          },
+          "evidence_ids": [
+            "http",
+            "html",
+            "render",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS15-method-size-excess",
+      "control_id": "TS15",
+      "description": {
+        "fr": "Exercice synthétique : dépassement attribué de la taille ; syntaxe et couverture demeurent indéterminées.",
+        "en": "Synthetic exercise: attributable size excess; syntax and coverage remain inconclusive."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC authored size judgment based on prefrozen native fixture full-path-byte-52428801: decoded lower bound 52428801 bytes exceeds 52428800. No real site capture.",
+        "intent": "SYNTHETIC authored method judgments; no actual server observation."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS15-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : dépassement attribué de la taille ; syntaxe et couverture demeurent indéterminées.",
+            "en": "Synthetic exercise: attributable size excess; syntax and coverage remain inconclusive."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS15-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique : dépassement attribué de la taille ; syntaxe et couverture demeurent indéterminées.",
+            "en": "Synthetic exercise: attributable size excess; syntax and coverage remain inconclusive."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS15-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique : dépassement attribué de la taille ; syntaxe et couverture demeurent indéterminées.",
+            "en": "Synthetic exercise: attributable size excess; syntax and coverage remain inconclusive."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS16-method-pass",
+      "control_id": "TS16",
+      "description": {
+        "fr": "Exercice synthétique de jugement pass sur les liens entrants dans la population préalable.",
+        "en": "Synthetic authored pass judgment on incoming links within the prior population."
+      },
+      "evidence": {
+        "http": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "html": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "inventory": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "intent": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS16-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique de jugement pass sur les liens entrants dans la population préalable.",
+            "en": "Synthetic authored pass judgment on incoming links within the prior population."
+          },
+          "evidence_ids": [
+            "http",
+            "html",
+            "inventory",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS16-method-fail",
+      "control_id": "TS16",
+      "description": {
+        "fr": "Exercice synthétique de jugement fail sur les liens entrants dans la population préalable.",
+        "en": "Synthetic authored fail judgment on incoming links within the prior population."
+      },
+      "evidence": {
+        "http": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "html": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "inventory": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "intent": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS16-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique de jugement fail sur les liens entrants dans la population préalable.",
+            "en": "Synthetic authored fail judgment on incoming links within the prior population."
+          },
+          "evidence_ids": [
+            "http",
+            "html",
+            "inventory",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS16-method-inconclusive",
+      "control_id": "TS16",
+      "description": {
+        "fr": "Exercice synthétique de jugement inconclusive sur les liens entrants dans la population préalable.",
+        "en": "Synthetic authored inconclusive judgment on incoming links within the prior population."
+      },
+      "evidence": {
+        "http": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "html": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "inventory": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment.",
+        "intent": "SYNTHETIC method-only judgment; native cases are separately frozen in incoming-links-v1.json. No real site assessment."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS16-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique de jugement inconclusive sur les liens entrants dans la population préalable.",
+            "en": "Synthetic authored inconclusive judgment on incoming links within the prior population."
+          },
+          "evidence_ids": [
+            "http",
+            "html",
+            "inventory",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS18-method-pass",
+      "control_id": "TS18",
+      "description": {
+        "fr": "Exercice documentaire synthétique pass pour le graphe borné ; aucune revue humaine réelle.",
+        "en": "Synthetic documentary pass exercise for bounded graph; no real human review."
+      },
+      "evidence": {
+        "crawl": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "sitemap": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "inventory": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "http": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "html": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS18-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice documentaire synthétique pass pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary pass exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        },
+        {
+          "rule_id": "TS18-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice documentaire synthétique pass pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary pass exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        },
+        {
+          "rule_id": "TS18-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice documentaire synthétique pass pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary pass exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS18-method-fail",
+      "control_id": "TS18",
+      "description": {
+        "fr": "Exercice documentaire synthétique fail pour le graphe borné ; aucune revue humaine réelle.",
+        "en": "Synthetic documentary fail exercise for bounded graph; no real human review."
+      },
+      "evidence": {
+        "crawl": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "sitemap": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "inventory": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "http": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "html": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS18-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice documentaire synthétique fail pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary fail exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        },
+        {
+          "rule_id": "TS18-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice documentaire synthétique fail pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary fail exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        },
+        {
+          "rule_id": "TS18-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice documentaire synthétique fail pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary fail exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS18-method-inconclusive",
+      "control_id": "TS18",
+      "description": {
+        "fr": "Exercice documentaire synthétique inconclusive pour le graphe borné ; aucune revue humaine réelle.",
+        "en": "Synthetic documentary inconclusive exercise for bounded graph; no real human review."
+      },
+      "evidence": {
+        "crawl": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "sitemap": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "inventory": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "http": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json.",
+        "html": "SYNTHETIC authored method judgment; native cases frozen separately in graph-reconciliation-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS18-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice documentaire synthétique inconclusive pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary inconclusive exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        },
+        {
+          "rule_id": "TS18-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice documentaire synthétique inconclusive pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary inconclusive exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        },
+        {
+          "rule_id": "TS18-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice documentaire synthétique inconclusive pour le graphe borné ; aucune revue humaine réelle.",
+            "en": "Synthetic documentary inconclusive exercise for bounded graph; no real human review."
+          },
+          "evidence_ids": [
+            "crawl",
+            "sitemap",
+            "inventory",
+            "intent",
+            "http",
+            "html"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS23-method-pass",
+      "control_id": "TS23",
+      "description": {
+        "fr": "Exercice synthétique pass de la méthode TS23 ; cas natifs préalables conservés séparément.",
+        "en": "Synthetic pass TS23 method exercise; preauthored native cases retained separately."
+      },
+      "evidence": {
+        "http": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json.",
+        "hreflang": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS23-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique pass de la méthode TS23 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic pass TS23 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS23-method-fail",
+      "control_id": "TS23",
+      "description": {
+        "fr": "Exercice synthétique fail de la méthode TS23 ; cas natifs préalables conservés séparément.",
+        "en": "Synthetic fail TS23 method exercise; preauthored native cases retained separately."
+      },
+      "evidence": {
+        "http": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json.",
+        "hreflang": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS23-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique fail de la méthode TS23 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic fail TS23 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS23-method-inconclusive",
+      "control_id": "TS23",
+      "description": {
+        "fr": "Exercice synthétique inconclusive de la méthode TS23 ; cas natifs préalables conservés séparément.",
+        "en": "Synthetic inconclusive TS23 method exercise; preauthored native cases retained separately."
+      },
+      "evidence": {
+        "http": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json.",
+        "hreflang": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native originals and expectations in hreflang-reciprocity-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS23-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique inconclusive de la méthode TS23 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic inconclusive TS23 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS24-method-pass",
+      "control_id": "TS24",
+      "description": {
+        "fr": "Exercice synthétique pass de la méthode TS24 ; cas natifs préalables conservés séparément.",
+        "en": "Synthetic pass TS24 method exercise; preauthored native cases retained separately."
+      },
+      "evidence": {
+        "http": "SYNTHETIC authored method judgment; native originals and expectations in xdefault-role-v1.json.",
+        "hreflang": "SYNTHETIC authored method judgment; native originals and expectations in xdefault-role-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native originals and expectations in xdefault-role-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS24-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique pass de la méthode TS24 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic pass TS24 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS24-method-fail",
+      "control_id": "TS24",
+      "description": {
+        "fr": "Exercice synthétique fail de la méthode TS24 ; cas natifs préalables conservés séparément.",
+        "en": "Synthetic fail TS24 method exercise; preauthored native cases retained separately."
+      },
+      "evidence": {
+        "http": "SYNTHETIC authored method judgment; native originals and expectations in xdefault-role-v1.json.",
+        "hreflang": "SYNTHETIC authored method judgment; native originals and expectations in xdefault-role-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native originals and expectations in xdefault-role-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS24-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique fail de la méthode TS24 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic fail TS24 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS24-method-inconclusive",
+      "control_id": "TS24",
+      "description": {
+        "fr": "Exercice synthétique inconclusive de la méthode TS24 ; cas natifs préalables conservés séparément.",
+        "en": "Synthetic inconclusive TS24 method exercise; preauthored native cases retained separately."
+      },
+      "evidence": {
+        "http": "SYNTHETIC authored method judgment; native originals and expectations in xdefault-role-v1.json.",
+        "hreflang": "SYNTHETIC authored method judgment; native originals and expectations in xdefault-role-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native originals and expectations in xdefault-role-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS24-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique inconclusive de la méthode TS24 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic inconclusive TS24 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS25-method-pass",
+      "control_id": "TS25",
+      "description": {
+        "fr": "Exercice synthétique pass de la méthode TS25 ; cas natifs préalables conservés séparément.",
+        "en": "Synthetic pass TS25 method exercise; preauthored native cases retained separately."
+      },
+      "evidence": {
+        "http": "SYNTHETIC authored method judgment; native originals and expectations in critical-presence-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native originals and expectations in critical-presence-v1.json.",
+        "render": "SYNTHETIC authored method judgment; native originals and expectations in critical-presence-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS25-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique pass de la méthode TS25 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic pass TS25 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "render",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS25-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Exercice synthétique pass de la méthode TS25 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic pass TS25 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "render",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS25-method-fail",
+      "control_id": "TS25",
+      "description": {
+        "fr": "Exercice synthétique fail de la méthode TS25 ; cas natifs préalables conservés séparément.",
+        "en": "Synthetic fail TS25 method exercise; preauthored native cases retained separately."
+      },
+      "evidence": {
+        "http": "SYNTHETIC authored method judgment; native originals and expectations in critical-presence-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native originals and expectations in critical-presence-v1.json.",
+        "render": "SYNTHETIC authored method judgment; native originals and expectations in critical-presence-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS25-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique fail de la méthode TS25 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic fail TS25 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "render",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS25-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Exercice synthétique fail de la méthode TS25 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic fail TS25 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "render",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS25-method-inconclusive",
+      "control_id": "TS25",
+      "description": {
+        "fr": "Exercice synthétique inconclusive de la méthode TS25 ; cas natifs préalables conservés séparément.",
+        "en": "Synthetic inconclusive TS25 method exercise; preauthored native cases retained separately."
+      },
+      "evidence": {
+        "http": "SYNTHETIC authored method judgment; native originals and expectations in critical-presence-v1.json.",
+        "intent": "SYNTHETIC authored method judgment; native originals and expectations in critical-presence-v1.json.",
+        "render": "SYNTHETIC authored method judgment; native originals and expectations in critical-presence-v1.json."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS25-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique inconclusive de la méthode TS25 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic inconclusive TS25 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "render",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS25-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Exercice synthétique inconclusive de la méthode TS25 ; cas natifs préalables conservés séparément.",
+            "en": "Synthetic inconclusive TS25 method exercise; preauthored native cases retained separately."
+          },
+          "evidence_ids": [
+            "http",
+            "render",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS05-separated-plan",
+      "control_id": "TS05",
+      "description": {
+        "fr": "Cas de méthode TS05 synthétique : separated-plan ; aucun site réel.",
+        "en": "Synthetic TS05 method case: separated-plan; no live site."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC declared crawl/indexing/protection configuration: separated-plan",
+        "intent": "SYNTHETIC dated policy map and claim review: separated-plan"
+      },
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS",
+      "atomic_results": [
+        {
+          "rule_id": "TS05-A01",
+          "outcome": "pass",
+          "evidence_ids": [
+            "configuration",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Résultat de référence synthétique : separated-plan.",
+            "en": "Authored synthetic reference outcome: separated-plan."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS05-disallow-guarantee",
+      "control_id": "TS05",
+      "description": {
+        "fr": "Cas de méthode TS05 synthétique : disallow-guarantee ; aucun site réel.",
+        "en": "Synthetic TS05 method case: disallow-guarantee; no live site."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC declared crawl/indexing/protection configuration: disallow-guarantee",
+        "intent": "SYNTHETIC dated policy map and claim review: disallow-guarantee"
+      },
+      "expected_status": "NC",
+      "expected_gate": "NO_GO",
+      "atomic_results": [
+        {
+          "rule_id": "TS05-A01",
+          "outcome": "fail",
+          "evidence_ids": [
+            "configuration",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Résultat de référence synthétique : disallow-guarantee.",
+            "en": "Authored synthetic reference outcome: disallow-guarantee."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS05-missing-plan",
+      "control_id": "TS05",
+      "description": {
+        "fr": "Cas de méthode TS05 synthétique : missing-plan ; aucun site réel.",
+        "en": "Synthetic TS05 method case: missing-plan; no live site."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC declared crawl/indexing/protection configuration: missing-plan",
+        "intent": "SYNTHETIC dated policy map and claim review: missing-plan"
+      },
+      "expected_status": "NT",
+      "expected_gate": "NO_GO",
+      "atomic_results": [
+        {
+          "rule_id": "TS05-A01",
+          "outcome": "inconclusive",
+          "evidence_ids": [
+            "configuration",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Résultat de référence synthétique : missing-plan.",
+            "en": "Authored synthetic reference outcome: missing-plan."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS05-positive-not-applicable",
+      "control_id": "TS05",
+      "description": {
+        "fr": "Cas de méthode TS05 synthétique : positive-not-applicable ; aucun site réel.",
+        "en": "Synthetic TS05 method case: positive-not-applicable; no live site."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC declared crawl/indexing/protection configuration: positive-not-applicable",
+        "intent": "SYNTHETIC dated policy map and claim review: positive-not-applicable"
+      },
+      "expected_status": "NA",
+      "expected_gate": "INCOMPLETE",
+      "atomic_results": []
+    },
+    {
+      "id": "TS06-supplied-matrix-pass",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Cas de méthode TS06 synthétique ; aucun site réel. Les preuves sont uniquement synthétiques ; la matrice route-rôle et les triplets fournis sont complets et cohérents.",
+        "en": "Synthetic TS06 method case; no live site. Evidence is synthetic only; complete supplied route-role matrix and cache triplets agree."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC route policy and fingerprint-bound plan.",
+        "http": "SYNTHETIC raw GET responses; no network collection.",
+        "intent": "SYNTHETIC prior route-role matrix and canary plan."
+      },
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS",
+      "atomic_results": [
+        {
+          "rule_id": "TS06-A01",
+          "outcome": "pass",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Les preuves sont uniquement synthétiques ; la matrice route-rôle et les triplets fournis sont complets et cohérents.",
+            "en": "Evidence is synthetic only; complete supplied route-role matrix and cache triplets agree."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS06-unauthorized-canary-leak",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Cas de méthode TS06 synthétique ; aucun site réel. Une réponse fournie à un rôle fictif non autorisé expose le canari synthétique déclaré.",
+        "en": "Synthetic TS06 method case; no live site. A supplied unauthorized response exposes the declared synthetic canary."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC route policy and fingerprint-bound plan.",
+        "http": "SYNTHETIC raw GET responses; no network collection.",
+        "intent": "SYNTHETIC prior route-role matrix and canary plan."
+      },
+      "expected_status": "NC",
+      "expected_gate": "NO_GO",
+      "atomic_results": [
+        {
+          "rule_id": "TS06-A01",
+          "outcome": "fail",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Une réponse fournie à un rôle fictif non autorisé expose le canari synthétique déclaré.",
+            "en": "A supplied unauthorized response exposes the declared synthetic canary."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS06-missing-matrix-cell",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Cas de méthode TS06 synthétique ; aucun site réel. Une cellule route-rôle manquante empêche une conclusion complète et bornée.",
+        "en": "Synthetic TS06 method case; no live site. A missing route-role cell prevents a complete bounded conclusion."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC route policy and fingerprint-bound plan.",
+        "http": "SYNTHETIC raw GET responses; no network collection.",
+        "intent": "SYNTHETIC prior route-role matrix and canary plan."
+      },
+      "expected_status": "NT",
+      "expected_gate": "NO_GO",
+      "atomic_results": [
+        {
+          "rule_id": "TS06-A01",
+          "outcome": "inconclusive",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Une cellule route-rôle manquante empêche une conclusion complète et bornée.",
+            "en": "A missing route-role cell prevents a complete bounded conclusion."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS06-declared-no-sensitive-routes",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Inventaire complet fictif, daté et sans route sensible ; NA ne vaut pas un audit réel.",
+        "en": "Complete dated fictional inventory with no sensitive route; NA is not a live audit."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC complete positive inventory review for this declared fixture scope."
+      },
+      "expected_status": "NA",
+      "expected_gate": "INCOMPLETE",
+      "atomic_results": []
+    },
+    {
+      "id": "TS06-atomic-inventory-exemption",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Exemption atomique sur un sous-périmètre de matrice, liée à un inventaire synthétique positif ; ce cas de rapport reste NT car il ne couvre pas tout le contrôle.",
+        "en": "Atomic exemption for a matrix sub-scope bound to a positive synthetic inventory; this report case remains NT because it does not cover the whole control."
+      },
+      "evidence": {
+        "intent": "SYNTHETIC complete, dated route inventory review linked to this target only."
+      },
+      "expected_status": "NT",
+      "expected_gate": "NO_GO",
+      "atomic_results": [
+        {
+          "rule_id": "TS06-A01",
+          "outcome": "not-applicable",
+          "evidence_ids": [
+            "intent"
+          ],
+          "reason": {
+            "fr": "Revue positive bornée à la cible, sans preuve d’exhaustivité globale.",
+            "en": "Positive review limited to this target, without proof of whole-control completeness."
+          }
+        }
+      ]
+    },
+    {
+      "id": "TS03-synthetic-matrix-complete",
+      "control_id": "TS03",
+      "description": {
+        "fr": "Réponses complètes et marqueurs conformes sur la matrice synthétique .invalid.",
+        "en": "Complete responses and markers match the synthetic .invalid matrix."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC: prior three-state route plan and bound fingerprint; no live scope.",
+        "http": "SYNTHETIC: complete GET response matrix for .invalid routes; no DNS or socket.",
+        "content": "SYNTHETIC: literal UTF-8 markers only; no semantic review.",
+        "intent": "SYNTHETIC: existing, removed and nonexistent route states are declared before capture."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS03-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "La matrice HTTP fictive complète respecte tous les statuts et marqueurs déclarés.",
+            "en": "The complete fictional HTTP matrix matches every declared status and marker."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS03-synthetic-removed-route-200",
+      "control_id": "TS03",
+      "description": {
+        "fr": "Une route supprimée reçoit un 200 complet en contradiction avec le plan synthétique.",
+        "en": "A removed route receives a complete 200 contrary to the synthetic plan."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC: prior three-state route plan and bound fingerprint; no live scope.",
+        "http": "SYNTHETIC: removed .invalid route returns a complete HTTP 200; no DNS or socket.",
+        "content": "SYNTHETIC: supplied literal UTF-8 marker expectations.",
+        "intent": "SYNTHETIC: the route is authored as removed; this classification is not authenticated."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS03-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "La réponse 200 complète contredit le statut déclaré pour une route supprimée.",
+            "en": "The complete 200 response contradicts the declared status for a removed route."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS03-synthetic-plan-after-observation",
+      "control_id": "TS03",
+      "description": {
+        "fr": "Le plan synthétique postérieur à l’observation laisse le cas indéterminé.",
+        "en": "The synthetic plan postdates the observation, leaving the case inconclusive."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC: supplied plan fingerprint does not establish temporal priority.",
+        "http": "SYNTHETIC: supplied .invalid response matrix; no DNS or socket.",
+        "content": "SYNTHETIC: literal UTF-8 expectations only.",
+        "intent": "SYNTHETIC: observation at 2026-10-16T14:00Z; plan declared at 15:00Z."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS03-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Le plan fourni après l’observation ne peut pas la qualifier rétroactivement.",
+            "en": "A plan supplied after observation cannot qualify it retroactively."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS13-qualified",
+      "control_id": "TS13",
+      "description": {
+        "fr": "Population et pages fictives qualifiées, revues fournies.",
+        "en": "Qualified fictional population and pages, supplied reviews."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS13-qualified; no actual capture, reviewer or page change.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference for TS13-qualified; no actual capture, reviewer or page change.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference for TS13-qualified; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS13-qualified; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS13-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Population et pages fictives qualifiées, revues fournies.",
+            "en": "Qualified fictional population and pages, supplied reviews."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS13-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Population et pages fictives qualifiées, revues fournies.",
+            "en": "Qualified fictional population and pages, supplied reviews."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS13-relative-location",
+      "control_id": "TS13",
+      "description": {
+        "fr": "Un loc natif relatif contredit A01 ; qualification des pages incomplète.",
+        "en": "A native relative loc contradicts A01; page qualification is incomplete."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS13-relative-location; no actual capture, reviewer or page change.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference for TS13-relative-location; no actual capture, reviewer or page change.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference for TS13-relative-location; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS13-relative-location; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS13-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Un loc natif relatif contredit A01 ; qualification des pages incomplète.",
+            "en": "A native relative loc contradicts A01; page qualification is incomplete."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS13-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Un loc natif relatif contredit A01 ; qualification des pages incomplète.",
+            "en": "A native relative loc contradicts A01; page qualification is incomplete."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS13-page-contradiction",
+      "control_id": "TS13",
+      "description": {
+        "fr": "Population native qualifiée mais page noindex ou canonical divergente.",
+        "en": "Qualified native population but noindex page or different canonical."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS13-page-contradiction; no actual capture, reviewer or page change.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference for TS13-page-contradiction; no actual capture, reviewer or page change.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference for TS13-page-contradiction; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS13-page-contradiction; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS13-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Population native qualifiée mais page noindex ou canonical divergente.",
+            "en": "Qualified native population but noindex page or different canonical."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS13-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Population native qualifiée mais page noindex ou canonical divergente.",
+            "en": "Qualified native population but noindex page or different canonical."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS13-missing-files",
+      "control_id": "TS13",
+      "description": {
+        "fr": "Fichier ou enfant manquant ; aucune conformité déduite.",
+        "en": "Missing file or child; no inferred conformity."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS13-missing-files; no actual capture, reviewer or page change.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference for TS13-missing-files; no actual capture, reviewer or page change.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference for TS13-missing-files; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS13-missing-files; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS13-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Fichier ou enfant manquant ; aucune conformité déduite.",
+            "en": "Missing file or child; no inferred conformity."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS13-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Fichier ou enfant manquant ; aucune conformité déduite.",
+            "en": "Missing file or child; no inferred conformity."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "http",
+            "html",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS14-traceable-significance",
+      "control_id": "TS14",
+      "description": {
+        "fr": "Date concordante et revue significative fournies dans le cas fictif.",
+        "en": "Matching date and supplied significant-change review in the fictional case."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS14-traceable-significance; no actual capture, reviewer or page change.",
+        "change-history": "SYNTHETIC / SYNTHÉTIQUE — authored change-history reference for TS14-traceable-significance; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS14-traceable-significance; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS14-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Date concordante et revue significative fournies dans le cas fictif.",
+            "en": "Matching date and supplied significant-change review in the fictional case."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "change-history",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS14-file-generation-only",
+      "control_id": "TS14",
+      "description": {
+        "fr": "La génération fictive du fichier ne suffit pas comme changement significatif.",
+        "en": "Fictional file generation is insufficient as a significant page change."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS14-file-generation-only; no actual capture, reviewer or page change.",
+        "change-history": "SYNTHETIC / SYNTHÉTIQUE — authored change-history reference for TS14-file-generation-only; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS14-file-generation-only; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS14-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "La génération fictive du fichier ne suffit pas comme changement significatif.",
+            "en": "Fictional file generation is insufficient as a significant page change."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "change-history",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS14-history-missing",
+      "control_id": "TS14",
+      "description": {
+        "fr": "Historique ou revue manquant : date non établie.",
+        "en": "Missing history or review: date not established."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS14-history-missing; no actual capture, reviewer or page change.",
+        "change-history": "SYNTHETIC / SYNTHÉTIQUE — authored change-history reference for TS14-history-missing; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS14-history-missing; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS14-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Historique ou revue manquant : date non établie.",
+            "en": "Missing history or review: date not established."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "change-history",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS14-native-lastmod-absent",
+      "control_id": "TS14",
+      "description": {
+        "fr": "Absence native complète ; exemption atomique, sans C ni NA automatique du contrôle.",
+        "en": "Complete native absence; atomic exemption, without C or automatic whole-control NA."
+      },
+      "evidence": {
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference for TS14-native-lastmod-absent; no actual capture, reviewer or page change.",
+        "change-history": "SYNTHETIC / SYNTHÉTIQUE — authored change-history reference for TS14-native-lastmod-absent; no actual capture, reviewer or page change.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference for TS14-native-lastmod-absent; no actual capture, reviewer or page change."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS14-A01",
+          "outcome": "not-applicable",
+          "reason": {
+            "fr": "Absence native complète ; exemption atomique, sans C ni NA automatique du contrôle.",
+            "en": "Complete native absence; atomic exemption, without C or automatic whole-control NA."
+          },
+          "evidence_ids": [
+            "sitemap",
+            "change-history",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS09-url-policy-pass",
+      "control_id": "TS09",
+      "description": {
+        "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+        "en": "Authored synthetic case: pass. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS09 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS09 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS09-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS09-url-policy-fail",
+      "control_id": "TS09",
+      "description": {
+        "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+        "en": "Authored synthetic case: fail. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS09 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS09 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS09-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS09-url-policy-inconclusive",
+      "control_id": "TS09",
+      "description": {
+        "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+        "en": "Authored synthetic case: inconclusive. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS09 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS09 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS09-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS11-url-policy-pass",
+      "control_id": "TS11",
+      "description": {
+        "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+        "en": "Authored synthetic case: pass. No real observation."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content for bounded TS11 method case; no actual capture or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html for bounded TS11 method case; no actual capture or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http for bounded TS11 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS11 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS11-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "http",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS11-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "http",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS11-url-policy-fail",
+      "control_id": "TS11",
+      "description": {
+        "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+        "en": "Authored synthetic case: fail. No real observation."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content for bounded TS11 method case; no actual capture or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html for bounded TS11 method case; no actual capture or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http for bounded TS11 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS11 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS11-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "http",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS11-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "http",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS11-url-policy-inconclusive",
+      "control_id": "TS11",
+      "description": {
+        "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+        "en": "Authored synthetic case: inconclusive. No real observation."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content for bounded TS11 method case; no actual capture or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html for bounded TS11 method case; no actual capture or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http for bounded TS11 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS11 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS11-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "http",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS11-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "http",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS19-url-policy-pass",
+      "control_id": "TS19",
+      "description": {
+        "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+        "en": "Authored synthetic case: pass. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS19 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS19 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS19 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS19-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS19-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS19-url-policy-fail",
+      "control_id": "TS19",
+      "description": {
+        "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+        "en": "Authored synthetic case: fail. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS19 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS19 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS19 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS19-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS19-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS19-url-policy-inconclusive",
+      "control_id": "TS19",
+      "description": {
+        "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+        "en": "Authored synthetic case: inconclusive. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS19 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS19 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS19 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS19-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS19-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS20-url-policy-pass",
+      "control_id": "TS20",
+      "description": {
+        "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+        "en": "Authored synthetic case: pass. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS20 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS20 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS20 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS20-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS20-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS20-url-policy-fail",
+      "control_id": "TS20",
+      "description": {
+        "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+        "en": "Authored synthetic case: fail. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS20 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS20 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS20 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS20-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS20-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS20-url-policy-inconclusive",
+      "control_id": "TS20",
+      "description": {
+        "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+        "en": "Authored synthetic case: inconclusive. No real observation."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE — authored configuration for bounded TS20 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS20 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS20 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS20-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS20-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "configuration",
+            "crawl",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS38-url-policy-pass",
+      "control_id": "TS38",
+      "description": {
+        "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+        "en": "Authored synthetic case: pass. No real observation."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content for bounded TS38 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS38 method case; no actual capture or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html for bounded TS38 method case; no actual capture or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http for bounded TS38 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS38 method case; no actual capture or reviewer.",
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap for bounded TS38 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS38-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "crawl",
+            "html",
+            "http",
+            "intent",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS38-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas synthétique rédigé : pass. Aucune observation réelle.",
+            "en": "Authored synthetic case: pass. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "crawl",
+            "html",
+            "http",
+            "intent",
+            "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS38-url-policy-fail",
+      "control_id": "TS38",
+      "description": {
+        "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+        "en": "Authored synthetic case: fail. No real observation."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content for bounded TS38 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS38 method case; no actual capture or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html for bounded TS38 method case; no actual capture or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http for bounded TS38 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS38 method case; no actual capture or reviewer.",
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap for bounded TS38 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS38-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "crawl",
+            "html",
+            "http",
+            "intent",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS38-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas synthétique rédigé : fail. Aucune observation réelle.",
+            "en": "Authored synthetic case: fail. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "crawl",
+            "html",
+            "http",
+            "intent",
+            "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS38-url-policy-inconclusive",
+      "control_id": "TS38",
+      "description": {
+        "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+        "en": "Authored synthetic case: inconclusive. No real observation."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content for bounded TS38 method case; no actual capture or reviewer.",
+        "crawl": "SYNTHETIC / SYNTHÉTIQUE — authored crawl for bounded TS38 method case; no actual capture or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html for bounded TS38 method case; no actual capture or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http for bounded TS38 method case; no actual capture or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent for bounded TS38 method case; no actual capture or reviewer.",
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap for bounded TS38 method case; no actual capture or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS38-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "crawl",
+            "html",
+            "http",
+            "intent",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS38-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas synthétique rédigé : inconclusive. Aucune observation réelle.",
+            "en": "Authored synthetic case: inconclusive. No real observation."
+          },
+          "evidence_ids": [
+            "content",
+            "crawl",
+            "html",
+            "http",
+            "intent",
+            "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS21-indexing-locale-pass",
+      "control_id": "TS21",
+      "description": {
+        "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+        "en": "Authored fictional case: pass. No real result."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer.",
+        "logs": "SYNTHETIC / SYNTHÉTIQUE — authored logs reference only, no Google account, browser or reviewer.",
+        "search-console": "SYNTHETIC / SYNTHÉTIQUE — authored search-console reference only, no Google account, browser or reviewer.",
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS21-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+            "en": "Authored fictional case: pass. No real result."
+          },
+          "evidence_ids": [
+            "content",
+            "intent",
+            "logs",
+            "search-console",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS21-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+            "en": "Authored fictional case: pass. No real result."
+          },
+          "evidence_ids": [
+            "content",
+            "intent",
+            "logs",
+            "search-console",
+            "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS21-indexing-locale-fail",
+      "control_id": "TS21",
+      "description": {
+        "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+        "en": "Authored fictional case: fail. No real result."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer.",
+        "logs": "SYNTHETIC / SYNTHÉTIQUE — authored logs reference only, no Google account, browser or reviewer.",
+        "search-console": "SYNTHETIC / SYNTHÉTIQUE — authored search-console reference only, no Google account, browser or reviewer.",
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS21-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+            "en": "Authored fictional case: fail. No real result."
+          },
+          "evidence_ids": [
+            "content",
+            "intent",
+            "logs",
+            "search-console",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS21-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+            "en": "Authored fictional case: fail. No real result."
+          },
+          "evidence_ids": [
+            "content",
+            "intent",
+            "logs",
+            "search-console",
+            "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS21-indexing-locale-inconclusive",
+      "control_id": "TS21",
+      "description": {
+        "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+        "en": "Authored fictional case: inconclusive. No real result."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE — authored content reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer.",
+        "logs": "SYNTHETIC / SYNTHÉTIQUE — authored logs reference only, no Google account, browser or reviewer.",
+        "search-console": "SYNTHETIC / SYNTHÉTIQUE — authored search-console reference only, no Google account, browser or reviewer.",
+        "sitemap": "SYNTHETIC / SYNTHÉTIQUE — authored sitemap reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS21-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+            "en": "Authored fictional case: inconclusive. No real result."
+          },
+          "evidence_ids": [
+            "content",
+            "intent",
+            "logs",
+            "search-console",
+            "sitemap"
+          ]
+        },
+        {
+          "rule_id": "TS21-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+            "en": "Authored fictional case: inconclusive. No real result."
+          },
+          "evidence_ids": [
+            "content",
+            "intent",
+            "logs",
+            "search-console",
+            "sitemap"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS22-indexing-locale-pass",
+      "control_id": "TS22",
+      "description": {
+        "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+        "en": "Authored fictional case: pass. No real result."
+      },
+      "evidence": {
+        "hreflang": "SYNTHETIC / SYNTHÉTIQUE — authored hreflang reference only, no Google account, browser or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference only, no Google account, browser or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer.",
+        "robots": "SYNTHETIC / SYNTHÉTIQUE — authored robots reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS22-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+            "en": "Authored fictional case: pass. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "html",
+            "http",
+            "intent",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS22-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+            "en": "Authored fictional case: pass. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "html",
+            "http",
+            "intent",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS22-indexing-locale-fail",
+      "control_id": "TS22",
+      "description": {
+        "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+        "en": "Authored fictional case: fail. No real result."
+      },
+      "evidence": {
+        "hreflang": "SYNTHETIC / SYNTHÉTIQUE — authored hreflang reference only, no Google account, browser or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference only, no Google account, browser or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer.",
+        "robots": "SYNTHETIC / SYNTHÉTIQUE — authored robots reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS22-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+            "en": "Authored fictional case: fail. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "html",
+            "http",
+            "intent",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS22-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+            "en": "Authored fictional case: fail. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "html",
+            "http",
+            "intent",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS22-indexing-locale-inconclusive",
+      "control_id": "TS22",
+      "description": {
+        "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+        "en": "Authored fictional case: inconclusive. No real result."
+      },
+      "evidence": {
+        "hreflang": "SYNTHETIC / SYNTHÉTIQUE — authored hreflang reference only, no Google account, browser or reviewer.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE — authored html reference only, no Google account, browser or reviewer.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE — authored http reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer.",
+        "robots": "SYNTHETIC / SYNTHÉTIQUE — authored robots reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS22-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+            "en": "Authored fictional case: inconclusive. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "html",
+            "http",
+            "intent",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS22-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+            "en": "Authored fictional case: inconclusive. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "html",
+            "http",
+            "intent",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS40-indexing-locale-pass",
+      "control_id": "TS40",
+      "description": {
+        "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+        "en": "Authored fictional case: pass. No real result."
+      },
+      "evidence": {
+        "hreflang": "SYNTHETIC / SYNTHÉTIQUE — authored hreflang reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS40-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+            "en": "Authored fictional case: pass. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS40-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass. Aucun résultat réel.",
+            "en": "Authored fictional case: pass. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS40-indexing-locale-fail",
+      "control_id": "TS40",
+      "description": {
+        "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+        "en": "Authored fictional case: fail. No real result."
+      },
+      "evidence": {
+        "hreflang": "SYNTHETIC / SYNTHÉTIQUE — authored hreflang reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS40-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+            "en": "Authored fictional case: fail. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS40-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail. Aucun résultat réel.",
+            "en": "Authored fictional case: fail. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS40-indexing-locale-inconclusive",
+      "control_id": "TS40",
+      "description": {
+        "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+        "en": "Authored fictional case: inconclusive. No real result."
+      },
+      "evidence": {
+        "hreflang": "SYNTHETIC / SYNTHÉTIQUE — authored hreflang reference only, no Google account, browser or reviewer.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE — authored intent reference only, no Google account, browser or reviewer."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS40-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+            "en": "Authored fictional case: inconclusive. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS40-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive. Aucun résultat réel.",
+            "en": "Authored fictional case: inconclusive. No real result."
+          },
+          "evidence_ids": [
+            "hreflang",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS26-render-transport-pass",
+      "control_id": "TS26",
+      "description": {
+        "fr": "Cas fictif rédigé : pass.",
+        "en": "Authored fictional case: pass."
+      },
+      "evidence": {
+        "html": "SYNTHETIC / SYNTHÉTIQUE authored html only; no actual browser, public trust or site audit.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE authored http only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit.",
+        "robots": "SYNTHETIC / SYNTHÉTIQUE authored robots only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS26-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "html",
+            "http",
+            "intent",
+            "render",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS26-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "html",
+            "http",
+            "intent",
+            "render",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS26-render-transport-fail",
+      "control_id": "TS26",
+      "description": {
+        "fr": "Cas fictif rédigé : fail.",
+        "en": "Authored fictional case: fail."
+      },
+      "evidence": {
+        "html": "SYNTHETIC / SYNTHÉTIQUE authored html only; no actual browser, public trust or site audit.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE authored http only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit.",
+        "robots": "SYNTHETIC / SYNTHÉTIQUE authored robots only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS26-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "html",
+            "http",
+            "intent",
+            "render",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS26-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "html",
+            "http",
+            "intent",
+            "render",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS26-render-transport-inconclusive",
+      "control_id": "TS26",
+      "description": {
+        "fr": "Cas fictif rédigé : inconclusive.",
+        "en": "Authored fictional case: inconclusive."
+      },
+      "evidence": {
+        "html": "SYNTHETIC / SYNTHÉTIQUE authored html only; no actual browser, public trust or site audit.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE authored http only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit.",
+        "robots": "SYNTHETIC / SYNTHÉTIQUE authored robots only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS26-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "html",
+            "http",
+            "intent",
+            "render",
+            "robots"
+          ]
+        },
+        {
+          "rule_id": "TS26-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "html",
+            "http",
+            "intent",
+            "render",
+            "robots"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS27-render-transport-pass",
+      "control_id": "TS27",
+      "description": {
+        "fr": "Cas fictif rédigé : pass.",
+        "en": "Authored fictional case: pass."
+      },
+      "evidence": {
+        "http": "SYNTHETIC / SYNTHÉTIQUE authored http only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS27-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "http",
+            "intent",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS27-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "http",
+            "intent",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS27-render-transport-fail",
+      "control_id": "TS27",
+      "description": {
+        "fr": "Cas fictif rédigé : fail.",
+        "en": "Authored fictional case: fail."
+      },
+      "evidence": {
+        "http": "SYNTHETIC / SYNTHÉTIQUE authored http only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS27-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "http",
+            "intent",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS27-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "http",
+            "intent",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS27-render-transport-inconclusive",
+      "control_id": "TS27",
+      "description": {
+        "fr": "Cas fictif rédigé : inconclusive.",
+        "en": "Authored fictional case: inconclusive."
+      },
+      "evidence": {
+        "http": "SYNTHETIC / SYNTHÉTIQUE authored http only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS27-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "http",
+            "intent",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS27-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "http",
+            "intent",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS28-render-transport-pass",
+      "control_id": "TS28",
+      "description": {
+        "fr": "Cas fictif rédigé : pass.",
+        "en": "Authored fictional case: pass."
+      },
+      "evidence": {
+        "html": "SYNTHETIC / SYNTHÉTIQUE authored html only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS28-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "html",
+            "intent",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS28-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "html",
+            "intent",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS28-render-transport-fail",
+      "control_id": "TS28",
+      "description": {
+        "fr": "Cas fictif rédigé : fail.",
+        "en": "Authored fictional case: fail."
+      },
+      "evidence": {
+        "html": "SYNTHETIC / SYNTHÉTIQUE authored html only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS28-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "html",
+            "intent",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS28-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "html",
+            "intent",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS28-render-transport-inconclusive",
+      "control_id": "TS28",
+      "description": {
+        "fr": "Cas fictif rédigé : inconclusive.",
+        "en": "Authored fictional case: inconclusive."
+      },
+      "evidence": {
+        "html": "SYNTHETIC / SYNTHÉTIQUE authored html only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS28-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "html",
+            "intent",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS28-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "html",
+            "intent",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS29-render-transport-pass",
+      "control_id": "TS29",
+      "description": {
+        "fr": "Cas fictif rédigé : pass.",
+        "en": "Authored fictional case: pass."
+      },
+      "evidence": {
+        "html": "SYNTHETIC / SYNTHÉTIQUE authored html only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS29-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "html",
+            "intent",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS29-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "html",
+            "intent",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS29-render-transport-fail",
+      "control_id": "TS29",
+      "description": {
+        "fr": "Cas fictif rédigé : fail.",
+        "en": "Authored fictional case: fail."
+      },
+      "evidence": {
+        "html": "SYNTHETIC / SYNTHÉTIQUE authored html only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS29-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "html",
+            "intent",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS29-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "html",
+            "intent",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS29-render-transport-inconclusive",
+      "control_id": "TS29",
+      "description": {
+        "fr": "Cas fictif rédigé : inconclusive.",
+        "en": "Authored fictional case: inconclusive."
+      },
+      "evidence": {
+        "html": "SYNTHETIC / SYNTHÉTIQUE authored html only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS29-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "html",
+            "intent",
+            "render"
+          ]
+        },
+        {
+          "rule_id": "TS29-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "html",
+            "intent",
+            "render"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS30-render-transport-pass",
+      "control_id": "TS30",
+      "description": {
+        "fr": "Cas fictif rédigé : pass.",
+        "en": "Authored fictional case: pass."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE authored content only; no actual browser, public trust or site audit.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE authored html only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS30-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS30-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS30-render-transport-fail",
+      "control_id": "TS30",
+      "description": {
+        "fr": "Cas fictif rédigé : fail.",
+        "en": "Authored fictional case: fail."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE authored content only; no actual browser, public trust or site audit.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE authored html only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS30-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS30-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS30-render-transport-inconclusive",
+      "control_id": "TS30",
+      "description": {
+        "fr": "Cas fictif rédigé : inconclusive.",
+        "en": "Authored fictional case: inconclusive."
+      },
+      "evidence": {
+        "content": "SYNTHETIC / SYNTHÉTIQUE authored content only; no actual browser, public trust or site audit.",
+        "html": "SYNTHETIC / SYNTHÉTIQUE authored html only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS30-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS30-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "content",
+            "html",
+            "intent"
+          ]
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS37-render-transport-pass",
+      "control_id": "TS37",
+      "description": {
+        "fr": "Cas fictif rédigé : pass.",
+        "en": "Authored fictional case: pass."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE authored configuration only; no actual browser, public trust or site audit.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE authored http only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit.",
+        "tls": "SYNTHETIC / SYNTHÉTIQUE authored tls only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS37-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent",
+            "render",
+            "tls"
+          ]
+        },
+        {
+          "rule_id": "TS37-A02",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent",
+            "render",
+            "tls"
+          ]
+        },
+        {
+          "rule_id": "TS37-A03",
+          "outcome": "pass",
+          "reason": {
+            "fr": "Cas fictif rédigé : pass.",
+            "en": "Authored fictional case: pass."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent",
+            "render",
+            "tls"
+          ]
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS37-render-transport-fail",
+      "control_id": "TS37",
+      "description": {
+        "fr": "Cas fictif rédigé : fail.",
+        "en": "Authored fictional case: fail."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE authored configuration only; no actual browser, public trust or site audit.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE authored http only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit.",
+        "tls": "SYNTHETIC / SYNTHÉTIQUE authored tls only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS37-A01",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent",
+            "render",
+            "tls"
+          ]
+        },
+        {
+          "rule_id": "TS37-A02",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent",
+            "render",
+            "tls"
+          ]
+        },
+        {
+          "rule_id": "TS37-A03",
+          "outcome": "fail",
+          "reason": {
+            "fr": "Cas fictif rédigé : fail.",
+            "en": "Authored fictional case: fail."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent",
+            "render",
+            "tls"
+          ]
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS37-render-transport-inconclusive",
+      "control_id": "TS37",
+      "description": {
+        "fr": "Cas fictif rédigé : inconclusive.",
+        "en": "Authored fictional case: inconclusive."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC / SYNTHÉTIQUE authored configuration only; no actual browser, public trust or site audit.",
+        "http": "SYNTHETIC / SYNTHÉTIQUE authored http only; no actual browser, public trust or site audit.",
+        "intent": "SYNTHETIC / SYNTHÉTIQUE authored intent only; no actual browser, public trust or site audit.",
+        "render": "SYNTHETIC / SYNTHÉTIQUE authored render only; no actual browser, public trust or site audit.",
+        "tls": "SYNTHETIC / SYNTHÉTIQUE authored tls only; no actual browser, public trust or site audit."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS37-A01",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent",
+            "render",
+            "tls"
+          ]
+        },
+        {
+          "rule_id": "TS37-A02",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent",
+            "render",
+            "tls"
+          ]
+        },
+        {
+          "rule_id": "TS37-A03",
+          "outcome": "inconclusive",
+          "reason": {
+            "fr": "Cas fictif rédigé : inconclusive.",
+            "en": "Authored fictional case: inconclusive."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent",
+            "render",
+            "tls"
           ]
         }
       ],

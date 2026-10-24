@@ -1,0 +1,8 @@
+Schema.org 30.1 — complete vocabulary, including historical terms.
+Copyright Schema.org sponsors Google, Yahoo, Microsoft and Yandex.
+Vocabulary data: Creative Commons Attribution-ShareAlike 3.0 Unported.
+https://creativecommons.org/licenses/by-sa/3.0/
+https://schema.org/docs/terms.html
+Unmodified upstream bytes; the surrounding TSEP code remains Apache-2.0.
+Source URL, capture date and SHA-256: research/structured-validation-2026-10-14/provenance.json.
+No endorsement by the sponsors is implied.

@@ -1,3 +1,5 @@
+Adapter39: TS18 original graph/inventory intake, no repaired hashes or generated reviews. Nested and prior supplied originals coexist. [Contract](graph-reconciliation-evidence.md).
+
 Current / Actuel : draft.23, interpreter 23, adapter 24, HTML 7, replay 3.
 TS43: [test client and log evidence / client de test et journaux](agent-access-evidence.md), supplied reviews and unverified operator identity.
 

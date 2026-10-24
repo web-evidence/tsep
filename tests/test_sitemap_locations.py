@@ -55,7 +55,7 @@ class SitemapLocations(unittest.TestCase):
     def test_427_historical_inputs_and_full_results_unchanged(self):
         prior = [{'case':c,'rows':evaluate(c['input'])}
                  for c in tsep.read_json(ROOT/'conformance/cases.json')['cases']
-                 if not c['id'].startswith(('sitemap-locations-', 'source-directives-', 'source-canonical-', 'source-link-policy-', 'http-canonical-', 'preview-', 'performance-', 'agents-', 'agent-access-', 'critical-content-', 'critical-boundary-', 'release-invariants-', 'delivery-evidence-', 'delivery-boundary-', 'identity-markers-'))]
+                 if not c['id'].startswith(('sitemap-locations-', 'source-directives-', 'source-canonical-', 'source-link-policy-', 'http-canonical-', 'preview-', 'performance-', 'agents-', 'agent-access-', 'critical-content-', 'critical-boundary-', 'release-invariants-', 'delivery-evidence-', 'delivery-boundary-', 'identity-markers-', 'inspection-v1-', 'canonical-comparison-v1-', 'release-monitoring-v1-', 'release-monitoring-boundary-', 'structured-content-v1-', 'structured-content-boundary-'))]
         self.assertEqual(len(prior),427)
         raw = json.dumps(prior,ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()
         self.assertEqual(hashlib.sha256(raw).hexdigest(),

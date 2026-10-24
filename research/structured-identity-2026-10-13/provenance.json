@@ -1,0 +1,23 @@
+{
+  "observations": [
+    {
+      "url": "https://schema.org/docs/datamodel.html",
+      "retrieved_url": "https://schema.org/docs/datamodel.html",
+      "captured_at": "2026-10-13T10:01:47.647773+00:00",
+      "scope": "Identifier mechanisms and flexible entity/property data model",
+      "path": "schema-datamodel.html",
+      "sha256": "aa397d32d2b50ecfe94b6d2c03d269e2a72426bffed38c4b6c66e50a95a73406",
+      "bytes": 21643
+    },
+    {
+      "url": "https://www.w3.org/TR/json-ld11/",
+      "retrieved_url": "https://www.w3.org/TR/json-ld11/",
+      "captured_at": "2026-10-13T10:01:47.826329+00:00",
+      "scope": "Node IDs, blank-node document scope and graph semantics",
+      "path": "w3c-jsonld-syntax.html",
+      "sha256": "9e2c9972d0f60bc744e975731643a9a63d410afc6b682eb8898ad2720e452866",
+      "bytes": 1021461
+    }
+  ],
+  "scope": "TS32 preparation; public references, not a site assessment"
+}

@@ -1,4 +1,59 @@
-# Contrat de rapport — TSEP 0.1.0-draft.27
+Édition draft.7 / Draft.7: [texte HTML principal v3, limites et migration / main-document text v3, limits and migration](migration-0.3.0-draft.7.md).
+
+Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](render-transport-evidence.md), [migration](migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
+
+Amendement normatif candidat **0.3.0-draft.6** : lecture des blancs structurels TS01 et trajectoire TS02 sur en-têtes complets avec arrêt de collecte attribué. [Règles et migration](migration-0.3.0-draft.6.md). Aucun ancien dossier ne migre implicitement.
+
+Amendement normatif **0.3.0-draft.5** : les préalables H1 de TS30 et la résolution/séparation des observations de TS37-A03 sont précisés dans [le contrat v2](render-transport-prerequisites-v2.md). Voir [migration](migration-0.3.0-draft.5.md). Les autres règles restent identiques.
+
+0.3.0-draft.1 : ajoute uniquement TS13-A01/A02 et TS14-A01 ; 30 contrôles à règles /70 règles. Les règles RC1 et leurs versions sont conservées. [Contrat bilingue](sitemap-quality-evidence.md), [migration depuis RC1](migration-0.3.0-draft.1.md). Preuves insuffisantes : NT ; exemples synthétiques, aucun audit réel. Le périmètre RC1 ci-dessous est historique.
+
+Draft.44 / reader3 : les champs reviewer, assistance et reason des revues TS25 fournies sont limités à8192octets UTF8 bruts chacun, avant strip ou normalisation ; chaque objet revue, champs supplémentaires inclus, à32768octets de JSON compact UTF8. Toute revue fournie est vérifiée à l’admission, même inutilisée. Un dépassement donne un refus technique avant publication, jamais C ou NT public ; les originaux sont conservés sans réécriture. Le diagnostic natif de chaque règle est borné à4MiB de JSON compact UTF8 trié, y compris A01 et les sorties d’erreur. Au dépassement, un diagnostic compact explicitement incomplet conserve un fail indépendant établi, sinon inconclusive ; aucun pass. Le transport refuse ce marqueur et borne aussi à4MiB par cible la somme des artefacts TS25 réellement sérialisés (JSON UTF8 indent2, saut de ligne final), pour les règles demandées. Les maxima individuels ne garantissent pas que toutes leurs combinaisons respectent les bornes cumulées. Aucun changement des autres contrôles ni du validateur partagé.
+[Migration](migration-draft.44.md).
+
+Draft.43 — TS25 non-object render boundary / frontière render non objet : [presence](critical-presence-evidence.md), [migration](migration-draft.43.md). Independent source failure retained / absence source indépendante conservée.
+
+Draft.42 — TS25-A01/A02 : [présence critique source/rendu / source-render critical presence](critical-presence-evidence.md), [migration](migration-draft.42.md).
+
+Draft.41 — TS24 : contradiction de destination unique même parmi plusieurs cibles / unique-destination contradiction including multiple targets. [Migration](migration-draft.41.md).
+
+Draft.40 — TS24-A01 : [rôle x-default fourni / supplied x-default role](xdefault-role-evidence.md), [migration](migration-draft.40.md).
+
+TS23 draft.39 : frontières typées et refus / typed boundaries and refusal are specified in [the TS23 profile](hreflang-reciprocity-evidence.md#typed-boundaries--frontières-typées), without changing historical controls.
+
+Draft.39 — TS23-A01 : [hreflang fourni / supplied hreflang](hreflang-reciprocity-evidence.md), [migration](migration-draft.39.md).
+
+Draft.38 — TS18-A01/A02/A03 : [graphe fourni / supplied graph](graph-reconciliation-evidence.md), [migration](migration-draft.38.md). Limites bornées, revues fournies / Bounded limits, supplied reviews.
+
+Draft.37 — TS16-A01 : [liens entrants fournis / supplied incoming links](incoming-links-evidence.md), [migration](migration-draft.37.md). Population préalable uniquement / Prior population only.
+
+Draft.36 — TS17-A01/A02 : [liens essentiels fournis / supplied essential links](essential-links-evidence.md), [migration](migration-draft.36.md). Source et états déclarés séparés / Separate source and provider-declared states.
+Import TS17 : types HTTP invalides refusés techniquement ; preuves absentes ou objets partiels conservés avec NT et motif. Voir le contrat lié.
+
+TS15-A03 admet uniquement pass/inconclusive, déclaration fermée `allowed_outcomes` dans la source ; fail/NA rejetés. Voir le contrat des fichiers sitemap et la migration draft.35.
+
+Draft.35 — TS15-A01/A02/A03 : [fichiers fournis / supplied files](sitemap-files-evidence.md), [migration](migration-draft.35.md). Population déclarée, aucun serveur observé / Declared population, no server observation.
+
+Draft.34 — TS33-A01/A02/A03 : [contrat / contract](structured-validation-evidence.md), [migration](migration-draft.34.md). Captures liées, messages natifs séparés / Bound captures, separate native messages. Erreur bloquante conservée / Blocking errors retained.
+
+Draft.33 ajoute TS32-A01/A02/A03 : registre préalable, identifiants/références natifs et revues liées. [Contrat](structured-identity-evidence.md), [migration](migration-draft.33.md). Cohérence du corpus fourni, sans stabilité temporelle authentifiée.
+Draft.32 ajoute TS31-A01/A02/A03 : périmètre préalable, lecture JSON-LD native et revues de contenu liées par entité. [Contrat bilingue](structured-content-evidence.md), [migration](migration-draft.32.md). Preuves fournies, aucune visibilité ou vérité authentifiée ni résultat enrichi garanti.
+
+Draft.31 ajoute TS36-A01/A02/A03 : chronologie, échéances et décisions fournies. [Contrat bilingue](release-monitoring.md), [import](release-monitoring-intake.md), [migration](migration-draft.31.md). Baseline/J+1/J+7/J+30 stricts ; futur NT, aucune causalité ni visite Google authentifiée.
+
+Draft.30 ajoute TS12-A01/A02/A03 : plan, comparaisons attribuées et revue/décision fournie. [Contrat bilingue](canonical-comparison.md), [migration](migration-draft.30.md). Rendu prévu requis ; C documentaire, pas TS10 ni indexation.
+
+Draft.29 ajoute trois règles TS08 : périmètre/objectifs, inspections natives et revues/décisions liées. [Contrat bilingue](inspection-evidence.md), [migration](migration-draft.29.md). C qualifie le dossier sélectionné, jamais une indexation garantie.
+
+# Contrat de rapport — TSEP 0.3.0-draft.1
+
+## Périmètre RC1 / Release-candidate scope
+
+RC1 conserve TS01–TS44 et le périmètre de règles existant : 28 contrôles, 67 règles atomiques exécutables. TS03-A01 évalue uniquement la matrice HTTP synthétique .invalid et les marqueurs littéraux fournis ; il ne collecte aucun site et ne classe pas les soft 404 de Google. Voir le [contrat TS03](ts03-response-evidence.md), la [migration](migration-0.2.0-rc.1.md) et l’[état des 44 contrôles](control-implementation-status.md). Cette préversion ne vérifie aucun usage réel de site.
+
+### TS06-A01 — matrice d’accès synthétique bornée
+
+`TS06-A01` compare de manière semi-automatique des traces GET HTTP synthétiques fournies, liées à un plan préalable, pour des cellules route/rôle `.invalid` déclarées et des étiquettes froid/amorçage/rejeu. Le résultat ne couvre que ces fixtures rédigées. Il n’établit ni identité réelle, authentification, protection serveur, comportement de cache partagé, ni couverture du site entier. Une fuite fournie ou une représentation réussie non autorisée donne `fail` ; une preuve manquante, partielle ou ambiguë donne `inconclusive`. Voir le [profil de preuve TS06](ts06-access-evidence.md) et la [migration draft.46](migration-draft.46.md).
 
 ### Diffusion et variantes — draft.27
 
@@ -81,7 +136,7 @@ d’indexation documenté, pas une promesse d’indexation. TS34 établit une le
 correcte des mesures terrain ; C ne signifie pas que les performances mesurées
 sont bonnes. Conserver les mesures défavorables et leurs conséquences opérationnelles.
 
-## Règles atomiques TS01, TS02, TS04, TS07, TS10, TS34, TS35, TS39, TS41, TS42, TS43 et TS44
+## Règles atomiques des contrôles déclarés
 
 Le format de rapport est `2`. Un **contrôle** garde son identifiant TSxx et son
 résultat C/NC/NA/NT sur le périmètre. Un **test atomique** répond à un attendu
@@ -89,7 +144,7 @@ identifié par `TSxx-Ayy` dans le JSON canonique. Une **observation** est une
 capture ou un constat daté dans un contexte donné ; son existence ne suffit pas
 à réussir le test. Chaque règle déclare `automation` : `automatic`, `semiAuto` ou `manual`.
 
-Pour ces douze contrôles, `atomic_results` relie chaque couple `rule_id`/`target`
+Pour les contrôles qui déclarent des règles atomiques dans la source, `atomic_results` relie chaque couple `rule_id`/`target`
 à un `outcome` (`pass`, `fail`, `not-applicable`, `inconclusive`), un `reason` et
 des `evidence_ids`. Les preuves doivent aussi figurer dans le résultat du contrôle
 et couvrir la cible. Tous les types d’entrée de la règle sont exigés pour `pass`.
@@ -122,7 +177,7 @@ affecte les déclarations, même si le validateur ne peut pas déterminer ce bes
 La CLI vérifie les déclarations, références et couvertures, pas la justesse de la
 lecture HTTP/HTML, de l’intention ou des exemptions. Les cas de méthode historiques
 ont des verdicts rédigés. La [suite exécutable distincte](conformance.md) interprète
-les entrées brutes de trente-trois règles dans des limites documentées ; elle
+les entrées brutes de quatre-vingt-dix-huit règles dans des limites documentées ; elle
 n’implémente pas tous les contrôles. Aucun C ne
 s’étend aux contrôles non sélectionnés, à un site entier ou à l’indexation réelle.
 Voir [migration et cas](migration-draft.2.md).
@@ -392,3 +447,10 @@ TS10-A04 accepte le profil préalable html-tree-links-v1 sous intent.canonical.l
 ### Bases non analysables — draft.18
 
 TS10-A04 accepte désormais aussi le profil préalable html-tree-links-v2. Une première base dont le href échoue à l’analyse WHATWG rend les href dépendants indéterminés, tout en conservant les contradictions indépendantes. Profil v1, A01/A02 et rendu inchangés. Le [contrat normatif bilingue](source-link-policy-v2.md) et la [migration](migration-draft.18.md) précisent les preuves, hypothèses, zéro observé et limites.
+
+
+### TS05 — policy map only / carte de politique uniquement
+
+Draft.45 ajoute TS05-A01 : comparaison semi-automatisée d’intention préalable et de configuration fournies. Pass signifie uniquement cohérence interne du plan ; aucune indexation ni protection d’accès n’est établie. Voir [preuves et limites TS05](ts05-indexing-evidence.md), [capture source datée](source-captures/ts05-google-search-central-2026-10-16.md) et [migration](migration-draft.45.md).
+
+La nouvelle intention `html-tree-markers-v2` exclut les segments sous `noscript` des comparaisons, à la référence, au test et au recontrôle. `html-tree-markers-v1` garde sa sémantique de marqueurs ; les anciens dossiers restent liés à leur moteur exact. Aucun repère ne peut devenir conforme grâce à sa seule présence dans `noscript` sous le profil v2.

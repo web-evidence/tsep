@@ -1,0 +1,89 @@
+{
+  "kind": "prefrozen-sitemap-root-attribution-expectations",
+  "version": "1",
+  "created_at": "2026-10-14T11:51:47.706903+00:00",
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "rss-utf16le",
+      "raw_hex": "3c007200730073002000760065007200730069006f006e003d00220032002e00300022003e003c006300680061006e006e0065006c002f003e003c002f007200730073003e00",
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null
+      },
+      "bundle_status": "NT"
+    },
+    {
+      "id": "rss-utf16be",
+      "raw_hex": "003c007200730073002000760065007200730069006f006e003d00220032002e00300022003e003c006300680061006e006e0065006c002f003e003c002f007200730073003e",
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null
+      },
+      "bundle_status": "NT"
+    },
+    {
+      "id": "rss-utf16bom",
+      "raw_hex": "fffe3c007200730073002000760065007200730069006f006e003d00220032002e00300022003e003c006300680061006e006e0065006c002f003e003c002f007200730073003e00",
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null
+      },
+      "bundle_status": "NT"
+    },
+    {
+      "id": "png",
+      "raw_hex": "89504e470d0a1a0a0000000049484452",
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null
+      },
+      "bundle_status": "NT"
+    },
+    {
+      "id": "plain-text",
+      "raw_hex": "6e6f7420584d4c",
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null
+      },
+      "bundle_status": "NT"
+    },
+    {
+      "id": "unattributed-invalid-utf8",
+      "raw_hex": "fffefffe",
+      "expected": {
+        "format": "inconclusive",
+        "limits": "inconclusive",
+        "kind": null
+      },
+      "bundle_status": "NT"
+    },
+    {
+      "id": "known-sitemap-utf16be",
+      "raw_hex": "003c00750072006c00730065007400200078006d006c006e0073003d00220068007400740070003a002f002f007700770077002e0073006900740065006d006100700073002e006f00720067002f0073006300680065006d00610073002f0073006900740065006d00610070002f0030002e00390022003e003c00750072006c003e003c006c006f0063003e00680074007400700073003a002f002f006500780061006d0070006c0065002e0074006500730074002f0061003c002f006c006f0063003e003c002f00750072006c003e003c002f00750072006c007300650074003e",
+      "expected": {
+        "format": "fail",
+        "limits": "inconclusive",
+        "kind": null
+      },
+      "bundle_status": "NC"
+    },
+    {
+      "id": "known-sitemap-invalid-tail",
+      "raw_hex": "3c75726c73657420786d6c6e733d22687474703a2f2f7777772e736974656d6170732e6f72672f736368656d61732f736974656d61702f302e39223e3c75726c3e3c6c6f633e68747470733a2f2f6578616d706c652e746573742f613c2f6c6f633e3c2f75726c3e3c2f75726c7365743eff",
+      "expected": {
+        "format": "fail",
+        "limits": "inconclusive",
+        "kind": null
+      },
+      "bundle_status": "NC"
+    }
+  ],
+  "scope": "Bounded secondary root attribution only; no UTF16 acceptance or repaired original"
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Bounded offline interpreter for thirty-three TSEP rules. Apache-2.0; no collection."""
+"""Bounded offline interpreter for versioned TSEP atomic rules. Apache-2.0; no collection."""
 import hashlib
 from html.parser import HTMLParser
 import json
@@ -11,11 +11,27 @@ from urllib.parse import urljoin, urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import tsep
 
-RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS04-A01', 'TS04-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
+RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS03-A01', 'TS04-A01', 'TS04-A02', 'TS05-A01', 'TS06-A01', 'TS07-A01', 'TS07-A02', 'TS07-A03',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04',
          'TS34-A01', 'TS34-A02', 'TS34-A03', 'TS35-A01', 'TS35-A02',
-         'TS42-A01', 'TS42-A02', 'TS42-A03', 'TS43-A01', 'TS43-A02', 'TS43-A03', 'TS44-A01', 'TS44-A02', 'TS44-A03', 'TS41-A01', 'TS41-A02', 'TS41-A03', 'TS39-A01', 'TS39-A02', 'TS39-A03')
-VERSION = '27'  # Interpreter coverage version; normative protocol version is separate.
+         'TS42-A01', 'TS42-A02', 'TS42-A03', 'TS43-A01', 'TS43-A02', 'TS43-A03', 'TS44-A01', 'TS44-A02', 'TS44-A03', 'TS41-A01', 'TS41-A02', 'TS41-A03', 'TS39-A01', 'TS39-A02', 'TS39-A03', 'TS08-A01', 'TS08-A02', 'TS08-A03', 'TS12-A01', 'TS12-A02', 'TS12-A03', 'TS36-A01', 'TS36-A02', 'TS36-A03')
+RULES += ('TS31-A01', 'TS31-A02', 'TS31-A03', 'TS32-A01', 'TS32-A02', 'TS32-A03')
+RULES += ('TS33-A01', 'TS33-A02', 'TS33-A03')
+RULES += ('TS15-A01', 'TS15-A02', 'TS15-A03')
+RULES += ('TS17-A01', 'TS17-A02')
+RULES += ('TS16-A01',)
+RULES += ('TS18-A01','TS18-A02','TS18-A03')
+RULES += ('TS23-A01',)
+RULES += ('TS24-A01',)
+RULES += ('TS25-A01','TS25-A02')
+RULES += ('TS13-A01', 'TS13-A02', 'TS14-A01')
+from conformance.url_policy import RULES as URL_POLICY_RULES
+RULES += URL_POLICY_RULES
+from conformance.indexing_locale import RULES as INDEXING_LOCALE_RULES
+RULES += INDEXING_LOCALE_RULES
+from conformance.render_transport import RULES as RENDER_TRANSPORT_RULES
+RULES += RENDER_TRANSPORT_RULES
+VERSION = '53'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -89,6 +105,13 @@ def url_parts(url):
 def exchange(hop, expected, crawler):
     """Validate one attributable exchange, including an unfinished redirect."""
     need(hop.get('complete') is True, 'Incomplete HTTP capture')
+    request_attribution(hop, expected, crawler)
+    status, headers, body = message(hop.get('response'), True)
+    return status, headers, body
+
+
+def request_attribution(hop, expected, crawler):
+    """Shared request attribution; does not establish response completeness."""
     need(hop.get('url') == expected, 'Missing or mismatched redirect hop')
     parts = url_parts(expected)
     first, request_headers, _ = message(hop.get('request'))
@@ -98,8 +121,6 @@ def exchange(hop, expected, crawler):
     need(request_headers.get('user-agent') == [crawler], 'Request crawler differs from intent')
     need(not any(k in request_headers for k in ('if-none-match', 'if-modified-since', 'range',
                                                  'authorization', 'cookie')), 'Unsupported conditional/authenticated request')
-    status, headers, body = message(hop.get('response'), True)
-    return status, headers, body
 
 
 def trace(hops, start, crawler):
@@ -351,6 +372,57 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
 
 
 def evaluate_target(target, rule, *, diagnostics=None):
+    if rule in RENDER_TRANSPORT_RULES:
+        from conformance.render_transport import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule in INDEXING_LOCALE_RULES:
+        from conformance.indexing_locale import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule in URL_POLICY_RULES:
+        from conformance.url_policy import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule.startswith(('TS13-', 'TS14-')):
+        from conformance.sitemap_quality import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule.startswith('TS25-'):
+        from conformance.critical_presence import assess
+        return assess(target,rule,diagnostics=diagnostics)
+    if rule.startswith('TS24-'):
+        from conformance.xdefault_role import assess
+        return assess(target,rule,diagnostics=diagnostics)
+    if rule.startswith('TS23-'):
+        from conformance.hreflang_reciprocity import assess
+        return assess(target,rule,diagnostics=diagnostics)
+    if rule.startswith('TS18-'):
+        from conformance.graph_reconciliation import assess
+        return assess(target,rule,diagnostics=diagnostics)
+    if rule.startswith('TS16-'):
+        from conformance.incoming_links import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule.startswith('TS17-'):
+        from conformance.essential_links import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule.startswith('TS15-'):
+        from conformance.sitemap_set import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule.startswith('TS33-'):
+        from conformance.structured_validation import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule.startswith('TS32-'):
+        from conformance.structured_identity import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule.startswith('TS31-'):
+        from conformance.structured_content import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule.startswith('TS36-'):
+        from conformance.release_monitoring import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule.startswith('TS12-'):
+        from conformance.canonical_comparison import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule.startswith('TS08-'):
+        from conformance.inspection import assess
+        return assess(target, rule, diagnostics=diagnostics)
     if rule.startswith('TS39-'):
         from conformance.delivery import assess
         return assess(target, rule, diagnostics=diagnostics)
@@ -369,6 +441,15 @@ def evaluate_target(target, rule, *, diagnostics=None):
     if rule.startswith(('TS34-', 'TS35-')):
         from conformance.performance import assess
         return assess(target, rule, diagnostics=diagnostics)
+    if rule.startswith('TS03-'):
+        from conformance.ts03_response import assess
+        return assess(target, rule)
+    if rule.startswith('TS05-'):
+        from conformance.ts05_indexing import assess
+        return assess(target, rule)
+    if rule.startswith('TS06-'):
+        from conformance.ts06_access import assess
+        return assess(target, rule)
     if rule.startswith('TS04-'):
         from conformance.robots_control import assess
         return assess(target, rule)
@@ -403,10 +484,30 @@ def evaluate_target(target, rule, *, diagnostics=None):
 
 def evaluate(data, *, source_observations=None):
     tsep.require(data.get('input_version') in ('1', '2'), 'Unsupported conformance input version')
+    if set(data.get('rules', [])) & {'TS13-A01', 'TS13-A02', 'TS14-A01'}:
+        from conformance.sitemap_quality import verify_target
+        for target in data.get('targets', []):
+            try: verify_target(target)
+            except (ValueError, TypeError, KeyError) as error:
+                raise tsep.Invalid('Sitemap quality integrity: ' + str(error)) from error
+    if set(data.get('rules', [])) & set(URL_POLICY_RULES + INDEXING_LOCALE_RULES + RENDER_TRANSPORT_RULES):
+        from conformance.evidence_dossier import verify
+        for target in data.get('targets', []):
+            try: verify(target)
+            except (ValueError, TypeError, KeyError) as error: raise tsep.Invalid('Evidence dossier integrity: '+str(error)) from error
+    hreflang_http_scopes=set()
+    if set(data.get('rules',[])) & {'TS23-A01','TS24-A01'}:
+        from adapters.hreflang_intake import verify_target
+        for target in data.get('targets',[]):
+            verify_target(target,data['input_version'])
+            docs=target.get('hreflang_documents') if isinstance(target,dict) else None
+            if isinstance(docs,list):hreflang_http_scopes.update(id(doc) for doc in docs if isinstance(doc,dict))
     def verify_wire(value):
         if isinstance(value, dict):
             for key, child in value.items():
-                if key == 'http' and isinstance(child, list):
+                # Only the directly guarded HTTP list admits missing own hashes.
+                # Recurse into every subtree, preserving all unrelated integrity guards.
+                if key == 'http' and isinstance(child, list) and id(value) not in hreflang_http_scopes:
                     for hop in child:
                         if isinstance(hop, dict):
                             for field in ('request', 'response'):
@@ -427,9 +528,15 @@ def evaluate(data, *, source_observations=None):
     tsep.unique([t['url'] for t in targets], 'conformance target')
     results = []
     for target in targets:
+        graph_assessment = None
         for rule in rules:
             diagnostics = [] if source_observations is not None else None
-            outcome, reason = evaluate_target(target, rule, diagnostics=diagnostics)
+            if rule.startswith('TS18-'):
+                from conformance.graph_reconciliation import assess_target, assess
+                if graph_assessment is None: graph_assessment = assess_target(target)
+                outcome, reason = assess(target,rule,diagnostics=diagnostics,assessment=graph_assessment)
+            else:
+                outcome, reason = evaluate_target(target, rule, diagnostics=diagnostics)
             if diagnostics:
                 source_observations.append({'rule_id':rule, 'target':target['url'], 'observations':diagnostics})
             results.append({'rule_id': rule, 'target': target['url'], 'outcome': outcome, 'reason': reason})

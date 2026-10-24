@@ -1,0 +1,159 @@
+{
+  "date": "2026-10-18",
+  "original_fixture_sha256": "8b32012a2ab8e51de4268c4c2055af920e2a88abf99570392ed9b7c806bf9f2a",
+  "corrected_fixture_sha256": "544080720e0fc9e48dc19c4a90514dbe590a9e0bd39c1906389302427a8a679a",
+  "original_case": {
+    "id": "sitemap-quality-v1-date-mismatch-missing-review",
+    "description": "SYNTHETIC / SYNTHÉTIQUE — date-mismatch-missing-review",
+    "input": {
+      "input_version": "2",
+      "rules": [
+        "TS13-A01",
+        "TS13-A02",
+        "TS14-A01"
+      ],
+      "targets": [
+        {
+          "url": "https://synthetic.invalid/sitemap.xml",
+          "observed_at": "2026-10-16T12:00:00Z",
+          "sitemap_synthetic": true,
+          "context": {
+            "id": "synthetic",
+            "network": "offline",
+            "bounds": "Authored fixture only; no site audit",
+            "tool": "Fixture author",
+            "tool_version": "1"
+          },
+          "intent": {
+            "declared_at": "2026-10-16T08:00:00Z",
+            "crawler": "TSEP-Synthetic/1",
+            "sitemap_files": {
+              "reader": "native-sitemap-files-v1",
+              "selection_reason": "SYNTHETIC declared file set",
+              "window_start": "2026-10-16T09:00:00Z",
+              "window_end": "2026-10-16T11:00:00Z",
+              "roots": [
+                "https://synthetic.invalid/sitemap.xml"
+              ],
+              "documents": [
+                "https://synthetic.invalid/sitemap.xml"
+              ]
+            },
+            "sitemap_quality": {
+              "reader": "supplied-sitemap-quality-v1",
+              "pages": [
+                {
+                  "url": "https://synthetic.invalid/a",
+                  "preferred_url": "https://synthetic.invalid/a",
+                  "indexing": "allow",
+                  "useful": true,
+                  "rendering": "source-only"
+                }
+              ]
+            },
+            "sitemap_lastmod": {
+              "reader": "supplied-sitemap-lastmod-v1",
+              "date_basis": "UTC"
+            }
+          },
+          "sitemap_files": [
+            {
+              "url": "https://synthetic.invalid/sitemap.xml",
+              "description": "SYNTHETIC authored XML",
+              "observed_at": "2026-10-16T10:00:00Z",
+              "provenance": "synthetic-exercise",
+              "native": {
+                "raw_base64": "PHVybHNldCB4bWxucz0iaHR0cDovL3d3dy5zaXRlbWFwcy5vcmcvc2NoZW1hcy9zaXRlbWFwLzAuOSI+PHVybD48bG9jPmh0dHBzOi8vc3ludGhldGljLmludmFsaWQvYTwvbG9jPjxsYXN0bW9kPjIwMjYtMTAtMTQ8L2xhc3Rtb2Q+PC91cmw+PC91cmxzZXQ+",
+                "sha256": "36733e8d0a653cd14c151b7d20c8598b75c884ef41821713b3363b858a433625",
+                "encoding": "identity",
+                "complete": true
+              }
+            }
+          ],
+          "documents": [
+            {
+              "url": "https://synthetic.invalid/a",
+              "observed_at": "2026-10-16T10:05:00Z",
+              "context_id": "synthetic",
+              "http": [
+                {
+                  "url": "https://synthetic.invalid/a",
+                  "complete": true,
+                  "request": "GET /a HTTP/1.1\r\nHost: synthetic.invalid\r\nUser-Agent: TSEP-Synthetic/1\r\n\r\n",
+                  "response": "HTTP/1.1 200 Fixture\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 117\r\n\r\n<html><head><link rel=\"canonical\" href=\"https://synthetic.invalid/a\"></head><body><p>SYNTHETIC page</p></body></html>"
+                }
+              ],
+              "quality_review": {
+                "evidence_sha256": "7392bd7519e211db1a01eeffe42e132452a1a695f6ec0c479a5ffee34eb88550",
+                "reviewer": "Fictional reviewer",
+                "reason": "Authored synthetic qualification only",
+                "provenance": "synthetic-exercise",
+                "reviewed_at": "2026-10-16T11:30:00Z",
+                "judgment": "supported"
+              }
+            }
+          ],
+          "change_history": [
+            {
+              "file_url": "https://synthetic.invalid/sitemap.xml",
+              "entry_index": 0,
+              "url": "https://synthetic.invalid/a",
+              "event": {
+                "raw_base64": "eyJ1cmwiOiAiaHR0cHM6Ly9zeW50aGV0aWMuaW52YWxpZC9hIiwgImNoYW5nZV9pZCI6ICJzeW50aGV0aWMtY2hhbmdlLTEiLCAiY2hhbmdlZF9hdCI6ICIyMDI2LTEwLTE1VDE0OjAwOjAwWiIsICJraW5kIjogImNvbnRlbnQiLCAiZGVzY3JpcHRpb24iOiAiU1lOVEhFVElDIHN1YnN0YW50aXZlIGNvbnRlbnQgcmV2aXNpb24ifQ==",
+                "sha256": "976055e563661420730ac7e163c1eeb48a7f10a80aadcef4930f3bf555a08176",
+                "encoding": "identity",
+                "complete": true
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "expected": [
+      {
+        "rule_id": "TS13-A01",
+        "target": "https://synthetic.invalid/sitemap.xml",
+        "outcome": "pass"
+      },
+      {
+        "rule_id": "TS13-A02",
+        "target": "https://synthetic.invalid/sitemap.xml",
+        "outcome": "pass"
+      },
+      {
+        "rule_id": "TS14-A01",
+        "target": "https://synthetic.invalid/sitemap.xml",
+        "outcome": "fail"
+      }
+    ]
+  },
+  "reason": {
+    "fr": "La mutation lastmod avait laissé la revue TS13 liée à l’ancien XML. Corriger seulement la liaison TS13 pour isoler le défaut TS14 prévu ; les trois attentes restent inchangées.",
+    "en": "The lastmod mutation left the TS13 review bound to the old XML. Correct only the TS13 binding to isolate the intended TS14 defect; all three expectations remain unchanged."
+  },
+  "initial_fixture_path": "tests/fixtures/sitemap-quality-authored-initial.json",
+  "current_fixture_sha256": "311ebb5086182f6ebd34a547ad1b83d738f82bce85f914c02bdf999dfd0cf847",
+  "clock_correction": {
+    "previous_fixture_sha256": "544080720e0fc9e48dc19c4a90514dbe590a9e0bd39c1906389302427a8a679a",
+    "date_shift_days": -1,
+    "expectations_changed": false,
+    "reason": {
+      "fr": "Décaler uniquement les dates fictives TS13/TS14 d’un jour pour précéder l’horloge d’import historique fixée au16octobre00:00UTC. Recalculer les liaisons déjà valides ; conserver celles volontairement invalides. Aucun test historique modifié.",
+      "en": "Shift only fictional TS13/TS14 dates back one day to precede the historical import clock fixed at October16 00:00UTC. Rebind previously valid reviews; retain deliberately invalid bindings. No historical test changed."
+    },
+    "result_fixture_sha256": "74225adcc45485516206070a8d14a2558383727af8a106e53a704168eabc52ff"
+  },
+  "expected_outcome_amendments": [
+    {
+      "case_id": "sitemap-quality-v1-unzoned-lastmod",
+      "rule_id": "TS14-A01",
+      "before": "fail",
+      "after": "inconclusive",
+      "date": "2026-10-18",
+      "reason": {
+        "fr": "Un horodatage sans fuseau ou hors précision prise en charge ne suffit pas à comparer les instants. Conserver NT pour cette preuve insuffisante ; une date calendaire impossible reste fail.",
+        "en": "An unzoned timestamp or unsupported precision cannot establish the instant comparison. Retain NT for insufficient evidence; an impossible calendar date remains fail."
+      }
+    }
+  ]
+}

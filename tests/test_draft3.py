@@ -180,6 +180,9 @@ class Draft3(unittest.TestCase):
         with self.assertRaisesRegex(tsep.Invalid, 'Missing input coverage search-console'):
             tsep.validate(report, self.root)
         engine['engine']='google'
+        report['results'][0]['atomic_results']=[{'rule_id':r['id'],'target':target,'outcome':'pass',
+            'reason':'Authored metadata validation only; no native inspection assessment',
+            'evidence_ids':[a['id'] for a in report['artifacts']]} for r in control['rules']]
         self.assertEqual(tsep.validate(report, self.root)['counts']['C'], 1)
         engine.update(kind='search-console', engine='bing')
         with self.assertRaisesRegex(tsep.Invalid, 'Google-specific'):

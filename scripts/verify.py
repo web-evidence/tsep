@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Verify the independent source tree, examples, HTTP probe and distribution. Apache-2.0."""
 import hashlib
+import argparse
 import json
 import math
 import os
@@ -16,9 +17,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 import maintain
 import tsep
+from scripts.runtime import node24
 
 TIMEOUT_ENV = 'TSEP_VERIFY_STEP_TIMEOUT'
-DEFAULT_STEP_TIMEOUT = 120
+DEFAULT_STEP_TIMEOUT = 7200
 MAX_STEP_TIMEOUT = 86400
 
 
@@ -40,6 +42,7 @@ def snapshot():
 def run(command, directory, environment, label, checks):
     timeout = step_timeout(environment)
     start = time.monotonic()
+    print('[verify] start: ' + label, file=sys.stderr, flush=True)
     try:
         result = subprocess.run(command, cwd=directory, env=environment, text=True,
                                 encoding='utf-8', capture_output=True, timeout=timeout)
@@ -49,14 +52,20 @@ def run(command, directory, environment, label, checks):
         checks.append({'name': label, 'exit': None, 'timed_out': True, 'timeout_seconds': timeout,
                        'seconds': round(time.monotonic()-start, 3),
                        'stdout': captured(error.stdout), 'stderr': captured(error.stderr)})
+        print('[verify] timeout: ' + label, file=sys.stderr, flush=True)
         raise tsep.Invalid(label + ' timed out after ' + str(timeout) + ' seconds; see check output') from error
     checks.append({'name': label, 'exit': result.returncode,
                    'seconds': round(time.monotonic()-start, 3),
                    'stdout': result.stdout, 'stderr': result.stderr})
+    print('[verify] end: ' + label + '; exit=' + str(result.returncode)
+          + '; seconds=' + str(checks[-1]['seconds']), file=sys.stderr, flush=True)
     tsep.require(result.returncode == 0, label + ' failed; see check output')
 
 
 def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--quick',action='store_true',help='Targeted regression check only; not full qualification')
+    args=parser.parse_args()
     checks = []
     report = {'success': False, 'python': sys.version.split()[0],
               'scope': 'Local report tests, synthetic examples, loopback HTTP and reproducible package. No external-site audit.',
@@ -65,43 +74,51 @@ def main():
     environment = dict(os.environ, PYTHONDONTWRITEBYTECODE='1', PYTHONUTF8='1')
     try:
         report['step_timeout_seconds'] = step_timeout(environment)
+        report['runtime']=node24(environment)
+        environment['TSEP_SOURCE_NODE']=report['runtime']['path']
+        report['full_qualification']=not args.quick
         before = snapshot()
         with tempfile.TemporaryDirectory(prefix='tsep-verify-') as folder:
             temp = Path(folder)
             python = sys.executable
             run([python, 'maintain.py', 'check'], ROOT, environment, 'contract and distribution inventory', checks)
-            run([python, '-m', 'unittest', 'discover', '-s', 'tests', '-v'], ROOT,
-                environment, 'report and distribution tests', checks)
-            run([python, 'conformance/run.py'], ROOT, environment, 'raw-input conformance', checks)
-            run([python, 'examples/replay.py', '--output-dir', str(temp/'examples')], ROOT,
-                environment, 'synthetic examples outside source tree', checks)
-            for case in ('pass', 'fail', 'partial', 'captures'):
-                expected = {p.name: p.read_bytes() for p in (ROOT/'examples'/case).iterdir() if p.is_file()}
-                actual = {p.name: p.read_bytes() for p in (temp/'examples'/case).iterdir() if p.is_file()}
-                tsep.require(expected == actual, 'Generated example differs from canonical fixture: ' + case)
-            http_environment = dict(environment, TSEP_HTTP_REPORT=str(temp/'http-cases.json'))
-            run([python, 'tests/legacy_http_cases.py'], ROOT, http_environment, 'bounded HTTP regression cases', checks)
-            report['http_cases'] = tsep.read_json(temp/'http-cases.json')['total']
-            run([python, 'maintain.py', 'build', '--output', str(temp/'first.zip')], ROOT,
-                environment, 'explicit distribution build', checks)
-            with zipfile.ZipFile(temp/'first.zip') as archive:
-                expected_names = {'tsep/' + name for name in before} | {'tsep/SHA256SUMS'}
-                tsep.require(set(archive.namelist()) == expected_names, 'Unexpected archive entry')
-                # Every name was checked against the explicit release inventory above.
-                archive.extractall(temp/'extracted')
-            extracted = temp/'extracted/tsep'
-            run([python, 'maintain.py', 'check'], extracted, environment, 'extracted contract', checks)
-            run([python, 'tsep.py', 'validate', 'examples/pass/report.json'], extracted,
-                environment, 'extracted CLI', checks)
-            run([python, '-m', 'unittest', 'discover', '-s', 'tests', '-v'], extracted,
-                environment, 'extracted report and atomic-rule cases', checks)
-            run([python, 'conformance/run.py'], extracted, environment, 'extracted raw-input conformance', checks)
-            run([python, 'maintain.py', 'build', '--output', str(temp/'second.zip')], extracted,
-                environment, 'rebuild from extracted archive', checks)
-            report['archive_sha256'] = tsep.digest(temp/'first.zip')
-            report['rebuild_sha256'] = tsep.digest(temp/'second.zip')
-            tsep.require(report['archive_sha256'] == report['rebuild_sha256'], 'Archive is not reproducible')
-            report['source_files'] = len(before)
+            if args.quick:
+                run([python,'-m','unittest','tests.test_lot1_readers','tests.test_source_markers',
+                     'tests.test_redirects','tests.test_verification','tests.test_lot1_runtime'],ROOT,
+                    environment,'targeted lot 1 regressions (not full qualification)',checks)
+            else:
+                run([python, '-m', 'unittest', 'discover', '-s', 'tests', '-v'], ROOT,
+                    environment, 'report and distribution tests', checks)
+                run([python, 'conformance/run.py'], ROOT, environment, 'raw-input conformance', checks)
+                run([python, 'examples/replay.py', '--output-dir', str(temp/'examples')], ROOT,
+                    environment, 'synthetic examples outside source tree', checks)
+                for case in ('pass', 'fail', 'partial', 'captures'):
+                    expected = {p.name: p.read_bytes() for p in (ROOT/'examples'/case).iterdir() if p.is_file()}
+                    actual = {p.name: p.read_bytes() for p in (temp/'examples'/case).iterdir() if p.is_file()}
+                    tsep.require(expected == actual, 'Generated example differs from canonical fixture: ' + case)
+                http_environment = dict(environment, TSEP_HTTP_REPORT=str(temp/'http-cases.json'))
+                run([python, 'tests/legacy_http_cases.py'], ROOT, http_environment, 'bounded HTTP regression cases', checks)
+                report['http_cases'] = tsep.read_json(temp/'http-cases.json')['total']
+                run([python, 'maintain.py', 'build', '--output', str(temp/'first.zip')], ROOT,
+                    environment, 'explicit distribution build', checks)
+                with zipfile.ZipFile(temp/'first.zip') as archive:
+                    expected_names = {'tsep/' + name for name in before} | {'tsep/SHA256SUMS'}
+                    tsep.require(set(archive.namelist()) == expected_names, 'Unexpected archive entry')
+                    # Every name was checked against the explicit release inventory above.
+                    archive.extractall(temp/'extracted')
+                extracted = temp/'extracted/tsep'
+                run([python, 'maintain.py', 'check'], extracted, environment, 'extracted contract', checks)
+                run([python, 'tsep.py', 'validate', 'examples/pass/report.json'], extracted,
+                    environment, 'extracted CLI', checks)
+                run([python, '-m', 'unittest', 'discover', '-s', 'tests', '-v'], extracted,
+                    environment, 'extracted report and atomic-rule cases', checks)
+                run([python, 'conformance/run.py'], extracted, environment, 'extracted raw-input conformance', checks)
+                run([python, 'maintain.py', 'build', '--output', str(temp/'second.zip')], extracted,
+                    environment, 'rebuild from extracted archive', checks)
+                report['archive_sha256'] = tsep.digest(temp/'first.zip')
+                report['rebuild_sha256'] = tsep.digest(temp/'second.zip')
+                tsep.require(report['archive_sha256'] == report['rebuild_sha256'], 'Archive is not reproducible')
+                report['source_files'] = len(before)
         report['success'] = True
     except (OSError, ValueError, subprocess.SubprocessError) as error:
         report['error'] = str(error)

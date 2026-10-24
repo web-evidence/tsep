@@ -1,4 +1,4 @@
-# TSEP 0.1.0-draft.28 — Controls
+# TSEP 0.3.0-draft.7 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -30,7 +30,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A01 — Final GET returns 200
 
-`TSEP@0.1.0-draft.28:TS01-A01`
+`TSEP@0.3.0-draft.7:TS01-A01`
 
 **Required inputs**: http, intent.
 
@@ -54,7 +54,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS01-A02 — Expected final resource
 
-`TSEP@0.1.0-draft.28:TS01-A02`
+`TSEP@0.3.0-draft.7:TS01-A02`
 
 **Required inputs**: http, intent.
 
@@ -62,7 +62,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Each final response whose content can be compared to intent.
 
-**Method.** First compare final URL with expected_final_url, then complete-body SHA-256 with expected_body_sha256. Fix references, any stable policy and markers before measurement. The changed non-stable body branch uses the historical reader unless prior identity_reader: html-tree-markers-v1 selects two whole-document static hypotheses, byte-attributed parsed segments and literal criteria. Hashing still covers the unchanged complete body.
+**Method.** First compare final URL with expected_final_url, then complete-body SHA-256 with expected_body_sha256. Fix references, any stable policy and markers before measurement. The changed non-stable body branch uses the historical reader unless prior identity_reader: html-tree-markers-v1 selects two whole-document static hypotheses, byte-attributed parsed segments and literal criteria. Hashing still covers the unchanged complete body. Draft.6 excludes attributable structural ASCII whitespace under html or across only body/html end tags, retaining original intervals and bytes; see migration-0.3.0-draft.6. The distinct html-tree-markers-v2 profile excludes noscript segments from all marker matching, including rechecks. The v1 profile retains its historical semantics. An intent must explicitly name the selected profile before the new capture. The distinct html-tree-markers-v3 profile covers main-document HTML text: attributed noscript/iframe/foreign-subtree exclusions; an excluded forbidden marker prevents pass; only duplicate-attribute parse5 errors are admitted, with no directive interpretation. ASCII whitespace across ignored end tags requires exact reconstruction. See migration-0.3.0-draft.7 for limits and explicit migration.
 
 **Acceptance.** Different final URL: fail. At the same URL, identical digest: pass. Otherwise, representation: stable requires fail. Otherwise, under the historical reader, valid markers yield fail if any required marker is missing or any forbidden marker is present. Pass requires at least one required marker, all required markers present and all forbidden markers absent. Forbidden-only markers all absent: inconclusive. Without markers or declared stability: inconclusive. HTTP status does not replace this comparison. Under html-tree-markers-v1, each complete reading compares all markers; both pass gives pass, both fail gives fail, every other pair is inconclusive. URL, hash and stability precedence remains unchanged.
 
@@ -102,7 +102,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A01 — Previously approved redirect plan
 
-`TSEP@0.1.0-draft.28:TS02-A01`
+`TSEP@0.3.0-draft.6:TS02-A01`
 
 **Required inputs**: intent.
 
@@ -126,7 +126,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS02-A02 — HTTP trajectory matches the plan
 
-`TSEP@0.1.0-draft.28:TS02-A02`
+`TSEP@0.3.0-draft.6:TS02-A02`
 
 **Required inputs**: http, intent.
 
@@ -134,7 +134,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Variants and legacy URLs with a declared expected behavior.
 
-**Method.** Read each attributable GET exchange in order, resolve Location, retain codes and URLs, count redirects and check terminal destination/status. Compare with the pre-capture plan without reconstructing missing responses.
+**Method.** Read each attributable GET exchange in order, resolve Location, retain codes and URLs, count redirects and check terminal destination/status. Compare with the pre-capture plan without reconstructing missing responses. Prior profile http-trajectory-headers-v1 may conclude from complete headers after an attributable collector-2 byte-limit stop; the body remains incomplete and unevaluated.
 
 **Acceptance.** The complete chain matches declared destination, statuses and bounds, without a loop. A forbidden type, exceeded maximum, redirect without Location or return to a visited URL is fail as soon as a complete prefix establishes it. Wrong terminal destination/status or insufficient count is fail after an attributable terminal response.
 
@@ -142,7 +142,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Assumptions.** The owner supplies criteria before capture; a laboratory author may supply an explicitly synthetic review. A digest binds records without authenticating a person.
 
-**Inconclusive.** Unfinished chain without contradiction, collection limit, ambiguous Location, unsupported fragment/syntax, conditional/authenticated request, incomplete or unattributable capture. A collection limit does not prove a loop; exceeding an intended maximum is distinct.
+**Inconclusive.** Unfinished chain without contradiction, collection limit, ambiguous Location, unsupported fragment/syntax, conditional/authenticated request, incomplete or unattributable capture. A collection limit does not prove a loop; exceeding an intended maximum is distinct. Bounded exception: prefix at the exact attributed byte limit with one overflow byte, without ambiguous headers or contradictory framing, under the explicit new profile only.
 
 **When NA is allowed.** No atomic exemption. Whole-control non-applicability needs a separate positive inventory; a missing capture does not establish it.
 
@@ -152,25 +152,49 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Severity**: major. **Unit**: url-set.
 
-**Required inputs**: http, content, intent.
+**Required inputs**: configuration, http, content, intent.
 
-**Applicability.** Existing, removed and nonexistent routes in scope.
+**Applicability.** Synthetic routes explicitly classified as existing, removed and nonexistent in a dated plan; real-world scope is not authenticated.
 
-**Method.** Test an existing page, a removed URL and a non-existent URL; compare status and content.
+**Method.** Before captures, bind the intent plan for the three route states and their content criteria into configuration. Compare a supplied HTTP GET matrix without DNS resolution or network collection.
 
-**Acceptance.** Status and content match the three declared cases; tested error pages do not return 200.
+**Acceptance.** Pass qualifies only the complete supplied matrix: 200 and expected markers for an existing route; 404/410 and declared body criteria for removed/nonexistent routes. A 2xx for the latter, another complete status, or a marker contradiction is fail. Soft-404 classification is not measured.
 
-**Evidence.** Consistent 4xx/5xx responses and an error template that does not return 200 by default.
+**Evidence.** Prior intent plan, binding fingerprint, body expectations, URL/GET and complete raw HTTP responses for each required state; retain counterexamples even when other evidence is missing.
 
 **When NA is allowed.** Scope contains no HTTP routing, with a justification.
 
-**Limits.** The final soft-404 classification remains a search-engine decision.
+**Limits.** The probe uses only synthetic .invalid captures and literal UTF-8 markers. It confirms no real existence, removal, sustained availability, semantic quality, or Google soft-404 classification. A point-in-time 5xx fails the declared status without proving a persistent outage. No site or search engine is queried.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
-**Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
+**Source scope.** Google Search Central describes status-class effects on its systems; it does not prescribe a TSEP standard. This rule compares supplied expectations and does not reproduce soft-404 classification.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/http-network-errors](https://developers.google.com/search/docs/crawling-indexing/http-network-errors)
+
+### TS03-A01 — Synthetic HTTP responses compared with a prior plan
+
+`TSEP@0.2.0-rc.1:TS03-A01`
+
+**Required inputs**: configuration, http, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** A route plan contains at least one existing, removed and nonexistent state in the synthetic scope.
+
+**Method.** Verify the prior plan and its fingerprint; compare each attributable, complete GET/response for a .invalid route with the permitted statuses and literal UTF-8 markers fixed in the content expectations.
+
+**Acceptance.** Pass requires exactly one complete response per route and every required state: 200 for existing, 404/410 for removed or nonexistent, required markers present and forbidden markers absent. A complete contradiction remains fail despite a duplicate, another incomplete capture or a gap. 206/304, missing, ambiguous or unattributable data remain inconclusive.
+
+**Evidence.** The plan and its fingerprint, content expectations, then for each route the GET request, raw HTTP response, status, time and complete body. Preserve contradictory observations and gaps separately.
+
+**Assumptions.** The plan, classifications and criteria are supplied and unauthenticated. Any attached review is a synthetic exercise, not independent approval.
+
+**Inconclusive.** Missing/future/mismatched plan, missing route state, duplicate, incomplete HTTP, unattributable URL/client, 206/304, non-UTF-8 content, contradictory plan markers or incomplete matrix; an attributable contradiction remains fail.
+
+**When NA is allowed.** No atomic exemption. Whole-control NA requires a positive, complete, reasoned and dated inventory establishing that no HTTP routing is in scope.
+
+**Limits.** A .invalid capture tests no server. Markers are searched literally in the decoded body, without DOM, rendering, semantic judgment or engine classification. C covers only the declared matrix, not a whole site, availability over time, indexing or ranking.
 
 ## TS04 — The effective robots policy matches declared intent.
 
@@ -198,7 +222,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A01 — Policy per origin, crawler and resource
 
-`TSEP@0.1.0-draft.28:TS04-A01`
+`TSEP@0.2.0-rc.1:TS04-A01`
 
 **Required inputs**: http, robots, intent.
 
@@ -222,7 +246,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS04-A02 — Access to required resources
 
-`TSEP@0.1.0-draft.28:TS04-A02`
+`TSEP@0.2.0-rc.1:TS04-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -254,21 +278,45 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Crawling or exclusion policies in scope.
 
-**Method.** Compare the robots policy, indexing requirements and meta/X-Robots-Tag directives.
+**Method.** Compare a decision map dated before observation—crawl, indexing goal and method, noindex visibility, protection, and the scope of claims—with the supplied configuration record.
 
-**Acceptance.** Crawling, indexing and protection have distinct mechanisms and objectives; no deindexing guarantee relies only on Disallow.
+**Acceptance.** A pass indicates only internal consistency of the supplied plan. Crawling, indexing and protection are separate; Disallow alone guarantees neither deindexing nor confidentiality. No actual index or server state is established.
 
-**Evidence.** Separate decisions for crawling, indexing and protection.
+**Evidence.** Configuration and intent records linked to the target, a prior dated decision map, scope, mechanisms and claims with their bases; positive dated review for non-applicability.
 
 **When NA is allowed.** No relevant policy, with scope and decision documented.
 
-**Limits.** A blocked URL may remain known and appear without a snippet.
+**Limits.** The reader compares a supplied synthetic plan; it does not fetch a site, test authentication, verify a removal request, or inspect index state. A blocked URL may remain known and appear without a snippet. Full TS05 qualification and application reception are separate.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
-**Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
+**Source scope.** The Google Search Central pages below support the technical distinction; TSEP expectations remain an editorial rule. A dated, fingerprinted selected capture, not a site audit.
 
-**References**: [https://developers.google.com/search/docs/crawling-indexing/robots/intro](https://developers.google.com/search/docs/crawling-indexing/robots/intro)
+**References**: [https://developers.google.com/search/docs/crawling-indexing/robots/intro](https://developers.google.com/search/docs/crawling-indexing/robots/intro); [https://developers.google.com/search/docs/crawling-indexing/block-indexing](https://developers.google.com/search/docs/crawling-indexing/block-indexing); [https://developers.google.com/search/docs/crawling-indexing/control-what-you-share](https://developers.google.com/search/docs/crawling-indexing/control-what-you-share)
+
+### TS05-A01 — Supplied map: crawling, indexing and protection are distinct.
+
+`TSEP@0.2.0-rc.1:TS05-A01`
+
+**Required inputs**: configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** A crawl policy, indexing objective or confidentiality claim exists in scope.
+
+**Method.** Read intent.ts05_policy, dated before observed_at, and the configuration record. Compare crawl methods/effects, indexing goal/method and noindex visibility, then protection and the bases for deindexing/confidentiality claims.
+
+**Acceptance.** Pass means only that the supplied map is internally consistent and separates the three axes. A deindexing guarantee based only on Disallow fails; an inaccessible noindex directive does not establish exclusion. No positive verdict proves index state, real crawler access or server confidentiality.
+
+**Evidence.** Configuration, prior intent map, dates, scope, methods/effects and claims with bases; both records cover the target.
+
+**Assumptions.** Records are supplied and unauthenticated. The interpreter tests their form and declared consistency, not their truth or implementation.
+
+**Inconclusive.** Missing, undated, incomplete or future plan; unsupported method; unknown index state; blocked or unknown noindex visibility; incomplete removal request; indeterminate protection basis.
+
+**When NA is allowed.** This atomic test does not accept a partial exemption. Whole-control NA requires a complete, reasoned inventory review dated before observed_at, establishing absence of relevant policy for every target.
+
+**Limits.** Semi-automated mechanism over a synthetic model. It does not parse live robots.txt, meta, X-Robots-Tag or HTTP; observe visits, indexing or removals; or test access controls. Pass qualifies only the consistency of the supplied map.
 
 ## TS06 — Sensitive areas genuinely deny access at server level.
 
@@ -276,23 +324,49 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Required inputs**: configuration, http, intent.
 
-**Applicability.** Routes declared private or sensitive.
+**Applicability.** Private or sensitive routes explicitly inventoried in a declared scope; this candidate rule qualifies only supplied synthetic HTTP traces.
 
-**Method.** Test private routes without a session and verify authentication, authorisation and caching.
+**Method.** Before observations, supply intent.ts06_access and bind its fingerprint in configuration.ts06_access. Declare routes, synthetic canaries, fictional roles, exact route/role tests, and cold anonymous → synthetic authorized seed → anonymous replay triplets with the same cache label. Inspect supplied GETs without DNS resolution or network requests. Authentication redirects must remain on the same origin (scheme, host, effective port) and follow an explicit path allowlist. A 404 counts as denial only when the plan declares it for that route.
 
-**Acceptance.** No sensitive content is delivered to tested anonymous or unauthorized roles, including from cache; list covered routes and roles.
+**Acceptance.** Pass means only that all declared unauthorized route/role cells are complete, denied without a sensitive marker, and every supplied triplet follows the declared order without a replay leak; the control measures neither real identity nor a real cache. Any attributable response to an unauthorized role containing a canary fails, including detected encoded bodies or response headers. A 2xx representation delivered to an unauthorized role also fails.
 
-**Evidence.** A 401/403 response or authentication redirect, with no sensitive content delivered.
+**Evidence.** Supplied configuration, intent and HTTP records; exact plan fingerprint; timestamps; route/role identifiers; each raw GET exchange and its order; complete unauthorized-cell list; and every triplet phase/cache label. Preserve attributable contradictory responses before reporting any matrix gap.
 
-**When NA is allowed.** An authorized inventory attests to the absence of private routes.
+**When NA is allowed.** The whole control may be not applicable only with a complete, dated, reasoned synthetic inventory review declaring no sensitive route in scope; no contradictory test or triplet may then be present.
 
-**Limits.** Absence from the index is not proof of confidentiality.
+**Limits.** A fixture interpreter bounded to .invalid URL labels, with no DNS, socket, crawl or live domain. An HTTP role is a synthetic label, not authentication. A shared cache label proves no shared cache; Age/X-Cache alone do not establish attribution. The rule does not execute cookies, Authorization, JavaScript, TLS, URL aliases or HEAD. 206, 304 without a complete body, unsupported encoding, missing/ambiguous cell and incomplete cache state yield inconclusive. The result does not qualify every page of a site.
 
-C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
+C requires the complete cells and triplets in the declared synthetic scope. A canary leak or unauthorized 2xx is an evidenced contradiction; partial or ambiguous data remain NT. NA requires only a complete positive inventory declaration.
 
-**Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
+**Source scope.** RFCs 9110, 9111, 6454 and 6761 support HTTP semantics, selected cache conditions, the origin concept, and reserved .invalid use respectively. They establish no TSEP certification rule; acceptance remains editorial and observations are synthetic fixtures.
 
-**References**: [https://www.rfc-editor.org/rfc/rfc9110](https://www.rfc-editor.org/rfc/rfc9110)
+**References**: [https://www.rfc-editor.org/rfc/rfc9110](https://www.rfc-editor.org/rfc/rfc9110); [https://www.rfc-editor.org/rfc/rfc9111](https://www.rfc-editor.org/rfc/rfc9111); [https://www.rfc-editor.org/rfc/rfc6454](https://www.rfc-editor.org/rfc/rfc6454); [https://www.rfc-editor.org/rfc/rfc6761](https://www.rfc-editor.org/rfc/rfc6761)
+
+### TS06-A01 — Access denied in the supplied synthetic HTTP matrix
+
+`TSEP@0.2.0-rc.1:TS06-A01`
+
+**Required inputs**: configuration, http, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Atomic exemption inputs**: intent.
+
+**Applicability.** At least one sensitive route is explicitly declared in the synthetic scope.
+
+**Method.** Compare the prior plan bound to configuration with a complete synthetic GET matrix by route and role. Detect markers in headers and bodies, preserve contradictions before validating duplicates/gaps, verify same-origin redirects and cold/authorized/replay sequences.
+
+**Acceptance.** Pass covers only the complete supplied synthetic matrix: no unauthorized response contains a canary, denial is established under the plan, and every cold → authorized seed → anonymous replay triplet is complete and ordered. An attributable leak or unauthorized 2xx representation yields fail.
+
+**Evidence.** Configuration/intent/http records linked to the target, plan fingerprint, routes/roles/tests, raw GET exchanges with timestamps, canaries and labelled cache triplets.
+
+**Assumptions.** Fixtures are supplied, synthetic and unauthenticated. Role and cache labels prove neither identity nor a shared cache.
+
+**Inconclusive.** Missing/future/inconsistent plan, missing/duplicate cell, absent/ambiguous role header, cross-origin redirect, 206, 304 without retained representation, unsupported encoding, or incomplete triplet/attribution.
+
+**When NA is allowed.** No atomic exemption. Whole-control NA requires a complete, dated, reasoned inventory review linked to intent.
+
+**Limits.** No DNS, socket, live collection, real identity, authentication, cookies, real cache, TLS, JavaScript, path aliases, HEAD, or whole-site assessment. Canary detection covers only implemented encodings; other cases are inconclusive.
 
 ## TS07 — Robots meta directives and X-Robots-Tag match the page objective.
 
@@ -320,7 +394,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.1.0-draft.28:TS07-A01`
+`TSEP@0.2.0-rc.1:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -344,7 +418,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.1.0-draft.28:TS07-A02`
+`TSEP@0.2.0-rc.1:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -368,7 +442,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.1.0-draft.28:TS07-A03`
+`TSEP@0.2.0-rc.1:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -400,21 +474,93 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** URLs whose Google indexing state must be established.
 
-**Method.** Use URL Inspection on a representative sample and retain the export or screenshot.
+**Method.** Declare selection, objectives, sources and prior knowledge before acquisition; retain native API JSON, limitations and supplied reviews under google-inspection-evidence-v1.
 
-**Acceptance.** Inspection is dated for each selected URL; actual state, crawl access and canonical are recorded against intent, with discrepancies explained.
+**Acceptance.** All three rules pass for the entire selected set. C qualifies documentation of Google-reported status, never an indexing promise or current site state.
 
 **Evidence.** Known URL, crawling permission, indexing state and Google-selected canonical documented.
 
 **When NA is allowed.** Google is explicitly out of scope; lack of access alone is insufficient.
 
-**Limits.** A public audit cannot establish this status without property access.
+**Limits.** Non-live API, supplied unauthenticated attribution/dates; missing/reserved fields, insufficient freshness and absent reviews remain inconclusive under the bounded profile. No site extrapolation.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
-**References**: [https://support.google.com/webmasters/answer/9012289](https://support.google.com/webmasters/answer/9012289)
+**References**: [https://support.google.com/webmasters/answer/9012289](https://support.google.com/webmasters/answer/9012289); [https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect](https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect); [https://developers.google.com/webmaster-tools/v1/urlInspection.index/UrlInspectionResult](https://developers.google.com/webmaster-tools/v1/urlInspection.index/UrlInspectionResult)
+
+### TS08-A01 — Qualified prior scope and objectives.
+
+`TSEP@0.2.0-rc.1:TS08-A01`
+
+**Required inputs**: intent, search-console.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicit selected URL set whose Google-reported state must be documented.
+
+**Method.** Declare members, objectives/sources, selection reasons, prior knowledge and freshness policy; retain the bound prior plan review.
+
+**Acceptance.** Supported selection/objective review, plan and review before acquisition, no omitted member. Supplied contradiction or acquisition preceding the plan fails; absence alone is inconclusive.
+
+**Evidence.** Dated sourced plan, native request/response JSON and hashes, actual metadata, supplied evidence-bound reviews; inspection-evidence-v1 contract.
+
+**Assumptions.** Dates, authorship, provenance, access and attribution are supplied, never authenticated by hashes alone.
+
+**Inconclusive.** Missing, invalid or ambiguous evidence, review or binding; retain limitations, unknowns and API errors.
+
+**When NA is allowed.** No atomic exemption; lack of access is not NA.
+
+**Limits.** Selected-set documentation only; non-live API and crawl time distinct from field timestamps. No current state, causality, TS12 or SEO outcome inferred.
+
+### TS08-A02 — Attributed and readable native inspections.
+
+`TSEP@0.2.0-rc.1:TS08-A02`
+
+**Required inputs**: search-console, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicit selected URL set whose Google-reported state must be documented.
+
+**Method.** Read native bytes using diagnostic1, compare URL/property attribution, retain fields and check dates against prior policy.
+
+**Acceptance.** Every member has a usable response with known required fields and dates within policy. Explicitly allowed absent API fields stay visible; API errors and unknown values never become C.
+
+**Evidence.** Dated sourced plan, native request/response JSON and hashes, actual metadata, supplied evidence-bound reviews; inspection-evidence-v1 contract.
+
+**Assumptions.** Dates, authorship, provenance, access and attribution are supplied, never authenticated by hashes alone.
+
+**Inconclusive.** Missing, invalid or ambiguous evidence, review or binding; retain limitations, unknowns and API errors.
+
+**When NA is allowed.** No atomic exemption; lack of access is not NA.
+
+**Limits.** Selected-set documentation only; non-live API and crawl time distinct from field timestamps. No current state, causality, TS12 or SEO outcome inferred.
+
+### TS08-A03 — Evidence-bound interpretation and decision.
+
+`TSEP@0.2.0-rc.1:TS08-A03`
+
+**Required inputs**: search-console, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicit selected URL set whose Google-reported state must be documented.
+
+**Method.** Read supplied review: exact API verdict claim, interpretation, relation to prior objective, temporal scope, typed explanation and operational decision.
+
+**Acceptance.** All facets are qualified; a documented discrepancy may pass. Explicit verdict/scope contradiction or contradiction judgment fails and survives independent unknowns. Missing review or unsupported cause remains inconclusive.
+
+**Evidence.** Dated sourced plan, native request/response JSON and hashes, actual metadata, supplied evidence-bound reviews; inspection-evidence-v1 contract.
+
+**Assumptions.** Dates, authorship, provenance, access and attribution are supplied, never authenticated by hashes alone.
+
+**Inconclusive.** Missing, invalid or ambiguous evidence, review or binding; retain limitations, unknowns and API errors.
+
+**When NA is allowed.** No atomic exemption; lack of access is not NA.
+
+**Limits.** Selected-set documentation only; non-live API and crawl time distinct from field timestamps. No current state, causality, TS12 or SEO outcome inferred.
 
 ## TS09 — Intentional exclusions have an owner and a rationale.
 
@@ -439,6 +585,30 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/block-indexing](https://developers.google.com/search/docs/crawling-indexing/block-indexing)
+
+### TS09-A01 — Exclusion register and ownership
+
+`TSEP@0.3.0-draft.2:TS09-A01`
+
+**Required inputs**: configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS09 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Read the native exclusion-register-v1 JSON register; compare each selected family with its prior mechanism, then require owner, rationale and review date. Require an evidence-bound review.
+
+**Acceptance.** Mechanisms agree and every family has governance information; supplied review supports the scope. A mechanism mismatch fails.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: configuration, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** Missing or ambiguous fields, missing register or unbound review are inconclusive. Review date is a declared calendar date, not evidence that review occurred.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
 
 ## TS10 — Each canonical page publishes an absolute, stable and consistent URL.
 
@@ -466,7 +636,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A01 — Canonical declaration
 
-`TSEP@0.1.0-draft.28:TS10-A01`
+`TSEP@0.2.0-rc.1:TS10-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -490,7 +660,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A02 — Direct canonical destination
 
-`TSEP@0.1.0-draft.28:TS10-A02`
+`TSEP@0.2.0-rc.1:TS10-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -514,7 +684,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A03 — Sitemap agreement
 
-`TSEP@0.1.0-draft.28:TS10-A03`
+`TSEP@0.2.0-rc.1:TS10-A03`
 
 **Required inputs**: sitemap, intent.
 
@@ -540,7 +710,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS10-A04 — Internal-link agreement
 
-`TSEP@0.1.0-draft.28:TS10-A04`
+`TSEP@0.2.0-rc.1:TS10-A04`
 
 **Required inputs**: crawl, intent.
 
@@ -586,29 +756,149 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
 
+### TS11-A01 — Editorial comparison of variants
+
+`TSEP@0.3.0-draft.2:TS11-A01`
+
+**Required inputs**: http, html, content, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicability.** Explicitly selected TS11 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** For each declared duplicate or distinct pair, read both complete UTF-8 HTML responses and retain fingerprints. Require a bound comparative review including source-scope sufficiency.
+
+**Acceptance.** Both contents are available and the supplied editorial review supports the declared relation. Contradictory review fails; text equality or similarity never supplies that review.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: http, html, content, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** Missing content, unsupported HTML, render-dependent comparison or missing judgment: inconclusive.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
+
+### TS11-A02 — Convergence without absorbing distinct pages
+
+`TSEP@0.3.0-draft.2:TS11-A02`
+
+**Required inputs**: http, html, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS11 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Read HTTP and HTML canonicals separately for both members. A duplicate points to the preference; a distinct page points to itself. Require review of the decision and source scope.
+
+**Acceptance.** Every qualified declaration agrees with the prior editorial relation; a conflicting declaration fails even if another surface is unavailable.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: http, html, content, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** No explicit canonical, uninterpretable source or required rendering unavailable: inconclusive, without inferring engine selection.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
+
 ## TS12 — Google’s selected canonical is compared with the declared canonical.
 
 **Severity**: major. **Unit**: url-set.
 
-**Required inputs**: search-console, html, intent.
+**Required inputs**: search-console, http, html, render, intent.
 
 **Applicability.** URLs whose Google canonical must be compared with the declared canonical.
 
-**Method.** Inspect priority URLs and record the user-declared and Google-selected canonicals.
+**Method.** Declare sourced preference, readers and rendered states; attribute API JSON and captures, compare literal strings and retain supplied reviews/decisions under google-canonical-comparison-v1.
 
-**Acceptance.** Both values are timestamped and compared; each discrepancy has an assessment and a decision.
+**Acceptance.** Qualified prior plan and all planned surfaces; retained values, separate dates and bound decisions. Documentary C, never canonical equality; documented differences allowed.
 
 **Evidence.** Agreement or a qualified, addressed divergence.
 
 **When NA is allowed.** Google explicitly out of scope; missing access is NT.
 
-**Limits.** Google’s selected canonical can change after recrawling.
+**Limits.** Missing required rendering or absent Google canonical: inconclusive. Literal comparison without inferred URL equivalence, live state, causality, TS10 or indexing.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://support.google.com/webmasters/answer/9012289](https://support.google.com/webmasters/answer/9012289)
+
+### TS12-A01 — Qualified prior comparison plan.
+
+`TSEP@0.2.0-rc.1:TS12-A01`
+
+**Required inputs**: intent, search-console, http.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Selected set whose reported and captured canonicals must be compared.
+
+**Method.** Declare selection/objectives, prior knowledge, sourced preference, readers and rendered states; qualify the bound plan before every acquisition.
+
+**Acceptance.** Supported selection/objectives/preferences/surfaces/temporal_policy judgments, prior chronology and complete set. Supplied contradiction or acquisition before plan fails; gaps are inconclusive.
+
+**Evidence.** Prior plan/review, native API JSON, HTTP traces, supplied structured DOM states and reviews bound to exact evidence; canonical-comparison-v1 contract.
+
+**Assumptions.** Supplied data, dates, provenance and judgments; hashes do not authenticate people, navigation or history.
+
+**Inconclusive.** Missing/unknown/invalid evidence, required state, value, policy, review or binding; retain limits and errors.
+
+**When NA is allowed.** No atomic exemption; lack of access or rendering is not NA.
+
+**Limits.** Missing required rendering or absent Google canonical: inconclusive. Literal comparison without inferred URL equivalence, live state, causality, TS10 or indexing.
+
+### TS12-A02 — Complete attributed readings and comparisons.
+
+`TSEP@0.2.0-rc.1:TS12-A02`
+
+**Required inputs**: search-console, http, html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Selected set whose reported and captured canonicals must be compared.
+
+**Method.** Read native evidence and both static HTML hypotheses; retain separate HTTP/HTML/DOM candidates, dates and literal comparisons.
+
+**Acceptance.** Qualified API, present Google canonical, readable HTTP/HTML and every planned DOM state; prior thresholds satisfied, duplicates retained. Different values allowed; source-only/absent Google remains inconclusive.
+
+**Evidence.** Prior plan/review, native API JSON, HTTP traces, supplied structured DOM states and reviews bound to exact evidence; canonical-comparison-v1 contract.
+
+**Assumptions.** Supplied data, dates, provenance and judgments; hashes do not authenticate people, navigation or history.
+
+**Inconclusive.** Missing/unknown/invalid evidence, required state, value, policy, review or binding; retain limits and errors.
+
+**When NA is allowed.** No atomic exemption; lack of access or rendering is not NA.
+
+**Limits.** Missing required rendering or absent Google canonical: inconclusive. Literal comparison without inferred URL equivalence, live state, causality, TS10 or indexing.
+
+### TS12-A03 — Qualification and decision bound to comparisons.
+
+`TSEP@0.2.0-rc.1:TS12-A03`
+
+**Required inputs**: search-console, http, html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Selected set whose reported and captured canonicals must be compared.
+
+**Method.** Examine every surface value claim in a supplied evidence-bound review with interpretation, chronology, changes, objective, explanation and decision.
+
+**Acceptance.** Claims match known lists, supported qualification, reasoned relation and decision. A contradicted claim retains fail despite another unknown; missing review or unsupported established-cause assertion is inconclusive.
+
+**Evidence.** Prior plan/review, native API JSON, HTTP traces, supplied structured DOM states and reviews bound to exact evidence; canonical-comparison-v1 contract.
+
+**Assumptions.** Supplied data, dates, provenance and judgments; hashes do not authenticate people, navigation or history.
+
+**Inconclusive.** Missing/unknown/invalid evidence, required state, value, policy, review or binding; retain limits and errors.
+
+**When NA is allowed.** No atomic exemption; lack of access or rendering is not NA.
+
+**Limits.** Missing required rendering or absent Google canonical: inconclusive. Literal comparison without inferred URL equivalence, live state, causality, TS10 or indexing.
 
 ## TS13 — The sitemap contains only useful absolute canonical URLs.
 
@@ -618,7 +908,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Sitemaps used for the URLs in scope.
 
-**Method.** Parse every sitemap, count URLs and compare status, canonical and indexability.
+**Method.** Apply TS13-A01/A02 to declared originals and supplied pages under sitemap-quality-v1.
 
 **Acceptance.** Each scoped entry resolves, is canonical under the strategy and is intended for indexing; exclusions and sample limits are explicit.
 
@@ -626,7 +916,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **When NA is allowed.** No sitemap used, with inventory and decision provided.
 
-**Limits.** Sitemap inclusion does not guarantee indexing.
+**Limits.** Declared supplied file/page population; bounded HTML sources and unauthenticated supplied reviews. No inferred real audit, site completeness, whole TS15 result, Google-selected canonical, indexing or ranking.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
@@ -634,15 +924,63 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap)
 
+### TS13-A01 — Qualified native population and absolute URLs.
+
+`TSEP@0.3.0-draft.1:TS13-A01`
+
+**Required inputs**: sitemap, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Page entries in prior declared sitemap files, bounded supplied-sitemap-quality-v1 profile.
+
+**Method.** Reconcile declared roots/children with complete originals; read each page loc, retain occurrences and check absolute HTTP(S) syntax.
+
+**Acceptance.** Pass requires all declared files and qualified locations. A relative loc, fragment, credentials or invalid port fails; missing coverage is inconclusive.
+
+**Evidence.** Plan, dated XML/gzip originals and SHA-256, index/position/loc of each entry. Literal repetitions remain visible without automatic failure.
+
+**Assumptions.** Prior plan, literal URLs, supplied window of at most24hours and original integrity. Declared dates, context and judgments, without authentication.
+
+**Inconclusive.** Missing, ambiguous or out-of-profile plan, document, child, binding, capture or review; exceeded bound. Retain every independent fail and other unknowns.
+
+**When NA is allowed.** No atomic exemption; missing evidence is not NA.
+
+**Limits.** Declared supplied file/page population; bounded HTML sources and unauthenticated supplied reviews. No inferred real audit, site completeness, whole TS15 result, Google-selected canonical, indexing or ranking.
+
+### TS13-A02 — Referenced pages consistent with the supplied strategy.
+
+`TSEP@0.3.0-draft.1:TS13-A02`
+
+**Required inputs**: sitemap, http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Page entries in prior declared sitemap files, bounded supplied-sitemap-quality-v1 profile.
+
+**Method.** For each distinct native URL, check direct GET200, HTTP/HTML Googlebot directives and literal canonical; reconcile prior strategy and review bound to page and files.
+
+**Acceptance.** Pass requires qualified source, identical explicit canonical, useful/indexable/self-canonical intent and supported review, rendering source-only. Redirect, complete non200 status, noindex, different canonical or contradicted judgment fails. Required rendering, absent canonical/review or unsupported format is inconclusive.
+
+**Evidence.** File and HTTP request/response originals, per-page context/date, plan and review with SHA-256 of the examined evidence. No missing review generated by the tool.
+
+**Assumptions.** Prior plan, literal URLs, supplied window of at most24hours and original integrity. Declared dates, context and judgments, without authentication.
+
+**Inconclusive.** Missing, ambiguous or out-of-profile plan, document, child, binding, capture or review; exceeded bound. Retain every independent fail and other unknowns.
+
+**When NA is allowed.** No atomic exemption; missing evidence is not NA.
+
+**Limits.** Declared supplied file/page population; bounded HTML sources and unauthenticated supplied reviews. No inferred real audit, site completeness, whole TS15 result, Google-selected canonical, indexing or ranking.
+
 ## TS14 — lastmod reflects a significant change to the page.
 
 **Severity**: minor. **Unit**: sitemap-set.
 
-**Required inputs**: sitemap, change-history.
+**Required inputs**: sitemap, change-history, intent.
 
 **Applicability.** Sitemaps containing lastmod.
 
-**Method.** Compare lastmod with editorial history or a significant content deployment.
+**Method.** Read each native page lastmod; compare its UTC date or zoned instant with an attributed original JSON event, then check the bound significance review.
 
 **Acceptance.** Each tested date maps to a traceable significant change; file generation alone is insufficient.
 
@@ -650,7 +988,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **When NA is allowed.** No lastmod declared; its absence is not itself a defect.
 
-**Limits.** The engine may ignore a lastmod it considers unreliable.
+**Limits.** Matching date and supplied review do not prove an actual change or its significance. UTC-day or zoned-instant precision; no complete CMS history, ideal freshness or engine processing inferred.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
@@ -658,23 +996,49 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping](https://developers.google.com/search/blog/2023/06/sitemaps-lastmod-ping)
 
+### TS14-A01 — lastmod linked to a documented significant change.
+
+`TSEP@0.3.0-draft.1:TS14-A01`
+
+**Required inputs**: sitemap, change-history, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Atomic exemption inputs**: sitemap, intent.
+
+**Applicability.** Page entries carrying lastmod in the prior population; supplied-sitemap-lastmod-v1 profile. Index lastmod is outside scope.
+
+**Method.** Read each native page lastmod; compare its UTC date or zoned instant with an attributed original JSON event, then check the bound significance review.
+
+**Acceptance.** Pass requires matching nonfuture dates, attributed content event and supported review. Invalid/future date, traceable mismatch, file generation alone or contradicted review fails. Insufficient history/review is inconclusive. Complete native absence of lastmod is an atomic exemption, never a defect.
+
+**Evidence.** Dated/fingerprinted XML original, file URL and entry position, original UTF8 JSON event with SHA-256, change_id, URL, changed_at, kind and description; attributed bound review.
+
+**Assumptions.** Prior plan, literal URLs, supplied window of at most24hours and original integrity. Declared dates, context and judgments, without authentication.
+
+**Inconclusive.** Missing, ambiguous or out-of-profile plan, document, child, binding, capture or review; exceeded bound. Retain every independent fail and other unknowns. Missing timezone or out-of-profile lastmod precision is inconclusive, never a fabricated defect.
+
+**When NA is allowed.** Atomic not-applicable only for absence read from a complete native entry. All-exempt entries produce neither C nor automatic whole-control NA.
+
+**Limits.** Matching date and supplied review do not prove an actual change or its significance. UTC-day or zoned-instant precision; no complete CMS history, ideal freshness or engine processing inferred.
+
 ## TS15 — Sitemap size and segmentation limits are respected.
 
 **Severity**: major. **Unit**: sitemap-set.
 
-**Required inputs**: sitemap.
+**Required inputs**: sitemap, intent.
 
-**Applicability.** Declared sitemap files and indexes.
+**Applicability.** Declared population of supplied native sitemap files; roots are not automatically discovered.
 
-**Method.** Check uncompressed size, URL count, sitemap indexes and encoding.
+**Method.** Read original bytes, base XML structure, decompressed size, direct entries and index children in the declared set.
 
-**Acceptance.** Encoding and syntax are valid; uncompressed size and entry-count limits are met for each file type.
+**Acceptance.** Within the bounded profile: qualified UTF-8 and minimal structure, at most52,428,800 bytes and50,000 direct entries per file, coverage of the declared set.
 
-**Evidence.** No more than 50,000 URLs and 50 MB uncompressed per sitemap.
+**Evidence.** Base64/SHA-256 originals, declared URLs/dates and set plan; native-sitemap-files-v1 bounds.
 
 **When NA is allowed.** No sitemap used in scope.
 
-**Limits.** A valid file can still cover the wrong editorial scope.
+**Limits.** Supplied files only, no observed server or site completeness. No full XSD, lastmod/changefreq/priority values, URL host/path/length, canonical or indexing validation.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
@@ -682,77 +1046,299 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://www.sitemaps.org/protocol.html](https://www.sitemaps.org/protocol.html)
 
+### TS15-A01 — Encoding and minimal structure of supplied files.
+
+`TSEP@0.2.0-rc.1:TS15-A01`
+
+**Required inputs**: sitemap, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Declared population of supplied native sitemap files; roots are not automatically discovered.
+
+**Method.** Check strict UTF-8,0.9 root, unique nonempty loc and unique ordered leaves; DTD/unqualified extensions stay unknown.
+
+**Acceptance.** Every complete file passes the bounded structure; established structural contradiction fails.
+
+**Evidence.** Base64/SHA-256 originals, declared URLs/dates and set plan; native-sitemap-files-v1 bounds.
+
+**Assumptions.** Supplied URL, date, origin and completeness, unauthenticated. No server observation.
+
+**Inconclusive.** Missing/ambiguous file, incomplete stream, unknown profile, reader bound, nested index or unqualified extension; independent violation retained.
+
+**When NA is allowed.** No NA in this profile.
+
+**Limits.** Supplied files only, no observed server or site completeness. No full XSD, lastmod/changefreq/priority values, URL host/path/length, canonical or indexing validation.
+
+### TS15-A02 — Actual size and population limits.
+
+`TSEP@0.2.0-rc.1:TS15-A02`
+
+**Required inputs**: sitemap, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Declared population of supplied native sitemap files; roots are not automatically discovered.
+
+**Method.** Count actually decompressed bytes and direct url/sitemap elements, including duplicates and entries without loc.
+
+**Acceptance.** Each file is at most52,428,800 bytes and50,000 entries; observed excess fails, partial reading without excess is inconclusive.
+
+**Evidence.** Base64/SHA-256 originals, declared URLs/dates and set plan; native-sitemap-files-v1 bounds.
+
+**Assumptions.** Supplied URL, date, origin and completeness, unauthenticated. No server observation.
+
+**Inconclusive.** Missing/ambiguous file, incomplete stream, unknown profile, reader bound, nested index or unqualified extension; independent violation retained.
+
+**When NA is allowed.** No NA in this profile.
+
+**Limits.** Supplied files only, no observed server or site completeness. No full XSD, lastmod/changefreq/priority values, URL host/path/length, canonical or indexing validation.
+
+### TS15-A03 — Coverage of declared population and bound children.
+
+`TSEP@0.2.0-rc.1:TS15-A03`
+
+**Required inputs**: sitemap, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Allowed outcomes**: pass, inconclusive.
+
+**Applicability.** Declared population of supplied native sitemap files; roots are not automatically discovered.
+
+**Method.** Bind each document to an exact declared URL and each index child to a complete leaf; roots and scope remain declared.
+
+**Acceptance.** All declared documents and branches are qualified; absence/ambiguity/outside-profile is inconclusive, never negative evidence about site sitemap use.
+
+**Evidence.** Base64/SHA-256 originals, declared URLs/dates and set plan; native-sitemap-files-v1 bounds.
+
+**Assumptions.** Supplied URL, date, origin and completeness, unauthenticated. No server observation.
+
+**Inconclusive.** Missing/ambiguous file, incomplete stream, unknown profile, reader bound, nested index or unqualified extension; independent violation retained.
+
+**When NA is allowed.** No NA in this profile.
+
+**Limits.** Supplied files only, no observed server or site completeness. No full XSD, lastmod/changefreq/priority values, URL host/path/length, canonical or indexing validation.
+
 ## TS16 — Every important page receives at least one crawlable internal link.
 
 **Severity**: major. **Unit**: url-set.
 
-**Required inputs**: crawl, inventory, intent.
+**Required inputs**: http, html, inventory, intent.
 
-**Applicability.** Pages identified as important in an inventory.
+**Applicability.** Important destinations and internal sources selected before captures, with dated original inventory and bound prior plan; incoming-document-links-v1.
 
-**Method.** Crawl from public entry points and list pages with no incoming HTML link.
+**Method.** For each destination, seek an a/href witness from a distinct qualified internal document: source HTML under two static hypotheses or provider-declared no-interaction DOM. Qualify each source, destination and surface separately.
 
-**Acceptance.** Every selected page has at least one resolvable incoming HTML link from an internal page; source and destination are archived.
+**Acceptance.** Each declared destination has a qualified incoming witness and its original HTTP evidence. Absence is established only across every qualified eligible surface of the prior inventory and remains bounded to that population.
 
-**Evidence.** Link source, destination, anchor and destination status.
+**Evidence.** Original inventory, prior plan, HTTP/DOM originals, requested/final URLs, dates, destination status, raw href, anchor reference and per-destination diagnostics. DOM is required for surfaces that depend on it; an independent source witness suffices without DOM, without inventing one.
 
-**When NA is allowed.** No relevant important page, with justification and inventory provided.
+**When NA is allowed.** No relevant important page only with justification and inventory; no automatic NA in the bounded reader.
 
-**Limits.** The presence of a link does not prove its editorial value.
+**Limits.** Population and importance are supplied, not authenticated. No site completeness, observed acquisition or interaction, editorial value, Google visit, indexing or ranking. Bounded absence does not establish a site-wide orphan. Expected source content and soft404s are not assessed.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/links-crawlable](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)
+
+### TS16-A01 — Incoming witness in the prior internal population.
+
+`TSEP@0.2.0-rc.1:TS16-A01`
+
+**Required inputs**: http, html, inventory, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Important destinations and internal sources selected before captures, with dated original inventory and bound prior plan; incoming-document-links-v1.
+
+**Method.** For each destination, seek an a/href witness from a distinct qualified internal document: source HTML under two static hypotheses or provider-declared no-interaction DOM. Qualify each source, destination and surface separately.
+
+**Acceptance.** Pass when every destination has an independently qualified witness and a destination original. Fail when a destination has no witness across the complete qualified eligible population. Otherwise inconclusive; an independent fail survives other unknowns.
+
+**Evidence.** Original inventory, prior plan, HTTP/DOM originals, requested/final URLs, dates, destination status, raw href, anchor reference and per-destination diagnostics. DOM is required for surfaces that depend on it; an independent source witness suffices without DOM, without inventing one.
+
+**Assumptions.** Inventory observed before the plan binding its digest, captures within the prior window; exact origins and no-interaction states supplied. Integrity does not authenticate evidence or simultaneity.
+
+**Inconclusive.** Insufficient plan/inventory/original, ambiguous population, unqualified surface, incoherent dates or absent runtime. A pair whose destination redirects back to its source remains inconclusive; another witness may suffice.
+
+**When NA is allowed.** No automatic NA in this profile.
+
+**Limits.** Population and importance are supplied, not authenticated. No site completeness, observed acquisition or interaction, editorial value, Google visit, indexing or ranking. Bounded absence does not establish a site-wide orphan. Expected source content and soft404s are not assessed.
 
 ## TS17 — Essential links use an a element with a resolvable href.
 
 **Severity**: major. **Unit**: page.
 
-**Required inputs**: html, render, intent.
+**Required inputs**: http, html, render, intent.
 
-**Applicability.** Navigation destinations declared essential.
+**Applicability.** Declared essential destinations under the prior source-and-rendered strategy, on supplied captures.
 
-**Method.** Compare source and rendered DOM; identify buttons, onclick handlers and anchors without href.
+**Method.** Compare HTML a/href links in source and every declared DOM state; separate stages and exact document URLs.
 
-**Acceptance.** Every tested essential destination has an a link with a resolvable href at the observed stage; source and rendered stages are distinguished.
+**Acceptance.** Each declared destination has a resolvable a/href in both required stages within essential-document-links-v1.
 
-**Evidence.** A crawlable HTML link to every essential destination.
+**Evidence.** Original HTTP bytes, bound DOM v2 tree, prior plan and separate source/render diagnostics; provider-declared states.
 
 **When NA is allowed.** No relevant navigation, with a justified scope.
 
-**Limits.** Crawlability guarantees neither indexing nor rankings.
+**Limits.** C only within the declared strategy. No established visibility, interaction, editorial importance, authenticity, Google visit, indexing or ranking. Source presence is not a universal Google requirement.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/links-crawlable](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)
+
+### TS17-A01 — Essential links present in supplied source.
+
+`TSEP@0.2.0-rc.1:TS17-A01`
+
+**Required inputs**: http, html, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Declared essential destinations under the prior source-and-rendered strategy, on supplied captures.
+
+**Method.** Read native source under both static scripting hypotheses; require their agreement.
+
+**Acceptance.** Every destination in the qualified stage: pass; established absence in complete inventory: fail; otherwise inconclusive.
+
+**Evidence.** Original HTTP bytes, bound DOM v2 tree, prior plan and separate source/render diagnostics; provider-declared states.
+
+**Assumptions.** Prior plan, population, scenarios and completeness supplied; checked HTTP/DOM association but unauthenticated acquisition.
+
+**Inconclusive.** Missing/incomplete/out-of-profile plan or stage, active base, ambiguous reading or missing runtime. Independent contradictions remain.
+
+**When NA is allowed.** No automatic NA in this profile.
+
+**Limits.** C only within the declared strategy. No established visibility, interaction, editorial importance, authenticity, Google visit, indexing or ranking. Source presence is not a universal Google requirement.
+
+### TS17-A02 — Essential links present in declared rendered states.
+
+`TSEP@0.2.0-rc.1:TS17-A02`
+
+**Required inputs**: http, render, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Declared essential destinations under the prior source-and-rendered strategy, on supplied captures.
+
+**Method.** Check each complete HTTP-bound tree and disclose repeated snapshots; scenarios are unauthenticated.
+
+**Acceptance.** Every destination in the qualified stage: pass; established absence in complete inventory: fail; otherwise inconclusive.
+
+**Evidence.** Original HTTP bytes, bound DOM v2 tree, prior plan and separate source/render diagnostics; provider-declared states.
+
+**Assumptions.** Prior plan, population, scenarios and completeness supplied; checked HTTP/DOM association but unauthenticated acquisition.
+
+**Inconclusive.** Missing/incomplete/out-of-profile plan or stage, active base, ambiguous reading or missing runtime. Independent contradictions remain.
+
+**When NA is allowed.** No automatic NA in this profile.
+
+**Limits.** C only within the declared strategy. No established visibility, interaction, editorial importance, authenticity, Google visit, indexing or ranking. Source presence is not a universal Google requirement.
 
 ## TS18 — Depth and orphan pages are measured within an explicit scope.
 
 **Severity**: major. **Unit**: url-set.
 
-**Required inputs**: crawl, sitemap, inventory, intent.
+**Required inputs**: crawl, sitemap, inventory, intent, http, html.
 
-**Applicability.** Declared reference inventory with crawl boundaries.
+**Applicability.** Population, roots, families and boundaries declared before captures; bounded supplied-graph-reconciliation-v1 profile.
 
-**Method.** Compare crawl, sitemap and CMS export; qualify every difference.
+**Method.** Reconcile original reference, crawl, CMS and sitemap inventories; compute native bounded graph links/distances; verify supplied reviews bound to family and difference measurements.
 
-**Acceptance.** Crawl and inventory are reconciled; observed depth and orphan candidates are assessed by family; a crawl alone never establishes completeness.
+**Acceptance.** Three complete layers within supplied scope: qualified reconciliation, qualified native measurements and bound documentary reviews. An evidenced reviewed defect remains NC despite another unknown.
 
-**Evidence.** Identified and dated reference inventory, crawl boundaries, incoming links, observed depths and assessed differences.
+**Evidence.** Dated fingerprinted original inventories, declared production/dependencies, prior plan, original HTTP/source/DOM, pairs and bounds, per-inventory dates and supplied reviews bound to exact dossiers.
 
 **When NA is allowed.** No relevant navigation graph, with a justification; a missing inventory means NT.
 
-**Limits.** No universal depth guarantees rankings.
+**Limits.** Declared graph only: no completeness, site-wide orphan, universal SEO depth, authenticated acquisition/reviews, observed interaction, indexing or ranking. HTTP200 does not verify expected content or soft404s. The reader does not adjudicate supplied rationale.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/links-crawlable](https://developers.google.com/search/docs/crawling-indexing/links-crawlable)
+
+### TS18-A01 — Prior scope and reconciled original inventories.
+
+`TSEP@0.2.0-rc.1:TS18-A01`
+
+**Required inputs**: crawl, sitemap, inventory, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Allowed outcomes**: pass, inconclusive.
+
+**Applicability.** Population, roots, families and boundaries declared before captures; bounded supplied-graph-reconciliation-v1 profile.
+
+**Method.** Read explicitly declared formats and lineage; ordered reference bound to plan, crawl following links from roots only, native CMS and sitemap with explicit optional dependency.
+
+**Acceptance.** Pass if all originals, dates, families and declarations are qualified; otherwise inconclusive. Matching lists do not establish completeness. Mixed or list seeding is inconclusive in this profile.
+
+**Evidence.** Dated fingerprinted original inventories, declared production/dependencies, prior plan, original HTTP/source/DOM, pairs and bounds, per-inventory dates and supplied reviews bound to exact dossiers.
+
+**Assumptions.** Exact origins/documents, prior plan, captures within at most24hours; unauthenticated production and no-interaction declarations.
+
+**Inconclusive.** Missing, ambiguous, out-of-profile, misbound or out-of-window plan/original/surface/review; required runtime absent. Unknowns remain explicit and independent defects survive.
+
+**When NA is allowed.** No automatic NA; missing proof is inconclusive.
+
+**Limits.** Declared graph only: no completeness, site-wide orphan, universal SEO depth, authenticated acquisition/reviews, observed interaction, indexing or ranking. HTTP200 does not verify expected content or soft404s. The reader does not adjudicate supplied rationale.
+
+### TS18-A02 — Depths and incoming degrees within the bounded graph.
+
+`TSEP@0.2.0-rc.1:TS18-A02`
+
+**Required inputs**: http, html, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Allowed outcomes**: pass, inconclusive.
+
+**Applicability.** Population, roots, families and boundaries declared before captures; bounded supplied-graph-reconciliation-v1 profile.
+
+**Method.** Read each pair from source under two hypotheses or qualified no-interaction DOM; compute lower/upper distances and counts of distinct incoming sources, excluding self-links.
+
+**Acceptance.** Pass if roots and every pair are qualified; otherwise inconclusive even if one depth is exact. A no-incoming candidate requires an upper degree of0. No universal depth threshold.
+
+**Evidence.** Dated fingerprinted original inventories, declared production/dependencies, prior plan, original HTTP/source/DOM, pairs and bounds, per-inventory dates and supplied reviews bound to exact dossiers.
+
+**Assumptions.** Exact origins/documents, prior plan, captures within at most24hours; unauthenticated production and no-interaction declarations.
+
+**Inconclusive.** Missing, ambiguous, out-of-profile, misbound or out-of-window plan/original/surface/review; required runtime absent. Unknowns remain explicit and independent defects survive.
+
+**When NA is allowed.** No automatic NA; missing proof is inconclusive.
+
+**Limits.** Declared graph only: no completeness, site-wide orphan, universal SEO depth, authenticated acquisition/reviews, observed interaction, indexing or ranking. HTTP200 does not verify expected content or soft404s. The reader does not adjudicate supplied rationale.
+
+### TS18-A03 — Supplied documentary qualification of families and differences.
+
+`TSEP@0.2.0-rc.1:TS18-A03`
+
+**Required inputs**: intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Population, roots, families and boundaries declared before captures; bounded supplied-graph-reconciliation-v1 profile.
+
+**Method.** Derive subjects only from native measurements; check one review for each family, known difference, no-incoming candidate and unreachable document, bound to plan, originals, dates and measurements.
+
+**Acceptance.** Pass if every qualified subject has a correctly bound supplied explanation; fail if a supplied defect binds an evidenced subject; otherwise inconclusive. Reviews cannot cure unknown measurements and are never software-created human approval.
+
+**Evidence.** Dated fingerprinted original inventories, declared production/dependencies, prior plan, original HTTP/source/DOM, pairs and bounds, per-inventory dates and supplied reviews bound to exact dossiers.
+
+**Assumptions.** Exact origins/documents, prior plan, captures within at most24hours; unauthenticated production and no-interaction declarations.
+
+**Inconclusive.** Missing, ambiguous, out-of-profile, misbound or out-of-window plan/original/surface/review; required runtime absent. Unknowns remain explicit and independent defects survive.
+
+**When NA is allowed.** No automatic NA; missing proof is inconclusive.
+
+**Limits.** Declared graph only: no completeness, site-wide orphan, universal SEO depth, authenticated acquisition/reviews, observed interaction, indexing or ranking. HTTP200 does not verify expected content or soft404s. The reader does not adjudicate supplied rationale.
 
 ## TS19 — Parameters, filters and calendars do not create an infinite URL space.
 
@@ -778,6 +1364,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/url-structure](https://developers.google.com/search/docs/crawling-indexing/url-structure)
 
+### TS19-A01 — Bounded combinatorial-pattern policy
+
+`TSEP@0.3.0-draft.2:TS19-A01`
+
+**Required inputs**: configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS19 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Compare max_combinations, navigation and indexing in native url-pattern-config-v1 with each prior pattern; require review of the chosen bounds.
+
+**Acceptance.** Every supplied axis matches the selected finite plan. A conflicting value, including zero against a positive planned limit, fails.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: configuration, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** Missing axis/configuration, non-integer bound outside1–128 or absent review: inconclusive.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
+
+### TS19-A02 — Observed population and trap decision
+
+`TSEP@0.3.0-draft.2:TS19-A02`
+
+**Required inputs**: crawl, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS19 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Read url-crawl-v1, count distinct URLs and compare with the finite list and bound; retain the reasoned trap/cycle decision and its review.
+
+**Acceptance.** Observed URLs belong to the planned population, their count respects the bound and traps are explained. An outside URL or exceeded bound fails.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: crawl, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** Incomplete supplied crawl, ambiguous identities, absent list or decision: inconclusive. A finite sample never proves whole-site finiteness.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
+
 ## TS20 — The URL structure is readable, stable and correctly encoded.
 
 **Severity**: minor. **Unit**: url-set.
@@ -801,6 +1435,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/url-structure](https://developers.google.com/search/docs/crawling-indexing/url-structure)
+
+### TS20-A01 — URL shape under supplied policy
+
+`TSEP@0.3.0-draft.2:TS20-A01`
+
+**Required inputs**: crawl, configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS20 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Read the later capture and url-shape-config-v1. Check spaces/controls, backslashes, percent escapes, fragments and path case against prior choices; require human readability review.
+
+**Acceptance.** Configuration matches the plan and every URL satisfies its lexical axes. A qualified mismatch fails. No implicit case change or decoding.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: crawl, configuration, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** Unsupported URL/authority, unknown policy, missing capture or review: inconclusive.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
+
+### TS20-A02 — Temporal stability and variation decisions
+
+`TSEP@0.3.0-draft.2:TS20-A02`
+
+**Required inputs**: crawl, configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS20 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Compare two ordered url-crawl-v1 captures with matching identities; every changed URL requires one reasoned before/after decision in the reviewed plan.
+
+**Acceptance.** URLs match at the two dates or their variation is explicitly decided and reviewed. An observed change without a decision fails.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: crawl, configuration, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** One date, reversed/equal dates, missing identity or review: inconclusive. Future stability remains unknown.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
 
 ## TS21 — Discovered but unindexed URLs are investigated by family.
 
@@ -826,6 +1508,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://support.google.com/webmasters/answer/7440203](https://support.google.com/webmasters/answer/7440203)
 
+### TS21-A01 — Attribution of nonindexed families
+
+`TSEP@0.3.0-draft.3:TS21-A01`
+
+**Required inputs**: search-console, logs, sitemap, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS21 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Method.** Read supplied Google URL Inspection requests/responses for each selected URL, compare property, URL and family label; reconcile native urlset and TSV log export in their declared window. Require segmentation/attribution review.
+
+**Acceptance.** Native pieces are available and attributed to the selected family; sitemap membership agrees with the plan. Request, family-label or sitemap disagreement fails. Logs describe only their supplied window and client.
+
+**Evidence.** Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: search-console, logs, sitemap, intent. Conditional native evidence follows declared methods.
+
+**Assumptions.** Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing.
+
+**Inconclusive.** Missing evidence, absent/error API result, unsupported label, uninterpretable logs or absent review: inconclusive.
+
+**When NA is allowed.** No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile.
+
+**Limits.** Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established.
+
+### TS21-A02 — Testable hypothesis and decision without invented causality
+
+`TSEP@0.3.0-draft.3:TS21-A02`
+
+**Required inputs**: content, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicability.** Explicitly selected TS21 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Method.** Read family-diagnosis-v1: diagnosis, hypothesis, prediction, falsification, measurement, decision, owner and due date for the same URL list. Check planned-versus-observed follow-up and bound review.
+
+**Acceptance.** Diagnostic axes are supplied and reviewed; causality=unproven and follow_up=planned-not-observed. Declaring causality from a label or correlation fails this profile.
+
+**Evidence.** Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: content, intent. Conditional native evidence follows declared methods.
+
+**Assumptions.** Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing.
+
+**Inconclusive.** Hypothesis without falsification, misattributed family, claimed observed follow-up outside a separate method or missing judgment: inconclusive.
+
+**When NA is allowed.** No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile.
+
+**Limits.** Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established.
+
 ## TS22 — Each hreflang variant points to an indexable canonical URL.
 
 **Severity**: major. **Unit**: locale-cluster.
@@ -850,47 +1580,119 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/search/docs/specialty/international/localized-versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
 
+### TS22-A01 — Native annotations and registered codes
+
+`TSEP@0.3.0-draft.3:TS22-A01`
+
+**Required inputs**: hreflang, http, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS22 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Method.** Read declared HTML, Link headers and XHTML urlsets separately; retain agreement of both static HTML hypotheses. Check each observed code against the frozen IANA registry subset and attribution to its planned destination.
+
+**Acceptance.** Observed codes belong to the documented language/script/region profile and destinations agree. An explicitly invalid code or conflicting destination fails; x-default qualifies only the reserved token.
+
+**Evidence.** Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: hreflang, http, html, intent. Conditional native evidence follows declared methods.
+
+**Assumptions.** Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing.
+
+**Inconclusive.** Deprecated code, exceptional region outside the subset, missing method/page, ambiguous HTML, relative annotation or absent review: inconclusive.
+
+**When NA is allowed.** No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile.
+
+**Limits.** Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established.
+
+### TS22-A02 — Hreflang destinations and indexing-permission signals
+
+`TSEP@0.3.0-draft.3:TS22-A02`
+
+**Required inputs**: hreflang, http, html, robots, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS22 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Method.** For every selected destination compare indexing intent, direct HTTP200, HTTP/HTML directives, explicit self-canonical and same-origin robots.txt under the prior Google profile. Require source-scope review.
+
+**Acceptance.** Qualified signals permit and agree with the planned destination. A conflicting response, noindex, divergent canonical or evidenced robots denial fails despite other unknowns.
+
+**Evidence.** Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: hreflang, http, html, robots, intent. Conditional native evidence follows declared methods.
+
+**Assumptions.** Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing.
+
+**Inconclusive.** Missing/unqualified robots, absent canonical, partial trace, required rendering or absent review: inconclusive. Indexing permission is not indexing.
+
+**When NA is allowed.** No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile.
+
+**Limits.** Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established.
+
 ## TS23 — hreflang annotations are reciprocal and include the current page.
 
 **Severity**: major. **Unit**: locale-cluster.
 
-**Required inputs**: hreflang, intent.
+**Required inputs**: http, hreflang, intent.
 
-**Applicability.** Declared hreflang clusters.
+**Applicability.** Cluster and primary channels declared before capture; bounded hreflang-reciprocity-v1 profile.
 
-**Method.** Build variant clusters and verify return links and self-references.
+**Method.** Read native HTML or HTTP Link annotations from originals, preserve two HTML hypotheses and secondary channels, compare every code–URL pair to the prior cluster without unioning channels.
 
-**Acceptance.** All pairs in the declared cluster are reciprocal and every variant includes itself; cluster boundaries are retained.
+**Acceptance.** Each cluster page includes the entire expected set in its primary channel, including self-reference; no qualified target contradiction. Several codes may share a URL and cross-domain clusters are allowed.
 
-**Evidence.** Complete reciprocal cluster with no conflicting URL.
+**Evidence.** Prior plan/expected mappings, selected channels, original HTTP requests/responses and hashes, dates, element/head-closure positions, static hypotheses, primary/secondary sets, exclusions and unknowns.
 
 **When NA is allowed.** No hreflang cluster in scope.
 
-**Limits.** A valid cluster does not prove the engine will always serve the expected variant.
+**Limits.** Supplied cluster and primary mode declarations: no capture authenticity, site completeness, TS22 language validity, indexability/canonical, TS24 x-default suitability, translation, executed JavaScript or Google processing. Relevant supplied sitemap/DOM channels remain outside this profile.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/specialty/international/localized-versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
+
+### TS23-A01 — Native reciprocal and self references within the prior cluster.
+
+`TSEP@0.2.0-rc.1:TS23-A01`
+
+**Required inputs**: http, hreflang, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Cluster and primary channels declared before capture; bounded hreflang-reciprocity-v1 profile.
+
+**Method.** Read native HTML or HTTP Link annotations from originals, preserve two HTML hypotheses and secondary channels, compare every code–URL pair to the prior cluster without unioning channels.
+
+**Acceptance.** Pass if all pages are qualified and include the expected set in their primary channel. Fail for established qualified absence, invalid primary-HTML placement or target conflict. Otherwise inconclusive; independent contradictions survive unknowns.
+
+**Evidence.** Prior plan/expected mappings, selected channels, original HTTP requests/responses and hashes, dates, element/head-closure positions, static hypotheses, primary/secondary sets, exclusions and unknowns.
+
+**Assumptions.** Prior plan, at most24-hour window, HTTP200 requested=final without redirects, exact absolute HTTP(S) URLs. Two static HTML hypotheses, no script execution.
+
+**Inconclusive.** Missing/ambiguous plan or original, unqualified chronology/channel, source recovery outside admitted boundary, language/URL outside closed admission, unplanned outside annotation or missing required runtime.
+
+**When NA is allowed.** No automatic NA; an empty plan does not establish non-applicability.
+
+**Limits.** Supplied cluster and primary mode declarations: no capture authenticity, site completeness, TS22 language validity, indexability/canonical, TS24 x-default suitability, translation, executed JavaScript or Google processing. Relevant supplied sitemap/DOM channels remain outside this profile.
 
 ## TS24 — x-default represents a neutral destination or an explicit default variant.
 
 **Severity**: minor. **Unit**: locale-cluster.
 
-**Required inputs**: hreflang, http, intent.
+**Required inputs**: http, hreflang, intent.
 
-**Applicability.** Clusters where x-default is declared or required by policy.
+**Applicability.** Group and x-default policy supplied before capture; bounded xdefault-role-v1 profile.
 
-**Method.** Check its presence and role in every relevant multilingual cluster.
+**Method.** Read native HTML/HTTP Link observations; check destination, motivated context, captured availability and bound supplied role review; retain unknowns and contested reviews.
 
-**Acceptance.** The destination is accessible and matches the selection flow or the deliberate default variant.
+**Acceptance.** Qualified presence/context, policy-consistent target, original200 and consistent supplied review. Independently evidenced failure is NC; no inferred approval or semantic validity.
 
-**Evidence.** Documented, accessible x-default URL consistent with the journey.
+**Evidence.** Prior policy/context, original HTTP and hashes, primary/secondary observations, original bound reviews, dates and unknowns.
 
-**When NA is allowed.** No x-default required or declared; retain the policy justification.
+**When NA is allowed.** No native NA or manual override; historical manual dossiers stay separate, optional absence is inconclusive.
 
-**Limits.** x-default is not mandatory in every case.
+**Limits.** Supplied scope, no representative audience or authenticated semantic role; HTTP200 does not detect error templates/soft404s. No translation, Google visit, indexing, completeness or global conformity.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
@@ -898,29 +1700,101 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/search/docs/specialty/international/localized-versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
 
+### TS24-A01 — Documented x-default role in the prior context.
+
+`TSEP@0.2.0-rc.1:TS24-A01`
+
+**Required inputs**: http, hreflang, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Group and x-default policy supplied before capture; bounded xdefault-role-v1 profile.
+
+**Method.** Read native HTML/HTTP Link observations; check destination, motivated context, captured availability and bound supplied role review; retain unknowns and contested reviews.
+
+**Acceptance.** Pass requires every surface qualified, an unambiguous expected target, its original200 and bound consistent review. Fail for qualified required-primary absence, any qualified target conflicting with the unique policy destination, including among multiple declarations, attributable404/410, contradicted URL distinctness or one bound defect review. Otherwise inconclusive.
+
+**Evidence.** Prior policy/context, original HTTP and hashes, primary/secondary observations, original bound reviews, dates and unknowns.
+
+**Assumptions.** Prior plan and one motivated context; one non-redirect GET per original, window<=24h, two static HTML hypotheses. Supplied review, unauthenticated author.
+
+**Inconclusive.** Missing/unqualified plan, context, original or review; unqualified declarations or divergent hypotheses without an independent contradiction, contested reviews, status outside200/404/410, relevant unexamined channel or missing required runtime.
+
+**When NA is allowed.** No native NA or manual override; historical manual dossiers stay separate, optional absence is inconclusive.
+
+**Limits.** Supplied scope, no representative audience or authenticated semantic role; HTTP200 does not detect error templates/soft404s. No translation, Google visit, indexing, completeness or global conformity.
+
 ## TS25 — Critical content exists in source HTML or becomes observable after rendering.
 
 **Severity**: blocking. **Unit**: page.
 
-**Required inputs**: html, render, intent.
+**Required inputs**: http, intent.
 
-**Applicability.** Templates whose critical elements are listed.
+**Applicability.** Critical items and stage policies declared before capture, profile critical-stage-presence-v1.
 
-**Method.** List critical elements, then compare source HTML and rendered DOM under declared conditions. Optional Google inspection is a separate additional observation.
+**Method.** Check five role dispositions, then items in static source hypotheses and planned rendered states; retain originals, exclusions and bound supplied reviews.
 
-**Acceptance.** Every critical element is observed at the declared source or rendered stage; engine, version and conditions are retained; no equivalence with Google is inferred.
+**Acceptance.** Two passing rules within supplied scope: motivated coverage and presence under prior policies. Any qualified independent failure yields NC; otherwise unknowns yield NT.
 
-**Evidence.** Title, content, links, canonical and structured data present at the right stage.
+**Evidence.** Prior plan, HTTP/DOM originals, fingerprints, conditions, per-item/stage values, actually supplied reviews and dates.
 
-**When NA is allowed.** No relevant HTML document in scope.
+**When NA is allowed.** No native NA; motivated out-of-scope roles retained, never equivalent to control NA.
 
-**Limits.** A local browser does not reproduce Google’s rendering exactly.
+**Limits.** Declared scope only, static hypotheses without execution; unauthenticated reviews and attribution. No inferred Google rendering, CSS visibility, truth, structured validity, indexing or global conformity.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+
+### TS25-A01 — Prior critical scope and five role dispositions.
+
+`TSEP@0.2.0-rc.1:TS25-A01`
+
+**Required inputs**: intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Critical items and stage policies declared before capture, profile critical-stage-presence-v1.
+
+**Method.** Check five role dispositions, then items in static source hypotheses and planned rendered states; retain originals, exclusions and bound supplied reviews.
+
+**Acceptance.** Pass requires motivated population, five exact decisions and a prior bound supported review. Bound contradiction review: fail. Missing, unbound or unknown review: inconclusive.
+
+**Evidence.** Prior plan, HTTP/DOM originals, fingerprints, conditions, per-item/stage values, actually supplied reviews and dates.
+
+**Assumptions.** 1–32 items,0–16 prior states, window<=24h, HTTP<=30s; five explicit roles. Two HTML hypotheses must agree; required states combine with qualified-failure precedence. Supplied review, no authentication.
+
+**Inconclusive.** Missing or invalid plan/capture/review, unsupported role, conflicting readings, unqualified rendered context, extra/duplicate states, exceeded bounds. An independent failure remains fail. Draft.44 / reader3: supplied TS25 review fields reviewer, assistance and reason are each limited to8192 raw UTF8 bytes before strip or normalization; each entire review object, including additional fields, to32768 compact UTF8 JSON bytes. Admission checks every supplied review, including unused ones. An overrun is technical refusal before publication, never public C or NT; exact originals are not rewritten. Each native rule diagnostic is bounded to4MiB of sorted compact UTF8 JSON, including A01 and error returns. Overflow produces an explicitly incomplete compact diagnostic retaining an independently established fail, otherwise inconclusive; never pass. Transport refuses that marker and also caps the sum of actual serialized TS25 observation artifacts per target at4MiB (UTF8 JSON indent2, trailing newline), for requested rules. Individual maxima do not guarantee that every combination satisfies aggregate bounds. Other controls and the shared validator are unchanged.
+
+**When NA is allowed.** No native NA; motivated out-of-scope roles retained, never equivalent to control NA.
+
+**Limits.** Declared scope only, static hypotheses without execution; unauthenticated reviews and attribution. No inferred Google rendering, CSS visibility, truth, structured validity, indexing or global conformity.
+
+### TS25-A02 — Critical presence under each item’s source/render policy.
+
+`TSEP@0.2.0-rc.1:TS25-A02`
+
+**Required inputs**: http, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Critical items and stage policies declared before capture, profile critical-stage-presence-v1.
+
+**Method.** Check five role dispositions, then items in static source hypotheses and planned rendered states; retain originals, exclusions and bound supplied reviews.
+
+**Acceptance.** Pass requires all items present under their policy and qualified state coverage. Independently qualified absence: fail despite another unknown. Otherwise inconclusive.
+
+**Evidence.** Prior plan, HTTP/DOM originals, fingerprints, conditions, per-item/stage values, actually supplied reviews and dates.
+
+**Assumptions.** 1–32 items,0–16 prior states, window<=24h, HTTP<=30s; five explicit roles. Two HTML hypotheses must agree; required states combine with qualified-failure precedence. Supplied review, no authentication.
+
+**Inconclusive.** Missing or invalid plan/capture/review, unsupported role, conflicting readings, unqualified rendered context, extra/duplicate states, exceeded bounds. An independent failure remains fail. A non-object render container remains unknown; it does not erase an independently required qualified source absence. Draft.44 / reader3: supplied TS25 review fields reviewer, assistance and reason are each limited to8192 raw UTF8 bytes before strip or normalization; each entire review object, including additional fields, to32768 compact UTF8 JSON bytes. Admission checks every supplied review, including unused ones. An overrun is technical refusal before publication, never public C or NT; exact originals are not rewritten. Each native rule diagnostic is bounded to4MiB of sorted compact UTF8 JSON, including A01 and error returns. Overflow produces an explicitly incomplete compact diagnostic retaining an independently established fail, otherwise inconclusive; never pass. Transport refuses that marker and also caps the sum of actual serialized TS25 observation artifacts per target at4MiB (UTF8 JSON indent2, trailing newline), for requested rules. Individual maxima do not guarantee that every combination satisfies aggregate bounds. Other controls and the shared validator are unchanged.
+
+**When NA is allowed.** No native NA; motivated out-of-scope roles retained, never equivalent to control NA.
+
+**Limits.** Declared scope only, static hypotheses without execution; unauthenticated reviews and attribution. No inferred Google rendering, CSS visibility, truth, structured validity, indexing or global conformity.
 
 ## TS26 — Resources required for rendering are neither blocked nor failing.
 
@@ -946,6 +1820,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
 
+### TS26-A01 — Resource access and native policies
+
+`TSEP@0.3.0-draft.4:TS26-A01`
+
+**Required inputs**: http, robots, html, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS26 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** For each selected critical resource compare direct HTTP200, same-origin robots and intersection of HTTP CSP policies from the HTTPS document. Retain complete source to exclude unqualified meta CSP.
+
+**Acceptance.** A qualified HTTP error, robots denial or CSP denial fails independently of other gaps.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, robots, html, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Absent inventory, missing robots, unsupported CSP directive, nonce, meta CSP, ambiguous source or absent review: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS26-A02 — Traffic and console attributed to rendering
+
+`TSEP@0.3.0-draft.4:TS26-A02`
+
+**Required inputs**: render, http, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS26 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Read a supplied bounded HAR export, bind its document response to native HTTP bytes, then check every critical resource. Retain dated HAR-bound console and criticality review.
+
+**Acceptance.** Selected resources have2xx responses without supplied network error. Unclassified console errors remain NT; native network failure remains NC.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: render, http, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Incomplete HAR, omitted body, unattributed context/session, missing console or unqualified error: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
 ## TS27 — SPA states and routes produce shareable URLs and consistent server responses.
 
 **Severity**: major. **Unit**: route-set.
@@ -969,6 +1891,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript](https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript)
+
+### TS27-A01 — Attributed routes and history
+
+`TSEP@0.3.0-draft.4:TS27-A01`
+
+**Required inputs**: http, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS27 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Check four supplied states in direct, refresh, back, forward order: session, sequence, time, URL, server-response binding and status.
+
+**Acceptance.** Every state retains its route URL and intended200 source. A qualified conflicting URL or status fails.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Missing/ambiguous state, action, binding, session or order; uncollected frame/shadow surface: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS27-A02 — Content and canonical in each SPA state
+
+`TSEP@0.3.0-draft.4:TS27-A02`
+
+**Required inputs**: http, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS27 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Within the same qualified states compare literal IDs, essential text and link destinations with the plan, then one explicit head canonical. Require operation review.
+
+**Acceptance.** States retain their intended content and signals. Absence on a complete surface, differing content or conflicting canonical fails.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Partial state, hidden context, ambiguous ID, differing HTML hypotheses or absent review: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
 
 ## TS28 — The document exposes an understandable HTML structure independently of appearance.
 
@@ -994,6 +1964,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://html.spec.whatwg.org/](https://html.spec.whatwg.org/)
 
+### TS28-A01 — Native source and supplied DOM structure
+
+`TSEP@0.3.0-draft.4:TS28-A01`
+
+**Required inputs**: html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS28 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Compare source and supplied serialization: title, language, declared main landmark, ordered headings, links and labels. H1 count follows the plan.
+
+**Acceptance.** Structures agree with the prior plan; qualified structural conflicts fail.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Absent source/DOM, undeclared language, ambiguous tree or unqualified visual context: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS28-A02 — Meaning and navigation review
+
+`TSEP@0.3.0-draft.4:TS28-A02`
+
+**Required inputs**: html, render, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicability.** Prior finite TS28 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Reuse attributed structural facts and require a distinct bound review of title/language adequacy, hierarchy, main subject, navigation and labels in declared use.
+
+**Acceptance.** Facts are qualified and a reasoned judgment supports meaning and use; evidenced contradiction fails.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Parser output alone, an unbound review or insufficient originals are not enough: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
 ## TS29 — Essential content remains available when scripts or styles fail.
 
 **Severity**: major. **Unit**: page.
@@ -1017,6 +2035,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics](https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics)
+
+### TS29-A01 — Blocked-script scenario and tested fallback
+
+`TSEP@0.3.0-draft.4:TS29-A01`
+
+**Required inputs**: html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS29 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Read source and a supplied state explicitly marked scripts-blocked; compare every essential content/link or the prior fallback within that same state. Require action and operation review.
+
+**Acceptance.** All main expectations or all tested fallback expectations are supported. Qualified failures of both main and fallback fail; text alone does not establish function.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Normal condition, partial capture, merely described fallback, hidden context or missing review: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS29-A02 — Degraded-style scenario and tested fallback
+
+`TSEP@0.3.0-draft.4:TS29-A02`
+
+**Required inputs**: html, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS29 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Apply the same examination in an explicitly styles-degraded state with action observations and a bound review. Script disabling does not qualify this scenario.
+
+**Acceptance.** Essential functions or tested fallback remain supported in this distinct scenario.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Missing degraded-style scenario, fallback evidence or attributed judgment: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
 
 ## TS30 — Essential metadata is unique, visible and consistent with the page.
 
@@ -1042,6 +2108,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/search/docs/appearance/title-link](https://developers.google.com/search/docs/appearance/title-link)
 
+### TS30-A01 — Metadata and duplicates in the declared corpus
+
+`TSEP@0.3.0-draft.5:TS30-A01`
+
+**Required inputs**: html, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md. Amendment: docs/render-transport-prerequisites-v2.md.
+
+**Method.** Read native title, description, H1, og:title, og:description for each page. Compare prior values and duplicates among selected pages; require a prior decision for each intentional duplicate. Separately qualify H1 and descendant-text flags; preserve native contradictions in other fields.
+
+**Acceptance.** Values and multiplicity agree; each observed duplicate has one reasoned decision. The corpus is limited to supplied pages.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, content, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Missing source, omitted field policy, ambiguous parse or missing review: NT. null permits only an explicitly absent optional field. Hidden/unqualified H1 or descendant text: NT, without manufacturing absence.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS30-A02 — Editorial coherence and main content
+
+`TSEP@0.3.0-draft.5:TS30-A02`
+
+**Required inputs**: html, content, intent.
+
+**Automation / Automatisation**: `manual`.
+
+**Applicability.** Prior finite TS30 population under render-transport-v1; see docs/render-transport-evidence.md. Amendment: docs/render-transport-prerequisites-v2.md.
+
+**Method.** Reconcile native metadata and identified main content; require a distinct review of promise, meaning and relevant visibility. Separately qualify H1 and descendant-text flags; preserve native contradictions in other fields.
+
+**Acceptance.** Facts agree with the plan and the bound editorial review supports them; qualified native or human contradiction fails.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: html, content, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Unqualified required source/rendering, hidden content, meaning without review or unbound judgment: NT. Hidden/unqualified H1 or descendant text: NT, without manufacturing absence.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
 ## TS31 — JSON-LD describes entities that are visible and appropriate to the content.
 
 **Severity**: major. **Unit**: page.
@@ -1065,6 +2179,78 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/appearance/structured-data/sd-policies](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)
+
+### TS31-A01 — Reviewed prior scope and hypotheses.
+
+`TSEP@0.2.0-rc.1:TS31-A01`
+
+**Required inputs**: structured-data, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Selected page with JSON-LD; planned source and DOM profile.
+
+**Method.** Qualify the plan, dated guidance and bound prior scope/source-base/guidance review.
+
+**Acceptance.** Three supported judgments; bound contradiction fails, missing or unknown review is inconclusive.
+
+**Evidence.** Native HTTP, attributed trees, supplied contexts/guidance, recomputed graphs and bound reviews; jsonld-visible-content-v1 contract.
+
+**Assumptions.** Supplied scope, bases, dates, visible content and judgments; hashes do not authenticate.
+
+**Inconclusive.** Gaps, bounds, missing context/runtime, ambiguous reading, empty graph, notice or unknown review; independent contradictions preserved.
+
+**When NA is allowed.** No atomic exemption; absence in a bounded profile does not establish NA.
+
+**Limits.** JSON-LD and documentary review of the selected page; no Schema.org vocabulary validation, authenticated truth/visibility, rich result, indexing or ranking.
+
+### TS31-A02 — Attributed source and rendered JSON-LD reading.
+
+`TSEP@0.2.0-rc.1:TS31-A02`
+
+**Required inputs**: structured-data, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Selected page with JSON-LD; planned source and DOM profile.
+
+**Method.** Recompute exact scripts under both source hypotheses and all planned DOM states using supplied contexts.
+
+**Acceptance.** Complete readings and at least one nonempty graph without notices; attributed invalid JSON fails, other limits are inconclusive.
+
+**Evidence.** Native HTTP, attributed trees, supplied contexts/guidance, recomputed graphs and bound reviews; jsonld-visible-content-v1 contract.
+
+**Assumptions.** Supplied scope, bases, dates, visible content and judgments; hashes do not authenticate.
+
+**Inconclusive.** Gaps, bounds, missing context/runtime, ambiguous reading, empty graph, notice or unknown review; independent contradictions preserved.
+
+**When NA is allowed.** No atomic exemption; absence in a bounded profile does not establish NA.
+
+**Limits.** JSON-LD and documentary review of the selected page; no Schema.org vocabulary validation, authenticated truth/visibility, rich result, indexing or ranking.
+
+### TS31-A03 — Content and type consistency reviewed per entity.
+
+`TSEP@0.2.0-rc.1:TS31-A03`
+
+**Required inputs**: structured-data, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Selected page with JSON-LD; planned source and DOM profile.
+
+**Method.** Bind supplied content and every flattened node to complete reviews covering visibility, type, all properties and absence of fabrication.
+
+**Acceptance.** Exact population and supported qualifications; bound supplied contradiction fails, gaps or unknowns are inconclusive.
+
+**Evidence.** Native HTTP, attributed trees, supplied contexts/guidance, recomputed graphs and bound reviews; jsonld-visible-content-v1 contract.
+
+**Assumptions.** Supplied scope, bases, dates, visible content and judgments; hashes do not authenticate.
+
+**Inconclusive.** Gaps, bounds, missing context/runtime, ambiguous reading, empty graph, notice or unknown review; independent contradictions preserved.
+
+**When NA is allowed.** No atomic exemption; absence in a bounded profile does not establish NA.
+
+**Limits.** JSON-LD and documentary review of the selected page; no Schema.org vocabulary validation, authenticated truth/visibility, rich result, indexing or ranking.
 
 ## TS32 — Stable @id values connect the same entities without creating duplicates.
 
@@ -1090,29 +2276,173 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://schema.org/docs/datamodel.html](https://schema.org/docs/datamodel.html)
 
+### TS32-A01 — Qualified prior registry and corpus.
+
+`TSEP@0.2.0-rc.1:TS32-A01`
+
+**Required inputs**: structured-data, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Declared corpus of 2–16 JSON-LD exports using identifiers.
+
+**Method.** Check distinct entities, plan and bound prior population/mapping/reference review.
+
+**Acceptance.** Collision-free registry and three supported judgments; distinct-entity collision fails even with absent review.
+
+**Evidence.** Prior registry, native exports, local contexts, recomputed graphs and bound reviews; jsonld-identity-corpus-v1 contract.
+
+**Assumptions.** Declared/reviewed origin, completeness, bases, dates and mappings; not authenticated.
+
+**Inconclusive.** Missing evidence, review, runtime or context; empty/named graph, notice or unqualified reference/ID. Independent contradictions preserved.
+
+**When NA is allowed.** No NA in this bounded profile.
+
+**Limits.** Supplied corpus coherence, no temporal stability, real identity, page collection, cross-document merging or Google guarantee.
+
+### TS32-A02 — Required identifiers and corpus references.
+
+`TSEP@0.2.0-rc.1:TS32-A02`
+
+**Required inputs**: structured-data, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Declared corpus of 2–16 JSON-LD exports using identifiers.
+
+**Method.** Recompute native exports independently and compare defined IRIs with the registry; inventory references and scope.
+
+**Acceptance.** Required IRIs defined and scope/references qualified; required absence from a complete nonempty graph fails, gaps or ambiguity are inconclusive.
+
+**Evidence.** Prior registry, native exports, local contexts, recomputed graphs and bound reviews; jsonld-identity-corpus-v1 contract.
+
+**Assumptions.** Declared/reviewed origin, completeness, bases, dates and mappings; not authenticated.
+
+**Inconclusive.** Missing evidence, review, runtime or context; empty/named graph, notice or unqualified reference/ID. Independent contradictions preserved.
+
+**When NA is allowed.** No NA in this bounded profile.
+
+**Limits.** Supplied corpus coherence, no temporal stability, real identity, page collection, cross-document merging or Google guarantee.
+
+### TS32-A03 — Evidence-bound mapping and duplicate review.
+
+`TSEP@0.2.0-rc.1:TS32-A03`
+
+**Required inputs**: structured-data, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Declared corpus of 2–16 JSON-LD exports using identifiers.
+
+**Method.** Bind each export and recomputed node to mapping, repetition/duplicate and reference-meaning reviews.
+
+**Acceptance.** Exact coverage and supported judgments; bound contradiction fails, incomplete/unknown review is inconclusive.
+
+**Evidence.** Prior registry, native exports, local contexts, recomputed graphs and bound reviews; jsonld-identity-corpus-v1 contract.
+
+**Assumptions.** Declared/reviewed origin, completeness, bases, dates and mappings; not authenticated.
+
+**Inconclusive.** Missing evidence, review, runtime or context; empty/named graph, notice or unqualified reference/ID. Independent contradictions preserved.
+
+**When NA is allowed.** No NA in this bounded profile.
+
+**Limits.** Supplied corpus coherence, no temporal stability, real identity, page collection, cross-document merging or Google guarantee.
+
 ## TS33 — Errors, warnings and unsupported uses are distinguished.
 
 **Severity**: minor. **Unit**: page.
 
 **Required inputs**: structured-data, validator-output, intent.
 
-**Applicability.** Markup whose validity and eligibility are assessed.
+**Applicability.** Selected page with bound HTTP/DOM JSON-LD captures and a separate native Google indexed result.
 
-**Method.** Test Schema.org syntax and Google eligibility separately; record both results.
+**Method.** Qualify the plan; recompute capture syntax and Schema.org names; separately classify native indexed-version messages and their decisions.
 
-**Acceptance.** Syntax, vocabulary, engine eligibility and warnings are separated; each result has a tool, version/date and decision.
+**Acceptance.** All three rules pass within the declared scope: qualified plan, attributed syntax and names, indexed messages without blocking errors and with an exact review. Correspondence between snapshots remains unestablished.
 
 **Evidence.** Report with no blocking error and qualified warnings.
 
-**When NA is allowed.** No structured markup in scope.
+**When NA is allowed.** No NA in this profile; missing markup or evidence remains NT.
 
-**Limits.** Rich Results Test does not validate the whole Schema.org vocabulary.
+**Limits.** Vocabulary names and roles only; no inferred complete semantic validity, cross-snapshot correspondence, current eligibility or display. Supplied origins and dates are not authenticated.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data](https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data)
+
+### TS33-A01 — Qualified prior scope, features and layers.
+
+`TSEP@0.2.0-rc.1:TS33-A01`
+
+**Required inputs**: structured-data, validator-output, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Selected page, bound HTTP/DOM JSON-LD captures and separate indexed APIv1 snapshot.
+
+**Method.** Check prior plan, dated feature guidance and bound scope/support/separation review.
+
+**Acceptance.** Three supported qualifications; reasoned contradiction fails, absence/unknown is inconclusive.
+
+**Evidence.** Plan, native captures, pinned vocabulary30.1, original API outputs and bound reviews; jsonld-validation-layers-v1 contract.
+
+**Assumptions.** Supplied/reviewed origin, dates and completeness, not authenticated; Google backend version unexposed.
+
+**Inconclusive.** Missing evidence/review/runtime, unattributed layer, unknown format/severity or undetected feature; independent errors retained.
+
+**When NA is allowed.** No NA in this profile.
+
+**Limits.** Schema.org names only; separate snapshots, no inferred live test, current eligibility, display or indexing.
+
+### TS33-A02 — Syntax and vocabulary names on bound captures.
+
+`TSEP@0.2.0-rc.1:TS33-A02`
+
+**Required inputs**: structured-data, validator-output, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Selected page, bound HTTP/DOM JSON-LD captures and separate indexed APIv1 snapshot.
+
+**Method.** Reprocess source/DOM with TS31 readers; compare classes/properties with complete Schema.org30.1, equivalent HTTP/HTTPS namespaces.
+
+**Acceptance.** Attributed typed graphs without syntax error, missing term or contradictory role; unknowns remain distinct.
+
+**Evidence.** Plan, native captures, pinned vocabulary30.1, original API outputs and bound reviews; jsonld-validation-layers-v1 contract.
+
+**Assumptions.** Supplied/reviewed origin, dates and completeness, not authenticated; Google backend version unexposed.
+
+**Inconclusive.** Missing evidence/review/runtime, unattributed layer, unknown format/severity or undetected feature; independent errors retained.
+
+**When NA is allowed.** No NA in this profile.
+
+**Limits.** Schema.org names only; separate snapshots, no inferred live test, current eligibility, display or indexing.
+
+### TS33-A03 — Native Google messages and decisions retained without downgrade.
+
+`TSEP@0.2.0-rc.1:TS33-A03`
+
+**Required inputs**: structured-data, validator-output, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Selected page, bound HTTP/DOM JSON-LD captures and separate indexed APIv1 snapshot.
+
+**Method.** Read all APIv1 messages, severities and features; bind an exact review to the indexed response, separate from current captures.
+
+**Acceptance.** No ERROR/FAIL; exact coverage and qualifications. Error, omission or downgrade fails even when documented; technical failure is inconclusive.
+
+**Evidence.** Plan, native captures, pinned vocabulary30.1, original API outputs and bound reviews; jsonld-validation-layers-v1 contract.
+
+**Assumptions.** Supplied/reviewed origin, dates and completeness, not authenticated; Google backend version unexposed.
+
+**Inconclusive.** Missing evidence/review/runtime, unattributed layer, unknown format/severity or undetected feature; independent errors retained.
+
+**When NA is allowed.** No NA in this profile.
+
+**Limits.** Schema.org names only; separate snapshots, no inferred live test, current eligibility, display or indexing.
 
 ## TS34 — Field Core Web Vitals are documented and classified at the 75th percentile.
 
@@ -1140,7 +2470,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A01 — Attributable field cohort
 
-`TSEP@0.1.0-draft.28:TS34-A01`
+`TSEP@0.2.0-rc.1:TS34-A01`
 
 **Required inputs**: field-data, intent.
 
@@ -1164,7 +2494,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A02 — Retained p75 measurements and classes
 
-`TSEP@0.1.0-draft.28:TS34-A02`
+`TSEP@0.2.0-rc.1:TS34-A02`
 
 **Required inputs**: field-data, intent.
 
@@ -1188,7 +2518,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS34-A03 — Reasoned decision bound to measurements
 
-`TSEP@0.1.0-draft.28:TS34-A03`
+`TSEP@0.2.0-rc.1:TS34-A03`
 
 **Required inputs**: field-data, intent.
 
@@ -1236,7 +2566,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A01 — Repeatable laboratory context and measurements
 
-`TSEP@0.1.0-draft.28:TS35-A01`
+`TSEP@0.2.0-rc.1:TS35-A01`
 
 **Required inputs**: lab-data, intent.
 
@@ -1260,7 +2590,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS35-A02 — Diagnostic hypothesis and next verification
 
-`TSEP@0.1.0-draft.28:TS35-A02`
+`TSEP@0.2.0-rc.1:TS35-A02`
 
 **Required inputs**: lab-data, intent.
 
@@ -1306,6 +2636,78 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://developers.google.com/crawling/docs/crawl-budget](https://developers.google.com/crawling/docs/crawl-budget)
 
+### TS36-A01 — Prior plan and release chronology.
+
+`TSEP@0.2.0-rc.1:TS36-A01`
+
+**Required inputs**: intent, change-history.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Selected release whose dated follow-up is assessed.
+
+**Method.** Qualify the bound plan before baseline, receipt identities and baseline/deployment order.
+
+**Acceptance.** Supported plan, matching identity and baseline recorded before deployment; explicit contradiction fails, gaps remain inconclusive.
+
+**Evidence.** Bound plan/reviews, deployment receipt, native API and supplied normalized logs; release-monitoring-v1 contract.
+
+**Assumptions.** Supplied scope, dates, layer and judgments; hashes alone authenticate nothing.
+
+**Inconclusive.** Future stage, missing evidence, errors, unknown values, incomplete logs or invalid bindings; preserve independent contradictions.
+
+**When NA is allowed.** No atomic exemption; absence or delay never establishes NA.
+
+**Limits.** Documentary C for selected baseline/D+1/D+7/D+30; no causality, authenticated Google visit, indexing or global coverage.
+
+### TS36-A02 — Observations attributed to follow-up stages.
+
+`TSEP@0.2.0-rc.1:TS36-A02`
+
+**Required inputs**: intent, search-console, logs, change-history.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Selected release whose dated follow-up is assessed.
+
+**Method.** Read baseline/d1/d7/d30, qualify TS08-A02 API and exact-window log inventories.
+
+**Acceptance.** All four stages reached, complete attributed evidence within bounds; future/absence/error remains inconclusive.
+
+**Evidence.** Bound plan/reviews, deployment receipt, native API and supplied normalized logs; release-monitoring-v1 contract.
+
+**Assumptions.** Supplied scope, dates, layer and judgments; hashes alone authenticate nothing.
+
+**Inconclusive.** Future stage, missing evidence, errors, unknown values, incomplete logs or invalid bindings; preserve independent contradictions.
+
+**When NA is allowed.** No atomic exemption; absence or delay never establishes NA.
+
+**Limits.** Documentary C for selected baseline/D+1/D+7/D+30; no causality, authenticated Google visit, indexing or global coverage.
+
+### TS36-A03 — Interpretation, decisions and closure bound to evidence.
+
+`TSEP@0.2.0-rc.1:TS36-A03`
+
+**Required inputs**: intent, search-console, logs, change-history.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Selected release whose dated follow-up is assessed.
+
+**Method.** Compare claims to known values, retain changes without causality and qualify supplied reviews/decisions.
+
+**Acceptance.** Faithful claims, supported reviews and complete cycle; false known claim or closure before a future stage fails; other gaps inconclusive.
+
+**Evidence.** Bound plan/reviews, deployment receipt, native API and supplied normalized logs; release-monitoring-v1 contract.
+
+**Assumptions.** Supplied scope, dates, layer and judgments; hashes alone authenticate nothing.
+
+**Inconclusive.** Future stage, missing evidence, errors, unknown values, incomplete logs or invalid bindings; preserve independent contradictions.
+
+**When NA is allowed.** No atomic exemption; absence or delay never establishes NA.
+
+**Limits.** Documentary C for selected baseline/D+1/D+7/D+30; no causality, authenticated Google visit, indexing or global coverage.
+
 ## TS37 — HTTPS, HSTS and embedded resources create neither certificate errors nor mixed content.
 
 **Severity**: major. **Unit**: host.
@@ -1330,6 +2732,78 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **References**: [https://www.rfc-editor.org/rfc/rfc6797](https://www.rfc-editor.org/rfc/rfc6797)
 
+### TS37-A01 — Certificates, host, time and supplied trust
+
+`TSEP@0.3.0-draft.5:TS37-A01`
+
+**Required inputs**: tls, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Recheck supplied public PEMs with offline OpenSSL3: chain, server purpose, DNS host, supplied time and explicit supplied roots. Disable implicit stores; retain version and diagnostic.
+
+**Acceptance.** Profile verification succeeds under supplied roots. A supported X509 error, including expiry or wrong host, fails.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: tls, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Missing OpenSSL3, unusable PEM, misattributed capture, absent roots or unqualified error code: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS37-A02 — HTTPS redirects and HSTS decision
+
+`TSEP@0.3.0-draft.5:TS37-A02`
+
+**Required inputs**: http, configuration, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md.
+
+**Method.** Follow the supplied HTTP chain to HTTPS without downgrade, check direct200 response, compare HSTS configuration and header with planned enablement, max-age, subdomains, scope, owner and rationale.
+
+**Acceptance.** Chains and HSTS decision agree; HSTS may be explicitly disabled. No preload requirement.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, configuration, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Missing chain/configuration, ambiguous header, absent scope or decision: NT.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
+### TS37-A03 — Embedded resources and mixed traffic in scope
+
+`TSEP@0.3.0-draft.5:TS37-A03`
+
+**Required inputs**: http, render, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Prior finite TS37 population under render-transport-v1; see docs/render-transport-evidence.md. Amendment: docs/render-transport-prerequisites-v2.md.
+
+**Method.** Bind HAR and console to the HTTPS document; inspect observed requests and source embedded URLs. The strict profile requires HTTPS for these resources even when a browser might upgrade them. With unqualified base href, a relative URL stays NT; examine absolute URLs independently despite CSS/srcset or another unknown scheme.
+
+**Acceptance.** No HTTP URL observed on these surfaces; dynamic-coverage review retained. An observed native HTTP URL fails despite another gap.
+
+**Evidence.** Exact originals, plan and dates/context, fingerprints, diagnostics and reasoned review bound to the entire dossier. Kinds: http, render, intent.
+
+**Assumptions.** Supplied unauthenticated provenance, inventory, browser state, conditions and judgment; two static HTML readings are not two navigations. TLS trust depends on supplied roots.
+
+**Inconclusive.** Truncated HAR, missing body, unqualified CSS/srcset, incomplete context or absent review: NT. Unqualified relative resolution with base href: NT; an independent HTTP contradiction stays NC.
+
+**When NA is allowed.** No atomic NA. Empty population or claimed absent domain without evidence remains NT in this profile.
+
+**Limits.** No real audit inferred from synthetic cases. No indexing, ranking, global conformity, accessibility certification, exhaustive security or universal browser trust. Reviews may be wrong and captures may omit states.
+
 ## TS38 — Host, case and trailing-slash variants converge on one rule.
 
 **Severity**: major. **Unit**: url-set.
@@ -1353,6 +2827,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls](https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls)
+
+### TS38-A01 — Trajectories and canonicals of equivalent variants
+
+`TSEP@0.3.0-draft.2:TS38-A01`
+
+**Required inputs**: http, html, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS38 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Require reviewed equivalence and read every native trajectory: one hop from each variant, direct200 preferred response, HTTP/HTML canonical pointing to it.
+
+**Acceptance.** Every variant converges in one hop and every qualified canonical agrees. Declared merging of distinct resources or native disagreement fails.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: http, html, content, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** Missing trace/canonical, undecided equivalence or necessary rendering: inconclusive.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
+
+### TS38-A02 — Internal signals for variants
+
+`TSEP@0.3.0-draft.2:TS38-A02`
+
+**Required inputs**: sitemap, html, crawl, content, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS38 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
+
+**Method.** Read the selected complete native urlset and every planned link source. Require the preference in that sitemap, no nonpreferred variant in sitemap/links, and equivalence/scope review.
+
+**Acceptance.** Sitemap and scoped links agree with the preference; disagreement or merging distinct pages fails. Zero links remains an observation of the complete supplied corpus.
+
+**Evidence.** Prior plan, original bytes and SHA-256, dates/context, atomic observations, reasoned human review bound to the entire dossier. Kinds: sitemap, html, crawl, content, intent.
+
+**Assumptions.** Supplied population and provenance; review assumes scope sufficiency and business judgment. Content, imported verdicts or hashes never prove authenticity.
+
+**Inconclusive.** XML index, truncated file, missing link source, ambiguous population/review: inconclusive; no global absence inferred.
+
+**When NA is allowed.** No atomic exemption in this profile. Empty population or absent evidence: NT, never automatic NA.
+
+**Limits.** Bounded offline reading, without collection, browser execution, generated human judgment or real audit. Reviewed source scope only; no site completeness, indexing, ranking or causality inferred.
 
 ## TS39 — The CDN, Vary and geolocation do not serve contradictory SEO signals.
 
@@ -1380,7 +2902,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS39-A01 — Reviewed prior matrix and configuration
 
-`TSEP@0.1.0-draft.28:TS39-A01`
+`TSEP@0.2.0-rc.1:TS39-A01`
 
 **Required inputs**: configuration, intent.
 
@@ -1404,7 +2926,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS39-A02 — Signal consistency in each context
 
-`TSEP@0.1.0-draft.28:TS39-A02`
+`TSEP@0.2.0-rc.1:TS39-A02`
 
 **Required inputs**: http, content, intent.
 
@@ -1428,7 +2950,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS39-A03 — Context and cache attribution
 
-`TSEP@0.1.0-draft.28:TS39-A03`
+`TSEP@0.2.0-rc.1:TS39-A03`
 
 **Required inputs**: configuration, http, logs, intent.
 
@@ -1454,7 +2976,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Severity**: major. **Unit**: locale-cluster.
 
-**Required inputs**: hreflang, sitemap, http, html, intent.
+**Required inputs**: hreflang, intent.
 
 **Applicability.** Clusters using at least one hreflang method.
 
@@ -1473,6 +2995,54 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
 **References**: [https://developers.google.com/search/docs/specialty/international/localized-versions](https://developers.google.com/search/docs/specialty/international/localized-versions)
+
+### TS40-A01 — Independent completeness of published methods
+
+`TSEP@0.3.0-draft.3:TS40-A01`
+
+**Required inputs**: hreflang, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS40 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Method.** Inventory methods before capture; read every method/page independently and check the complete expected group including self-reference. A secondary method does not complete a partial primary one.
+
+**Acceptance.** Each complete method contains the expected mappings. Demonstrated omission on a complete surface or a conflicting destination fails; one chosen method is allowed.
+
+**Evidence.** Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: hreflang, intent. Conditional native evidence follows declared methods.
+
+**Assumptions.** Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing.
+
+**Inconclusive.** Missing capture/method, truncated/index XML, published method omitted from plan, outside-group mapping or absent review: inconclusive.
+
+**When NA is allowed.** No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile.
+
+**Limits.** Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established.
+
+### TS40-A02 — Consistency across methods and cluster pages
+
+`TSEP@0.3.0-draft.3:TS40-A02`
+
+**Required inputs**: hreflang, intent.
+
+**Automation / Automatisation**: `semiAuto`.
+
+**Applicability.** Explicitly selected TS40 families or clusters; indexing-locale-v1, docs/indexing-locale-evidence.md.
+
+**Method.** Compare qualified mappings across methods/pages without merging their sets. Retain independent destination conflicts even when a third method is missing; compare set equality when both are complete.
+
+**Acceptance.** Complete methods and pages agree. One complete method is allowed. A native conflict or differing complete sets fails.
+
+**Evidence.** Prior plan, exact originals, fingerprints, dates/context, observations and reasoned review bound to the whole dossier. Minimum kinds: hreflang, intent. Conditional native evidence follows declared methods.
+
+**Assumptions.** Supplied unauthenticated scope, provenance, segmentation and reviews. Two static HTML hypotheses are not two navigations. Frozen codes do not predict engine processing.
+
+**Inconclusive.** Comparison without a qualified surface, partial capture, missing method or absent review: inconclusive unless an independent contradiction is established.
+
+**When NA is allowed.** No atomic exemption. Empty population, unassessed Google or an unobserved cluster remains NT in this profile.
+
+**Limits.** Offline reading of supplied evidence; no authenticated Google origin, human identity or crawler visit; no current index state, causality, translation quality, targeting or global conformity established.
 
 ## TS41 — Critical SEO invariants are replayed automatically before and after deployment.
 
@@ -1500,7 +3070,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS41-A01 — Prior plan and representativeness
 
-`TSEP@0.1.0-draft.28:TS41-A01`
+`TSEP@0.2.0-rc.1:TS41-A01`
 
 **Required inputs**: configuration, intent.
 
@@ -1524,7 +3094,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS41-A02 — Execution coverage and output fidelity
 
-`TSEP@0.1.0-draft.28:TS41-A02`
+`TSEP@0.2.0-rc.1:TS41-A02`
 
 **Required inputs**: configuration, ci-output, change-history, intent.
 
@@ -1548,7 +3118,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS41-A03 — Negative rehearsal and process response
 
-`TSEP@0.1.0-draft.28:TS41-A03`
+`TSEP@0.2.0-rc.1:TS41-A03`
 
 **Required inputs**: configuration, ci-output, change-history, intent.
 
@@ -1596,7 +3166,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A01 — Documented purposes and mechanisms
 
-`TSEP@0.1.0-draft.28:TS42-A01`
+`TSEP@0.2.0-rc.1:TS42-A01`
 
 **Required inputs**: operator-docs, intent.
 
@@ -1620,7 +3190,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A02 — Owner decisions and tradeoffs
 
-`TSEP@0.1.0-draft.28:TS42-A02`
+`TSEP@0.2.0-rc.1:TS42-A02`
 
 **Required inputs**: intent.
 
@@ -1644,7 +3214,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS42-A03 — Captured policy and effective choice
 
-`TSEP@0.1.0-draft.28:TS42-A03`
+`TSEP@0.2.0-rc.1:TS42-A03`
 
 **Required inputs**: configuration, operator-docs, intent.
 
@@ -1692,7 +3262,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A01 — Full client and expected treatment
 
-`TSEP@0.1.0-draft.28:TS43-A01`
+`TSEP@0.2.0-rc.1:TS43-A01`
 
 **Required inputs**: http, operator-docs, intent.
 
@@ -1716,7 +3286,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A02 — Chain reconciled with logs
 
-`TSEP@0.1.0-draft.28:TS43-A02`
+`TSEP@0.2.0-rc.1:TS43-A02`
 
 **Required inputs**: http, logs, intent.
 
@@ -1740,7 +3310,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS43-A03 — Test origin without invented identity
 
-`TSEP@0.1.0-draft.28:TS43-A03`
+`TSEP@0.2.0-rc.1:TS43-A03`
 
 **Required inputs**: http, intent.
 
@@ -1788,7 +3358,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS44-A01 — Prior critical scope
 
-`TSEP@0.1.0-draft.28:TS44-A01`
+`TSEP@0.2.0-rc.1:TS44-A01`
 
 **Required inputs**: content, intent.
 
@@ -1812,7 +3382,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS44-A02 — Delivery path without JavaScript
 
-`TSEP@0.1.0-draft.28:TS44-A02`
+`TSEP@0.2.0-rc.1:TS44-A02`
 
 **Required inputs**: http, html, intent.
 
@@ -1836,7 +3406,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS44-A03 — Value and context coherence
 
-`TSEP@0.1.0-draft.28:TS44-A03`
+`TSEP@0.2.0-rc.1:TS44-A03`
 
 **Required inputs**: http, html, render, content, intent.
 

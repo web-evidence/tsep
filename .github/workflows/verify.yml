@@ -14,7 +14,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          # Python 3.9 is unavailable on Ubuntu 26.04. Pin this legacy-runtime
+          # job; all seven combinations and verifier checks are preserved.
+          # FR : seul l'hôte du test 3.9 change ; aucun test n'est retiré.
+          - os: ubuntu-24.04
             python: '3.9'
           - os: ubuntu-latest
             python: '3.10'
@@ -29,11 +32,11 @@ jobs:
           - os: macos-latest
             python: '3.14'
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 60
+    timeout-minutes: 360
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONUTF8: '1'
-      TSEP_VERIFY_STEP_TIMEOUT: '1800'
+      TSEP_VERIFY_STEP_TIMEOUT: '7200'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:

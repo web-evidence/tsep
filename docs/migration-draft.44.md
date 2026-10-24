@@ -1,0 +1,15 @@
+# Draft.44 migration / migration draft.44
+
+Protocol44 / interpreter43 / critical-presence reader3 / adapter43 / HTML25 / replay3. 25 controls /64 rules.
+
+## Français
+
+Draft.44 / reader3 : les champs reviewer, assistance et reason des revues TS25 fournies sont limités à8192octets UTF8 bruts chacun, avant strip ou normalisation ; chaque objet revue, champs supplémentaires inclus, à32768octets de JSON compact UTF8. Toute revue fournie est vérifiée à l’admission, même inutilisée. Un dépassement donne un refus technique avant publication, jamais C ou NT public ; les originaux sont conservés sans réécriture. Le diagnostic natif de chaque règle est borné à4MiB de JSON compact UTF8 trié, y compris A01 et les sorties d’erreur. Au dépassement, un diagnostic compact explicitement incomplet conserve un fail indépendant établi, sinon inconclusive ; aucun pass. Le transport refuse ce marqueur et borne aussi à4MiB par cible la somme des artefacts TS25 réellement sérialisés (JSON UTF8 indent2, saut de ligne final), pour les règles demandées. Les maxima individuels ne garantissent pas que toutes leurs combinaisons respectent les bornes cumulées. Aucun changement des autres contrôles ni du validateur partagé.
+
+Les candidats42/43 non qualifiés et leurs défauts restent conservés. Dix-neuf contre-cas sont fixés et exécutés avant correction ; les183attentes précédentes sont inchangées. Les anciennes valeurs longues en caractères mais supérieures à8192octets peuvent désormais être refusées. Créer un nouveau dossier avec ses originaux et une importation explicite qualifiée ; aucune normalisation ou réduction automatique des revues. Réception applicative distincte, aucune publication ou version0.2 implicite.
+
+## English
+
+Draft.44 / reader3: supplied TS25 review fields reviewer, assistance and reason are each limited to8192 raw UTF8 bytes before strip or normalization; each entire review object, including additional fields, to32768 compact UTF8 JSON bytes. Admission checks every supplied review, including unused ones. An overrun is technical refusal before publication, never public C or NT; exact originals are not rewritten. Each native rule diagnostic is bounded to4MiB of sorted compact UTF8 JSON, including A01 and error returns. Overflow produces an explicitly incomplete compact diagnostic retaining an independently established fail, otherwise inconclusive; never pass. Transport refuses that marker and also caps the sum of actual serialized TS25 observation artifacts per target at4MiB (UTF8 JSON indent2, trailing newline), for requested rules. Individual maxima do not guarantee that every combination satisfies aggregate bounds. Other controls and the shared validator are unchanged.
+
+Unqualified42/43 candidates and defects are retained. Nineteen countercases are authored and executed before correction; the183previous expectations remain unchanged. Previously accepted long-character values exceeding8192bytes may now be refused. Create a new dossier with exact originals and an explicitly qualified import; never automatically normalize or shorten supplied reviews. App acceptance is separate; no publication or implicit0.2.

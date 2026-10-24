@@ -1,3 +1,131 @@
+Correction de publication / Publication correction **publication-v2** : arrêt CI macOS au plafond de quatre heures observé et conservé ; plafond de six heures, progression des étapes sur stderr, nouvelle archive et qualification complète requises / observed four-hour macOS CI interruption retained; six-hour ceiling, step progress on stderr, distinct archive and complete qualification required. [Migration FR/EN](docs/publication-profile-v2.md). Norme, règles et tests inchangés / Normative source, rules and tests unchanged.
+
+Préparation de publication / Publication preparation **publication-v1** : citation draft.5 et plafonds CI7200s/240min ; norme, lecteurs, règles et tests inchangés / draft.5 citation and CI7200s/240min ceilings; normative source, readers, rules and tests unchanged. [Migration FR/EN](docs/publication-profile-v1.md). Résultats locaux et CI à consigner séparément / Local and CI results recorded separately.
+
+Correction de distribution / Distribution correction **method-corpus-v1** : métadonnée de version du corpus de méthode alignée sur draft.5 après un échec observé sur1254tests ; cas, attentes et norme inchangés / method-corpus version metadata aligned with draft.5 after one observed failure among1254tests; cases, expectations and normative source unchanged. [Migration FR/EN](docs/method-corpus-metadata-v1.md). Nouvelle qualification complète requise / New complete verification required.
+
+Préparation / preparation **0.3.0-draft.5** : corrections bornées des préalables TS30/TS37, 44 contrôles/98 règles ; 95 définitions atomiques inchangées, toutes les règles RC1 conservées. [Migration](docs/migration-0.3.0-draft.5.md), [contrat / contract](docs/render-transport-prerequisites-v2.md). Nouvelle qualification distincte requise ; aucune publication ni audit réel.
+
+Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](docs/render-transport-evidence.md), [migration](docs/migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
+
+# 0.3.0-draft.3 — 2026-10-18
+
+- FR : six règles TS21/22/40,38 contrôles à règles /85 règles ;53 cas synthétiques et neuf cas de méthode, registre de codes figé, preuves conditionnelles TS40 explicites. Les79 règles précédentes conservent leurs objets/versions.
+- EN: six TS21/22/40 rules,38 rule-bearing controls /85 rules;53 synthetic cases and nine method cases, frozen code registry, explicit TS40 conditional evidence. All79 prior rule objects/versions retained. No site/app change or publication.
+
+# 0.3.0-draft.2 — 2026-10-18
+
+- FR : neuf règles TS09/11/19/20/38 ; 35 contrôles à règles /79 règles. Dossiers sources bornés, revues liées, NT sur preuves insuffisantes ; 64 contre-cas synthétiques, migration bilingue, règles antérieures conservées.
+- EN: nine TS09/11/19/20/38 rules;35 rule-bearing controls /79 rules. Bounded source dossiers, bound supplied reviews, NT for insufficient evidence;64 synthetic counterexamples, bilingual migration, prior rules preserved.
+- Correctif de test préalable / prior test-only TS25 runtime portability correction:19 historical recipes retained, two actual-runtime boundaries added; no engine or threshold change. No publication or application/site change.
+
+# 0.3.0-draft.1 — 2026-10-18
+
+- FR : ajoute TS13-A01/A02 et TS14-A01 uniquement depuis RC1 ; 30 contrôles à règles /70 règles, règles antérieures et versions préservées. Contrat bilingue, migration et cas synthétiques ; aucune application/site/publication.
+- EN: adds only TS13-A01/A02 and TS14-A01 from RC1; 30 rule-bearing controls /70 rules, earlier rules and versions preserved. Bilingual contract, migration and synthetic cases; no application/site/publication.
+
+Historical baseline / Base historique :
+
+## 0.2.0-rc.1 — 2026-10-17 — prerelease / préversion
+
+- EN: Freeze the complete TS01–TS44 scope inherited from v0.1.0-draft.47; no new control. 28 controls carry 67 executable atomic rules. TS03-A01 remains limited to supplied synthetic .invalid HTTP matrices and literal body markers. Adds RC1 migration, an explicit 44-control status matrix, and a separate app integration dossier for future TS01/TS04 then TS07/TS10 flows. Application version remains independent.
+- FR : fige le périmètre complet TS01–TS44 repris de v0.1.0-draft.47, sans nouveau contrôle. 28 contrôles portent 67 règles atomiques exécutables. TS03-A01 reste limité aux matrices HTTP synthétiques .invalid et aux marqueurs littéraux. Ajout de la migration RC1, du tableau d’état explicite des 44 contrôles et d’un dossier séparé pour les futurs parcours app TS01/TS04 puis TS07/TS10. La version app reste indépendante.
+- TS03 application r2 receipt is for draft.47 only; a receipt tied to the exact RC1 archive is recorded separately after validation. No real-site use or global conformity is claimed.
+- Migration: docs/migration-0.2.0-rc.1.md. Release notes: docs/release-notes-0.2.0-rc.1.md.
+
+## Draft.44 — TS25 byte budgets / bornes en octets
+
+Draft.44 / reader3 : les champs reviewer, assistance et reason des revues TS25 fournies sont limités à8192octets UTF8 bruts chacun, avant strip ou normalisation ; chaque objet revue, champs supplémentaires inclus, à32768octets de JSON compact UTF8. Toute revue fournie est vérifiée à l’admission, même inutilisée. Un dépassement donne un refus technique avant publication, jamais C ou NT public ; les originaux sont conservés sans réécriture. Le diagnostic natif de chaque règle est borné à4MiB de JSON compact UTF8 trié, y compris A01 et les sorties d’erreur. Au dépassement, un diagnostic compact explicitement incomplet conserve un fail indépendant établi, sinon inconclusive ; aucun pass. Le transport refuse ce marqueur et borne aussi à4MiB par cible la somme des artefacts TS25 réellement sérialisés (JSON UTF8 indent2, saut de ligne final), pour les règles demandées. Les maxima individuels ne garantissent pas que toutes leurs combinaisons respectent les bornes cumulées. Aucun changement des autres contrôles ni du validateur partagé.
+
+Draft.44 / reader3: supplied TS25 review fields reviewer, assistance and reason are each limited to8192 raw UTF8 bytes before strip or normalization; each entire review object, including additional fields, to32768 compact UTF8 JSON bytes. Admission checks every supplied review, including unused ones. An overrun is technical refusal before publication, never public C or NT; exact originals are not rewritten. Each native rule diagnostic is bounded to4MiB of sorted compact UTF8 JSON, including A01 and error returns. Overflow produces an explicitly incomplete compact diagnostic retaining an independently established fail, otherwise inconclusive; never pass. Transport refuses that marker and also caps the sum of actual serialized TS25 observation artifacts per target at4MiB (UTF8 JSON indent2, trailing newline), for requested rules. Individual maxima do not guarantee that every combination satisfies aggregate bounds. Other controls and the shared validator are unchanged.
+
+## Draft.43 — TS25 independent failure / défaut indépendant
+
+Draft.43 / reader2 : le champ render est un objet documentaire contenant states. render:[] n’est pas équivalent à render:{states:[]}. Un conteneur non objet ou une population mal formée donne une couverture inconnue, sans coercition ni arrêt des lectures source indépendantes. Une absence source requise et qualifiée reste fail ; une source présente ne transforme pas cette couverture inconnue en pass. Une liste states vide est valide quand aucun état n’est requis. Les revues restent liées aux ID d’états, jamais à leurs indices. Cette frontière propre à TS25 ne migre pas celle de TS23. Les self-digests contradictoires conservent leur refus technique.
+
+Draft.43 / reader2: render is a documentary object containing states. render:[] is not render:{states:[]}. A non-object container or malformed population makes coverage unknown, without coercion or stopping independent source readings. An independently required qualified source absence remains fail; positive source cannot turn unknown coverage into pass. An empty states list is valid when no state is required. Reviews remain bound to state IDs, never indexes. This TS25-specific boundary does not migrate TS23. Contradicted self-digests remain technical refusal.
+
+## Draft.42 — TS25 critical stage presence / présence critique par stade
+
+Five explicit roles, prior stage policies, source hypotheses, rendered states and bound supplied reviews. Finite declared scope; no execution, authenticated judgment, indexing or semantic validity. New native profile; historical manual artifacts unchanged.
+
+## Draft.41 — TS24 unique destination policy / politique de destination unique
+
+A qualified foreign target remains NC when the expected target is also present. Une cible qualifiée contraire reste NC même avec la bonne cible. Earlier draft.40 attempts retained; raw observation/report-intake boundaries explicit. No new control or extra atomic rule.
+
+## Draft.40 — TS24 supplied x-default role / rôle fourni
+
+Prior motivated context, native annotations and bound supplied review; no fabricated approval, native NA or soft404 heuristic. Migration and qualification receipts are separate.
+
+## 0.1.0-draft.36 — local candidate, 2026-10-14
+
+- FR : TS17 source/rendu séparés, stratégie préalable et états déclarés ; snapshots répétés visibles, absence qualifiée distincte d’une preuve manquante. Deux règles natives, aucun constat d’interaction ou d’acquisition authentifiée. Le descriptif TS17 est précisé ; upstream1.1 intact.
+- EN: TS17 separate source/render stages, prior strategy and declared states; repeated snapshots disclosed, qualified absence distinct from missing evidence. Two native rules, no authenticated interaction/acquisition. TS17 description narrowed; upstream1.1 retained.
+- Interpreter35 /adapter36 /HTML20 /replay3.20 tooled controls /56 rules. Qualification/app reception recorded separately; historical engines, public draft.28 and frozen demo unchanged.
+
+## 0.1.0-draft.35 — local candidate, 2026-10-14
+
+- FR : TS15, trois règles sur les fichiers fournis ;44 cas lecteur,31 cas du jeu et4 contre-exemples de revue figés. Le texte descriptif TS15 est précisé : population déclarée et structure minimale, pas validité complète. Origine non authentifiée, aucune exhaustivité du site. Grille upstream1.1 inchangée ; divergence explicite.
+- EN: TS15, three supplied-file rules;44 reader cases,31 set cases and4 frozen review counterexamples. TS15 description narrowed to declared population/minimal structure, not full validity. Unauthenticated origin, no site completeness. Historical upstream1.1 unchanged; explicit editorial divergence.
+- Interpreter34 /adapter35 /HTML19 /replay3.19 tooled controls /54rules. Historical engines, public draft.28 and frozen demo unchanged. Actual qualification/app import recorded separately.
+
+- FR : changement de la description TS33 héritée : remplacer la promesse de test d’éligibilité par les trois qualifications bornées ; correspondance entre instantanés non établie. EN: changed the inherited TS33 description, replacing eligibility-testing language with three bounded qualifications; cross-snapshot correspondence remains unestablished. Upstream/grid1.1, public draft.28 and frozen demo unchanged.
+
+## 0.1.0-draft.34 — local candidate, 2026-10-14
+
+- FR : TS33, trois règles,52 cas synthétiques figés/156 paires ; captures liées TS31, noms Schema.org30.1 épinglés, messages natifs APIv1 et revues liées. Erreurs bloquantes conservées ; aucune éligibilité actuelle ni affichage déduits.
+- EN: TS33, three rules,52 frozen synthetic cases/156 pairs; TS31-bound captures, pinned Schema.org30.1 names, native APIv1 messages and bound reviews. Blocking errors retained; no current eligibility/display inference.
+- Interpreter33 / adapter34 / HTML18 / replay3.18 tooled controls /51rules. Historical engines, archives, public draft.28 and frozen demo remain separate. Qualification and app import evidence recorded separately.
+
+## HTML17 — narrow metric grid / Synthèse sur écran étroit — 2026-10-14
+
+- FR : les cartes de synthèse passent sur une seule colonne jusqu’à 380 pixels CSS ; les libellés restent entiers sans débordement, masquage ou troncature.
+- EN: Stack overview metric cards in one column up to 380 CSS pixels, keeping labels readable without overflow, hiding or truncation.
+- Presentation-only change: CSS, its derived CSP hash and renderer footer version. Draft.33, JSON reports, original evidence, historical replay and application engine pins remain unchanged. Generate a distinct HTML file; observed layout and source verification results belong to the separate delivery.
+
+## TS02 prospective collector 1 — 2026-10-13 — non-normative
+
+- FR : préparation liée aux outils et bornes, revue préalable fournie, collecte native HTTP bornée, tentatives conservées et évaluation/rejeu hors réseau via le moteur existant. Onze scénarios synthétiques figés ; aucune collecte Edikka ni approbation humaine créée.
+- EN: Tool/bounds-bound preparation, supplied prior review, bounded native HTTP collection, retained attempts and offline engine assessment/replay. Eleven prefrozen synthetic scenarios; no Edikka collection or invented human approval.
+- Draft.33, interpreter32 / adapter33 / HTML16 / replay3 and all 48 atomic rules remain unchanged. App migration requires an explicit whole-engine import; observed checks are recorded separately.
+
+## 0.1.0-draft.33 — local candidate, 2026-10-13
+
+- FR : trois règles TS32 sur le corpus JSON-LD déclaré, registre préalable, références et revues liées ; 62 cas figés,17 contrôles/48 règles. Aucune stabilité temporelle, identité réelle ou collecte de pages inférée.
+- EN: three TS32 declared-corpus rules, prior registry, references and bound reviews;62 frozen cases,17 controls/48 rules. No temporal stability, real identity or page collection inferred.
+- Explicit bounded/fingerprinted conformance extensions preserve all1494 earlier cases; general input limits unchanged. Interpreter32 / adapter33 / HTML16 / replay3.
+- Draft.32 general verification failures exposed missing method fixtures, provenance-refusal expectations and historical-corpus boundaries. Corrections retain previous expected hashes and frozen rule outcomes. Final verification is recorded separately.
+
+## 0.1.0-draft.32 — local candidate, 2026-10-13
+
+- TS31: prior scope, recomputed source/rendered JSON-LD and entity-bound supplied content reviews; 49 prefrozen synthetic cases.
+- FR : trois règles TS31, revues fournies et inconnues conservées ; aucune visibilité authentifiée, validation Schema.org ni résultat enrichi garanti.
+- Interpreter31 / adapter32 / HTML15 / replay3; prior artifacts and TS08 application kit unchanged.
+- Validation results are recorded after execution; no remote CI or actual Edikka review inferred.
+
+## TS08 application rehearsal 1 — 2026-10-13 — non-normative
+
+- FR : kit CLI import/rapport FR+EN/rejeu, treize exemples fictifs dont une sélection de deux URL, quatre refus attendus et test de rejeu avec horloge future simulée ; guide d'intégration applicative. Aucune nouvelle règle, donnée Google réelle ou qualification OAuth. Les résultats observés sont consignés dans le rapport du kit.
+- EN: CLI intake/FR+EN report/replay rehearsal, thirteen authored scenarios including a two-URL selection, four expected refusals and replay test with a simulated future clock; application integration guide. No new rule, real Google acquisition or OAuth qualification. Actual results are retained in the rehearsal report.
+
+## 0.1.0-draft.31 — 2026-10-12 — local candidate
+
+- FR : TS36 ajoute trois règles semiAuto,65 cas préfigés, suivi daté et décisions fournies ; futur indéterminé, zéro causalité ou identité Google inférée. Import/revues/clôture, HTML FR/EN et rejeu ;15 contrôles/42 règles. [Migration](docs/migration-draft.31.md).
+- EN: Three TS36 semiAuto rules,65 prefrozen authored cases, supplied chronology/decisions; future stages inconclusive, no inferred causality or Google identity. Intake/reviews/closure, bilingual HTML and replay;15 controls/42 rules.
+- FR/EN: Correct the report-contract heading previously omitting TS12; existing rule objects/results remain unchanged.
+
+## 0.1.0-draft.30 — local candidate, 2026-10-12
+
+FR : TS12 ajoute plan, lectures natives API/HTTP/HTML/DOM et qualification/décision fournie. Rendu prévu requis, comparaisons littérales sans verdict TS10. 66 cas figés/198 couples ; 36 règles et 1 304 cas antérieurs préservés. Import hors ligne avec revues vides, preuves, FR/EN et rejeu ; aucune collecte réelle ni publication.
+
+EN: TS12 adds prior plan, native API/HTTP/HTML/DOM comparisons and supplied qualification/decision. Planned rendering required; literal comparisons are not TS10 outcomes. 66 frozen cases/198 pairs, unchanged36 older rules/1,304 cases. Offline intake with blank reviews, evidence, FR/EN and replay; no actual collection or publication. [Migration](docs/migration-draft.30.md).
+
+# 0.1.0-draft.29 — local candidate
+
+TS08 : trois règles semiAuto, JSON API natifs, plan/revues liés, décisions typées, rapports FR/EN et rejeu. Google PASS ne devient pas C ; données anciennes, absences, erreurs et contradictions restent visibles. TS12 reste en attente.
+
+TS08: three semiAuto rules, native API JSON, bound plans/reviews, typed decisions, FR/EN reports and replay. Google PASS is not C; retain old data, gaps, errors and independent contradictions. TS12 remains pending. [Migration](docs/migration-draft.29.md). No publication or real-account assessment inferred.
+
 ## Supplied rendered JSON-LD observation 1 — 2026-10-11
 
 - Optional planned source/DOM workflow, supplied base attribution, exact payload comparison and offline replay; no normative version or control-count change.

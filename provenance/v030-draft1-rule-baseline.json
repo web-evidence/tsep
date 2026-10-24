@@ -1,0 +1,292 @@
+{
+  "base_commit": "c969f772ca0c490dafce529bf686c75787347426",
+  "rules": {
+    "TS01-A01": {
+      "sha256": "03dd8fbf1a7c0b4e6cf65072913defd7e7613c064fae7b7ca2bfdea073e1ee6b",
+      "version": "0.2.0-rc.1"
+    },
+    "TS01-A02": {
+      "sha256": "4955b796ff82dbc60cace97f24d6913222accb9cd93887ace9558e98cb2ee5bc",
+      "version": "0.2.0-rc.1"
+    },
+    "TS02-A01": {
+      "sha256": "86d49e27e30ba4019a15a25c3ecd0cd374647e4122c730573f15fa32a68688db",
+      "version": "0.2.0-rc.1"
+    },
+    "TS02-A02": {
+      "sha256": "f53a9bbc8c52cf563b5c9ada0d15d1cb829fd1f251d09b4561a932e4f7e64ad3",
+      "version": "0.2.0-rc.1"
+    },
+    "TS03-A01": {
+      "sha256": "31b6522c50f3c856ae4948259be7bd4e489e6d547eff15c15cd396f1557b05c9",
+      "version": "0.2.0-rc.1"
+    },
+    "TS04-A01": {
+      "sha256": "b389e72a22e4779ba8a1cc892c60f69ba3b30d04f821108583fa8389aecbe321",
+      "version": "0.2.0-rc.1"
+    },
+    "TS04-A02": {
+      "sha256": "30df3aa697393666c0c0ab7ff6ca0160d540d844367ac41842b866b66e599ced",
+      "version": "0.2.0-rc.1"
+    },
+    "TS05-A01": {
+      "sha256": "8a8b3f4c3367e32c8d27a81400b96f9706eae595eca15326efed01e110734b0d",
+      "version": "0.2.0-rc.1"
+    },
+    "TS06-A01": {
+      "sha256": "709d9fe823d3e8b860cdba14f8fcff355528e83d5028a90c67091e7a510b6a54",
+      "version": "0.2.0-rc.1"
+    },
+    "TS07-A01": {
+      "sha256": "5985d9b93c6fb1c2d88fc77d1b1c68179d78db52ec4691581c6896d87a70e625",
+      "version": "0.2.0-rc.1"
+    },
+    "TS07-A02": {
+      "sha256": "29b4e2d518da5c20e0709a30420afa6a9c66a9f42aa7c322f671c9cd3d1bcea2",
+      "version": "0.2.0-rc.1"
+    },
+    "TS07-A03": {
+      "sha256": "0d8fb2de85265a19ca80cb712982033f43dc0955deab26d9006452e93185fce3",
+      "version": "0.2.0-rc.1"
+    },
+    "TS08-A01": {
+      "sha256": "e26807145641553750319fbf3bdbd1a1bd76871d65df2444b5319042b2c748a6",
+      "version": "0.2.0-rc.1"
+    },
+    "TS08-A02": {
+      "sha256": "db1161e8073b358102347d50653ff332f03705e88a7da3b4733911a90da0efae",
+      "version": "0.2.0-rc.1"
+    },
+    "TS08-A03": {
+      "sha256": "6ecd605aabce6ebbe76b0f1d4cd4dd9615ca11f35e7b41b46fc1535d058c45c0",
+      "version": "0.2.0-rc.1"
+    },
+    "TS10-A01": {
+      "sha256": "0f431af7333c90f4215b38cbd9690680108fc3d958e361197395f464b7c52c46",
+      "version": "0.2.0-rc.1"
+    },
+    "TS10-A02": {
+      "sha256": "68a1f99770332de18e2259c1d65653fcc692eae983a4a2dc336ebec68120133a",
+      "version": "0.2.0-rc.1"
+    },
+    "TS10-A03": {
+      "sha256": "3c7bd367c8f83e594e820d00986abc03f6ff900b39f3c5bf0268965f9455d347",
+      "version": "0.2.0-rc.1"
+    },
+    "TS10-A04": {
+      "sha256": "d4e6f36f511b2cf3bb589c378b316fffaeaa41ec4b814b90a293f4ec06a54bb6",
+      "version": "0.2.0-rc.1"
+    },
+    "TS12-A01": {
+      "sha256": "72b34741a6beb0e53055b156a8ad1543a9509630d55d86c75953c46703b6acc1",
+      "version": "0.2.0-rc.1"
+    },
+    "TS12-A02": {
+      "sha256": "46c29f6a2d54dc31344120d26fcbf9d2db3f27da80b4ddc20eb9af023ec2f403",
+      "version": "0.2.0-rc.1"
+    },
+    "TS12-A03": {
+      "sha256": "bdd9c3f62478a593239a1a34fe060e63dd108336f7935f8ae74d9b45d5ef4cdb",
+      "version": "0.2.0-rc.1"
+    },
+    "TS13-A01": {
+      "sha256": "c8c4911215a4a65250f8e63188d2513f0732ee5660035671e61f697aa93b12bb",
+      "version": "0.3.0-draft.1"
+    },
+    "TS13-A02": {
+      "sha256": "05eb961e599c892c38cced9bd57dd4111dc3c024f90d213b6049ba302be2154a",
+      "version": "0.3.0-draft.1"
+    },
+    "TS14-A01": {
+      "sha256": "f8d006d365d1484425d8097910f5a5e84a0ff48c910ecc098c1f9e1f7e7a817e",
+      "version": "0.3.0-draft.1"
+    },
+    "TS15-A01": {
+      "sha256": "48ac2aa4071f5c04bb01fc028279857de077a20427ae93686e85d564ab707504",
+      "version": "0.2.0-rc.1"
+    },
+    "TS15-A02": {
+      "sha256": "7f2b9a4e5b6ccc50e6ea0bec4d0ccf49cb181bcdc2407ff4c19ef2a12bac1650",
+      "version": "0.2.0-rc.1"
+    },
+    "TS15-A03": {
+      "sha256": "8642afbde801d4ad7fef6fcca6275324064216bcd97c1415642542f8e291d23d",
+      "version": "0.2.0-rc.1"
+    },
+    "TS16-A01": {
+      "sha256": "eaa456862fa31de60e9b87934ebaf5fd4f3232ccdba6563cf6e3d6693f63db9c",
+      "version": "0.2.0-rc.1"
+    },
+    "TS17-A01": {
+      "sha256": "b582f17184f69155d16baa453b86de8bc5624f9e93f4f56735de3f1107aef68d",
+      "version": "0.2.0-rc.1"
+    },
+    "TS17-A02": {
+      "sha256": "d923ca8ec43755451a121df9fa78bb995549a7815cffce18e66b826c6341e16f",
+      "version": "0.2.0-rc.1"
+    },
+    "TS18-A01": {
+      "sha256": "03de1f4db27f347e8816ac473b4c214cd17b626b366cde7362ed2e463505ea10",
+      "version": "0.2.0-rc.1"
+    },
+    "TS18-A02": {
+      "sha256": "5e945f79dc798850cfe1e969eab1536d85fb0dad33ee5f612ab270ebfa7576f6",
+      "version": "0.2.0-rc.1"
+    },
+    "TS18-A03": {
+      "sha256": "9678d32d78d756e0948be9c7fcac0ff19b5df3825480c356abe77a32c6df0b61",
+      "version": "0.2.0-rc.1"
+    },
+    "TS23-A01": {
+      "sha256": "280a9d49ecf50b0bfd85f4ad35ab2d396e1217298323a76b55632f74aabdc3a3",
+      "version": "0.2.0-rc.1"
+    },
+    "TS24-A01": {
+      "sha256": "07103a239a2556030c1b086591d24d7433cf0aa9e4a32e095b1a9bb9514585a9",
+      "version": "0.2.0-rc.1"
+    },
+    "TS25-A01": {
+      "sha256": "bfe8436cef05bda6b0bcc34ab0dc30d3fd0070d13230ca3aa96e76597850004b",
+      "version": "0.2.0-rc.1"
+    },
+    "TS25-A02": {
+      "sha256": "0f87189e2c777aa79e74463c1547c4a885a4426fd946fa636a4b1162bb776530",
+      "version": "0.2.0-rc.1"
+    },
+    "TS31-A01": {
+      "sha256": "528fd8df847eebfd85ee03f445661cbd23120cdb7b81a5aa3c3feeaaedab6133",
+      "version": "0.2.0-rc.1"
+    },
+    "TS31-A02": {
+      "sha256": "4522b116dca752fb1ef4e1bc67dff0e384a80a2aca124c6703e7447a1f5cabc5",
+      "version": "0.2.0-rc.1"
+    },
+    "TS31-A03": {
+      "sha256": "82d940852542e4d82eb225343cd4c72a5b1f5992f6f1a4ee6d72e7d4b46d8978",
+      "version": "0.2.0-rc.1"
+    },
+    "TS32-A01": {
+      "sha256": "2a116dca479c0ead1659848f445a4b6330242df6830040b102c820d237ecf456",
+      "version": "0.2.0-rc.1"
+    },
+    "TS32-A02": {
+      "sha256": "c73b6dfe3190352915aa2dd6600362ccd7e33c98931d614be5bd2d75550d13fb",
+      "version": "0.2.0-rc.1"
+    },
+    "TS32-A03": {
+      "sha256": "5efe9e528fa00756ffe33730f29bf3315fd0f89a8885ee1a552f06f2cd0f70ec",
+      "version": "0.2.0-rc.1"
+    },
+    "TS33-A01": {
+      "sha256": "ebecdfd153007aa34ddc7bf06408778aa0ec637c4719f1ef3aefdb9dfad576af",
+      "version": "0.2.0-rc.1"
+    },
+    "TS33-A02": {
+      "sha256": "a3a51bc920faf0fb6a73fa384cafdd75720421e98e84e0a79cb97b08fb142f74",
+      "version": "0.2.0-rc.1"
+    },
+    "TS33-A03": {
+      "sha256": "80c21af5d27b3076bab92da21ebc7a9e8efd1e2bf71ecc9eb50b584ed731cc34",
+      "version": "0.2.0-rc.1"
+    },
+    "TS34-A01": {
+      "sha256": "3179cc12790f4e4e7d2c3171aae147bb80dd3dac6d989eb932d01eabee3dea6a",
+      "version": "0.2.0-rc.1"
+    },
+    "TS34-A02": {
+      "sha256": "3f39934104e80696405668867bb4b8b4065152a2a13f2785bc8392783be32a1e",
+      "version": "0.2.0-rc.1"
+    },
+    "TS34-A03": {
+      "sha256": "dc90e6e96e14128442e096eb7b2749fb9cb50565616da547b3fe6c6642ad2522",
+      "version": "0.2.0-rc.1"
+    },
+    "TS35-A01": {
+      "sha256": "933f757ab8de8e7f333a25b15602118bd43bc9567f4e58fcd4eb7ab5ab2485df",
+      "version": "0.2.0-rc.1"
+    },
+    "TS35-A02": {
+      "sha256": "c65c794d6207b2cecc4c6cbf9af3e60821c8e910474178131a12533cf81b77c2",
+      "version": "0.2.0-rc.1"
+    },
+    "TS36-A01": {
+      "sha256": "22be7e9f1e772f5b0837bd1d7aebf7f8a0830a1bfd61199ccd70974f9bc23171",
+      "version": "0.2.0-rc.1"
+    },
+    "TS36-A02": {
+      "sha256": "1b0a822d22e529bf791723b1be29b974c2968e1b462157b912a22f940243d4b1",
+      "version": "0.2.0-rc.1"
+    },
+    "TS36-A03": {
+      "sha256": "d0097c5c4c033c6b2bb50a84f7bf6a3af97a2d06af6ae93181ed5c30b6771456",
+      "version": "0.2.0-rc.1"
+    },
+    "TS39-A01": {
+      "sha256": "4d403381c70d0f7483a5a0226c4af761f43ca72e483df806125e26e3f2645aaf",
+      "version": "0.2.0-rc.1"
+    },
+    "TS39-A02": {
+      "sha256": "416951899aded5dd1b64fb9ff60770a5e2abbee41de99094ec1161780d317283",
+      "version": "0.2.0-rc.1"
+    },
+    "TS39-A03": {
+      "sha256": "9ca468e7b9d84a7f52de6ead1bce8c7b0e804c21b2a34600e65d98c18bad2b78",
+      "version": "0.2.0-rc.1"
+    },
+    "TS41-A01": {
+      "sha256": "e20c7a675374cb9d31a163bab0327679ac31ff09f5a7bbacec0d3676bcddc693",
+      "version": "0.2.0-rc.1"
+    },
+    "TS41-A02": {
+      "sha256": "9a08afc9385b3f48cf023c16e7e0eb58097c2f6e3bb2b89d5116797b70ff8831",
+      "version": "0.2.0-rc.1"
+    },
+    "TS41-A03": {
+      "sha256": "49c7fe0b8dd0794b6e6dcd317f3b3ff3eed0bfc0a48a0dea764c68b228cb2db9",
+      "version": "0.2.0-rc.1"
+    },
+    "TS42-A01": {
+      "sha256": "8d3566f9ca78a3cf41158e5b3de4bf56285890dcf6f3a0f05a7f93d4d0d2a1b3",
+      "version": "0.2.0-rc.1"
+    },
+    "TS42-A02": {
+      "sha256": "7df69125ebdc8bd31383e36972165ee90b19544441c6bcf670a50f81e6ca5aca",
+      "version": "0.2.0-rc.1"
+    },
+    "TS42-A03": {
+      "sha256": "5a03c22a3465b3910fa767ed844dc1160bc9e1b2b0e940945df68b1cde113d95",
+      "version": "0.2.0-rc.1"
+    },
+    "TS43-A01": {
+      "sha256": "0463b7f256fd2b4b6bae27964347ecaabbc95fc4fcf23dd4c8a892f9f9b093a1",
+      "version": "0.2.0-rc.1"
+    },
+    "TS43-A02": {
+      "sha256": "e8f0a7664ee00cba0cea5b7dc475affdd5d183c422158119286febb3d29ab2bf",
+      "version": "0.2.0-rc.1"
+    },
+    "TS43-A03": {
+      "sha256": "2d54e7e4d544e9d711e2ac5c2349065bf2436cccbbdf841065d74764c14e0ea3",
+      "version": "0.2.0-rc.1"
+    },
+    "TS44-A01": {
+      "sha256": "b7abcbe0d4decd6d164f335ee4dc07c893699ca7c6dd3416f44d6e6da1374c23",
+      "version": "0.2.0-rc.1"
+    },
+    "TS44-A02": {
+      "sha256": "2b2b001882ae85a3a822bcd3c33664b940150047f9cc03a7415490587fd48007",
+      "version": "0.2.0-rc.1"
+    },
+    "TS44-A03": {
+      "sha256": "764d599b29d3285afdd29c3deb614aeafdd6e7d3a8ca5e3032380ad37d913eab",
+      "version": "0.2.0-rc.1"
+    }
+  },
+  "new_control_previous_versions": {
+    "TS09": "0.1.0-draft.19",
+    "TS11": "0.1.0-draft.19",
+    "TS19": "0.1.0-draft.19",
+    "TS20": "0.1.0-draft.19",
+    "TS38": "0.1.0-draft.19"
+  }
+}

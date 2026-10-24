@@ -1,0 +1,23 @@
+{
+  "observations": [
+    {
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+      "retrieved_url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+      "captured_at": "2026-10-13T09:33:01.312439+00:00",
+      "scope": "Content visibility/relevance; quality review not established by syntax alone",
+      "path": "google-policies.html",
+      "sha256": "99d0f768bef7c144ee6cf475b03f064cc8e5260a62e3d39bfc13f2b131fa4637",
+      "bytes": 197033
+    },
+    {
+      "url": "https://www.w3.org/TR/json-ld11-api/",
+      "retrieved_url": "https://www.w3.org/TR/json-ld11-api/",
+      "captured_at": "2026-10-13T09:33:01.485243+00:00",
+      "scope": "JSON-LD 1.1 processing semantics, not Schema.org or search eligibility",
+      "path": "w3c-jsonld-api.html",
+      "sha256": "380ddb64232c701a8ff969e22646451e20fe66d264e34a5bc4c5b018e8c77f55",
+      "bytes": 899664
+    }
+  ],
+  "scope": "Public reference capture, not an external-site assessment or endorsement"
+}

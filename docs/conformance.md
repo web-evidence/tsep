@@ -1,4 +1,38 @@
-Current addition / Ajout courant — draft.28: optional TS01-A02 html-tree-markers-v1, 76 authored cases / 76 pairs. Corpus: 1257 cases / 2408 pairs, 33 rules. Historical TS01 inputs/results remain covered separately; no real-site assessment.
+Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](render-transport-evidence.md), [migration](migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.
+
+0.3.0-draft.3 preparation:38 rule-bearing controls /85 rules, TS21/22/40 batch. Synthetic cases and supplied reviews; no actual indexing or causality inferred. [Contrat / contract](indexing-locale-evidence.md), [migration](migration-0.3.0-draft.3.md).
+
+0.3.0-draft.2:64 authored synthetic URL-policy cases, nine new rules,35 rule-bearing controls /79 rules. Prior inputs and expectations preserved. FR : 64 cas synthétiques rédigés avant exécution ; aucun audit réel ni qualification complète déduite de ce décompte.
+
+0.3.0-draft.1 adds 55 authored synthetic TS13/TS14 cases (165 pairs), with documented binding/fictional-clock corrections and one explicit fail→inconclusive amendment for unzoned lastmod; all other expectations unchanged. 70 executable rules. The report-method corpus retains its 144 RC1 cases and appends eight TS13/TS14 authored cases; all earlier expectations are unchanged. Existing TS12/TS15/TS16/TS17/TS18 fixtures/readers remain byte-identical to RC1; exact runtime comparison is recorded separately. FR : cas synthétiques, aucun audit réel ; tests préparés ≠ exécution observée.
+
+Historical baseline / Base historique :
+
+Draft.47 adds 13 authored synthetic TS03 cases /13 primary rule-target pairs: 1534 primary cases /3159 primary pairs; the fully expanded corpus has 2098 cases /4164 pairs across its fingerprinted extensions. The native interpreter supports 67 rules. Reference fixtures only; no site or Google soft-404 assessment. See TS03 method and limits (ts03-response-evidence.md) and migration (migration-draft.47.md).
+FR : 13 cas TS03 synthétiques ajoutés ; corpus principal 1534 cas /3159 paires et corpus étendu 2098 cas /4164 paires. Fixtures uniquement, aucune qualification d’un site ni classification soft 404.
+
+Draft.38 candidate:32 authored native TS18 cases/96pairs; expected1769cases/3782pairs. Existing cases unchanged; actual qualification is recorded separately.
+
+Draft.36 : TS17 adds34 authored synthetic cases/68pairs;1673cases/3622pairs total,56rules. Source52,DOM37,malformed36 cases run separately. FR : attentes rédigées avant changements, aucune observation réelle ni exécution déduite du décompte.
+
+Draft.35 : TS15 adds31 authored synthetic set cases/93pairs in an explicit fingerprinted extension;1639total cases/3554pairs,54rules.44 native reader +4 review cases are exercised separately. A03 is coverage-only: missing evidence is inconclusive, no fail case is invented solely for a test matrix. FR : couverture absente reste indéterminée ; les cas figés ne prouvent pas une exécution.
+
+Draft.34 : TS33 adds52 synthetic cases/156pairs in one explicit fingerprinted extension;1608total cases/3461pairs,51rules. Full native profile requires Node24. Expected outcomes were frozen before the reader; observed executions are separate. FR : cas synthétiques figés avant le lecteur, exécution observée distincte.
+
+TS32 / draft.33:62 frozen authored cases /186 pairs. Expanded total:1556 cases /3305 pairs,48 rules. `conformance.corpus.expand` loads only the two declared fingerprinted extensions. Les résultats effectifs restent consignés séparément ; aucun audit réel déduit.
+TS31 / draft.32: 49 initial and 10 boundary authored cases /177 pairs added; total 1494 cases /3119 pairs and45 rules. Cas fictifs uniquement ; les résultats effectifs de vérification sont conservés séparément.
+
+Draft.31 : TS36 ajoute 65 cas préfigés /195 paires synthétiques. Total : 1435 cas /2942 paires, 42 règles ; preuves API/logs/déploiement fournies, aucune exécution future.
+EN: TS36 adds65 prefrozen cases/195 authored pairs;1435 cases/2942 pairs and42 rules, no real future execution.
+
+Historical addition / Ajout historique — draft.30: TS12-A01/A02/A03, 66 authored cases / 198 pairs. Corpus: 1,370 cases / 2,747 pairs, 39 rules.
+FR/EN: 1,304 historical case objects unchanged; supplied API/DOM/reviews are synthetic. [Migration](migration-draft.30.md).
+
+Historical addition / Ajout historique — draft.29: TS08-A01/A02/A03, 47 authored cases / 141 pairs. Corpus: 1,304 cases / 2,549 pairs, 36 rules.
+FR : les 1 257 cas historiques restent intacts ; 47 cas TS08 synthétiques, aucune application réelle déduite.
+EN: all 1,257 historical cases remain unchanged; 47 synthetic TS08 cases, no real account assessment inferred. [Migration](migration-draft.29.md).
+
+Historical addition / Ajout historique — draft.28: optional TS01-A02 html-tree-markers-v1, 76 authored cases / 76 pairs. Corpus: 1257 cases / 2408 pairs, 33 rules. Historical TS01 inputs/results remain covered separately; no real-site assessment.
 
 Historical addition / Ajout historique — draft.27 : TS39-A01/A02/A03, 77 authored cases / 231 pairs. Corpus total: 1181 cases / 2332 pairs, 33 rules. Historical results below retain their versions; current runtime verification is recorded separately.
 FR : corpus historique préservé, reformatté compact pour rester sous 8 Mio ; v1 de préparation avec dates incohérentes conservée hors corpus actif, v2 corrigée.
@@ -495,3 +529,24 @@ previous cases and 45 prefrozen additions, covering thirteen rules.
 TS04 ajoute matrice préalable et accès aux ressources avec revues fournies. Le
 lecteur est commun à TS07-A02. Les 299 cas comprennent les 254 cas antérieurs et
 45 ajouts figés ; aucune observation réelle du moteur n'est revendiquée.
+
+### Closed outcome domain / Issues fermées — TS15-A03
+
+FR : la règle TS15-A03 déclare dans spec/protocol.json
+`allowed_outcomes: ["pass", "inconclusive"]`. Aucun fail ni not-applicable n'est
+admis pour cette règle, y compris dans un rapport fourni. Le banc exige au moins
+un cas pour chacune de ces deux issues. Toutes les autres règles gardent leurs
+issues historiques et l'exigence pass/fail/inconclusive du banc. Supprimer une
+classe du corpus ne réduit jamais cette exigence. Le profil ne contient aucune
+affirmation déclarative de lien parent/enfant : un fichier déclaré orphelin donne
+inconclusive. Une future assertion de parent contradictoire exigerait une autre
+version ; elle ne doit pas être déduite de la déclaration de population.
+
+EN: TS15-A03 declares `allowed_outcomes: ["pass", "inconclusive"]` in the canonical
+protocol. Neither fail nor not-applicable is accepted for that rule, including
+in supplied reports. The corpus must contain each of its two declared outcomes.
+Every other rule retains its historical domain and required pass/fail/inconclusive
+coverage. Removing a class from the corpus never weakens this requirement.
+The profile has no declared parent/child assertion: an orphan declared file stays
+inconclusive. A future contradicted parent assertion would require another version;
+it must not be inferred from the population declaration.

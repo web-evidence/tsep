@@ -1,0 +1,60 @@
+{
+  "scope": "Official documentation and pinned vocabulary; no site audit or authenticated Google observation",
+  "records": [
+    {
+      "path": "schema-developers.html",
+      "url": "https://schema.org/docs/developers.html",
+      "final_url": "https://schema.org/docs/developers.html",
+      "observed_at": "2026-10-14T10:06:12.180487+00:00",
+      "sha256": "f4e9eff84b52c0961eefe4afa7167ee5f7fc26a60395b0f89a81ad2c59fa3713",
+      "bytes": 12785,
+      "wire_path": "schema-developers.html.gz",
+      "wire_sha256": "f7f2b17a175a1592a8245625d6e01c67b16659ce6be456b94123abdda55bf6c7",
+      "wire_bytes": 5164,
+      "transformation": "gzip decoded from retained wire bytes; encoding detected by magic"
+    },
+    {
+      "path": "schema-terms.html",
+      "url": "https://schema.org/docs/terms.html",
+      "final_url": "https://schema.org/docs/terms.html",
+      "observed_at": "2026-10-14T10:06:12.465123+00:00",
+      "sha256": "4124418da202d5976705def0cd11ee938cfe903ba9f1c9f0e140902d72a942bb",
+      "bytes": 9331,
+      "wire_path": "schema-terms.html.gz",
+      "wire_sha256": "2414294b9b6a9a7cd69abb07146fab0f0a502810fca28333fcdd7c8d87d8f1b9",
+      "wire_bytes": 3985,
+      "transformation": "gzip decoded from retained wire bytes; encoding detected by magic"
+    },
+    {
+      "path": "google-rich-results-api.html",
+      "url": "https://developers.google.com/webmaster-tools/v1/urlInspection.index/UrlInspectionResult",
+      "final_url": "https://developers.google.com/webmaster-tools/v1/urlInspection.index/UrlInspectionResult",
+      "observed_at": "2026-10-14T10:06:13.308262+00:00",
+      "sha256": "003d01363d5b9c3dc7b1e0cb217dc5bdacf2adafa0ae85254fe5911dc77ff8d5",
+      "bytes": 127603
+    },
+    {
+      "path": "google-inspect-method.html",
+      "url": "https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect",
+      "final_url": "https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect",
+      "observed_at": "2026-10-14T10:06:14.381699+00:00",
+      "sha256": "18ead65b371ffa9910fc54bba7a9b80957e6833a42b3335c9d12a950cc72c210",
+      "bytes": 74935
+    },
+    {
+      "path": "google-structured-policies.html",
+      "url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+      "final_url": "https://developers.google.com/search/docs/appearance/structured-data/sd-policies",
+      "observed_at": "2026-10-14T10:06:15.149454+00:00",
+      "sha256": "a4828bfdc3c2544fa2781eb68cc0a93336fb12d0827f01128856e9c5c5fc8a21",
+      "bytes": 197037
+    },
+    {
+      "path": "../../third_party/schemaorg/schemaorg-all-https-30.1.jsonld",
+      "url": "https://raw.githubusercontent.com/schemaorg/schemaorg/main/data/releases/30.1/schemaorg-all-https.jsonld",
+      "observed_at": "2026-10-14T10:07:12.788333+00:00",
+      "sha256": "07e7c663dbc12a0937581745e59a98ed12b8698f38e8e3b03650287d9df88ae5",
+      "bytes": 1523088
+    }
+  ]
+}
