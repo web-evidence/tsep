@@ -10,7 +10,34 @@ concurrency:
   group: tsep-${{ github.workflow }}-${{ github.ref == 'refs/heads/main' && github.run_id || github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 jobs:
+  postmerge:
+    name: Post-merge identity
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      actions: read
+      pull-requests: read
+    outputs:
+      reuse: ${{ steps.identity.outputs.reuse }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.12'
+      - name: Verify qualification identity or require full checks
+        id: identity
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python -I -B scripts/postmerge_check.py --output "$RUNNER_TEMP/postmerge-identity.json"
   verify:
+    needs: postmerge
+    # Missing proof or failed/timed-out identity selects full checks; run cancellation still works.
+    if: ${{ !cancelled() && (github.event_name != 'push' || needs.postmerge.result != 'success' || needs.postmerge.outputs.reuse != 'true') }}
     strategy:
       fail-fast: false
       matrix:
@@ -51,6 +78,6 @@ jobs:
       - name: Select the explicit optional source runtime
         run: echo "TSEP_SOURCE_NODE=$(command -v node)" >> "$GITHUB_ENV"
       - name: Verify contract, evidence and reproducible distribution
-        run: python -I -B -X utf8 scripts/verify.py --jobs 2
+        run: python -I -B -X utf8 scripts/ci_qualify.py
       - name: Check that verification preserved the checkout
         run: test -z "$(git status --porcelain --untracked-files=all)"
