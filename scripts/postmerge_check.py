@@ -125,9 +125,10 @@ class GitHub:
 def local_identity(root):
     """Rebuild only the distribution; do not execute a second test matrix."""
     environment = {k:v for k,v in os.environ.items() if k not in ('GITHUB_TOKEN', 'GH_TOKEN')}
+    environment.update(PYTHONUTF8='1', PYTHONDONTWRITEBYTECODE='1')
     with tempfile.TemporaryDirectory(prefix='tsep-postmerge-') as folder:
         archive = Path(folder)/'current.zip'
-        result = subprocess.run([sys.executable, '-B', 'maintain.py', 'build', '--output', str(archive)],
+        result = subprocess.run([sys.executable, '-B', '-X', 'utf8', 'maintain.py', 'build', '--output', str(archive)],
                                 cwd=root, env=environment, capture_output=True, timeout=45)
         require(result.returncode == 0, 'Current distribution could not be built')
         manifest = read_json((root/'release-files.json').read_text(encoding='utf-8'))

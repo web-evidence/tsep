@@ -38,6 +38,8 @@ Au moindre manque de preuve, erreur réseau, expiration ou contradiction,
 Si le job court échoue ou dépasse cinq minutes, la matrice s’exécute également.
 Seuls un job court réussi et la sortie exacte `reuse=true` dispensent de la
 répétition. Le résumé GitHub distingue réutilisation et nouvelle exécution.
+L’annulation explicite du run reste possible (`!cancelled()`) ; elle n’est jamais
+assimilée à un succès. Une PR remplacée peut ainsi arrêter sa campagne précédente.
 
 Cette méthode réutilise les environnements consignés avant fusion. Elle ne prouve
 pas le comportement sur une nouvelle image ni l’absence de tests intermittents.
@@ -76,6 +78,8 @@ expired qualification or API errors select the full matrix. Even a failed or
 timed-out short job does not skip it: only a successful job AND the exact string
 `reuse=true` can do so. The GitHub summary and receipt identify reused results,
 not a newly executed matrix. No repository protection is disabled.
+Explicit workflow cancellation remains effective (`!cancelled()`), including
+superseded PR runs; cancellation never establishes qualification.
 
 This retains evidence from recorded environments; it does not test new runner
 images or establish freedom from intermittent behavior. Failed/retried runs for

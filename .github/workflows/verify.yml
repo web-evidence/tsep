@@ -36,8 +36,8 @@ jobs:
         run: python -I -B scripts/postmerge_check.py --output "$RUNNER_TEMP/postmerge-identity.json"
   verify:
     needs: postmerge
-    # Missing output, refusal, timeout or failed identity job always selects full checks.
-    if: ${{ always() && (github.event_name != 'push' || needs.postmerge.result != 'success' || needs.postmerge.outputs.reuse != 'true') }}
+    # Missing proof or failed/timed-out identity selects full checks; run cancellation still works.
+    if: ${{ !cancelled() && (github.event_name != 'push' || needs.postmerge.result != 'success' || needs.postmerge.outputs.reuse != 'true') }}
     strategy:
       fail-fast: false
       matrix:
