@@ -14,7 +14,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - os: ubuntu-latest
+          # Python 3.9 is unavailable on Ubuntu 26.04. Pin this legacy-runtime
+          # job; all seven combinations and verifier checks are preserved.
+          # FR : seul l'hôte du test 3.9 change ; aucun test n'est retiré.
+          - os: ubuntu-24.04
             python: '3.9'
           - os: ubuntu-latest
             python: '3.10'
