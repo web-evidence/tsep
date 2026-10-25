@@ -22,6 +22,26 @@ La comparaison utilise la date de capture. Une règle ajoutée à une date sans
 virgule ne devient pas une date valide. Les portées de robots et leurs changements
 restent explicites ; une règle propre à un autre robot ne s’applique pas à Googlebot.
 
+Limites assumées : même `index follow` reste NT sans preuve indépendante ; aucune
+seconde lecture n’invente des séparateurs par espaces. Une portée telle que
+`otherbot: noindex googlebot: noindex` reste inconnue avant de filtrer les autres
+robots. Les appels internes doivent fournir le profil explicitement.
+
+Le lecteur v2 consomme la valeur entière des dates. Il prend en charge les dates
+ISO étendues `AAAA-MM-JJ`, avec heure facultative `HH:MM[:SS[.fraction]]` (six
+décimales au maximum), puis `Z` ou un décalage `±HH:MM` facultatif ; et les formes
+RFC à jour/mois anglais/année, séparées par espaces ou tirets, avec heure, secondes
+facultatives et fuseau UTC/GMT/UT, américain fixe ou `±HHMM`. L’année RFC à deux
+chiffres suit la convention fixe RFC5322 §4.3 : 00–49 → 2000–2049, 50–99 → 1950–1999.
+Une date sans fuseau reste NT à moins de 24 heures de la capture. Une date
+calendaire impossible est ignorée ; un format plausible non pris en charge
+(`20201021`, décalage ISO `+0000`, semaine ISO), un suffixe ou un saut de ligne
+reste NT. Cela ne prétend pas que Google ignore ces formats. Le parseur v1 reste
+inchangé, y compris ses limites historiques ; il n’est pas un lecteur v2.
+Les secondes intercalaires, l’heure ISO 24:00, l’année zéro et un jour de semaine
+contradictoire restent hors périmètre (NT). Le décalage négatif nul est inconnu,
+sans assimilation implicite à UTC.
+
 Migration explicite : créer une nouvelle attente v2, puis une nouvelle évaluation.
 Les attentes v1 restent interprétées selon v1 lorsqu’elles le déclarent ; aucune
 relecture automatique de leurs preuves n’est présentée comme une nouvelle collecte.
@@ -51,6 +71,24 @@ Valid parameter/date spaces are retained. An RFC 822/850 weekday comma is retain
 only inside `unavailable_after`; dates are compared with capture time. A rule
 appended to a date without a comma does not become a valid date. Crawler scopes
 and scope switches remain explicit; another crawler’s rules do not govern Googlebot.
+
+Declared limitations: even `index follow` stays NT without independent evidence;
+no second reading invents whitespace separators. A header such as
+`otherbot: noindex googlebot: noindex` remains unknown before foreign crawler
+filtering. Internal calls must supply the profile explicitly.
+
+The v2 date reader consumes the entire value. It supports extended ISO dates
+`YYYY-MM-DD`, optional `HH:MM[:SS[.fraction]]` time (up to six decimals), and optional
+`Z` or `±HH:MM` zone; RFC forms with English day/month/year, spaces or hyphens,
+time, optional seconds and UTC/GMT/UT, fixed US or `±HHMM` zones. Two-digit RFC
+years follow RFC5322 §4.3's fixed mail-date convention: 00–49 → 2000–2049,
+50–99 → 1950–1999. Zoneless dates remain NT within 24 hours of capture. Impossible
+calendar dates are ignored; plausible unsupported formats (`20201021`, ISO
+`+0000` offsets, ISO weeks), suffixes and line breaks remain NT. This does not
+claim Google ignores those formats. The v1 parser retains its historical behavior
+and limitations; it is not silently promoted to v2.
+Leap seconds, ISO 24:00, year zero and contradictory weekdays are outside the
+supported subset (NT). Negative zero offsets remain unknown, never silently UTC.
 
 Migration requires new v2 intent and a new assessment. Explicit v1 intent retains
 v1 interpretation; replay is never labelled a fresh collection. The TS09 reader

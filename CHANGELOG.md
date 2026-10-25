@@ -1,5 +1,7 @@
 ## 0.3.0-draft.9 — 2026-10-25
 
+- FR : contre-revue R077 corrigée : dates entièrement consommées, grammaire v2 déterministe et NT sur formats non pris en charge, portées cachées refusées ; profils internes explicites, lecteur TS09 v1 conservé. EN: reviewed R077 fixes consume whole dates, use a deterministic bounded v2 grammar and keep unsupported formats inconclusive; hidden scopes are rejected, internal profiles explicit, TS09 v1 retained.
+
 Candidat local non publié / unpublished local candidate. TS07-A01 : profil Google v2, listes à espaces seules indéterminées, contradictions indépendantes conservées. / Google v2 profile, space-only rule lists remain inconclusive; independent contradictions retained. Migration explicite, aucune substitution des anciennes preuves. / Explicit migration, no replacement of old evidence.
 
 Préparation / preparation **0.3.0-draft.8** : TS07 directives Googlebot, TS05 cohérence des moyens d’exclusion, TS09 preuve représentative et inventaires d’export exacts / Googlebot directives, exclusion-policy consistency, representative exclusion evidence and exact export inventories. [Migration FR/EN](docs/migration-0.3.0-draft.8.md). Candidat non publié ; qualifications locale et distante à distinguer / Unpublished candidate; local and remote qualification are separate.

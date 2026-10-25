@@ -196,7 +196,7 @@ def directive_result(headers, body, intent, *, source=False, diagnostics=None, o
         outcome = assess(headers, body, intent, combine=lambda h, v, i, **kw: directive_values(h, v, i, observed_at=observed_at, **kw), diagnostics=diagnostics)
         if 'directive_policy' in intent and intent.get('following', 'unspecified') == 'unspecified':
             from conformance.google_directives import facts, result
-            if facts(headers, [], observed_at)['excluded']:
+            if facts(headers, [], observed_at, intent['directive_policy'])['excluded']:
                 return result(headers, [], intent, observed_at, diagnostics)
         return outcome
     body = text_body(body)

@@ -17,7 +17,7 @@ BARE = {'all', 'index', 'follow', 'noindex', 'nofollow', 'none', 'nosnippet',
 PARAMS = {'max-snippet', 'max-image-preview', 'max-video-preview', 'unavailable_after'}
 
 
-def tokens(value, profile=PROFILE):
+def tokens(value, profile):
     if profile == LEGACY_PROFILE:
         # Frozen v1 grammar for explicitly declared historical targets only.
         parts = re.split(r',(?!(?:\s*\d{1,2}[ -][A-Za-z]{3}))', value)
@@ -59,7 +59,78 @@ def expiry(value, observed_at):
     return 'expired' if date <= observed else 'future'
 
 
-def facts(headers, values, observed_at=None, profile=PROFILE):
+_MONTHS = {name: index for index, name in enumerate(
+    ('jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'), 1)}
+_ZONES = {'ut': 0, 'utc': 0, 'gmt': 0, 'est': -300, 'edt': -240,
+          'cst': -360, 'cdt': -300, 'mst': -420, 'mdt': -360, 'pst': -480, 'pdt': -420}
+_ISO_DATE = re.compile(r'(?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2})'
+    r'(?:[Tt ](?P<hour>[0-9]{2}):(?P<minute>[0-9]{2})'
+    r'(?::(?P<second>[0-9]{2})(?:\.(?P<fraction>[0-9]{1,6}))?)?'
+    r'(?P<zone>[Zz]|[+-][0-9]{2}:[0-9]{2})?)?')
+_RFC_DATE = re.compile(r'(?:(?P<weekday>Mon(?:day)?|Tue(?:sday)?|Wed(?:nesday)?|Thu(?:rsday)?|'
+    r'Fri(?:day)?|Sat(?:urday)?|Sun(?:day)?),[ \t]+)?'
+    r'(?P<day>[0-9]{1,2})(?P<sep>[ \t]+|-)(?P<month>[A-Za-z]{3})(?P=sep)'
+    r'(?P<year>[0-9]{2}(?:[0-9]{2})?)[ \t]+'
+    r'(?P<hour>[0-9]{2}):(?P<minute>[0-9]{2})(?::(?P<second>[0-9]{2}))?'
+    r'(?:[ \t]+(?P<zone>UT|UTC|GMT|EST|EDT|CST|CDT|MST|MDT|PST|PDT|[+-][0-9]{4}))?', re.I)
+
+
+def expiry_v2(value, observed_at):
+    """Closed whole-value grammar; never rely on version-sensitive lenient parsers.
+
+    Supported ISO extended dates and RFC mail dates use fixed numeric fields.
+    Other plausible formats stay unsupported, not presumed ignored by Google.
+    """
+    match = _ISO_DATE.fullmatch(value)
+    iso = match is not None
+    if match is None:
+        match = _RFC_DATE.fullmatch(value)
+    if match is None:
+        return 'unsupported' if re.search(r'[0-9\s:+]', value) else 'invalid'
+    fields = match.groupdict()
+    try:
+        year = int(fields['year'])
+        if not iso and len(fields['year']) == 2:
+            # RFC5322 section4.3 mail-date pivot; never Python's varying grammar.
+            year += 2000 if year < 50 else 1900
+        month = int(fields['month']) if iso else _MONTHS[fields['month'].lower()]
+        if year == 0 or int(fields.get('second') or 0) == 60 or (iso and fields.get('hour') == '24'):
+            # Plausible ISO/leap-second forms outside this datetime subset.
+            return 'unsupported'
+        zone = fields.get('zone')
+        offset = None
+        if zone:
+            if zone.lower() == 'z':
+                offset = 0
+            elif zone[0] in '+-':
+                digits = zone[1:].replace(':', '')
+                hours, minutes = int(digits[:2]), int(digits[2:])
+                if hours > 23 or minutes > 59:
+                    return 'invalid'
+                offset = (hours * 60 + minutes) * (-1 if zone[0] == '-' else 1)
+                if zone in ('-0000', '-00:00'):
+                    offset = None  # Unknown local offset, not asserted UTC.
+            else:
+                offset = _ZONES[zone.lower()]
+        date = dt.datetime(year, month, int(fields['day']), int(fields.get('hour') or 0),
+            int(fields.get('minute') or 0), int(fields.get('second') or 0),
+            int((fields.get('fraction') or '').ljust(6, '0')),
+            tzinfo=None if offset is None else dt.timezone(dt.timedelta(minutes=offset)))
+        if fields.get('weekday') and ('mon','tue','wed','thu','fri','sat','sun')[date.weekday()] != fields['weekday'][:3].lower():
+            return 'unsupported'
+    except (ValueError, KeyError, OverflowError):
+        return 'invalid'
+    if observed_at is None:
+        return 'unresolved'
+    observed = tsep.timestamp(observed_at)
+    if date.tzinfo is None:
+        date = date.replace(tzinfo=dt.timezone.utc)
+        if abs((observed-date).total_seconds()) <= 86400:
+            return 'unresolved'
+    return 'expired' if date <= observed else 'future'
+
+
+def facts(headers, values, observed_at, profile):
     need(profile in (PROFILE, LEGACY_PROFILE), 'Unsupported directive policy')
     record = {'reader': profile, 'source': SOURCE, 'source_checked': '2026-10-25',
               'observed_at': observed_at, 'tokens': [], 'ignored': [], 'unknown': [],
@@ -74,6 +145,12 @@ def facts(headers, values, observed_at=None, profile=PROFILE):
             match = re.match(r'^([a-z][a-z0-9_-]*):\s*(.*)$', token)
             if is_header and match and match[1] not in PARAMS:
                 scope, token = match.groups()
+            if profile == PROFILE and is_header and any(m.start() != 0 or m[1] not in PARAMS
+                    for m in re.finditer(r'(?:^|\s+)([a-z][a-z0-9_-]*)\s*:', token)):
+                # A second scope/parameter without a comma is not attributable,
+                # even when the first scope names another crawler.
+                record['unknown'].append(token);record['unsupported_syntax'].append(raw)
+                continue
             if scope not in ('googlebot', 'robots'):
                 record['ignored'].append({'value': raw, 'reason': 'other-crawler', 'crawler': scope})
                 continue
@@ -88,11 +165,13 @@ def facts(headers, values, observed_at=None, profile=PROFILE):
                 elif re.fullmatch(r'max-(?:snippet|video-preview):\s*(?:-1|[0-9]+)', token) or re.fullmatch(r'max-image-preview:\s*(?:none|standard|large)', token):
                     record['tokens'].append(token)
                 elif token.startswith('unavailable_after:'):
-                    # A trailing rule without its comma is not part of a date.
-                    if profile == PROFILE and re.search(r'\s+(?:'+ '|'.join(sorted(BARE | IGNORED)) +r')\s*$', token):
-                        record['unknown'].append(token);record['unsupported_syntax'].append(raw);continue
-                    state = expiry(re.search(r'unavailable_after:\s*(.*)$', raw, re.I)[1], observed_at)
+                    if profile == PROFILE:
+                        state = expiry_v2(token[len('unavailable_after:'):].strip(), observed_at)
+                    else:
+                        state = expiry(re.search(r'unavailable_after:\s*(.*)$', raw, re.I)[1], observed_at)
                     record['expires'].append({'value': raw, 'state': state})
+                    if state == 'unsupported':
+                        record['unknown'].append(token);record['unsupported_syntax'].append(raw)
                     record['excluded'] |= state == 'expired'
                     record['uncertain_expiry'] |= state == 'unresolved'
                     if state == 'invalid':
@@ -126,7 +205,7 @@ def result(headers, values, intent, observed_at=None, diagnostics=None):
     if diagnostics is not None:
         diagnostics.append(record)
     reason = 'Googlebot standalone-page directives: ' + ('exclusion present' if record['excluded'] else 'no established exclusion')
-    if record.get('unsupported_syntax'): reason += '; undocumented syntax (space-separated rules): ' + ', '.join(record['unsupported_syntax'])
+    if record.get('unsupported_syntax'): reason += '; undocumented or unsupported syntax: ' + ', '.join(record['unsupported_syntax'])
     if record['unknown']: reason += '; unrecognized: ' + ', '.join(record['unknown'])
     if record['ignored']: reason += '; ignored: ' + ', '.join(x['value'] for x in record['ignored'])
     if record['expires']: reason += '; dated restrictions: ' + ', '.join(x['state'] for x in record['expires'])

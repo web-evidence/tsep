@@ -22,7 +22,7 @@ class GoogleSyntaxV2(unittest.TestCase):
         notes=[]
         state,reason=result({'x-robots-tag':['googlebot: noindex nofollow']},[],
             {'directive_policy':PROFILE,'crawler':'googlebot','indexing':'exclude'},NOW,notes)
-        self.assertEqual(state,'inconclusive');self.assertIn('undocumented syntax',reason)
+        self.assertEqual(state,'inconclusive');self.assertIn('undocumented or unsupported syntax',reason)
         self.assertEqual(notes[0]['unsupported_syntax'],['googlebot: noindex nofollow'])
         self.assertEqual(notes[0]['tokens'],[])
 
@@ -32,8 +32,8 @@ class GoogleSyntaxV2(unittest.TestCase):
             self.assertEqual(got[0],expected)
 
     def test_date_comma_is_scoped_to_a_date_directive(self):
-        self.assertEqual(list(tokens('noindex, 21 Oct 2026 00:00:00 GMT')),['noindex','21 Oct 2026 00:00:00 GMT'])
-        self.assertEqual(list(tokens('googlebot: unavailable_after: Wednesday, 21-Oct-26 00:00:00 GMT, nofollow')),
+        self.assertEqual(list(tokens('noindex, 21 Oct 2026 00:00:00 GMT',PROFILE)),['noindex','21 Oct 2026 00:00:00 GMT'])
+        self.assertEqual(list(tokens('googlebot: unavailable_after: Wednesday, 21-Oct-26 00:00:00 GMT, nofollow',PROFILE)),
             ['googlebot: unavailable_after: Wednesday, 21-Oct-26 00:00:00 GMT','nofollow'])
 
     def test_both_static_html_readings_preserve_independent_failure(self):
