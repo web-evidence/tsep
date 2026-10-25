@@ -116,7 +116,7 @@ class ReplayComparison(unittest.TestCase):
                 self.assertFalse(result['same_source_observations'])
                 self.assertFalse(result['same_recorded_runtime'])
                 self.assertTrue(result['source_observations_match'])
-                self.assertEqual(result['workflow_version'], '3')
+                self.assertEqual(result['workflow_version'], '4')
                 self.assertIsNone(result['original_unicode_data_version'])
                 self.assertEqual((root/'profile/original-evidence'/observation_name).read_bytes(),
                                  (bundle/observation_name).read_bytes())

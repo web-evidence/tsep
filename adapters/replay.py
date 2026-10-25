@@ -13,7 +13,7 @@ from adapters import captures, package, replay_comparison
 from adapters.package import inventory, json_bytes, publish, seal
 from provenance.runtime import runtime_identity, loaded_sources
 
-VERSION = '3'
+VERSION = '4'
 
 
 def replay(source, output, *, comparison='exact'):
@@ -57,15 +57,18 @@ def replay(source, output, *, comparison='exact'):
         # Retain the old bytes, not a normalized substitute. This is a partial
         # evidence copy; the old manifest refers to the complete source bundle.
         for name in sorted(observed_names | {'import.json', 'SHA256SUMS'}):
-            destination = stage/'original-evidence'/name
+            destination = stage/'original-evidence'/('source-bundle.SHA256SUMS.txt' if name == 'SHA256SUMS' else name)
             destination.parent.mkdir(parents=True, exist_ok=True)
             destination.write_bytes(package.regular(source/name))
+        seal(stage/'original-evidence')
+        inventory(stage/'original-evidence')
         same_gate = summary == original_gate
         # Also catch a coherently rehashed report that disagrees with the raw input.
         current = tsep.read_json(stage/'bundle/report.json')
         same_report_results = current['results'] == original['results']
         result = {'kind': 'tsep-capture-replay', 'workflow_version': VERSION,
                   'workflow_source_files': workflow_sources,
+                  'source_inventory': {'path': 'original-evidence/source-bundle.SHA256SUMS.txt', 'role': 'Historical full source inventory; retained fragment only, not an inventory of this directory'},
                   'input_sha256': entries['input.json'], 'original_manifest_sha256': tsep.digest(source/'SHA256SUMS'),
                   'same_atomic_results': same_results, 'same_report_results': same_report_results,
                   'same_gate': same_gate, 'same_source_observations': same_source_observations, 'same_tool_sources': True,

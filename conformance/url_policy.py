@@ -7,7 +7,7 @@ from urllib.parse import urljoin, unquote_to_bytes
 from conformance.evidence_dossier import Dossier, Findings, ERRORS, address, digest, text
 from conformance.http import need
 
-VERSION='1'
+VERSION='2'
 COUNTS={'TS09':1,'TS11':2,'TS19':2,'TS20':2,'TS38':2}
 RULES=tuple(c+'-A%02d'%n for c,count in COUNTS.items() for n in range(1,count+1))
 LIMITATION=('Supplied finite population and bound human judgments only. No acquisition or reviewer authentication, '
@@ -165,19 +165,24 @@ def assess(target,rule,*,diagnostics=None):
     f=Findings();control=rule.split('-')[0]
     try:
         need(rule in RULES,'Unsupported URL policy rule')
-        d=Dossier(target,control,'url-policy-v1')
+        from conformance.exclusion_observation import READER, assess as observed
+        reader=target.get('intent',{}).get('evidence_checks',{}).get(control,{}).get('reader')
+        enhanced=control=='TS09' and reader==READER
+        d=Dossier(target,control,READER if enhanced else 'url-policy-v1')
         for item in d.items:
             subject=rule+':'+item['id']
             start=len(f.rows)
             f.check(subject,lambda item=item:HANDLERS[control](d,item,rule,f))
+            if enhanced:f.check(subject+':representative',lambda item=item:observed(d,item,f))
             native_unknown=any(row['outcome']=='inconclusive' for row in f.rows[start:])
             def reviewed(subject=subject,native_unknown=native_unknown):
                 result=d.review(subject)
-                if result[0]=='fail' and native_unknown:
+                if not enhanced and result[0]=='fail' and native_unknown:
                     return 'inconclusive','Contradictory review cannot resolve missing native prerequisites'
                 return result
             f.check(subject+':review',reviewed)
     except ERRORS as error:f.add(control,'inconclusive',str(error))
-    note={'reader':'url-policy-v1','version':VERSION,'rule':rule,'findings':f.rows,'limitations':LIMITATION}
+    note={'reader':target.get('intent',{}).get('evidence_checks',{}).get(control,{}).get('reader','url-policy-v1'),'version':VERSION,'rule':rule,'findings':f.rows,'limitations':LIMITATION}
+    if hasattr(f,'info'):note['informative_observations']=f.info
     if diagnostics is not None:diagnostics.append(note)
     return f.result(),'Supplied URL policy / politique URL fournie: '+json.dumps(note,ensure_ascii=False,sort_keys=True)

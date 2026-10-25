@@ -31,7 +31,7 @@ from conformance.indexing_locale import RULES as INDEXING_LOCALE_RULES
 RULES += INDEXING_LOCALE_RULES
 from conformance.render_transport import RULES as RENDER_TRANSPORT_RULES
 RULES += RENDER_TRANSPORT_RULES
-VERSION = '53'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '54'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -190,10 +190,15 @@ def identity_text(headers, body):
     return extract(body)
 
 
-def directive_result(headers, body, intent, *, source=False, diagnostics=None):
+def directive_result(headers, body, intent, *, source=False, diagnostics=None, observed_at=None):
     if source and 'source_reader' in intent:
         from conformance.source_directives import assess
-        return assess(headers, body, intent, combine=directive_values, diagnostics=diagnostics)
+        outcome = assess(headers, body, intent, combine=lambda h, v, i, **kw: directive_values(h, v, i, observed_at=observed_at, **kw), diagnostics=diagnostics)
+        if 'directive_policy' in intent and intent.get('following', 'unspecified') == 'unspecified':
+            from conformance.google_directives import facts, result
+            if facts(headers, [], observed_at)['excluded']:
+                return result(headers, [], intent, observed_at, diagnostics)
+        return outcome
     body = text_body(body)
     need(intent.get('directive_crawler', intent.get('crawler')) == 'googlebot',
          'Only the Googlebot directive series is implemented')
@@ -207,13 +212,16 @@ def directive_result(headers, body, intent, *, source=False, diagnostics=None):
     parser.close()
     need(parser.roots == 1 and not parser.stack, 'Incomplete HTML structure')
     notes = [] if diagnostics is not None else None
-    result = directive_values(headers, parser.directives, intent, diagnostics=notes)
+    result = directive_values(headers, parser.directives, intent, diagnostics=notes, observed_at=observed_at)
     if notes:
         diagnostics.extend(dict(n, surface='source' if source else 'serialized-dom') for n in notes)
     return result
 
 
-def directive_values(headers, values, intent, *, diagnostics=None):
+def directive_values(headers, values, intent, *, diagnostics=None, observed_at=None):
+    if "directive_policy" in intent:
+        from conformance.google_directives import result
+        return result(headers, values, intent, observed_at, diagnostics)
     if 'presentation_reader' in intent:
         from conformance.preview_intent import result
         return result(headers, values, intent, diagnostics)
@@ -345,11 +353,11 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
             if reader(plan, state) == READER:
                 need(utf8_media(headers, ('text/html',)), 'Unsupported rendered source media')
                 surface = Surface(state, final_url, target['http'], intent['crawler'])
-                outcome, reason = directive_values(headers, surface.directives, intent, diagnostics=diagnostics)
+                outcome, reason = directive_values(headers, surface.directives, intent, diagnostics=diagnostics, observed_at=state['observed_at'])
                 reason += '; ' + surface.detail
             else:
                 need(isinstance(state.get('dom'), str), 'Missing raw DOM')
-                outcome, reason = directive_result(headers, state['dom'], intent, diagnostics=diagnostics)
+                outcome, reason = directive_result(headers, state['dom'], intent, diagnostics=diagnostics, observed_at=state['observed_at'])
         except (Unknown, tsep.Invalid, KeyError, TypeError, ValueError) as error:
             outcome, reason = 'inconclusive', str(error)
         if diagnostics is not None:
@@ -359,7 +367,7 @@ def rendered_result(target, final_url, headers, body, *, diagnostics=None):
                     observation['source_http_sha256'] = source_hash
         results.append((outcome, label + ': ' + reason))
     try:
-        source_outcome, source_reason = directive_result(headers, body, intent, source=True, diagnostics=diagnostics)
+        source_outcome, source_reason = directive_result(headers, body, intent, source=True, diagnostics=diagnostics, observed_at=target['observed_at'])
     except (Unknown, tsep.Invalid, KeyError, TypeError, ValueError) as error:
         source_outcome, source_reason = 'inconclusive', str(error)
     detail = '; '.join(outcome + ' — ' + reason for outcome, reason in results)
@@ -473,7 +481,7 @@ def evaluate_target(target, rule, *, diagnostics=None):
         if rule == 'TS01-A02':
             return identity_result(final_url, headers, body, intent, diagnostics=diagnostics)
         if rule == 'TS07-A01':
-            return directive_result(headers, body, intent, source=True, diagnostics=diagnostics)
+            return directive_result(headers, body, intent, source=True, diagnostics=diagnostics, observed_at=target['observed_at'])
         if rule == 'TS07-A03':
             return rendered_result(target, final_url, headers, body, diagnostics=diagnostics)
         from conformance.robots_control import access_rule

@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts, binding_digest
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '49'
+VERSION = '50'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -68,6 +68,8 @@ def verify_ts17_self_digests(target):
 
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
+    modules['conformance/google_directives.py'] = importlib.import_module('conformance.google_directives')
+    modules['conformance/exclusion_observation.py'] = importlib.import_module('conformance.exclusion_observation')
     modules['conformance/http_canonical.py'] = importlib.import_module('conformance.http_canonical')
     modules['conformance/preview_intent.py'] = importlib.import_module('conformance.preview_intent')
     modules['conformance/performance.py'] = importlib.import_module('conformance.performance')

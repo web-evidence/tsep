@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.7 — Controls
+# TSEP 0.3.0-draft.8 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -288,7 +288,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Limits.** The reader compares a supplied synthetic plan; it does not fetch a site, test authentication, verify a removal request, or inspect index state. A blocked URL may remain known and appear without a snippet. Full TS05 qualification and application reception are separate.
 
-C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
+C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability. The policy_version=2 profile also compares authentication, authorization and HTTP 404/410 removal. Exclusion hidden by Disallow is contradictory even without a guarantee claim. Results concern declared plan consistency only; neither deindexing nor confidentiality is established.
 
 **Source scope.** The Google Search Central pages below support the technical distinction; TSEP expectations remain an editorial rule. A dated, fingerprinted selected capture, not a site audit.
 
@@ -296,7 +296,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS05-A01 — Supplied map: crawling, indexing and protection are distinct.
 
-`TSEP@0.2.0-rc.1:TS05-A01`
+`TSEP@0.3.0-draft.8:TS05-A01`
 
 **Required inputs**: configuration, intent.
 
@@ -304,7 +304,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** A crawl policy, indexing objective or confidentiality claim exists in scope.
 
-**Method.** Read intent.ts05_policy, dated before observed_at, and the configuration record. Compare crawl methods/effects, indexing goal/method and noindex visibility, then protection and the bases for deindexing/confidentiality claims.
+**Method.** Read intent.ts05_policy, dated before observed_at, and the configuration record. Compare crawl methods/effects, indexing goal/method and noindex visibility, then protection and the bases for deindexing/confidentiality claims. The policy_version=2 profile also compares authentication, authorization and HTTP 404/410 removal. Exclusion hidden by Disallow is contradictory even without a guarantee claim. Results concern declared plan consistency only; neither deindexing nor confidentiality is established.
 
 **Acceptance.** Pass means only that the supplied map is internally consistent and separates the three axes. A deindexing guarantee based only on Disallow fails; an inaccessible noindex directive does not establish exclusion. No positive verdict proves index state, real crawler access or server confidentiality.
 
@@ -386,7 +386,7 @@ C requires the complete cells and triplets in the declared synthetic scope. A ca
 
 **Limits.** The engine must be allowed to crawl the resource to read the directive.
 
-C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
+C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability. The google-indexing-2026-10-v1 profile interprets standalone-page Googlebot directives. Certain exclusion remains evidence alongside unknown tokens. Dated restrictions are compared with capture time; ignored and unknown instructions are retained. Certain HTTP noindex remains interpretable even when body reading is unavailable. Access and rendering remain separate.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal. Sources checked on 2026-10-09; dated capture fingerprints recorded in docs/source-observations.md.
 
@@ -394,7 +394,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.2.0-rc.1:TS07-A01`
+`TSEP@0.3.0-draft.8:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -402,7 +402,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Each document with a declared indexing objective, for an explicitly named crawler and context.
 
-**Method.** Inventory all final X-Robots-Tag headers and robots/target-crawler meta tags in source HTML, separate from redirect hops. Apply documented crawler semantics, including duplicates, scope, case, parameters and ignored rules. Optional source_reader=html-tree-directives-v1, declared before capture, constructs two complete static hypotheses without executing scripts; HTML robots/googlebot meta in head/body without foreign ancestors are combined separately with final headers. Ordinary template contents are retained but excluded from active directives. Optional prior presentation_reader=google-preview-intent-v1 compares minimum/maximum permission intervals for text, images and video under the preview-intent contract; extraction and states remain separate.
+**Method.** Inventory all final X-Robots-Tag headers and robots/target-crawler meta tags in source HTML, separate from redirect hops. Apply documented crawler semantics, including duplicates, scope, case, parameters and ignored rules. Optional source_reader=html-tree-directives-v1, declared before capture, constructs two complete static hypotheses without executing scripts; HTML robots/googlebot meta in head/body without foreign ancestors are combined separately with final headers. Ordinary template contents are retained but excluded from active directives. Optional prior presentation_reader=google-preview-intent-v1 compares minimum/maximum permission intervals for text, images and video under the preview-intent contract; extraction and states remain separate. The google-indexing-2026-10-v1 profile interprets standalone-page Googlebot directives. Certain exclusion remains evidence alongside unknown tokens. Dated restrictions are compared with capture time; ignored and unknown instructions are retained. Certain HTTP noindex remains interpretable even when body reading is unavailable. Access and rendering remain separate.
 
 **Acceptance.** Combined effects match the declared indexing objective and declared presentation/link restrictions. For Google: an applicable restriction prevails over permission, none includes noindex/nofollow; nofollow or a preview limit alone does not mean noindex. Missing directives are not failure when intent permits indexing. For this profile, two pass yield pass, two fail yield fail, every other pair stays inconclusive; never merge directives across alternative hypotheses or confuse them with observed rendered states. For this new profile, all possible values within the intended interval yield pass; all outside on one side yield fail; otherwise inconclusive. Independent contradiction prevails within a reading; existing source consensus and rendered priority remain.
 
@@ -418,7 +418,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.2.0-rc.1:TS07-A02`
+`TSEP@0.3.0-draft.8:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -442,7 +442,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.2.0-rc.1:TS07-A03`
+`TSEP@0.3.0-draft.8:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 
@@ -580,7 +580,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Limits.** The business relevance of an exclusion cannot be automated.
 
-C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
+C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability. The url-exclusion-observed-v2 profile requires a register, one representative HTTP response and robots.txt per family, followed by a review explicitly bound to the displayed evidence. A native contradiction remains NC without a review; a match without review remains NT. This sample does not establish the entire family, Google index state or confidentiality.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal.
 
@@ -588,7 +588,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS09-A01 — Exclusion register and ownership
 
-`TSEP@0.3.0-draft.2:TS09-A01`
+`TSEP@0.3.0-draft.8:TS09-A01`
 
 **Required inputs**: configuration, intent.
 
@@ -596,7 +596,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Explicitly selected TS09 items; url-policy-v1 profile defined in docs/url-policy-evidence.md.
 
-**Method.** Read the native exclusion-register-v1 JSON register; compare each selected family with its prior mechanism, then require owner, rationale and review date. Require an evidence-bound review.
+**Method.** Read the native exclusion-register-v1 JSON register; compare each selected family with its prior mechanism, then require owner, rationale and review date. Require an evidence-bound review. The url-exclusion-observed-v2 profile requires a register, one representative HTTP response and robots.txt per family, followed by a review explicitly bound to the displayed evidence. A native contradiction remains NC without a review; a match without review remains NT. This sample does not establish the entire family, Google index state or confidentiality.
 
 **Acceptance.** Mechanisms agree and every family has governance information; supplied review supports the scope. A mechanism mismatch fails.
 

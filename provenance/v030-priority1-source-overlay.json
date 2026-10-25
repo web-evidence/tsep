@@ -1,0 +1,54 @@
+{
+  "scope": "Explicit draft8 priority1 source changes; inverse preserves historical source-byte guards, not an assertion that the new behavior equals the old behavior.",
+  "updates": [
+    {
+      "path": "conformance/source_directives.py",
+      "base_sha256": "778d933f29fb896dda5e20dfa2ebbfd4774939298f83227041b02be078efa2b1",
+      "current_sha256": "c59543dce84cba0b8d4e36940202f8368dd9f52a8d25d08b56e92d4dc644100a",
+      "replacements": [
+        {
+          "before": "        results = {}\n        for mode, reading in result['readings'].items():\n            try:\n                if 'presentation_reader' in intent:\n                    preview_notes = []\n                    outcome, reason = decide_reading(reading, headers, intent,\n                        lambda h, v, i: combine(h, v, i, diagnostics=preview_notes))\n                    record.setdefault('preview_observations', {})[mode] = preview_notes\n                else:\n                    outcome, reason = decide_reading(reading, headers, intent, combine)\n            except (Unknown, KeyError, TypeError, ValueError) as error:\n",
+          "after": "        results = {}\n        for mode, reading in result['readings'].items():\n            try:\n                if 'presentation_reader' in intent or 'directive_policy' in intent:\n                    preview_notes = []\n                    outcome, reason = decide_reading(reading, headers, intent,\n                        lambda h, v, i: combine(h, v, i, diagnostics=preview_notes))\n                    record.setdefault('directive_observations' if 'directive_policy' in intent else 'preview_observations', {})[mode] = preview_notes\n                else:\n                    outcome, reason = decide_reading(reading, headers, intent, combine)\n            except (Unknown, KeyError, TypeError, ValueError) as error:\n"
+        }
+      ]
+    },
+    {
+      "path": "conformance/ts05_indexing.py",
+      "base_sha256": "7429ceae1349fbb120befcddfc1e95aa7372ebbc62cd930b03c78ac1164b384a",
+      "current_sha256": "21331dd2f4c44f09097a4b50ccabff50f8dab2f0953160ee50e17701dd3259c7",
+      "replacements": [
+        {
+          "before": "CRAWL_METHODS = {\"robots-txt\", \"other\", \"none\", \"unknown\"}\nCRAWL_EFFECTS = {\"allow\", \"disallow\", \"unknown\", \"not-applicable\"}\nINDEX_METHODS = {\"meta-noindex\", \"x-robots-tag-noindex\", \"removal-request\",\n                 \"other\", \"none\", \"unknown\", \"not-applicable\"}\nINDEX_GOALS = {\"exclude\", \"include\", \"not-assessed\"}\nVISIBILITY = {\"fetchable\", \"blocked-by-robots\", \"unknown\", \"not-applicable\"}\n",
+          "after": "CRAWL_METHODS = {\"robots-txt\", \"other\", \"none\", \"unknown\"}\nCRAWL_EFFECTS = {\"allow\", \"disallow\", \"unknown\", \"not-applicable\"}\nINDEX_METHODS = {\"meta-noindex\", \"x-robots-tag-noindex\", \"removal-request\",\n                 \"authentication\", \"authorization\", \"http-404\", \"http-410\",\n                 \"other\", \"none\", \"unknown\", \"not-applicable\"}\nINDEX_GOALS = {\"exclude\", \"include\", \"not-assessed\"}\nVISIBILITY = {\"fetchable\", \"blocked-by-robots\", \"unknown\", \"not-applicable\"}\n"
+        },
+        {
+          "before": "PROTECTION_GOALS = {\"private\", \"public\", \"not-assessed\"}\nCLAIM_KINDS = {\"deindex\", \"confidentiality\"}\nSERVER_SIDE_BASIS = {\"authentication\", \"authorization\"}\nCRAWL_ONLY_BASIS = {\"robots-disallow\", \"noindex-directive\", \"removal-request\"}\n\n\n",
+          "after": "PROTECTION_GOALS = {\"private\", \"public\", \"not-assessed\"}\nCLAIM_KINDS = {\"deindex\", \"confidentiality\"}\nSERVER_SIDE_BASIS = {\"authentication\", \"authorization\"}\nHTTP_BASIS = {\"http-404\", \"http-410\"}\nCRAWL_ONLY_BASIS = {\"robots-disallow\", \"noindex-directive\", \"removal-request\"}\n\n\n"
+        },
+        {
+          "before": "        need(isinstance(target.get(\"intent\"), dict), \"Missing TS05 intent\")\n        policy = target[\"intent\"].get(\"ts05_policy\")\n        need(isinstance(policy, dict), \"Missing prior TS05 policy map\")\n        observed_at = target.get(\"observed_at\")\n        applicability = policy.get(\"applicability\")\n        if applicability == \"not-applicable\":\n",
+          "after": "        need(isinstance(target.get(\"intent\"), dict), \"Missing TS05 intent\")\n        policy = target[\"intent\"].get(\"ts05_policy\")\n        need(isinstance(policy, dict), \"Missing prior TS05 policy map\")\n        need(policy.get(\"policy_version\") in (None,\"2\"), \"Unsupported TS05 policy version\")\n        observed_at = target.get(\"observed_at\")\n        applicability = policy.get(\"applicability\")\n        if applicability == \"not-applicable\":\n"
+        },
+        {
+          "before": "            return (\"inconclusive\",\n                    \"Actual index state is outside this policy-only assessment\")\n\n        claims = policy.get(\"claims\")\n        need(isinstance(claims, list), \"Missing TS05 claim inventory\")\n        seen = set()\n",
+          "after": "            return (\"inconclusive\",\n                    \"Actual index state is outside this policy-only assessment\")\n\n        # Versioned policy consistency: certain contradictions survive missing axes.\n        if policy.get(\"policy_version\") == \"2\":\n            effective = {\"meta-noindex\", \"x-robots-tag-noindex\"} | SERVER_SIDE_BASIS | HTTP_BASIS\n            if index_goal == \"exclude\" and crawl_effect == \"disallow\":\n                return \"fail\", \"Robots Disallow prevents the crawler from observing the declared exclusion mechanism\"\n            if index_goal == \"exclude\" and index_method in (\"none\", \"not-applicable\"):\n                return \"fail\", \"Exclusion is intended but no usable indexing mechanism is declared\"\n            if index_goal == \"include\" and crawl_effect == \"disallow\":\n                return \"fail\", \"Robots Disallow prevents crawling of content intended for inclusion\"\n            if index_goal == \"include\" and protection_method in SERVER_SIDE_BASIS:\n                return \"fail\", \"Server-side access control contradicts inclusion of anonymously available content\"\n            if protection_goal == \"public\" and protection_method in SERVER_SIDE_BASIS:\n                return \"fail\", \"Public access goal contradicts declared server-side access control\"\n            if index_goal == \"include\" and index_method in effective:\n                return \"fail\", \"The declared exclusion mechanism contradicts the inclusion goal\"\n            if index_method in SERVER_SIDE_BASIS and protection_method != index_method:\n                return \"fail\", \"Declared authentication exclusion and server protection mechanisms disagree\"\n            if protection_goal == \"private\" and protection_method in (\"robots-only\", \"none\", \"public\"):\n                return \"fail\", \"Private content lacks a declared server-side access control\"\n            if index_goal == \"exclude\" and index_method in effective and visibility not in (\"fetchable\",):\n                return \"inconclusive\", \"Crawler visibility of the declared exclusion mechanism is not established\"\n\n        claims = policy.get(\"claims\")\n        need(isinstance(claims, list), \"Missing TS05 claim inventory\")\n        seen = set()\n"
+        },
+        {
+          "before": "            seen.add(kind)\n            basis = claim.get(\"basis\")\n            need(isinstance(basis, list) and basis and\n                 all(value in SERVER_SIDE_BASIS | CRAWL_ONLY_BASIS | {\"other\", \"unknown\"}\n                     for value in basis), \"Missing or unsupported TS05 claim basis\")\n            parsed.append((kind, level, basis))\n        need(seen == CLAIM_KINDS,\n",
+          "after": "            seen.add(kind)\n            basis = claim.get(\"basis\")\n            need(isinstance(basis, list) and basis and\n                 all(value in SERVER_SIDE_BASIS | HTTP_BASIS | CRAWL_ONLY_BASIS | {\"other\", \"unknown\"}\n                     for value in basis), \"Missing or unsupported TS05 claim basis\")\n            parsed.append((kind, level, basis))\n        need(seen == CLAIM_KINDS,\n"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_replay_comparison.py",
+      "base_sha256": "d23787c8ab4c03e4f550c5eee1d733e2a46d28721148540d8df3983815367515",
+      "current_sha256": "564b11eb3965b9ddbae2e716b3225efdf05ffaacfae122e2f88bf1152026496d",
+      "replacements": [
+        {
+          "before": "                self.assertFalse(result['same_source_observations'])\n                self.assertFalse(result['same_recorded_runtime'])\n                self.assertTrue(result['source_observations_match'])\n                self.assertEqual(result['workflow_version'], '3')\n                self.assertIsNone(result['original_unicode_data_version'])\n                self.assertEqual((root/'profile/original-evidence'/observation_name).read_bytes(),\n                                 (bundle/observation_name).read_bytes())\n",
+          "after": "                self.assertFalse(result['same_source_observations'])\n                self.assertFalse(result['same_recorded_runtime'])\n                self.assertTrue(result['source_observations_match'])\n                self.assertEqual(result['workflow_version'], '4')\n                self.assertIsNone(result['original_unicode_data_version'])\n                self.assertEqual((root/'profile/original-evidence'/observation_name).read_bytes(),\n                                 (bundle/observation_name).read_bytes())\n"
+        }
+      ]
+    }
+  ]
+}
