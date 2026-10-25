@@ -474,6 +474,7 @@
     "provenance/base-uri-diagnostic-v1.json",
     "provenance/canonical-comparison-development.json",
     "provenance/canonical-partial-laboratory.json",
+    "provenance/capture-import-clock-test-overlay-v1.json",
     "provenance/critical-content-v1.json",
     "provenance/delivery-evidence-v1.json",
     "provenance/delivery-laboratory-v1.json",

@@ -109,6 +109,7 @@ class SitemapQuality(unittest.TestCase):
         overlays += tsep.read_json(ROOT/'provenance/ts25-runtime-test-overlay-v1.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/v030-indexing-locale-integration-overlay.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/v030-report-test-overlay-v1.json')['updates']
+        overlays = tsep.read_json(ROOT/'provenance/capture-import-clock-test-overlay-v1.json')['updates'] + overlays
         for name, sha in frozen['preserved_files'].items():
             raw = (ROOT/name).read_bytes()
             for update in overlays:
