@@ -1,17 +1,17 @@
 {
   "format_version": 1,
-  "tests": 1364,
-  "test_ids_sha256": "dbcdc08ff903b1dd170774f804ee87ab296ae592a9375f00c762b702318b43f6",
+  "tests": 1367,
+  "test_ids_sha256": "b9ef022dc937be52da0b645f7ecc5f43e0199a8d32c54b706af025d6a0024e42",
   "http_cases": 48,
   "conformance": {
-    "cases": 2543,
-    "rule_target_pairs": 4916,
+    "cases": 2567,
+    "rule_target_pairs": 4940,
     "disagreements": 0,
     "rules": 98,
     "rule_ids_sha256": "b16cd896a36a90601f188fa2b7d186b8583557389d945da9cf27fa6b8030fa2e",
     "reduced_pairs": 8
   },
-  "conformance_case_ids_sha256": "59d38a45cc9e2a483691599eea43ad9d6b1917afe57bc7dad9d534438a14870a",
-  "conformance_input_sha256": "5847bd3684a35c4f5d6dd6b1d2d3d252364958f6ee46c79403812e4ee405d2f4",
+  "conformance_case_ids_sha256": "05a95a898227f019dbc8726075eaa4cab01dd4c6b14ca602812f2e9cf164f520",
+  "conformance_input_sha256": "c7b21aa4fd8ad611347f2100d46db5db51502450bc3578d3dcc946afa36eb15f",
   "http_case_ids_sha256": "e879666f484e9130a95621b480b7bdf96ca5d98ae64712b3c179e6c99b886c56"
 }

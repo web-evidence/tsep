@@ -25,14 +25,13 @@ class ReviewedDateBoundaries(unittest.TestCase):
         self.assertEqual(g.expiry_v2('31 Feb 2020 00:00:00 GMT',NOW),'invalid')
 
     def test_two_digit_years_require_agreement_without_google_pivot(self):
-        for year in ('49','50','76','99'):
-            self.assertEqual(g.expiry_v2('21 Oct '+year+' 00:00:00 GMT',NOW),'unresolved')
-        self.assertEqual(g.expiry_v2('21 Oct 20 00:00:00 GMT',NOW),'expired')
-        self.assertEqual(g.expiry_v2('21 Oct 50 00:00:00 GMT','1800-01-01T00:00:00Z'),'future')
-        self.assertEqual(g.expiry_v2('21 Oct 50 00:00:00 GMT','2100-01-01T00:00:00Z'),'expired')
-        self.assertEqual(g.expiry_v2('Sat, 21 Oct 50 00:00:00 GMT',NOW),'expired')
-        self.assertEqual(g.expiry_v2('Friday, 21-Oct-50 00:00:00 GMT',NOW),'future')
-        self.assertEqual(g.expiry_v2('Mon, 21 Oct 50 00:00:00 GMT',NOW),'unsupported')
+        # No documented Google parser agreement exists: the whole format stays NT.
+        for year in ('49','50','76','99','20'):
+            self.assertEqual(g.expiry_v2('21 Oct '+year+' 00:00:00 GMT',NOW),'unsupported')
+        for captured in ('1800-01-01T00:00:00Z','2100-01-01T00:00:00Z',None):
+            self.assertEqual(g.expiry_v2('21 Oct 50 00:00:00 GMT',captured),'unsupported')
+        for value in ('Sat, 21 Oct 50 00:00:00 GMT','Friday, 21-Oct-50 00:00:00 GMT','Mon, 21 Oct 50 00:00:00 GMT'):
+            self.assertEqual(g.expiry_v2(value,NOW),'unsupported')
 
     def test_negative_zero_offsets_represent_known_utc_instant(self):
         for value in ('25 Oct 2026 05:01:00 -0000','2026-10-25T05:01:00-00:00'):

@@ -90,11 +90,12 @@ def expiry_v2(value, observed_at):
     fields = match.groupdict()
     try:
         year = int(fields['year'])
-        # Google documents multiple date families without a two-digit pivot.
-        # Keep both bounded century readings; a matching weekday may exclude one.
-        years = (1900 + year, 2000 + year) if not iso and len(fields['year']) == 2 else (year,)
+        if not iso and len(fields['year']) == 2:
+            # Bounded v2 limitation: no century or Google parser behavior inferred,
+            # even when a weekday or calendar check would favour one reading.
+            return 'unsupported'
         month = int(fields['month']) if iso else _MONTHS[fields['month'].lower()]
-        if years == (0,) or int(fields.get('second') or 0) == 60 or (iso and fields.get('hour') == '24'):
+        if year == 0 or int(fields.get('second') or 0) == 60 or (iso and fields.get('hour') == '24'):
             # Plausible ISO/leap-second forms outside this datetime subset.
             return 'unsupported'
         zone = fields.get('zone')
@@ -112,37 +113,23 @@ def expiry_v2(value, observed_at):
                 # retains a known UTC instant; only the local offset is unknown.
             else:
                 offset = _ZONES[zone.lower()]
-        dates = []
-        for year in years:
-            try:
-                dates.append(dt.datetime(year, month, int(fields['day']), int(fields.get('hour') or 0),
-                    int(fields.get('minute') or 0), int(fields.get('second') or 0),
-                    int((fields.get('fraction') or '').ljust(6, '0')),
-                    tzinfo=None if offset is None else dt.timezone(dt.timedelta(minutes=offset))))
-            except (ValueError, OverflowError):
-                continue
-        if not dates:
-            return 'invalid'
-        if fields.get('weekday'):
-            dates = [date for date in dates if
-                ('mon','tue','wed','thu','fri','sat','sun')[date.weekday()] == fields['weekday'][:3].lower()]
-            if not dates:
-                return 'unsupported'
+        date = dt.datetime(year, month, int(fields['day']), int(fields.get('hour') or 0),
+            int(fields.get('minute') or 0), int(fields.get('second') or 0),
+            int((fields.get('fraction') or '').ljust(6, '0')),
+            tzinfo=None if offset is None else dt.timezone(dt.timedelta(minutes=offset)))
+        if fields.get('weekday') and ('mon','tue','wed','thu','fri','sat','sun')[date.weekday()] != fields['weekday'][:3].lower():
+            return 'unsupported'
     except (ValueError, KeyError, OverflowError):
         return 'invalid'
     if observed_at is None:
         return 'unresolved'
     observed = tsep.timestamp(observed_at)
-    states = set()
-    for date in dates:
-        if date.tzinfo is None:
-            date = date.replace(tzinfo=dt.timezone.utc)
-            if abs((observed-date).total_seconds()) <= 86400:
-                states.add('unresolved')
-                continue
-        # Google says "after" the date: equality does not establish expiration.
-        states.add('expired' if date < observed else 'future')
-    return states.pop() if len(states) == 1 else 'unresolved'
+    if date.tzinfo is None:
+        date = date.replace(tzinfo=dt.timezone.utc)
+        if abs((observed-date).total_seconds()) <= 86400:
+            return 'unresolved'
+    # Google says "after" the date: equality does not establish expiration.
+    return 'expired' if date < observed else 'future'
 
 
 

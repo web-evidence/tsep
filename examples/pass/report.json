@@ -3,7 +3,7 @@
   "protocol": {
     "name": "TSEP",
     "version": "0.3.0-draft.9",
-    "sha256": "2e19e0523b66d2dccc365a7e3bee1df242234036c4b84e18fa61a6267d078013"
+    "sha256": "3af55b64677ccd74d3ccfcc49f3dbf469c90fb214844fe13c5f10773a11d9041"
   },
   "issued_at": "2026-10-09T10:00:00Z",
   "assessor": {

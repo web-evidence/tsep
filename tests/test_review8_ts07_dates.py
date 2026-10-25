@@ -41,8 +41,8 @@ class ReviewedGoogleDates(unittest.TestCase):
                                ('2026-10-25T04:00:00-02:00','future'),
                                ('2026-10-25T06:00:00','unresolved'),
                                ('2020-10-21','expired'),('2020-02-31','invalid'),
-                               ('21 Oct 49 00:00:00 GMT','unresolved'),
-                               ('21 Oct 50 00:00:00 GMT','unresolved'),
+                               ('21 Oct 49 00:00:00 GMT','unsupported'),
+                               ('21 Oct 50 00:00:00 GMT','unsupported'),
                                ('2026-10-25T05:01:00-00:00','future'),
                                ('25 Oct 2026 05:01:00 -0000','future')]:
             with self.subTest(value=value):self.assertEqual(google.expiry_v2(value,NOW),expected)

@@ -16,7 +16,7 @@
     {
       "url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
       "checked_at": "2026-10-25",
-      "scope": "Section5.6.7: rolling rfc850 HTTP pivot differs from mail dates; bounded candidate instead compares 19xx/20xx readings.",
+      "scope": "Section5.6.7: rolling rfc850 HTTP pivot differs from mail dates. The bounded v2 profile therefore leaves every two-digit RFC year unsupported; no Google parser is simulated.",
       "capture_limitation": "Official text read via web tool; original HTTP bytes not available, no source-byte fingerprint claimed."
     },
     {

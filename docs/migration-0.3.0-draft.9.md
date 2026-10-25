@@ -33,11 +33,14 @@ décimales au maximum), puis `Z` ou un décalage `±HH:MM` facultatif ; et les f
 RFC à jour/mois anglais/année, séparées par espaces ou tirets, avec heure, secondes
 facultatives et fuseau UTC/GMT/UT, américain fixe ou `±HHMM`. Les douze mois
 anglais sont seuls reconnus ; une autre abréviation plausible reste NT.
-Pour une année RFC à deux chiffres, les lectures 19xx et 20xx sont comparées
-à la capture : NT si elles divergent. Une lecture calendaire impossible est
-écartée ; un jour de semaine fourni doit correspondre à la date retenue. Aucune
-convention de pivot propre aux courriels n’est attribuée à Google. Ce choix
-prudent est borné à ces deux siècles ; il ne modélise pas tous les futurs pivots HTTP.
+Toute année RFC à deux chiffres reste hors du profil v2 (NT), même si le jour
+de semaine ou le calendrier paraît lever l’ambiguïté, et même pour `31 Feb 50`.
+Seules les années à quatre chiffres sont évaluables. Le lecteur ne simule ni
+choix de siècle ni comportement permissif/strict attribué à Google. Un `noindex`
+valide indépendant conserve sa valeur probante. Cette limite volontaire remplace
+les hypothèses des candidats non publiés précédents ; les quinze attentes
+révisées sont détaillées dans `provenance/ts07-draft9-review3-expectation-delta.json`,
+avec entrées inchangées et empreintes avant/après.
 Une date sans fuseau reste NT à moins de 24 heures de la capture. Une date
 calendaire impossible est ignorée ; un format plausible non pris en charge
 (`20201021`, décalage ISO `+0000`, semaine ISO), un suffixe ou un saut de ligne
@@ -90,11 +93,13 @@ The v2 date reader consumes the entire value. It supports extended ISO dates
 `Z` or `±HH:MM` zone; RFC forms with English day/month/year, spaces or hyphens,
 time, optional seconds and UTC/GMT/UT, fixed US or `±HHMM` zones. Only the twelve
 English month abbreviations are recognized; other plausible months remain NT.
-For two-digit RFC years, both 19xx and 20xx readings are compared with capture
-time: differing states remain NT. Impossible calendar readings are discarded;
-a supplied weekday must match the retained date. No mail-date pivot is attributed
-to Google. This conservative choice is bounded to those two centuries, without
-modelling every future HTTP pivot. Zoneless dates remain NT within 24 hours of capture. Impossible
+Every two-digit RFC year is outside profile v2 (NT), even if a weekday or calendar
+check appears to resolve it, and even for `31 Feb 50`. Only four-digit years are
+assessable. No century choice or permissive/strict Google parser is simulated.
+Independent valid `noindex` remains decisive. This deliberate limitation replaces
+earlier unpublished candidate assumptions; the fifteen revised expectations are
+listed in `provenance/ts07-draft9-review3-expectation-delta.json`, with unchanged
+inputs and before/after fingerprints. Zoneless dates remain NT within 24 hours of capture. Impossible
 calendar dates are ignored; plausible unsupported formats (`20201021`, ISO
 `+0000` offsets, ISO weeks), suffixes and line breaks remain NT. This does not
 claim Google ignores those formats. The v1 parser retains its historical behavior

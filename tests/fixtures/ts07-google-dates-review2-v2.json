@@ -834,7 +834,7 @@
         {
           "rule_id": "TS07-A01",
           "target": "https://syntax.synthetic.invalid/page",
-          "outcome": "fail"
+          "outcome": "inconclusive"
         }
       ]
     },
@@ -878,7 +878,7 @@
         {
           "rule_id": "TS07-A01",
           "target": "https://syntax.synthetic.invalid/page",
-          "outcome": "pass"
+          "outcome": "inconclusive"
         }
       ]
     },
@@ -1098,7 +1098,7 @@
         {
           "rule_id": "TS07-A01",
           "target": "https://syntax.synthetic.invalid/page",
-          "outcome": "fail"
+          "outcome": "inconclusive"
         }
       ]
     },
@@ -1142,7 +1142,7 @@
         {
           "rule_id": "TS07-A01",
           "target": "https://syntax.synthetic.invalid/page",
-          "outcome": "pass"
+          "outcome": "inconclusive"
         }
       ]
     },
@@ -1186,7 +1186,7 @@
         {
           "rule_id": "TS07-A01",
           "target": "https://syntax.synthetic.invalid/page",
-          "outcome": "pass"
+          "outcome": "inconclusive"
         }
       ]
     },
@@ -1230,7 +1230,7 @@
         {
           "rule_id": "TS07-A01",
           "target": "https://syntax.synthetic.invalid/page",
-          "outcome": "fail"
+          "outcome": "inconclusive"
         }
       ]
     },
@@ -1362,7 +1362,7 @@
         {
           "rule_id": "TS07-A01",
           "target": "https://syntax.synthetic.invalid/page",
-          "outcome": "fail"
+          "outcome": "inconclusive"
         }
       ]
     },
@@ -1406,7 +1406,7 @@
         {
           "rule_id": "TS07-A01",
           "target": "https://syntax.synthetic.invalid/page",
-          "outcome": "pass"
+          "outcome": "inconclusive"
         }
       ]
     },
@@ -1450,7 +1450,7 @@
         {
           "rule_id": "TS07-A01",
           "target": "https://syntax.synthetic.invalid/page",
-          "outcome": "fail"
+          "outcome": "inconclusive"
         }
       ]
     },
@@ -1494,7 +1494,7 @@
         {
           "rule_id": "TS07-A01",
           "target": "https://syntax.synthetic.invalid/page",
-          "outcome": "pass"
+          "outcome": "inconclusive"
         }
       ]
     },
@@ -1626,7 +1626,7 @@
         {
           "rule_id": "TS07-A01",
           "target": "https://syntax.synthetic.invalid/page",
-          "outcome": "pass"
+          "outcome": "inconclusive"
         }
       ]
     },
@@ -1670,7 +1670,7 @@
         {
           "rule_id": "TS07-A01",
           "target": "https://syntax.synthetic.invalid/page",
-          "outcome": "fail"
+          "outcome": "inconclusive"
         }
       ]
     },

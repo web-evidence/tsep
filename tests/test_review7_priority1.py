@@ -58,7 +58,7 @@ class GoogleRules(unittest.TestCase):
 
     def test_expiry_is_relative_to_capture_not_wall_clock(self):
         for date,state in (('21 Oct 2026 00:00:00 GMT','fail'),('Wed, 21 Oct 2026 00:00:00 GMT','fail'),
-                           ('Wednesday, 21-Oct-26 00:00:00 GMT','fail'),('2030-01-01T00:00:00Z','pass'),('2020-01-01T00:00:00Z','fail'),
+                           ('Wednesday, 21-Oct-26 00:00:00 GMT','inconclusive'),('2030-01-01T00:00:00Z','pass'),('2020-01-01T00:00:00Z','fail'),
                            ('2026-10-25T06:00:00','inconclusive'),('nonsense','pass')):
             with self.subTest(date=date):self.assertEqual(self.verdict('unavailable_after: '+date)[0],state)
 

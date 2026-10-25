@@ -1,0 +1,1062 @@
+{
+  "synthetic": true,
+  "description": "Authored before r4 code: two-digit RFC years unsupported; independently valid noindex decisive. No actual Google parser claim.",
+  "cases": [
+    {
+      "id": "ts07-v2-review3-saturday50-sole-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "allow",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 143\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: Saturday, 21-Oct-50 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-saturday50-meta-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "allow",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 181\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: Saturday, 21-Oct-50 00:00:00 GMT\"><meta name=\"robots\" content=\"noindex\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-saturday50-header-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "allow",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: noindex\r\nContent-Length: 143\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: Saturday, 21-Oct-50 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-saturday50-sole-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 143\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: Saturday, 21-Oct-50 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-saturday50-meta-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 181\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: Saturday, 21-Oct-50 00:00:00 GMT\"><meta name=\"robots\" content=\"noindex\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-saturday50-header-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: noindex\r\nContent-Length: 143\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: Saturday, 21-Oct-50 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-friday50-sole-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "allow",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 141\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: Friday, 21-Oct-50 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-friday50-meta-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "allow",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 179\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: Friday, 21-Oct-50 00:00:00 GMT\"><meta name=\"robots\" content=\"noindex\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-friday50-header-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "allow",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: noindex\r\nContent-Length: 141\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: Friday, 21-Oct-50 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-friday50-sole-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 141\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: Friday, 21-Oct-50 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-friday50-meta-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 179\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: Friday, 21-Oct-50 00:00:00 GMT\"><meta name=\"robots\" content=\"noindex\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-friday50-header-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: noindex\r\nContent-Length: 141\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: Friday, 21-Oct-50 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-leap00-sole-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "allow",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 133\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: 29 Feb 00 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-leap00-meta-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "allow",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 171\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: 29 Feb 00 00:00:00 GMT\"><meta name=\"robots\" content=\"noindex\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-leap00-header-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "allow",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: noindex\r\nContent-Length: 133\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: 29 Feb 00 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-leap00-sole-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 133\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: 29 Feb 00 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-leap00-meta-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 171\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: 29 Feb 00 00:00:00 GMT\"><meta name=\"robots\" content=\"noindex\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-leap00-header-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: noindex\r\nContent-Length: 133\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: 29 Feb 00 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-invalid50-sole-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "allow",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 133\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: 31 Feb 50 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-invalid50-meta-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "allow",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 171\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: 31 Feb 50 00:00:00 GMT\"><meta name=\"robots\" content=\"noindex\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-invalid50-header-allow",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "allow",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: noindex\r\nContent-Length: 133\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: 31 Feb 50 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-invalid50-sole-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 133\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: 31 Feb 50 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-invalid50-meta-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nContent-Length: 171\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: 31 Feb 50 00:00:00 GMT\"><meta name=\"robots\" content=\"noindex\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "ts07-v2-review3-invalid50-header-exclude",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A01"
+        ],
+        "targets": [
+          {
+            "url": "https://syntax.synthetic.invalid/page",
+            "observed_at": "2026-10-25T05:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "one supplied response",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-25T04:00:00Z",
+              "crawler": "googlebot",
+              "directive_policy": "google-indexing-2026-10-v2",
+              "indexing": "exclude",
+              "following": "unspecified",
+              "public_canonical": true
+            },
+            "http": [
+              {
+                "url": "https://syntax.synthetic.invalid/page",
+                "request": "GET /page HTTP/1.1\r\nHost: syntax.synthetic.invalid\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 200 OK\r\nContent-Type: text/html; charset=utf-8\r\nX-Robots-Tag: noindex\r\nContent-Length: 133\r\n\r\n<html><head><meta name=\"robots\" content=\"unavailable_after: 31 Feb 50 00:00:00 GMT\"></head><body>Synthetic fixture only</body></html>",
+                "complete": true
+              }
+            ]
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A01",
+          "target": "https://syntax.synthetic.invalid/page",
+          "outcome": "pass"
+        }
+      ]
+    }
+  ]
+}
