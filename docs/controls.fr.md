@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.8 — Contrôles
+# TSEP 0.3.0-draft.9 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -386,7 +386,7 @@ C exige les cellules et triplets complets du périmètre synthétique déclaré.
 
 **Limites.** Le moteur doit pouvoir explorer la ressource pour lire la directive.
 
-C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité. Le profil google-indexing-2026-10-v1 interprète les directives Googlebot de la page autonome. Une exclusion certaine demeure probante avec des jetons inconnus. Les restrictions datées sont comparées à la capture ; les consignes ignorées et inconnues sont conservées. Un noindex HTTP certain reste interprétable même si le corps ne peut être lu. Accès et rendu restent séparés.
+C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité. Le profil google-indexing-2026-10-v2 interprète les directives Googlebot de la page autonome. Une exclusion certaine demeure probante avec des jetons inconnus. Les restrictions datées sont comparées à la capture ; les consignes ignorées et inconnues sont conservées. Un noindex HTTP certain reste interprétable même si le corps ne peut être lu. Accès et rendu restent séparés. Le profil v2 exige des virgules entre les règles, ou des champs/balises distincts. Une liste séparée seulement par des espaces est une syntaxe non documentée : NT en l’absence de preuve indépendante décisive ; une contradiction certaine dans un autre champ reste NC. La virgule d’une date RFC dans unavailable_after est conservée. Le profil v1 reste explicitement historique, sans migration implicite.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale. Sources consultées le 2026-10-09 ; captures datées et empreintes consignées dans docs/source-observations.md.
 
@@ -394,7 +394,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.3.0-draft.8:TS07-A01`
+`TSEP@0.3.0-draft.9:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -402,7 +402,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Chaque document avec objectif d’indexation déclaré, pour un robot et un contexte explicitement nommés.
 
-**Méthode.** Inventorier tous les X-Robots-Tag finaux et meta robots/robot cible dans le HTML source, sans les confondre avec les sauts. Appliquer la sémantique documentée du robot, y compris doublons, portée, casse, paramètres et directives ignorées. Le profil facultatif source_reader=html-tree-directives-v1, déclaré avant capture, construit deux hypothèses statiques complètes sans exécuter de script ; les meta HTML robots/googlebot de head/body sans ancêtre étranger sont combinés séparément avec les en-têtes finaux. Les contenus des templates ordinaires sont conservés mais exclus des directives actives. Le choix préalable facultatif presentation_reader=google-preview-intent-v1 compare les intervalles minimum/maximum de permission texte, image et vidéo selon le contrat preview-intent ; extraction et états restent distincts. Le profil google-indexing-2026-10-v1 interprète les directives Googlebot de la page autonome. Une exclusion certaine demeure probante avec des jetons inconnus. Les restrictions datées sont comparées à la capture ; les consignes ignorées et inconnues sont conservées. Un noindex HTTP certain reste interprétable même si le corps ne peut être lu. Accès et rendu restent séparés.
+**Méthode.** Inventorier tous les X-Robots-Tag finaux et meta robots/robot cible dans le HTML source, sans les confondre avec les sauts. Appliquer la sémantique documentée du robot, y compris doublons, portée, casse, paramètres et directives ignorées. Le profil facultatif source_reader=html-tree-directives-v1, déclaré avant capture, construit deux hypothèses statiques complètes sans exécuter de script ; les meta HTML robots/googlebot de head/body sans ancêtre étranger sont combinés séparément avec les en-têtes finaux. Les contenus des templates ordinaires sont conservés mais exclus des directives actives. Le choix préalable facultatif presentation_reader=google-preview-intent-v1 compare les intervalles minimum/maximum de permission texte, image et vidéo selon le contrat preview-intent ; extraction et états restent distincts. Le profil google-indexing-2026-10-v2 interprète les directives Googlebot de la page autonome. Une exclusion certaine demeure probante avec des jetons inconnus. Les restrictions datées sont comparées à la capture ; les consignes ignorées et inconnues sont conservées. Un noindex HTTP certain reste interprétable même si le corps ne peut être lu. Accès et rendu restent séparés. Le profil v2 exige des virgules entre les règles, ou des champs/balises distincts. Une liste séparée seulement par des espaces est une syntaxe non documentée : NT en l’absence de preuve indépendante décisive ; une contradiction certaine dans un autre champ reste NC. La virgule d’une date RFC dans unavailable_after est conservée. Le profil v1 reste explicitement historique, sans migration implicite.
 
 **Attendus.** L’effet combiné correspond à l’objectif déclaré d’indexation et aux restrictions de présentation/liens déclarées. Pour Google : une restriction applicable prime une permission, none inclut noindex/nofollow ; nofollow ou une limite d’aperçu seuls ne signifient pas noindex. L’absence de directive n’est pas un échec si l’objectif autorise l’indexation. Pour ce profil, deux pass donnent pass, deux fail donnent fail, toute autre paire reste inconclusive ; ne jamais fusionner les directives des hypothèses alternatives ni les confondre avec des états rendus observés. Pour ce nouveau profil, toutes les valeurs possibles dans l’intervalle voulu donnent pass ; toutes hors intervalle du même côté donnent fail ; sinon inconclusive. Une contradiction indépendante prévaut dans une lecture ; les règles de consensus source et de priorité rendue restent inchangées.
 
@@ -418,7 +418,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.3.0-draft.8:TS07-A02`
+`TSEP@0.3.0-draft.9:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -442,7 +442,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.3.0-draft.8:TS07-A03`
+`TSEP@0.3.0-draft.9:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 

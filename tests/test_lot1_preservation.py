@@ -9,12 +9,15 @@ class Lot1Preservation(unittest.TestCase):
         from pathlib import Path
         root=Path(__file__).resolve().parents[1]
         for name,want in {'conformance/cases.json': '2d34a6e002d689c516add05e56971d9e3c1af87d3368021967401f4c7aecb402', 'tests/fixtures/control-cases.json': 'd87a5b60fea94d1e373a1e939edc639bb2435fcc9c2fddc859548e4b03baf5c0'}.items():
-            value=json.loads((root/name).read_text());self.assertEqual(value.pop('protocol_version'),'0.3.0-draft.8')
+            value=json.loads((root/name).read_text());self.assertEqual(value.pop('protocol_version'),'0.3.0-draft.9')
+            if name=='conformance/cases.json':
+                added=[r for r in value['additional_case_files'] if r['path']=='tests/fixtures/ts07-google-syntax-v2.json'];self.assertEqual(len(added),1)
+                value['additional_case_files']=[r for r in value['additional_case_files'] if r not in added]
             self.assertEqual(hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest(),want)
 
     def test_only_declared_normative_fields_change(self):
         old=baseline();actual=tsep.read_json(tsep.PROTOCOL_PATH)
-        self.assertEqual(actual['version'],'0.3.0-draft.8')
+        self.assertEqual(actual['version'],'0.3.0-draft.9')
         self.assertEqual(len(actual['controls']),44)
         allowed={'TS01-A02':{'procedure'},'TS02-A02':{'procedure','inconclusive'}}
         changed=set()

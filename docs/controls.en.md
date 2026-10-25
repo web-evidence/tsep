@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.8 — Controls
+# TSEP 0.3.0-draft.9 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -386,7 +386,7 @@ C requires the complete cells and triplets in the declared synthetic scope. A ca
 
 **Limits.** The engine must be allowed to crawl the resource to read the directive.
 
-C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability. The google-indexing-2026-10-v1 profile interprets standalone-page Googlebot directives. Certain exclusion remains evidence alongside unknown tokens. Dated restrictions are compared with capture time; ignored and unknown instructions are retained. Certain HTTP noindex remains interpretable even when body reading is unavailable. Access and rendering remain separate.
+C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability. The google-indexing-2026-10-v2 profile interprets standalone-page Googlebot directives. Certain exclusion remains evidence alongside unknown tokens. Dated restrictions are compared with capture time; ignored and unknown instructions are retained. Certain HTTP noindex remains interpretable even when body reading is unavailable. Access and rendering remain separate. Profile v2 requires commas between rules or separate fields/tags. A whitespace-only rule list is undocumented syntax: NT without decisive independent evidence; a certain contradiction in another field remains NC. RFC date commas inside unavailable_after are retained. Explicit v1 intent remains historical, with no implicit migration.
 
 **Source scope.** Technical reference; the TSEP acceptance rule remains an editorial proposal. Sources checked on 2026-10-09; dated capture fingerprints recorded in docs/source-observations.md.
 
@@ -394,7 +394,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.3.0-draft.8:TS07-A01`
+`TSEP@0.3.0-draft.9:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -402,7 +402,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Each document with a declared indexing objective, for an explicitly named crawler and context.
 
-**Method.** Inventory all final X-Robots-Tag headers and robots/target-crawler meta tags in source HTML, separate from redirect hops. Apply documented crawler semantics, including duplicates, scope, case, parameters and ignored rules. Optional source_reader=html-tree-directives-v1, declared before capture, constructs two complete static hypotheses without executing scripts; HTML robots/googlebot meta in head/body without foreign ancestors are combined separately with final headers. Ordinary template contents are retained but excluded from active directives. Optional prior presentation_reader=google-preview-intent-v1 compares minimum/maximum permission intervals for text, images and video under the preview-intent contract; extraction and states remain separate. The google-indexing-2026-10-v1 profile interprets standalone-page Googlebot directives. Certain exclusion remains evidence alongside unknown tokens. Dated restrictions are compared with capture time; ignored and unknown instructions are retained. Certain HTTP noindex remains interpretable even when body reading is unavailable. Access and rendering remain separate.
+**Method.** Inventory all final X-Robots-Tag headers and robots/target-crawler meta tags in source HTML, separate from redirect hops. Apply documented crawler semantics, including duplicates, scope, case, parameters and ignored rules. Optional source_reader=html-tree-directives-v1, declared before capture, constructs two complete static hypotheses without executing scripts; HTML robots/googlebot meta in head/body without foreign ancestors are combined separately with final headers. Ordinary template contents are retained but excluded from active directives. Optional prior presentation_reader=google-preview-intent-v1 compares minimum/maximum permission intervals for text, images and video under the preview-intent contract; extraction and states remain separate. The google-indexing-2026-10-v2 profile interprets standalone-page Googlebot directives. Certain exclusion remains evidence alongside unknown tokens. Dated restrictions are compared with capture time; ignored and unknown instructions are retained. Certain HTTP noindex remains interpretable even when body reading is unavailable. Access and rendering remain separate. Profile v2 requires commas between rules or separate fields/tags. A whitespace-only rule list is undocumented syntax: NT without decisive independent evidence; a certain contradiction in another field remains NC. RFC date commas inside unavailable_after are retained. Explicit v1 intent remains historical, with no implicit migration.
 
 **Acceptance.** Combined effects match the declared indexing objective and declared presentation/link restrictions. For Google: an applicable restriction prevails over permission, none includes noindex/nofollow; nofollow or a preview limit alone does not mean noindex. Missing directives are not failure when intent permits indexing. For this profile, two pass yield pass, two fail yield fail, every other pair stays inconclusive; never merge directives across alternative hypotheses or confuse them with observed rendered states. For this new profile, all possible values within the intended interval yield pass; all outside on one side yield fail; otherwise inconclusive. Independent contradiction prevails within a reading; existing source consensus and rendered priority remain.
 
@@ -418,7 +418,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.3.0-draft.8:TS07-A02`
+`TSEP@0.3.0-draft.9:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -442,7 +442,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.3.0-draft.8:TS07-A03`
+`TSEP@0.3.0-draft.9:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 

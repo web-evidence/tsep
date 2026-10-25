@@ -1,3 +1,7 @@
+## 0.3.0-draft.9 — 2026-10-25
+
+Candidat local non publié / unpublished local candidate. TS07-A01 : profil Google v2, listes à espaces seules indéterminées, contradictions indépendantes conservées. / Google v2 profile, space-only rule lists remain inconclusive; independent contradictions retained. Migration explicite, aucune substitution des anciennes preuves. / Explicit migration, no replacement of old evidence.
+
 Préparation / preparation **0.3.0-draft.8** : TS07 directives Googlebot, TS05 cohérence des moyens d’exclusion, TS09 preuve représentative et inventaires d’export exacts / Googlebot directives, exclusion-policy consistency, representative exclusion evidence and exact export inventories. [Migration FR/EN](docs/migration-0.3.0-draft.8.md). Candidat non publié ; qualifications locale et distante à distinguer / Unpublished candidate; local and remote qualification are separate.
 
 Correction de publication / Publication correction **publication-v2** : arrêt CI macOS au plafond de quatre heures observé et conservé ; plafond de six heures, progression des étapes sur stderr, nouvelle archive et qualification complète requises / observed four-hour macOS CI interruption retained; six-hour ceiling, step progress on stderr, distinct archive and complete qualification required. [Migration FR/EN](docs/publication-profile-v2.md). Norme, règles et tests inchangés / Normative source, rules and tests unchanged.

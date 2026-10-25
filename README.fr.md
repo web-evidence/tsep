@@ -1,3 +1,13 @@
+# TSEP — Technical SEO Evidence Protocol
+
+Transformer des preuves SEO en décisions vérifiables.
+
+Candidat local **0.3.0-draft.9** du 25 octobre 2026 : syntaxe des directives TS07, profil v2. Non publié ; tests ciblés seulement, qualification complète encore requise. [Migration](docs/migration-0.3.0-draft.9.md).
+
+Les notes ci-dessous décrivent les versions précédentes.
+
+---
+
 Préparation / preparation **0.3.0-draft.8** : TS07 directives Googlebot, TS05 cohérence des moyens d’exclusion, TS09 preuve représentative et inventaires d’export exacts / Googlebot directives, exclusion-policy consistency, representative exclusion evidence and exact export inventories. [Migration FR/EN](docs/migration-0.3.0-draft.8.md). Candidat non publié ; qualifications locale et distante à distinguer / Unpublished candidate; local and remote qualification are separate.
 
 Préparation / preparation **0.3.0-draft.4** :44 contrôles avec98 règles atomiques bornées /44 controls with98 bounded atomic rules. TS26–30/37 added;85 prior rules preserved. [Contract](docs/render-transport-evidence.md), [migration](docs/migration-0.3.0-draft.4.md). Qualification evidence is separate; no real site audit or publication.

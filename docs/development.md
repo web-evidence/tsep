@@ -1,3 +1,5 @@
+Candidat local draft.9 / Local draft.9 candidate: [TS07 syntax and explicit migration / syntaxe TS07 et migration explicite](migration-0.3.0-draft.9.md). Targeted tests only; full qualification remains required. / Tests ciblés uniquement ; qualification complète encore requise.
+
 Contrôle après fusion / Post-merge check : [réutilisation conditionnelle / conditional qualification reuse](verification-postmerge.md). Les sept environnements PR restent complets ; seuls des fichiers et preuves exactement identiques permettent le chemin court après fusion. / Seven full PR environments remain; only exactly matching files and evidence permit the short post-merge path.
 
 Optimisation non normative / Non-normative optimization : [répétitions de conformité v2 / repeated conformance work v2](verification-speed-v2.md). Une attente contradictoire ciblée, intégration complète conservée ; mesures et qualification du candidat exact requises. / Scoped contradictory expectation with full integration retained; exact-candidate measurements and qualification required.
