@@ -1,5 +1,7 @@
 ## 0.3.0-draft.9 — 2026-10-25
 
+- FR : seconde contre-revue : mois hors grammaire indéterminés ; années à deux chiffres comparées sans pivot Google inventé ; décalages négatifs nuls en UTC ; expiration strictement après la date ; profil inconnu sans exception hors raccourci HTTP. EN: second review fixes keep unknown months inconclusive, compare two-digit centuries without an invented Google pivot, interpret negative zero as UTC, require strictly later expiry and preserve inconclusive results for unsupported HTTP-shortcut profiles.
+
 - FR : contre-revue R077 corrigée : dates entièrement consommées, grammaire v2 déterministe et NT sur formats non pris en charge, portées cachées refusées ; profils internes explicites, lecteur TS09 v1 conservé. EN: reviewed R077 fixes consume whole dates, use a deterministic bounded v2 grammar and keep unsupported formats inconclusive; hidden scopes are rejected, internal profiles explicit, TS09 v1 retained.
 
 Candidat local non publié / unpublished local candidate. TS07-A01 : profil Google v2, listes à espaces seules indéterminées, contradictions indépendantes conservées. / Google v2 profile, space-only rule lists remain inconclusive; independent contradictions retained. Migration explicite, aucune substitution des anciennes preuves. / Explicit migration, no replacement of old evidence.

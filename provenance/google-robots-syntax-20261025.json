@@ -6,10 +6,24 @@
   "summary": "The documentation describes commas or distinct fields/tags. It does not document a whitespace-only list of rules. This candidate treats such syntax as unknown rather than predicting crawler behaviour.",
   "capture_status": "Original HTTP bytes unavailable from this rendered-text tool response; no source-byte hash or retained original HTML is claimed.",
   "candidate_only": true,
-  "date_grammar_source": {
-    "url": "https://www.rfc-editor.org/rfc/rfc5322#section-4.3",
-    "checked_at": "2026-10-25",
-    "scope": "Fixed two-digit mail-date year and named-zone meanings; this bounded profile is not a claim to implement every Google-accepted date format.",
-    "capture_limitation": "Official HTML read through web retrieval; no original response bytes retained, so no original-capture hash claimed."
-  }
+  "date_grammar_sources": [
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc5322",
+      "checked_at": "2026-10-25",
+      "scope": "Sections3.3/4.3: negative-zero UTC instant and fixed mail-date pivot; not attributed to Google.",
+      "capture_limitation": "Official text read via web tool; original HTTP bytes not available, no source-byte fingerprint claimed."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc9110.txt",
+      "checked_at": "2026-10-25",
+      "scope": "Section5.6.7: rolling rfc850 HTTP pivot differs from mail dates; bounded candidate instead compares 19xx/20xx readings.",
+      "capture_limitation": "Official text read via web tool; original HTTP bytes not available, no source-byte fingerprint claimed."
+    },
+    {
+      "url": "https://www.rfc-editor.org/rfc/rfc3339",
+      "checked_at": "2026-10-25",
+      "scope": "Section4.3: -00:00 encodes known UTC time with unknown local offset.",
+      "capture_limitation": "Official text read via web tool; original HTTP bytes not available, no source-byte fingerprint claimed."
+    }
+  ]
 }

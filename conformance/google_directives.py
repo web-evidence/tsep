@@ -69,7 +69,7 @@ _ISO_DATE = re.compile(r'(?P<year>[0-9]{4})-(?P<month>[0-9]{2})-(?P<day>[0-9]{2}
     r'(?P<zone>[Zz]|[+-][0-9]{2}:[0-9]{2})?)?')
 _RFC_DATE = re.compile(r'(?:(?P<weekday>Mon(?:day)?|Tue(?:sday)?|Wed(?:nesday)?|Thu(?:rsday)?|'
     r'Fri(?:day)?|Sat(?:urday)?|Sun(?:day)?),[ \t]+)?'
-    r'(?P<day>[0-9]{1,2})(?P<sep>[ \t]+|-)(?P<month>[A-Za-z]{3})(?P=sep)'
+    r'(?P<day>[0-9]{1,2})(?P<sep>[ \t]+|-)(?P<month>Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)(?P=sep)'
     r'(?P<year>[0-9]{2}(?:[0-9]{2})?)[ \t]+'
     r'(?P<hour>[0-9]{2}):(?P<minute>[0-9]{2})(?::(?P<second>[0-9]{2}))?'
     r'(?:[ \t]+(?P<zone>UT|UTC|GMT|EST|EDT|CST|CDT|MST|MDT|PST|PDT|[+-][0-9]{4}))?', re.I)
@@ -90,11 +90,11 @@ def expiry_v2(value, observed_at):
     fields = match.groupdict()
     try:
         year = int(fields['year'])
-        if not iso and len(fields['year']) == 2:
-            # RFC5322 section4.3 mail-date pivot; never Python's varying grammar.
-            year += 2000 if year < 50 else 1900
+        # Google documents multiple date families without a two-digit pivot.
+        # Keep both bounded century readings; a matching weekday may exclude one.
+        years = (1900 + year, 2000 + year) if not iso and len(fields['year']) == 2 else (year,)
         month = int(fields['month']) if iso else _MONTHS[fields['month'].lower()]
-        if year == 0 or int(fields.get('second') or 0) == 60 or (iso and fields.get('hour') == '24'):
+        if years == (0,) or int(fields.get('second') or 0) == 60 or (iso and fields.get('hour') == '24'):
             # Plausible ISO/leap-second forms outside this datetime subset.
             return 'unsupported'
         zone = fields.get('zone')
@@ -108,26 +108,42 @@ def expiry_v2(value, observed_at):
                 if hours > 23 or minutes > 59:
                     return 'invalid'
                 offset = (hours * 60 + minutes) * (-1 if zone[0] == '-' else 1)
-                if zone in ('-0000', '-00:00'):
-                    offset = None  # Unknown local offset, not asserted UTC.
+                # RFC5322 section3.3 / RFC3339 section4.3: negative zero
+                # retains a known UTC instant; only the local offset is unknown.
             else:
                 offset = _ZONES[zone.lower()]
-        date = dt.datetime(year, month, int(fields['day']), int(fields.get('hour') or 0),
-            int(fields.get('minute') or 0), int(fields.get('second') or 0),
-            int((fields.get('fraction') or '').ljust(6, '0')),
-            tzinfo=None if offset is None else dt.timezone(dt.timedelta(minutes=offset)))
-        if fields.get('weekday') and ('mon','tue','wed','thu','fri','sat','sun')[date.weekday()] != fields['weekday'][:3].lower():
-            return 'unsupported'
+        dates = []
+        for year in years:
+            try:
+                dates.append(dt.datetime(year, month, int(fields['day']), int(fields.get('hour') or 0),
+                    int(fields.get('minute') or 0), int(fields.get('second') or 0),
+                    int((fields.get('fraction') or '').ljust(6, '0')),
+                    tzinfo=None if offset is None else dt.timezone(dt.timedelta(minutes=offset))))
+            except (ValueError, OverflowError):
+                continue
+        if not dates:
+            return 'invalid'
+        if fields.get('weekday'):
+            dates = [date for date in dates if
+                ('mon','tue','wed','thu','fri','sat','sun')[date.weekday()] == fields['weekday'][:3].lower()]
+            if not dates:
+                return 'unsupported'
     except (ValueError, KeyError, OverflowError):
         return 'invalid'
     if observed_at is None:
         return 'unresolved'
     observed = tsep.timestamp(observed_at)
-    if date.tzinfo is None:
-        date = date.replace(tzinfo=dt.timezone.utc)
-        if abs((observed-date).total_seconds()) <= 86400:
-            return 'unresolved'
-    return 'expired' if date <= observed else 'future'
+    states = set()
+    for date in dates:
+        if date.tzinfo is None:
+            date = date.replace(tzinfo=dt.timezone.utc)
+            if abs((observed-date).total_seconds()) <= 86400:
+                states.add('unresolved')
+                continue
+        # Google says "after" the date: equality does not establish expiration.
+        states.add('expired' if date < observed else 'future')
+    return states.pop() if len(states) == 1 else 'unresolved'
+
 
 
 def facts(headers, values, observed_at, profile):

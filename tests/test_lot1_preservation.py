@@ -11,7 +11,7 @@ class Lot1Preservation(unittest.TestCase):
         for name,want in {'conformance/cases.json': '2d34a6e002d689c516add05e56971d9e3c1af87d3368021967401f4c7aecb402', 'tests/fixtures/control-cases.json': 'd87a5b60fea94d1e373a1e939edc639bb2435fcc9c2fddc859548e4b03baf5c0'}.items():
             value=json.loads((root/name).read_text());self.assertEqual(value.pop('protocol_version'),'0.3.0-draft.9')
             if name=='conformance/cases.json':
-                added=[r for r in value['additional_case_files'] if r['path'] in ('tests/fixtures/ts07-google-syntax-v2.json','tests/fixtures/ts07-google-dates-v2.json')];self.assertEqual(len(added),2)
+                added=[r for r in value['additional_case_files'] if r['path'] in ('tests/fixtures/ts07-google-syntax-v2.json','tests/fixtures/ts07-google-dates-v2.json','tests/fixtures/ts07-google-dates-review2-v2.json')];self.assertEqual(len(added),3)
                 value['additional_case_files']=[r for r in value['additional_case_files'] if r not in added]
             self.assertEqual(hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest(),want)
 

@@ -31,16 +31,24 @@ Le lecteur v2 consomme la valeur entière des dates. Il prend en charge les date
 ISO étendues `AAAA-MM-JJ`, avec heure facultative `HH:MM[:SS[.fraction]]` (six
 décimales au maximum), puis `Z` ou un décalage `±HH:MM` facultatif ; et les formes
 RFC à jour/mois anglais/année, séparées par espaces ou tirets, avec heure, secondes
-facultatives et fuseau UTC/GMT/UT, américain fixe ou `±HHMM`. L’année RFC à deux
-chiffres suit la convention fixe RFC5322 §4.3 : 00–49 → 2000–2049, 50–99 → 1950–1999.
+facultatives et fuseau UTC/GMT/UT, américain fixe ou `±HHMM`. Les douze mois
+anglais sont seuls reconnus ; une autre abréviation plausible reste NT.
+Pour une année RFC à deux chiffres, les lectures 19xx et 20xx sont comparées
+à la capture : NT si elles divergent. Une lecture calendaire impossible est
+écartée ; un jour de semaine fourni doit correspondre à la date retenue. Aucune
+convention de pivot propre aux courriels n’est attribuée à Google. Ce choix
+prudent est borné à ces deux siècles ; il ne modélise pas tous les futurs pivots HTTP.
 Une date sans fuseau reste NT à moins de 24 heures de la capture. Une date
 calendaire impossible est ignorée ; un format plausible non pris en charge
 (`20201021`, décalage ISO `+0000`, semaine ISO), un suffixe ou un saut de ligne
 reste NT. Cela ne prétend pas que Google ignore ces formats. Le parseur v1 reste
 inchangé, y compris ses limites historiques ; il n’est pas un lecteur v2.
 Les secondes intercalaires, l’heure ISO 24:00, l’année zéro et un jour de semaine
-contradictoire restent hors périmètre (NT). Le décalage négatif nul est inconnu,
-sans assimilation implicite à UTC.
+contradictoire restent hors périmètre (NT). Les décalages `-0000` (RFC5322 §3.3)
+et `-00:00` (RFC3339 §4.3) désignent un instant UTC connu ; seul le décalage local
+est inconnu. La date expire strictement après l’instant indiqué : l’égalité avec
+la capture ne constitue pas une expiration. Un profil non pris en charge reste
+NT, y compris dans le raccourci de lecture des en-têtes HTTP.
 
 Migration explicite : créer une nouvelle attente v2, puis une nouvelle évaluation.
 Les attentes v1 restent interprétées selon v1 lorsqu’elles le déclarent ; aucune
@@ -80,15 +88,22 @@ filtering. Internal calls must supply the profile explicitly.
 The v2 date reader consumes the entire value. It supports extended ISO dates
 `YYYY-MM-DD`, optional `HH:MM[:SS[.fraction]]` time (up to six decimals), and optional
 `Z` or `±HH:MM` zone; RFC forms with English day/month/year, spaces or hyphens,
-time, optional seconds and UTC/GMT/UT, fixed US or `±HHMM` zones. Two-digit RFC
-years follow RFC5322 §4.3's fixed mail-date convention: 00–49 → 2000–2049,
-50–99 → 1950–1999. Zoneless dates remain NT within 24 hours of capture. Impossible
+time, optional seconds and UTC/GMT/UT, fixed US or `±HHMM` zones. Only the twelve
+English month abbreviations are recognized; other plausible months remain NT.
+For two-digit RFC years, both 19xx and 20xx readings are compared with capture
+time: differing states remain NT. Impossible calendar readings are discarded;
+a supplied weekday must match the retained date. No mail-date pivot is attributed
+to Google. This conservative choice is bounded to those two centuries, without
+modelling every future HTTP pivot. Zoneless dates remain NT within 24 hours of capture. Impossible
 calendar dates are ignored; plausible unsupported formats (`20201021`, ISO
 `+0000` offsets, ISO weeks), suffixes and line breaks remain NT. This does not
 claim Google ignores those formats. The v1 parser retains its historical behavior
 and limitations; it is not silently promoted to v2.
 Leap seconds, ISO 24:00, year zero and contradictory weekdays are outside the
-supported subset (NT). Negative zero offsets remain unknown, never silently UTC.
+supported subset (NT). Negative zero `-0000` (RFC5322 §3.3) and `-00:00`
+(RFC3339 §4.3) represent a known UTC instant; only the local offset is unknown.
+Expiration requires strictly later capture time; equality does not establish
+expiration. An unsupported profile remains NT, including the HTTP-header shortcut.
 
 Migration requires new v2 intent and a new assessment. Explicit v1 intent retains
 v1 interpretation; replay is never labelled a fresh collection. The TS09 reader
@@ -99,3 +114,13 @@ Official source checked on 25 October 2026:
 [Google robots rules](https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag).
 Google documents comma-separated lists and separate fields/tags. Space-only
 lists remain unknown in this profile; this does not predict Google’s actual behaviour.
+
+## Date references / Références des dates
+
+- [RFC5322 §3.3 and §4.3](https://www.rfc-editor.org/rfc/rfc5322): mail-date offsets and two-digit-year convention / décalages et années des dates de courriels.
+- [RFC9110 §5.6.7](https://www.rfc-editor.org/rfc/rfc9110.txt): a different rolling HTTP rule for rfc850 dates / règle HTTP glissante différente.
+- [RFC3339 §4.3](https://www.rfc-editor.org/rfc/rfc3339): known UTC instant with unknown local offset / instant UTC connu et décalage local inconnu.
+
+These references explain the bounded choices; they do not establish Google's
+actual parser. / Ces références expliquent les choix bornés, sans démontrer le
+parseur réellement employé par Google.

@@ -35,16 +35,16 @@ class ReviewedGoogleDates(unittest.TestCase):
             self.assertEqual(google.expiry_v2(value,NOW),'unsupported')
 
     def test_date_zones_and_boundary_use_capture_time(self):
-        for value,expected in [('2026-10-25T05:00:00Z','expired'),
+        for value,expected in [('2026-10-25T05:00:00Z','future'),
                                ('2026-10-25T05:00:00.000001Z','future'),
                                ('2026-10-25T06:00:00+02:00','expired'),
                                ('2026-10-25T04:00:00-02:00','future'),
                                ('2026-10-25T06:00:00','unresolved'),
                                ('2020-10-21','expired'),('2020-02-31','invalid'),
-                               ('21 Oct 49 00:00:00 GMT','future'),
-                               ('21 Oct 50 00:00:00 GMT','expired'),
-                               ('2026-10-25T05:01:00-00:00','unresolved'),
-                               ('25 Oct 2026 05:01:00 -0000','unresolved')]:
+                               ('21 Oct 49 00:00:00 GMT','unresolved'),
+                               ('21 Oct 50 00:00:00 GMT','unresolved'),
+                               ('2026-10-25T05:01:00-00:00','future'),
+                               ('25 Oct 2026 05:01:00 -0000','future')]:
             with self.subTest(value=value):self.assertEqual(google.expiry_v2(value,NOW),expected)
         self.assertEqual(google.expiry_v2('2020-10-21T00:00:00Z',None),'unresolved')
 
