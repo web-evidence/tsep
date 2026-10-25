@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.7 — Contrôles
+# TSEP 0.3.0-draft.8 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -288,7 +288,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Limites.** Le lecteur compare un plan synthétique fourni ; il ne récupère aucun site, ne teste aucune authentification, ne vérifie pas l’exécution d’un retrait, ni l’état de l’index. Une URL bloquée peut rester connue et apparaître sans extrait. La qualification complète de TS05 et sa réception dans l’application sont distinctes.
 
-C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
+C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité. Le profil policy_version=2 compare aussi authentification, autorisation et suppression HTTP 404/410. Une exclusion empêchée par Disallow est contradictoire, même sans garantie affirmée. Le résultat porte uniquement sur la cohérence du plan déclaré ; il ne prouve ni désindexation ni confidentialité.
 
 **Portée des sources.** Les pages Google Search Central ci-dessous appuient la distinction technique ; les attendus TSEP restent une règle éditoriale. Capture sélective datée et empreintée, pas un audit de site.
 
@@ -296,7 +296,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS05-A01 — Carte fournie : exploration, indexation et protection sont distinctes.
 
-`TSEP@0.2.0-rc.1:TS05-A01`
+`TSEP@0.3.0-draft.8:TS05-A01`
 
 **Entrées requises**: configuration, intent.
 
@@ -304,7 +304,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Une politique d’exploration, un objectif d’indexation ou une déclaration de confidentialité existe dans le périmètre.
 
-**Méthode.** Lire intent.ts05_policy, datée avant observed_at, et le record configuration. Comparer les méthodes/effets d’exploration, l’objectif/méthode de l’indexation et la visibilité de noindex, puis la protection et les bases d’affirmations de désindexation/confidentialité.
+**Méthode.** Lire intent.ts05_policy, datée avant observed_at, et le record configuration. Comparer les méthodes/effets d’exploration, l’objectif/méthode de l’indexation et la visibilité de noindex, puis la protection et les bases d’affirmations de désindexation/confidentialité. Le profil policy_version=2 compare aussi authentification, autorisation et suppression HTTP 404/410. Une exclusion empêchée par Disallow est contradictoire, même sans garantie affirmée. Le résultat porte uniquement sur la cohérence du plan déclaré ; il ne prouve ni désindexation ni confidentialité.
 
 **Attendus.** Pass signifie seulement que la carte fournie est cohérente et distingue les trois axes. Une garantie de désindexation fondée seulement sur Disallow échoue ; une directive noindex inaccessible n’établit pas une exclusion. Aucun verdict positif ne prouve l’état de l’index, l’accès réel du robot ou la confidentialité serveur.
 
@@ -386,7 +386,7 @@ C exige les cellules et triplets complets du périmètre synthétique déclaré.
 
 **Limites.** Le moteur doit pouvoir explorer la ressource pour lire la directive.
 
-C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
+C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité. Le profil google-indexing-2026-10-v1 interprète les directives Googlebot de la page autonome. Une exclusion certaine demeure probante avec des jetons inconnus. Les restrictions datées sont comparées à la capture ; les consignes ignorées et inconnues sont conservées. Un noindex HTTP certain reste interprétable même si le corps ne peut être lu. Accès et rendu restent séparés.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale. Sources consultées le 2026-10-09 ; captures datées et empreintes consignées dans docs/source-observations.md.
 
@@ -394,7 +394,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.2.0-rc.1:TS07-A01`
+`TSEP@0.3.0-draft.8:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -402,7 +402,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Chaque document avec objectif d’indexation déclaré, pour un robot et un contexte explicitement nommés.
 
-**Méthode.** Inventorier tous les X-Robots-Tag finaux et meta robots/robot cible dans le HTML source, sans les confondre avec les sauts. Appliquer la sémantique documentée du robot, y compris doublons, portée, casse, paramètres et directives ignorées. Le profil facultatif source_reader=html-tree-directives-v1, déclaré avant capture, construit deux hypothèses statiques complètes sans exécuter de script ; les meta HTML robots/googlebot de head/body sans ancêtre étranger sont combinés séparément avec les en-têtes finaux. Les contenus des templates ordinaires sont conservés mais exclus des directives actives. Le choix préalable facultatif presentation_reader=google-preview-intent-v1 compare les intervalles minimum/maximum de permission texte, image et vidéo selon le contrat preview-intent ; extraction et états restent distincts.
+**Méthode.** Inventorier tous les X-Robots-Tag finaux et meta robots/robot cible dans le HTML source, sans les confondre avec les sauts. Appliquer la sémantique documentée du robot, y compris doublons, portée, casse, paramètres et directives ignorées. Le profil facultatif source_reader=html-tree-directives-v1, déclaré avant capture, construit deux hypothèses statiques complètes sans exécuter de script ; les meta HTML robots/googlebot de head/body sans ancêtre étranger sont combinés séparément avec les en-têtes finaux. Les contenus des templates ordinaires sont conservés mais exclus des directives actives. Le choix préalable facultatif presentation_reader=google-preview-intent-v1 compare les intervalles minimum/maximum de permission texte, image et vidéo selon le contrat preview-intent ; extraction et états restent distincts. Le profil google-indexing-2026-10-v1 interprète les directives Googlebot de la page autonome. Une exclusion certaine demeure probante avec des jetons inconnus. Les restrictions datées sont comparées à la capture ; les consignes ignorées et inconnues sont conservées. Un noindex HTTP certain reste interprétable même si le corps ne peut être lu. Accès et rendu restent séparés.
 
 **Attendus.** L’effet combiné correspond à l’objectif déclaré d’indexation et aux restrictions de présentation/liens déclarées. Pour Google : une restriction applicable prime une permission, none inclut noindex/nofollow ; nofollow ou une limite d’aperçu seuls ne signifient pas noindex. L’absence de directive n’est pas un échec si l’objectif autorise l’indexation. Pour ce profil, deux pass donnent pass, deux fail donnent fail, toute autre paire reste inconclusive ; ne jamais fusionner les directives des hypothèses alternatives ni les confondre avec des états rendus observés. Pour ce nouveau profil, toutes les valeurs possibles dans l’intervalle voulu donnent pass ; toutes hors intervalle du même côté donnent fail ; sinon inconclusive. Une contradiction indépendante prévaut dans une lecture ; les règles de consensus source et de priorité rendue restent inchangées.
 
@@ -418,7 +418,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.2.0-rc.1:TS07-A02`
+`TSEP@0.3.0-draft.8:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -442,7 +442,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.2.0-rc.1:TS07-A03`
+`TSEP@0.3.0-draft.8:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 
@@ -580,7 +580,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Limites.** La pertinence métier de l’exclusion ne peut pas être automatisée.
 
-C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
+C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité. Le profil url-exclusion-observed-v2 exige un registre, une réponse HTTP représentative et robots.txt par famille, puis une revue explicitement liée aux preuves affichées. Une contradiction native reste NC en l’absence de revue ; une correspondance sans revue reste NT. Une famille entière, l’index Google et la confidentialité ne sont pas établis par cet échantillon.
 
 **Portée des sources.** Référence technique ; les attendus TSEP restent une proposition éditoriale.
 
@@ -588,7 +588,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS09-A01 — Registre des exclusions et responsabilités
 
-`TSEP@0.3.0-draft.2:TS09-A01`
+`TSEP@0.3.0-draft.8:TS09-A01`
 
 **Entrées requises**: configuration, intent.
 
@@ -596,7 +596,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Éléments explicitement sélectionnés du contrôle TS09 ; profil url-policy-v1 décrit dans docs/url-policy-evidence.md.
 
-**Méthode.** Lire le registre natif JSON exclusion-register-v1 ; rapprocher chaque famille sélectionnée du mécanisme préalable, puis vérifier propriétaire, motif et date de revue. Exiger une revue liée au dossier.
+**Méthode.** Lire le registre natif JSON exclusion-register-v1 ; rapprocher chaque famille sélectionnée du mécanisme préalable, puis vérifier propriétaire, motif et date de revue. Exiger une revue liée au dossier. Le profil url-exclusion-observed-v2 exige un registre, une réponse HTTP représentative et robots.txt par famille, puis une revue explicitement liée aux preuves affichées. Une contradiction native reste NC en l’absence de revue ; une correspondance sans revue reste NT. Une famille entière, l’index Google et la confidentialité ne sont pas établis par cet échantillon.
 
 **Attendus.** Les mécanismes concordent et chaque famille a ses informations de gouvernance ; la revue fournie confirme le périmètre. Une divergence de mécanisme échoue.
 

@@ -6,6 +6,7 @@ from conformance.http import Unknown, need
 CRAWL_METHODS = {"robots-txt", "other", "none", "unknown"}
 CRAWL_EFFECTS = {"allow", "disallow", "unknown", "not-applicable"}
 INDEX_METHODS = {"meta-noindex", "x-robots-tag-noindex", "removal-request",
+                 "authentication", "authorization", "http-404", "http-410",
                  "other", "none", "unknown", "not-applicable"}
 INDEX_GOALS = {"exclude", "include", "not-assessed"}
 VISIBILITY = {"fetchable", "blocked-by-robots", "unknown", "not-applicable"}
@@ -14,6 +15,7 @@ PROTECTION_METHODS = {"authentication", "authorization", "other", "public",
 PROTECTION_GOALS = {"private", "public", "not-assessed"}
 CLAIM_KINDS = {"deindex", "confidentiality"}
 SERVER_SIDE_BASIS = {"authentication", "authorization"}
+HTTP_BASIS = {"http-404", "http-410"}
 CRAWL_ONLY_BASIS = {"robots-disallow", "noindex-directive", "removal-request"}
 
 
@@ -43,6 +45,7 @@ def assess(target, rule):
         need(isinstance(target.get("intent"), dict), "Missing TS05 intent")
         policy = target["intent"].get("ts05_policy")
         need(isinstance(policy, dict), "Missing prior TS05 policy map")
+        need(policy.get("policy_version") in (None,"2"), "Unsupported TS05 policy version")
         observed_at = target.get("observed_at")
         applicability = policy.get("applicability")
         if applicability == "not-applicable":
@@ -85,6 +88,28 @@ def assess(target, rule):
             return ("inconclusive",
                     "Actual index state is outside this policy-only assessment")
 
+        # Versioned policy consistency: certain contradictions survive missing axes.
+        if policy.get("policy_version") == "2":
+            effective = {"meta-noindex", "x-robots-tag-noindex"} | SERVER_SIDE_BASIS | HTTP_BASIS
+            if index_goal == "exclude" and crawl_effect == "disallow":
+                return "fail", "Robots Disallow prevents the crawler from observing the declared exclusion mechanism"
+            if index_goal == "exclude" and index_method in ("none", "not-applicable"):
+                return "fail", "Exclusion is intended but no usable indexing mechanism is declared"
+            if index_goal == "include" and crawl_effect == "disallow":
+                return "fail", "Robots Disallow prevents crawling of content intended for inclusion"
+            if index_goal == "include" and protection_method in SERVER_SIDE_BASIS:
+                return "fail", "Server-side access control contradicts inclusion of anonymously available content"
+            if protection_goal == "public" and protection_method in SERVER_SIDE_BASIS:
+                return "fail", "Public access goal contradicts declared server-side access control"
+            if index_goal == "include" and index_method in effective:
+                return "fail", "The declared exclusion mechanism contradicts the inclusion goal"
+            if index_method in SERVER_SIDE_BASIS and protection_method != index_method:
+                return "fail", "Declared authentication exclusion and server protection mechanisms disagree"
+            if protection_goal == "private" and protection_method in ("robots-only", "none", "public"):
+                return "fail", "Private content lacks a declared server-side access control"
+            if index_goal == "exclude" and index_method in effective and visibility not in ("fetchable",):
+                return "inconclusive", "Crawler visibility of the declared exclusion mechanism is not established"
+
         claims = policy.get("claims")
         need(isinstance(claims, list), "Missing TS05 claim inventory")
         seen = set()
@@ -98,7 +123,7 @@ def assess(target, rule):
             seen.add(kind)
             basis = claim.get("basis")
             need(isinstance(basis, list) and basis and
-                 all(value in SERVER_SIDE_BASIS | CRAWL_ONLY_BASIS | {"other", "unknown"}
+                 all(value in SERVER_SIDE_BASIS | HTTP_BASIS | CRAWL_ONLY_BASIS | {"other", "unknown"}
                      for value in basis), "Missing or unsupported TS05 claim basis")
             parsed.append((kind, level, basis))
         need(seen == CLAIM_KINDS,

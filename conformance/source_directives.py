@@ -79,11 +79,11 @@ def assess(headers, body, intent, *, combine, diagnostics=None):
         results = {}
         for mode, reading in result['readings'].items():
             try:
-                if 'presentation_reader' in intent:
+                if 'presentation_reader' in intent or 'directive_policy' in intent:
                     preview_notes = []
                     outcome, reason = decide_reading(reading, headers, intent,
                         lambda h, v, i: combine(h, v, i, diagnostics=preview_notes))
-                    record.setdefault('preview_observations', {})[mode] = preview_notes
+                    record.setdefault('directive_observations' if 'directive_policy' in intent else 'preview_observations', {})[mode] = preview_notes
                 else:
                     outcome, reason = decide_reading(reading, headers, intent, combine)
             except (Unknown, KeyError, TypeError, ValueError) as error:

@@ -88,7 +88,7 @@ class SitemapQuality(unittest.TestCase):
         frozen = tsep.read_json(ROOT/'provenance/v030-rc1-preservation.json')
         protocol = tsep.read_json(tsep.PROTOCOL_PATH)
         self.assertEqual(frozen['base_commit'], '7b60c20e7ac572574f756ad92531e0c46f7b83e7')
-        self.assertEqual(protocol['version'], '0.3.0-draft.7')
+        self.assertEqual(protocol['version'], '0.3.0-draft.8')
         protocol['controls']=controls_before_lot1()
         previous = tsep.read_json(ROOT/'provenance/v030-draft1-rule-baseline.json')['new_control_previous_versions']
         next_baseline = tsep.read_json(ROOT/'provenance/v030-draft2-rule-baseline.json')
@@ -105,7 +105,7 @@ class SitemapQuality(unittest.TestCase):
             else:
                 self.assertEqual(control['rule_version'], '0.3.0-draft.1')
         verification = tsep.read_json(ROOT/'provenance/verification-speed-test-overlay-v1.json')['updates']
-        overlays = verification + tsep.read_json(ROOT/'provenance/v030-lot1-source-overlay.json')['updates']
+        overlays = tsep.read_json(ROOT/'provenance/v030-priority1-source-overlay.json')['updates'] + verification + tsep.read_json(ROOT/'provenance/v030-lot1-source-overlay.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/ts25-runtime-test-overlay-v1.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/v030-indexing-locale-integration-overlay.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/v030-report-test-overlay-v1.json')['updates']

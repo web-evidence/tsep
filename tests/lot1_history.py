@@ -1,4 +1,4 @@
-"""Explicit inverse of the TS01/TS02 lot1 contract amendment for historical checks."""
+"""Explicit inverses of lot1 and priority1 contract amendments for historical checks. New profiles have separate contradictory tests."""
 import copy,hashlib,json
 from pathlib import Path
 import tsep
@@ -9,4 +9,7 @@ def baseline():
     return json.loads(raw)
 def controls_before_lot1():
     old=baseline()['controls']
+    raw=(ROOT/'provenance/v030-draft7-priority1-baseline.json').read_bytes()
+    if hashlib.sha256(raw).hexdigest()!='791ee10afb221194e5acd495ac9fe5d685fce9ab80f65be2b1fc3c0fdf3f6276':raise ValueError('Changed priority1 historical baseline')
+    old.update(json.loads(raw)['controls'])
     return [copy.deepcopy(old.get(c['id'],c)) for c in tsep.read_json(tsep.PROTOCOL_PATH)['controls']]
