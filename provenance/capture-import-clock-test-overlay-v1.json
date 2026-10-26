@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "scope": "Non-normative capture import test clock only. A checked inverse restores the exact RC1 test bytes; historical fingerprints, runtime, protocol, corpus and expected outcomes remain unchanged.",
+  "scope_fr": "Horloge du test d’import uniquement, sans changement normatif. La transformation inverse vérifiée retrouve les octets RC1 exacts ; empreintes historiques, moteur, protocole, corpus et attentes restent inchangés.",
+  "base_commit": "cb0c6229d2709021106ec38f71159d3cb734f808",
+  "source_change_commit": "7b2a0ae60b50a9cb3eff4807e7deaa85ca730ca1",
+  "reason": "The former 16/17 October mock import clock predates 205 supplied fixtures captured on 25 October. The 26 October mock clock and fail-fast date invariant were reviewed and validated separately. This overlay records that test-only change; it neither repairs supplied dates nor changes the native assessment clock.",
+  "updates": [
+    {
+      "path": "tests/test_capture_adapter.py",
+      "base_sha256": "ef0c04eb33ead3719c8c6aa20f88ea2e1c2997c39be0f1220976661c5c1a2c95",
+      "current_sha256": "81e34f96e467ed95558820a2966afa5bd5ea2746c5a08e8cffcde716bf435e9e",
+      "replacements": [
+        {
+          "before": "        # Expected verdicts are never supplied to this adapter.\n        for name,case in CASES.items():\n",
+          "after": "        # Expected verdicts are never supplied to this adapter.\n        import_clock = datetime(2026,10,26,tzinfo=timezone.utc)\n        def valid_source_dates(value):\n            if isinstance(value, dict):\n                for key, child in value.items():\n                    if key in ('observed_at', 'declared_at'):\n                        try:\n                            yield tsep.timestamp(child)\n                        except (ValueError, TypeError):\n                            # Invalid source dates still reach the unchanged adapter.\n                            continue\n                    else:\n                        yield from valid_source_dates(child)\n            elif isinstance(value, list):\n                for child in value:\n                    yield from valid_source_dates(child)\n        for name, case in CASES.items():\n            for supplied_date in valid_source_dates(case['input']):\n                self.assertLess(supplied_date, import_clock,\n                                'Advance the fixed import clock for fixture: '+name)\n        for name,case in CASES.items():\n"
+        },
+        {
+          "before": "                    # After every supplied fixture date; future-to-assessment remains unknown.\n                    clock.now.return_value=datetime(2026,10,17 if name.startswith(('ts03-','ts06-')) else 16,tzinfo=timezone.utc)\n",
+          "after": "                    # Corpus observations/declarations end at 2026-10-25T05:00Z.\n                    # Import later without changing the native assessment clock;\n                    # future-to-assessment evidence remains unknown.\n                    clock.now.return_value=import_clock\n"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+{
+  "candidate_version": "0.3.0-draft.9",
+  "previous_unpublished_commit": "c6e2aaf2d1ce18e55789b95523cfebdbd237198d",
+  "reason": "Explicit bounded v2 limitation: every two-digit RFC year unsupported regardless of weekday or calendar validity; no Google century/parser assumptions. v1 unchanged.",
+  "previous_source_preserved": "Previous commit retained; inputs and case IDs unchanged, 15 former decisive expectations deliberately replaced with NT before code changes.",
+  "files": [
+    {
+      "path": "tests/fixtures/ts07-google-dates-v2.json",
+      "before_sha256": "5c83288d6e3edd5bd795648bf3e6b61c7929a7a6f60c8cac76039c8910e697e0",
+      "after_sha256": "08c338126dbeba93aaaf7f37aac65504fce6488f182f87b397be82bc6b2b29ff",
+      "revisions": [
+        {
+          "case": "ts07-v2-reviewed-rfc850-allow",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "fail"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "61868fb5a22910ed578ecb8fc1ab76192f907d597c98f19e6ecd5cc397755baa"
+        },
+        {
+          "case": "ts07-v2-reviewed-rfc850-exclude",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "pass"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "bd2b15a2839e7d811880c62c7291edf6339e09753665cf7227e94b0e91470c19"
+        }
+      ]
+    },
+    {
+      "path": "tests/fixtures/ts07-google-dates-review2-v2.json",
+      "before_sha256": "65ca227d6bc26e88f4419582bbf13e0c8011de2afe1651c439047a0ec383cbdb",
+      "after_sha256": "c7c1137f5f3cc2b46e4e22acd044c4961dcb9f22c227b0862a0ef5a555280eed",
+      "revisions": [
+        {
+          "case": "ts07-v2-review2-year20-allow",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "fail"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "ed958b19dbc6e1d5fd4880789d9c1f09d2201093d98bd5ba3584c6edce48c396"
+        },
+        {
+          "case": "ts07-v2-review2-year20-exclude",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "pass"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "ab7e288a506e33c6f6e306a4dbbcf9de1462610a8358f7400b2575b3111a3c37"
+        },
+        {
+          "case": "ts07-v2-review2-weekday1950-allow",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "fail"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "873a4df2ad5a47fddf1c9712eb181dd0cb2420b7cf6ef4ff0aa9febf231c4664"
+        },
+        {
+          "case": "ts07-v2-review2-weekday1950-exclude",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "pass"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "0b8101ff7d5b2fcac124ddb5071b93b82ea43bc92f6a0a028cfef97f7b4ec833"
+        },
+        {
+          "case": "ts07-v2-review2-weekday2050-allow",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "pass"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "31db66b8d74ae7a013ee4535ca7f937dd770373244f6d2f4fc92bb30d426c49d"
+        },
+        {
+          "case": "ts07-v2-review2-weekday2050-exclude",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "fail"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "9f4e9b2eb91e1c813b1efcf529519b881d8d9f059aa3450ba1e6aa1bbb1bc303"
+        },
+        {
+          "case": "ts07-v2-review2-leap2000-allow",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "fail"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "8601c2e137b81cb4f73f774fb8f136c503a2c2be2a17c70a7534a0db5067955f"
+        },
+        {
+          "case": "ts07-v2-review2-leap2000-exclude",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "pass"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "33aeb05b3aa311f382ce62a9808c33bb4460c1f48a952df06cb40c2d0d28b202"
+        },
+        {
+          "case": "ts07-v2-review2-leap2000-weekday-allow",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "fail"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "6c390f282db99ed7e506d56025196afd89ad46683849adbea22f2859ff965e5e"
+        },
+        {
+          "case": "ts07-v2-review2-leap2000-weekday-exclude",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "pass"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "dc0dab201a8d952980bc0ea87a50700ca4d351e448b6a87873ea761437d535b7"
+        },
+        {
+          "case": "ts07-v2-review2-invalid-both-centuries-allow",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "pass"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "0ce36d297bb4ac8e0c287badd756859e2925a84219599fab0825b8f84a98643c"
+        },
+        {
+          "case": "ts07-v2-review2-invalid-both-centuries-exclude",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "fail"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "441b896942a34198d6d89a0178c1a7dacd16ff90ed1900a485929ba8f0788bdf"
+        }
+      ]
+    },
+    {
+      "path": "tests/fixtures/ts07-google-syntax-v2.json",
+      "before_sha256": "df41d31688a213b363093140b70446f83d215d0f9282700c813780613d8ca9b3",
+      "after_sha256": "0f2b32025701d0c6b871860bab20144d3e3ffc97eef7ed76dd80b3550ee7bf69",
+      "revisions": [
+        {
+          "case": "ts07-v2-rfc850-expired",
+          "before": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "fail"
+            }
+          ],
+          "after": [
+            {
+              "rule_id": "TS07-A01",
+              "target": "https://syntax.synthetic.invalid/page",
+              "outcome": "inconclusive"
+            }
+          ],
+          "input_sha256": "03d416160188a15ee952988275698478f925a3fe8eea308da18ec7b97d0187c3"
+        }
+      ]
+    }
+  ],
+  "new_fixture": {
+    "path": "tests/fixtures/ts07-google-dates-review3-v2.json",
+    "sha256": "1d1e8eaffe4d805a728cbd3eacf71d978e659dec0bb60c7aca3eccc2720fc428",
+    "cases": 24
+  },
+  "revised_expectation_count": 15,
+  "unit_expectation_revision": {
+    "path": "tests/test_review7_priority1.py",
+    "test": "GoogleRules.test_expiry_is_relative_to_capture_not_wall_clock",
+    "date": "Wednesday, 21-Oct-26 00:00:00 GMT",
+    "profile": "google-indexing-2026-10-v2",
+    "before": "fail",
+    "after": "inconclusive",
+    "before_sha256": "8226afc1ffb3b4119f42022bc24f0db6b73db0473770b65c1ecd8769750d0c3f",
+    "after_sha256": "1258173d2040396894f8fb1a2823705037f8838113b8f5baa5773010299a040b"
+  },
+  "additional_discovery": "First targeted run detected the initial 35-case RFC850 header and its existing unit assertion; both now explicitly revised with inputs unchanged. Failure receipt retained."
+}

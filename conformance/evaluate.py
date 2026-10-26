@@ -31,7 +31,7 @@ from conformance.indexing_locale import RULES as INDEXING_LOCALE_RULES
 RULES += INDEXING_LOCALE_RULES
 from conformance.render_transport import RULES as RENDER_TRANSPORT_RULES
 RULES += RENDER_TRANSPORT_RULES
-VERSION = '54'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '55'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -194,9 +194,9 @@ def directive_result(headers, body, intent, *, source=False, diagnostics=None, o
     if source and 'source_reader' in intent:
         from conformance.source_directives import assess
         outcome = assess(headers, body, intent, combine=lambda h, v, i, **kw: directive_values(h, v, i, observed_at=observed_at, **kw), diagnostics=diagnostics)
-        if 'directive_policy' in intent and intent.get('following', 'unspecified') == 'unspecified':
-            from conformance.google_directives import facts, result
-            if facts(headers, [], observed_at)['excluded']:
+        from conformance.google_directives import PROFILE, LEGACY_PROFILE, facts, result
+        if intent.get('directive_policy') in (PROFILE, LEGACY_PROFILE) and intent.get('following', 'unspecified') == 'unspecified':
+            if facts(headers, [], observed_at, intent['directive_policy'])['excluded']:
                 return result(headers, [], intent, observed_at, diagnostics)
         return outcome
     body = text_body(body)

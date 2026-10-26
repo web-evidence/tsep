@@ -58,7 +58,7 @@ class GoogleRules(unittest.TestCase):
 
     def test_expiry_is_relative_to_capture_not_wall_clock(self):
         for date,state in (('21 Oct 2026 00:00:00 GMT','fail'),('Wed, 21 Oct 2026 00:00:00 GMT','fail'),
-                           ('Wednesday, 21-Oct-26 00:00:00 GMT','fail'),('2030-01-01T00:00:00Z','pass'),('2020-01-01T00:00:00Z','fail'),
+                           ('Wednesday, 21-Oct-26 00:00:00 GMT','inconclusive'),('2030-01-01T00:00:00Z','pass'),('2020-01-01T00:00:00Z','fail'),
                            ('2026-10-25T06:00:00','inconclusive'),('nonsense','pass')):
             with self.subTest(date=date):self.assertEqual(self.verdict('unavailable_after: '+date)[0],state)
 
@@ -87,11 +87,11 @@ class PolicyV2(unittest.TestCase):
         root=Path(__file__).resolve().parents[1]
         baseline=json.loads((root/'provenance/v030-draft7-priority1-baseline.json').read_text())['controls']
         protocol=tsep.read_json(tsep.PROTOCOL_PATH)
-        self.assertEqual(protocol['version'],'0.3.0-draft.8')
+        self.assertEqual(protocol['version'],'0.3.0-draft.9')
         for c in protocol['controls']:
             if c['id'] not in baseline:continue
             old=baseline[c['id']]
-            self.assertEqual(c['rule_version'],'0.3.0-draft.8')
+            self.assertEqual(c['rule_version'],'0.3.0-draft.9' if c['id']=='TS07' else '0.3.0-draft.8')
             self.assertEqual({k for k in c if c[k]!=old[k]}, {'rule_version','acceptance_note','rules'})
             self.assertEqual({k for k in c['rules'][0] if c['rules'][0][k]!=old['rules'][0][k]}, {'procedure'})
             self.assertEqual(c['rules'][1:],old['rules'][1:])

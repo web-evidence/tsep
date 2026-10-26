@@ -52,6 +52,25 @@ class CaptureAdapter(unittest.TestCase):
     def test_all_raw_cases_retain_computed_outcomes_and_evidence(self):
         # End-to-end integrity across every existing raw scenario, including parser limits.
         # Expected verdicts are never supplied to this adapter.
+        import_clock = datetime(2026,10,26,tzinfo=timezone.utc)
+        def valid_source_dates(value):
+            if isinstance(value, dict):
+                for key, child in value.items():
+                    if key in ('observed_at', 'declared_at'):
+                        try:
+                            yield tsep.timestamp(child)
+                        except (ValueError, TypeError):
+                            # Invalid source dates still reach the unchanged adapter.
+                            continue
+                    else:
+                        yield from valid_source_dates(child)
+            elif isinstance(value, list):
+                for child in value:
+                    yield from valid_source_dates(child)
+        for name, case in CASES.items():
+            for supplied_date in valid_source_dates(case['input']):
+                self.assertLess(supplied_date, import_clock,
+                                'Advance the fixed import clock for fixture: '+name)
         for name,case in CASES.items():
             with self.subTest(case=name):
                 # A failed assertion in the previous case must not contaminate
@@ -62,8 +81,10 @@ class CaptureAdapter(unittest.TestCase):
                     shutil.rmtree(self.output)
                 # Fixed import clock keeps future-to-assessment fixtures deterministic.
                 with patch('adapters.captures.datetime') as clock:
-                    # After every supplied fixture date; future-to-assessment remains unknown.
-                    clock.now.return_value=datetime(2026,10,17 if name.startswith(('ts03-','ts06-')) else 16,tzinfo=timezone.utc)
+                    # Corpus observations/declarations end at 2026-10-25T05:00Z.
+                    # Import later without changing the native assessment clock;
+                    # future-to-assessment evidence remains unknown.
+                    clock.now.return_value=import_clock
                     admission = TS25_ADMISSION.get(name)
                     if admission and admission['admission'] == 'technical-refusal':
                         # Native uncertainty does not authorize publishing corrupt evidence.

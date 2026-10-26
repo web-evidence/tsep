@@ -56,16 +56,16 @@ def assess(d, item, f):
         # Always expose both source surfaces, including when the declaration differs.
         if status == 200:
             if mechanism == 'x-robots-tag-noindex':
-                header_match=bool(set(google_directives.facts(headers, [], captured_at)['tokens']) & {'noindex','none'})
+                header_match=bool(set(google_directives.facts(headers, [], captured_at, google_directives.LEGACY_PROFILE)['tokens']) & {'noindex','none'})
                 f.compare(key+':mechanism', header_match, 'Declared HTTP noindex compared with complete response headers; HTML parsing is not required')
             notes = []
-            intent = {'source_reader': 'html-tree-directives-v1', 'directive_policy': google_directives.PROFILE,
+            intent = {'source_reader': 'html-tree-directives-v1', 'directive_policy': google_directives.LEGACY_PROFILE,
                       'crawler': 'googlebot', 'indexing': 'exclude'}
             def combine(h, values, i, diagnostics=None):
                 result = google_directives.result(h, values, i, captured_at, diagnostics)
                 if diagnostics is not None:
-                    diagnostics.append({'surface': 'meta', **google_directives.facts({}, values, captured_at)})
-                    diagnostics.append({'surface': 'header', **google_directives.facts(h, [], captured_at)})
+                    diagnostics.append({'surface': 'meta', **google_directives.facts({}, values, captured_at, google_directives.LEGACY_PROFILE)})
+                    diagnostics.append({'surface': 'header', **google_directives.facts(h, [], captured_at, google_directives.LEGACY_PROFILE)})
                 return result
             try:
                 outcome, reason = source_assess(headers, body, intent, combine=combine, diagnostics=notes)
