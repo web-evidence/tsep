@@ -1,4 +1,4 @@
-Candidat local draft.9 / Local draft.9 candidate: [TS07 syntax and explicit migration / syntaxe TS07 et migration explicite](migration-0.3.0-draft.9.md). Targeted tests only; full qualification remains required. / Tests ciblés uniquement ; qualification complète encore requise.
+Candidat local draft.10 / Local draft.10 candidate: [sondes publiques TS03/TS06, preuves d’accès TS07 et migration explicite / public TS03/TS06 probes, TS07 access evidence and explicit migration](migration-0.3.0-draft.10.md). Qualification complète du candidat exact requise avant intégration / Complete qualification of the exact candidate required before integration.
 
 Contrôle après fusion / Post-merge check : [réutilisation conditionnelle / conditional qualification reuse](verification-postmerge.md). Les sept environnements PR restent complets ; seuls des fichiers et preuves exactement identiques permettent le chemin court après fusion. / Seven full PR environments remain; only exactly matching files and evidence permit the short post-merge path.
 

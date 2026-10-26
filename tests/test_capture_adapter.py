@@ -52,7 +52,7 @@ class CaptureAdapter(unittest.TestCase):
     def test_all_raw_cases_retain_computed_outcomes_and_evidence(self):
         # End-to-end integrity across every existing raw scenario, including parser limits.
         # Expected verdicts are never supplied to this adapter.
-        import_clock = datetime(2026,10,26,tzinfo=timezone.utc)
+        import_clock = datetime(2026,10,27,tzinfo=timezone.utc)
         def valid_source_dates(value):
             if isinstance(value, dict):
                 for key, child in value.items():
@@ -81,7 +81,7 @@ class CaptureAdapter(unittest.TestCase):
                     shutil.rmtree(self.output)
                 # Fixed import clock keeps future-to-assessment fixtures deterministic.
                 with patch('adapters.captures.datetime') as clock:
-                    # Corpus observations/declarations end at 2026-10-25T05:00Z.
+                    # Corpus observations/declarations end at 2026-10-26T00:00:05Z.
                     # Import later without changing the native assessment clock;
                     # future-to-assessment evidence remains unknown.
                     clock.now.return_value=import_clock

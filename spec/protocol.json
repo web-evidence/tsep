@@ -7652,11 +7652,11 @@
     },
     {
       "path": "docs/migration-0.3.0-draft.8.md",
-      "sha256": "a3e93a40c24e570a5a752d5923eb4e9a9c8edf157b6eff36f7f87d2a83ae744d"
+      "sha256": "5e40b6c63b54c32e51dd251e8f4824118a63ba100c6be66d9734e385f6b19f66"
     },
     {
       "path": "docs/migration-0.3.0-draft.9.md",
-      "sha256": "a300bfea090ee5f3c5844a0fc6a1021d4e7e7db3171177c91501aaf2fe3486c0"
+      "sha256": "0ee398906d0fa124e5d23fb4760d1730edc4b29f6643d4a8f7dd6e181a224b8e"
     }
   ]
 }

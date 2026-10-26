@@ -1,6 +1,6 @@
 {
   "base_commit": "d6a6e73f5c21d52131d3f4e39cde309d97385cbc",
-  "purpose": "Reversible explicit TS07 access-profile hook; historical robots decision remains first",
+  "purpose": "Reversible explicit TS07 access-profile hook and import-clock advance for the newly authored public-probe fixtures; historical expectations remain unchanged",
   "updates": [
     {
       "path": "conformance/robots_control.py",
@@ -14,6 +14,21 @@
         {
           "before": "    if status in (401, 403):\n        return 'fail', 'Observed HTTP access denial to test client'",
           "after": "    if status in (401, 403) and 'access_evidence_profile' not in intent:\n        return 'fail', 'Observed HTTP access denial to test client'"
+        }
+      ]
+    },
+    {
+      "path": "tests/test_capture_adapter.py",
+      "base_sha256": "81e34f96e467ed95558820a2966afa5bd5ea2746c5a08e8cffcde716bf435e9e",
+      "current_sha256": "4d8c4c5a114eeb5e8ed66db1187444fab9a0af3c882c30c18b53f8a51df2544d",
+      "replacements": [
+        {
+          "before": "import_clock = datetime(2026,10,26,tzinfo=timezone.utc)",
+          "after": "import_clock = datetime(2026,10,27,tzinfo=timezone.utc)"
+        },
+        {
+          "before": "Corpus observations/declarations end at 2026-10-25T05:00Z.",
+          "after": "Corpus observations/declarations end at 2026-10-26T00:00:05Z."
         }
       ]
     }

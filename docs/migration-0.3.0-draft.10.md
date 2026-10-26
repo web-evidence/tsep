@@ -31,3 +31,9 @@ EN: TS03-A02 is limited to the existing and generated routes; formerly moved pag
 FR : changement normatif explicite : un C global sur TS03 ou TS06 exige désormais A01 **et** la sonde A02. Sous le nouveau profil d’accès TS07, un refus 401/403 adressé au seul client de test reste NT ; un Disallow prouvé reste NC. Les profils historiques gardent leurs attentes.
 
 EN: explicit normative change: whole-control C for TS03 or TS06 now requires A01 **and** probe A02. Under the new TS07 access profile, a 401/403 denial to the test client alone stays NT; a proven Disallow stays NC. Historical profiles retain their expectations.
+
+## Inventaire préalable / Prequalification inventory
+
+FR : 1 390 tests découverts, 2 588 cas de conformité et 4 961 paires pour 100 règles. Les 21 cas supplémentaires de cette édition figurent dans le corpus distribué ; les 2 567 cas antérieurs sont conservés. Cet inventaire décrit ce qui doit être exécuté, sans annoncer une qualification réussie. L’horloge fixe d’import passe au 27 octobre, après la dernière observation synthétique du 26 octobre à 00:00:05 UTC ; son inverse de provenance conserve l’ancrage historique et les attentes.
+
+EN: 1,390 discovered tests, 2,588 conformance cases and 4,961 pairs across 100 rules. This edition’s 21 additional cases belong to the distributed corpus; all 2,567 prior cases remain. This inventory describes required execution, not a successful qualification. The fixed import clock advances to 27 October, after the last synthetic observation on 26 October at 00:00:05 UTC; its provenance inverse preserves the historical anchor and expectations.
