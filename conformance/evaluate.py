@@ -11,7 +11,7 @@ from urllib.parse import urljoin, urlsplit
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import tsep
 
-RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS03-A01', 'TS04-A01', 'TS04-A02', 'TS05-A01', 'TS06-A01', 'TS07-A01', 'TS07-A02', 'TS07-A03',
+RULES = ('TS01-A01', 'TS01-A02', 'TS02-A01', 'TS02-A02', 'TS03-A01', 'TS03-A02', 'TS04-A01', 'TS04-A02', 'TS05-A01', 'TS06-A01', 'TS06-A02', 'TS07-A01', 'TS07-A02', 'TS07-A03',
          'TS10-A01', 'TS10-A02', 'TS10-A03', 'TS10-A04',
          'TS34-A01', 'TS34-A02', 'TS34-A03', 'TS35-A01', 'TS35-A02',
          'TS42-A01', 'TS42-A02', 'TS42-A03', 'TS43-A01', 'TS43-A02', 'TS43-A03', 'TS44-A01', 'TS44-A02', 'TS44-A03', 'TS41-A01', 'TS41-A02', 'TS41-A03', 'TS39-A01', 'TS39-A02', 'TS39-A03', 'TS08-A01', 'TS08-A02', 'TS08-A03', 'TS12-A01', 'TS12-A02', 'TS12-A03', 'TS36-A01', 'TS36-A02', 'TS36-A03')
@@ -31,7 +31,7 @@ from conformance.indexing_locale import RULES as INDEXING_LOCALE_RULES
 RULES += INDEXING_LOCALE_RULES
 from conformance.render_transport import RULES as RENDER_TRANSPORT_RULES
 RULES += RENDER_TRANSPORT_RULES
-VERSION = '55'  # Interpreter coverage version; normative protocol version is separate.
+VERSION = '56'  # Interpreter coverage version; normative protocol version is separate.
 
 
 from conformance.http import Unknown, need, message, unchunk, text_body, body_digest, raw_bytes
@@ -448,6 +448,9 @@ def evaluate_target(target, rule, *, diagnostics=None):
         return assess(target, rule, diagnostics=diagnostics)
     if rule.startswith(('TS34-', 'TS35-')):
         from conformance.performance import assess
+        return assess(target, rule, diagnostics=diagnostics)
+    if rule in ('TS03-A02', 'TS06-A02'):
+        from conformance.public_probes import assess
         return assess(target, rule, diagnostics=diagnostics)
     if rule.startswith('TS03-'):
         from conformance.ts03_response import assess

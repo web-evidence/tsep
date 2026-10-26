@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.9 — Controls
+# TSEP 0.3.0-draft.10 — Controls
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -154,17 +154,17 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Required inputs**: configuration, http, content, intent.
 
-**Applicability.** Synthetic routes explicitly classified as existing, removed and nonexistent in a dated plan; real-world scope is not authenticated.
+**Applicability.** Synthetic routes explicitly classified as existing, removed and nonexistent in a dated plan; real-world scope is not authenticated. Public profile added in A02: Explicit public-probes-v1 plan, dated before collection and fingerprint-bound to the target.
 
-**Method.** Before captures, bind the intent plan for the three route states and their content criteria into configuration. Compare a supplied HTTP GET matrix without DNS resolution or network collection.
+**Method.** Before captures, bind the intent plan for the three route states and their content criteria into configuration. Compare a supplied HTTP GET matrix without DNS resolution or network collection. Public profile added in A02: Before collection, declare an existing URL and a random 128-bit path in its directory, assumed absent; a removed route may be added explicitly. Compare complete HTTP chains (at most 4 responses), on the same origin, with expected statuses.
 
-**Acceptance.** Pass qualifies only the complete supplied matrix: 200 and expected markers for an existing route; 404/410 and declared body criteria for removed/nonexistent routes. A 2xx for the latter, another complete status, or a marker contradiction is fail. Soft-404 classification is not measured.
+**Acceptance.** Pass qualifies only the complete supplied matrix: 200 and expected markers for an existing route; 404/410 and declared body criteria for removed/nonexistent routes. A 2xx for the latter, another complete status, or a marker contradiction is fail. Soft-404 classification is not measured. Public profile added in A02: Pass: one attributable observation per route, 200 for existing and 404/410 for expected absent routes. Fail: expected absence returning 200, including after redirect, or existing-status contradiction outside obstacles. An established contradiction survives another gap or duplicate.
 
-**Evidence.** Prior intent plan, binding fingerprint, body expectations, URL/GET and complete raw HTTP responses for each required state; retain counterexamples even when other evidence is missing.
+**Evidence.** Prior intent plan, binding fingerprint, body expectations, URL/GET and complete raw HTTP responses for each required state; retain counterexamples even when other evidence is missing. Public profile added in A02: Fingerprint-bound prior plan, generated URL and explicit assumption; complete HTTP requests and responses, timestamps, client and origin for each route.
 
 **When NA is allowed.** Scope contains no HTTP routing, with a justification.
 
-**Limits.** The probe uses only synthetic .invalid captures and literal UTF-8 markers. It confirms no real existence, removal, sustained availability, semantic quality, or Google soft-404 classification. A point-in-time 5xx fails the declared status without proving a persistent outage. No site or search engine is queried.
+**Limits.** The probe uses only synthetic .invalid captures and literal UTF-8 markers. It confirms no real existence, removal, sustained availability, semantic quality, or Google soft-404 classification. A point-in-time 5xx fails the declared status without proving a persistent outage. No site or search engine is queried. Public profile added in A02: Point-in-time status probe on declared routes only. No expected content, removed-route inventory or Google soft-404 classification established. A01 remains separate: A02 alone does not make TS03 conforming.
 
 C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability.
 
@@ -174,7 +174,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS03-A01 — Synthetic HTTP responses compared with a prior plan
 
-`TSEP@0.2.0-rc.1:TS03-A01`
+`TSEP@0.3.0-draft.10:TS03-A01`
 
 **Required inputs**: configuration, http, content, intent.
 
@@ -195,6 +195,30 @@ C requires all expectations across the declared scope. NC requires evidenced con
 **When NA is allowed.** No atomic exemption. Whole-control NA requires a positive, complete, reasoned and dated inventory establishing that no HTTP routing is in scope.
 
 **Limits.** A .invalid capture tests no server. Markers are searched literally in the decoded body, without DOM, rendering, semantic judgment or engine classification. C covers only the declared matrix, not a whole site, availability over time, indexing or ranking.
+
+### TS03-A02 — Responses of the public and generated routes
+
+`TSEP@0.3.0-draft.10:TS03-A02`
+
+**Required inputs**: configuration, http, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Explicit public-probes-v1 plan, dated before collection and fingerprint-bound to the target.
+
+**Method.** Before collection, declare an existing URL and a random 128-bit path in its directory, assumed absent; a removed route may be added explicitly. Compare complete HTTP chains (at most 4 responses), on the same origin, with expected statuses.
+
+**Acceptance.** Pass: one attributable observation per route, 200 for existing and 404/410 for expected absent routes. Fail: expected absence returning 200, including after redirect, or existing-status contradiction outside obstacles. An established contradiction survives another gap or duplicate.
+
+**Evidence.** Fingerprint-bound prior plan, generated URL and explicit assumption; complete HTTP requests and responses, timestamps, client and origin for each route.
+
+**Assumptions.** Intent is supplied. Collection comes from the test client; it represents neither Googlebot nor every user.
+
+**Inconclusive.** 401/403/429/5xx, 206/304, bounds, incomplete response, another origin, positive duplicate, invalid plan or binding.
+
+**When NA is allowed.** No atomic exemption; missing evidence remains inconclusive.
+
+**Limits.** Point-in-time status probe on declared routes only. No expected content, removed-route inventory or Google soft-404 classification established. A01 remains separate: A02 alone does not make TS03 conforming.
 
 ## TS04 — The effective robots policy matches declared intent.
 
@@ -324,17 +348,17 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Required inputs**: configuration, http, intent.
 
-**Applicability.** Private or sensitive routes explicitly inventoried in a declared scope; this candidate rule qualifies only supplied synthetic HTTP traces.
+**Applicability.** Private or sensitive routes explicitly inventoried in a declared scope; this candidate rule qualifies only supplied synthetic HTTP traces. Public profile added in A02: Explicit public-probes-v1 plan, dated before collection and fingerprint-bound to the target.
 
-**Method.** Before observations, supply intent.ts06_access and bind its fingerprint in configuration.ts06_access. Declare routes, synthetic canaries, fictional roles, exact route/role tests, and cold anonymous → synthetic authorized seed → anonymous replay triplets with the same cache label. Inspect supplied GETs without DNS resolution or network requests. Authentication redirects must remain on the same origin (scheme, host, effective port) and follow an explicit path allowlist. A 404 counts as denial only when the plan declares it for that route.
+**Method.** Before observations, supply intent.ts06_access and bind its fingerprint in configuration.ts06_access. Declare routes, synthetic canaries, fictional roles, exact route/role tests, and cold anonymous → synthetic authorized seed → anonymous replay triplets with the same cache label. Inspect supplied GETs without DNS resolution or network requests. Authentication redirects must remain on the same origin (scheme, host, effective port) and follow an explicit path allowlist. A 404 counts as denial only when the plan declares it for that route. Public profile added in A02: Before one anonymous GET without cookies or credentials, declare expected denial: HTTP 401 challenge, redirect to an exact same-origin login URL, or deliberate 404. Reject URL query parameters. Follow no redirects; retain no body or private header values.
 
-**Acceptance.** Pass means only that all declared unauthorized route/role cells are complete, denied without a sensitive marker, and every supplied triplet follows the declared order without a replay leak; the control measures neither real identity nor a real cache. Any attributable response to an unauthorized role containing a canary fails, including detected encoded bodies or response headers. A 2xx representation delivered to an unauthorized role also fails.
+**Acceptance.** Pass means only that all declared unauthorized route/role cells are complete, denied without a sensitive marker, and every supplied triplet follows the declared order without a replay leak; the control measures neither real identity nor a real cache. Any attributable response to an unauthorized role containing a canary fails, including detected encoded bodies or response headers. A 2xx representation delivered to an unauthorized role also fails. Public profile added in A02: Probe pass: 401 with WWW-Authenticate challenge, redirect to the exact predeclared login URL, or explicitly expected 404. 200 = fail of expected denial, without claiming a leak: check for exposed content or a login form returning 200.
 
-**Evidence.** Supplied configuration, intent and HTTP records; exact plan fingerprint; timestamps; route/role identifiers; each raw GET exchange and its order; complete unauthorized-cell list; and every triplet phase/cache label. Preserve attributable contradictory responses before reporting any matrix gap.
+**Evidence.** Supplied configuration, intent and HTTP records; exact plan fingerprint; timestamps; route/role identifiers; each raw GET exchange and its order; complete unauthorized-cell list; and every triplet phase/cache label. Preserve attributable contradictory responses before reporting any matrix gap. Public profile added in A02: Plan, client, method, timestamps, status and collection metadata; body, response and header digests, body size, challenge scheme names or destination digest. Body and private values are not retained.
 
 **When NA is allowed.** The whole control may be not applicable only with a complete, dated, reasoned synthetic inventory review declaring no sensitive route in scope; no contradictory test or triplet may then be present.
 
-**Limits.** A fixture interpreter bounded to .invalid URL labels, with no DNS, socket, crawl or live domain. An HTTP role is a synthetic label, not authentication. A shared cache label proves no shared cache; Age/X-Cache alone do not establish attribution. The rule does not execute cookies, Authorization, JavaScript, TLS, URL aliases or HEAD. 206, 304 without a complete body, unsupported encoding, missing/ambiguous cell and incomplete cache state yield inconclusive. The result does not qualify every page of a site.
+**Limits.** A fixture interpreter bounded to .invalid URL labels, with no DNS, socket, crawl or live domain. An HTTP role is a synthetic label, not authentication. A shared cache label proves no shared cache; Age/X-Cache alone do not establish attribution. The rule does not execute cookies, Authorization, JavaScript, TLS, URL aliases or HEAD. 206, 304 without a complete body, unsupported encoding, missing/ambiguous cell and incomplete cache state yield inconclusive. The result does not qualify every page of a site. Public profile added in A02: Evidence is a supplied record, not cryptographically authenticated by the server. Bodies are excluded to protect data. No body confidentiality, roles or cache tested; A01 remains separate and A02 alone does not make TS06 conforming.
 
 C requires the complete cells and triplets in the declared synthetic scope. A canary leak or unauthorized 2xx is an evidenced contradiction; partial or ambiguous data remain NT. NA requires only a complete positive inventory declaration.
 
@@ -344,7 +368,7 @@ C requires the complete cells and triplets in the declared synthetic scope. A ca
 
 ### TS06-A01 — Access denied in the supplied synthetic HTTP matrix
 
-`TSEP@0.2.0-rc.1:TS06-A01`
+`TSEP@0.3.0-draft.10:TS06-A01`
 
 **Required inputs**: configuration, http, intent.
 
@@ -367,6 +391,30 @@ C requires the complete cells and triplets in the declared synthetic scope. A ca
 **When NA is allowed.** No atomic exemption. Whole-control NA requires a complete, dated, reasoned inventory review linked to intent.
 
 **Limits.** No DNS, socket, live collection, real identity, authentication, cookies, real cache, TLS, JavaScript, path aliases, HEAD, or whole-site assessment. Canary detection covers only implemented encodings; other cases are inconclusive.
+
+### TS06-A02 — Expected denial for an anonymous request
+
+`TSEP@0.3.0-draft.10:TS06-A02`
+
+**Required inputs**: configuration, http, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicability.** Explicit public-probes-v1 plan, dated before collection and fingerprint-bound to the target.
+
+**Method.** Before one anonymous GET without cookies or credentials, declare expected denial: HTTP 401 challenge, redirect to an exact same-origin login URL, or deliberate 404. Reject URL query parameters. Follow no redirects; retain no body or private header values.
+
+**Acceptance.** Probe pass: 401 with WWW-Authenticate challenge, redirect to the exact predeclared login URL, or explicitly expected 404. 200 = fail of expected denial, without claiming a leak: check for exposed content or a login form returning 200.
+
+**Evidence.** Plan, client, method, timestamps, status and collection metadata; body, response and header digests, body size, challenge scheme names or destination digest. Body and private values are not retained.
+
+**Assumptions.** Intent is supplied. Collection comes from the test client; it represents neither Googlebot nor every user.
+
+**Inconclusive.** 403 alone, 429/5xx, unattributable challenge, different redirect, incomplete response, signed URL, unestablished anonymous context or fingerprint.
+
+**When NA is allowed.** No atomic exemption; missing evidence remains inconclusive.
+
+**Limits.** Evidence is a supplied record, not cryptographically authenticated by the server. Bodies are excluded to protect data. No body confidentiality, roles or cache tested; A01 remains separate and A02 alone does not make TS06 conforming.
 
 ## TS07 — Robots meta directives and X-Robots-Tag match the page objective.
 
@@ -394,7 +442,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A01 — Effective directives and objective
 
-`TSEP@0.3.0-draft.9:TS07-A01`
+`TSEP@0.3.0-draft.10:TS07-A01`
 
 **Required inputs**: http, html, intent.
 
@@ -418,7 +466,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 ### TS07-A02 — Access to the directive
 
-`TSEP@0.3.0-draft.9:TS07-A02`
+`TSEP@0.3.0-draft.10:TS07-A02`
 
 **Required inputs**: http, robots, intent.
 
@@ -426,7 +474,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Every resource for which directive effects are assessed.
 
-**Method.** Compare effective robots policy and access conditions for the target crawler; distinguish the test client response, explicit blocking and unobserved crawler access. With explicit directive_crawler, require an explicit robots_policy whose product_token matches googlebot case-insensitively; select that group and never fall back to the browser agent group.
+**Method.** Compare effective robots policy and access conditions for the target crawler; distinguish the test client response, explicit blocking and unobserved crawler access. With explicit directive_crawler, require an explicit robots_policy whose product_token matches googlebot case-insensitively; select that group and never fall back to the browser agent group. Optional prior access_evidence_profile=ts07-access-evidence-v1: after HTTP 200 and allowing robots, accept a raw hashed Google inspection for this exact URL on an authorized property, with successful fetch, allowed robots and Google crawl between current capture and API retrieval; otherwise retain historical evidence without a current pass. Explicit alternative: a later user declaration bound to this response stating no known crawler obstacle; display its declarative provenance.
 
 **Acceptance.** No observed obstacle prevents reading the directive in the declared context. Robots disallow contradicts a strategy relying on reading noindex. An attributable HTTP 401/403 remains fail even if robots evidence is missing.
 
@@ -438,11 +486,11 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **When NA is allowed.** No atomic exemption when the control applies.
 
-**Limits.** No evidence of an actual engine visit; TS04 and other access controls are not globally validated. Automation is semiAuto: the bounded interpreter does not cover every syntax, crawler or context; unsupported inputs remain inconclusive and require review. Registry fields and sitemap are recorded without assessing usage preferences, TS42 or indexing and never delimit groups. Other fields and tolerances remain unsupported. Full line numbers and values are retained; reason previews disclose truncation.
+**Limits.** No evidence of an actual engine visit; TS04 and other access controls are not globally validated. Automation is semiAuto: the bounded interpreter does not cover every syntax, crawler or context; unsupported inputs remain inconclusive and require review. Registry fields and sitemap are recorded without assessing usage preferences, TS42 or indexing and never delimit groups. Other fields and tolerances remain unsupported. Full line numbers and values are retained; reason previews disclose truncation. The Inspection API describes a historical crawl, never a live test. A declaration proves no Googlebot visit; no declaration is generated automatically.
 
 ### TS07-A03 — Required rendered states
 
-`TSEP@0.3.0-draft.9:TS07-A03`
+`TSEP@0.3.0-draft.10:TS07-A03`
 
 **Required inputs**: http, html, render, intent.
 

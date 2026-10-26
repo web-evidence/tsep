@@ -212,6 +212,10 @@ def access_rule(target, final_url, status):
             + '; actual Googlebot representation unobserved') if 'directive_crawler' in intent else ''
     if not allowed:
         return 'fail', 'Observed robots policy disallows this target crawler/path' + note
+    if 'access_evidence_profile' in intent:
+        need(status == 200, 'Current HTTP response is not 200')
+        from conformance.access_evidence import assess
+        return assess(target)
     review = target.get('access_review', {})
     need(status == 200 and review.get('outcome') == 'no-obstacle' and review.get('reason'), 'HTTP access unresolved or challenge not reviewed')
     need(tsep.timestamp(review['observed_at']) >= tsep.timestamp(target['observed_at']), 'Access review predates the HTTP capture')

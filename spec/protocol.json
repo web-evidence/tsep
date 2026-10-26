@@ -1,9 +1,9 @@
 {
   "name": "Technical SEO Evidence Protocol",
   "short_name": "TSEP",
-  "version": "0.3.0-draft.9",
+  "version": "0.3.0-draft.10",
   "status": "draft",
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "languages": [
     "en",
     "fr"
@@ -347,28 +347,28 @@
         "intent"
       ],
       "applicability": {
-        "fr": "Routes synthétiques explicitement classées existantes, supprimées et inexistantes dans un plan daté ; la portée réelle n’est pas authentifiée.",
-        "en": "Synthetic routes explicitly classified as existing, removed and nonexistent in a dated plan; real-world scope is not authenticated."
+        "fr": "Routes synthétiques explicitement classées existantes, supprimées et inexistantes dans un plan daté ; la portée réelle n’est pas authentifiée. Profil public ajouté en A02 : Plan public-probes-v1 explicite, daté avant la collecte, lié par son empreinte à la cible.",
+        "en": "Synthetic routes explicitly classified as existing, removed and nonexistent in a dated plan; real-world scope is not authenticated. Public profile added in A02: Explicit public-probes-v1 plan, dated before collection and fingerprint-bound to the target."
       },
       "procedure": {
-        "fr": "Avant les captures, lier à configuration le plan d’intention des trois états de route et leurs critères de contenu. Comparer une matrice HTTP GET fournie, sans résolution DNS ni collecte réseau.",
-        "en": "Before captures, bind the intent plan for the three route states and their content criteria into configuration. Compare a supplied HTTP GET matrix without DNS resolution or network collection."
+        "fr": "Avant les captures, lier à configuration le plan d’intention des trois états de route et leurs critères de contenu. Comparer une matrice HTTP GET fournie, sans résolution DNS ni collecte réseau. Profil public ajouté en A02 : Avant la collecte, déclarer une URL existante et un chemin aléatoire de 128 bits dans son répertoire, supposé inexistant ; une route supprimée peut être ajoutée explicitement. Comparer les chaînes HTTP complètes (4 réponses maximum), sur la même origine, avec les statuts attendus.",
+        "en": "Before captures, bind the intent plan for the three route states and their content criteria into configuration. Compare a supplied HTTP GET matrix without DNS resolution or network collection. Public profile added in A02: Before collection, declare an existing URL and a random 128-bit path in its directory, assumed absent; a removed route may be added explicitly. Compare complete HTTP chains (at most 4 responses), on the same origin, with expected statuses."
       },
       "acceptance": {
-        "fr": "Pass qualifie seulement la matrice complète fournie : 200 et marqueurs attendus pour une route existante ; 404/410 et critères de corps déclarés pour les routes supprimées/inexistantes. Un 2xx pour ces dernières, un autre statut complet, ou une contradiction de marqueur est fail. La classification soft 404 reste hors mesure.",
-        "en": "Pass qualifies only the complete supplied matrix: 200 and expected markers for an existing route; 404/410 and declared body criteria for removed/nonexistent routes. A 2xx for the latter, another complete status, or a marker contradiction is fail. Soft-404 classification is not measured."
+        "fr": "Pass qualifie seulement la matrice complète fournie : 200 et marqueurs attendus pour une route existante ; 404/410 et critères de corps déclarés pour les routes supprimées/inexistantes. Un 2xx pour ces dernières, un autre statut complet, ou une contradiction de marqueur est fail. La classification soft 404 reste hors mesure. Profil public ajouté en A02 : Pass : une observation attribuable par route, 200 pour l’existante et 404/410 pour les routes supposées absentes. Fail : absence supposée répondant 200, même après redirection, ou contradiction de statut existant hors obstacles. Une contradiction établie subsiste malgré une autre lacune ou un doublon.",
+        "en": "Pass qualifies only the complete supplied matrix: 200 and expected markers for an existing route; 404/410 and declared body criteria for removed/nonexistent routes. A 2xx for the latter, another complete status, or a marker contradiction is fail. Soft-404 classification is not measured. Public profile added in A02: Pass: one attributable observation per route, 200 for existing and 404/410 for expected absent routes. Fail: expected absence returning 200, including after redirect, or existing-status contradiction outside obstacles. An established contradiction survives another gap or duplicate."
       },
       "non_applicability": {
         "fr": "Périmètre ne contenant aucun routage HTTP, justification fournie.",
         "en": "Scope contains no HTTP routing, with a justification."
       },
       "evidence": {
-        "fr": "Plan d’intention antérieur, empreinte de liaison, attentes de corps, URL/GET et réponses HTTP brutes complètes pour chaque état requis ; conserver les contre-cas même si d’autres pièces manquent.",
-        "en": "Prior intent plan, binding fingerprint, body expectations, URL/GET and complete raw HTTP responses for each required state; retain counterexamples even when other evidence is missing."
+        "fr": "Plan d’intention antérieur, empreinte de liaison, attentes de corps, URL/GET et réponses HTTP brutes complètes pour chaque état requis ; conserver les contre-cas même si d’autres pièces manquent. Profil public ajouté en A02 : Plan préalable empreinté, URL générée et hypothèse explicite ; requêtes et réponses HTTP complètes, dates, client et origine de chaque route.",
+        "en": "Prior intent plan, binding fingerprint, body expectations, URL/GET and complete raw HTTP responses for each required state; retain counterexamples even when other evidence is missing. Public profile added in A02: Fingerprint-bound prior plan, generated URL and explicit assumption; complete HTTP requests and responses, timestamps, client and origin for each route."
       },
       "limitations": {
-        "fr": "La sonde n’utilise que des captures synthétiques .invalid et des marqueurs littéraux UTF-8. Elle ne confirme ni existence réelle, suppression, disponibilité durable, qualité sémantique, ni classification soft 404 par Google. Une réponse ponctuelle 5xx échoue au statut déclaré sans prouver une panne persistante. Aucun site ni moteur n’est interrogé.",
-        "en": "The probe uses only synthetic .invalid captures and literal UTF-8 markers. It confirms no real existence, removal, sustained availability, semantic quality, or Google soft-404 classification. A point-in-time 5xx fails the declared status without proving a persistent outage. No site or search engine is queried."
+        "fr": "La sonde n’utilise que des captures synthétiques .invalid et des marqueurs littéraux UTF-8. Elle ne confirme ni existence réelle, suppression, disponibilité durable, qualité sémantique, ni classification soft 404 par Google. Une réponse ponctuelle 5xx échoue au statut déclaré sans prouver une panne persistante. Aucun site ni moteur n’est interrogé. Profil public ajouté en A02 : Sonde ponctuelle de statuts sur les seules routes déclarées. Aucun contenu attendu, inventaire de suppressions ou classement soft 404 de Google établi. A01 reste distincte : A02 seule ne rend pas TS03 conforme.",
+        "en": "The probe uses only synthetic .invalid captures and literal UTF-8 markers. It confirms no real existence, removal, sustained availability, semantic quality, or Google soft-404 classification. A point-in-time 5xx fails the declared status without proving a persistent outage. No site or search engine is queried. Public profile added in A02: Point-in-time status probe on declared routes only. No expected content, removed-route inventory or Google soft-404 classification established. A01 remains separate: A02 alone does not make TS03 conforming."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -386,7 +386,7 @@
         "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
         "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
       },
-      "rule_version": "0.2.0-rc.1",
+      "rule_version": "0.3.0-draft.10",
       "rules": [
         {
           "id": "TS03-A01",
@@ -433,6 +433,52 @@
           "evidence": {
             "fr": "Le plan et son empreinte, les attentes content, puis pour chaque route la requête GET, la réponse HTTP brute, le statut, la date et le corps complet. Conserver les observations contradictoires et les lacunes séparément.",
             "en": "The plan and its fingerprint, content expectations, then for each route the GET request, raw HTTP response, status, time and complete body. Preserve contradictory observations and gaps separately."
+          }
+        },
+        {
+          "id": "TS03-A02",
+          "required_inputs": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "automatic",
+          "applicability": {
+            "fr": "Plan public-probes-v1 explicite, daté avant la collecte, lié par son empreinte à la cible.",
+            "en": "Explicit public-probes-v1 plan, dated before collection and fingerprint-bound to the target."
+          },
+          "assumptions": {
+            "fr": "L’intention est fournie. La collecte provient du client de test ; elle ne représente pas Googlebot ni tous les utilisateurs.",
+            "en": "Intent is supplied. Collection comes from the test client; it represents neither Googlebot nor every user."
+          },
+          "non_applicability": {
+            "fr": "Pas d’exemption atomique ; une preuve absente reste indéterminée.",
+            "en": "No atomic exemption; missing evidence remains inconclusive."
+          },
+          "title": {
+            "fr": "Réponses des routes publique et générée",
+            "en": "Responses of the public and generated routes"
+          },
+          "procedure": {
+            "fr": "Avant la collecte, déclarer une URL existante et un chemin aléatoire de 128 bits dans son répertoire, supposé inexistant ; une route supprimée peut être ajoutée explicitement. Comparer les chaînes HTTP complètes (4 réponses maximum), sur la même origine, avec les statuts attendus.",
+            "en": "Before collection, declare an existing URL and a random 128-bit path in its directory, assumed absent; a removed route may be added explicitly. Compare complete HTTP chains (at most 4 responses), on the same origin, with expected statuses."
+          },
+          "acceptance": {
+            "fr": "Pass : une observation attribuable par route, 200 pour l’existante et 404/410 pour les routes supposées absentes. Fail : absence supposée répondant 200, même après redirection, ou contradiction de statut existant hors obstacles. Une contradiction établie subsiste malgré une autre lacune ou un doublon.",
+            "en": "Pass: one attributable observation per route, 200 for existing and 404/410 for expected absent routes. Fail: expected absence returning 200, including after redirect, or existing-status contradiction outside obstacles. An established contradiction survives another gap or duplicate."
+          },
+          "inconclusive": {
+            "fr": "401/403/429/5xx, 206/304, limites, réponse incomplète, autre origine, doublon positif, plan ou liaison invalide.",
+            "en": "401/403/429/5xx, 206/304, bounds, incomplete response, another origin, positive duplicate, invalid plan or binding."
+          },
+          "evidence": {
+            "fr": "Plan préalable empreinté, URL générée et hypothèse explicite ; requêtes et réponses HTTP complètes, dates, client et origine de chaque route.",
+            "en": "Fingerprint-bound prior plan, generated URL and explicit assumption; complete HTTP requests and responses, timestamps, client and origin for each route."
+          },
+          "limitations": {
+            "fr": "Sonde ponctuelle de statuts sur les seules routes déclarées. Aucun contenu attendu, inventaire de suppressions ou classement soft 404 de Google établi. A01 reste distincte : A02 seule ne rend pas TS03 conforme.",
+            "en": "Point-in-time status probe on declared routes only. No expected content, removed-route inventory or Google soft-404 classification established. A01 remains separate: A02 alone does not make TS03 conforming."
           }
         }
       ]
@@ -718,28 +764,28 @@
         "intent"
       ],
       "applicability": {
-        "fr": "Routes privées ou sensibles explicitement inventoriées dans un périmètre déclaré ; cette règle candidate ne qualifie que les traces HTTP synthétiques fournies.",
-        "en": "Private or sensitive routes explicitly inventoried in a declared scope; this candidate rule qualifies only supplied synthetic HTTP traces."
+        "fr": "Routes privées ou sensibles explicitement inventoriées dans un périmètre déclaré ; cette règle candidate ne qualifie que les traces HTTP synthétiques fournies. Profil public ajouté en A02 : Plan public-probes-v1 explicite, daté avant la collecte, lié par son empreinte à la cible.",
+        "en": "Private or sensitive routes explicitly inventoried in a declared scope; this candidate rule qualifies only supplied synthetic HTTP traces. Public profile added in A02: Explicit public-probes-v1 plan, dated before collection and fingerprint-bound to the target."
       },
       "procedure": {
-        "fr": "Avant les observations, fournir intent.ts06_access et son empreinte liée à configuration.ts06_access. Déclarer routes, marqueurs synthétiques, rôles fictifs, tests exacts par route/rôle et triplets froid anonyme → amorçage autorisé synthétique → rejeu anonyme, avec même étiquette de cache. Examiner les GET fournis sans résolution DNS ni requête réseau. Les redirections d’authentification doivent rester sur la même origine (schéma, hôte, port effectif) et suivre une liste de chemins explicitement déclarée. Une réponse 404 ne compte comme refus que si le plan la déclare pour cette route.",
-        "en": "Before observations, supply intent.ts06_access and bind its fingerprint in configuration.ts06_access. Declare routes, synthetic canaries, fictional roles, exact route/role tests, and cold anonymous → synthetic authorized seed → anonymous replay triplets with the same cache label. Inspect supplied GETs without DNS resolution or network requests. Authentication redirects must remain on the same origin (scheme, host, effective port) and follow an explicit path allowlist. A 404 counts as denial only when the plan declares it for that route."
+        "fr": "Avant les observations, fournir intent.ts06_access et son empreinte liée à configuration.ts06_access. Déclarer routes, marqueurs synthétiques, rôles fictifs, tests exacts par route/rôle et triplets froid anonyme → amorçage autorisé synthétique → rejeu anonyme, avec même étiquette de cache. Examiner les GET fournis sans résolution DNS ni requête réseau. Les redirections d’authentification doivent rester sur la même origine (schéma, hôte, port effectif) et suivre une liste de chemins explicitement déclarée. Une réponse 404 ne compte comme refus que si le plan la déclare pour cette route. Profil public ajouté en A02 : Déclarer avant une unique requête GET sans cookie ni identifiant le refus attendu : défi HTTP 401, redirection vers une URL exacte de connexion de même origine, ou 404 volontaire. Refuser les paramètres URL. Ne suivre aucune redirection ; ne conserver aucun corps ni valeur privée d’en-tête.",
+        "en": "Before observations, supply intent.ts06_access and bind its fingerprint in configuration.ts06_access. Declare routes, synthetic canaries, fictional roles, exact route/role tests, and cold anonymous → synthetic authorized seed → anonymous replay triplets with the same cache label. Inspect supplied GETs without DNS resolution or network requests. Authentication redirects must remain on the same origin (scheme, host, effective port) and follow an explicit path allowlist. A 404 counts as denial only when the plan declares it for that route. Public profile added in A02: Before one anonymous GET without cookies or credentials, declare expected denial: HTTP 401 challenge, redirect to an exact same-origin login URL, or deliberate 404. Reject URL query parameters. Follow no redirects; retain no body or private header values."
       },
       "acceptance": {
-        "fr": "Pass signifie seulement que toutes les cellules route/rôle non autorisées déclarées sont complètes, refusées sans marqueur sensible et que chaque triplet fourni suit l’ordre déclaré sans fuite au rejeu ; le contrôle ne mesure ni une identité réelle ni un cache réel. Toute réponse attribuable à un rôle non autorisé contenant un canari échoue, y compris un corps encodé détecté ou un en-tête de réponse. Une représentation 2xx livrée à un rôle non autorisé échoue aussi.",
-        "en": "Pass means only that all declared unauthorized route/role cells are complete, denied without a sensitive marker, and every supplied triplet follows the declared order without a replay leak; the control measures neither real identity nor a real cache. Any attributable response to an unauthorized role containing a canary fails, including detected encoded bodies or response headers. A 2xx representation delivered to an unauthorized role also fails."
+        "fr": "Pass signifie seulement que toutes les cellules route/rôle non autorisées déclarées sont complètes, refusées sans marqueur sensible et que chaque triplet fourni suit l’ordre déclaré sans fuite au rejeu ; le contrôle ne mesure ni une identité réelle ni un cache réel. Toute réponse attribuable à un rôle non autorisé contenant un canari échoue, y compris un corps encodé détecté ou un en-tête de réponse. Une représentation 2xx livrée à un rôle non autorisé échoue aussi. Profil public ajouté en A02 : Pass de la sonde : 401 avec défi WWW-Authenticate, redirection vers la connexion exacte préalablement déclarée, ou 404 explicitement attendu. 200 = fail du refus attendu, sans affirmer une fuite : vérifier contenu exposé ou formulaire de connexion en 200.",
+        "en": "Pass means only that all declared unauthorized route/role cells are complete, denied without a sensitive marker, and every supplied triplet follows the declared order without a replay leak; the control measures neither real identity nor a real cache. Any attributable response to an unauthorized role containing a canary fails, including detected encoded bodies or response headers. A 2xx representation delivered to an unauthorized role also fails. Public profile added in A02: Probe pass: 401 with WWW-Authenticate challenge, redirect to the exact predeclared login URL, or explicitly expected 404. 200 = fail of expected denial, without claiming a leak: check for exposed content or a login form returning 200."
       },
       "non_applicability": {
         "fr": "Le contrôle entier peut être NA seulement avec une revue d’inventaire synthétique complète, datée et motivée qui déclare aucune route sensible dans le périmètre ; aucun test ni triplet contradictoire ne peut alors être présent.",
         "en": "The whole control may be not applicable only with a complete, dated, reasoned synthetic inventory review declaring no sensitive route in scope; no contradictory test or triplet may then be present."
       },
       "evidence": {
-        "fr": "Records configuration, intent et HTTP fournis, empreinte exacte du plan, dates, identifiants route/rôle, chaque échange GET brut et ordre, liste complète des cellules non autorisées et chaque étiquette/phase de triplet. Conserver aussi les réponses contradictoires attribuables avant de signaler toute lacune de matrice.",
-        "en": "Supplied configuration, intent and HTTP records; exact plan fingerprint; timestamps; route/role identifiers; each raw GET exchange and its order; complete unauthorized-cell list; and every triplet phase/cache label. Preserve attributable contradictory responses before reporting any matrix gap."
+        "fr": "Records configuration, intent et HTTP fournis, empreinte exacte du plan, dates, identifiants route/rôle, chaque échange GET brut et ordre, liste complète des cellules non autorisées et chaque étiquette/phase de triplet. Conserver aussi les réponses contradictoires attribuables avant de signaler toute lacune de matrice. Profil public ajouté en A02 : Plan, client, méthode, dates, statut et métadonnées de collecte ; empreintes du corps, de la réponse et des en-têtes, taille du corps, noms des schémas de défi ou empreinte de destination. Corps et valeurs privées non conservés.",
+        "en": "Supplied configuration, intent and HTTP records; exact plan fingerprint; timestamps; route/role identifiers; each raw GET exchange and its order; complete unauthorized-cell list; and every triplet phase/cache label. Preserve attributable contradictory responses before reporting any matrix gap. Public profile added in A02: Plan, client, method, timestamps, status and collection metadata; body, response and header digests, body size, challenge scheme names or destination digest. Body and private values are not retained."
       },
       "limitations": {
-        "fr": "Interpréteur de fixture borné aux URL-étiquettes .invalid, sans DNS, socket, crawl ni domaine réel. Un rôle HTTP est une étiquette synthétique, pas une authentification. Une étiquette de cache commune ne prouve aucun cache partagé ; Age/X-Cache seuls ne prouvent pas l’attribution. La règle n’exécute pas cookies, Authorization, JavaScript, TLS, variantes d’URL ou méthode HEAD. 206, 304 sans corps complet, codage non pris en charge, cellule manquante/ambiguë et état de cache incomplet donnent inconclusive. Le résultat ne qualifie pas toutes les pages d’un site.",
-        "en": "A fixture interpreter bounded to .invalid URL labels, with no DNS, socket, crawl or live domain. An HTTP role is a synthetic label, not authentication. A shared cache label proves no shared cache; Age/X-Cache alone do not establish attribution. The rule does not execute cookies, Authorization, JavaScript, TLS, URL aliases or HEAD. 206, 304 without a complete body, unsupported encoding, missing/ambiguous cell and incomplete cache state yield inconclusive. The result does not qualify every page of a site."
+        "fr": "Interpréteur de fixture borné aux URL-étiquettes .invalid, sans DNS, socket, crawl ni domaine réel. Un rôle HTTP est une étiquette synthétique, pas une authentification. Une étiquette de cache commune ne prouve aucun cache partagé ; Age/X-Cache seuls ne prouvent pas l’attribution. La règle n’exécute pas cookies, Authorization, JavaScript, TLS, variantes d’URL ou méthode HEAD. 206, 304 sans corps complet, codage non pris en charge, cellule manquante/ambiguë et état de cache incomplet donnent inconclusive. Le résultat ne qualifie pas toutes les pages d’un site. Profil public ajouté en A02 : La preuve est un relevé fourni, non authentifié cryptographiquement par le serveur. Les corps sont exclus pour protéger les données. Ni confidentialité du contenu, ni rôles, ni cache vérifiés ; A01 reste distincte et A02 seule ne rend pas TS06 conforme.",
+        "en": "A fixture interpreter bounded to .invalid URL labels, with no DNS, socket, crawl or live domain. An HTTP role is a synthetic label, not authentication. A shared cache label proves no shared cache; Age/X-Cache alone do not establish attribution. The rule does not execute cookies, Authorization, JavaScript, TLS, URL aliases or HEAD. 206, 304 without a complete body, unsupported encoding, missing/ambiguous cell and incomplete cache state yield inconclusive. The result does not qualify every page of a site. Public profile added in A02: Evidence is a supplied record, not cryptographically authenticated by the server. Bodies are excluded to protect data. No body confidentiality, roles or cache tested; A01 remains separate and A02 alone does not make TS06 conforming."
       },
       "assessment": "manual-or-tool-assisted",
       "legacy_access": {
@@ -760,7 +806,7 @@
         "fr": "C exige les cellules et triplets complets du périmètre synthétique déclaré. Une fuite de canari ou une réponse 2xx non autorisée est une contradiction étayée ; les données partielles ou ambiguës restent NT. NA est uniquement une déclaration d’inventaire complète et positive.",
         "en": "C requires the complete cells and triplets in the declared synthetic scope. A canary leak or unauthorized 2xx is an evidenced contradiction; partial or ambiguous data remain NT. NA requires only a complete positive inventory declaration."
       },
-      "rule_version": "0.2.0-rc.1",
+      "rule_version": "0.3.0-draft.10",
       "rules": [
         {
           "id": "TS06-A01",
@@ -808,6 +854,52 @@
           "limitations": {
             "fr": "Pas de DNS, socket, collecte live, identité réelle, authentification, cookie, cache réel, TLS, JavaScript, alias de chemin, HEAD ni évaluation de site entier. La détection de canaris couvre uniquement les codages implémentés ; le reste est inconclusif.",
             "en": "No DNS, socket, live collection, real identity, authentication, cookies, real cache, TLS, JavaScript, path aliases, HEAD, or whole-site assessment. Canary detection covers only implemented encodings; other cases are inconclusive."
+          }
+        },
+        {
+          "id": "TS06-A02",
+          "required_inputs": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "automatic",
+          "applicability": {
+            "fr": "Plan public-probes-v1 explicite, daté avant la collecte, lié par son empreinte à la cible.",
+            "en": "Explicit public-probes-v1 plan, dated before collection and fingerprint-bound to the target."
+          },
+          "assumptions": {
+            "fr": "L’intention est fournie. La collecte provient du client de test ; elle ne représente pas Googlebot ni tous les utilisateurs.",
+            "en": "Intent is supplied. Collection comes from the test client; it represents neither Googlebot nor every user."
+          },
+          "non_applicability": {
+            "fr": "Pas d’exemption atomique ; une preuve absente reste indéterminée.",
+            "en": "No atomic exemption; missing evidence remains inconclusive."
+          },
+          "title": {
+            "fr": "Refus attendu pour une requête sans connexion",
+            "en": "Expected denial for an anonymous request"
+          },
+          "procedure": {
+            "fr": "Déclarer avant une unique requête GET sans cookie ni identifiant le refus attendu : défi HTTP 401, redirection vers une URL exacte de connexion de même origine, ou 404 volontaire. Refuser les paramètres URL. Ne suivre aucune redirection ; ne conserver aucun corps ni valeur privée d’en-tête.",
+            "en": "Before one anonymous GET without cookies or credentials, declare expected denial: HTTP 401 challenge, redirect to an exact same-origin login URL, or deliberate 404. Reject URL query parameters. Follow no redirects; retain no body or private header values."
+          },
+          "acceptance": {
+            "fr": "Pass de la sonde : 401 avec défi WWW-Authenticate, redirection vers la connexion exacte préalablement déclarée, ou 404 explicitement attendu. 200 = fail du refus attendu, sans affirmer une fuite : vérifier contenu exposé ou formulaire de connexion en 200.",
+            "en": "Probe pass: 401 with WWW-Authenticate challenge, redirect to the exact predeclared login URL, or explicitly expected 404. 200 = fail of expected denial, without claiming a leak: check for exposed content or a login form returning 200."
+          },
+          "inconclusive": {
+            "fr": "403 seul, 429/5xx, défi non attribuable, redirection différente, réponse incomplète, URL signée, contexte anonyme ou empreinte non établi.",
+            "en": "403 alone, 429/5xx, unattributable challenge, different redirect, incomplete response, signed URL, unestablished anonymous context or fingerprint."
+          },
+          "evidence": {
+            "fr": "Plan, client, méthode, dates, statut et métadonnées de collecte ; empreintes du corps, de la réponse et des en-têtes, taille du corps, noms des schémas de défi ou empreinte de destination. Corps et valeurs privées non conservés.",
+            "en": "Plan, client, method, timestamps, status and collection metadata; body, response and header digests, body size, challenge scheme names or destination digest. Body and private values are not retained."
+          },
+          "limitations": {
+            "fr": "La preuve est un relevé fourni, non authentifié cryptographiquement par le serveur. Les corps sont exclus pour protéger les données. Ni confidentialité du contenu, ni rôles, ni cache vérifiés ; A01 reste distincte et A02 seule ne rend pas TS06 conforme.",
+            "en": "Evidence is a supplied record, not cryptographically authenticated by the server. Bodies are excluded to protect data. No body confidentiality, roles or cache tested; A01 remains separate and A02 alone does not make TS06 conforming."
           }
         }
       ]
@@ -936,8 +1028,8 @@
             "en": "Every resource for which directive effects are assessed."
           },
           "procedure": {
-            "fr": "Confronter politique robots effective et conditions d’accès au robot cible ; distinguer réponse au client de test, blocage explicite et accès du robot non observé. Avec directive_crawler explicite, exiger un robots_policy explicite dont product_token concorde avec googlebot sans distinction de casse ; sélectionner ce groupe et jamais le groupe de l’agent du navigateur par repli.",
-            "en": "Compare effective robots policy and access conditions for the target crawler; distinguish the test client response, explicit blocking and unobserved crawler access. With explicit directive_crawler, require an explicit robots_policy whose product_token matches googlebot case-insensitively; select that group and never fall back to the browser agent group."
+            "fr": "Confronter politique robots effective et conditions d’accès au robot cible ; distinguer réponse au client de test, blocage explicite et accès du robot non observé. Avec directive_crawler explicite, exiger un robots_policy explicite dont product_token concorde avec googlebot sans distinction de casse ; sélectionner ce groupe et jamais le groupe de l’agent du navigateur par repli. Profil préalable facultatif access_evidence_profile=ts07-access-evidence-v1 : après HTTP 200 et robots autorisant, accepter une inspection Google brute, empreintée, visant cette URL exacte sur une propriété autorisée, avec récupération réussie, robots autorisant et passage Google entre la capture actuelle et la récupération API ; sinon conserver cette preuve historique sans pass actuel. Alternative explicite : déclaration de l’utilisateur liée à cette réponse, postérieure, affirmant ne connaître aucun obstacle aux robots ; afficher sa provenance déclarative.",
+            "en": "Compare effective robots policy and access conditions for the target crawler; distinguish the test client response, explicit blocking and unobserved crawler access. With explicit directive_crawler, require an explicit robots_policy whose product_token matches googlebot case-insensitively; select that group and never fall back to the browser agent group. Optional prior access_evidence_profile=ts07-access-evidence-v1: after HTTP 200 and allowing robots, accept a raw hashed Google inspection for this exact URL on an authorized property, with successful fetch, allowed robots and Google crawl between current capture and API retrieval; otherwise retain historical evidence without a current pass. Explicit alternative: a later user declaration bound to this response stating no known crawler obstacle; display its declarative provenance."
           },
           "acceptance": {
             "fr": "Aucun obstacle observé n’empêche de lire la directive dans le contexte déclaré. Une interdiction robots contredit une stratégie reposant sur la lecture de noindex. Un refus HTTP 401/403 attribuable reste fail même si la capture robots manque.",
@@ -956,8 +1048,8 @@
             "en": "Unavailable or ambiguous policy, unresolved challenge, missing capture: inconclusive, never NA for missing access. The new path without a matching profile remains inconclusive. Attributable HTTP 401/403 denial retains precedence."
           },
           "limitations": {
-            "fr": "Aucune preuve de visite réelle du moteur ; TS04 et les autres contrôles d’accès ne sont pas globalement validés. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue. Les champs du registre et sitemap sont relevés, sans évaluer leurs préférences d’usage, TS42 ou l’indexation ; ils ne délimitent pas les groupes. Autres champs et tolérances restent hors couverture. Numéros et valeurs intégrales sont conservés ; les aperçus de motifs signalent leur troncature.",
-            "en": "No evidence of an actual engine visit; TS04 and other access controls are not globally validated. Automation is semiAuto: the bounded interpreter does not cover every syntax, crawler or context; unsupported inputs remain inconclusive and require review. Registry fields and sitemap are recorded without assessing usage preferences, TS42 or indexing and never delimit groups. Other fields and tolerances remain unsupported. Full line numbers and values are retained; reason previews disclose truncation."
+            "fr": "Aucune preuve de visite réelle du moteur ; TS04 et les autres contrôles d’accès ne sont pas globalement validés. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue. Les champs du registre et sitemap sont relevés, sans évaluer leurs préférences d’usage, TS42 ou l’indexation ; ils ne délimitent pas les groupes. Autres champs et tolérances restent hors couverture. Numéros et valeurs intégrales sont conservés ; les aperçus de motifs signalent leur troncature. L’API Inspection décrit un passage historique, jamais un test en direct. Une déclaration ne prouve aucune visite Googlebot ; aucune déclaration n’est créée automatiquement.",
+            "en": "No evidence of an actual engine visit; TS04 and other access controls are not globally validated. Automation is semiAuto: the bounded interpreter does not cover every syntax, crawler or context; unsupported inputs remain inconclusive and require review. Registry fields and sitemap are recorded without assessing usage preferences, TS42 or indexing and never delimit groups. Other fields and tolerances remain unsupported. Full line numbers and values are retained; reason previews disclose truncation. The Inspection API describes a historical crawl, never a live test. A declaration proves no Googlebot visit; no declaration is generated automatically."
           },
           "na_inputs": [],
           "non_applicability": {
@@ -1018,7 +1110,7 @@
           "automation": "semiAuto"
         }
       ],
-      "rule_version": "0.3.0-draft.9"
+      "rule_version": "0.3.0-draft.10"
     },
     {
       "id": "TS08",
@@ -7408,7 +7500,7 @@
   "normative_documents": [
     {
       "path": "schemas/report.schema.json",
-      "sha256": "ca7112268eea895c061db4b7d671c65c0cb38540d0b75cf5564687f9722a34b0"
+      "sha256": "53596eafa824b560a98e71218ed5a9f1aa8489d4dc5626075aaac98cfff77af5"
     },
     {
       "path": "docs/contract.en.md",

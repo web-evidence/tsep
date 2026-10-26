@@ -140,9 +140,26 @@ def local_identity(root):
                 'qualification_inventory':read_json((root/'scripts/qualification-inventory.json').read_text(encoding='utf-8'))}
 
 
+def log_projection(data):
+    """Remove only GitHub segment BOMs; retain a reversible byte-offset receipt."""
+    require(isinstance(data, bytes) and len(data) <= MAX_LOG_BYTES, 'Log too large')
+    bom = b'\xef\xbb\xbf'
+    pattern = rb'(?m)^' + bom + rb'(?=\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{7}Z )'
+    positions = [m.start() for m in re.finditer(pattern, data)]
+    projected = re.sub(pattern, b'', data)
+    require(bom not in projected, 'Unexpected UTF-8 BOM in qualification evidence')
+    restored = projected
+    for offset in positions:
+        restored = restored[:offset] + bom + restored[offset:]
+    require(restored == data, 'Log transport normalization is not reversible')
+    return projected, {'profile':'github-segment-bom-v1', 'removed_bom_offsets':positions,
+        'original_sha256':hashlib.sha256(data).hexdigest(),
+        'projection_sha256':hashlib.sha256(projected).hexdigest()}
+
+
 def receipt_from_log(data):
-    require(len(data) <= MAX_LOG_BYTES, 'Log too large')
-    text = re.sub(r'^\d{4}-\d\d-\d\dT\S+\s?', '', data.decode('utf-8-sig'), flags=re.M)
+    projected, _ = log_projection(data)
+    text = re.sub(r'^\d{4}-\d\d-\d\dT\S+\s?', '', projected.decode('utf-8'), flags=re.M)
     # Only the pinned checkout action's section can supply this independent SHA.
     begin = '##[group]Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1\n'
     end = '##[group]Run actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97\n'
@@ -252,7 +269,7 @@ def evaluate(api, repository, merge_sha, expected, now, push_before):
         validate_receipt(receipt, expected, JOBS[job['name']])
         proofs.append({'job':job['id'], 'environment':job['name'], 'checkout':checkout,
                        'python':receipt['python'], 'node':receipt['runtime']['version'],
-                       'log_sha256':hashlib.sha256(data).hexdigest()})
+                       'log_sha256':hashlib.sha256(data).hexdigest(), 'log_transport':log_projection(data)[1]})
     # Refuse a mutable main/head or a rerun appearing during the lookup.
     require(api.json('/commits/main')['sha'] == merge_sha, 'Main advanced during verification')
     fresh = api.json('/actions/runs/'+str(run['id']))

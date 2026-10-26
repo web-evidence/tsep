@@ -1,4 +1,4 @@
-# TSEP 0.3.0-draft.9 — Contrôles
+# TSEP 0.3.0-draft.10 — Contrôles
 
 Generated from `spec/protocol.json` / Généré depuis `spec/protocol.json`.
 
@@ -154,17 +154,17 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Entrées requises**: configuration, http, content, intent.
 
-**Applicabilité.** Routes synthétiques explicitement classées existantes, supprimées et inexistantes dans un plan daté ; la portée réelle n’est pas authentifiée.
+**Applicabilité.** Routes synthétiques explicitement classées existantes, supprimées et inexistantes dans un plan daté ; la portée réelle n’est pas authentifiée. Profil public ajouté en A02 : Plan public-probes-v1 explicite, daté avant la collecte, lié par son empreinte à la cible.
 
-**Méthode.** Avant les captures, lier à configuration le plan d’intention des trois états de route et leurs critères de contenu. Comparer une matrice HTTP GET fournie, sans résolution DNS ni collecte réseau.
+**Méthode.** Avant les captures, lier à configuration le plan d’intention des trois états de route et leurs critères de contenu. Comparer une matrice HTTP GET fournie, sans résolution DNS ni collecte réseau. Profil public ajouté en A02 : Avant la collecte, déclarer une URL existante et un chemin aléatoire de 128 bits dans son répertoire, supposé inexistant ; une route supprimée peut être ajoutée explicitement. Comparer les chaînes HTTP complètes (4 réponses maximum), sur la même origine, avec les statuts attendus.
 
-**Attendus.** Pass qualifie seulement la matrice complète fournie : 200 et marqueurs attendus pour une route existante ; 404/410 et critères de corps déclarés pour les routes supprimées/inexistantes. Un 2xx pour ces dernières, un autre statut complet, ou une contradiction de marqueur est fail. La classification soft 404 reste hors mesure.
+**Attendus.** Pass qualifie seulement la matrice complète fournie : 200 et marqueurs attendus pour une route existante ; 404/410 et critères de corps déclarés pour les routes supprimées/inexistantes. Un 2xx pour ces dernières, un autre statut complet, ou une contradiction de marqueur est fail. La classification soft 404 reste hors mesure. Profil public ajouté en A02 : Pass : une observation attribuable par route, 200 pour l’existante et 404/410 pour les routes supposées absentes. Fail : absence supposée répondant 200, même après redirection, ou contradiction de statut existant hors obstacles. Une contradiction établie subsiste malgré une autre lacune ou un doublon.
 
-**Preuves.** Plan d’intention antérieur, empreinte de liaison, attentes de corps, URL/GET et réponses HTTP brutes complètes pour chaque état requis ; conserver les contre-cas même si d’autres pièces manquent.
+**Preuves.** Plan d’intention antérieur, empreinte de liaison, attentes de corps, URL/GET et réponses HTTP brutes complètes pour chaque état requis ; conserver les contre-cas même si d’autres pièces manquent. Profil public ajouté en A02 : Plan préalable empreinté, URL générée et hypothèse explicite ; requêtes et réponses HTTP complètes, dates, client et origine de chaque route.
 
 **Conditions de NA.** Périmètre ne contenant aucun routage HTTP, justification fournie.
 
-**Limites.** La sonde n’utilise que des captures synthétiques .invalid et des marqueurs littéraux UTF-8. Elle ne confirme ni existence réelle, suppression, disponibilité durable, qualité sémantique, ni classification soft 404 par Google. Une réponse ponctuelle 5xx échoue au statut déclaré sans prouver une panne persistante. Aucun site ni moteur n’est interrogé.
+**Limites.** La sonde n’utilise que des captures synthétiques .invalid et des marqueurs littéraux UTF-8. Elle ne confirme ni existence réelle, suppression, disponibilité durable, qualité sémantique, ni classification soft 404 par Google. Une réponse ponctuelle 5xx échoue au statut déclaré sans prouver une panne persistante. Aucun site ni moteur n’est interrogé. Profil public ajouté en A02 : Sonde ponctuelle de statuts sur les seules routes déclarées. Aucun contenu attendu, inventaire de suppressions ou classement soft 404 de Google établi. A01 reste distincte : A02 seule ne rend pas TS03 conforme.
 
 C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.
 
@@ -174,7 +174,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS03-A01 — Réponses HTTP synthétiques comparées à un plan préalable
 
-`TSEP@0.2.0-rc.1:TS03-A01`
+`TSEP@0.3.0-draft.10:TS03-A01`
 
 **Entrées requises**: configuration, http, content, intent.
 
@@ -195,6 +195,30 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 **Conditions de NA.** Aucune exemption atomique. NA du contrôle entier exige un inventaire positif, complet, motivé et daté prouvant qu’aucun routage HTTP n’entre dans le périmètre.
 
 **Limites.** Une capture .invalid ne teste aucun serveur. Les marqueurs sont recherchés littéralement dans le corps décodé, sans DOM, rendu, jugement sémantique ou classification de moteur. C ne porte que sur la matrice déclarée, pas sur un site entier, une disponibilité dans le temps, une indexation ou un ranking.
+
+### TS03-A02 — Réponses des routes publique et générée
+
+`TSEP@0.3.0-draft.10:TS03-A02`
+
+**Entrées requises**: configuration, http, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicabilité.** Plan public-probes-v1 explicite, daté avant la collecte, lié par son empreinte à la cible.
+
+**Méthode.** Avant la collecte, déclarer une URL existante et un chemin aléatoire de 128 bits dans son répertoire, supposé inexistant ; une route supprimée peut être ajoutée explicitement. Comparer les chaînes HTTP complètes (4 réponses maximum), sur la même origine, avec les statuts attendus.
+
+**Attendus.** Pass : une observation attribuable par route, 200 pour l’existante et 404/410 pour les routes supposées absentes. Fail : absence supposée répondant 200, même après redirection, ou contradiction de statut existant hors obstacles. Une contradiction établie subsiste malgré une autre lacune ou un doublon.
+
+**Preuves.** Plan préalable empreinté, URL générée et hypothèse explicite ; requêtes et réponses HTTP complètes, dates, client et origine de chaque route.
+
+**Hypothèses.** L’intention est fournie. La collecte provient du client de test ; elle ne représente pas Googlebot ni tous les utilisateurs.
+
+**Indéterminé.** 401/403/429/5xx, 206/304, limites, réponse incomplète, autre origine, doublon positif, plan ou liaison invalide.
+
+**Conditions de NA.** Pas d’exemption atomique ; une preuve absente reste indéterminée.
+
+**Limites.** Sonde ponctuelle de statuts sur les seules routes déclarées. Aucun contenu attendu, inventaire de suppressions ou classement soft 404 de Google établi. A01 reste distincte : A02 seule ne rend pas TS03 conforme.
 
 ## TS04 — La politique robots effective correspond à l’intention déclarée.
 
@@ -324,17 +348,17 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Entrées requises**: configuration, http, intent.
 
-**Applicabilité.** Routes privées ou sensibles explicitement inventoriées dans un périmètre déclaré ; cette règle candidate ne qualifie que les traces HTTP synthétiques fournies.
+**Applicabilité.** Routes privées ou sensibles explicitement inventoriées dans un périmètre déclaré ; cette règle candidate ne qualifie que les traces HTTP synthétiques fournies. Profil public ajouté en A02 : Plan public-probes-v1 explicite, daté avant la collecte, lié par son empreinte à la cible.
 
-**Méthode.** Avant les observations, fournir intent.ts06_access et son empreinte liée à configuration.ts06_access. Déclarer routes, marqueurs synthétiques, rôles fictifs, tests exacts par route/rôle et triplets froid anonyme → amorçage autorisé synthétique → rejeu anonyme, avec même étiquette de cache. Examiner les GET fournis sans résolution DNS ni requête réseau. Les redirections d’authentification doivent rester sur la même origine (schéma, hôte, port effectif) et suivre une liste de chemins explicitement déclarée. Une réponse 404 ne compte comme refus que si le plan la déclare pour cette route.
+**Méthode.** Avant les observations, fournir intent.ts06_access et son empreinte liée à configuration.ts06_access. Déclarer routes, marqueurs synthétiques, rôles fictifs, tests exacts par route/rôle et triplets froid anonyme → amorçage autorisé synthétique → rejeu anonyme, avec même étiquette de cache. Examiner les GET fournis sans résolution DNS ni requête réseau. Les redirections d’authentification doivent rester sur la même origine (schéma, hôte, port effectif) et suivre une liste de chemins explicitement déclarée. Une réponse 404 ne compte comme refus que si le plan la déclare pour cette route. Profil public ajouté en A02 : Déclarer avant une unique requête GET sans cookie ni identifiant le refus attendu : défi HTTP 401, redirection vers une URL exacte de connexion de même origine, ou 404 volontaire. Refuser les paramètres URL. Ne suivre aucune redirection ; ne conserver aucun corps ni valeur privée d’en-tête.
 
-**Attendus.** Pass signifie seulement que toutes les cellules route/rôle non autorisées déclarées sont complètes, refusées sans marqueur sensible et que chaque triplet fourni suit l’ordre déclaré sans fuite au rejeu ; le contrôle ne mesure ni une identité réelle ni un cache réel. Toute réponse attribuable à un rôle non autorisé contenant un canari échoue, y compris un corps encodé détecté ou un en-tête de réponse. Une représentation 2xx livrée à un rôle non autorisé échoue aussi.
+**Attendus.** Pass signifie seulement que toutes les cellules route/rôle non autorisées déclarées sont complètes, refusées sans marqueur sensible et que chaque triplet fourni suit l’ordre déclaré sans fuite au rejeu ; le contrôle ne mesure ni une identité réelle ni un cache réel. Toute réponse attribuable à un rôle non autorisé contenant un canari échoue, y compris un corps encodé détecté ou un en-tête de réponse. Une représentation 2xx livrée à un rôle non autorisé échoue aussi. Profil public ajouté en A02 : Pass de la sonde : 401 avec défi WWW-Authenticate, redirection vers la connexion exacte préalablement déclarée, ou 404 explicitement attendu. 200 = fail du refus attendu, sans affirmer une fuite : vérifier contenu exposé ou formulaire de connexion en 200.
 
-**Preuves.** Records configuration, intent et HTTP fournis, empreinte exacte du plan, dates, identifiants route/rôle, chaque échange GET brut et ordre, liste complète des cellules non autorisées et chaque étiquette/phase de triplet. Conserver aussi les réponses contradictoires attribuables avant de signaler toute lacune de matrice.
+**Preuves.** Records configuration, intent et HTTP fournis, empreinte exacte du plan, dates, identifiants route/rôle, chaque échange GET brut et ordre, liste complète des cellules non autorisées et chaque étiquette/phase de triplet. Conserver aussi les réponses contradictoires attribuables avant de signaler toute lacune de matrice. Profil public ajouté en A02 : Plan, client, méthode, dates, statut et métadonnées de collecte ; empreintes du corps, de la réponse et des en-têtes, taille du corps, noms des schémas de défi ou empreinte de destination. Corps et valeurs privées non conservés.
 
 **Conditions de NA.** Le contrôle entier peut être NA seulement avec une revue d’inventaire synthétique complète, datée et motivée qui déclare aucune route sensible dans le périmètre ; aucun test ni triplet contradictoire ne peut alors être présent.
 
-**Limites.** Interpréteur de fixture borné aux URL-étiquettes .invalid, sans DNS, socket, crawl ni domaine réel. Un rôle HTTP est une étiquette synthétique, pas une authentification. Une étiquette de cache commune ne prouve aucun cache partagé ; Age/X-Cache seuls ne prouvent pas l’attribution. La règle n’exécute pas cookies, Authorization, JavaScript, TLS, variantes d’URL ou méthode HEAD. 206, 304 sans corps complet, codage non pris en charge, cellule manquante/ambiguë et état de cache incomplet donnent inconclusive. Le résultat ne qualifie pas toutes les pages d’un site.
+**Limites.** Interpréteur de fixture borné aux URL-étiquettes .invalid, sans DNS, socket, crawl ni domaine réel. Un rôle HTTP est une étiquette synthétique, pas une authentification. Une étiquette de cache commune ne prouve aucun cache partagé ; Age/X-Cache seuls ne prouvent pas l’attribution. La règle n’exécute pas cookies, Authorization, JavaScript, TLS, variantes d’URL ou méthode HEAD. 206, 304 sans corps complet, codage non pris en charge, cellule manquante/ambiguë et état de cache incomplet donnent inconclusive. Le résultat ne qualifie pas toutes les pages d’un site. Profil public ajouté en A02 : La preuve est un relevé fourni, non authentifié cryptographiquement par le serveur. Les corps sont exclus pour protéger les données. Ni confidentialité du contenu, ni rôles, ni cache vérifiés ; A01 reste distincte et A02 seule ne rend pas TS06 conforme.
 
 C exige les cellules et triplets complets du périmètre synthétique déclaré. Une fuite de canari ou une réponse 2xx non autorisée est une contradiction étayée ; les données partielles ou ambiguës restent NT. NA est uniquement une déclaration d’inventaire complète et positive.
 
@@ -344,7 +368,7 @@ C exige les cellules et triplets complets du périmètre synthétique déclaré.
 
 ### TS06-A01 — Accès refusé dans la matrice HTTP synthétique fournie
 
-`TSEP@0.2.0-rc.1:TS06-A01`
+`TSEP@0.3.0-draft.10:TS06-A01`
 
 **Entrées requises**: configuration, http, intent.
 
@@ -367,6 +391,30 @@ C exige les cellules et triplets complets du périmètre synthétique déclaré.
 **Conditions de NA.** Aucune exemption atomique. Le NA du contrôle entier exige une revue d’inventaire complète, datée et motivée ; elle doit être liée à intent.
 
 **Limites.** Pas de DNS, socket, collecte live, identité réelle, authentification, cookie, cache réel, TLS, JavaScript, alias de chemin, HEAD ni évaluation de site entier. La détection de canaris couvre uniquement les codages implémentés ; le reste est inconclusif.
+
+### TS06-A02 — Refus attendu pour une requête sans connexion
+
+`TSEP@0.3.0-draft.10:TS06-A02`
+
+**Entrées requises**: configuration, http, intent.
+
+**Automation / Automatisation**: `automatic`.
+
+**Applicabilité.** Plan public-probes-v1 explicite, daté avant la collecte, lié par son empreinte à la cible.
+
+**Méthode.** Déclarer avant une unique requête GET sans cookie ni identifiant le refus attendu : défi HTTP 401, redirection vers une URL exacte de connexion de même origine, ou 404 volontaire. Refuser les paramètres URL. Ne suivre aucune redirection ; ne conserver aucun corps ni valeur privée d’en-tête.
+
+**Attendus.** Pass de la sonde : 401 avec défi WWW-Authenticate, redirection vers la connexion exacte préalablement déclarée, ou 404 explicitement attendu. 200 = fail du refus attendu, sans affirmer une fuite : vérifier contenu exposé ou formulaire de connexion en 200.
+
+**Preuves.** Plan, client, méthode, dates, statut et métadonnées de collecte ; empreintes du corps, de la réponse et des en-têtes, taille du corps, noms des schémas de défi ou empreinte de destination. Corps et valeurs privées non conservés.
+
+**Hypothèses.** L’intention est fournie. La collecte provient du client de test ; elle ne représente pas Googlebot ni tous les utilisateurs.
+
+**Indéterminé.** 403 seul, 429/5xx, défi non attribuable, redirection différente, réponse incomplète, URL signée, contexte anonyme ou empreinte non établi.
+
+**Conditions de NA.** Pas d’exemption atomique ; une preuve absente reste indéterminée.
+
+**Limites.** La preuve est un relevé fourni, non authentifié cryptographiquement par le serveur. Les corps sont exclus pour protéger les données. Ni confidentialité du contenu, ni rôles, ni cache vérifiés ; A01 reste distincte et A02 seule ne rend pas TS06 conforme.
 
 ## TS07 — Les directives meta robots et X-Robots-Tag sont cohérentes avec l’objectif de la page.
 
@@ -394,7 +442,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A01 — Directives effectives et objectif
 
-`TSEP@0.3.0-draft.9:TS07-A01`
+`TSEP@0.3.0-draft.10:TS07-A01`
 
 **Entrées requises**: http, html, intent.
 
@@ -418,7 +466,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 ### TS07-A02 — Accès à la directive
 
-`TSEP@0.3.0-draft.9:TS07-A02`
+`TSEP@0.3.0-draft.10:TS07-A02`
 
 **Entrées requises**: http, robots, intent.
 
@@ -426,7 +474,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Toute ressource pour laquelle l’effet des directives est évalué.
 
-**Méthode.** Confronter politique robots effective et conditions d’accès au robot cible ; distinguer réponse au client de test, blocage explicite et accès du robot non observé. Avec directive_crawler explicite, exiger un robots_policy explicite dont product_token concorde avec googlebot sans distinction de casse ; sélectionner ce groupe et jamais le groupe de l’agent du navigateur par repli.
+**Méthode.** Confronter politique robots effective et conditions d’accès au robot cible ; distinguer réponse au client de test, blocage explicite et accès du robot non observé. Avec directive_crawler explicite, exiger un robots_policy explicite dont product_token concorde avec googlebot sans distinction de casse ; sélectionner ce groupe et jamais le groupe de l’agent du navigateur par repli. Profil préalable facultatif access_evidence_profile=ts07-access-evidence-v1 : après HTTP 200 et robots autorisant, accepter une inspection Google brute, empreintée, visant cette URL exacte sur une propriété autorisée, avec récupération réussie, robots autorisant et passage Google entre la capture actuelle et la récupération API ; sinon conserver cette preuve historique sans pass actuel. Alternative explicite : déclaration de l’utilisateur liée à cette réponse, postérieure, affirmant ne connaître aucun obstacle aux robots ; afficher sa provenance déclarative.
 
 **Attendus.** Aucun obstacle observé n’empêche de lire la directive dans le contexte déclaré. Une interdiction robots contredit une stratégie reposant sur la lecture de noindex. Un refus HTTP 401/403 attribuable reste fail même si la capture robots manque.
 
@@ -438,11 +486,11 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Conditions de NA.** Aucune exemption atomique quand le contrôle s’applique.
 
-**Limites.** Aucune preuve de visite réelle du moteur ; TS04 et les autres contrôles d’accès ne sont pas globalement validés. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue. Les champs du registre et sitemap sont relevés, sans évaluer leurs préférences d’usage, TS42 ou l’indexation ; ils ne délimitent pas les groupes. Autres champs et tolérances restent hors couverture. Numéros et valeurs intégrales sont conservés ; les aperçus de motifs signalent leur troncature.
+**Limites.** Aucune preuve de visite réelle du moteur ; TS04 et les autres contrôles d’accès ne sont pas globalement validés. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue. Les champs du registre et sitemap sont relevés, sans évaluer leurs préférences d’usage, TS42 ou l’indexation ; ils ne délimitent pas les groupes. Autres champs et tolérances restent hors couverture. Numéros et valeurs intégrales sont conservés ; les aperçus de motifs signalent leur troncature. L’API Inspection décrit un passage historique, jamais un test en direct. Une déclaration ne prouve aucune visite Googlebot ; aucune déclaration n’est créée automatiquement.
 
 ### TS07-A03 — États rendus nécessaires
 
-`TSEP@0.3.0-draft.9:TS07-A03`
+`TSEP@0.3.0-draft.10:TS07-A03`
 
 **Entrées requises**: http, html, render, intent.
 

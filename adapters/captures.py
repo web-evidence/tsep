@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts, binding_digest
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '50'
+VERSION = '51'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -68,6 +68,8 @@ def verify_ts17_self_digests(target):
 
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
+    modules['conformance/access_evidence.py'] = importlib.import_module('conformance.access_evidence')
+    modules['conformance/public_probes.py'] = importlib.import_module('conformance.public_probes')
     modules['conformance/google_directives.py'] = importlib.import_module('conformance.google_directives')
     modules['conformance/exclusion_observation.py'] = importlib.import_module('conformance.exclusion_observation')
     modules['conformance/http_canonical.py'] = importlib.import_module('conformance.http_canonical')
@@ -377,6 +379,10 @@ def pieces(target):
         retain('http','hreflang_documents',hreflang)
         retain('hreflang','native_hreflang_sources',hreflang)
     if 'hreflang_unsupported_channels' in target:retain('hreflang','unsupported_supplied_channels',target['hreflang_unsupported_channels'])
+    if 'public_probe' in target.get('intent', {}):
+        retain('configuration','public_probe_binding',target.get('configuration',{}))
+    for key in ('probe_documents','anonymous_probe','access_inspection'):
+        if key in target: retain('http',key,target[key])
     from conformance.evidence_dossier import pieces as dossier_pieces
     for kind, value in dossier_pieces(target).items():
         retain(kind, 'control_dossiers', value)
