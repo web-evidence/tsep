@@ -1,8 +1,8 @@
-# TSEP 0.3.0-draft.9 — candidat R-077 / R-077 candidate
+# TSEP 0.3.0-draft.9 — migration R-077 / R-077 migration
 
 ## Français
 
-Candidat local du 25 octobre 2026, non publié et non qualifié pour diffusion.
+Préparée le 25 octobre 2026, cette édition a été publiée le 26 octobre 2026 après qualification complète locale, sept environnements PR et sept environnements main. [Release et reçus publics](https://github.com/web-evidence/tsep/releases/tag/v0.3.0-draft.9).
 Seul TS07-A01 change normativement ; TS07 porte la version de règle draft.9.
 Les tests ciblés ne constituent pas la qualification complète. Aucun tag,
 archive publiée ou dossier existant n’est remplacé.
@@ -67,7 +67,7 @@ affirmation sur ce que Google fera réellement d’une syntaxe non documentée.
 
 ## English
 
-Local candidate dated 25 October 2026, unpublished and not release-qualified.
+Prepared on 25 October 2026 and published on 26 October 2026 after full local, seven PR and seven main environment qualifications. [Release and public receipts](https://github.com/web-evidence/tsep/releases/tag/v0.3.0-draft.9).
 Only TS07-A01 changes normatively; TS07 uses rule version draft.9. Targeted tests
 are not full qualification. No published tag, archive or existing evidence is replaced.
 

@@ -12,4 +12,7 @@ def controls_before_lot1():
     raw=(ROOT/'provenance/v030-draft7-priority1-baseline.json').read_bytes()
     if hashlib.sha256(raw).hexdigest()!='791ee10afb221194e5acd495ac9fe5d685fce9ab80f65be2b1fc3c0fdf3f6276':raise ValueError('Changed priority1 historical baseline')
     old.update(json.loads(raw)['controls'])
-    return [copy.deepcopy(old.get(c['id'],c)) for c in tsep.read_json(tsep.PROTOCOL_PATH)['controls']]
+    new_raw=(ROOT/'provenance/v030-draft10-rule-baseline.json').read_bytes()
+    if hashlib.sha256(new_raw).hexdigest()!='c8c558db9983c99a5d7ab4e262e56b6c096a75904b1c79e584bedf538b26ab2d':raise ValueError('Changed draft10 historical baseline')
+    pre_automation=json.loads(new_raw)['controls']
+    return [copy.deepcopy(old.get(c['id'],pre_automation.get(c['id'],c))) for c in tsep.read_json(tsep.PROTOCOL_PATH)['controls']]

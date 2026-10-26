@@ -88,7 +88,7 @@ class SitemapQuality(unittest.TestCase):
         frozen = tsep.read_json(ROOT/'provenance/v030-rc1-preservation.json')
         protocol = tsep.read_json(tsep.PROTOCOL_PATH)
         self.assertEqual(frozen['base_commit'], '7b60c20e7ac572574f756ad92531e0c46f7b83e7')
-        self.assertEqual(protocol['version'], '0.3.0-draft.9')
+        self.assertEqual(protocol['version'], '0.3.0-draft.10')
         protocol['controls']=controls_before_lot1()
         previous = tsep.read_json(ROOT/'provenance/v030-draft1-rule-baseline.json')['new_control_previous_versions']
         next_baseline = tsep.read_json(ROOT/'provenance/v030-draft2-rule-baseline.json')
@@ -110,6 +110,7 @@ class SitemapQuality(unittest.TestCase):
         overlays += tsep.read_json(ROOT/'provenance/v030-indexing-locale-integration-overlay.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/v030-report-test-overlay-v1.json')['updates']
         overlays = tsep.read_json(ROOT/'provenance/capture-import-clock-test-overlay-v1.json')['updates'] + overlays
+        overlays = tsep.read_json(ROOT/'provenance/public-automation-source-overlay-v1.json')['updates'] + overlays
         for name, sha in frozen['preserved_files'].items():
             raw = (ROOT/name).read_bytes()
             for update in overlays:
@@ -126,6 +127,7 @@ class SitemapQuality(unittest.TestCase):
         extension += tsep.read_json(ROOT/'provenance/v030-indexing-locale-integration-overlay.json')['updates']
         extension += tsep.read_json(ROOT/'provenance/v030-render-transport-integration-overlay.json')['updates']
         extension += verification
+        extension += tsep.read_json(ROOT/'provenance/public-automation-source-overlay-v1.json')['updates']
         for update in frozen['integration_test_updates']:
             current = (ROOT/update['path']).read_text()
             for addition in reversed(extension):
@@ -142,7 +144,8 @@ class SitemapQuality(unittest.TestCase):
         self.assertEqual(reader.digest(corpus['cases']), frozen['core_cases_sha256'])
         refs = frozen['additional_case_files']
         self.assertEqual(corpus['additional_case_files'][:len(refs)], refs)
-        methods = tsep.read_json(ROOT/'tests/fixtures/control-cases.json')
+        from tests.automation_history import method_before_automation
+        methods = method_before_automation()
         self.assertEqual(reader.digest(methods['cases'][:frozen['method_cases_count']]), frozen['method_cases_sha256'])
         self.assertEqual(sum(len(c.get('rules', [])) for c in protocol['controls']), 98)
 

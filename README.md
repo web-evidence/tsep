@@ -2,13 +2,13 @@
 
 Turn SEO evidence into verifiable decisions.
 
-Local **0.3.0-draft.9** candidate dated 25 October 2026: TS07 directive syntax, profile v2. Unpublished; targeted tests only, complete qualification still required. [Migration](docs/migration-0.3.0-draft.9.md).
+Local **0.3.0-draft.10** candidate dated 26 October 2026: bounded public TS03/TS06 probes and TS07 access evidence. Unpublished; complete qualification still required. A passing probe does not establish whole-control conformity. [Migration](docs/migration-0.3.0-draft.10.md).
 
 The notes below describe previous versions.
 
 ---
 
-Préparation / preparation **0.3.0-draft.8** : TS07 directives Googlebot, TS05 cohérence des moyens d’exclusion, TS09 preuve représentative et inventaires d’export exacts / Googlebot directives, exclusion-policy consistency, representative exclusion evidence and exact export inventories. [Migration FR/EN](docs/migration-0.3.0-draft.8.md). Candidat non publié ; qualifications locale et distante à distinguer / Unpublished candidate; local and remote qualification are separate.
+Préparation / preparation **0.3.0-draft.8** : TS07 directives Googlebot, TS05 cohérence des moyens d’exclusion, TS09 preuve représentative et inventaires d’export exacts / Googlebot directives, exclusion-policy consistency, representative exclusion evidence and exact export inventories. [Migration FR/EN](docs/migration-0.3.0-draft.8.md). Préversion publiée le 25 octobre 2026 / Prerelease published on 25 October 2026: [v0.3.0-draft.8](https://github.com/web-evidence/tsep/releases/tag/v0.3.0-draft.8).
 
 Préparation / preparation **0.3.0-draft.5** : corrections bornées des préalables TS30/TS37, 44 contrôles/98 règles ; 95 définitions atomiques inchangées, toutes les règles RC1 conservées. [Migration](docs/migration-0.3.0-draft.5.md), [contrat / contract](docs/render-transport-prerequisites-v2.md). Nouvelle qualification distincte requise ; aucune publication ni audit réel.
 

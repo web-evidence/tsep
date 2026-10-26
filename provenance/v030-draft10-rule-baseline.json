@@ -1,0 +1,434 @@
+{
+  "base_commit": "d6a6e73f5c21d52131d3f4e39cde309d97385cbc",
+  "controls": {
+    "TS03": {
+      "id": "TS03",
+      "title": {
+        "fr": "Les erreurs serveur et soft 404 ne remplacent pas une réponse explicite.",
+        "en": "Server errors and soft 404s do not replace an explicit response."
+      },
+      "domain": {
+        "fr": "HTTP et disponibilité",
+        "en": "HTTP and availability"
+      },
+      "severity": "major",
+      "unit": "url-set",
+      "required_inputs": [
+        "configuration",
+        "http",
+        "content",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Routes synthétiques explicitement classées existantes, supprimées et inexistantes dans un plan daté ; la portée réelle n’est pas authentifiée.",
+        "en": "Synthetic routes explicitly classified as existing, removed and nonexistent in a dated plan; real-world scope is not authenticated."
+      },
+      "procedure": {
+        "fr": "Avant les captures, lier à configuration le plan d’intention des trois états de route et leurs critères de contenu. Comparer une matrice HTTP GET fournie, sans résolution DNS ni collecte réseau.",
+        "en": "Before captures, bind the intent plan for the three route states and their content criteria into configuration. Compare a supplied HTTP GET matrix without DNS resolution or network collection."
+      },
+      "acceptance": {
+        "fr": "Pass qualifie seulement la matrice complète fournie : 200 et marqueurs attendus pour une route existante ; 404/410 et critères de corps déclarés pour les routes supprimées/inexistantes. Un 2xx pour ces dernières, un autre statut complet, ou une contradiction de marqueur est fail. La classification soft 404 reste hors mesure.",
+        "en": "Pass qualifies only the complete supplied matrix: 200 and expected markers for an existing route; 404/410 and declared body criteria for removed/nonexistent routes. A 2xx for the latter, another complete status, or a marker contradiction is fail. Soft-404 classification is not measured."
+      },
+      "non_applicability": {
+        "fr": "Périmètre ne contenant aucun routage HTTP, justification fournie.",
+        "en": "Scope contains no HTTP routing, with a justification."
+      },
+      "evidence": {
+        "fr": "Plan d’intention antérieur, empreinte de liaison, attentes de corps, URL/GET et réponses HTTP brutes complètes pour chaque état requis ; conserver les contre-cas même si d’autres pièces manquent.",
+        "en": "Prior intent plan, binding fingerprint, body expectations, URL/GET and complete raw HTTP responses for each required state; retain counterexamples even when other evidence is missing."
+      },
+      "limitations": {
+        "fr": "La sonde n’utilise que des captures synthétiques .invalid et des marqueurs littéraux UTF-8. Elle ne confirme ni existence réelle, suppression, disponibilité durable, qualité sémantique, ni classification soft 404 par Google. Une réponse ponctuelle 5xx échoue au statut déclaré sans prouver une panne persistante. Aucun site ni moteur n’est interrogé.",
+        "en": "The probe uses only synthetic .invalid captures and literal UTF-8 markers. It confirms no real existence, removal, sustained availability, semantic quality, or Google soft-404 classification. A point-in-time 5xx fails the declared status without proving a persistent outage. No site or search engine is queried."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/http-network-errors"
+      ],
+      "source_scope": {
+        "fr": "Google Search Central décrit les effets de classes de statuts sur ses systèmes ; cette source ne prescrit pas un standard TSEP. La règle compare des attentes fournies et ne reproduit pas la classification soft 404.",
+        "en": "Google Search Central describes status-class effects on its systems; it does not prescribe a TSEP standard. This rule compares supplied expectations and does not reproduce soft-404 classification."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability."
+      },
+      "rule_version": "0.2.0-rc.1",
+      "rules": [
+        {
+          "id": "TS03-A01",
+          "title": {
+            "fr": "Réponses HTTP synthétiques comparées à un plan préalable",
+            "en": "Synthetic HTTP responses compared with a prior plan"
+          },
+          "required_inputs": [
+            "configuration",
+            "http",
+            "content",
+            "intent"
+          ],
+          "na_inputs": [],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Un plan de route contient au moins un état existant, supprimé et inexistant dans le périmètre synthétique.",
+            "en": "A route plan contains at least one existing, removed and nonexistent state in the synthetic scope."
+          },
+          "procedure": {
+            "fr": "Vérifier le plan antérieur et son empreinte ; comparer chaque GET/response attribuable, complète et liée à une route .invalid aux statuts permis et marqueurs littéraux UTF-8 fixés dans les attentes content.",
+            "en": "Verify the prior plan and its fingerprint; compare each attributable, complete GET/response for a .invalid route with the permitted statuses and literal UTF-8 markers fixed in the content expectations."
+          },
+          "acceptance": {
+            "fr": "Pass exige exactement une réponse complète par route et tous les états requis : 200 pour existante, 404/410 pour supprimée ou inexistante, marqueurs requis présents et interdits absents. Une contradiction complète reste fail malgré doublon, autre capture incomplète ou lacune. Les 206/304, données absentes, ambiguës ou mal attribuées restent inconclusives.",
+            "en": "Pass requires exactly one complete response per route and every required state: 200 for existing, 404/410 for removed or nonexistent, required markers present and forbidden markers absent. A complete contradiction remains fail despite a duplicate, another incomplete capture or a gap. 206/304, missing, ambiguous or unattributable data remain inconclusive."
+          },
+          "assumptions": {
+            "fr": "Le plan, les classifications et critères sont fournis et non authentifiés. La revue attachée est un exercice synthétique, pas une approbation indépendante.",
+            "en": "The plan, classifications and criteria are supplied and unauthenticated. Any attached review is a synthetic exercise, not independent approval."
+          },
+          "inconclusive": {
+            "fr": "Plan absent/futur/mal lié, état de route manquant, doublon, HTTP incomplet, URL/client non attribuable, statut 206/304, contenu non UTF-8, marqueurs contradictoires dans le plan ou matrice incomplète ; une contradiction attribuable reste fail.",
+            "en": "Missing/future/mismatched plan, missing route state, duplicate, incomplete HTTP, unattributable URL/client, 206/304, non-UTF-8 content, contradictory plan markers or incomplete matrix; an attributable contradiction remains fail."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique. NA du contrôle entier exige un inventaire positif, complet, motivé et daté prouvant qu’aucun routage HTTP n’entre dans le périmètre.",
+            "en": "No atomic exemption. Whole-control NA requires a positive, complete, reasoned and dated inventory establishing that no HTTP routing is in scope."
+          },
+          "limitations": {
+            "fr": "Une capture .invalid ne teste aucun serveur. Les marqueurs sont recherchés littéralement dans le corps décodé, sans DOM, rendu, jugement sémantique ou classification de moteur. C ne porte que sur la matrice déclarée, pas sur un site entier, une disponibilité dans le temps, une indexation ou un ranking.",
+            "en": "A .invalid capture tests no server. Markers are searched literally in the decoded body, without DOM, rendering, semantic judgment or engine classification. C covers only the declared matrix, not a whole site, availability over time, indexing or ranking."
+          },
+          "evidence": {
+            "fr": "Le plan et son empreinte, les attentes content, puis pour chaque route la requête GET, la réponse HTTP brute, le statut, la date et le corps complet. Conserver les observations contradictoires et les lacunes séparément.",
+            "en": "The plan and its fingerprint, content expectations, then for each route the GET request, raw HTTP response, status, time and complete body. Preserve contradictory observations and gaps separately."
+          }
+        }
+      ]
+    },
+    "TS06": {
+      "id": "TS06",
+      "title": {
+        "fr": "Les zones sensibles refusent réellement l’accès au serveur.",
+        "en": "Sensitive areas genuinely deny access at server level."
+      },
+      "domain": {
+        "fr": "Robots et accès",
+        "en": "Robots and access"
+      },
+      "severity": "blocking",
+      "unit": "route-set",
+      "required_inputs": [
+        "configuration",
+        "http",
+        "intent"
+      ],
+      "applicability": {
+        "fr": "Routes privées ou sensibles explicitement inventoriées dans un périmètre déclaré ; cette règle candidate ne qualifie que les traces HTTP synthétiques fournies.",
+        "en": "Private or sensitive routes explicitly inventoried in a declared scope; this candidate rule qualifies only supplied synthetic HTTP traces."
+      },
+      "procedure": {
+        "fr": "Avant les observations, fournir intent.ts06_access et son empreinte liée à configuration.ts06_access. Déclarer routes, marqueurs synthétiques, rôles fictifs, tests exacts par route/rôle et triplets froid anonyme → amorçage autorisé synthétique → rejeu anonyme, avec même étiquette de cache. Examiner les GET fournis sans résolution DNS ni requête réseau. Les redirections d’authentification doivent rester sur la même origine (schéma, hôte, port effectif) et suivre une liste de chemins explicitement déclarée. Une réponse 404 ne compte comme refus que si le plan la déclare pour cette route.",
+        "en": "Before observations, supply intent.ts06_access and bind its fingerprint in configuration.ts06_access. Declare routes, synthetic canaries, fictional roles, exact route/role tests, and cold anonymous → synthetic authorized seed → anonymous replay triplets with the same cache label. Inspect supplied GETs without DNS resolution or network requests. Authentication redirects must remain on the same origin (scheme, host, effective port) and follow an explicit path allowlist. A 404 counts as denial only when the plan declares it for that route."
+      },
+      "acceptance": {
+        "fr": "Pass signifie seulement que toutes les cellules route/rôle non autorisées déclarées sont complètes, refusées sans marqueur sensible et que chaque triplet fourni suit l’ordre déclaré sans fuite au rejeu ; le contrôle ne mesure ni une identité réelle ni un cache réel. Toute réponse attribuable à un rôle non autorisé contenant un canari échoue, y compris un corps encodé détecté ou un en-tête de réponse. Une représentation 2xx livrée à un rôle non autorisé échoue aussi.",
+        "en": "Pass means only that all declared unauthorized route/role cells are complete, denied without a sensitive marker, and every supplied triplet follows the declared order without a replay leak; the control measures neither real identity nor a real cache. Any attributable response to an unauthorized role containing a canary fails, including detected encoded bodies or response headers. A 2xx representation delivered to an unauthorized role also fails."
+      },
+      "non_applicability": {
+        "fr": "Le contrôle entier peut être NA seulement avec une revue d’inventaire synthétique complète, datée et motivée qui déclare aucune route sensible dans le périmètre ; aucun test ni triplet contradictoire ne peut alors être présent.",
+        "en": "The whole control may be not applicable only with a complete, dated, reasoned synthetic inventory review declaring no sensitive route in scope; no contradictory test or triplet may then be present."
+      },
+      "evidence": {
+        "fr": "Records configuration, intent et HTTP fournis, empreinte exacte du plan, dates, identifiants route/rôle, chaque échange GET brut et ordre, liste complète des cellules non autorisées et chaque étiquette/phase de triplet. Conserver aussi les réponses contradictoires attribuables avant de signaler toute lacune de matrice.",
+        "en": "Supplied configuration, intent and HTTP records; exact plan fingerprint; timestamps; route/role identifiers; each raw GET exchange and its order; complete unauthorized-cell list; and every triplet phase/cache label. Preserve attributable contradictory responses before reporting any matrix gap."
+      },
+      "limitations": {
+        "fr": "Interpréteur de fixture borné aux URL-étiquettes .invalid, sans DNS, socket, crawl ni domaine réel. Un rôle HTTP est une étiquette synthétique, pas une authentification. Une étiquette de cache commune ne prouve aucun cache partagé ; Age/X-Cache seuls ne prouvent pas l’attribution. La règle n’exécute pas cookies, Authorization, JavaScript, TLS, variantes d’URL ou méthode HEAD. 206, 304 sans corps complet, codage non pris en charge, cellule manquante/ambiguë et état de cache incomplet donnent inconclusive. Le résultat ne qualifie pas toutes les pages d’un site.",
+        "en": "A fixture interpreter bounded to .invalid URL labels, with no DNS, socket, crawl or live domain. An HTTP role is a synthetic label, not authentication. A shared cache label proves no shared cache; Age/X-Cache alone do not establish attribution. The rule does not execute cookies, Authorization, JavaScript, TLS, URL aliases or HEAD. 206, 304 without a complete body, unsupported encoding, missing/ambiguous cell and incomplete cache state yield inconclusive. The result does not qualify every page of a site."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Configuration",
+        "en": "Configuration"
+      },
+      "references": [
+        "https://www.rfc-editor.org/rfc/rfc9110",
+        "https://www.rfc-editor.org/rfc/rfc9111",
+        "https://www.rfc-editor.org/rfc/rfc6454",
+        "https://www.rfc-editor.org/rfc/rfc6761"
+      ],
+      "source_scope": {
+        "fr": "Les RFC 9110, 9111, 6454 et 6761 appuient respectivement la sémantique HTTP, quelques conditions de cache, la notion d’origine et l’usage réservé de .invalid. Elles n’établissent pas une règle de certification TSEP ; l’attendu reste éditorial et les observations sont des fixtures synthétiques.",
+        "en": "RFCs 9110, 9111, 6454 and 6761 support HTTP semantics, selected cache conditions, the origin concept, and reserved .invalid use respectively. They establish no TSEP certification rule; acceptance remains editorial and observations are synthetic fixtures."
+      },
+      "acceptance_note": {
+        "fr": "C exige les cellules et triplets complets du périmètre synthétique déclaré. Une fuite de canari ou une réponse 2xx non autorisée est une contradiction étayée ; les données partielles ou ambiguës restent NT. NA est uniquement une déclaration d’inventaire complète et positive.",
+        "en": "C requires the complete cells and triplets in the declared synthetic scope. A canary leak or unauthorized 2xx is an evidenced contradiction; partial or ambiguous data remain NT. NA requires only a complete positive inventory declaration."
+      },
+      "rule_version": "0.2.0-rc.1",
+      "rules": [
+        {
+          "id": "TS06-A01",
+          "title": {
+            "fr": "Accès refusé dans la matrice HTTP synthétique fournie",
+            "en": "Access denied in the supplied synthetic HTTP matrix"
+          },
+          "required_inputs": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "na_inputs": [
+            "intent"
+          ],
+          "automation": "semiAuto",
+          "applicability": {
+            "fr": "Au moins une route sensible est explicitement déclarée dans le périmètre synthétique.",
+            "en": "At least one sensitive route is explicitly declared in the synthetic scope."
+          },
+          "procedure": {
+            "fr": "Comparer le plan préalable lié à la configuration à une matrice complète de GET synthétiques par route et rôle. Détecter les marqueurs dans les en-têtes et corps, préserver les contradictions avant validation des doublons/lacunes, vérifier les redirections de même origine et les séquences froid/autorisé/rejeu.",
+            "en": "Compare the prior plan bound to configuration with a complete synthetic GET matrix by route and role. Detect markers in headers and bodies, preserve contradictions before validating duplicates/gaps, verify same-origin redirects and cold/authorized/replay sequences."
+          },
+          "acceptance": {
+            "fr": "Pass couvre uniquement la matrice synthétique complète fournie : aucune réponse non autorisée ne contient de canari, les refus sont établis selon le plan, et chaque triplet froid → amorçage autorisé → rejeu anonyme est complet et ordonné. Une fuite attribuable ou une représentation 2xx non autorisée donne fail.",
+            "en": "Pass covers only the complete supplied synthetic matrix: no unauthorized response contains a canary, denial is established under the plan, and every cold → authorized seed → anonymous replay triplet is complete and ordered. An attributable leak or unauthorized 2xx representation yields fail."
+          },
+          "evidence": {
+            "fr": "Records configuration/intent/http liés à la cible, empreinte du plan, routes/rôles/tests, échanges GET bruts avec horodatages, canaris et triplets de cache étiquetés.",
+            "en": "Configuration/intent/http records linked to the target, plan fingerprint, routes/roles/tests, raw GET exchanges with timestamps, canaries and labelled cache triplets."
+          },
+          "assumptions": {
+            "fr": "Les fixtures sont fournies, synthétiques et non authentifiées. L’étiquette de rôle et l’identifiant de cache ne prouvent ni identité ni cache partagé.",
+            "en": "Fixtures are supplied, synthetic and unauthenticated. Role and cache labels prove neither identity nor a shared cache."
+          },
+          "inconclusive": {
+            "fr": "Plan absent/futur/incohérent, cellule manquante ou dupliquée, en-tête d’identification absent/ambigu, redirection externe, 206, 304 sans représentation conservée, codage non pris en charge ou triplet/attribution incomplets.",
+            "en": "Missing/future/inconsistent plan, missing/duplicate cell, absent/ambiguous role header, cross-origin redirect, 206, 304 without retained representation, unsupported encoding, or incomplete triplet/attribution."
+          },
+          "non_applicability": {
+            "fr": "Aucune exemption atomique. Le NA du contrôle entier exige une revue d’inventaire complète, datée et motivée ; elle doit être liée à intent.",
+            "en": "No atomic exemption. Whole-control NA requires a complete, dated, reasoned inventory review linked to intent."
+          },
+          "limitations": {
+            "fr": "Pas de DNS, socket, collecte live, identité réelle, authentification, cookie, cache réel, TLS, JavaScript, alias de chemin, HEAD ni évaluation de site entier. La détection de canaris couvre uniquement les codages implémentés ; le reste est inconclusif.",
+            "en": "No DNS, socket, live collection, real identity, authentication, cookies, real cache, TLS, JavaScript, path aliases, HEAD, or whole-site assessment. Canary detection covers only implemented encodings; other cases are inconclusive."
+          }
+        }
+      ]
+    },
+    "TS07": {
+      "id": "TS07",
+      "title": {
+        "fr": "Les directives meta robots et X-Robots-Tag sont cohérentes avec l’objectif de la page.",
+        "en": "Robots meta directives and X-Robots-Tag match the page objective."
+      },
+      "domain": {
+        "fr": "Indexation",
+        "en": "Indexing"
+      },
+      "severity": "blocking",
+      "unit": "page",
+      "required_inputs": [
+        "http",
+        "html",
+        "intent",
+        "robots"
+      ],
+      "applicability": {
+        "fr": "Documents et ressources dont l’objectif d’indexation est déclaré.",
+        "en": "Documents and resources with a declared indexing objective."
+      },
+      "procedure": {
+        "fr": "Examiner les en-têtes finaux, le HTML source, l’accès et les états rendus nécessaires selon A01–A03.",
+        "en": "Review final headers, source HTML, access and required rendered states under A01–A03."
+      },
+      "acceptance": {
+        "fr": "Les directives effectives du robot cible, dans les en-têtes finaux et le HTML, correspondent à cet objectif ; directives inconnues et états rendus nécessaires sont examinés.",
+        "en": "Effective target-bot directives in final headers and HTML match that objective; unknown directives and any necessary rendered states are reviewed."
+      },
+      "non_applicability": {
+        "fr": "Aucune ressource soumise à une politique d’indexation dans le périmètre.",
+        "en": "No resource subject to an indexing policy in scope."
+      },
+      "evidence": {
+        "fr": "Directive unique ou combinaison compatible, sans noindex accidentel.",
+        "en": "One directive or a compatible combination, with no accidental noindex."
+      },
+      "limitations": {
+        "fr": "Le moteur doit pouvoir explorer la ressource pour lire la directive.",
+        "en": "The engine must be allowed to crawl the resource to read the directive."
+      },
+      "assessment": "manual-or-tool-assisted",
+      "legacy_access": {
+        "fr": "Public",
+        "en": "Public"
+      },
+      "references": [
+        "https://developers.google.com/search/docs/crawling-indexing/robots-meta-tag",
+        "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+        "https://developers.google.com/search/docs/crawling-indexing/block-indexing",
+        "https://www.rfc-editor.org/rfc/rfc9309"
+      ],
+      "source_scope": {
+        "fr": "Référence technique ; les attendus TSEP restent une proposition éditoriale. Sources consultées le 2026-10-09 ; captures datées et empreintes consignées dans docs/source-observations.md.",
+        "en": "Technical reference; the TSEP acceptance rule remains an editorial proposal. Sources checked on 2026-10-09; dated capture fingerprints recorded in docs/source-observations.md."
+      },
+      "acceptance_note": {
+        "fr": "C exige tous les attendus sur le périmètre déclaré. NC exige une contradiction étayée ; sinon NT. NA exige la preuve de non-applicabilité. Le profil google-indexing-2026-10-v2 interprète les directives Googlebot de la page autonome. Une exclusion certaine demeure probante avec des jetons inconnus. Les restrictions datées sont comparées à la capture ; les consignes ignorées et inconnues sont conservées. Un noindex HTTP certain reste interprétable même si le corps ne peut être lu. Accès et rendu restent séparés. Le profil v2 exige des virgules entre les règles, ou des champs/balises distincts. Une liste séparée seulement par des espaces est une syntaxe non documentée : NT en l’absence de preuve indépendante décisive ; une contradiction certaine dans un autre champ reste NC. La virgule d’une date RFC dans unavailable_after est conservée. Le profil v1 reste explicitement historique, sans migration implicite.",
+        "en": "C requires all expectations across the declared scope. NC requires evidenced contradiction; otherwise NT. NA requires evidence of non-applicability. The google-indexing-2026-10-v2 profile interprets standalone-page Googlebot directives. Certain exclusion remains evidence alongside unknown tokens. Dated restrictions are compared with capture time; ignored and unknown instructions are retained. Certain HTTP noindex remains interpretable even when body reading is unavailable. Access and rendering remain separate. Profile v2 requires commas between rules or separate fields/tags. A whitespace-only rule list is undocumented syntax: NT without decisive independent evidence; a certain contradiction in another field remains NC. RFC date commas inside unavailable_after are retained. Explicit v1 intent remains historical, with no implicit migration."
+      },
+      "rules": [
+        {
+          "id": "TS07-A01",
+          "required_inputs": [
+            "http",
+            "html",
+            "intent"
+          ],
+          "title": {
+            "fr": "Directives effectives et objectif",
+            "en": "Effective directives and objective"
+          },
+          "applicability": {
+            "fr": "Chaque document avec objectif d’indexation déclaré, pour un robot et un contexte explicitement nommés.",
+            "en": "Each document with a declared indexing objective, for an explicitly named crawler and context."
+          },
+          "procedure": {
+            "fr": "Inventorier tous les X-Robots-Tag finaux et meta robots/robot cible dans le HTML source, sans les confondre avec les sauts. Appliquer la sémantique documentée du robot, y compris doublons, portée, casse, paramètres et directives ignorées. Le profil facultatif source_reader=html-tree-directives-v1, déclaré avant capture, construit deux hypothèses statiques complètes sans exécuter de script ; les meta HTML robots/googlebot de head/body sans ancêtre étranger sont combinés séparément avec les en-têtes finaux. Les contenus des templates ordinaires sont conservés mais exclus des directives actives. Le choix préalable facultatif presentation_reader=google-preview-intent-v1 compare les intervalles minimum/maximum de permission texte, image et vidéo selon le contrat preview-intent ; extraction et états restent distincts. Le profil google-indexing-2026-10-v2 interprète les directives Googlebot de la page autonome. Une exclusion certaine demeure probante avec des jetons inconnus. Les restrictions datées sont comparées à la capture ; les consignes ignorées et inconnues sont conservées. Un noindex HTTP certain reste interprétable même si le corps ne peut être lu. Accès et rendu restent séparés. Le profil v2 exige des virgules entre les règles, ou des champs/balises distincts. Une liste séparée seulement par des espaces est une syntaxe non documentée : NT en l’absence de preuve indépendante décisive ; une contradiction certaine dans un autre champ reste NC. La virgule d’une date RFC dans unavailable_after est conservée. Le profil v1 reste explicitement historique, sans migration implicite. Les dates v2 doivent être entièrement reconnues par la grammaire bornée de la migration draft.9, identique entre interpréteurs ; format plausible non pris en charge, suffixe ou changement de portée sans séparateur : NT sans preuve indépendante décisive. Même index follow reste NT : cette limite est explicite. Toute année RFC à deux chiffres reste hors du profil v2 : NT sans preuve indépendante décisive, même si le calendrier ou le jour de semaine paraît résoudre le siècle. Seules les années à quatre chiffres sont évaluables. Les décalages négatifs nuls gardent un instant UTC connu. Une restriction expire strictement après sa date ; une égalité ne constitue pas une expiration.",
+            "en": "Inventory all final X-Robots-Tag headers and robots/target-crawler meta tags in source HTML, separate from redirect hops. Apply documented crawler semantics, including duplicates, scope, case, parameters and ignored rules. Optional source_reader=html-tree-directives-v1, declared before capture, constructs two complete static hypotheses without executing scripts; HTML robots/googlebot meta in head/body without foreign ancestors are combined separately with final headers. Ordinary template contents are retained but excluded from active directives. Optional prior presentation_reader=google-preview-intent-v1 compares minimum/maximum permission intervals for text, images and video under the preview-intent contract; extraction and states remain separate. The google-indexing-2026-10-v2 profile interprets standalone-page Googlebot directives. Certain exclusion remains evidence alongside unknown tokens. Dated restrictions are compared with capture time; ignored and unknown instructions are retained. Certain HTTP noindex remains interpretable even when body reading is unavailable. Access and rendering remain separate. Profile v2 requires commas between rules or separate fields/tags. A whitespace-only rule list is undocumented syntax: NT without decisive independent evidence; a certain contradiction in another field remains NC. RFC date commas inside unavailable_after are retained. Explicit v1 intent remains historical, with no implicit migration. V2 dates must be fully recognized by the bounded draft.9 migration grammar, identical across interpreters; plausible unsupported formats, suffixes or unseparated scope changes yield NT without decisive independent evidence. Even index follow stays NT: this limitation is explicit. Every two-digit RFC year is outside profile v2: NT without decisive independent evidence, even if the calendar or weekday appears to resolve the century. Only four-digit years are assessable. Negative zero offsets retain a known UTC instant. A restriction expires strictly after its date; equality does not establish expiration."
+          },
+          "acceptance": {
+            "fr": "L’effet combiné correspond à l’objectif déclaré d’indexation et aux restrictions de présentation/liens déclarées. Pour Google : une restriction applicable prime une permission, none inclut noindex/nofollow ; nofollow ou une limite d’aperçu seuls ne signifient pas noindex. L’absence de directive n’est pas un échec si l’objectif autorise l’indexation. Pour ce profil, deux pass donnent pass, deux fail donnent fail, toute autre paire reste inconclusive ; ne jamais fusionner les directives des hypothèses alternatives ni les confondre avec des états rendus observés. Pour ce nouveau profil, toutes les valeurs possibles dans l’intervalle voulu donnent pass ; toutes hors intervalle du même côté donnent fail ; sinon inconclusive. Une contradiction indépendante prévaut dans une lecture ; les règles de consensus source et de priorité rendue restent inchangées.",
+            "en": "Combined effects match the declared indexing objective and declared presentation/link restrictions. For Google: an applicable restriction prevails over permission, none includes noindex/nofollow; nofollow or a preview limit alone does not mean noindex. Missing directives are not failure when intent permits indexing. For this profile, two pass yield pass, two fail yield fail, every other pair stays inconclusive; never merge directives across alternative hypotheses or confuse them with observed rendered states. For this new profile, all possible values within the intended interval yield pass; all outside on one side yield fail; otherwise inconclusive. Independent contradiction prevails within a reading; existing source consensus and rendered priority remain."
+          },
+          "evidence": {
+            "fr": "En-têtes répétés bruts, HTML source, tableau token/robot/effet et référence technique datée. Pour un non-HTML, le fichier de type html décrit la non-applicabilité de cette surface avec le Content-Type, sans inventer de HTML. Ce profil conserve aussi les deux inventaires meta complets, contextes/namespaces, tags et positions dans les octets d’origine, templates, décodage, erreurs signalées, versions et empreintes dans les observations calculées liées au rapport et comparées au rejeu. Le nouveau profil conserve aussi les valeurs HTTP/meta ordonnées, portées, inconnues, décisions et intervalles par dimension dans les observations liées et rejouées.",
+            "en": "Raw repeated headers, source HTML, token/crawler/effect table and dated technical reference. For non-HTML, the html-kind record documents why this surface does not apply, with Content-Type, without inventing HTML. This profile also retains both full meta inventories, contexts/namespaces, original tags/body-byte spans, templates, decoding, reported errors, versions and fingerprints in calculated observations linked to the report and compared during replay. The new profile additionally retains ordered HTTP/meta values, scopes, unknowns, dimension decisions and intervals in bound replayed observations."
+          },
+          "assumptions": {
+            "fr": "Intention et robot figés avant revue ; ne pas extrapoler les règles Google à un autre moteur. En cas d’indexifembedded ou unavailable_after, inclure contexte d’intégration et date nécessaires. L’intention conserve crawler comme User-Agent HTTP exact. Le champ facultatif directive_crawler, figé avant capture et limité ici à googlebot, choisit la sémantique des directives sur cette seule représentation cliente ; il ne décrit pas une réponse reçue par Googlebot. Sans ce champ, le comportement historique exige crawler=googlebot. Sans source_reader, garder le lecteur historique ; nul/inconnu ou Node 24 absent ne se replie pas. Le profil exige HTML HTTP UTF-8 explicite, consomme un BOM initial, conserve les réparations non signalées du parseur épinglé. Les règles et bornes du contrat bilingue source-directives précisent les hypothèses, sans assertion de validité HTML. Les bornes portent sur un plafond de permission, pas sur l’affichage réel. Le choix et les bornes sont préalables ; absence du lecteur conserve le comportement historique et aucun scalaire n’est migré automatiquement.",
+            "en": "Intent and crawler fixed before review; do not extrapolate Google rules to another engine. For indexifembedded or unavailable_after, include the required embedding context and date. Intent retains crawler as the exact HTTP User-Agent. Optional directive_crawler, frozen before collection and limited here to googlebot, selects directive semantics only for this client representation; it does not describe a response received by Googlebot. Without this field, historical behavior requires crawler=googlebot. Absent source_reader preserves the legacy reader; null/unknown or missing Node 24 never falls back. This profile requires explicit HTTP UTF-8 HTML, consumes one initial BOM and retains unreported repairs by the pinned parser. The bilingual source-directives contract specifies assumptions/bounds without asserting HTML validity. Bounds concern a permission cap, not actual display. Selection and bounds are prior; absent reader preserves historical behavior and no scalar is automatically migrated."
+          },
+          "inconclusive": {
+            "fr": "Objectif absent, syntaxe/portée inconnue, capture partielle ou contexte manquant : inconclusive. Une directive documentée comme ignorée est consignée, pas transformée automatiquement en erreur. directive_crawler présent mais non pris en charge, nul ou incohérent : inconclusive ; aucun repli favorable. Pour ce profil : lecture incomplète, erreur signalée, encodage non couvert, shadow déclaratif open/closed, template for, metadata robots de contexte étranger, contenu absent/rôle mixte ou forme approchante définie au contrat, directive inconnue et dépassement de borne restent indéterminés. Un HTML illisible ne devient pas un accord fondé sur les seuls en-têtes. Le profil de présentation garde les défauts d’image non qualifiés, l’interaction vidéo de max-snippet:0, les syntaxes non couvertes et les dépassements comme inconnues selon les intervalles conservateurs du contrat. Noindex ne donne pas un pass de présentation.",
+            "en": "Missing objective, unknown syntax/scope, partial capture or missing context: inconclusive. A documented ignored directive is recorded, not automatically treated as an error. Present but unsupported, null or inconsistent directive_crawler: inconclusive; no favorable fallback. For this profile: incomplete reading, reported error, unsupported encoding, declared open/closed shadow, template for, foreign-context robots metadata, missing content/mixed roles or near form defined by the contract, unknown directive and exceeded bound remain inconclusive. Unreadable HTML never becomes header-only agreement. The preview profile retains unqualified image defaults, max-snippet:0 video interaction, unsupported syntax and exceeded bounds as unknown under the contract’s conservative intervals. Noindex does not give a presentation pass."
+          },
+          "limitations": {
+            "fr": "Évalue les déclarations observées, pas leur ingestion ni l’indexation réelle. A01 seul ne couvre pas l’accès ou le rendu. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue. Ce choix méthodologique ne simule pas Google. Aucun rendu, accès, revue ou résultat TS10 n’est déduit. Le profil de présentation ne vérifie ni affichage Google, ni disponibilité d’image, ni data-nosnippet, ni usages sous licence, données structurées ou IA ; aucune revue n’est produite.",
+            "en": "Assesses observed declarations, not ingestion or actual indexing. A01 alone does not cover access or rendering. Automation is semiAuto: the bounded interpreter does not cover every syntax, crawler or context; unsupported inputs remain inconclusive and require review. This methodological choice does not simulate Google. No rendering, access, review or TS10 outcome is inferred. The preview profile assesses neither Google display, image availability, data-nosnippet nor licensed, structured-data or AI usage; it produces no review."
+          },
+          "na_inputs": [],
+          "non_applicability": {
+            "fr": "Aucune exemption atomique quand le contrôle s’applique.",
+            "en": "No atomic exemption when the control applies."
+          },
+          "automation": "semiAuto"
+        },
+        {
+          "id": "TS07-A02",
+          "required_inputs": [
+            "http",
+            "robots",
+            "intent"
+          ],
+          "title": {
+            "fr": "Accès à la directive",
+            "en": "Access to the directive"
+          },
+          "applicability": {
+            "fr": "Toute ressource pour laquelle l’effet des directives est évalué.",
+            "en": "Every resource for which directive effects are assessed."
+          },
+          "procedure": {
+            "fr": "Confronter politique robots effective et conditions d’accès au robot cible ; distinguer réponse au client de test, blocage explicite et accès du robot non observé. Avec directive_crawler explicite, exiger un robots_policy explicite dont product_token concorde avec googlebot sans distinction de casse ; sélectionner ce groupe et jamais le groupe de l’agent du navigateur par repli.",
+            "en": "Compare effective robots policy and access conditions for the target crawler; distinguish the test client response, explicit blocking and unobserved crawler access. With explicit directive_crawler, require an explicit robots_policy whose product_token matches googlebot case-insensitively; select that group and never fall back to the browser agent group."
+          },
+          "acceptance": {
+            "fr": "Aucun obstacle observé n’empêche de lire la directive dans le contexte déclaré. Une interdiction robots contredit une stratégie reposant sur la lecture de noindex. Un refus HTTP 401/403 attribuable reste fail même si la capture robots manque.",
+            "en": "No observed obstacle prevents reading the directive in the declared context. Robots disallow contradicts a strategy relying on reading noindex. An attributable HTTP 401/403 remains fail even if robots evidence is missing."
+          },
+          "evidence": {
+            "fr": "Capture et interprétation robots pour URL/robot, trace HTTP et hypothèses d’accès documentées dans l’intention.",
+            "en": "Robots capture and interpretation for URL/crawler, HTTP trace and access assumptions documented in intent."
+          },
+          "assumptions": {
+            "fr": "La politique est interprétée par le lecteur partagé TS04. Un nouveau profil est déclaré dans l’intention avant capture. Sans champ robots_policy, les anciennes entrées restent sous le profil fixe legacy-exact-v1, sans extension implicite de sa couverture. Le client ne s’authentifie pas comme Googlebot. L’intention conserve crawler comme User-Agent HTTP exact. Le champ facultatif directive_crawler, figé avant capture et limité ici à googlebot, choisit la sémantique des directives sur cette seule représentation cliente ; il ne décrit pas une réponse reçue par Googlebot. Sans ce champ, les profils robots historiques conservent leur comportement. Le profil facultatif préalable google-robotstxt-fields-v2 étend la liste fermée des champs hors portée accès, selon le registre google/robotstxt épinglé ; anciens profils inchangés, sans sélection automatique.",
+            "en": "Policy is interpreted by the shared TS04 reader. A new profile is declared in intent before capture. Without robots_policy, legacy inputs retain the fixed legacy-exact-v1 profile without implicit coverage extension. The client does not authenticate as Googlebot. Intent retains crawler as the exact HTTP User-Agent. Optional directive_crawler, frozen before collection and limited here to googlebot, selects directive semantics only for this client representation; it does not describe a response received by Googlebot. Without this field, historical robots profiles retain their behavior. Optional prior google-robotstxt-fields-v2 extends the closed registry of fields outside access scope using pinned google/robotstxt sources; old profiles remain unchanged with no automatic selection."
+          },
+          "inconclusive": {
+            "fr": "Politique inaccessible ou ambiguë, challenge non résolu, capture manquante : inconclusive, jamais NA pour manque d’accès. Le nouveau chemin sans profil concordant reste indéterminé. Le refus HTTP 401/403 attribuable conserve sa priorité.",
+            "en": "Unavailable or ambiguous policy, unresolved challenge, missing capture: inconclusive, never NA for missing access. The new path without a matching profile remains inconclusive. Attributable HTTP 401/403 denial retains precedence."
+          },
+          "limitations": {
+            "fr": "Aucune preuve de visite réelle du moteur ; TS04 et les autres contrôles d’accès ne sont pas globalement validés. Automatisation semiAuto : l’interpréteur borné ne couvre pas toutes les syntaxes, tous les robots ou tous les contextes ; les entrées non prises en charge restent inconclusive et exigent une revue. Les champs du registre et sitemap sont relevés, sans évaluer leurs préférences d’usage, TS42 ou l’indexation ; ils ne délimitent pas les groupes. Autres champs et tolérances restent hors couverture. Numéros et valeurs intégrales sont conservés ; les aperçus de motifs signalent leur troncature.",
+            "en": "No evidence of an actual engine visit; TS04 and other access controls are not globally validated. Automation is semiAuto: the bounded interpreter does not cover every syntax, crawler or context; unsupported inputs remain inconclusive and require review. Registry fields and sitemap are recorded without assessing usage preferences, TS42 or indexing and never delimit groups. Other fields and tolerances remain unsupported. Full line numbers and values are retained; reason previews disclose truncation."
+          },
+          "na_inputs": [],
+          "non_applicability": {
+            "fr": "Aucune exemption atomique quand le contrôle s’applique.",
+            "en": "No atomic exemption when the control applies."
+          },
+          "automation": "semiAuto"
+        },
+        {
+          "id": "TS07-A03",
+          "required_inputs": [
+            "http",
+            "html",
+            "render",
+            "intent"
+          ],
+          "title": {
+            "fr": "États rendus nécessaires",
+            "en": "Required rendered states"
+          },
+          "applicability": {
+            "fr": "Pages dont scripts ou états peuvent affecter les directives, ou dont la stabilité n’est pas établie.",
+            "en": "Pages whose scripts or states can affect directives, or whose stability is not established."
+          },
+          "procedure": {
+            "fr": "Fixer avant la capture les états requis, interactions et conditions d’attente. Comparer les en-têtes finaux et le HTML source avec chaque DOM, en déclarant navigateur/version, scripts activés, heure, erreurs et contexte. Relier chaque capture à la réponse source et à la cible. Ne pas supposer que le moteur rend un HTML initial noindex. Le lecteur DOM est choisi avant capture : structured-inventory-v2 ou le lecteur sérialisé historique fixe en l’absence de champ. Aucun repli après un refus. L’inventaire structuré complet conserve namespaces, positions, doublons, sérialisation et pièces de rattachement à la navigation ; aucune suppression de nœud selon son origine supposée. Le nouveau source_reader facultatif affecte seulement le préalable source A01, jamais le lecteur de chaque DOM ; la priorité d’une contradiction rendue attribuable reste inchangée. Le choix préalable facultatif presentation_reader=google-preview-intent-v1 compare les intervalles minimum/maximum de permission texte, image et vidéo selon le contrat preview-intent ; extraction et états restent distincts.",
+            "en": "Fix required states, interactions and waiting conditions before capture. Compare final headers and source HTML with each DOM, declaring browser/version, enabled scripts, time, errors and context. Bind each capture to the source response and target. Do not assume the engine renders initially noindex HTML. The DOM reader is chosen before capture: structured-inventory-v2, or the fixed legacy serialization reader when the field is absent. No fallback after refusal. The complete structured inventory retains namespaces, positions, duplicates, serialization and navigation attribution records; no node is removed based on its presumed origin. The optional new source_reader affects only the A01 source prerequisite, never each DOM reader; priority for an attributable rendered contradiction remains unchanged. Optional prior presentation_reader=google-preview-intent-v1 compares minimum/maximum permission intervals for text, images and video under the preview-intent contract; extraction and states remain separate."
+          },
+          "acceptance": {
+            "fr": "Tous les états requis sont documentés et compatibles avec l’objectif, dans le contexte déclaré. Une contradiction dans un état complet et attribuable est fail, même si d’autres états manquent. Un retrait de noindex initial par JavaScript ne donne pas pass : A03 reste inconclusive si aucun état requis ne fournit une autre contradiction ; A01 conserve son propre verdict source. Pour ce nouveau profil, toutes les valeurs possibles dans l’intervalle voulu donnent pass ; toutes hors intervalle du même côté donnent fail ; sinon inconclusive. Une contradiction indépendante prévaut dans une lecture ; les règles de consensus source et de priorité rendue restent inchangées.",
+            "en": "All required states are documented and compatible with intent in the declared context. A contradiction in a complete, attributable state is fail even if other states are missing. Removing initial noindex with JavaScript does not yield pass: A03 remains inconclusive unless a required state supplies another contradiction; A01 retains its own source verdict. For this new profile, all possible values within the intended interval yield pass; all outside on one side yield fail; otherwise inconclusive. Independent contradiction prevails within a reading; existing source consensus and rendered priority remain."
+          },
+          "evidence": {
+            "fr": "En-têtes et HTML source conservés, plan préalable, DOM bruts datés avec empreinte de liaison à la trace HTTP, URL finale, contexte, navigateur/version, état des scripts, interactions, attente et erreurs. Comparaison motivée et limites ; aucune capture du moteur simulée. Le nouveau profil conserve aussi les valeurs HTTP/meta ordonnées, portées, inconnues, décisions et intervalles par dimension dans les observations liées et rejouées.",
+            "en": "Retained headers/source HTML, prior plan, dated raw DOMs with binding digest of the HTTP trace, final URL, context, browser/version, script state, interactions, waiting conditions and errors. Reasoned comparison and limitations; no simulated engine capture. The new profile additionally retains ordered HTTP/meta values, scopes, unknowns, dimension decisions and intervals in bound replayed observations."
+          },
+          "assumptions": {
+            "fr": "Les états nécessaires sont listés avant le test ; rendu local et rendu du moteur restent distincts. Le lecteur structuré interprète les meta HTML enfants directs du head réel ; position ou shadow ambigu reste indéterminé. Il conserve la combinaison avec les en-têtes de la navigation déclarée. L’intention conserve crawler comme User-Agent HTTP exact. Le champ facultatif directive_crawler, figé avant capture et limité ici à googlebot, choisit la sémantique des directives sur cette seule représentation cliente ; il ne décrit pas une réponse reçue par Googlebot. Sans ce champ, le comportement historique exige crawler=googlebot. Les bornes portent sur un plafond de permission, pas sur l’affichage réel. Le choix et les bornes sont préalables ; absence du lecteur conserve le comportement historique et aucun scalaire n’est migré automatiquement.",
+            "en": "Required states are listed before the test; local and engine rendering remain distinct. The structured reader interprets HTML meta children directly in the real document head; ambiguous placement or shadow remains inconclusive. It retains combination with the declared navigation headers. Intent retains crawler as the exact HTTP User-Agent. Optional directive_crawler, frozen before collection and limited here to googlebot, selects directive semantics only for this client representation; it does not describe a response received by Googlebot. Without this field, historical behavior requires crawler=googlebot. Bounds concern a permission cap, not actual display. Selection and bounds are prior; absent reader preserves historical behavior and no scalar is automatically migrated."
+          },
+          "inconclusive": {
+            "fr": "Plan ou capture requis absent, état tronqué, erreur de script, liaison source/cible/contexte incohérente, chronologie invalide, directive non interprétable ou retrait tardif du noindex initial : inconclusive sans réussite déduite. Une contradiction établie dans un autre état attribuable reste fail. Pour le lecteur structuré : arbre/transport incomplet, chargement en cours, API connue comme altérée, histoire d’intégrité absente, capture source/DOM séparée sans rattachement à une même navigation ou agent différent : inconclusive. Une empreinte seule ne prouve pas la navigation. directive_crawler présent mais non pris en charge, nul ou incohérent : inconclusive ; aucun repli favorable. Le profil de présentation garde les défauts d’image non qualifiés, l’interaction vidéo de max-snippet:0, les syntaxes non couvertes et les dépassements comme inconnues selon les intervalles conservateurs du contrat. Noindex ne donne pas un pass de présentation.",
+            "en": "Missing required plan/capture, truncated state, script error, inconsistent source/target/context binding, invalid chronology, uninterpretable directive or late removal of initial noindex: inconclusive without an inferred pass. An established contradiction in another attributable state remains fail. For the structured reader: incomplete tree/transport, loading document, known API alteration, missing integrity history, separate source/DOM acquisition without same-navigation attribution or a different agent: inconclusive. A digest alone does not prove navigation. Present but unsupported, null or inconsistent directive_crawler: inconclusive; no favorable fallback. The preview profile retains unqualified image defaults, max-snippet:0 video interaction, unsupported syntax and exceeded bounds as unknown under the contract’s conservative intervals. Noindex does not give a presentation pass."
+          },
+          "limitations": {
+            "fr": "semiAuto : le plan et la suffisance des observations nécessitent une revue. L’interpréteur compare des captures fournies ; il n’exécute pas JavaScript et ne démontre ni exhaustivité des états, ni TS25, ni rendu ou indexation du moteur. Rattachement et API fournis non authentifiés ; relevé synthétique explicitement signalé, jamais une visite réelle. Frames, fragments template et shadow fermés hors périmètre. Bornes et migration dans docs/structured-rendering.md. Le profil de présentation ne vérifie ni affichage Google, ni disponibilité d’image, ni data-nosnippet, ni usages sous licence, données structurées ou IA ; aucune revue n’est produite.",
+            "en": "semiAuto: the plan and sufficiency of observations require review. The interpreter compares supplied captures; it does not execute JavaScript or establish exhaustive states, TS25, engine rendering or indexing. Supplied attribution and APIs are not authenticated; authored synthetic records are explicitly labeled, never actual visits. Frames, template fragments and closed shadow roots are outside scope. Bounds and migration are documented in docs/structured-rendering.md. The preview profile assesses neither Google display, image availability, data-nosnippet nor licensed, structured-data or AI usage; it produces no review."
+          },
+          "na_inputs": [
+            "intent",
+            "http",
+            "html"
+          ],
+          "non_applicability": {
+            "fr": "Non-HTML ou stabilité des directives démontrée par revue documentée ; la preuve intent référence cette justification et ses pièces. Aucune simple affirmation « pas de JS ».",
+            "en": "Non-HTML or directive stability demonstrated by documented review; intent evidence references this justification and supporting records. No unsupported “no JS” assertion."
+          },
+          "automation": "semiAuto"
+        }
+      ],
+      "rule_version": "0.3.0-draft.9"
+    }
+  }
+}

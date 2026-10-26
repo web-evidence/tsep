@@ -1,3 +1,14 @@
+## 0.3.0-draft.10 — 2026-10-26
+
+Candidat local non publié / Unpublished local candidate.
+
+- FR : sondes publiques TS03-A02 et TS06-A02 avec plan préalable ; profil d’accès TS07 lié à une preuve ou une déclaration explicite ; aucune conformité globale déduite de la sonde seule. Migration normative explicite, profils historiques conservés.
+- EN: public TS03-A02 and TS06-A02 probes with a prior plan; TS07 access profile bound to evidence or an explicit declaration; no whole-control conformity inferred from the probe alone. Explicit normative migration, historical profiles retained.
+- FR/EN : lecture bornée et réversible des BOM de transport des journaux GitHub / bounded reversible reading of GitHub log transport BOMs. Aucun nouveau succès du contrôle court revendiqué / No new short-check success claimed.
+- FR : un C global sur TS03 ou TS06 exige désormais A01 et A02. Sous le nouveau profil TS07, un refus 401/403 au seul client de test reste NT ; un Disallow prouvé reste NC.
+- EN: whole-control C for TS03 or TS06 now requires A01 and A02. Under the new TS07 profile, a 401/403 denial to the test client alone stays NT; proven Disallow stays NC.
+- [Migration FR/EN](docs/migration-0.3.0-draft.10.md). Qualification locale et distante du candidat exact encore requise / Exact-candidate local and remote qualification still required.
+
 ## 0.3.0-draft.9 — 2026-10-25
 
 - FR : limite finale explicite : toute année RFC à deux chiffres reste NT en v2, sans simulation du parseur Google ; 15 attentes de candidats non publiés révisées par manifeste, entrées conservées, noindex indépendant décisif. EN: explicit final limit: every two-digit RFC year stays NT in v2 without simulating Google's parser; 15 unpublished-candidate expectations revised with a manifest, inputs preserved, independent noindex decisive.
@@ -6,9 +17,9 @@
 
 - FR : contre-revue R077 corrigée : dates entièrement consommées, grammaire v2 déterministe et NT sur formats non pris en charge, portées cachées refusées ; profils internes explicites, lecteur TS09 v1 conservé. EN: reviewed R077 fixes consume whole dates, use a deterministic bounded v2 grammar and keep unsupported formats inconclusive; hidden scopes are rejected, internal profiles explicit, TS09 v1 retained.
 
-Candidat local non publié / unpublished local candidate. TS07-A01 : profil Google v2, listes à espaces seules indéterminées, contradictions indépendantes conservées. / Google v2 profile, space-only rule lists remain inconclusive; independent contradictions retained. Migration explicite, aucune substitution des anciennes preuves. / Explicit migration, no replacement of old evidence.
+Publié le 26 octobre 2026 / Published 26 October 2026 : [v0.3.0-draft.9](https://github.com/web-evidence/tsep/releases/tag/v0.3.0-draft.9). TS07-A01 : profil Google v2, listes à espaces seules indéterminées, contradictions indépendantes conservées. / Google v2 profile, space-only rule lists remain inconclusive; independent contradictions retained. Migration explicite, aucune substitution des anciennes preuves. / Explicit migration, no replacement of old evidence.
 
-Préparation / preparation **0.3.0-draft.8** : TS07 directives Googlebot, TS05 cohérence des moyens d’exclusion, TS09 preuve représentative et inventaires d’export exacts / Googlebot directives, exclusion-policy consistency, representative exclusion evidence and exact export inventories. [Migration FR/EN](docs/migration-0.3.0-draft.8.md). Candidat non publié ; qualifications locale et distante à distinguer / Unpublished candidate; local and remote qualification are separate.
+Préparation / preparation **0.3.0-draft.8** : TS07 directives Googlebot, TS05 cohérence des moyens d’exclusion, TS09 preuve représentative et inventaires d’export exacts / Googlebot directives, exclusion-policy consistency, representative exclusion evidence and exact export inventories. [Migration FR/EN](docs/migration-0.3.0-draft.8.md). Préversion publiée le 25 octobre 2026 / Prerelease published on 25 October 2026: [v0.3.0-draft.8](https://github.com/web-evidence/tsep/releases/tag/v0.3.0-draft.8).
 
 Correction de publication / Publication correction **publication-v2** : arrêt CI macOS au plafond de quatre heures observé et conservé ; plafond de six heures, progression des étapes sur stderr, nouvelle archive et qualification complète requises / observed four-hour macOS CI interruption retained; six-hour ceiling, step progress on stderr, distinct archive and complete qualification required. [Migration FR/EN](docs/publication-profile-v2.md). Norme, règles et tests inchangés / Normative source, rules and tests unchanged.
 

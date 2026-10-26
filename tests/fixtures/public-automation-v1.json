@@ -1,0 +1,1579 @@
+{
+  "synthetic": true,
+  "cases": [
+    {
+      "id": "automation-v1-TS03-200",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS03-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS03",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "generated_assumption": "expected-absent-not-proven",
+                "routes": [
+                  {
+                    "kind": "existing",
+                    "url": "https://public.invalid/a/"
+                  },
+                  {
+                    "kind": "generated",
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "1d7de35983a58af7118688dd974d4e6a88564801a535688606ab135f506f8f31"
+            },
+            "probe_documents": [
+              {
+                "url": "https://public.invalid/a/",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hLyBIVFRQLzEuMQ0KSG9zdDogcHVibGljLmludmFsaWQNClVzZXItQWdlbnQ6IFRTRVAtUHJvYmUvMQ0KQWNjZXB0OiAqLyoNCkFjY2VwdC1FbmNvZGluZzogaWRlbnRpdHkNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg==",
+                      "sha256": "6547c88f298bc0e61d84a3a8d64b2e80b1ccc2191cb70313476e0ed909703074"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "91d6027bab9c646e4161efd8a074f9e246a9f1154e5934c182011904939a21d5"
+                    }
+                  }
+                ]
+              },
+              {
+                "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hL3RzZXAtY2hlY2stYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWEgSFRUUC8xLjENCkhvc3Q6IHB1YmxpYy5pbnZhbGlkDQpVc2VyLUFnZW50OiBUU0VQLVByb2JlLzENCkFjY2VwdDogKi8qDQpBY2NlcHQtRW5jb2Rpbmc6IGlkZW50aXR5DQpDb25uZWN0aW9uOiBjbG9zZQ0KDQo=",
+                      "sha256": "23c1b70c4b87da55a2830aae5446d72ebc18f34e0a61d025019ea51507fad556"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "91d6027bab9c646e4161efd8a074f9e246a9f1154e5934c182011904939a21d5"
+                    }
+                  }
+                ]
+              }
+            ],
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS03-404",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS03-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS03",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "generated_assumption": "expected-absent-not-proven",
+                "routes": [
+                  {
+                    "kind": "existing",
+                    "url": "https://public.invalid/a/"
+                  },
+                  {
+                    "kind": "generated",
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "1d7de35983a58af7118688dd974d4e6a88564801a535688606ab135f506f8f31"
+            },
+            "probe_documents": [
+              {
+                "url": "https://public.invalid/a/",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hLyBIVFRQLzEuMQ0KSG9zdDogcHVibGljLmludmFsaWQNClVzZXItQWdlbnQ6IFRTRVAtUHJvYmUvMQ0KQWNjZXB0OiAqLyoNCkFjY2VwdC1FbmNvZGluZzogaWRlbnRpdHkNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg==",
+                      "sha256": "6547c88f298bc0e61d84a3a8d64b2e80b1ccc2191cb70313476e0ed909703074"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "91d6027bab9c646e4161efd8a074f9e246a9f1154e5934c182011904939a21d5"
+                    }
+                  }
+                ]
+              },
+              {
+                "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hL3RzZXAtY2hlY2stYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWEgSFRUUC8xLjENCkhvc3Q6IHB1YmxpYy5pbnZhbGlkDQpVc2VyLUFnZW50OiBUU0VQLVByb2JlLzENCkFjY2VwdDogKi8qDQpBY2NlcHQtRW5jb2Rpbmc6IGlkZW50aXR5DQpDb25uZWN0aW9uOiBjbG9zZQ0KDQo=",
+                      "sha256": "23c1b70c4b87da55a2830aae5446d72ebc18f34e0a61d025019ea51507fad556"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgNDA0IFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "48a60c62f3d9075a19d85f970878fd41bf470cb38828708327fee66f1cbc6318"
+                    }
+                  }
+                ]
+              }
+            ],
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS03-410",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS03-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS03",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "generated_assumption": "expected-absent-not-proven",
+                "routes": [
+                  {
+                    "kind": "existing",
+                    "url": "https://public.invalid/a/"
+                  },
+                  {
+                    "kind": "generated",
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "1d7de35983a58af7118688dd974d4e6a88564801a535688606ab135f506f8f31"
+            },
+            "probe_documents": [
+              {
+                "url": "https://public.invalid/a/",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hLyBIVFRQLzEuMQ0KSG9zdDogcHVibGljLmludmFsaWQNClVzZXItQWdlbnQ6IFRTRVAtUHJvYmUvMQ0KQWNjZXB0OiAqLyoNCkFjY2VwdC1FbmNvZGluZzogaWRlbnRpdHkNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg==",
+                      "sha256": "6547c88f298bc0e61d84a3a8d64b2e80b1ccc2191cb70313476e0ed909703074"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "91d6027bab9c646e4161efd8a074f9e246a9f1154e5934c182011904939a21d5"
+                    }
+                  }
+                ]
+              },
+              {
+                "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hL3RzZXAtY2hlY2stYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWEgSFRUUC8xLjENCkhvc3Q6IHB1YmxpYy5pbnZhbGlkDQpVc2VyLUFnZW50OiBUU0VQLVByb2JlLzENCkFjY2VwdDogKi8qDQpBY2NlcHQtRW5jb2Rpbmc6IGlkZW50aXR5DQpDb25uZWN0aW9uOiBjbG9zZQ0KDQo=",
+                      "sha256": "23c1b70c4b87da55a2830aae5446d72ebc18f34e0a61d025019ea51507fad556"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgNDEwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "337c010c66a3006ca6c8c0eeb1db9c8f77bae5bee55f5ce4b63da2a5026a73d0"
+                    }
+                  }
+                ]
+              }
+            ],
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS03-401",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS03-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS03",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "generated_assumption": "expected-absent-not-proven",
+                "routes": [
+                  {
+                    "kind": "existing",
+                    "url": "https://public.invalid/a/"
+                  },
+                  {
+                    "kind": "generated",
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "1d7de35983a58af7118688dd974d4e6a88564801a535688606ab135f506f8f31"
+            },
+            "probe_documents": [
+              {
+                "url": "https://public.invalid/a/",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hLyBIVFRQLzEuMQ0KSG9zdDogcHVibGljLmludmFsaWQNClVzZXItQWdlbnQ6IFRTRVAtUHJvYmUvMQ0KQWNjZXB0OiAqLyoNCkFjY2VwdC1FbmNvZGluZzogaWRlbnRpdHkNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg==",
+                      "sha256": "6547c88f298bc0e61d84a3a8d64b2e80b1ccc2191cb70313476e0ed909703074"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "91d6027bab9c646e4161efd8a074f9e246a9f1154e5934c182011904939a21d5"
+                    }
+                  }
+                ]
+              },
+              {
+                "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hL3RzZXAtY2hlY2stYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWEgSFRUUC8xLjENCkhvc3Q6IHB1YmxpYy5pbnZhbGlkDQpVc2VyLUFnZW50OiBUU0VQLVByb2JlLzENCkFjY2VwdDogKi8qDQpBY2NlcHQtRW5jb2Rpbmc6IGlkZW50aXR5DQpDb25uZWN0aW9uOiBjbG9zZQ0KDQo=",
+                      "sha256": "23c1b70c4b87da55a2830aae5446d72ebc18f34e0a61d025019ea51507fad556"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgNDAxIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "ac92031a1eab03aa78b2d8616e96767d7d3f88e14fe5972d60944e412fe944e3"
+                    }
+                  }
+                ]
+              }
+            ],
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS03-403",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS03-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS03",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "generated_assumption": "expected-absent-not-proven",
+                "routes": [
+                  {
+                    "kind": "existing",
+                    "url": "https://public.invalid/a/"
+                  },
+                  {
+                    "kind": "generated",
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "1d7de35983a58af7118688dd974d4e6a88564801a535688606ab135f506f8f31"
+            },
+            "probe_documents": [
+              {
+                "url": "https://public.invalid/a/",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hLyBIVFRQLzEuMQ0KSG9zdDogcHVibGljLmludmFsaWQNClVzZXItQWdlbnQ6IFRTRVAtUHJvYmUvMQ0KQWNjZXB0OiAqLyoNCkFjY2VwdC1FbmNvZGluZzogaWRlbnRpdHkNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg==",
+                      "sha256": "6547c88f298bc0e61d84a3a8d64b2e80b1ccc2191cb70313476e0ed909703074"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "91d6027bab9c646e4161efd8a074f9e246a9f1154e5934c182011904939a21d5"
+                    }
+                  }
+                ]
+              },
+              {
+                "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hL3RzZXAtY2hlY2stYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWEgSFRUUC8xLjENCkhvc3Q6IHB1YmxpYy5pbnZhbGlkDQpVc2VyLUFnZW50OiBUU0VQLVByb2JlLzENCkFjY2VwdDogKi8qDQpBY2NlcHQtRW5jb2Rpbmc6IGlkZW50aXR5DQpDb25uZWN0aW9uOiBjbG9zZQ0KDQo=",
+                      "sha256": "23c1b70c4b87da55a2830aae5446d72ebc18f34e0a61d025019ea51507fad556"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgNDAzIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "44d7a74a0c08c22484403a8a54c578823f11f1b4786db0b9ac35391cca10146b"
+                    }
+                  }
+                ]
+              }
+            ],
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS03-429",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS03-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS03",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "generated_assumption": "expected-absent-not-proven",
+                "routes": [
+                  {
+                    "kind": "existing",
+                    "url": "https://public.invalid/a/"
+                  },
+                  {
+                    "kind": "generated",
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "1d7de35983a58af7118688dd974d4e6a88564801a535688606ab135f506f8f31"
+            },
+            "probe_documents": [
+              {
+                "url": "https://public.invalid/a/",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hLyBIVFRQLzEuMQ0KSG9zdDogcHVibGljLmludmFsaWQNClVzZXItQWdlbnQ6IFRTRVAtUHJvYmUvMQ0KQWNjZXB0OiAqLyoNCkFjY2VwdC1FbmNvZGluZzogaWRlbnRpdHkNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg==",
+                      "sha256": "6547c88f298bc0e61d84a3a8d64b2e80b1ccc2191cb70313476e0ed909703074"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "91d6027bab9c646e4161efd8a074f9e246a9f1154e5934c182011904939a21d5"
+                    }
+                  }
+                ]
+              },
+              {
+                "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hL3RzZXAtY2hlY2stYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWEgSFRUUC8xLjENCkhvc3Q6IHB1YmxpYy5pbnZhbGlkDQpVc2VyLUFnZW50OiBUU0VQLVByb2JlLzENCkFjY2VwdDogKi8qDQpBY2NlcHQtRW5jb2Rpbmc6IGlkZW50aXR5DQpDb25uZWN0aW9uOiBjbG9zZQ0KDQo=",
+                      "sha256": "23c1b70c4b87da55a2830aae5446d72ebc18f34e0a61d025019ea51507fad556"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgNDI5IFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "99da7a2adbc6488ad5e4739be419941c899884d9ec4f755ef68b81154eb75ef4"
+                    }
+                  }
+                ]
+              }
+            ],
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS03-503",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS03-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS03",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "generated_assumption": "expected-absent-not-proven",
+                "routes": [
+                  {
+                    "kind": "existing",
+                    "url": "https://public.invalid/a/"
+                  },
+                  {
+                    "kind": "generated",
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "1d7de35983a58af7118688dd974d4e6a88564801a535688606ab135f506f8f31"
+            },
+            "probe_documents": [
+              {
+                "url": "https://public.invalid/a/",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hLyBIVFRQLzEuMQ0KSG9zdDogcHVibGljLmludmFsaWQNClVzZXItQWdlbnQ6IFRTRVAtUHJvYmUvMQ0KQWNjZXB0OiAqLyoNCkFjY2VwdC1FbmNvZGluZzogaWRlbnRpdHkNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg==",
+                      "sha256": "6547c88f298bc0e61d84a3a8d64b2e80b1ccc2191cb70313476e0ed909703074"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "91d6027bab9c646e4161efd8a074f9e246a9f1154e5934c182011904939a21d5"
+                    }
+                  }
+                ]
+              },
+              {
+                "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hL3RzZXAtY2hlY2stYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWEgSFRUUC8xLjENCkhvc3Q6IHB1YmxpYy5pbnZhbGlkDQpVc2VyLUFnZW50OiBUU0VQLVByb2JlLzENCkFjY2VwdDogKi8qDQpBY2NlcHQtRW5jb2Rpbmc6IGlkZW50aXR5DQpDb25uZWN0aW9uOiBjbG9zZQ0KDQo=",
+                      "sha256": "23c1b70c4b87da55a2830aae5446d72ebc18f34e0a61d025019ea51507fad556"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgNTAzIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "9b0fb9fb6d90e9457c3fa58099021a510d9701d030756625fe8a42f279aed120"
+                    }
+                  }
+                ]
+              }
+            ],
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS03-redirect200",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS03-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS03",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "generated_assumption": "expected-absent-not-proven",
+                "routes": [
+                  {
+                    "kind": "existing",
+                    "url": "https://public.invalid/a/"
+                  },
+                  {
+                    "kind": "generated",
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "1d7de35983a58af7118688dd974d4e6a88564801a535688606ab135f506f8f31"
+            },
+            "probe_documents": [
+              {
+                "url": "https://public.invalid/a/",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hLyBIVFRQLzEuMQ0KSG9zdDogcHVibGljLmludmFsaWQNClVzZXItQWdlbnQ6IFRTRVAtUHJvYmUvMQ0KQWNjZXB0OiAqLyoNCkFjY2VwdC1FbmNvZGluZzogaWRlbnRpdHkNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg==",
+                      "sha256": "6547c88f298bc0e61d84a3a8d64b2e80b1ccc2191cb70313476e0ed909703074"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "91d6027bab9c646e4161efd8a074f9e246a9f1154e5934c182011904939a21d5"
+                    }
+                  }
+                ]
+              },
+              {
+                "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hL3RzZXAtY2hlY2stYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWEgSFRUUC8xLjENCkhvc3Q6IHB1YmxpYy5pbnZhbGlkDQpVc2VyLUFnZW50OiBUU0VQLVByb2JlLzENCkFjY2VwdDogKi8qDQpBY2NlcHQtRW5jb2Rpbmc6IGlkZW50aXR5DQpDb25uZWN0aW9uOiBjbG9zZQ0KDQo=",
+                      "sha256": "23c1b70c4b87da55a2830aae5446d72ebc18f34e0a61d025019ea51507fad556"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMzAxIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQpMb2NhdGlvbjogaHR0cHM6Ly9wdWJsaWMuaW52YWxpZC9hLw0KDQo=",
+                      "sha256": "b7ee1c33e41932f64beb8048f69a461148b8e70957c7f7c1758a91c32310b475"
+                    }
+                  },
+                  {
+                    "url": "https://public.invalid/a/",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hLyBIVFRQLzEuMQ0KSG9zdDogcHVibGljLmludmFsaWQNClVzZXItQWdlbnQ6IFRTRVAtUHJvYmUvMQ0KQWNjZXB0OiAqLyoNCkFjY2VwdC1FbmNvZGluZzogaWRlbnRpdHkNCkNvbm5lY3Rpb246IGNsb3NlDQoNCg==",
+                      "sha256": "6547c88f298bc0e61d84a3a8d64b2e80b1ccc2191cb70313476e0ed909703074"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "91d6027bab9c646e4161efd8a074f9e246a9f1154e5934c182011904939a21d5"
+                    }
+                  }
+                ]
+              }
+            ],
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS03-fail-survives-gap-duplicate",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS03-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS03",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "generated_assumption": "expected-absent-not-proven",
+                "routes": [
+                  {
+                    "kind": "existing",
+                    "url": "https://public.invalid/a/"
+                  },
+                  {
+                    "kind": "generated",
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+                  }
+                ]
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "1d7de35983a58af7118688dd974d4e6a88564801a535688606ab135f506f8f31"
+            },
+            "probe_documents": [
+              {
+                "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hL3RzZXAtY2hlY2stYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWEgSFRUUC8xLjENCkhvc3Q6IHB1YmxpYy5pbnZhbGlkDQpVc2VyLUFnZW50OiBUU0VQLVByb2JlLzENCkFjY2VwdDogKi8qDQpBY2NlcHQtRW5jb2Rpbmc6IGlkZW50aXR5DQpDb25uZWN0aW9uOiBjbG9zZQ0KDQo=",
+                      "sha256": "23c1b70c4b87da55a2830aae5446d72ebc18f34e0a61d025019ea51507fad556"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "91d6027bab9c646e4161efd8a074f9e246a9f1154e5934c182011904939a21d5"
+                    }
+                  }
+                ]
+              },
+              {
+                "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                "observed_at": "2026-10-26T00:00:05+00:00",
+                "http": [
+                  {
+                    "url": "https://public.invalid/a/tsep-check-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+                    "complete": true,
+                    "request": {
+                      "base64": "R0VUIC9hL3RzZXAtY2hlY2stYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWEgSFRUUC8xLjENCkhvc3Q6IHB1YmxpYy5pbnZhbGlkDQpVc2VyLUFnZW50OiBUU0VQLVByb2JlLzENCkFjY2VwdDogKi8qDQpBY2NlcHQtRW5jb2Rpbmc6IGlkZW50aXR5DQpDb25uZWN0aW9uOiBjbG9zZQ0KDQo=",
+                      "sha256": "23c1b70c4b87da55a2830aae5446d72ebc18f34e0a61d025019ea51507fad556"
+                    },
+                    "response": {
+                      "base64": "SFRUUC8xLjEgMjAwIFRlc3QNCkNvbnRlbnQtTGVuZ3RoOiAwDQoNCg==",
+                      "sha256": "91d6027bab9c646e4161efd8a074f9e246a9f1154e5934c182011904939a21d5"
+                    }
+                  }
+                ]
+              }
+            ],
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS03-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS06-401",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS06-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS06",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "expectation": "authentication",
+                "login_url": "https://public.invalid/login"
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "5ea8f3f8342e2f1f59e6ccb68a1269123f69e5e7f964fd6be085b445489ac255"
+            },
+            "anonymous_probe": {
+              "profile": "anonymous-http-redacted-v1",
+              "url": "https://public.invalid/a/",
+              "agent": "TSEP-Probe/1",
+              "method": "GET",
+              "cookies": false,
+              "credentials": false,
+              "plan_sha256": "5ea8f3f8342e2f1f59e6ccb68a1269123f69e5e7f964fd6be085b445489ac255",
+              "started_at": "2026-10-26T00:00:00+00:00",
+              "finished_at": "2026-10-26T00:00:05+00:00",
+              "complete": true,
+              "status": 401,
+              "body_bytes": 0,
+              "body_retained": false,
+              "redirect_followed": false,
+              "authentication_schemes": [
+                "basic"
+              ],
+              "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "headers_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS06-403",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS06-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS06",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "expectation": "authentication",
+                "login_url": "https://public.invalid/login"
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "5ea8f3f8342e2f1f59e6ccb68a1269123f69e5e7f964fd6be085b445489ac255"
+            },
+            "anonymous_probe": {
+              "profile": "anonymous-http-redacted-v1",
+              "url": "https://public.invalid/a/",
+              "agent": "TSEP-Probe/1",
+              "method": "GET",
+              "cookies": false,
+              "credentials": false,
+              "plan_sha256": "5ea8f3f8342e2f1f59e6ccb68a1269123f69e5e7f964fd6be085b445489ac255",
+              "started_at": "2026-10-26T00:00:00+00:00",
+              "finished_at": "2026-10-26T00:00:05+00:00",
+              "complete": true,
+              "status": 403,
+              "body_bytes": 0,
+              "body_retained": false,
+              "redirect_followed": false,
+              "authentication_schemes": [
+                "basic"
+              ],
+              "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "headers_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS06-429",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS06-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS06",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "expectation": "authentication",
+                "login_url": "https://public.invalid/login"
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "5ea8f3f8342e2f1f59e6ccb68a1269123f69e5e7f964fd6be085b445489ac255"
+            },
+            "anonymous_probe": {
+              "profile": "anonymous-http-redacted-v1",
+              "url": "https://public.invalid/a/",
+              "agent": "TSEP-Probe/1",
+              "method": "GET",
+              "cookies": false,
+              "credentials": false,
+              "plan_sha256": "5ea8f3f8342e2f1f59e6ccb68a1269123f69e5e7f964fd6be085b445489ac255",
+              "started_at": "2026-10-26T00:00:00+00:00",
+              "finished_at": "2026-10-26T00:00:05+00:00",
+              "complete": true,
+              "status": 429,
+              "body_bytes": 0,
+              "body_retained": false,
+              "redirect_followed": false,
+              "authentication_schemes": [
+                "basic"
+              ],
+              "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "headers_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS06-200",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS06-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS06",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "expectation": "authentication",
+                "login_url": "https://public.invalid/login"
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "5ea8f3f8342e2f1f59e6ccb68a1269123f69e5e7f964fd6be085b445489ac255"
+            },
+            "anonymous_probe": {
+              "profile": "anonymous-http-redacted-v1",
+              "url": "https://public.invalid/a/",
+              "agent": "TSEP-Probe/1",
+              "method": "GET",
+              "cookies": false,
+              "credentials": false,
+              "plan_sha256": "5ea8f3f8342e2f1f59e6ccb68a1269123f69e5e7f964fd6be085b445489ac255",
+              "started_at": "2026-10-26T00:00:00+00:00",
+              "finished_at": "2026-10-26T00:00:05+00:00",
+              "complete": true,
+              "status": 200,
+              "body_bytes": 0,
+              "body_retained": false,
+              "redirect_followed": false,
+              "authentication_schemes": [
+                "basic"
+              ],
+              "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "headers_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS06-503",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS06-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS06",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "expectation": "authentication",
+                "login_url": "https://public.invalid/login"
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "5ea8f3f8342e2f1f59e6ccb68a1269123f69e5e7f964fd6be085b445489ac255"
+            },
+            "anonymous_probe": {
+              "profile": "anonymous-http-redacted-v1",
+              "url": "https://public.invalid/a/",
+              "agent": "TSEP-Probe/1",
+              "method": "GET",
+              "cookies": false,
+              "credentials": false,
+              "plan_sha256": "5ea8f3f8342e2f1f59e6ccb68a1269123f69e5e7f964fd6be085b445489ac255",
+              "started_at": "2026-10-26T00:00:00+00:00",
+              "finished_at": "2026-10-26T00:00:05+00:00",
+              "complete": true,
+              "status": 503,
+              "body_bytes": 0,
+              "body_retained": false,
+              "redirect_followed": false,
+              "authentication_schemes": [
+                "basic"
+              ],
+              "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "headers_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS06-login",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS06-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS06",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "expectation": "login",
+                "login_url": "https://public.invalid/login"
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "226ea4c4972354284fe14402da1e8ea7a54193f5ecf342cd671f4d97d9c87d58"
+            },
+            "anonymous_probe": {
+              "profile": "anonymous-http-redacted-v1",
+              "url": "https://public.invalid/a/",
+              "agent": "TSEP-Probe/1",
+              "method": "GET",
+              "cookies": false,
+              "credentials": false,
+              "plan_sha256": "226ea4c4972354284fe14402da1e8ea7a54193f5ecf342cd671f4d97d9c87d58",
+              "started_at": "2026-10-26T00:00:00+00:00",
+              "finished_at": "2026-10-26T00:00:05+00:00",
+              "complete": true,
+              "status": 302,
+              "body_bytes": 0,
+              "body_retained": false,
+              "redirect_followed": false,
+              "authentication_schemes": [
+                "basic"
+              ],
+              "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "headers_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "location_origin_path_sha256": "65a2484cad6723abea648f5ae83654e59f62faca803b30218fdbdf8df254d5ab"
+            },
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "pass"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS06-401-without-challenge",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS06-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS06",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "expectation": "authentication",
+                "login_url": "https://public.invalid/login"
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "5ea8f3f8342e2f1f59e6ccb68a1269123f69e5e7f964fd6be085b445489ac255"
+            },
+            "anonymous_probe": {
+              "profile": "anonymous-http-redacted-v1",
+              "url": "https://public.invalid/a/",
+              "agent": "TSEP-Probe/1",
+              "method": "GET",
+              "cookies": false,
+              "credentials": false,
+              "plan_sha256": "5ea8f3f8342e2f1f59e6ccb68a1269123f69e5e7f964fd6be085b445489ac255",
+              "started_at": "2026-10-26T00:00:00+00:00",
+              "finished_at": "2026-10-26T00:00:05+00:00",
+              "complete": true,
+              "status": 401,
+              "body_bytes": 0,
+              "body_retained": false,
+              "redirect_followed": false,
+              "authentication_schemes": [],
+              "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "headers_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS06-404-not-proof",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS06-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS06",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "expectation": "not-found",
+                "login_url": "https://public.invalid/login"
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "ac35574e9cb9ab84dafed9fb64203f850262afc6a53dd0788c6f4a1adb09608b"
+            },
+            "anonymous_probe": {
+              "profile": "anonymous-http-redacted-v1",
+              "url": "https://public.invalid/a/",
+              "agent": "TSEP-Probe/1",
+              "method": "GET",
+              "cookies": false,
+              "credentials": false,
+              "plan_sha256": "ac35574e9cb9ab84dafed9fb64203f850262afc6a53dd0788c6f4a1adb09608b",
+              "started_at": "2026-10-26T00:00:00+00:00",
+              "finished_at": "2026-10-26T00:00:05+00:00",
+              "complete": true,
+              "status": 404,
+              "body_bytes": 0,
+              "body_retained": false,
+              "redirect_followed": false,
+              "authentication_schemes": [
+                "basic"
+              ],
+              "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "headers_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS07-client-401-legacy",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 401 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS07-client-401-bounded",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only",
+              "access_evidence_profile": "ts07-access-evidence-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 401 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS07-client-403-legacy",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 403 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "fail"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS07-client-403-bounded",
+      "input": {
+        "input_version": "1",
+        "rules": [
+          "TS07-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://example.com/page",
+            "observed_at": "2026-10-09T10:00:00Z",
+            "context": {
+              "network": "none; synthetic",
+              "bounds": "10s; 20 hops; 1 MiB",
+              "tool": "authored-fixture",
+              "tool_version": "1"
+            },
+            "intent": {
+              "declared_at": "2026-10-09T09:00:00Z",
+              "public_canonical": true,
+              "crawler": "googlebot",
+              "expected_final_url": "https://example.com/page",
+              "expected_body_sha256": "1a6e0470877c5649d6bd2ea27b1fb6c3e1a0ea357880ef3679fe4b5fa921d0da",
+              "indexing": "allow",
+              "following": "unspecified",
+              "access_basis": "test-client-only",
+              "access_evidence_profile": "ts07-access-evidence-v1"
+            },
+            "http": [
+              {
+                "url": "https://example.com/page",
+                "complete": true,
+                "request": "GET /page HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                "response": "HTTP/1.1 403 Synthetic\r\nContent-Type: text/html; charset=utf-8\r\n\r\n<!doctype html><html><head><title>Reference</title></head><body><p>Expected content</p></body></html>"
+              }
+            ],
+            "robots": {
+              "observed_at": "2026-10-09T09:00:00Z",
+              "http": [
+                {
+                  "url": "https://example.com/robots.txt",
+                  "complete": true,
+                  "request": "GET /robots.txt HTTP/1.1\r\nHost: example.com\r\nUser-Agent: googlebot\r\n\r\n",
+                  "response": "HTTP/1.1 200 Synthetic\r\nContent-Type: text/plain; charset=utf-8\r\n\r\nUser-agent: *\nDisallow:\n"
+                }
+              ]
+            },
+            "access_review": {
+              "observed_at": "2026-10-09T10:00:00Z",
+              "outcome": "no-obstacle",
+              "reason": "Authored review of synthetic test-client access, no claim about actual engine access."
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS07-A02",
+          "target": "https://example.com/page",
+          "outcome": "inconclusive"
+        }
+      ]
+    }
+  ]
+}

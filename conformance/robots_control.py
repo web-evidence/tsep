@@ -192,7 +192,7 @@ def access_rule(target, final_url, status):
     from conformance.evaluate import trace, url_parts, utf8_media, text_body
     intent = target['intent']
     need(intent.get('access_basis') == 'test-client-only', 'Access assumptions not declared')
-    if status in (401, 403):
+    if status in (401, 403) and 'access_evidence_profile' not in intent:
         return 'fail', 'Observed HTTP access denial to test client'
     directive_scope(intent)
     if 'robots_policy' in intent:
@@ -212,6 +212,10 @@ def access_rule(target, final_url, status):
             + '; actual Googlebot representation unobserved') if 'directive_crawler' in intent else ''
     if not allowed:
         return 'fail', 'Observed robots policy disallows this target crawler/path' + note
+    if 'access_evidence_profile' in intent:
+        need(status == 200, 'Observed HTTP refusal for the test client does not establish crawler access')
+        from conformance.access_evidence import assess
+        return assess(target)
     review = target.get('access_review', {})
     need(status == 200 and review.get('outcome') == 'no-obstacle' and review.get('reason'), 'HTTP access unresolved or challenge not reviewed')
     need(tsep.timestamp(review['observed_at']) >= tsep.timestamp(target['observed_at']), 'Access review predates the HTTP capture')

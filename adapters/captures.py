@@ -21,7 +21,7 @@ import tsep
 from conformance.evaluate import RULES, VERSION as INTERPRETER_VERSION, evaluate, url_parts, binding_digest
 from provenance.runtime import loaded_sources, runtime_identity
 
-VERSION = '50'
+VERSION = '51'
 NAME = 'TSEP offline capture adapter'
 ACCESS = ('public', 'restricted', 'synthetic')
 
@@ -68,6 +68,8 @@ def verify_ts17_self_digests(target):
 
 def source_files():
     modules = {'adapters/captures.py': sys.modules[__name__], 'tsep.py': tsep}
+    modules['conformance/access_evidence.py'] = importlib.import_module('conformance.access_evidence')
+    modules['conformance/public_probes.py'] = importlib.import_module('conformance.public_probes')
     modules['conformance/google_directives.py'] = importlib.import_module('conformance.google_directives')
     modules['conformance/exclusion_observation.py'] = importlib.import_module('conformance.exclusion_observation')
     modules['conformance/http_canonical.py'] = importlib.import_module('conformance.http_canonical')
@@ -377,6 +379,10 @@ def pieces(target):
         retain('http','hreflang_documents',hreflang)
         retain('hreflang','native_hreflang_sources',hreflang)
     if 'hreflang_unsupported_channels' in target:retain('hreflang','unsupported_supplied_channels',target['hreflang_unsupported_channels'])
+    if 'public_probe' in target.get('intent', {}):
+        retain('configuration','public_probe_binding',target.get('configuration',{}))
+    for key in ('probe_documents','anonymous_probe','access_inspection'):
+        if key in target: retain('http',key,target[key])
     from conformance.evidence_dossier import pieces as dossier_pieces
     for kind, value in dossier_pieces(target).items():
         retain(kind, 'control_dossiers', value)
@@ -664,9 +670,19 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         ts06_rules = {r['id'] for r in controls.get('TS06', {}).get('rules', [])}
         ts06_rows = [row for row in calculated if row['rule_id'] in ts06_rules]
         ts06_pairs = {(row['rule_id'], row['target']) for row in ts06_rows}
-        ts06_whole_na = bool(ts06_rules) and ts06_rules <= set(data['rules']) and \
-            ts06_pairs == {(rule, target) for rule in ts06_rules for target in targets} and \
-            all(row['outcome'] == 'not-applicable' for row in ts06_rows)
+        # A positive inventory is a whole-scope applicability decision, not a
+        # successful probe. The historical synthetic inventory remains usable
+        # only when no selected/supplied public probe contradicts its scope.
+        ts06_inventory_rules = {'TS06-A01'}
+        ts06_public_scope = 'TS06-A02' in data['rules'] or any(
+            'public_probe' in target.get('intent', {})
+            or 'public_probe_sha256' in target.get('configuration', {})
+            or 'anonymous_probe' in target
+            for target in data['targets'])
+        ts06_whole_na = ts06_inventory_rules <= set(data['rules']) and \
+            ts06_pairs == {('TS06-A01', target) for target in targets} and \
+            all(row['outcome'] == 'not-applicable' for row in ts06_rows) and \
+            not ts06_public_scope
         refs = {}
         for index, target in enumerate(data['targets'], 1):
             refs[target['url']] = list(shared) + diagnostic_refs[target['url']]
@@ -679,6 +695,11 @@ def build(input_path, output, *, assessor, label, selection_method, access, mode
         atoms = []
         for row in calculated:
             atom = dict(row, evidence_ids=refs[row['target']])
+            if row['rule_id'] == 'TS06-A01' and row['outcome'] == 'not-applicable' and not ts06_whole_na:
+                atom['outcome'] = 'inconclusive'
+                atom['reason'] += ('; the no-sensitive-route inventory conflicts with a selected or supplied public probe'
+                                   if ts06_public_scope else
+                                   '; positive inventory does not cover every declared target')
             if (row['rule_id'] in ts05_rules and row['outcome'] == 'not-applicable'
                     and not ts05_whole_na):
                 atom['outcome'] = 'inconclusive'

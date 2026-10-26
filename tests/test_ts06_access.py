@@ -65,7 +65,8 @@ class TS06Access(unittest.TestCase):
 
     def test_native_import_export_and_offline_replay_for_pass_fail_and_whole_na(self):
         for case_id, expected_status in (
-                ('ts06-safe-synthetic-matrix', 'C'),
+                # Draft.10 requires A02 too; the unchanged A01 pass alone is partial.
+                ('ts06-safe-synthetic-matrix', 'NT'),
                 ('ts06-canary-in-403', 'NC'),
                 ('ts06-dated-positive-na', 'NA')):
             with self.subTest(case=case_id), tempfile.TemporaryDirectory() as temp:
