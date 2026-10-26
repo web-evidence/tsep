@@ -21,3 +21,9 @@ EN: CI log reading accepts only BOMs before the exact GitHub timestamp, retains 
 - https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect — indexed version only, no live inspection; exact URL/property required.
 
 FR/EN : pages lues via l’outil de recherche ; pas de capture complète redistribuée (documentation tierce). Les liens, date et portée ci-dessus constituent la trace documentaire ; aucun changement de standard externe revendiqué. / Pages read through the search tool; no full capture redistributed (third-party documentation). URLs, date and scope above retain the documentary record; no external standard change claimed.
+
+## Corrections de contre-revue / counter-review corrections
+
+FR : TS03-A02 se limite aux deux routes existante et générée ; les anciennes pages déplacées ne sont pas jugées par cette sonde. TS06 : 404 reste NT, les paramètres de retour de connexion sont ignorés sans être conservés, et un défi sans paramètres est reconnu. Les données sources de draft.9 sont conservées dans une baseline explicite ; la garde historique applique un inverse vérifiable pour le seul raccord TS07. Les anciennes attentes ne sont pas réécrites. Cette nouvelle édition exige toujours toutes ses règles pour un C global ; la sonde seule reste partielle.
+
+EN: TS03-A02 is limited to the existing and generated routes; formerly moved pages are not assessed by this probe. TS06: 404 remains NT, login return parameters are ignored without retention, and a parameterless challenge is recognized. Draft.9 source controls are retained in an explicit baseline; the historical guard applies a verifiable inverse for the sole TS07 hook. Historical expectations are not rewritten. This new edition still requires all its rules for whole-control C; the probe alone remains partial.

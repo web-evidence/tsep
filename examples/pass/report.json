@@ -1,10 +1,5 @@
 {
   "format_version": "2",
-  "protocol": {
-    "name": "TSEP",
-    "version": "0.3.0-draft.10",
-    "sha256": "c7a8136bc112a46702c3ae52c29d7996c4901665a6ea23818e30440bb9901045"
-  },
   "issued_at": "2026-10-09T10:00:00Z",
   "assessor": {
     "name": "Synthetic fixture author / Auteur des cas fictifs",
@@ -88,5 +83,10 @@
         }
       ]
     }
-  ]
+  ],
+  "protocol": {
+    "name": "TSEP",
+    "version": "0.3.0-draft.10",
+    "sha256": "9aac8f12485c67f8dda617dd0806f7cda070cd0a1e1baaada753979f4827b2cd"
+  }
 }

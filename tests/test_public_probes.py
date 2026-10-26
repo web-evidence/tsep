@@ -51,6 +51,10 @@ class PublicProbes(unittest.TestCase):
         changes=[lambda t:t['configuration'].clear(),lambda t:t['intent']['public_probe'].update(declared_at='2026-10-27T00:00:00Z'),lambda t:t['probe_documents'][1]['http'][0].update(request=encoded(request_bytes(MISSING,'Other/1','identity'))),lambda t:t['probe_documents'][1].update(http=[hop(MISSING,302,'https://else.invalid/'),hop('https://else.invalid/',404)])]
         for f in changes:
             t=target03();f(t);self.assertEqual(assess(t,'TS03-A02')[0],'inconclusive')
+    def test_ts03_removed_route_not_assessed_by_generated_probe(self):
+        t=target03();p=t['intent']['public_probe'];p['routes'].append({'kind':'removed','url':'https://public.invalid/old'})
+        t['configuration']['public_probe_sha256']=digest(p)
+        self.assertEqual(assess(t,'TS03-A02')[0],'inconclusive')
     def test_ts06_status_matrix(self):
         for status,want in [(401,'pass'),(403,'inconclusive'),(429,'inconclusive'),(500,'inconclusive'),(200,'fail'),(302,'inconclusive')]:
             with self.subTest(status=status):self.assertEqual(assess(target06(status),'TS06-A02')[0],want)
@@ -58,11 +62,11 @@ class PublicProbes(unittest.TestCase):
         t=target06();t['anonymous_probe']['authentication_schemes']=[]
         self.assertEqual(assess(t,'TS06-A02')[0],'inconclusive')
     def test_ts06_exact_login_and_404(self):
-        t=target06(302,'login');t['anonymous_probe']['location_sha256']=hashlib.sha256(t['intent']['public_probe']['login_url'].encode()).hexdigest()
+        t=target06(302,'login');t['anonymous_probe']['location_origin_path_sha256']=hashlib.sha256(t['intent']['public_probe']['login_url'].encode()).hexdigest()
         self.assertEqual(assess(t,'TS06-A02')[0],'pass')
-        t['anonymous_probe']['location_sha256']='0'*64
+        t['anonymous_probe']['location_origin_path_sha256']='0'*64
         self.assertEqual(assess(t,'TS06-A02')[0],'inconclusive')
-        self.assertEqual(assess(target06(404,'not-found'),'TS06-A02')[0],'pass')
+        self.assertEqual(assess(target06(404,'not-found'),'TS06-A02')[0],'inconclusive')
     def test_ts06_signed_url_refused(self):
         t=target06();t['url']+='?token=secret';t['intent']['public_probe']['url']=t['url'];t['configuration']['public_probe_sha256']=digest(t['intent']['public_probe'])
         self.assertEqual(assess(t,'TS06-A02')[0],'inconclusive')
@@ -83,6 +87,23 @@ class PublicProbes(unittest.TestCase):
             self.assertTrue(r['complete'],r);self.assertEqual(r['status'],200);self.assertEqual(r['body_sha256'],hashlib.sha256(secret).hexdigest())
             self.assertNotIn('PRIVATE',json.dumps(r));self.assertNotIn('fixture',json.dumps(r));self.assertNotIn('Cookie',server.received);self.assertNotIn('Authorization',server.received)
             r=collect(p);self.assertFalse(r['complete'])
+        finally:server.shutdown();server.server_close();thread.join()
+    def test_collector_redirect_query_redacted_and_bare_challenge(self):
+        class Handler(BaseHTTPRequestHandler):
+            def do_GET(self):
+                self.send_response(302 if self.path=='/redirect' else 401)
+                if self.path=='/redirect':self.send_header('Location','/login?returnTo=PRIVATE_TOKEN')
+                else:self.send_header('WWW-Authenticate','Negotiate')
+                self.send_header('Content-Length','0');self.end_headers()
+            def log_message(self,*args):pass
+        server=ThreadingHTTPServer(('127.0.0.1',0),Handler);thread=threading.Thread(target=server.serve_forever,daemon=True);thread.start()
+        try:
+            p=target06()['intent']['public_probe'];base='http://127.0.0.1:'+str(server.server_port)
+            p['url']=base+'/redirect';r=collect(p,allow_loopback=True)
+            self.assertTrue(r['complete']);self.assertEqual(r['location_origin_path_sha256'],hashlib.sha256((base+'/login').encode()).hexdigest())
+            self.assertNotIn('PRIVATE_TOKEN',json.dumps(r));self.assertNotIn('returnTo',json.dumps(r))
+            p['url']=base+'/private';r=collect(p,allow_loopback=True)
+            self.assertTrue(r['complete']);self.assertEqual(r['authentication_schemes'],['negotiate'])
         finally:server.shutdown();server.server_close();thread.join()
 
 if __name__=='__main__':unittest.main()

@@ -1,0 +1,17 @@
+{
+  "base_commit": "d6a6e73f5c21d52131d3f4e39cde309d97385cbc",
+  "purpose": "Reversible explicit TS07 access-profile hook; historical robots decision remains first",
+  "updates": [
+    {
+      "path": "conformance/robots_control.py",
+      "base_sha256": "dce351a194692b6713793bdf31d04f9e6d0c2c695276597b28c2be63066164a4",
+      "current_sha256": "49c90c09baf21872ded83cff99bf1a9ae93cb5f1a72e43672ccbb4afda0786fc",
+      "replacements": [
+        {
+          "before": "            + '; actual Googlebot representation unobserved') if 'directive_crawler' in intent else ''\n    if not allowed:\n        return 'fail', 'Observed robots policy disallows this target crawler/path' + note\n    review = target.get('access_review', {})\n    need(status == 200 and review.get('outcome') == 'no-obstacle' and review.get('reason'), 'HTTP access unresolved or challenge not reviewed')\n    need(tsep.timestamp(review['observed_at']) >= tsep.timestamp(target['observed_at']), 'Access review predates the HTTP capture')\n",
+          "after": "            + '; actual Googlebot representation unobserved') if 'directive_crawler' in intent else ''\n    if not allowed:\n        return 'fail', 'Observed robots policy disallows this target crawler/path' + note\n    if 'access_evidence_profile' in intent:\n        need(status == 200, 'Current HTTP response is not 200')\n        from conformance.access_evidence import assess\n        return assess(target)\n    review = target.get('access_review', {})\n    need(status == 200 and review.get('outcome') == 'no-obstacle' and review.get('reason'), 'HTTP access unresolved or challenge not reviewed')\n    need(tsep.timestamp(review['observed_at']) >= tsep.timestamp(target['observed_at']), 'Access review predates the HTTP capture')\n"
+        }
+      ]
+    }
+  ]
+}

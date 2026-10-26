@@ -44,10 +44,10 @@ def plan(target, control):
 def ts03(target, p, diagnostics):
     from conformance.evaluate import trace
     routes = p.get('routes')
-    need(isinstance(routes, list) and 2 <= len(routes) <= 3, 'Expected existing and generated routes, optional removed route')
+    need(isinstance(routes, list) and len(routes) == 2, 'Expected exactly the existing and generated routes; removed-route policies require a separate plan')
     kinds = [r.get('kind') for r in routes if isinstance(r, dict)]
     need(len(kinds) == len(routes) and len(set(kinds)) == len(kinds)
-         and set(kinds) in ({'existing', 'generated'}, {'existing', 'generated', 'removed'}), 'Ambiguous probe route scope')
+         and set(kinds) == {'existing', 'generated'}, 'Ambiguous probe route scope')
     need(len({r.get('url') for r in routes}) == len(routes), 'Duplicate planned route URL')
     need(next(r['url'] for r in routes if r['kind'] == 'existing') == p['url'], 'Existing route differs from target')
     generated = next(r['url'] for r in routes if r['kind'] == 'generated')
@@ -125,10 +125,10 @@ def ts06(target, p, diagnostics):
     status = record.get('status'); need(type(status) is int and 100 <= status <= 599, 'Missing HTTP status')
     if status == 401 and record.get('authentication_schemes') and p['expectation'] == 'authentication':
         outcome, reason = 'pass', 'HTTP 401 with an authentication challenge observed; content not retained or examined'
-    elif status in (301,302,303,307,308) and p['expectation'] == 'login' and record.get('location_sha256') == hashlib.sha256(login.encode()).hexdigest():
-        outcome, reason = 'pass', 'Redirect to the exact predeclared login URL observed; destination not followed'
+    elif status in (301,302,303,307,308) and p['expectation'] == 'login' and record.get('location_origin_path_sha256') == hashlib.sha256(login.encode()).hexdigest():
+        outcome, reason = 'pass', 'Redirect to the exact predeclared login origin and path observed; query excluded, destination not followed'
     elif status == 404 and p['expectation'] == 'not-found':
-        outcome, reason = 'pass', 'Explicitly expected HTTP 404 observed; body confidentiality not established'
+        outcome, reason = 'inconclusive', 'HTTP 404 observed; an absent or mistyped URL cannot establish protection'
     elif status == 200:
         outcome, reason = 'fail', 'HTTP 200 instead of the expected denial; check for exposed content or a login page served as 200'
     else:

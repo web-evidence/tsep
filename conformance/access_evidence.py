@@ -28,10 +28,10 @@ def assess(target):
     request=json.loads(record['request']['raw_text'])
     need(request.get('inspectionUrl')==target['url'],'Inspection request targets another URL')
     site=request.get('siteUrl','');p=urlsplit(target['url'])
+    need(isinstance(site,str) and site and (site.startswith('sc-domain:') and len(site)>10 or site.endswith('/')), 'Invalid property scope')
     covered=((p.hostname==site[10:] or (p.hostname or '').endswith('.'+site[10:])) if site.startswith('sc-domain:')
              else target['url'].startswith(site) and urlsplit(site).netloc==p.netloc)
     need(covered and record.get('authorized_property')==site,'Inspection property does not cover the exact URL')
-    need(isinstance(site,str) and site and (site.startswith('sc-domain:') and len(site)>10 or site.endswith('/')), 'Invalid property scope')
     retrieved=tsep.timestamp(record['retrieved_at'])
     need(observed<=retrieved,'Inspection retrieval predates current response')
     fields=json.loads(record['response']['raw_text'])['inspectionResult']['indexStatusResult']

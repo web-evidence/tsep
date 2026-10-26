@@ -88,7 +88,7 @@ class SitemapQuality(unittest.TestCase):
         frozen = tsep.read_json(ROOT/'provenance/v030-rc1-preservation.json')
         protocol = tsep.read_json(tsep.PROTOCOL_PATH)
         self.assertEqual(frozen['base_commit'], '7b60c20e7ac572574f756ad92531e0c46f7b83e7')
-        self.assertEqual(protocol['version'], '0.3.0-draft.9')
+        self.assertEqual(protocol['version'], '0.3.0-draft.10')
         protocol['controls']=controls_before_lot1()
         previous = tsep.read_json(ROOT/'provenance/v030-draft1-rule-baseline.json')['new_control_previous_versions']
         next_baseline = tsep.read_json(ROOT/'provenance/v030-draft2-rule-baseline.json')
@@ -110,6 +110,7 @@ class SitemapQuality(unittest.TestCase):
         overlays += tsep.read_json(ROOT/'provenance/v030-indexing-locale-integration-overlay.json')['updates']
         overlays += tsep.read_json(ROOT/'provenance/v030-report-test-overlay-v1.json')['updates']
         overlays = tsep.read_json(ROOT/'provenance/capture-import-clock-test-overlay-v1.json')['updates'] + overlays
+        overlays = tsep.read_json(ROOT/'provenance/public-automation-source-overlay-v1.json')['updates'] + overlays
         for name, sha in frozen['preserved_files'].items():
             raw = (ROOT/name).read_bytes()
             for update in overlays:

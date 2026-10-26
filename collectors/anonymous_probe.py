@@ -9,7 +9,7 @@ import socket
 import ssl
 import sys
 import time
-from urllib.parse import urljoin, urlsplit
+from urllib.parse import urljoin, urlsplit, urlunsplit
 from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from collectors.http import request_bytes
@@ -63,7 +63,7 @@ def collect(plan, *, allow_loopback=False):
         if isinstance(body,str):body=body.encode()
         schemes=[]
         for h in headers.get('www-authenticate',[]):
-            match=re.match(r'^([A-Za-z][A-Za-z0-9_-]*)\s+.+',h)
+            match=re.fullmatch(r'([A-Za-z][A-Za-z0-9_-]*)(?:\s+.+)?',h.strip())
             if match:schemes.append(match[1].lower())
         result.update(complete=True,status=status,body_bytes=len(body),body_sha256=hashlib.sha256(body).hexdigest(),
             response_sha256=hashlib.sha256(raw).hexdigest(),headers_sha256=hashlib.sha256(raw[:split+4]).hexdigest(),
@@ -73,6 +73,11 @@ def collect(plan, *, allow_loopback=False):
             location=urljoin(plan['url'],locations[0])
             # Only a digest is retained: Location may contain a private session token.
             result['location_sha256']=hashlib.sha256(location.encode()).hexdigest()
+            try:
+                destination=url(location)
+                clean=urlunsplit((destination.scheme,destination.netloc,destination.path or '/','',''))
+                result['location_origin_path_sha256']=hashlib.sha256(clean.encode()).hexdigest()
+            except ValueError:pass
         # Discard all raw bytes, including error bodies and authentication realms.
     except (OSError,ValueError) as error:
         result['complete']=False;result['error_type']=type(error).__name__

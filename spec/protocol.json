@@ -461,8 +461,8 @@
             "en": "Responses of the public and generated routes"
           },
           "procedure": {
-            "fr": "Avant la collecte, déclarer une URL existante et un chemin aléatoire de 128 bits dans son répertoire, supposé inexistant ; une route supprimée peut être ajoutée explicitement. Comparer les chaînes HTTP complètes (4 réponses maximum), sur la même origine, avec les statuts attendus.",
-            "en": "Before collection, declare an existing URL and a random 128-bit path in its directory, assumed absent; a removed route may be added explicitly. Compare complete HTTP chains (at most 4 responses), on the same origin, with expected statuses."
+            "fr": "Avant la collecte, déclarer une URL existante et un chemin aléatoire de 128 bits dans son répertoire, supposé inexistant. Une ancienne page supprimée ou déplacée exige un plan distinct. Comparer les chaînes HTTP complètes (4 réponses maximum), sur la même origine, avec les statuts attendus.",
+            "en": "Before collection, declare an existing URL and a random 128-bit path in its directory, assumed absent. A previously removed or moved page requires a separate plan. Compare complete HTTP chains (at most 4 responses), on the same origin, with expected statuses."
           },
           "acceptance": {
             "fr": "Pass : une observation attribuable par route, 200 pour l’existante et 404/410 pour les routes supposées absentes. Fail : absence supposée répondant 200, même après redirection, ou contradiction de statut existant hors obstacles. Une contradiction établie subsiste malgré une autre lacune ou un doublon.",
@@ -886,8 +886,8 @@
             "en": "Before one anonymous GET without cookies or credentials, declare expected denial: HTTP 401 challenge, redirect to an exact same-origin login URL, or deliberate 404. Reject URL query parameters. Follow no redirects; retain no body or private header values."
           },
           "acceptance": {
-            "fr": "Pass de la sonde : 401 avec défi WWW-Authenticate, redirection vers la connexion exacte préalablement déclarée, ou 404 explicitement attendu. 200 = fail du refus attendu, sans affirmer une fuite : vérifier contenu exposé ou formulaire de connexion en 200.",
-            "en": "Probe pass: 401 with WWW-Authenticate challenge, redirect to the exact predeclared login URL, or explicitly expected 404. 200 = fail of expected denial, without claiming a leak: check for exposed content or a login form returning 200."
+            "fr": "Pass de la sonde : 401 avec défi WWW-Authenticate, ou redirection vers l’origine et le chemin exacts de connexion préalablement déclarés ; paramètres de redirection exclus et non conservés. Un 404 reste indéterminé : une URL inexistante ou erronée ne prouve aucune protection. 200 = fail du refus attendu, sans affirmer une fuite : vérifier contenu exposé ou formulaire de connexion en 200.",
+            "en": "Probe pass: 401 with WWW-Authenticate challenge, or redirect to the exact predeclared login origin and path; redirect query parameters excluded and not retained. A 404 remains inconclusive: a missing or mistyped URL establishes no protection. 200 = fail of expected denial, without claiming a leak: check for exposed content or a login form returning 200."
           },
           "inconclusive": {
             "fr": "403 seul, 429/5xx, défi non attribuable, redirection différente, réponse incomplète, URL signée, contexte anonyme ou empreinte non établi.",

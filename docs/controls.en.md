@@ -206,7 +206,7 @@ C requires all expectations across the declared scope. NC requires evidenced con
 
 **Applicability.** Explicit public-probes-v1 plan, dated before collection and fingerprint-bound to the target.
 
-**Method.** Before collection, declare an existing URL and a random 128-bit path in its directory, assumed absent; a removed route may be added explicitly. Compare complete HTTP chains (at most 4 responses), on the same origin, with expected statuses.
+**Method.** Before collection, declare an existing URL and a random 128-bit path in its directory, assumed absent. A previously removed or moved page requires a separate plan. Compare complete HTTP chains (at most 4 responses), on the same origin, with expected statuses.
 
 **Acceptance.** Pass: one attributable observation per route, 200 for existing and 404/410 for expected absent routes. Fail: expected absence returning 200, including after redirect, or existing-status contradiction outside obstacles. An established contradiction survives another gap or duplicate.
 
@@ -404,7 +404,7 @@ C requires the complete cells and triplets in the declared synthetic scope. A ca
 
 **Method.** Before one anonymous GET without cookies or credentials, declare expected denial: HTTP 401 challenge, redirect to an exact same-origin login URL, or deliberate 404. Reject URL query parameters. Follow no redirects; retain no body or private header values.
 
-**Acceptance.** Probe pass: 401 with WWW-Authenticate challenge, redirect to the exact predeclared login URL, or explicitly expected 404. 200 = fail of expected denial, without claiming a leak: check for exposed content or a login form returning 200.
+**Acceptance.** Probe pass: 401 with WWW-Authenticate challenge, or redirect to the exact predeclared login origin and path; redirect query parameters excluded and not retained. A 404 remains inconclusive: a missing or mistyped URL establishes no protection. 200 = fail of expected denial, without claiming a leak: check for exposed content or a login form returning 200.
 
 **Evidence.** Plan, client, method, timestamps, status and collection metadata; body, response and header digests, body size, challenge scheme names or destination digest. Body and private values are not retained.
 

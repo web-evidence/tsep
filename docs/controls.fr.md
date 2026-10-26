@@ -206,7 +206,7 @@ C exige tous les attendus sur le périmètre déclaré. NC exige une contradicti
 
 **Applicabilité.** Plan public-probes-v1 explicite, daté avant la collecte, lié par son empreinte à la cible.
 
-**Méthode.** Avant la collecte, déclarer une URL existante et un chemin aléatoire de 128 bits dans son répertoire, supposé inexistant ; une route supprimée peut être ajoutée explicitement. Comparer les chaînes HTTP complètes (4 réponses maximum), sur la même origine, avec les statuts attendus.
+**Méthode.** Avant la collecte, déclarer une URL existante et un chemin aléatoire de 128 bits dans son répertoire, supposé inexistant. Une ancienne page supprimée ou déplacée exige un plan distinct. Comparer les chaînes HTTP complètes (4 réponses maximum), sur la même origine, avec les statuts attendus.
 
 **Attendus.** Pass : une observation attribuable par route, 200 pour l’existante et 404/410 pour les routes supposées absentes. Fail : absence supposée répondant 200, même après redirection, ou contradiction de statut existant hors obstacles. Une contradiction établie subsiste malgré une autre lacune ou un doublon.
 
@@ -404,7 +404,7 @@ C exige les cellules et triplets complets du périmètre synthétique déclaré.
 
 **Méthode.** Déclarer avant une unique requête GET sans cookie ni identifiant le refus attendu : défi HTTP 401, redirection vers une URL exacte de connexion de même origine, ou 404 volontaire. Refuser les paramètres URL. Ne suivre aucune redirection ; ne conserver aucun corps ni valeur privée d’en-tête.
 
-**Attendus.** Pass de la sonde : 401 avec défi WWW-Authenticate, redirection vers la connexion exacte préalablement déclarée, ou 404 explicitement attendu. 200 = fail du refus attendu, sans affirmer une fuite : vérifier contenu exposé ou formulaire de connexion en 200.
+**Attendus.** Pass de la sonde : 401 avec défi WWW-Authenticate, ou redirection vers l’origine et le chemin exacts de connexion préalablement déclarés ; paramètres de redirection exclus et non conservés. Un 404 reste indéterminé : une URL inexistante ou erronée ne prouve aucune protection. 200 = fail du refus attendu, sans affirmer une fuite : vérifier contenu exposé ou formulaire de connexion en 200.
 
 **Preuves.** Plan, client, méthode, dates, statut et métadonnées de collecte ; empreintes du corps, de la réponse et des en-têtes, taille du corps, noms des schémas de défi ou empreinte de destination. Corps et valeurs privées non conservés.
 

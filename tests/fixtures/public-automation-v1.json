@@ -1180,7 +1180,7 @@
               "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
               "headers_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
               "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-              "location_sha256": "65a2484cad6723abea648f5ae83654e59f62faca803b30218fdbdf8df254d5ab"
+              "location_origin_path_sha256": "65a2484cad6723abea648f5ae83654e59f62faca803b30218fdbdf8df254d5ab"
             },
             "context": {
               "network": "none; synthetic",
@@ -1240,6 +1240,70 @@
               "body_retained": false,
               "redirect_followed": false,
               "authentication_schemes": [],
+              "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "headers_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+            },
+            "context": {
+              "network": "none; synthetic",
+              "tool": "authored-fixture",
+              "tool_version": "1",
+              "bounds": "fixed fictional records"
+            }
+          }
+        ]
+      },
+      "expected": [
+        {
+          "rule_id": "TS06-A02",
+          "target": "https://public.invalid/a/",
+          "outcome": "inconclusive"
+        }
+      ]
+    },
+    {
+      "id": "automation-v1-TS06-404-not-proof",
+      "input": {
+        "input_version": "2",
+        "rules": [
+          "TS06-A02"
+        ],
+        "targets": [
+          {
+            "url": "https://public.invalid/a/",
+            "observed_at": "2026-10-26T00:00:05+00:00",
+            "intent": {
+              "public_probe": {
+                "profile": "public-probes-v1",
+                "control": "TS06",
+                "url": "https://public.invalid/a/",
+                "declared_at": "2026-10-26T00:00:00+00:00",
+                "agent": "TSEP-Probe/1",
+                "expectation": "not-found",
+                "login_url": "https://public.invalid/login"
+              }
+            },
+            "configuration": {
+              "public_probe_sha256": "ac35574e9cb9ab84dafed9fb64203f850262afc6a53dd0788c6f4a1adb09608b"
+            },
+            "anonymous_probe": {
+              "profile": "anonymous-http-redacted-v1",
+              "url": "https://public.invalid/a/",
+              "agent": "TSEP-Probe/1",
+              "method": "GET",
+              "cookies": false,
+              "credentials": false,
+              "plan_sha256": "ac35574e9cb9ab84dafed9fb64203f850262afc6a53dd0788c6f4a1adb09608b",
+              "started_at": "2026-10-26T00:00:00+00:00",
+              "finished_at": "2026-10-26T00:00:05+00:00",
+              "complete": true,
+              "status": 404,
+              "body_bytes": 0,
+              "body_retained": false,
+              "redirect_followed": false,
+              "authentication_schemes": [
+                "basic"
+              ],
               "response_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
               "headers_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
               "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
