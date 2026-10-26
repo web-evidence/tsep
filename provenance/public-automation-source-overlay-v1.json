@@ -5,11 +5,15 @@
     {
       "path": "conformance/robots_control.py",
       "base_sha256": "dce351a194692b6713793bdf31d04f9e6d0c2c695276597b28c2be63066164a4",
-      "current_sha256": "49c90c09baf21872ded83cff99bf1a9ae93cb5f1a72e43672ccbb4afda0786fc",
+      "current_sha256": "73fbc1b7d27738f58940d1e1d776a782d65a380b5a84bfe37414d1b1ea503adf",
       "replacements": [
         {
           "before": "            + '; actual Googlebot representation unobserved') if 'directive_crawler' in intent else ''\n    if not allowed:\n        return 'fail', 'Observed robots policy disallows this target crawler/path' + note\n    review = target.get('access_review', {})\n    need(status == 200 and review.get('outcome') == 'no-obstacle' and review.get('reason'), 'HTTP access unresolved or challenge not reviewed')\n    need(tsep.timestamp(review['observed_at']) >= tsep.timestamp(target['observed_at']), 'Access review predates the HTTP capture')\n",
-          "after": "            + '; actual Googlebot representation unobserved') if 'directive_crawler' in intent else ''\n    if not allowed:\n        return 'fail', 'Observed robots policy disallows this target crawler/path' + note\n    if 'access_evidence_profile' in intent:\n        need(status == 200, 'Current HTTP response is not 200')\n        from conformance.access_evidence import assess\n        return assess(target)\n    review = target.get('access_review', {})\n    need(status == 200 and review.get('outcome') == 'no-obstacle' and review.get('reason'), 'HTTP access unresolved or challenge not reviewed')\n    need(tsep.timestamp(review['observed_at']) >= tsep.timestamp(target['observed_at']), 'Access review predates the HTTP capture')\n"
+          "after": "            + '; actual Googlebot representation unobserved') if 'directive_crawler' in intent else ''\n    if not allowed:\n        return 'fail', 'Observed robots policy disallows this target crawler/path' + note\n    if 'access_evidence_profile' in intent:\n        need(status == 200, 'Observed HTTP refusal for the test client does not establish crawler access')\n        from conformance.access_evidence import assess\n        return assess(target)\n    review = target.get('access_review', {})\n    need(status == 200 and review.get('outcome') == 'no-obstacle' and review.get('reason'), 'HTTP access unresolved or challenge not reviewed')\n    need(tsep.timestamp(review['observed_at']) >= tsep.timestamp(target['observed_at']), 'Access review predates the HTTP capture')\n"
+        },
+        {
+          "before": "    if status in (401, 403):\n        return 'fail', 'Observed HTTP access denial to test client'",
+          "after": "    if status in (401, 403) and 'access_evidence_profile' not in intent:\n        return 'fail', 'Observed HTTP access denial to test client'"
         }
       ]
     }

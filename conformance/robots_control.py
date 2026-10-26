@@ -192,7 +192,7 @@ def access_rule(target, final_url, status):
     from conformance.evaluate import trace, url_parts, utf8_media, text_body
     intent = target['intent']
     need(intent.get('access_basis') == 'test-client-only', 'Access assumptions not declared')
-    if status in (401, 403):
+    if status in (401, 403) and 'access_evidence_profile' not in intent:
         return 'fail', 'Observed HTTP access denial to test client'
     directive_scope(intent)
     if 'robots_policy' in intent:
@@ -213,7 +213,7 @@ def access_rule(target, final_url, status):
     if not allowed:
         return 'fail', 'Observed robots policy disallows this target crawler/path' + note
     if 'access_evidence_profile' in intent:
-        need(status == 200, 'Current HTTP response is not 200')
+        need(status == 200, 'Observed HTTP refusal for the test client does not establish crawler access')
         from conformance.access_evidence import assess
         return assess(target)
     review = target.get('access_review', {})
