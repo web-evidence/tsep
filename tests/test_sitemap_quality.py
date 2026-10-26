@@ -127,6 +127,7 @@ class SitemapQuality(unittest.TestCase):
         extension += tsep.read_json(ROOT/'provenance/v030-indexing-locale-integration-overlay.json')['updates']
         extension += tsep.read_json(ROOT/'provenance/v030-render-transport-integration-overlay.json')['updates']
         extension += verification
+        extension += tsep.read_json(ROOT/'provenance/public-automation-source-overlay-v1.json')['updates']
         for update in frozen['integration_test_updates']:
             current = (ROOT/update['path']).read_text()
             for addition in reversed(extension):
@@ -143,7 +144,8 @@ class SitemapQuality(unittest.TestCase):
         self.assertEqual(reader.digest(corpus['cases']), frozen['core_cases_sha256'])
         refs = frozen['additional_case_files']
         self.assertEqual(corpus['additional_case_files'][:len(refs)], refs)
-        methods = tsep.read_json(ROOT/'tests/fixtures/control-cases.json')
+        from tests.automation_history import method_before_automation
+        methods = method_before_automation()
         self.assertEqual(reader.digest(methods['cases'][:frozen['method_cases_count']]), frozen['method_cases_sha256'])
         self.assertEqual(sum(len(c.get('rules', [])) for c in protocol['controls']), 98)
 

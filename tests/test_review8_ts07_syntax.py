@@ -45,7 +45,8 @@ class GoogleSyntaxV2(unittest.TestCase):
 
     def test_normative_delta_is_only_ts07_a01(self):
         baseline=json.loads((ROOT/'provenance/v030-draft8-r077-baseline.json').read_text())
-        protocol=json.loads((ROOT/'spec/protocol.json').read_text())
+        from tests.automation_history import protocol_before_automation
+        protocol=protocol_before_automation()
         self.assertEqual(protocol['version'],'0.3.0-draft.9')
         for control in protocol['controls']:
             if control['id']!='TS07':

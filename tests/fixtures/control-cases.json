@@ -1,6 +1,6 @@
 {
   "synthetic": true,
-  "protocol_version": "0.3.0-draft.9",
+  "protocol_version": "0.3.0-draft.10",
   "verdict_origin": "Authored reference judgments; no automatic SEO interpretation or live observation.",
   "cases": [
     {
@@ -7196,16 +7196,16 @@
       "id": "TS06-supplied-matrix-pass",
       "control_id": "TS06",
       "description": {
-        "fr": "Cas de méthode TS06 synthétique ; aucun site réel. Les preuves sont uniquement synthétiques ; la matrice route-rôle et les triplets fournis sont complets et cohérents.",
-        "en": "Synthetic TS06 method case; no live site. Evidence is synthetic only; complete supplied route-role matrix and cache triplets agree."
+        "fr": "Cas de méthode TS06 synthétique ; aucun site réel. Les preuves sont uniquement synthétiques ; la matrice route-rôle et les triplets fournis sont complets et cohérents. Draft.10 : A01 reste conforme dans son périmètre, mais A02 manque pour conclure sur le contrôle entier.",
+        "en": "Synthetic TS06 method case; no live site. Evidence is synthetic only; complete supplied route-role matrix and cache triplets agree. Draft.10: A01 still passes in its scope, but A02 is missing for a whole-control conclusion."
       },
       "evidence": {
         "configuration": "SYNTHETIC route policy and fingerprint-bound plan.",
         "http": "SYNTHETIC raw GET responses; no network collection.",
         "intent": "SYNTHETIC prior route-role matrix and canary plan."
       },
-      "expected_status": "C",
-      "expected_gate": "GO_WITH_RESERVATIONS",
+      "expected_status": "NT",
+      "expected_gate": "NO_GO",
       "atomic_results": [
         {
           "rule_id": "TS06-A01",
@@ -7326,8 +7326,8 @@
       "id": "TS03-synthetic-matrix-complete",
       "control_id": "TS03",
       "description": {
-        "fr": "Réponses complètes et marqueurs conformes sur la matrice synthétique .invalid.",
-        "en": "Complete responses and markers match the synthetic .invalid matrix."
+        "fr": "Réponses complètes et marqueurs conformes sur la matrice synthétique .invalid. Draft.10 : A01 reste conforme dans son périmètre, mais A02 manque pour conclure sur le contrôle entier.",
+        "en": "Complete responses and markers match the synthetic .invalid matrix. Draft.10: A01 still passes in its scope, but A02 is missing for a whole-control conclusion."
       },
       "evidence": {
         "configuration": "SYNTHETIC: prior three-state route plan and bound fingerprint; no live scope.",
@@ -7351,8 +7351,8 @@
           ]
         }
       ],
-      "expected_status": "C",
-      "expected_gate": "GO_WITH_RESERVATIONS"
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
     },
     {
       "id": "TS03-synthetic-removed-route-200",
@@ -9626,6 +9626,274 @@
       ],
       "expected_status": "NT",
       "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS03-public-probe-pass",
+      "control_id": "TS03",
+      "description": {
+        "fr": "Cas de méthode intégralement synthétique, sans réseau. Une réponse 200 pour la page existante et 404 pour le chemin généré concordent avec le plan préalable. A02 seule ne valide pas le contrôle entier.",
+        "en": "Entirely synthetic method fixture without network. An existing-page 200 and generated-path 404 agree with the prior plan. A02 alone cannot validate the whole control."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC public-probes-v1 configuration bound to the prior plan.",
+        "http": "SYNTHETIC public-probe HTTP record; no real server or network.",
+        "intent": "SYNTHETIC explicit pre-observation expectation and target scope."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS03-A02",
+          "outcome": "pass",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Une réponse 200 pour la page existante et 404 pour le chemin généré concordent avec le plan préalable.",
+            "en": "An existing-page 200 and generated-path 404 agree with the prior plan."
+          }
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS03-public-probe-fail",
+      "control_id": "TS03",
+      "description": {
+        "fr": "Cas de méthode intégralement synthétique, sans réseau. Le chemin supposé absent répond 200, en contradiction avec le plan. A02 seule ne valide pas le contrôle entier.",
+        "en": "Entirely synthetic method fixture without network. The presumed-absent path returns 200, contrary to the plan. A02 alone cannot validate the whole control."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC public-probes-v1 configuration bound to the prior plan.",
+        "http": "SYNTHETIC public-probe HTTP record; no real server or network.",
+        "intent": "SYNTHETIC explicit pre-observation expectation and target scope."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS03-A02",
+          "outcome": "fail",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Le chemin supposé absent répond 200, en contradiction avec le plan.",
+            "en": "The presumed-absent path returns 200, contrary to the plan."
+          }
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "REVIEW"
+    },
+    {
+      "id": "TS03-public-probe-inconclusive",
+      "control_id": "TS03",
+      "description": {
+        "fr": "Cas de méthode intégralement synthétique, sans réseau. La sonde reçoit 429 et ne permet pas de conclure. A02 seule ne valide pas le contrôle entier.",
+        "en": "Entirely synthetic method fixture without network. The probe receives 429 and cannot establish a result. A02 alone cannot validate the whole control."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC public-probes-v1 configuration bound to the prior plan.",
+        "http": "SYNTHETIC public-probe HTTP record; no real server or network.",
+        "intent": "SYNTHETIC explicit pre-observation expectation and target scope."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS03-A02",
+          "outcome": "inconclusive",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "La sonde reçoit 429 et ne permet pas de conclure.",
+            "en": "The probe receives 429 and cannot establish a result."
+          }
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "INCOMPLETE"
+    },
+    {
+      "id": "TS03-matrix-and-public-probe-pass",
+      "control_id": "TS03",
+      "description": {
+        "fr": "Réponses complètes et marqueurs conformes sur la matrice synthétique .invalid. A02 dispose aussi d’un plan et de réponses fictives concordantes ; aucune conclusion sur un site réel.",
+        "en": "Complete responses and markers match the synthetic .invalid matrix. A02 also has a matching fictional plan and responses; no real-site conclusion."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC: prior three-state route plan and bound fingerprint; no live scope. Additional SYNTHETIC, explicitly supplied public-probes-v1 plan and anonymous observation, no network.",
+        "http": "SYNTHETIC: complete GET response matrix for .invalid routes; no DNS or socket. Additional SYNTHETIC, explicitly supplied public-probes-v1 plan and anonymous observation, no network.",
+        "content": "SYNTHETIC: literal UTF-8 markers only; no semantic review.",
+        "intent": "SYNTHETIC: existing, removed and nonexistent route states are declared before capture. Additional SYNTHETIC, explicitly supplied public-probes-v1 plan and anonymous observation, no network."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS03-A01",
+          "outcome": "pass",
+          "reason": {
+            "fr": "La matrice HTTP fictive complète respecte tous les statuts et marqueurs déclarés.",
+            "en": "The complete fictional HTTP matrix matches every declared status and marker."
+          },
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "content",
+            "intent"
+          ]
+        },
+        {
+          "rule_id": "TS03-A02",
+          "outcome": "pass",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Une réponse 200 pour la page existante et 404 pour le chemin généré concordent avec le plan préalable.",
+            "en": "An existing-page 200 and generated-path 404 agree with the prior plan."
+          }
+        }
+      ],
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS"
+    },
+    {
+      "id": "TS06-public-probe-pass",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Cas de méthode intégralement synthétique, sans réseau. Le relevé anonyme 401 avec défi HTTP correspond au refus déclaré. A02 seule ne valide pas le contrôle entier.",
+        "en": "Entirely synthetic method fixture without network. The anonymous 401 record with an HTTP challenge matches the declared denial. A02 alone cannot validate the whole control."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC public-probes-v1 configuration bound to the prior plan.",
+        "http": "SYNTHETIC public-probe HTTP record; no real server or network.",
+        "intent": "SYNTHETIC explicit pre-observation expectation and target scope."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS06-A02",
+          "outcome": "pass",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Le relevé anonyme 401 avec défi HTTP correspond au refus déclaré.",
+            "en": "The anonymous 401 record with an HTTP challenge matches the declared denial."
+          }
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS06-public-probe-fail",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Cas de méthode intégralement synthétique, sans réseau. La réponse 200 contredit le refus attendu, sans prouver une fuite de contenu. A02 seule ne valide pas le contrôle entier.",
+        "en": "Entirely synthetic method fixture without network. The 200 response contradicts expected denial without establishing a content leak. A02 alone cannot validate the whole control."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC public-probes-v1 configuration bound to the prior plan.",
+        "http": "SYNTHETIC public-probe HTTP record; no real server or network.",
+        "intent": "SYNTHETIC explicit pre-observation expectation and target scope."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS06-A02",
+          "outcome": "fail",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "La réponse 200 contredit le refus attendu, sans prouver une fuite de contenu.",
+            "en": "The 200 response contradicts expected denial without establishing a content leak."
+          }
+        }
+      ],
+      "expected_status": "NC",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS06-public-probe-inconclusive",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Cas de méthode intégralement synthétique, sans réseau. Un 403 isolé ne suffit pas à attribuer le refus à la protection attendue. A02 seule ne valide pas le contrôle entier.",
+        "en": "Entirely synthetic method fixture without network. A bare 403 cannot attribute denial to the expected protection. A02 alone cannot validate the whole control."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC public-probes-v1 configuration bound to the prior plan.",
+        "http": "SYNTHETIC public-probe HTTP record; no real server or network.",
+        "intent": "SYNTHETIC explicit pre-observation expectation and target scope."
+      },
+      "atomic_results": [
+        {
+          "rule_id": "TS06-A02",
+          "outcome": "inconclusive",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Un 403 isolé ne suffit pas à attribuer le refus à la protection attendue.",
+            "en": "A bare 403 cannot attribute denial to the expected protection."
+          }
+        }
+      ],
+      "expected_status": "NT",
+      "expected_gate": "NO_GO"
+    },
+    {
+      "id": "TS06-matrix-and-public-probe-pass",
+      "control_id": "TS06",
+      "description": {
+        "fr": "Cas de méthode TS06 synthétique ; aucun site réel. Les preuves sont uniquement synthétiques ; la matrice route-rôle et les triplets fournis sont complets et cohérents. A02 dispose aussi d’un plan et de réponses fictives concordantes ; aucune conclusion sur un site réel.",
+        "en": "Synthetic TS06 method case; no live site. Evidence is synthetic only; complete supplied route-role matrix and cache triplets agree. A02 also has a matching fictional plan and responses; no real-site conclusion."
+      },
+      "evidence": {
+        "configuration": "SYNTHETIC route policy and fingerprint-bound plan. Additional SYNTHETIC, explicitly supplied public-probes-v1 plan and anonymous observation, no network.",
+        "http": "SYNTHETIC raw GET responses; no network collection. Additional SYNTHETIC, explicitly supplied public-probes-v1 plan and anonymous observation, no network.",
+        "intent": "SYNTHETIC prior route-role matrix and canary plan. Additional SYNTHETIC, explicitly supplied public-probes-v1 plan and anonymous observation, no network."
+      },
+      "expected_status": "C",
+      "expected_gate": "GO_WITH_RESERVATIONS",
+      "atomic_results": [
+        {
+          "rule_id": "TS06-A01",
+          "outcome": "pass",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Les preuves sont uniquement synthétiques ; la matrice route-rôle et les triplets fournis sont complets et cohérents.",
+            "en": "Evidence is synthetic only; complete supplied route-role matrix and cache triplets agree."
+          }
+        },
+        {
+          "rule_id": "TS06-A02",
+          "outcome": "pass",
+          "evidence_ids": [
+            "configuration",
+            "http",
+            "intent"
+          ],
+          "reason": {
+            "fr": "Le relevé anonyme 401 avec défi HTTP correspond au refus déclaré.",
+            "en": "The anonymous 401 record with an HTTP challenge matches the declared denial."
+          }
+        }
+      ]
     }
   ]
 }

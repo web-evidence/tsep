@@ -1,0 +1,173 @@
+{
+  "purpose": "Explicit current-edition method migration; all atomic rows/outcomes of the 194 previous cases are unchanged. Two whole-control C become NT because A02 is missing. Eight authored cases added; no real observations.",
+  "base_protocol_version": "0.3.0-draft.9",
+  "current_protocol_version": "0.3.0-draft.10",
+  "base_sha256": "267d550a5534b8924bbd50b17a054de752e7922ce66e408ab6ad606396d8fbaa",
+  "current_sha256": "44d7d82b24047438a5e15e46ab87cb04b25514fae3b8043e0901daafd666f839",
+  "updates": [
+    {
+      "id": "TS03-synthetic-matrix-complete",
+      "before": {
+        "id": "TS03-synthetic-matrix-complete",
+        "control_id": "TS03",
+        "description": {
+          "fr": "Réponses complètes et marqueurs conformes sur la matrice synthétique .invalid.",
+          "en": "Complete responses and markers match the synthetic .invalid matrix."
+        },
+        "evidence": {
+          "configuration": "SYNTHETIC: prior three-state route plan and bound fingerprint; no live scope.",
+          "http": "SYNTHETIC: complete GET response matrix for .invalid routes; no DNS or socket.",
+          "content": "SYNTHETIC: literal UTF-8 markers only; no semantic review.",
+          "intent": "SYNTHETIC: existing, removed and nonexistent route states are declared before capture."
+        },
+        "atomic_results": [
+          {
+            "rule_id": "TS03-A01",
+            "outcome": "pass",
+            "reason": {
+              "fr": "La matrice HTTP fictive complète respecte tous les statuts et marqueurs déclarés.",
+              "en": "The complete fictional HTTP matrix matches every declared status and marker."
+            },
+            "evidence_ids": [
+              "configuration",
+              "http",
+              "content",
+              "intent"
+            ]
+          }
+        ],
+        "expected_status": "C",
+        "expected_gate": "GO_WITH_RESERVATIONS"
+      },
+      "after": {
+        "id": "TS03-synthetic-matrix-complete",
+        "control_id": "TS03",
+        "description": {
+          "fr": "Réponses complètes et marqueurs conformes sur la matrice synthétique .invalid. Draft.10 : A01 reste conforme dans son périmètre, mais A02 manque pour conclure sur le contrôle entier.",
+          "en": "Complete responses and markers match the synthetic .invalid matrix. Draft.10: A01 still passes in its scope, but A02 is missing for a whole-control conclusion."
+        },
+        "evidence": {
+          "configuration": "SYNTHETIC: prior three-state route plan and bound fingerprint; no live scope.",
+          "http": "SYNTHETIC: complete GET response matrix for .invalid routes; no DNS or socket.",
+          "content": "SYNTHETIC: literal UTF-8 markers only; no semantic review.",
+          "intent": "SYNTHETIC: existing, removed and nonexistent route states are declared before capture."
+        },
+        "atomic_results": [
+          {
+            "rule_id": "TS03-A01",
+            "outcome": "pass",
+            "reason": {
+              "fr": "La matrice HTTP fictive complète respecte tous les statuts et marqueurs déclarés.",
+              "en": "The complete fictional HTTP matrix matches every declared status and marker."
+            },
+            "evidence_ids": [
+              "configuration",
+              "http",
+              "content",
+              "intent"
+            ]
+          }
+        ],
+        "expected_status": "NT",
+        "expected_gate": "INCOMPLETE"
+      }
+    },
+    {
+      "id": "TS06-supplied-matrix-pass",
+      "before": {
+        "id": "TS06-supplied-matrix-pass",
+        "control_id": "TS06",
+        "description": {
+          "fr": "Cas de méthode TS06 synthétique ; aucun site réel. Les preuves sont uniquement synthétiques ; la matrice route-rôle et les triplets fournis sont complets et cohérents.",
+          "en": "Synthetic TS06 method case; no live site. Evidence is synthetic only; complete supplied route-role matrix and cache triplets agree."
+        },
+        "evidence": {
+          "configuration": "SYNTHETIC route policy and fingerprint-bound plan.",
+          "http": "SYNTHETIC raw GET responses; no network collection.",
+          "intent": "SYNTHETIC prior route-role matrix and canary plan."
+        },
+        "expected_status": "C",
+        "expected_gate": "GO_WITH_RESERVATIONS",
+        "atomic_results": [
+          {
+            "rule_id": "TS06-A01",
+            "outcome": "pass",
+            "evidence_ids": [
+              "configuration",
+              "http",
+              "intent"
+            ],
+            "reason": {
+              "fr": "Les preuves sont uniquement synthétiques ; la matrice route-rôle et les triplets fournis sont complets et cohérents.",
+              "en": "Evidence is synthetic only; complete supplied route-role matrix and cache triplets agree."
+            }
+          }
+        ]
+      },
+      "after": {
+        "id": "TS06-supplied-matrix-pass",
+        "control_id": "TS06",
+        "description": {
+          "fr": "Cas de méthode TS06 synthétique ; aucun site réel. Les preuves sont uniquement synthétiques ; la matrice route-rôle et les triplets fournis sont complets et cohérents. Draft.10 : A01 reste conforme dans son périmètre, mais A02 manque pour conclure sur le contrôle entier.",
+          "en": "Synthetic TS06 method case; no live site. Evidence is synthetic only; complete supplied route-role matrix and cache triplets agree. Draft.10: A01 still passes in its scope, but A02 is missing for a whole-control conclusion."
+        },
+        "evidence": {
+          "configuration": "SYNTHETIC route policy and fingerprint-bound plan.",
+          "http": "SYNTHETIC raw GET responses; no network collection.",
+          "intent": "SYNTHETIC prior route-role matrix and canary plan."
+        },
+        "expected_status": "NT",
+        "expected_gate": "NO_GO",
+        "atomic_results": [
+          {
+            "rule_id": "TS06-A01",
+            "outcome": "pass",
+            "evidence_ids": [
+              "configuration",
+              "http",
+              "intent"
+            ],
+            "reason": {
+              "fr": "Les preuves sont uniquement synthétiques ; la matrice route-rôle et les triplets fournis sont complets et cohérents.",
+              "en": "Evidence is synthetic only; complete supplied route-role matrix and cache triplets agree."
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "added": [
+    {
+      "id": "TS03-public-probe-pass",
+      "sha256": "1c546e0a42d6bacdf94dff7466eb9a4b78f28fdd2737b17e42763dff1a960702"
+    },
+    {
+      "id": "TS03-public-probe-fail",
+      "sha256": "67242b5dc6812a47540fcfe5dea4e300454df71dd40239ac8cd45a1ab4c89450"
+    },
+    {
+      "id": "TS03-public-probe-inconclusive",
+      "sha256": "d4b0f8cd0d52bde4af629a829d30bfd28faa67f8eb3260a1e13dd841d3411430"
+    },
+    {
+      "id": "TS03-matrix-and-public-probe-pass",
+      "sha256": "e2a5862e4842857d367faa3535c8fb72b2d9e6414ece2425e3853a416d0a1fbe"
+    },
+    {
+      "id": "TS06-public-probe-pass",
+      "sha256": "94676346d20572fc8e646412fe8294a5b12c621013b2d5e8db8bd4ee80979b5e"
+    },
+    {
+      "id": "TS06-public-probe-fail",
+      "sha256": "e087bf3b199c7e6f2e69ac81195d7be2b762d64238089301cf2e81607803dcd7"
+    },
+    {
+      "id": "TS06-public-probe-inconclusive",
+      "sha256": "93dd6f7feca17d3e7bc26dc6c266f3855d45338896854102dbd1f2c892c45b44"
+    },
+    {
+      "id": "TS06-matrix-and-public-probe-pass",
+      "sha256": "ceef50aae2dd59b32a5a8d4efe61929e8f3b5eb4998f05fd294cc863fa6b43f8"
+    }
+  ]
+}

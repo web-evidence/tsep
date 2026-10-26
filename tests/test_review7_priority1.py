@@ -86,7 +86,8 @@ class PolicyV2(unittest.TestCase):
         import tsep
         root=Path(__file__).resolve().parents[1]
         baseline=json.loads((root/'provenance/v030-draft7-priority1-baseline.json').read_text())['controls']
-        protocol=tsep.read_json(tsep.PROTOCOL_PATH)
+        from tests.automation_history import protocol_before_automation
+        protocol=protocol_before_automation()
         self.assertEqual(protocol['version'],'0.3.0-draft.9')
         for c in protocol['controls']:
             if c['id'] not in baseline:continue

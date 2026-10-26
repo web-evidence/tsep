@@ -44,7 +44,8 @@ class TS03Response(unittest.TestCase):
         self.assertEqual(evaluate(case["input"])[0]["outcome"],"fail")
 
     def test_native_import_export_and_offline_replay(self):
-        for case_id,status in (("ts03-complete-synthetic-matrix","C"),
+        # Draft.10 requires A02 too; the unchanged A01 pass alone is partial.
+        for case_id,status in (("ts03-complete-synthetic-matrix","NT"),
                                ("ts03-removed-route-200","NC"),
                                ("ts03-missing-route-observation","NT")):
             with self.subTest(case=case_id), tempfile.TemporaryDirectory() as folder, patch.object(socket,"socket",side_effect=AssertionError("No collection")), patch.object(socket,"getaddrinfo",side_effect=AssertionError("No DNS")):
